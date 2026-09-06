@@ -1,0 +1,129 @@
+/* ============================================================
+   TEMA — GRIMOIRE (akademia sihir)
+   Perpustakaan tua di menara batu, lilin menyala, hujan di luar jendela.
+   Bahasa visual orisinal — tanpa nama, lambang, atau font waralaba mana pun.
+   ============================================================ */
+
+:root[data-theme="grimoire"] {
+  --bg: #14100c;
+  --surface: #1f1811;
+  --surface-2: #191309;
+  --paper: #e8dcc0;
+  --line: rgba(201, 162, 39, 0.18);
+  --line-strong: rgba(201, 162, 39, 0.42);
+
+  --ink: #e8dcc0;
+  --ink-soft: rgba(232, 220, 192, 0.66);
+  --ink-faint: rgba(232, 220, 192, 0.36);
+  --ink-on-paper: #201a12;
+
+  --accent: #c9a227;
+  --accent-2: #6b2320;
+  --glow: #f2c14e;
+
+  /* Naik = emas, turun = oxblood. Bukan hijau-merah. */
+  --up: #c9a227;
+  --down: #a8443f;
+
+  --paper-1: #e8dcc0;
+  --paper-2: #ddcfae;
+  --paper-3: #e6d3a8;
+  --paper-4: #d8c9a5;
+  --paper-5: #e3cdb4;
+  --paper-6: #cfc0a0;
+
+  --font-display: "Cinzel", "Playfair Display", serif;
+  --font-body: "EB Garamond", Georgia, serif;
+  --font-hand: "IM Fell English", "EB Garamond", serif;
+  --font-mono: "Courier Prime", ui-monospace, monospace;
+
+  --radius: 2px;
+  --radius-sm: 2px;
+  --radius-lg: 3px;
+  --stroke: 1px;
+
+  --shadow-card: 0 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-lift: 0 22px 48px rgba(0, 0, 0, 0.7);
+  --shadow-paper: 0 10px 18px -6px rgba(0, 0, 0, 0.72);
+
+  --texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23p)'/%3E%3C/svg%3E");
+  --texture-opacity: 0.09;
+  --texture-blend: overlay;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: none;
+
+  --sticky-fastener: "wax";
+  --sticky-tilt: 3.5deg;
+}
+
+/* Judul modul: kapital kecil, berjarak, dengan pemisah berornamen. */
+:root[data-theme="grimoire"] .ex-module-title {
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+}
+:root[data-theme="grimoire"] .ex-module-title::after {
+  content: "❦";
+  margin-left: 0.7em;
+  color: var(--accent);
+  opacity: 0.65;
+  font-size: 0.85em;
+}
+
+/* Cahaya lilin: ritme tidak beraturan, sengaja bukan ease-in-out. */
+@keyframes ex-candle {
+  0%   { opacity: 0.94; }
+  7%   { opacity: 1;    }
+  13%  { opacity: 0.92; }
+  22%  { opacity: 0.99; }
+  31%  { opacity: 0.95; }
+  38%  { opacity: 1;    }
+  47%  { opacity: 0.93; }
+  55%  { opacity: 0.98; }
+  61%  { opacity: 0.94; }
+  73%  { opacity: 1;    }
+  81%  { opacity: 0.95; }
+  88%  { opacity: 0.99; }
+  100% { opacity: 0.94; }
+}
+
+:root[data-theme="grimoire"] .ex-candle {
+  display: block;
+  animation: ex-candle 7.3s linear infinite;
+}
+
+/* Bingkai foto "bernapas" sangat halus. */
+@keyframes ex-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.006); }
+}
+:root[data-theme="grimoire"] .ex-frame {
+  animation: ex-breathe 11s ease-in-out infinite;
+  border: 10px solid transparent;
+  border-image: linear-gradient(
+      160deg,
+      #6b4f22 0%, #a8842f 18%, #5a3f18 34%,
+      #c9a227 52%, #4f3a17 70%, #8f6f28 86%, #3f2d11 100%
+    ) 1;
+  box-shadow:
+    inset 0 0 0 2px rgba(20, 16, 12, 0.8),
+    0 24px 50px rgba(0, 0, 0, 0.7);
+}
+
+/* Tinta menyerap ke perkamen saat catatan baru dibuat. */
+@keyframes ex-ink-soak {
+  from { -webkit-mask-size: 0% 140%; mask-size: 0% 140%; opacity: 0.2; }
+  to   { -webkit-mask-size: 320% 140%; mask-size: 320% 140%; opacity: 1; }
+}
+:root[data-theme="grimoire"] .ex-ink-in {
+  -webkit-mask-image: radial-gradient(ellipse at left center, #000 42%, transparent 72%);
+  mask-image: radial-gradient(ellipse at left center, #000 42%, transparent 72%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: ex-ink-soak 600ms var(--ease-soft) forwards;
+}
+
+/* Sticky ditempel segel lilin merah, bukan paku payung. */
+:root[data-theme="grimoire"] .ex-sticky {
+  border: 1px solid rgba(32, 26, 18, 0.16);
+}

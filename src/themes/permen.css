@@ -1,0 +1,102 @@
+/* ============================================================
+   TEMA — PERMEN (pastel manis)
+   Toko permen sore hari. Serba bulat, lembut, dan terang. Tema
+   terang kedua, untuk hari-hari yang butuh sesuatu yang ringan.
+   ============================================================ */
+
+:root[data-theme="permen"] {
+  --bg: #fff0f6;
+  --surface: #ffffff;
+  --surface-2: #fff7fb;
+  --paper: #fffdfe;
+  --line: rgba(74, 53, 80, 0.14);
+  --line-strong: rgba(74, 53, 80, 0.3);
+
+  --ink: #4a3550;
+  --ink-soft: rgba(74, 53, 80, 0.68);
+  --ink-faint: rgba(74, 53, 80, 0.42);
+  --ink-on-paper: #4a3550;
+
+  --accent: #ff6fa5;
+  --accent-2: #7bc5f0;
+  --glow: #ffd86b;
+
+  --up: #59c9a5;
+  --down: #ff6f8b;
+
+  --paper-1: #fff3f8;
+  --paper-2: #fdf1c7;
+  --paper-3: #dff3fb;
+  --paper-4: #e8f8e4;
+  --paper-5: #f3ecfd;
+  --paper-6: #ffe9d6;
+
+  --font-display: "Fredoka", "Baloo 2", system-ui, sans-serif;
+  --font-body: "Fredoka", system-ui, sans-serif;
+  --font-hand: "Baloo 2", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius: 22px;
+  --radius-sm: 14px;
+  --radius-lg: 30px;
+  --stroke: 1px;
+
+  --shadow-card: 0 2px 0 rgba(255, 111, 165, 0.16), 0 4px 14px rgba(74, 53, 80, 0.08);
+  --shadow-lift: 0 18px 40px rgba(255, 111, 165, 0.28);
+  --shadow-paper: 0 6px 16px rgba(74, 53, 80, 0.12);
+
+  --texture: none;
+  --texture-opacity: 0;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: none;
+
+  --sticky-fastener: "tape";
+  --sticky-tilt: 3deg;
+}
+
+:root[data-theme="permen"] .ex-module-title {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--accent);
+}
+:root[data-theme="permen"] .ex-module-title::after {
+  content: "✿";
+  margin-left: 0.45em;
+  opacity: 0.6;
+}
+
+/* Tombol seperti permen karet: bulat penuh dan sedikit memantul. */
+:root[data-theme="permen"] .ex-btn {
+  border-radius: 999px;
+  font-weight: 500;
+}
+:root[data-theme="permen"] .ex-btn[data-variant="accent"] {
+  color: #ffffff;
+  box-shadow: 0 3px 0 rgba(214, 74, 129, 0.55);
+}
+:root[data-theme="permen"] .ex-btn[data-variant="accent"]:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+:root[data-theme="permen"] .ex-input {
+  border-radius: 999px;
+  padding-left: 16px;
+}
+
+:root[data-theme="permen"] .ex-sticky {
+  border: 1px solid rgba(74, 53, 80, 0.1);
+}
+
+:root[data-theme="permen"] .ex-frame {
+  border: 8px solid #ffffff;
+  outline: 2px solid rgba(255, 111, 165, 0.35);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 14px 30px rgba(255, 111, 165, 0.24);
+}
+
+/* Redup malam di tema terang berarti menghangatkan, bukan menggelapkan. */
+:root[data-theme="permen"][data-dim="evening"] .ex-dimmable { filter: brightness(0.96) sepia(0.14); }
+:root[data-theme="permen"][data-dim="night"] .ex-dimmable { filter: brightness(0.9) sepia(0.24); }

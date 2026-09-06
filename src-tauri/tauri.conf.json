@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Exact Canvas",
+  "version": "1.0.0",
+  "identifier": "com.exactgroup.canvas",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1421",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [],
+    "macOSPrivateApi": true,
+    "withGlobalTauri": false,
+    "security": {
+      "csp": "default-src 'self' ipc: http://ipc.localhost; script-src 'self' 'unsafe-inline' blob:; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' asset: http://asset.localhost data: blob:; media-src 'self' asset: http://asset.localhost blob:; connect-src 'self' ipc: http://ipc.localhost ws://localhost:1421 ws://localhost:1422 http://localhost:1421",
+      "assetProtocol": {
+        "enable": true,
+        "scope": [
+          "$HOME/ExactCanvas/**",
+          "$HOME/Library/Mobile Documents/**"
+        ]
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["app", "dmg"],
+    "category": "Productivity",
+    "shortDescription": "Kanvas sketsa Wacom, local-first",
+    "longDescription": "Kanvas tak terbatas atau berhalaman untuk pen tablet: pena, pensil, kaligrafi, kuas, stabilo, penghapus, laso, bentuk geometri yang bisa disunting, teks, lapisan, tempel gambar & PDF, ekspor PNG/SVG/PDF, dan cetak. Sketsa tersimpan sebagai berkas JSON di folder milikmu.",
+    "copyright": "© Exact Group",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "macOS": {
+      "minimumSystemVersion": "11.0"
+    }
+  }
+}

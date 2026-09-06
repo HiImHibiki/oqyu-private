@@ -1,0 +1,70 @@
+/* ============================================================
+   TEMA — KACA (modern malam)
+   Panel kaca melayang di ruang gelap. Bersih, presisi, tanpa dekorasi.
+   Tema default untuk kerja malam: paling rendah kelelahan mata.
+   ============================================================ */
+
+:root[data-theme="kaca"] {
+  --bg: #0a0d12;
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-2: rgba(255, 255, 255, 0.025);
+  --paper: rgba(255, 255, 255, 0.07);
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.16);
+
+  --ink: #e7ecf3;
+  --ink-soft: rgba(231, 236, 243, 0.62);
+  --ink-faint: rgba(231, 236, 243, 0.34);
+  --ink-on-paper: #e7ecf3;
+
+  --accent: #63e6be;
+  --accent-2: #8aa4ff;
+  --glow: #63e6be;
+
+  --up: #63e6be;
+  --down: #ff8095;
+
+  --paper-1: rgba(255, 255, 255, 0.085);
+  --paper-2: rgba(99, 230, 190, 0.13);
+  --paper-3: rgba(138, 164, 255, 0.13);
+  --paper-4: rgba(255, 210, 128, 0.13);
+  --paper-5: rgba(255, 128, 149, 0.12);
+  --paper-6: rgba(200, 160, 255, 0.13);
+
+  --font-display: "Inter Tight", system-ui, sans-serif;
+  --font-body: "Inter Tight", system-ui, sans-serif;
+  --font-hand: "Inter Tight", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Radius 16, spacing kelipatan 8. Di tema minimal, presisi adalah keindahannya. */
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-lg: 22px;
+  --stroke: 1px;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-lift: 0 18px 44px rgba(0, 0, 0, 0.6);
+  --shadow-paper: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+  --texture: none;
+  --texture-opacity: 0;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: blur(24px);
+
+  --sticky-fastener: "magnet";
+  --sticky-tilt: 1.5deg;
+}
+
+/* Garis tepi 1px adalah satu-satunya "dekorasi". */
+:root[data-theme="kaca"] .ex-card {
+  backdrop-filter: var(--blur-surface);
+  -webkit-backdrop-filter: var(--blur-surface);
+}
+
+/* Sticky note melekat seperti magnet di kaca: bayangan sangat tipis. */
+:root[data-theme="kaca"] .ex-sticky {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line-strong);
+}

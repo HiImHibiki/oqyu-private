@@ -1,0 +1,123 @@
+/* ============================================================
+   TEMA — CLASSIC
+   Halaman buku bersampul kain di perpustakaan pribadi. Kertas gading,
+   tinta biru-tinta, aksen anggur tua, dan garis rangkap tipis seperti
+   pembatas bab. Tidak ada yang berkilau; semuanya dicetak.
+   ============================================================ */
+
+:root[data-theme="klasik"] {
+  --bg: #ece5d8;
+  --surface: #f7f2e7;
+  --surface-2: #f1ebdd;
+  --paper: #fbf7ee;
+  --line: rgba(38, 44, 58, 0.16);
+  --line-strong: rgba(38, 44, 58, 0.34);
+
+  --ink: #262c3a;
+  --ink-soft: rgba(38, 44, 58, 0.7);
+  --ink-faint: rgba(38, 44, 58, 0.44);
+  --ink-on-paper: #262c3a;
+
+  --accent: #7b2d3b;
+  --accent-2: #2c5449;
+  --glow: #a8813f;
+
+  --up: #2c5449;
+  --down: #7b2d3b;
+
+  --paper-1: #fbf7ee;
+  --paper-2: #f4ead3;
+  --paper-3: #e9efe8;
+  --paper-4: #f7e9e6;
+  --paper-5: #e8ebf2;
+  --paper-6: #f2eee2;
+
+  --font-display: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --font-body: "EB Garamond", Georgia, serif;
+  --font-hand: "IM Fell English", Georgia, serif;
+  --font-mono: "Courier Prime", ui-monospace, monospace;
+
+  --radius: 4px;
+  --radius-sm: 2px;
+  --radius-lg: 6px;
+  --stroke: 1px;
+
+  /* Tinta di atas kertas: bayangan tipis dan hangat, bukan hitam netral. */
+  --shadow-card: 0 1px 2px rgba(58, 48, 34, 0.09);
+  --shadow-lift: 0 20px 44px rgba(58, 48, 34, 0.2);
+  --shadow-paper: 0 7px 18px rgba(58, 48, 34, 0.17);
+
+  --texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23c)'/%3E%3C/svg%3E");
+  --texture-opacity: 0.05;
+  --texture-blend: multiply;
+  /* Garis-garis halus seperti kertas laid — hanya terbaca dari dekat. */
+  --pattern: repeating-linear-gradient(
+    90deg,
+    rgba(38, 44, 58, 0.05) 0 1px,
+    transparent 1px 7px
+  );
+  --pattern-opacity: 0.5;
+  --blur-surface: none;
+
+  --sticky-fastener: "clip";
+  --sticky-tilt: 1.6deg;
+}
+
+/* Judul modul sebagai kepala bab: huruf kapital kecil, dijarangkan,
+   lalu ditutup garis rangkap tebal-tipis. */
+:root[data-theme="klasik"] .ex-module-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05em;
+  text-transform: uppercase;
+  letter-spacing: 0.19em;
+  color: var(--ink-soft);
+}
+:root[data-theme="klasik"] .ex-module-title::after {
+  content: "";
+  display: block;
+  margin-top: 6px;
+  height: 3px;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Angka pakai angka teks Garamond — tinggi-rendahnya ikut naik turun
+   seperti di buku cetak, bukan berbaris rata seperti tabel. */
+:root[data-theme="klasik"] .ex-num {
+  font-family: var(--font-display);
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0;
+}
+
+/* Jam raksasa: satu-satunya tempat angka dibiarkan setinggi kapital,
+   supaya tetap rata dan terbaca dari seberang ruangan. */
+:root[data-theme="klasik"] .ex-jam-besar {
+  font-variant-numeric: lining-nums;
+  font-weight: 300;
+}
+
+:root[data-theme="klasik"] .ex-card {
+  border: 1px solid var(--line);
+}
+
+/* Kutipan diberi kutip pembuka besar seperti di halaman pembuka bab. */
+:root[data-theme="klasik"] .ex-kutipan {
+  font-style: italic;
+  font-size: 1.08em;
+}
+
+:root[data-theme="klasik"] .ex-frame {
+  background: #fdfaf3;
+  padding: 12px 12px 42px;
+  border: 1px solid rgba(38, 44, 58, 0.14);
+  box-shadow: 0 12px 28px rgba(58, 48, 34, 0.2);
+}
+
+:root[data-theme="klasik"] .ex-sticky {
+  border: 1px solid rgba(38, 44, 58, 0.12);
+}
+
+/* Tema terang: meredup berarti menguningkan seperti lampu meja, bukan gelap. */
+:root[data-theme="klasik"][data-dim="evening"] .ex-dimmable { filter: brightness(0.96) sepia(0.18); }
+:root[data-theme="klasik"][data-dim="night"] .ex-dimmable { filter: brightness(0.89) sepia(0.32); }

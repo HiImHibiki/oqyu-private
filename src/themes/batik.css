@@ -1,0 +1,91 @@
+/* ============================================================
+   TEMA — BATIK INDIGO (Nusantara modern)
+   Kain indigo yang baru diangkat dari celupan, dijemur di bawah lampu kuning.
+   Tema paling personal — untuk momen keluarga & galeri foto.
+   ============================================================ */
+
+:root[data-theme="batik"] {
+  --bg: #141f35;
+  --surface: #1e3055;
+  --surface-2: #182742;
+  --paper: #efe7d8;
+  --line: rgba(201, 162, 75, 0.2);
+  --line-strong: rgba(201, 162, 75, 0.44);
+
+  --ink: #efe7d8;
+  --ink-soft: rgba(239, 231, 216, 0.66);
+  --ink-faint: rgba(239, 231, 216, 0.38);
+  --ink-on-paper: #1a2536;
+
+  --accent: #c9a24b;
+  --accent-2: #8b5e34;
+  --glow: #e0c073;
+
+  --up: #c9a24b;
+  --down: #b06a4a;
+
+  --paper-1: #efe7d8;
+  --paper-2: #e6dcc6;
+  --paper-3: #f0e2c6;
+  --paper-4: #e2ddcd;
+  --paper-5: #eddfd2;
+  --paper-6: #dfd9c4;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-hand: "IM Fell English", Georgia, serif;
+  --font-mono: "IBM Plex Sans", ui-sans-serif, sans-serif;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 16px;
+  --stroke: 1px;
+
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 20px 44px rgba(0, 0, 0, 0.5);
+  --shadow-paper: 0 8px 18px -6px rgba(0, 0, 0, 0.5);
+
+  --texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='k'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23k)'/%3E%3C/svg%3E");
+  --texture-opacity: 0.05;
+  --texture-blend: overlay;
+
+  /* Motif kawung: hadir, tapi tidak berteriak. */
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23c9a24b' stroke-width='2'%3E%3Cellipse cx='60' cy='30' rx='19' ry='28'/%3E%3Cellipse cx='60' cy='90' rx='19' ry='28'/%3E%3Cellipse cx='30' cy='60' rx='28' ry='19'/%3E%3Cellipse cx='90' cy='60' rx='28' ry='19'/%3E%3Cellipse cx='0' cy='0' rx='19' ry='28'/%3E%3Cellipse cx='120' cy='0' rx='19' ry='28'/%3E%3Cellipse cx='0' cy='120' rx='19' ry='28'/%3E%3Cellipse cx='120' cy='120' rx='19' ry='28'/%3E%3Ccircle cx='60' cy='60' r='4'/%3E%3Ccircle cx='0' cy='60' r='3'/%3E%3Ccircle cx='120' cy='60' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  --pattern-opacity: 0.04;
+  --blur-surface: none;
+
+  --sticky-fastener: "pin";
+  --sticky-tilt: 3deg;
+}
+
+/* Pembatas: garis tipis emas dengan simpul kecil di tengah. */
+:root[data-theme="batik"] .ex-divider {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.5;
+}
+:root[data-theme="batik"] .ex-divider::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--accent);
+}
+
+/* Kertas sticky bertekstur kain. */
+:root[data-theme="batik"] .ex-sticky {
+  border: 1px solid rgba(26, 37, 54, 0.14);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(26, 37, 54, 0.035) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(26, 37, 54, 0.035) 0 1px, transparent 1px 3px);
+}
+
+:root[data-theme="batik"] .ex-frame {
+  border: 8px solid var(--surface);
+  outline: 1px solid var(--line-strong);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5);
+}

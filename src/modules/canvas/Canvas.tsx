@@ -1,0 +1,3319 @@
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useApp } from '@/lib/appStore'
+import { inTauri } from '@/lib/runtime'
+import { bukaJendelaBaru } from '@/lib/layar'
+import { useViewport } from '@/lib/useViewport'
+import { jam } from '@/lib/tanggal'
+import { newId } from '@/lib/id'
+import { IconButton } from '@/components/ui/Button'
+import { Icon } from '@/components/ui/Icon'
+import { KERTAS_BAWAAN, berkasBaru, bacaKanvas, simpanKanvas } from './data'
+import {
+  JUMLAH_LAPISAN,
+  alatObjek,
+  alatTulis,
+  potongCoretan,
+  type AlatTulis,
+  coretanDalamLaso,
+  coretanKena,
+  gambarCoretan,
+  geserCoretan,
+  garisLuar,
+  jalurDari,
+  kePng,
+  keSvg,
+  kotakSemua,
+  gambarKena,
+  gambarTempelan,
+  kotakCoretan,
+  kotakGambar,
+  porosGambar,
+  sudutGambar,
+  kotakTeks,
+  gambarTeks,
+  geserTeks,
+  teksKena,
+  lapisanBawaan,
+  muatGambar,
+  warnaToken,
+  JARAK_BARIS,
+  KELUARGA_HURUF,
+  WARNA_CORETAN,
+  PALET_CORETAN,
+  type Alat,
+  type Coretan,
+  type Gambar,
+  type Lapisan,
+  type Teks,
+} from './strokes'
+import {
+  OBJEK,
+  gambarObjek,
+  geserObjek,
+  kotakObjek,
+  kunciTitik,
+  keLurus,
+  objekKena,
+  porosObjek,
+  putarSekitar,
+  titikTampak,
+  titikAwal,
+  type Objek,
+} from './objek'
+import { AMBANG_DIAM, JEDA_TAHAN, kenaliBentuk } from './bentuk'
+import { DaftarHalaman, PetaBebas } from './PetaKanvas'
+import {
+  MODE_PENGHAPUS_BAWAAN,
+  muatModePenghapus,
+  muatSetelanAlat,
+  setelanBawaan,
+  simpanModePenghapus,
+  simpanSetelanAlat,
+  type KunciAlat,
+  type PetaSetelan,
+  type ModePenghapus,
+  type SetelanAlat,
+} from './setelanAlat'
+import {
+  SLOT_ALAT,
+  URUTAN_BAWAAN,
+  infoAlat,
+  muatUrutanAlat,
+  simpanUrutanAlat,
+  taruhAlat,
+} from './urutanAlat'
+
+/** Di atas ambang ini coretan lama dipanggang jadi bitmap; hanya yang baru digambar ulang. */
+const AMBANG_PANGGANG = 2000
+const SISA_HIDUP = 400
+const JEDA_SIMPAN = 800
+
+/** Latar kertas. Bukan coretan — tidak ikut terhapus, tidak ikut terekspor. */
+type Latar = 'polos' | 'titik' | 'kotak' | 'garis'
+
+const LATAR: { id: Latar; label: string }[] = [
+  { id: 'polos', label: 'Plain' },
+  { id: 'titik', label: 'Dots' },
+  { id: 'kotak', label: 'Grid' },
+  { id: 'garis', label: 'Ruled' },
+]
+
+/** Jarak antar garis latar dalam satuan dunia. */
+const PETAK = 32
+
+/** Sisi pegangan ubah-ukuran gambar, dalam piksel layar. */
+const PEGANGAN = 14
+
+/** Sisi terpanjang tangkapan layar yang ditempel; lebih dari ini diperkecil. */
+const SISI_MAKS = 2200
+
+/** Radius pegangan titik sudut objek, dalam piksel layar. */
+const TITIK_KENDALI = 7
+
+/** Jarak pegangan putar dari tepi atas bentuk, dalam piksel layar. */
+const LENGAN_PUTAR = 26
+
+/**
+ * Tempat pegangan putar berada, dalam koordinat dunia.
+ *
+ * Dihitung dari bentuk lurusnya lalu ikut diputar, jadi pegangannya tetap
+ * menempel di sisi yang sama seberapa pun bentuknya sudah diputar — bukan
+ * melompat ke atas layar tiap kali sudutnya melewati suatu titik.
+ */
+function peganganPutarGambar(g: Gambar, skala: number): [number, number] {
+  const poros = porosGambar(g)
+  return putarSekitar([poros[0], g.y - LENGAN_PUTAR / skala], poros, g.putar ?? 0)
+}
+
+function peganganPutar(o: Objek, skala: number): [number, number] {
+  const poros = porosObjek(o)
+  let atas = Infinity
+  for (const [, y] of o.titik) if (y < atas) atas = y
+  return putarSekitar([poros[0], atas - LENGAN_PUTAR / skala], poros, o.putar ?? 0)
+}
+
+/**
+ * Ukuran halaman dalam satuan dunia, dihitung pada 96 dpi — angka yang sama
+ * yang dipakai CSS, jadi 1 satuan dunia = 1 piksel CSS dan ukuran cetaknya
+ * bisa dihitung langsung tanpa faktor konversi tersembunyi.
+ */
+interface Kertas {
+  id: string
+  label: string
+  w: number
+  h: number
+  /** Milimeter, untuk PDF. */
+  mmW: number
+  mmH: number
+}
+
+/** Jarak antar halaman dalam satuan dunia — cukup untuk terlihat terpisah. */
+const JARAK_HALAMAN = 40
+
+/** Batas halaman ke-`i` dalam koordinat dunia; halaman ditumpuk ke bawah. */
+function kotakHalaman(k: Kertas, i: number) {
+  const atas = i * (k.h + JARAK_HALAMAN)
+  return { x1: 0, y1: atas, x2: k.w, y2: atas + k.h }
+}
+
+const HALAMAN_MAKS = 60
+
+type KelompokAlat = 'alat' | 'warna' | 'goresan' | 'kertas' | 'lapisan' | 'ekspor'
+
+const JUDUL_PANEL: Record<KelompokAlat, string> = {
+  alat: 'Tools',
+  warna: 'Colour',
+  goresan: 'Stroke',
+  kertas: 'Paper',
+  lapisan: 'Layers',
+  ekspor: 'Export',
+}
+
+/**
+ * Anggaran ukuran berkas PDF.
+ *
+ * PNG 288 dpi seukuran A4 sendiri sudah beberapa megabita, dan sketsa sepuluh
+ * halaman menghasilkan berkas yang tidak bisa dilampirkan ke mana-mana. Angka
+ * ini yang menentukan seberapa jauh tiap halaman boleh dipadatkan.
+ */
+const ANGGARAN_PDF = 10 * 1024 * 1024
+
+type RupaGambar = 'PNG' | 'JPEG'
+
+/** Ukuran byte sebenarnya dari sebuah data URL base64. */
+function byteDataUrl(url: string): number {
+  const isi = url.slice(url.indexOf(',') + 1)
+  const bantalan = isi.endsWith('==') ? 2 : isi.endsWith('=') ? 1 : 0
+  return Math.floor((isi.length * 3) / 4) - bantalan
+}
+
+function kecilkanKanvas(c: HTMLCanvasElement, faktor: number): HTMLCanvasElement {
+  if (faktor >= 1) return c
+  const k = document.createElement('canvas')
+  k.width = Math.max(1, Math.round(c.width * faktor))
+  k.height = Math.max(1, Math.round(c.height * faktor))
+  const ctx = k.getContext('2d')
+  if (!ctx) return c
+  ctx.imageSmoothingEnabled = true
+  ctx.imageSmoothingQuality = 'high'
+  ctx.drawImage(c, 0, 0, k.width, k.height)
+  return k
+}
+
+/**
+ * Padatkan satu halaman sampai muat anggarannya, sekecil mungkin kerugiannya.
+ *
+ * PNG dicoba lebih dulu: garis hitam di atas putih sering justru lebih kecil
+ * sekaligus utuh sepenuhnya. Kalau tidak muat, mutu JPEG diturunkan bertahap,
+ * dan baru sesudah mutu habis ukuran pikselnya yang dikecilkan — menurunkan
+ * mutu lebih dulu menjaga garis tetap tajam, sedangkan mengecilkan piksel
+ * lebih dulu membuatnya kabur pada mutu berapa pun.
+ */
+function padatkanHalaman(
+  c: HTMLCanvasElement,
+  sasaran: number,
+): { data: string; rupa: RupaGambar; byte: number } {
+  const png = c.toDataURL('image/png')
+  let terkecil = { data: png, rupa: 'PNG' as RupaGambar, byte: byteDataUrl(png) }
+  if (terkecil.byte <= sasaran) return terkecil
+
+  for (const faktor of [1, 0.8, 0.65, 0.5, 0.4]) {
+    const kecil = kecilkanKanvas(c, faktor)
+    for (const mutu of [0.92, 0.85, 0.78, 0.7]) {
+      const jpg = kecil.toDataURL('image/jpeg', mutu)
+      const byte = byteDataUrl(jpg)
+      if (byte <= sasaran) return { data: jpg, rupa: 'JPEG', byte }
+      if (byte < terkecil.byte) terkecil = { data: jpg, rupa: 'JPEG', byte }
+    }
+  }
+  // Tidak ada yang muat: kembalikan yang paling kecil dan biarkan pemanggil
+  // memberitahu bahwa anggarannya terlampaui, bukan diam-diam mengira berhasil.
+  return terkecil
+}
+
+/** Berkas kantor yang bisa diseret ke kanvas; sisanya ditolak dengan jelas. */
+const EKSTENSI_KANTOR = ['doc', 'docx', 'rtf', 'odt', 'wordml', 'ppt', 'pptx', 'odp', 'key', 'pages']
+
+const KERTAS: Kertas[] = [
+  { id: 'bebas', label: 'Infinite canvas', w: 0, h: 0, mmW: 0, mmH: 0 },
+  { id: 'a4', label: 'A4 portrait', w: 794, h: 1123, mmW: 210, mmH: 297 },
+  { id: 'a4l', label: 'A4 landscape', w: 1123, h: 794, mmW: 297, mmH: 210 },
+  { id: 'a3', label: 'A3 portrait', w: 1123, h: 1587, mmW: 297, mmH: 420 },
+  { id: 'letter', label: 'Letter portrait', w: 816, h: 1056, mmW: 216, mmH: 279 },
+  { id: 'letterl', label: 'Letter landscape', w: 1056, h: 816, mmW: 279, mmH: 216 },
+]
+
+interface Props {
+  idKanvas: string
+  judul?: string
+}
+
+export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
+  const v = useViewport()
+  const dasarRef = useRef<HTMLCanvasElement | null>(null)
+  const aktifRef = useRef<HTMLCanvasElement | null>(null)
+  const wadahRef = useRef<HTMLDivElement | null>(null)
+  const berkasRef = useRef<HTMLInputElement | null>(null)
+
+  const [coretan, setCoretan] = useState<Coretan[]>([])
+  const [gambar, setGambar] = useState<Gambar[]>([])
+  const [gambarTerpilih, setGambarTerpilih] = useState<string | null>(null)
+  const [objek, setObjek] = useState<Objek[]>([])
+  const [objekTerpilih, setObjekTerpilih] = useState<string | null>(null)
+  const [teks, setTeks] = useState<Teks[]>([])
+  const [teksTerpilih, setTeksTerpilih] = useState<string | null>(null)
+  /** Id tulisan yang kotak ketiknya sedang terbuka. */
+  const [teksDiubah, setTeksDiubah] = useState<string | null>(null)
+  const [alat, setAlat] = useState<Alat>('pen')
+  const [warna, setWarna] = useState<string>('ink')
+  /**
+   * Setelan per alat, bukan satu slider bersama.
+   *
+   * Stabilo mau tebal, pena mau tipis, dan keduanya dipakai bergantian di
+   * halaman yang sama — satu nilai bersama memaksa menyetel ulang tiap kali
+   * berpindah alat.
+   */
+  const [setelan, setSetelan] = useState<PetaSetelan>({})
+  const [modePenghapus, setModePenghapus] = useState<ModePenghapus>(MODE_PENGHAPUS_BAWAAN)
+
+  function ubahModePenghapus(m: ModePenghapus) {
+    setModePenghapus(m)
+    void simpanModePenghapus(m)
+  }
+  /** Kelompok yang panelnya sedang terbuka di sebelah rel; null = tertutup. */
+  const [panelAlat, setPanelAlat] = useState<KelompokAlat | null>('alat')
+
+  function bukaPanel(k: KelompokAlat) {
+    setPanelAlat((lama) => (lama === k ? null : k))
+  }
+
+  useEffect(() => {
+    void muatSetelanAlat().then(setSetelan)
+    void muatModePenghapus().then(setModePenghapus)
+  }, [])
+  const [lapisan, setLapisan] = useState(0)
+  const [lapisanInfo, setLapisanInfo] = useState<Lapisan[]>(lapisanBawaan)
+  const [pilihan, setPilihan] = useState<Set<string>>(new Set())
+  const [tekananTersedia, setTekananTersedia] = useState<boolean | null>(null)
+  const [latar, setLatar] = useState<Latar>('polos')
+  const [steady, setSteady] = useState(false)
+  const [tahanBentuk, setTahanBentuk] = useState(true)
+  const [disimpan, setDisimpan] = useState<number | null>(null)
+  const [petunjuk, setPetunjuk] = useState<string | null>(null)
+  const [kertas, setKertas] = useState<string>(KERTAS_BAWAAN)
+  /** Sedang ada berkas yang diseret di atas jendela — tampilkan sasaran jatuhnya. */
+  const [seretMasuk, setSeretMasuk] = useState(false)
+  const [jumlahHalaman, setJumlahHalaman] = useState(1)
+  const [ukuranLayar, setUkuranLayar] = useState({ w: 0, h: 0 })
+  const [urutanAlat, setUrutanAlat] = useState(URUTAN_BAWAAN)
+  const [seretAlat, setSeretAlat] = useState<Alat | null>(null)
+  const bilahRef = useRef<HTMLDivElement | null>(null)
+  /**
+   * Seretan bilah alat ditangani sendiri lewat pointer, bukan drag-and-drop
+   * HTML5: Tauri menyalakan penanganan drop berkas asli, dan itu mematikan DnD
+   * web di dalam webview macOS. Kanban di aplikasi ini memakai pustaka berbasis
+   * pointer karena alasan yang sama.
+   */
+  const seretBilah = useRef<{ alat: Alat; x: number; y: number; geser: boolean } | null>(null)
+
+  useEffect(() => {
+    void muatUrutanAlat().then(setUrutanAlat)
+  }, [])
+
+  // Penangan tombol dipasang sekali; urutannya dibaca lewat ref supaya
+  // menyusun ulang bilah alat tidak memasang ulang seluruh pendengar papan tik
+  // di tengah orang menggambar.
+  const urutanRef = useRef(urutanAlat)
+  urutanRef.current = urutanAlat
+
+  /** Slot bilah alat yang berada tepat di bawah titik layar ini. */
+  function slotDiTitik(x: number, y: number): number | null {
+    const wadah = bilahRef.current
+    if (!wadah) return null
+    const anak = Array.from(wadah.children) as HTMLElement[]
+    for (let i = 0; i < anak.length; i++) {
+      const r = anak[i].getBoundingClientRect()
+      if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return i
+    }
+    return null
+  }
+
+  /** Penangan bersama untuk tombol di bilah maupun bentuk di katalog. */
+  function pegangAlat(a: Alat) {
+    return {
+      onPointerDown: (e: React.PointerEvent) => {
+        if (e.button !== 0) return
+        e.currentTarget.setPointerCapture(e.pointerId)
+        seretBilah.current = { alat: a, x: e.clientX, y: e.clientY, geser: false }
+      },
+      onPointerMove: (e: React.PointerEvent) => {
+        const s = seretBilah.current
+        if (!s) return
+        // Ambang kecil supaya ketukan biasa tidak pernah terbaca sebagai seretan.
+        if (!s.geser && Math.hypot(e.clientX - s.x, e.clientY - s.y) < 6) return
+        if (!s.geser) {
+          s.geser = true
+          setSeretAlat(s.alat)
+        }
+        const ke = slotDiTitik(e.clientX, e.clientY)
+        if (ke !== null && urutanAlat[ke] !== s.alat) pindahAlat(s.alat, ke)
+      },
+      onPointerUp: (e: React.PointerEvent) => {
+        const s = seretBilah.current
+        seretBilah.current = null
+        setSeretAlat(null)
+        if (!s) return
+        // Tanpa geser, ini ketukan biasa: pilih alatnya.
+        if (!s.geser) setAlat(s.alat)
+        else if (slotDiTitik(e.clientX, e.clientY) === null) beriTahu('Drop it on the bar to keep it there.')
+      },
+      onPointerCancel: () => {
+        seretBilah.current = null
+        setSeretAlat(null)
+      },
+    }
+  }
+
+  const pindahAlat = useCallback((alat: Alat, ke: number) => {
+    setUrutanAlat((lama) => {
+      const baru = taruhAlat(lama, alat, ke)
+      void simpanUrutanAlat(baru)
+      return baru
+    })
+  }, [])
+
+  /**
+   * ⌘P dipegang butir menu asli, bukan penangan tombol di halaman ini —
+   * WKWebView tidak selalu meneruskan pintasan ber-Command ke web. Yang sampai
+   * ke sini cuma penghitung permintaannya.
+   */
+  const mintaCetak = useApp((s) => s.cetakSketsa)
+  const cetakTerlayani = useRef(mintaCetak)
+  const [menuTampil, setMenuTampil] = useState(true)
+  const [sibuk, setSibuk] = useState<string | null>(null)
+
+  const halaman = KERTAS.find((k) => k.id === kertas) ?? KERTAS[0]
+
+  const shiftDitekan = useRef(false)
+
+  /** Objek yang sedang ditarik, dan pegangan yang sedang diseret. */
+  const objekBaru = useRef<Objek | null>(null)
+  /* Tahan-untuk-bentuk. `bentukSnap` adalah pratinjau: ia baru jadi objek
+     sungguhan saat pena diangkat, jadi menggerakkan tangan lagi cukup untuk
+     membatalkannya tanpa menyentuh riwayat undo. */
+  const bentukSnap = useRef<Objek | null>(null)
+  const timerTahan = useRef<number | null>(null)
+  const titikDiam = useRef<{ x: number; y: number } | null>(null)
+  const kunciAlat: KunciAlat = alatTulis(alat) ? alat : alat === 'penghapus' ? 'penghapus' : 'pen'
+  const setelanAktif = setelan[kunciAlat] ?? setelanBawaan(kunciAlat)
+  const ukuran = setelanAktif.size
+
+  function ubahSetelan(ubah: Partial<SetelanAlat>) {
+    setSetelan((lama) => {
+      const baru = { ...lama, [kunciAlat]: { ...setelanBawaan(kunciAlat), ...lama[kunciAlat], ...ubah } }
+      void simpanSetelanAlat(baru)
+      return baru
+    })
+  }
+
+  const seretPutar = useRef<{ id: string; awal: number; sudutAwal: number } | null>(null)
+  const seretPutarGambar = useRef<{ id: string; awal: number; sudutAwal: number } | null>(null)
+  const seretObjek = useRef<{
+    id: string
+    /** -1 = menggeser seluruh objek; selain itu indeks titik kendali. */
+    titik: number
+    x: number
+    y: number
+  } | null>(null)
+
+  /** Riwayat menyimpan coretan dan objek bersamaan — urung-langkah yang hanya
+   *  mengembalikan separuh keadaan lebih membingungkan daripada tidak ada. */
+  const riwayat = useRef<{ coretan: Coretan[]; objek: Objek[] }[]>([])
+  const riwayatMaju = useRef<{ coretan: Coretan[]; objek: Objek[] }[]>([])
+  const aktifCoretan = useRef<Coretan | null>(null)
+  const jalurLaso = useRef<[number, number][]>([])
+  /** Sudut pertama seretan laso kotak; laso bebas tidak memerlukannya. */
+  const awalLaso = useRef<{ x: number; y: number } | null>(null)
+  const geser = useRef<{ x: number; y: number } | null>(null)
+  const seretTeks = useRef<{ id: string; x: number; y: number } | null>(null)
+  const ketikRef = useRef<HTMLTextAreaElement | null>(null)
+  /**
+   * Penangan berkas terbaru, dipegang lewat ref.
+   *
+   * Pendengar drop dipasang sekali seumur komponen, tapi penempatan gambar
+   * bergantung pada alat, lapisan, dan posisi layar saat itu — bukan saat
+   * pendengarnya dipasang.
+   */
+  const terimaRef = useRef<(b: Blob | null) => Promise<void>>(async () => {})
+  const seretGambar = useRef<{
+    id: string
+    mode: 'geser' | 'ukur'
+    x: number
+    y: number
+    w: number
+    h: number
+  } | null>(null)
+  const simpanTimer = useRef<number | null>(null)
+  const panggang = useRef<{ bitmap: HTMLCanvasElement; kunci: string; sampai: number } | null>(null)
+
+  /* ── Muat & simpan ─────────────────────────────────────────────── */
+
+  useEffect(() => {
+    let batal = false
+    void bacaKanvas(idKanvas).then((b) => {
+      if (batal) return
+      setCoretan(b?.strokes ?? [])
+      setGambar(b?.images ?? [])
+      setGambarTerpilih(null)
+      setObjek(b?.objects ?? [])
+      setObjekTerpilih(null)
+      setTeks(b?.texts ?? [])
+      setTeksTerpilih(null)
+      setTeksDiubah(null)
+      setLapisanInfo(b?.layers ?? lapisanBawaan())
+      setLapisan(0)
+      setPilihan(new Set())
+      const kertasIni = b?.paper ?? KERTAS_BAWAAN
+      setKertas(kertasIni)
+      setJumlahHalaman(Math.max(1, Math.round(b?.pages ?? 1)))
+      setDisimpan(b?.updated_at ?? null)
+      panggang.current = null
+      // Halaman pertama dibawa ke tengah layar dan dimuat penuh tingginya:
+      // membuka sketsa seharusnya memperlihatkan kertasnya, bukan sudut kirinya.
+      const k = KERTAS.find((x2) => x2.id === kertasIni)
+      const el = wadahRef.current
+      if (k && k.w > 0 && el) {
+        const r = el.getBoundingClientRect()
+        const skala = Math.min(1.5, Math.max(0.3, (r.height - 56) / k.h))
+        v.setTampilan({ skala, x: (r.width - k.w * skala) / 2, y: 24 })
+      } else {
+        v.setTampilan({ skala: 1, x: 0, y: 0 })
+      }
+    })
+    return () => {
+      batal = true
+    }
+  }, [idKanvas])
+
+  /**
+   * Lapisan disimpan lewat ref, bukan lewat dependency.
+   *
+   * `jadwalkanSimpan` dipanggil dari dalam handler pointer; kalau ia ikut
+   * berubah setiap kali sebuah lapisan disembunyikan, seluruh rantai callback
+   * menggambar ikut dibuat ulang di tengah goresan.
+   */
+  const lapisanRef = useRef(lapisanInfo)
+  lapisanRef.current = lapisanInfo
+  const gambarRef = useRef(gambar)
+  gambarRef.current = gambar
+  const kertasRef = useRef(kertas)
+  kertasRef.current = kertas
+  const jumlahHalamanRef = useRef(jumlahHalaman)
+  jumlahHalamanRef.current = jumlahHalaman
+  const teksRef = useRef(teks)
+  teksRef.current = teks
+  const objekRef = useRef(objek)
+  objekRef.current = objek
+
+  const simpanSekarang = useCallback(
+    async (isi: Coretan[]) => {
+      if (simpanTimer.current) window.clearTimeout(simpanTimer.current)
+      simpanTimer.current = null
+      const saat = Date.now()
+      await simpanKanvas(
+        berkasBaru(
+          idKanvas,
+          judul,
+          isi,
+          lapisanRef.current,
+          gambarRef.current,
+          objekRef.current,
+          teksRef.current,
+          kertasRef.current,
+          jumlahHalamanRef.current,
+        ),
+      )
+      setDisimpan(saat)
+    },
+    [idKanvas, judul],
+  )
+
+  const jadwalkanSimpan = useCallback(
+    (isi: Coretan[]) => {
+      if (simpanTimer.current) window.clearTimeout(simpanTimer.current)
+      simpanTimer.current = window.setTimeout(() => {
+        simpanTimer.current = null
+        void simpanSekarang(isi)
+      }, JEDA_SIMPAN)
+    },
+    [simpanSekarang],
+  )
+
+  // Perubahan lapisan (nama, sembunyi, kunci) juga perlu ikut tersimpan.
+  const pertamaLapisan = useRef(true)
+  useEffect(() => {
+    if (pertamaLapisan.current) {
+      pertamaLapisan.current = false
+      return
+    }
+    jadwalkanSimpan(coretan)
+    // Sengaja hanya bergantung pada tiga ini: reaksi terhadap perubahan
+    // lapisan, gambar, dan objek — bukan terhadap setiap goresan baru.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lapisanInfo, gambar, objek])
+
+  // Sketsa yang belum sempat tersimpan tidak boleh hilang saat berpindah
+  // sketsa, berpindah modul, atau menutup window.
+  useEffect(() => {
+    return () => {
+      if (simpanTimer.current) {
+        window.clearTimeout(simpanTimer.current)
+        simpanTimer.current = null
+      }
+    }
+  }, [idKanvas])
+
+  const terapkan = useCallback(
+    (berikut: Coretan[], berikutObjek?: Objek[]) => {
+      riwayat.current.push({ coretan, objek })
+      if (riwayat.current.length > 60) riwayat.current.shift()
+      riwayatMaju.current = []
+      setCoretan(berikut)
+      if (berikutObjek) setObjek(berikutObjek)
+      jadwalkanSimpan(berikut)
+    },
+    [coretan, objek, jadwalkanSimpan],
+  )
+
+  const urungkan = useCallback(() => {
+    const lalu = riwayat.current.pop()
+    if (!lalu) return
+    riwayatMaju.current.push({ coretan, objek })
+    setCoretan(lalu.coretan)
+    setObjek(lalu.objek)
+    objekRef.current = lalu.objek
+    panggang.current = null
+    jadwalkanSimpan(lalu.coretan)
+  }, [coretan, objek, jadwalkanSimpan])
+
+  const ulangi = useCallback(() => {
+    const maju = riwayatMaju.current.pop()
+    if (!maju) return
+    riwayat.current.push({ coretan, objek })
+    setCoretan(maju.coretan)
+    setObjek(maju.objek)
+    objekRef.current = maju.objek
+    panggang.current = null
+    jadwalkanSimpan(maju.coretan)
+  }, [coretan, objek, jadwalkanSimpan])
+
+  const gambarDasarRef = useRef<(() => void) | null>(null)
+  const timerPetunjuk = useRef<number | null>(null)
+
+  /** Pesan sekilas di sudut kanvas — tidak memakai toast global karena ini
+   *  hanya relevan selama mata masih di kanvas. */
+  const beriTahu = useCallback((teks: string) => {
+    setPetunjuk(teks)
+    if (timerPetunjuk.current) window.clearTimeout(timerPetunjuk.current)
+    timerPetunjuk.current = window.setTimeout(() => setPetunjuk(null), 2600)
+  }, [])
+
+  /* ── Menggambar ────────────────────────────────────────────────── */
+
+  const siapkanKanvas = useCallback((el: HTMLCanvasElement | null) => {
+    if (!el) return null
+    const dpr = window.devicePixelRatio || 1
+    const kotak = el.getBoundingClientRect()
+    const w = Math.max(1, Math.round(kotak.width * dpr))
+    const h = Math.max(1, Math.round(kotak.height * dpr))
+    if (el.width !== w || el.height !== h) {
+      el.width = w
+      el.height = h
+    }
+    const ctx = el.getContext('2d')
+    if (!ctx) return null
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    return ctx
+  }, [])
+
+  const terlihat = useCallback(
+    (c: Coretan) => lapisanInfo[c.layer]?.tampak ?? true,
+    [lapisanInfo],
+  )
+
+  /**
+   * Boleh disentuh penghapus, laso, dan seret.
+   *
+   * Lapisan terkunci sengaja tetap terlihat tapi kebal: itu seluruh gunanya —
+   * menjadikan satu lapisan sebagai jiplakan yang tidak bisa tergores tanpa
+   * sengaja saat menggambar di atasnya.
+   */
+  const bisaDiubah = useCallback(
+    (c: Coretan) => {
+      const l = lapisanInfo[c.layer]
+      return (l?.tampak ?? true) && !(l?.kunci ?? false)
+    },
+    [lapisanInfo],
+  )
+
+  /**
+   * Latar kertas digambar tiap bingkai, bukan dipanggang bersama coretan —
+   * jumlah garisnya selalu sebanyak layar, tidak pernah sebanyak sketsa, jadi
+   * menggambarnya ulang jauh lebih murah daripada menyimpannya.
+   */
+  const gambarLatar = useCallback(
+    (ctx: CanvasRenderingContext2D, lebar: number, tinggi: number) => {
+      const { skala, x, y } = v.tampilan
+
+      // Halaman digambar lebih dulu: ia jadi alas putih tempat petak dan
+      // coretan berdiri, bukan bingkai yang ditumpuk di atasnya.
+      if (halaman.w > 0) {
+        ctx.save()
+        ctx.translate(x, y)
+        ctx.scale(skala, skala)
+        ctx.lineWidth = 1 / skala
+        ctx.textAlign = 'right'
+        ctx.font = `${11 / skala}px ui-monospace, monospace`
+        for (let i = 0; i < jumlahHalaman; i++) {
+          const k = kotakHalaman(halaman, i)
+          // Halaman di luar layar dilewati: satu sketsa boleh punya puluhan
+          // halaman, dan yang tidak terlihat tidak perlu digambar tiap bingkai.
+          if (k.y2 * skala + y < -20 || k.y1 * skala + y > tinggi + 20) continue
+          ctx.fillStyle = warnaToken('paper')
+          ctx.fillRect(k.x1, k.y1, halaman.w, halaman.h)
+          ctx.strokeStyle = warnaToken('line-strong')
+          ctx.strokeRect(k.x1, k.y1, halaman.w, halaman.h)
+          if (jumlahHalaman > 1 && skala > 0.22) {
+            ctx.fillStyle = warnaToken('ink-faint')
+            ctx.fillText(`${i + 1}/${jumlahHalaman}`, k.x2, k.y2 + 26 / skala)
+          }
+        }
+        ctx.restore()
+      }
+
+      if (latar === 'polos') return
+      // Di bawah 45% zoom, petaknya rapat jadi bubur — dilipatgandakan.
+      const jarak = PETAK * skala < 14 ? PETAK * 4 : PETAK * skala < 26 ? PETAK * 2 : PETAK
+      const x1 = Math.floor(-x / skala / jarak) * jarak
+      const y1 = Math.floor(-y / skala / jarak) * jarak
+      const x2 = x1 + lebar / skala + jarak
+      const y2 = y1 + tinggi / skala + jarak
+
+      ctx.save()
+      ctx.translate(x, y)
+      ctx.scale(skala, skala)
+      // Di mode kertas, petaknya berhenti di tepi halaman. Petak yang meluber
+      // ke luar kertas membuat halaman berhenti terbaca sebagai halaman.
+      if (halaman.w > 0) {
+        ctx.beginPath()
+        for (let i = 0; i < jumlahHalaman; i++) {
+          const k = kotakHalaman(halaman, i)
+          ctx.rect(k.x1, k.y1, halaman.w, halaman.h)
+        }
+        ctx.clip()
+      }
+      ctx.strokeStyle = warnaToken('line')
+      ctx.fillStyle = warnaToken('line-strong')
+      ctx.lineWidth = 1 / skala
+
+      if (latar === 'titik') {
+        const r = 1.2 / skala
+        for (let gx = x1; gx < x2; gx += jarak) {
+          for (let gy = y1; gy < y2; gy += jarak) {
+            ctx.beginPath()
+            ctx.arc(gx, gy, r, 0, Math.PI * 2)
+            ctx.fill()
+          }
+        }
+      } else {
+        ctx.beginPath()
+        for (let gy = y1; gy < y2; gy += jarak) {
+          ctx.moveTo(x1, gy)
+          ctx.lineTo(x2, gy)
+        }
+        if (latar === 'kotak') {
+          for (let gx = x1; gx < x2; gx += jarak) {
+            ctx.moveTo(gx, y1)
+            ctx.lineTo(gx, y2)
+          }
+        }
+        ctx.stroke()
+      }
+      ctx.restore()
+    },
+    [latar, v.tampilan, halaman, jumlahHalaman],
+  )
+
+  const gambarDasar = useCallback(() => {
+    const ctx = siapkanKanvas(dasarRef.current)
+    const el = dasarRef.current
+    if (!ctx || !el) return
+    const dpr = window.devicePixelRatio || 1
+    ctx.clearRect(0, 0, el.width / dpr, el.height / dpr)
+    gambarLatar(ctx, el.width / dpr, el.height / dpr)
+
+    // Tempelan selalu di bawah coretan, apa pun urutan pembuatannya: yang
+    // ditempel adalah alas, yang digambar adalah anotasi di atasnya.
+    ctx.save()
+    ctx.translate(v.tampilan.x, v.tampilan.y)
+    ctx.scale(v.tampilan.skala, v.tampilan.skala)
+    for (const g of gambar) {
+      if (!(lapisanInfo[g.layer]?.tampak ?? true)) continue
+      gambarTempelan(ctx, g, () => gambarDasarRef.current?.())
+      if (g.id === gambarTerpilih) {
+        const sudut = sudutGambar(g)
+        ctx.save()
+        ctx.strokeStyle = warnaToken('accent')
+        ctx.lineWidth = 1.5 / v.tampilan.skala
+        ctx.setLineDash([6 / v.tampilan.skala, 4 / v.tampilan.skala])
+        ctx.beginPath()
+        ctx.moveTo(sudut[0][0], sudut[0][1])
+        for (const [px, py] of sudut.slice(1)) ctx.lineTo(px, py)
+        ctx.closePath()
+        ctx.stroke()
+        ctx.setLineDash([])
+
+        // Pegangan ubah-ukuran menempel di sudut kanan bawah gambar, jadi ia
+        // ikut berpindah saat gambarnya diputar — bukan tetap di kanan bawah layar.
+        const p = PEGANGAN / v.tampilan.skala
+        ctx.fillStyle = warnaToken('accent')
+        ctx.save()
+        ctx.translate(sudut[2][0], sudut[2][1])
+        ctx.rotate(g.putar ?? 0)
+        ctx.fillRect(-p, -p, p, p)
+        ctx.restore()
+
+        const [rx, ry] = peganganPutarGambar(g, v.tampilan.skala)
+        const tengahAtas: [number, number] = [
+          (sudut[0][0] + sudut[1][0]) / 2,
+          (sudut[0][1] + sudut[1][1]) / 2,
+        ]
+        ctx.globalAlpha = 0.55
+        ctx.strokeStyle = warnaToken('accent')
+        ctx.lineWidth = 1.3 / v.tampilan.skala
+        ctx.beginPath()
+        ctx.moveTo(tengahAtas[0], tengahAtas[1])
+        ctx.lineTo(rx, ry)
+        ctx.stroke()
+        ctx.globalAlpha = 1
+        ctx.beginPath()
+        ctx.arc(rx, ry, (TITIK_KENDALI * 0.8) / v.tampilan.skala, 0, Math.PI * 2)
+        ctx.fillStyle = warnaToken('accent')
+        ctx.fill()
+        ctx.lineWidth = 1.6 / v.tampilan.skala
+        ctx.strokeStyle = warnaToken('bg')
+        ctx.stroke()
+        ctx.restore()
+      }
+    }
+    ctx.restore()
+
+    const kunci = `${v.tampilan.skala.toFixed(4)}:${Math.round(v.tampilan.x)}:${Math.round(v.tampilan.y)}:${lapisanInfo.map((l) => (l.tampak ? '1' : '0')).join('')}`
+
+    // Coretan lama dipanggang sekali jadi bitmap seukuran layar; selama pan/zoom
+    // tidak berubah, menambah goresan baru tidak menggambar ulang semuanya.
+    if (coretan.length > AMBANG_PANGGANG) {
+      const batas = coretan.length - SISA_HIDUP
+      const perluPanggang =
+        !panggang.current || panggang.current.kunci !== kunci || panggang.current.sampai !== batas
+
+      if (perluPanggang) {
+        const bitmap = document.createElement('canvas')
+        bitmap.width = el.width
+        bitmap.height = el.height
+        const bctx = bitmap.getContext('2d')
+        if (bctx) {
+          bctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+          bctx.translate(v.tampilan.x, v.tampilan.y)
+          bctx.scale(v.tampilan.skala, v.tampilan.skala)
+          for (let i = 0; i < batas; i++) {
+            if (terlihat(coretan[i])) gambarCoretan(bctx, coretan[i])
+          }
+        }
+        panggang.current = { bitmap, kunci, sampai: batas }
+      }
+
+      const dipanggang = panggang.current
+      if (dipanggang) {
+        ctx.save()
+        ctx.setTransform(1, 0, 0, 1, 0, 0)
+        ctx.drawImage(dipanggang.bitmap, 0, 0)
+        ctx.restore()
+      }
+
+      ctx.save()
+      ctx.translate(v.tampilan.x, v.tampilan.y)
+      ctx.scale(v.tampilan.skala, v.tampilan.skala)
+      for (let i = batas; i < coretan.length; i++) {
+        if (terlihat(coretan[i])) gambarCoretan(ctx, coretan[i])
+      }
+      ctx.restore()
+      gambarSemuaObjek(ctx)
+      return
+    }
+
+    panggang.current = null
+    ctx.save()
+    ctx.translate(v.tampilan.x, v.tampilan.y)
+    ctx.scale(v.tampilan.skala, v.tampilan.skala)
+    for (const c of coretan) {
+      if (!terlihat(c)) continue
+      gambarCoretan(ctx, c)
+      if (pilihan.has(c.id)) {
+        ctx.save()
+        ctx.strokeStyle = warnaToken('accent')
+        ctx.globalAlpha = 0.5
+        ctx.lineWidth = 1 / v.tampilan.skala
+        ctx.stroke(jalurDari(garisLuar(c)))
+        ctx.restore()
+      }
+    }
+    ctx.restore()
+    gambarSemuaObjek(ctx)
+    gambarSemuaTeks(ctx)
+
+    /** Tulisan yang diketik, digambar di atas segalanya seperti anotasi. */
+    function gambarSemuaTeks(c2: CanvasRenderingContext2D) {
+      c2.save()
+      c2.translate(v.tampilan.x, v.tampilan.y)
+      c2.scale(v.tampilan.skala, v.tampilan.skala)
+      for (const t of teks) {
+        if (!(lapisanInfo[t.layer]?.tampak ?? true)) continue
+        // Yang sedang diketik tidak digambar di kanvas: kotak ketiknya sendiri
+        // sudah menampilkan hurufnya, dan dua salinan yang bertumpuk membuat
+        // tulisannya terlihat tebal sebelah.
+        if (t.id === teksDiubah) continue
+        gambarTeks(c2, t)
+        if (t.id !== teksTerpilih) continue
+        const k = kotakTeks(t)
+        c2.save()
+        c2.strokeStyle = warnaToken('accent')
+        c2.globalAlpha = 0.5
+        c2.lineWidth = 1 / v.tampilan.skala
+        c2.setLineDash([5 / v.tampilan.skala, 4 / v.tampilan.skala])
+        c2.strokeRect(k.x1 - 3, k.y1 - 2, k.x2 - k.x1 + 6, k.y2 - k.y1 + 4)
+        c2.restore()
+      }
+      c2.restore()
+    }
+
+    /** Objek geometri + pegangan titik sudut milik yang sedang terpilih. */
+    function gambarSemuaObjek(c2: CanvasRenderingContext2D) {
+      c2.save()
+      c2.translate(v.tampilan.x, v.tampilan.y)
+      c2.scale(v.tampilan.skala, v.tampilan.skala)
+      const fontLabel = `${Math.max(13, 14 / v.tampilan.skala)}px ui-monospace, monospace`
+      for (const o of objek) {
+        if (!(lapisanInfo[o.layer]?.tampak ?? true)) continue
+        gambarObjek(c2, o, warnaToken(o.color), fontLabel)
+        if (o.id !== objekTerpilih) continue
+
+        const k = kotakObjek(o)
+        c2.save()
+        c2.strokeStyle = warnaToken('accent')
+        c2.globalAlpha = 0.4
+        c2.lineWidth = 1 / v.tampilan.skala
+        c2.setLineDash([5 / v.tampilan.skala, 4 / v.tampilan.skala])
+        c2.strokeRect(k.x1, k.y1, k.x2 - k.x1, k.y2 - k.y1)
+        c2.setLineDash([])
+        c2.restore()
+
+        // Pegangan: lingkaran isi warna aksen dengan tepi warna latar, supaya
+        // tetap terlihat di atas garis segelap apa pun.
+        const r = TITIK_KENDALI / v.tampilan.skala
+        const bulat = (px: number, py: number, jari: number) => {
+          c2.beginPath()
+          c2.arc(px, py, jari, 0, Math.PI * 2)
+          c2.fillStyle = warnaToken('accent')
+          c2.fill()
+          c2.lineWidth = 1.6 / v.tampilan.skala
+          c2.strokeStyle = warnaToken('bg')
+          c2.stroke()
+        }
+        for (const [px, py] of titikTampak(o)) bulat(px, py, r)
+
+        // Pegangan putar: batangnya digambar supaya jelas ia milik bentuk ini,
+        // bukan titik kendali yang kebetulan melayang di dekatnya.
+        const [gx, gy] = peganganPutar(o, v.tampilan.skala)
+        const poros = porosObjek(o)
+        const pangkal = putarSekitar(
+          [poros[0], Math.min(...o.titik.map((t) => t[1]))],
+          poros,
+          o.putar ?? 0,
+        )
+        c2.save()
+        c2.strokeStyle = warnaToken('accent')
+        c2.globalAlpha = 0.55
+        c2.lineWidth = 1.3 / v.tampilan.skala
+        c2.beginPath()
+        c2.moveTo(pangkal[0], pangkal[1])
+        c2.lineTo(gx, gy)
+        c2.stroke()
+        c2.restore()
+        bulat(gx, gy, r * 0.8)
+      }
+      c2.restore()
+    }
+  }, [
+    coretan,
+    gambar,
+    gambarTerpilih,
+    objek,
+    objekTerpilih,
+    teks,
+    teksTerpilih,
+    teksDiubah,
+    v.tampilan,
+    siapkanKanvas,
+    terlihat,
+    lapisanInfo,
+    pilihan,
+    gambarLatar,
+  ])
+
+  const gambarAktif = useCallback(() => {
+    const ctx = siapkanKanvas(aktifRef.current)
+    const el = aktifRef.current
+    if (!ctx || !el) return
+    const dpr = window.devicePixelRatio || 1
+    ctx.clearRect(0, 0, el.width / dpr, el.height / dpr)
+    ctx.save()
+    ctx.translate(v.tampilan.x, v.tampilan.y)
+    ctx.scale(v.tampilan.skala, v.tampilan.skala)
+
+    // Begitu bentuk terkunci, coretan mentahnya berhenti digambar — melihat
+    // keduanya bertumpuk membuat hasilnya terasa belum tentu.
+    if (bentukSnap.current) {
+      gambarObjek(
+        ctx,
+        bentukSnap.current,
+        warnaToken(bentukSnap.current.color),
+        `${Math.max(13, 14 / v.tampilan.skala)}px ui-monospace, monospace`,
+      )
+    } else if (aktifCoretan.current) {
+      gambarCoretan(ctx, aktifCoretan.current)
+    }
+    if (objekBaru.current) {
+      gambarObjek(
+        ctx,
+        objekBaru.current,
+        warnaToken(objekBaru.current.color),
+        `${Math.max(13, 14 / v.tampilan.skala)}px ui-monospace, monospace`,
+      )
+    }
+
+    if (jalurLaso.current.length > 1) {
+      ctx.strokeStyle = warnaToken('accent')
+      ctx.setLineDash([6 / v.tampilan.skala, 5 / v.tampilan.skala])
+      ctx.lineWidth = 1.4 / v.tampilan.skala
+      ctx.beginPath()
+      ctx.moveTo(jalurLaso.current[0][0], jalurLaso.current[0][1])
+      for (const [x, y] of jalurLaso.current.slice(1)) ctx.lineTo(x, y)
+      ctx.stroke()
+      ctx.setLineDash([])
+    }
+    ctx.restore()
+  }, [siapkanKanvas, v.tampilan])
+
+  useEffect(() => {
+    gambarDasarRef.current = gambarDasar
+    gambarDasar()
+  }, [gambarDasar])
+
+  useEffect(() => {
+    const onResize = () => {
+      panggang.current = null
+      gambarDasar()
+      gambarAktif()
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [gambarDasar, gambarAktif])
+
+  /* ── Input pen ─────────────────────────────────────────────────── */
+
+  /** Ujung belakang pen Wacom terbaca sebagai button 5 → jadi penghapus. */
+  function alatEfektif(e: React.PointerEvent): Alat {
+    if (e.pointerType === 'pen' && (e.button === 5 || e.buttons === 32)) return 'penghapus'
+    return alat
+  }
+
+  function tekananDari(e: PointerEvent | React.PointerEvent): number {
+    if (e.pointerType === 'pen') {
+      // Driver Wacom yang belum terpasang membuat pressure selalu 0.5.
+      return e.pressure > 0 ? e.pressure : 0.5
+    }
+    return 0.5
+  }
+
+  /* ── Tahan untuk bentuk ────────────────────────────────────────── */
+
+  function batalTahan() {
+    if (timerTahan.current) window.clearTimeout(timerTahan.current)
+    timerTahan.current = null
+  }
+
+  /** Mulai hitung mundur diam; dipanggil ulang tiap kali tangan bergerak. */
+  function jadwalkanTahan() {
+    batalTahan()
+    if (!tahanBentuk) return
+    timerTahan.current = window.setTimeout(kunciBentuk, JEDA_TAHAN)
+  }
+
+  /** Pena sudah diam cukup lama — coba baca coretannya sebagai bentuk. */
+  function kunciBentuk() {
+    timerTahan.current = null
+    const c = aktifCoretan.current
+    // Setelan bisa dimatikan setelah hitung mundur ini dijadwalkan.
+    if (!c || !tahanBentuk) return
+    // Ambang ukuran dihitung di satuan dunia: yang menentukan "terlalu kecil"
+    // adalah seberapa kecil di mata, bukan angka koordinatnya.
+    const tebak = kenaliBentuk(c.points, 24 / v.tampilan.skala)
+    if (!tebak) return
+    bentukSnap.current = {
+      id: newId('obj'),
+      jenis: tebak.jenis,
+      layer: c.layer,
+      color: c.color,
+      size: Math.max(1.5, ukuran * 0.55),
+      titik: tebak.titik,
+      putar: tebak.putar,
+    }
+    const nama = OBJEK.find((o) => o.id === tebak.jenis)?.label.toLowerCase() ?? 'shape'
+    beriTahu(`Snapped to a ${nama}. Lift the pen to keep it — ⌘Z undoes it.`)
+    gambarAktif()
+  }
+
+  const turun = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (v.spasiDitekan || e.button === 1) {
+      v.mulaiGeser(e)
+      return
+    }
+    if (e.button !== 0 && e.button !== 5) return
+
+    // Kotak ketik yang terbuka ditutup oleh ketukan berikutnya di kanvas.
+    // Dulu ini bersandar pada peristiwa blur, dan itu justru sumber
+    // masalahnya: pointer-up di kanvas mencuri fokus tepat sesudah kotaknya
+    // dibuat, jadi tulisan yang belum sempat diketik langsung terhapus karena
+    // dianggap kosong.
+    if (teksDiubah) selesaiKetik()
+
+    e.currentTarget.setPointerCapture(e.pointerId)
+    const d = v.keDunia(e.clientX, e.clientY)
+    const efektif = alatEfektif(e)
+
+    if (e.pointerType === 'pen' && tekananTersedia === null) {
+      setTekananTersedia(e.pressure > 0 && e.pressure !== 0.5)
+    }
+
+    if (efektif === 'penghapus') {
+      hapusDi(d.x, d.y)
+      aktifCoretan.current = null
+      return
+    }
+
+    // Titik kendali objek terpilih ditangkap lebih dulu, apa pun alat yang
+    // sedang aktif. Sesudah sebuah bentuk terkunci lewat "hold to shape",
+    // tangan masih memegang pena; menuntut ganti alat dulu hanya untuk menggeser
+    // satu sudut akan memutus alurnya. Sasarannya kecil dan hanya milik objek
+    // yang memang sudah terpilih, jadi menggambar biasa tidak terganggu.
+    const terpilihKini = objek.find((o) => o.id === objekTerpilih)
+    if (
+      terpilihKini &&
+      (lapisanInfo[terpilihKini.layer]?.tampak ?? true) &&
+      !(lapisanInfo[terpilihKini.layer]?.kunci ?? false)
+    ) {
+      const r = (TITIK_KENDALI + 4) / v.tampilan.skala
+      const [gx, gy] = peganganPutar(terpilihKini, v.tampilan.skala)
+      if (Math.hypot(gx - d.x, gy - d.y) <= r) {
+        const poros = porosObjek(terpilihKini)
+        seretPutar.current = {
+          id: terpilihKini.id,
+          awal: Math.atan2(d.y - poros[1], d.x - poros[0]),
+          sudutAwal: terpilihKini.putar ?? 0,
+        }
+        return
+      }
+      const idx = titikTampak(terpilihKini).findIndex(
+        ([px, py]) => Math.hypot(px - d.x, py - d.y) <= r,
+      )
+      if (idx !== -1) {
+        seretObjek.current = { id: terpilihKini.id, titik: idx, x: d.x, y: d.y }
+        return
+      }
+    }
+
+    // Lapisan terkunci menolak goresan baru; yang tersembunyi dimunculkan
+    // kembali, karena menggambar ke tempat yang tak terlihat selalu tidak
+    // disengaja.
+    const sasaran = lapisanInfo[lapisan]
+    if (sasaran?.kunci) {
+      beriTahu(`${sasaran.nama} is locked.`)
+      return
+    }
+    if (sasaran && !sasaran.tampak) {
+      setLapisanInfo((l) => l.map((x2, i) => (i === lapisan ? { ...x2, tampak: true } : x2)))
+      beriTahu(`${sasaran.nama} shown again — you were drawing on it.`)
+    }
+
+    if (efektif === 'teks') {
+      const baru: Teks = {
+        id: newId('txt'),
+        layer: lapisan,
+        x: d.x,
+        y: d.y,
+        size: Math.max(13, ukuran * 3.2),
+        color: warna,
+        isi: '',
+      }
+      setTeks((lama) => [...lama, baru])
+      setTeksTerpilih(baru.id)
+      setTeksDiubah(baru.id)
+      setPilihan(new Set())
+      setObjekTerpilih(null)
+      setGambarTerpilih(null)
+      return
+    }
+
+    if (alatObjek(efektif)) {
+      objekBaru.current = {
+        id: newId('obj'),
+        jenis: efektif,
+        layer: lapisan,
+        color: warna,
+        size: Math.max(1.5, ukuran * 0.55),
+        titik: titikAwal(efektif, d, d),
+      }
+      gambarAktif()
+      return
+    }
+
+    if (efektif === 'laso' || efektif === 'lasoKotak') {
+      // Tulisan diuji lebih dulu: ia digambar paling atas, jadi ia juga yang
+      // pantas tersentuh lebih dulu.
+      const teksKenaIni = [...teks]
+        .reverse()
+        .find(
+          (t) =>
+            (lapisanInfo[t.layer]?.tampak ?? true) &&
+            !(lapisanInfo[t.layer]?.kunci ?? false) &&
+            teksKena(t, d.x, d.y),
+        )
+      if (teksKenaIni) {
+        // Ketukan pertama memilih, ketukan berikutnya membuka kotak ketik —
+        // menggeser tulisan jauh lebih sering daripada menyuntingnya.
+        if (teksTerpilih === teksKenaIni.id) {
+          setTeksDiubah(teksKenaIni.id)
+          return
+        }
+        setTeksTerpilih(teksKenaIni.id)
+        setObjekTerpilih(null)
+        setGambarTerpilih(null)
+        setPilihan(new Set())
+        seretTeks.current = { id: teksKenaIni.id, x: d.x, y: d.y }
+        return
+      }
+      setTeksTerpilih(null)
+
+      const objKena = [...objek]
+        .reverse()
+        .find(
+          (o) =>
+            (lapisanInfo[o.layer]?.tampak ?? true) &&
+            !(lapisanInfo[o.layer]?.kunci ?? false) &&
+            objekKena(o, d.x, d.y, 8 / v.tampilan.skala),
+        )
+      if (objKena) {
+        setObjekTerpilih(objKena.id)
+        setGambarTerpilih(null)
+        setPilihan(new Set())
+        seretObjek.current = { id: objKena.id, titik: -1, x: d.x, y: d.y }
+        return
+      }
+      setObjekTerpilih(null)
+
+      // Pegangan sudut dari gambar yang sedang terpilih menang atas apa pun
+      // yang ada di bawahnya — itu target paling kecil di layar.
+      const terpilih = gambar.find((g) => g.id === gambarTerpilih)
+      if (terpilih) {
+        const [rx, ry] = peganganPutarGambar(terpilih, v.tampilan.skala)
+        if (Math.hypot(rx - d.x, ry - d.y) <= (TITIK_KENDALI + 4) / v.tampilan.skala) {
+          const poros = porosGambar(terpilih)
+          seretPutarGambar.current = {
+            id: terpilih.id,
+            awal: Math.atan2(d.y - poros[1], d.x - poros[0]),
+            sudutAwal: terpilih.putar ?? 0,
+          }
+          return
+        }
+        const p = PEGANGAN / v.tampilan.skala
+        // Sudut kanan bawah gambar, di posisi terlihatnya.
+        const [px, py] = sudutGambar(terpilih)[2]
+        const dalamPegangan = Math.hypot(px - d.x, py - d.y) <= p
+        if (dalamPegangan) {
+          seretGambar.current = {
+            id: terpilih.id,
+            mode: 'ukur',
+            x: d.x,
+            y: d.y,
+            w: terpilih.w,
+            h: terpilih.h,
+          }
+          return
+        }
+      }
+
+      // Gambar teratas yang kena, pada lapisan yang terlihat dan tidak terkunci.
+      const kena = [...gambar]
+        .reverse()
+        .find(
+          (g) =>
+            (lapisanInfo[g.layer]?.tampak ?? true) &&
+            !(lapisanInfo[g.layer]?.kunci ?? false) &&
+            gambarKena(g, d.x, d.y),
+        )
+      if (kena) {
+        setGambarTerpilih(kena.id)
+        setPilihan(new Set())
+        seretGambar.current = { id: kena.id, mode: 'geser', x: d.x, y: d.y, w: kena.w, h: kena.h }
+        return
+      }
+      setGambarTerpilih(null)
+
+      if (pilihan.size > 0 && adaPilihanDiTitik(d.x, d.y)) {
+        geser.current = { x: d.x, y: d.y }
+        return
+      }
+      awalLaso.current = { x: d.x, y: d.y }
+      jalurLaso.current = [[d.x, d.y]]
+      setPilihan(new Set())
+      gambarAktif()
+      return
+    }
+
+    aktifCoretan.current = {
+      id: newId('sk'),
+      tool: efektif as AlatTulis,
+      color: warna,
+      size: efektif === 'spidol' ? ukuran * 2.6 : ukuran,
+      layer: lapisan,
+      alpha: setelanAktif.alpha,
+      pola: setelanAktif.pola,
+      steady,
+      points: [[d.x, d.y, tekananDari(e)]],
+    }
+    // Mulai menggambar lagi berarti sudah selesai dengan bentuk sebelumnya —
+    // titik-titiknya ikut hilang, bukan menggantung di atas coretan baru.
+    if (objekTerpilih) setObjekTerpilih(null)
+    titikDiam.current = { x: e.clientX, y: e.clientY }
+    jadwalkanTahan()
+    gambarAktif()
+  }
+
+  /**
+   * Satu penggambaran per bingkai layar, bukan per peristiwa pointer.
+   *
+   * Wacom mengirim sampel jauh lebih rapat daripada layar bisa menampilkannya;
+   * menggambar ulang pada tiap peristiwa berarti sebagian besar hasilnya
+   * ditimpa sebelum sempat terlihat. Menyerahkan waktunya ke `requestAnimationFrame`
+   * membuat kerjanya sepadan dengan yang benar-benar tampak.
+   */
+  const bingkaiAktif = useRef<number | null>(null)
+
+  const mintaGambarAktif = useCallback(() => {
+    if (bingkaiAktif.current !== null) return
+    bingkaiAktif.current = window.requestAnimationFrame(() => {
+      bingkaiAktif.current = null
+      gambarAktif()
+    })
+  }, [gambarAktif])
+
+  useEffect(
+    () => () => {
+      if (bingkaiAktif.current !== null) cancelAnimationFrame(bingkaiAktif.current)
+    },
+    [],
+  )
+
+  const bergerak = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (v.sedangGeser) {
+      v.lanjutGeser(e)
+      return
+    }
+
+    if (objekBaru.current) {
+      const d = v.keDunia(e.clientX, e.clientY)
+      const o = objekBaru.current
+      const awal = { x: o.titik[0][0], y: o.titik[0][1] }
+      o.titik = titikAwal(o.jenis, awal, d)
+      if (e.shiftKey || shiftDitekan.current) o.titik = kunciTitik(o.jenis, o.titik, 1)
+      mintaGambarAktif()
+      return
+    }
+
+    if (seretPutar.current) {
+      const sp = seretPutar.current
+      const d = v.keDunia(e.clientX, e.clientY)
+      setObjek((lama) =>
+        lama.map((o) => {
+          if (o.id !== sp.id) return o
+          const poros = porosObjek(o)
+          const sekarang = Math.atan2(d.y - poros[1], d.x - poros[0])
+          let sudut = sp.sudutAwal + (sekarang - sp.awal)
+          // Shift mengunci ke kelipatan 15°, sama seperti saat menarik garis.
+          if (e.shiftKey || shiftDitekan.current) {
+            const langkah = Math.PI / 12
+            sudut = Math.round(sudut / langkah) * langkah
+          }
+          return { ...o, putar: sudut }
+        }),
+      )
+      return
+    }
+
+    if (seretObjek.current) {
+      const so = seretObjek.current
+      const d = v.keDunia(e.clientX, e.clientY)
+      const dx = d.x - so.x
+      const dy = d.y - so.y
+      so.x = d.x
+      so.y = d.y
+      setObjek((lama) =>
+        lama.map((o) => {
+          if (o.id !== so.id) return o
+          if (so.titik === -1) return geserObjek(o, dx, dy)
+          // Titik kendali disimpan tanpa putaran, jadi posisi pointer harus
+          // dikembalikan dulu ke ruang bentuk lurusnya.
+          const lurus = keLurus(o, [d.x, d.y])
+          const titik = o.titik.map((t, i) => (i === so.titik ? lurus : t)) as [number, number][]
+          return {
+            ...o,
+            titik: e.shiftKey || shiftDitekan.current ? kunciTitik(o.jenis, titik, so.titik) : titik,
+          }
+        }),
+      )
+      return
+    }
+
+    if (seretTeks.current) {
+      const st = seretTeks.current
+      const d = v.keDunia(e.clientX, e.clientY)
+      const dx = d.x - st.x
+      const dy = d.y - st.y
+      st.x = d.x
+      st.y = d.y
+      setTeks((lama) => lama.map((t) => (t.id === st.id ? geserTeks(t, dx, dy) : t)))
+      return
+    }
+
+    if (seretPutarGambar.current) {
+      const sp = seretPutarGambar.current
+      const d = v.keDunia(e.clientX, e.clientY)
+      setGambar((lama) =>
+        lama.map((g) => {
+          if (g.id !== sp.id) return g
+          const poros = porosGambar(g)
+          const sekarang = Math.atan2(d.y - poros[1], d.x - poros[0])
+          let sudut = sp.sudutAwal + (sekarang - sp.awal)
+          if (e.shiftKey || shiftDitekan.current) {
+            const langkah = Math.PI / 12
+            sudut = Math.round(sudut / langkah) * langkah
+          }
+          return { ...g, putar: sudut }
+        }),
+      )
+      return
+    }
+
+    if (seretGambar.current) {
+      const sg = seretGambar.current
+      const d = v.keDunia(e.clientX, e.clientY)
+      const dx = d.x - sg.x
+      const dy = d.y - sg.y
+      setGambar((lama) =>
+        lama.map((g) => {
+          if (g.id !== sg.id) return g
+          if (sg.mode === 'geser') return { ...g, x: g.x + dx, y: g.y + dy }
+          // Ubah ukuran menjaga rasio: tangkapan layar yang gepeng selalu salah.
+          // Geseran pointer diproyeksikan ke sumbu gambar dulu, supaya menarik
+          // pegangan pada gambar yang diputar terasa searah dengan tepinya.
+          const th = g.putar ?? 0
+          const dxLokal = dx * Math.cos(-th) - dy * Math.sin(-th)
+          const rasio = sg.h / sg.w
+          const w = Math.max(24, sg.w + dxLokal)
+          return { ...g, w, h: w * rasio }
+        }),
+      )
+      if (sg.mode === 'geser') {
+        sg.x = d.x
+        sg.y = d.y
+      }
+      return
+    }
+
+    if (geser.current) {
+      const d = v.keDunia(e.clientX, e.clientY)
+      const dx = d.x - geser.current.x
+      const dy = d.y - geser.current.y
+      geser.current = { x: d.x, y: d.y }
+      setCoretan((lama) =>
+        lama.map((c) => (pilihan.has(c.id) ? geserCoretan(c, dx, dy) : c)),
+      )
+      panggang.current = null
+      return
+    }
+
+    if (jalurLaso.current.length > 0) {
+      const d = v.keDunia(e.clientX, e.clientY)
+      const awal = awalLaso.current
+      if (alat === 'lasoKotak' && awal) {
+        // Persegi panjangnya disimpan sebagai poligon empat sudut, bukan sebagai
+        // jenis pilihan tersendiri: seluruh jalur sesudah ini — menggambar
+        // pratinjau, menguji coretan mana yang masuk, membereskan saat pena
+        // diangkat — jadi tetap satu dan tidak perlu bercabang.
+        jalurLaso.current = [
+          [awal.x, awal.y],
+          [d.x, awal.y],
+          [d.x, d.y],
+          [awal.x, d.y],
+          [awal.x, awal.y],
+        ]
+      } else {
+        jalurLaso.current.push([d.x, d.y])
+      }
+      mintaGambarAktif()
+      return
+    }
+
+    if (alatEfektif(e) === 'penghapus' && e.buttons !== 0) {
+      const d = v.keDunia(e.clientX, e.clientY)
+      hapusDi(d.x, d.y)
+      return
+    }
+
+    const c = aktifCoretan.current
+    if (!c) return
+
+    // Bentuk yang sudah terkunci bertahan. Dulu gerakan berikutnya
+    // membatalkannya kembali jadi coretan tangan, dan itu salah: menahan pena
+    // sampai bentuknya muncul adalah keputusan yang sudah diambil — tangan yang
+    // bergeser sedikit setelahnya bukan pembatalan, cuma tangan yang bergeser.
+    if (bentukSnap.current) return
+
+    // Wacom mengirim jauh lebih banyak sampel daripada frame rate layar.
+    // Tanpa getCoalescedEvents, garis cepat akan patah-patah.
+    const native = e.nativeEvent
+    const sampel =
+      typeof native.getCoalescedEvents === 'function' ? native.getCoalescedEvents() : [native]
+
+    for (const s of sampel) {
+      const d = v.keDunia(s.clientX, s.clientY)
+      c.points.push([d.x, d.y, tekananDari(s)])
+    }
+
+    // Diukur di piksel layar, bukan dunia: yang dinilai adalah tangan yang
+    // berhenti, dan itu tidak berubah artinya saat kanvas di-zoom.
+    const diam = titikDiam.current
+    const bergeser = !diam || Math.hypot(e.clientX - diam.x, e.clientY - diam.y) > AMBANG_DIAM
+    if (bergeser) {
+      titikDiam.current = { x: e.clientX, y: e.clientY }
+      jadwalkanTahan()
+    }
+    mintaGambarAktif()
+  }
+
+  const naik = (_e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (bingkaiAktif.current !== null) {
+      cancelAnimationFrame(bingkaiAktif.current)
+      bingkaiAktif.current = null
+    }
+    if (v.sedangGeser) {
+      v.selesaiGeser()
+      return
+    }
+
+    if (objekBaru.current) {
+      const o = objekBaru.current
+      objekBaru.current = null
+      const k = kotakObjek(o)
+      // Sekali ketuk tanpa menarik tidak meninggalkan bentuk sebesar nol.
+      if (k.x2 - k.x1 < 6 && k.y2 - k.y1 < 6) {
+        gambarAktif()
+        return
+      }
+      terapkan(coretan, [...objek, o])
+      setObjekTerpilih(o.id)
+      setAlat('laso')
+      beriTahu('Drag the dots to reshape it. It stays editable.')
+      gambarAktif()
+      return
+    }
+
+    if (seretPutar.current) {
+      seretPutar.current = null
+      jadwalkanSimpan(coretan)
+      return
+    }
+
+    if (seretObjek.current) {
+      seretObjek.current = null
+      jadwalkanSimpan(coretan)
+      return
+    }
+
+    if (seretTeks.current) {
+      seretTeks.current = null
+      jadwalkanSimpan(coretan)
+      return
+    }
+
+    if (seretPutarGambar.current) {
+      seretPutarGambar.current = null
+      jadwalkanSimpan(coretan)
+      return
+    }
+
+    if (seretGambar.current) {
+      seretGambar.current = null
+      jadwalkanSimpan(coretan)
+      return
+    }
+
+    if (geser.current) {
+      geser.current = null
+      jadwalkanSimpan(coretan)
+      return
+    }
+
+    awalLaso.current = null
+    if (jalurLaso.current.length > 2) {
+      const poligon = jalurLaso.current
+      const terpilih = new Set(
+        coretan.filter((c) => bisaDiubah(c) && coretanDalamLaso(c, poligon)).map((c) => c.id),
+      )
+      setPilihan(terpilih)
+      jalurLaso.current = []
+      gambarAktif()
+      return
+    }
+    jalurLaso.current = []
+
+    batalTahan()
+    titikDiam.current = null
+    const bentuk = bentukSnap.current
+    bentukSnap.current = null
+
+    const c = aktifCoretan.current
+    aktifCoretan.current = null
+    if (!c || c.points.length < 2) {
+      gambarAktif()
+      return
+    }
+    if (bentuk) {
+      // Coretan aslinya dibuang, bukan disimpan di bawah bentuk: yang diminta
+      // adalah bentuknya, dan satu ⌘Z mengembalikan kanvas ke sebelum goresan.
+      terapkan(coretan, [...objek, bentuk])
+      setObjekTerpilih(bentuk.id)
+      beriTahu('Drag the dots to resize it · ⌫ deletes it · draw again to move on.')
+      gambarAktif()
+      return
+    }
+    terapkan([...coretan, c])
+    gambarAktif()
+  }
+
+  function hapusDi(x: number, y: number) {
+    const sisaTeks = teks.filter(
+      (t) =>
+        !(
+          (lapisanInfo[t.layer]?.tampak ?? true) &&
+          !(lapisanInfo[t.layer]?.kunci ?? false) &&
+          teksKena(t, x, y)
+        ),
+    )
+    if (sisaTeks.length !== teks.length) {
+      setTeks(sisaTeks)
+      setTeksTerpilih(null)
+      jadwalkanSimpan(coretan)
+    }
+    const radius = setelanAktif.size / 2
+    // Sebagian: goresan dipotong di tempat yang tersentuh dan sisanya tetap
+    // hidup. Goresan: satu sentuhan membuang goresan utuh — masih yang tercepat
+    // untuk membereskan coretan yang memang salah seluruhnya.
+    const sisa =
+      modePenghapus === 'sebagian'
+        ? coretan.flatMap((c) => (bisaDiubah(c) ? potongCoretan(c, x, y, radius) : [c]))
+        : coretan.filter((c) => !(bisaDiubah(c) && coretanKena(c, x, y, radius)))
+    const sisaObjek = objek.filter(
+      (o) =>
+        !(
+          (lapisanInfo[o.layer]?.tampak ?? true) &&
+          !(lapisanInfo[o.layer]?.kunci ?? false) &&
+          objekKena(o, x, y, radius)
+        ),
+    )
+    if (sisa.length !== coretan.length || sisaObjek.length !== objek.length) {
+      panggang.current = null
+      terapkan(sisa, sisaObjek)
+    }
+  }
+
+  /**
+   * Salinan dari yang sedang terpilih, digeser sedikit dan langsung jadi
+   * pilihan baru — jadi ⌘D berkali-kali menghasilkan deretan, bukan tumpukan
+   * di satu tempat.
+   */
+  const duplikat = useCallback(() => {
+    if (objekTerpilih) {
+      const asal = objek.find((o) => o.id === objekTerpilih)
+      if (asal) {
+        const salinan = { ...geserObjek(asal, 18, 18), id: newId('obj') }
+        terapkan(coretan, [...objek, salinan])
+        setObjekTerpilih(salinan.id)
+      }
+      return
+    }
+    if (pilihan.size === 0) return
+    const salinan = coretan
+      .filter((c) => pilihan.has(c.id))
+      .map((c) => ({ ...geserCoretan(c, 18, 18), id: newId('sk') }))
+    terapkan([...coretan, ...salinan])
+    setPilihan(new Set(salinan.map((c) => c.id)))
+    panggang.current = null
+  }, [coretan, objek, objekTerpilih, pilihan, terapkan])
+
+  /** Pindahkan yang terpilih ke lapisan yang sedang aktif. */
+  const pindahKeLapisan = useCallback(
+    (tujuan: number) => {
+      if (pilihan.size === 0) return
+      terapkan(coretan.map((c) => (pilihan.has(c.id) ? { ...c, layer: tujuan } : c)))
+      panggang.current = null
+      beriTahu(`Moved ${pilihan.size} stroke${pilihan.size === 1 ? '' : 's'} to ${lapisanInfo[tujuan]?.nama}.`)
+    },
+    [coretan, pilihan, terapkan, lapisanInfo, beriTahu],
+  )
+
+  /** Kosongkan satu lapisan tanpa menyentuh lapisan lain. */
+  const kosongkanLapisan = useCallback(
+    (i: number) => {
+      const sisa = coretan.filter((c) => c.layer !== i)
+      const sisaObjek = objek.filter((o) => o.layer !== i)
+      if (sisa.length === coretan.length && sisaObjek.length === objek.length) return
+      terapkan(sisa, sisaObjek)
+      setPilihan(new Set())
+      setObjekTerpilih(null)
+      panggang.current = null
+      beriTahu(`${lapisanInfo[i]?.nama} cleared.`)
+    },
+    [coretan, objek, terapkan, lapisanInfo, beriTahu],
+  )
+
+  /** Perbesar/perkecil sampai seluruh sketsa muat di layar, dengan sedikit margin. */
+  const muatSemua = useCallback(() => {
+    const dasar = kotakSemua(
+      coretan.filter(terlihat),
+      gambar.filter((g) => lapisanInfo[g.layer]?.tampak ?? true),
+      [],
+      teks.filter((t) => lapisanInfo[t.layer]?.tampak ?? true),
+    )
+    // Kalau halaman dipilih, ia yang jadi acuan — "muat" berarti melihat satu
+    // halaman penuh, bukan sekadar isi yang kebetulan sudah tergambar.
+    const kotakKertas =
+      halaman.w > 0
+        ? { x1: 0, y1: 0, x2: halaman.w, y2: kotakHalaman(halaman, jumlahHalaman - 1).y2 }
+        : null
+    const objekTampak = objek.filter((o) => lapisanInfo[o.layer]?.tampak ?? true)
+    const kotakObj = objekTampak.map(kotakObjek)
+    const semua = [dasar, kotakKertas, ...kotakObj].filter(Boolean) as {
+      x1: number
+      y1: number
+      x2: number
+      y2: number
+    }[]
+    const kotak =
+      semua.length === 0
+        ? null
+        : {
+            x1: Math.min(...semua.map((k) => k.x1)),
+            y1: Math.min(...semua.map((k) => k.y1)),
+            x2: Math.max(...semua.map((k) => k.x2)),
+            y2: Math.max(...semua.map((k) => k.y2)),
+          }
+    const el = wadahRef.current
+    if (!kotak || !el) return
+    const kotakEl = el.getBoundingClientRect()
+    const margin = 48
+    const lebar = Math.max(1, kotak.x2 - kotak.x1)
+    const tinggi = Math.max(1, kotak.y2 - kotak.y1)
+    const skala = Math.min(
+      4,
+      Math.max(0.12, Math.min((kotakEl.width - margin * 2) / lebar, (kotakEl.height - margin * 2) / tinggi)),
+    )
+    v.setTampilan({
+      skala,
+      x: kotakEl.width / 2 - ((kotak.x1 + kotak.x2) / 2) * skala,
+      y: kotakEl.height / 2 - ((kotak.y1 + kotak.y2) / 2) * skala,
+    })
+    panggang.current = null
+  }, [coretan, gambar, objek, halaman, jumlahHalaman, lapisanInfo, terlihat, v])
+
+  /**
+   * Selalu ada satu halaman kosong menunggu di bawah.
+   *
+   * Begitu halaman terakhir mulai terisi, halaman berikutnya sudah disiapkan —
+   * jadi menggulung ke bawah dan terus menulis tidak pernah membentur ujung,
+   * dan tidak ada tombol yang harus ditekan di tengah menulis. Buku tulis tidak
+   * meminta izin sebelum halaman berikutnya boleh dipakai.
+   *
+   * Hanya bertambah, tidak pernah berkurang: halaman tidak boleh lenyap di
+   * bawah tangan yang sedang menghapus. Sketsa yang benar-benar kosong tetap
+   * satu halaman — lembar kosong kedua baru muncul setelah ada coretan pertama.
+   */
+  useEffect(() => {
+    if (halaman.w <= 0) return
+    const k = kotakSemua(coretan, gambar, objek, teks)
+    if (!k) return
+    const slot = halaman.h + JARAK_HALAMAN
+    // Halaman tempat coretan terbawah berada, lalu satu lembar kosong sesudahnya.
+    const terisi = Math.floor(k.y2 / slot)
+    const perlu = Math.max(1, terisi + 2)
+    setJumlahHalaman((lama) => (perlu > lama ? Math.min(HALAMAN_MAKS, perlu) : lama))
+  }, [coretan, gambar, objek, halaman])
+
+  useEffect(() => {
+    const el = wadahRef.current
+    if (!el) return
+    const ro = new ResizeObserver(([e]) =>
+      setUkuranLayar({ w: e.contentRect.width, h: e.contentRect.height }),
+    )
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
+  /**
+   * Berkas yang dijatuhkan ke jendela.
+   *
+   * Penangkap drop asli Tauri sengaja dimatikan (lihat windows.rs): ia hanya
+   * mengenali jalur berkas, sedangkan seretan dari WhatsApp, Foto, atau Safari
+   * sering datang sebagai *file promise* atau data gambar mentah tanpa jalur.
+   * WebKit menerima ketiganya lewat drop HTML5 biasa, jadi satu penangan di
+   * elemen kanvas cukup — di dalam aplikasi maupun di browser.
+   */
+  async function terimaJatuhan(dt: DataTransfer) {
+    const berkas: (File | Blob)[] = []
+    const items = Array.from(dt.items ?? [])
+    for (const it of items) {
+      if (it.kind !== 'file') continue
+      const f = it.getAsFile()
+      if (f) berkas.push(f)
+    }
+    // Sebagian aplikasi hanya mengisi `files`, bukan `items`.
+    if (berkas.length === 0) berkas.push(...Array.from(dt.files ?? []))
+
+    // Jalur berkas (file://) tanpa isi — dibaca lewat sisi Rust.
+    if (berkas.length === 0 && inTauri) {
+      const uri = dt.getData('text/uri-list') || dt.getData('text/plain')
+      const jalur = uri
+        .split(/\r?\n/)
+        .map((s) => s.trim())
+        .filter((s) => s.startsWith('file://'))
+        .map((s) => decodeURIComponent(s.replace(/^file:\/\//, '')))
+      if (jalur.length > 0) {
+        const { invoke } = await import('@tauri-apps/api/core')
+        for (const j of jalur) {
+          try {
+            const isi = await invoke<number[]>('dropped_bytes', { path: j })
+            const nama = j.split('/').pop() ?? 'file'
+            berkas.push(new File([new Uint8Array(isi)], nama))
+          } catch (err) {
+            beriTahu(err instanceof Error ? err.message : String(err))
+          }
+        }
+      }
+    }
+
+    if (berkas.length === 0) {
+      beriTahu('Nothing droppable there — try an image or a PDF.')
+      return
+    }
+    // Beberapa berkas sekaligus ditempel berurutan; tiap gambar sudah digeser
+    // ke tengah pandangan, jadi yang berikutnya tinggal ditarik ke tempatnya.
+    for (const b of berkas) await terimaRef.current(b)
+  }
+
+  /** Bawa layar ke halaman ke-`i`, tepinya sedikit di bawah tepi atas. */
+  const keHalaman = useCallback(
+    (i: number) => {
+      if (halaman.w <= 0) return
+      const atas = kotakHalaman(halaman, i).y1
+      v.setTampilan((t) => ({ ...t, y: -atas * t.skala + 24 }))
+    },
+    [halaman, v],
+  )
+
+  /**
+   * Sisipkan atau hapus satu halaman, dengan isinya ikut bergeser.
+   *
+   * Halaman yang hanya bertambah di daftar tanpa menggeser apa pun akan
+   * memotong tulisan di tengah: yang sudah tertulis di halaman 3 harus pindah
+   * ke halaman 4 kalau sebuah halaman disisipkan sebelumnya. Yang menentukan
+   * sebuah coretan "milik" halaman mana adalah titik tengahnya — bukan tepinya,
+   * supaya goresan yang sedikit melewati batas tidak ikut terbawa.
+   */
+  const ubahHalaman = useCallback(
+    (indeks: number, mode: 'sisip' | 'hapus') => {
+      if (halaman.w <= 0) return
+      if (mode === 'sisip' && jumlahHalaman >= HALAMAN_MAKS) {
+        beriTahu(`A sketch tops out at ${HALAMAN_MAKS} pages.`)
+        return
+      }
+      if (mode === 'hapus' && jumlahHalaman <= 1) {
+        beriTahu('A sketch keeps at least one page.')
+        return
+      }
+      const slot = halaman.h + JARAK_HALAMAN
+      const awal = indeks * slot
+      const dy = mode === 'sisip' ? slot : -slot
+      const dibuang = (y: number) => mode === 'hapus' && y >= awal && y < awal + slot
+      const digeser = (y: number) => y >= (mode === 'hapus' ? awal + slot : awal)
+      const tengah = (k: { y1: number; y2: number }) => (k.y1 + k.y2) / 2
+
+      terapkan(
+        coretan
+          .filter((c) => !dibuang(tengah(kotakCoretan(c))))
+          .map((c) => (digeser(tengah(kotakCoretan(c))) ? geserCoretan(c, 0, dy) : c)),
+        objek
+          .filter((o) => !dibuang(tengah(kotakObjek(o))))
+          .map((o) => (digeser(tengah(kotakObjek(o))) ? geserObjek(o, 0, dy) : o)),
+      )
+      setGambar((lama) =>
+        lama
+          .filter((g) => !dibuang(g.y + g.h / 2))
+          .map((g) => (digeser(g.y + g.h / 2) ? { ...g, y: g.y + dy } : g)),
+      )
+      setJumlahHalaman(jumlahHalaman + (mode === 'sisip' ? 1 : -1))
+      setPilihan(new Set())
+      setObjekTerpilih(null)
+      setGambarTerpilih(null)
+      panggang.current = null
+      beriTahu(
+        mode === 'sisip' ? `Page inserted before ${indeks + 1}.` : `Page ${indeks + 1} deleted.`,
+      )
+    },
+    [halaman, jumlahHalaman, coretan, objek, terapkan, beriTahu],
+  )
+
+  /**
+   * Pratinjau kecil tiap halaman untuk daftar di pojok.
+   *
+   * Dibuat setelah tangan berhenti sejenak, bukan tiap goresan: menggambar
+   * ulang delapan belas pratinjau di tengah coretan akan terasa di ujung pena.
+   * Isinya dikelompokkan per halaman sekali di awal — menyaring seluruh coretan
+   * berulang kali untuk tiap halaman membuat biayanya berlipat dengan jumlah
+   * halaman, dan sketsa panjang justru yang paling butuh daftar ini.
+   */
+  const [pratinjau, setPratinjau] = useState<string[]>([])
+
+  useEffect(() => {
+    if (halaman.w <= 0) {
+      setPratinjau([])
+      return
+    }
+    let batal = false
+    const timer = window.setTimeout(() => {
+      const slot = halaman.h + JARAK_HALAMAN
+      const kelompok = Array.from({ length: jumlahHalaman }, () => ({
+        g: [] as Gambar[],
+        c: [] as Coretan[],
+        o: [] as Objek[],
+      }))
+      const rentang = (k: { y1: number; y2: number }) => [
+        Math.max(0, Math.floor(k.y1 / slot)),
+        Math.min(jumlahHalaman - 1, Math.floor(k.y2 / slot)),
+      ]
+      for (const g of gambar) {
+        if (!(lapisanInfo[g.layer]?.tampak ?? true)) continue
+        const [a, b] = rentang(kotakGambar(g))
+        for (let i = a; i <= b; i++) kelompok[i]?.g.push(g)
+      }
+      for (const c of coretan) {
+        if (!terlihat(c)) continue
+        const [a, b] = rentang(kotakCoretan(c))
+        for (let i = a; i <= b; i++) kelompok[i]?.c.push(c)
+      }
+      for (const o of objek) {
+        if (!(lapisanInfo[o.layer]?.tampak ?? true)) continue
+        const [a, b] = rentang(kotakObjek(o))
+        for (let i = a; i <= b; i++) kelompok[i]?.o.push(o)
+      }
+
+      const LEBAR = 96
+      const skala = LEBAR / halaman.w
+      const keluar: string[] = []
+      for (let i = 0; i < jumlahHalaman; i++) {
+        const c = document.createElement('canvas')
+        c.width = LEBAR
+        c.height = Math.max(1, Math.round(halaman.h * skala))
+        const ctx = c.getContext('2d')
+        if (!ctx) continue
+        ctx.fillStyle = '#ffffff'
+        ctx.fillRect(0, 0, c.width, c.height)
+        ctx.scale(skala, skala)
+        ctx.translate(0, -i * slot)
+        for (const g of kelompok[i].g) gambarTempelan(ctx, g)
+        for (const k of kelompok[i].c) gambarCoretan(ctx, k)
+        for (const o of kelompok[i].o) {
+          gambarObjek(ctx, o, warnaToken(o.color), `${Math.max(9, o.size * 3)}px ui-monospace, monospace`)
+        }
+        keluar.push(c.toDataURL('image/png'))
+      }
+      if (!batal) setPratinjau(keluar)
+    }, 500)
+    return () => {
+      batal = true
+      window.clearTimeout(timer)
+    }
+  }, [halaman, jumlahHalaman, coretan, objek, gambar, lapisanInfo, terlihat])
+
+  /** Halaman mana yang sudah ada isinya, untuk titik penanda di daftar. */
+  const halamanBerisi = useMemo(() => {
+    if (halaman.w <= 0) return []
+    const slot = halaman.h + JARAK_HALAMAN
+    const ada = Array.from({ length: jumlahHalaman }, () => false)
+    const tandai = (y: number) => {
+      const i = Math.floor(y / slot)
+      if (i >= 0 && i < ada.length) ada[i] = true
+    }
+    for (const c of coretan) tandai((kotakCoretan(c).y1 + kotakCoretan(c).y2) / 2)
+    for (const o of objek) tandai((kotakObjek(o).y1 + kotakObjek(o).y2) / 2)
+    for (const g of gambar) tandai(g.y + g.h / 2)
+    return ada
+  }, [halaman, jumlahHalaman, coretan, objek, gambar])
+
+  /**
+   * Kotak isi untuk mini-peta.
+   *
+   * Sketsa padat bisa berisi ribuan goresan, dan peta selebar 176px tidak bisa
+   * menunjukkan bedanya — jadi di atas ambang ini isinya dicuplik. Yang dicari
+   * orang di mini-peta adalah gumpalan tempat ia pernah menggambar, bukan tiap
+   * goresan satu per satu.
+   */
+  const kotakIsi = useMemo(() => {
+    if (halaman.w > 0) return []
+    const semua = [
+      ...coretan.filter(terlihat).map(kotakCoretan),
+      ...objek.filter((o) => lapisanInfo[o.layer]?.tampak ?? true).map(kotakObjek),
+      ...gambar.filter((g) => lapisanInfo[g.layer]?.tampak ?? true).map(kotakGambar),
+    ]
+    const BATAS = 600
+    if (semua.length <= BATAS) return semua
+    const langkah = Math.ceil(semua.length / BATAS)
+    return semua.filter((_, i) => i % langkah === 0)
+  }, [halaman, coretan, objek, gambar, lapisanInfo, terlihat])
+
+  const lompatKeDunia = useCallback(
+    (x: number, y: number) => {
+      v.setTampilan((t) => ({
+        ...t,
+        x: -x * t.skala + ukuranLayar.w / 2,
+        y: -y * t.skala + ukuranLayar.h / 2,
+      }))
+    },
+    [v, ukuranLayar],
+  )
+
+  const tambahHalaman = useCallback(() => {
+    if (halaman.w <= 0) return
+    if (jumlahHalaman >= HALAMAN_MAKS) {
+      beriTahu(`A sketch tops out at ${HALAMAN_MAKS} pages.`)
+      return
+    }
+    // Menggeser layar dan menjadwalkan simpan dilakukan di luar pembaruan
+    // keadaan, bukan di dalamnya: fungsi pembaru harus bersih, dan React boleh
+    // memanggilnya lebih dari sekali.
+    setJumlahHalaman(jumlahHalaman + 1)
+    keHalaman(jumlahHalaman)
+    jadwalkanSimpan(coretan)
+  }, [halaman, jumlahHalaman, keHalaman, beriTahu, jadwalkanSimpan, coretan])
+
+  function adaPilihanDiTitik(x: number, y: number): boolean {
+    return coretan.some((c) => pilihan.has(c.id) && coretanKena(c, x, y, 12 / v.tampilan.skala))
+  }
+
+  /* ── Pintasan ──────────────────────────────────────────────────── */
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement | null
+      if (t && (t.isContentEditable || /^(INPUT|TEXTAREA)$/.test(t.tagName))) return
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') {
+        e.preventDefault()
+        e.shiftKey ? ulangi() : urungkan()
+        return
+      }
+
+      // ⌘2/⌘3/⌘4 memilih alat. Angka-angka ini dulu dipakai untuk berpindah
+      // modul; dilepas dari menu supaya sampai ke sini.
+      if (e.metaKey || e.ctrlKey) {
+        // ⌘1–⌘9 menunjuk posisi di bilah alat, bukan alat tertentu — jadi
+        // menyusun ulang bilahnya sekaligus menyusun ulang pintasannya.
+        const slot = Number(e.key)
+        if (Number.isInteger(slot) && slot >= 1 && slot <= SLOT_ALAT) {
+          const pilihan = urutanRef.current[slot - 1]
+          if (pilihan) {
+            e.preventDefault()
+            setAlat(pilihan)
+            return
+          }
+        }
+        if (e.key === '.') {
+          e.preventDefault()
+          setMenuTampil((tampil) => !tampil)
+          return
+        }
+        if (e.key.toLowerCase() === 'd') {
+          e.preventDefault()
+          duplikat()
+          return
+        }
+        if (e.key === '0') {
+          e.preventDefault()
+          muatSemua()
+          return
+        }
+        if (e.key.toLowerCase() === 's') {
+          e.preventDefault()
+          void simpanSekarang(coretan)
+          beriTahu('Saved.')
+          return
+        }
+        return
+      }
+
+      // Huruf tunggal tetap bekerja untuk yang terbiasa.
+      if (e.key === 'p') setAlat('pen')
+      if (e.key === 'm') setAlat('spidol')
+      if (e.key === 'e') setAlat('penghapus')
+      if (e.key === 'l') setAlat('laso')
+      if (e.key === 'k') setAlat('lasoKotak')
+      if (e.key === 'g') setAlat('garis')
+      if (e.key === 'r') setAlat('kotak')
+      if (e.key === 'o') setAlat('elips')
+      if (e.key === 'a') setAlat('panah')
+      if (e.key === 'c') setAlat('lingkaran')
+      if (e.key === 't') setAlat('segitiga')
+      if (e.key === 'k') setAlat('kubus')
+      if (e.key === 'b') setAlat('balok')
+      if (e.key === 'x') setAlat('sumbu2d')
+      if ((e.key === 'Backspace' || e.key === 'Delete') && teksTerpilih && !teksDiubah) {
+        e.preventDefault()
+        setTeks((lama) => lama.filter((t) => t.id !== teksTerpilih))
+        setTeksTerpilih(null)
+        jadwalkanSimpan(coretan)
+        return
+      }
+      if ((e.key === 'Backspace' || e.key === 'Delete') && objekTerpilih) {
+        e.preventDefault()
+        terapkan(
+          coretan,
+          objek.filter((o) => o.id !== objekTerpilih),
+        )
+        setObjekTerpilih(null)
+        return
+      }
+      if ((e.key === 'Backspace' || e.key === 'Delete') && gambarTerpilih) {
+        e.preventDefault()
+        setGambar((g) => g.filter((x2) => x2.id !== gambarTerpilih))
+        setGambarTerpilih(null)
+        return
+      }
+      if ((e.key === 'Backspace' || e.key === 'Delete') && pilihan.size > 0) {
+        terapkan(coretan.filter((c) => !pilihan.has(c.id)))
+        setPilihan(new Set())
+        panggang.current = null
+      }
+    }
+    // Shift ditahan saat menarik bentuk = kunci sudut / bujur sangkar.
+    const shiftTurun = (e: KeyboardEvent) => {
+      shiftDitekan.current = e.shiftKey
+    }
+    window.addEventListener('keydown', onKey)
+    window.addEventListener('keydown', shiftTurun)
+    window.addEventListener('keyup', shiftTurun)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      window.removeEventListener('keydown', shiftTurun)
+      window.removeEventListener('keyup', shiftTurun)
+    }
+  }, [
+    urungkan,
+    ulangi,
+    pilihan,
+    coretan,
+    objek,
+    objekTerpilih,
+    terapkan,
+    duplikat,
+    muatSemua,
+    simpanSekarang,
+    beriTahu,
+    gambarTerpilih,
+  ])
+
+  /* ── Gambar tempelan ───────────────────────────────────────────── */
+
+  /**
+   * Taruh satu gambar di tengah pandangan, seukuran wajar terhadap layar.
+   *
+   * Tangkapan layar Retina berukuran 5120 piksel akan menutupi seluruh kanvas
+   * kalau ditempel apa adanya, jadi ukurannya disesuaikan supaya muat di sekitar
+   * dua pertiga lebar layar — masih bisa diperbesar sendiri setelahnya.
+   */
+  const tempelGambar = useCallback(
+    (src: string, lebarAsli: number, tinggiAsli: number) => {
+      const el = wadahRef.current
+      if (!el || lebarAsli === 0) return
+      const kotak = el.getBoundingClientRect()
+      const maksimum = ((kotak.width * 0.66) / v.tampilan.skala) || lebarAsli
+      const rasio = Math.min(1, maksimum / lebarAsli)
+      const w = lebarAsli * rasio
+      const h = tinggiAsli * rasio
+      const tengah = v.keDunia(kotak.left + kotak.width / 2, kotak.top + kotak.height / 2)
+
+      const baru: Gambar = {
+        id: newId('img'),
+        layer: lapisan,
+        x: tengah.x - w / 2,
+        y: tengah.y - h / 2,
+        w,
+        h,
+        src,
+      }
+      setGambar((g) => [...g, baru])
+      setGambarTerpilih(baru.id)
+      setAlat('laso')
+      beriTahu('Pasted. Drag to move, corner to resize, Backspace to remove.')
+    },
+    [v, lapisan, beriTahu],
+  )
+
+  /**
+   * Blob gambar → data URL, diperkecil kalau sisinya keterlaluan.
+   *
+   * Berkas sketsa memuat gambarnya sendiri, jadi tangkapan layar 8 MB akan
+   * ikut dibaca ulang setiap kali sketsa dibuka. Batas sisi menjaga berkasnya
+   * tetap ringan tanpa terlihat kehilangan ketajaman di layar.
+   */
+  async function keDataUrl(blob: Blob): Promise<{ src: string; w: number; h: number } | null> {
+    const bitmap = await createImageBitmap(blob).catch(() => null)
+    if (!bitmap) return null
+    const rasio = Math.min(1, SISI_MAKS / Math.max(bitmap.width, bitmap.height))
+    if (rasio === 1 && blob.type === 'image/png') {
+      const src = await new Promise<string>((res) => {
+        const fr = new FileReader()
+        fr.onload = () => res(String(fr.result))
+        fr.readAsDataURL(blob)
+      })
+      return { src, w: bitmap.width, h: bitmap.height }
+    }
+    const w = Math.round(bitmap.width * rasio)
+    const h = Math.round(bitmap.height * rasio)
+    const c = document.createElement('canvas')
+    c.width = w
+    c.height = h
+    const ctx = c.getContext('2d')
+    if (!ctx) return null
+    ctx.drawImage(bitmap, 0, 0, w, h)
+    return { src: c.toDataURL('image/png'), w, h }
+  }
+
+  terimaRef.current = (b) => terimaBerkas(b)
+
+  async function terimaBerkas(berkas: Blob | null) {
+    if (!berkas) return
+    const nama = (berkas as File).name ?? ''
+    const ext = nama.toLowerCase().split('.').pop() ?? ''
+    if (berkas.type === 'application/pdf' || ext === 'pdf') {
+      await imporPdf(berkas)
+      return
+    }
+    if (EKSTENSI_KANTOR.includes(ext)) {
+      await imporKantor(berkas, nama)
+      return
+    }
+    if (!berkas.type.startsWith('image/')) {
+      if (nama) beriTahu(`Not something the canvas can take: ${nama}`)
+      return
+    }
+    const hasil = await keDataUrl(berkas)
+    if (!hasil) {
+      beriTahu('That image could not be read.')
+      return
+    }
+    tempelGambar(hasil.src, hasil.w, hasil.h)
+  }
+
+  // ⌘V di mana pun selama kanvas terbuka. Dipasang di window, bukan di elemen
+  // kanvas: canvas tidak bisa menerima fokus papan tik, jadi listener yang
+  // menempel padanya tidak akan pernah menerima event paste.
+  useEffect(() => {
+    const onPaste = (e: ClipboardEvent) => {
+      const t = e.target as HTMLElement | null
+      if (t && (t.isContentEditable || /^(INPUT|TEXTAREA)$/.test(t.tagName))) return
+      const item = Array.from(e.clipboardData?.items ?? []).find((i) =>
+        i.type.startsWith('image/'),
+      )
+      if (!item) return
+      e.preventDefault()
+      void terimaBerkas(item.getAsFile())
+    }
+    window.addEventListener('paste', onPaste)
+    return () => window.removeEventListener('paste', onPaste)
+  })
+
+  /* ── PDF ───────────────────────────────────────────────────────── */
+
+  /**
+   * Gambar satu wilayah dunia ke kanvas luar layar.
+   *
+   * Dipakai ekspor PDF, yang butuh wilayah pasti seukuran halaman — bukan
+   * kotak pembatas isi seperti pada ekspor PNG.
+   */
+  async function rekamWilayah(
+    x1: number,
+    y1: number,
+    lebar: number,
+    tinggi: number,
+    skala: number,
+  ): Promise<HTMLCanvasElement | null> {
+    const c = document.createElement('canvas')
+    c.width = Math.round(lebar * skala)
+    c.height = Math.round(tinggi * skala)
+    const ctx = c.getContext('2d')
+    if (!ctx) return null
+
+    // Latar putih, bukan warna tema: hasil cetak tidak ikut bertema gelap.
+    ctx.fillStyle = '#ffffff'
+    ctx.fillRect(0, 0, c.width, c.height)
+    ctx.scale(skala, skala)
+    ctx.translate(-x1, -y1)
+
+    const tampak = <T extends { layer: number }>(x: T) => lapisanInfo[x.layer]?.tampak ?? true
+    const dipakai = gambar.filter(tampak)
+    await Promise.all(
+      dipakai.map(
+        (g) =>
+          new Promise<void>((res) => {
+            const img = muatGambar(g.src)
+            if (img.complete && img.naturalWidth > 0) return res()
+            img.addEventListener('load', () => res(), { once: true })
+            img.addEventListener('error', () => res(), { once: true })
+          }),
+      ),
+    )
+    for (const g of dipakai) gambarTempelan(ctx, g)
+    for (const k of coretan.filter(tampak)) gambarCoretan(ctx, k)
+    for (const o of objek.filter(tampak)) {
+      gambarObjek(ctx, o, warnaToken(o.color), `${Math.max(13, o.size * 3)}px ui-monospace, monospace`)
+    }
+    for (const t of teks.filter(tampak)) gambarTeks(ctx, t)
+    return c
+  }
+
+  /** Piksel dunia (96 dpi) → milimeter. */
+  const keMm = (px: number) => (px / 96) * 25.4
+
+  /**
+   * Wilayah yang akan dicetak atau diekspor, satu kotak per halaman.
+   *
+   * Dipakai bersama oleh ekspor PDF dan cetak supaya keduanya tidak pernah
+   * memotong di tempat yang berbeda.
+   */
+  function wilayahCetak(): { x: number; y: number; w: number; h: number }[] | null {
+    if (halaman.w > 0) {
+      return Array.from({ length: jumlahHalaman }, (_, i) => {
+        const k = kotakHalaman(halaman, i)
+        return { x: k.x1, y: k.y1, w: halaman.w, h: halaman.h }
+      })
+    }
+    const k = kotakSemua(coretan, gambar, objek, teks)
+    if (!k) return null
+    const margin = 24
+    return [
+      { x: k.x1 - margin, y: k.y1 - margin, w: k.x2 - k.x1 + margin * 2, h: k.y2 - k.y1 + margin * 2 },
+    ]
+  }
+
+  /**
+   * Rakit seluruh halaman jadi satu PDF di memori.
+   *
+   * Dipakai bersama oleh ekspor dan cetak: keduanya harus menghasilkan berkas
+   * yang sama persis, dan satu-satunya bedanya cuma ke mana byte-nya pergi.
+   */
+  async function bangunPdf(): Promise<{ bytes: Uint8Array; terlampaui: boolean } | null> {
+    const wilayah = wilayahCetak()
+    if (!wilayah) {
+      beriTahu('Nothing on a page yet.')
+      return null
+    }
+    const { jsPDF } = await import('jspdf')
+    const mmW = halaman.mmW || keMm(wilayah[0].w)
+    const mmH = halaman.mmH || keMm(wilayah[0].h)
+    const arah = mmW > mmH ? 'landscape' : 'portrait'
+    const pdf = new jsPDF({ unit: 'mm', format: [mmW, mmH], orientation: arah, compress: true })
+
+    // Anggaran dibagi rata per halaman, dengan sisa untuk kerangka PDF-nya
+    // sendiri. Sketsa 20 halaman berarti tiap halaman dapat jatah kecil — itu
+    // memang konsekuensi yang benar dari satu batas untuk satu berkas.
+    const jatah = (ANGGARAN_PDF * 0.92) / wilayah.length
+    // Merender 40 halaman sekaligus pada 288 dpi memakan memori lebih banyak
+    // daripada yang pantas dipakai satu ekspor; halaman banyak mulai dari
+    // resolusi lebih rendah, dan pemadat menurunkannya lagi bila perlu.
+    const skala = wilayah.length <= 4 ? 3 : wilayah.length <= 16 ? 2.5 : 2
+    let terlampaui = false
+
+    for (const [i, w] of wilayah.entries()) {
+      if (wilayah.length > 1) setSibuk(`Rendering page ${i + 1}/${wilayah.length}…`)
+      const c = await rekamWilayah(w.x, w.y, w.w, w.h, skala)
+      if (!c) return null
+      const padat = padatkanHalaman(c, jatah)
+      if (padat.byte > jatah) terlampaui = true
+      if (i > 0) pdf.addPage([mmW, mmH], arah)
+      pdf.addImage(padat.data, padat.rupa, 0, 0, mmW, mmH)
+    }
+    return { bytes: new Uint8Array(pdf.output('arraybuffer')), terlampaui }
+  }
+
+  function pesanUkuran(awalan: string, bytes: Uint8Array, terlampaui: boolean): string {
+    const mb = (bytes.length / 1024 / 1024).toFixed(1)
+    const batas = (ANGGARAN_PDF / 1024 / 1024).toFixed(0)
+    return terlampaui
+      ? `${awalan} — ${mb} MB. Too much detail to fit the ${batas} MB budget.`
+      : `${awalan} — ${mb} MB.`
+  }
+
+  /**
+   * Cetak lewat dialog sistem.
+   *
+   * `window.print()` tidak berbuat apa-apa di dalam WKWebView, jadi mencetak
+   * harus lewat sisi asli: PDF yang sama dengan hasil ekspor dikirim ke
+   * penampil bawaan, tempat dialog cetak macOS yang sesungguhnya berada —
+   * lengkap dengan pilihan printer, rentang halaman, dan pratinjaunya.
+   */
+  async function cetak() {
+    setSibuk('Preparing to print…')
+    try {
+      const { save } = await import('@tauri-apps/plugin-dialog')
+      const { invoke } = await import('@tauri-apps/api/core')
+      // Namanya ditanyakan lebih dulu: PDF cetakan ini juga berkas yang akan
+      // dikirim lewat surel atau disimpan, dan "sketch-1756276800.pdf" bukan
+      // nama yang mau dilihat siapa pun di lampiran.
+      const path = await save({
+        defaultPath: `${judul}.pdf`,
+        filters: [{ name: 'PDF', extensions: ['pdf'] }],
+      })
+      if (!path) return
+      const hasil = await bangunPdf()
+      if (!hasil) return
+      await invoke('write_bytes', { path, bytes: Array.from(hasil.bytes) })
+      await invoke('print_pdf', { path })
+      beriTahu(pesanUkuran('Saved and opened for printing', hasil.bytes, hasil.terlampaui))
+    } catch (e) {
+      beriTahu(e instanceof Error ? e.message : 'Printing failed.')
+    } finally {
+      setSibuk(null)
+    }
+  }
+
+  async function eksporPdf() {
+    setSibuk('Building PDF…')
+    try {
+      const { save } = await import('@tauri-apps/plugin-dialog')
+      const { invoke } = await import('@tauri-apps/api/core')
+      const path = await save({
+        defaultPath: `${judul}.pdf`,
+        filters: [{ name: 'PDF', extensions: ['pdf'] }],
+      })
+      if (!path) return
+      const hasil = await bangunPdf()
+      if (!hasil) return
+      await invoke('write_bytes', { path, bytes: Array.from(hasil.bytes) })
+      beriTahu(pesanUkuran('PDF exported', hasil.bytes, hasil.terlampaui))
+    } catch (e) {
+      beriTahu(e instanceof Error ? e.message : 'PDF export failed.')
+    } finally {
+      setSibuk(null)
+    }
+  }
+
+  /**
+   * Impor PDF: tiap halaman jadi satu gambar tempelan, ditumpuk ke bawah.
+   *
+   * Sengaja jadi gambar biasa, bukan jenis objek tersendiri — begitu masuk,
+   * halaman PDF bisa digeser, diperbesar, dikunci di lapisannya sendiri, dan
+   * dicoret-coret persis seperti tangkapan layar mana pun.
+   */
+  /**
+   * Word / PowerPoint yang diseret ke kanvas.
+   *
+   * Konversinya dikerjakan di sisi Rust — di sanalah LibreOffice dan `textutil`
+   * bisa dijalankan. Yang kembali cuma dua kemungkinan, dan keduanya sudah punya
+   * jalur menggambar di sini: PDF masuk lewat pengimpor PDF yang sudah ada, HTML
+   * dirender jadi satu gambar halaman.
+   */
+  async function imporKantor(berkas: Blob, nama: string) {
+    setSibuk('Converting…')
+    try {
+      const { invoke } = await import('@tauri-apps/api/core')
+      const hasil = await invoke<{ kind: string; pdf: number[] | null; html: string | null }>(
+        'office_convert',
+        { name: nama, bytes: Array.from(new Uint8Array(await berkas.arrayBuffer())) },
+      )
+      if (hasil.kind === 'pdf' && hasil.pdf) {
+        await imporPdf(new Blob([new Uint8Array(hasil.pdf)], { type: 'application/pdf' }))
+        return
+      }
+      if (hasil.kind === 'html' && hasil.html) {
+        await tempelHtml(hasil.html)
+        return
+      }
+      beriTahu('That file came back empty.')
+    } catch (e) {
+      beriTahu(e instanceof Error ? e.message : String(e))
+    } finally {
+      setSibuk(null)
+    }
+  }
+
+  /**
+   * HTML hasil konversi jadi satu gambar selebar A4.
+   *
+   * Dirender di dalam iframe ber-sandbox tanpa izin skrip, bukan langsung di
+   * dalam DOM aplikasi: isinya berasal dari berkas yang baru saja diseret orang
+   * dari luar, dan itu tidak pernah boleh ikut hidup di halaman yang sama
+   * dengan datanya.
+   */
+  async function tempelHtml(html: string) {
+    setSibuk('Rendering document…')
+    const bingkai = document.createElement('iframe')
+    bingkai.setAttribute('sandbox', 'allow-same-origin')
+    bingkai.style.cssText = 'position:fixed;left:-10000px;top:0;width:794px;height:400px;border:0;'
+    document.body.appendChild(bingkai)
+    try {
+      const dok = bingkai.contentDocument
+      if (!dok) throw new Error('Could not prepare the page.')
+      dok.open()
+      dok.write(
+        `<!doctype html><meta charset="utf-8"><style>` +
+          `html,body{margin:0;background:#fff;color:#111;` +
+          `font:14px/1.65 -apple-system,system-ui,sans-serif}` +
+          `body{padding:48px;width:698px}img{max-width:100%}` +
+          `table{border-collapse:collapse}td,th{border:1px solid #ccc;padding:4px 6px}` +
+          `</style>${html}`,
+      )
+      dok.close()
+      await new Promise((r) => window.setTimeout(r, 60))
+      const tinggi = Math.max(200, dok.body.scrollHeight)
+      bingkai.style.height = `${tinggi}px`
+
+      const html2canvas = (await import('html2canvas')).default
+      const c = await html2canvas(dok.body, { backgroundColor: '#ffffff', scale: 2, width: 794, height: tinggi })
+      tempelGambar(c.toDataURL('image/png'), c.width / 2, c.height / 2)
+    } finally {
+      bingkai.remove()
+      setSibuk(null)
+    }
+  }
+
+  async function imporPdf(berkas: Blob) {
+    setSibuk('Reading PDF…')
+    try {
+      const pdfjs = await import('pdfjs-dist')
+      const pekerja = (await import('pdfjs-dist/build/pdf.worker.min.mjs?url')).default
+      pdfjs.GlobalWorkerOptions.workerSrc = pekerja
+
+      const data = new Uint8Array(await berkas.arrayBuffer())
+      const dok = await pdfjs.getDocument({ data }).promise
+      const jumlah = Math.min(dok.numPages, 40)
+      const baru: Gambar[] = []
+      let y = 0
+
+      for (let i = 1; i <= jumlah; i++) {
+        setSibuk(`Rendering page ${i} of ${jumlah}…`)
+        const hal = await dok.getPage(i)
+        // PDF memakai 72 dpi; 96/72 membuat satu poin PDF jadi satu satuan
+        // dunia, lalu 2× lagi supaya tetap tajam saat diperbesar.
+        const vp = hal.getViewport({ scale: (96 / 72) * 2 })
+        const c = document.createElement('canvas')
+        c.width = Math.round(vp.width)
+        c.height = Math.round(vp.height)
+        const ctx = c.getContext('2d')
+        if (!ctx) continue
+        ctx.fillStyle = '#ffffff'
+        ctx.fillRect(0, 0, c.width, c.height)
+        await hal.render({ canvas: c, canvasContext: ctx, viewport: vp }).promise
+
+        const w = vp.width / 2
+        const h = vp.height / 2
+        baru.push({
+          id: newId('img'),
+          layer: lapisan,
+          x: 0,
+          y,
+          w,
+          h,
+          src: c.toDataURL('image/jpeg', 0.86),
+        })
+        y += h + 32
+      }
+
+      if (baru.length === 0) {
+        beriTahu('That PDF had no pages to render.')
+        return
+      }
+      setGambar((g) => [...g, ...baru])
+      setAlat('pen')
+      beriTahu(
+        dok.numPages > jumlah
+          ? `Imported the first ${jumlah} of ${dok.numPages} pages. Draw straight on them.`
+          : `Imported ${baru.length} page${baru.length === 1 ? '' : 's'}. Draw straight on them.`,
+      )
+    } catch (e) {
+      beriTahu(e instanceof Error ? e.message : 'That PDF could not be read.')
+    } finally {
+      setSibuk(null)
+    }
+  }
+
+  /* ── Ekspor ────────────────────────────────────────────────────── */
+
+  async function ekspor(format: 'png' | 'svg') {
+    const { save } = await import('@tauri-apps/plugin-dialog')
+    const { invoke } = await import('@tauri-apps/api/core')
+    const path = await save({
+      defaultPath: `${judul}.${format}`,
+      filters: [{ name: format.toUpperCase(), extensions: [format] }],
+    })
+    if (!path) return
+    const bytes =
+      format === 'svg'
+        ? new TextEncoder().encode(keSvg(coretan, gambar, objek, teks))
+        : await kePng(coretan, gambar, objek, teks)
+    if (!bytes) return
+    await invoke('write_bytes', { path, bytes: Array.from(bytes) })
+  }
+
+  const kursor = v.spasiDitekan ? 'grab' : alat === 'penghapus' ? 'cell' : 'crosshair'
+
+  /** Halaman yang tepi atasnya paling dekat dengan tepi atas layar. */
+  const halamanTerlihat =
+    halaman.w > 0
+      ? Math.max(
+          0,
+          Math.min(
+            jumlahHalaman - 1,
+            Math.round(-v.tampilan.y / v.tampilan.skala / (halaman.h + JARAK_HALAMAN)),
+          ),
+        )
+      : 0
+
+  useEffect(() => {
+    if (mintaCetak === cetakTerlayani.current) return
+    cetakTerlayani.current = mintaCetak
+    void cetak()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mintaCetak])
+
+  const teksSedangDiubah = teksDiubah ? (teks.find((t) => t.id === teksDiubah) ?? null) : null
+
+  /**
+   * Fokus dipaksa setelah kotaknya benar-benar ada di halaman.
+   *
+   * `autoFocus` berlomba dengan penangkapan pointer milik kanvas, dan di
+   * WKWebView kanvas kadang menang — kotaknya muncul tapi ketikan tidak masuk
+   * ke mana-mana. Satu bingkai jeda membuat urutannya pasti.
+   */
+  useEffect(() => {
+    if (!teksDiubah) return
+    const id = requestAnimationFrame(() => {
+      const el = ketikRef.current
+      if (!el) return
+      el.focus()
+      el.setSelectionRange(el.value.length, el.value.length)
+    })
+    return () => cancelAnimationFrame(id)
+  }, [teksDiubah])
+
+  /**
+   * Tutup kotak ketik.
+   *
+   * Tulisan kosong dibuang, bukan disimpan: satu ketukan yang tidak jadi apa-apa
+   * tidak boleh meninggalkan titik tak terlihat yang masih bisa tersentuh laso
+   * dan penghapus.
+   */
+  function selesaiKetik() {
+    const id = teksDiubah
+    setTeksDiubah(null)
+    if (!id) return
+    setTeks((lama) => lama.filter((t) => t.id !== id || t.isi.trim() !== ''))
+    jadwalkanSimpan(coretan)
+  }
+
+  const jumlahTampak = useMemo(() => coretan.filter(terlihat).length, [coretan, terlihat])
+
+  return (
+    <div
+      ref={wadahRef}
+      className="relative h-full w-full overflow-hidden"
+      onDragEnter={(e) => {
+        e.preventDefault()
+        setSeretMasuk(true)
+      }}
+      onDragOver={(e) => {
+        // Selalu diterima: jenis pasteboard dari aplikasi lain tidak selalu
+        // mengumumkan 'Files' sebelum dijatuhkan, dan menolaknya di sini
+        // berarti kursor "dilarang" untuk seretan yang sebenarnya sah.
+        e.preventDefault()
+        e.dataTransfer.dropEffect = 'copy'
+        if (!seretMasuk) setSeretMasuk(true)
+      }}
+      onDragLeave={(e) => {
+        if (e.currentTarget.contains(e.relatedTarget as Node | null)) return
+        setSeretMasuk(false)
+      }}
+      onDrop={(e) => {
+        e.preventDefault()
+        setSeretMasuk(false)
+        void terimaJatuhan(e.dataTransfer)
+      }}
+    >
+      {seretMasuk && (
+        <div
+          className="pointer-events-none absolute inset-3 z-20 grid place-items-center"
+          style={{
+            border: '2px dashed var(--accent)',
+            borderRadius: 'var(--radius)',
+            background: 'color-mix(in srgb, var(--accent) 8%, transparent)',
+          }}
+        >
+          <p className="ex-card px-4 py-2" style={{ color: 'var(--accent)' }}>
+            Drop to place it on the canvas
+          </p>
+        </div>
+      )}
+      <input
+        ref={berkasRef}
+        type="file"
+        accept="application/pdf,image/*,.doc,.docx,.rtf,.odt,.ppt,.pptx,.odp,.key,.pages"
+        className="hidden"
+        onChange={(e) => {
+          const f = e.target.files?.[0]
+          e.target.value = ''
+          if (f) void terimaBerkas(f)
+        }}
+      />
+
+      <div ref={v.ref} className="absolute inset-0">
+        <canvas ref={dasarRef} className="absolute inset-0 h-full w-full" />
+        <canvas
+          ref={aktifRef}
+          className="absolute inset-0 h-full w-full"
+          // Gestur sistem tidak boleh mencuri input pen.
+          style={{ touchAction: 'none', cursor: kursor }}
+          onPointerDown={turun}
+          onPointerMove={bergerak}
+          onPointerUp={naik}
+          onPointerCancel={naik}
+          onPointerLeave={(e) => {
+            if (aktifCoretan.current && e.buttons === 0) naik(e)
+          }}
+        />
+
+        {/* Kotak ketik melayang tepat di atas tempat tulisannya akan berada,
+            dengan huruf seukuran hasil akhirnya — jadi yang terlihat saat
+            mengetik sudah sama dengan yang tergambar setelah selesai. */}
+        {teksSedangDiubah && (
+          <textarea
+            key={teksSedangDiubah.id}
+            ref={ketikRef}
+            className="ex-input"
+            aria-label="Text"
+            defaultValue={teksSedangDiubah.isi}
+            spellCheck={false}
+            onChange={(e) => {
+              const isi = e.target.value
+              setTeks((lama) =>
+                lama.map((t) => (t.id === teksSedangDiubah.id ? { ...t, isi } : t)),
+              )
+            }}
+            onKeyDown={(e) => {
+              e.stopPropagation()
+              if (e.key === 'Escape' || (e.key === 'Enter' && (e.metaKey || e.ctrlKey))) {
+                e.preventDefault()
+                selesaiKetik()
+              }
+            }}
+            style={{
+              position: 'absolute',
+              left: teksSedangDiubah.x * v.tampilan.skala + v.tampilan.x - 4,
+              top: teksSedangDiubah.y * v.tampilan.skala + v.tampilan.y - 3,
+              minWidth: 140,
+              width: `${Math.max(140, (kotakTeks(teksSedangDiubah).x2 - teksSedangDiubah.x) * v.tampilan.skala + 40)}px`,
+              height: `${Math.max(1, teksSedangDiubah.isi.split('\n').length) * teksSedangDiubah.size * JARAK_BARIS * v.tampilan.skala + 10}px`,
+              padding: '2px 4px',
+              lineHeight: JARAK_BARIS,
+              fontSize: teksSedangDiubah.size * v.tampilan.skala,
+              fontFamily: KELUARGA_HURUF,
+              color: warnaToken(teksSedangDiubah.color),
+              resize: 'none',
+              overflow: 'hidden',
+            }}
+          />
+        )}
+      </div>
+
+      {!menuTampil ? null : halaman.w > 0 ? (
+        <DaftarHalaman
+          jumlah={jumlahHalaman}
+          aktif={halamanTerlihat}
+          berisi={halamanBerisi}
+          pratinjau={pratinjau}
+          bolehTambah={jumlahHalaman < HALAMAN_MAKS}
+          onLompat={keHalaman}
+          onSisip={(i) => ubahHalaman(i, 'sisip')}
+          onHapus={(i) => ubahHalaman(i, 'hapus')}
+          onTambah={tambahHalaman}
+        />
+      ) : (
+        <PetaBebas
+          kotak={kotakIsi}
+          tampilan={v.tampilan}
+          ukuranLayar={ukuranLayar}
+          onLompat={lompatKeDunia}
+        />
+      )}
+
+      {/* Saat panelnya disembunyikan, tombol ini satu-satunya jalan kembali —
+          jadi ia berdiri sendiri di luar kartu, bukan di dalamnya. Sengaja
+          tetap terlihat: kanvas tanpa jalan pulang bukan tampilan bersih,
+          melainkan tampilan yang macet. */}
+      {!menuTampil && (
+        <IconButton
+          nama="tampilkan"
+          label="Show the panels (⌘.)"
+          className="ex-card absolute left-4 top-4 z-10"
+          onClick={() => setMenuTampil(true)}
+        />
+      )}
+
+      {/*
+        Rel alat: satu kolom sempit, isinya muncul saat ditekan.
+
+        Sebelumnya seluruh isi bilah tergelar sekaligus dan memakan hampir
+        seluruh tinggi layar — padahal saat menggambar, yang benar-benar dipakai
+        cuma satu atau dua kelompok. Yang tetap terlihat di sini hanyalah yang
+        menjawab "sedang pakai alat apa, warna apa": sisanya menunggu diminta.
+      */}
+      <div
+        className="ex-card absolute left-3 top-3 z-10 flex flex-col gap-1 p-1"
+        style={{ display: menuTampil ? undefined : 'none' }}
+      >
+        <IconButton
+          nama={infoAlat(alat).ikon}
+          label={`${infoAlat(alat).label} — tools and shapes`}
+          aktif={panelAlat === 'alat'}
+          onClick={() => bukaPanel('alat')}
+        />
+        <button
+          type="button"
+          className="ex-btn grid place-items-center"
+          data-variant={panelAlat === 'warna' ? 'accent' : 'ghost'}
+          title="Colour"
+          aria-label="Colour"
+          style={{ padding: 7 }}
+          onClick={() => bukaPanel('warna')}
+        >
+          <span
+            aria-hidden
+            style={{
+              width: 16,
+              height: 16,
+              borderRadius: 999,
+              background: warna.startsWith('#') ? warna : `var(--${warna})`,
+              border: '1px solid var(--line-strong)',
+            }}
+          />
+        </button>
+        <IconButton
+          nama="garis"
+          label="Thickness, ink, and line pattern"
+          aktif={panelAlat === 'goresan'}
+          onClick={() => bukaPanel('goresan')}
+        />
+        <IconButton
+          nama="halaman"
+          label="Paper and pages"
+          aktif={panelAlat === 'kertas'}
+          onClick={() => bukaPanel('kertas')}
+        />
+        <IconButton
+          nama="lapisan"
+          label="Layers"
+          aktif={panelAlat === 'lapisan'}
+          onClick={() => bukaPanel('lapisan')}
+        />
+
+        <div className="ex-divider" style={{ margin: '2px 0' }} />
+
+        <IconButton nama="urungkan" label="Undo (⌘Z)" onClick={urungkan} />
+        <IconButton nama="ulangi" label="Redo (⇧⌘Z)" onClick={ulangi} />
+        <IconButton
+          nama="arsip"
+          label="Export, print, import"
+          aktif={panelAlat === 'ekspor'}
+          onClick={() => bukaPanel('ekspor')}
+        />
+        {inTauri && (
+          <IconButton
+            nama="jendela"
+            label="Open the canvas in another window"
+            onClick={() => {
+              void bukaJendelaBaru('kanvas').then((label) => {
+                beriTahu(label ? 'Opened in another window.' : 'All windows are already open.')
+              })
+            }}
+          />
+        )}
+        <IconButton
+          nama="sembunyi"
+          label="Hide both panels for a clean canvas (⌘.)"
+          onClick={() => setMenuTampil(false)}
+        />
+      </div>
+
+      {/* Panel isi, muncul di sebelah rel. Tingginya dibatasi tinggi kanvas —
+          daftar lapisan pada layar pendek tetap bisa digulung, bukan terpotong. */}
+      {menuTampil && panelAlat && (
+        <div
+          className="ex-card absolute z-10 flex flex-col gap-2 p-2"
+          style={{
+            left: 62,
+            top: 12,
+            width: panelAlat === 'alat' ? 214 : 232,
+            maxHeight: 'calc(100% - 24px)',
+            overflowY: 'auto',
+          }}
+        >
+          <div className="flex items-center justify-between gap-2">
+            <span className="ex-label" style={{ color: 'var(--ink-faint)' }}>
+              {JUDUL_PANEL[panelAlat]}
+            </span>
+            <IconButton nama="silang" label="Close" ukuran={14} onClick={() => setPanelAlat(null)} />
+          </div>
+
+          {panelAlat === 'alat' && (
+            <>
+        {/* Bilah cepat: seret tombolnya untuk menyusun ulang, atau seret bentuk
+            dari katalog di bawah ke salah satu slot. ⌘1–⌘9 mengikuti urutannya. */}
+        <div ref={bilahRef} className="grid grid-cols-5 gap-1">
+          {urutanAlat.map((a, i) => {
+            const info = infoAlat(a)
+            return (
+              <div
+                key={a}
+                {...pegangAlat(a)}
+                style={{
+                  opacity: seretAlat === a ? 0.45 : 1,
+                  cursor: seretAlat ? 'grabbing' : 'grab',
+                  touchAction: 'none',
+                }}
+              >
+                <IconButton
+                  nama={info.ikon}
+                  label={`${info.label} (⌘${i + 1}) — drag to rearrange`}
+                  aktif={alat === a}
+                />
+              </div>
+            )
+          })}
+        </div>
+
+        {/* Bentuk geometri. Tahan Shift saat menarik untuk mengunci sudut 15°
+            atau memaksa bujur sangkar; sesudah dilepas, titik sudutnya masih
+            bisa digeser dengan alat laso. */}
+        <div className="grid grid-cols-4 gap-1">
+          {OBJEK.map((o) => (
+            <div
+              key={o.id}
+              {...pegangAlat(o.id)}
+              style={{ cursor: 'grab', touchAction: 'none' }}
+            >
+              <IconButton
+                nama={o.ikon}
+                label={`${o.label} — editable afterwards, drag onto the bar above for a ⌘ shortcut`}
+                aktif={alat === o.id}
+              />
+            </div>
+          ))}
+        </div>
+            </>
+          )}
+
+          {panelAlat === 'warna' && (
+            <>
+        <div className="flex gap-1.5">
+          {WARNA_CORETAN.map((w) => (
+            <button
+              key={w}
+              title={`Theme colour — follows the active theme`}
+              aria-label={`Theme colour ${w}`}
+              onClick={() => setWarna(w)}
+              style={{
+                width: 20,
+                height: 20,
+                borderRadius: 999,
+                background: `var(--${w})`,
+                border: warna === w ? '2px solid var(--ink)' : '1px solid var(--line-strong)',
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Palet tetap, di barisnya sendiri: warna yang ikut tema dan warna yang
+            tidak adalah dua hal berbeda, dan mencampurnya dalam satu baris
+            membuat orang mengira semuanya berperilaku sama. */}
+        <div className="grid grid-cols-6 gap-1">
+          {PALET_CORETAN.map((p) => (
+            <button
+              key={p.hex}
+              title={p.nama}
+              aria-label={p.nama}
+              onClick={() => setWarna(p.hex)}
+              style={{
+                width: 20,
+                height: 20,
+                borderRadius: 999,
+                background: p.hex,
+                border: warna === p.hex ? '2px solid var(--ink)' : '1px solid var(--line-strong)',
+              }}
+            />
+          ))}
+        </div>
+            </>
+          )}
+
+          {panelAlat === 'goresan' && (
+            <>
+        <label
+          className="ex-label flex items-center gap-2"
+          style={{ color: 'var(--ink-soft)' }}
+          title="Kept per tool — the pen stays thin even when the highlighter is thick."
+        >
+          Size
+          <input
+            type="range"
+            min={1}
+            max={kunciAlat === 'penghapus' || kunciAlat === 'spidol' ? 60 : 30}
+            value={ukuran}
+            onChange={(e) => ubahSetelan({ size: Number(e.target.value) })}
+            style={{ width: 78, accentColor: 'var(--accent)' }}
+          />
+          <span style={{ width: 20, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
+            {Math.round(ukuran)}
+          </span>
+        </label>
+
+        {kunciAlat !== 'penghapus' && (
+          <>
+            <label className="ex-label flex items-center gap-2" style={{ color: 'var(--ink-soft)' }}>
+              Ink
+              <input
+                type="range"
+                min={5}
+                max={100}
+                value={Math.round(setelanAktif.alpha * 100)}
+                onChange={(e) => ubahSetelan({ alpha: Number(e.target.value) / 100 })}
+                style={{ width: 78, accentColor: 'var(--accent)' }}
+              />
+              <span style={{ width: 20, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
+                {Math.round(setelanAktif.alpha * 100)}
+              </span>
+            </label>
+
+            <div className="flex gap-1">
+              {(['utuh', 'putus', 'titik'] as const).map((pola) => (
+                <button
+                  key={pola}
+                  className="ex-btn flex-1 justify-center"
+                  data-variant={setelanAktif.pola === pola ? 'accent' : 'ghost'}
+                  title={{ utuh: 'Solid line', putus: 'Dashed line', titik: 'Dotted line' }[pola]}
+                  onClick={() => ubahSetelan({ pola })}
+                  style={{ padding: '4px 0' }}
+                >
+                  <svg width="30" height="10" viewBox="0 0 30 10" aria-hidden>
+                    <line
+                      x1="2"
+                      y1="5"
+                      x2="28"
+                      y2="5"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeDasharray={pola === 'putus' ? '6 4' : pola === 'titik' ? '0.1 5' : undefined}
+                    />
+                  </svg>
+                </button>
+              ))}
+            </div>
+          </>
+        )}
+
+        {kunciAlat === 'penghapus' && (
+          <div className="flex gap-1">
+            {(['sebagian', 'goresan'] as const).map((m) => (
+              <button
+                key={m}
+                className="ex-btn flex-1 justify-center"
+                data-variant={modePenghapus === m ? 'accent' : 'ghost'}
+                title={
+                  m === 'sebagian'
+                    ? 'Rub out only what you touch'
+                    : 'One touch removes a whole stroke'
+                }
+                onClick={() => ubahModePenghapus(m)}
+                style={{ padding: '4px 0', fontSize: 'var(--fs-label)' }}
+              >
+                {m === 'sebagian' ? 'Part' : 'Stroke'}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <label
+          className="ex-label flex items-center gap-2"
+          style={{ color: 'var(--ink-soft)' }}
+          title="Smooths out hand shake. Applies to new strokes only."
+        >
+          <input
+            type="checkbox"
+            checked={steady}
+            onChange={(e) => setSteady(e.target.checked)}
+            style={{ accentColor: 'var(--accent)' }}
+          />
+          Steady hand
+        </label>
+
+        <label
+          className="ex-label flex items-center gap-2"
+          style={{ color: 'var(--ink-soft)' }}
+          title="Draw a circle, box, triangle or line, then hold the pen still — it snaps to a clean shape you can still reshape later."
+        >
+          <input
+            type="checkbox"
+            checked={tahanBentuk}
+            onChange={(e) => setTahanBentuk(e.target.checked)}
+            style={{ accentColor: 'var(--accent)' }}
+          />
+          Hold to shape
+        </label>
+            </>
+          )}
+
+          {panelAlat === 'kertas' && (
+            <>
+        <div className="flex items-center gap-1">
+          <span style={{ color: 'var(--ink-faint)' }}>
+            <Icon nama="petak" ukuran={14} />
+          </span>
+          <select
+            className="ex-input"
+            style={{ padding: '3px 6px', fontSize: 'var(--fs-label)', flex: 1 }}
+            value={latar}
+            aria-label="Paper background"
+            onChange={(e) => setLatar(e.target.value as Latar)}
+          >
+            {LATAR.map((l) => (
+              <option key={l.id} value={l.id}>
+                {l.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex items-center gap-1">
+          <span style={{ color: 'var(--ink-faint)' }}>
+            <Icon nama="halaman" ukuran={14} />
+          </span>
+          <select
+            className="ex-input"
+            style={{ padding: '3px 6px', fontSize: 'var(--fs-label)', flex: 1 }}
+            value={kertas}
+            aria-label="Page size"
+            title="Infinite canvas, or stacked pages you can scroll through and export as a PDF."
+            onChange={(e) => {
+              setKertas(e.target.value)
+              jadwalkanSimpan(coretan)
+            }}
+          >
+            {KERTAS.map((k) => (
+              <option key={k.id} value={k.id}>
+                {k.label}
+              </option>
+            ))}
+          </select>
+        </div>
+            </>
+          )}
+
+          {panelAlat === 'lapisan' && (
+            <>
+        <div className="flex flex-col gap-1">
+          {Array.from({ length: JUMLAH_LAPISAN }, (_, i) => {
+            const l = lapisanInfo[i]
+            const isi = coretan.filter((c) => c.layer === i).length
+            return (
+              <div key={i} className="flex items-center gap-1">
+                <button
+                  className="ex-btn justify-start"
+                  style={{ flex: 1, minWidth: 0, opacity: l.tampak ? 1 : 0.45 }}
+                  data-variant={lapisan === i ? 'accent' : 'ghost'}
+                  title={
+                    pilihan.size > 0
+                      ? `Click to draw here · double-click to move ${pilihan.size} selected here`
+                      : 'Draw on this layer'
+                  }
+                  onClick={() => setLapisan(i)}
+                  onDoubleClick={() => pindahKeLapisan(i)}
+                >
+                  <Icon nama="lapisan" ukuran={14} />
+                  <span className="min-w-0 flex-1 truncate text-left">{l.nama}</span>
+                  <span className="ex-num shrink-0" style={{ opacity: 0.5, fontSize: 11 }}>
+                    {isi || ''}
+                  </span>
+                </button>
+                <IconButton
+                  nama={l.tampak ? 'mata' : 'mataCoret'}
+                  label={l.tampak ? `Hide ${l.nama}` : `Show ${l.nama}`}
+                  ukuran={14}
+                  onClick={() =>
+                    setLapisanInfo((t) =>
+                      t.map((x2, j) => (j === i ? { ...x2, tampak: !x2.tampak } : x2)),
+                    )
+                  }
+                />
+                <IconButton
+                  nama={l.kunci ? 'gembok' : 'gembokBuka'}
+                  label={l.kunci ? `Unlock ${l.nama}` : `Lock ${l.nama}`}
+                  aktif={l.kunci}
+                  ukuran={14}
+                  onClick={() =>
+                    setLapisanInfo((t) =>
+                      t.map((x2, j) => (j === i ? { ...x2, kunci: !x2.kunci } : x2)),
+                    )
+                  }
+                />
+                <IconButton
+                  nama="hapus"
+                  label={`Clear ${l.nama}`}
+                  ukuran={14}
+                  onClick={() => kosongkanLapisan(i)}
+                />
+              </div>
+            )
+          })}
+          <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
+            Double-click a layer to move the selection onto it.
+          </p>
+        </div>
+            </>
+          )}
+
+          {panelAlat === 'ekspor' && (
+            <>
+        <div className="flex gap-1">
+          <IconButton nama="urungkan" label="Undo (⌘Z)" onClick={urungkan} />
+          <IconButton nama="ulangi" label="Redo (⌘⇧Z)" onClick={ulangi} />
+          <IconButton nama="layar" label="Fit to sketch (⌘0)" onClick={muatSemua} />
+          <IconButton
+            nama="tarik"
+            label="Duplicate selection (⌘D)"
+            onClick={duplikat}
+          />
+        </div>
+
+        <button
+          className="ex-btn"
+          data-variant="ghost"
+          title="Sketches save themselves a moment after you stop drawing. This forces it now."
+          onClick={() => {
+            void simpanSekarang(coretan)
+            beriTahu('Saved.')
+          }}
+        >
+          <Icon nama="arsip" ukuran={14} />
+          {disimpan ? `Saved ${jam(new Date(disimpan))}` : 'Save now'}
+        </button>
+
+        <div className="flex gap-1">
+          <button className="ex-btn flex-1" data-variant="ghost" onClick={() => void ekspor('png')}>
+            PNG
+          </button>
+          <button className="ex-btn flex-1" data-variant="ghost" onClick={() => void ekspor('svg')}>
+            SVG
+          </button>
+          <button
+            className="ex-btn flex-1"
+            data-variant="ghost"
+            title={
+              halaman.w > 0
+                ? `Export ${jumlahHalaman} ${halaman.label} page${jumlahHalaman > 1 ? 's' : ''}`
+                : 'Export everything drawn, on a page sized to fit'
+            }
+            onClick={() => void eksporPdf()}
+          >
+            PDF
+          </button>
+        </div>
+
+        <button
+          className="ex-btn"
+          data-variant="ghost"
+          title="Each page becomes an image you can draw straight onto."
+          onClick={() => berkasRef.current?.click()}
+        >
+          <Icon nama="pdf" ukuran={14} /> Import PDF or image
+        </button>
+            </>
+          )}
+        </div>
+      )}
+
+      {sibuk && (
+        <p
+          className="ex-card absolute left-1/2 top-4 px-3 py-1.5"
+          style={{ transform: 'translateX(-50%)', color: 'var(--accent)' }}
+        >
+          {sibuk}
+        </p>
+      )}
+
+      {petunjuk && (
+        <p
+          className="ex-card ex-masuk absolute bottom-3 left-1/2 px-3 py-1.5"
+          style={{ transform: 'translateX(-50%)', color: 'var(--ink-soft)' }}
+        >
+          {petunjuk}
+        </p>
+      )}
+
+      <p className="ex-label absolute bottom-3 left-4" style={{ color: 'var(--ink-faint)' }}>
+        {jumlahTampak} strokes
+        {objek.length > 0 && ` · ${objek.length} shape${objek.length === 1 ? '' : 's'}`}
+        {gambar.length > 0 && ` · ${gambar.length} image${gambar.length === 1 ? '' : 's'}`} ·{' '}
+        {Math.round(v.tampilan.skala * 100)}%
+        {pilihan.size > 0 && ` · ${pilihan.size} selected`}
+        {tekananTersedia === false && ' · no pen pressure detected; check that the Wacom driver is installed'}
+      </p>
+    </div>
+  )
+}

@@ -1,0 +1,296 @@
+@import "./fonts.css";
+@import "tailwindcss";
+@import "../themes/tokens.css";
+@import "../themes/kaca.css";
+@import "../themes/grimoire.css";
+@import "../themes/arsip.css";
+@import "../themes/batik.css";
+@import "../themes/fosfor.css";
+@import "../themes/senja.css";
+@import "../themes/kertas.css";
+@import "../themes/laut.css";
+@import "../themes/samudra.css";
+@import "../themes/permen.css";
+@import "../themes/arena.css";
+@import "../themes/klasik.css";
+@import "../themes/anggun.css";
+@import "../themes/mutiara.css";
+@import "../themes/tanah.css";
+@import "../themes/rimba.css";
+@import "../themes/mochi.css";
+@import "../themes/piksel.css";
+
+/* Token tema diekspos sebagai utility Tailwind (bg-surface, text-ink, ...). */
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-paper: var(--paper);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-ink-on-paper: var(--ink-on-paper);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-glow: var(--glow);
+  --color-up: var(--up);
+  --color-down: var(--down);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-hand: var(--font-hand);
+  --font-mono: var(--font-mono);
+
+  --radius-theme: var(--radius);
+  --radius-theme-sm: var(--radius-sm);
+  --radius-theme-lg: var(--radius-lg);
+}
+
+/* ── Skala tipografi ──────────────────────────────────────────────── */
+:root {
+  --skala-teks: 1;
+  --fs-label: calc(clamp(12px, 0.85vw, 17px) * var(--skala-teks));
+  --fs-body: calc(clamp(15px, 1.05vw, 22px) * var(--skala-teks));
+  --fs-title: calc(clamp(19px, 1.5vw, 32px) * var(--skala-teks));
+  --fs-hero: calc(clamp(28px, 2.6vw, 56px) * var(--skala-teks));
+  --fs-clock: calc(clamp(64px, 9vw, 190px) * var(--skala-teks));
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    cursor: default;
+    transition: background-color var(--dur-theme) var(--ease-soft),
+                color var(--dur-theme) var(--ease-soft);
+  }
+
+  .ex-noselect { user-select: none; -webkit-user-select: none; }
+
+  button, input, textarea, select {
+    font: inherit;
+    color: inherit;
+  }
+  button { background: none; border: 0; cursor: pointer; }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-track { background: transparent; }
+}
+
+/* ── Lapisan tekstur & motif (per tema) ───────────────────────────── */
+.ex-texture::before,
+.ex-texture::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ex-texture::before {
+  background-image: var(--texture);
+  opacity: var(--texture-opacity);
+  mix-blend-mode: var(--texture-blend);
+}
+
+.ex-texture::after {
+  background-image: var(--pattern);
+  opacity: var(--pattern-opacity);
+}
+
+:root[data-theme="kaca"] .ex-texture::before,
+:root[data-theme="senja"] .ex-texture::before,
+:root[data-theme="fosfor"] .ex-texture::before,
+:root[data-theme="piksel"] .ex-texture::before {
+  content: none;
+}
+
+.ex-texture::after {
+  content: none;
+}
+:root[data-theme="batik"] .ex-texture::after,
+:root[data-theme="piksel"] .ex-texture::after {
+  content: "";
+}
+
+@layer components {
+  .ex-card {
+    position: relative;
+    background: var(--surface);
+    border: var(--stroke) solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    transition: background-color var(--dur-theme) var(--ease-soft),
+                border-color var(--dur-theme) var(--ease-soft),
+                border-radius var(--dur-theme) var(--ease-soft);
+  }
+
+  .ex-module-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-label);
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+  }
+
+  .ex-label {
+    font-size: var(--fs-label);
+    color: var(--ink-soft);
+  }
+
+  .ex-num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  .ex-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: var(--stroke) solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px;
+    font-size: var(--fs-label);
+    color: var(--ink-soft);
+    background: var(--surface-2);
+    transition: color 140ms, border-color 140ms, background-color 140ms, transform 120ms;
+  }
+  .ex-btn, button, [role="button"], input, select, textarea, label {
+    touch-action: manipulation;
+  }
+
+  .ex-btn:hover { color: var(--ink); border-color: var(--accent); }
+  .ex-btn:active { transform: translateY(1px); }
+  .ex-btn[data-variant="accent"] {
+    color: var(--bg);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .ex-btn[data-variant="accent"]:hover { filter: brightness(1.08); color: var(--bg); }
+  .ex-btn[data-variant="ghost"] { background: transparent; border-color: transparent; }
+  .ex-btn[data-variant="ghost"]:hover { border-color: var(--line); }
+
+  .ex-input {
+    width: 100%;
+    background: var(--surface-2);
+    border: var(--stroke) solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 160ms;
+  }
+  .ex-input::placeholder { color: var(--ink-faint); }
+  .ex-input:focus { border-color: var(--accent); }
+
+  .ex-divider {
+    height: 1px;
+    background: var(--line);
+    border: 0;
+  }
+
+  .ex-sticky {
+    color: var(--ink-on-paper);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-paper);
+  }
+
+  .ex-frame {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Pemilih tema di Pengaturan. */
+  .ex-palet-pilihan {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+  }
+  .ex-palet-kartu {
+    display: grid;
+    gap: 4px;
+    padding: 8px 10px 10px;
+    text-align: left;
+    border: var(--stroke) solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+    transition: border-color 160ms, background-color 160ms;
+  }
+  .ex-palet-kartu:hover { border-color: var(--line-strong); }
+  .ex-palet-kartu[data-terpilih] {
+    border-color: var(--accent);
+    background: var(--surface-2);
+  }
+  .ex-palet-nama {
+    font-size: var(--fs-label);
+    color: var(--ink);
+  }
+  .ex-palet-sub {
+    font-size: var(--fs-label);
+    color: var(--ink-faint);
+    line-height: 1.35;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+.ex-dimmable { transition: filter 4s linear; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes ex-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes ex-masuk {
+  from { opacity: 0; transform: translate3d(0, 6px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+.ex-masuk { animation: ex-masuk 260ms var(--ease-soft) both; }

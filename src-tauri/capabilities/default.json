@@ -1,0 +1,31 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Izin untuk seluruh window aplikasi.",
+  "windows": ["focus", "layar-*"],
+  "permissions": [
+    "core:default",
+    "core:app:allow-version",
+    "core:event:default",
+    "core:window:allow-set-focus",
+    "core:window:allow-show",
+    "core:window:allow-hide",
+    "core:window:allow-close",
+    "core:window:allow-set-fullscreen",
+    "core:window:allow-is-fullscreen",
+    "core:window:allow-start-dragging",
+    "core:window:allow-set-title",
+    "core:window:allow-current-monitor",
+    "core:window:allow-scale-factor",
+    "core:window:allow-inner-size",
+    "core:webview:allow-internal-toggle-devtools",
+    "sql:default",
+    "sql:allow-load",
+    "sql:allow-select",
+    "sql:allow-execute",
+    "sql:allow-close",
+    "dialog:default",
+    "opener:default",
+    "opener:allow-reveal-item-in-dir"
+  ]
+}

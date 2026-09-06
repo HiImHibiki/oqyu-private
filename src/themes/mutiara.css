@@ -1,0 +1,135 @@
+/* ============================================================
+   TEMA — PEARL (elegan, terang)
+   Pasangan siang untuk tema Elegant. Ruang yang sama sesudah tirai
+   dibuka: gading, abu hangat, satu sorot emas mawar. Kemewahannya
+   tetap pada jarak antar benda, bukan pada hiasan.
+   ============================================================ */
+
+:root[data-theme="mutiara"] {
+  /* Gading yang sedikit hangat. Putih murni membuat emas mawar di
+     atasnya terlihat merah muda pucat, bukan logam. */
+  --bg: #f4f1ec;
+  --surface: #fdfbf8;
+  --surface-2: #f8f5f0;
+  --paper: #fffdfa;
+  --line: rgba(58, 53, 48, 0.13);
+  --line-strong: rgba(58, 53, 48, 0.26);
+
+  --ink: #2f2b27;
+  --ink-soft: rgba(47, 43, 39, 0.62);
+  --ink-faint: rgba(47, 43, 39, 0.36);
+  --ink-on-paper: #2f2b27;
+
+  --accent: #a8836a;
+  --accent-2: #8c8b86;
+  --glow: #cbab8c;
+
+  /* Sage dan mawar tua — sepasang warna yang tidak berteriak. */
+  --up: #77856a;
+  --down: #b07a74;
+
+  --paper-1: #fffdfa;
+  --paper-2: #f6ece2;
+  --paper-3: #eef0ea;
+  --paper-4: #f7ebe9;
+  --paper-5: #f0eee9;
+  --paper-6: #f3eee6;
+
+  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-body: "Inter Tight", system-ui, sans-serif;
+  --font-hand: "Cormorant Garamond", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Sudut nyaris siku, seperti kartu undangan yang dipotong pisau. */
+  --radius: 2px;
+  --radius-sm: 1px;
+  --radius-lg: 3px;
+  --stroke: 1px;
+
+  /* Di tema terang, yang mengangkat kartu adalah bayangan yang sangat
+     tipis — garis tepi tebal akan langsung terlihat murah. */
+  --shadow-card: 0 1px 2px rgba(58, 53, 48, 0.06);
+  --shadow-lift: 0 22px 52px rgba(58, 53, 48, 0.14);
+  --shadow-paper: 0 8px 20px rgba(58, 53, 48, 0.1);
+
+  --texture: none;
+  --texture-opacity: 0;
+  --texture-blend: normal;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: blur(24px);
+
+  --sticky-fastener: "clip";
+  --sticky-tilt: 0.6deg;
+}
+
+/* Kapital kecil yang sangat dijarangkan, dengan garis emas mawar
+   pendek — sama seperti pasangan gelapnya. */
+:root[data-theme="mutiara"] .ex-module-title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: var(--ink-faint);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+:root[data-theme="mutiara"] .ex-module-title::before {
+  content: "";
+  width: 16px;
+  height: 1px;
+  flex: none;
+  background: var(--accent);
+}
+
+:root[data-theme="mutiara"] .ex-num,
+:root[data-theme="mutiara"] .ex-jam-besar {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+:root[data-theme="mutiara"] .ex-candle {
+  font-weight: 300;
+}
+
+:root[data-theme="mutiara"] .ex-kutipan {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2em;
+}
+
+:root[data-theme="mutiara"] .ex-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #fefcf9, #faf7f2);
+}
+
+/* Satu garis emas mawar setipis rambut di tepi atas — hanya terlihat
+   kalau diperhatikan, dan itulah maksudnya. */
+:root[data-theme="mutiara"] .ex-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(168, 131, 106, 0.45) 22%,
+    rgba(168, 131, 106, 0.45) 78%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+:root[data-theme="mutiara"] .ex-btn[data-variant="accent"] {
+  color: #fffdfa;
+}
+
+:root[data-theme="mutiara"] .ex-frame {
+  background: #fdfbf8;
+  padding: 14px 14px 44px;
+  border: 1px solid rgba(168, 131, 106, 0.3);
+  box-shadow: 0 16px 38px rgba(58, 53, 48, 0.16);
+}

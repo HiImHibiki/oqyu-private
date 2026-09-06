@@ -1,0 +1,89 @@
+/* ============================================================
+   TEMA — SENJA (neon di ujung hari)
+   Matahari turun di balik gedung, neon mulai menyala, aspal basah
+   memantulkan lampu. Berani, tapi tidak berisik.
+   ============================================================ */
+
+:root[data-theme="senja"] {
+  --bg: #140a26;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-2: rgba(255, 255, 255, 0.028);
+  --paper: rgba(255, 255, 255, 0.08);
+  --line: rgba(255, 121, 216, 0.16);
+  --line-strong: rgba(255, 121, 216, 0.4);
+
+  --ink: #ffe9f5;
+  --ink-soft: rgba(255, 233, 245, 0.66);
+  --ink-faint: rgba(255, 233, 245, 0.36);
+  --ink-on-paper: #ffe9f5;
+
+  --accent: #ff4fd8;
+  --accent-2: #46e0ff;
+  --glow: #ff9a3c;
+
+  --up: #46e0ff;
+  --down: #ff4f7d;
+
+  --paper-1: rgba(255, 255, 255, 0.085);
+  --paper-2: rgba(255, 79, 216, 0.16);
+  --paper-3: rgba(70, 224, 255, 0.15);
+  --paper-4: rgba(255, 154, 60, 0.16);
+  --paper-5: rgba(178, 108, 255, 0.16);
+  --paper-6: rgba(255, 231, 128, 0.14);
+
+  --font-display: "Inter Tight", system-ui, sans-serif;
+  --font-body: "Inter Tight", system-ui, sans-serif;
+  --font-hand: "Fraunces", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --radius-lg: 20px;
+  --stroke: 1px;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-lift: 0 20px 52px rgba(255, 79, 216, 0.22);
+  --shadow-paper: 0 8px 22px rgba(0, 0, 0, 0.5);
+
+  --texture: none;
+  --texture-opacity: 0;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: blur(20px);
+
+  --sticky-fastener: "magnet";
+  --sticky-tilt: 2deg;
+}
+
+:root[data-theme="senja"] .ex-card {
+  backdrop-filter: var(--blur-surface);
+  -webkit-backdrop-filter: var(--blur-surface);
+}
+
+/* Judul modul menyala seperti papan neon. */
+:root[data-theme="senja"] .ex-module-title {
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-shadow:
+    0 0 6px color-mix(in srgb, var(--accent) 55%, transparent),
+    0 0 22px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+/* Tombol aksen ikut berpendar, seperti tabung kaca berisi gas. */
+:root[data-theme="senja"] .ex-btn[data-variant="accent"] {
+  box-shadow:
+    0 0 12px color-mix(in srgb, var(--accent) 45%, transparent),
+    inset 0 0 8px color-mix(in srgb, #ffffff 25%, transparent);
+}
+
+:root[data-theme="senja"] .ex-frame {
+  border: 2px solid transparent;
+  border-image: linear-gradient(150deg, var(--accent), var(--glow) 45%, var(--accent-2)) 1;
+  box-shadow: 0 18px 46px rgba(255, 79, 216, 0.22);
+}
+
+:root[data-theme="senja"] .ex-sticky {
+  border: 1px solid var(--line-strong);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}

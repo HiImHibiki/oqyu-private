@@ -1,0 +1,84 @@
+/* Font dibundel lokal (@fontsource) — aplikasi ini harus jalan tanpa internet. */
+@import "@fontsource/inter-tight/300.css";
+@import "@fontsource/inter-tight/400.css";
+@import "@fontsource/inter-tight/500.css";
+@import "@fontsource/inter-tight/600.css";
+@import "@fontsource/inter-tight/700.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/700.css";
+
+@import "@fontsource/cinzel/400.css";
+@import "@fontsource/cinzel/600.css";
+@import "@fontsource/eb-garamond/400.css";
+@import "@fontsource/eb-garamond/500.css";
+@import "@fontsource/eb-garamond/600.css";
+@import "@fontsource/im-fell-english/400.css";
+
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/libre-baskerville/400.css";
+@import "@fontsource/libre-baskerville/700.css";
+@import "@fontsource/courier-prime/400.css";
+@import "@fontsource/courier-prime/700.css";
+
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/fraunces/700.css";
+@import "@fontsource/fraunces/400-italic.css";
+@import "@fontsource/source-serif-4/400.css";
+@import "@fontsource/source-serif-4/600.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+
+/* Huruf bulat untuk tema kartun. */
+@import "@fontsource/baloo-2/500.css";
+@import "@fontsource/baloo-2/700.css";
+@import "@fontsource/baloo-2/800.css";
+@import "@fontsource/fredoka/400.css";
+@import "@fontsource/fredoka/500.css";
+@import "@fontsource/fredoka/600.css";
+
+/* Garamond ramping untuk tema Classic & Elegant — pinggangnya tinggi dan
+   kontrasnya tajam, jadi terbaca mahal di ukuran besar. */
+@import "@fontsource/cormorant-garamond/300.css";
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/400-italic.css";
+
+/* ── Keluarga untuk pemilih font di Pengaturan ─────────────────────────
+   Hanya berat yang benar-benar dipakai pasangan font: tiap berat adalah
+   berkas tersendiri yang ikut dibundel. */
+
+/* Tulisan tangan sungguhan — sebelumnya --font-hand selalu jatuh ke serif
+   atau sans, jadi sticky note tidak pernah benar-benar terlihat ditulis. */
+@import "@fontsource/caveat/400.css";
+@import "@fontsource/caveat/600.css";
+@import "@fontsource/caveat/700.css";
+
+/* Sans dengan karakter: Space Grotesk bersudut, Manrope bulat dan netral. */
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/manrope/400.css";
+@import "@fontsource/manrope/500.css";
+@import "@fontsource/manrope/700.css";
+
+/* Serif redaksi: Newsreader untuk layar, Lora untuk badan teks panjang. */
+@import "@fontsource/newsreader/400.css";
+@import "@fontsource/newsreader/600.css";
+@import "@fontsource/newsreader/400-italic.css";
+@import "@fontsource/lora/400.css";
+@import "@fontsource/lora/600.css";
+@import "@fontsource/lora/400-italic.css";
+
+/* Display bersuara keras, untuk judul yang memang ingin terdengar. */
+@import "@fontsource/bricolage-grotesque/500.css";
+@import "@fontsource/bricolage-grotesque/700.css";
+
+/* Huruf piksel untuk label HUD di tema 8-Bit. Satu berat saja: huruf
+   bitmap tidak punya varian tebal. */
+@import "@fontsource/press-start-2p/400.css";

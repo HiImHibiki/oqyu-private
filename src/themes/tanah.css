@@ -1,0 +1,122 @@
+/* ============================================================
+   TEMA — TERRACOTTA (earthy, terang)
+   Bengkel gerabah jam empat sore. Tanah liat yang baru dijemur,
+   linen mentah, sedikit daun zaitun. Warnanya semua diambil dari
+   benda yang bisa dipegang — tidak ada satu pun warna layar di sini.
+   ============================================================ */
+
+:root[data-theme="tanah"] {
+  /* Linen mentah, bukan putih. Putih murni akan membuat terakota di
+     atasnya terlihat merah muda, bukan tanah. */
+  --bg: #ece4d9;
+  --surface: #f8f3ec;
+  --surface-2: #f2ebe1;
+  --paper: #fdfaf4;
+  --line: rgba(74, 56, 43, 0.15);
+  --line-strong: rgba(74, 56, 43, 0.32);
+
+  --ink: #3d2f26;
+  --ink-soft: rgba(61, 47, 38, 0.68);
+  --ink-faint: rgba(61, 47, 38, 0.4);
+  --ink-on-paper: #3d2f26;
+
+  --accent: #b4643c;
+  --accent-2: #6f7a4e;
+  --glow: #d9955c;
+
+  /* Zaitun naik, tanah merah turun. Hijau-merah layar akan menusuk
+     di tengah palet sehangat ini. */
+  --up: #6f7a4e;
+  --down: #a8503c;
+
+  --paper-1: #fdf8f0;
+  --paper-2: #f6e7d2;
+  --paper-3: #e8ecdc;
+  --paper-4: #f7ddd0;
+  --paper-5: #eee6da;
+  --paper-6: #e6ded1;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-hand: "Fraunces", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Sudut yang tidak pernah benar-benar seragam — barang buatan tangan
+     tidak keluar dari cetakan yang sama. */
+  --radius: 12px;
+  --radius-sm: 7px;
+  --radius-lg: 18px;
+  --stroke: 1px;
+
+  --shadow-card: 0 1px 2px rgba(74, 56, 43, 0.09), 0 1px 1px rgba(74, 56, 43, 0.05);
+  --shadow-lift: 0 20px 44px rgba(74, 56, 43, 0.2);
+  --shadow-paper: 0 7px 18px rgba(74, 56, 43, 0.16);
+
+  /* Butiran halus seperti serat linen; cukup untuk menghilangkan kesan
+     bidang digital yang rata sempurna. */
+  --texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23t)'/%3E%3C/svg%3E");
+  --texture-opacity: 0.055;
+  --texture-blend: multiply;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: blur(10px);
+
+  --sticky-fastener: "tape";
+  --sticky-tilt: 1.6deg;
+}
+
+/* Judul modul dicap seperti stempel pada gerabah: kapital kecil,
+   dijarangkan, dengan titik tanah liat di kiri. */
+:root[data-theme="tanah"] .ex-module-title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.19em;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+:root[data-theme="tanah"] .ex-module-title::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* Angka pakai Fraunces yang gemuk dan hangat — bukan angka mesin. */
+:root[data-theme="tanah"] .ex-num,
+:root[data-theme="tanah"] .ex-jam-besar {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+
+:root[data-theme="tanah"] .ex-kutipan {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1em;
+}
+
+/* Kartu = keping tanah liat: tepi atas lebih terang tersinari, bawah
+   sedikit lebih dalam. */
+:root[data-theme="tanah"] .ex-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #faf6f0, #f4ede3);
+}
+
+/* Bidang aksen butuh tinta gelap di atasnya — terakota tidak cukup
+   pekat untuk menahan tulisan putih. */
+:root[data-theme="tanah"] .ex-btn[data-variant="accent"] {
+  color: #fdf7f0;
+}
+
+:root[data-theme="tanah"] .ex-frame {
+  background: #f8f3ec;
+  padding: 12px 12px 40px;
+  border: 1px solid rgba(74, 56, 43, 0.18);
+  box-shadow: 0 14px 34px rgba(74, 56, 43, 0.22);
+}

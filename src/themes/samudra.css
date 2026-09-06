@@ -1,0 +1,98 @@
+/* ============================================================
+   TEMA — SAMUDRA (petualangan bajak laut)
+   Peta harta di atas geladak. Ombak besar, layar terkembang, matahari
+   tinggi. Kertas peta untuk kartu, merah bendera untuk aksen.
+
+   Terinspirasi cerita petualangan laut, dengan bahasa visual sendiri —
+   tanpa nama, lambang, atau karakter waralaba mana pun (§5).
+   ============================================================ */
+
+:root[data-theme="samudra"] {
+  --bg: #0f3a5f;
+  --surface: #17507e;
+  --surface-2: #134669;
+  --paper: #f3dfaf;
+  --line: rgba(243, 223, 175, 0.22);
+  --line-strong: rgba(243, 223, 175, 0.5);
+
+  --ink: #f7ead0;
+  --ink-soft: rgba(247, 234, 208, 0.72);
+  --ink-faint: rgba(247, 234, 208, 0.44);
+  --ink-on-paper: #3a2a12;
+
+  --accent: #e23b34;
+  --accent-2: #f2c14e;
+  --glow: #ffd166;
+
+  /* Naik = emas rampasan, turun = merah bendera. */
+  --up: #f2c14e;
+  --down: #e23b34;
+
+  --paper-1: #f3dfaf;
+  --paper-2: #ecd39a;
+  --paper-3: #f6e7c3;
+  --paper-4: #e8cfa0;
+  --paper-5: #f2dcb4;
+  --paper-6: #dfc894;
+
+  --font-display: "Fraunces", "Playfair Display", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-hand: "IM Fell English", Georgia, serif;
+  --font-mono: "Courier Prime", ui-monospace, monospace;
+
+  --radius: 6px;
+  --radius-sm: 4px;
+  --radius-lg: 10px;
+  --stroke: 1px;
+
+  --shadow-card: 0 2px 6px rgba(4, 20, 34, 0.5);
+  --shadow-lift: 0 20px 46px rgba(4, 20, 34, 0.6);
+  --shadow-paper: 0 8px 18px -4px rgba(4, 20, 34, 0.6);
+
+  --texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23s)'/%3E%3C/svg%3E");
+  --texture-opacity: 0.07;
+  --texture-blend: overlay;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: none;
+
+  --sticky-fastener: "pin";
+  --sticky-tilt: 3.5deg;
+}
+
+/* Judul modul diapit tali kapal. */
+:root[data-theme="samudra"] .ex-module-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent-2);
+}
+:root[data-theme="samudra"] .ex-module-title::after {
+  content: "⚓";
+  margin-left: 0.5em;
+  font-size: 0.85em;
+  opacity: 0.6;
+}
+
+/* Pembatas berupa tali: dua garis rapat dengan simpul di tengah. */
+:root[data-theme="samudra"] .ex-divider {
+  height: 3px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--accent-2) 0 6px,
+      transparent 6px 10px
+    );
+  opacity: 0.45;
+}
+
+:root[data-theme="samudra"] .ex-sticky {
+  border: 1px solid rgba(58, 42, 18, 0.22);
+}
+
+/* Foto ditempel di papan pengumuman kapal. */
+:root[data-theme="samudra"] .ex-frame {
+  border: 8px solid #6b4a24;
+  outline: 2px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 34px rgba(4, 20, 34, 0.6);
+}
