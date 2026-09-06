@@ -322,6 +322,8 @@ html.ex-sentuh .ex-halaman { display: none !important; }
   max-height: calc(100% - 64px) !important;
 }
 html.ex-sentuh .ex-panel-kelas {
+  left: auto !important;
+  transform: none !important;
   right: 10px !important;
   top: 44px !important;
   width: min(320px, calc(100% / 1.45 - 24px)) !important;
