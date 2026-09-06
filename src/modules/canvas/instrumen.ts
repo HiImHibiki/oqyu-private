@@ -364,7 +364,11 @@ export function gambarInstrumen(ctx: CanvasRenderingContext2D, i: Instrumen, ska
       ctx.lineTo(Math.cos(th) * (i.r - panjang), Math.sin(th) * (i.r - panjang))
     }
     ctx.stroke()
-    for (let d = 0; d <= 180; d += 10) {
+    // Jarak antar label 10° di layar; kalau sempit, cukup tiap 30° — angka
+    // yang saling menimpa tidak bisa dibaca sama sekali.
+    const jarakLabel = (i.r * skala * Math.PI) / 18
+    const langkahLabel = jarakLabel >= 22 ? 10 : jarakLabel >= 8 ? 30 : 90
+    for (let d = 0; d <= 180; d += langkahLabel) {
       const th = -(d * Math.PI) / 180
       const rr = i.r - px(26)
       ctx.save()
