@@ -519,6 +519,8 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const lewatiSimpanBerikut = useRef(false)
   /** Salinan terakhir yang dimuat/disimpan sisi ini — dasar penggabungan tiga arah. */
   const basisRef = useRef<BerkasKanvas | null>(null)
+  /** Tepi bawah PDF yang baru diimpor, supaya PDF berikutnya dalam jatuhan yang sama tidak menumpuk. */
+  const tepiBawahImpor = useRef(-Infinity)
   const coretanRef = useRef<Coretan[]>([])
   /** Goresan yang sedang ditarik editor lain di sketsa ini, dan ujung penanya. */
   const goresanJauh = useRef(new Map<string, Coretan>())
@@ -537,6 +539,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       lewatiSimpanBerikut.current = true
       dimuat.current = b !== null
       basisRef.current = b
+      tepiBawahImpor.current = -Infinity
       goresanJauh.current.clear()
       kursorJauh.current = null
       setCoretan(b?.strokes ?? [])
@@ -2368,8 +2371,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       beriTahu('Nothing droppable there — try an image or a PDF.')
       return
     }
-    // Beberapa berkas sekaligus ditempel berurutan; tiap gambar sudah digeser
-    // ke tengah pandangan, jadi yang berikutnya tinggal ditarik ke tempatnya.
+    // Beberapa berkas sekaligus diproses berurutan menurut namanya — "bab 1",
+    // "bab 2" — bukan menurut urutan Finder memilihnya. PDF disusun halaman
+    // demi halaman ke bawah; gambar biasa ditempel di tengah pandangan.
+    berkas.sort((a, b) =>
+      ((a as File).name ?? '').localeCompare((b as File).name ?? '', undefined, { numeric: true, sensitivity: 'base' }),
+    )
     for (const b of berkas) await terimaRef.current(b)
   }
 
@@ -3130,9 +3137,18 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
 
       const data = new Uint8Array(await berkas.arrayBuffer())
       const dok = await pdfjs.getDocument({ data }).promise
-      const jumlah = Math.min(dok.numPages, 40)
+      const jumlah = Math.min(dok.numPages, 60)
       const baru: Gambar[] = []
-      let y = 0
+
+      // Mulai di bawah semua yang sudah ada — juga di bawah PDF yang baru saja
+      // masuk dalam jatuhan yang sama — bukan di pojok kiri atas lagi.
+      const isiAda = kotakSemua(coretanRef.current, gambarRef.current, objekRef.current, teksRef.current)
+      const bawahIsi = Math.max(isiAda ? isiAda.y2 : -Infinity, tepiBawahImpor.current)
+      const slot = halaman.w > 0 ? halaman.h + JARAK_HALAMAN : 0
+      // Mode kertas: halaman PDF pertama jatuh di halaman kertas kosong pertama
+      // sesudah isi; tiap halaman PDF berikutnya menempati satu halaman kertas.
+      let indeksHalaman = halaman.w > 0 ? (Number.isFinite(bawahIsi) ? Math.floor(bawahIsi / slot) + 1 : 0) : 0
+      let y = halaman.w > 0 ? 0 : Number.isFinite(bawahIsi) ? bawahIsi + 32 : 0
 
       for (let i = 1; i <= jumlah; i++) {
         setSibuk(`Rendering page ${i} of ${jumlah}…`)
@@ -3149,18 +3165,33 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         ctx.fillRect(0, 0, c.width, c.height)
         await hal.render({ canvas: c, canvasContext: ctx, viewport: vp }).promise
 
-        const w = vp.width / 2
-        const h = vp.height / 2
+        let w = vp.width / 2
+        let h = vp.height / 2
+        let x = 0
+        if (halaman.w > 0) {
+          // Muat ke halaman kertas, dipusatkan; PDF A4 pas persis, yang lain diskalakan.
+          const skalaMuat = Math.min(1, halaman.w / w, halaman.h / h)
+          w *= skalaMuat
+          h *= skalaMuat
+          const k = kotakHalaman(halaman, indeksHalaman)
+          x = k.x1 + (halaman.w - w) / 2
+          y = k.y1
+          indeksHalaman++
+        }
         baru.push({
           id: newId('img'),
           layer: lapisan,
-          x: 0,
+          x,
           y,
           w,
           h,
           src: c.toDataURL('image/jpeg', 0.86),
         })
-        y += h + 32
+        if (halaman.w > 0) tepiBawahImpor.current = Math.max(tepiBawahImpor.current, y + h)
+        else {
+          y += h + 32
+          tepiBawahImpor.current = Math.max(tepiBawahImpor.current, y)
+        }
       }
 
       if (baru.length === 0) {
@@ -3168,7 +3199,11 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         return
       }
       setGambar((g) => [...g, ...baru])
+      gambarRef.current = [...gambarRef.current, ...baru]
       setAlat('pen')
+      // Bawa layar ke halaman pertama PDF ini supaya hasilnya langsung terlihat.
+      const pertama = baru[0]
+      v.setTampilan((t) => ({ ...t, y: -pertama.y * t.skala + 24 }))
       beriTahu(
         dok.numPages > jumlah
           ? `Imported the first ${jumlah} of ${dok.numPages} pages. Draw straight on them.`
@@ -3298,11 +3333,16 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         ref={berkasRef}
         type="file"
         accept="application/pdf,image/*,.doc,.docx,.rtf,.odt,.ppt,.pptx,.odp,.key,.pages"
+        multiple
         className="hidden"
         onChange={(e) => {
-          const f = e.target.files?.[0]
+          const daftar = Array.from(e.target.files ?? [])
           e.target.value = ''
-          if (f) void terimaBerkas(f)
+          if (daftar.length === 0) return
+          daftar.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }))
+          void (async () => {
+            for (const f of daftar) await terimaBerkas(f)
+          })()
         }}
       />
 
