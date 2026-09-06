@@ -77,6 +77,10 @@ pub struct InfoBerbagi {
     pub url: String,
     pub url_tv: String,
     pub url_murid: String,
+    /// Alamat Wi-Fi lokal, selalu ada — cadangan kalau internet mati.
+    pub url_lokal: String,
+    /// Alamat publik yang sedang dipakai, kalau ada.
+    pub publik: Option<String>,
     pub pin: String,
     pub port: u16,
     pub ip: String,
@@ -126,10 +130,14 @@ fn pin_acak() -> String {
 
 fn info(hub: &Hub) -> InfoBerbagi {
     let ip = ip_lokal();
+    let publik = ALAMAT_PUBLIK.lock().ok().and_then(|a| a.clone());
+    let dasar = publik.clone().unwrap_or_else(|| format!("http://{ip}:{}", hub.port));
     InfoBerbagi {
-        url: format!("http://{ip}:{}/?pin={}", hub.port, hub.pin),
-        url_tv: format!("http://{ip}:{}/tv?pin={}&tv=1&ruang=1", hub.port, hub.pin),
-        url_murid: format!("http://{ip}:{}/tv?pin={}&murid=1", hub.port, hub.pin),
+        url: format!("{dasar}/?pin={}", hub.pin),
+        url_tv: format!("{dasar}/tv?pin={}&tv=1&ruang=1", hub.pin),
+        url_murid: format!("{dasar}/tv?pin={}&murid=1", hub.pin),
+        url_lokal: format!("http://{ip}:{}/?pin={}", hub.port, hub.pin),
+        publik,
         pin: hub.pin.clone(),
         port: hub.port,
         ip,
@@ -138,6 +146,18 @@ fn info(hub: &Hub) -> InfoBerbagi {
 }
 
 /* ── Perintah ──────────────────────────────────────────────────────── */
+
+/// Alamat publik (mis. https://meet2.exactprintsolution.com) kalau aplikasi
+/// diekspos lewat Cloudflare Tunnel. Tautan & QR di Pengaturan memakainya.
+static ALAMAT_PUBLIK: Mutex<Option<String>> = Mutex::new(None);
+
+#[tauri::command]
+pub fn share_set_public(alamat: Option<String>) {
+    let bersih = alamat
+        .map(|a| a.trim().trim_end_matches('/').to_string())
+        .filter(|a| a.starts_with("http://") || a.starts_with("https://"));
+    *ALAMAT_PUBLIK.lock().unwrap_or_else(|e| e.into_inner()) = bersih;
+}
 
 #[tauri::command]
 pub async fn share_start(app: AppHandle, pin: Option<String>) -> Result<InfoBerbagi, String> {
@@ -160,7 +180,9 @@ pub async fn share_start(app: AppHandle, pin: Option<String>) -> Result<InfoBerb
 
     let (tx, _) = broadcast::channel::<String>(512);
     let hub = Arc::new(Hub {
-        pin: pin.filter(|p| p.len() == 4 && p.chars().all(|c| c.is_ascii_digit())).unwrap_or_else(pin_acak),
+        // 4–8 digit: di jaringan rumah 4 cukup; begitu dibuka lewat internet,
+        // pengguna diarahkan memakai 6–8 digit (lihat pembatas percobaan di bawah).
+        pin: pin.filter(|p| (4..=8).contains(&p.len()) && p.chars().all(|c| c.is_ascii_digit())).unwrap_or_else(pin_acak),
         port,
         token: format!("{}-{}", env!("CARGO_PKG_VERSION"), pin_acak()),
         tx,
@@ -244,7 +266,7 @@ fn rute(hub: Arc<Hub>) -> Router {
             get(api_canvas_read).put(api_canvas_write).delete(api_canvas_delete),
         )
         .route("/api/canvas/{id}/ringan", get(api_canvas_ringan))
-        .route("/api/canvas/{id}/gambar/{i}", get(api_canvas_gambar))
+        .route("/api/canvas/{id}/gambar/{nama}", get(api_canvas_gambar))
         .route("/api/sql", axum::routing::post(api_sql))
         .route("/api/kelas/masuk", axum::routing::post(crate::kelas::api_masuk))
         .route("/api/kelas/saya", get(crate::kelas::api_saya))
@@ -289,13 +311,68 @@ pub struct QueryPin {
     pub pin: Option<String>,
 }
 
+/// Percobaan PIN yang gagal per alamat asal. Lewat Cloudflare, alamat asli
+/// klien ada di header `CF-Connecting-IP`; di jaringan lokal dipakai
+/// `X-Forwarded-For` kalau ada, kalau tidak satu ember bersama.
+static GAGAL_PIN: Mutex<Option<HashMap<String, (u32, std::time::Instant)>>> = Mutex::new(None);
+const BATAS_GAGAL: u32 = 12;
+const JENDELA_GAGAL: Duration = Duration::from_secs(10 * 60);
+
+fn asal_klien(headers: &HeaderMap) -> String {
+    for nama in ["cf-connecting-ip", "x-forwarded-for", "x-real-ip"] {
+        if let Some(v) = headers.get(nama).and_then(|v| v.to_str().ok()) {
+            let pertama = v.split(',').next().unwrap_or("").trim();
+            if !pertama.is_empty() {
+                return pertama.to_string();
+            }
+        }
+    }
+    "lokal".into()
+}
+
+/// Terlalu banyak PIN salah dari satu asal → ditolak sementara, PIN benar pun.
+/// Menebak 10.000 kombinasi empat digit jadi butuh bertahun-tahun, bukan menit.
+fn diblokir(asal: &str) -> bool {
+    let mut g = GAGAL_PIN.lock().unwrap_or_else(|e| e.into_inner());
+    let peta = g.get_or_insert_with(HashMap::new);
+    match peta.get(asal) {
+        Some((n, sejak)) if *n >= BATAS_GAGAL && sejak.elapsed() < JENDELA_GAGAL => true,
+        Some((_, sejak)) if sejak.elapsed() >= JENDELA_GAGAL => {
+            peta.remove(asal);
+            false
+        }
+        _ => false,
+    }
+}
+
+fn catat_gagal(asal: &str) {
+    let mut g = GAGAL_PIN.lock().unwrap_or_else(|e| e.into_inner());
+    let peta = g.get_or_insert_with(HashMap::new);
+    let masuk = peta.entry(asal.to_string()).or_insert((0, std::time::Instant::now()));
+    if masuk.1.elapsed() >= JENDELA_GAGAL {
+        *masuk = (0, std::time::Instant::now());
+    }
+    masuk.0 += 1;
+    if peta.len() > 5000 {
+        peta.retain(|_, (_, sejak)| sejak.elapsed() < JENDELA_GAGAL);
+    }
+}
+
 pub fn sah(hub: &Hub, headers: &HeaderMap, q: Option<&str>) -> bool {
+    let asal = asal_klien(headers);
+    if diblokir(&asal) {
+        return false;
+    }
     let dari_header = headers
         .get("x-exact-pin")
         .and_then(|v| v.to_str().ok())
         .map(|v| v == hub.pin)
         .unwrap_or(false);
-    dari_header || q == Some(hub.pin.as_str())
+    let benar = dari_header || q == Some(hub.pin.as_str());
+    if !benar {
+        catat_gagal(&asal);
+    }
+    benar
 }
 
 pub fn tolak() -> Response {
@@ -477,8 +554,12 @@ fn sketsa_ringan(id: &str, pin: &str) -> Result<String, String> {
             let sidik = sidik_teks(src);
             // Sidik jari isi masuk ke URL supaya browser boleh men-cache selamanya.
             if let Some((mime, bytes)) = dekode_data_url(src) {
+                // Ekstensi di jalurnya: Cloudflare (dan proksi lain) men-cache
+                // .jpg/.png secara bawaan, jadi 40 HP di luar Wi-Fi tidak
+                // menarik tiap halaman PDF dari Mac ini satu per satu.
+                let ext = if mime.contains("png") { "png" } else if mime.contains("webp") { "webp" } else { "jpg" };
                 daftar.push(GambarSketsa { mime, bytes });
-                g["src"] = Value::String(format!("/api/canvas/{id}/gambar/{i}?v={sidik:x}&pin={pin}"));
+                g["src"] = Value::String(format!("/api/canvas/{id}/gambar/{i}.{ext}?v={sidik:x}&pin={pin}"));
             } else {
                 // Bukan data URL (sudah berupa URL): biarkan; slot cache tetap
                 // terisi supaya indeksnya sejajar dengan urutan gambar.
@@ -534,11 +615,14 @@ async fn api_canvas_gambar(
     State(hub): State<Arc<Hub>>,
     headers: HeaderMap,
     Query(q): Query<QueryPin>,
-    Path((id, i)): Path<(String, usize)>,
+    Path((id, nama)): Path<(String, String)>,
 ) -> Response {
     if !sah(&hub, &headers, q.pin.as_deref()) {
         return tolak();
     }
+    let Ok(i) = nama.split('.').next().unwrap_or("").parse::<usize>() else {
+        return StatusCode::NOT_FOUND.into_response();
+    };
     let pin = hub.pin.clone();
     let hasil = tokio::task::spawn_blocking(move || gambar_dari_cache(&id, &pin)).await;
     match hasil {

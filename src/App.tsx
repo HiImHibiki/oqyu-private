@@ -29,6 +29,8 @@ export interface InfoBerbagi {
   url: string
   urlTv: string
   urlMurid: string
+  urlLokal: string
+  publik: string | null
   pin: string
   port: number
   ip: string
@@ -122,6 +124,9 @@ function useBerbagi(siap: boolean) {
     const terapkan = async () => {
       const { invoke } = await import('@tauri-apps/api/core')
       const mau = (await getSetting('berbagi').catch(() => null)) === '1'
+      // Alamat publik (Cloudflare) diberitahukan ke server sebelum tautan dibuat.
+      const publik = await getSetting('alamat_publik').catch(() => null)
+      await invoke('share_set_public', { alamat: publik || null }).catch(() => {})
       let info = await invoke<InfoBerbagi | null>('share_status').catch(() => null)
       if (mau && !info) {
         const pin = await getSetting('berbagi_pin').catch(() => null)

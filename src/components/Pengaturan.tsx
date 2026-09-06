@@ -14,7 +14,7 @@ import {
 import { inTauri } from '@/lib/runtime'
 import { bukaVault, vault } from '@/lib/vault'
 import { toast, toastGalat } from '@/lib/toast'
-import { setSetting } from '@/lib/db'
+import { getSetting, setSetting } from '@/lib/db'
 import { pancarkan } from '@/lib/events'
 import { useSinkron } from '@/lib/sinkron'
 import type { InfoBerbagi } from '@/App'
@@ -190,6 +190,24 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
   const [info, setInfo] = useState<InfoBerbagi | null>(null)
   const [qr, setQr] = useState('')
   const [sibuk, setSibuk] = useState(false)
+  const [publik, setPublik] = useState('')
+  const [pinKustom, setPinKustom] = useState('')
+
+  useEffect(() => {
+    if (!buka) return
+    void getSetting('alamat_publik').then((v) => setPublik(v ?? '')).catch(() => {})
+  }, [buka])
+
+  /** Simpan alamat publik, beri tahu server, segarkan tautan. */
+  async function simpanPublik(alamat: string) {
+    const bersih = alamat.trim().replace(/\/$/, '')
+    setPublik(bersih)
+    await setSetting('alamat_publik', bersih)
+    const { invoke } = await import('@tauri-apps/api/core')
+    await invoke('share_set_public', { alamat: bersih || null }).catch(() => {})
+    setInfo(await invoke<InfoBerbagi | null>('share_status').catch(() => null))
+    await pancarkan('settings')
+  }
   const klien = useSinkron((s) => s.klien)
   const status = useSinkron((s) => s.status)
 
@@ -277,6 +295,25 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
         drawing; a tablet with a pen edits the same sketches. Nothing leaves this Mac.
       </p>
 
+      <label className="flex flex-wrap items-center gap-2">
+        <span className="ex-label" style={{ color: 'var(--ink-soft)', width: '13ch' }}>
+          Public address
+        </span>
+        <input
+          className="ex-input"
+          style={{ flex: 1, minWidth: 220, padding: '5px 8px', fontSize: 'var(--fs-label)' }}
+          placeholder="https://meet2.exactprintsolution.com (via Cloudflare Tunnel)"
+          value={publik}
+          onChange={(e) => setPublik(e.target.value)}
+          onBlur={() => void simpanPublik(publik)}
+          onKeyDown={(e) => e.key === 'Enter' && void simpanPublik(publik)}
+        />
+      </label>
+      <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
+        Leave empty for Wi-Fi only. With a public address, links and the QR use it so phones can join
+        on mobile data; the Wi-Fi link is still shown as a fallback. Use a 6–8 digit PIN when public.
+      </p>
+
       {info && (
         <div className="grid gap-3" style={{ gridTemplateColumns: 'auto 1fr' }}>
           <div
@@ -288,12 +325,33 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
             <Tautan label="Tablet (edit)" url={info.url} onSalin={salin} onBuka={bukaDiBrowser} />
             <Tautan label="TV (follow)" url={info.urlTv} onSalin={salin} onBuka={bukaDiBrowser} />
             <Tautan label="Students" url={info.urlMurid} onSalin={salin} onBuka={bukaDiBrowser} />
-            <p className="ex-label" style={{ color: 'var(--ink-faint)' }}>
+            {info.publik && <Tautan label="Wi-Fi only" url={info.urlLokal} onSalin={salin} onBuka={bukaDiBrowser} />}
+            <p className="ex-label flex flex-wrap items-center gap-1" style={{ color: 'var(--ink-faint)' }}>
               PIN <span className="ex-num" style={{ color: 'var(--ink)', letterSpacing: '0.2em' }}>{info.pin}</span>
               {' · '}
               <button className="underline" onClick={() => void pinBaru()}>
                 new PIN
               </button>
+              {' · '}
+              <input
+                className="ex-input ex-num"
+                style={{ width: 96, padding: '2px 6px', fontSize: 11 }}
+                placeholder="set 4–8 digits"
+                inputMode="numeric"
+                value={pinKustom}
+                onChange={(e) => setPinKustom(e.target.value.replace(/\D/g, '').slice(0, 8))}
+                onKeyDown={(e) => {
+                  if (e.key !== 'Enter' || pinKustom.length < 4) return
+                  void (async () => {
+                    const { invoke } = await import('@tauri-apps/api/core')
+                    await invoke('share_stop')
+                    await nyalakan(pinKustom)
+                    setPinKustom('')
+                    toast('PIN changed. Devices need the new link.')
+                  })()
+                }}
+                aria-label="Set a custom PIN"
+              />
               {' · '}
               <span>{status === 'tersambung' ? 'this window connected' : 'this window connecting…'}</span>
             </p>
