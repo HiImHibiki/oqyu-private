@@ -330,12 +330,6 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     // Ruangan dulu, baru kabar: HP murid diarahkan mengikuti perangkat ini,
     // dan aturan ruangannya harus sudah cocok saat kabar itu tiba.
     if (useKelas.getState().ruang !== t.room) useKelas.getState().setRuang(t.room)
-    try {
-      await ubahTanya(t.id, 'dibahas', idKlien)
-    } catch (e) {
-      beriTahu(e instanceof Error ? e.message : String(e))
-      return
-    }
     // Anggota grup berbagi satu kanvas grup; murid tanpa grup punya kanvasnya
     // sendiri. Keduanya dibuat saat pertama dibutuhkan dan dipakai lagi seterusnya.
     let idTujuan: string | null = null
@@ -361,6 +355,15 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           await x('UPDATE students SET sketch_id = ? WHERE id = ?', [idTujuan, t.student_id])
         }
       }
+    } catch (e) {
+      beriTahu(e instanceof Error ? e.message : String(e))
+      return
+    }
+    // Kabar dikirim sesudah kanvasnya pasti: HP murid (dan grupnya) dipaku ke
+    // kanvas itu, mengikuti coretan selama guru di sana, dan tinggal di sana
+    // saat guru pindah ke anak lain.
+    try {
+      await ubahTanya(t.id, 'dibahas', idKlien, idTujuan)
     } catch (e) {
       beriTahu(e instanceof Error ? e.message : String(e))
       return
@@ -3597,7 +3600,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         ) : (
           <button
             type="button"
-            className="ex-card ex-btn absolute bottom-3 right-3"
+            className="ex-card ex-btn ex-halaman absolute bottom-3 right-3"
             data-variant="ghost"
             title="Show the page thumbnails"
             style={{ padding: '5px 9px' }}
@@ -3771,7 +3774,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           daftar lapisan pada layar pendek tetap bisa digulung, bukan terpotong. */}
       {menuTampil && panelAlat && (
         <div
-          className="ex-card ex-bilah ex-panel absolute z-10 flex flex-col gap-2 p-2"
+          className={`ex-card ex-bilah ex-panel absolute z-10 flex flex-col gap-2 p-2${panelAlat === 'kelas' ? ' ex-panel-kelas' : ''}`}
           style={{
             left: 62,
             top: 12,

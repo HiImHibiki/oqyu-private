@@ -350,6 +350,13 @@ async function sketsaTerbaru(): Promise<string | null> {
  */
 /** Editor yang baru saja membuka pertanyaan saya/grup saya: diikuti apa pun ruangannya. */
 let sumberPaksa: string | null = null
+/**
+ * Kanvas saya (atau grup saya) yang sedang dibahas. Selama dipaku, layar ini
+ * hanya mengikuti guru di kanvas itu: kalau guru pindah ke kanvas anak lain,
+ * layar tinggal di sini — bukan ikut ke pertanyaan orang. Dilepas saat murid
+ * menekan "Got it" atau memilih mengikuti guru lagi.
+ */
+let kanvasSaya: string | null = null
 
 function bolehIkuti(src: string | undefined): boolean {
   if (!src) return false
@@ -392,6 +399,11 @@ function terima(p: PesanLangsung) {
     return
   }
   if (!bolehIkuti(p.src)) return
+  if (kanvasSaya && typeof p.idKanvas === 'string' && p.idKanvas !== kanvasSaya) {
+    // Guru sedang di kanvas anak lain: tetap di kanvas saya, tawarkan tombol ikut.
+    if (p.t === 'pandangan' && p.src === sumber) tawarkanIkut('Teacher moved on · tap to follow')
+    return
+  }
   // Editor yang sedang bekerja diikuti; denyut dari editor yang diam tidak
   // merebut layar. Sumber pertama diambil dari siapa pun yang bersuara.
   const aktifDariPengirim = p.aktif !== false
@@ -825,6 +837,8 @@ function pasangBilahMurid() {
     void api('/api/kelas/ubah', { method: 'POST', json: { id: tanyaSaya.id, status: 'selesai' } })
       .then(() => {
         tanyaSaya = null
+        kanvasSaya = null
+        el('ikuti').hidden = true
         perbaruiStatusSaya()
         tampilkanStatus('Marked as understood.')
       })
@@ -875,6 +889,8 @@ function terimaBahas(t: { murid: string; nama: string; anggota?: string[]; grup?
   if (!punyaku && !segrup) return
   // Langsung ikuti perangkat guru yang membahas — tidak menunggu ia bergerak.
   bebas = false
+  kanvasSaya = (t as { sketsa?: string | null }).sketsa ?? null
+  el('ikuti').hidden = true
   const teksKabar = punyaku
     ? 'Your question is being discussed — look at the board'
     : `${t.nama}'s question is being discussed${t.grup ? ` (${t.grup})` : ''} — look at the board`
@@ -913,13 +929,23 @@ function terimaBahas(t: { murid: string; nama: string; anggota?: string[]; grup?
   if (timerKabar) window.clearTimeout(timerKabar)
   timerKabar = window.setTimeout(() => kabar.classList.remove('tampil'), 6000)
   if (punyaku) void segarkanSaya()
+  if (kanvasSaya && kanvasSaya !== idSketsa) void muatSketsa(kanvasSaya)
+}
+
+/** Tombol "ikut guru" dengan teks tertentu; menekannya melepas pakuan kanvas. */
+function tawarkanIkut(teks: string) {
+  const b = el('ikuti')
+  b.textContent = `↩ ${teks}`
+  b.hidden = false
 }
 
 /* ── Menjelajah sendiri (HP) ───────────────────────────────────────── */
 
 function kembaliIkuti() {
   bebas = false
+  kanvasSaya = null
   el('ikuti').hidden = true
+  el('ikuti').textContent = '↩ Follow the teacher'
   hitungTampilan()
   kotorDasar = true
   kotorAktif = true
