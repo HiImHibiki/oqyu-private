@@ -56,6 +56,33 @@ function kotakDari(t: Titik[]): Batas {
   return { x1, y1, x2, y2 }
 }
 
+/**
+ * Kotak pembatas yang mengabaikan ekor.
+ *
+ * Tangan yang menutup persegi hampir selalu kelewat: goresan lewat beberapa
+ * milimeter dari sudut awalnya. Ekor itu memperbesar kotak min/maks dan
+ * membuat sisi yang seharusnya rapat jadi meleset. Persentil ke-3 dan ke-97
+ * dari tiap sumbu membuang ekor semacam itu tanpa menyentuh sisinya.
+ */
+function kotakRobust(t: Titik[]): Batas {
+  const xs = t.map((p) => p[0]).sort((a, b) => a - b)
+  const ys = t.map((p) => p[1]).sort((a, b) => a - b)
+  const lo = Math.floor(t.length * 0.03)
+  const hi = Math.max(lo, t.length - 1 - lo)
+  return { x1: xs[lo], y1: ys[lo], x2: xs[hi], y2: ys[hi] }
+}
+
+/** Persegi panjang yang hampir bujur sangkar dijadikan bujur sangkar betul. */
+function rapikanKotak(k: Batas): Batas {
+  const w = k.x2 - k.x1
+  const h = k.y2 - k.y1
+  if (Math.abs(w - h) / Math.max(w, h) > 0.07) return k
+  const sisi = (w + h) / 2
+  const cx = (k.x1 + k.x2) / 2
+  const cy = (k.y1 + k.y2) / 2
+  return { x1: cx - sisi / 2, y1: cy - sisi / 2, x2: cx + sisi / 2, y2: cy + sisi / 2 }
+}
+
 function panjangJalur(t: Titik[]): number {
   let n = 0
   for (let i = 1; i < t.length; i++) n += jarak(t[i - 1], t[i])
@@ -412,11 +439,12 @@ function sebagaiKotak(sudut: Titik[], k: Batas, luasKotak: number): Tebakan | nu
     if (miringDariSumbu(p, b) > 15) return null
   }
   if (luasPoligon(sudut) / luasKotak < 0.72) return null
+  const r = rapikanKotak(k)
   return {
     jenis: 'kotak',
     titik: [
-      [k.x1, k.y1],
-      [k.x2, k.y2],
+      [r.x1, r.y1],
+      [r.x2, r.y2],
     ],
   }
 }
@@ -532,7 +560,7 @@ function sebagaiKotakCocok(t: Titik[], diag: number): Tebakan | null {
   for (let derajat = -45; derajat < 45; derajat += 1) {
     const theta = (derajat * Math.PI) / 180
     const lurus = t.map((p) => putar(p, poros, -theta))
-    const k = kotakDari(lurus)
+    const k = kotakRobust(lurus)
     if (k.x2 - k.x1 < diag * 0.15 || k.y2 - k.y1 < diag * 0.15) continue
     let jumlah = 0
     for (const [x, y] of lurus) {
@@ -550,13 +578,41 @@ function sebagaiKotakCocok(t: Titik[], diag: number): Tebakan | null {
     }
   }
 
-  if (!terbaik || galatTerbaik > diag * 0.022) return null
+  // Ambangnya sengaja di atas titik-titik lingkaran (rata-rata 3,5% diagonal
+  // dari tepi kotaknya); yang membedakan keduanya adalah dua syarat di bawah,
+  // bukan angka ini. Persegi tangan yang bergelombang mendarat di 2–3%.
+  if (!terbaik || galatTerbaik > diag * 0.036) return null
   const { theta, k } = terbaik
+  const lurus = t.map((p) => putar(p, poros, -theta))
+  // Persegi punya sudut: harus ada tinta di dekat keempat sudut kotaknya.
+  // Lingkaran tidak pernah mendekati sudut kotak pembatasnya (jaraknya
+  // 0,41·r), dan di sinilah keduanya berpisah dengan pasti.
+  const pojok: Titik[] = [
+    [k.x1, k.y1],
+    [k.x2, k.y1],
+    [k.x2, k.y2],
+    [k.x1, k.y2],
+  ]
+  for (const c of pojok) {
+    let dekat = Infinity
+    for (const p of lurus) dekat = Math.min(dekat, jarak(p, c))
+    if (dekat > diag * 0.1) return null
+  }
+  // Dan keempat sisinya harus sama-sama terisi: tiga sisi tanpa yang keempat
+  // adalah huruf U, bukan persegi.
+  const isiSisi = [0, 0, 0, 0]
+  for (const [x, y] of lurus) {
+    const d = [Math.abs(x - k.x1), Math.abs(y - k.y1), Math.abs(x - k.x2), Math.abs(y - k.y2)]
+    isiSisi[d.indexOf(Math.min(...d))]++
+  }
+  if (isiSisi.some((n) => n < lurus.length * 0.08)) return null
+
+  const r = rapikanKotak(k)
   return {
     jenis: 'kotak',
     titik: [
-      [k.x1, k.y1],
-      [k.x2, k.y2],
+      [r.x1, r.y1],
+      [r.x2, r.y2],
     ],
     // Hampir lurus dibiarkan lurus: menyimpan miring 0,4° hanya membuat bentuk
     // yang seharusnya rapi terlihat sedikit meleset.
@@ -595,11 +651,12 @@ function sebagaiKotakMiring(sudut: Titik[]): Tebakan | null {
   const luasLurus = Math.max(1, (k.x2 - k.x1) * (k.y2 - k.y1))
   if (luasPoligon(lurus) / luasLurus < 0.68) return null
 
+  const r = rapikanKotak(k)
   return {
     jenis: 'kotak',
     titik: [
-      [k.x1, k.y1],
-      [k.x2, k.y2],
+      [r.x1, r.y1],
+      [r.x2, r.y2],
     ],
     putar: theta,
   }
@@ -848,9 +905,28 @@ export function kenaliBentuk(
   const diag = Math.hypot(kotak.x2 - kotak.x1, kotak.y2 - kotak.y1)
   if (diag < minDiag) return null
 
-  const halus = sampelUlang(p)
+  let halus = sampelUlang(p)
   const keliling = panjangJalur(halus)
   if (keliling < minDiag) return null
+
+  // Ekor penutup dibuang sebelum apa pun dinilai. Tangan yang menutup persegi
+  // hampir selalu lewat dari titik awalnya — kadang jauh. Titik terdekat ke
+  // awal di sepertiga akhir goresan adalah tempat bentuknya benar-benar
+  // tertutup; sisanya sesudah itu hanya pena yang belum sempat diangkat.
+  {
+    let iTutup = halus.length - 1
+    let dekat = jarak(halus[0], halus[iTutup])
+    for (let i = Math.floor(halus.length * 0.6); i < halus.length - 1; i++) {
+      const d = jarak(halus[0], halus[i])
+      if (d < dekat) {
+        dekat = d
+        iTutup = i
+      }
+    }
+    if (iTutup < halus.length - 1 && dekat < diag * 0.12) {
+      halus = sampelUlang(halus.slice(0, iTutup + 1))
+    }
+  }
 
   const celah = jarak(halus[0], halus[halus.length - 1])
   // Tertutup kalau ujungnya bertemu kembali *dan* jalurnya memang berkeliling —
@@ -877,11 +953,17 @@ export function kenaliBentuk(
   // sisi lurus pecah jadi dua, dan trapesium terbaca bersudut lima. Naikkan
   // ambangnya bertahap dan biarkan `sahkan` yang menolak gabungan yang salah —
   // lebih jujur daripada melonggarkan syarat tiap bentuk satu per satu.
+  // Ekor 4% di awal dan akhir goresan tidak ikut dinilai: di situlah pena
+  // mendarat dan kelewat saat menutup bentuk, dan itu bukan bagian bentuknya.
+  const potong = Math.round(halus.length * 0.04)
+  const inti = halus.slice(potong, halus.length - potong)
   for (const eps of [0.045, 0.065, 0.09]) {
     const ambang = Math.max(3, diag * eps)
     const sudut = rapikanSudut(sederhanakan(tutup, ambang).slice(0, -1), ambang)
-    const sah = sahkan(tebakTertutup(sudut, halus, kotak, luasKotak, diag), halus, diag)
+    const sah = sahkan(tebakTertutup(sudut, halus, kotak, luasKotak, diag), inti, diag)
     if (sah) return sah
   }
-  return null
+  // Jalur terakhir: pencocok persegi langsung, tanpa lewat pencarian sudut —
+  // untuk persegi yang sisinya terlalu bergelombang bagi penyederhana jalur.
+  return sahkan(sebagaiKotakCocok(halus, diag), inti, diag)
 }
