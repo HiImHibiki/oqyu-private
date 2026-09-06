@@ -2219,13 +2219,25 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       // kanvas bersih saat layar sedang dibagikan ke murid.
       if (e.key === 'Escape' && !e.metaKey && !e.ctrlKey && !e.altKey) {
         e.preventDefault()
-        // Sekaligus lepaskan apa pun yang terpilih dan kembali ke pena
-        // terakhir: satu tombol untuk "selesai, lanjut menulis".
-        setPilihan(new Set())
-        setObjekTerpilih(null)
-        setGambarTerpilih(null)
-        setTeksTerpilih(null)
-        setAlat(alatTulisTerakhir.current)
+        // Escape mundur selangkah. Kalau ada bentuk, gambar, tulisan, atau
+        // pilihan laso yang sedang disunting, ia dilepas dan tangan kembali ke
+        // pena terakhir — panelnya dibiarkan. Kalau tidak ada apa-apa yang
+        // sedang disunting, barulah semua panel dilipat (atau dibuka lagi).
+        const adaYangDisunting =
+          pilihan.size > 0 || objekTerpilih !== null || gambarTerpilih !== null || teksTerpilih !== null || teksDiubah !== null
+        if (adaYangDisunting) {
+          if (teksDiubah) selesaiKetik()
+          setPilihan(new Set())
+          setObjekTerpilih(null)
+          setGambarTerpilih(null)
+          setTeksTerpilih(null)
+          setAlat(alatTulisTerakhir.current)
+          return
+        }
+        if (!alatTulis(alat)) {
+          setAlat(alatTulisTerakhir.current)
+          return
+        }
         setMenuTampil((tampil) => !tampil)
         return
       }
@@ -2336,6 +2348,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     simpanSekarang,
     beriTahu,
     gambarTerpilih,
+    teksTerpilih,
+    teksDiubah,
+    alat,
   ])
 
   /* ── Gambar tempelan ───────────────────────────────────────────── */
