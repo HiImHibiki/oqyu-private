@@ -36,6 +36,28 @@ export function pinAktif(): string {
   return pinMemori ?? pinTersimpan() ?? ''
 }
 
+/**
+ * Alamat dasar server. Kosong di browser (relatif ke halaman yang dibuka);
+ * di dalam aplikasi Mac diisi `http://127.0.0.1:<port>` begitu berbagi menyala,
+ * supaya panel kelas di Mac bisa memanggil endpoint yang sama dengan tablet.
+ */
+let alamatDasar = ''
+
+export function setAlamatServer(alamat: string, pin?: string): void {
+  alamatDasar = alamat.replace(/\/$/, '')
+  if (pin) pinMemori = pin
+}
+
+export function alamatServer(): string {
+  return alamatDasar
+}
+
+/** URL lengkap untuk <img>/tautan yang tidak bisa membawa header PIN. */
+export function urlDenganPin(path: string): string {
+  const pemisah = path.includes('?') ? '&' : '?'
+  return `${alamatDasar}${path}${pemisah}pin=${encodeURIComponent(pinAktif())}`
+}
+
 export class GalatApi extends Error {
   constructor(
     public status: number,
@@ -55,7 +77,7 @@ export async function api<T>(
     headers['content-type'] = 'application/json'
     body = JSON.stringify(init.json)
   }
-  const r = await fetch(path, { method: init.method ?? 'GET', headers, body })
+  const r = await fetch(`${alamatDasar}${path}`, { method: init.method ?? 'GET', headers, body })
   if (!r.ok) {
     const teks = await r.text().catch(() => '')
     throw new GalatApi(r.status, teks || `${r.status} ${r.statusText}`)

@@ -14,6 +14,10 @@ export interface Klien {
   id: string
   nama: string
   peran: string
+  ruang: number
+  murid: string
+  fokus: boolean
+  keluar: number
 }
 
 export interface PesanLangsung {
@@ -28,6 +32,10 @@ export interface OpsiSinkron {
   pin: string
   peran: 'editor' | 'tv'
   nama: string
+  /** Ruangan tempat perangkat ini berada. */
+  ruang?: number
+  /** Id murid, untuk HP yang masuk dengan nama. */
+  murid?: string
 }
 
 /** Id jendela/browser ini; pesan yang memantul balik dari server dikenali darinya. */
@@ -58,6 +66,8 @@ function sambung() {
   u.searchParams.set('id', idKlien)
   u.searchParams.set('name', opsi.nama)
   u.searchParams.set('role', opsi.peran)
+  u.searchParams.set('ruang', String(opsi.ruang ?? 1))
+  if (opsi.murid) u.searchParams.set('murid', opsi.murid)
   useSinkron.setState({ status: 'menyambung' })
   const soket = new WebSocket(u.toString())
   ws = soket
@@ -102,7 +112,14 @@ function sambung() {
 }
 
 export function mulaiSinkron(o: OpsiSinkron): void {
-  if (opsi && opsi.url === o.url && opsi.pin === o.pin && ws && ws.readyState <= 1) return
+  if (opsi && opsi.url === o.url && opsi.pin === o.pin && ws && ws.readyState <= 1) {
+    // Hanya ruangannya yang berubah: cukup kabari server, tanpa menyambung ulang.
+    if (o.ruang !== undefined && o.ruang !== opsi.ruang) {
+      opsi = { ...opsi, ruang: o.ruang }
+      kirim({ t: 'ruang', ruang: o.ruang })
+    }
+    return
+  }
   hentikanSinkron()
   opsi = o
   sambung()
@@ -116,6 +133,12 @@ export function hentikanSinkron(): void {
   ws = null
   s?.close()
   useSinkron.setState({ status: 'mati', klien: [] })
+}
+
+/** Editor berpindah ruangan: server dikabari, dan penyambungan ulang memakai ruangan baru. */
+export function setRuangSinkron(ruang: number): void {
+  if (opsi) opsi = { ...opsi, ruang }
+  kirim({ t: 'ruang', ruang })
 }
 
 export function tersambung(): boolean {

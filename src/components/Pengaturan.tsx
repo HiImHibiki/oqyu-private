@@ -287,6 +287,7 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
           <div className="flex min-w-0 flex-col gap-2">
             <Tautan label="Tablet (edit)" url={info.url} onSalin={salin} onBuka={bukaDiBrowser} />
             <Tautan label="TV (follow)" url={info.urlTv} onSalin={salin} onBuka={bukaDiBrowser} />
+            <Tautan label="Students" url={info.urlMurid} onSalin={salin} onBuka={bukaDiBrowser} />
             <p className="ex-label" style={{ color: 'var(--ink-faint)' }}>
               PIN <span className="ex-num" style={{ color: 'var(--ink)', letterSpacing: '0.2em' }}>{info.pin}</span>
               {' · '}
@@ -306,8 +307,9 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
                     .join(', ')}
             </p>
             <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
-              Add <span className="ex-num">&amp;mode=fit</span> to the TV link to always show the whole
-              page instead of following the zoom. Keep the Mac awake while teaching.
+              TV link: change <span className="ex-num">ruang=1</span> to 2 or 3 for the other rooms;
+              add <span className="ex-num">&amp;mode=fit</span> to always show a whole page. Students
+              open the Students link on their phone, type their name and pick a room. Keep the Mac awake.
             </p>
           </div>
         </div>

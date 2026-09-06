@@ -162,6 +162,10 @@ fn cari_vault() -> PathBuf {
 pub fn canvas_dir() -> PathBuf {
     root().join("canvas")
 }
+/// Foto pertanyaan murid; dibersihkan otomatis setelah sehari.
+pub fn tanya_dir() -> PathBuf {
+    root().join("tanya")
+}
 pub fn db_path() -> PathBuf {
     root().join("exact-canvas.db")
 }
@@ -174,6 +178,7 @@ pub fn db_url() -> String {
 pub fn ensure_layout() -> std::io::Result<()> {
     fs::create_dir_all(canvas_dir())?;
     fs::create_dir_all(backup_dir())?;
+    fs::create_dir_all(tanya_dir())?;
     let readme = root().join("BACA-DULU.md");
     if !ada_walau_belum_terunduh(&root(), "BACA-DULU.md") {
         let _ = fs::write(

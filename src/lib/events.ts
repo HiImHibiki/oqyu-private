@@ -5,7 +5,7 @@
 import { inTauri } from './runtime'
 import { dengarkanLangsung, kirim } from './sinkron'
 
-export type Kanal = 'canvas' | 'settings' | 'tampilan' | 'theme'
+export type Kanal = 'canvas' | 'settings' | 'tampilan' | 'theme' | 'kelas'
 
 const LOKAL = 'exact-canvas://data'
 const bc = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel(LOKAL) : null

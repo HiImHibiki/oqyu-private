@@ -5,8 +5,9 @@ import { useApp } from '@/lib/appStore'
 import { getSetting, lipatWal } from '@/lib/db'
 import { dengarkan } from '@/lib/events'
 import { bukaJendelaBaru } from '@/lib/layar'
-import { api, namaPerangkat, pinAktif, simpanPin } from '@/lib/api'
+import { api, namaPerangkat, pinAktif, setAlamatServer, simpanPin } from '@/lib/api'
 import { hentikanSinkron, mulaiSinkron } from '@/lib/sinkron'
+import { muatRuang, useKelas } from '@/lib/kelas'
 import { Toast } from '@/components/Toast'
 import { Pengaturan } from '@/components/Pengaturan'
 import { IconButton } from '@/components/ui/Button'
@@ -27,6 +28,7 @@ if (typeof window !== 'undefined' && !inTauri) {
 export interface InfoBerbagi {
   url: string
   urlTv: string
+  urlMurid: string
   pin: string
   port: number
   ip: string
@@ -112,7 +114,9 @@ function useBerbagi(siap: boolean) {
     if (!siap) return
     if (!inTauri) {
       const ws = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`
-      mulaiSinkron({ url: ws, pin: pinAktif(), peran: 'editor', nama: namaPerangkat() })
+      void muatRuang().then((ruang) =>
+        mulaiSinkron({ url: ws, pin: pinAktif(), peran: 'editor', nama: namaPerangkat(), ruang }),
+      )
       return () => hentikanSinkron()
     }
     const terapkan = async () => {
@@ -130,11 +134,21 @@ function useBerbagi(siap: boolean) {
         await invoke('share_stop').catch(() => {})
         info = null
       }
-      if (info) mulaiSinkron({ url: `ws://127.0.0.1:${info.port}/ws`, pin: info.pin, peran: 'editor', nama: 'Mac' })
-      else hentikanSinkron()
+      if (info) {
+        setAlamatServer(`http://127.0.0.1:${info.port}`, info.pin)
+        const ruang = await muatRuang()
+        mulaiSinkron({ url: `ws://127.0.0.1:${info.port}/ws`, pin: info.pin, peran: 'editor', nama: 'Mac', ruang })
+      } else hentikanSinkron()
     }
     void terapkan()
-    return dengarkan('settings', () => void terapkan())
+    const lepas = dengarkan('settings', () => void terapkan())
+    // Ruangan editor ini diumumkan lewat WS oleh setRuang; di sini cukup dijaga
+    // agar penyambungan ulang memakai ruangan yang terakhir dipilih.
+    const lepasRuang = useKelas.subscribe(() => {})
+    return () => {
+      lepas()
+      lepasRuang()
+    }
   }, [siap])
 }
 

@@ -85,6 +85,9 @@ import {
 } from './instrumen'
 import { PanelGrafik } from './PanelGrafik'
 import { PanelTabel } from './PanelTabel'
+import { PanelKelas } from './PanelKelas'
+import { bunyi, daftarTanya, useKelas } from '@/lib/kelas'
+import { useData } from '@/lib/useData'
 import { ukuranTabel, type DefinisiGrafik, type DefinisiTabel, type MetaGambar } from './sisipan'
 import {
   MODE_PENGHAPUS_BAWAAN,
@@ -160,7 +163,7 @@ function peganganPutar(o: Objek, skala: number): [number, number] {
 
 const HALAMAN_MAKS = 60
 
-type KelompokAlat = 'alat' | 'warna' | 'goresan' | 'kertas' | 'lapisan' | 'instrumen' | 'sisip' | 'ekspor'
+type KelompokAlat = 'alat' | 'warna' | 'goresan' | 'kertas' | 'lapisan' | 'instrumen' | 'sisip' | 'kelas' | 'ekspor'
 
 const JUDUL_PANEL: Record<KelompokAlat, string> = {
   alat: 'Tools',
@@ -170,6 +173,7 @@ const JUDUL_PANEL: Record<KelompokAlat, string> = {
   lapisan: 'Layers',
   instrumen: 'Instruments',
   sisip: 'Insert',
+  kelas: 'Class',
   ekspor: 'Export',
 }
 
@@ -293,6 +297,41 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     void muatModePenghapus().then(setModePenghapus)
     void muatAutoBentuk().then(setAutoBentuk)
   }, [])
+
+  /** Antrian pertanyaan murid — untuk lencana di rel dan bunyi saat ada yang baru. */
+  const { data: antrianKelas } = useData('kelas', daftarTanya, [])
+  const jumlahMenunggu = antrianKelas.filter((t) => t.status === 'menunggu').length
+  useEffect(
+    () =>
+      dengarkan('kelas', (payload) => {
+        const p = payload as { apa?: string; isi?: { nama?: string; ruang?: number; foto?: boolean; teks?: string } } | null
+        if (p?.apa !== 'tanya' || !p.isi) return
+        bunyi('tanya')
+        beriTahu(`${p.isi.nama ?? 'A student'} (room ${p.isi.ruang ?? '?'}) ${p.isi.foto || p.isi.teks ? 'sent a question' : 'raised a hand'}.`)
+      }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  )
+
+  /**
+   * Guru membuka pertanyaan: pindah ke ruangan murid itu, dan fotonya (kalau
+   * ada) ditempel ke kanvas ini supaya bisa langsung dicoret.
+   */
+  async function bahasTanya(t: { name: string; room: number; photo: string | null }, urlFoto: string | null) {
+    if (useKelas.getState().ruang !== t.room) useKelas.getState().setRuang(t.room)
+    if (!urlFoto) {
+      beriTahu(`Discussing ${t.name}'s question. Their phone has been told.`)
+      return
+    }
+    try {
+      const r = await fetch(urlFoto)
+      const blob = await r.blob()
+      await terimaRef.current(new File([blob], `${t.name}.jpg`, { type: blob.type || 'image/jpeg' }))
+      beriTahu(`${t.name}'s photo is on the canvas. Their phone has been told.`)
+    } catch {
+      beriTahu('Could not fetch the photo.')
+    }
+  }
 
   /** Pasang instrumen di tengah pandangan, atau lepas kalau yang sama ditekan lagi. */
   function pasangInstrumen(jenis: JenisInstrumen) {
@@ -3538,6 +3577,35 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           aktif={panelAlat === 'sisip'}
           onClick={() => bukaPanel('sisip')}
         />
+        <div className="relative">
+          <IconButton
+            nama="grup"
+            label="Class: queue, students, groups"
+            aktif={panelAlat === 'kelas'}
+            onClick={() => bukaPanel('kelas')}
+          />
+          {jumlahMenunggu > 0 && (
+            <span
+              className="ex-num absolute"
+              style={{
+                top: 0,
+                right: 0,
+                minWidth: 16,
+                height: 16,
+                padding: '0 4px',
+                borderRadius: 999,
+                background: 'var(--down)',
+                color: '#fff',
+                fontSize: 10,
+                lineHeight: '16px',
+                textAlign: 'center',
+                pointerEvents: 'none',
+              }}
+            >
+              {jumlahMenunggu}
+            </span>
+          )}
+        </div>
 
         <div className="ex-divider" style={{ margin: '2px 0' }} />
 
@@ -3575,7 +3643,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           style={{
             left: 62,
             top: 12,
-            width: panelAlat === 'alat' ? 214 : 232,
+            width: panelAlat === 'alat' ? 214 : panelAlat === 'kelas' ? 300 : 232,
             maxHeight: 'calc(100% - 24px)',
             overflowY: 'auto',
           }}
@@ -3982,6 +4050,8 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         </p>
             </>
           )}
+
+          {panelAlat === 'kelas' && <PanelKelas onBahas={(t, url) => void bahasTanya(t, url)} />}
 
           {panelAlat === 'ekspor' && (
             <>

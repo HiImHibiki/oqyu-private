@@ -40,6 +40,14 @@ pub struct Klien {
     pub id: String,
     pub nama: String,
     pub peran: String,
+    /// Ruangan tempat klien berada (editor maupun pengikut).
+    pub ruang: i64,
+    /// Id murid untuk HP yang masuk dengan nama; kosong untuk TV dan editor.
+    pub murid: String,
+    /// Halaman masih di depan mata (lampu hijau) atau disembunyikan (kuning/merah).
+    pub fokus: bool,
+    /// Berapa kali meninggalkan halaman sejak tersambung.
+    pub keluar: i64,
 }
 
 pub struct Hub {
@@ -66,6 +74,7 @@ static BERBAGI: Mutex<Option<Aktif>> = Mutex::new(None);
 pub struct InfoBerbagi {
     pub url: String,
     pub url_tv: String,
+    pub url_murid: String,
     pub pin: String,
     pub port: u16,
     pub ip: String,
@@ -117,7 +126,8 @@ fn info(hub: &Hub) -> InfoBerbagi {
     let ip = ip_lokal();
     InfoBerbagi {
         url: format!("http://{ip}:{}/?pin={}", hub.port, hub.pin),
-        url_tv: format!("http://{ip}:{}/tv?pin={}", hub.port, hub.pin),
+        url_tv: format!("http://{ip}:{}/tv?pin={}&tv=1&ruang=1", hub.port, hub.pin),
+        url_murid: format!("http://{ip}:{}/tv?pin={}&murid=1", hub.port, hub.pin),
         pin: hub.pin.clone(),
         port: hub.port,
         ip,
@@ -159,6 +169,14 @@ pub async fn share_start(app: AppHandle, pin: Option<String>) -> Result<InfoBerb
     let (kirim_matikan, terima_matikan) = oneshot::channel::<()>();
     let router = rute(hub.clone());
     let listener = tokio::net::TcpListener::from_std(listener).map_err(|e| e.to_string())?;
+
+    // Foto pertanyaan kemarin dibuang saat server menyala dan tiap jam.
+    tauri::async_runtime::spawn(async {
+        loop {
+            tokio::task::spawn_blocking(crate::kelas::bersihkan).await.ok();
+            tokio::time::sleep(Duration::from_secs(3600)).await;
+        }
+    });
 
     tauri::async_runtime::spawn(async move {
         let hasil = axum::serve(listener, router)
@@ -226,17 +244,22 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/api/canvas/{id}/ringan", get(api_canvas_ringan))
         .route("/api/canvas/{id}/gambar/{i}", get(api_canvas_gambar))
         .route("/api/sql", axum::routing::post(api_sql))
+        .route("/api/kelas/masuk", axum::routing::post(crate::kelas::api_masuk))
+        .route("/api/kelas/saya", get(crate::kelas::api_saya))
+        .route("/api/kelas/tanya", axum::routing::post(crate::kelas::api_tanya))
+        .route("/api/kelas/ubah", axum::routing::post(crate::kelas::api_ubah_tanya))
+        .route("/api/kelas/foto/{nama}", get(crate::kelas::api_foto))
         .route("/ws", get(ws_masuk))
         .fallback(aset_lain)
         .with_state(hub)
 }
 
 #[derive(Deserialize)]
-struct QueryPin {
-    pin: Option<String>,
+pub struct QueryPin {
+    pub pin: Option<String>,
 }
 
-fn sah(hub: &Hub, headers: &HeaderMap, q: Option<&str>) -> bool {
+pub fn sah(hub: &Hub, headers: &HeaderMap, q: Option<&str>) -> bool {
     let dari_header = headers
         .get("x-exact-pin")
         .and_then(|v| v.to_str().ok())
@@ -245,7 +268,7 @@ fn sah(hub: &Hub, headers: &HeaderMap, q: Option<&str>) -> bool {
     dari_header || q == Some(hub.pin.as_str())
 }
 
-fn tolak() -> Response {
+pub fn tolak() -> Response {
     (StatusCode::UNAUTHORIZED, "PIN salah.").into_response()
 }
 
@@ -400,7 +423,7 @@ fn sidik_teks(s: &str) -> u64 {
     h.finish()
 }
 
-fn dekode_data_url(src: &str) -> Option<(String, Vec<u8>)> {
+pub fn dekode_data_url(src: &str) -> Option<(String, Vec<u8>)> {
     use base64::Engine;
     let sisa = src.strip_prefix("data:")?;
     let (kepala, isi) = sisa.split_once(',')?;
@@ -595,6 +618,8 @@ struct QueryWs {
     id: Option<String>,
     name: Option<String>,
     role: Option<String>,
+    ruang: Option<i64>,
+    murid: Option<String>,
 }
 
 async fn ws_masuk(
@@ -610,6 +635,10 @@ async fn ws_masuk(
         id: q.id.unwrap_or_else(|| format!("k{}", pin_acak())),
         nama: q.name.unwrap_or_else(|| "Device".into()),
         peran: q.role.unwrap_or_else(|| "editor".into()),
+        ruang: q.ruang.unwrap_or(1).clamp(1, 9),
+        murid: q.murid.unwrap_or_default(),
+        fokus: true,
+        keluar: 0,
     };
     ws.on_upgrade(move |soket| layani(soket, hub, klien))
 }
@@ -637,6 +666,29 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
             masuk = baca.next() => {
                 match masuk {
                     Some(Ok(Message::Text(t))) => {
+                        // Dua pesan mengubah catatan klien di server sebelum
+                        // diteruskan: status fokus (lampu pengawasan) dan
+                        // ruangan (editor yang berpindah ruangan).
+                        if let Ok(v) = serde_json::from_str::<Value>(&t) {
+                            let jenis = v.get("t").and_then(|x| x.as_str()).unwrap_or("");
+                            if jenis == "fokus" || jenis == "ruang" {
+                                if let Ok(mut k) = hub.klien.lock() {
+                                    if let Some(me) = k.iter_mut().find(|x| x.id == id) {
+                                        if jenis == "fokus" {
+                                            let aktif = v.get("aktif").and_then(|x| x.as_bool()).unwrap_or(true);
+                                            if me.fokus && !aktif {
+                                                me.keluar += 1;
+                                            }
+                                            me.fokus = aktif;
+                                        } else if let Some(r) = v.get("ruang").and_then(|x| x.as_i64()) {
+                                            me.ruang = r.clamp(1, 9);
+                                        }
+                                    }
+                                }
+                                siarkan_klien(&hub);
+                                continue;
+                            }
+                        }
                         let _ = hub.tx.send(t.to_string());
                     }
                     Some(Ok(Message::Close(_))) | None | Some(Err(_)) => break,

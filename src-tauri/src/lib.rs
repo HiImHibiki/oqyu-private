@@ -2,6 +2,7 @@
 //! Seluruh data ada di folder vault milik pengguna.
 
 mod db;
+mod kelas;
 mod menu;
 mod office;
 mod server;

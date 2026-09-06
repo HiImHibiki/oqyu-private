@@ -22,6 +22,42 @@
         background: rgba(242, 240, 234, 0.92); font-size: 22px; line-height: 1.5; }
       #pesan.tampil { display: grid; }
       #pesan small { display: block; font-size: 15px; color: var(--ink-soft); margin-top: 8px; }
+
+      /* ── Murid (HP) ─────────────────────────────────────────────── */
+      .hp { cursor: auto; }
+      #masuk { position: absolute; inset: 0; display: none; place-items: center; padding: 24px; background: var(--bg); }
+      #masuk.tampil { display: grid; }
+      #masuk form { width: min(360px, 100%); display: flex; flex-direction: column; gap: 12px; }
+      #masuk h1 { font-size: 20px; margin: 0; font-weight: 600; }
+      #masuk input, #masuk select, #masuk button { font: inherit; font-size: 17px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); }
+      #masuk button { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+      .ruangan { display: flex; gap: 8px; }
+      .ruangan label { flex: 1; text-align: center; padding: 10px 0; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); }
+      .ruangan input { display: none; }
+      .ruangan input:checked + span { color: #fff; }
+      .ruangan label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+      #bilah { position: absolute; left: 0; right: 0; bottom: 0; display: none; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(242, 240, 234, 0.92); border-top: 1px solid var(--line); backdrop-filter: blur(8px); }
+      #bilah.tampil { display: flex; }
+      #bilah button { flex: 1; font: inherit; font-size: 15px; padding: 11px 8px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); }
+      #bilah button.utama { background: var(--accent); color: #fff; border-color: var(--accent); }
+      #bilah button:disabled { opacity: 0.45; }
+      #status-saya { position: absolute; left: 12px; right: 12px; bottom: calc(70px + env(safe-area-inset-bottom)); text-align: center; font-size: 14px; color: var(--ink-soft); pointer-events: none; }
+      #status-saya b { color: var(--accent); }
+
+      #lembar { position: absolute; inset: 0; display: none; align-items: flex-end; background: rgba(36, 38, 43, 0.35); }
+      #lembar.tampil { display: flex; }
+      #lembar .isi { width: 100%; background: var(--surface); border-radius: 16px 16px 0 0; padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; }
+      #lembar textarea { font: inherit; font-size: 16px; min-height: 72px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink); resize: none; }
+      #lembar .baris { display: flex; gap: 8px; }
+      #lembar button { flex: 1; font: inherit; font-size: 15px; padding: 11px 8px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--ink); }
+      #lembar button.utama { background: var(--accent); color: #fff; border-color: var(--accent); }
+      #lembar img { max-height: 160px; width: auto; max-width: 100%; border-radius: 8px; border: 1px solid var(--line); align-self: flex-start; }
+
+      #kabar { position: absolute; left: 12px; right: 12px; top: 12px; padding: 12px 14px; border-radius: 12px; background: var(--accent); color: #fff; font-size: 16px;
+        text-align: center; transform: translateY(-140%); transition: transform 300ms; pointer-events: none; box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+      #kabar.tampil { transform: none; }
     </style>
   </head>
   <body>
@@ -29,6 +65,35 @@
     <canvas id="aktif"></canvas>
     <div id="status"></div>
     <div id="pesan"></div>
+
+    <div id="kabar"></div>
+    <div id="status-saya"></div>
+    <div id="bilah">
+      <button id="tombol-tangan">✋ Raise hand</button>
+      <button id="tombol-tanya" class="utama">❓ Ask</button>
+      <button id="tombol-paham" disabled>✅ Got it</button>
+    </div>
+    <div id="lembar">
+      <div class="isi">
+        <strong>Ask the teacher</strong>
+        <textarea id="teks-tanya" placeholder="Type your question (optional)…"></textarea>
+        <img id="pratinjau-foto" alt="" hidden />
+        <div class="baris">
+          <button id="tombol-foto">📷 Photo</button>
+          <button id="tombol-kirim" class="utama">Send</button>
+        </div>
+        <button id="tombol-batal">Cancel</button>
+        <input id="berkas-foto" type="file" accept="image/*" capture="environment" hidden />
+      </div>
+    </div>
+    <div id="masuk">
+      <form id="form-masuk">
+        <h1>Join the lesson</h1>
+        <input id="nama-masuk" placeholder="Your name" autocomplete="name" maxlength="40" required />
+        <div class="ruangan" id="ruangan-masuk"></div>
+        <button type="submit">Join</button>
+      </form>
+    </div>
     <script type="module" src="/src/tv/main.ts"></script>
   </body>
 </html>
