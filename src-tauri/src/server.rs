@@ -482,6 +482,9 @@ fn siarkan_klien(hub: &Hub) {
 
 async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
     let id = klien.id.clone();
+    // Berlangganan dulu, baru mengumumkan diri: kalau dibalik, klien yang baru
+    // masuk justru tidak pernah menerima daftar yang memuat dirinya sendiri.
+    let mut rx = hub.tx.subscribe();
     if let Ok(mut k) = hub.klien.lock() {
         k.retain(|x| x.id != id);
         k.push(klien);
@@ -489,7 +492,6 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
     siarkan_klien(&hub);
 
     let (mut tulis, mut baca) = soket.split();
-    let mut rx = hub.tx.subscribe();
 
     loop {
         tokio::select! {

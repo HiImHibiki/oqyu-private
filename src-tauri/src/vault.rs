@@ -270,7 +270,7 @@ pub fn backup_dir() -> PathBuf {
 }
 
 /// Berapa versi lama tiap sketsa yang disimpan.
-const VERSI_CADANGAN: usize = 30;
+const VERSI_CADANGAN: usize = 12;
 
 /// Simpan versi sebelumnya sebelum sebuah sketsa ditimpa.
 ///
@@ -278,6 +278,14 @@ const VERSI_CADANGAN: usize = 30;
 /// pengguna yang keliru menghapus semua — pernah berarti hilang selamanya.
 /// Sekarang tiap penulisan meninggalkan salinan yang lama di
 /// `backup/<id>/<waktu>.json`, dan hanya tiga puluh terakhir yang ditahan.
+/// Jarak minimum antar cadangan satu sketsa.
+///
+/// Sketsa disimpan tiap kali tangan berhenti sebentar; sketsa berisi 40 halaman
+/// PDF berukuran 20 MB, dan menyalin 20 MB tiap jeda menulis membuat folder
+/// cadangan membengkak ratusan megabita dalam hitungan menit. Satu salinan per
+/// dua menit sudah cukup untuk kembali ke keadaan yang masuk akal.
+const JARAK_CADANGAN_MS: u128 = 2 * 60 * 1000;
+
 fn cadangkan_sebelum_tulis(id: &str, p: &Path, baru: &str) {
     let Ok(lama) = fs::read_to_string(p) else { return };
     if lama == baru {
@@ -291,6 +299,17 @@ fn cadangkan_sebelum_tulis(id: &str, p: &Path, baru: &str) {
         .duration_since(std::time::UNIX_EPOCH)
         .map(|d| d.as_millis())
         .unwrap_or(0);
+    // Cadangan terbaru masih segar: lewati, jangan tumpuk salinan tiap jeda.
+    if let Ok(entries) = fs::read_dir(&dir) {
+        let terbaru = entries
+            .flatten()
+            .filter_map(|e| e.path().file_stem()?.to_str()?.parse::<u128>().ok())
+            .max()
+            .unwrap_or(0);
+        if stempel.saturating_sub(terbaru) < JARAK_CADANGAN_MS {
+            return;
+        }
+    }
     let _ = fs::write(dir.join(format!("{stempel}.json")), lama);
     // Pangkas yang paling tua.
     if let Ok(entries) = fs::read_dir(&dir) {
