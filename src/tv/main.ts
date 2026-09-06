@@ -240,10 +240,13 @@ async function muatSketsa(id: string) {
 
 function jadwalkanMuatUlang() {
   if (timerMuat) window.clearTimeout(timerMuat)
+  // Perubahan yang terlihat sudah datang lewat pesan 'ubah'; muat ulang
+  // berkas penuh cukup menyusul sedikit lebih santai — pada sketsa 20 MB,
+  // memuatnya tiap jeda tulis justru yang membuat TV tersendat.
   timerMuat = window.setTimeout(() => {
     timerMuat = null
     if (idSketsa) void muatSketsa(idSketsa)
-  }, 150)
+  }, 1200)
 }
 
 async function sketsaTerbaru(): Promise<string | null> {
@@ -332,6 +335,29 @@ function terima(p: PesanLangsung) {
       kursor = typeof p.x === 'number' ? { x: p.x as number, y: p.y as number } : null
       kotorAktif = true
       break
+    case 'ubah': {
+      // Hapusan dan perubahan diterapkan seketika; berkas penuh menyusul.
+      if (!sketsa) break
+      const hapus = (p.hapus ?? {}) as { coretan?: string[]; objek?: string[]; teks?: string[] }
+      const tambah = (p.tambah ?? {}) as { coretan?: Coretan[]; objek?: Objek[] }
+      const hc = new Set(hapus.coretan ?? [])
+      const ho = new Set(hapus.objek ?? [])
+      const ht = new Set(hapus.teks ?? [])
+      for (const id of hc) goresanHidup.delete(id)
+      const upsert = <T extends { id: string }>(lama: T[], buang: Set<string>, baru: T[]): T[] => {
+        const petaBaru = new Map(baru.map((x) => [x.id, x]))
+        const hasil = lama.filter((x) => !buang.has(x.id)).map((x) => petaBaru.get(x.id) ?? x)
+        const ada = new Set(hasil.map((x) => x.id))
+        for (const x of baru) if (!ada.has(x.id)) hasil.push(x)
+        return hasil
+      }
+      sketsa.strokes = upsert(sketsa.strokes, hc, tambah.coretan ?? [])
+      sketsa.objects = upsert(sketsa.objects ?? [], ho, tambah.objek ?? [])
+      if (ht.size) sketsa.texts = (sketsa.texts ?? []).filter((t) => !ht.has(t.id))
+      kotorDasar = true
+      kotorAktif = true
+      break
+    }
   }
 }
 

@@ -737,6 +737,38 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     }
   }, [idKanvas])
 
+  /**
+   * Siarkan selisih dua keadaan ke layar lain sebagai operasi kecil.
+   *
+   * Menunggu simpanan lalu memuat ulang seluruh berkas berarti TV tertinggal
+   * sedetik untuk tiap hapusan — dan pada sketsa berisi puluhan halaman PDF,
+   * "sedetik" itu jadi beberapa detik. Id yang hilang dan butir yang berubah
+   * cukup untuk TV dan tablet memperbarui gambarnya seketika; berkas menyusul.
+   */
+  const siarkanPerubahan = useCallback(
+    (lamaC: Coretan[], baruC: Coretan[], lamaO: Objek[], baruO: Objek[]) => {
+      const petaLamaC = new Map(lamaC.map((c) => [c.id, c]))
+      const petaBaruC = new Map(baruC.map((c) => [c.id, c]))
+      const petaLamaO = new Map(lamaO.map((o) => [o.id, o]))
+      const petaBaruO = new Map(baruO.map((o) => [o.id, o]))
+      const hapusC = lamaC.filter((c) => !petaBaruC.has(c.id)).map((c) => c.id)
+      const hapusO = lamaO.filter((o) => !petaBaruO.has(o.id)).map((o) => o.id)
+      const tambahC = baruC.filter((c) => petaLamaC.get(c.id) !== c)
+      const tambahO = baruO.filter((o) => petaLamaO.get(o.id) !== o)
+      if (hapusC.length + hapusO.length + tambahC.length + tambahO.length === 0) return
+      // Perubahan raksasa (mis. mengosongkan lapisan berisi ribuan goresan)
+      // dibiarkan lewat berkas saja; pesan langsung dijaga tetap kecil.
+      if (tambahC.length > 300) return
+      kirim({
+        t: 'ubah',
+        idKanvas,
+        hapus: { coretan: hapusC, objek: hapusO },
+        tambah: { coretan: tambahC, objek: tambahO },
+      })
+    },
+    [idKanvas],
+  )
+
   const terapkan = useCallback(
     (berikut: Coretan[], berikutObjek?: Objek[]) => {
       riwayat.current.push({ coretan, objek })
@@ -744,9 +776,10 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       riwayatMaju.current = []
       setCoretan(berikut)
       if (berikutObjek) setObjek(berikutObjek)
+      siarkanPerubahan(coretan, berikut, objek, berikutObjek ?? objek)
       jadwalkanSimpan(berikut)
     },
-    [coretan, objek, jadwalkanSimpan],
+    [coretan, objek, jadwalkanSimpan, siarkanPerubahan],
   )
 
   const urungkan = useCallback(() => {
@@ -757,8 +790,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     setObjek(lalu.objek)
     objekRef.current = lalu.objek
     panggang.current = null
+    siarkanPerubahan(coretan, lalu.coretan, objek, lalu.objek)
     jadwalkanSimpan(lalu.coretan)
-  }, [coretan, objek, jadwalkanSimpan])
+  }, [coretan, objek, jadwalkanSimpan, siarkanPerubahan])
 
   const ulangi = useCallback(() => {
     const maju = riwayatMaju.current.pop()
@@ -768,8 +802,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     setObjek(maju.objek)
     objekRef.current = maju.objek
     panggang.current = null
+    siarkanPerubahan(coretan, maju.coretan, objek, maju.objek)
     jadwalkanSimpan(maju.coretan)
-  }, [coretan, objek, jadwalkanSimpan])
+  }, [coretan, objek, jadwalkanSimpan, siarkanPerubahan])
 
   const gambarDasarRef = useRef<(() => void) | null>(null)
   const timerPetunjuk = useRef<number | null>(null)
@@ -1684,6 +1719,38 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           case 'kursor':
             kursorJauh.current = typeof p.x === 'number' ? { x: p.x as number, y: p.y as number } : null
             break
+          case 'ubah': {
+            // Terapkan langsung ke keadaan lokal; berkasnya menyusul lewat
+            // penggabungan saat sisi lain selesai menyimpan.
+            const hapus = (p.hapus ?? {}) as { coretan?: string[]; objek?: string[]; teks?: string[] }
+            const tambah = (p.tambah ?? {}) as { coretan?: Coretan[]; objek?: Objek[] }
+            const hc = new Set(hapus.coretan ?? [])
+            const ho = new Set(hapus.objek ?? [])
+            const ht = new Set(hapus.teks ?? [])
+            for (const id of hc) peta.delete(id)
+            if (hc.size || tambah.coretan?.length) {
+              setCoretan((lama) => {
+                const petaBaru = new Map((tambah.coretan ?? []).map((c) => [c.id, c]))
+                const hasil = lama.filter((c) => !hc.has(c.id)).map((c) => petaBaru.get(c.id) ?? c)
+                const ada = new Set(hasil.map((c) => c.id))
+                for (const c of tambah.coretan ?? []) if (!ada.has(c.id)) hasil.push(c)
+                return hasil
+              })
+              panggang.current = null
+            }
+            if (ho.size || tambah.objek?.length) {
+              lewatiSimpanBerikut.current = true
+              setObjek((lama) => {
+                const petaBaru = new Map((tambah.objek ?? []).map((o) => [o.id, o]))
+                const hasil = lama.filter((o) => !ho.has(o.id)).map((o) => petaBaru.get(o.id) ?? o)
+                const ada = new Set(hasil.map((o) => o.id))
+                for (const o of tambah.objek ?? []) if (!ada.has(o.id)) hasil.push(o)
+                return hasil
+              })
+            }
+            if (ht.size) setTeks((lama) => lama.filter((t) => !ht.has(t.id)))
+            break
+          }
           default:
             return
         }
@@ -2095,6 +2162,8 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         ),
     )
     if (sisaTeks.length !== teks.length) {
+      const sisaId = new Set(sisaTeks.map((t) => t.id))
+      kirim({ t: 'ubah', idKanvas, hapus: { teks: teks.filter((t) => !sisaId.has(t.id)).map((t) => t.id) } })
       setTeks(sisaTeks)
       setTeksTerpilih(null)
       jadwalkanSimpan(coretan)
