@@ -2,6 +2,7 @@ import { q, x } from '@/lib/db'
 import { pancarkan } from '@/lib/events'
 import { kanvas } from '@/lib/vault'
 import { newId } from '@/lib/id'
+import { idKlien } from '@/lib/sinkron'
 import { kunciTanggal, tanggalPendek } from '@/lib/tanggal'
 import {
   bacaLapisan,
@@ -124,7 +125,9 @@ export async function simpanKanvas(berkas: BerkasKanvas): Promise<void> {
      ON CONFLICT(id) DO UPDATE SET title = excluded.title, updated_at = excluded.updated_at`,
     [berkas.id, berkas.title, berkas.updated_at],
   )
-  await pancarkan('canvas')
+  // Id dan pengirim ikut disiarkan: editor lain yang membuka sketsa yang sama
+  // memuat ulang dan menggabungkan, editor yang mengirimnya sendiri tidak.
+  await pancarkan('canvas', { id: berkas.id, src: idKlien })
 }
 
 /**
@@ -138,7 +141,7 @@ export async function hapusKanvas(id: string): Promise<BerkasKanvas | null> {
   const isi = await bacaKanvas(id)
   await x('DELETE FROM canvases WHERE id = ?', [id])
   await kanvas.hapus(id).catch(() => {})
-  await pancarkan('canvas')
+  await pancarkan('canvas', { id, src: idKlien, hapus: true })
   return isi
 }
 

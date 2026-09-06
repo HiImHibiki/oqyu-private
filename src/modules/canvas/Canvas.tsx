@@ -42,6 +42,7 @@ import {
   WARNA_CORETAN,
   PALET_CORETAN,
   type Alat,
+  type BerkasKanvas,
   type Coretan,
   type Gambar,
   type Lapisan,
@@ -64,7 +65,10 @@ import {
 import { AMBANG_DIAM, JEDA_TAHAN, kenaliBentuk } from './bentuk'
 import { DaftarHalaman, PetaBebas } from './PetaKanvas'
 import { kursorAlat } from './kursor'
-import { kirim } from '@/lib/sinkron'
+import { dengarkanLangsung, idKlien, kirim } from '@/lib/sinkron'
+import { dengarkan } from '@/lib/events'
+import { q1 } from '@/lib/db'
+import { gabungkan } from './gabung'
 import { pilihTujuan, tulisBerkas } from '@/lib/berkas'
 import {
   INSTRUMEN,
@@ -513,6 +517,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const dimuat = useRef(false)
   /** Perubahan lapisan/gambar/objek yang berasal dari pemuatan, bukan dari tangan. */
   const lewatiSimpanBerikut = useRef(false)
+  /** Salinan terakhir yang dimuat/disimpan sisi ini — dasar penggabungan tiga arah. */
+  const basisRef = useRef<BerkasKanvas | null>(null)
+  const coretanRef = useRef<Coretan[]>([])
+  /** Goresan yang sedang ditarik editor lain di sketsa ini, dan ujung penanya. */
+  const goresanJauh = useRef(new Map<string, Coretan>())
+  const kursorJauh = useRef<{ x: number; y: number } | null>(null)
 
   /* ── Muat & simpan ─────────────────────────────────────────────── */
 
@@ -526,6 +536,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       }
       lewatiSimpanBerikut.current = true
       dimuat.current = b !== null
+      basisRef.current = b
+      goresanJauh.current.clear()
+      kursorJauh.current = null
       setCoretan(b?.strokes ?? [])
       setGambar(b?.images ?? [])
       setGambarTerpilih(null)
@@ -566,6 +579,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * berubah setiap kali sebuah lapisan disembunyikan, seluruh rantai callback
    * menggambar ikut dibuat ulang di tengah goresan.
    */
+  coretanRef.current = coretan
   const lapisanRef = useRef(lapisanInfo)
   lapisanRef.current = lapisanInfo
   const gambarRef = useRef(gambar)
@@ -585,22 +599,100 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       simpanTimer.current = null
       if (!dimuat.current) return
       const saat = Date.now()
-      await simpanKanvas(
-        berkasBaru(
-          idKanvas,
-          judul,
-          isi,
-          lapisanRef.current,
-          gambarRef.current,
-          objekRef.current,
-          teksRef.current,
-          kertasRef.current,
-          jumlahHalamanRef.current,
-        ),
+      const saya = berkasBaru(
+        idKanvas,
+        judul,
+        isi,
+        lapisanRef.current,
+        gambarRef.current,
+        objekRef.current,
+        teksRef.current,
+        kertasRef.current,
+        jumlahHalamanRef.current,
       )
+      let tulis = saya
+      // Kalau sisi lain sempat menyimpan sejak salinan ini dimuat, hasilnya
+      // digabung dulu — bukan ditimpa. Ini yang membuat goresan dari tablet dan
+      // dari Mac sama-sama bertahan.
+      const basis = basisRef.current
+      const diVault = await bacaKanvas(idKanvas).catch(() => null)
+      if (diVault && basis && diVault.updated_at !== basis.updated_at) {
+        tulis = { ...gabungkan(basis, saya, diVault), updated_at: saat }
+        terapkanBerkas(tulis)
+      }
+      await simpanKanvas(tulis)
+      basisRef.current = tulis
       setDisimpan(saat)
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [idKanvas, judul],
+  )
+
+  /** Ganti seluruh keadaan dengan isi berkas — tanpa memicu penyimpanan ulang. */
+  function terapkanBerkas(b: BerkasKanvas) {
+    lewatiSimpanBerikut.current = true
+    const gambarBaru = b.images ?? []
+    const objekBaruSemua = b.objects ?? []
+    const teksBaru = b.texts ?? []
+    const lapisanBaru = b.layers ?? lapisanBawaan()
+    setCoretan(b.strokes)
+    setGambar(gambarBaru)
+    setObjek(objekBaruSemua)
+    setTeks(teksBaru)
+    setLapisanInfo(lapisanBaru)
+    setKertas(b.paper ?? KERTAS_BAWAAN)
+    setJumlahHalaman(Math.max(1, Math.round(b.pages ?? 1)))
+    coretanRef.current = b.strokes
+    gambarRef.current = gambarBaru
+    objekRef.current = objekBaruSemua
+    teksRef.current = teksBaru
+    lapisanRef.current = lapisanBaru
+    kertasRef.current = b.paper ?? KERTAS_BAWAAN
+    jumlahHalamanRef.current = Math.max(1, Math.round(b.pages ?? 1))
+    panggang.current = null
+    for (const c of b.strokes) goresanJauh.current.delete(c.id)
+  }
+
+  /**
+   * Sisi lain baru saja menyimpan sketsa ini: ambil versinya dan gabungkan
+   * dengan apa yang ada di layar. Kalau di sini ada simpanan yang tertunda,
+   * simpanan itu dijalankan sekarang — ia sudah menggabungkan sendiri.
+   */
+  const muatUlangGabung = useCallback(async () => {
+    if (!dimuat.current) return
+    if (simpanTimer.current) {
+      void simpanSekarang(coretanRef.current)
+      return
+    }
+    const mereka = await bacaKanvas(idKanvas).catch(() => null)
+    const basis = basisRef.current
+    if (!mereka || !basis || mereka.updated_at === basis.updated_at) return
+    const saya = berkasBaru(
+      idKanvas,
+      judul,
+      coretanRef.current,
+      lapisanRef.current,
+      gambarRef.current,
+      objekRef.current,
+      teksRef.current,
+      kertasRef.current,
+      jumlahHalamanRef.current,
+    )
+    const hasil = gabungkan(basis, saya, mereka)
+    basisRef.current = mereka
+    terapkanBerkas(hasil)
+    setDisimpan(mereka.updated_at)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [idKanvas, judul, simpanSekarang])
+
+  useEffect(
+    () =>
+      dengarkan('canvas', (payload) => {
+        const p = payload as { id?: string; src?: string; hapus?: boolean } | null | undefined
+        if (!p || p.id !== idKanvas || p.src === idKlien || p.hapus) return
+        void muatUlangGabung()
+      }),
+    [idKanvas, muatUlangGabung],
   )
 
   const jadwalkanSimpan = useCallback(
@@ -1085,6 +1177,19 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       ctx.setLineDash([])
     }
 
+    // Yang sedang ditarik editor lain (tablet ↔ Mac) tampil seketika, jauh
+    // sebelum tersimpan; kursornya jadi penunjuk kecil berwarna aksen.
+    for (const c of goresanJauh.current.values()) if (c.points.length > 1) gambarCoretan(ctx, c)
+    const kj = kursorJauh.current
+    if (kj) {
+      ctx.beginPath()
+      ctx.arc(kj.x, kj.y, 4 / v.tampilan.skala, 0, Math.PI * 2)
+      ctx.fillStyle = warnaToken('accent')
+      ctx.globalAlpha = 0.8
+      ctx.fill()
+      ctx.globalAlpha = 1
+    }
+
     if (instrumen) gambarInstrumen(ctx, instrumen, v.tampilan.skala)
 
     // Bacaan hidup: panjang di penggaris, sudut di busur, jari-jari di jangka.
@@ -1129,6 +1234,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   useEffect(() => {
     kirim({ t: 'instrumen', i: instrumen })
   }, [instrumen])
+
 
   // Instrumen digambar di lapisan aktif, jadi ia harus ikut digambar ulang saat
   // dipasang, digeser, atau saat kanvas di-pan — bukan hanya di tengah goresan.
@@ -1239,7 +1345,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       // tetap bisa menggambarnya tanpa menunggu goresan berikutnya.
       const { points: _abaikan, ...meta } = c
       void _abaikan
-      kirim({ t: 'titik', id: c.id, dari: terkirim.current, titik: c.points.slice(terkirim.current), meta })
+      kirim({ t: 'titik', idKanvas, id: c.id, dari: terkirim.current, titik: c.points.slice(terkirim.current), meta })
       terkirim.current = c.points.length
     }
     const o = objekBaru.current ?? bentukSnap.current
@@ -1506,7 +1612,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       points: [[awal[0], awal[1], tekananDari(e)]],
     }
     terkirim.current = 0
-    kirim({ t: 'goresan', c: { ...aktifCoretan.current, points: [] } })
+    kirim({ t: 'goresan', idKanvas, c: { ...aktifCoretan.current, points: [] } })
     // Mulai menggambar lagi berarti sudah selesai dengan bentuk sebelumnya —
     // titik-titiknya ikut hilang, bukan menggantung di atas coretan baru.
     if (objekTerpilih) setObjekTerpilih(null)
@@ -1541,6 +1647,58 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     [],
   )
 
+  useEffect(
+    () =>
+      dengarkanLangsung((p) => {
+        if (p.idKanvas !== idKanvas) return
+        const peta = goresanJauh.current
+        switch (p.t) {
+          case 'goresan': {
+            const c = p.c as Coretan
+            peta.set(c.id, { ...c, points: [...c.points] })
+            break
+          }
+          case 'titik': {
+            let c = peta.get(p.id as string)
+            if (!c && p.meta) {
+              c = { ...(p.meta as Omit<Coretan, 'points'>), points: [] }
+              peta.set(c.id, c)
+            }
+            if (!c) return
+            const dari = p.dari as number
+            c.points.length = Math.min(c.points.length, dari)
+            c.points.push(...(p.titik as [number, number, number][]))
+            break
+          }
+          case 'goresan-selesai':
+            if (p.batal) peta.delete(p.id as string)
+            break
+          case 'kursor':
+            kursorJauh.current = typeof p.x === 'number' ? { x: p.x as number, y: p.y as number } : null
+            break
+          default:
+            return
+        }
+        mintaGambarAktif()
+      }),
+    [idKanvas, mintaGambarAktif],
+  )
+
+  // Jaring pengaman: tiap lima detik cocokkan stempel waktu di database. Kalau
+  // sisi lain menyimpan dan pesannya sempat terlewat (Wi-Fi putus sebentar),
+  // sketsa tetap menyusul. Yang dibaca hanya satu angka, bukan berkasnya.
+  useEffect(() => {
+    const t = window.setInterval(() => {
+      if (!dimuat.current || simpanTimer.current || aktifCoretan.current) return
+      void q1<{ updated_at: number }>('SELECT updated_at FROM canvases WHERE id = ?', [idKanvas])
+        .then((baris) => {
+          if (baris && basisRef.current && baris.updated_at !== basisRef.current.updated_at) void muatUlangGabung()
+        })
+        .catch(() => {})
+    }, 5000)
+    return () => window.clearInterval(t)
+  }, [idKanvas, muatUlangGabung])
+
   const bergerak = (e: React.PointerEvent<HTMLCanvasElement>) => {
     if (e.pointerType === 'pen') terakhirPena.current = performance.now()
     if (e.pointerType === 'touch') {
@@ -1574,7 +1732,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     if (kini - kursorTerakhir.current > 40) {
       kursorTerakhir.current = kini
       const d = v.keDunia(e.clientX, e.clientY)
-      kirim({ t: 'kursor', x: d.x, y: d.y })
+      kirim({ t: 'kursor', idKanvas, x: d.x, y: d.y })
     }
 
     if (v.sedangGeser) {
@@ -1873,7 +2031,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     const c = aktifCoretan.current
     aktifCoretan.current = null
     if (!c || c.points.length < 2) {
-      if (c) kirim({ t: 'goresan-selesai', id: c.id, batal: true })
+      if (c) kirim({ t: 'goresan-selesai', idKanvas, id: c.id, batal: true })
       gambarAktif()
       return
     }
@@ -1887,7 +2045,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       // adalah bentuknya, dan satu ⌘Z mengembalikan kanvas ke sebelum goresan.
       terapkan(coretan, [...objek, bentuk])
       setObjekTerpilih(bentuk.id)
-      kirim({ t: 'goresan-selesai', id: c.id, batal: true })
+      kirim({ t: 'goresan-selesai', idKanvas, id: c.id, batal: true })
       beriTahu('Drag the dots to resize it · ⌫ deletes it · draw again to move on.')
       gambarAktif()
       return
@@ -1909,13 +2067,13 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         }
         terapkan(coretan, [...objek, obj])
         setObjekTerpilih(obj.id)
-        kirim({ t: 'goresan-selesai', id: c.id, batal: true })
+        kirim({ t: 'goresan-selesai', idKanvas, id: c.id, batal: true })
         gambarAktif()
         return
       }
     }
     terapkan([...coretan, c])
-    kirim({ t: 'goresan-selesai', id: c.id })
+    kirim({ t: 'goresan-selesai', idKanvas, id: c.id })
     gambarAktif()
   }
 
@@ -3083,7 +3241,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           onPointerUp={naik}
           onPointerCancel={naik}
           onPointerLeave={(e) => {
-            kirim({ t: 'kursor', x: null })
+            kirim({ t: 'kursor', idKanvas, x: null })
             if (aktifCoretan.current && e.buttons === 0) naik(e)
           }}
         />
