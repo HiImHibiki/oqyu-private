@@ -35,6 +35,22 @@ Tambahan khusus untuk mengajar:
   segitiga siku-siku dirapikan; opsi **Auto shapes** (panel Stroke) mengenali
   bentuk saat pena diangkat tanpa perlu menahan.
 
+## Berbagi di jaringan (TV & tablet)
+
+Settings (⌘,) → **Share on this network**. Aplikasi Mac menjadi server kecil di
+Wi-Fi (port 4747, PIN 4 digit, QR code):
+
+- **TV**: buka tautan *TV (follow)* di browser smart TV. Layar bersih yang
+  mengikuti editor yang sedang aktif: pandangan, zoom, halaman, goresan yang
+  sedang ditarik, instrumen, dan posisi pena. Tambahkan `&mode=fit` supaya
+  selalu menampilkan satu halaman penuh.
+- **Tablet** (mis. Galaxy Tab S11): buka tautan *Tablet (edit)*. Editor penuh di
+  browser; pena menggambar dengan tekanan, satu jari menggeser, dua jari
+  mencubit. Menyimpan langsung ke vault Mac.
+- Mac, TV, dan tablet harus di Wi-Fi yang sama; Mac tidak boleh tidur.
+- Setiap penulisan sketsa menyimpan versi sebelumnya ke `backup/<id>/` (30
+  versi terakhir).
+
 ## Data
 
 Sketsa disimpan sebagai berkas JSON di folder vault, bawaan `~/ExactCanvas`

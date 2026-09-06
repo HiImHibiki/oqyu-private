@@ -5,6 +5,7 @@
  */
 import type Database from '@tauri-apps/plugin-sql'
 import { inTauri } from './runtime'
+import { api } from './api'
 
 export interface VaultInfo {
   root: string
@@ -16,7 +17,10 @@ let vaultCache: VaultInfo | null = null
 
 export async function vaultInfo(): Promise<VaultInfo> {
   if (vaultCache) return vaultCache
-  if (!inTauri) throw new Error('The vault is only available inside the Tauri app.')
+  if (!inTauri) {
+    vaultCache = await api<VaultInfo>('/api/vault')
+    return vaultCache
+  }
   const { invoke } = await import('@tauri-apps/api/core')
   vaultCache = await invoke<VaultInfo>('vault_info')
   return vaultCache
@@ -71,6 +75,10 @@ export function db(): Promise<Database> {
 
 /** SELECT. */
 export async function q<T>(sql: string, params: unknown[] = []): Promise<T[]> {
+  if (!inTauri) {
+    const r = await api<{ rows: T[] }>('/api/sql', { method: 'POST', json: { sql, params } })
+    return r.rows
+  }
   const d = await db()
   return d.select<T[]>(sql, params)
 }
@@ -83,6 +91,10 @@ export async function q1<T>(sql: string, params: unknown[] = []): Promise<T | nu
 
 /** INSERT / UPDATE / DELETE. */
 export async function x(sql: string, params: unknown[] = []): Promise<void> {
+  if (!inTauri) {
+    await api('/api/sql', { method: 'POST', json: { sql, params } })
+    return
+  }
   const d = await db()
   await d.execute(sql, params)
 }
@@ -117,6 +129,7 @@ export async function setSettingJSON(key: string, value: unknown): Promise<void>
 
 /** Lipat isi WAL kembali ke berkas database utama (aman untuk iCloud). */
 export async function lipatWal(): Promise<void> {
+  if (!inTauri) return
   try {
     await x('PRAGMA wal_checkpoint(TRUNCATE)')
   } catch {

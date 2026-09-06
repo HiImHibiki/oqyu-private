@@ -173,6 +173,7 @@ pub fn db_url() -> String {
 
 pub fn ensure_layout() -> std::io::Result<()> {
     fs::create_dir_all(canvas_dir())?;
+    fs::create_dir_all(backup_dir())?;
     let readme = root().join("BACA-DULU.md");
     if !ada_walau_belum_terunduh(&root(), "BACA-DULU.md") {
         let _ = fs::write(
@@ -180,6 +181,7 @@ pub fn ensure_layout() -> std::io::Result<()> {
             "# Vault Exact Canvas\n\n\
              Folder ini milik kamu, bukan milik aplikasi.\n\n\
              - `canvas/` — sketsa, satu berkas JSON per sketsa (vektor + gambar tempelan).\n\
+             - `backup/<id>/` — 30 versi terakhir tiap sketsa, disalin sebelum ditimpa.\n\
              - `exact-canvas.db` — indeks judul sketsa dan setelan aplikasi.\n\n\
              ## Dipakai di beberapa Mac\n\n\
              Pindahkan folder ini ke iCloud Drive (Settings \u{2192} Vault \u{2192} Use another folder),\n\
@@ -263,10 +265,54 @@ pub fn canvas_read(id: String) -> Result<Option<String>, String> {
     fs::read_to_string(p).map(Some).map_err(|e| e.to_string())
 }
 
+pub fn backup_dir() -> PathBuf {
+    root().join("backup")
+}
+
+/// Berapa versi lama tiap sketsa yang disimpan.
+const VERSI_CADANGAN: usize = 30;
+
+/// Simpan versi sebelumnya sebelum sebuah sketsa ditimpa.
+///
+/// Sketsa yang tertimpa isi kosong — oleh klien yang gagal memuat, oleh
+/// pengguna yang keliru menghapus semua — pernah berarti hilang selamanya.
+/// Sekarang tiap penulisan meninggalkan salinan yang lama di
+/// `backup/<id>/<waktu>.json`, dan hanya tiga puluh terakhir yang ditahan.
+fn cadangkan_sebelum_tulis(id: &str, p: &Path, baru: &str) {
+    let Ok(lama) = fs::read_to_string(p) else { return };
+    if lama == baru {
+        return;
+    }
+    let dir = backup_dir().join(id);
+    if fs::create_dir_all(&dir).is_err() {
+        return;
+    }
+    let stempel = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|d| d.as_millis())
+        .unwrap_or(0);
+    let _ = fs::write(dir.join(format!("{stempel}.json")), lama);
+    // Pangkas yang paling tua.
+    if let Ok(entries) = fs::read_dir(&dir) {
+        let mut berkas: Vec<PathBuf> = entries
+            .flatten()
+            .map(|e| e.path())
+            .filter(|p| p.extension().and_then(|s| s.to_str()) == Some("json"))
+            .collect();
+        berkas.sort();
+        while berkas.len() > VERSI_CADANGAN {
+            let _ = fs::remove_file(berkas.remove(0));
+        }
+    }
+}
+
 #[tauri::command]
 pub fn canvas_write(id: String, json: String) -> Result<(), String> {
+    // JSON yang tidak terbaca ditolak di sini, bukan disimpan lalu gagal dibuka.
+    serde_json::from_str::<serde_json::Value>(&json).map_err(|e| format!("Sketch data is not valid JSON: {e}"))?;
     fs::create_dir_all(canvas_dir()).map_err(|e| e.to_string())?;
     let p = resolve_within(&canvas_dir(), &format!("{id}.json"))?;
+    cadangkan_sebelum_tulis(&id, &p, &json);
     fs::write(p, json).map_err(|e| e.to_string())
 }
 

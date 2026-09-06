@@ -8,6 +8,7 @@ import { newId } from '@/lib/id'
 import { IconButton } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { KERTAS_BAWAAN, berkasBaru, bacaKanvas, simpanKanvas } from './data'
+import { JARAK_HALAMAN, KERTAS, kotakHalaman } from './kertas'
 import {
   JUMLAH_LAPISAN,
   alatObjek,
@@ -63,6 +64,8 @@ import {
 import { AMBANG_DIAM, JEDA_TAHAN, kenaliBentuk } from './bentuk'
 import { DaftarHalaman, PetaBebas } from './PetaKanvas'
 import { kursorAlat } from './kursor'
+import { kirim } from '@/lib/sinkron'
+import { pilihTujuan, tulisBerkas } from '@/lib/berkas'
 import {
   INSTRUMEN,
   buatInstrumen,
@@ -151,30 +154,6 @@ function peganganPutar(o: Objek, skala: number): [number, number] {
   return putarSekitar([poros[0], atas - LENGAN_PUTAR / skala], poros, o.putar ?? 0)
 }
 
-/**
- * Ukuran halaman dalam satuan dunia, dihitung pada 96 dpi — angka yang sama
- * yang dipakai CSS, jadi 1 satuan dunia = 1 piksel CSS dan ukuran cetaknya
- * bisa dihitung langsung tanpa faktor konversi tersembunyi.
- */
-interface Kertas {
-  id: string
-  label: string
-  w: number
-  h: number
-  /** Milimeter, untuk PDF. */
-  mmW: number
-  mmH: number
-}
-
-/** Jarak antar halaman dalam satuan dunia — cukup untuk terlihat terpisah. */
-const JARAK_HALAMAN = 40
-
-/** Batas halaman ke-`i` dalam koordinat dunia; halaman ditumpuk ke bawah. */
-function kotakHalaman(k: Kertas, i: number) {
-  const atas = i * (k.h + JARAK_HALAMAN)
-  return { x1: 0, y1: atas, x2: k.w, y2: atas + k.h }
-}
-
 const HALAMAN_MAKS = 60
 
 type KelompokAlat = 'alat' | 'warna' | 'goresan' | 'kertas' | 'lapisan' | 'instrumen' | 'sisip' | 'ekspor'
@@ -255,14 +234,6 @@ function padatkanHalaman(
 /** Berkas kantor yang bisa diseret ke kanvas; sisanya ditolak dengan jelas. */
 const EKSTENSI_KANTOR = ['doc', 'docx', 'rtf', 'odt', 'wordml', 'ppt', 'pptx', 'odp', 'key', 'pages']
 
-const KERTAS: Kertas[] = [
-  { id: 'bebas', label: 'Infinite canvas', w: 0, h: 0, mmW: 0, mmH: 0 },
-  { id: 'a4', label: 'A4 portrait', w: 794, h: 1123, mmW: 210, mmH: 297 },
-  { id: 'a4l', label: 'A4 landscape', w: 1123, h: 794, mmW: 297, mmH: 210 },
-  { id: 'a3', label: 'A3 portrait', w: 1123, h: 1587, mmW: 297, mmH: 420 },
-  { id: 'letter', label: 'Letter portrait', w: 816, h: 1056, mmW: 216, mmH: 279 },
-  { id: 'letterl', label: 'Letter landscape', w: 1056, h: 816, mmW: 279, mmH: 216 },
-]
 
 interface Props {
   idKanvas: string
@@ -353,6 +324,21 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   /** Penggaris / busur / jangka yang sedang terpasang; satu saja pada satu waktu. */
   const [instrumen, setInstrumen] = useState<Instrumen | null>(null)
   const seretInstrumen = useRef<Seretan | null>(null)
+  /**
+   * Gestur jari di tablet. Jari tidak pernah menggambar: satu jari menggeser,
+   * dua jari mencubit. Menggambar adalah pekerjaan pena.
+   */
+  const sentuh = useRef(new Map<number, { x: number; y: number }>())
+  const geserSentuh = useRef<{ x: number; y: number; tx: number; ty: number } | null>(null)
+  const cubit = useRef<{ jarak: number; tengah: { x: number; y: number }; awal: { skala: number; x: number; y: number } } | null>(null)
+  /** Kapan pena terakhir menyentuh — telapak yang mendarat sesudahnya diabaikan. */
+  const terakhirPena = useRef(0)
+  const tampilanRef = useRef(v.tampilan)
+  tampilanRef.current = v.tampilan
+  /** Penyiaran langsung ke TV/tablet: sampai indeks berapa titik goresan sudah terkirim. */
+  const terkirim = useRef(0)
+  const objekTerkirim = useRef('')
+  const kursorTerakhir = useRef(0)
   /** Kuncian goresan yang sedang ditarik di tepi instrumen. */
   const kuncianAktif = useRef<Kuncian | null>(null)
   /** Bacaan hidup (panjang / sudut) yang digambar di dekat ujung pena. */
@@ -516,13 +502,30 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   } | null>(null)
   const simpanTimer = useRef<number | null>(null)
   const panggang = useRef<{ bitmap: HTMLCanvasElement; kunci: string; sampai: number } | null>(null)
+  /**
+   * Sketsa ini sudah berhasil dibaca dari vault.
+   *
+   * Sebelum itu, TIDAK ADA yang boleh ditulis: keadaan awal komponen adalah
+   * sketsa kosong, dan sekali saja kekosongan itu tersimpan, isi aslinya
+   * hilang. Pembacaan yang gagal — jaringan putus, berkas rusak — membuat
+   * sketsa terbuka hanya untuk dilihat, bukan untuk ditimpa.
+   */
+  const dimuat = useRef(false)
+  /** Perubahan lapisan/gambar/objek yang berasal dari pemuatan, bukan dari tangan. */
+  const lewatiSimpanBerikut = useRef(false)
 
   /* ── Muat & simpan ─────────────────────────────────────────────── */
 
   useEffect(() => {
     let batal = false
+    dimuat.current = false
     void bacaKanvas(idKanvas).then((b) => {
       if (batal) return
+      if (!b) {
+        beriTahu('This sketch could not be read. It is opened read-only so nothing gets overwritten.')
+      }
+      lewatiSimpanBerikut.current = true
+      dimuat.current = b !== null
       setCoretan(b?.strokes ?? [])
       setGambar(b?.images ?? [])
       setGambarTerpilih(null)
@@ -580,6 +583,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     async (isi: Coretan[]) => {
       if (simpanTimer.current) window.clearTimeout(simpanTimer.current)
       simpanTimer.current = null
+      if (!dimuat.current) return
       const saat = Date.now()
       await simpanKanvas(
         berkasBaru(
@@ -601,6 +605,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
 
   const jadwalkanSimpan = useCallback(
     (isi: Coretan[]) => {
+      if (!dimuat.current) return
       if (simpanTimer.current) window.clearTimeout(simpanTimer.current)
       simpanTimer.current = window.setTimeout(() => {
         simpanTimer.current = null
@@ -615,6 +620,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   useEffect(() => {
     if (pertamaLapisan.current) {
       pertamaLapisan.current = false
+      return
+    }
+    // Perubahan yang datang dari pemuatan sketsa bukan perubahan yang perlu
+    // disimpan — dan dulu inilah jalur yang menimpa sketsa dengan salinan kosong.
+    if (lewatiSimpanBerikut.current) {
+      lewatiSimpanBerikut.current = false
       return
     }
     jadwalkanSimpan(coretan)
@@ -1094,7 +1105,30 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       ctx.fillText(b.teks, b.x + 20 / s, b.y - 12 / s)
     }
     ctx.restore()
+    kirimLangsung()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [siapkanKanvas, v.tampilan, instrumen])
+
+  /* ── Penyiaran ke layar lain (TV, tablet) ───────────────────────── */
+
+  // Pandangan: tiap kali bergeser, plus denyut pelan supaya TV yang baru
+  // menyala langsung tahu harus menampilkan apa. Denyutnya ditandai tidak
+  // aktif, jadi Mac yang diam tidak merebut layar dari tablet yang sedang dipakai.
+  useEffect(() => {
+    kirim({ t: 'pandangan', idKanvas, tampilan: v.tampilan, layar: ukuranLayar })
+  }, [v.tampilan, ukuranLayar, idKanvas])
+  const ukuranLayarRef = useRef(ukuranLayar)
+  ukuranLayarRef.current = ukuranLayar
+  useEffect(() => {
+    const t = window.setInterval(
+      () => kirim({ t: 'pandangan', aktif: false, idKanvas, tampilan: tampilanRef.current, layar: ukuranLayarRef.current }),
+      4000,
+    )
+    return () => window.clearInterval(t)
+  }, [idKanvas])
+  useEffect(() => {
+    kirim({ t: 'instrumen', i: instrumen })
+  }, [instrumen])
 
   // Instrumen digambar di lapisan aktif, jadi ia harus ikut digambar ulang saat
   // dipasang, digeser, atau saat kanvas di-pan — bukan hanya di tengah goresan.
@@ -1169,9 +1203,62 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     const nama = OBJEK.find((o) => o.id === tebak.jenis)?.label.toLowerCase() ?? 'shape'
     beriTahu(`Snapped to a ${nama}. Lift the pen to keep it — ⌘Z undoes it.`)
     gambarAktif()
+    kirimLangsung()
+  }
+
+  /** Mulai (atau susun ulang) gestur dari jari-jari yang sedang menyentuh. */
+  function mulaiGestur() {
+    const jari = Array.from(sentuh.current.values())
+    const t = tampilanRef.current
+    if (jari.length >= 2) {
+      const [a, b] = jari
+      cubit.current = {
+        jarak: Math.max(1, Math.hypot(b.x - a.x, b.y - a.y)),
+        tengah: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 },
+        awal: { skala: t.skala, x: t.x, y: t.y },
+      }
+      geserSentuh.current = null
+    } else if (jari.length === 1) {
+      geserSentuh.current = { x: jari[0].x, y: jari[0].y, tx: t.x, ty: t.y }
+      cubit.current = null
+    } else {
+      geserSentuh.current = null
+      cubit.current = null
+    }
+  }
+
+  /**
+   * Siarkan yang sedang terjadi ke layar lain: titik goresan yang belum
+   * terkirim, dan bentuk yang sedang ditarik. Dipanggil tiap bingkai gambar;
+   * kalau tidak ada yang berubah, tidak ada yang dikirim.
+   */
+  function kirimLangsung() {
+    const c = aktifCoretan.current
+    if (c && c.points.length > terkirim.current) {
+      // Meta goresan ikut tiap kiriman: TV yang menyambung di tengah goresan
+      // tetap bisa menggambarnya tanpa menunggu goresan berikutnya.
+      const { points: _abaikan, ...meta } = c
+      void _abaikan
+      kirim({ t: 'titik', id: c.id, dari: terkirim.current, titik: c.points.slice(terkirim.current), meta })
+      terkirim.current = c.points.length
+    }
+    const o = objekBaru.current ?? bentukSnap.current
+    const kunci = o ? JSON.stringify(o) : ''
+    if (kunci !== objekTerkirim.current) {
+      objekTerkirim.current = kunci
+      kirim({ t: 'objek', o })
+    }
   }
 
   const turun = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (e.pointerType === 'pen') terakhirPena.current = performance.now()
+    if (e.pointerType === 'touch') {
+      if (performance.now() - terakhirPena.current < 700 || aktifCoretan.current) return
+      e.currentTarget.setPointerCapture(e.pointerId)
+      sentuh.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      mulaiGestur()
+      return
+    }
     if (v.spasiDitekan || e.button === 1) {
       v.mulaiGeser(e)
       return
@@ -1418,6 +1505,8 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       steady: kuncian ? false : steady,
       points: [[awal[0], awal[1], tekananDari(e)]],
     }
+    terkirim.current = 0
+    kirim({ t: 'goresan', c: { ...aktifCoretan.current, points: [] } })
     // Mulai menggambar lagi berarti sudah selesai dengan bentuk sebelumnya —
     // titik-titiknya ikut hilang, bukan menggantung di atas coretan baru.
     if (objekTerpilih) setObjekTerpilih(null)
@@ -1453,6 +1542,41 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   )
 
   const bergerak = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (e.pointerType === 'pen') terakhirPena.current = performance.now()
+    if (e.pointerType === 'touch') {
+      if (!sentuh.current.has(e.pointerId)) return
+      sentuh.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      const jari = Array.from(sentuh.current.values())
+      if (cubit.current && jari.length >= 2) {
+        const [a, b] = jari
+        const c = cubit.current
+        const jarak = Math.max(1, Math.hypot(b.x - a.x, b.y - a.y))
+        const rasio = Math.min(4 / c.awal.skala, Math.max(0.12 / c.awal.skala, jarak / c.jarak))
+        const tengah = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }
+        const kotak = wadahRef.current?.getBoundingClientRect()
+        const ox = c.tengah.x - (kotak?.left ?? 0)
+        const oy = c.tengah.y - (kotak?.top ?? 0)
+        // Titik dunia yang tadinya di bawah tengah dua jari tetap di bawahnya.
+        v.setTampilan({
+          skala: c.awal.skala * rasio,
+          x: tengah.x - c.tengah.x + ox - (ox - c.awal.x) * rasio,
+          y: tengah.y - c.tengah.y + oy - (oy - c.awal.y) * rasio,
+        })
+      } else if (geserSentuh.current && jari.length === 1) {
+        const g = geserSentuh.current
+        v.setTampilan((t) => ({ ...t, x: g.tx + (e.clientX - g.x), y: g.ty + (e.clientY - g.y) }))
+      }
+      return
+    }
+
+    // Ujung pena sebagai penunjuk di TV — juga saat melayang tanpa menggores.
+    const kini = performance.now()
+    if (kini - kursorTerakhir.current > 40) {
+      kursorTerakhir.current = kini
+      const d = v.keDunia(e.clientX, e.clientY)
+      kirim({ t: 'kursor', x: d.x, y: d.y })
+    }
+
     if (v.sedangGeser) {
       v.lanjutGeser(e)
       return
@@ -1655,7 +1779,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     mintaGambarAktif()
   }
 
-  const naik = (_e: React.PointerEvent<HTMLCanvasElement>) => {
+  const naik = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (e.pointerType === 'touch') {
+      sentuh.current.delete(e.pointerId)
+      mulaiGestur()
+      return
+    }
     if (bingkaiAktif.current !== null) {
       cancelAnimationFrame(bingkaiAktif.current)
       bingkaiAktif.current = null
@@ -1744,9 +1873,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     const c = aktifCoretan.current
     aktifCoretan.current = null
     if (!c || c.points.length < 2) {
+      if (c) kirim({ t: 'goresan-selesai', id: c.id, batal: true })
       gambarAktif()
       return
     }
+    // Sisa titik yang belum sempat terkirim menyusul sebelum penutupnya.
+    kirimLangsung()
     const terkunci = kuncianAktif.current !== null
     kuncianAktif.current = null
     bacaanRef.current = null
@@ -1755,6 +1887,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       // adalah bentuknya, dan satu ⌘Z mengembalikan kanvas ke sebelum goresan.
       terapkan(coretan, [...objek, bentuk])
       setObjekTerpilih(bentuk.id)
+      kirim({ t: 'goresan-selesai', id: c.id, batal: true })
       beriTahu('Drag the dots to resize it · ⌫ deletes it · draw again to move on.')
       gambarAktif()
       return
@@ -1776,11 +1909,13 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         }
         terapkan(coretan, [...objek, obj])
         setObjekTerpilih(obj.id)
+        kirim({ t: 'goresan-selesai', id: c.id, batal: true })
         gambarAktif()
         return
       }
     }
     terapkan([...coretan, c])
+    kirim({ t: 'goresan-selesai', id: c.id })
     gambarAktif()
   }
 
@@ -2632,21 +2767,19 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   async function cetak() {
     setSibuk('Preparing to print…')
     try {
-      const { save } = await import('@tauri-apps/plugin-dialog')
-      const { invoke } = await import('@tauri-apps/api/core')
       // Namanya ditanyakan lebih dulu: PDF cetakan ini juga berkas yang akan
       // dikirim lewat surel atau disimpan, dan "sketch-1756276800.pdf" bukan
-      // nama yang mau dilihat siapa pun di lampiran.
-      const path = await save({
-        defaultPath: `${judul}.pdf`,
-        filters: [{ name: 'PDF', extensions: ['pdf'] }],
-      })
+      // nama yang mau dilihat siapa pun di lampiran. Di browser tidak ada
+      // dialog: PDF-nya dibuka di tab baru, tempat tablet bisa mencetak atau
+      // membagikannya.
+      const path = await pilihTujuan(`${judul}.pdf`, 'pdf')
       if (!path) return
       const hasil = await bangunPdf()
       if (!hasil) return
-      await invoke('write_bytes', { path, bytes: Array.from(hasil.bytes) })
-      await invoke('print_pdf', { path })
-      beriTahu(pesanUkuran('Saved and opened for printing', hasil.bytes, hasil.terlampaui))
+      await tulisBerkas(path, hasil.bytes, 'application/pdf', `${judul}.pdf`, { buka: true })
+      beriTahu(
+        pesanUkuran(inTauri ? 'Saved and opened for printing' : 'PDF opened in a new tab', hasil.bytes, hasil.terlampaui),
+      )
     } catch (e) {
       beriTahu(e instanceof Error ? e.message : 'Printing failed.')
     } finally {
@@ -2657,16 +2790,11 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   async function eksporPdf() {
     setSibuk('Building PDF…')
     try {
-      const { save } = await import('@tauri-apps/plugin-dialog')
-      const { invoke } = await import('@tauri-apps/api/core')
-      const path = await save({
-        defaultPath: `${judul}.pdf`,
-        filters: [{ name: 'PDF', extensions: ['pdf'] }],
-      })
+      const path = await pilihTujuan(`${judul}.pdf`, 'pdf')
       if (!path) return
       const hasil = await bangunPdf()
       if (!hasil) return
-      await invoke('write_bytes', { path, bytes: Array.from(hasil.bytes) })
+      await tulisBerkas(path, hasil.bytes, 'application/pdf', `${judul}.pdf`)
       beriTahu(pesanUkuran('PDF exported', hasil.bytes, hasil.terlampaui))
     } catch (e) {
       beriTahu(e instanceof Error ? e.message : 'PDF export failed.')
@@ -2691,6 +2819,10 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * dirender jadi satu gambar halaman.
    */
   async function imporKantor(berkas: Blob, nama: string) {
+    if (!inTauri) {
+      beriTahu('Word and PowerPoint need the Mac app — export it to PDF and drop that instead.')
+      return
+    }
     setSibuk('Converting…')
     try {
       const { invoke } = await import('@tauri-apps/api/core')
@@ -2817,19 +2949,14 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   /* ── Ekspor ────────────────────────────────────────────────────── */
 
   async function ekspor(format: 'png' | 'svg') {
-    const { save } = await import('@tauri-apps/plugin-dialog')
-    const { invoke } = await import('@tauri-apps/api/core')
-    const path = await save({
-      defaultPath: `${judul}.${format}`,
-      filters: [{ name: format.toUpperCase(), extensions: [format] }],
-    })
+    const path = await pilihTujuan(`${judul}.${format}`, format)
     if (!path) return
     const bytes =
       format === 'svg'
         ? new TextEncoder().encode(keSvg(coretan, gambar, objek, teks))
         : await kePng(coretan, gambar, objek, teks)
     if (!bytes) return
-    await invoke('write_bytes', { path, bytes: Array.from(bytes) })
+    await tulisBerkas(path, bytes, format === 'svg' ? 'image/svg+xml' : 'image/png', `${judul}.${format}`)
   }
 
   const kursor = v.spasiDitekan
@@ -2956,6 +3083,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           onPointerUp={naik}
           onPointerCancel={naik}
           onPointerLeave={(e) => {
+            kirim({ t: 'kursor', x: null })
             if (aktifCoretan.current && e.buttons === 0) naik(e)
           }}
         />

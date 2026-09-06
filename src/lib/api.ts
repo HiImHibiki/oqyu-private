@@ -1,0 +1,81 @@
+/**
+ * Jalur data saat aplikasi dibuka di browser (TV atau tablet), bukan di Tauri.
+ *
+ * Servernya adalah aplikasi Mac sendiri (src-tauri/src/server.rs). Semua
+ * permintaan membawa PIN di header; PIN datang dari tautan/QR (`?pin=`) atau
+ * dari yang pernah diketik, dan disimpan di browser itu saja.
+ */
+
+const KUNCI_PIN = 'exact-canvas-pin'
+
+export function pinTersimpan(): string | null {
+  try {
+    const dariUrl = new URLSearchParams(location.search).get('pin')
+    if (dariUrl && /^\d{4}$/.test(dariUrl)) {
+      localStorage.setItem(KUNCI_PIN, dariUrl)
+      return dariUrl
+    }
+    return localStorage.getItem(KUNCI_PIN)
+  } catch {
+    return null
+  }
+}
+
+export function simpanPin(pin: string): void {
+  try {
+    localStorage.setItem(KUNCI_PIN, pin)
+  } catch {
+    /* penyimpanan browser dimatikan — PIN cukup hidup di memori */
+  }
+  pinMemori = pin
+}
+
+let pinMemori: string | null = null
+
+export function pinAktif(): string {
+  return pinMemori ?? pinTersimpan() ?? ''
+}
+
+export class GalatApi extends Error {
+  constructor(
+    public status: number,
+    pesan: string,
+  ) {
+    super(pesan)
+  }
+}
+
+export async function api<T>(
+  path: string,
+  init: { method?: string; body?: BodyInit; json?: unknown } = {},
+): Promise<T> {
+  const headers: Record<string, string> = { 'x-exact-pin': pinAktif() }
+  let body = init.body
+  if (init.json !== undefined) {
+    headers['content-type'] = 'application/json'
+    body = JSON.stringify(init.json)
+  }
+  const r = await fetch(path, { method: init.method ?? 'GET', headers, body })
+  if (!r.ok) {
+    const teks = await r.text().catch(() => '')
+    throw new GalatApi(r.status, teks || `${r.status} ${r.statusText}`)
+  }
+  if (r.status === 204) return undefined as T
+  const jenis = r.headers.get('content-type') ?? ''
+  return (jenis.includes('application/json') ? r.json() : r.text()) as Promise<T>
+}
+
+/** Nama perangkat ini, sebisanya dari user agent — untuk daftar klien di Mac. */
+export function namaPerangkat(): string {
+  const ua = navigator.userAgent
+  const m = ua.match(/\((?:Linux; Android [\d.]+; )?([^;)]+)/)
+  if (/Tizen|Web0S|SMART-TV|SmartTV|BRAVIA/i.test(ua)) return 'TV'
+  if (/Android/.test(ua) && m) {
+    const model = ua.match(/Android [\d.]+; ([^;)]+)/)?.[1]
+    if (model) return model.replace(/ Build.*/, '').trim()
+  }
+  if (/iPad/.test(ua)) return 'iPad'
+  if (/iPhone/.test(ua)) return 'iPhone'
+  if (/Macintosh/.test(ua)) return 'Mac browser'
+  return 'Browser'
+}

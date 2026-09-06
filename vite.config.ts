@@ -21,7 +21,15 @@ export default defineConfig({
   },
   envPrefix: ['VITE_', 'TAURI_ENV_*'],
   build: {
-    target: 'safari15',
+    // Dua halaman: aplikasi utama, dan halaman TV yang ringan (tanpa React)
+    // untuk browser smart TV yang mesinnya lebih lemah.
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        tv: fileURLToPath(new URL('./tv.html', import.meta.url)),
+      },
+    },
+    target: ['safari15', 'chrome79'],
     minify: process.env.TAURI_ENV_DEBUG ? false : 'esbuild',
     sourcemap: !!process.env.TAURI_ENV_DEBUG,
     // Aplikasi ini memuat berkasnya dari disk, bukan dari jaringan — satu

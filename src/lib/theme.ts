@@ -5,7 +5,6 @@
 import { create } from 'zustand'
 import { getSetting, setSetting } from './db'
 import { dengarkan, pancarkan } from './events'
-import { inTauri } from './runtime'
 
 export const TEMA = [
   { id: 'kaca', nama: 'Glass', sub: 'Modern night — glass panels in a dark room' },
@@ -50,13 +49,11 @@ export const useTema = create<StoreTema>((set, get) => ({
 
   async muat() {
     let tema: TemaId = DEFAULT
-    if (inTauri) {
-      try {
-        const simpan = (await getSetting('theme')) as TemaId | null
-        if (simpan && TEMA.some((t) => t.id === simpan)) tema = simpan
-      } catch {
-        /* database belum siap — pakai default */
-      }
+    try {
+      const simpan = (await getSetting('theme')) as TemaId | null
+      if (simpan && TEMA.some((t) => t.id === simpan)) tema = simpan
+    } catch {
+      /* database belum siap — pakai default */
     }
     terapkan(tema)
     set({ tema, siap: true })
@@ -65,10 +62,8 @@ export const useTema = create<StoreTema>((set, get) => ({
   async ganti(t) {
     terapkan(t)
     set({ tema: t })
-    if (inTauri) {
-      await setSetting('theme', t).catch(() => {})
-      await pancarkan('theme', t)
-    }
+    await setSetting('theme', t).catch(() => {})
+    await pancarkan('theme', t)
   },
 
   async siklus() {

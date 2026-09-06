@@ -14,6 +14,10 @@ import {
 import { inTauri } from '@/lib/runtime'
 import { bukaVault, vault } from '@/lib/vault'
 import { toast, toastGalat } from '@/lib/toast'
+import { setSetting } from '@/lib/db'
+import { pancarkan } from '@/lib/events'
+import { useSinkron } from '@/lib/sinkron'
+import type { InfoBerbagi } from '@/App'
 
 /**
  * Pengaturan (⌘,): tema, kecepatan gulir/zoom kanvas, dan letak vault.
@@ -97,6 +101,9 @@ export function Pengaturan() {
           />
         </section>
 
+        {inTauri && <BagianBerbagi buka={buka} />}
+
+        {inTauri && (
         <section className="flex flex-col gap-2">
           <h3 className="ex-module-title">Vault</h3>
           <p className="ex-label" style={{ color: 'var(--ink-soft)' }}>
@@ -115,6 +122,7 @@ export function Pengaturan() {
             </button>
           </div>
         </section>
+        )}
 
         <section className="flex flex-col gap-1">
           <h3 className="ex-module-title">Shortcuts</h3>
@@ -170,5 +178,168 @@ function Geser({
         </button>
       )}
     </label>
+  )
+}
+
+/**
+ * Berbagi di jaringan: TV membuka tautan TV sebagai layar pengikut, tablet
+ * membuka tautan editor. Keduanya membawa PIN, jadi tinggal dipindai.
+ */
+function BagianBerbagi({ buka }: { buka: boolean }) {
+  const [info, setInfo] = useState<InfoBerbagi | null>(null)
+  const [qr, setQr] = useState('')
+  const [sibuk, setSibuk] = useState(false)
+  const klien = useSinkron((s) => s.klien)
+  const status = useSinkron((s) => s.status)
+
+  useEffect(() => {
+    if (!buka) return
+    void import('@tauri-apps/api/core').then(({ invoke }) =>
+      invoke<InfoBerbagi | null>('share_status').then(setInfo).catch(() => setInfo(null)),
+    )
+  }, [buka])
+
+  useEffect(() => {
+    if (!info) {
+      setQr('')
+      return
+    }
+    void import('@tauri-apps/api/core').then(({ invoke }) =>
+      invoke<string>('share_qr', { text: info.url }).then(setQr).catch(() => setQr('')),
+    )
+  }, [info])
+
+  async function nyalakan(pinBaru: string | null) {
+    setSibuk(true)
+    try {
+      const { invoke } = await import('@tauri-apps/api/core')
+      const i = await invoke<InfoBerbagi>('share_start', { pin: pinBaru })
+      await setSetting('berbagi', '1')
+      await setSetting('berbagi_pin', i.pin)
+      setInfo(i)
+      await pancarkan('settings')
+    } catch (e) {
+      toastGalat(e instanceof Error ? e.message : String(e))
+    } finally {
+      setSibuk(false)
+    }
+  }
+
+  async function matikan() {
+    setSibuk(true)
+    try {
+      const { invoke } = await import('@tauri-apps/api/core')
+      await invoke('share_stop')
+      await setSetting('berbagi', '0')
+      setInfo(null)
+      await pancarkan('settings')
+    } finally {
+      setSibuk(false)
+    }
+  }
+
+  async function pinBaru() {
+    const { invoke } = await import('@tauri-apps/api/core')
+    await invoke('share_stop')
+    await nyalakan(null)
+    toast('New PIN. Devices will need the new link.')
+  }
+
+  const salin = (teks: string) =>
+    navigator.clipboard
+      .writeText(teks)
+      .then(() => toast('Link copied.'))
+      .catch(() => toastGalat('Could not copy.'))
+
+  const bukaDiBrowser = async (url: string) => {
+    const { openUrl } = await import('@tauri-apps/plugin-opener')
+    await openUrl(url).catch(() => toastGalat('Could not open the browser.'))
+  }
+
+  return (
+    <section className="flex flex-col gap-3">
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="ex-module-title">Share on this network</h3>
+        <label className="ex-label flex items-center gap-2" style={{ color: 'var(--ink-soft)' }}>
+          <input
+            type="checkbox"
+            checked={info !== null}
+            disabled={sibuk}
+            onChange={(e) => (e.target.checked ? void nyalakan(null) : void matikan())}
+            style={{ accentColor: 'var(--accent)' }}
+          />
+          {info ? 'On' : 'Off'}
+        </label>
+      </div>
+      <p className="ex-label" style={{ color: 'var(--ink-soft)' }}>
+        TVs and tablets on the same Wi-Fi open the canvas in their browser. TVs follow whoever is
+        drawing; a tablet with a pen edits the same sketches. Nothing leaves this Mac.
+      </p>
+
+      {info && (
+        <div className="grid gap-3" style={{ gridTemplateColumns: 'auto 1fr' }}>
+          <div
+            className="ex-card overflow-hidden"
+            style={{ width: 150, height: 150, background: '#fff', padding: 4 }}
+            dangerouslySetInnerHTML={{ __html: qr.replace(/<svg /, '<svg style="width:100%;height:100%" ') }}
+          />
+          <div className="flex min-w-0 flex-col gap-2">
+            <Tautan label="Tablet (edit)" url={info.url} onSalin={salin} onBuka={bukaDiBrowser} />
+            <Tautan label="TV (follow)" url={info.urlTv} onSalin={salin} onBuka={bukaDiBrowser} />
+            <p className="ex-label" style={{ color: 'var(--ink-faint)' }}>
+              PIN <span className="ex-num" style={{ color: 'var(--ink)', letterSpacing: '0.2em' }}>{info.pin}</span>
+              {' · '}
+              <button className="underline" onClick={() => void pinBaru()}>
+                new PIN
+              </button>
+              {' · '}
+              <span>{status === 'tersambung' ? 'this window connected' : 'this window connecting…'}</span>
+            </p>
+            <p className="ex-label" style={{ color: 'var(--ink-faint)' }}>
+              Connected:{' '}
+              {klien.filter((k) => k.nama !== 'Mac').length === 0
+                ? 'no other devices yet'
+                : klien
+                    .filter((k) => k.nama !== 'Mac')
+                    .map((k) => `${k.nama}${k.peran === 'tv' ? ' (TV)' : ''}`)
+                    .join(', ')}
+            </p>
+            <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
+              Add <span className="ex-num">&amp;mode=fit</span> to the TV link to always show the whole
+              page instead of following the zoom. Keep the Mac awake while teaching.
+            </p>
+          </div>
+        </div>
+      )}
+    </section>
+  )
+}
+
+function Tautan({
+  label,
+  url,
+  onSalin,
+  onBuka,
+}: {
+  label: string
+  url: string
+  onSalin: (u: string) => void
+  onBuka: (u: string) => void
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className="ex-label shrink-0" style={{ color: 'var(--ink-soft)', width: '10ch' }}>
+        {label}
+      </span>
+      <span className="ex-num ex-label min-w-0 flex-1 truncate" style={{ color: 'var(--ink)' }} title={url}>
+        {url}
+      </span>
+      <button className="ex-btn" data-variant="ghost" style={{ padding: '3px 8px' }} onClick={() => onSalin(url)}>
+        Copy
+      </button>
+      <button className="ex-btn" data-variant="ghost" style={{ padding: '3px 8px' }} onClick={() => onBuka(url)}>
+        Open
+      </button>
+    </div>
   )
 }

@@ -10,7 +10,6 @@
 
 import { getSetting, setSetting } from './db'
 import { pancarkan } from './events'
-import { inTauri } from './runtime'
 
 export const KUNCI_GULIR = 'kecepatan_gulir'
 export const KUNCI_ZOOM = 'kecepatan_zoom'
@@ -47,7 +46,6 @@ export function kecepatanZoom(): number {
 }
 
 export async function muatKecepatan(): Promise<{ gulir: number; zoom: number }> {
-  if (!inTauri) return { gulir, zoom }
   const [g, z] = await Promise.all([
     getSetting(KUNCI_GULIR).catch(() => null),
     getSetting(KUNCI_ZOOM).catch(() => null),

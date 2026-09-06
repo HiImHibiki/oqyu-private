@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exact Canvas — TV</title>
+    <style>
+      :root {
+        --bg: #f2f0ea; --surface: #ffffff; --surface-2: #f7f5ef; --paper: #ffffff;
+        --line: rgba(36, 38, 43, 0.13); --line-strong: rgba(36, 38, 43, 0.28);
+        --ink: #24262b; --ink-soft: rgba(36, 38, 43, 0.68); --ink-faint: rgba(36, 38, 43, 0.42);
+        --ink-on-paper: #24262b; --accent: #b4531a; --accent-2: #1f6f5c; --glow: #e8a24b;
+        --up: #1f6f5c; --down: #b4351a;
+      }
+      html, body { height: 100%; margin: 0; overflow: hidden; background: var(--bg); color: var(--ink);
+        font: 15px -apple-system, system-ui, "Helvetica Neue", Arial, sans-serif; cursor: none; }
+      canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+      #status { position: absolute; left: 16px; bottom: 14px; padding: 6px 12px; border-radius: 999px;
+        background: rgba(36, 38, 43, 0.72); color: #fff; font-size: 14px; opacity: 0; transition: opacity 600ms; pointer-events: none; }
+      #status.tampil { opacity: 1; }
+      #pesan { position: absolute; inset: 0; display: none; place-items: center; text-align: center; padding: 24px;
+        background: rgba(242, 240, 234, 0.92); font-size: 22px; line-height: 1.5; }
+      #pesan.tampil { display: grid; }
+      #pesan small { display: block; font-size: 15px; color: var(--ink-soft); margin-top: 8px; }
+    </style>
+  </head>
+  <body>
+    <canvas id="dasar"></canvas>
+    <canvas id="aktif"></canvas>
+    <div id="status"></div>
+    <div id="pesan"></div>
+    <script type="module" src="/src/tv/main.ts"></script>
+  </body>
+</html>

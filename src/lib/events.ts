@@ -3,6 +3,7 @@
  * menulis, pancarkan event agar window lain menyegarkan tampilannya.
  */
 import { inTauri } from './runtime'
+import { dengarkanLangsung, kirim } from './sinkron'
 
 export type Kanal = 'canvas' | 'settings' | 'tampilan' | 'theme'
 
@@ -14,6 +15,9 @@ type Handler = (payload?: unknown) => void
 
 /** Beri tahu semua window bahwa `kanal` berubah. */
 export async function pancarkan(kanal: Kanal, payload?: unknown): Promise<void> {
+  // Layar lain di jaringan (TV, tablet, atau Mac dari sisi tablet) ikut diberi
+  // tahu lewat hub; kalau tidak sedang berbagi, pesannya cuma dibuang.
+  kirim({ t: 'data', kanal, payload: payload ?? null })
   if (inTauri) {
     // emit Tauri kembali juga ke window pengirim, jadi jangan dispatch lokal.
     const { emit } = await import('@tauri-apps/api/event')
@@ -46,9 +50,14 @@ export function dengarkan(kanal: Kanal, handler: Handler): () => void {
     lepasTauri = () => bc.removeEventListener('message', onBc)
   }
 
+  const lepasJaringan = dengarkanLangsung((p) => {
+    if (p.t === 'data' && p.kanal === kanal) handler(p.payload)
+  })
+
   return () => {
     dibatalkan = true
     lokal.removeEventListener(kanal, onLokal)
     lepasTauri?.()
+    lepasJaringan()
   }
 }

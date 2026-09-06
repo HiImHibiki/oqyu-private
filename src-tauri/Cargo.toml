@@ -22,6 +22,12 @@ tauri-plugin-dialog = "2.7.2"
 tauri-plugin-opener = "2.5.4"
 tauri-plugin-sql = { version = "2.4.0", features = ["sqlite"] }
 tauri-plugin-window-state = "2.4.1"
+# Server berbagi di jaringan: TV dan tablet membuka kanvas lewat browser.
+axum = { version = "0.8", features = ["ws"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "sync", "time"] }
+futures-util = "0.3"
+rusqlite = { version = "0.32", features = ["bundled"] }
+qrcode = { version = "0.14.1", default-features = false, features = ["svg"] }
 
 [profile.release]
 codegen-units = 1

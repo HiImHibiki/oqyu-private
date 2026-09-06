@@ -4,6 +4,7 @@
 mod db;
 mod menu;
 mod office;
+mod server;
 mod vault;
 mod windows;
 
@@ -42,6 +43,10 @@ pub fn run() {
             office::dropped_bytes,
             windows::open_window,
             windows::window_list,
+            server::share_start,
+            server::share_stop,
+            server::share_status,
+            server::share_qr,
         ])
         .setup(move |app| {
             let handle = app.handle().clone();

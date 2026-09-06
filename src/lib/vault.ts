@@ -4,6 +4,7 @@
  */
 import { inTauri } from './runtime'
 import { vaultInfo } from './db'
+import { api } from './api'
 
 async function inv<T>(cmd: string, args?: Record<string, unknown>): Promise<T> {
   if (!inTauri) throw new Error('The vault is only available inside the app.')
@@ -12,10 +13,25 @@ async function inv<T>(cmd: string, args?: Record<string, unknown>): Promise<T> {
 }
 
 export const kanvas = {
-  baca: (id: string) => inv<string | null>('canvas_read', { id }),
-  tulis: (id: string, json: string) => inv<void>('canvas_write', { id, json }),
-  daftar: () => inv<string[]>('canvas_list'),
-  hapus: (id: string) => inv<void>('canvas_delete', { id }),
+  baca: async (id: string) => {
+    if (inTauri) return inv<string | null>('canvas_read', { id })
+    try {
+      const isi = await api<string | object>(`/api/canvas/${encodeURIComponent(id)}`)
+      return typeof isi === 'string' ? isi : JSON.stringify(isi)
+    } catch (e) {
+      if ((e as { status?: number }).status === 404) return null
+      throw e
+    }
+  },
+  tulis: (id: string, json: string) =>
+    inTauri
+      ? inv<void>('canvas_write', { id, json })
+      : api<void>(`/api/canvas/${encodeURIComponent(id)}`, { method: 'PUT', body: json }),
+  daftar: () => (inTauri ? inv<string[]>('canvas_list') : api<string[]>('/api/canvas')),
+  hapus: (id: string) =>
+    inTauri
+      ? inv<void>('canvas_delete', { id })
+      : api<void>(`/api/canvas/${encodeURIComponent(id)}`, { method: 'DELETE' }),
 }
 
 export const vault = {

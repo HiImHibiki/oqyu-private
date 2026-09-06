@@ -26,6 +26,7 @@
     "sql:allow-close",
     "dialog:default",
     "opener:default",
-    "opener:allow-reveal-item-in-dir"
+    "opener:allow-reveal-item-in-dir",
+    "opener:allow-open-url"
   ]
 }
