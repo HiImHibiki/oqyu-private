@@ -2209,6 +2209,15 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         return
       }
 
+      // Escape melipat semua panel — rel alat, panelnya, dan daftar halaman —
+      // dan menekannya lagi mengembalikan semuanya. Cara tercepat mendapat
+      // kanvas bersih saat layar sedang dibagikan ke murid.
+      if (e.key === 'Escape' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        e.preventDefault()
+        setMenuTampil((tampil) => !tampil)
+        return
+      }
+
       // ⌘2/⌘3/⌘4 memilih alat. Angka-angka ini dulu dipakai untuk berpindah
       // modul; dilepas dari menu supaya sampai ke sini.
       if (e.metaKey || e.ctrlKey) {
@@ -3013,7 +3022,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       {!menuTampil && (
         <IconButton
           nama="tampilkan"
-          label="Show the panels (⌘.)"
+          label="Show the panels (Esc or ⌘.)"
           className="ex-card absolute left-4 top-4 z-10"
           onClick={() => setMenuTampil(true)}
         />
@@ -3111,7 +3120,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         )}
         <IconButton
           nama="sembunyi"
-          label="Hide both panels for a clean canvas (⌘.)"
+          label="Hide all panels for a clean canvas (Esc or ⌘.)"
           onClick={() => setMenuTampil(false)}
         />
       </div>

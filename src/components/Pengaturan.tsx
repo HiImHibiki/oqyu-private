@@ -125,7 +125,7 @@ export function Pengaturan() {
             <li>⌘D duplicate selection</li>
             <li>⌘0 fit to sketch</li>
             <li>⌘1–⌘9 tool slots</li>
-            <li>⌘. hide / show panels</li>
+            <li>Esc or ⌘. hide / show panels</li>
             <li>⌘S save now</li>
             <li>Space + drag pan</li>
             <li>⌘ + scroll zoom</li>
