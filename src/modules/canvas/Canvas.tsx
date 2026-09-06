@@ -3523,7 +3523,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         <IconButton
           nama="tampilkan"
           label="Show the panels (Esc or ⌘.)"
-          className="ex-card ex-bilah absolute left-4 top-4 z-10"
+          className="ex-card ex-bilah ex-tampilkan absolute left-4 top-4 z-10"
           onClick={() => setMenuTampil(true)}
         />
       )}

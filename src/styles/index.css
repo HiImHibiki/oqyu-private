@@ -307,6 +307,7 @@ html.ex-sentuh .ex-panel {
   width: min(320px, calc(100% / 1.45 - 24px)) !important;
 }
 html.ex-sentuh .ex-sketsa { bottom: auto !important; top: 12px !important; }
+html.ex-sentuh .ex-tampilkan { top: auto !important; bottom: 10px !important; left: 50% !important; transform: translateX(-50%); }
 html.ex-sentuh .ex-statusbar { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
