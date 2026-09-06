@@ -355,14 +355,18 @@ function bolehIkuti(src: string | undefined): boolean {
   const k = daftar.find((x) => x.id === src)
   if (!k) return false
   const ruangTarget = arah?.startsWith('ruang:') ? Number(arah.slice(6)) : ruangSaya
-  return k.ruang === ruangTarget
+  if (k.ruang === ruangTarget) return true
+  // Belum ada guru di ruangan ini: ikuti guru yang sedang aktif di ruangan
+  // mana pun daripada menatap layar diam. Begitu guru datang ke ruangan ini,
+  // aturan ruangan kembali berlaku.
+  return !daftar.some((x) => x.peran === 'editor' && x.ruang === ruangTarget)
 }
 
 function gantiSumber(p: PesanLangsung) {
   if (p.src && p.src !== sumber) {
     sumber = p.src
     const k = useSinkron.getState().klien.find((x) => x.id === sumber)
-    namaSumber = k?.nama ?? 'editor'
+    namaSumber = k ? `${k.nama} · room ${k.ruang}` : 'editor'
     tampilkanStatus(`Following ${namaSumber}`)
     goresanHidup.clear()
     objekPratinjau = null
@@ -654,7 +658,13 @@ function layarMasuk(): Promise<void> {
       // Ketukan ini sekaligus membuka izin audio (untuk bunyi "dibahas") dan
       // meminta layar penuh — dua hal yang browser hanya izinkan dari ketukan.
       bunyi('diam')
-      void document.documentElement.requestFullscreen?.().catch(() => {})
+      // iPhone tidak punya requestFullscreen; jangan sampai itu menggagalkan Join.
+      try {
+        const janji = document.documentElement.requestFullscreen?.()
+        void janji?.catch?.(() => {})
+      } catch {
+        /* tidak didukung */
+      }
       try {
         await api('/api/kelas/masuk', { method: 'POST', json: { murid: muridId, nama: n, ruang: r } })
       } catch (err) {
