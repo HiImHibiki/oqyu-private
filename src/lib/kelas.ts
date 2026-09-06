@@ -99,8 +99,8 @@ export async function riwayatTanya(batas = 30): Promise<Tanya[]> {
 }
 
 /** Lewat server, bukan SQL langsung: HP murid (dan grupnya) harus dikabari. */
-export async function ubahTanya(id: string, status: 'dibahas' | 'selesai'): Promise<void> {
-  await api('/api/kelas/ubah', { method: 'POST', json: { id, status } })
+export async function ubahTanya(id: string, status: 'dibahas' | 'selesai', editor?: string): Promise<void> {
+  await api('/api/kelas/ubah', { method: 'POST', json: { id, status, editor: editor ?? null } })
 }
 
 /* ── Murid & grup ──────────────────────────────────────────────────── */

@@ -86,7 +86,7 @@ import {
 import { PanelGrafik } from './PanelGrafik'
 import { PanelTabel } from './PanelTabel'
 import { PanelKelas } from './PanelKelas'
-import { bunyi, daftarTanya, useKelas } from '@/lib/kelas'
+import { bunyi, daftarTanya, ubahTanya, useKelas } from '@/lib/kelas'
 import { useData } from '@/lib/useData'
 import { ukuranTabel, type DefinisiGrafik, type DefinisiTabel, type MetaGambar } from './sisipan'
 import {
@@ -317,20 +317,31 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * Guru membuka pertanyaan: pindah ke ruangan murid itu, dan fotonya (kalau
    * ada) ditempel ke kanvas ini supaya bisa langsung dicoret.
    */
-  async function bahasTanya(t: { name: string; room: number; photo: string | null }, urlFoto: string | null) {
+  async function bahasTanya(t: { id: string; name: string; room: number; photo: string | null }, urlFoto: string | null) {
+    // Ruangan dulu, baru kabar: HP murid diarahkan mengikuti perangkat ini,
+    // dan aturan ruangannya harus sudah cocok saat kabar itu tiba.
     if (useKelas.getState().ruang !== t.room) useKelas.getState().setRuang(t.room)
-    if (!urlFoto) {
-      beriTahu(`Discussing ${t.name}'s question. Their phone has been told.`)
+    try {
+      await ubahTanya(t.id, 'dibahas', idKlien)
+    } catch (e) {
+      beriTahu(e instanceof Error ? e.message : String(e))
       return
     }
-    try {
-      const r = await fetch(urlFoto)
-      const blob = await r.blob()
-      await terimaRef.current(new File([blob], `${t.name}.jpg`, { type: blob.type || 'image/jpeg' }))
-      beriTahu(`${t.name}'s photo is on the canvas. Their phone has been told.`)
-    } catch {
-      beriTahu('Could not fetch the photo.')
+    if (urlFoto) {
+      try {
+        const r = await fetch(urlFoto)
+        const blob = await r.blob()
+        await terimaRef.current(new File([blob], `${t.name}.jpg`, { type: blob.type || 'image/jpeg' }))
+      } catch {
+        beriTahu('Could not fetch the photo.')
+      }
     }
+    // Langsung pena: yang ditunggu murid adalah coretan, bukan pemilihan gambar.
+    setGambarTerpilih(null)
+    setAlat(alatTulisTerakhir.current)
+    // Umumkan diri sebagai editor aktif supaya layar di ruangan ini berpindah ke sini.
+    kirim({ t: 'pandangan', idKanvas, tampilan: tampilanRef.current, layar: ukuranLayarRef.current })
+    beriTahu(urlFoto ? `${t.name}'s photo is on the canvas — draw away.` : `Discussing ${t.name}'s question.`)
   }
 
   /** Pasang instrumen di tengah pandangan, atau lepas kalau yang sama ditekan lagi. */
@@ -1764,11 +1775,21 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           case 'ubah': {
             // Terapkan langsung ke keadaan lokal; berkasnya menyusul lewat
             // penggabungan saat sisi lain selesai menyimpan.
-            const hapus = (p.hapus ?? {}) as { coretan?: string[]; objek?: string[]; teks?: string[] }
-            const tambah = (p.tambah ?? {}) as { coretan?: Coretan[]; objek?: Objek[] }
+            const hapus = (p.hapus ?? {}) as { coretan?: string[]; objek?: string[]; teks?: string[]; gambar?: string[] }
+            const tambah = (p.tambah ?? {}) as { coretan?: Coretan[]; objek?: Objek[]; gambar?: Gambar[] }
             const hc = new Set(hapus.coretan ?? [])
             const ho = new Set(hapus.objek ?? [])
             const ht = new Set(hapus.teks ?? [])
+            const hg = new Set(hapus.gambar ?? [])
+            if (hg.size || tambah.gambar?.length) {
+              lewatiSimpanBerikut.current = true
+              setGambar((lama) => {
+                const hasil = lama.filter((g) => !hg.has(g.id))
+                const ada = new Set(hasil.map((g) => g.id))
+                for (const g of tambah.gambar ?? []) if (!ada.has(g.id)) hasil.push(g)
+                return hasil
+              })
+            }
             for (const id of hc) peta.delete(id)
             if (hc.size || tambah.coretan?.length) {
               setCoretan((lama) => {
@@ -2730,6 +2751,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       if ((e.key === 'Backspace' || e.key === 'Delete') && gambarTerpilih) {
         e.preventDefault()
         setGambar((g) => g.filter((x2) => x2.id !== gambarTerpilih))
+        kirim({ t: 'ubah', idKanvas, hapus: { gambar: [gambarTerpilih] } })
         setGambarTerpilih(null)
         return
       }
@@ -2802,6 +2824,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       setGambar((g) => [...g, baru])
       setGambarTerpilih(baru.id)
       setAlat('laso')
+      // Layar lain melihat tempelannya sekarang juga; yang sangat besar
+      // menyusul lewat berkas supaya tidak menyumbat Wi-Fi 40 HP sekaligus.
+      if (src.length < 700_000) kirim({ t: 'ubah', idKanvas, tambah: { gambar: [baru] } })
       beriTahu(
         meta
           ? 'Inserted. Drag to move, corner to resize · tap it again to edit.'

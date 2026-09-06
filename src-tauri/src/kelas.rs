@@ -202,6 +202,9 @@ pub struct UbahTanya {
     pub id: String,
     /// 'dibahas' | 'selesai'
     pub status: String,
+    /// Id klien editor yang membahas — HP murid langsung mengikutinya.
+    #[serde(default)]
+    pub editor: Option<String>,
 }
 
 /// Guru membuka ("dibahas") atau menutup pertanyaan. Saat dibuka, HP murid
@@ -240,7 +243,7 @@ pub async fn api_ubah_tanya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Jso
                 .flatten()
                 .collect();
         }
-        Ok(json!({ "id": u.id, "status": u.status, "murid": murid, "nama": nama, "grup": grup, "anggota": anggota }))
+        Ok(json!({ "id": u.id, "status": u.status, "murid": murid, "nama": nama, "grup": grup, "anggota": anggota, "editor": u.editor }))
     })
     .await;
     match hasil {

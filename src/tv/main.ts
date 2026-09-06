@@ -20,6 +20,7 @@ import {
   warnaToken,
   type BerkasKanvas,
   type Coretan,
+  type Gambar,
   type Lapisan,
 } from '@/modules/canvas/strokes'
 import { gambarObjek, type Objek } from '@/modules/canvas/objek'
@@ -310,8 +311,12 @@ async function sketsaTerbaru(): Promise<string | null> {
  * karena dipaku ke satu sketsa. Sebelum daftar klien datang, semua diterima
  * supaya layar tidak kosong menunggu.
  */
+/** Editor yang baru saja membuka pertanyaan saya/grup saya: diikuti apa pun ruangannya. */
+let sumberPaksa: string | null = null
+
 function bolehIkuti(src: string | undefined): boolean {
   if (!src) return false
+  if (src === sumberPaksa) return true
   if (arah?.startsWith('sketsa:')) return false
   if (arah?.startsWith('editor:')) return src === arah.slice(7)
   const daftar = useSinkron.getState().klien
@@ -405,11 +410,21 @@ function terima(p: PesanLangsung) {
     case 'ubah': {
       // Hapusan dan perubahan diterapkan seketika; berkas penuh menyusul.
       if (!sketsa) break
-      const hapus = (p.hapus ?? {}) as { coretan?: string[]; objek?: string[]; teks?: string[] }
-      const tambah = (p.tambah ?? {}) as { coretan?: Coretan[]; objek?: Objek[] }
+      const hapus = (p.hapus ?? {}) as { coretan?: string[]; objek?: string[]; teks?: string[]; gambar?: string[] }
+      const tambah = (p.tambah ?? {}) as { coretan?: Coretan[]; objek?: Objek[]; gambar?: Gambar[] }
       const hc = new Set(hapus.coretan ?? [])
       const ho = new Set(hapus.objek ?? [])
       const ht = new Set(hapus.teks ?? [])
+      const hg = new Set(hapus.gambar ?? [])
+      if (hg.size || tambah.gambar?.length) {
+        sketsa.images = (sketsa.images ?? []).filter((g) => !hg.has(g.id))
+        for (const g of tambah.gambar ?? []) {
+          if (!sketsa.images.some((x) => x.id === g.id)) {
+            sketsa.images.push(g)
+            muatGambar(g.src, () => (kotorDasar = true))
+          }
+        }
+      }
       for (const id of hc) goresanHidup.delete(id)
       const upsert = <T extends { id: string }>(lama: T[], buang: Set<string>, baru: T[]): T[] => {
         const petaBaru = new Map(baru.map((x) => [x.id, x]))
@@ -715,11 +730,24 @@ async function perkecilFoto(f: File): Promise<string> {
 
 let timerKabar: number | null = null
 
-function terimaBahas(t: { murid: string; nama: string; anggota?: string[]; grup?: string | null }) {
+function terimaBahas(t: { murid: string; nama: string; anggota?: string[]; grup?: string | null; editor?: string | null }) {
   if (!sebagaiMurid) return
   const punyaku = t.murid === muridId
   const segrup = !punyaku && (t.anggota ?? []).includes(muridId)
   if (!punyaku && !segrup) return
+  // Langsung ikuti perangkat guru yang membahas — tidak menunggu ia bergerak.
+  if (t.editor) {
+    sumberPaksa = t.editor
+    if (sumber !== t.editor) {
+      sumber = t.editor
+      goresanHidup.clear()
+      kursor = null
+      kotorAktif = true
+    }
+    window.setTimeout(() => {
+      if (sumberPaksa === t.editor) sumberPaksa = null
+    }, 15 * 60_000)
+  }
   bunyi('bahas')
   try {
     navigator.vibrate?.([120, 60, 120])

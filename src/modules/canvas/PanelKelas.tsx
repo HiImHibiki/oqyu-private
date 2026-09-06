@@ -101,12 +101,7 @@ export function PanelKelas({
               key={t.id}
               t={t}
               grup={grup.find((g) => g.id === petaGrupMurid.get(t.student_id)) ?? null}
-              onBahas={() => {
-                const url = t.photo ? urlDenganPin(`/api/kelas/foto/${encodeURIComponent(t.photo)}`) : null
-                void ubahTanya(t.id, 'dibahas')
-                  .then(() => onBahas(t, url))
-                  .catch((e: unknown) => toastGalat(e instanceof Error ? e.message : String(e)))
-              }}
+              onBahas={() => onBahas(t, t.photo ? urlDenganPin(`/api/kelas/foto/${encodeURIComponent(t.photo)}`) : null)}
               onSelesai={() => void ubahTanya(t.id, 'selesai').catch(() => toastGalat('Could not close it.'))}
             />
           ))}
