@@ -1629,9 +1629,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       const d = v.keDunia(s.clientX, s.clientY)
       if (kuncian) {
         const { q, bacaan } = kunciKeInstrumen(kuncian, [d.x, d.y])
-        // Kuncian radial dan garis hanya butuh dua titik yang benar; titik
-        // tengah yang menumpuk cuma membuat garis lurus jadi berat.
-        if (kuncian.jenis !== 'lingkaran' && c.points.length > 1) c.points.pop()
+        // Titiknya tetap rapat seperti goresan biasa, walau semuanya segaris:
+        // penghapus, laso, dan pemotong bekerja per titik, dan garis yang
+        // cuma punya dua ujung tidak bisa disentuh di tengahnya.
         c.points.push([q[0], q[1], tekananDari(s)])
         bacaanRef.current = { teks: bacaan, x: q[0], y: q[1] }
         continue

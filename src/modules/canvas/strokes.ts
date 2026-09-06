@@ -554,9 +554,25 @@ export function kotakSemua(
 export function coretanKena(c: Coretan, x: number, y: number, radius: number): boolean {
   const k = kotakCoretan(c)
   if (x < k.x1 - radius || x > k.x2 + radius || y < k.y1 - radius || y > k.y2 + radius) return false
-  const r2 = (radius + c.size / 2) ** 2
+  const r = radius + c.size / 2
+  const r2 = r * r
   for (const [px, py] of c.points) {
     if ((px - x) ** 2 + (py - y) ** 2 <= r2) return true
+  }
+  // Ruas di antara titik juga diuji: goresan cepat, atau goresan yang dikunci
+  // ke penggaris, bisa punya titik yang berjauhan — dan sentuhan di antara
+  // dua titik tetaplah sentuhan pada goresan itu.
+  for (let i = 1; i < c.points.length; i++) {
+    const [ax, ay] = c.points[i - 1]
+    const [bx, by] = c.points[i]
+    const dx = bx - ax
+    const dy = by - ay
+    const pj = dx * dx + dy * dy
+    if (pj === 0) continue
+    const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / pj))
+    const qx = ax + t * dx
+    const qy = ay + t * dy
+    if ((qx - x) ** 2 + (qy - y) ** 2 <= r2) return true
   }
   return false
 }
