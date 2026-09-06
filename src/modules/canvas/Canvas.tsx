@@ -1259,9 +1259,15 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
 
   /* ── Input pen ─────────────────────────────────────────────────── */
 
-  /** Ujung belakang pen Wacom terbaca sebagai button 5 → jadi penghapus. */
+  /**
+   * Penghapus di pena: ujung belakang Wacom (button 5 / buttons 32), dan
+   * tombol samping S Pen yang ditahan (barrel: button 2 / buttons & 2) —
+   * Chrome Android melaporkannya sebagai tombol sekunder, bukan penghapus.
+   */
   function alatEfektif(e: React.PointerEvent): Alat {
-    if (e.pointerType === 'pen' && (e.button === 5 || e.buttons === 32)) return 'penghapus'
+    if (e.pointerType !== 'pen') return alat
+    if (e.button === 5 || (e.buttons & 32) !== 0) return 'penghapus'
+    if (e.button === 2 || (e.buttons & 2) !== 0) return 'penghapus'
     return alat
   }
 
@@ -1369,7 +1375,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       v.mulaiGeser(e)
       return
     }
-    if (e.button !== 0 && e.button !== 5) return
+    // Tombol 2 hanya diterima dari pena (tombol samping S Pen); klik kanan
+    // mouse tetap tidak menggambar apa pun.
+    if (e.button !== 0 && e.button !== 5 && !(e.button === 2 && e.pointerType === 'pen')) return
 
     // Kotak ketik yang terbuka ditutup oleh ketukan berikutnya di kanvas.
     // Dulu ini bersandar pada peristiwa blur, dan itu justru sumber
@@ -3240,6 +3248,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           onPointerMove={bergerak}
           onPointerUp={naik}
           onPointerCancel={naik}
+          // Tombol samping S Pen memicu menu konteks di Android; di kanvas ia
+          // adalah penghapus, bukan menu.
+          onContextMenu={(e) => e.preventDefault()}
           onPointerLeave={(e) => {
             kirim({ t: 'kursor', idKanvas, x: null })
             if (aktifCoretan.current && e.buttons === 0) naik(e)

@@ -139,6 +139,7 @@ export function Pengaturan() {
             <li>⌘ + scroll zoom</li>
             <li>Shift lock angle / square</li>
             <li>Hold pen still snap to shape</li>
+            <li>S Pen side button / Wacom back end erase</li>
           </ul>
         </section>
       </div>
