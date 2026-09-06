@@ -371,7 +371,10 @@ async fn cors(req: axum::extract::Request, next: axum::middleware::Next) -> Resp
 fn pasang_cors(h: &mut HeaderMap) {
     h.insert("access-control-allow-origin", "*".parse().unwrap());
     h.insert("access-control-allow-methods", "GET, POST, PUT, DELETE, OPTIONS".parse().unwrap());
-    h.insert("access-control-allow-headers", "content-type, x-exact-pin".parse().unwrap());
+    // Semua header kredensial: aplikasi Mac (asal tauri://localhost) mengirim
+    // x-exact-admin; tanpa ini preflight-nya gagal dan tiap aksi admin dari Mac
+    // ditolak browser sebelum sampai ke server.
+    h.insert("access-control-allow-headers", "content-type, x-exact-pin, x-exact-admin, x-exact-sesi".parse().unwrap());
     h.insert("access-control-max-age", "86400".parse().unwrap());
 }
 
