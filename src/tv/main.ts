@@ -285,7 +285,9 @@ function terima(p: PesanLangsung) {
   // merebut layar. Sumber pertama diambil dari siapa pun yang bersuara.
   const aktifDariPengirim = p.aktif !== false
   if (p.src !== sumber && !(aktifDariPengirim || sumber === null)) return
-  if (['pandangan', 'goresan', 'titik', 'instrumen', 'objek'].includes(p.t) && aktifDariPengirim) gantiSumber(p)
+  // Menghapus dan mengubah bentuk juga aktivitas: guru yang pindah dari tablet
+  // ke Mac lalu langsung menghapus harus tetap diikuti.
+  if (['pandangan', 'goresan', 'titik', 'instrumen', 'objek', 'ubah'].includes(p.t) && aktifDariPengirim) gantiSumber(p)
   else if (sumber === null) gantiSumber(p)
   if (p.src !== sumber) return
 
@@ -380,7 +382,18 @@ async function mulai() {
   mulaiSinkron({ url: wsUrl, pin, peran: 'tv', nama: `${namaPerangkat()} (TV)` })
   dengarkanLangsung(terima)
 
+  let serverDikenal: string | null = null
   useSinkron.subscribe((s) => {
+    // Aplikasi Mac dibuka ulang: halaman ini memuat ulang supaya selalu
+    // menjalankan versi yang sama dengan Mac-nya. TV tidak punya tombol reload
+    // yang gampang dijangkau, jadi ia mengurus dirinya sendiri.
+    if (s.server) {
+      if (serverDikenal && serverDikenal !== s.server) {
+        location.reload()
+        return
+      }
+      serverDikenal = s.server
+    }
     if (s.serverMati) tampilkanPesan('Sharing was turned off on the Mac.<small>Turn it on again in Settings → Share on this network.</small>')
     else if (s.status === 'menyambung') tampilkanStatus('Reconnecting…', true)
     else if (s.status === 'tersambung') {

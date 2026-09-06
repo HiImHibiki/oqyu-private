@@ -41,9 +41,11 @@ interface StoreSinkron {
   klien: Klien[]
   /** Server berhenti dari sisi Mac; jangan mencoba menyambung lagi. */
   serverMati: boolean
+  /** Penanda proses server; berganti tiap aplikasi Mac dibuka ulang. */
+  server: string | null
 }
 
-export const useSinkron = create<StoreSinkron>(() => ({ status: 'mati', klien: [], serverMati: false }))
+export const useSinkron = create<StoreSinkron>(() => ({ status: 'mati', klien: [], serverMati: false, server: null }))
 
 let ws: WebSocket | null = null
 let opsi: OpsiSinkron | null = null
@@ -71,7 +73,7 @@ function sambung() {
       return
     }
     if (p.t === 'klien') {
-      useSinkron.setState({ klien: (p.daftar as Klien[]) ?? [] })
+      useSinkron.setState({ klien: (p.daftar as Klien[]) ?? [], server: (p.server as string | undefined) ?? null })
       return
     }
     if (p.t === 'server-mati') {

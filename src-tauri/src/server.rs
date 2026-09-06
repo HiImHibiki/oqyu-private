@@ -43,6 +43,10 @@ pub struct Klien {
 pub struct Hub {
     pub pin: String,
     pub port: u16,
+    /// Penanda proses server ini. Klien yang melihatnya berganti tahu bahwa
+    /// aplikasi Mac dibuka ulang — mungkin dengan versi baru — dan memuat
+    /// ulang halamannya sendiri.
+    pub token: String,
     pub tx: broadcast::Sender<String>,
     pub klien: Mutex<Vec<Klien>>,
     pub app: AppHandle,
@@ -144,6 +148,7 @@ pub async fn share_start(app: AppHandle, pin: Option<String>) -> Result<InfoBerb
     let hub = Arc::new(Hub {
         pin: pin.filter(|p| p.len() == 4 && p.chars().all(|c| c.is_ascii_digit())).unwrap_or_else(pin_acak),
         port,
+        token: format!("{}-{}", env!("CARGO_PKG_VERSION"), pin_acak()),
         tx,
         klien: Mutex::new(Vec::new()),
         app: app.clone(),
@@ -477,7 +482,7 @@ async fn ws_masuk(
 
 fn siarkan_klien(hub: &Hub) {
     let daftar = hub.klien.lock().map(|k| k.clone()).unwrap_or_default();
-    let _ = hub.tx.send(json!({ "t": "klien", "daftar": daftar }).to_string());
+    let _ = hub.tx.send(json!({ "t": "klien", "daftar": daftar, "server": hub.token }).to_string());
 }
 
 async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
