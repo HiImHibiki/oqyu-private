@@ -54,7 +54,7 @@ export function DaftarHalaman({
   }, [aktif])
 
   return (
-    <div className="ex-card absolute bottom-3 right-3 flex flex-col p-1" style={{ width: LEBAR }}>
+    <div className="ex-card ex-bilah absolute bottom-3 right-3 flex flex-col p-1" style={{ width: LEBAR }}>
       <div className="flex items-center justify-between pl-2">
         <p className="ex-label py-1" style={{ color: 'var(--ink-faint)' }}>
           {jumlah} page{jumlah > 1 ? 's' : ''}

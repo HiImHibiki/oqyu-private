@@ -138,7 +138,7 @@ export function KanvasLayar() {
     <div className="relative h-full w-full">
       <Canvas idKanvas={aktif} judul={sekarang.title} />
 
-      <div className="ex-card absolute bottom-4 left-4 flex items-center gap-1 p-1">
+      <div className="ex-card ex-bilah absolute bottom-4 left-4 flex items-center gap-1 p-1">
         {ubahNama ? (
           <input
             ref={inputRef}

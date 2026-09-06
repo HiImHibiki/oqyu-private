@@ -16,6 +16,14 @@ import { toast } from '@/lib/toast'
 
 const label = windowLabel()
 
+// Layar sentuh (tablet Android/iPad): panel dan tombol dibesarkan lewat CSS.
+// Jari butuh sasaran yang lebih lapang daripada kursor, dan di tablet 11 inci
+// panel seukuran desktop terasa seperti mainan.
+if (typeof window !== 'undefined' && !inTauri) {
+  const sentuh = window.matchMedia?.('(pointer: coarse)').matches || /Android|iPad|iPhone/.test(navigator.userAgent)
+  if (sentuh) document.documentElement.classList.add('ex-sentuh')
+}
+
 export interface InfoBerbagi {
   url: string
   urlTv: string

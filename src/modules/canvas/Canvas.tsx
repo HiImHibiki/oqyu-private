@@ -3347,7 +3347,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         <IconButton
           nama="tampilkan"
           label="Show the panels (Esc or ⌘.)"
-          className="ex-card absolute left-4 top-4 z-10"
+          className="ex-card ex-bilah absolute left-4 top-4 z-10"
           onClick={() => setMenuTampil(true)}
         />
       )}
@@ -3361,7 +3361,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         menjawab "sedang pakai alat apa, warna apa": sisanya menunggu diminta.
       */}
       <div
-        className="ex-card absolute left-3 top-3 z-10 flex flex-col gap-1 p-1"
+        className="ex-card ex-bilah absolute left-3 top-3 z-10 flex flex-col gap-1 p-1"
         style={{ display: menuTampil ? undefined : 'none' }}
       >
         <IconButton
@@ -3369,6 +3369,15 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           label={`${infoAlat(alat).label} — tools and shapes`}
           aktif={panelAlat === 'alat'}
           onClick={() => bukaPanel('alat')}
+        />
+        {/* Penghapus punya tombolnya sendiri tepat di bawah alat: berganti
+            pena ↔ penghapus adalah gerakan yang paling sering dilakukan, dan
+            di tablet membuka panel dulu terasa dua ketukan kelebihan. */}
+        <IconButton
+          nama="penghapus"
+          label={alat === 'penghapus' ? 'Back to the pen' : 'Eraser'}
+          aktif={alat === 'penghapus'}
+          onClick={() => setAlat(alat === 'penghapus' ? alatTulisTerakhir.current : 'penghapus')}
         />
         <button
           type="button"
@@ -3453,7 +3462,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           daftar lapisan pada layar pendek tetap bisa digulung, bukan terpotong. */}
       {menuTampil && panelAlat && (
         <div
-          className="ex-card absolute z-10 flex flex-col gap-2 p-2"
+          className="ex-card ex-bilah absolute z-10 flex flex-col gap-2 p-2"
           style={{
             left: 62,
             top: 12,

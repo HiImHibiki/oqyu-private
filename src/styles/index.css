@@ -276,6 +276,12 @@
 
 .ex-dimmable { transition: filter 4s linear; }
 
+/* Tablet: semua bilah kanvas diperbesar. `zoom` ikut menskalakan posisi
+   (left/top) dan ikon SVG-nya, jadi tata letaknya tetap utuh. */
+html.ex-sentuh .ex-bilah { zoom: 1.45; }
+html.ex-sentuh .ex-btn { min-height: 34px; }
+html.ex-sentuh input[type="range"] { height: 28px; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
