@@ -89,6 +89,9 @@ let instrumen: Instrumen | null = null
 let kursor: { x: number; y: number } | null = null
 let kotorDasar = true
 let kotorAktif = true
+/** Siaran 'ubah' untuk sketsa yang sedang dimuat; diterapkan begitu selesai. */
+const ubahTertunda = new Map<string, PesanLangsung[]>()
+let sedangMemuat: string | null = null
 let timerMuat: number | null = null
 let timerStatus: number | null = null
 
@@ -251,6 +254,7 @@ function bingkai() {
 /* ── Data ──────────────────────────────────────────────────────────── */
 
 async function muatSketsa(id: string) {
+  sedangMemuat = id
   try {
     // Versi ringan: gambar tempelan diganti URL yang di-cache browser, jadi
     // yang lewat Wi-Fi tiap muat ulang hanya goresannya — bukan puluhan MB PDF.
@@ -272,8 +276,14 @@ async function muatSketsa(id: string) {
     hitungTampilan()
     kotorDasar = true
     kotorAktif = true
+    // Siaran yang tiba selagi memuat diterapkan sekarang, urut kedatangan.
+    const antre = ubahTertunda.get(id) ?? []
+    ubahTertunda.delete(id)
+    for (const p of antre) terima(p)
   } catch (e) {
     tampilkanStatus(`Could not load the sketch: ${e instanceof Error ? e.message : String(e)}`, true)
+  } finally {
+    if (sedangMemuat === id) sedangMemuat = null
   }
 }
 
@@ -370,12 +380,14 @@ function terima(p: PesanLangsung) {
       break
     }
     case 'goresan': {
+      if (p.idKanvas && p.idKanvas !== idSketsa) break
       const c = p.c as Coretan
       goresanHidup.set(c.id, { ...c, points: [...c.points] })
       kotorAktif = true
       break
     }
     case 'titik': {
+      if (p.idKanvas && p.idKanvas !== idSketsa) break
       let c = goresanHidup.get(p.id as string)
       if (!c && p.meta) {
         c = { ...(p.meta as Omit<Coretan, 'points'>), points: [] }
@@ -409,6 +421,17 @@ function terima(p: PesanLangsung) {
       break
     case 'ubah': {
       // Hapusan dan perubahan diterapkan seketika; berkas penuh menyusul.
+      // Siaran untuk sketsa lain: kalau sketsa itu sedang dimuat (guru baru
+      // berpindah), tahan dan terapkan sesudahnya; kalau bukan, abaikan.
+      const idUbah = p.idKanvas as string | undefined
+      if (idUbah && idUbah !== idSketsa) {
+        if (idUbah === sedangMemuat) {
+          const antre = ubahTertunda.get(idUbah) ?? []
+          antre.push(p)
+          ubahTertunda.set(idUbah, antre)
+        }
+        break
+      }
       if (!sketsa) break
       const hapus = (p.hapus ?? {}) as { coretan?: string[]; objek?: string[]; teks?: string[]; gambar?: string[] }
       const tambah = (p.tambah ?? {}) as { coretan?: Coretan[]; objek?: Objek[]; gambar?: Gambar[] }

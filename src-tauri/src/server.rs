@@ -251,7 +251,32 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/api/kelas/foto/{nama}", get(crate::kelas::api_foto))
         .route("/ws", get(ws_masuk))
         .fallback(aset_lain)
+        .layer(axum::middleware::from_fn(cors))
         .with_state(hub)
+}
+
+/// Izinkan permintaan lintas-asal.
+///
+/// Aplikasi Mac sendiri memanggil server ini dari asal `tauri://localhost`,
+/// dan tanpa header ini browser di dalamnya menolak jawabannya diam-diam —
+/// foto pertanyaan tidak pernah sampai ke kanvas guru. PIN tetap yang
+/// menjaga pintunya; asal boleh siapa saja.
+async fn cors(req: axum::extract::Request, next: axum::middleware::Next) -> Response {
+    if req.method() == axum::http::Method::OPTIONS {
+        let mut r = StatusCode::NO_CONTENT.into_response();
+        pasang_cors(r.headers_mut());
+        return r;
+    }
+    let mut r = next.run(req).await;
+    pasang_cors(r.headers_mut());
+    r
+}
+
+fn pasang_cors(h: &mut HeaderMap) {
+    h.insert("access-control-allow-origin", "*".parse().unwrap());
+    h.insert("access-control-allow-methods", "GET, POST, PUT, DELETE, OPTIONS".parse().unwrap());
+    h.insert("access-control-allow-headers", "content-type, x-exact-pin".parse().unwrap());
+    h.insert("access-control-max-age", "86400".parse().unwrap());
 }
 
 #[derive(Deserialize)]
