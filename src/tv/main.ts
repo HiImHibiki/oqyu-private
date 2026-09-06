@@ -16,6 +16,8 @@ import {
   gambarCoretan,
   gambarTeks,
   gambarTempelan,
+  kotakCoretan,
+  kotakGambar,
   muatGambar,
   warnaToken,
   type BerkasKanvas,
@@ -203,13 +205,25 @@ function gambarDasar() {
   }
 
   const lapisan = sketsa.layers
+  // Hanya yang terlihat di layar yang digambar. Sketsa 40 halaman PDF punya
+  // 40 gambar besar; menggambar semuanya tiap perubahan menyedot CPU dan
+  // baterai HP untuk piksel yang tidak pernah tampil.
+  const x1 = -x / skala
+  const y1 = -y / skala
+  const x2 = x1 + w / skala
+  const y2 = y1 + h / skala
+  const terlihat = (k: { x1: number; y1: number; x2: number; y2: number }) => k.x2 >= x1 && k.x1 <= x2 && k.y2 >= y1 && k.y1 <= y2
   for (const g of sketsa.images ?? []) {
-    if (!tampak(lapisan, g.layer)) continue
+    if (!tampak(lapisan, g.layer) || !terlihat(kotakGambar(g))) continue
     gambarTempelan(ctx, g, () => {
       kotorDasar = true
     })
   }
-  for (const c of sketsa.strokes) if (tampak(lapisan, c.layer)) gambarCoretan(ctx, c)
+  for (const c of sketsa.strokes) {
+    if (!tampak(lapisan, c.layer)) continue
+    if (c.points.length > 2 && !terlihat(kotakCoretan(c))) continue
+    gambarCoretan(ctx, c)
+  }
   const fontLabel = `${Math.max(13, 14 / skala)}px ui-monospace, monospace`
   for (const o of sketsa.objects ?? []) if (tampak(lapisan, o.layer)) gambarObjek(ctx, o, warnaToken(o.color), fontLabel)
   for (const t of sketsa.texts ?? []) if (tampak(lapisan, t.layer)) gambarTeks(ctx, t)
