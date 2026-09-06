@@ -117,12 +117,14 @@ export function PanelKelas({
           )}
           {murid.map((m) => {
             const k = hadir.get(m.id)
-            const warna = !k ? 'var(--ink-faint)' : k.fokus ? 'var(--up)' : 'var(--down)'
+            const warna = !k ? 'var(--ink-faint)' : k.tunggu ? 'var(--accent-2)' : k.fokus ? 'var(--up)' : 'var(--down)'
             const judul = !k
               ? 'Offline'
-              : k.fokus
-                ? `On the board${k.keluar ? ` · left ${k.keluar}×` : ''}`
-                : `Left the page · ${k.keluar}×`
+              : k.tunggu
+                ? 'Waiting — screen dimmed or phone locked on purpose'
+                : k.fokus
+                  ? `On the board${k.keluar ? ` · left ${k.keluar}×` : ''}`
+                  : `Left the page · ${k.keluar}×`
             return (
               <div key={m.id} className="flex items-center gap-2" title={judul}>
                 <span
@@ -154,7 +156,8 @@ export function PanelKelas({
             )
           })}
           <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
-            Green: watching the board. Red: left the page (count shows how often). Grey: offline.
+            Green: watching the board. Blue: waiting with the screen dimmed (allowed). Red: left the
+            page (count shows how often). Grey: offline.
           </p>
         </div>
       )}

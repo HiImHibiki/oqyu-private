@@ -576,23 +576,50 @@ async function mulai() {
     kotorAktif = true
   })
 
-  // Layar TV tidak boleh tidur di tengah pelajaran.
-  try {
-    const n = navigator as Navigator & { wakeLock?: { request: (t: 'screen') => Promise<unknown> } }
-    await n.wakeLock?.request('screen')
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') void n.wakeLock?.request('screen')
-    })
-  } catch {
-    /* tidak didukung — pengaturan hemat daya TV yang menentukan */
-  }
+  // Layar tidak boleh tidur di tengah pelajaran — kecuali murid sengaja
+  // memilih mode menunggu, yang melepasnya supaya HP boleh terkunci.
+  await mintaWakeLock()
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && !modeTunggu) void mintaWakeLock()
+  })
 
   requestAnimationFrame(bingkai)
 }
 
 void mulai()
 
+/* ── Wake lock ─────────────────────────────────────────────────────── */
+
+type Sentinel = { release: () => Promise<void> }
+let sentinel: Sentinel | null = null
+
+async function mintaWakeLock() {
+  try {
+    const n = navigator as Navigator & { wakeLock?: { request: (t: 'screen') => Promise<Sentinel> } }
+    sentinel = (await n.wakeLock?.request('screen')) ?? null
+  } catch {
+    /* tidak didukung — pengaturan hemat daya perangkat yang menentukan */
+  }
+}
+
+async function lepasWakeLock() {
+  try {
+    await sentinel?.release()
+  } catch {
+    /* sudah lepas */
+  }
+  sentinel = null
+}
+
 /* ── Murid (HP) ────────────────────────────────────────────────────── */
+
+/**
+ * Mode menunggu: layar dihitamkan dan wake lock dilepas, jadi HP boleh
+ * meredup atau terkunci sendiri sambil menunggu giliran. Guru melihatnya
+ * sebagai lampu biru, bukan merah. Berakhir saat pertanyaannya dibahas,
+ * saat status antreannya berubah jadi "dibahas", atau saat layar diketuk.
+ */
+let modeTunggu = false
 
 const el = (id: string) => document.getElementById(id) as HTMLElement
 
@@ -670,6 +697,10 @@ async function segarkanSaya() {
     }
     tanyaSaya = r.tanya
     perbaruiStatusSaya()
+    if (modeTunggu) {
+      if (tanyaSaya?.status === 'dibahas') void keluarModeTunggu('Your question is being discussed — look at the board', true)
+      else el('tunggu-antrean').textContent = tanyaSaya ? `Queue position #${tanyaSaya.urutan ?? '?'}` : 'No question in the queue'
+    }
   } catch {
     /* jaringan sedang putus — coba lagi di siklus berikutnya */
   }
@@ -757,6 +788,14 @@ function pasangBilahMurid() {
     lembar.classList.remove('tampil')
     void kirimTanya(teks.value, fotoData)
   }
+  el('tombol-tunggu').onclick = () => void masukModeTunggu()
+  el('tunggu').onclick = () => void keluarModeTunggu('Back on the board.')
+  // Izin notifikasi diminta di sini, saat masih ada ketukan pengguna di sesi ini.
+  try {
+    if ('Notification' in window && Notification.permission === 'default') void Notification.requestPermission()
+  } catch {
+    /* abaikan */
+  }
   el('tombol-paham').onclick = () => {
     if (!tanyaSaya) return
     void api('/api/kelas/ubah', { method: 'POST', json: { id: tanyaSaya.id, status: 'selesai' } })
@@ -770,7 +809,7 @@ function pasangBilahMurid() {
 
   // Lampu pengawasan: halaman disembunyikan (pindah aplikasi, layar dikunci)
   // atau kehilangan fokus dilaporkan ke guru. Hanya sinyal, bukan kunci.
-  const lapor = () => kirim({ t: 'fokus', aktif: document.visibilityState === 'visible' && document.hasFocus() })
+  const lapor = () => kirim({ t: 'fokus', aktif: document.visibilityState === 'visible' && document.hasFocus(), tunggu: modeTunggu })
   document.addEventListener('visibilitychange', lapor)
   window.addEventListener('blur', lapor)
   window.addEventListener('focus', lapor)
@@ -812,6 +851,18 @@ function terimaBahas(t: { murid: string; nama: string; anggota?: string[]; grup?
   if (!punyaku && !segrup) return
   // Langsung ikuti perangkat guru yang membahas — tidak menunggu ia bergerak.
   bebas = false
+  const teksKabar = punyaku
+    ? 'Your question is being discussed — look at the board'
+    : `${t.nama}'s question is being discussed${t.grup ? ` (${t.grup})` : ''} — look at the board`
+  if (modeTunggu) void keluarModeTunggu(teksKabar, true)
+  // Halaman di latar belakang (HP terkunci tapi masih hidup): notifikasi sistem.
+  try {
+    if (document.visibilityState !== 'visible' && 'Notification' in window && Notification.permission === 'granted') {
+      new Notification('Exact Canvas', { body: teksKabar, tag: 'bahas' })
+    }
+  } catch {
+    /* abaikan */
+  }
   if (t.editor) {
     sumberPaksa = t.editor
     if (sumber !== t.editor) {
@@ -937,4 +988,32 @@ function pasangGestur() {
     },
     { passive: false },
   )
+}
+
+async function masukModeTunggu() {
+  if (modeTunggu) return
+  modeTunggu = true
+  el('tunggu').classList.add('tampil')
+  el('tunggu-antrean').textContent = tanyaSaya ? `Queue position #${tanyaSaya.urutan ?? '?'}` : 'No question in the queue'
+  kirim({ t: 'fokus', aktif: true, tunggu: true })
+  await lepasWakeLock()
+}
+
+async function keluarModeTunggu(pesan: string, bunyikan = false) {
+  if (!modeTunggu) return
+  modeTunggu = false
+  el('tunggu').classList.remove('tampil')
+  kirim({ t: 'fokus', aktif: document.visibilityState === 'visible', tunggu: false })
+  await mintaWakeLock()
+  if (bunyikan) {
+    bunyi('bahas')
+    try {
+      navigator.vibrate?.([120, 60, 120, 60, 200])
+    } catch {
+      /* tidak didukung */
+    }
+  }
+  tampilkanStatus(pesan)
+  kotorDasar = true
+  kotorAktif = true
 }

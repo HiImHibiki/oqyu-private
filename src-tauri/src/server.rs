@@ -48,6 +48,8 @@ pub struct Klien {
     pub fokus: bool,
     /// Berapa kali meninggalkan halaman sejak tersambung.
     pub keluar: i64,
+    /// Murid sengaja meredupkan/mengunci HP sambil menunggu giliran — bukan kabur.
+    pub tunggu: bool,
 }
 
 pub struct Hub {
@@ -667,6 +669,7 @@ async fn ws_masuk(
         murid: q.murid.unwrap_or_default(),
         fokus: true,
         keluar: 0,
+        tunggu: false,
     };
     ws.on_upgrade(move |soket| layani(soket, hub, klien))
 }
@@ -704,10 +707,13 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
                                     if let Some(me) = k.iter_mut().find(|x| x.id == id) {
                                         if jenis == "fokus" {
                                             let aktif = v.get("aktif").and_then(|x| x.as_bool()).unwrap_or(true);
-                                            if me.fokus && !aktif {
+                                            let tunggu = v.get("tunggu").and_then(|x| x.as_bool()).unwrap_or(false);
+                                            // Meninggalkan halaman saat mode menunggu tidak dihitung kabur.
+                                            if me.fokus && !aktif && !tunggu {
                                                 me.keluar += 1;
                                             }
-                                            me.fokus = aktif;
+                                            me.fokus = aktif || tunggu;
+                                            me.tunggu = tunggu;
                                         } else if let Some(r) = v.get("ruang").and_then(|x| x.as_i64()) {
                                             me.ruang = r.clamp(1, 9);
                                         }

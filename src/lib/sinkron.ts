@@ -18,6 +18,7 @@ export interface Klien {
   murid: string
   fokus: boolean
   keluar: number
+  tunggu: boolean
 }
 
 export interface PesanLangsung {

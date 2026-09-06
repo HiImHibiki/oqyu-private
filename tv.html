@@ -60,6 +60,13 @@
       #kabar { position: absolute; left: 12px; right: 12px; top: 12px; padding: 12px 14px; border-radius: 12px; background: var(--accent); color: #fff; font-size: 16px;
         text-align: center; transform: translateY(-140%); transition: transform 300ms; pointer-events: none; box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
       #kabar.tampil { transform: none; }
+      #tunggu { position: absolute; inset: 0; display: none; place-items: center; text-align: center; background: #000; color: #666; padding: 32px; }
+      #tunggu.tampil { display: grid; }
+      #tunggu .bulan { font-size: 40px; margin-bottom: 12px; }
+      #tunggu .judul { font-size: 18px; color: #999; }
+      #tunggu .sub { font-size: 14px; line-height: 1.5; margin-top: 8px; }
+      #tunggu #tunggu-antrean { margin-top: 18px; font-size: 15px; color: #8a8; }
+      #bilah #tombol-tunggu { flex: 0 0 auto; padding: 11px 14px; }
       #ikuti { position: absolute; right: 12px; top: 12px; padding: 10px 14px; border-radius: 999px; border: 0; background: var(--accent); color: #fff;
         font: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
       .hp #aktif { touch-action: none; }
@@ -78,6 +85,15 @@
       <button id="tombol-tangan">✋ Raise hand</button>
       <button id="tombol-tanya" class="utama">❓ Ask</button>
       <button id="tombol-paham" disabled>✅ Got it</button>
+      <button id="tombol-tunggu" title="Dim the screen or lock the phone until the teacher gets to you">🌙</button>
+    </div>
+    <div id="tunggu">
+      <div>
+        <div class="bulan">🌙</div>
+        <div class="judul">Waiting for the teacher</div>
+        <div class="sub">You can lock your phone. It will ring when your question comes up.<br>Tap anywhere to go back.</div>
+        <div id="tunggu-antrean"></div>
+      </div>
     </div>
     <div id="lembar">
       <div class="isi">
