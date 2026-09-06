@@ -66,6 +66,29 @@ export function simpanAdmin(sandi: string): void {
   }
 }
 
+/** Sesi akun murid: token acak dari server, pengganti PIN di HP. */
+const KUNCI_SESI = 'exact-canvas-sesi'
+let sesiMemori: string | null = null
+
+export function sesiAktif(): string {
+  if (sesiMemori) return sesiMemori
+  try {
+    return localStorage.getItem(KUNCI_SESI) ?? ''
+  } catch {
+    return ''
+  }
+}
+
+export function simpanSesi(token: string): void {
+  sesiMemori = token
+  try {
+    if (token) localStorage.setItem(KUNCI_SESI, token)
+    else localStorage.removeItem(KUNCI_SESI)
+  } catch {
+    /* abaikan */
+  }
+}
+
 export function setAlamatServer(alamat: string, pin?: string, admin?: string): void {
   alamatDasar = alamat.replace(/\/$/, '')
   if (pin) pinMemori = pin
@@ -79,8 +102,11 @@ export function alamatServer(): string {
 /** URL lengkap untuk <img>/tautan yang tidak bisa membawa header PIN. */
 export function urlDenganPin(path: string): string {
   const pemisah = path.includes('?') ? '&' : '?'
-  const admin = adminAktif()
-  return `${alamatDasar}${path}${pemisah}pin=${encodeURIComponent(pinAktif())}${admin ? `&admin=${encodeURIComponent(admin)}` : ''}`
+  const bagian: string[] = []
+  if (pinAktif()) bagian.push(`pin=${encodeURIComponent(pinAktif())}`)
+  if (sesiAktif()) bagian.push(`sesi=${encodeURIComponent(sesiAktif())}`)
+  if (adminAktif()) bagian.push(`admin=${encodeURIComponent(adminAktif())}`)
+  return `${alamatDasar}${path}${bagian.length ? pemisah + bagian.join('&') : ''}`
 }
 
 export class GalatApi extends Error {
@@ -96,7 +122,11 @@ export async function api<T>(
   path: string,
   init: { method?: string; body?: BodyInit; json?: unknown } = {},
 ): Promise<T> {
-  const headers: Record<string, string> = { 'x-exact-pin': pinAktif() }
+  const headers: Record<string, string> = {}
+  const pin = pinAktif()
+  if (pin) headers['x-exact-pin'] = pin
+  const sesi = sesiAktif()
+  if (sesi) headers['x-exact-sesi'] = sesi
   const admin = adminAktif()
   if (admin) headers['x-exact-admin'] = admin
   let body = init.body

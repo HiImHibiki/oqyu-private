@@ -8,7 +8,7 @@
  * Mac di depan kelas, atau tablet yang dibawa berkeliling.
  */
 
-import { api, pinTersimpan, namaPerangkat, simpanPin } from '@/lib/api'
+import { api, pinTersimpan, namaPerangkat, sesiAktif, simpanPin, simpanSesi } from '@/lib/api'
 import { dengarkanLangsung, kirim, mulaiSinkron, useSinkron, type PesanLangsung } from '@/lib/sinkron'
 import { bunyi } from '@/lib/kelas'
 import { JARAK_HALAMAN, kertasDari, kotakHalaman } from '@/modules/canvas/kertas'
@@ -54,20 +54,11 @@ let ruangSaya = Number(params.get('ruang')) || 1
  * `murid=1` jadi tidak pernah melihat pilihan ini.
  */
 const perluPilih = params.get('tv') !== '1' && params.get('murid') !== '1' && !window.matchMedia('(pointer: coarse)').matches
-/** Id murid, dibuat sekali per HP dan diingat. */
-const muridId = (() => {
-  if (!sebagaiMurid && !perluPilih) return ''
-  try {
-    let id = localStorage.getItem('exact-murid-id')
-    if (!id) {
-      id = `m${Math.random().toString(36).slice(2, 10)}`
-      localStorage.setItem('exact-murid-id', id)
-    }
-    return id
-  } catch {
-    return `m${Math.random().toString(36).slice(2, 10)}`
-  }
-})()
+/**
+ * Id murid = id akunnya, bukan perangkatnya: ganti HP tetap orang yang sama,
+ * kanvas "Tanya · Nama" dan antreannya ikut. Diisi setelah masuk.
+ */
+let muridId = ''
 let namaSaya = ''
 /** Apa yang diikuti: null = ruangan sendiri, 'ruang:N' | 'editor:id' | 'sketsa:id'. */
 let arah: string | null = null
@@ -419,6 +410,17 @@ function terima(p: PesanLangsung) {
     terimaBahas(p.tanya as { murid: string; nama: string; anggota?: string[]; grup?: string | null })
     return
   }
+  if (p.t === 'izin') {
+    if (p.murid === muridId) terapkanIzin(p.boleh === true, (p.sketsa as string | null) ?? null)
+    return
+  }
+  if (p.dariMurid) {
+    // Goresan murid berizin di kanvasnya: tampil di semua layar yang sedang
+    // membuka kanvas itu, tanpa mengubah siapa yang diikuti.
+    if (p.idKanvas !== idSketsa) return
+    if (p.t === 'titik' || p.t === 'goresan-selesai' || p.t === 'ubah') terapkanPesan(p)
+    return
+  }
   if (!bolehIkuti(p.src)) return
   if (kanvasSaya && typeof p.idKanvas === 'string' && p.idKanvas !== kanvasSaya) {
     // Guru sedang di kanvas anak lain: tetap di kanvas saya, tawarkan tombol ikut.
@@ -435,11 +437,18 @@ function terima(p: PesanLangsung) {
   else if (sumber === null) gantiSumber(p)
   if (p.src !== sumber) return
 
-  if (bebas && (p.t === 'goresan' || p.t === 'instrumen' || p.t === 'objek') && p.src === sumber) {
+  if (bebas && !modeCoret && (p.t === 'goresan' || p.t === 'instrumen' || p.t === 'objek') && p.src === sumber) {
     // Guru sedang menjelaskan: penjelajahan sendiri berakhir, ikut ke area guru.
     kembaliIkuti()
   }
+  // Sedang mencoret sendiri: pandangan guru tidak menggeser layar ini.
+  if (modeCoret && p.t === 'pandangan') return
 
+  terapkanPesan(p)
+}
+
+/** Terapkan satu pesan langsung ke keadaan gambar. */
+function terapkanPesan(p: PesanLangsung) {
   switch (p.t) {
     case 'pandangan': {
       pandanganSumber = { tampilan: p.tampilan as Tampilan, layar: p.layar as { w: number; h: number } }
@@ -538,19 +547,6 @@ function terima(p: PesanLangsung) {
 /* ── Mulai ─────────────────────────────────────────────────────────── */
 
 async function mulai() {
-  // PIN dari tautan/QR; kalau tidak ada (mis. dibuka lewat alamat publik
-  // tanpa tautan), tanyakan — dan ulangi sampai server menerimanya.
-  let pin = pinTersimpan()
-  for (;;) {
-    if (!pin) pin = await mintaPin(false)
-    try {
-      await api('/api/vault')
-      break
-    } catch {
-      pin = await mintaPin(true)
-    }
-  }
-
   if (perluPilih) {
     const pilihan = await layarPilih()
     if (pilihan === 'murid') sebagaiMurid = true
@@ -559,9 +555,25 @@ async function mulai() {
       ruangSaya = pilihan
     }
   }
+  let pin = ''
   if (sebagaiMurid) {
+    // Murid masuk dengan akun; PIN kelas hanya diketik sekali saat mendaftar
+    // dan tidak pernah ada di alamat HP-nya.
     document.documentElement.classList.add('hp')
+    await layarAkun()
     await layarMasuk()
+  } else {
+    // TV tidak bisa mengetik: tautannya membawa PIN, atau diminta sekali.
+    pin = pinTersimpan() ?? ''
+    for (;;) {
+      if (!pin) pin = await mintaPin(false)
+      try {
+        await api('/api/vault')
+        break
+      } catch {
+        pin = await mintaPin(true)
+      }
+    }
   }
 
   const wsUrl = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`
@@ -572,11 +584,14 @@ async function mulai() {
     nama: sebagaiMurid ? namaSaya : `${namaPerangkat()} (TV)`,
     ruang: ruangSaya,
     murid: muridId || undefined,
+    sesi: sebagaiMurid ? sesiAktif() : undefined,
   })
   dengarkanLangsung(terima)
   if (sebagaiMurid) {
     pasangBilahMurid()
     pasangGestur()
+    pasangCoret()
+    pasangRuangan()
     void segarkanSaya()
     window.setInterval(() => void segarkanSaya(), 20_000)
   }
@@ -638,7 +653,6 @@ async function mulai() {
   requestAnimationFrame(bingkai)
 }
 
-void mulai()
 
 /* ── Wake lock ─────────────────────────────────────────────────────── */
 
@@ -675,22 +689,186 @@ let modeTunggu = false
 
 const el = (id: string) => document.getElementById(id) as HTMLElement
 
-/** Layar masuk: nama dan ruangan; selesai saat server mencatatnya. */
+type Akun = { id: string; nama: string; hp: string; disetujui?: boolean }
+
+/**
+ * Akun yang belum diterima guru menunggu di sini, bertanya tiap beberapa
+ * detik. Tanpa langkah ini siapa pun yang tahu PIN bisa masuk kelas.
+ */
+async function tungguPersetujuan(a: Akun): Promise<void> {
+  if (a.disetujui) return
+  const kotak = el('setuju')
+  el('setuju-siapa').textContent = `${a.nama} · ${a.hp}`
+  el('setuju-teks').textContent = 'Your account is registered. The teacher needs to accept it in the Class panel before you can join — this screen continues by itself.'
+  el('setuju-keluar').onclick = () => void keluarAkun()
+  kotak.classList.add('tampil')
+  for (;;) {
+    await new Promise((r) => setTimeout(r, 4000))
+    try {
+      const b = await api<Akun>('/api/akun/saya')
+      if (b.disetujui) break
+    } catch (err) {
+      // Ditolak guru: akunnya hilang, mulai lagi dari layar akun.
+      if ((err as { status?: number }).status === 401) {
+        simpanSesi('')
+        kotak.classList.remove('tampil')
+        tampilkanStatus('Your registration was not accepted. Ask the teacher.', true)
+        await layarAkun()
+        return
+      }
+    }
+  }
+  kotak.classList.remove('tampil')
+  bunyi('bahas')
+}
+
+/**
+ * Layar akun: masuk dengan nomor HP + sandi, atau daftar (nama, HP, sandi,
+ * konfirmasi, kode kelas). Sesi yang masih berlaku melewati layar ini.
+ */
+async function layarAkun(): Promise<void> {
+  if (sesiAktif()) {
+    try {
+      const a = await api<Akun>('/api/akun/saya')
+      muridId = a.id
+      namaSaya = a.nama
+      await tungguPersetujuan(a)
+      return
+    } catch {
+      simpanSesi('')
+    }
+  }
+  await new Promise<void>((selesai) => {
+    const kotak = el('akun')
+    const form = el('form-akun') as HTMLFormElement
+    const nama = el('akun-nama') as HTMLInputElement
+    const hp = el('akun-hp') as HTMLInputElement
+    const sandi = el('akun-sandi') as HTMLInputElement
+    const ulang = el('akun-ulang') as HTMLInputElement
+    const kode = el('akun-kode') as HTMLInputElement
+    const galat = el('akun-galat')
+    const kirim = el('akun-kirim') as HTMLButtonElement
+    const catatan = el('akun-catatan')
+    let daftar = false
+    const pasangTab = () => {
+      el('tab-masuk').classList.toggle('aktif', !daftar)
+      el('tab-daftar').classList.toggle('aktif', daftar)
+      nama.hidden = !daftar
+      ulang.hidden = !daftar
+      kode.hidden = !daftar
+      nama.required = daftar
+      ulang.required = daftar
+      kode.required = daftar
+      sandi.autocomplete = daftar ? 'new-password' : 'current-password'
+      kirim.textContent = daftar ? 'Create account' : 'Sign in'
+      catatan.textContent = daftar
+        ? 'The class code is the PIN the teacher shows on the board. You only need it once.'
+        : 'Your phone number is your username. Forgot the password? Ask the teacher to reset it.'
+      galat.textContent = ''
+    }
+    el('tab-masuk').onclick = () => {
+      daftar = false
+      pasangTab()
+    }
+    el('tab-daftar').onclick = () => {
+      daftar = true
+      pasangTab()
+    }
+    try {
+      hp.value = localStorage.getItem('exact-murid-hp') ?? ''
+    } catch {
+      /* abaikan */
+    }
+    pasangTab()
+    kotak.classList.add('tampil')
+    form.onsubmit = async (e) => {
+      e.preventDefault()
+      galat.textContent = ''
+      if (daftar && sandi.value !== ulang.value) {
+        galat.textContent = 'The two passwords are different.'
+        return
+      }
+      kirim.disabled = true
+      try {
+        const a = daftar
+          ? await api<Akun & { token: string }>('/api/akun/daftar', {
+              method: 'POST',
+              json: { nama: nama.value.trim(), hp: hp.value.trim(), sandi: sandi.value, kode: kode.value.trim() },
+            })
+          : await api<Akun & { token: string }>('/api/akun/masuk', {
+              method: 'POST',
+              json: { hp: hp.value.trim(), sandi: sandi.value },
+            })
+        simpanSesi(a.token)
+        muridId = a.id
+        namaSaya = a.nama
+        try {
+          localStorage.setItem('exact-murid-hp', a.hp)
+        } catch {
+          /* abaikan */
+        }
+        kotak.classList.remove('tampil')
+        await tungguPersetujuan(a)
+        selesai()
+      } catch (err) {
+        galat.textContent = err instanceof Error ? err.message : String(err)
+      } finally {
+        kirim.disabled = false
+      }
+    }
+  })
+}
+
+/** Keluar dari akun di HP ini dan mulai lagi dari layar masuk. */
+async function keluarAkun() {
+  try {
+    await api('/api/akun/keluar', { method: 'POST' })
+  } catch {
+    /* sesi sudah tidak ada */
+  }
+  simpanSesi('')
+  location.reload()
+}
+
+/** Tombol "Room N ▾": anak pindah ruangan tanpa memuat ulang. */
+function pasangRuangan() {
+  const b = el('tombol-ruang')
+  const label = () => (b.textContent = `Room ${ruangSaya} ▾`)
+  label()
+  b.hidden = false
+  b.onclick = async () => {
+    const lama = ruangSaya
+    await layarMasuk()
+    label()
+    if (ruangSaya === lama) return
+    // Server memindahkan catatan klien ini; layar mulai mengikuti guru di
+    // ruangan baru dari nol.
+    kirim({ t: 'ruang', ruang: ruangSaya })
+    if (!kanvasSaya) {
+      sumber = null
+      sumberPaksa = null
+      goresanHidup.clear()
+      kursor = null
+      kotorAktif = true
+    }
+    tampilkanStatus(`Moved to room ${ruangSaya}`)
+  }
+}
+
+/** Layar masuk: pilih ruangan; selesai saat server mencatatnya. */
 function layarMasuk(): Promise<void> {
   return new Promise((selesai) => {
     const masuk = el('masuk')
     const form = el('form-masuk') as HTMLFormElement
-    const nama = el('nama-masuk') as HTMLInputElement
     const ruangan = el('ruangan-masuk')
-    let namaLama = ''
     let ruangLama = ruangSaya
     try {
-      namaLama = localStorage.getItem('exact-murid-nama') ?? ''
       ruangLama = Number(localStorage.getItem('exact-murid-ruang')) || ruangSaya
     } catch {
       /* abaikan */
     }
-    nama.value = namaLama
+    el('masuk-siapa').textContent = `Hi, ${namaSaya}`
+    el('masuk-keluar').onclick = () => void keluarAkun()
     ruangan.innerHTML = [1, 2, 3]
       .map(
         (r) =>
@@ -700,8 +878,7 @@ function layarMasuk(): Promise<void> {
     masuk.classList.add('tampil')
     form.onsubmit = async (e) => {
       e.preventDefault()
-      const n = nama.value.trim()
-      if (!n) return
+      const n = namaSaya
       const r = Number((form.querySelector('input[name=ruang]:checked') as HTMLInputElement | null)?.value) || 1
       // Ketukan ini sekaligus membuka izin audio (untuk bunyi "dibahas") dan
       // meminta layar penuh — dua hal yang browser hanya izinkan dari ketukan.
@@ -719,10 +896,8 @@ function layarMasuk(): Promise<void> {
         tampilkanStatus(`Could not join: ${err instanceof Error ? err.message : String(err)}`, true)
         return
       }
-      namaSaya = n
       ruangSaya = r
       try {
-        localStorage.setItem('exact-murid-nama', n)
         localStorage.setItem('exact-murid-ruang', String(r))
       } catch {
         /* abaikan */
@@ -737,9 +912,13 @@ function layarMasuk(): Promise<void> {
 async function segarkanSaya() {
   if (!sebagaiMurid) return
   try {
-    const r = await api<{ grup: { id: string; nama: string; target: string | null } | null; tanya: { id: string; status: string; urutan?: number } | null }>(
-      `/api/kelas/saya?murid=${encodeURIComponent(muridId)}`,
-    )
+    const r = await api<{
+      grup: { id: string; nama: string; target: string | null } | null
+      tanya: { id: string; status: string; urutan?: number } | null
+      boleh?: boolean
+      sketsa?: string | null
+    }>(`/api/kelas/saya?murid=${encodeURIComponent(muridId)}`)
+    terapkanIzin(r.boleh === true, r.sketsa ?? null)
     const arahBaru = r.grup?.target ?? null
     if (arahBaru !== arah) {
       arah = arahBaru
@@ -1040,10 +1219,21 @@ function pasangGestur() {
   aktif.addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return
     aktif.setPointerCapture(e.pointerId)
+    // Mode coret: satu jari/pena menggambar; jari kedua membatalkan goresan
+    // itu dan mengambil alih sebagai cubit/geser.
+    if (modeCoret && jari.size === 0 && !goresanSaya) {
+      mulaiGoresan(e)
+      return
+    }
+    if (goresanSaya) batalGoresan()
     jari.set(e.pointerId, { x: e.clientX, y: e.clientY })
     susun()
   })
   aktif.addEventListener('pointermove', (e) => {
+    if (goresanSaya && goresanSaya.pointer === e.pointerId) {
+      lanjutGoresan(e)
+      return
+    }
     if (!jari.has(e.pointerId)) return
     jari.set(e.pointerId, { x: e.clientX, y: e.clientY })
     const daftar = Array.from(jari.values())
@@ -1073,6 +1263,11 @@ function pasangGestur() {
     }
   })
   const lepas = (e: PointerEvent) => {
+    if (goresanSaya && goresanSaya.pointer === e.pointerId) {
+      if (e.type === 'pointercancel') batalGoresan()
+      else selesaiGoresan()
+      return
+    }
     jari.delete(e.pointerId)
     susun()
   }
@@ -1096,6 +1291,167 @@ function pasangGestur() {
     },
     { passive: false },
   )
+}
+
+/* ── Mencoret sendiri (murid berizin) ─────────────────────────────── */
+
+/** Izin dari guru: boleh mencoret, dan kanvas mana. */
+let izinCoret: { boleh: boolean; sketsa: string | null } = { boleh: false, sketsa: null }
+let modeCoret = false
+let warnaCoret = 'ink'
+let ukuranCoret = 5
+/** Goresan yang sedang ditarik jari/pena saya. */
+let goresanSaya: { c: Coretan; pointer: number; terkirim: number } | null = null
+/** Id goresan buatan saya di sesi ini, untuk undo. */
+const goresanKu: string[] = []
+let bingkaiKirim: number | null = null
+
+function terapkanIzin(boleh: boolean, sketsaId: string | null) {
+  const berubah = izinCoret.boleh !== boleh || izinCoret.sketsa !== sketsaId
+  izinCoret = { boleh, sketsa: sketsaId }
+  const tombol = el('tombol-coret') as HTMLButtonElement
+  tombol.hidden = !boleh
+  if (!boleh && modeCoret) {
+    selesaiCoret()
+    tampilkanStatus('The teacher turned off drawing.', true)
+  } else if (boleh && berubah && !modeCoret) {
+    tampilkanStatus('You may draw on your canvas — tap ✏️', true)
+    bunyi('bahas')
+  }
+}
+
+/** Buka kanvas saya dan nyalakan mode coret. */
+async function mulaiCoret() {
+  if (!izinCoret.boleh || !izinCoret.sketsa) return
+  kanvasSaya = izinCoret.sketsa
+  bebas = false
+  el('ikuti').hidden = true
+  if (idSketsa !== izinCoret.sketsa) {
+    await muatSketsa(izinCoret.sketsa)
+    pandanganSumber = null
+    muatSatuHalaman()
+  }
+  modeCoret = true
+  document.documentElement.classList.add('mencoret')
+  el('tombol-coret').classList.add('aktif')
+  el('alat-coret').classList.add('tampil')
+  tampilkanStatus('Drawing on your canvas · two fingers to move')
+}
+
+function selesaiCoret() {
+  if (goresanSaya) selesaiGoresan()
+  modeCoret = false
+  document.documentElement.classList.remove('mencoret')
+  el('tombol-coret').classList.remove('aktif')
+  el('alat-coret').classList.remove('tampil')
+}
+
+function pasangCoret() {
+  el('tombol-coret').onclick = () => {
+    if (modeCoret) selesaiCoret()
+    else void mulaiCoret()
+  }
+  el('coret-selesai').onclick = selesaiCoret
+  el('coret-undo').onclick = () => {
+    const id = goresanKu.pop()
+    if (!id || !sketsa || !idSketsa) return
+    sketsa.strokes = sketsa.strokes.filter((c) => c.id !== id)
+    kotorDasar = true
+    kirim({ t: 'ubah', idKanvas: idSketsa, hapus: { coretan: [id], objek: [] }, tambah: { coretan: [], objek: [] } })
+  }
+  const alat = el('alat-coret')
+  alat.querySelectorAll<HTMLButtonElement>('button.warna').forEach((b) => {
+    b.onclick = () => {
+      warnaCoret = b.dataset.warna ?? 'ink'
+      alat.querySelectorAll('button.warna').forEach((x) => x.classList.toggle('aktif', x === b))
+    }
+  })
+  alat.querySelectorAll<HTMLButtonElement>('button.ukuran').forEach((b) => {
+    b.onclick = () => {
+      ukuranCoret = Number(b.dataset.ukuran) || 5
+      alat.querySelectorAll('button.ukuran').forEach((x) => x.classList.toggle('aktif', x === b))
+    }
+  })
+}
+
+function keDunia(x: number, y: number): [number, number] {
+  return [(x - tampilan.x) / tampilan.skala, (y - tampilan.y) / tampilan.skala]
+}
+
+function mulaiGoresan(e: PointerEvent) {
+  if (!sketsa || !idSketsa) return
+  const [x, y] = keDunia(e.clientX, e.clientY)
+  const tekanan = e.pointerType === 'pen' && e.pressure > 0 ? e.pressure : 0.5
+  const c: Coretan = {
+    id: `sk_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`,
+    tool: 'pen',
+    color: warnaCoret,
+    size: ukuranCoret,
+    layer: 0,
+    alpha: 1,
+    pola: 'utuh',
+    steady: false,
+    points: [[x, y, tekanan]],
+  }
+  goresanSaya = { c, pointer: e.pointerId, terkirim: 0 }
+  goresanHidup.set(c.id, c)
+  kotorAktif = true
+  jadwalkanKirimGoresan()
+}
+
+function lanjutGoresan(e: PointerEvent) {
+  if (!goresanSaya) return
+  const c = goresanSaya.c
+  const daftar = 'getCoalescedEvents' in e ? e.getCoalescedEvents() : [e]
+  for (const ev of daftar.length ? daftar : [e]) {
+    const [x, y] = keDunia(ev.clientX, ev.clientY)
+    const akhir = c.points[c.points.length - 1]
+    if (akhir && Math.hypot(akhir[0] - x, akhir[1] - y) * tampilan.skala < 1.2) continue
+    c.points.push([x, y, ev.pointerType === 'pen' && ev.pressure > 0 ? ev.pressure : 0.5])
+  }
+  kotorAktif = true
+  jadwalkanKirimGoresan()
+}
+
+/** Titik yang belum terkirim dikirim sekali per bingkai, seperti editor. */
+function jadwalkanKirimGoresan() {
+  if (bingkaiKirim !== null) return
+  bingkaiKirim = window.requestAnimationFrame(() => {
+    bingkaiKirim = null
+    const g = goresanSaya
+    if (!g || !idSketsa || g.c.points.length <= g.terkirim) return
+    const { points: _abaikan, ...meta } = g.c
+    void _abaikan
+    kirim({ t: 'titik', idKanvas: idSketsa, id: g.c.id, dari: g.terkirim, titik: g.c.points.slice(g.terkirim), meta })
+    g.terkirim = g.c.points.length
+  })
+}
+
+function selesaiGoresan() {
+  const g = goresanSaya
+  goresanSaya = null
+  if (!g || !sketsa || !idSketsa) return
+  goresanHidup.delete(g.c.id)
+  if (g.c.points.length < 2) {
+    kotorAktif = true
+    return
+  }
+  sketsa.strokes.push(g.c)
+  goresanKu.push(g.c.id)
+  if (goresanKu.length > 200) goresanKu.shift()
+  kotorDasar = true
+  kotorAktif = true
+  kirim({ t: 'goresan-selesai', idKanvas: idSketsa, id: g.c.id })
+  kirim({ t: 'ubah', idKanvas: idSketsa, hapus: { coretan: [], objek: [] }, tambah: { coretan: [g.c], objek: [] } })
+}
+
+function batalGoresan() {
+  const g = goresanSaya
+  goresanSaya = null
+  if (!g) return
+  goresanHidup.delete(g.c.id)
+  kotorAktif = true
+  if (idSketsa) kirim({ t: 'goresan-selesai', idKanvas: idSketsa, id: g.c.id, batal: true })
 }
 
 async function masukModeTunggu() {
@@ -1143,3 +1499,7 @@ function layarPilih(): Promise<'murid' | number> {
     })
   })
 }
+
+// Dipanggil paling akhir: semua const/let modul di atas sudah terisi saat
+// layar akun (yang berjalan sinkron sebelum await pertama) memakainya.
+void mulai()

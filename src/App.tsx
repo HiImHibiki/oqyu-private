@@ -5,7 +5,7 @@ import { useApp } from '@/lib/appStore'
 import { getSetting, lipatWal } from '@/lib/db'
 import { dengarkan } from '@/lib/events'
 import { bukaJendelaBaru } from '@/lib/layar'
-import { adminAktif, api, namaPerangkat, pinAktif, setAlamatServer, simpanAdmin, simpanPin } from '@/lib/api'
+import { adminAktif, api, namaPerangkat, pinAktif, setAlamatServer, simpanAdmin } from '@/lib/api'
 import { hentikanSinkron, mulaiSinkron } from '@/lib/sinkron'
 import { muatRuang, useKelas } from '@/lib/kelas'
 import { Toast } from '@/components/Toast'
@@ -42,9 +42,7 @@ export interface InfoBerbagi {
 export default function App() {
   const [siap, setSiap] = useState(false)
   const [galat, setGalat] = useState<string | null>(null)
-  /** Di browser: PIN belum ada atau ditolak server. */
-  const [perluPin, setPerluPin] = useState(false)
-  /** Di browser: editor butuh kata sandi admin. */
+  /** Di browser: editor butuh kata sandi admin (sandi admin sekaligus membuka kelas). */
   const [perluAdmin, setPerluAdmin] = useState(false)
 
   useEffect(() => pasangTema(), [])
@@ -58,15 +56,12 @@ export default function App() {
         .catch((e: unknown) => setGalat(e instanceof Error ? e.message : String(e)))
       return
     }
-    void api('/api/vault')
-      .then(() => api('/api/admin/cek'))
+    void api('/api/admin/cek')
       .then(() => setSiap(true))
       .catch((e: unknown) => {
         const status = (e as { status?: number }).status
-        const pesan = e instanceof Error ? e.message : String(e)
-        if (status === 401 && /admin/i.test(pesan)) setPerluAdmin(true)
-        else if (status === 401) setPerluPin(true)
-        else setGalat(pesan)
+        if (status === 401) setPerluAdmin(true)
+        else setGalat(e instanceof Error ? e.message : String(e))
       })
   }, [])
 
@@ -75,28 +70,6 @@ export default function App() {
   useBerbagi(siap)
 
   if (galat) return <LayarGalat pesan={galat} />
-  if (!inTauri && perluPin) {
-    return (
-      <LayarPin
-        onMasuk={async (pin) => {
-          simpanPin(pin)
-          try {
-            await api('/api/vault')
-            setPerluPin(false)
-            try {
-              await api('/api/admin/cek')
-              setSiap(true)
-            } catch {
-              setPerluAdmin(true)
-            }
-            return true
-          } catch {
-            return false
-          }
-        }}
-      />
-    )
-  }
   if (!inTauri && perluAdmin) {
     return (
       <LayarAdmin
@@ -342,7 +315,8 @@ function LayarAdmin({ onMasuk }: { onMasuk: (sandi: string) => Promise<boolean> 
           <Icon nama="gembok" ukuran={15} /> Teacher sign-in
         </h1>
         <p style={{ color: 'var(--ink-soft)' }}>
-          The editor is for the teacher. Enter the admin password from Settings on the Mac.
+          The editor is for the teacher. Enter the admin password from Settings on the Mac — no PIN
+          needed.
         </p>
         <input
           className="ex-input"
@@ -368,56 +342,3 @@ function LayarAdmin({ onMasuk }: { onMasuk: (sandi: string) => Promise<boolean> 
   )
 }
 
-/** Gerbang PIN untuk tablet. Tautan dari QR sudah membawa PIN-nya, jadi ini jarang terlihat. */
-function LayarPin({ onMasuk }: { onMasuk: (pin: string) => Promise<boolean> }) {
-  const [pin, setPin] = useState('')
-  const [salah, setSalah] = useState(false)
-  const [sibuk, setSibuk] = useState(false)
-
-  const kirimPin = async () => {
-    if (pin.length !== 4) return
-    setSibuk(true)
-    const ok = await onMasuk(pin)
-    setSibuk(false)
-    if (!ok) setSalah(true)
-  }
-
-  return (
-    <div className="grid h-full place-items-center p-8">
-      <form
-        className="ex-card flex w-full max-w-[380px] flex-col gap-3 p-6"
-        onSubmit={(e) => {
-          e.preventDefault()
-          void kirimPin()
-        }}
-      >
-        <h1 className="ex-module-title flex items-center gap-2">
-          <Icon nama="pena" ukuran={15} /> Exact Canvas
-        </h1>
-        <p style={{ color: 'var(--ink-soft)' }}>Enter the 4-digit PIN shown in Settings on the Mac.</p>
-        <input
-          className="ex-input ex-num"
-          style={{ fontSize: 28, letterSpacing: '0.4em', textAlign: 'center' }}
-          inputMode="numeric"
-          pattern="[0-9]*"
-          maxLength={4}
-          autoFocus
-          value={pin}
-          onChange={(e) => {
-            setSalah(false)
-            setPin(e.target.value.replace(/\D/g, '').slice(0, 4))
-          }}
-          aria-label="PIN"
-        />
-        {salah && (
-          <p className="ex-label" style={{ color: 'var(--down)' }}>
-            That PIN was not accepted.
-          </p>
-        )}
-        <button className="ex-btn" data-variant="accent" disabled={pin.length !== 4 || sibuk} type="submit">
-          Open the canvas
-        </button>
-      </form>
-    </div>
-  )
-}

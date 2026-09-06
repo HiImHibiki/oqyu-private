@@ -34,6 +34,20 @@ export interface Murid {
   first_seen: number
   last_seen: number
   muted_until: number | null
+  /** 1 = boleh mencoret kanvasnya sendiri dari HP. */
+  can_draw: number
+  /** Nomor HP dari akunnya (null untuk murid lama tanpa akun). */
+  phone?: string | null
+}
+
+/** Akun murid (nomor HP + sandi) — identitas yang mengikuti anak ke perangkat mana pun. */
+export interface Akun {
+  id: string
+  nama: string
+  hp: string
+  dibuat: number
+  /** Guru sudah menerima pendaftarannya. */
+  disetujui: boolean
 }
 
 export interface Grup {
@@ -42,6 +56,11 @@ export interface Grup {
   color: string | null
   /** null = ruangannya sendiri; 'ruang:2' | 'editor:<id>' | 'sketsa:<id>' */
   target: string | null
+  /** Jadwal tetap, teks bebas: "Sen 16:00". */
+  schedule?: string | null
+  /** Kanvas grup hari ini (satu kanvas per grup per hari). */
+  sketch_id?: string | null
+  sketch_day?: string | null
   sort_order: number | null
 }
 
@@ -108,9 +127,34 @@ export async function ubahTanya(id: string, status: 'dibahas' | 'selesai', edito
 
 /** Murid yang terlihat dalam 10 jam terakhir — satu hari mengajar. */
 export async function daftarMurid(): Promise<Murid[]> {
-  return q<Murid>('SELECT * FROM students WHERE last_seen > ? ORDER BY room, name COLLATE NOCASE', [
-    Date.now() - 10 * 3600_000,
-  ])
+  return q<Murid>(
+    'SELECT s.*, a.phone FROM students s LEFT JOIN accounts a ON a.id = s.id WHERE s.last_seen > ? ORDER BY s.room, s.name COLLATE NOCASE',
+    [Date.now() - 10 * 3600_000],
+  )
+}
+
+/** Semua murid yang pernah masuk — untuk menyusun anggota tetap grup. */
+export async function daftarMuridSemua(): Promise<Murid[]> {
+  return q<Murid>('SELECT s.*, a.phone FROM students s LEFT JOIN accounts a ON a.id = s.id ORDER BY s.name COLLATE NOCASE')
+}
+
+export async function daftarAkun(): Promise<Akun[]> {
+  // Berbagi belum menyala → server belum ada → belum ada akun yang bisa mendaftar.
+  try {
+    return await api<Akun[]>('/api/akun')
+  } catch {
+    return []
+  }
+}
+
+/** Terima (akun aktif) atau tolak (akun dihapus) seorang pendaftar. */
+export async function setujuiAkun(id: string, setuju: boolean): Promise<void> {
+  await api('/api/akun/setujui', { method: 'POST', json: { id, setuju } })
+}
+
+/** Ganti sandi murid yang lupa; sesi lamanya dicabut. */
+export async function resetSandiAkun(id: string, sandi: string): Promise<void> {
+  await api('/api/akun/reset', { method: 'POST', json: { id, sandi } })
 }
 
 export async function daftarGrup(): Promise<Grup[]> {
@@ -136,9 +180,10 @@ export async function buatGrup(nama: string): Promise<string> {
   return id
 }
 
-export async function ubahGrup(id: string, ubah: { name?: string; target?: string | null }): Promise<void> {
+export async function ubahGrup(id: string, ubah: { name?: string; target?: string | null; schedule?: string | null }): Promise<void> {
   if (ubah.name !== undefined) await x('UPDATE groups SET name = ? WHERE id = ?', [ubah.name, id])
   if (ubah.target !== undefined) await x('UPDATE groups SET target = ? WHERE id = ?', [ubah.target, id])
+  if (ubah.schedule !== undefined) await x('UPDATE groups SET schedule = ? WHERE id = ?', [ubah.schedule, id])
   await pancarkan('kelas', { apa: 'grup' })
 }
 
@@ -159,6 +204,15 @@ export async function tetapkanGrup(muridId: string, grupId: string | null): Prom
 export async function bisukanMurid(muridId: string, menit: number): Promise<void> {
   await x('UPDATE students SET muted_until = ? WHERE id = ?', [menit > 0 ? Date.now() + menit * 60_000 : null, muridId])
   await pancarkan('kelas', { apa: 'bisu' })
+}
+
+/**
+ * Izinkan/cabut izin murid mencoret kanvasnya sendiri dari HP. Lewat server,
+ * bukan SQL langsung: server yang memegang koneksi WebSocket murid itu dan
+ * membuat kanvasnya kalau belum ada.
+ */
+export async function izinkanCoret(muridId: string, boleh: boolean): Promise<void> {
+  await api('/api/kelas/izin', { method: 'POST', json: { murid: muridId, boleh } })
 }
 
 /** Tutup semua pertanyaan yang masih terbuka. */

@@ -1,7 +1,7 @@
 // Regresi fungsional: API, hub WebSocket, alur kelas, menggambar dari editor web → pengikut.
 import { spawn } from 'node:child_process'
 import zlib from 'node:zlib'
-const B = 'http://127.0.0.1:4747', H = { 'x-exact-pin': '1234', 'content-type': 'application/json' }
+const B = 'http://127.0.0.1:4747', H = { 'x-exact-pin': '1234', 'x-exact-admin': process.env.ADMIN ?? 'exact2026', 'content-type': 'application/json' }
 const j = async (p, init) => { const r = await fetch(B + p, init); const t = await r.text(); return { status: r.status, body: t ? (() => { try { return JSON.parse(t) } catch { return t } })() : null, ct: r.headers.get('content-type') } }
 const sql = (q, params = []) => j('/api/sql', { method: 'POST', headers: H, body: JSON.stringify({ sql: q, params }) })
 const tidur = (ms) => new Promise((r) => setTimeout(r, ms))
@@ -30,7 +30,7 @@ cek('badan besar (3 MB) diterima', (await j(`/api/canvas/cnv_ujibesar`, { method
 await j('/api/canvas/cnv_ujibesar', { method: 'DELETE', headers: H })
 
 // ── Hub
-const soket = (q) => { const ws = new WebSocket(`ws://127.0.0.1:4747/ws?pin=1234&${q}`); const masuk = []; ws.onmessage = (e) => masuk.push(JSON.parse(e.data)); return new Promise((r) => (ws.onopen = () => r({ ws, masuk }))) }
+const soket = (q) => { const ws = new WebSocket(`ws://127.0.0.1:4747/ws?pin=1234&admin=${encodeURIComponent(H['x-exact-admin'])}&${q}`); const masuk = []; ws.onmessage = (e) => masuk.push(JSON.parse(e.data)); return new Promise((r) => (ws.onopen = () => r({ ws, masuk }))) }
 const hp = await soket('id=f_hp&name=Ani&role=tv&ruang=2&murid=uji_f1')
 const tab = await soket('id=f_tab&name=Tablet&role=editor&ruang=1')
 await tidur(300)
@@ -51,17 +51,21 @@ cek('murid masuk', (await j('/api/kelas/masuk', { method: 'POST', headers: H, bo
 cek('nama kosong ditolak', (await j('/api/kelas/masuk', { method: 'POST', headers: H, body: JSON.stringify({ murid: 'uji_f2', nama: '  ', ruang: 2 }) })).status === 400)
 const t1 = await j('/api/kelas/tanya', { method: 'POST', headers: H, body: JSON.stringify({ murid: 'uji_f1', nama: 'Ani', ruang: 2, teks: 'halo', foto: PNG }) })
 cek('kirim pertanyaan berfoto', t1.status === 200 && t1.body.foto === true)
-const t2 = await j('/api/kelas/tanya', { method: 'POST', headers: H, body: JSON.stringify({ murid: 'uji_f1', nama: 'Ani', ruang: 2, teks: '', foto: '' }) })
+await sql('UPDATE questions SET created_at = created_at - 30000 WHERE student_id = ?', ['uji_f1'])
+const t2k = await j('/api/kelas/tanya', { method: 'POST', headers: H, body: JSON.stringify({ murid: 'uji_f1', nama: 'Ani', ruang: 2, teks: '', foto: '' }) })
+cek('angkat tangan kosong saat sudah antre ditolak (409)', t2k.status === 409)
+const t2 = await j('/api/kelas/tanya', { method: 'POST', headers: H, body: JSON.stringify({ murid: 'uji_f1', nama: 'Ani', ruang: 2, teks: 'lagi', foto: '' }) })
 cek('pertanyaan baru menutup yang lama', (await sql('SELECT status FROM questions WHERE id=?', [t1.body.id])).body.rows[0]?.status === 'selesai')
 const saya = await j(`/api/kelas/saya?murid=uji_f1`, { headers: H })
 cek('status saya: menunggu #n', saya.body.tanya?.status === 'menunggu' && typeof saya.body.tanya?.urutan === 'number')
 hp.masuk.length = 0
 const ub = await j('/api/kelas/ubah', { method: 'POST', headers: H, body: JSON.stringify({ id: t2.body.id, status: 'dibahas', editor: 'f_tab' }) }); await tidur(200)
-cek('bahas → HP menerima kabar dgn editor', ub.status === 200 && hp.masuk.some((p) => p.t === 'bahas' && p.tanya.murid === 'uji_f1' && p.tanya.editor === 'f_tab'))
+cek('bahas → HP menerima kabar dgn editor', ub.status === 200 && hp.masuk.some((p) => p.t === 'bahas' && p.tanya.murid === 'uji_f1' && p.tanya.editor === 'f_tab'), `${ub.status} ${JSON.stringify(ub.body).slice(0,120)} t2=${t2.status} ${JSON.stringify(t2.body).slice(0,80)}`)
 cek('bahas → siaran data:kelas', hp.masuk.some((p) => p.t === 'data' && p.kanal === 'kelas'))
 const pdf = 'data:application/pdf;base64,' + Buffer.from('%PDF-1.4\n%%EOF').toString('base64')
+await sql('UPDATE questions SET created_at = created_at - 30000 WHERE student_id = ?', ['uji_f1'])
 const t3 = await j('/api/kelas/tanya', { method: 'POST', headers: H, body: JSON.stringify({ murid: 'uji_f1', nama: 'Ani', ruang: 2, teks: '', foto: pdf }) })
-cek('lampiran PDF diterima & dilayani', t3.status === 200 && (await fetch(`${B}/api/kelas/foto/${t3.body.id}.pdf?pin=1234`)).headers.get('content-type') === 'application/pdf')
+cek('lampiran PDF diterima & dilayani', t3.status === 200 && (await fetch(`${B}/api/kelas/foto/${t3.body.id}.pdf?pin=1234&admin=${encodeURIComponent(H['x-exact-admin'])}`)).headers.get('content-type') === 'application/pdf')
 cek('foto tanpa PIN ditolak', (await fetch(`${B}/api/kelas/foto/${t3.body.id}.pdf`)).status === 401)
 // grup
 const gid = 'grp_ujifungsi'

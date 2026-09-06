@@ -3,7 +3,7 @@ import { useApp } from '@/lib/appStore'
 import { inTauri } from '@/lib/runtime'
 import { bukaJendelaBaru } from '@/lib/layar'
 import { useViewport } from '@/lib/useViewport'
-import { jam } from '@/lib/tanggal'
+import { jam, kunciTanggal, tanggalPendek } from '@/lib/tanggal'
 import { newId } from '@/lib/id'
 import { IconButton } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
@@ -335,17 +335,20 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     let idTujuan: string | null = null
     let judulTujuan = `Tanya · ${t.name}`
     try {
-      const grup = await q1<{ id: string; name: string; sketch_id: string | null }>(
-        'SELECT g.id, g.name, g.sketch_id FROM groups g JOIN group_members m ON m.group_id = g.id WHERE m.student_id = ? ORDER BY g.sort_order LIMIT 1',
+      const grup = await q1<{ id: string; name: string; sketch_id: string | null; sketch_day: string | null }>(
+        'SELECT g.id, g.name, g.sketch_id, g.sketch_day FROM groups g JOIN group_members m ON m.group_id = g.id WHERE m.student_id = ? ORDER BY g.sort_order LIMIT 1',
         [t.student_id],
       )
       const adaSketsa = async (id: string | null) => (id ? !!(await q1('SELECT id FROM canvases WHERE id = ?', [id])) : false)
       if (grup) {
-        judulTujuan = `Grup · ${grup.name}`
-        idTujuan = (await adaSketsa(grup.sketch_id)) ? grup.sketch_id : null
+        // Satu kanvas per grup per hari: "Grup · Mat 1 · 6 Sep". Besok grup
+        // yang sama mulai bersih; materi hari ini tetap ada di daftar sketsa.
+        const hari = kunciTanggal()
+        judulTujuan = `Grup · ${grup.name} · ${tanggalPendek(new Date())}`
+        idTujuan = grup.sketch_day === hari && (await adaSketsa(grup.sketch_id)) ? grup.sketch_id : null
         if (!idTujuan) {
           idTujuan = await buatKanvas(judulTujuan)
-          await x('UPDATE groups SET sketch_id = ? WHERE id = ?', [idTujuan, grup.id])
+          await x('UPDATE groups SET sketch_id = ?, sketch_day = ? WHERE id = ?', [idTujuan, hari, grup.id])
         }
       } else {
         const baris = await q1<{ sketch_id: string | null }>('SELECT sketch_id FROM students WHERE id = ?', [t.student_id])
@@ -1228,6 +1231,21 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         ctx.globalAlpha = 0.5
         ctx.lineWidth = 1 / v.tampilan.skala
         ctx.stroke(jalurDari(garisLuar(c)))
+        ctx.restore()
+      }
+    }
+    {
+      // Bingkai putus-putus mengelilingi pilihan: pegangan untuk menyeretnya.
+      const k = kotakPilihan()
+      if (k) {
+        ctx.save()
+        ctx.strokeStyle = warnaToken('accent')
+        ctx.lineWidth = 1.5 / v.tampilan.skala
+        ctx.setLineDash([6 / v.tampilan.skala, 4 / v.tampilan.skala])
+        ctx.strokeRect(k.x1, k.y1, k.x2 - k.x1, k.y2 - k.y1)
+        ctx.fillStyle = warnaToken('accent')
+        ctx.globalAlpha = 0.05
+        ctx.fillRect(k.x1, k.y1, k.x2 - k.x1, k.y2 - k.y1)
         ctx.restore()
       }
     }
@@ -2744,7 +2762,33 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     jadwalkanSimpan(coretan)
   }, [halaman, jumlahHalaman, keHalaman, beriTahu, jadwalkanSimpan, coretan])
 
+  /**
+   * Bingkai pilihan: kotak pembatas semua coretan terpilih, dengan tepi
+   * longgar. Menyeret di mana pun di dalamnya memindahkan pilihan — tidak
+   * harus tepat mengenai garisnya.
+   */
+  function kotakPilihan(): { x1: number; y1: number; x2: number; y2: number } | null {
+    if (pilihan.size === 0) return null
+    let x1 = Infinity
+    let y1 = Infinity
+    let x2 = -Infinity
+    let y2 = -Infinity
+    for (const c of coretan) {
+      if (!pilihan.has(c.id)) continue
+      const k = kotakCoretan(c)
+      x1 = Math.min(x1, k.x1)
+      y1 = Math.min(y1, k.y1)
+      x2 = Math.max(x2, k.x2)
+      y2 = Math.max(y2, k.y2)
+    }
+    if (!Number.isFinite(x1)) return null
+    const tepi = 10 / v.tampilan.skala
+    return { x1: x1 - tepi, y1: y1 - tepi, x2: x2 + tepi, y2: y2 + tepi }
+  }
+
   function adaPilihanDiTitik(x: number, y: number): boolean {
+    const k = kotakPilihan()
+    if (k && x >= k.x1 && x <= k.x2 && y >= k.y1 && y <= k.y2) return true
     return coretan.some((c) => pilihan.has(c.id) && coretanKena(c, x, y, 12 / v.tampilan.skala))
   }
 

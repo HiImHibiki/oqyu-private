@@ -39,6 +39,8 @@ export interface OpsiSinkron {
   murid?: string
   /** Token/sandi admin — wajib untuk peran editor. */
   admin?: string
+  /** Token sesi akun murid. */
+  sesi?: string
 }
 
 /** Id jendela/browser ini; pesan yang memantul balik dari server dikenali darinya. */
@@ -72,6 +74,8 @@ function sambung() {
   u.searchParams.set('ruang', String(opsi.ruang ?? 1))
   if (opsi.murid) u.searchParams.set('murid', opsi.murid)
   if (opsi.admin) u.searchParams.set('admin', opsi.admin)
+  if (opsi.sesi) u.searchParams.set('sesi', opsi.sesi)
+  if (!opsi.pin) u.searchParams.delete('pin')
   useSinkron.setState({ status: 'menyambung' })
   const soket = new WebSocket(u.toString())
   ws = soket

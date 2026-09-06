@@ -236,7 +236,7 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
       return
     }
     void import('@tauri-apps/api/core').then(({ invoke }) =>
-      invoke<string>('share_qr', { text: info.url }).then(setQr).catch(() => setQr('')),
+      invoke<string>('share_qr', { text: info.urlMurid }).then(setQr).catch(() => setQr('')),
     )
   }, [info])
 
@@ -354,7 +354,7 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
             dangerouslySetInnerHTML={{ __html: qr.replace(/<svg /, '<svg style="width:100%;height:100%" ') }}
           />
           <div className="flex min-w-0 flex-col gap-2">
-            <Tautan label="Tablet (edit)" url={info.url} onSalin={salin} onBuka={bukaDiBrowser} />
+            <Tautan label="Teacher (edit)" url={info.url} onSalin={salin} onBuka={bukaDiBrowser} />
             <Tautan label="TV (follow)" url={info.urlTv} onSalin={salin} onBuka={bukaDiBrowser} />
             <Tautan label="Students" url={info.urlMurid} onSalin={salin} onBuka={bukaDiBrowser} />
             {info.publik && <Tautan label="Students · Wi-Fi" url={info.urlLokal} onSalin={salin} onBuka={bukaDiBrowser} />}
@@ -397,9 +397,10 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
                     .join(', ')}
             </p>
             <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
-              TV link: change <span className="ex-num">ruang=1</span> to 2 or 3 for the other rooms;
-              add <span className="ex-num">&amp;mode=fit</span> to always show a whole page. Students
-              open the Students link on their phone, type their name and pick a room. Keep the Mac awake.
+              The QR is the Students link. Students register once with name, phone number, password
+              and the class PIN as the class code; after that they sign in with phone and password —
+              the PIN never appears in their address bar. Teacher link asks for the admin password.
+              TV link carries the PIN: change <span className="ex-num">ruang=1</span> for other rooms.
             </p>
           </div>
         </div>

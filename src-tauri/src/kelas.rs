@@ -37,7 +37,7 @@ const BATAS_PER_ALAMAT: u32 = 90;
 static HITUNG_ALAMAT: std::sync::Mutex<Option<std::collections::HashMap<String, (u32, std::time::Instant)>>> =
     std::sync::Mutex::new(None);
 
-fn alamat_klien(headers: &HeaderMap) -> String {
+pub fn alamat_klien(headers: &HeaderMap) -> String {
     for nama in ["cf-connecting-ip", "x-forwarded-for", "x-real-ip"] {
         if let Some(v) = headers.get(nama).and_then(|v| v.to_str().ok()) {
             let pertama = v.split(',').next().unwrap_or("").trim();
@@ -51,7 +51,7 @@ fn alamat_klien(headers: &HeaderMap) -> String {
 
 /// Terlalu sering dari satu alamat → 429. Satu HP normal mengirim beberapa
 /// permintaan per menit; skrip yang membanjiri mengirim ratusan.
-fn kebanjiran(headers: &HeaderMap) -> bool {
+pub fn kebanjiran(headers: &HeaderMap) -> bool {
     let asal = alamat_klien(headers);
     let mut g = HITUNG_ALAMAT.lock().unwrap_or_else(|e| e.into_inner());
     let peta = g.get_or_insert_with(std::collections::HashMap::new);
@@ -83,7 +83,7 @@ fn id_baru(awalan: &str) -> String {
     format!("{awalan}_{:x}", n)
 }
 
-fn koneksi() -> Result<rusqlite::Connection, String> {
+pub fn koneksi() -> Result<rusqlite::Connection, String> {
     let c = rusqlite::Connection::open(vault::db_path()).map_err(|e| e.to_string())?;
     c.busy_timeout(std::time::Duration::from_millis(15000)).map_err(|e| e.to_string())?;
     Ok(c)
@@ -143,13 +143,14 @@ pub async fn api_masuk(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(m):
 pub struct QuerySaya {
     pub murid: String,
     pub pin: Option<String>,
+    pub sesi: Option<String>,
 }
 
 /// Grup tempat murid ini berada (kalau ada) beserta targetnya, dan
 /// pertanyaannya yang masih terbuka — semua yang dibutuhkan HP untuk
 /// memutuskan siapa yang diikuti dan apa yang ditampilkan di bilah bawah.
 pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QuerySaya>) -> Response {
-    if !sah(&hub, &headers, q.pin.as_deref()) {
+    if !crate::server::sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
         return tolak();
     }
     let murid = q.murid.clone();
@@ -179,9 +180,12 @@ pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
             )
             .ok()
         });
+        let (boleh, sketsa) = izin_murid(&c, &murid);
         Ok(json!({
             "grup": grup.map(|(id, nama, target)| json!({ "id": id, "nama": nama, "target": target })),
             "tanya": tanya.map(|(id, status, dibuat, teks)| json!({ "id": id, "status": status, "dibuat": dibuat, "teks": teks, "urutan": urutan.map(|u| u + 1) })),
+            "boleh": boleh,
+            "sketsa": sketsa,
         }))
     })
     .await;
@@ -190,6 +194,247 @@ pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
         Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
         Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
     }
+}
+
+/* ── Izin mencoret ─────────────────────────────────────────────────── */
+
+/// Kanvas tempat murid ini boleh menulis: kanvas grupnya kalau ia bergrup,
+/// kalau tidak kanvas pribadinya — aturan yang sama dengan "Open on canvas".
+/// Hanya kanvas yang masih ada yang dikembalikan.
+fn sketsa_murid(c: &rusqlite::Connection, murid: &str) -> Option<String> {
+    let ada = |id: &str| -> bool {
+        c.query_row("SELECT 1 FROM canvases WHERE id = ?1", rusqlite::params![id], |_| Ok(()))
+            .is_ok()
+            && vault::canvas_read(id.to_string()).ok().flatten().is_some()
+    };
+    // Kanvas grup berlaku satu hari: besok grup yang sama mulai di kanvas
+    // baru, materi kemarin tetap bisa dibuka dari daftar sketsa.
+    let grup: Option<(Option<String>, Option<String>)> = c
+        .query_row(
+            "SELECT g.sketch_id, g.sketch_day FROM groups g JOIN group_members m ON m.group_id = g.id WHERE m.student_id = ?1 ORDER BY g.sort_order LIMIT 1",
+            rusqlite::params![murid],
+            |r| Ok((r.get(0)?, r.get(1)?)),
+        )
+        .ok();
+    if let Some((sketsa, hari)) = grup {
+        return sketsa.filter(|s| hari.as_deref() == Some(hari_ini().as_str()) && ada(s));
+    }
+    let sendiri: Option<String> = c
+        .query_row("SELECT sketch_id FROM students WHERE id = ?1", rusqlite::params![murid], |r| r.get::<_, Option<String>>(0))
+        .ok()
+        .flatten();
+    sendiri.filter(|s| ada(s))
+}
+
+/// (boleh mencoret?, kanvas yang boleh dicoret).
+pub fn izin_murid(c: &rusqlite::Connection, murid: &str) -> (bool, Option<String>) {
+    let boleh: bool = c
+        .query_row("SELECT can_draw FROM students WHERE id = ?1", rusqlite::params![murid], |r| r.get::<_, i64>(0))
+        .map(|n| n != 0)
+        .unwrap_or(false);
+    let sketsa = if boleh { sketsa_murid(c, murid) } else { None };
+    (boleh && sketsa.is_some(), sketsa)
+}
+
+/// Izin dibaca dari koneksi baru — untuk WebSocket yang baru tersambung.
+pub fn izin_murid_baru(murid: &str) -> (bool, Option<String>) {
+    match koneksi() {
+        Ok(c) => izin_murid(&c, murid),
+        Err(_) => (false, None),
+    }
+}
+
+/// Sketsa kosong A4 buatan server, sama bentuknya dengan `buatKanvas` di sisi depan.
+fn buat_sketsa_kosong(c: &rusqlite::Connection, judul: &str) -> Result<String, String> {
+    let kini = sekarang();
+    let acak: String = format!("{:x}", SystemTime::now().duration_since(UNIX_EPOCH).map(|d| d.as_nanos()).unwrap_or(0));
+    let id = format!("cnv_{}{}", radix36(kini as u128), &acak[acak.len().saturating_sub(5)..]);
+    let lapisan = |n: u32| json!({ "nama": format!("Layer {n}"), "tampak": true, "kunci": false });
+    let berkas = json!({
+        "id": id, "title": judul, "strokes": [], "images": [], "objects": [], "texts": [],
+        "layers": [lapisan(1), lapisan(2), lapisan(3)], "paper": "a4", "pages": 1, "updated_at": kini,
+    });
+    vault::canvas_write(id.clone(), berkas.to_string())?;
+    c.execute(
+        "INSERT OR REPLACE INTO canvases (id, title, updated_at) VALUES (?1, ?2, ?3)",
+        rusqlite::params![id, judul, kini],
+    )
+    .map_err(|e| e.to_string())?;
+    Ok(id)
+}
+
+/// 'YYYY-MM-DD' waktu lokal Mac — sama dengan `kunciTanggal` di sisi depan.
+pub fn hari_ini() -> String {
+    chrono::Local::now().format("%Y-%m-%d").to_string()
+}
+
+/// "6 Sep" — sama dengan `tanggalPendek` di sisi depan.
+fn tanggal_pendek() -> String {
+    const BULAN: [&str; 12] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let kini = chrono::Local::now();
+    use chrono::Datelike;
+    format!("{} {}", kini.day(), BULAN[(kini.month0() as usize).min(11)])
+}
+
+fn radix36(mut n: u128) -> String {
+    const D: &[u8] = b"0123456789abcdefghijklmnopqrstuvwxyz";
+    if n == 0 {
+        return "0".into();
+    }
+    let mut s = Vec::new();
+    while n > 0 {
+        s.push(D[(n % 36) as usize]);
+        n /= 36;
+    }
+    s.reverse();
+    String::from_utf8(s).unwrap_or_default()
+}
+
+#[derive(Deserialize)]
+pub struct Izin {
+    pub murid: String,
+    pub boleh: bool,
+}
+
+/// Guru mengizinkan (atau mencabut izin) seorang murid mencoret kanvasnya
+/// sendiri. Kanvasnya dibuat di sini kalau belum ada, supaya HP murid punya
+/// tempat menulis seketika. Siarannya dipakai server sendiri (koneksi WS
+/// murid itu) dan HP-nya (tombol Draw muncul/hilang).
+pub async fn api_izin(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(z): Json<Izin>) -> Response {
+    if !sah(&hub, &headers, None) {
+        return tolak();
+    }
+    if !admin_sah(&hub, &headers, None) {
+        return (StatusCode::UNAUTHORIZED, "Admin password required.").into_response();
+    }
+    let murid = z.murid.clone();
+    let boleh = z.boleh;
+    let hasil = tokio::task::spawn_blocking(move || -> Result<(Option<String>, Option<String>), String> {
+        let c = koneksi()?;
+        let nama: String = c
+            .query_row("SELECT name FROM students WHERE id = ?1", rusqlite::params![murid], |r| r.get(0))
+            .map_err(|_| "Student not found.".to_string())?;
+        c.execute("UPDATE students SET can_draw = ?1 WHERE id = ?2", rusqlite::params![boleh as i64, murid]).map_err(|e| e.to_string())?;
+        if !boleh {
+            return Ok((None, None));
+        }
+        let mut baru = None;
+        let mut sketsa = sketsa_murid(&c, &murid);
+        if sketsa.is_none() {
+            // Bergrup → kanvas grup; sendiri → kanvas pribadi.
+            let grup: Option<(String, String)> = c
+                .query_row(
+                    "SELECT g.id, g.name FROM groups g JOIN group_members m ON m.group_id = g.id WHERE m.student_id = ?1 ORDER BY g.sort_order LIMIT 1",
+                    rusqlite::params![murid],
+                    |r| Ok((r.get(0)?, r.get(1)?)),
+                )
+                .ok();
+            let id = match &grup {
+                Some((gid, gnama)) => {
+                    let id = buat_sketsa_kosong(&c, &format!("Grup · {gnama} · {}", tanggal_pendek()))?;
+                    c.execute("UPDATE groups SET sketch_id = ?1, sketch_day = ?2 WHERE id = ?3", rusqlite::params![id, hari_ini(), gid])
+                        .map_err(|e| e.to_string())?;
+                    id
+                }
+                None => {
+                    let id = buat_sketsa_kosong(&c, &format!("Tanya · {nama}"))?;
+                    c.execute("UPDATE students SET sketch_id = ?1 WHERE id = ?2", rusqlite::params![id, murid]).map_err(|e| e.to_string())?;
+                    id
+                }
+            };
+            baru = Some(id.clone());
+            sketsa = Some(id);
+        }
+        Ok((sketsa, baru))
+    })
+    .await;
+    match hasil {
+        Ok(Ok((sketsa, baru))) => {
+            if let Some(id) = &baru {
+                let _ = hub.tx.send(json!({ "t": "data", "kanal": "canvas", "payload": { "id": id, "src": "server" } }).to_string());
+            }
+            let _ = hub.tx.send(json!({ "t": "izin", "murid": z.murid, "boleh": boleh && sketsa.is_some(), "sketsa": sketsa }).to_string());
+            kabari(&hub, "izin", json!({ "murid": z.murid, "boleh": boleh }));
+            Json(json!({ "sketsa": sketsa })).into_response()
+        }
+        Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
+    }
+}
+
+/* ── Menyimpan coretan murid ───────────────────────────────────────── */
+
+/// Perubahan dari HP murid yang belum ditulis ke berkas, per sketsa. Ditulis
+/// sekaligus sekitar 1,2 detik setelah goresan terakhir: puluhan goresan
+/// berturut-turut jadi satu kali baca-tulis, bukan puluhan.
+static TERTUNDA: std::sync::Mutex<Option<std::collections::HashMap<String, Vec<Value>>>> = std::sync::Mutex::new(None);
+
+pub fn antre_coretan_murid(hub: Arc<Hub>, id_kanvas: String, ubah: Value) {
+    let pertama = {
+        let mut g = TERTUNDA.lock().unwrap_or_else(|e| e.into_inner());
+        let peta = g.get_or_insert_with(Default::default);
+        let daftar = peta.entry(id_kanvas.clone()).or_default();
+        daftar.push(ubah);
+        daftar.len() == 1
+    };
+    if pertama {
+        tokio::spawn(async move {
+            tokio::time::sleep(std::time::Duration::from_millis(1200)).await;
+            let ops = {
+                let mut g = TERTUNDA.lock().unwrap_or_else(|e| e.into_inner());
+                g.as_mut().and_then(|p| p.remove(&id_kanvas)).unwrap_or_default()
+            };
+            if ops.is_empty() {
+                return;
+            }
+            let id2 = id_kanvas.clone();
+            let hasil = tokio::task::spawn_blocking(move || tulis_coretan_murid(&id2, &ops)).await;
+            match hasil {
+                Ok(Ok(())) => {
+                    let _ = hub.tx.send(json!({ "t": "data", "kanal": "canvas", "payload": { "id": id_kanvas, "src": "server" } }).to_string());
+                }
+                Ok(Err(e)) => eprintln!("[kelas] coretan murid tidak tersimpan ({id_kanvas}): {e}"),
+                Err(e) => eprintln!("[kelas] coretan murid: {e}"),
+            }
+        });
+    }
+}
+
+/// Terapkan pesan-pesan `ubah` (hanya coretan) ke berkas sketsa, lalu tulis.
+fn tulis_coretan_murid(id: &str, ops: &[Value]) -> Result<(), String> {
+    let teks = vault::canvas_read(id.to_string())?.ok_or_else(|| "Sketch is gone.".to_string())?;
+    let mut d: Value = serde_json::from_str(&teks).map_err(|e| e.to_string())?;
+    if !d.is_object() {
+        return Err("Sketch file is not an object.".into());
+    }
+    if !d["strokes"].is_array() {
+        d["strokes"] = Value::Array(vec![]);
+    }
+    let strokes = d["strokes"].as_array_mut().expect("array");
+    for op in ops {
+        if let Some(hapus) = op["hapus"]["coretan"].as_array() {
+            let ids: std::collections::HashSet<&str> = hapus.iter().filter_map(|x| x.as_str()).collect();
+            if !ids.is_empty() {
+                strokes.retain(|s| !s["id"].as_str().map(|i| ids.contains(i)).unwrap_or(false));
+            }
+        }
+        if let Some(tambah) = op["tambah"]["coretan"].as_array() {
+            for c in tambah {
+                let Some(cid) = c["id"].as_str() else { continue };
+                if let Some(ada) = strokes.iter_mut().find(|s| s["id"].as_str() == Some(cid)) {
+                    *ada = c.clone();
+                } else {
+                    strokes.push(c.clone());
+                }
+            }
+        }
+    }
+    let kini = sekarang();
+    d["updated_at"] = json!(kini);
+    vault::canvas_write(id.to_string(), d.to_string())?;
+    let c = koneksi()?;
+    let _ = c.execute("UPDATE canvases SET updated_at = ?1 WHERE id = ?2", rusqlite::params![kini, id]);
+    Ok(())
 }
 
 /* ── Pertanyaan ────────────────────────────────────────────────────── */
@@ -440,7 +685,7 @@ pub async fn api_paham(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(p):
 
 /// Sketsa yang terakhir disentuh — untuk layar pengikut yang baru menyala.
 pub async fn api_terbaru(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryPin>) -> Response {
-    if !sah(&hub, &headers, q.pin.as_deref()) {
+    if !crate::server::sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
         return tolak();
     }
     let hasil = tokio::task::spawn_blocking(|| -> Result<Option<String>, String> {

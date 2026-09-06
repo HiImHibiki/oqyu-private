@@ -29,6 +29,11 @@ futures-util = "0.3"
 rusqlite = { version = "0.32", features = ["bundled"] }
 qrcode = { version = "0.14.1", default-features = false, features = ["svg"] }
 base64 = "0.22"
+# Akun murid: PBKDF2-HMAC-SHA256 dan garam/token acak.
+sha2 = "0.10"
+hmac = "0.12"
+getrandom = "0.2"
+chrono = "0.4"
 
 [profile.release]
 codegen-units = 1

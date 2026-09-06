@@ -10,18 +10,24 @@ import {
   RUANGAN,
   anggotaGrup,
   bisukanMurid,
+  izinkanCoret,
   buatGrup,
   kosongkanAntrean,
+  daftarAkun,
   daftarGrup,
   daftarMurid,
+  daftarMuridSemua,
   daftarTanya,
   hapusGrup,
   lamaMenunggu,
+  resetSandiAkun,
+  setujuiAkun,
   tetapkanGrup,
   ubahGrup,
   ubahTanya,
   useKelas,
   type Grup,
+  type Murid,
   type Tanya,
 } from '@/lib/kelas'
 
@@ -46,6 +52,9 @@ export function PanelKelas({
   const { data: murid } = useData('kelas', daftarMurid, [])
   const { data: grup } = useData('kelas', daftarGrup, [])
   const { data: anggota } = useData('kelas', anggotaGrup, [])
+  const { data: akun } = useData('kelas', daftarAkun, [])
+  const { data: semuaMurid } = useData('kelas', daftarMuridSemua, [])
+  const menungguSetuju = akun.filter((a) => !a.disetujui)
 
   const petaGrupMurid = useMemo(() => new Map(anggota.map((a) => [a.student_id, a.group_id])), [anggota])
   const hadir = useMemo(() => new Map(klien.filter((k) => k.murid).map((k) => [k.murid, k])), [klien])
@@ -123,6 +132,35 @@ export function PanelKelas({
 
       {tab === 'murid' && (
         <div className="flex flex-col gap-1">
+          {menungguSetuju.length > 0 && (
+            <div className="ex-card flex flex-col gap-1 p-2" style={{ borderColor: 'var(--accent)' }}>
+              <span className="ex-label" style={{ color: 'var(--accent)' }}>
+                Waiting for your approval · {menungguSetuju.length}
+              </span>
+              {menungguSetuju.map((a) => (
+                <div key={a.id} className="flex items-center gap-2">
+                  <span className="min-w-0 flex-1 truncate" style={{ fontSize: 'var(--fs-label)' }}>
+                    {a.nama}
+                    <span className="ex-num" style={{ marginLeft: 6, fontSize: 11, color: 'var(--ink-faint)' }}>
+                      {a.hp}
+                    </span>
+                  </span>
+                  <IconButton
+                    nama="centang"
+                    label={`Accept ${a.nama}`}
+                    ukuran={13}
+                    onClick={() => setujuiAkun(a.id, true).then(() => toast(`${a.nama} accepted.`)).catch(toastGalat)}
+                  />
+                  <IconButton
+                    nama="silang"
+                    label={`Reject ${a.nama} (removes the account)`}
+                    ukuran={13}
+                    onClick={() => setujuiAkun(a.id, false).then(() => toast(`${a.nama} rejected.`)).catch(toastGalat)}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
           {murid.length === 0 && (
             <p className="ex-label" style={{ color: 'var(--ink-faint)' }}>
               No students yet today. They join from the TV link on their phone.
@@ -139,7 +177,7 @@ export function PanelKelas({
                   ? `On the board${k.keluar ? ` · left ${k.keluar}×` : ''}`
                   : `Left the page · ${k.keluar}×`
             return (
-              <div key={m.id} className="flex items-center gap-2" title={judul}>
+              <div key={m.id} className="flex items-center gap-2" title={`${judul}${m.phone ? ` · ${m.phone}` : ''}`}>
                 <span
                   aria-hidden
                   style={{ width: 9, height: 9, borderRadius: 999, background: warna, flexShrink: 0, boxShadow: k?.fokus ? `0 0 6px ${warna}` : undefined }}
@@ -151,6 +189,29 @@ export function PanelKelas({
                   R{k?.ruang ?? m.room}
                   {k && k.keluar > 0 && ` · ${k.keluar}×`}
                 </span>
+                {m.phone && (
+                  <IconButton
+                    nama="gembok"
+                    label="Reset this student's password"
+                    ukuran={12}
+                    onClick={() => {
+                      const sandi = window.prompt(`New password for ${m.name} (at least 4 characters):`)
+                      if (!sandi || sandi.length < 4) return
+                      resetSandiAkun(m.id, sandi).then(() => toast(`Password for ${m.name} changed.`)).catch(toastGalat)
+                    }}
+                  />
+                )}
+                <IconButton
+                  nama="pena"
+                  label={m.can_draw ? 'Allowed to draw on their own canvas — tap to revoke' : 'Allow drawing on their own canvas from the phone'}
+                  aktif={!!m.can_draw}
+                  ukuran={12}
+                  onClick={() =>
+                    izinkanCoret(m.id, !m.can_draw)
+                      .then(() => toast(m.can_draw ? `${m.name} can no longer draw` : `${m.name} can now draw on their canvas`))
+                      .catch(toastGalat)
+                  }
+                />
                 <IconButton
                   nama={m.muted_until && m.muted_until > Date.now() ? 'silang' : 'lonceng'}
                   label={m.muted_until && m.muted_until > Date.now() ? 'Muted — tap to allow questions again' : 'Mute questions from this student for 10 min'}
@@ -188,15 +249,17 @@ export function PanelKelas({
             <BarisGrup
               key={g.id}
               g={g}
-              jumlah={anggota.filter((a) => a.group_id === g.id).length}
+              anggota={anggota.filter((a) => a.group_id === g.id).map((a) => semuaMurid.find((m) => m.id === a.student_id) ?? { id: a.student_id, name: a.student_id })}
+              bebas={semuaMurid.filter((m) => !anggota.some((a) => a.student_id === m.id))}
               editorLain={editorLain.map((e) => ({ id: e.id, nama: e.nama, ruang: e.ruang }))}
               daftarSketsa={daftarSketsa}
             />
           ))}
           <TambahGrup />
           <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
-            A group's view overrides its members' room: follow a room, one editor, or pin one
-            sketch. Assign students on the Students tab.
+            Groups are permanent: members stay in their group across days (their account is
+            their identity), and each group gets a fresh canvas per day. A group's view overrides
+            its members' room.
           </p>
         </div>
       )}
@@ -270,17 +333,21 @@ function BarisTanya({
 
 function BarisGrup({
   g,
-  jumlah,
+  anggota,
+  bebas,
   editorLain,
   daftarSketsa,
 }: {
   g: Grup
-  jumlah: number
+  anggota: Pick<Murid, 'id' | 'name'>[]
+  bebas: Pick<Murid, 'id' | 'name'>[]
   editorLain: { id: string; nama: string; ruang: number }[]
   daftarSketsa: { id: string; title: string }[]
 }) {
   const [nama, setNama] = useState(g.name)
+  const [jadwal, setJadwal] = useState(g.schedule ?? '')
   useEffect(() => setNama(g.name), [g.name])
+  useEffect(() => setJadwal(g.schedule ?? ''), [g.schedule])
   return (
     <div className="ex-card flex flex-col gap-1 p-2">
       <div className="flex items-center gap-2">
@@ -293,10 +360,43 @@ function BarisGrup({
           onBlur={() => nama.trim() && nama !== g.name && void ubahGrup(g.id, { name: nama.trim() })}
           aria-label="Group name"
         />
-        <span className="ex-num" style={{ fontSize: 11, color: 'var(--ink-faint)' }}>
-          {jumlah}
-        </span>
+        <input
+          className="ex-input"
+          style={{ padding: '3px 6px', fontSize: 11, width: 88 }}
+          value={jadwal}
+          placeholder="Mon 16:00"
+          onChange={(e) => setJadwal(e.target.value)}
+          onBlur={() => jadwal.trim() !== (g.schedule ?? '') && void ubahGrup(g.id, { schedule: jadwal.trim() || null })}
+          aria-label="Schedule"
+          title="Fixed schedule (free text)"
+        />
         <IconButton nama="hapus" label="Delete group" ukuran={13} onClick={() => void hapusGrup(g.id)} />
+      </div>
+      <div className="flex flex-wrap items-center gap-1">
+        {anggota.map((m) => (
+          <span
+            key={m.id}
+            className="flex items-center gap-1"
+            style={{ fontSize: 11, padding: '1px 4px 1px 7px', borderRadius: 999, background: 'var(--surface-2)', border: '1px solid var(--line)' }}
+          >
+            {m.name}
+            <IconButton nama="silang" label={`Remove ${m.name} from ${g.name}`} ukuran={10} onClick={() => void tetapkanGrup(m.id, null)} />
+          </span>
+        ))}
+        <select
+          className="ex-input"
+          style={{ padding: '2px 4px', fontSize: 11, width: 110 }}
+          value=""
+          onChange={(e) => e.target.value && void tetapkanGrup(e.target.value, g.id)}
+          aria-label={`Add a member to ${g.name}`}
+        >
+          <option value="">+ add member…</option>
+          {bebas.map((m) => (
+            <option key={m.id} value={m.id}>
+              {m.name}
+            </option>
+          ))}
+        </select>
       </div>
       <select
         className="ex-input"

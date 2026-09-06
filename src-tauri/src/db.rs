@@ -39,8 +39,50 @@ pub fn migrations() -> Vec<Migration> {
             kind: MigrationKind::Up,
             sql: "ALTER TABLE students ADD COLUMN muted_until INTEGER;",
         },
+        Migration {
+            version: 6,
+            description: "akun murid & sesi login",
+            kind: MigrationKind::Up,
+            sql: SKEMA_AKUN,
+        },
+        Migration {
+            version: 7,
+            description: "izin murid mencoret kanvasnya sendiri",
+            kind: MigrationKind::Up,
+            sql: "ALTER TABLE students ADD COLUMN can_draw INTEGER NOT NULL DEFAULT 0;",
+        },
+        Migration {
+            version: 8,
+            description: "akun perlu persetujuan guru; grup permanen (jadwal, kanvas per hari)",
+            kind: MigrationKind::Up,
+            sql: "ALTER TABLE accounts ADD COLUMN approved INTEGER NOT NULL DEFAULT 0;
+                  ALTER TABLE groups ADD COLUMN schedule TEXT;
+                  ALTER TABLE groups ADD COLUMN sketch_day TEXT;",
+        },
     ]
 }
+
+/// Akun murid: nomor HP sebagai nama pengguna, sandi disimpan sebagai hash
+/// PBKDF2 bergaram. Sesi adalah token acak yang dipegang browser; satu akun
+/// boleh punya beberapa sesi (HP dan laptop).
+const SKEMA_AKUN: &str = r#"
+CREATE TABLE IF NOT EXISTS accounts (
+  id         TEXT PRIMARY KEY,
+  name       TEXT NOT NULL,
+  phone      TEXT NOT NULL UNIQUE,
+  pass_hash  TEXT NOT NULL,
+  salt       TEXT NOT NULL,
+  created_at INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS sessions (
+  token      TEXT PRIMARY KEY,
+  account_id TEXT NOT NULL,
+  device     TEXT,
+  created_at INTEGER NOT NULL,
+  last_seen  INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_sessions_akun ON sessions(account_id);
+"#;
 
 /// Kelas langsung: murid yang masuk lewat HP, grup buatan guru, dan antrian
 /// pertanyaan. Foto pertanyaan tinggal di `vault/tanya/` dan dihapus bersama

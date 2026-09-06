@@ -1,6 +1,7 @@
 //! Exact Canvas — kanvas sketsa Wacom, local-first.
 //! Seluruh data ada di folder vault milik pengguna.
 
+mod akun;
 mod db;
 mod kelas;
 mod menu;

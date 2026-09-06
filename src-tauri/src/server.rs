@@ -140,11 +140,12 @@ fn info(hub: &Hub) -> InfoBerbagi {
     let publik = ALAMAT_PUBLIK.lock().ok().and_then(|a| a.clone());
     let dasar = publik.clone().unwrap_or_else(|| format!("http://{ip}:{}", hub.port));
     InfoBerbagi {
-        // Editor (tablet) selalu lewat /admin: minta kata sandi admin, bukan cuma PIN.
-        url: format!("{dasar}/admin?pin={}", hub.pin),
+        // Editor (tablet) lewat /admin dengan kata sandi admin; murid masuk
+        // dengan akun. Hanya TV — yang tidak bisa mengetik — yang membawa PIN.
+        url: format!("{dasar}/admin"),
         url_tv: format!("{dasar}/tv?pin={}&tv=1&ruang=1", hub.pin),
-        url_murid: format!("{dasar}/tv?pin={}&murid=1", hub.pin),
-        url_lokal: format!("http://{ip}:{}/tv?pin={}&murid=1", hub.port, hub.pin),
+        url_murid: format!("{dasar}/tv?murid=1"),
+        url_lokal: format!("http://{ip}:{}/tv?murid=1", hub.port),
         publik,
         token_app: hub.token_app.clone(),
         admin_diset: SANDI_ADMIN.lock().ok().and_then(|s| s.clone()).is_some(),
@@ -331,6 +332,15 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/api/kelas/ubah", axum::routing::post(crate::kelas::api_ubah_tanya))
         .route("/api/kelas/foto/{nama}", get(crate::kelas::api_foto))
         .route("/api/kelas/paham", axum::routing::post(crate::kelas::api_paham))
+        .route("/api/kelas/izin", axum::routing::post(crate::kelas::api_izin))
+        .route("/api/akun/daftar", axum::routing::post(crate::akun::api_daftar))
+        .route("/api/akun/masuk", axum::routing::post(crate::akun::api_masuk_akun))
+        .route("/api/akun/saya", get(crate::akun::api_saya_akun))
+        .route("/api/akun/keluar", axum::routing::post(crate::akun::api_keluar))
+        .route("/api/akun", get(crate::akun::api_daftar_akun))
+        .route("/api/akun/reset", axum::routing::post(crate::akun::api_reset_sandi))
+        .route("/api/akun/setujui", axum::routing::post(crate::akun::api_setujui))
+        .route("/api/akun/{id}", axum::routing::delete(crate::akun::api_hapus_akun))
         .route("/api/kelas/terbaru", get(crate::kelas::api_terbaru))
         .route("/ws", get(ws_masuk))
         .fallback(aset_lain)
@@ -368,6 +378,8 @@ fn pasang_cors(h: &mut HeaderMap) {
 #[derive(Deserialize)]
 pub struct QueryPin {
     pub pin: Option<String>,
+    /// Token sesi murid (untuk <img>/WebSocket yang tidak bisa membawa header).
+    pub sesi: Option<String>,
 }
 
 /// Percobaan PIN yang gagal per alamat asal. Lewat Cloudflare, alamat asli
@@ -391,7 +403,7 @@ fn asal_klien(headers: &HeaderMap) -> String {
 
 /// Terlalu banyak PIN salah dari satu asal → ditolak sementara, PIN benar pun.
 /// Menebak 10.000 kombinasi empat digit jadi butuh bertahun-tahun, bukan menit.
-fn diblokir(asal: &str) -> bool {
+pub fn diblokir(asal: &str) -> bool {
     let mut g = GAGAL_PIN.lock().unwrap_or_else(|e| e.into_inner());
     let peta = g.get_or_insert_with(HashMap::new);
     match peta.get(asal) {
@@ -404,7 +416,7 @@ fn diblokir(asal: &str) -> bool {
     }
 }
 
-fn catat_gagal(asal: &str) {
+pub fn catat_gagal(asal: &str) {
     let mut g = GAGAL_PIN.lock().unwrap_or_else(|e| e.into_inner());
     let peta = g.get_or_insert_with(HashMap::new);
     let masuk = peta.entry(asal.to_string()).or_insert((0, std::time::Instant::now()));
@@ -417,21 +429,41 @@ fn catat_gagal(asal: &str) {
     }
 }
 
+/// Boleh masuk kelas ini? Lewat PIN (TV, tautan lama), lewat sesi akun murid
+/// (HP yang sudah masuk), atau lewat hak admin (guru). Percobaan PIN yang
+/// salah dihitung; permintaan tanpa kredensial sama sekali tidak.
 pub fn sah(hub: &Hub, headers: &HeaderMap, q: Option<&str>) -> bool {
+    sah_lengkap(hub, headers, q, None)
+}
+
+pub fn sah_lengkap(hub: &Hub, headers: &HeaderMap, q_pin: Option<&str>, q_sesi: Option<&str>) -> bool {
     let asal = asal_klien(headers);
     if diblokir(&asal) {
         return false;
     }
-    let dari_header = headers
-        .get("x-exact-pin")
+    let pin_header = headers.get("x-exact-pin").and_then(|v| v.to_str().ok());
+    if let Some(p) = pin_header.or(q_pin) {
+        if p == hub.pin {
+            return true;
+        }
+    }
+    let sesi = headers
+        .get("x-exact-sesi")
         .and_then(|v| v.to_str().ok())
-        .map(|v| v == hub.pin)
-        .unwrap_or(false);
-    let benar = dari_header || q == Some(hub.pin.as_str());
-    if !benar {
+        .map(|s| s.to_string())
+        .or_else(|| q_sesi.map(|s| s.to_string()));
+    if let Some(t) = sesi {
+        if crate::akun::akun_dari_sesi(&t).is_some() {
+            return true;
+        }
+    }
+    if headers.contains_key("x-exact-admin") && admin_sah(hub, headers, None) {
+        return true;
+    }
+    if pin_header.is_some() || q_pin.is_some() {
         catat_gagal(&asal);
     }
-    benar
+    false
 }
 
 pub fn tolak() -> Response {
@@ -536,7 +568,7 @@ async fn aset_lain(State(hub): State<Arc<Hub>>, uri: axum::http::Uri) -> Respons
 /* ── API vault ─────────────────────────────────────────────────────── */
 
 async fn api_vault(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryPin>) -> Response {
-    if !sah(&hub, &headers, q.pin.as_deref()) {
+    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
         return tolak();
     }
     Json(vault::vault_info()).into_response()
@@ -634,7 +666,7 @@ pub fn dekode_data_url(src: &str) -> Option<(String, Vec<u8>)> {
 
 /// Baca sketsa; kembalikan JSON tanpa isi gambar (diganti URL) dan simpan
 /// gambar yang didekode di cache untuk dilayani per permintaan.
-fn sketsa_ringan(id: &str, pin: &str) -> Result<String, String> {
+fn sketsa_ringan(id: &str, kred: &str) -> Result<String, String> {
     let p = vault::resolve_within(&vault::canvas_dir(), &format!("{id}.json"))?;
     let mtime = std::fs::metadata(&p).and_then(|m| m.modified()).map_err(|e| e.to_string())?;
     let teks = std::fs::read_to_string(&p).map_err(|e| e.to_string())?;
@@ -652,7 +684,7 @@ fn sketsa_ringan(id: &str, pin: &str) -> Result<String, String> {
                 // menarik tiap halaman PDF dari Mac ini satu per satu.
                 let ext = if mime.contains("png") { "png" } else if mime.contains("webp") { "webp" } else { "jpg" };
                 daftar.push(GambarSketsa { mime, bytes });
-                g["src"] = Value::String(format!("/api/canvas/{id}/gambar/{i}.{ext}?v={sidik:x}&pin={pin}"));
+                g["src"] = Value::String(format!("/api/canvas/{id}/gambar/{i}.{ext}?v={sidik:x}&{kred}"));
             } else {
                 // Bukan data URL (sudah berupa URL): biarkan; slot cache tetap
                 // terisi supaya indeksnya sejajar dengan urutan gambar.
@@ -672,7 +704,7 @@ fn sketsa_ringan(id: &str, pin: &str) -> Result<String, String> {
     serde_json::to_string(&v).map_err(|e| e.to_string())
 }
 
-fn gambar_dari_cache(id: &str, pin: &str) -> Result<Arc<Vec<GambarSketsa>>, String> {
+fn gambar_dari_cache(id: &str, kred: &str) -> Result<Arc<Vec<GambarSketsa>>, String> {
     let p = vault::resolve_within(&vault::canvas_dir(), &format!("{id}.json"))?;
     let mtime = std::fs::metadata(&p).and_then(|m| m.modified()).map_err(|e| e.to_string())?;
     {
@@ -683,7 +715,7 @@ fn gambar_dari_cache(id: &str, pin: &str) -> Result<Arc<Vec<GambarSketsa>>, Stri
             }
         }
     }
-    sketsa_ringan(id, pin)?;
+    sketsa_ringan(id, kred)?;
     let cache = CACHE_SKETSA.lock().unwrap_or_else(|e| e.into_inner());
     cache
         .as_ref()
@@ -693,11 +725,16 @@ fn gambar_dari_cache(id: &str, pin: &str) -> Result<Arc<Vec<GambarSketsa>>, Stri
 }
 
 async fn api_canvas_ringan(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryPin>, Path(id): Path<String>) -> Response {
-    if !sah(&hub, &headers, q.pin.as_deref()) {
+    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
         return tolak();
     }
-    let pin = hub.pin.clone();
-    match tokio::task::spawn_blocking(move || sketsa_ringan(&id, &pin)).await {
+    // Kredensial yang dipakai peminta itulah yang ditanam di URL gambarnya:
+    // murid bersesi tidak pernah melihat PIN kelas.
+    let kred = match q.sesi.clone().or_else(|| headers.get("x-exact-sesi").and_then(|v| v.to_str().ok()).map(|s| s.to_string())) {
+        Some(s) => format!("sesi={s}"),
+        None => format!("pin={}", hub.pin),
+    };
+    match tokio::task::spawn_blocking(move || sketsa_ringan(&id, &kred)).await {
         Ok(Ok(isi)) => ([(header::CONTENT_TYPE, "application/json"), (header::CACHE_CONTROL, "no-store")], isi).into_response(),
         Ok(Err(e)) => (StatusCode::NOT_FOUND, e).into_response(),
         Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
@@ -710,14 +747,14 @@ async fn api_canvas_gambar(
     Query(q): Query<QueryPin>,
     Path((id, nama)): Path<(String, String)>,
 ) -> Response {
-    if !sah(&hub, &headers, q.pin.as_deref()) {
+    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
         return tolak();
     }
     let Ok(i) = nama.split('.').next().unwrap_or("").parse::<usize>() else {
         return StatusCode::NOT_FOUND.into_response();
     };
-    let pin = hub.pin.clone();
-    let hasil = tokio::task::spawn_blocking(move || gambar_dari_cache(&id, &pin)).await;
+    let kred = format!("pin={}", hub.pin);
+    let hasil = tokio::task::spawn_blocking(move || gambar_dari_cache(&id, &kred)).await;
     match hasil {
         Ok(Ok(daftar)) => match daftar.get(i) {
             Some(g) if !g.bytes.is_empty() => {
@@ -832,6 +869,7 @@ struct QueryWs {
     ruang: Option<i64>,
     murid: Option<String>,
     admin: Option<String>,
+    sesi: Option<String>,
 }
 
 async fn ws_masuk(
@@ -840,7 +878,7 @@ async fn ws_masuk(
     headers: HeaderMap,
     Query(q): Query<QueryWs>,
 ) -> Response {
-    if !sah(&hub, &headers, q.pin.as_deref()) {
+    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
         return tolak();
     }
     // Peran editor menyiarkan pandangan dan goresan ke semua layar; itu hak
@@ -862,6 +900,57 @@ async fn ws_masuk(
     ws.on_upgrade(move |soket| layani(soket, hub, klien))
 }
 
+/// Saring pesan dari HP murid: hanya goresan pena (titik / selesai / ubah
+/// coretan) di kanvas yang diizinkan; hapusan hanya untuk coretan buatannya
+/// sendiri. Pesan yang lolos ditandai `dariMurid` supaya layar lain tahu ini
+/// bukan guru. Mengembalikan None untuk pesan yang dibuang.
+fn coretan_murid(
+    v: &Value,
+    jenis: &str,
+    boleh: bool,
+    kanvas: Option<&str>,
+    murid: &str,
+    punya: &mut std::collections::HashSet<String>,
+) -> Option<Value> {
+    if !boleh {
+        return None;
+    }
+    let kanvas = kanvas?;
+    if v.get("idKanvas").and_then(|x| x.as_str()) != Some(kanvas) {
+        return None;
+    }
+    let mut keluar = match jenis {
+        "titik" | "goresan-selesai" | "kursor" => v.clone(),
+        "ubah" => {
+            let mut tambah: Vec<Value> = v["tambah"]["coretan"].as_array().cloned().unwrap_or_default();
+            tambah.retain(|c| c["id"].is_string() && c["points"].as_array().map(|p| p.len() <= 6000).unwrap_or(false));
+            if tambah.len() > 50 {
+                return None;
+            }
+            for c in &tambah {
+                if let Some(id) = c["id"].as_str() {
+                    punya.insert(id.to_string());
+                }
+            }
+            let hapus: Vec<Value> = v["hapus"]["coretan"]
+                .as_array()
+                .map(|h| h.iter().filter(|x| x.as_str().map(|s| punya.contains(s)).unwrap_or(false)).cloned().collect())
+                .unwrap_or_default();
+            if tambah.is_empty() && hapus.is_empty() {
+                return None;
+            }
+            json!({
+                "t": "ubah", "idKanvas": kanvas, "src": v.get("src").cloned().unwrap_or(Value::Null),
+                "hapus": { "coretan": hapus, "objek": [] },
+                "tambah": { "coretan": tambah, "objek": [] },
+            })
+        }
+        _ => return None,
+    };
+    keluar["dariMurid"] = Value::String(murid.to_string());
+    Some(keluar)
+}
+
 fn siarkan_klien(hub: &Hub) {
     let daftar = hub.klien.lock().map(|k| k.clone()).unwrap_or_default();
     let _ = hub.tx.send(json!({ "t": "klien", "daftar": daftar, "server": hub.token }).to_string());
@@ -870,6 +959,17 @@ fn siarkan_klien(hub: &Hub) {
 async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
     let id = klien.id.clone();
     let editor = klien.peran == "editor";
+    let murid = klien.murid.clone();
+    // Murid yang diizinkan guru boleh mencoret satu kanvas: kanvasnya sendiri.
+    // Izinnya dibaca sekali di sini dan diperbarui lewat siaran `izin`.
+    let (mut boleh_coret, mut kanvas_izin) = if !editor && !murid.is_empty() {
+        let m = murid.clone();
+        tokio::task::spawn_blocking(move || crate::kelas::izin_murid_baru(&m)).await.unwrap_or((false, None))
+    } else {
+        (false, None)
+    };
+    // Coretan yang dibuat koneksi ini — hanya itu yang boleh ia hapus lagi (undo).
+    let mut punya: std::collections::HashSet<String> = Default::default();
     // Berlangganan dulu, baru mengumumkan diri: kalau dibalik, klien yang baru
     // masuk justru tidak pernah menerima daftar yang memuat dirinya sendiri.
     let mut rx = hub.tx.subscribe();
@@ -912,8 +1012,15 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
                                 continue;
                             }
                             // Selain fokus/ruang, hanya editor yang boleh menyiarkan:
-                            // HP murid tidak bisa menyamar jadi guru.
+                            // HP murid tidak bisa menyamar jadi guru. Kecuali
+                            // murid berizin, untuk goresan di kanvasnya sendiri.
                             if !editor {
+                                if let Some(pesan) = coretan_murid(&v, jenis, boleh_coret, kanvas_izin.as_deref(), &murid, &mut punya) {
+                                    if jenis == "ubah" {
+                                        crate::kelas::antre_coretan_murid(hub.clone(), kanvas_izin.clone().unwrap_or_default(), pesan.clone());
+                                    }
+                                    let _ = hub.tx.send(pesan.to_string());
+                                }
                                 continue;
                             }
                         }
@@ -926,6 +1033,14 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
             keluar = rx.recv() => {
                 match keluar {
                     Ok(pesan) => {
+                        if !murid.is_empty() && pesan.len() < 400 && pesan.contains("\"t\":\"izin\"") {
+                            if let Ok(v) = serde_json::from_str::<Value>(&pesan) {
+                                if v.get("murid").and_then(|x| x.as_str()) == Some(murid.as_str()) {
+                                    boleh_coret = v.get("boleh").and_then(|x| x.as_bool()).unwrap_or(false);
+                                    kanvas_izin = v.get("sketsa").and_then(|x| x.as_str()).map(|s| s.to_string());
+                                }
+                            }
+                        }
                         if tulis.send(Message::Text(pesan.into())).await.is_err() {
                             break;
                         }

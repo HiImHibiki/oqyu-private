@@ -36,7 +36,7 @@ const t2 = performance.now()
 const unduh = await Promise.all(murid.flatMap(() => gambarUrl.slice(0, 5).map((u) => fetch(B + u).then((r) => r.arrayBuffer()))))
 console.log(`muat sketsa "${besar.title}" ×40: ${(t2 - t1).toFixed(0)} ms | ${gambarUrl.length} gambar; 40×5 unduhan gambar (${(unduh.reduce((a, b) => a + b.byteLength, 0) / 1e6).toFixed(1)} MB): ${(performance.now() - t2).toFixed(0)} ms`)
 // ── guru menulis: 60 paket titik/dtk + kursor 25/dtk + pandangan tiap 2 dtk
-const guru = await new Promise((res) => { const ws = new WebSocket('ws://127.0.0.1:4747/ws?pin=1234&id=guru_uji&name=Guru&role=editor&ruang=1'); ws.onopen = () => res(ws) })
+const guru = await new Promise((res) => { const ws = new WebSocket('ws://127.0.0.1:4747/ws?pin=1234&admin=' + encodeURIComponent(process.env.ADMIN ?? 'exact2026') + '&id=guru_uji&name=Guru&role=editor&ruang=1'); ws.onopen = () => res(ws) })
 let dikirim = 0; let n = 0
 const kirim = (p) => { guru.send(JSON.stringify({ ...p, src: 'guru_uji', ts: Date.now() })); dikirim++ }
 const tulis = setInterval(() => { const titik = []; for (let i = 0; i < 6; i++, n++) titik.push([200 + (n % 400), 300 + Math.sin(n / 9) * 60, 0.5]); kirim({ t: 'titik', idKanvas: besar.id, id: 'sk_beban', dari: n - 6, titik, meta: { id: 'sk_beban', tool: 'pen', color: 'ink', size: 4, layer: 0 } }) }, 1000 / 60)

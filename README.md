@@ -44,9 +44,21 @@ Wi-Fi (port 4747, PIN 4 digit, QR code):
   mengikuti editor yang sedang aktif: pandangan, zoom, halaman, goresan yang
   sedang ditarik, instrumen, dan posisi pena. Tambahkan `&mode=fit` supaya
   selalu menampilkan satu halaman penuh.
-- **Tablet** (mis. Galaxy Tab S11): buka tautan *Tablet (edit)*. Editor penuh di
-  browser; pena menggambar dengan tekanan, satu jari menggeser, dua jari
+- **Tablet** (mis. Galaxy Tab S11): buka tautan *Teacher (edit)* (`/admin`) dan
+  masukkan kata sandi admin dari Settings — tanpa PIN di alamat. Editor penuh
+  di browser; pena menggambar dengan tekanan, satu jari menggeser, dua jari
   mencubit. Menyimpan langsung ke vault Mac.
+- **Murid** (HP): tautan *Students* / QR (`/tv?murid=1`, juga alamat publik `/`).
+  Murid mendaftar sekali (nama, nomor HP, sandi, dan PIN kelas sebagai kode
+  kelas), lalu masuk dengan nomor HP + sandi. Identitasnya adalah akunnya,
+  bukan HP-nya, jadi ganti perangkat tetap orang yang sama. PIN tidak pernah
+  tampil di alamat HP murid; sesi login yang menggantikannya. Sandi disimpan
+  sebagai hash PBKDF2; guru bisa mereset sandi murid yang lupa.
+- **Izin coret**: di panel Class → Students, ikon pena mengizinkan seorang
+  murid mencoret kanvasnya sendiri (kanvas "Tanya · Nama", atau kanvas grupnya)
+  dari HP: pena, lima warna, tiga ketebalan, undo. Goresannya tampil langsung
+  di Mac/tablet/TV yang membuka kanvas itu dan disimpan server ke berkas
+  sketsa. Murid tidak bisa menyentuh kanvas lain, objek, teks, atau gambar.
 - Mac, TV, dan tablet harus di Wi-Fi yang sama; Mac tidak boleh tidur.
 - Setiap penulisan sketsa menyimpan versi sebelumnya ke `backup/<id>/` (30
   versi terakhir).
