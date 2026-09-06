@@ -965,12 +965,12 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
     let murid = klien.murid.clone();
     // Murid yang diizinkan guru boleh mencoret satu kanvas: kanvasnya sendiri.
     // Izinnya dibaca sekali di sini dan diperbarui lewat siaran `izin`.
-    let (mut boleh_coret, mut kanvas_izin) = if !editor && !murid.is_empty() {
+    // Dibaca sekali di awal (mungkin membuka database) supaya pembacaan
+    // per pesan selanjutnya tinggal dari cache bersama.
+    if !editor && !murid.is_empty() {
         let m = murid.clone();
-        tokio::task::spawn_blocking(move || crate::kelas::izin_murid_baru(&m)).await.unwrap_or((false, None))
-    } else {
-        (false, None)
-    };
+        let _ = tokio::task::spawn_blocking(move || crate::kelas::izin_murid_terkini(&m)).await;
+    }
     // Coretan yang dibuat koneksi ini — hanya itu yang boleh ia hapus lagi (undo).
     let mut punya: std::collections::HashSet<String> = Default::default();
     // Berlangganan dulu, baru mengumumkan diri: kalau dibalik, klien yang baru
@@ -1018,6 +1018,7 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
                             // HP murid tidak bisa menyamar jadi guru. Kecuali
                             // murid berizin, untuk goresan di kanvasnya sendiri.
                             if !editor {
+                                let (boleh_coret, kanvas_izin) = if murid.is_empty() { (false, None) } else { crate::kelas::izin_murid_terkini(&murid) };
                                 if let Some(pesan) = coretan_murid(&v, jenis, boleh_coret, kanvas_izin.as_deref(), &murid, &mut punya) {
                                     if jenis == "ubah" {
                                         crate::kelas::antre_coretan_murid(hub.clone(), kanvas_izin.clone().unwrap_or_default(), pesan.clone());
@@ -1036,14 +1037,6 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
             keluar = rx.recv() => {
                 match keluar {
                     Ok(pesan) => {
-                        if !murid.is_empty() && pesan.len() < 400 && pesan.contains("\"t\":\"izin\"") {
-                            if let Ok(v) = serde_json::from_str::<Value>(&pesan) {
-                                if v.get("murid").and_then(|x| x.as_str()) == Some(murid.as_str()) {
-                                    boleh_coret = v.get("boleh").and_then(|x| x.as_bool()).unwrap_or(false);
-                                    kanvas_izin = v.get("sketsa").and_then(|x| x.as_str()).map(|s| s.to_string());
-                                }
-                            }
-                        }
                         if tulis.send(Message::Text(pesan.into())).await.is_err() {
                             break;
                         }

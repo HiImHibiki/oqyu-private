@@ -236,11 +236,30 @@ pub fn izin_murid(c: &rusqlite::Connection, murid: &str) -> (bool, Option<String
     (boleh && sketsa.is_some(), sketsa)
 }
 
-/// Izin dibaca dari koneksi baru — untuk WebSocket yang baru tersambung.
-pub fn izin_murid_baru(murid: &str) -> (bool, Option<String>) {
-    match koneksi() {
+/// Izin terkini per murid, dibagi semua koneksi WebSocket. Diisi saat koneksi
+/// pertama murid itu dan ditulis ulang oleh `api_izin` sebelum siarannya —
+/// jadi pencabutan berlaku seketika, bukan setelah siaran sampai ke koneksi.
+static IZIN: std::sync::Mutex<Option<std::collections::HashMap<String, (bool, Option<String>)>>> = std::sync::Mutex::new(None);
+
+/// Izin murid untuk koneksi WebSocket: dari cache bersama, atau dari database
+/// kalau belum pernah dibaca.
+pub fn izin_murid_terkini(murid: &str) -> (bool, Option<String>) {
+    if let Some(z) = IZIN.lock().ok().and_then(|g| g.as_ref().and_then(|p| p.get(murid).cloned())) {
+        return z;
+    }
+    let z = match koneksi() {
         Ok(c) => izin_murid(&c, murid),
         Err(_) => (false, None),
+    };
+    if let Ok(mut g) = IZIN.lock() {
+        g.get_or_insert_with(Default::default).insert(murid.to_string(), z.clone());
+    }
+    z
+}
+
+fn catat_izin(murid: &str, boleh: bool, sketsa: Option<String>) {
+    if let Ok(mut g) = IZIN.lock() {
+        g.get_or_insert_with(Default::default).insert(murid.to_string(), (boleh, sketsa));
     }
 }
 
@@ -350,6 +369,7 @@ pub async fn api_izin(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(z): 
     .await;
     match hasil {
         Ok(Ok((sketsa, baru))) => {
+            catat_izin(&z.murid, boleh && sketsa.is_some(), sketsa.clone());
             if let Some(id) = &baru {
                 let _ = hub.tx.send(json!({ "t": "data", "kanal": "canvas", "payload": { "id": id, "src": "server" } }).to_string());
             }
