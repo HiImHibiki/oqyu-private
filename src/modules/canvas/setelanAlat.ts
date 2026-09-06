@@ -91,3 +91,22 @@ export async function muatModePenghapus(): Promise<ModePenghapus> {
 export async function simpanModePenghapus(m: ModePenghapus): Promise<void> {
   await setSettingJSON(KUNCI_MODE_PENGHAPUS, m)
 }
+
+/* ── Bentuk otomatis ───────────────────────────────────────────────── */
+
+export const KUNCI_AUTO_BENTUK = 'auto_bentuk_kanvas'
+
+/**
+ * Kenali bentuk begitu pena diangkat, tanpa harus menahan.
+ *
+ * Mati secara bawaan: saat menulis huruf, "o" yang berubah jadi lingkaran
+ * adalah gangguan. Saat mengajar geometri, menyalakannya berarti setiap
+ * segitiga dan lingkaran langsung rapi tanpa jeda.
+ */
+export async function muatAutoBentuk(): Promise<boolean> {
+  return (await getSettingJSON<boolean>(KUNCI_AUTO_BENTUK, false)) === true
+}
+
+export async function simpanAutoBentuk(on: boolean): Promise<void> {
+  await setSettingJSON(KUNCI_AUTO_BENTUK, on)
+}

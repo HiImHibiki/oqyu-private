@@ -62,11 +62,30 @@ import {
 } from './objek'
 import { AMBANG_DIAM, JEDA_TAHAN, kenaliBentuk } from './bentuk'
 import { DaftarHalaman, PetaBebas } from './PetaKanvas'
+import { kursorAlat } from './kursor'
+import {
+  INSTRUMEN,
+  buatInstrumen,
+  gambarInstrumen,
+  kenaInstrumen,
+  kunciTitik as kunciKeInstrumen,
+  kuncianDi,
+  terapkanSeret,
+  type Instrumen,
+  type JenisInstrumen,
+  type Kuncian,
+  type Seretan,
+} from './instrumen'
+import { PanelGrafik } from './PanelGrafik'
+import { PanelTabel } from './PanelTabel'
+import { ukuranTabel, type DefinisiGrafik, type DefinisiTabel, type MetaGambar } from './sisipan'
 import {
   MODE_PENGHAPUS_BAWAAN,
+  muatAutoBentuk,
   muatModePenghapus,
   muatSetelanAlat,
   setelanBawaan,
+  simpanAutoBentuk,
   simpanModePenghapus,
   simpanSetelanAlat,
   type KunciAlat,
@@ -158,7 +177,7 @@ function kotakHalaman(k: Kertas, i: number) {
 
 const HALAMAN_MAKS = 60
 
-type KelompokAlat = 'alat' | 'warna' | 'goresan' | 'kertas' | 'lapisan' | 'ekspor'
+type KelompokAlat = 'alat' | 'warna' | 'goresan' | 'kertas' | 'lapisan' | 'instrumen' | 'sisip' | 'ekspor'
 
 const JUDUL_PANEL: Record<KelompokAlat, string> = {
   alat: 'Tools',
@@ -166,6 +185,8 @@ const JUDUL_PANEL: Record<KelompokAlat, string> = {
   goresan: 'Stroke',
   kertas: 'Paper',
   lapisan: 'Layers',
+  instrumen: 'Instruments',
+  sisip: 'Insert',
   ekspor: 'Export',
 }
 
@@ -290,7 +311,28 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   useEffect(() => {
     void muatSetelanAlat().then(setSetelan)
     void muatModePenghapus().then(setModePenghapus)
+    void muatAutoBentuk().then(setAutoBentuk)
   }, [])
+
+  /** Pasang instrumen di tengah pandangan, atau lepas kalau yang sama ditekan lagi. */
+  function pasangInstrumen(jenis: JenisInstrumen) {
+    if (instrumen?.jenis === jenis) {
+      setInstrumen(null)
+      return
+    }
+    const el = wadahRef.current
+    if (!el) return
+    const r = el.getBoundingClientRect()
+    const tengah = v.keDunia(r.left + r.width / 2, r.top + r.height / 2)
+    setInstrumen(buatInstrumen(jenis, [tengah.x, tengah.y], r.width / v.tampilan.skala, r.height / v.tampilan.skala))
+    beriTahu(
+      jenis === 'penggaris'
+        ? 'Ruler placed. Start a stroke on its top edge to draw straight.'
+        : jenis === 'busur'
+          ? 'Protractor placed. Draw along the arc, or from the centre to read an angle.'
+          : 'Compass placed. Start a stroke at the pencil tip to draw an arc.',
+    )
+  }
   const [lapisan, setLapisan] = useState(0)
   const [lapisanInfo, setLapisanInfo] = useState<Lapisan[]>(lapisanBawaan)
   const [pilihan, setPilihan] = useState<Set<string>>(new Set())
@@ -303,6 +345,18 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const [kertas, setKertas] = useState<string>(KERTAS_BAWAAN)
   /** Sedang ada berkas yang diseret di atas jendela — tampilkan sasaran jatuhnya. */
   const [seretMasuk, setSeretMasuk] = useState(false)
+  /** Penggaris / busur / jangka yang sedang terpasang; satu saja pada satu waktu. */
+  const [instrumen, setInstrumen] = useState<Instrumen | null>(null)
+  const seretInstrumen = useRef<Seretan | null>(null)
+  /** Kuncian goresan yang sedang ditarik di tepi instrumen. */
+  const kuncianAktif = useRef<Kuncian | null>(null)
+  /** Bacaan hidup (panjang / sudut) yang digambar di dekat ujung pena. */
+  const bacaanRef = useRef<{ teks: string; x: number; y: number } | null>(null)
+  /** Kenali bentuk saat pena diangkat, tanpa menahan. */
+  const [autoBentuk, setAutoBentuk] = useState(false)
+  /** Editor sisipan yang sedang terbuka; `id` terisi saat menyunting yang sudah ada. */
+  const [editorGrafik, setEditorGrafik] = useState<{ awal: DefinisiGrafik | null; id: string | null } | null>(null)
+  const [editorTabel, setEditorTabel] = useState<{ awal: DefinisiTabel | null; id: string | null } | null>(null)
   const [jumlahHalaman, setJumlahHalaman] = useState(1)
   const [ukuranLayar, setUkuranLayar] = useState({ w: 0, h: 0 })
   const [urutanAlat, setUrutanAlat] = useState(URUTAN_BAWAAN)
@@ -1014,8 +1068,34 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       ctx.stroke()
       ctx.setLineDash([])
     }
+
+    if (instrumen) gambarInstrumen(ctx, instrumen, v.tampilan.skala)
+
+    // Bacaan hidup: panjang di penggaris, sudut di busur, jari-jari di jangka.
+    const b = bacaanRef.current
+    if (b) {
+      const s = v.tampilan.skala
+      ctx.font = `${12 / s}px ui-monospace, monospace`
+      ctx.textBaseline = 'middle'
+      ctx.textAlign = 'left'
+      const lebar = ctx.measureText(b.teks).width + 12 / s
+      ctx.fillStyle = warnaToken('accent')
+      ctx.beginPath()
+      // roundRect belum ada di WebKit macOS 11; kotak biasa cukup di sana.
+      if (typeof ctx.roundRect === 'function') ctx.roundRect(b.x + 14 / s, b.y - 22 / s, lebar, 20 / s, 5 / s)
+      else ctx.rect(b.x + 14 / s, b.y - 22 / s, lebar, 20 / s)
+      ctx.fill()
+      ctx.fillStyle = warnaToken('bg')
+      ctx.fillText(b.teks, b.x + 20 / s, b.y - 12 / s)
+    }
     ctx.restore()
-  }, [siapkanKanvas, v.tampilan])
+  }, [siapkanKanvas, v.tampilan, instrumen])
+
+  // Instrumen digambar di lapisan aktif, jadi ia harus ikut digambar ulang saat
+  // dipasang, digeser, atau saat kanvas di-pan — bukan hanya di tengah goresan.
+  useEffect(() => {
+    gambarAktif()
+  }, [gambarAktif])
 
   useEffect(() => {
     gambarDasarRef.current = gambarDasar
@@ -1106,6 +1186,16 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
 
     if (e.pointerType === 'pen' && tekananTersedia === null) {
       setTekananTersedia(e.pressure > 0 && e.pressure !== 0.5)
+    }
+
+    // Pegangan dan badan instrumen menang atas alat apa pun: penggaris yang
+    // tidak bisa digeser karena pena sedang aktif bukan penggaris.
+    if (instrumen) {
+      const mode = kenaInstrumen(instrumen, [d.x, d.y], v.tampilan.skala)
+      if (mode) {
+        seretInstrumen.current = { mode, awal: [d.x, d.y], asal: instrumen }
+        return
+      }
     }
 
     if (efektif === 'penghapus') {
@@ -1275,6 +1365,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
             gambarKena(g, d.x, d.y),
         )
       if (kena) {
+        // Ketukan kedua pada grafik atau tabel yang sudah terpilih membuka
+        // penyusunnya lagi — sama seperti tulisan yang diketik.
+        if (kena.meta && gambarTerpilih === kena.id) {
+          bukaEditorGambar(kena)
+          return
+        }
         setGambarTerpilih(kena.id)
         setPilihan(new Set())
         seretGambar.current = { id: kena.id, mode: 'geser', x: d.x, y: d.y, w: kena.w, h: kena.h }
@@ -1293,6 +1389,17 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       return
     }
 
+    // Goresan yang dimulai di tepi instrumen dikunci ke tepi itu sepanjang
+    // tarikannya — seperti pena yang ditempelkan ke penggaris sungguhan.
+    const kuncian = instrumen ? kuncianDi(instrumen, [d.x, d.y], v.tampilan.skala) : null
+    kuncianAktif.current = kuncian
+    let awal: [number, number] = [d.x, d.y]
+    if (kuncian) {
+      const { q, bacaan } = kunciKeInstrumen(kuncian, awal)
+      awal = q
+      bacaanRef.current = { teks: bacaan, x: q[0], y: q[1] }
+    }
+
     aktifCoretan.current = {
       id: newId('sk'),
       tool: efektif as AlatTulis,
@@ -1301,14 +1408,17 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       layer: lapisan,
       alpha: setelanAktif.alpha,
       pola: setelanAktif.pola,
-      steady,
-      points: [[d.x, d.y, tekananDari(e)]],
+      // Goresan terkunci sudah lurus atau bulat sempurna; perataan tangan
+      // hanya akan menariknya menjauh dari tepi yang dikuncinya.
+      steady: kuncian ? false : steady,
+      points: [[awal[0], awal[1], tekananDari(e)]],
     }
     // Mulai menggambar lagi berarti sudah selesai dengan bentuk sebelumnya —
     // titik-titiknya ikut hilang, bukan menggantung di atas coretan baru.
     if (objekTerpilih) setObjekTerpilih(null)
     titikDiam.current = { x: e.clientX, y: e.clientY }
-    jadwalkanTahan()
+    // Tahan-untuk-bentuk tidak berlaku di tepi instrumen: garisnya sudah garis.
+    if (!kuncian) jadwalkanTahan()
     gambarAktif()
   }
 
@@ -1340,6 +1450,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const bergerak = (e: React.PointerEvent<HTMLCanvasElement>) => {
     if (v.sedangGeser) {
       v.lanjutGeser(e)
+      return
+    }
+
+    if (seretInstrumen.current) {
+      const d = v.keDunia(e.clientX, e.clientY)
+      setInstrumen(terapkanSeret(seretInstrumen.current, [d.x, d.y]))
       return
     }
 
@@ -1508,8 +1624,18 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     const sampel =
       typeof native.getCoalescedEvents === 'function' ? native.getCoalescedEvents() : [native]
 
+    const kuncian = kuncianAktif.current
     for (const s of sampel) {
       const d = v.keDunia(s.clientX, s.clientY)
+      if (kuncian) {
+        const { q, bacaan } = kunciKeInstrumen(kuncian, [d.x, d.y])
+        // Kuncian radial dan garis hanya butuh dua titik yang benar; titik
+        // tengah yang menumpuk cuma membuat garis lurus jadi berat.
+        if (kuncian.jenis !== 'lingkaran' && c.points.length > 1) c.points.pop()
+        c.points.push([q[0], q[1], tekananDari(s)])
+        bacaanRef.current = { teks: bacaan, x: q[0], y: q[1] }
+        continue
+      }
       c.points.push([d.x, d.y, tekananDari(s)])
     }
 
@@ -1531,6 +1657,11 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     }
     if (v.sedangGeser) {
       v.selesaiGeser()
+      return
+    }
+
+    if (seretInstrumen.current) {
+      seretInstrumen.current = null
       return
     }
 
@@ -1611,6 +1742,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       gambarAktif()
       return
     }
+    const terkunci = kuncianAktif.current !== null
+    kuncianAktif.current = null
+    bacaanRef.current = null
     if (bentuk) {
       // Coretan aslinya dibuang, bukan disimpan di bawah bentuk: yang diminta
       // adalah bentuknya, dan satu ⌘Z mengembalikan kanvas ke sebelum goresan.
@@ -1619,6 +1753,27 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       beriTahu('Drag the dots to resize it · ⌫ deletes it · draw again to move on.')
       gambarAktif()
       return
+    }
+    // Bentuk otomatis: sama seperti tahan-untuk-bentuk, tapi tanpa menunggu.
+    // Goresan di tepi instrumen dibiarkan sebagai tinta — itu memang tinta yang
+    // diminta, dan bentuknya sudah dijamin instrumennya.
+    if (autoBentuk && !terkunci && c.points.length >= 8) {
+      const tebak = kenaliBentuk(c.points, 24 / v.tampilan.skala)
+      if (tebak) {
+        const obj: Objek = {
+          id: newId('obj'),
+          jenis: tebak.jenis,
+          layer: c.layer,
+          color: c.color,
+          size: Math.max(1.5, ukuran * 0.55),
+          titik: tebak.titik,
+          putar: tebak.putar,
+        }
+        terapkan(coretan, [...objek, obj])
+        setObjekTerpilih(obj.id)
+        gambarAktif()
+        return
+      }
     }
     terapkan([...coretan, c])
     gambarAktif()
@@ -2172,7 +2327,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * dua pertiga lebar layar — masih bisa diperbesar sendiri setelahnya.
    */
   const tempelGambar = useCallback(
-    (src: string, lebarAsli: number, tinggiAsli: number) => {
+    (src: string, lebarAsli: number, tinggiAsli: number, meta?: MetaGambar) => {
       const el = wadahRef.current
       if (!el || lebarAsli === 0) return
       const kotak = el.getBoundingClientRect()
@@ -2190,14 +2345,50 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         w,
         h,
         src,
+        ...(meta ? { meta } : {}),
       }
       setGambar((g) => [...g, baru])
       setGambarTerpilih(baru.id)
       setAlat('laso')
-      beriTahu('Pasted. Drag to move, corner to resize, Backspace to remove.')
+      beriTahu(
+        meta
+          ? 'Inserted. Drag to move, corner to resize · tap it again to edit.'
+          : 'Pasted. Drag to move, corner to resize, Backspace to remove.',
+      )
     },
     [v, lapisan, beriTahu],
   )
+
+  /** Buka penyusun grafik/tabel untuk gambar bersisipan yang sudah ada. */
+  function bukaEditorGambar(g: Gambar) {
+    if (!g.meta) return
+    if (g.meta.jenis === 'grafik') setEditorGrafik({ awal: g.meta.data, id: g.id })
+    else setEditorTabel({ awal: g.meta.data, id: g.id })
+  }
+
+  /**
+   * Hasil render sisipan masuk ke kanvas — sebagai gambar baru di tengah
+   * pandangan, atau menggantikan gambar lama di tempat dan lebar yang sama.
+   */
+  function terimaSisipan(meta: MetaGambar, hasil: { src: string; w: number; h: number }, id: string | null) {
+    if (!id) {
+      tempelGambar(hasil.src, hasil.w, hasil.h, meta)
+      return
+    }
+    setGambar((lama) =>
+      lama.map((g) => {
+        if (g.id !== id) return g
+        // Skala di kanvas dipertahankan: tabel yang bertambah kolom ikut melebar,
+        // bukan selnya yang menyempit demi lebar yang sama.
+        const lebarAsli = !g.meta ? hasil.w : g.meta.jenis === 'grafik' ? g.meta.data.w : ukuranTabel(g.meta.data).w
+        const skalaLama = g.w / lebarAsli
+        const w = Number.isFinite(skalaLama) && skalaLama > 0 ? hasil.w * skalaLama : g.w
+        return { ...g, src: hasil.src, w, h: (hasil.h / hasil.w) * w, meta }
+      }),
+    )
+    setGambarTerpilih(id)
+    beriTahu('Updated.')
+  }
 
   /**
    * Blob gambar → data URL, diperkecil kalau sisinya keterlaluan.
@@ -2605,7 +2796,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     await invoke('write_bytes', { path, bytes: Array.from(bytes) })
   }
 
-  const kursor = v.spasiDitekan ? 'grab' : alat === 'penghapus' ? 'cell' : 'crosshair'
+  const kursor = v.spasiDitekan
+    ? 'grab'
+    : kursorAlat(alat, alat === 'penghapus' ? setelanAktif.size * v.tampilan.skala : 0)
 
   /** Halaman yang tepi atasnya paling dekat dengan tepi atas layar. */
   const halamanTerlihat =
@@ -2882,6 +3075,18 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           aktif={panelAlat === 'lapisan'}
           onClick={() => bukaPanel('lapisan')}
         />
+        <IconButton
+          nama={instrumen?.jenis ?? 'penggaris'}
+          label="Ruler, protractor, compass"
+          aktif={panelAlat === 'instrumen'}
+          onClick={() => bukaPanel('instrumen')}
+        />
+        <IconButton
+          nama="sisip"
+          label="Insert a function graph, table, PDF or image"
+          aktif={panelAlat === 'sisip'}
+          onClick={() => bukaPanel('sisip')}
+        />
 
         <div className="ex-divider" style={{ margin: '2px 0' }} />
 
@@ -3136,6 +3341,23 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           />
           Hold to shape
         </label>
+
+        <label
+          className="ex-label flex items-center gap-2"
+          style={{ color: 'var(--ink-soft)' }}
+          title="Recognise lines, arrows, circles, boxes and triangles the moment the pen lifts — no holding. Handy for geometry, less so for handwriting."
+        >
+          <input
+            type="checkbox"
+            checked={autoBentuk}
+            onChange={(e) => {
+              setAutoBentuk(e.target.checked)
+              void simpanAutoBentuk(e.target.checked)
+            }}
+            style={{ accentColor: 'var(--accent)' }}
+          />
+          Auto shapes
+        </label>
             </>
           )}
 
@@ -3248,6 +3470,68 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
             </>
           )}
 
+          {panelAlat === 'instrumen' && (
+            <>
+        <div className="flex flex-col gap-1">
+          {INSTRUMEN.map((i) => (
+            <button
+              key={i.id}
+              className="ex-btn justify-start"
+              data-variant={instrumen?.jenis === i.id ? 'accent' : 'ghost'}
+              title={i.sub}
+              onClick={() => pasangInstrumen(i.id)}
+            >
+              <Icon nama={i.ikon} ukuran={15} />
+              <span className="flex-1 text-left">{i.label}</span>
+              {instrumen?.jenis === i.id && <span style={{ fontSize: 11, opacity: 0.8 }}>on</span>}
+            </button>
+          ))}
+        </div>
+        {instrumen && (
+          <button className="ex-btn" data-variant="ghost" onClick={() => setInstrumen(null)}>
+            <Icon nama="silang" ukuran={14} /> Put it away
+          </button>
+        )}
+        <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
+          Drag the body to move it and the dots to rotate or resize. Strokes that start on the
+          measuring edge, the arc, or the compass tip snap to it. 1 cm on the ruler is 1 cm on an
+          A4 print.
+        </p>
+            </>
+          )}
+
+          {panelAlat === 'sisip' && (
+            <>
+        <button
+          className="ex-btn justify-start"
+          data-variant="ghost"
+          title="Plot one or more functions of x on labelled axes"
+          onClick={() => setEditorGrafik({ awal: null, id: null })}
+        >
+          <Icon nama="grafik" ukuran={15} /> Function graph…
+        </button>
+        <button
+          className="ex-btn justify-start"
+          data-variant="ghost"
+          title="A table you can type into, or leave blank and fill by hand"
+          onClick={() => setEditorTabel({ awal: null, id: null })}
+        >
+          <Icon nama="tabel" ukuran={15} /> Table…
+        </button>
+        <button
+          className="ex-btn justify-start"
+          data-variant="ghost"
+          title="Each PDF page becomes an image you can draw straight onto."
+          onClick={() => berkasRef.current?.click()}
+        >
+          <Icon nama="pdf" ukuran={15} /> PDF or image…
+        </button>
+        <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
+          Graphs and tables stay editable: select one with the lasso, then tap it again.
+        </p>
+            </>
+          )}
+
           {panelAlat === 'ekspor' && (
             <>
         <div className="flex gap-1">
@@ -3307,6 +3591,47 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           )}
         </div>
       )}
+
+      <PanelGrafik
+        buka={editorGrafik !== null}
+        awal={editorGrafik?.awal ?? null}
+        onTutup={() => setEditorGrafik(null)}
+        onSisip={(d, hasil) => {
+          const id = editorGrafik?.id ?? null
+          setEditorGrafik(null)
+          if (hasil.galat.length > 0 && hasil.galat.length === d.fungsi.length) {
+            beriTahu('None of the functions could be read.')
+            return
+          }
+          terimaSisipan({ jenis: 'grafik', data: d }, hasil, id)
+        }}
+      />
+      <PanelTabel
+        buka={editorTabel !== null}
+        awal={editorTabel?.awal ?? null}
+        onTutup={() => setEditorTabel(null)}
+        onSisip={(d, hasil) => {
+          const id = editorTabel?.id ?? null
+          setEditorTabel(null)
+          terimaSisipan({ jenis: 'tabel', data: d }, hasil, id)
+        }}
+      />
+
+      {(() => {
+        const g = gambar.find((x2) => x2.id === gambarTerpilih)
+        if (!g?.meta) return null
+        return (
+          <button
+            className="ex-card ex-btn absolute left-1/2 top-4 z-10"
+            data-variant="ghost"
+            style={{ transform: 'translateX(-50%)' }}
+            onClick={() => bukaEditorGambar(g)}
+          >
+            <Icon nama={g.meta.jenis === 'grafik' ? 'grafik' : 'tabel'} ukuran={14} />
+            Edit {g.meta.jenis === 'grafik' ? 'graph' : 'table'}
+          </button>
+        )
+      })()}
 
       {sibuk && (
         <p

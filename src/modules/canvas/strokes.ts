@@ -1,5 +1,6 @@
 import getStroke from 'perfect-freehand'
 import { newId } from '@/lib/id'
+import type { MetaGambar } from './sisipan'
 
 import {
   OBJEK,
@@ -110,6 +111,12 @@ export interface Gambar {
   src: string
   /** Radian, berporos di tengah gambar. Sama seperti pada objek geometri. */
   putar?: number
+  /**
+   * Definisi sisipan yang dirender jadi gambar ini (grafik fungsi, tabel).
+   * Disimpan supaya sisipannya masih bisa dibuka dan disunting, lalu dirender
+   * ulang — bukan sekadar gambar mati.
+   */
+  meta?: MetaGambar
 }
 
 export function porosGambar(g: Gambar): [number, number] {

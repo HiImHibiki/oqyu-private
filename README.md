@@ -19,6 +19,22 @@ modul Canvas di Exact Dashboard Workspace. Seluruh fitur kanvas disalin utuh:
 - Beberapa sketsa: buat (⌘N), ganti nama, gandakan, hapus dengan Undo.
 - Beberapa jendela kanvas sekaligus (⌘⇧N), 18 tema, pengaturan kecepatan gulir/zoom.
 
+Tambahan khusus untuk mengajar:
+
+- **Kursor per alat**: ujung kursor adalah ikon alatnya; penghapus memperlihatkan
+  bidang hapusnya.
+- **Penggaris, busur derajat, jangka** (panel Instruments): digeser/diputar lewat
+  pegangannya; goresan yang dimulai di tepi ukur, di busur, atau di ujung pensil
+  jangka dikunci ke sana, dengan bacaan panjang (cm) atau sudut (°) langsung.
+  1 cm penggaris = 1 cm pada cetakan A4.
+- **Grafik fungsi** (panel Insert): beberapa fungsi sekaligus (`x^2-4`, `sin(x)`,
+  `1/x`, `2x+1`), rentang sumbu, petak, ukuran; masuk sebagai gambar yang tetap
+  bisa disunting (pilih dengan laso, ketuk lagi).
+- **Tabel**: baris/kolom, baris kepala, sel boleh kosong untuk diisi tulisan tangan.
+- **Pengenalan bentuk** lebih baik: panah satu tarikan, garis dikunci ke 0°/45°/90°,
+  segitiga siku-siku dirapikan; opsi **Auto shapes** (panel Stroke) mengenali
+  bentuk saat pena diangkat tanpa perlu menahan.
+
 ## Data
 
 Sketsa disimpan sebagai berkas JSON di folder vault, bawaan `~/ExactCanvas`

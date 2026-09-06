@@ -299,7 +299,68 @@ function sebagaiGaris(t: Titik[]): Tebakan | null {
   // Jalurnya juga tidak boleh jauh lebih panjang dari talinya — coretan
   // bolak-balik di tempat yang sama juga "lurus" menurut ukuran di atas.
   if (panjangJalur(t) / rentang > 1.12) return null
-  return { jenis: 'garis', titik: [a, b] }
+  return { jenis: 'garis', titik: rapikanGaris(a, b) }
+}
+
+/**
+ * Garis yang hampir mendatar, tegak, atau 45° dibuat tepat begitu.
+ *
+ * Diputar di sekitar titik tengahnya dengan panjang yang sama, jadi ujung-
+ * ujungnya hanya bergeser sepersekian milimeter — cukup untuk terlihat rapi,
+ * tidak cukup untuk terasa berpindah. Di luar 4° dari sumbu dibiarkan: garis
+ * miring 30° memang dimaksudkan miring.
+ */
+function rapikanGaris(a: Titik, b: Titik): Titik[] {
+  const sudut = Math.atan2(b[1] - a[1], b[0] - a[0])
+  const langkah = Math.PI / 4
+  const dekat = Math.round(sudut / langkah) * langkah
+  if (Math.abs(dekat - sudut) > (4 * Math.PI) / 180) return [a, b]
+  const panjang = jarak(a, b)
+  const tengah: Titik = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
+  const dx = (Math.cos(dekat) * panjang) / 2
+  const dy = (Math.sin(dekat) * panjang) / 2
+  return [
+    [tengah[0] - dx, tengah[1] - dy],
+    [tengah[0] + dx, tengah[1] + dy],
+  ]
+}
+
+/**
+ * Panah yang digambar satu tarikan: batang, lalu satu atau dua sirip di ujung.
+ *
+ * Ujungnya adalah titik terjauh dari pangkal. Semua yang ditarik sebelum ujung
+ * harus lurus; semua yang ditarik sesudahnya harus pendek dan tinggal di dekat
+ * ujung — itulah kepala panahnya. Panah yang kepalanya digambar sebagai
+ * goresan terpisah tidak dikenali di sini; itu dua goresan, bukan satu.
+ */
+function sebagaiPanah(t: Titik[]): Tebakan | null {
+  const a = t[0]
+  let iUjung = 0
+  let jauh = 0
+  for (let i = 1; i < t.length; i++) {
+    const d = jarak(a, t[i])
+    if (d > jauh) {
+      jauh = d
+      iUjung = i
+    }
+  }
+  if (jauh < 1 || iUjung < 4 || iUjung > t.length - 3) return null
+  const ujung = t[iUjung]
+  const batang = t.slice(0, iUjung + 1)
+  let maks = 0
+  for (const p of batang) maks = Math.max(maks, jarakKeRuas(p, a, ujung))
+  if (maks / jauh > 0.05) return null
+  const kepala = t.slice(iUjung)
+  const panjangKepala = panjangJalur(kepala)
+  if (panjangKepala < jauh * 0.08 || panjangKepala > jauh * 0.9) return null
+  for (const p of kepala) if (jarak(p, ujung) > jauh * 0.45) return null
+  // Sirip harus benar-benar menyimpang dari batang: goresan yang cuma sedikit
+  // mundur di garis yang sama hanyalah garis yang ditarik kelewat.
+  const ekor = kepala[kepala.length - 1]
+  const sudutSirip = sudutDi(ujung, a, ekor)
+  if (sudutSirip < 15 || sudutSirip > 80) return null
+  const [p, q] = rapikanGaris(a, ujung)
+  return { jenis: 'panah', titik: [p, q] }
 }
 
 function sebagaiSegitiga(sudut: Titik[], luasKotak: number): Tebakan | null {
@@ -308,7 +369,36 @@ function sebagaiSegitiga(sudut: Titik[], luasKotak: number): Tebakan | null {
     if (jarak(sudut[i], sudut[(i + 1) % 3]) / keliling < 0.15) return null
   }
   if (luasPoligon(sudut) / luasKotak < 0.28) return null
-  return { jenis: 'segitiga', titik: sudut }
+  return { jenis: 'segitiga', titik: rapikanSegitiga(sudut) }
+}
+
+/**
+ * Segitiga yang hampir siku-siku dijadikan siku-siku betul.
+ *
+ * Sisi yang miring kurang dari 6° dari mendatar atau tegak diluruskan dengan
+ * menggeser kedua ujungnya ke rata-ratanya. Segitiga siku-siku dengan alas
+ * mendatar adalah yang paling sering digambar saat mengajar, dan alas yang
+ * miring dua derajat membuat seluruh gambar tampak sembrono.
+ */
+function rapikanSegitiga(sudut: Titik[]): Titik[] {
+  const t = sudut.map((p) => [p[0], p[1]] as Titik)
+  const batas = 6
+  for (let i = 0; i < 3; i++) {
+    const p = t[i]
+    const q = t[(i + 1) % 3]
+    const deg = (Math.atan2(q[1] - p[1], q[0] - p[0]) * 180) / Math.PI
+    const m = ((deg % 180) + 180) % 180
+    if (Math.min(m, 180 - m) < batas) {
+      const y = (p[1] + q[1]) / 2
+      p[1] = y
+      q[1] = y
+    } else if (Math.abs(m - 90) < batas) {
+      const x = (p[0] + q[0]) / 2
+      p[0] = x
+      q[0] = x
+    }
+  }
+  return t
 }
 
 function sebagaiKotak(sudut: Titik[], k: Batas, luasKotak: number): Tebakan | null {
@@ -767,9 +857,14 @@ export function kenaliBentuk(
   // goresan lurus pendek juga punya ujung yang berdekatan.
   // Ambangnya longgar: orang jarang menutup persegi tepat di titik mulainya,
   // dan celah selebar sepertiga diagonal masih jelas dimaksudkan tertutup.
-  const tertutup = celah < Math.max(diag * 0.34, 12) && keliling > diag * 1.6
+  const tertutup = celah < Math.max(diag * 0.38, 12) && keliling > diag * 1.55
 
   if (!tertutup) {
+    // Panah diuji sebelum garis: batangnya sendiri lolos sebagai garis, tapi
+    // sirip di ujungnya membuat simpangan garis membengkak, dan urutan
+    // sebaliknya hanya akan menolak keduanya.
+    const panah = sebagaiPanah(halus)
+    if (panah) return panah
     return sahkan(sebagaiGaris(halus) ?? sebagaiKurva(halus, kotak, diag), halus, diag)
   }
 
