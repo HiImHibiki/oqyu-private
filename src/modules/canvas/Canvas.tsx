@@ -286,6 +286,11 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   /** Id tulisan yang kotak ketiknya sedang terbuka. */
   const [teksDiubah, setTeksDiubah] = useState<string | null>(null)
   const [alat, setAlat] = useState<Alat>('pen')
+  /** Alat tulis yang terakhir dipakai — tempat Escape mengembalikan tangan. */
+  const alatTulisTerakhir = useRef<Alat>('pen')
+  useEffect(() => {
+    if (alatTulis(alat)) alatTulisTerakhir.current = alat
+  }, [alat])
   const [warna, setWarna] = useState<string>('ink')
   /**
    * Setelan per alat, bukan satu slider bersama.
@@ -2214,6 +2219,13 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       // kanvas bersih saat layar sedang dibagikan ke murid.
       if (e.key === 'Escape' && !e.metaKey && !e.ctrlKey && !e.altKey) {
         e.preventDefault()
+        // Sekaligus lepaskan apa pun yang terpilih dan kembali ke pena
+        // terakhir: satu tombol untuk "selesai, lanjut menulis".
+        setPilihan(new Set())
+        setObjekTerpilih(null)
+        setGambarTerpilih(null)
+        setTeksTerpilih(null)
+        setAlat(alatTulisTerakhir.current)
         setMenuTampil((tampil) => !tampil)
         return
       }
