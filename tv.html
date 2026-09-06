@@ -26,8 +26,8 @@
 
       /* ── Murid (HP) ─────────────────────────────────────────────── */
       .hp { cursor: auto; }
-      #masuk { position: absolute; inset: 0; display: none; place-items: center; padding: 24px; background: var(--bg); }
-      #masuk.tampil { display: grid; }
+      #masuk { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; padding: 24px; background: var(--bg); overflow: hidden; }
+      #masuk.tampil { display: flex; }
       #masuk form { width: 100%; max-width: 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
       #masuk input, #masuk select, #masuk button { width: 100%; min-width: 0; }
       #masuk h1 { font-size: 20px; margin: 0; font-weight: 600; }
@@ -91,7 +91,7 @@
     <div id="masuk">
       <form id="form-masuk">
         <h1>Join the lesson</h1>
-        <input id="nama-masuk" placeholder="Your name" autocomplete="name" maxlength="40" required />
+        <input id="nama-masuk" placeholder="Your name" autocomplete="name" maxlength="40" size="10" required />
         <div class="ruangan" id="ruangan-masuk"></div>
         <button type="submit">Join</button>
       </form>
