@@ -35,7 +35,10 @@ const aktif = document.getElementById('aktif') as HTMLCanvasElement
 const statusEl = document.getElementById('status') as HTMLDivElement
 const pesanEl = document.getElementById('pesan') as HTMLDivElement
 
-const modeMuat = new URLSearchParams(location.search).get('mode') === 'fit'
+const paramMode = new URLSearchParams(location.search).get('mode')
+// Layar sempit (HP) lebih enak selalu melihat satu halaman penuh; layar lebar
+// (TV) mengikuti zoom guru. Keduanya bisa dipaksa lewat ?mode=fit / ?mode=follow.
+const modeMuat = paramMode === 'fit' || (paramMode !== 'follow' && window.innerWidth < 700)
 
 /* ── Keadaan ───────────────────────────────────────────────────────── */
 
@@ -215,7 +218,9 @@ function bingkai() {
 
 async function muatSketsa(id: string) {
   try {
-    const teks = await api<string | object>(`/api/canvas/${encodeURIComponent(id)}`)
+    // Versi ringan: gambar tempelan diganti URL yang di-cache browser, jadi
+    // yang lewat Wi-Fi tiap muat ulang hanya goresannya — bukan puluhan MB PDF.
+    const teks = await api<string | object>(`/api/canvas/${encodeURIComponent(id)}/ringan`)
     const data = (typeof teks === 'string' ? JSON.parse(teks) : teks) as BerkasKanvas
     sketsa = {
       ...data,

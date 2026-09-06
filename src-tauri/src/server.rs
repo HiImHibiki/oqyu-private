@@ -7,9 +7,11 @@
 //! apa adanya lewat satu hub WebSocket: server tidak menafsirkan isinya,
 //! cuma menyiarkan ke semua klien lain.
 
+use std::collections::HashMap;
+use std::hash::{Hash, Hasher};
 use std::net::{IpAddr, SocketAddr, TcpListener as StdTcpListener, UdpSocket};
 use std::sync::{Arc, Mutex};
-use std::time::Duration;
+use std::time::{Duration, SystemTime};
 
 use axum::{
     body::Body,
@@ -221,6 +223,8 @@ fn rute(hub: Arc<Hub>) -> Router {
             "/api/canvas/{id}",
             get(api_canvas_read).put(api_canvas_write).delete(api_canvas_delete),
         )
+        .route("/api/canvas/{id}/ringan", get(api_canvas_ringan))
+        .route("/api/canvas/{id}/gambar/{i}", get(api_canvas_gambar))
         .route("/api/sql", axum::routing::post(api_sql))
         .route("/ws", get(ws_masuk))
         .fallback(aset_lain)
@@ -367,6 +371,136 @@ async fn api_canvas_delete(State(hub): State<Arc<Hub>>, headers: HeaderMap, Path
     match vault::canvas_delete(id) {
         Ok(()) => StatusCode::NO_CONTENT.into_response(),
         Err(e) => (StatusCode::BAD_REQUEST, e).into_response(),
+    }
+}
+
+/* ── Sketsa ringan untuk layar pengikut ────────────────────────────── */
+
+/// Gambar tempelan satu sketsa, sudah didekode dari data URL-nya.
+struct GambarSketsa {
+    mime: String,
+    bytes: Vec<u8>,
+}
+
+struct CacheSketsa {
+    mtime: SystemTime,
+    gambar: Arc<Vec<GambarSketsa>>,
+}
+
+/// Gambar yang sudah didekode, per sketsa, selama berkasnya belum berubah.
+///
+/// Tanpa ini, tiap HP yang meminta satu halaman PDF memaksa server mengurai
+/// ulang berkas 20 MB — empat puluh HP dikali empat puluh halaman adalah
+/// ribuan penguraian untuk satu sketsa yang tidak berubah.
+static CACHE_SKETSA: Mutex<Option<HashMap<String, CacheSketsa>>> = Mutex::new(None);
+
+fn sidik_teks(s: &str) -> u64 {
+    let mut h = std::collections::hash_map::DefaultHasher::new();
+    s.hash(&mut h);
+    h.finish()
+}
+
+fn dekode_data_url(src: &str) -> Option<(String, Vec<u8>)> {
+    use base64::Engine;
+    let sisa = src.strip_prefix("data:")?;
+    let (kepala, isi) = sisa.split_once(',')?;
+    let mime = kepala.trim_end_matches(";base64").to_string();
+    let bytes = base64::engine::general_purpose::STANDARD.decode(isi.as_bytes()).ok()?;
+    Some((mime, bytes))
+}
+
+/// Baca sketsa; kembalikan JSON tanpa isi gambar (diganti URL) dan simpan
+/// gambar yang didekode di cache untuk dilayani per permintaan.
+fn sketsa_ringan(id: &str, pin: &str) -> Result<String, String> {
+    let p = vault::resolve_within(&vault::canvas_dir(), &format!("{id}.json"))?;
+    let mtime = std::fs::metadata(&p).and_then(|m| m.modified()).map_err(|e| e.to_string())?;
+    let teks = std::fs::read_to_string(&p).map_err(|e| e.to_string())?;
+    let mut v: Value = serde_json::from_str(&teks).map_err(|e| e.to_string())?;
+
+    let mut daftar: Vec<GambarSketsa> = Vec::new();
+    if let Some(gambar) = v.get_mut("images").and_then(|g| g.as_array_mut()) {
+        for (i, g) in gambar.iter_mut().enumerate() {
+            let Some(src) = g.get("src").and_then(|s| s.as_str()) else { continue };
+            let sidik = sidik_teks(src);
+            // Sidik jari isi masuk ke URL supaya browser boleh men-cache selamanya.
+            if let Some((mime, bytes)) = dekode_data_url(src) {
+                daftar.push(GambarSketsa { mime, bytes });
+                g["src"] = Value::String(format!("/api/canvas/{id}/gambar/{i}?v={sidik:x}&pin={pin}"));
+            } else {
+                // Bukan data URL (sudah berupa URL): biarkan; slot cache tetap
+                // terisi supaya indeksnya sejajar dengan urutan gambar.
+                daftar.push(GambarSketsa { mime: String::new(), bytes: Vec::new() });
+            }
+        }
+    }
+    let mut cache = CACHE_SKETSA.lock().unwrap_or_else(|e| e.into_inner());
+    let peta = cache.get_or_insert_with(HashMap::new);
+    // Paling banyak beberapa sketsa yang ditahan; TV biasanya menonton satu.
+    if peta.len() >= 4 && !peta.contains_key(id) {
+        if let Some(k) = peta.keys().next().cloned() {
+            peta.remove(&k);
+        }
+    }
+    peta.insert(id.to_string(), CacheSketsa { mtime, gambar: Arc::new(daftar) });
+    serde_json::to_string(&v).map_err(|e| e.to_string())
+}
+
+fn gambar_dari_cache(id: &str, pin: &str) -> Result<Arc<Vec<GambarSketsa>>, String> {
+    let p = vault::resolve_within(&vault::canvas_dir(), &format!("{id}.json"))?;
+    let mtime = std::fs::metadata(&p).and_then(|m| m.modified()).map_err(|e| e.to_string())?;
+    {
+        let cache = CACHE_SKETSA.lock().unwrap_or_else(|e| e.into_inner());
+        if let Some(c) = cache.as_ref().and_then(|m| m.get(id)) {
+            if c.mtime == mtime {
+                return Ok(c.gambar.clone());
+            }
+        }
+    }
+    sketsa_ringan(id, pin)?;
+    let cache = CACHE_SKETSA.lock().unwrap_or_else(|e| e.into_inner());
+    cache
+        .as_ref()
+        .and_then(|m| m.get(id))
+        .map(|c| c.gambar.clone())
+        .ok_or_else(|| "Sketch not cached.".into())
+}
+
+async fn api_canvas_ringan(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryPin>, Path(id): Path<String>) -> Response {
+    if !sah(&hub, &headers, q.pin.as_deref()) {
+        return tolak();
+    }
+    let pin = hub.pin.clone();
+    match tokio::task::spawn_blocking(move || sketsa_ringan(&id, &pin)).await {
+        Ok(Ok(isi)) => ([(header::CONTENT_TYPE, "application/json"), (header::CACHE_CONTROL, "no-store")], isi).into_response(),
+        Ok(Err(e)) => (StatusCode::NOT_FOUND, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
+    }
+}
+
+async fn api_canvas_gambar(
+    State(hub): State<Arc<Hub>>,
+    headers: HeaderMap,
+    Query(q): Query<QueryPin>,
+    Path((id, i)): Path<(String, usize)>,
+) -> Response {
+    if !sah(&hub, &headers, q.pin.as_deref()) {
+        return tolak();
+    }
+    let pin = hub.pin.clone();
+    let hasil = tokio::task::spawn_blocking(move || gambar_dari_cache(&id, &pin)).await;
+    match hasil {
+        Ok(Ok(daftar)) => match daftar.get(i) {
+            Some(g) if !g.bytes.is_empty() => {
+                let mut r = Response::new(Body::from(g.bytes.clone()));
+                r.headers_mut().insert(header::CONTENT_TYPE, g.mime.parse().unwrap_or(header::HeaderValue::from_static("application/octet-stream")));
+                // URL-nya memuat sidik isi, jadi browser boleh menyimpannya selamanya.
+                r.headers_mut().insert(header::CACHE_CONTROL, "public, max-age=31536000, immutable".parse().unwrap());
+                r
+            }
+            _ => StatusCode::NOT_FOUND.into_response(),
+        },
+        Ok(Err(e)) => (StatusCode::NOT_FOUND, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
     }
 }
 
