@@ -67,6 +67,16 @@
       #tunggu .sub { font-size: 14px; line-height: 1.5; margin-top: 8px; }
       #tunggu #tunggu-antrean { margin-top: 18px; font-size: 15px; color: #8a8; }
       #bilah #tombol-tunggu { flex: 0 0 auto; padding: 11px 14px; }
+      #pilih { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; padding: 24px; background: var(--bg); cursor: auto; }
+      #pilih.tampil { display: flex; }
+      #pilih .kotak { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 12px; text-align: center; }
+      #pilih h1 { margin: 0; font-size: 22px; font-weight: 600; }
+      #pilih p { margin: 0; color: var(--ink-soft); }
+      #pilih button { font: inherit; font-size: 16px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); cursor: pointer; }
+      #pilih button.utama { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+      #pilih .baris { display: flex; gap: 8px; }
+      #pilih .baris button { flex: 1; }
+      #pilih small { color: var(--ink-faint); }
       #ikuti { position: absolute; right: 12px; top: 12px; padding: 10px 14px; border-radius: 999px; border: 0; background: var(--accent); color: #fff;
         font: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
       .hp #aktif { touch-action: none; }
@@ -109,6 +119,19 @@
         <button id="tombol-batal">Cancel</button>
         <input id="berkas-foto" type="file" accept="image/*" capture="environment" hidden />
         <input id="berkas-pdf" type="file" accept="application/pdf,.pdf" hidden />
+      </div>
+    </div>
+    <div id="pilih">
+      <div class="kotak">
+        <h1>Exact Canvas</h1>
+        <p>How should this screen be used?</p>
+        <button id="pilih-murid" class="utama">🙋 Join as a student</button>
+        <div class="baris">
+          <button data-ruang="1">📺 TV · room 1</button>
+          <button data-ruang="2">📺 TV · room 2</button>
+          <button data-ruang="3">📺 TV · room 3</button>
+        </div>
+        <small>Students can ask questions and follow the teacher. A TV only follows.</small>
       </div>
     </div>
     <div id="masuk">

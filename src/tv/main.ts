@@ -45,12 +45,18 @@ const paramMode = params.get('mode')
  * HP murid atau TV? TV: layar lebar tanpa sentuh, atau `?tv=1`. HP murid masuk
  * dengan nama, punya bilah tanya, dan lampunya diawasi guru.
  */
-const sebagaiMurid = params.get('tv') !== '1' && (params.get('murid') === '1' || window.matchMedia('(pointer: coarse)').matches)
+let sebagaiMurid = params.get('tv') !== '1' && (params.get('murid') === '1' || window.matchMedia('(pointer: coarse)').matches)
 /** Ruangan perangkat ini: dari tautan untuk TV, dari layar masuk untuk HP. */
 let ruangSaya = Number(params.get('ruang')) || 1
+/**
+ * Laptop atau Mac tanpa petunjuk di tautannya: tanyakan dulu. Perangkat sentuh
+ * langsung dianggap murid; tautan dari Settings sudah membawa `tv=1` atau
+ * `murid=1` jadi tidak pernah melihat pilihan ini.
+ */
+const perluPilih = params.get('tv') !== '1' && params.get('murid') !== '1' && !window.matchMedia('(pointer: coarse)').matches
 /** Id murid, dibuat sekali per HP dan diingat. */
 const muridId = (() => {
-  if (!sebagaiMurid) return ''
+  if (!sebagaiMurid && !perluPilih) return ''
   try {
     let id = localStorage.getItem('exact-murid-id')
     if (!id) {
@@ -511,6 +517,14 @@ async function mulai() {
     return
   }
 
+  if (perluPilih) {
+    const pilihan = await layarPilih()
+    if (pilihan === 'murid') sebagaiMurid = true
+    else {
+      sebagaiMurid = false
+      ruangSaya = pilihan
+    }
+  }
   if (sebagaiMurid) {
     document.documentElement.classList.add('hp')
     await layarMasuk()
@@ -1026,4 +1040,22 @@ async function keluarModeTunggu(pesan: string, bunyikan = false) {
   tampilkanStatus(pesan)
   kotorDasar = true
   kotorAktif = true
+}
+
+/** Pilihan awal di layar tanpa sentuh: murid, atau TV untuk satu ruangan. */
+function layarPilih(): Promise<'murid' | number> {
+  return new Promise((selesai) => {
+    const kotak = el('pilih')
+    kotak.classList.add('tampil')
+    el('pilih-murid').onclick = () => {
+      kotak.classList.remove('tampil')
+      selesai('murid')
+    }
+    kotak.querySelectorAll<HTMLButtonElement>('button[data-ruang]').forEach((b) => {
+      b.onclick = () => {
+        kotak.classList.remove('tampil')
+        selesai(Number(b.dataset.ruang) || 1)
+      }
+    })
+  })
 }
