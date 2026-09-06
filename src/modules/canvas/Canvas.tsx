@@ -336,9 +336,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         beriTahu('Could not fetch the photo.')
       }
     }
-    // Langsung pena: yang ditunggu murid adalah coretan, bukan pemilihan gambar.
+    // Langsung pena dan panel dilipat: yang ditunggu murid adalah coretan,
+    // bukan pemilihan gambar atau bilah alat. Esc atau ⌘. membukanya lagi.
     setGambarTerpilih(null)
     setAlat(alatTulisTerakhir.current)
+    setPanelAlat(null)
+    setMenuTampil(false)
     // Umumkan diri sebagai editor aktif supaya layar di ruangan ini berpindah ke sini.
     kirim({ t: 'pandangan', idKanvas, tampilan: tampilanRef.current, layar: ukuranLayarRef.current })
     beriTahu(urlFoto ? `${t.name}'s photo is on the canvas — draw away.` : `Discussing ${t.name}'s question.`)
@@ -3534,7 +3537,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         menjawab "sedang pakai alat apa, warna apa": sisanya menunggu diminta.
       */}
       <div
-        className="ex-card ex-bilah absolute left-3 top-3 z-10 flex flex-col gap-1 p-1"
+        className="ex-card ex-bilah ex-rel absolute left-3 top-3 z-10 flex flex-col gap-1 p-1"
         style={{ display: menuTampil ? undefined : 'none' }}
       >
         <IconButton
@@ -3632,7 +3635,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           )}
         </div>
 
-        <div className="ex-divider" style={{ margin: '2px 0' }} />
+        <div className="ex-divider ex-pemisah" style={{ margin: '2px 0' }} />
 
         <IconButton nama="urungkan" label="Undo (⌘Z)" onClick={urungkan} />
         <IconButton nama="ulangi" label="Redo (⇧⌘Z)" onClick={ulangi} />
@@ -3664,7 +3667,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           daftar lapisan pada layar pendek tetap bisa digulung, bukan terpotong. */}
       {menuTampil && panelAlat && (
         <div
-          className="ex-card ex-bilah absolute z-10 flex flex-col gap-2 p-2"
+          className="ex-card ex-bilah ex-panel absolute z-10 flex flex-col gap-2 p-2"
           style={{
             left: 62,
             top: 12,
@@ -4197,7 +4200,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         </p>
       )}
 
-      <p className="ex-label absolute bottom-3 left-4" style={{ color: 'var(--ink-faint)' }}>
+      <p className="ex-label ex-statusbar absolute bottom-3 left-4" style={{ color: 'var(--ink-faint)' }}>
         {jumlahTampak} strokes
         {objek.length > 0 && ` · ${objek.length} shape${objek.length === 1 ? '' : 's'}`}
         {gambar.length > 0 && ` · ${gambar.length} image${gambar.length === 1 ? '' : 's'}`} ·{' '}

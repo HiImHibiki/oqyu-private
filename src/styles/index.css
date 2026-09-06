@@ -282,6 +282,33 @@ html.ex-sentuh .ex-bilah { zoom: 1.45; }
 html.ex-sentuh .ex-btn { min-height: 34px; }
 html.ex-sentuh input[type="range"] { height: 28px; }
 
+/* Tablet: rel alat mendatar di tengah bawah — dijangkau ibu jari kiri maupun
+   kanan tanpa menyeberangi layar — dan panelnya membuka ke atas. Pemilih
+   sketsa naik ke kiri atas supaya tidak berebut tempat dengan rel. */
+html.ex-sentuh .ex-rel {
+  left: 50% !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 10px !important;
+  transform: translateX(-50%);
+  flex-direction: row !important;
+  align-items: center;
+  max-width: calc(100% / 1.45 - 20px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+html.ex-sentuh .ex-rel .ex-pemisah { width: 1px; height: 22px; margin: 0 2px !important; }
+html.ex-sentuh .ex-panel {
+  left: 50% !important;
+  top: auto !important;
+  bottom: 64px !important;
+  transform: translateX(-50%);
+  max-height: calc(100% / 1.45 - 90px) !important;
+  width: min(320px, calc(100% / 1.45 - 24px)) !important;
+}
+html.ex-sentuh .ex-sketsa { bottom: auto !important; top: 12px !important; }
+html.ex-sentuh .ex-statusbar { display: none; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;

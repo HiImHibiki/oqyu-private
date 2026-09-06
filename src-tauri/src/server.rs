@@ -252,6 +252,9 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/ws", get(ws_masuk))
         .fallback(aset_lain)
         .layer(axum::middleware::from_fn(cors))
+        // Bawaannya 2 MB — sketsa dengan foto atau halaman PDF jauh lebih besar
+        // dari itu, dan tablet menyimpan seluruh sketsa lewat jalur ini.
+        .layer(axum::extract::DefaultBodyLimit::max(512 * 1024 * 1024))
         .with_state(hub)
 }
 
