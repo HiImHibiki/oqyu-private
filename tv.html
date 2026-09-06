@@ -12,6 +12,7 @@
         --ink-on-paper: #24262b; --accent: #b4531a; --accent-2: #1f6f5c; --glow: #e8a24b;
         --up: #1f6f5c; --down: #b4351a;
       }
+      *, *::before, *::after { box-sizing: border-box; }
       html, body { height: 100%; margin: 0; overflow: hidden; background: var(--bg); color: var(--ink);
         font: 15px -apple-system, system-ui, "Helvetica Neue", Arial, sans-serif; cursor: none; }
       canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
@@ -27,12 +28,13 @@
       .hp { cursor: auto; }
       #masuk { position: absolute; inset: 0; display: none; place-items: center; padding: 24px; background: var(--bg); }
       #masuk.tampil { display: grid; }
-      #masuk form { width: min(360px, 100%); display: flex; flex-direction: column; gap: 12px; }
+      #masuk form { width: 100%; max-width: 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+      #masuk input, #masuk select, #masuk button { width: 100%; min-width: 0; }
       #masuk h1 { font-size: 20px; margin: 0; font-weight: 600; }
       #masuk input, #masuk select, #masuk button { font: inherit; font-size: 17px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); }
       #masuk button { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
       .ruangan { display: flex; gap: 8px; }
-      .ruangan label { flex: 1; text-align: center; padding: 10px 0; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); }
+      .ruangan label { flex: 1; min-width: 0; text-align: center; padding: 10px 0; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); font-size: 15px; }
       .ruangan input { display: none; }
       .ruangan input:checked + span { color: #fff; }
       .ruangan label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: #fff; }
