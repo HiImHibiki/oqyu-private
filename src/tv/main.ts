@@ -36,9 +36,15 @@ const statusEl = document.getElementById('status') as HTMLDivElement
 const pesanEl = document.getElementById('pesan') as HTMLDivElement
 
 const paramMode = new URLSearchParams(location.search).get('mode')
-// Layar sempit (HP) lebih enak selalu melihat satu halaman penuh; layar lebar
-// (TV) mengikuti zoom guru. Keduanya bisa dipaksa lewat ?mode=fit / ?mode=follow.
-const modeMuat = paramMode === 'fit' || (paramMode !== 'follow' && window.innerWidth < 700)
+/** ?mode=fit: selalu satu halaman penuh, apa pun zoom guru. */
+const modeMuat = paramMode === 'fit'
+/**
+ * Layar sempit (HP) mengikuti zoom guru tapi *memenuhi* layarnya: wilayah yang
+ * dilihat guru di monitor lebar dipas ke tinggi HP, sisi kiri-kanan yang tidak
+ * muat dipotong. Memuat seluruh wilayah itu ke HP tegak hanya menyisakan pita
+ * kecil di tengah layar. ?mode=follow memaksa cara TV (muat seluruhnya).
+ */
+const modePenuh = paramMode !== 'follow' && !modeMuat && window.innerWidth < 700
 
 /* ── Keadaan ───────────────────────────────────────────────────────── */
 
@@ -104,7 +110,7 @@ function hitungTampilan() {
     lw = kertas.w + tepi * 2
     lh = kertas.h + tepi * 2
   }
-  const skala = Math.min(w / lw, h / lh)
+  const skala = modePenuh && !modeMuat ? Math.max(w / lw, h / lh) : Math.min(w / lw, h / lh)
   tampilan = {
     skala,
     x: (w - lw * skala) / 2 - x1 * skala,
