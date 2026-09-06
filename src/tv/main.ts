@@ -853,13 +853,49 @@ function pasangBilahMurid() {
   window.addEventListener('focus', lapor)
 }
 
+let timerKunci: number | null = null
+
+/** Kunci tombol tanya selama `detik`, dengan hitung mundur di tombolnya. */
+function kunciTombol(detik: number) {
+  const tombol = [el('tombol-tangan'), el('tombol-tanya')] as HTMLButtonElement[]
+  const label = ['✋ Raise hand', '❓ Ask']
+  let sisa = detik
+  if (timerKunci) window.clearInterval(timerKunci)
+  const tik = () => {
+    tombol.forEach((b, i) => {
+      b.disabled = sisa > 0
+      b.textContent = sisa > 0 ? `${label[i]} · ${sisa}s` : label[i]
+    })
+    if (sisa <= 0 && timerKunci) {
+      window.clearInterval(timerKunci)
+      timerKunci = null
+    }
+    sisa--
+  }
+  tik()
+  timerKunci = window.setInterval(tik, 1000)
+}
+
 async function kirimTanya(teks: string, foto: string) {
   try {
     await api('/api/kelas/tanya', { method: 'POST', json: { murid: muridId, nama: namaSaya, ruang: ruangSaya, teks, foto } })
     tampilkanStatus(foto.startsWith('data:application/pdf') ? 'PDF sent.' : foto || teks ? 'Question sent.' : 'Hand raised.')
+    kunciTombol(20)
     await segarkanSaya()
   } catch (e) {
-    tampilkanStatus(`Could not send: ${e instanceof Error ? e.message : String(e)}`, true)
+    // Pesan server berkode: TUNGGU:<detik>:<pesan> | ANTRE:<pesan> | MUTED:<pesan>
+    const mentah = e instanceof Error ? e.message : String(e)
+    const m = mentah.match(/^TUNGGU:(\d+):(.*)$/)
+    if (m) {
+      kunciTombol(Number(m[1]))
+      tampilkanStatus(m[2], true)
+    } else if (mentah.startsWith('ANTRE:') || mentah.startsWith('MUTED:')) {
+      tampilkanStatus(mentah.replace(/^[A-Z]+:/, ''), true)
+      if (mentah.startsWith('MUTED:')) kunciTombol(60)
+    } else {
+      tampilkanStatus(`Could not send: ${mentah}`, true)
+    }
+    await segarkanSaya()
   }
 }
 

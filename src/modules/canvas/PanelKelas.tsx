@@ -9,7 +9,9 @@ import { daftarKanvas } from './data'
 import {
   RUANGAN,
   anggotaGrup,
+  bisukanMurid,
   buatGrup,
+  kosongkanAntrean,
   daftarGrup,
   daftarMurid,
   daftarTanya,
@@ -91,6 +93,17 @@ export function PanelKelas({
 
       {tab === 'antrian' && (
         <div className="flex flex-col gap-1">
+          {antrian.length > 1 && (
+            <button
+              className="ex-btn self-end"
+              data-variant="ghost"
+              style={{ padding: '3px 8px', fontSize: 11 }}
+              title="Close every open question"
+              onClick={() => void kosongkanAntrean().then(() => toast('Queue cleared.'))}
+            >
+              <Icon nama="silang" ukuran={12} /> Clear queue
+            </button>
+          )}
           {antrian.length === 0 && (
             <p className="ex-label" style={{ color: 'var(--ink-faint)' }}>
               No one is waiting. Students raise a hand or send a question from their phone.
@@ -138,6 +151,13 @@ export function PanelKelas({
                   R{k?.ruang ?? m.room}
                   {k && k.keluar > 0 && ` · ${k.keluar}×`}
                 </span>
+                <IconButton
+                  nama={m.muted_until && m.muted_until > Date.now() ? 'silang' : 'lonceng'}
+                  label={m.muted_until && m.muted_until > Date.now() ? 'Muted — tap to allow questions again' : 'Mute questions from this student for 10 min'}
+                  aktif={!!m.muted_until && m.muted_until > Date.now()}
+                  ukuran={12}
+                  onClick={() => void bisukanMurid(m.id, m.muted_until && m.muted_until > Date.now() ? 0 : 10)}
+                />
                 <select
                   className="ex-input"
                   style={{ width: 96, padding: '2px 4px', fontSize: 11 }}

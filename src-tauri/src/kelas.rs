@@ -24,6 +24,56 @@ use crate::vault;
 
 const UMUR_FOTO_MS: i64 = 24 * 60 * 60 * 1000;
 
+/* ── Anti-spam ─────────────────────────────────────────────────────── */
+
+/// Jeda minimum antar pertanyaan dari satu murid.
+const JEDA_TANYA_MS: i64 = 20_000;
+/// Paling banyak sekian pertanyaan per murid dalam sepuluh menit.
+const KUOTA_TANYA: i64 = 6;
+const JENDELA_KUOTA_MS: i64 = 10 * 60 * 1000;
+/// Permintaan endpoint kelas per alamat per menit; di atas ini ditolak.
+const BATAS_PER_ALAMAT: u32 = 90;
+
+static HITUNG_ALAMAT: std::sync::Mutex<Option<std::collections::HashMap<String, (u32, std::time::Instant)>>> =
+    std::sync::Mutex::new(None);
+
+fn alamat_klien(headers: &HeaderMap) -> String {
+    for nama in ["cf-connecting-ip", "x-forwarded-for", "x-real-ip"] {
+        if let Some(v) = headers.get(nama).and_then(|v| v.to_str().ok()) {
+            let pertama = v.split(',').next().unwrap_or("").trim();
+            if !pertama.is_empty() {
+                return pertama.to_string();
+            }
+        }
+    }
+    "lokal".into()
+}
+
+/// Terlalu sering dari satu alamat → 429. Satu HP normal mengirim beberapa
+/// permintaan per menit; skrip yang membanjiri mengirim ratusan.
+fn kebanjiran(headers: &HeaderMap) -> bool {
+    let asal = alamat_klien(headers);
+    let mut g = HITUNG_ALAMAT.lock().unwrap_or_else(|e| e.into_inner());
+    let peta = g.get_or_insert_with(std::collections::HashMap::new);
+    let kini = std::time::Instant::now();
+    let jumlah = {
+        let masuk = peta.entry(asal).or_insert((0, kini));
+        if kini.duration_since(masuk.1).as_secs() >= 60 {
+            *masuk = (0, kini);
+        }
+        masuk.0 += 1;
+        masuk.0
+    };
+    if peta.len() > 5000 {
+        peta.retain(|_, (_, t)| kini.duration_since(*t).as_secs() < 60);
+    }
+    jumlah > BATAS_PER_ALAMAT
+}
+
+fn terlalu_sering() -> Response {
+    (StatusCode::TOO_MANY_REQUESTS, "Too many requests — slow down.").into_response()
+}
+
 fn sekarang() -> i64 {
     SystemTime::now().duration_since(UNIX_EPOCH).map(|d| d.as_millis() as i64).unwrap_or(0)
 }
@@ -57,6 +107,9 @@ pub struct Masuk {
 pub async fn api_masuk(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(m): Json<Masuk>) -> Response {
     if !sah(&hub, &headers, None) {
         return tolak();
+    }
+    if kebanjiran(&headers) {
+        return terlalu_sering();
     }
     let nama = m.nama.trim().chars().take(40).collect::<String>();
     if nama.is_empty() || m.murid.is_empty() {
@@ -157,10 +210,61 @@ pub async fn api_tanya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(t):
     if !sah(&hub, &headers, None) {
         return tolak();
     }
+    if kebanjiran(&headers) {
+        return terlalu_sering();
+    }
     let hasil = tokio::task::spawn_blocking(move || -> Result<Value, String> {
         let c = koneksi()?;
         let id = id_baru("tny");
         let kini = sekarang();
+
+        // ── anti-spam per murid
+        let dibisukan: Option<i64> = c
+            .query_row("SELECT muted_until FROM students WHERE id = ?1", rusqlite::params![t.murid], |r| r.get(0))
+            .ok()
+            .flatten();
+        if let Some(sampai) = dibisukan {
+            if sampai > kini {
+                let menit = ((sampai - kini) as f64 / 60_000.0).ceil() as i64;
+                return Err(format!("MUTED:The teacher muted questions from you for {menit} more min."));
+            }
+        }
+        let terakhir: Option<i64> = c
+            .query_row("SELECT MAX(created_at) FROM questions WHERE student_id = ?1", rusqlite::params![t.murid], |r| r.get(0))
+            .ok()
+            .flatten();
+        if let Some(tk) = terakhir {
+            if kini - tk < JEDA_TANYA_MS {
+                let sisa = ((JEDA_TANYA_MS - (kini - tk)) as f64 / 1000.0).ceil() as i64;
+                return Err(format!("TUNGGU:{sisa}:Please wait {sisa} s before asking again."));
+            }
+        }
+        let dalam_10_menit: i64 = c
+            .query_row(
+                "SELECT COUNT(*) FROM questions WHERE student_id = ?1 AND created_at > ?2",
+                rusqlite::params![t.murid, kini - JENDELA_KUOTA_MS],
+                |r| r.get(0),
+            )
+            .unwrap_or(0);
+        if dalam_10_menit >= KUOTA_TANYA {
+            return Err("TUNGGU:120:That's a lot of questions in a row — take a breath and try again in a couple of minutes.".into());
+        }
+        // Sudah antre tanpa membawa hal baru: jangan tambah antrean, cukup katakan posisinya.
+        let terbuka: Option<(String, i64)> = c
+            .query_row(
+                "SELECT status, created_at FROM questions WHERE student_id = ?1 AND status != 'selesai' ORDER BY created_at DESC LIMIT 1",
+                rusqlite::params![t.murid],
+                |r| Ok((r.get(0)?, r.get(1)?)),
+            )
+            .ok();
+        if let Some((status, dibuat)) = &terbuka {
+            if status == "menunggu" && t.teks.trim().is_empty() && t.foto.is_empty() {
+                let urutan: i64 = c
+                    .query_row("SELECT COUNT(*) FROM questions WHERE status = 'menunggu' AND created_at < ?1", rusqlite::params![dibuat], |r| r.get(0))
+                    .unwrap_or(0);
+                return Err(format!("ANTRE:You're already in the queue, #{}. The teacher will get to you.", urutan + 1));
+            }
+        }
         let mut nama_foto: Option<String> = None;
         if !t.foto.is_empty() {
             let (mime, bytes) = crate::server::dekode_data_url(&t.foto).ok_or("Attachment is not a data URL.")?;
@@ -194,6 +298,11 @@ pub async fn api_tanya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(t):
             kabari(&hub, "tanya", v.clone());
             Json(v).into_response()
         }
+        // Penolakan anti-spam dibedakan kodenya supaya HP bisa menampilkan
+        // hitung mundur, bukan sekadar "gagal".
+        Ok(Err(e)) if e.starts_with("TUNGGU:") => (StatusCode::TOO_MANY_REQUESTS, e).into_response(),
+        Ok(Err(e)) if e.starts_with("ANTRE:") => (StatusCode::CONFLICT, e).into_response(),
+        Ok(Err(e)) if e.starts_with("MUTED:") => (StatusCode::FORBIDDEN, e).into_response(),
         Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
         Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
     }

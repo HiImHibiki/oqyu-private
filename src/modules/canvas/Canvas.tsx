@@ -85,7 +85,7 @@ import {
 import { PanelGrafik } from './PanelGrafik'
 import { PanelTabel } from './PanelTabel'
 import { PanelKelas } from './PanelKelas'
-import { bunyi, daftarTanya, ubahTanya, useKelas, type Tanya } from '@/lib/kelas'
+import { bunyiTanya, daftarTanya, ubahTanya, useKelas, type Tanya } from '@/lib/kelas'
 import { buatKanvas } from './data'
 import { q1, x } from '@/lib/db'
 import { useData } from '@/lib/useData'
@@ -307,7 +307,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       dengarkan('kelas', (payload) => {
         const p = payload as { apa?: string; isi?: { nama?: string; ruang?: number; foto?: boolean; teks?: string } } | null
         if (p?.apa !== 'tanya' || !p.isi) return
-        bunyi('tanya')
+        bunyiTanya()
         beriTahu(`${p.isi.nama ?? 'A student'} (room ${p.isi.ruang ?? '?'}) ${p.isi.foto || p.isi.teks ? 'sent a question' : 'raised a hand'}.`)
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps

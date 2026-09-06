@@ -33,6 +33,7 @@ export interface Murid {
   room: number
   first_seen: number
   last_seen: number
+  muted_until: number | null
 }
 
 export interface Grup {
@@ -154,7 +155,29 @@ export async function tetapkanGrup(muridId: string, grupId: string | null): Prom
   await pancarkan('kelas', { apa: 'grup' })
 }
 
+/** Bisukan pertanyaan dari seorang murid selama `menit`; 0 = buka lagi. */
+export async function bisukanMurid(muridId: string, menit: number): Promise<void> {
+  await x('UPDATE students SET muted_until = ? WHERE id = ?', [menit > 0 ? Date.now() + menit * 60_000 : null, muridId])
+  await pancarkan('kelas', { apa: 'bisu' })
+}
+
+/** Tutup semua pertanyaan yang masih terbuka. */
+export async function kosongkanAntrean(): Promise<void> {
+  await x("UPDATE questions SET status = 'selesai', handled_at = ? WHERE status != 'selesai'", [Date.now()])
+  await pancarkan('kelas', { apa: 'kosong' })
+}
+
 /* ── Bunyi ─────────────────────────────────────────────────────────── */
+
+let bunyiTerakhir = 0
+
+/** Bunyi pertanyaan baru paling sering sekali tiap 4 detik — banjir pertanyaan bukan alasan kelas berisik. */
+export function bunyiTanya(): void {
+  const kini = Date.now()
+  if (kini - bunyiTerakhir < 4000) return
+  bunyiTerakhir = kini
+  bunyi('tanya')
+}
 
 let audio: AudioContext | null = null
 

@@ -33,6 +33,12 @@ pub fn migrations() -> Vec<Migration> {
             kind: MigrationKind::Up,
             sql: "ALTER TABLE groups ADD COLUMN sketch_id TEXT;",
         },
+        Migration {
+            version: 5,
+            description: "anti-spam: murid dibisukan sementara",
+            kind: MigrationKind::Up,
+            sql: "ALTER TABLE students ADD COLUMN muted_until INTEGER;",
+        },
     ]
 }
 
