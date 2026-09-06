@@ -29,6 +29,7 @@ export function DaftarHalaman({
   onSisip,
   onHapus,
   onTambah,
+  onSembunyi,
 }: {
   jumlah: number
   aktif: number
@@ -41,6 +42,8 @@ export function DaftarHalaman({
   onSisip: (i: number) => void
   onHapus: (i: number) => void
   onTambah: () => void
+  /** Lipat panelnya; tombol kecil di pojok yang sama membukanya lagi. */
+  onSembunyi: () => void
 }) {
   const barisRef = useRef<HTMLDivElement | null>(null)
 
@@ -52,12 +55,17 @@ export function DaftarHalaman({
 
   return (
     <div className="ex-card absolute bottom-3 right-3 flex flex-col p-1" style={{ width: LEBAR }}>
-      <p
-        className="ex-label px-2 pb-1 pt-1"
-        style={{ color: 'var(--ink-faint)' }}
-      >
-        {jumlah} page{jumlah > 1 ? 's' : ''}
-      </p>
+      <div className="flex items-center justify-between pl-2">
+        <p className="ex-label py-1" style={{ color: 'var(--ink-faint)' }}>
+          {jumlah} page{jumlah > 1 ? 's' : ''}
+        </p>
+        <IconButton
+          nama="bawah"
+          label="Hide the page thumbnails"
+          ukuran={13}
+          onClick={onSembunyi}
+        />
+      </div>
 
       <div className="flex flex-col gap-px overflow-y-auto" style={{ maxHeight: 300 }}>
         {Array.from({ length: jumlah }, (_, i) => (

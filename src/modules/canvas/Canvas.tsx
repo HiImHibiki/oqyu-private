@@ -390,6 +390,8 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const mintaCetak = useApp((s) => s.cetakSketsa)
   const cetakTerlayani = useRef(mintaCetak)
   const [menuTampil, setMenuTampil] = useState(true)
+  /** Daftar halaman di pojok kanan bawah bisa dilipat sendiri, terpisah dari rel alat. */
+  const [daftarTampil, setDaftarTampil] = useState(true)
   const [sibuk, setSibuk] = useState<string | null>(null)
 
   const halaman = KERTAS.find((k) => k.id === kertas) ?? KERTAS[0]
@@ -2773,17 +2775,35 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       </div>
 
       {!menuTampil ? null : halaman.w > 0 ? (
-        <DaftarHalaman
-          jumlah={jumlahHalaman}
-          aktif={halamanTerlihat}
-          berisi={halamanBerisi}
-          pratinjau={pratinjau}
-          bolehTambah={jumlahHalaman < HALAMAN_MAKS}
-          onLompat={keHalaman}
-          onSisip={(i) => ubahHalaman(i, 'sisip')}
-          onHapus={(i) => ubahHalaman(i, 'hapus')}
-          onTambah={tambahHalaman}
-        />
+        daftarTampil ? (
+          <DaftarHalaman
+            jumlah={jumlahHalaman}
+            aktif={halamanTerlihat}
+            berisi={halamanBerisi}
+            pratinjau={pratinjau}
+            bolehTambah={jumlahHalaman < HALAMAN_MAKS}
+            onLompat={keHalaman}
+            onSisip={(i) => ubahHalaman(i, 'sisip')}
+            onHapus={(i) => ubahHalaman(i, 'hapus')}
+            onTambah={tambahHalaman}
+            onSembunyi={() => setDaftarTampil(false)}
+          />
+        ) : (
+          <button
+            type="button"
+            className="ex-card ex-btn absolute bottom-3 right-3"
+            data-variant="ghost"
+            title="Show the page thumbnails"
+            style={{ padding: '5px 9px' }}
+            onClick={() => setDaftarTampil(true)}
+          >
+            <Icon nama="halaman" ukuran={14} />
+            <span className="ex-num" style={{ fontSize: 'var(--fs-label)' }}>
+              {halamanTerlihat + 1}/{jumlahHalaman}
+            </span>
+            <Icon nama="atas" ukuran={12} />
+          </button>
+        )
       ) : (
         <PetaBebas
           kotak={kotakIsi}
