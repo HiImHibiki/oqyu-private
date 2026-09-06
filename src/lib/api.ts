@@ -71,8 +71,10 @@ export function namaPerangkat(): string {
   const m = ua.match(/\((?:Linux; Android [\d.]+; )?([^;)]+)/)
   if (/Tizen|Web0S|SMART-TV|SmartTV|BRAVIA/i.test(ua)) return 'TV'
   if (/Android/.test(ua) && m) {
-    const model = ua.match(/Android [\d.]+; ([^;)]+)/)?.[1]
-    if (model) return model.replace(/ Build.*/, '').trim()
+    const model = ua.match(/Android [\d.]+; ([^;)]+)/)?.[1]?.replace(/ Build.*/, '').trim()
+    // Chrome versi baru menyamarkan modelnya jadi "K"; itu bukan nama perangkat.
+    if (model && model !== 'K') return model
+    return /Tablet|SM-X|SM-T/i.test(ua) || !/Mobile/.test(ua) ? 'Android tablet' : 'Android phone'
   }
   if (/iPad/.test(ua)) return 'iPad'
   if (/iPhone/.test(ua)) return 'iPhone'
