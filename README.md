@@ -51,6 +51,17 @@ Wi-Fi (port 4747, PIN 4 digit, QR code):
 - Setiap penulisan sketsa menyimpan versi sebelumnya ke `backup/<id>/` (30
   versi terakhir).
 
+## Akses dari internet (Cloudflare Tunnel)
+
+```sh
+./scripts/cloudflare-setup.sh kanvas.domain-anda.com
+```
+
+Skrip memasang `cloudflared`, membuat tunnel untuk Mac ini, mengarahkan
+subdomain, dan menjalankannya otomatis tiap login. Lalu isi *Public address*
+di Settings → Share on this network dengan `https://kanvas.domain-anda.com`
+dan pakai PIN 6–8 digit. Tautan Wi-Fi lokal tetap berfungsi bersamaan.
+
 ## Data
 
 Sketsa disimpan sebagai berkas JSON di folder vault, bawaan `~/ExactCanvas`
