@@ -7,7 +7,20 @@ import { create } from 'zustand'
  * sendiri. Aksinya masuk lewat penghitung di sini: yang menaikkan angka adalah
  * penangan menu, yang menyimaknya adalah layar kanvas.
  */
+export interface TempelanTertunda {
+  /** Sketsa tujuan; dikerjakan begitu kanvas itu selesai dimuat. */
+  idKanvas: string
+  url: string
+  nama: string
+}
+
 interface StoreApp {
+  /** Sketsa yang diminta dibuka (mis. kanvas khusus murid saat pertanyaannya dibahas). */
+  sketsaDiminta: { id: string; judul: string } | null
+  /** Foto/PDF yang harus ditempel setelah sketsa tujuan terbuka. */
+  tempelanTertunda: TempelanTertunda | null
+  mintaBukaSketsa: (id: string, judul: string) => void
+  setTempelanTertunda: (t: TempelanTertunda | null) => void
   /** Penghitung permintaan "sketsa baru". */
   sketsaBaru: number
   /** Penghitung permintaan cetak. */
@@ -19,6 +32,10 @@ interface StoreApp {
 }
 
 export const useApp = create<StoreApp>((set) => ({
+  sketsaDiminta: null,
+  tempelanTertunda: null,
+  mintaBukaSketsa: (id, judul) => set({ sketsaDiminta: { id, judul } }),
+  setTempelanTertunda: (t) => set({ tempelanTertunda: t }),
   sketsaBaru: 0,
   cetakSketsa: 0,
   pengaturanTerbuka: false,

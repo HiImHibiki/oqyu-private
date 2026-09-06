@@ -64,6 +64,11 @@ let namaSaya = ''
 /** Apa yang diikuti: null = ruangan sendiri, 'ruang:N' | 'editor:id' | 'sketsa:id'. */
 let arah: string | null = null
 let tanyaSaya: { id: string; status: string; urutan?: number } | null = null
+/**
+ * Menjelajah sendiri: murid boleh menggeser dan memperbesar kanvas grupnya
+ * dengan jari. Begitu guru mulai mencoret, layar kembali mengikuti guru.
+ */
+let bebas = false
 /** ?mode=fit: selalu satu halaman penuh, apa pun zoom guru. */
 const modeMuat = paramMode === 'fit'
 /**
@@ -123,6 +128,7 @@ function tampilkanPesan(html: string | null) {
  */
 function hitungTampilan() {
   const { w, h } = ukuran()
+  if (bebas) return
   if (!pandanganSumber) return
   const s = pandanganSumber
   let x1 = -s.tampilan.x / s.tampilan.skala
@@ -267,6 +273,7 @@ async function muatSketsa(id: string) {
       objects: data.objects ?? [],
       texts: data.texts ?? [],
     }
+    if (idSketsa !== id) bebas = false
     idSketsa = id
     // Goresan hidup yang sudah masuk berkas tidak perlu digambar dua kali.
     const ada = new Set(sketsa.strokes.map((c) => c.id))
@@ -370,6 +377,11 @@ function terima(p: PesanLangsung) {
   if (['pandangan', 'goresan', 'titik', 'instrumen', 'objek', 'ubah'].includes(p.t) && aktifDariPengirim) gantiSumber(p)
   else if (sumber === null) gantiSumber(p)
   if (p.src !== sumber) return
+
+  if (bebas && (p.t === 'goresan' || p.t === 'instrumen' || p.t === 'objek') && p.src === sumber) {
+    // Guru sedang menjelaskan: penjelajahan sendiri berakhir, ikut ke area guru.
+    kembaliIkuti()
+  }
 
   switch (p.t) {
     case 'pandangan': {
@@ -498,6 +510,7 @@ async function mulai() {
   dengarkanLangsung(terima)
   if (sebagaiMurid) {
     pasangBilahMurid()
+    pasangGestur()
     void segarkanSaya()
     window.setInterval(() => void segarkanSaya(), 20_000)
   }
@@ -682,13 +695,16 @@ function pasangBilahMurid() {
   const lembar = el('lembar')
   const teks = el('teks-tanya') as HTMLTextAreaElement
   const pratinjau = el('pratinjau-foto') as HTMLImageElement
+  const pratinjauPdf = el('pratinjau-pdf')
   const berkas = el('berkas-foto') as HTMLInputElement
+  const berkasPdf = el('berkas-pdf') as HTMLInputElement
 
   el('tombol-tangan').onclick = () => void kirimTanya('', '')
   el('tombol-tanya').onclick = () => {
     teks.value = ''
     fotoData = ''
     pratinjau.hidden = true
+    pratinjauPdf.hidden = true
     lembar.classList.add('tampil')
   }
   el('tombol-batal').onclick = () => lembar.classList.remove('tampil')
@@ -700,6 +716,28 @@ function pasangBilahMurid() {
     fotoData = await perkecilFoto(f)
     pratinjau.src = fotoData
     pratinjau.hidden = false
+    pratinjauPdf.hidden = true
+  }
+  // PDF dikirim apa adanya (maks 40 MB); guru membukanya halaman per halaman
+  // di kanvas khusus anak ini.
+  el('tombol-pdf').onclick = () => berkasPdf.click()
+  berkasPdf.onchange = async () => {
+    const f = berkasPdf.files?.[0]
+    berkasPdf.value = ''
+    if (!f) return
+    if (f.size > 40 * 1024 * 1024) {
+      tampilkanStatus('That PDF is over 40 MB — too big to send.', true)
+      return
+    }
+    fotoData = await new Promise<string>((res) => {
+      const fr = new FileReader()
+      fr.onload = () => res(String(fr.result))
+      fr.onerror = () => res('')
+      fr.readAsDataURL(f)
+    })
+    pratinjau.hidden = true
+    pratinjauPdf.textContent = `📄 ${f.name} · ${(f.size / 1024 / 1024).toFixed(1)} MB`
+    pratinjauPdf.hidden = false
   }
   el('tombol-kirim').onclick = () => {
     lembar.classList.remove('tampil')
@@ -727,7 +765,7 @@ function pasangBilahMurid() {
 async function kirimTanya(teks: string, foto: string) {
   try {
     await api('/api/kelas/tanya', { method: 'POST', json: { murid: muridId, nama: namaSaya, ruang: ruangSaya, teks, foto } })
-    tampilkanStatus(foto || teks ? 'Question sent.' : 'Hand raised.')
+    tampilkanStatus(foto.startsWith('data:application/pdf') ? 'PDF sent.' : foto || teks ? 'Question sent.' : 'Hand raised.')
     await segarkanSaya()
   } catch (e) {
     tampilkanStatus(`Could not send: ${e instanceof Error ? e.message : String(e)}`, true)
@@ -759,6 +797,7 @@ function terimaBahas(t: { murid: string; nama: string; anggota?: string[]; grup?
   const segrup = !punyaku && (t.anggota ?? []).includes(muridId)
   if (!punyaku && !segrup) return
   // Langsung ikuti perangkat guru yang membahas — tidak menunggu ia bergerak.
+  bebas = false
   if (t.editor) {
     sumberPaksa = t.editor
     if (sumber !== t.editor) {
@@ -785,4 +824,103 @@ function terimaBahas(t: { murid: string; nama: string; anggota?: string[]; grup?
   if (timerKabar) window.clearTimeout(timerKabar)
   timerKabar = window.setTimeout(() => kabar.classList.remove('tampil'), 6000)
   if (punyaku) void segarkanSaya()
+}
+
+/* ── Menjelajah sendiri (HP) ───────────────────────────────────────── */
+
+function kembaliIkuti() {
+  bebas = false
+  el('ikuti').hidden = true
+  hitungTampilan()
+  kotorDasar = true
+  kotorAktif = true
+}
+
+/** Satu jari menggeser, dua jari mencubit; roda mouse untuk pengujian di desktop. */
+function pasangGestur() {
+  const jari = new Map<number, { x: number; y: number }>()
+  let geser: { x: number; y: number; tx: number; ty: number } | null = null
+  let cubit: { jarak: number; tengah: { x: number; y: number }; awal: Tampilan } | null = null
+  const tombol = el('ikuti')
+  tombol.onclick = kembaliIkuti
+
+  const mulaiBebas = () => {
+    if (!bebas) {
+      bebas = true
+      tombol.hidden = false
+    }
+  }
+  const susun = () => {
+    const daftar = Array.from(jari.values())
+    if (daftar.length >= 2) {
+      const [a, b] = daftar
+      cubit = { jarak: Math.max(1, Math.hypot(b.x - a.x, b.y - a.y)), tengah: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, awal: { ...tampilan } }
+      geser = null
+    } else if (daftar.length === 1) {
+      geser = { x: daftar[0].x, y: daftar[0].y, tx: tampilan.x, ty: tampilan.y }
+      cubit = null
+    } else {
+      geser = null
+      cubit = null
+    }
+  }
+  aktif.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return
+    aktif.setPointerCapture(e.pointerId)
+    jari.set(e.pointerId, { x: e.clientX, y: e.clientY })
+    susun()
+  })
+  aktif.addEventListener('pointermove', (e) => {
+    if (!jari.has(e.pointerId)) return
+    jari.set(e.pointerId, { x: e.clientX, y: e.clientY })
+    const daftar = Array.from(jari.values())
+    if (cubit && daftar.length >= 2) {
+      const [a, b] = daftar
+      const c = cubit
+      const jarak = Math.max(1, Math.hypot(b.x - a.x, b.y - a.y))
+      const rasio = Math.min(6 / c.awal.skala, Math.max(0.1 / c.awal.skala, jarak / c.jarak))
+      const tengah = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }
+      mulaiBebas()
+      tampilan = {
+        skala: c.awal.skala * rasio,
+        x: tengah.x - c.tengah.x + c.tengah.x - (c.tengah.x - c.awal.x) * rasio,
+        y: tengah.y - c.tengah.y + c.tengah.y - (c.tengah.y - c.awal.y) * rasio,
+      }
+      kotorDasar = true
+      kotorAktif = true
+    } else if (geser && daftar.length === 1) {
+      const dx = e.clientX - geser.x
+      const dy = e.clientY - geser.y
+      // Ambang kecil: ketukan biasa bukan gestur menjelajah.
+      if (!bebas && Math.hypot(dx, dy) < 8) return
+      mulaiBebas()
+      tampilan = { ...tampilan, x: geser.tx + dx, y: geser.ty + dy }
+      kotorDasar = true
+      kotorAktif = true
+    }
+  })
+  const lepas = (e: PointerEvent) => {
+    jari.delete(e.pointerId)
+    susun()
+  }
+  aktif.addEventListener('pointerup', lepas)
+  aktif.addEventListener('pointercancel', lepas)
+  aktif.addEventListener(
+    'wheel',
+    (e) => {
+      e.preventDefault()
+      mulaiBebas()
+      if (e.ctrlKey || e.metaKey) {
+        const f = Math.exp(-e.deltaY * 0.01)
+        const skala = Math.min(6, Math.max(0.1, tampilan.skala * f))
+        const r = skala / tampilan.skala
+        tampilan = { skala, x: e.clientX - (e.clientX - tampilan.x) * r, y: e.clientY - (e.clientY - tampilan.y) * r }
+      } else {
+        tampilan = { ...tampilan, x: tampilan.x - e.deltaX, y: tampilan.y - e.deltaY }
+      }
+      kotorDasar = true
+      kotorAktif = true
+    },
+    { passive: false },
+  )
 }

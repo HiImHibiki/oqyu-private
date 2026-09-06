@@ -60,6 +60,9 @@
       #kabar { position: absolute; left: 12px; right: 12px; top: 12px; padding: 12px 14px; border-radius: 12px; background: var(--accent); color: #fff; font-size: 16px;
         text-align: center; transform: translateY(-140%); transition: transform 300ms; pointer-events: none; box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
       #kabar.tampil { transform: none; }
+      #ikuti { position: absolute; right: 12px; top: 12px; padding: 10px 14px; border-radius: 999px; border: 0; background: var(--accent); color: #fff;
+        font: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+      .hp #aktif { touch-action: none; }
     </style>
   </head>
   <body>
@@ -69,6 +72,7 @@
     <div id="pesan"></div>
 
     <div id="kabar"></div>
+    <button id="ikuti" hidden>↩ Follow the teacher</button>
     <div id="status-saya"></div>
     <div id="bilah">
       <button id="tombol-tangan">✋ Raise hand</button>
@@ -80,12 +84,15 @@
         <strong>Ask the teacher</strong>
         <textarea id="teks-tanya" placeholder="Type your question (optional)…"></textarea>
         <img id="pratinjau-foto" alt="" hidden />
+        <div id="pratinjau-pdf" hidden style="font-size:14px;color:var(--ink-soft)"></div>
         <div class="baris">
           <button id="tombol-foto">📷 Photo</button>
+          <button id="tombol-pdf">📄 PDF</button>
           <button id="tombol-kirim" class="utama">Send</button>
         </div>
         <button id="tombol-batal">Cancel</button>
         <input id="berkas-foto" type="file" accept="image/*" capture="environment" hidden />
+        <input id="berkas-pdf" type="file" accept="application/pdf,.pdf" hidden />
       </div>
     </div>
     <div id="masuk">

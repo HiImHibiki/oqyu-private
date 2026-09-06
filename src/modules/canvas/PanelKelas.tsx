@@ -222,16 +222,20 @@ function BarisTanya({
       {t.text && (
         <p style={{ fontSize: 'var(--fs-label)', color: 'var(--ink-soft)', whiteSpace: 'pre-wrap' }}>{t.text}</p>
       )}
-      {t.photo && (
+      {t.photo && t.photo.endsWith('.pdf') ? (
+        <span className="ex-label flex items-center gap-1" style={{ color: 'var(--ink-soft)' }}>
+          <Icon nama="pdf" ukuran={14} /> PDF attached
+        </span>
+      ) : t.photo ? (
         <img
           src={urlDenganPin(`/api/kelas/foto/${encodeURIComponent(t.photo)}`)}
           alt=""
           style={{ maxHeight: 110, width: 'auto', maxWidth: '100%', borderRadius: 6, border: '1px solid var(--line)', alignSelf: 'flex-start' }}
         />
-      )}
+      ) : null}
       <div className="flex gap-1">
         <button className="ex-btn flex-1" data-variant={dibahas ? 'ghost' : 'accent'} style={{ padding: '4px 0' }} onClick={onBahas}>
-          <Icon nama="pena" ukuran={13} /> {t.photo ? 'Open on canvas' : 'Discuss'}
+          <Icon nama="pena" ukuran={13} /> {t.photo ? (t.photo.endsWith('.pdf') ? 'Open PDF on canvas' : 'Open on canvas') : 'Discuss'}
         </button>
         <button className="ex-btn" data-variant="ghost" style={{ padding: '4px 8px' }} onClick={onSelesai} title="Done">
           <Icon nama="centang" ukuran={13} />

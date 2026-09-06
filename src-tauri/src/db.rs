@@ -21,6 +21,18 @@ pub fn migrations() -> Vec<Migration> {
             kind: MigrationKind::Up,
             sql: SKEMA_KELAS,
         },
+        Migration {
+            version: 3,
+            description: "kanvas khusus tiap murid",
+            kind: MigrationKind::Up,
+            sql: "ALTER TABLE students ADD COLUMN sketch_id TEXT;",
+        },
+        Migration {
+            version: 4,
+            description: "kanvas bersama tiap grup",
+            kind: MigrationKind::Up,
+            sql: "ALTER TABLE groups ADD COLUMN sketch_id TEXT;",
+        },
     ]
 }
 

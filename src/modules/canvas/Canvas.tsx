@@ -67,7 +67,6 @@ import { DaftarHalaman, PetaBebas } from './PetaKanvas'
 import { kursorAlat } from './kursor'
 import { dengarkanLangsung, idKlien, kirim } from '@/lib/sinkron'
 import { dengarkan } from '@/lib/events'
-import { q1 } from '@/lib/db'
 import { gabungkan } from './gabung'
 import { pilihTujuan, tulisBerkas } from '@/lib/berkas'
 import {
@@ -86,7 +85,9 @@ import {
 import { PanelGrafik } from './PanelGrafik'
 import { PanelTabel } from './PanelTabel'
 import { PanelKelas } from './PanelKelas'
-import { bunyi, daftarTanya, ubahTanya, useKelas } from '@/lib/kelas'
+import { bunyi, daftarTanya, ubahTanya, useKelas, type Tanya } from '@/lib/kelas'
+import { buatKanvas } from './data'
+import { q1, x } from '@/lib/db'
 import { useData } from '@/lib/useData'
 import { ukuranTabel, type DefinisiGrafik, type DefinisiTabel, type MetaGambar } from './sisipan'
 import {
@@ -317,7 +318,15 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * Guru membuka pertanyaan: pindah ke ruangan murid itu, dan fotonya (kalau
    * ada) ditempel ke kanvas ini supaya bisa langsung dicoret.
    */
-  async function bahasTanya(t: { id: string; name: string; room: number; photo: string | null }, urlFoto: string | null) {
+  /**
+   * Guru membuka pertanyaan.
+   *
+   * Tiap murid punya kanvas khususnya sendiri, "Tanya · Nama", dibuat saat
+   * pertanyaan pertamanya dibahas dan dipakai lagi untuk pertanyaan berikutnya:
+   * foto atau PDF-nya masuk di halaman baru kanvas itu, jadi riwayat satu anak
+   * tinggal berurutan di satu tempat, dan anak lain tidak bercampur.
+   */
+  async function bahasTanya(t: Tanya, urlLampiran: string | null) {
     // Ruangan dulu, baru kabar: HP murid diarahkan mengikuti perangkat ini,
     // dan aturan ruangannya harus sudah cocok saat kabar itu tiba.
     if (useKelas.getState().ruang !== t.room) useKelas.getState().setRuang(t.room)
@@ -327,13 +336,60 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       beriTahu(e instanceof Error ? e.message : String(e))
       return
     }
-    if (urlFoto) {
+    // Anggota grup berbagi satu kanvas grup; murid tanpa grup punya kanvasnya
+    // sendiri. Keduanya dibuat saat pertama dibutuhkan dan dipakai lagi seterusnya.
+    let idTujuan: string | null = null
+    let judulTujuan = `Tanya · ${t.name}`
+    try {
+      const grup = await q1<{ id: string; name: string; sketch_id: string | null }>(
+        'SELECT g.id, g.name, g.sketch_id FROM groups g JOIN group_members m ON m.group_id = g.id WHERE m.student_id = ? ORDER BY g.sort_order LIMIT 1',
+        [t.student_id],
+      )
+      const adaSketsa = async (id: string | null) => (id ? !!(await q1('SELECT id FROM canvases WHERE id = ?', [id])) : false)
+      if (grup) {
+        judulTujuan = `Grup · ${grup.name}`
+        idTujuan = (await adaSketsa(grup.sketch_id)) ? grup.sketch_id : null
+        if (!idTujuan) {
+          idTujuan = await buatKanvas(judulTujuan)
+          await x('UPDATE groups SET sketch_id = ? WHERE id = ?', [idTujuan, grup.id])
+        }
+      } else {
+        const baris = await q1<{ sketch_id: string | null }>('SELECT sketch_id FROM students WHERE id = ?', [t.student_id])
+        idTujuan = (await adaSketsa(baris?.sketch_id ?? null)) ? baris!.sketch_id : null
+        if (!idTujuan) {
+          idTujuan = await buatKanvas(judulTujuan)
+          await x('UPDATE students SET sketch_id = ? WHERE id = ?', [idTujuan, t.student_id])
+        }
+      }
+    } catch (e) {
+      beriTahu(e instanceof Error ? e.message : String(e))
+      return
+    }
+    const tempelan = urlLampiran ? { idKanvas: idTujuan, url: urlLampiran, nama: t.name } : null
+    if (idTujuan === idKanvas) {
+      await kerjakanTempelan(tempelan)
+      return
+    }
+    // Kanvas lain: pindah dulu; tempelannya dikerjakan begitu kanvas itu termuat.
+    useApp.getState().setTempelanTertunda(tempelan)
+    useApp.getState().mintaBukaSketsa(idTujuan, judulTujuan)
+  }
+
+  /** Tempel foto/PDF pertanyaan ke halaman baru, lalu siap menulis. */
+  async function kerjakanTempelan(tempelan: { url: string; nama: string } | null) {
+    if (tempelan) {
       try {
-        const r = await fetch(urlFoto)
+        const r = await fetch(tempelan.url)
         const blob = await r.blob()
-        await terimaRef.current(new File([blob], `${t.name}.jpg`, { type: blob.type || 'image/jpeg' }))
+        const pdf = blob.type.includes('pdf') || tempelan.url.includes('.pdf')
+        if (pdf) {
+          await terimaRef.current(new File([blob], `${tempelan.nama}.pdf`, { type: 'application/pdf' }))
+        } else {
+          const hasil = await keDataUrl(blob)
+          if (hasil) tempelKeHalamanBaru(hasil.src, hasil.w, hasil.h)
+        }
       } catch {
-        beriTahu('Could not fetch the photo.')
+        beriTahu('Could not fetch the attachment.')
       }
     }
     // Langsung pena dan panel dilipat: yang ditunggu murid adalah coretan,
@@ -344,7 +400,41 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     setMenuTampil(false)
     // Umumkan diri sebagai editor aktif supaya layar di ruangan ini berpindah ke sini.
     kirim({ t: 'pandangan', idKanvas, tampilan: tampilanRef.current, layar: ukuranLayarRef.current })
-    beriTahu(urlFoto ? `${t.name}'s photo is on the canvas — draw away.` : `Discussing ${t.name}'s question.`)
+    beriTahu(tempelan ? `${tempelan.nama}'s question is on the canvas — draw away.` : 'Discussing — draw away.')
+  }
+
+  /**
+   * Foto ditaruh di halaman kosong pertama sesudah isi (mode kertas) atau di
+   * bawah isi (kanvas bebas), dimuat selebar 90% halaman, lalu layar dibawa ke
+   * sana. Pertanyaan kedua dari anak yang sama jadi halaman berikutnya.
+   */
+  function tempelKeHalamanBaru(src: string, lebarAsli: number, tinggiAsli: number) {
+    const isiAda = kotakSemua(coretanRef.current, gambarRef.current, objekRef.current, teksRef.current)
+    let x0 = 0
+    let y0 = 0
+    let w = lebarAsli
+    let h = tinggiAsli
+    if (halaman.w > 0) {
+      const slot = halaman.h + JARAK_HALAMAN
+      const indeks = isiAda ? Math.floor(isiAda.y2 / slot) + 1 : 0
+      const k = kotakHalaman(halaman, indeks)
+      const skalaMuat = Math.min((halaman.w * 0.9) / lebarAsli, (halaman.h * 0.9) / tinggiAsli, 1)
+      w = lebarAsli * skalaMuat
+      h = tinggiAsli * skalaMuat
+      x0 = k.x1 + (halaman.w - w) / 2
+      y0 = k.y1 + 24
+    } else {
+      y0 = isiAda ? isiAda.y2 + 40 : 0
+      const skalaMuat = Math.min(1, 900 / lebarAsli)
+      w = lebarAsli * skalaMuat
+      h = tinggiAsli * skalaMuat
+    }
+    const baru: Gambar = { id: newId('img'), layer: lapisan, x: x0, y: y0, w, h, src }
+    setGambar((g) => [...g, baru])
+    gambarRef.current = [...gambarRef.current, baru]
+    if (src.length < 700_000) kirim({ t: 'ubah', idKanvas, tambah: { gambar: [baru] } })
+    v.setTampilan((t) => ({ ...t, y: -(y0 - 24) * t.skala + 24 }))
+    jadwalkanSimpan(coretanRef.current)
   }
 
   /** Pasang instrumen di tengah pandangan, atau lepas kalau yang sama ditekan lagi. */
@@ -568,8 +658,15 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * sketsa terbuka hanya untuk dilihat, bukan untuk ditimpa.
    */
   const dimuat = useRef(false)
-  /** Perubahan lapisan/gambar/objek yang berasal dari pemuatan, bukan dari tangan. */
-  const lewatiSimpanBerikut = useRef(false)
+  /**
+   * Data persis yang terakhir dimuat/diterapkan ke keadaan.
+   *
+   * Efek penyimpanan membandingkan referensinya: kalau lapisan, gambar, dan
+   * objek masih array yang sama dengan yang dimuat, tidak ada yang berubah dan
+   * tidak ada yang perlu disimpan. Ini menggantikan bendera sekali-pakai yang
+   * bisa tertelan oleh pembaruan lain yang kebetulan terbatch bersamanya.
+   */
+  const snapshotDimuat = useRef<{ l: Lapisan[]; g: Gambar[]; o: Objek[] } | null>(null)
   /** Salinan terakhir yang dimuat/disimpan sisi ini — dasar penggabungan tiga arah. */
   const basisRef = useRef<BerkasKanvas | null>(null)
   /** Tepi bawah PDF yang baru diimpor, supaya PDF berikutnya dalam jatuhan yang sama tidak menumpuk. */
@@ -589,25 +686,35 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       if (!b) {
         beriTahu('This sketch could not be read. It is opened read-only so nothing gets overwritten.')
       }
-      lewatiSimpanBerikut.current = true
       dimuat.current = b !== null
       basisRef.current = b
       tepiBawahImpor.current = -Infinity
       goresanJauh.current.clear()
       kursorJauh.current = null
+      const gDimuat = b?.images ?? []
+      const oDimuat = b?.objects ?? []
+      const lDimuat = b?.layers ?? lapisanBawaan()
+      snapshotDimuat.current = { l: lDimuat, g: gDimuat, o: oDimuat }
       setCoretan(b?.strokes ?? [])
-      setGambar(b?.images ?? [])
+      setGambar(gDimuat)
       setGambarTerpilih(null)
-      setObjek(b?.objects ?? [])
+      setObjek(oDimuat)
       setObjekTerpilih(null)
       setTeks(b?.texts ?? [])
       setTeksTerpilih(null)
       setTeksDiubah(null)
-      setLapisanInfo(b?.layers ?? lapisanBawaan())
+      setLapisanInfo(lDimuat)
       setLapisan(0)
       setPilihan(new Set())
       const kertasIni = b?.paper ?? KERTAS_BAWAAN
       setKertas(kertasIni)
+      // Pertanyaan murid yang menunggu kanvas ini terbuka: dikerjakan sesudah
+      // render pertama, saat ref-ref isi sudah menunjuk ke data yang dimuat.
+      const tertunda = useApp.getState().tempelanTertunda
+      if (b && tertunda && tertunda.idKanvas === idKanvas) {
+        useApp.getState().setTempelanTertunda(null)
+        window.setTimeout(() => void kerjakanTempelan(tertunda), 50)
+      }
       setJumlahHalaman(Math.max(1, Math.round(b?.pages ?? 1)))
       setDisimpan(b?.updated_at ?? null)
       panggang.current = null
@@ -686,11 +793,11 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
 
   /** Ganti seluruh keadaan dengan isi berkas — tanpa memicu penyimpanan ulang. */
   function terapkanBerkas(b: BerkasKanvas) {
-    lewatiSimpanBerikut.current = true
     const gambarBaru = b.images ?? []
     const objekBaruSemua = b.objects ?? []
     const teksBaru = b.texts ?? []
     const lapisanBaru = b.layers ?? lapisanBawaan()
+    snapshotDimuat.current = { l: lapisanBaru, g: gambarBaru, o: objekBaruSemua }
     setCoretan(b.strokes)
     setGambar(gambarBaru)
     setObjek(objekBaruSemua)
@@ -772,10 +879,8 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     }
     // Perubahan yang datang dari pemuatan sketsa bukan perubahan yang perlu
     // disimpan — dan dulu inilah jalur yang menimpa sketsa dengan salinan kosong.
-    if (lewatiSimpanBerikut.current) {
-      lewatiSimpanBerikut.current = false
-      return
-    }
+    const d = snapshotDimuat.current
+    if (d && d.l === lapisanInfo && d.g === gambar && d.o === objek) return
     jadwalkanSimpan(coretan)
     // Sengaja hanya bergantung pada tiga ini: reaksi terhadap perubahan
     // lapisan, gambar, dan objek — bukan terhadap setiap goresan baru.
@@ -1785,7 +1890,6 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
             const ht = new Set(hapus.teks ?? [])
             const hg = new Set(hapus.gambar ?? [])
             if (hg.size || tambah.gambar?.length) {
-              lewatiSimpanBerikut.current = true
               setGambar((lama) => {
                 const hasil = lama.filter((g) => !hg.has(g.id))
                 const ada = new Set(hasil.map((g) => g.id))
@@ -1805,7 +1909,6 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
               panggang.current = null
             }
             if (ho.size || tambah.objek?.length) {
-              lewatiSimpanBerikut.current = true
               setObjek((lama) => {
                 const petaBaru = new Map((tambah.objek ?? []).map((o) => [o.id, o]))
                 const hasil = lama.filter((o) => !ho.has(o.id)).map((o) => petaBaru.get(o.id) ?? o)
@@ -3267,6 +3370,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       }
       setGambar((g) => [...g, ...baru])
       gambarRef.current = [...gambarRef.current, ...baru]
+      jadwalkanSimpan(coretanRef.current)
       setAlat('pen')
       // Bawa layar ke halaman pertama PDF ini supaya hasilnya langsung terlihat.
       const pertama = baru[0]

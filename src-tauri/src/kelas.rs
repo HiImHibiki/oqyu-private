@@ -163,11 +163,13 @@ pub async fn api_tanya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(t):
         let kini = sekarang();
         let mut nama_foto: Option<String> = None;
         if !t.foto.is_empty() {
-            let (mime, bytes) = crate::server::dekode_data_url(&t.foto).ok_or("Photo is not a data URL.")?;
-            if bytes.len() > 4 * 1024 * 1024 {
-                return Err("Photo is too large.".into());
+            let (mime, bytes) = crate::server::dekode_data_url(&t.foto).ok_or("Attachment is not a data URL.")?;
+            let pdf = mime.contains("pdf");
+            // Foto sudah diperkecil di HP; PDF boleh lebih besar, tapi tetap ada pagarnya.
+            if bytes.len() > if pdf { 40 * 1024 * 1024 } else { 4 * 1024 * 1024 } {
+                return Err(if pdf { "PDF is too large (max 40 MB)." } else { "Photo is too large." }.into());
             }
-            let ext = if mime.contains("png") { "png" } else { "jpg" };
+            let ext = if pdf { "pdf" } else if mime.contains("png") { "png" } else { "jpg" };
             let nama = format!("{id}.{ext}");
             std::fs::create_dir_all(vault::tanya_dir()).map_err(|e| e.to_string())?;
             std::fs::write(vault::tanya_dir().join(&nama), bytes).map_err(|e| e.to_string())?;
@@ -269,7 +271,13 @@ pub async fn api_foto(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
     };
     match std::fs::read(&p) {
         Ok(bytes) => {
-            let mime = if nama.ends_with(".png") { "image/png" } else { "image/jpeg" };
+            let mime = if nama.ends_with(".pdf") {
+                "application/pdf"
+            } else if nama.ends_with(".png") {
+                "image/png"
+            } else {
+                "image/jpeg"
+            };
             let mut r = Response::new(Body::from(bytes));
             r.headers_mut().insert(header::CONTENT_TYPE, mime.parse().unwrap());
             r.headers_mut().insert(header::CACHE_CONTROL, "private, max-age=86400".parse().unwrap());

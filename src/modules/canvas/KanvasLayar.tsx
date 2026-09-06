@@ -98,6 +98,15 @@ export function KanvasLayar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mintaSketsa])
 
+  // Permintaan membuka sketsa tertentu (kanvas khusus murid) dari mana pun.
+  const diminta = useApp((s) => s.sketsaDiminta)
+  useEffect(() => {
+    if (!diminta) return
+    bukaBaru(diminta.id, diminta.judul)
+    useApp.setState({ sketsaDiminta: null })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [diminta])
+
   const sekarang =
     kanvas.find((k) => k.id === aktif) ??
     (menunggu.current?.id === aktif ? menunggu.current : undefined)
