@@ -43,9 +43,33 @@ export function pinAktif(): string {
  */
 let alamatDasar = ''
 
-export function setAlamatServer(alamat: string, pin?: string): void {
+/** Hak admin: token internal (aplikasi Mac) atau kata sandi admin (tablet). */
+const KUNCI_ADMIN = 'exact-canvas-admin'
+let adminMemori: string | null = null
+
+export function adminAktif(): string {
+  if (adminMemori) return adminMemori
+  try {
+    return localStorage.getItem(KUNCI_ADMIN) ?? ''
+  } catch {
+    return ''
+  }
+}
+
+export function simpanAdmin(sandi: string): void {
+  adminMemori = sandi
+  try {
+    if (sandi) localStorage.setItem(KUNCI_ADMIN, sandi)
+    else localStorage.removeItem(KUNCI_ADMIN)
+  } catch {
+    /* abaikan */
+  }
+}
+
+export function setAlamatServer(alamat: string, pin?: string, admin?: string): void {
   alamatDasar = alamat.replace(/\/$/, '')
   if (pin) pinMemori = pin
+  if (admin) adminMemori = admin
 }
 
 export function alamatServer(): string {
@@ -55,7 +79,8 @@ export function alamatServer(): string {
 /** URL lengkap untuk <img>/tautan yang tidak bisa membawa header PIN. */
 export function urlDenganPin(path: string): string {
   const pemisah = path.includes('?') ? '&' : '?'
-  return `${alamatDasar}${path}${pemisah}pin=${encodeURIComponent(pinAktif())}`
+  const admin = adminAktif()
+  return `${alamatDasar}${path}${pemisah}pin=${encodeURIComponent(pinAktif())}${admin ? `&admin=${encodeURIComponent(admin)}` : ''}`
 }
 
 export class GalatApi extends Error {
@@ -72,6 +97,8 @@ export async function api<T>(
   init: { method?: string; body?: BodyInit; json?: unknown } = {},
 ): Promise<T> {
   const headers: Record<string, string> = { 'x-exact-pin': pinAktif() }
+  const admin = adminAktif()
+  if (admin) headers['x-exact-admin'] = admin
   let body = init.body
   if (init.json !== undefined) {
     headers['content-type'] = 'application/json'

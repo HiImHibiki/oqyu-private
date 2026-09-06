@@ -55,6 +55,9 @@ pub struct Klien {
 pub struct Hub {
     pub pin: String,
     pub port: u16,
+    /// Rahasia per proses yang hanya diketahui aplikasi Mac ini sendiri; ia
+    /// memberi hak admin tanpa kata sandi untuk panggilan dari aplikasi.
+    pub token_app: String,
     /// Penanda proses server ini. Klien yang melihatnya berganti tahu bahwa
     /// aplikasi Mac dibuka ulang — mungkin dengan versi baru — dan memuat
     /// ulang halamannya sendiri.
@@ -81,6 +84,10 @@ pub struct InfoBerbagi {
     pub url_lokal: String,
     /// Alamat publik yang sedang dipakai, kalau ada.
     pub publik: Option<String>,
+    /// Token admin internal untuk aplikasi ini sendiri.
+    pub token_app: String,
+    /// Kata sandi admin sudah disetel — editor lewat web bisa dibuka.
+    pub admin_diset: bool,
     pub pin: String,
     pub port: u16,
     pub ip: String,
@@ -133,11 +140,14 @@ fn info(hub: &Hub) -> InfoBerbagi {
     let publik = ALAMAT_PUBLIK.lock().ok().and_then(|a| a.clone());
     let dasar = publik.clone().unwrap_or_else(|| format!("http://{ip}:{}", hub.port));
     InfoBerbagi {
-        url: format!("{dasar}/?pin={}", hub.pin),
+        // Editor (tablet) selalu lewat /admin: minta kata sandi admin, bukan cuma PIN.
+        url: format!("{dasar}/admin?pin={}", hub.pin),
         url_tv: format!("{dasar}/tv?pin={}&tv=1&ruang=1", hub.pin),
         url_murid: format!("{dasar}/tv?pin={}&murid=1", hub.pin),
-        url_lokal: format!("http://{ip}:{}/?pin={}", hub.port, hub.pin),
+        url_lokal: format!("http://{ip}:{}/tv?pin={}&murid=1", hub.port, hub.pin),
         publik,
+        token_app: hub.token_app.clone(),
+        admin_diset: SANDI_ADMIN.lock().ok().and_then(|s| s.clone()).is_some(),
         pin: hub.pin.clone(),
         port: hub.port,
         ip,
@@ -150,6 +160,50 @@ fn info(hub: &Hub) -> InfoBerbagi {
 /// Alamat publik (mis. https://meet2.exactprintsolution.com) kalau aplikasi
 /// diekspos lewat Cloudflare Tunnel. Tautan & QR di Pengaturan memakainya.
 static ALAMAT_PUBLIK: Mutex<Option<String>> = Mutex::new(None);
+
+/// Kata sandi admin untuk membuka editor dari tablet/browser. Terpisah dari
+/// PIN murid: PIN membuka papan dan antrian, sandi membuka pena dan data.
+static SANDI_ADMIN: Mutex<Option<String>> = Mutex::new(None);
+
+#[tauri::command]
+pub fn share_set_admin(sandi: Option<String>) {
+    let bersih = sandi.map(|s| s.trim().to_string()).filter(|s| s.len() >= 4);
+    *SANDI_ADMIN.lock().unwrap_or_else(|e| e.into_inner()) = bersih;
+}
+
+/// Hak admin: token internal aplikasi, atau kata sandi admin yang disetel.
+/// Percobaan yang gagal dihitung bersama percobaan PIN yang salah.
+pub fn admin_sah(hub: &Hub, headers: &HeaderMap, q: Option<&str>) -> bool {
+    let asal = asal_klien(headers);
+    if diblokir(&asal) {
+        return false;
+    }
+    let kandidat = headers
+        .get("x-exact-admin")
+        .and_then(|v| v.to_str().ok())
+        .map(|s| s.to_string())
+        .or_else(|| q.map(|s| s.to_string()));
+    let Some(k) = kandidat.filter(|k| !k.is_empty()) else { return false };
+    if k == hub.token_app {
+        return true;
+    }
+    let sandi = SANDI_ADMIN.lock().ok().and_then(|s| s.clone());
+    let benar = sandi.as_deref() == Some(k.as_str());
+    if !benar {
+        catat_gagal(&asal);
+    }
+    benar
+}
+
+fn tolak_admin() -> Response {
+    (StatusCode::UNAUTHORIZED, "Admin password required.").into_response()
+}
+
+#[derive(Deserialize)]
+pub struct QueryAdmin {
+    pub pin: Option<String>,
+    pub admin: Option<String>,
+}
 
 #[tauri::command]
 pub fn share_set_public(alamat: Option<String>) {
@@ -185,6 +239,7 @@ pub async fn share_start(app: AppHandle, pin: Option<String>) -> Result<InfoBerb
         pin: pin.filter(|p| (4..=8).contains(&p.len()) && p.chars().all(|c| c.is_ascii_digit())).unwrap_or_else(pin_acak),
         port,
         token: format!("{}-{}", env!("CARGO_PKG_VERSION"), pin_acak()),
+        token_app: format!("{:x}{:x}{:x}", sidik_teks(&pin_acak()), sidik_teks(&format!("{:?}", std::time::SystemTime::now())), sidik_teks(&pin_acak())),
         tx,
         klien: Mutex::new(Vec::new()),
         app: app.clone(),
@@ -258,8 +313,10 @@ pub fn share_qr(text: String) -> Result<String, String> {
 fn rute(hub: Arc<Hub>) -> Router {
     Router::new()
         .route("/", get(halaman_utama))
+        .route("/admin", get(halaman_admin))
         .route("/tv", get(halaman_tv))
         .route("/api/vault", get(api_vault))
+        .route("/api/admin/cek", get(api_admin_cek))
         .route("/api/canvas", get(api_canvas_list))
         .route(
             "/api/canvas/{id}",
@@ -273,6 +330,8 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/api/kelas/tanya", axum::routing::post(crate::kelas::api_tanya))
         .route("/api/kelas/ubah", axum::routing::post(crate::kelas::api_ubah_tanya))
         .route("/api/kelas/foto/{nama}", get(crate::kelas::api_foto))
+        .route("/api/kelas/paham", axum::routing::post(crate::kelas::api_paham))
+        .route("/api/kelas/terbaru", get(crate::kelas::api_terbaru))
         .route("/ws", get(ws_masuk))
         .fallback(aset_lain)
         .layer(axum::middleware::from_fn(cors))
@@ -438,8 +497,32 @@ fn balas_aset(app: &AppHandle, path: &str) -> Response {
     }
 }
 
-async fn halaman_utama(State(hub): State<Arc<Hub>>) -> Response {
+/// `/` di alamat publik mengarah ke halaman murid: yang datang dari internet
+/// adalah anak-anak. Editor ada di `/admin`. Di Wi-Fi lokal `/` tetap editor
+/// (dengan kata sandi admin) supaya alur lama di tablet tidak putus.
+async fn halaman_utama(State(hub): State<Arc<Hub>>, headers: HeaderMap) -> Response {
+    let host = headers.get(header::HOST).and_then(|v| v.to_str().ok()).unwrap_or("");
+    let publik = ALAMAT_PUBLIK.lock().ok().and_then(|a| a.clone());
+    let host_publik = publik.as_deref().and_then(|a| a.split("://").nth(1)).map(|h| h.trim_end_matches('/'));
+    let lewat_cloudflare = headers.contains_key("cf-connecting-ip") || host_publik.is_some_and(|h| h.eq_ignore_ascii_case(host));
+    if lewat_cloudflare {
+        return axum::response::Redirect::temporary("/tv?murid=1").into_response();
+    }
     balas_aset(&hub.app, "index.html")
+}
+
+async fn halaman_admin(State(hub): State<Arc<Hub>>) -> Response {
+    balas_aset(&hub.app, "index.html")
+}
+
+async fn api_admin_cek(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryAdmin>) -> Response {
+    if !sah(&hub, &headers, q.pin.as_deref()) {
+        return tolak();
+    }
+    if !admin_sah(&hub, &headers, q.admin.as_deref()) {
+        return tolak_admin();
+    }
+    StatusCode::NO_CONTENT.into_response()
 }
 
 async fn halaman_tv(State(hub): State<Arc<Hub>>) -> Response {
@@ -470,6 +553,10 @@ async fn api_canvas_read(State(hub): State<Arc<Hub>>, headers: HeaderMap, Path(i
     if !sah(&hub, &headers, None) {
         return tolak();
     }
+    // Berkas utuh (dengan data gambar) hanya untuk editor; murid memakai /ringan.
+    if !admin_sah(&hub, &headers, None) {
+        return tolak_admin();
+    }
     match vault::canvas_read(id) {
         // Sebagai teks, bukan JSON: klien menyimpan berkasnya apa adanya dan
         // mengurainya sendiri, sama seperti saat membaca dari disk.
@@ -488,6 +575,9 @@ async fn api_canvas_write(
     if !sah(&hub, &headers, None) {
         return tolak();
     }
+    if !admin_sah(&hub, &headers, None) {
+        return tolak_admin();
+    }
     match vault::canvas_write(id, body) {
         Ok(()) => StatusCode::NO_CONTENT.into_response(),
         Err(e) => (StatusCode::BAD_REQUEST, e).into_response(),
@@ -497,6 +587,9 @@ async fn api_canvas_write(
 async fn api_canvas_delete(State(hub): State<Arc<Hub>>, headers: HeaderMap, Path(id): Path<String>) -> Response {
     if !sah(&hub, &headers, None) {
         return tolak();
+    }
+    if !admin_sah(&hub, &headers, None) {
+        return tolak_admin();
     }
     match vault::canvas_delete(id) {
         Ok(()) => StatusCode::NO_CONTENT.into_response(),
@@ -717,6 +810,10 @@ async fn api_sql(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(req): Jso
     if !sah(&hub, &headers, None) {
         return tolak();
     }
+    // SQL bebas hanya untuk editor: murid tidak boleh membaca, apalagi menulis, database.
+    if !admin_sah(&hub, &headers, None) {
+        return tolak_admin();
+    }
     match tokio::task::spawn_blocking(move || jalankan_sql(req)).await {
         Ok(Ok(v)) => Json(v).into_response(),
         Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
@@ -734,6 +831,7 @@ struct QueryWs {
     role: Option<String>,
     ruang: Option<i64>,
     murid: Option<String>,
+    admin: Option<String>,
 }
 
 async fn ws_masuk(
@@ -745,10 +843,16 @@ async fn ws_masuk(
     if !sah(&hub, &headers, q.pin.as_deref()) {
         return tolak();
     }
+    // Peran editor menyiarkan pandangan dan goresan ke semua layar; itu hak
+    // admin. Yang tidak punya sandinya diturunkan jadi pengikut biasa.
+    let mut peran = q.role.unwrap_or_else(|| "editor".into());
+    if peran == "editor" && !admin_sah(&hub, &headers, q.admin.as_deref()) {
+        peran = "tv".into();
+    }
     let klien = Klien {
         id: q.id.unwrap_or_else(|| format!("k{}", pin_acak())),
         nama: q.name.unwrap_or_else(|| "Device".into()),
-        peran: q.role.unwrap_or_else(|| "editor".into()),
+        peran,
         ruang: q.ruang.unwrap_or(1).clamp(1, 9),
         murid: q.murid.unwrap_or_default(),
         fokus: true,
@@ -765,6 +869,7 @@ fn siarkan_klien(hub: &Hub) {
 
 async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
     let id = klien.id.clone();
+    let editor = klien.peran == "editor";
     // Berlangganan dulu, baru mengumumkan diri: kalau dibalik, klien yang baru
     // masuk justru tidak pernah menerima daftar yang memuat dirinya sendiri.
     let mut rx = hub.tx.subscribe();
@@ -804,6 +909,11 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
                                     }
                                 }
                                 siarkan_klien(&hub);
+                                continue;
+                            }
+                            // Selain fokus/ruang, hanya editor yang boleh menyiarkan:
+                            // HP murid tidak bisa menyamar jadi guru.
+                            if !editor {
                                 continue;
                             }
                         }

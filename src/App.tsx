@@ -5,7 +5,7 @@ import { useApp } from '@/lib/appStore'
 import { getSetting, lipatWal } from '@/lib/db'
 import { dengarkan } from '@/lib/events'
 import { bukaJendelaBaru } from '@/lib/layar'
-import { api, namaPerangkat, pinAktif, setAlamatServer, simpanPin } from '@/lib/api'
+import { adminAktif, api, namaPerangkat, pinAktif, setAlamatServer, simpanAdmin, simpanPin } from '@/lib/api'
 import { hentikanSinkron, mulaiSinkron } from '@/lib/sinkron'
 import { muatRuang, useKelas } from '@/lib/kelas'
 import { Toast } from '@/components/Toast'
@@ -31,6 +31,8 @@ export interface InfoBerbagi {
   urlMurid: string
   urlLokal: string
   publik: string | null
+  tokenApp: string
+  adminDiset: boolean
   pin: string
   port: number
   ip: string
@@ -42,6 +44,8 @@ export default function App() {
   const [galat, setGalat] = useState<string | null>(null)
   /** Di browser: PIN belum ada atau ditolak server. */
   const [perluPin, setPerluPin] = useState(false)
+  /** Di browser: editor butuh kata sandi admin. */
+  const [perluAdmin, setPerluAdmin] = useState(false)
 
   useEffect(() => pasangTema(), [])
 
@@ -55,10 +59,14 @@ export default function App() {
       return
     }
     void api('/api/vault')
+      .then(() => api('/api/admin/cek'))
       .then(() => setSiap(true))
       .catch((e: unknown) => {
-        if ((e as { status?: number }).status === 401) setPerluPin(true)
-        else setGalat(e instanceof Error ? e.message : String(e))
+        const status = (e as { status?: number }).status
+        const pesan = e instanceof Error ? e.message : String(e)
+        if (status === 401 && /admin/i.test(pesan)) setPerluAdmin(true)
+        else if (status === 401) setPerluPin(true)
+        else setGalat(pesan)
       })
   }, [])
 
@@ -75,9 +83,32 @@ export default function App() {
           try {
             await api('/api/vault')
             setPerluPin(false)
+            try {
+              await api('/api/admin/cek')
+              setSiap(true)
+            } catch {
+              setPerluAdmin(true)
+            }
+            return true
+          } catch {
+            return false
+          }
+        }}
+      />
+    )
+  }
+  if (!inTauri && perluAdmin) {
+    return (
+      <LayarAdmin
+        onMasuk={async (sandi) => {
+          simpanAdmin(sandi)
+          try {
+            await api('/api/admin/cek')
+            setPerluAdmin(false)
             setSiap(true)
             return true
           } catch {
+            simpanAdmin('')
             return false
           }
         }}
@@ -117,7 +148,7 @@ function useBerbagi(siap: boolean) {
     if (!inTauri) {
       const ws = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`
       void muatRuang().then((ruang) =>
-        mulaiSinkron({ url: ws, pin: pinAktif(), peran: 'editor', nama: namaPerangkat(), ruang }),
+        mulaiSinkron({ url: ws, pin: pinAktif(), peran: 'editor', nama: namaPerangkat(), ruang, admin: adminAktif() }),
       )
       return () => hentikanSinkron()
     }
@@ -127,6 +158,8 @@ function useBerbagi(siap: boolean) {
       // Alamat publik (Cloudflare) diberitahukan ke server sebelum tautan dibuat.
       const publik = await getSetting('alamat_publik').catch(() => null)
       await invoke('share_set_public', { alamat: publik || null }).catch(() => {})
+      const sandi = await getSetting('sandi_admin').catch(() => null)
+      await invoke('share_set_admin', { sandi: sandi || null }).catch(() => {})
       let info = await invoke<InfoBerbagi | null>('share_status').catch(() => null)
       if (mau && !info) {
         const pin = await getSetting('berbagi_pin').catch(() => null)
@@ -140,9 +173,9 @@ function useBerbagi(siap: boolean) {
         info = null
       }
       if (info) {
-        setAlamatServer(`http://127.0.0.1:${info.port}`, info.pin)
+        setAlamatServer(`http://127.0.0.1:${info.port}`, info.pin, info.tokenApp)
         const ruang = await muatRuang()
-        mulaiSinkron({ url: `ws://127.0.0.1:${info.port}/ws`, pin: info.pin, peran: 'editor', nama: 'Mac', ruang })
+        mulaiSinkron({ url: `ws://127.0.0.1:${info.port}/ws`, pin: info.pin, peran: 'editor', nama: 'Mac', ruang, admin: info.tokenApp })
       } else hentikanSinkron()
     }
     void terapkan()
@@ -282,6 +315,55 @@ function LayarGalat({ pesan }: { pesan: string }) {
             : 'Make sure Exact Canvas is open on the Mac with sharing turned on, and that this device is on the same Wi-Fi.'}
         </p>
       </div>
+    </div>
+  )
+}
+
+/** Gerbang kata sandi admin: editor hanya untuk guru, PIN saja tidak cukup. */
+function LayarAdmin({ onMasuk }: { onMasuk: (sandi: string) => Promise<boolean> }) {
+  const [sandi, setSandi] = useState('')
+  const [salah, setSalah] = useState(false)
+  const [sibuk, setSibuk] = useState(false)
+  return (
+    <div className="grid h-full place-items-center p-8">
+      <form
+        className="ex-card flex w-full max-w-[380px] flex-col gap-3 p-6"
+        onSubmit={(e) => {
+          e.preventDefault()
+          if (!sandi) return
+          setSibuk(true)
+          void onMasuk(sandi).then((ok) => {
+            setSibuk(false)
+            if (!ok) setSalah(true)
+          })
+        }}
+      >
+        <h1 className="ex-module-title flex items-center gap-2">
+          <Icon nama="gembok" ukuran={15} /> Teacher sign-in
+        </h1>
+        <p style={{ color: 'var(--ink-soft)' }}>
+          The editor is for the teacher. Enter the admin password from Settings on the Mac.
+        </p>
+        <input
+          className="ex-input"
+          type="password"
+          autoFocus
+          value={sandi}
+          onChange={(e) => {
+            setSalah(false)
+            setSandi(e.target.value)
+          }}
+          aria-label="Admin password"
+        />
+        {salah && (
+          <p className="ex-label" style={{ color: 'var(--down)' }}>
+            Wrong password, or no admin password has been set yet on the Mac.
+          </p>
+        )}
+        <button className="ex-btn" data-variant="accent" disabled={!sandi || sibuk} type="submit">
+          Open the editor
+        </button>
+      </form>
     </div>
   )
 }

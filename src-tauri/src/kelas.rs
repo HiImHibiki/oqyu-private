@@ -19,7 +19,7 @@ use axum::{
 use serde::Deserialize;
 use serde_json::{json, Value};
 
-use crate::server::{sah, tolak, Hub, QueryPin};
+use crate::server::{admin_sah, sah, tolak, Hub, QueryPin};
 use crate::vault;
 
 const UMUR_FOTO_MS: i64 = 24 * 60 * 60 * 1000;
@@ -327,6 +327,9 @@ pub async fn api_ubah_tanya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Jso
     if !sah(&hub, &headers, None) {
         return tolak();
     }
+    if !admin_sah(&hub, &headers, None) {
+        return (StatusCode::UNAUTHORIZED, "Admin password required.").into_response();
+    }
     if u.status != "dibahas" && u.status != "selesai" {
         return (StatusCode::BAD_REQUEST, "Unknown status.").into_response();
     }
@@ -374,9 +377,13 @@ pub async fn api_ubah_tanya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Jso
 }
 
 /// Foto pertanyaan, untuk panel guru dan untuk ditempel ke sketsa.
-pub async fn api_foto(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryPin>, Path(nama): Path<String>) -> Response {
+pub async fn api_foto(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<crate::server::QueryAdmin>, Path(nama): Path<String>) -> Response {
     if !sah(&hub, &headers, q.pin.as_deref()) {
         return tolak();
+    }
+    // Foto pertanyaan anak hanya untuk guru.
+    if !admin_sah(&hub, &headers, q.admin.as_deref()) {
+        return (StatusCode::UNAUTHORIZED, "Admin password required.").into_response();
     }
     let Ok(p) = vault::resolve_within(&vault::tanya_dir(), &nama) else {
         return StatusCode::BAD_REQUEST.into_response();
@@ -396,6 +403,55 @@ pub async fn api_foto(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
             r
         }
         Err(_) => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
+#[derive(Deserialize)]
+pub struct Paham {
+    pub murid: String,
+}
+
+/// Murid menutup pertanyaannya sendiri ("Got it") — tanpa hak admin.
+pub async fn api_paham(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(p): Json<Paham>) -> Response {
+    if !sah(&hub, &headers, None) {
+        return tolak();
+    }
+    let murid = p.murid.clone();
+    let hasil = tokio::task::spawn_blocking(move || -> Result<usize, String> {
+        let c = koneksi()?;
+        c.execute(
+            "UPDATE questions SET status = 'selesai', handled_at = ?1 WHERE student_id = ?2 AND status != 'selesai'",
+            rusqlite::params![sekarang(), murid],
+        )
+        .map_err(|e| e.to_string())
+    })
+    .await;
+    match hasil {
+        Ok(Ok(n)) => {
+            if n > 0 {
+                kabari(&hub, "ubah", json!({ "murid": p.murid, "status": "selesai" }));
+            }
+            StatusCode::NO_CONTENT.into_response()
+        }
+        Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
+    }
+}
+
+/// Sketsa yang terakhir disentuh — untuk layar pengikut yang baru menyala.
+pub async fn api_terbaru(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryPin>) -> Response {
+    if !sah(&hub, &headers, q.pin.as_deref()) {
+        return tolak();
+    }
+    let hasil = tokio::task::spawn_blocking(|| -> Result<Option<String>, String> {
+        let c = koneksi()?;
+        Ok(c.query_row("SELECT id FROM canvases ORDER BY updated_at DESC LIMIT 1", [], |r| r.get::<_, String>(0)).ok())
+    })
+    .await;
+    match hasil {
+        Ok(Ok(id)) => Json(json!({ "id": id })).into_response(),
+        Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
     }
 }
 

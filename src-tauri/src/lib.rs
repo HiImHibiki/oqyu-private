@@ -49,6 +49,7 @@ pub fn run() {
             server::share_status,
             server::share_qr,
             server::share_set_public,
+            server::share_set_admin,
         ])
         .setup(move |app| {
             let handle = app.handle().clone();

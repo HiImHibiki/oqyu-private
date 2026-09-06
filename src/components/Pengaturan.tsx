@@ -192,11 +192,23 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
   const [sibuk, setSibuk] = useState(false)
   const [publik, setPublik] = useState('')
   const [pinKustom, setPinKustom] = useState('')
+  const [sandiAdmin, setSandiAdmin] = useState('')
 
   useEffect(() => {
     if (!buka) return
     void getSetting('alamat_publik').then((v) => setPublik(v ?? '')).catch(() => {})
+    void getSetting('sandi_admin').then((v) => setSandiAdmin(v ?? '')).catch(() => {})
   }, [buka])
+
+  async function simpanSandiAdmin(sandi: string) {
+    const bersih = sandi.trim()
+    setSandiAdmin(bersih)
+    await setSetting('sandi_admin', bersih)
+    const { invoke } = await import('@tauri-apps/api/core')
+    await invoke('share_set_admin', { sandi: bersih || null }).catch(() => {})
+    setInfo(await invoke<InfoBerbagi | null>('share_status').catch(() => null))
+    toast(bersih.length >= 4 ? 'Admin password saved.' : 'Admin password cleared — the tablet editor is now closed.')
+  }
 
   /** Simpan alamat publik, beri tahu server, segarkan tautan. */
   async function simpanPublik(alamat: string) {
@@ -297,6 +309,26 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
 
       <label className="flex flex-wrap items-center gap-2">
         <span className="ex-label" style={{ color: 'var(--ink-soft)', width: '13ch' }}>
+          Admin password
+        </span>
+        <input
+          className="ex-input"
+          type="password"
+          style={{ flex: 1, minWidth: 200, padding: '5px 8px', fontSize: 'var(--fs-label)' }}
+          placeholder="at least 4 characters — needed to open the editor on the tablet"
+          value={sandiAdmin}
+          onChange={(e) => setSandiAdmin(e.target.value)}
+          onBlur={() => void simpanSandiAdmin(sandiAdmin)}
+          onKeyDown={(e) => e.key === 'Enter' && void simpanSandiAdmin(sandiAdmin)}
+        />
+      </label>
+      <p className="ex-label" style={{ color: sandiAdmin.trim().length >= 4 ? 'var(--ink-faint)' : 'var(--down)', fontSize: 11 }}>
+        {sandiAdmin.trim().length >= 4
+          ? 'The tablet asks for this once and remembers it. Students only ever need the PIN.'
+          : 'No admin password yet: the tablet editor stays closed until you set one. This Mac is unaffected.'}
+      </p>
+      <label className="flex flex-wrap items-center gap-2">
+        <span className="ex-label" style={{ color: 'var(--ink-soft)', width: '13ch' }}>
           Public address
         </span>
         <input
@@ -325,7 +357,7 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
             <Tautan label="Tablet (edit)" url={info.url} onSalin={salin} onBuka={bukaDiBrowser} />
             <Tautan label="TV (follow)" url={info.urlTv} onSalin={salin} onBuka={bukaDiBrowser} />
             <Tautan label="Students" url={info.urlMurid} onSalin={salin} onBuka={bukaDiBrowser} />
-            {info.publik && <Tautan label="Wi-Fi only" url={info.urlLokal} onSalin={salin} onBuka={bukaDiBrowser} />}
+            {info.publik && <Tautan label="Students · Wi-Fi" url={info.urlLokal} onSalin={salin} onBuka={bukaDiBrowser} />}
             <p className="ex-label flex flex-wrap items-center gap-1" style={{ color: 'var(--ink-faint)' }}>
               PIN <span className="ex-num" style={{ color: 'var(--ink)', letterSpacing: '0.2em' }}>{info.pin}</span>
               {' · '}

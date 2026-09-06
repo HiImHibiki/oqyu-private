@@ -8,7 +8,7 @@
  * Mac di depan kelas, atau tablet yang dibawa berkeliling.
  */
 
-import { api, pinTersimpan, namaPerangkat } from '@/lib/api'
+import { api, pinTersimpan, namaPerangkat, simpanPin } from '@/lib/api'
 import { dengarkanLangsung, kirim, mulaiSinkron, useSinkron, type PesanLangsung } from '@/lib/sinkron'
 import { bunyi } from '@/lib/kelas'
 import { JARAK_HALAMAN, kertasDari, kotakHalaman } from '@/modules/canvas/kertas'
@@ -327,14 +327,35 @@ function jadwalkanMuatUlang() {
 
 async function sketsaTerbaru(): Promise<string | null> {
   try {
-    const r = await api<{ rows: { id: string }[] }>('/api/sql', {
-      method: 'POST',
-      json: { sql: 'SELECT id FROM canvases ORDER BY updated_at DESC LIMIT 1', params: [] },
-    })
-    return r.rows[0]?.id ?? null
+    const r = await api<{ id: string | null }>('/api/kelas/terbaru')
+    return r.id ?? null
   } catch {
     return null
   }
+}
+
+/** Formulir PIN kecil di layar pesan. */
+function mintaPin(salah: boolean): Promise<string> {
+  return new Promise((selesai) => {
+    tampilkanPesan(
+      `${salah ? 'That PIN was not accepted.' : 'Enter the class PIN from the teacher.'}` +
+        `<form id="form-pin" style="margin-top:14px;display:flex;gap:8px;justify-content:center">` +
+        `<input id="isi-pin" inputmode="numeric" pattern="[0-9]*" maxlength="8" placeholder="PIN" style="font:inherit;font-size:22px;letter-spacing:0.3em;text-align:center;width:150px;padding:8px;border-radius:10px;border:1px solid var(--line-strong)">` +
+        `<button type="submit" style="font:inherit;font-size:16px;padding:8px 16px;border-radius:10px;border:0;background:var(--accent);color:#fff">Join</button></form>`,
+    )
+    pesanEl.style.pointerEvents = 'auto'
+    const form = document.getElementById('form-pin') as HTMLFormElement
+    const isi = document.getElementById('isi-pin') as HTMLInputElement
+    isi.focus()
+    form.onsubmit = (e) => {
+      e.preventDefault()
+      const v = isi.value.replace(/\D/g, '')
+      if (v.length < 4) return
+      simpanPin(v)
+      tampilkanPesan(null)
+      selesai(v)
+    }
+  })
 }
 
 /* ── Pesan langsung ────────────────────────────────────────────────── */
@@ -517,16 +538,17 @@ function terima(p: PesanLangsung) {
 /* ── Mulai ─────────────────────────────────────────────────────────── */
 
 async function mulai() {
-  const pin = pinTersimpan()
-  if (!pin) {
-    tampilkanPesan('Open this page from the link or QR code shown in Exact Canvas on the Mac.<small>The link carries the PIN.</small>')
-    return
-  }
-  try {
-    await api('/api/vault')
-  } catch {
-    tampilkanPesan('This PIN is no longer valid.<small>Scan the QR code in Exact Canvas again.</small>')
-    return
+  // PIN dari tautan/QR; kalau tidak ada (mis. dibuka lewat alamat publik
+  // tanpa tautan), tanyakan — dan ulangi sampai server menerimanya.
+  let pin = pinTersimpan()
+  for (;;) {
+    if (!pin) pin = await mintaPin(false)
+    try {
+      await api('/api/vault')
+      break
+    } catch {
+      pin = await mintaPin(true)
+    }
   }
 
   if (perluPilih) {
@@ -834,7 +856,7 @@ function pasangBilahMurid() {
   }
   el('tombol-paham').onclick = () => {
     if (!tanyaSaya) return
-    void api('/api/kelas/ubah', { method: 'POST', json: { id: tanyaSaya.id, status: 'selesai' } })
+    void api('/api/kelas/paham', { method: 'POST', json: { murid: muridId } })
       .then(() => {
         tanyaSaya = null
         kanvasSaya = null
