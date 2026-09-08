@@ -110,3 +110,20 @@ export async function muatAutoBentuk(): Promise<boolean> {
 export async function simpanAutoBentuk(on: boolean): Promise<void> {
   await setSettingJSON(KUNCI_AUTO_BENTUK, on)
 }
+
+/**
+ * Gambar tempelan terkunci: halaman PDF, foto pertanyaan, dan tangkapan layar
+ * tidak bisa dipilih atau digeser laso — yang dipilih hanya anotasinya.
+ * Bawaan menyala: saat mengajar, tersenggolnya halaman PDF oleh laso kotak
+ * lebih sering terjadi daripada kebutuhan memindahkannya. Grafik dan tabel
+ * tetap bisa dipilih karena memang untuk disunting.
+ */
+export const KUNCI_GAMBAR_TERKUNCI = 'kunci_gambar_kanvas'
+
+export async function muatKunciGambar(): Promise<boolean> {
+  return (await getSettingJSON<boolean>(KUNCI_GAMBAR_TERKUNCI, true)) !== false
+}
+
+export async function simpanKunciGambar(on: boolean): Promise<void> {
+  await setSettingJSON(KUNCI_GAMBAR_TERKUNCI, on)
+}

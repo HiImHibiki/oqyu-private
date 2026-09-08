@@ -40,8 +40,6 @@ pub struct Klien {
     pub id: String,
     pub nama: String,
     pub peran: String,
-    /// Ruangan tempat klien berada (editor maupun pengikut).
-    pub ruang: i64,
     /// Id murid untuk HP yang masuk dengan nama; kosong untuk TV dan editor.
     pub murid: String,
     /// Halaman masih di depan mata (lampu hijau) atau disembunyikan (kuning/merah).
@@ -143,7 +141,7 @@ fn info(hub: &Hub) -> InfoBerbagi {
         // Editor (tablet) lewat /admin dengan kata sandi admin; murid masuk
         // dengan akun. Hanya TV — yang tidak bisa mengetik — yang membawa PIN.
         url: format!("{dasar}/admin"),
-        url_tv: format!("{dasar}/tv?pin={}&tv=1&ruang=1", hub.pin),
+        url_tv: format!("{dasar}/tv?pin={}&tv=1", hub.pin),
         url_murid: format!("{dasar}/tv?murid=1"),
         url_lokal: format!("http://{ip}:{}/tv?murid=1", hub.port),
         publik,
@@ -342,6 +340,10 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/api/akun/setujui", axum::routing::post(crate::akun::api_setujui))
         .route("/api/akun/{id}", axum::routing::delete(crate::akun::api_hapus_akun))
         .route("/api/kelas/terbaru", get(crate::kelas::api_terbaru))
+        .route("/api/kelas/grup/buat", axum::routing::post(crate::kelas::api_grup_buat))
+        .route("/api/kelas/grup/daftar", get(crate::kelas::api_grup_daftar))
+        .route("/api/kelas/grup/gabung", axum::routing::post(crate::kelas::api_grup_gabung))
+        .route("/api/kelas/grup/keluar", axum::routing::post(crate::kelas::api_grup_keluar))
         .route("/ws", get(ws_masuk))
         .fallback(aset_lain)
         .layer(axum::middleware::from_fn(cors))
@@ -436,10 +438,13 @@ pub fn catat_gagal(asal: &str) {
 /// (HP yang sudah masuk), atau lewat hak admin (guru). Percobaan PIN yang
 /// salah dihitung; permintaan tanpa kredensial sama sekali tidak.
 pub fn sah(hub: &Hub, headers: &HeaderMap, q: Option<&str>) -> bool {
-    sah_lengkap(hub, headers, q, None)
+    sah_lengkap(hub, headers, q, None, None)
 }
 
-pub fn sah_lengkap(hub: &Hub, headers: &HeaderMap, q_pin: Option<&str>, q_sesi: Option<&str>) -> bool {
+/// `q_admin`: sandi admin lewat parameter URL — satu-satunya cara koneksi
+/// WebSocket dari browser bisa membawanya, karena API WebSocket bawaan
+/// tidak bisa mengirim header kustom seperti x-exact-admin.
+pub fn sah_lengkap(hub: &Hub, headers: &HeaderMap, q_pin: Option<&str>, q_sesi: Option<&str>, q_admin: Option<&str>) -> bool {
     let asal = asal_klien(headers);
     if diblokir(&asal) {
         return false;
@@ -460,8 +465,10 @@ pub fn sah_lengkap(hub: &Hub, headers: &HeaderMap, q_pin: Option<&str>, q_sesi: 
             return true;
         }
     }
-    if headers.contains_key("x-exact-admin") && admin_sah(hub, headers, None) {
-        return true;
+    if headers.contains_key("x-exact-admin") || q_admin.is_some() {
+        if admin_sah(hub, headers, q_admin) {
+            return true;
+        }
     }
     if pin_header.is_some() || q_pin.is_some() {
         catat_gagal(&asal);
@@ -571,7 +578,7 @@ async fn aset_lain(State(hub): State<Arc<Hub>>, uri: axum::http::Uri) -> Respons
 /* ── API vault ─────────────────────────────────────────────────────── */
 
 async fn api_vault(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryPin>) -> Response {
-    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
+    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref(), None) {
         return tolak();
     }
     Json(vault::vault_info()).into_response()
@@ -728,7 +735,7 @@ fn gambar_dari_cache(id: &str, kred: &str) -> Result<Arc<Vec<GambarSketsa>>, Str
 }
 
 async fn api_canvas_ringan(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryPin>, Path(id): Path<String>) -> Response {
-    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
+    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref(), None) {
         return tolak();
     }
     // Kredensial yang dipakai peminta itulah yang ditanam di URL gambarnya:
@@ -750,7 +757,7 @@ async fn api_canvas_gambar(
     Query(q): Query<QueryPin>,
     Path((id, nama)): Path<(String, String)>,
 ) -> Response {
-    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
+    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref(), None) {
         return tolak();
     }
     let Ok(i) = nama.split('.').next().unwrap_or("").parse::<usize>() else {
@@ -869,7 +876,6 @@ struct QueryWs {
     id: Option<String>,
     name: Option<String>,
     role: Option<String>,
-    ruang: Option<i64>,
     murid: Option<String>,
     admin: Option<String>,
     sesi: Option<String>,
@@ -881,7 +887,7 @@ async fn ws_masuk(
     headers: HeaderMap,
     Query(q): Query<QueryWs>,
 ) -> Response {
-    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
+    if !sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref(), q.admin.as_deref()) {
         return tolak();
     }
     // Peran editor menyiarkan pandangan dan goresan ke semua layar; itu hak
@@ -894,7 +900,6 @@ async fn ws_masuk(
         id: q.id.unwrap_or_else(|| format!("k{}", pin_acak())),
         nama: q.name.unwrap_or_else(|| "Device".into()),
         peran,
-        ruang: q.ruang.unwrap_or(1).clamp(1, 9),
         murid: q.murid.unwrap_or_default(),
         fokus: true,
         keluar: 0,
@@ -930,10 +935,13 @@ fn coretan_murid(
             if tambah.len() > 50 {
                 return None;
             }
-            for c in &tambah {
+            for c in &mut tambah {
                 if let Some(id) = c["id"].as_str() {
                     punya.insert(id.to_string());
                 }
+                // Cap pemilik ikut tersimpan di berkas: sesudah muat ulang,
+                // goresan ini tetap dikenali sebagai miliknya (lihat goresan_milik).
+                c["murid"] = Value::String(murid.to_string());
             }
             let hapus: Vec<Value> = v["hapus"]["coretan"]
                 .as_array()
@@ -971,8 +979,11 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
         let m = murid.clone();
         let _ = tokio::task::spawn_blocking(move || crate::kelas::izin_murid_terkini(&m)).await;
     }
-    // Coretan yang dibuat koneksi ini — hanya itu yang boleh ia hapus lagi (undo).
+    // Coretan miliknya — hanya itu yang boleh ia hapus lagi (undo, penghapus):
+    // yang dibuat koneksi ini, ditambah yang bercap namanya di berkas kanvas
+    // yang diizinkan (dibaca sekali per kanvas, saat kanvas izinnya berganti).
     let mut punya: std::collections::HashSet<String> = Default::default();
+    let mut kanvas_dibenihi: Option<String> = None;
     // Berlangganan dulu, baru mengumumkan diri: kalau dibalik, klien yang baru
     // masuk justru tidak pernah menerima daftar yang memuat dirinya sendiri.
     let mut rx = hub.tx.subscribe();
@@ -989,36 +1000,38 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
             masuk = baca.next() => {
                 match masuk {
                     Some(Ok(Message::Text(t))) => {
-                        // Dua pesan mengubah catatan klien di server sebelum
-                        // diteruskan: status fokus (lampu pengawasan) dan
-                        // ruangan (editor yang berpindah ruangan).
+                        // Status fokus (lampu pengawasan) mengubah catatan
+                        // klien di server sebelum diteruskan.
                         if let Ok(v) = serde_json::from_str::<Value>(&t) {
                             let jenis = v.get("t").and_then(|x| x.as_str()).unwrap_or("");
-                            if jenis == "fokus" || jenis == "ruang" {
+                            if jenis == "fokus" {
                                 if let Ok(mut k) = hub.klien.lock() {
                                     if let Some(me) = k.iter_mut().find(|x| x.id == id) {
-                                        if jenis == "fokus" {
-                                            let aktif = v.get("aktif").and_then(|x| x.as_bool()).unwrap_or(true);
-                                            let tunggu = v.get("tunggu").and_then(|x| x.as_bool()).unwrap_or(false);
-                                            // Meninggalkan halaman saat mode menunggu tidak dihitung kabur.
-                                            if me.fokus && !aktif && !tunggu {
-                                                me.keluar += 1;
-                                            }
-                                            me.fokus = aktif || tunggu;
-                                            me.tunggu = tunggu;
-                                        } else if let Some(r) = v.get("ruang").and_then(|x| x.as_i64()) {
-                                            me.ruang = r.clamp(1, 9);
+                                        let aktif = v.get("aktif").and_then(|x| x.as_bool()).unwrap_or(true);
+                                        let tunggu = v.get("tunggu").and_then(|x| x.as_bool()).unwrap_or(false);
+                                        // Meninggalkan halaman saat mode menunggu tidak dihitung kabur.
+                                        if me.fokus && !aktif && !tunggu {
+                                            me.keluar += 1;
                                         }
+                                        me.fokus = aktif || tunggu;
+                                        me.tunggu = tunggu;
                                     }
                                 }
                                 siarkan_klien(&hub);
                                 continue;
                             }
-                            // Selain fokus/ruang, hanya editor yang boleh menyiarkan:
+                            // Selain fokus, hanya editor yang boleh menyiarkan:
                             // HP murid tidak bisa menyamar jadi guru. Kecuali
                             // murid berizin, untuk goresan di kanvasnya sendiri.
                             if !editor {
                                 let (boleh_coret, kanvas_izin) = if murid.is_empty() { (false, None) } else { crate::kelas::izin_murid_terkini(&murid) };
+                                if boleh_coret && kanvas_izin.is_some() && kanvas_izin != kanvas_dibenihi {
+                                    let (k, m) = (kanvas_izin.clone().unwrap_or_default(), murid.clone());
+                                    if let Ok(ids) = tokio::task::spawn_blocking(move || crate::kelas::goresan_milik(&k, &m)).await {
+                                        punya.extend(ids);
+                                    }
+                                    kanvas_dibenihi = kanvas_izin.clone();
+                                }
                                 if let Some(pesan) = coretan_murid(&v, jenis, boleh_coret, kanvas_izin.as_deref(), &murid, &mut punya) {
                                     if jenis == "ubah" {
                                         crate::kelas::antre_coretan_murid(hub.clone(), kanvas_izin.clone().unwrap_or_default(), pesan.clone());

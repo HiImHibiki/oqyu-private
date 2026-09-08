@@ -7,7 +7,6 @@ import { dengarkan } from '@/lib/events'
 import { bukaJendelaBaru } from '@/lib/layar'
 import { adminAktif, api, namaPerangkat, pinAktif, setAlamatServer, simpanAdmin } from '@/lib/api'
 import { hentikanSinkron, mulaiSinkron } from '@/lib/sinkron'
-import { muatRuang, useKelas } from '@/lib/kelas'
 import { Toast } from '@/components/Toast'
 import { Pengaturan } from '@/components/Pengaturan'
 import { IconButton } from '@/components/ui/Button'
@@ -120,9 +119,7 @@ function useBerbagi(siap: boolean) {
     if (!siap) return
     if (!inTauri) {
       const ws = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`
-      void muatRuang().then((ruang) =>
-        mulaiSinkron({ url: ws, pin: pinAktif(), peran: 'editor', nama: namaPerangkat(), ruang, admin: adminAktif() }),
-      )
+      mulaiSinkron({ url: ws, pin: pinAktif(), peran: 'editor', nama: namaPerangkat(), admin: adminAktif() })
       return () => hentikanSinkron()
     }
     const terapkan = async () => {
@@ -147,19 +144,12 @@ function useBerbagi(siap: boolean) {
       }
       if (info) {
         setAlamatServer(`http://127.0.0.1:${info.port}`, info.pin, info.tokenApp)
-        const ruang = await muatRuang()
-        mulaiSinkron({ url: `ws://127.0.0.1:${info.port}/ws`, pin: info.pin, peran: 'editor', nama: 'Mac', ruang, admin: info.tokenApp })
+        mulaiSinkron({ url: `ws://127.0.0.1:${info.port}/ws`, pin: info.pin, peran: 'editor', nama: 'Mac', admin: info.tokenApp })
       } else hentikanSinkron()
     }
     void terapkan()
     const lepas = dengarkan('settings', () => void terapkan())
-    // Ruangan editor ini diumumkan lewat WS oleh setRuang; di sini cukup dijaga
-    // agar penyambungan ulang memakai ruangan yang terakhir dipilih.
-    const lepasRuang = useKelas.subscribe(() => {})
-    return () => {
-      lepas()
-      lepasRuang()
-    }
+    return () => lepas()
   }, [siap])
 }
 

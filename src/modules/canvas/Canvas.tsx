@@ -85,7 +85,7 @@ import {
 import { PanelGrafik } from './PanelGrafik'
 import { PanelTabel } from './PanelTabel'
 import { PanelKelas } from './PanelKelas'
-import { bunyiTanya, daftarTanya, ubahTanya, useKelas, type Tanya } from '@/lib/kelas'
+import { bunyiTanya, daftarTanya, ubahTanya, type Tanya } from '@/lib/kelas'
 import { buatKanvas } from './data'
 import { q1, x } from '@/lib/db'
 import { useData } from '@/lib/useData'
@@ -93,10 +93,12 @@ import { ukuranTabel, type DefinisiGrafik, type DefinisiTabel, type MetaGambar }
 import {
   MODE_PENGHAPUS_BAWAAN,
   muatAutoBentuk,
+  muatKunciGambar,
   muatModePenghapus,
   muatSetelanAlat,
   setelanBawaan,
   simpanAutoBentuk,
+  simpanKunciGambar,
   simpanModePenghapus,
   simpanSetelanAlat,
   type KunciAlat,
@@ -297,6 +299,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     void muatSetelanAlat().then(setSetelan)
     void muatModePenghapus().then(setModePenghapus)
     void muatAutoBentuk().then(setAutoBentuk)
+    void muatKunciGambar().then(setKunciGambar)
   }, [])
 
   /** Antrian pertanyaan murid — untuk lencana di rel dan bunyi saat ada yang baru. */
@@ -305,10 +308,10 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   useEffect(
     () =>
       dengarkan('kelas', (payload) => {
-        const p = payload as { apa?: string; isi?: { nama?: string; ruang?: number; foto?: boolean; teks?: string } } | null
+        const p = payload as { apa?: string; isi?: { nama?: string; foto?: boolean; teks?: string } } | null
         if (p?.apa !== 'tanya' || !p.isi) return
         bunyiTanya()
-        beriTahu(`${p.isi.nama ?? 'A student'} (room ${p.isi.ruang ?? '?'}) ${p.isi.foto || p.isi.teks ? 'sent a question' : 'raised a hand'}.`)
+        beriTahu(`${p.isi.nama ?? 'A student'} ${p.isi.foto || p.isi.teks ? 'sent a question' : 'raised a hand'}.`)
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
@@ -327,9 +330,6 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * tinggal berurutan di satu tempat, dan anak lain tidak bercampur.
    */
   async function bahasTanya(t: Tanya, urlLampiran: string | null) {
-    // Ruangan dulu, baru kabar: HP murid diarahkan mengikuti perangkat ini,
-    // dan aturan ruangannya harus sudah cocok saat kabar itu tiba.
-    if (useKelas.getState().ruang !== t.room) useKelas.getState().setRuang(t.room)
     // Anggota grup berbagi satu kanvas grup; murid tanpa grup punya kanvasnya
     // sendiri. Keduanya dibuat saat pertama dibutuhkan dan dipakai lagi seterusnya.
     let idTujuan: string | null = null
@@ -371,7 +371,10 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       beriTahu(e instanceof Error ? e.message : String(e))
       return
     }
-    const tempelan = urlLampiran ? { idKanvas: idTujuan, url: urlLampiran, nama: t.name } : null
+    // Pertanyaan yang sudah dibahas: lampirannya sudah ada di kanvas itu.
+    // Membuka lagi hanya kembali ke kanvasnya, tidak menempel halaman baru.
+    const sudahDitempel = t.status === 'dibahas'
+    const tempelan = urlLampiran && !sudahDitempel ? { idKanvas: idTujuan, url: urlLampiran, nama: t.name } : null
     if (idTujuan === idKanvas) {
       await kerjakanTempelan(tempelan)
       return
@@ -498,6 +501,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const bacaanRef = useRef<{ teks: string; x: number; y: number } | null>(null)
   /** Kenali bentuk saat pena diangkat, tanpa menahan. */
   const [autoBentuk, setAutoBentuk] = useState(false)
+  /** Gambar tempelan (PDF, foto) kebal laso; grafik/tabel tetap bisa dipilih. */
+  const [kunciGambar, setKunciGambar] = useState(true)
+  const bisaDipilihGambar = (g: Gambar) => !kunciGambar || !!g.meta
   /** Editor sisipan yang sedang terbuka; `id` terisi saat menyunting yang sudah ada. */
   const [editorGrafik, setEditorGrafik] = useState<{ awal: DefinisiGrafik | null; id: string | null } | null>(null)
   const [editorTabel, setEditorTabel] = useState<{ awal: DefinisiTabel | null; id: string | null } | null>(null)
@@ -1449,8 +1455,8 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     return () => window.clearInterval(t)
   }, [idKanvas])
   useEffect(() => {
-    kirim({ t: 'instrumen', i: instrumen })
-  }, [instrumen])
+    kirim({ t: 'instrumen', idKanvas, i: instrumen })
+  }, [instrumen, idKanvas])
 
 
   // Instrumen digambar di lapisan aktif, jadi ia harus ikut digambar ulang saat
@@ -1575,7 +1581,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     const kunci = o ? JSON.stringify(o) : ''
     if (kunci !== objekTerkirim.current) {
       objekTerkirim.current = kunci
-      kirim({ t: 'objek', o })
+      kirim({ t: 'objek', idKanvas, o })
     }
   }
 
@@ -1750,7 +1756,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       // Pegangan sudut dari gambar yang sedang terpilih menang atas apa pun
       // yang ada di bawahnya — itu target paling kecil di layar.
       const terpilih = gambar.find((g) => g.id === gambarTerpilih)
-      if (terpilih) {
+      if (terpilih && bisaDipilihGambar(terpilih)) {
         const [rx, ry] = peganganPutarGambar(terpilih, v.tampilan.skala)
         if (Math.hypot(rx - d.x, ry - d.y) <= (TITIK_KENDALI + 4) / v.tampilan.skala) {
           const poros = porosGambar(terpilih)
@@ -1779,10 +1785,13 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       }
 
       // Gambar teratas yang kena, pada lapisan yang terlihat dan tidak terkunci.
+      // Saat gambar dikunci, halaman PDF dan foto dilewati: laso jatuh ke
+      // coretan di atasnya, jadi halamannya tidak ikut tergeser.
       const kena = [...gambar]
         .reverse()
         .find(
           (g) =>
+            bisaDipilihGambar(g) &&
             (lapisanInfo[g.layer]?.tampak ?? true) &&
             !(lapisanInfo[g.layer]?.kunci ?? false) &&
             gambarKena(g, d.x, d.y),
@@ -4224,6 +4233,23 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         >
           <Icon nama="pdf" ukuran={15} /> PDF or image…
         </button>
+        <label
+          className="ex-label flex items-center gap-2"
+          style={{ color: 'var(--ink-soft)' }}
+          title="PDF pages, photos and pasted pictures can't be selected or moved by the lasso — only your annotations are. Turn off to reposition a picture."
+        >
+          <input
+            type="checkbox"
+            checked={kunciGambar}
+            onChange={(e) => {
+              setKunciGambar(e.target.checked)
+              if (e.target.checked) setGambarTerpilih(null)
+              void simpanKunciGambar(e.target.checked)
+            }}
+            style={{ accentColor: 'var(--accent)' }}
+          />
+          Lock pictures
+        </label>
         <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
           Graphs and tables stay editable: select one with the lasso, then tap it again.
         </p>

@@ -101,7 +101,6 @@ fn kabari(hub: &Hub, apa: &str, payload: Value) {
 pub struct Masuk {
     pub murid: String,
     pub nama: String,
-    pub ruang: i64,
 }
 
 pub async fn api_masuk(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(m): Json<Masuk>) -> Response {
@@ -119,9 +118,9 @@ pub async fn api_masuk(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(m):
         let c = koneksi()?;
         let kini = sekarang();
         c.execute(
-            "INSERT INTO students (id, name, room, first_seen, last_seen) VALUES (?1, ?2, ?3, ?4, ?4)
-             ON CONFLICT(id) DO UPDATE SET name = excluded.name, room = excluded.room, last_seen = excluded.last_seen",
-            rusqlite::params![m.murid, nama, m.ruang.clamp(1, 9), kini],
+            "INSERT INTO students (id, name, room, first_seen, last_seen) VALUES (?1, ?2, 1, ?3, ?3)
+             ON CONFLICT(id) DO UPDATE SET name = excluded.name, last_seen = excluded.last_seen",
+            rusqlite::params![m.murid, nama, kini],
         )
         .map_err(|e| e.to_string())?;
         Ok(())
@@ -150,7 +149,7 @@ pub struct QuerySaya {
 /// pertanyaannya yang masih terbuka — semua yang dibutuhkan HP untuk
 /// memutuskan siapa yang diikuti dan apa yang ditampilkan di bilah bawah.
 pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QuerySaya>) -> Response {
-    if !crate::server::sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
+    if !crate::server::sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref(), None) {
         return tolak();
     }
     let murid = q.murid.clone();
@@ -181,11 +180,17 @@ pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
             .ok()
         });
         let (boleh, sketsa) = izin_murid(&c, &murid);
+        // Kanvas yang harus ditampilkan (grup kalau bergrup, sendiri kalau
+        // tidak) — beda dari `sketsa` di atas yang cuma terisi kalau boleh
+        // mencoret. Ini dipakai HP untuk selalu memaku diri ke kanvasnya
+        // sendiri, apa pun yang sedang dibuka guru di tempat lain.
+        let kanvas = sketsa_murid(&c, &murid);
         Ok(json!({
             "grup": grup.map(|(id, nama, target)| json!({ "id": id, "nama": nama, "target": target })),
             "tanya": tanya.map(|(id, status, dibuat, teks)| json!({ "id": id, "status": status, "dibuat": dibuat, "teks": teks, "urutan": urutan.map(|u| u + 1) })),
             "boleh": boleh,
             "sketsa": sketsa,
+            "kanvas": kanvas,
         }))
     })
     .await;
@@ -421,6 +426,22 @@ pub fn antre_coretan_murid(hub: Arc<Hub>, id_kanvas: String, ubah: Value) {
 }
 
 /// Terapkan pesan-pesan `ubah` (hanya coretan) ke berkas sketsa, lalu tulis.
+/// Id goresan bercap `murid` ini di berkas kanvas — yang boleh ia hapus lagi
+/// sesudah HP-nya memuat ulang. Berkas yang hilang atau rusak berarti kosong.
+pub fn goresan_milik(id_kanvas: &str, murid: &str) -> std::collections::HashSet<String> {
+    let Ok(Some(teks)) = vault::canvas_read(id_kanvas.to_string()) else { return Default::default() };
+    let Ok(d) = serde_json::from_str::<Value>(&teks) else { return Default::default() };
+    d["strokes"]
+        .as_array()
+        .map(|s| {
+            s.iter()
+                .filter(|c| c["murid"].as_str() == Some(murid))
+                .filter_map(|c| c["id"].as_str().map(|i| i.to_string()))
+                .collect()
+        })
+        .unwrap_or_default()
+}
+
 fn tulis_coretan_murid(id: &str, ops: &[Value]) -> Result<(), String> {
     let teks = vault::canvas_read(id.to_string())?.ok_or_else(|| "Sketch is gone.".to_string())?;
     let mut d: Value = serde_json::from_str(&teks).map_err(|e| e.to_string())?;
@@ -463,7 +484,6 @@ fn tulis_coretan_murid(id: &str, ops: &[Value]) -> Result<(), String> {
 pub struct Tanya {
     pub murid: String,
     pub nama: String,
-    pub ruang: i64,
     #[serde(default)]
     pub teks: String,
     /// Data URL JPEG yang sudah diperkecil di HP; boleh kosong (angkat tangan).
@@ -551,11 +571,11 @@ pub async fn api_tanya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(t):
             rusqlite::params![kini, t.murid],
         );
         c.execute(
-            "INSERT INTO questions (id, student_id, name, room, text, photo, status, created_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, 'menunggu', ?7)",
-            rusqlite::params![id, t.murid, t.nama.trim().chars().take(40).collect::<String>(), t.ruang, if teks.is_empty() { None } else { Some(teks.clone()) }, nama_foto, kini],
+            "INSERT INTO questions (id, student_id, name, room, text, photo, status, created_at) VALUES (?1, ?2, ?3, 1, ?4, ?5, 'menunggu', ?6)",
+            rusqlite::params![id, t.murid, t.nama.trim().chars().take(40).collect::<String>(), if teks.is_empty() { None } else { Some(teks.clone()) }, nama_foto, kini],
         )
         .map_err(|e| e.to_string())?;
-        Ok(json!({ "id": id, "nama": t.nama, "ruang": t.ruang, "teks": teks, "foto": nama_foto.is_some() }))
+        Ok(json!({ "id": id, "nama": t.nama, "teks": teks, "foto": nama_foto.is_some() }))
     })
     .await;
     match hasil {
@@ -705,7 +725,7 @@ pub async fn api_paham(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(p):
 
 /// Sketsa yang terakhir disentuh — untuk layar pengikut yang baru menyala.
 pub async fn api_terbaru(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryPin>) -> Response {
-    if !crate::server::sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref()) {
+    if !crate::server::sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref(), None) {
         return tolak();
     }
     let hasil = tokio::task::spawn_blocking(|| -> Result<Option<String>, String> {
@@ -749,5 +769,162 @@ pub fn bersihkan() {
                 let _ = std::fs::remove_file(e.path());
             }
         }
+    }
+}
+
+/* ── Grup belajar mandiri ──────────────────────────────────────────── */
+//
+// Guru masih bisa mengatur grup dari panel (lewat SQL admin), tapi murid
+// juga boleh membentuk atau bergabung ke grup belajarnya sendiri dari HP —
+// satu murid satu grup, sama seperti yang guru atur.
+
+const WARNA_GRUP: [&str; 6] = ["#b4531a", "#1f6f5c", "#1d4ed8", "#7c3aed", "#d97706", "#0891b2"];
+
+#[derive(Deserialize)]
+pub struct BuatGrup {
+    pub murid: String,
+    pub nama: String,
+}
+
+/// Murid membuat grup belajarnya sendiri dan langsung jadi anggotanya.
+pub async fn api_grup_buat(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(g): Json<BuatGrup>) -> Response {
+    if !sah(&hub, &headers, None) {
+        return tolak();
+    }
+    if kebanjiran(&headers) {
+        return terlalu_sering();
+    }
+    let nama = g.nama.trim().chars().take(40).collect::<String>();
+    if nama.is_empty() || g.murid.is_empty() {
+        return (StatusCode::BAD_REQUEST, "A group name is required.").into_response();
+    }
+    let hasil = tokio::task::spawn_blocking(move || -> Result<(String, String), String> {
+        let mut c = koneksi()?;
+        let jumlah: i64 = c.query_row("SELECT COUNT(*) FROM groups", [], |r| r.get(0)).unwrap_or(0);
+        let warna = WARNA_GRUP[(jumlah as usize) % WARNA_GRUP.len()];
+        let id = id_baru("grp");
+        let tx = c.transaction().map_err(|e| e.to_string())?;
+        tx.execute(
+            "INSERT INTO groups (id, name, color, target, sort_order) VALUES (?1, ?2, ?3, NULL, ?4)",
+            rusqlite::params![id, nama, warna, sekarang()],
+        )
+        .map_err(|e| e.to_string())?;
+        tx.execute("DELETE FROM group_members WHERE student_id = ?1", rusqlite::params![g.murid]).map_err(|e| e.to_string())?;
+        tx.execute("INSERT INTO group_members (group_id, student_id) VALUES (?1, ?2)", rusqlite::params![id, g.murid])
+            .map_err(|e| e.to_string())?;
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok((id, nama))
+    })
+    .await;
+    match hasil {
+        Ok(Ok((id, nama))) => {
+            kabari(&hub, "grup", Value::Null);
+            Json(json!({ "id": id, "nama": nama })).into_response()
+        }
+        Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
+    }
+}
+
+/// Daftar grup yang bisa digabung murid — nama, warna, jumlah anggota saja.
+pub async fn api_grup_daftar(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryPin>) -> Response {
+    if !crate::server::sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref(), None) {
+        return tolak();
+    }
+    let hasil = tokio::task::spawn_blocking(move || -> Result<Vec<Value>, String> {
+        let c = koneksi()?;
+        let mut st = c
+            .prepare(
+                "SELECT g.id, g.name, g.color, COUNT(m.student_id) FROM groups g \
+                 LEFT JOIN group_members m ON m.group_id = g.id \
+                 GROUP BY g.id ORDER BY g.sort_order, g.name COLLATE NOCASE",
+            )
+            .map_err(|e| e.to_string())?;
+        let baris = st
+            .query_map([], |r| {
+                Ok(json!({
+                    "id": r.get::<_, String>(0)?,
+                    "nama": r.get::<_, String>(1)?,
+                    "warna": r.get::<_, Option<String>>(2)?,
+                    "anggota": r.get::<_, i64>(3)?,
+                }))
+            })
+            .map_err(|e| e.to_string())?
+            .flatten()
+            .collect();
+        Ok(baris)
+    })
+    .await;
+    match hasil {
+        Ok(Ok(v)) => Json(v).into_response(),
+        Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
+    }
+}
+
+#[derive(Deserialize)]
+pub struct GabungGrup {
+    pub murid: String,
+    pub grup: String,
+}
+
+/// Murid bergabung ke grup yang sudah ada, keluar dari grup lamanya kalau ada.
+pub async fn api_grup_gabung(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(g): Json<GabungGrup>) -> Response {
+    if !sah(&hub, &headers, None) {
+        return tolak();
+    }
+    if g.murid.is_empty() || g.grup.is_empty() {
+        return (StatusCode::BAD_REQUEST, "Missing student or group.").into_response();
+    }
+    let hasil = tokio::task::spawn_blocking(move || -> Result<(), String> {
+        let mut c = koneksi()?;
+        let ada: bool = c.query_row("SELECT 1 FROM groups WHERE id = ?1", rusqlite::params![g.grup], |_| Ok(())).is_ok();
+        if !ada {
+            return Err("That group no longer exists.".into());
+        }
+        let tx = c.transaction().map_err(|e| e.to_string())?;
+        tx.execute("DELETE FROM group_members WHERE student_id = ?1", rusqlite::params![g.murid]).map_err(|e| e.to_string())?;
+        tx.execute(
+            "INSERT OR IGNORE INTO group_members (group_id, student_id) VALUES (?1, ?2)",
+            rusqlite::params![g.grup, g.murid],
+        )
+        .map_err(|e| e.to_string())?;
+        tx.commit().map_err(|e| e.to_string())?;
+        Ok(())
+    })
+    .await;
+    match hasil {
+        Ok(Ok(())) => {
+            kabari(&hub, "grup", Value::Null);
+            StatusCode::NO_CONTENT.into_response()
+        }
+        Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
+    }
+}
+
+#[derive(Deserialize)]
+pub struct KeluarGrup {
+    pub murid: String,
+}
+
+/// Murid keluar dari grupnya, kembali sendirian di kanvas pribadinya.
+pub async fn api_grup_keluar(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(g): Json<KeluarGrup>) -> Response {
+    if !sah(&hub, &headers, None) {
+        return tolak();
+    }
+    let hasil = tokio::task::spawn_blocking(move || -> Result<(), String> {
+        let c = koneksi()?;
+        c.execute("DELETE FROM group_members WHERE student_id = ?1", rusqlite::params![g.murid]).map_err(|e| e.to_string())?;
+        Ok(())
+    })
+    .await;
+    match hasil {
+        Ok(Ok(())) => {
+            kabari(&hub, "grup", Value::Null);
+            StatusCode::NO_CONTENT.into_response()
+        }
+        Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
     }
 }

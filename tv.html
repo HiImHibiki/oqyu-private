@@ -41,12 +41,6 @@
       #masuk .siapa button, #setuju .siapa button { width: auto; font: inherit; background: transparent; border: 0; color: var(--accent); padding: 4px 6px; font-size: 14px; font-weight: 600; }
       #akun #akun-kirim { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
       #masuk button { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
-      .ruangan { display: flex; gap: 8px; }
-      .ruangan label { flex: 1; min-width: 0; text-align: center; padding: 10px 0; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); font-size: 15px; }
-      .ruangan input { display: none; }
-      .ruangan input:checked + span { color: #fff; }
-      .ruangan label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: #fff; }
-
       #bilah { position: absolute; left: 0; right: 0; bottom: 0; display: none; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
         background: rgba(242, 240, 234, 0.92); border-top: 1px solid var(--line); backdrop-filter: blur(8px); }
       #bilah.tampil { display: flex; }
@@ -64,6 +58,20 @@
       #lembar button { flex: 1; font: inherit; font-size: 15px; padding: 11px 8px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--ink); }
       #lembar button.utama { background: var(--accent); color: #fff; border-color: var(--accent); }
       #lembar img { max-height: 160px; width: auto; max-width: 100%; border-radius: 8px; border: 1px solid var(--line); align-self: flex-start; }
+
+      #grup { position: absolute; inset: 0; display: none; align-items: flex-end; background: rgba(36, 38, 43, 0.35); }
+      #grup.tampil { display: flex; }
+      #grup .isi { width: 100%; max-height: 80vh; overflow-y: auto; background: var(--surface); border-radius: 16px 16px 0 0; padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; }
+      #grup input { font: inherit; font-size: 16px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink); flex: 1; min-width: 0; }
+      #grup .baris { display: flex; gap: 8px; }
+      #grup button { font: inherit; font-size: 15px; padding: 11px 8px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--ink); }
+      #grup button.utama { background: var(--accent); color: #fff; border-color: var(--accent); flex: 0 0 auto; }
+      #grup #grup-keluar, #grup #grup-tutup { width: 100%; }
+      .grup-baris { display: flex; align-items: center; gap: 8px; padding: 8px 4px; border-bottom: 1px solid var(--line); }
+      .grup-baris .titik { width: 10px; height: 10px; border-radius: 999px; flex-shrink: 0; }
+      .grup-baris .nama { flex: 1; min-width: 0; font-size: 15px; }
+      .grup-baris .jumlah { font-size: 12px; color: var(--ink-faint); }
+      .grup-baris button { padding: 6px 12px; font-size: 13px; }
 
       #kabar { position: absolute; left: 12px; right: 12px; top: 12px; padding: 12px 14px; border-radius: 12px; background: var(--accent); color: #fff; font-size: 16px;
         text-align: center; transform: translateY(-140%); transition: transform 300ms; pointer-events: none; box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
@@ -89,10 +97,9 @@
       #alat-coret .warna[data-warna="up"] { background: var(--up); }
       #alat-coret .warna[data-warna="accent-2"] { background: var(--accent-2); }
       #alat-coret .sekat { width: 1px; height: 24px; background: var(--line-strong); flex: 0 0 auto; }
+      #alat-coret #coret-hapus.aktif { background: var(--ink); color: var(--bg); border-color: var(--ink); outline: 0; }
+      .hp.mencoret.menghapus #aktif { cursor: cell; }
       .hp.mencoret #ikuti { display: none; }
-      #tombol-ruang { position: absolute; left: 12px; top: calc(12px + env(safe-area-inset-top)); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line-strong);
-        background: rgba(242, 240, 234, 0.92); color: var(--ink); font: inherit; font-size: 13px; font-weight: 600; backdrop-filter: blur(8px); }
-      .mencoret #tombol-ruang { display: none; }
       #pilih { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; padding: 24px; background: var(--bg); cursor: auto; }
       #pilih.tampil { display: flex; }
       #pilih .kotak { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 12px; text-align: center; }
@@ -116,9 +123,9 @@
 
     <div id="kabar"></div>
     <button id="ikuti" hidden>↩ Follow the teacher</button>
-    <button id="tombol-ruang" hidden title="Change room">Room 1 ▾</button>
     <div id="status-saya"></div>
     <div id="bilah">
+      <button id="tombol-grup" title="Study group">👥 Group</button>
       <button id="tombol-tangan">✋ Raise hand</button>
       <button id="tombol-tanya" class="utama">❓ Ask</button>
       <button id="tombol-paham" disabled>✅ Got it</button>
@@ -136,7 +143,8 @@
       <button data-ukuran="5" class="ukuran aktif">med</button>
       <button data-ukuran="9" class="ukuran">thick</button>
       <span class="sekat"></span>
-      <button id="coret-undo" aria-label="Undo my last stroke">↶</button>
+      <button id="coret-hapus" aria-label="Eraser: rub out your own strokes" title="Eraser">⌫ erase</button>
+      <button id="coret-undo" aria-label="Undo">↶</button>
       <button id="coret-selesai" class="utama">Done</button>
     </div>
     <div id="tunggu">
@@ -163,15 +171,30 @@
         <input id="berkas-pdf" type="file" accept="application/pdf,.pdf" hidden />
       </div>
     </div>
+    <div id="grup">
+      <div class="isi">
+        <strong>Study group</strong>
+        <div id="grup-sekarang" hidden>
+          <p id="grup-sekarang-teks" style="margin:0 0 8px;color:var(--ink-soft);font-size:15px"></p>
+          <button id="grup-keluar">Leave this group</button>
+        </div>
+        <div id="grup-buat">
+          <div class="baris">
+            <input id="grup-nama" placeholder="New group name" maxlength="40" />
+            <button id="grup-buat-kirim" class="utama">Create</button>
+          </div>
+        </div>
+        <div id="grup-daftar"></div>
+        <button id="grup-tutup">Close</button>
+      </div>
+    </div>
     <div id="pilih">
       <div class="kotak">
         <h1>Exact Canvas</h1>
         <p>How should this screen be used?</p>
         <button id="pilih-murid" class="utama">🙋 Join as a student</button>
         <div class="baris">
-          <button data-ruang="1">📺 TV · room 1</button>
-          <button data-ruang="2">📺 TV · room 2</button>
-          <button data-ruang="3">📺 TV · room 3</button>
+          <button id="pilih-tv">📺 TV</button>
         </div>
         <small>Students can ask questions and follow the teacher. A TV only follows.</small>
       </div>
@@ -204,7 +227,6 @@
       <form id="form-masuk">
         <h1>Join the lesson</h1>
         <div class="siapa"><span id="masuk-siapa"></span><button type="button" id="masuk-keluar">Not you? Sign out</button></div>
-        <div class="ruangan" id="ruangan-masuk"></div>
         <button type="submit">Join</button>
       </form>
     </div>

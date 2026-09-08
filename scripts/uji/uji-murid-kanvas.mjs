@@ -2,7 +2,7 @@
 // pertanyaan kedua Sari (PDF) → kembali ke kanvas yang sama, halaman berikutnya.
 import { spawn } from 'node:child_process'
 import { writeFileSync } from 'node:fs'
-const B = 'http://127.0.0.1:4747', H = { 'x-exact-pin': '1234', 'content-type': 'application/json' }
+const B = 'http://127.0.0.1:4747', H = { 'x-exact-pin': '1234', 'x-exact-admin': process.env.ADMIN ?? 'exact2026', 'content-type': 'application/json' }
 const j = async (p, init) => { const r = await fetch(B + p, init); const t = await r.text(); return { status: r.status, body: t ? (() => { try { return JSON.parse(t) } catch { return t } })() : null } }
 const tidur = (ms) => new Promise((r) => setTimeout(r, ms))
 const PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAwCAIAAAAuKetIAAAAQ0lEQVR42u3PQQkAAAgEsItjCPtjLCv4FQYrsEzXaxEQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQuFoOKBDTXECg5QAAAABJRU5ErkJggg=='
@@ -26,6 +26,8 @@ ws.onmessage = (e) => { const m = JSON.parse(e.data); if (m.id && tunggu.has(m.i
 const cdp = (method, params = {}) => new Promise((r) => { const id = ++seq; tunggu.set(id, r); ws.send(JSON.stringify({ id, method, params })) })
 await cdp('Runtime.enable'); await cdp('Page.enable')
 const ev = async (expr) => (await cdp('Runtime.evaluate', { expression: expr, awaitPromise: true, returnByValue: true })).result?.result?.value
+// Editor web dijaga kata sandi admin: simpan ke localStorage lalu muat ulang.
+await ev(`localStorage.setItem('exact-canvas-admin', ${JSON.stringify(H['x-exact-admin'])}); location.reload(); true`); await tidur(1500)
 const klikBukaSari = async () => {
   // Panel bisa sedang terlipat sesudah pertanyaan sebelumnya dibuka: buka dulu.
   await ev(`document.querySelector('.ex-tampilkan')?.click()`); await tidur(300)
@@ -46,13 +48,20 @@ const m = (await sql("SELECT sketch_id FROM students WHERE id='uji_m4'")).body.r
 console.log('sketch_id murid:', m?.sketch_id)
 let berkas = await j(`/api/canvas/${m.sketch_id}`, { headers: H })
 console.log('gambar di kanvas Sari:', berkas.body.images?.length, '| judul:', berkas.body.title)
-// pertanyaan kedua: PDF
+// pertanyaan kedua: PDF — mundurkan waktu pertanyaan pertama supaya lolos jeda anti-spam 20 dtk.
+await sql("UPDATE questions SET created_at = created_at - 30000 WHERE student_id = 'uji_m4'")
 const t2 = await j('/api/kelas/tanya', { method: 'POST', headers: H, body: JSON.stringify({ murid: 'uji_m4', nama: 'Sari', ruang: 2, teks: 'pdf', foto: PDF }) })
-console.log('tanya pdf:', t2.status, '| berkas pdf mime:', (await fetch(`${B}/api/kelas/foto/${t2.body.id}.pdf?pin=1234`)).headers.get('content-type'))
+console.log('tanya pdf:', t2.status, '| berkas pdf mime:', (await fetch(`${B}/api/kelas/foto/${t2.body.id}.pdf?pin=1234&admin=${encodeURIComponent(H['x-exact-admin'])}`)).headers.get('content-type'))
 await tidur(800)
 console.log('klik Open (pdf):', await klikBukaSari()); await tidur(7000)
 berkas = await j(`/api/canvas/${m.sketch_id}`, { headers: H })
 console.log('sketsa terbuka:', await sketsaAktif(), '| gambar sekarang:', berkas.body.images?.length, '| halaman:', berkas.body.pages, '| posisi y gambar:', berkas.body.images?.map((g) => Math.round(g.y)).join(','))
+// Klik Open lagi pada pertanyaan yang sudah dibahas: kembali ke kanvas, tanpa halaman/gambar baru.
+{ const sebelum = { gambar: berkas.body.images?.length, halaman: berkas.body.pages }
+  console.log('klik Open ulang (sudah dibahas):', await klikBukaSari()); await tidur(4000)
+  const lagi = await j(`/api/canvas/${m.sketch_id}`, { headers: H })
+  const sama = lagi.body.images?.length === sebelum.gambar && lagi.body.pages === sebelum.halaman
+  console.log(sama ? 'ok  ' : 'FAIL', 'buka ulang tidak menempel duplikat — gambar', lagi.body.images?.length, '| halaman', lagi.body.pages) }
 const shot = await cdp('Page.captureScreenshot', { format: 'png' }); writeFileSync(process.env.S + '/kanvas-sari.png', Buffer.from(shot.result.data, 'base64'))
 console.log('log:\n  ' + log.join('\n  '))
 ws.close(); chrome.kill()

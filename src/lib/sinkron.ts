@@ -14,7 +14,6 @@ export interface Klien {
   id: string
   nama: string
   peran: string
-  ruang: number
   murid: string
   fokus: boolean
   keluar: number
@@ -33,8 +32,6 @@ export interface OpsiSinkron {
   pin: string
   peran: 'editor' | 'tv'
   nama: string
-  /** Ruangan tempat perangkat ini berada. */
-  ruang?: number
   /** Id murid, untuk HP yang masuk dengan nama. */
   murid?: string
   /** Token/sandi admin — wajib untuk peran editor. */
@@ -64,6 +61,14 @@ let ws: WebSocket | null = null
 let opsi: OpsiSinkron | null = null
 let timerUlang: number | null = null
 
+/**
+ * Pesan yang gagal terkirim karena sedang putus (mis. Wi-Fi tablet guru
+ * sebentar hilang). Disimpan di sini dan disiram begitu tersambung lagi,
+ * supaya goresan yang ditulis pas putus tidak hilang tanpa jejak.
+ */
+let antrean: string[] = []
+const BATAS_ANTREAN = 200
+
 function sambung() {
   if (!opsi) return
   const u = new URL(opsi.url)
@@ -71,7 +76,6 @@ function sambung() {
   u.searchParams.set('id', idKlien)
   u.searchParams.set('name', opsi.nama)
   u.searchParams.set('role', opsi.peran)
-  u.searchParams.set('ruang', String(opsi.ruang ?? 1))
   if (opsi.murid) u.searchParams.set('murid', opsi.murid)
   if (opsi.admin) u.searchParams.set('admin', opsi.admin)
   if (opsi.sesi) u.searchParams.set('sesi', opsi.sesi)
@@ -82,6 +86,13 @@ function sambung() {
   soket.onopen = () => {
     if (ws !== soket) return
     useSinkron.setState({ status: 'tersambung', serverMati: false })
+    if (antrean.length) {
+      const isi = antrean
+      antrean = []
+      for (const pesan of isi) {
+        if (soket.readyState === WebSocket.OPEN) soket.send(pesan)
+      }
+    }
   }
   soket.onmessage = (e) => {
     let p: PesanLangsung
@@ -120,14 +131,7 @@ function sambung() {
 }
 
 export function mulaiSinkron(o: OpsiSinkron): void {
-  if (opsi && opsi.url === o.url && opsi.pin === o.pin && ws && ws.readyState <= 1) {
-    // Hanya ruangannya yang berubah: cukup kabari server, tanpa menyambung ulang.
-    if (o.ruang !== undefined && o.ruang !== opsi.ruang) {
-      opsi = { ...opsi, ruang: o.ruang }
-      kirim({ t: 'ruang', ruang: o.ruang })
-    }
-    return
-  }
+  if (opsi && opsi.url === o.url && opsi.pin === o.pin && ws && ws.readyState <= 1) return
   hentikanSinkron()
   opsi = o
   sambung()
@@ -140,23 +144,26 @@ export function hentikanSinkron(): void {
   const s = ws
   ws = null
   s?.close()
+  antrean = []
   useSinkron.setState({ status: 'mati', klien: [] })
-}
-
-/** Editor berpindah ruangan: server dikabari, dan penyambungan ulang memakai ruangan baru. */
-export function setRuangSinkron(ruang: number): void {
-  if (opsi) opsi = { ...opsi, ruang }
-  kirim({ t: 'ruang', ruang })
 }
 
 export function tersambung(): boolean {
   return ws?.readyState === WebSocket.OPEN
 }
 
-/** Kirim ke semua layar lain. Diam-diam dibuang kalau sedang tidak tersambung. */
+/**
+ * Kirim ke semua layar lain. Kalau sedang tidak tersambung, disimpan dulu
+ * di antrean dan dikirim begitu tersambung lagi (lihat `antrean` di atas).
+ */
 export function kirim(p: Record<string, unknown>): void {
-  if (!ws || ws.readyState !== WebSocket.OPEN) return
-  ws.send(JSON.stringify({ ...p, src: idKlien }))
+  const pesan = JSON.stringify({ ...p, src: idKlien })
+  if (!ws || ws.readyState !== WebSocket.OPEN) {
+    antrean.push(pesan)
+    if (antrean.length > BATAS_ANTREAN) antrean.shift()
+    return
+  }
+  ws.send(pesan)
 }
 
 /** Dengarkan pesan dari layar lain (pesan sendiri sudah disaring). */

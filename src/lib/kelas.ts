@@ -5,15 +5,10 @@
  * yang bersangkutan berbunyi.
  */
 
-import { create } from 'zustand'
 import { api } from './api'
-import { getSetting, q, setSetting, x } from './db'
+import { q, x } from './db'
 import { pancarkan } from './events'
 import { newId } from './id'
-import { inTauri } from './runtime'
-import { setRuangSinkron } from './sinkron'
-
-export const RUANGAN = [1, 2, 3] as const
 
 export interface Tanya {
   id: string
@@ -54,7 +49,7 @@ export interface Grup {
   id: string
   name: string
   color: string | null
-  /** null = ruangannya sendiri; 'ruang:2' | 'editor:<id>' | 'sketsa:<id>' */
+  /** null = kanvas sendiri/grup (bawaan); 'editor:<id>' | 'sketsa:<id>' */
   target: string | null
   /** Jadwal tetap, teks bebas: "Sen 16:00". */
   schedule?: string | null
@@ -62,48 +57,6 @@ export interface Grup {
   sketch_id?: string | null
   sketch_day?: string | null
   sort_order: number | null
-}
-
-/* ── Ruangan editor ini ────────────────────────────────────────────── */
-
-const KUNCI_RUANG = 'ruang_editor'
-
-interface StoreKelas {
-  ruang: number
-  setRuang: (r: number) => void
-}
-
-export const useKelas = create<StoreKelas>((set) => ({
-  ruang: 1,
-  setRuang: (r) => {
-    set({ ruang: r })
-    setRuangSinkron(r)
-    if (inTauri) void setSetting(KUNCI_RUANG, String(r)).catch(() => {})
-    else {
-      try {
-        localStorage.setItem(KUNCI_RUANG, String(r))
-      } catch {
-        /* abaikan */
-      }
-    }
-  },
-}))
-
-/** Ruangan yang terakhir dipilih editor ini. Mac bawaannya 1, tablet ingat sendiri. */
-export async function muatRuang(): Promise<number> {
-  let v: string | null = null
-  if (inTauri) v = await getSetting(KUNCI_RUANG).catch(() => null)
-  else {
-    try {
-      v = localStorage.getItem(KUNCI_RUANG)
-    } catch {
-      v = null
-    }
-  }
-  const r = Number(v)
-  const ruang = Number.isInteger(r) && r >= 1 && r <= 9 ? r : 1
-  useKelas.setState({ ruang })
-  return ruang
 }
 
 /* ── Antrian ───────────────────────────────────────────────────────── */

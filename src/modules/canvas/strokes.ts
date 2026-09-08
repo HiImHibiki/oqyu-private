@@ -59,6 +59,12 @@ export interface Coretan {
   alpha?: number
   /** Kosong berarti garis utuh — nilai bawaan untuk semua berkas lama. */
   pola?: PolaGaris
+  /**
+   * Id akun murid yang menggambarnya, dibubuhkan server pada goresan dari HP.
+   * Dengan ini murid masih bisa menghapus goresannya sendiri sesudah muat
+   * ulang, dan tetap tidak bisa menyentuh goresan guru atau teman.
+   */
+  murid?: string
 }
 
 /** Satu lapisan gambar: punya nama, bisa disembunyikan, bisa dikunci. */

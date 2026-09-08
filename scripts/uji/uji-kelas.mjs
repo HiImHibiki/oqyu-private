@@ -1,4 +1,5 @@
-const B = 'http://127.0.0.1:4747', H = { 'x-exact-pin': '1234', 'content-type': 'application/json' }
+// Jalankan: ADMIN=<sandi admin> node scripts/uji/uji-kelas.mjs (bawaan exact2026).
+const B = 'http://127.0.0.1:4747', H = { 'x-exact-pin': '1234', 'x-exact-admin': process.env.ADMIN ?? 'exact2026', 'content-type': 'application/json' }
 const j = async (path, init) => { const r = await fetch(B + path, init); const t = await r.text(); return { status: r.status, body: t ? (() => { try { return JSON.parse(t) } catch { return t } })() : null } }
 const PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAEklEQVR4nGP4z8DwHwyBFJgFAE0HBf0hM7bJAAAAAElFTkSuQmCC'
 const murid = 'uji_m1'
@@ -29,7 +30,7 @@ console.log('status sekarang:', saya2.body.tanya?.status)
 // 4. foto terlayani
 const daftar = await j('/api/sql', { method: 'POST', headers: H, body: JSON.stringify({ sql: 'SELECT photo FROM questions WHERE id = ?', params: [tanya.body.id] }) })
 const foto = daftar.body.rows[0].photo
-const rf = await fetch(`${B}/api/kelas/foto/${foto}?pin=1234`)
+const rf = await fetch(`${B}/api/kelas/foto/${foto}?pin=1234&admin=${encodeURIComponent(H['x-exact-admin'])}`)
 console.log('foto:', rf.status, rf.headers.get('content-type'))
 // 5. selesai & bersih-bersih data uji
 console.log('selesai:', (await j('/api/kelas/ubah', { method: 'POST', headers: H, body: JSON.stringify({ id: tanya.body.id, status: 'selesai' }) })).status)

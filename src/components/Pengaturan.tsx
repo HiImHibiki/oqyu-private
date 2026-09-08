@@ -400,7 +400,7 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
               The QR is the Students link. Students register once with name, phone number, password
               and the class PIN as the class code; after that they sign in with phone and password —
               the PIN never appears in their address bar. Teacher link asks for the admin password.
-              TV link carries the PIN: change <span className="ex-num">ruang=1</span> for other rooms.
+              TV link carries the PIN.
             </p>
           </div>
         </div>

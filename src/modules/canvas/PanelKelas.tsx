@@ -7,7 +7,6 @@ import { urlDenganPin } from '@/lib/api'
 import { toast, toastGalat } from '@/lib/toast'
 import { daftarKanvas } from './data'
 import {
-  RUANGAN,
   anggotaGrup,
   bisukanMurid,
   izinkanCoret,
@@ -25,7 +24,6 @@ import {
   tetapkanGrup,
   ubahGrup,
   ubahTanya,
-  useKelas,
   type Grup,
   type Murid,
   type Tanya,
@@ -45,8 +43,6 @@ export function PanelKelas({
 }) {
   const [tab, setTab] = useState<Tab>('antrian')
   const { data: daftarSketsa } = useData('canvas', daftarKanvas, [])
-  const ruang = useKelas((s) => s.ruang)
-  const setRuang = useKelas((s) => s.setRuang)
   const klien = useSinkron((s) => s.klien)
   const { data: antrian } = useData('kelas', daftarTanya, [])
   const { data: murid } = useData('kelas', daftarMurid, [])
@@ -63,23 +59,6 @@ export function PanelKelas({
 
   return (
     <>
-      <div className="flex items-center gap-1">
-        <span className="ex-label" style={{ color: 'var(--ink-soft)' }}>
-          I am in room
-        </span>
-        {RUANGAN.map((r) => (
-          <button
-            key={r}
-            className="ex-btn"
-            data-variant={ruang === r ? 'accent' : 'ghost'}
-            style={{ padding: '3px 9px' }}
-            onClick={() => setRuang(r)}
-          >
-            {r}
-          </button>
-        ))}
-      </div>
-
       <div className="flex gap-1">
         {(
           [
@@ -185,10 +164,11 @@ export function PanelKelas({
                 <span className="min-w-0 flex-1 truncate" style={{ fontSize: 'var(--fs-label)', opacity: k ? 1 : 0.55 }}>
                   {m.name}
                 </span>
-                <span className="ex-num" style={{ fontSize: 11, color: 'var(--ink-faint)' }}>
-                  R{k?.ruang ?? m.room}
-                  {k && k.keluar > 0 && ` · ${k.keluar}×`}
-                </span>
+                {k && k.keluar > 0 && (
+                  <span className="ex-num" style={{ fontSize: 11, color: 'var(--ink-faint)' }}>
+                    {k.keluar}×
+                  </span>
+                )}
                 {m.phone && (
                   <IconButton
                     nama="gembok"
@@ -251,7 +231,7 @@ export function PanelKelas({
               g={g}
               anggota={anggota.filter((a) => a.group_id === g.id).map((a) => semuaMurid.find((m) => m.id === a.student_id) ?? { id: a.student_id, name: a.student_id })}
               bebas={semuaMurid.filter((m) => !anggota.some((a) => a.student_id === m.id))}
-              editorLain={editorLain.map((e) => ({ id: e.id, nama: e.nama, ruang: e.ruang }))}
+              editorLain={editorLain.map((e) => ({ id: e.id, nama: e.nama }))}
               daftarSketsa={daftarSketsa}
             />
           ))}
@@ -290,9 +270,6 @@ function BarisTanya({
       style={{ borderColor: dibahas ? 'var(--accent)' : undefined, background: dibahas ? 'var(--surface-2)' : undefined }}
     >
       <div className="flex items-center gap-2">
-        <span className="ex-num" style={{ fontSize: 11, color: 'var(--ink-faint)' }}>
-          R{t.room}
-        </span>
         <span className="min-w-0 flex-1 truncate" style={{ fontWeight: 600, fontSize: 'var(--fs-label)' }}>
           {t.name}
         </span>
@@ -321,7 +298,7 @@ function BarisTanya({
       ) : null}
       <div className="flex gap-1">
         <button className="ex-btn flex-1" data-variant={dibahas ? 'ghost' : 'accent'} style={{ padding: '4px 0' }} onClick={onBahas}>
-          <Icon nama="pena" ukuran={13} /> {t.photo ? (t.photo.endsWith('.pdf') ? 'Open PDF on canvas' : 'Open on canvas') : 'Discuss'}
+          <Icon nama="pena" ukuran={13} /> {dibahas ? 'Back to canvas' : t.photo ? (t.photo.endsWith('.pdf') ? 'Open PDF on canvas' : 'Open on canvas') : 'Discuss'}
         </button>
         <button className="ex-btn" data-variant="ghost" style={{ padding: '4px 8px' }} onClick={onSelesai} title="Done">
           <Icon nama="centang" ukuran={13} />
@@ -341,7 +318,7 @@ function BarisGrup({
   g: Grup
   anggota: Pick<Murid, 'id' | 'name'>[]
   bebas: Pick<Murid, 'id' | 'name'>[]
-  editorLain: { id: string; nama: string; ruang: number }[]
+  editorLain: { id: string; nama: string }[]
   daftarSketsa: { id: string; title: string }[]
 }) {
   const [nama, setNama] = useState(g.name)
@@ -405,15 +382,10 @@ function BarisGrup({
         onChange={(e) => void ubahGrup(g.id, { target: e.target.value || null })}
         aria-label="What this group sees"
       >
-        <option value="">Follow their own room</option>
-        {RUANGAN.map((r) => (
-          <option key={r} value={`ruang:${r}`}>
-            Follow room {r}
-          </option>
-        ))}
+        <option value="">Their own canvas (default)</option>
         {editorLain.map((e) => (
           <option key={e.id} value={`editor:${e.id}`}>
-            Follow {e.nama} (room {e.ruang})
+            Follow {e.nama}
           </option>
         ))}
         {daftarSketsa.map((s) => (

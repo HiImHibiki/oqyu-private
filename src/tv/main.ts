@@ -13,6 +13,7 @@ import { dengarkanLangsung, kirim, mulaiSinkron, useSinkron, type PesanLangsung 
 import { bunyi } from '@/lib/kelas'
 import { JARAK_HALAMAN, kertasDari, kotakHalaman } from '@/modules/canvas/kertas'
 import {
+  coretanKena,
   gambarCoretan,
   gambarTeks,
   gambarTempelan,
@@ -46,8 +47,6 @@ const paramMode = params.get('mode')
  * dengan nama, punya bilah tanya, dan lampunya diawasi guru.
  */
 let sebagaiMurid = params.get('tv') !== '1' && (params.get('murid') === '1' || window.matchMedia('(pointer: coarse)').matches)
-/** Ruangan perangkat ini: dari tautan untuk TV, dari layar masuk untuk HP. */
-let ruangSaya = Number(params.get('ruang')) || 1
 /**
  * Laptop atau Mac tanpa petunjuk di tautannya: tanyakan dulu. Perangkat sentuh
  * langsung dianggap murid; tautan dari Settings sudah membawa `tv=1` atau
@@ -60,7 +59,7 @@ const perluPilih = params.get('tv') !== '1' && params.get('murid') !== '1' && !w
  */
 let muridId = ''
 let namaSaya = ''
-/** Apa yang diikuti: null = ruangan sendiri, 'ruang:N' | 'editor:id' | 'sketsa:id'. */
+/** Apa yang diikuti grup ini: null = kanvas sendiri/grup (bawaan), 'editor:id' | 'sketsa:id'. */
 let arah: string | null = null
 let tanyaSaya: { id: string; status: string; urutan?: number } | null = null
 /**
@@ -354,44 +353,37 @@ function mintaPin(salah: boolean): Promise<string> {
 /**
  * Bolehkah pesan dari `src` diikuti layar ini?
  *
- * Pengikut hanya mengikuti editor di ruangannya — guru yang menulis di tablet
- * di ruangan 2 tidak menggeser layar ruangan 1. Grup boleh mengesampingkan:
- * mengikuti ruangan lain, satu editor tertentu, atau tidak mengikuti siapa pun
- * karena dipaku ke satu sketsa. Sebelum daftar klien datang, semua diterima
- * supaya layar tidak kosong menunggu.
+ * TV mengikuti editor yang sedang aktif, siapa pun itu — tidak ada lagi
+ * pembagian ruangan. Grup boleh mengesampingkan lewat `arah`: mengikuti satu
+ * editor tertentu, atau tidak mengikuti siapa pun karena dipaku ke satu
+ * sketsa. Murid sendiri tidak lewat sini untuk urusan kanvas — mereka selalu
+ * dipaku ke `kanvasSaya` (lihat pengecekan idKanvas di `terima`).
  */
-/** Editor yang baru saja membuka pertanyaan saya/grup saya: diikuti apa pun ruangannya. */
+/** Editor yang baru saja membuka pertanyaan saya/grup saya: diikuti apa pun kanvasnya. */
 let sumberPaksa: string | null = null
 /**
- * Kanvas saya (atau grup saya) yang sedang dibahas. Selama dipaku, layar ini
- * hanya mengikuti guru di kanvas itu: kalau guru pindah ke kanvas anak lain,
- * layar tinggal di sini — bukan ikut ke pertanyaan orang. Dilepas saat murid
- * menekan "Got it" atau memilih mengikuti guru lagi.
+ * Kanvas saya (kalau sendiri) atau kanvas grup saya (kalau bergrup). Murid
+ * selalu di sini — diisi dari server begitu masuk dan disegarkan berkala,
+ * bukan cuma saat guru membuka pertanyaan, supaya murid selalu berada di
+ * kanvasnya sendiri kapan pun, tidak pernah melihat kanvas anak lain.
  */
 let kanvasSaya: string | null = null
+/** Grup belajar saya sekarang, kalau ada — dipakai tombol "Group" di bilah. */
+let grupSaya: { id: string; nama: string } | null = null
 
 function bolehIkuti(src: string | undefined): boolean {
   if (!src) return false
   if (src === sumberPaksa) return true
   if (arah?.startsWith('sketsa:')) return false
   if (arah?.startsWith('editor:')) return src === arah.slice(7)
-  const daftar = useSinkron.getState().klien
-  if (daftar.length === 0) return true
-  const k = daftar.find((x) => x.id === src)
-  if (!k) return false
-  const ruangTarget = arah?.startsWith('ruang:') ? Number(arah.slice(6)) : ruangSaya
-  if (k.ruang === ruangTarget) return true
-  // Belum ada guru di ruangan ini: ikuti guru yang sedang aktif di ruangan
-  // mana pun daripada menatap layar diam. Begitu guru datang ke ruangan ini,
-  // aturan ruangan kembali berlaku.
-  return !daftar.some((x) => x.peran === 'editor' && x.ruang === ruangTarget)
+  return true
 }
 
 function gantiSumber(p: PesanLangsung) {
   if (p.src && p.src !== sumber) {
     sumber = p.src
     const k = useSinkron.getState().klien.find((x) => x.id === sumber)
-    namaSumber = k ? `${k.nama} · room ${k.ruang}` : 'editor'
+    namaSumber = k ? k.nama : 'editor'
     tampilkanStatus(`Following ${namaSumber}`)
     goresanHidup.clear()
     objekPratinjau = null
@@ -422,11 +414,9 @@ function terima(p: PesanLangsung) {
     return
   }
   if (!bolehIkuti(p.src)) return
-  if (kanvasSaya && typeof p.idKanvas === 'string' && p.idKanvas !== kanvasSaya) {
-    // Guru sedang di kanvas anak lain: tetap di kanvas saya, tawarkan tombol ikut.
-    if (p.t === 'pandangan' && p.src === sumber) tawarkanIkut('Teacher moved on · tap to follow')
-    return
-  }
+  // Guru sedang di kanvas anak lain: layar ini tidak pernah pindah ke sana —
+  // murid selalu di kanvasnya sendiri, titik.
+  if (kanvasSaya && typeof p.idKanvas === 'string' && p.idKanvas !== kanvasSaya) return
   // Editor yang sedang bekerja diikuti; denyut dari editor yang diam tidak
   // merebut layar. Sumber pertama diambil dari siapa pun yang bersuara.
   const aktifDariPengirim = p.aktif !== false
@@ -547,14 +537,7 @@ function terapkanPesan(p: PesanLangsung) {
 /* ── Mulai ─────────────────────────────────────────────────────────── */
 
 async function mulai() {
-  if (perluPilih) {
-    const pilihan = await layarPilih()
-    if (pilihan === 'murid') sebagaiMurid = true
-    else {
-      sebagaiMurid = false
-      ruangSaya = pilihan
-    }
-  }
+  if (perluPilih) sebagaiMurid = (await layarPilih()) === 'murid'
   let pin = ''
   if (sebagaiMurid) {
     // Murid masuk dengan akun; PIN kelas hanya diketik sekali saat mendaftar
@@ -582,7 +565,6 @@ async function mulai() {
     pin,
     peran: 'tv',
     nama: sebagaiMurid ? namaSaya : `${namaPerangkat()} (TV)`,
-    ruang: ruangSaya,
     murid: muridId || undefined,
     sesi: sebagaiMurid ? sesiAktif() : undefined,
   })
@@ -591,7 +573,6 @@ async function mulai() {
     pasangBilahMurid()
     pasangGestur()
     pasangCoret()
-    pasangRuangan()
     void segarkanSaya()
     window.setInterval(() => void segarkanSaya(), 20_000)
   }
@@ -638,7 +619,9 @@ async function mulai() {
   }
 
   window.addEventListener('resize', () => {
-    hitungTampilan()
+    // Sedang mencoret: zoom yang diatur murid sendiri dipertahankan; kalau
+    // tidak, membuka papan ketik atau memutar layar melempar pandangannya.
+    if (!modeCoret) hitungTampilan()
     kotorDasar = true
     kotorAktif = true
   })
@@ -831,59 +814,24 @@ async function keluarAkun() {
 }
 
 /** Tombol "Room N ▾": anak pindah ruangan tanpa memuat ulang. */
-function pasangRuangan() {
-  const b = el('tombol-ruang')
-  const label = () => (b.textContent = `Room ${ruangSaya} ▾`)
-  label()
-  b.hidden = false
-  b.onclick = async () => {
-    const lama = ruangSaya
-    await layarMasuk()
-    label()
-    if (ruangSaya === lama) return
-    // Server memindahkan catatan klien ini; layar mulai mengikuti guru di
-    // ruangan baru dari nol.
-    kirim({ t: 'ruang', ruang: ruangSaya })
-    if (!kanvasSaya) {
-      sumber = null
-      sumberPaksa = null
-      goresanHidup.clear()
-      kursor = null
-      kotorAktif = true
-    }
-    tampilkanStatus(`Moved to room ${ruangSaya}`)
-  }
-}
-
-/** Layar masuk: pilih ruangan; selesai saat server mencatatnya. */
+/**
+ * Layar "Join the lesson": satu ketukan, tanpa pilihan ruangan lagi. Tetap
+ * perlu ketukannya sendiri (bukan cuma lanjut dari layar akun) karena izin
+ * audio (bunyi "dibahas") dan layar penuh hanya boleh diminta browser dari
+ * ketukan pengguna — termasuk untuk murid lama yang sesinya sudah aktif dan
+ * tidak melewati form akun sama sekali.
+ */
 function layarMasuk(): Promise<void> {
   return new Promise((selesai) => {
     const masuk = el('masuk')
     const form = el('form-masuk') as HTMLFormElement
-    const ruangan = el('ruangan-masuk')
-    let ruangLama = ruangSaya
-    try {
-      ruangLama = Number(localStorage.getItem('exact-murid-ruang')) || ruangSaya
-    } catch {
-      /* abaikan */
-    }
     el('masuk-siapa').textContent = `Hi, ${namaSaya}`
     el('masuk-keluar').onclick = () => void keluarAkun()
-    ruangan.innerHTML = [1, 2, 3]
-      .map(
-        (r) =>
-          `<label><input type="radio" name="ruang" value="${r}" ${r === ruangLama ? 'checked' : ''}/><span>Room ${r}</span></label>`,
-      )
-      .join('')
     masuk.classList.add('tampil')
     form.onsubmit = async (e) => {
       e.preventDefault()
-      const n = namaSaya
-      const r = Number((form.querySelector('input[name=ruang]:checked') as HTMLInputElement | null)?.value) || 1
-      // Ketukan ini sekaligus membuka izin audio (untuk bunyi "dibahas") dan
-      // meminta layar penuh — dua hal yang browser hanya izinkan dari ketukan.
       bunyi('diam')
-      // iPhone tidak punya requestFullscreen; jangan sampai itu menggagalkan Join.
+      // iPhone tidak punya requestFullscreen; jangan sampai itu menggagalkan masuk.
       try {
         const janji = document.documentElement.requestFullscreen?.()
         void janji?.catch?.(() => {})
@@ -891,16 +839,10 @@ function layarMasuk(): Promise<void> {
         /* tidak didukung */
       }
       try {
-        await api('/api/kelas/masuk', { method: 'POST', json: { murid: muridId, nama: n, ruang: r } })
+        await api('/api/kelas/masuk', { method: 'POST', json: { murid: muridId, nama: namaSaya } })
       } catch (err) {
         tampilkanStatus(`Could not join: ${err instanceof Error ? err.message : String(err)}`, true)
         return
-      }
-      ruangSaya = r
-      try {
-        localStorage.setItem('exact-murid-ruang', String(r))
-      } catch {
-        /* abaikan */
       }
       masuk.classList.remove('tampil')
       selesai()
@@ -917,16 +859,23 @@ async function segarkanSaya() {
       tanya: { id: string; status: string; urutan?: number } | null
       boleh?: boolean
       sketsa?: string | null
+      kanvas?: string | null
     }>(`/api/kelas/saya?murid=${encodeURIComponent(muridId)}`)
     terapkanIzin(r.boleh === true, r.sketsa ?? null)
+    grupSaya = r.grup ? { id: r.grup.id, nama: r.grup.nama } : null
     const arahBaru = r.grup?.target ?? null
-    if (arahBaru !== arah) {
-      arah = arahBaru
+    // Kanvas yang harus selalu ditampilkan: kalau grup diarahkan ke satu
+    // sketsa tetap pakai itu, kalau tidak pakai kanvas grup/sendiri bawaan —
+    // murid tidak pernah tanpa kanvas begitu satu sudah ada untuknya.
+    const kanvasBaru = arahBaru?.startsWith('sketsa:') ? arahBaru.slice(7) : (r.kanvas ?? null)
+    if (arahBaru !== arah) arah = arahBaru
+    if (kanvasBaru !== kanvasSaya) {
+      kanvasSaya = kanvasBaru
       sumber = null
       goresanHidup.clear()
       kursor = null
-      if (arah?.startsWith('sketsa:')) {
-        await muatSketsa(arah.slice(7))
+      if (kanvasSaya) {
+        await muatSketsa(kanvasSaya)
         pandanganSumber = null
         muatSatuHalaman()
       }
@@ -1038,10 +987,12 @@ function pasangBilahMurid() {
     void api('/api/kelas/paham', { method: 'POST', json: { murid: muridId } })
       .then(() => {
         tanyaSaya = null
-        kanvasSaya = null
         el('ikuti').hidden = true
         perbaruiStatusSaya()
         tampilkanStatus('Marked as understood.')
+        // Kembali ke kanvas sendiri/grup — bukan dilepas ke ruangan, karena
+        // sudah tidak ada lagi konsep ruangan.
+        void segarkanSaya()
       })
       .catch(() => tampilkanStatus('Could not send that.', true))
   }
@@ -1052,6 +1003,101 @@ function pasangBilahMurid() {
   document.addEventListener('visibilitychange', lapor)
   window.addEventListener('blur', lapor)
   window.addEventListener('focus', lapor)
+
+  pasangGrup()
+}
+
+/**
+ * Grup belajar mandiri: murid boleh membuat grupnya sendiri atau bergabung
+ * ke grup yang sudah ada, tanpa lewat guru. Satu murid satu grup — masuk ke
+ * grup baru otomatis keluar dari yang lama (sama seperti kalau guru yang atur).
+ */
+function pasangGrup() {
+  const kotak = el('grup')
+  const sekarangDiv = el('grup-sekarang')
+  const sekarangTeks = el('grup-sekarang-teks')
+  const buatDiv = el('grup-buat')
+  const namaInput = el('grup-nama') as HTMLInputElement
+  const daftarDiv = el('grup-daftar')
+
+  async function render() {
+    if (grupSaya) {
+      sekarangDiv.hidden = false
+      sekarangTeks.textContent = `You're in "${grupSaya.nama}".`
+      buatDiv.hidden = true
+      daftarDiv.hidden = true
+      daftarDiv.replaceChildren()
+      return
+    }
+    sekarangDiv.hidden = true
+    buatDiv.hidden = false
+    try {
+      const daftar = await api<{ id: string; nama: string; warna: string | null; anggota: number }[]>('/api/kelas/grup/daftar')
+      daftarDiv.replaceChildren()
+      daftarDiv.hidden = daftar.length === 0
+      for (const g of daftar) {
+        const baris = document.createElement('div')
+        baris.className = 'grup-baris'
+        const titik = document.createElement('span')
+        titik.className = 'titik'
+        titik.style.background = g.warna ?? '#b4531a'
+        const nama = document.createElement('span')
+        nama.className = 'nama'
+        nama.textContent = g.nama
+        const jumlah = document.createElement('span')
+        jumlah.className = 'jumlah'
+        jumlah.textContent = `${g.anggota} ${g.anggota === 1 ? 'student' : 'students'}`
+        const tombol = document.createElement('button')
+        tombol.textContent = 'Join'
+        tombol.onclick = () => void gabung(g.id, g.nama)
+        baris.append(titik, nama, jumlah, tombol)
+        daftarDiv.append(baris)
+      }
+    } catch {
+      daftarDiv.hidden = true
+    }
+  }
+
+  async function gabung(id: string, nama: string) {
+    try {
+      await api('/api/kelas/grup/gabung', { method: 'POST', json: { murid: muridId, grup: id } })
+      grupSaya = { id, nama }
+      tampilkanStatus(`Joined "${nama}".`)
+      await render()
+      void segarkanSaya()
+    } catch (err) {
+      tampilkanStatus(`Could not join: ${err instanceof Error ? err.message : String(err)}`, true)
+    }
+  }
+
+  el('tombol-grup').onclick = () => {
+    kotak.classList.add('tampil')
+    void render()
+  }
+  el('grup-tutup').onclick = () => kotak.classList.remove('tampil')
+  el('grup-keluar').onclick = () => {
+    void api('/api/kelas/grup/keluar', { method: 'POST', json: { murid: muridId } })
+      .then(async () => {
+        grupSaya = null
+        tampilkanStatus('Left the group.')
+        await render()
+        void segarkanSaya()
+      })
+      .catch((err) => tampilkanStatus(`Could not leave: ${err instanceof Error ? err.message : String(err)}`, true))
+  }
+  el('grup-buat-kirim').onclick = () => {
+    const nama = namaInput.value.trim()
+    if (!nama) return
+    void api<{ id: string; nama: string }>('/api/kelas/grup/buat', { method: 'POST', json: { murid: muridId, nama } })
+      .then(async (r) => {
+        grupSaya = { id: r.id, nama: r.nama }
+        namaInput.value = ''
+        tampilkanStatus(`Created "${r.nama}".`)
+        await render()
+        void segarkanSaya()
+      })
+      .catch((err) => tampilkanStatus(`Could not create: ${err instanceof Error ? err.message : String(err)}`, true))
+  }
 }
 
 let timerKunci: number | null = null
@@ -1079,7 +1125,7 @@ function kunciTombol(detik: number) {
 
 async function kirimTanya(teks: string, foto: string) {
   try {
-    await api('/api/kelas/tanya', { method: 'POST', json: { murid: muridId, nama: namaSaya, ruang: ruangSaya, teks, foto } })
+    await api('/api/kelas/tanya', { method: 'POST', json: { murid: muridId, nama: namaSaya, teks, foto } })
     tampilkanStatus(foto.startsWith('data:application/pdf') ? 'PDF sent.' : foto || teks ? 'Question sent.' : 'Hand raised.')
     kunciTombol(20)
     await segarkanSaya()
@@ -1169,20 +1215,11 @@ function terimaBahas(t: { murid: string; nama: string; anggota?: string[]; grup?
   if (kanvasSaya && kanvasSaya !== idSketsa) void muatSketsa(kanvasSaya)
 }
 
-/** Tombol "ikut guru" dengan teks tertentu; menekannya melepas pakuan kanvas. */
-function tawarkanIkut(teks: string) {
-  const b = el('ikuti')
-  b.textContent = `↩ ${teks}`
-  b.hidden = false
-}
-
 /* ── Menjelajah sendiri (HP) ───────────────────────────────────────── */
 
 function kembaliIkuti() {
   bebas = false
-  kanvasSaya = null
   el('ikuti').hidden = true
-  el('ikuti').textContent = '↩ Follow the teacher'
   hitungTampilan()
   kotorDasar = true
   kotorAktif = true
@@ -1221,17 +1258,32 @@ function pasangGestur() {
     aktif.setPointerCapture(e.pointerId)
     // Mode coret: satu jari/pena menggambar; jari kedua membatalkan goresan
     // itu dan mengambil alih sebagai cubit/geser.
-    if (modeCoret && jari.size === 0 && !goresanSaya) {
-      mulaiGoresan(e)
+    if (modeCoret && jari.size === 0 && !goresanSaya && !hapusanSaya) {
+      if (alatCoret === 'hapus') mulaiHapus(e)
+      else mulaiGoresan(e)
       return
     }
-    if (goresanSaya) batalGoresan()
+    // Jari pertama sedang menggambar: goresannya dibatalkan dan jari itu ikut
+    // dicatat di posisi terakhirnya — tanpa itu, dua jari hanya terhitung satu
+    // dan cubit menjadi geser.
+    if (goresanSaya) {
+      jari.set(goresanSaya.pointer, goresanSaya.layar)
+      batalGoresan()
+    }
+    if (hapusanSaya) {
+      jari.set(hapusanSaya.pointer, hapusanSaya.layar)
+      selesaiHapus()
+    }
     jari.set(e.pointerId, { x: e.clientX, y: e.clientY })
     susun()
   })
   aktif.addEventListener('pointermove', (e) => {
     if (goresanSaya && goresanSaya.pointer === e.pointerId) {
       lanjutGoresan(e)
+      return
+    }
+    if (hapusanSaya && hapusanSaya.pointer === e.pointerId) {
+      lanjutHapus(e)
       return
     }
     if (!jari.has(e.pointerId)) return
@@ -1268,6 +1320,10 @@ function pasangGestur() {
       else selesaiGoresan()
       return
     }
+    if (hapusanSaya && hapusanSaya.pointer === e.pointerId) {
+      selesaiHapus()
+      return
+    }
     jari.delete(e.pointerId)
     susun()
   }
@@ -1300,11 +1356,36 @@ let izinCoret: { boleh: boolean; sketsa: string | null } = { boleh: false, skets
 let modeCoret = false
 let warnaCoret = 'ink'
 let ukuranCoret = 5
-/** Goresan yang sedang ditarik jari/pena saya. */
-let goresanSaya: { c: Coretan; pointer: number; terkirim: number } | null = null
-/** Id goresan buatan saya di sesi ini, untuk undo. */
-const goresanKu: string[] = []
+/** Pena menulis; penghapus membuang goresan saya yang tersentuh, utuh. */
+let alatCoret: 'pen' | 'hapus' = 'pen'
+/** Goresan yang sedang ditarik jari/pena saya; `layar` posisi terakhirnya di layar. */
+let goresanSaya: { c: Coretan; pointer: number; terkirim: number; layar: { x: number; y: number } } | null = null
+/** Sapuan penghapus yang sedang berjalan: goresan yang sudah terbuang di sapuan ini. */
+let hapusanSaya: { pointer: number; dihapus: Coretan[]; layar: { x: number; y: number } } | null = null
+/** Id goresan buatan saya di sesi ini — pelengkap cap `murid` dari server. */
+const milikKu = new Set<string>()
+/**
+ * Riwayat untuk undo: satu langkah = goresan yang ditambah dan/atau dibuang.
+ * Undo menulis balik: yang ditambah dihapus, yang dibuang dikembalikan.
+ */
+const riwayatKu: { tambah: Coretan[]; hapus: Coretan[] }[] = []
 let bingkaiKirim: number | null = null
+
+/** Goresan ini milik saya? Dari sesi ini, atau bercap id akun saya di berkas. */
+function milikSaya(c: Coretan): boolean {
+  return milikKu.has(c.id) || (!!muridId && c.murid === muridId)
+}
+
+function catatRiwayat(langkah: { tambah: Coretan[]; hapus: Coretan[] }) {
+  riwayatKu.push(langkah)
+  if (riwayatKu.length > 200) riwayatKu.shift()
+}
+
+function setAlatCoret(alat: 'pen' | 'hapus') {
+  alatCoret = alat
+  el('coret-hapus').classList.toggle('aktif', alat === 'hapus')
+  document.documentElement.classList.toggle('menghapus', alat === 'hapus')
+}
 
 function terapkanIzin(boleh: boolean, sketsaId: string | null) {
   const berubah = izinCoret.boleh !== boleh || izinCoret.sketsa !== sketsaId
@@ -1340,6 +1421,8 @@ async function mulaiCoret() {
 
 function selesaiCoret() {
   if (goresanSaya) selesaiGoresan()
+  if (hapusanSaya) selesaiHapus()
+  setAlatCoret('pen')
   modeCoret = false
   document.documentElement.classList.remove('mencoret')
   el('tombol-coret').classList.remove('aktif')
@@ -1353,22 +1436,31 @@ function pasangCoret() {
   }
   el('coret-selesai').onclick = selesaiCoret
   el('coret-undo').onclick = () => {
-    const id = goresanKu.pop()
-    if (!id || !sketsa || !idSketsa) return
-    sketsa.strokes = sketsa.strokes.filter((c) => c.id !== id)
+    const langkah = riwayatKu.pop()
+    if (!langkah || !sketsa || !idSketsa) return
+    const buang = new Set(langkah.tambah.map((c) => c.id))
+    sketsa.strokes = [...sketsa.strokes.filter((c) => !buang.has(c.id)), ...langkah.hapus]
     kotorDasar = true
-    kirim({ t: 'ubah', idKanvas: idSketsa, hapus: { coretan: [id], objek: [] }, tambah: { coretan: [], objek: [] } })
+    kirim({
+      t: 'ubah',
+      idKanvas: idSketsa,
+      hapus: { coretan: langkah.tambah.map((c) => c.id), objek: [] },
+      tambah: { coretan: langkah.hapus, objek: [] },
+    })
   }
+  el('coret-hapus').onclick = () => setAlatCoret(alatCoret === 'hapus' ? 'pen' : 'hapus')
   const alat = el('alat-coret')
   alat.querySelectorAll<HTMLButtonElement>('button.warna').forEach((b) => {
     b.onclick = () => {
       warnaCoret = b.dataset.warna ?? 'ink'
+      setAlatCoret('pen')
       alat.querySelectorAll('button.warna').forEach((x) => x.classList.toggle('aktif', x === b))
     }
   })
   alat.querySelectorAll<HTMLButtonElement>('button.ukuran').forEach((b) => {
     b.onclick = () => {
       ukuranCoret = Number(b.dataset.ukuran) || 5
+      setAlatCoret('pen')
       alat.querySelectorAll('button.ukuran').forEach((x) => x.classList.toggle('aktif', x === b))
     }
   })
@@ -1393,7 +1485,7 @@ function mulaiGoresan(e: PointerEvent) {
     steady: false,
     points: [[x, y, tekanan]],
   }
-  goresanSaya = { c, pointer: e.pointerId, terkirim: 0 }
+  goresanSaya = { c, pointer: e.pointerId, terkirim: 0, layar: { x: e.clientX, y: e.clientY } }
   goresanHidup.set(c.id, c)
   kotorAktif = true
   jadwalkanKirimGoresan()
@@ -1401,6 +1493,7 @@ function mulaiGoresan(e: PointerEvent) {
 
 function lanjutGoresan(e: PointerEvent) {
   if (!goresanSaya) return
+  goresanSaya.layar = { x: e.clientX, y: e.clientY }
   const c = goresanSaya.c
   const daftar = 'getCoalescedEvents' in e ? e.getCoalescedEvents() : [e]
   for (const ev of daftar.length ? daftar : [e]) {
@@ -1437,12 +1530,48 @@ function selesaiGoresan() {
     return
   }
   sketsa.strokes.push(g.c)
-  goresanKu.push(g.c.id)
-  if (goresanKu.length > 200) goresanKu.shift()
+  milikKu.add(g.c.id)
+  catatRiwayat({ tambah: [g.c], hapus: [] })
   kotorDasar = true
   kotorAktif = true
   kirim({ t: 'goresan-selesai', idKanvas: idSketsa, id: g.c.id })
   kirim({ t: 'ubah', idKanvas: idSketsa, hapus: { coretan: [], objek: [] }, tambah: { coretan: [g.c], objek: [] } })
+}
+
+/* Penghapus: menyapu membuang goresan saya yang tersentuh, seutuhnya.
+   Goresan guru dan teman tidak tersentuh — server pun menolaknya. */
+
+function mulaiHapus(e: PointerEvent) {
+  if (!sketsa || !idSketsa) return
+  hapusanSaya = { pointer: e.pointerId, dihapus: [], layar: { x: e.clientX, y: e.clientY } }
+  hapusDi(e.clientX, e.clientY)
+}
+
+function lanjutHapus(e: PointerEvent) {
+  if (!hapusanSaya) return
+  hapusanSaya.layar = { x: e.clientX, y: e.clientY }
+  const daftar = 'getCoalescedEvents' in e ? e.getCoalescedEvents() : [e]
+  for (const ev of daftar.length ? daftar : [e]) hapusDi(ev.clientX, ev.clientY)
+}
+
+function hapusDi(lx: number, ly: number) {
+  if (!hapusanSaya || !sketsa || !idSketsa) return
+  const [x, y] = keDunia(lx, ly)
+  // Bidang hapus selebar ujung jari di layar, apa pun zoom-nya.
+  const radius = 14 / tampilan.skala
+  const kena = sketsa.strokes.filter((c) => milikSaya(c) && coretanKena(c, x, y, radius))
+  if (kena.length === 0) return
+  const ids = new Set(kena.map((c) => c.id))
+  sketsa.strokes = sketsa.strokes.filter((c) => !ids.has(c.id))
+  hapusanSaya.dihapus.push(...kena)
+  kotorDasar = true
+  kirim({ t: 'ubah', idKanvas: idSketsa, hapus: { coretan: Array.from(ids), objek: [] }, tambah: { coretan: [], objek: [] } })
+}
+
+function selesaiHapus() {
+  const h = hapusanSaya
+  hapusanSaya = null
+  if (h && h.dihapus.length > 0) catatRiwayat({ tambah: [], hapus: h.dihapus })
 }
 
 function batalGoresan() {
@@ -1482,8 +1611,8 @@ async function keluarModeTunggu(pesan: string, bunyikan = false) {
   kotorAktif = true
 }
 
-/** Pilihan awal di layar tanpa sentuh: murid, atau TV untuk satu ruangan. */
-function layarPilih(): Promise<'murid' | number> {
+/** Pilihan awal di layar tanpa sentuh: murid, atau TV. */
+function layarPilih(): Promise<'murid' | 'tv'> {
   return new Promise((selesai) => {
     const kotak = el('pilih')
     kotak.classList.add('tampil')
@@ -1491,12 +1620,10 @@ function layarPilih(): Promise<'murid' | number> {
       kotak.classList.remove('tampil')
       selesai('murid')
     }
-    kotak.querySelectorAll<HTMLButtonElement>('button[data-ruang]').forEach((b) => {
-      b.onclick = () => {
-        kotak.classList.remove('tampil')
-        selesai(Number(b.dataset.ruang) || 1)
-      }
-    })
+    el('pilih-tv').onclick = () => {
+      kotak.classList.remove('tampil')
+      selesai('tv')
+    }
   })
 }
 

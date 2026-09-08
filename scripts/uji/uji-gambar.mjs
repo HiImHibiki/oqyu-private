@@ -1,6 +1,6 @@
 // Menggambar di editor web lewat DevTools (Input.dispatchMouseEvent) → pengikut menerima goresan langsung, berkas tersimpan.
 import { spawn } from 'node:child_process'
-const B = 'http://127.0.0.1:4747', H = { 'x-exact-pin': '1234', 'content-type': 'application/json' }
+const B = 'http://127.0.0.1:4747', H = { 'x-exact-pin': '1234', 'x-exact-admin': process.env.ADMIN ?? 'exact2026', 'content-type': 'application/json' }
 const j = async (p, init) => { const r = await fetch(B + p, init); const t = await r.text(); return { status: r.status, body: t ? (() => { try { return JSON.parse(t) } catch { return t } })() : null } }
 const sql = (q, params = []) => j('/api/sql', { method: 'POST', headers: H, body: JSON.stringify({ sql: q, params }) })
 const tidur = (ms) => new Promise((r) => setTimeout(r, ms))
@@ -19,6 +19,8 @@ ws.onmessage = (e) => { const m = JSON.parse(e.data); if (m.id && tunggu.has(m.i
 const cdp = (method, params = {}) => new Promise((r) => { const id = ++seq; tunggu.set(id, r); ws.send(JSON.stringify({ id, method, params })) })
 const ev = async (expr) => (await cdp('Runtime.evaluate', { expression: expr, awaitPromise: true, returnByValue: true })).result?.result?.value
 await cdp('Runtime.enable')
+// Editor web dijaga kata sandi admin: simpan ke localStorage lalu muat ulang.
+await ev(`localStorage.setItem('exact-canvas-admin', ${JSON.stringify(H['x-exact-admin'])}); location.reload(); true`); await tidur(1500)
 for (let i = 0; i < 40; i++) { if ((await ev(`document.querySelector('select[aria-label="Pick a sketch"]')?.selectedOptions[0]?.textContent`)) === 'UJI GAMBAR') break; await tidur(300) }
 console.log('sketsa terbuka:', await ev(`document.querySelector('select[aria-label="Pick a sketch"]')?.selectedOptions[0]?.textContent`))
 await tidur(1200)

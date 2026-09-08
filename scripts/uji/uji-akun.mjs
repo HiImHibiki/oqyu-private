@@ -124,19 +124,21 @@ ok('HP tersambung WS dengan sesi (tanpa PIN)', hp.readyState === 1)
 const coretan = (id) => ({ id, tool: 'pen', color: 'ink', size: 5, layer: 0, alpha: 1, pola: 'utuh', points: [[10, 10, 0.5], [50, 60, 0.5], [90, 20, 0.5]] })
 
 // Goresan di kanvas lain harus dibuang.
-let tunggu = pesanDari(tv, (p) => p.t === 'ubah')
+// Saring pesan milik uji ini saja: murid lain yang sedang aktif juga menyiarkan `ubah`.
+const ubahSaya = (p) => p.t === 'ubah' && p.dariMurid === akun.id
+let tunggu = pesanDari(tv, ubahSaya)
 hp.send(JSON.stringify({ t: 'ubah', src: 'uji_hp', idKanvas: 'cnv_bukan_punyaku', hapus: { coretan: [], objek: [] }, tambah: { coretan: [coretan('uji_c0')], objek: [] } }))
 ok('goresan di kanvas lain dibuang', (await tunggu) === null)
 
-tunggu = pesanDari(tv, (p) => p.t === 'ubah')
+tunggu = pesanDari(tv, ubahSaya)
 hp.send(JSON.stringify({ t: 'ubah', src: 'uji_hp', idKanvas: sketsa, hapus: { coretan: [], objek: [] }, tambah: { coretan: [coretan('uji_c1')], objek: [] } }))
 let p = await tunggu
 ok('goresan di kanvas sendiri diteruskan ke TV, bertanda dariMurid', p && p.dariMurid === akun.id && p.tambah.coretan[0].id === 'uji_c1')
-tunggu = pesanDari(tv, (p) => p.t === 'titik')
+tunggu = pesanDari(tv, (p) => p.t === 'titik' && p.id === 'uji_c2')
 hp.send(JSON.stringify({ t: 'titik', src: 'uji_hp', idKanvas: sketsa, id: 'uji_c2', dari: 0, titik: [[1, 1, 0.5]], meta: { id: 'uji_c2', tool: 'pen', color: 'ink', size: 5, layer: 0 } }))
 ok('titik langsung diteruskan', (await tunggu) !== null)
 // Objek/teks dari murid dibuang walau di kanvas sendiri.
-tunggu = pesanDari(tv, (p) => p.t === 'ubah' && p.tambah?.objek?.length)
+tunggu = pesanDari(tv, (p) => ubahSaya(p) && p.tambah?.objek?.length)
 hp.send(JSON.stringify({ t: 'ubah', src: 'uji_hp', idKanvas: sketsa, hapus: { coretan: [], objek: [] }, tambah: { coretan: [], objek: [{ id: 'uji_o1' }] } }))
 ok('objek dari murid dibuang', (await tunggu) === null)
 // Hapus goresan orang lain ditolak, goresan sendiri boleh.
@@ -144,13 +146,33 @@ hp.send(JSON.stringify({ t: 'ubah', src: 'uji_hp', idKanvas: sketsa, hapus: { co
 await new Promise((r) => setTimeout(r, 1800))
 let d = JSON.parse(readFileSync(berkas, 'utf8'))
 ok('server menyimpan goresan murid ke berkas', d.strokes.some((c) => c.id === 'uji_c1') && d.strokes.some((c) => c.id === 'uji_c3'), `${d.strokes.length} goresan`)
-tunggu = pesanDari(tv, (p) => p.t === 'ubah' && p.hapus?.coretan?.length)
+tunggu = pesanDari(tv, (p) => ubahSaya(p) && p.hapus?.coretan?.length)
 hp.send(JSON.stringify({ t: 'ubah', src: 'uji_hp', idKanvas: sketsa, hapus: { coretan: ['uji_c1', 'sk_milik_guru'], objek: [] }, tambah: { coretan: [], objek: [] } }))
 p = await tunggu
 ok('undo hanya menghapus goresan miliknya', p && p.hapus.coretan.length === 1 && p.hapus.coretan[0] === 'uji_c1')
 await new Promise((r) => setTimeout(r, 1800))
 d = JSON.parse(readFileSync(berkas, 'utf8'))
 ok('hapusan tersimpan ke berkas', !d.strokes.some((c) => c.id === 'uji_c1') && d.strokes.some((c) => c.id === 'uji_c3'))
+ok('goresan tersimpan bercap id murid', d.strokes.find((c) => c.id === 'uji_c3')?.murid === akun.id)
+
+// Sambung ulang (HP dimuat ulang): goresan lama yang bercap namanya tetap bisa dihapus (penghapus/undo),
+// dan hapusan bisa dikembalikan lagi lewat undo.
+{
+  const hp2 = await buka(`sesi=${akun.token}&id=uji_hp2&name=uji_Akun&role=tv&ruang=2&murid=${akun.id}`)
+  await new Promise((r) => setTimeout(r, 300))
+  tunggu = pesanDari(tv, (p) => ubahSaya(p) && p.hapus?.coretan?.length)
+  hp2.send(JSON.stringify({ t: 'ubah', src: 'uji_hp2', idKanvas: sketsa, hapus: { coretan: ['uji_c3'], objek: [] }, tambah: { coretan: [], objek: [] } }))
+  p = await tunggu
+  ok('koneksi baru boleh menghapus goresan lamanya sendiri', p && p.hapus.coretan[0] === 'uji_c3')
+  tunggu = pesanDari(tv, (p) => ubahSaya(p) && p.tambah?.coretan?.length)
+  hp2.send(JSON.stringify({ t: 'ubah', src: 'uji_hp2', idKanvas: sketsa, hapus: { coretan: [], objek: [] }, tambah: { coretan: [coretan('uji_c3')], objek: [] } }))
+  p = await tunggu
+  ok('undo hapusan: goresan dikembalikan', p && p.tambah.coretan[0].id === 'uji_c3')
+  hp2.close()
+  await new Promise((r) => setTimeout(r, 1800))
+  d = JSON.parse(readFileSync(berkas, 'utf8'))
+  ok('goresan yang dikembalikan tersimpan lagi', d.strokes.some((c) => c.id === 'uji_c3'))
+}
 
 // Cabut izin: goresan berikutnya dibuang.
 tunggu = pesanDari(hp, (p) => p.t === 'izin' && p.murid === akun.id)
@@ -158,7 +180,7 @@ r = await req('/api/kelas/izin', { method: 'POST', json: { murid: akun.id, boleh
 p = await tunggu
 ok('HP menerima pencabutan izin', p && p.boleh === false)
 await new Promise((r) => setTimeout(r, 200))
-tunggu = pesanDari(tv, (p) => p.t === 'ubah')
+tunggu = pesanDari(tv, ubahSaya)
 hp.send(JSON.stringify({ t: 'ubah', src: 'uji_hp', idKanvas: sketsa, hapus: { coretan: [], objek: [] }, tambah: { coretan: [coretan('uji_c9')], objek: [] } }))
 ok('setelah dicabut, goresan dibuang', (await tunggu) === null)
 
