@@ -909,10 +909,11 @@ async fn ws_masuk(
     ws.on_upgrade(move |soket| layani(soket, hub, klien))
 }
 
-/// Saring pesan dari HP murid: hanya goresan pena (titik / selesai / ubah
-/// coretan) di kanvas yang diizinkan; hapusan hanya untuk coretan buatannya
-/// sendiri. Pesan yang lolos ditandai `dariMurid` supaya layar lain tahu ini
-/// bukan guru. Mengembalikan None untuk pesan yang dibuang.
+/// Saring pesan dari HP murid: goresan pena (titik / selesai / ubah coretan)
+/// dan foto yang ditempelnya sendiri ke kanvasnya (lihat "sisip foto" di HP),
+/// di kanvas yang diizinkan; hapusan hanya untuk coretan buatannya sendiri.
+/// Pesan yang lolos ditandai `dariMurid` supaya layar lain tahu ini bukan
+/// guru. Mengembalikan None untuk pesan yang dibuang.
 fn coretan_murid(
     v: &Value,
     jenis: &str,
@@ -948,13 +949,26 @@ fn coretan_murid(
                 .as_array()
                 .map(|h| h.iter().filter(|x| x.as_str().map(|s| punya.contains(s)).unwrap_or(false)).cloned().collect())
                 .unwrap_or_default();
-            if tambah.is_empty() && hapus.is_empty() {
+            // Foto yang ditempel murid sendiri ke kanvasnya — data URL sudah
+            // diperkecil di HP; batas ukuran & jumlah di sini cuma pagar kalau
+            // ada yang mengutak-atik klien.
+            let mut gambar: Vec<Value> = v["tambah"]["gambar"].as_array().cloned().unwrap_or_default();
+            gambar.retain(|g| {
+                g["id"].is_string()
+                    && g["x"].is_number()
+                    && g["y"].is_number()
+                    && g["w"].is_number()
+                    && g["h"].is_number()
+                    && g["src"].as_str().map(|s| s.starts_with("data:image/") && s.len() <= 900_000).unwrap_or(false)
+            });
+            gambar.truncate(8);
+            if tambah.is_empty() && hapus.is_empty() && gambar.is_empty() {
                 return None;
             }
             json!({
                 "t": "ubah", "idKanvas": kanvas, "src": v.get("src").cloned().unwrap_or(Value::Null),
                 "hapus": { "coretan": hapus, "objek": [] },
-                "tambah": { "coretan": tambah, "objek": [] },
+                "tambah": { "coretan": tambah, "objek": [], "gambar": gambar },
             })
         }
         _ => return None,

@@ -461,21 +461,44 @@ fn tulis_coretan_murid(id: &str, ops: &[Value]) -> Result<(), String> {
     if !d["strokes"].is_array() {
         d["strokes"] = Value::Array(vec![]);
     }
-    let strokes = d["strokes"].as_array_mut().expect("array");
-    for op in ops {
-        if let Some(hapus) = op["hapus"]["coretan"].as_array() {
-            let ids: std::collections::HashSet<&str> = hapus.iter().filter_map(|x| x.as_str()).collect();
-            if !ids.is_empty() {
-                strokes.retain(|s| !s["id"].as_str().map(|i| ids.contains(i)).unwrap_or(false));
+    {
+        let strokes = d["strokes"].as_array_mut().expect("array");
+        for op in ops {
+            if let Some(hapus) = op["hapus"]["coretan"].as_array() {
+                let ids: std::collections::HashSet<&str> = hapus.iter().filter_map(|x| x.as_str()).collect();
+                if !ids.is_empty() {
+                    strokes.retain(|s| !s["id"].as_str().map(|i| ids.contains(i)).unwrap_or(false));
+                }
+            }
+            if let Some(tambah) = op["tambah"]["coretan"].as_array() {
+                for c in tambah {
+                    let Some(cid) = c["id"].as_str() else { continue };
+                    if let Some(ada) = strokes.iter_mut().find(|s| s["id"].as_str() == Some(cid)) {
+                        *ada = c.clone();
+                    } else {
+                        strokes.push(c.clone());
+                    }
+                }
             }
         }
-        if let Some(tambah) = op["tambah"]["coretan"].as_array() {
-            for c in tambah {
-                let Some(cid) = c["id"].as_str() else { continue };
-                if let Some(ada) = strokes.iter_mut().find(|s| s["id"].as_str() == Some(cid)) {
-                    *ada = c.clone();
-                } else {
-                    strokes.push(c.clone());
+    }
+    // Foto yang murid tempel sendiri ke kanvasnya (lihat sisip foto di HP) —
+    // sama seperti coretan, disatukan ke `images` supaya tetap ada sesudah
+    // muat ulang, tidak cuma nyiar sekali lewat websocket.
+    if !d["images"].is_array() {
+        d["images"] = Value::Array(vec![]);
+    }
+    {
+        let images = d["images"].as_array_mut().expect("array");
+        for op in ops {
+            if let Some(tambah) = op["tambah"]["gambar"].as_array() {
+                for g in tambah {
+                    let Some(gid) = g["id"].as_str() else { continue };
+                    if let Some(ada) = images.iter_mut().find(|x| x["id"].as_str() == Some(gid)) {
+                        *ada = g.clone();
+                    } else {
+                        images.push(g.clone());
+                    }
                 }
             }
         }

@@ -139,8 +139,12 @@
       <button id="tombol-tanya" class="utama">❓ Ask</button>
       <button id="tombol-paham" disabled>✅ Got it</button>
       <button id="tombol-coret" title="Draw on your own canvas" hidden>✏️</button>
+      <button id="tombol-sisip-foto" title="Insert a photo onto your canvas" hidden>🖼️</button>
       <button id="tombol-tunggu" title="Dim the screen or lock the phone until the teacher gets to you">🌙</button>
     </div>
+    <!-- Foto ditempel langsung ke kanvas sendiri (tidak lewat antrian guru) —
+         cuma untuk murid yang sedang diizinkan mencoret. -->
+    <input id="berkas-sisip-foto" type="file" accept="image/*" multiple hidden />
     <div id="alat-coret">
       <button data-warna="ink" class="warna aktif" aria-label="Black"></button>
       <button data-warna="accent" class="warna" aria-label="Orange"></button>

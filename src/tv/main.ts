@@ -31,6 +31,7 @@ import {
 } from '@/modules/canvas/strokes'
 import { gambarObjek, type Objek } from '@/modules/canvas/objek'
 import { gambarInstrumen, type Instrumen } from '@/modules/canvas/instrumen'
+import { newId } from '@/lib/id'
 
 /**
  * HP murid sering di Wi-Fi lemah atau tunnel yang goyah. Tanpa batas waktu,
@@ -1024,7 +1025,7 @@ function pasangBilahMurid() {
     let gagal = 0
     for (const f of dipakai) {
       try {
-        fotoDataList.push(await perkecilFoto(f))
+        fotoDataList.push((await perkecilFoto(f)).src)
       } catch {
         gagal++
       }
@@ -1457,7 +1458,7 @@ function muatGambarCadangan(f: File): Promise<HTMLImageElement> {
  * Melempar galat (bukan diam-diam gagal) kalau berkasnya tidak terbaca —
  * pemanggilnya wajib memberi tahu murid, bukan mengirim "hand raised" kosong.
  */
-async function perkecilFoto(f: File): Promise<string> {
+async function perkecilFoto(f: File): Promise<{ src: string; w: number; h: number }> {
   let sumber: CanvasImageSource
   let w: number
   let h: number
@@ -1487,7 +1488,7 @@ async function perkecilFoto(f: File): Promise<string> {
   ctx.drawImage(sumber, 0, 0, c.width, c.height)
   const url = c.toDataURL('image/jpeg', 0.72)
   if (!url || url === 'data:,') throw new Error('Could not encode photo')
-  return url
+  return { src: url, w: c.width, h: c.height }
 }
 
 let timerKabar: number | null = null
@@ -1719,6 +1720,7 @@ function terapkanIzin(boleh: boolean, sketsaId: string | null) {
   izinCoret = { boleh, sketsa: sketsaId }
   const tombol = el('tombol-coret') as HTMLButtonElement
   tombol.hidden = !boleh
+  el('tombol-sisip-foto').hidden = !boleh
   if (!boleh && modeCoret) {
     selesaiCoret()
     tampilkanStatus('The teacher turned off drawing.', true)
@@ -1756,10 +1758,101 @@ function selesaiCoret() {
   el('alat-coret').classList.remove('tampil')
 }
 
+/**
+ * Susun beberapa foto sebagai kisi di halaman baru — sama seperti guru
+ * menempel pertanyaan berfoto, hanya di sini murid menempelnya sendiri ke
+ * kanvasnya, jadi tidak tergantung server meneruskan/mendekode ulang fotonya.
+ */
+function susunGambarKanvas(daftar: { src: string; w: number; h: number }[]): Gambar[] {
+  if (!sketsa || daftar.length === 0) return []
+  const kertas = kertasDari(sketsa.paper)
+  const isiAda = kotakSemua(sketsa.strokes, sketsa.images ?? [], sketsa.objects ?? [], sketsa.texts ?? [])
+  const kolom = daftar.length <= 1 ? 1 : daftar.length <= 4 ? 2 : 3
+  const gap = 16
+  let lebarBlok: number
+  let x0: number
+  let y0: number
+  if (kertas.w > 0) {
+    const slot = kertas.h + JARAK_HALAMAN
+    const indeks = isiAda ? Math.floor(isiAda.y2 / slot) + 1 : 0
+    const k = kotakHalaman(kertas, indeks)
+    lebarBlok = kertas.w * 0.9
+    x0 = k.x1 + (kertas.w - lebarBlok) / 2
+    y0 = k.y1 + 24
+  } else {
+    lebarBlok = 900
+    x0 = 0
+    y0 = isiAda ? isiAda.y2 + 40 : 0
+  }
+  const lebarSel = (lebarBlok - gap * (kolom - 1)) / kolom
+  const baris = Math.ceil(daftar.length / kolom)
+  const tinggiSelTarget = kertas.w > 0 ? (kertas.h * 0.9 - gap * (baris - 1)) / baris : 260
+
+  const baru: Gambar[] = []
+  let y = y0
+  for (let i = 0; i < daftar.length; i += kolom) {
+    const potong = daftar.slice(i, i + kolom)
+    const ditempatkan = potong.map((g) => {
+      const skala = Math.min(lebarSel / g.w, tinggiSelTarget / g.h, 1)
+      return { src: g.src, w: g.w * skala, h: g.h * skala }
+    })
+    const tinggiBaris = Math.max(...ditempatkan.map((g) => g.h))
+    let x = x0
+    for (const g of ditempatkan) {
+      baru.push({ id: newId('img'), layer: 0, x: x + (lebarSel - g.w) / 2, y: y + (tinggiBaris - g.h) / 2, w: g.w, h: g.h, src: g.src })
+      x += lebarSel + gap
+    }
+    y += tinggiBaris + gap
+  }
+  return baru
+}
+
+/**
+ * Foto dipilih di HP ini langsung ditempel ke kanvas sendiri — tidak lewat
+ * antrian guru sama sekali, jadi tidak ada server lain yang perlu mengambil
+ * dan mendekode ulang fotonya (itu yang beberapa kali gagal di tablet).
+ */
+async function sisipFotoKanvas(berkasTerpilih: File[]) {
+  if (!izinCoret.boleh || !izinCoret.sketsa || !berkasTerpilih.length) return
+  if (idSketsa !== izinCoret.sketsa) {
+    await muatSketsa(izinCoret.sketsa)
+    pandanganSumber = null
+    muatSatuHalaman()
+  }
+  if (!sketsa || !idSketsa) return
+  const dipakai = berkasTerpilih.slice(0, MAKS_FOTO)
+  const diproses: { src: string; w: number; h: number }[] = []
+  let gagal = 0
+  for (const f of dipakai) {
+    try {
+      diproses.push(await perkecilFoto(f))
+    } catch {
+      gagal++
+    }
+  }
+  if (berkasTerpilih.length > dipakai.length) tampilkanStatus(`You can insert up to ${MAKS_FOTO} photos at a time.`, true)
+  else if (gagal) tampilkanStatus(gagal === dipakai.length ? 'Could not read those photos — try again.' : `Could not read ${gagal} of the photos.`, true)
+  if (!diproses.length) return
+  const baru = susunGambarKanvas(diproses)
+  sketsa.images = [...(sketsa.images ?? []), ...baru]
+  for (const g of baru) muatGambar(g.src, () => (kotorDasar = true))
+  kotorDasar = true
+  kotorAktif = true
+  kirim({ t: 'ubah', idKanvas: idSketsa, hapus: { coretan: [], objek: [] }, tambah: { coretan: [], objek: [], gambar: baru } })
+  tampilkanStatus(baru.length > 1 ? `${baru.length} photos added to your canvas.` : 'Photo added to your canvas.')
+}
+
 function pasangCoret() {
   el('tombol-coret').onclick = () => {
     if (modeCoret) selesaiCoret()
     else void mulaiCoret()
+  }
+  const berkasSisip = el('berkas-sisip-foto') as HTMLInputElement
+  el('tombol-sisip-foto').onclick = () => berkasSisip.click()
+  berkasSisip.onchange = async () => {
+    const berkasTerpilih = Array.from(berkasSisip.files ?? [])
+    berkasSisip.value = ''
+    await sisipFotoKanvas(berkasTerpilih)
   }
   el('coret-selesai').onclick = selesaiCoret
   el('coret-undo').onclick = () => {
