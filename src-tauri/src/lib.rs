@@ -20,6 +20,16 @@ pub fn run() {
     if let Err(e) = vault::ensure_layout() {
         eprintln!("[vault] gagal menyiapkan folder: {e}");
     }
+    // WAL: penulis (mis. foto pertanyaan murid) tidak lagi mengunci pembaca —
+    // penting saat beberapa anak mengirim hampir bersamaan lewat HTTP.
+    match rusqlite::Connection::open(vault::db_path()) {
+        Ok(c) => {
+            if let Err(e) = c.pragma_update(None, "journal_mode", "WAL") {
+                eprintln!("[db] gagal mengaktifkan WAL: {e}");
+            }
+        }
+        Err(e) => eprintln!("[db] gagal membuka database untuk WAL: {e}"),
+    }
     let db_url = vault::db_url();
 
     tauri::Builder::default()

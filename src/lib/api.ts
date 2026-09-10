@@ -120,7 +120,7 @@ export class GalatApi extends Error {
 
 export async function api<T>(
   path: string,
-  init: { method?: string; body?: BodyInit; json?: unknown } = {},
+  init: { method?: string; body?: BodyInit; json?: unknown; timeoutMs?: number } = {},
 ): Promise<T> {
   const headers: Record<string, string> = {}
   const pin = pinAktif()
@@ -134,7 +134,19 @@ export async function api<T>(
     headers['content-type'] = 'application/json'
     body = JSON.stringify(init.json)
   }
-  const r = await fetch(`${alamatDasar}${path}`, { method: init.method ?? 'GET', headers, body })
+  // Tanpa batas waktu, koneksi yang macet (Wi-Fi lemah/tunnel) bisa
+  // menggantung tanpa kabar sama sekali — terutama untuk unggahan foto/PDF.
+  const kontrol = init.timeoutMs ? new AbortController() : null
+  const batas = kontrol ? window.setTimeout(() => kontrol.abort(), init.timeoutMs) : null
+  let r: Response
+  try {
+    r = await fetch(`${alamatDasar}${path}`, { method: init.method ?? 'GET', headers, body, signal: kontrol?.signal })
+  } catch (e) {
+    if (e instanceof DOMException && e.name === 'AbortError') throw new Error('Request timed out — check your connection and try again.')
+    throw e
+  } finally {
+    if (batas) window.clearTimeout(batas)
+  }
   if (!r.ok) {
     const teks = await r.text().catch(() => '')
     throw new GalatApi(r.status, teks || `${r.status} ${r.statusText}`)

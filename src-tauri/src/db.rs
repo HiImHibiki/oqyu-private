@@ -59,6 +59,13 @@ pub fn migrations() -> Vec<Migration> {
                   ALTER TABLE groups ADD COLUMN schedule TEXT;
                   ALTER TABLE groups ADD COLUMN sketch_day TEXT;",
         },
+        Migration {
+            version: 9,
+            description: "riwayat kanvas grup: tiap kanvas harian dicap grupnya",
+            kind: MigrationKind::Up,
+            sql: "ALTER TABLE canvases ADD COLUMN group_id TEXT;
+                  CREATE INDEX IF NOT EXISTS idx_canvases_grup ON canvases(group_id);",
+        },
     ]
 }
 

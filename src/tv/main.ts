@@ -11,6 +11,8 @@
 import { api, pinTersimpan, namaPerangkat, sesiAktif, simpanPin, simpanSesi } from '@/lib/api'
 import { dengarkanLangsung, kirim, mulaiSinkron, useSinkron, type PesanLangsung } from '@/lib/sinkron'
 import { bunyi } from '@/lib/kelas'
+import { pilihTujuan, tulisBerkas } from '@/lib/berkas'
+import { ANGGARAN_PDF, padatkanHalaman } from '@/lib/pdf'
 import { JARAK_HALAMAN, kertasDari, kotakHalaman } from '@/modules/canvas/kertas'
 import {
   coretanKena,
@@ -19,6 +21,7 @@ import {
   gambarTempelan,
   kotakCoretan,
   kotakGambar,
+  kotakSemua,
   muatGambar,
   warnaToken,
   type BerkasKanvas,
@@ -76,6 +79,13 @@ const modeMuat = paramMode === 'fit'
  * kecil di tengah layar. ?mode=follow memaksa cara TV (muat seluruhnya).
  */
 const modePenuh = paramMode !== 'follow' && !modeMuat && window.innerWidth < 700
+/**
+ * Seberapa penuh layar HP diisi wilayah guru dalam mode "penuh" — 1 berarti
+ * pas rapat di tepi (bisa terasa terlalu dekat di HP tegak), lebih kecil
+ * menyisakan sedikit ruang di tepi. Guru bisa mengubahnya dari Settings;
+ * diambil dari server tiap segarkanSaya, bawaannya 0.88 sebelum sempat dibaca.
+ */
+let zoomMurid = 0.88
 
 /* ── Keadaan ───────────────────────────────────────────────────────── */
 
@@ -145,7 +155,7 @@ function hitungTampilan() {
     lw = kertas.w + tepi * 2
     lh = kertas.h + tepi * 2
   }
-  const skala = modePenuh && !modeMuat ? Math.max(w / lw, h / lh) : Math.min(w / lw, h / lh)
+  const skala = modePenuh && !modeMuat ? Math.max(w / lw, h / lh) * zoomMurid : Math.min(w / lw, h / lh)
   tampilan = {
     skala,
     x: (w - lw * skala) / 2 - x1 * skala,
@@ -370,6 +380,8 @@ let sumberPaksa: string | null = null
 let kanvasSaya: string | null = null
 /** Grup belajar saya sekarang, kalau ada — dipakai tombol "Group" di bilah. */
 let grupSaya: { id: string; nama: string } | null = null
+/** Sedang melihat kanvas grup dari hari lampau (baca saja) — bukan kanvasSaya. */
+let melihatRiwayat = false
 
 function bolehIkuti(src: string | undefined): boolean {
   if (!src) return false
@@ -443,6 +455,9 @@ function terapkanPesan(p: PesanLangsung) {
     case 'pandangan': {
       pandanganSumber = { tampilan: p.tampilan as Tampilan, layar: p.layar as { w: number; h: number } }
       const id = p.idKanvas as string | null
+      // Lagi melihat riwayat hari lampau: jangan ditarik balik ke kanvas hari
+      // ini hanya karena guru menggeser pandangannya di sana.
+      if (melihatRiwayat) break
       if (id && id !== idSketsa) void muatSketsa(id)
       else hitungTampilan()
       break
@@ -476,14 +491,17 @@ function terapkanPesan(p: PesanLangsung) {
       break
     }
     case 'objek':
+      if (p.idKanvas && p.idKanvas !== idSketsa) break
       objekPratinjau = (p.o as Objek | null) ?? null
       kotorAktif = true
       break
     case 'instrumen':
+      if (p.idKanvas && p.idKanvas !== idSketsa) break
       instrumen = (p.i as Instrumen | null) ?? null
       kotorAktif = true
       break
     case 'kursor':
+      if (p.idKanvas && p.idKanvas !== idSketsa) break
       kursor = typeof p.x === 'number' ? { x: p.x as number, y: p.y as number } : null
       kotorAktif = true
       break
@@ -860,8 +878,16 @@ async function segarkanSaya() {
       boleh?: boolean
       sketsa?: string | null
       kanvas?: string | null
+      zoom?: number
     }>(`/api/kelas/saya?murid=${encodeURIComponent(muridId)}`)
     terapkanIzin(r.boleh === true, r.sketsa ?? null)
+    if (typeof r.zoom === 'number') {
+      const baru = Math.max(0.5, Math.min(1, r.zoom / 100))
+      if (baru !== zoomMurid) {
+        zoomMurid = baru
+        hitungTampilan()
+      }
+    }
     grupSaya = r.grup ? { id: r.grup.id, nama: r.grup.nama } : null
     const arahBaru = r.grup?.target ?? null
     // Kanvas yang harus selalu ditampilkan: kalau grup diarahkan ke satu
@@ -871,15 +897,19 @@ async function segarkanSaya() {
     if (arahBaru !== arah) arah = arahBaru
     if (kanvasBaru !== kanvasSaya) {
       kanvasSaya = kanvasBaru
-      sumber = null
-      goresanHidup.clear()
-      kursor = null
-      if (kanvasSaya) {
-        await muatSketsa(kanvasSaya)
-        pandanganSumber = null
-        muatSatuHalaman()
+      // Lagi melihat riwayat: jangan pindahkan layar yang sedang dilihat —
+      // kanvasSaya tetap diperbarui di latar, dipakai begitu kembali ke hari ini.
+      if (!melihatRiwayat) {
+        sumber = null
+        goresanHidup.clear()
+        kursor = null
+        if (kanvasSaya) {
+          await muatSketsa(kanvasSaya)
+          pandanganSumber = null
+          muatSatuHalaman()
+        }
+        kotorAktif = true
       }
-      kotorAktif = true
     }
     tanyaSaya = r.tanya
     perbaruiStatusSaya()
@@ -944,10 +974,14 @@ function pasangBilahMurid() {
     const f = berkas.files?.[0]
     berkas.value = ''
     if (!f) return
-    fotoData = await perkecilFoto(f)
-    pratinjau.src = fotoData
-    pratinjau.hidden = false
-    pratinjauPdf.hidden = true
+    try {
+      fotoData = await perkecilFoto(f)
+      pratinjau.src = fotoData
+      pratinjau.hidden = false
+      pratinjauPdf.hidden = true
+    } catch {
+      tampilkanStatus('Could not read that photo — try taking another one.', true)
+    }
   }
   // PDF dikirim apa adanya (maks 40 MB); guru membukanya halaman per halaman
   // di kanvas khusus anak ini.
@@ -970,9 +1004,18 @@ function pasangBilahMurid() {
     pratinjauPdf.textContent = `📄 ${f.name} · ${(f.size / 1024 / 1024).toFixed(1)} MB`
     pratinjauPdf.hidden = false
   }
-  el('tombol-kirim').onclick = () => {
-    lembar.classList.remove('tampil')
-    void kirimTanya(teks.value, fotoData)
+  const tombolKirim = el('tombol-kirim') as HTMLButtonElement
+  const labelKirim = tombolKirim.textContent
+  tombolKirim.onclick = () => {
+    // Lembar (dan fotonya) tetap terbuka kalau gagal — supaya murid tidak
+    // perlu memfoto ulang hanya karena Wi-Fi/tunnel sempat tersendat.
+    tombolKirim.disabled = true
+    tombolKirim.textContent = 'Sending…'
+    void kirimTanya(teks.value, fotoData).then((ok) => {
+      tombolKirim.disabled = false
+      tombolKirim.textContent = labelKirim
+      if (ok) lembar.classList.remove('tampil')
+    })
   }
   el('tombol-tunggu').onclick = () => void masukModeTunggu()
   el('tunggu').onclick = () => void keluarModeTunggu('Back on the board.')
@@ -1005,6 +1048,7 @@ function pasangBilahMurid() {
   window.addEventListener('focus', lapor)
 
   pasangGrup()
+  el('tombol-ekspor').onclick = () => void eksporPdfSaya()
 }
 
 /**
@@ -1019,6 +1063,38 @@ function pasangGrup() {
   const buatDiv = el('grup-buat')
   const namaInput = el('grup-nama') as HTMLInputElement
   const daftarDiv = el('grup-daftar')
+  const riwayatDiv = el('grup-riwayat')
+  const riwayatDaftarDiv = el('grup-riwayat-daftar')
+
+  async function muatRiwayat() {
+    if (!grupSaya) {
+      riwayatDiv.hidden = true
+      return
+    }
+    try {
+      const daftar = await api<{ id: string; judul: string; diubah: number }[]>(
+        `/api/kelas/grup/riwayat?murid=${encodeURIComponent(muridId)}`,
+      )
+      // Hari ini (kanvasSaya) sudah kelihatan di papan biasa; di sini cuma hari lampau.
+      const lampau = daftar.filter((d) => d.id !== kanvasSaya)
+      riwayatDaftarDiv.replaceChildren()
+      riwayatDiv.hidden = lampau.length === 0
+      for (const d of lampau) {
+        const baris = document.createElement('div')
+        baris.className = 'grup-baris'
+        const judul = document.createElement('span')
+        judul.className = 'nama'
+        judul.textContent = d.judul
+        const tombol = document.createElement('button')
+        tombol.textContent = 'View'
+        tombol.onclick = () => void lihatRiwayat(d.id)
+        baris.append(judul, tombol)
+        riwayatDaftarDiv.append(baris)
+      }
+    } catch {
+      riwayatDiv.hidden = true
+    }
+  }
 
   async function render() {
     if (grupSaya) {
@@ -1027,8 +1103,10 @@ function pasangGrup() {
       buatDiv.hidden = true
       daftarDiv.hidden = true
       daftarDiv.replaceChildren()
+      await muatRiwayat()
       return
     }
+    riwayatDiv.hidden = true
     sekarangDiv.hidden = true
     buatDiv.hidden = false
     try {
@@ -1070,6 +1148,35 @@ function pasangGrup() {
     }
   }
 
+  /** Buka satu kanvas grup dari hari lampau — baca saja, coret dimatikan. */
+  async function lihatRiwayat(id: string) {
+    melihatRiwayat = true
+    kotak.classList.remove('tampil')
+    el('tombol-coret').hidden = true
+    sumber = null
+    goresanHidup.clear()
+    kursor = null
+    await muatSketsa(id)
+    pandanganSumber = null
+    muatSatuHalaman()
+    el('kembali-riwayat').hidden = false
+    tampilkanStatus('Viewing a past day — read-only.')
+  }
+
+  el('kembali-riwayat').onclick = () => {
+    void (async () => {
+      melihatRiwayat = false
+      el('kembali-riwayat').hidden = true
+      if (izinCoret.boleh && izinCoret.sketsa === kanvasSaya) el('tombol-coret').hidden = false
+      if (kanvasSaya) {
+        await muatSketsa(kanvasSaya)
+        pandanganSumber = null
+        muatSatuHalaman()
+      }
+      tampilkanStatus('Back to today.')
+    })()
+  }
+
   el('tombol-grup').onclick = () => {
     kotak.classList.add('tampil')
     void render()
@@ -1100,6 +1207,98 @@ function pasangGrup() {
   }
 }
 
+/* ── Ekspor PDF (murid) ───────────────────────────────────────────── */
+
+/** Piksel dunia (96 dpi) → milimeter — sama seperti di app guru. */
+const keMm = (px: number) => (px / 96) * 25.4
+
+/** Rekam satu wilayah dunia ke kanvas lepas, sama seperti di app guru. */
+async function rekamWilayahSaya(x1: number, y1: number, lebar: number, tinggi: number, skala: number): Promise<HTMLCanvasElement | null> {
+  if (!sketsa) return null
+  const s = sketsa
+  const c = document.createElement('canvas')
+  c.width = Math.round(lebar * skala)
+  c.height = Math.round(tinggi * skala)
+  const ctx = c.getContext('2d')
+  if (!ctx) return null
+  ctx.fillStyle = '#ffffff'
+  ctx.fillRect(0, 0, c.width, c.height)
+  ctx.scale(skala, skala)
+  ctx.translate(-x1, -y1)
+  const lapisan = s.layers
+  const dipakai = (s.images ?? []).filter((g) => tampak(lapisan, g.layer))
+  await Promise.all(
+    dipakai.map(
+      (g) =>
+        new Promise<void>((res) => {
+          const img = muatGambar(g.src)
+          if (img.complete && img.naturalWidth > 0) return res()
+          img.addEventListener('load', () => res(), { once: true })
+          img.addEventListener('error', () => res(), { once: true })
+        }),
+    ),
+  )
+  for (const g of dipakai) gambarTempelan(ctx, g)
+  for (const k of s.strokes.filter((k) => tampak(lapisan, k.layer))) gambarCoretan(ctx, k)
+  const fontLabel = '13px ui-monospace, monospace'
+  for (const o of (s.objects ?? []).filter((o) => tampak(lapisan, o.layer))) gambarObjek(ctx, o, warnaToken(o.color), fontLabel)
+  for (const t of (s.texts ?? []).filter((t) => tampak(lapisan, t.layer))) gambarTeks(ctx, t)
+  return c
+}
+
+/** Ekspor kanvas saya (atau grup saya) jadi satu PDF, dibagikan lewat browser. */
+async function eksporPdfSaya() {
+  if (!sketsa) {
+    tampilkanStatus('Nothing to export yet.', true)
+    return
+  }
+  const kertas = kertasDari(sketsa.paper)
+  const wilayah =
+    kertas.w > 0
+      ? Array.from({ length: Math.max(1, sketsa.pages ?? 1) }, (_, i) => {
+          const k = kotakHalaman(kertas, i)
+          return { x: k.x1, y: k.y1, w: kertas.w, h: kertas.h }
+        })
+      : (() => {
+          const k = kotakSemua(sketsa!.strokes, sketsa!.images ?? [], sketsa!.objects ?? [], sketsa!.texts ?? [])
+          if (!k) return null
+          const margin = 24
+          return [{ x: k.x1 - margin, y: k.y1 - margin, w: k.x2 - k.x1 + margin * 2, h: k.y2 - k.y1 + margin * 2 }]
+        })()
+  if (!wilayah) {
+    tampilkanStatus('Nothing on the canvas yet.', true)
+    return
+  }
+  tampilkanStatus('Preparing PDF…')
+  try {
+    const { jsPDF } = await import('jspdf')
+    const mmW = kertas.mmW || keMm(wilayah[0].w)
+    const mmH = kertas.mmH || keMm(wilayah[0].h)
+    const arah = mmW > mmH ? 'landscape' : 'portrait'
+    const pdf = new jsPDF({ unit: 'mm', format: [mmW, mmH], orientation: arah, compress: true })
+    const jatah = (ANGGARAN_PDF * 0.92) / wilayah.length
+    const skala = wilayah.length <= 4 ? 3 : wilayah.length <= 16 ? 2.5 : 2
+    let terlampaui = false
+    for (const [i, w] of wilayah.entries()) {
+      const c = await rekamWilayahSaya(w.x, w.y, w.w, w.h, skala)
+      if (!c) return
+      const padat = padatkanHalaman(c, jatah)
+      if (padat.byte > jatah) terlampaui = true
+      if (i > 0) pdf.addPage([mmW, mmH], arah)
+      pdf.addImage(padat.data, padat.rupa, 0, 0, mmW, mmH)
+    }
+    const bytes = new Uint8Array(pdf.output('arraybuffer'))
+    const nama = `${sketsa.title || 'Sketch'}.pdf`
+    const tujuan = await pilihTujuan(nama, 'pdf')
+    if (!tujuan) return
+    await tulisBerkas(tujuan, bytes, 'application/pdf', nama, { buka: true })
+    const mb = (bytes.length / 1024 / 1024).toFixed(1)
+    tampilkanStatus(terlampaui ? `Exported — ${mb} MB (some detail was reduced to fit).` : `Exported — ${mb} MB.`)
+  } catch (e) {
+    tampilkanStatus(e instanceof Error ? e.message : 'Could not export the PDF.', true)
+  }
+}
+
 let timerKunci: number | null = null
 
 /** Kunci tombol tanya selama `detik`, dengan hitung mundur di tombolnya. */
@@ -1123,12 +1322,15 @@ function kunciTombol(detik: number) {
   timerKunci = window.setInterval(tik, 1000)
 }
 
-async function kirimTanya(teks: string, foto: string) {
+async function kirimTanya(teks: string, foto: string): Promise<boolean> {
   try {
-    await api('/api/kelas/tanya', { method: 'POST', json: { murid: muridId, nama: namaSaya, teks, foto } })
+    // Foto bisa beberapa ratus KB; lewat Wi-Fi/tunnel yang lemah butuh waktu —
+    // 45 s cukup longgar tapi tetap memberi kabar alih-alih menggantung diam.
+    await api('/api/kelas/tanya', { method: 'POST', json: { murid: muridId, nama: namaSaya, teks, foto }, timeoutMs: 45000 })
     tampilkanStatus(foto.startsWith('data:application/pdf') ? 'PDF sent.' : foto || teks ? 'Question sent.' : 'Hand raised.')
     kunciTombol(20)
     await segarkanSaya()
+    return true
   } catch (e) {
     // Pesan server berkode: TUNGGU:<detik>:<pesan> | ANTRE:<pesan> | MUTED:<pesan>
     const mentah = e instanceof Error ? e.message : String(e)
@@ -1143,24 +1345,59 @@ async function kirimTanya(teks: string, foto: string) {
       tampilkanStatus(`Could not send: ${mentah}`, true)
     }
     await segarkanSaya()
+    return false
   }
+}
+
+/** Muat gambar lewat <img>+object URL — cadangan untuk WebView yang menolak createImageBitmap pada berkas tertentu (mis. HEIC di beberapa Android). */
+function muatGambarCadangan(f: File): Promise<HTMLImageElement> {
+  return new Promise((res, rej) => {
+    const url = URL.createObjectURL(f)
+    const img = new Image()
+    img.onload = () => {
+      URL.revokeObjectURL(url)
+      res(img)
+    }
+    img.onerror = () => {
+      URL.revokeObjectURL(url)
+      rej(new Error('Unreadable image'))
+    }
+    img.src = url
+  })
 }
 
 /**
  * Foto dari kamera HP berukuran 3–8 MB; yang dibutuhkan guru cukup 1280 px.
  * Diperkecil di HP sebelum diunggah supaya Wi-Fi dan vault tetap ringan.
+ * Melempar galat (bukan diam-diam gagal) kalau berkasnya tidak terbaca —
+ * pemanggilnya wajib memberi tahu murid, bukan mengirim "hand raised" kosong.
  */
 async function perkecilFoto(f: File): Promise<string> {
+  let sumber: CanvasImageSource
+  let w: number
+  let h: number
   const bitmap = await createImageBitmap(f).catch(() => null)
-  if (!bitmap) return ''
-  const skala = Math.min(1, 1280 / Math.max(bitmap.width, bitmap.height))
+  if (bitmap) {
+    sumber = bitmap
+    w = bitmap.width
+    h = bitmap.height
+  } else {
+    const img = await muatGambarCadangan(f)
+    sumber = img
+    w = img.naturalWidth
+    h = img.naturalHeight
+  }
+  if (!w || !h) throw new Error('Unreadable image')
+  const skala = Math.min(1, 1280 / Math.max(w, h))
   const c = document.createElement('canvas')
-  c.width = Math.round(bitmap.width * skala)
-  c.height = Math.round(bitmap.height * skala)
+  c.width = Math.round(w * skala)
+  c.height = Math.round(h * skala)
   const ctx = c.getContext('2d')
-  if (!ctx) return ''
-  ctx.drawImage(bitmap, 0, 0, c.width, c.height)
-  return c.toDataURL('image/jpeg', 0.72)
+  if (!ctx) throw new Error('Canvas unavailable')
+  ctx.drawImage(sumber, 0, 0, c.width, c.height)
+  const url = c.toDataURL('image/jpeg', 0.72)
+  if (!url || url === 'data:,') throw new Error('Could not encode photo')
+  return url
 }
 
 let timerKabar: number | null = null

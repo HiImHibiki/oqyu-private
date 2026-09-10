@@ -28,6 +28,8 @@ export function KanvasLayar() {
   const [ubahNama, setUbahNama] = useState(false)
   const [nama, setNama] = useState('')
   const inputRef = useRef<HTMLInputElement | null>(null)
+  const [kelolaTerbuka, setKelolaTerbuka] = useState(false)
+  const [dipilih, setDipilih] = useState<Set<string>>(new Set())
 
   /**
    * Sketsa pertama hanya dibuat oleh window kerja.
@@ -230,7 +232,90 @@ export function KanvasLayar() {
             )
           }}
         />
+
+        <IconButton
+          nama="arsip"
+          label="Manage sketches — delete several at once"
+          ukuran={15}
+          onClick={() => {
+            setDipilih(new Set())
+            setKelolaTerbuka(true)
+          }}
+        />
       </div>
+
+      {kelolaTerbuka && (
+        <div
+          className="absolute inset-0 z-30 grid place-items-center"
+          style={{ background: 'rgba(36, 38, 43, 0.35)' }}
+          onClick={() => setKelolaTerbuka(false)}
+        >
+          <div
+            className="ex-card flex flex-col gap-2 p-3"
+            style={{ width: 360, maxHeight: '70vh' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <strong className="ex-label">Manage sketches</strong>
+              <button
+                className="ex-btn"
+                data-variant="ghost"
+                style={{ padding: '3px 9px', fontSize: 12 }}
+                onClick={() =>
+                  setDipilih((d) => (d.size === kanvas.length ? new Set() : new Set(kanvas.map((k) => k.id))))
+                }
+              >
+                {dipilih.size === kanvas.length ? 'Deselect all' : `Select all · ${kanvas.length}`}
+              </button>
+            </div>
+            <div className="flex flex-col gap-1 overflow-y-auto" style={{ minHeight: 0 }}>
+              {kanvas.map((k) => (
+                <label key={k.id} className="flex items-center gap-2" style={{ padding: '3px 2px' }}>
+                  <input
+                    type="checkbox"
+                    checked={dipilih.has(k.id)}
+                    onChange={(e) =>
+                      setDipilih((d) => {
+                        const n = new Set(d)
+                        if (e.target.checked) n.add(k.id)
+                        else n.delete(k.id)
+                        return n
+                      })
+                    }
+                  />
+                  <span className="min-w-0 flex-1 truncate" style={{ fontSize: 'var(--fs-label)' }}>
+                    {k.title}
+                  </span>
+                </label>
+              ))}
+            </div>
+            <div className="flex items-center justify-end gap-2">
+              <button className="ex-btn" data-variant="ghost" onClick={() => setKelolaTerbuka(false)}>
+                Close
+              </button>
+              <button
+                className="ex-btn"
+                data-variant="accent"
+                disabled={dipilih.size === 0}
+                onClick={() => {
+                  const ids = Array.from(dipilih)
+                  const n = ids.length
+                  setKelolaTerbuka(false)
+                  void hapusDenganUrungkan(
+                    `${n} sketch${n === 1 ? '' : 'es'} deleted.`,
+                    async () => Promise.all(ids.map((id) => hapusKanvas(id))),
+                    async (isi) => {
+                      await Promise.all(isi.map((b) => pulihkanKanvas(b)))
+                    },
+                  )
+                }}
+              >
+                Delete {dipilih.size || ''}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

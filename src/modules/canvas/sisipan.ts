@@ -154,7 +154,7 @@ function tokenkan(s: string): Token[] {
  * sebagai satu nama. Yang dikenali dipisah jadi variabel/konstanta/fungsi.
  */
 function pecahNama(nama: string): string[] {
-  const dikenal = new Set([...Object.keys(FUNGSI_1), ...Object.keys(FUNGSI_2), ...Object.keys(KONSTANTA), 'x'])
+  const dikenal = new Set([...Object.keys(FUNGSI_1), ...Object.keys(FUNGSI_2), ...Object.keys(KONSTANTA), 'x', 'y'])
   if (dikenal.has(nama)) return [nama]
   const hasil: string[] = []
   let sisa = nama
@@ -257,41 +257,136 @@ function keRpn(tokens: Token[]): Rpn[] {
   return out
 }
 
-/** Susun fungsi x ↦ y dari teks. Melempar galat kalau teksnya tidak terbaca. */
-export function susunFungsi(teks: string): (x: number) => number {
-  let s = teks.trim()
-  // "y = ..." dan "f(x) = ..." boleh ditulis; hanya sisi kanannya yang dihitung.
-  s = s.replace(/^[a-zA-Z]\w*\s*(\(\s*x\s*\))?\s*=\s*/, '')
-  if (!s) throw new Error('Empty expression')
-  const rpn = keRpn(normalkan(tokenkan(s)))
-  // Coba sekali untuk menangkap tumpukan yang tidak seimbang.
-  const uji = (x: number) => {
-    const st: number[] = []
-    for (const r of rpn) {
-      if (r.t === 'angka') st.push(r.v)
-      else if (r.t === 'nama') {
-        if (r.v === 'x') st.push(x)
-        else if (r.v in KONSTANTA) st.push(KONSTANTA[r.v])
-        else throw new Error(`Unknown name "${r.v}"`)
-      } else if (r.t === 'neg') st.push(-(st.pop() as number))
-      else if (r.t === 'panggil') {
-        if (r.n === 2) {
-          const b = st.pop() as number
-          const a = st.pop() as number
-          st.push(FUNGSI_2[r.v](a, b))
-        } else st.push(FUNGSI_1[r.v](st.pop() as number))
-      } else if (r.t === 'op') {
+function evalRpn(rpn: Rpn[], vars: Record<string, number>): number {
+  const st: number[] = []
+  for (const r of rpn) {
+    if (r.t === 'angka') st.push(r.v)
+    else if (r.t === 'nama') {
+      if (r.v in vars) st.push(vars[r.v])
+      else if (r.v in KONSTANTA) st.push(KONSTANTA[r.v])
+      else throw new Error(`Unknown name "${r.v}"`)
+    } else if (r.t === 'neg') st.push(-(st.pop() as number))
+    else if (r.t === 'panggil') {
+      if (r.n === 2) {
         const b = st.pop() as number
         const a = st.pop() as number
-        if (a === undefined || b === undefined) throw new Error('Incomplete expression')
-        st.push(r.v === '+' ? a + b : r.v === '-' ? a - b : r.v === '*' ? a * b : r.v === '/' ? a / b : Math.pow(a, b))
+        st.push(FUNGSI_2[r.v](a, b))
+      } else st.push(FUNGSI_1[r.v](st.pop() as number))
+    } else if (r.t === 'op') {
+      const b = st.pop() as number
+      const a = st.pop() as number
+      if (a === undefined || b === undefined) throw new Error('Incomplete expression')
+      st.push(r.v === '+' ? a + b : r.v === '-' ? a - b : r.v === '*' ? a * b : r.v === '/' ? a / b : Math.pow(a, b))
+    }
+  }
+  if (st.length !== 1) throw new Error('Incomplete expression')
+  return st[0]
+}
+
+/** Cari tanda "=" di level teratas (bukan yang tersembunyi di dalam kurung). */
+function cariSamaDenganTeratas(s: string): number {
+  let dalam = 0
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i]
+    if (c === '(') dalam++
+    else if (c === ')') dalam--
+    else if (c === '=' && dalam === 0) return i
+  }
+  return -1
+}
+
+export type Kurva =
+  | { jenis: 'eksplisit'; hitung: (x: number) => number }
+  | { jenis: 'implisit'; hitung: (x: number, y: number) => number }
+
+/**
+ * Susun kurva dari teks: "2x+1" atau "y = 2x+1" jadi fungsi eksplisit x ↦ y;
+ * persamaan penuh seperti "x^2 + y^2 = 25" (lingkaran, ellips, hiperbola, dst.)
+ * jadi fungsi implisit (x,y) ↦ (ruas kiri − ruas kanan), nol di kurvanya.
+ */
+export function susunKurva(teks: string): Kurva {
+  const s0 = teks.trim()
+  if (!s0) throw new Error('Empty expression')
+  const idx = cariSamaDenganTeratas(s0)
+  if (idx === -1) {
+    const rpn = keRpn(normalkan(tokenkan(s0)))
+    const f = (x: number) => evalRpn(rpn, { x })
+    f(1)
+    return { jenis: 'eksplisit', hitung: f }
+  }
+  const kiri = s0.slice(0, idx).trim()
+  const kanan = s0.slice(idx + 1).trim()
+  if (!kanan) throw new Error('Empty expression')
+  // "y = ..." atau "f(x) = ...": hanya sisi kanan yang dihitung, sebagai fungsi dari x.
+  if (/^[a-zA-Z]\w*(\(\s*x\s*\))?$/.test(kiri)) {
+    const rpn = keRpn(normalkan(tokenkan(kanan)))
+    const f = (x: number) => evalRpn(rpn, { x })
+    f(1)
+    return { jenis: 'eksplisit', hitung: f }
+  }
+  if (!kiri) throw new Error('Empty expression')
+  const rpnKiri = keRpn(normalkan(tokenkan(kiri)))
+  const rpnKanan = keRpn(normalkan(tokenkan(kanan)))
+  const f = (x: number, y: number) => evalRpn(rpnKiri, { x, y }) - evalRpn(rpnKanan, { x, y })
+  f(1, 1)
+  return { jenis: 'implisit', hitung: f }
+}
+
+/**
+ * Kisi marching-squares: jejak titik nol f(x,y)=0 di dalam kotak dunia yang
+ * diberikan, sebagai kumpulan ruas garis [x1,y1,x2,y2].
+ */
+function jejakImplisit(
+  f: (x: number, y: number) => number,
+  xMin: number,
+  xMax: number,
+  yMin: number,
+  yMax: number,
+  nx: number,
+  ny: number,
+): [number, number, number, number][] {
+  const nilai: number[][] = []
+  for (let j = 0; j <= ny; j++) {
+    const y = yMin + ((yMax - yMin) * j) / ny
+    const baris: number[] = []
+    for (let i = 0; i <= nx; i++) {
+      const x = xMin + ((xMax - xMin) * i) / nx
+      let v: number
+      try {
+        v = f(x, y)
+      } catch {
+        v = NaN
+      }
+      baris.push(v)
+    }
+    nilai.push(baris)
+  }
+  const lerp = (a: number, b: number, va: number, vb: number) => a + ((b - a) * -va) / (vb - va)
+  const segs: [number, number, number, number][] = []
+  for (let j = 0; j < ny; j++) {
+    const y0 = yMin + ((yMax - yMin) * j) / ny
+    const y1 = yMin + ((yMax - yMin) * (j + 1)) / ny
+    for (let i = 0; i < nx; i++) {
+      const x0 = xMin + ((xMax - xMin) * i) / nx
+      const x1 = xMin + ((xMax - xMin) * (i + 1)) / nx
+      const v00 = nilai[j][i]
+      const v10 = nilai[j][i + 1]
+      const v01 = nilai[j + 1][i]
+      const v11 = nilai[j + 1][i + 1]
+      if (!Number.isFinite(v00) || !Number.isFinite(v10) || !Number.isFinite(v01) || !Number.isFinite(v11)) continue
+      const pts: [number, number][] = []
+      if (v00 < 0 !== v10 < 0) pts.push([lerp(x0, x1, v00, v10), y0])
+      if (v01 < 0 !== v11 < 0) pts.push([lerp(x0, x1, v01, v11), y1])
+      if (v00 < 0 !== v01 < 0) pts.push([x0, lerp(y0, y1, v00, v01)])
+      if (v10 < 0 !== v11 < 0) pts.push([x1, lerp(y0, y1, v10, v11)])
+      if (pts.length === 2) segs.push([pts[0][0], pts[0][1], pts[1][0], pts[1][1]])
+      else if (pts.length === 4) {
+        segs.push([pts[0][0], pts[0][1], pts[1][0], pts[1][1]])
+        segs.push([pts[2][0], pts[2][1], pts[3][0], pts[3][1]])
       }
     }
-    if (st.length !== 1) throw new Error('Incomplete expression')
-    return st[0]
   }
-  uji(1)
-  return uji
+  return segs
 }
 
 /* ── Render grafik ─────────────────────────────────────────────────── */
@@ -339,25 +434,26 @@ export function renderGrafik(d: DefinisiGrafik, dpr = 2): HasilGrafik {
   const fs = d.fungsi
     .map((f) => {
       try {
-        return { ...f, hitung: susunFungsi(f.ekspresi) }
+        return { ...f, kurva: susunKurva(f.ekspresi) }
       } catch (e) {
         galat.push({ ekspresi: f.ekspresi, pesan: e instanceof Error ? e.message : String(e) })
         return null
       }
     })
-    .filter((f): f is Fungsi & { hitung: (x: number) => number } => f !== null)
+    .filter((f): f is Fungsi & { kurva: Kurva } => f !== null)
 
   const xMin = Math.min(d.xMin, d.xMax)
   const xMax = Math.max(d.xMin, d.xMax)
   let yMin = Math.min(d.yMin, d.yMax)
   let yMax = Math.max(d.yMin, d.yMax)
-  if (d.yOtomatis && fs.length > 0) {
+  const eksplisit = fs.filter((f): f is Fungsi & { kurva: { jenis: 'eksplisit'; hitung: (x: number) => number } } => f.kurva.jenis === 'eksplisit')
+  if (d.yOtomatis && eksplisit.length > 0) {
     let lo = Infinity
     let hi = -Infinity
     const N = 400
-    for (const f of fs) {
+    for (const f of eksplisit) {
       for (let i = 0; i <= N; i++) {
-        const y = f.hitung(xMin + ((xMax - xMin) * i) / N)
+        const y = f.kurva.hitung(xMin + ((xMax - xMin) * i) / N)
         if (Number.isFinite(y)) {
           if (y < lo) lo = y
           if (y > hi) hi = y
@@ -471,28 +567,40 @@ export function renderGrafik(d: DefinisiGrafik, dpr = 2): HasilGrafik {
   ctx.lineWidth = 2
   ctx.lineJoin = 'round'
   const N = Math.max(400, Math.round(pw * 2))
+  const nx = Math.max(60, Math.min(240, Math.round(pw / 2.5)))
+  const ny = Math.max(60, Math.min(240, Math.round(ph / 2.5)))
   for (const f of fs) {
     ctx.strokeStyle = f.warna
-    ctx.beginPath()
-    let putus = true
-    let yLalu = NaN
-    for (let i = 0; i <= N; i++) {
-      const x = xMin + ((xMax - xMin) * i) / N
-      const y = f.hitung(x)
-      if (!Number.isFinite(y)) {
-        putus = true
-        yLalu = NaN
-        continue
+    if (f.kurva.jenis === 'eksplisit') {
+      ctx.beginPath()
+      let putus = true
+      let yLalu = NaN
+      for (let i = 0; i <= N; i++) {
+        const x = xMin + ((xMax - xMin) * i) / N
+        const y = f.kurva.hitung(x)
+        if (!Number.isFinite(y)) {
+          putus = true
+          yLalu = NaN
+          continue
+        }
+        const py = keY(y)
+        // Lompatan tegak lebih dari dua tinggi plot: itu asimtot, bukan garis.
+        if (Number.isFinite(yLalu) && Math.abs(py - yLalu) > ph * 2) putus = true
+        if (putus) ctx.moveTo(keX(x), py)
+        else ctx.lineTo(keX(x), py)
+        putus = false
+        yLalu = py
       }
-      const py = keY(y)
-      // Lompatan tegak lebih dari dua tinggi plot: itu asimtot, bukan garis.
-      if (Number.isFinite(yLalu) && Math.abs(py - yLalu) > ph * 2) putus = true
-      if (putus) ctx.moveTo(keX(x), py)
-      else ctx.lineTo(keX(x), py)
-      putus = false
-      yLalu = py
+      ctx.stroke()
+    } else {
+      const segs = jejakImplisit(f.kurva.hitung, xMin, xMax, yMin, yMax, nx, ny)
+      ctx.beginPath()
+      for (const [sx1, sy1, sx2, sy2] of segs) {
+        ctx.moveTo(keX(sx1), keY(sy1))
+        ctx.lineTo(keX(sx2), keY(sy2))
+      }
+      ctx.stroke()
     }
-    ctx.stroke()
   }
   ctx.restore()
 
@@ -502,7 +610,10 @@ export function renderGrafik(d: DefinisiGrafik, dpr = 2): HasilGrafik {
   ctx.font = '12px ui-sans-serif, -apple-system, system-ui, sans-serif'
   let ly = tepi.atas + 10
   for (const f of fs) {
-    const label = `y = ${f.ekspresi.trim().replace(/^[a-zA-Z]\w*\s*(\(\s*x\s*\))?\s*=\s*/, '')}`
+    const label =
+      f.kurva.jenis === 'implisit'
+        ? f.ekspresi.trim()
+        : `y = ${f.ekspresi.trim().replace(/^[a-zA-Z]\w*\s*(\(\s*x\s*\))?\s*=\s*/, '')}`
     const lebar = ctx.measureText(label).width + 30
     ctx.fillStyle = 'rgba(255,255,255,0.85)'
     ctx.fillRect(tepi.kiri + pw - lebar - 4, ly - 9, lebar + 4, 18)

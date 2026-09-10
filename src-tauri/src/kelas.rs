@@ -185,12 +185,22 @@ pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
         // mencoret. Ini dipakai HP untuk selalu memaku diri ke kanvasnya
         // sendiri, apa pun yang sedang dibuka guru di tempat lain.
         let kanvas = sketsa_murid(&c, &murid);
+        // Berapa persen layar HP diisi wilayah guru (mode "penuh" di layar
+        // sempit) — bawaan 88, guru bisa mengecilkannya dari Settings kalau
+        // masih terasa terlalu dekat, terutama di HP tegak (potret).
+        let zoom: i64 = c
+            .query_row("SELECT value FROM settings WHERE key = 'murid_zoom'", [], |r| r.get::<_, String>(0))
+            .ok()
+            .and_then(|v| v.parse().ok())
+            .filter(|z| (50..=100).contains(z))
+            .unwrap_or(88);
         Ok(json!({
             "grup": grup.map(|(id, nama, target)| json!({ "id": id, "nama": nama, "target": target })),
             "tanya": tanya.map(|(id, status, dibuat, teks)| json!({ "id": id, "status": status, "dibuat": dibuat, "teks": teks, "urutan": urutan.map(|u| u + 1) })),
             "boleh": boleh,
             "sketsa": sketsa,
             "kanvas": kanvas,
+            "zoom": zoom,
         }))
     })
     .await;
@@ -718,6 +728,51 @@ pub async fn api_paham(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(p):
             }
             StatusCode::NO_CONTENT.into_response()
         }
+        Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
+    }
+}
+
+#[derive(Deserialize)]
+pub struct QueryGrupRiwayat {
+    pub murid: String,
+    pub pin: Option<String>,
+    pub sesi: Option<String>,
+}
+
+/// Riwayat kanvas grup murid ini — satu per hari (dicap saat dibuat lewat
+/// `bahasTanya`), terbaru dulu. Murid tanpa grup, atau grup yang belum pernah
+/// dicap (dibuat sebelum fitur ini ada), dapat daftar kosong.
+pub async fn api_grup_riwayat(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q): Query<QueryGrupRiwayat>) -> Response {
+    if !crate::server::sah_lengkap(&hub, &headers, q.pin.as_deref(), q.sesi.as_deref(), None) {
+        return tolak();
+    }
+    let murid = q.murid.clone();
+    let hasil = tokio::task::spawn_blocking(move || -> Result<Vec<Value>, String> {
+        let c = koneksi()?;
+        let grup: Option<String> = c
+            .query_row(
+                "SELECT g.id FROM groups g JOIN group_members m ON m.group_id = g.id WHERE m.student_id = ?1 LIMIT 1",
+                rusqlite::params![murid],
+                |r| r.get(0),
+            )
+            .ok();
+        let Some(gid) = grup else { return Ok(vec![]) };
+        let mut st = c
+            .prepare("SELECT id, title, updated_at FROM canvases WHERE group_id = ?1 ORDER BY updated_at DESC")
+            .map_err(|e| e.to_string())?;
+        let baris = st
+            .query_map(rusqlite::params![gid], |r| {
+                Ok(json!({ "id": r.get::<_, String>(0)?, "judul": r.get::<_, String>(1)?, "diubah": r.get::<_, i64>(2)? }))
+            })
+            .map_err(|e| e.to_string())?
+            .flatten()
+            .collect();
+        Ok(baris)
+    })
+    .await;
+    match hasil {
+        Ok(Ok(v)) => Json(v).into_response(),
         Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
         Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
     }

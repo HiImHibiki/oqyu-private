@@ -91,14 +91,11 @@ export function PanelGrafik({
                       aria-label={`Colour of function ${i + 1}`}
                     />
                   </label>
-                  <span className="ex-num ex-label shrink-0" style={{ color: 'var(--ink-faint)' }}>
-                    y =
-                  </span>
                   <input
                     className="ex-input ex-num"
                     style={{ padding: '6px 8px', borderColor: galat.has(f.ekspresi) ? 'var(--down)' : undefined }}
                     value={f.ekspresi}
-                    placeholder="e.g. 2x + 1, sin(x), x^2 - 4"
+                    placeholder="e.g. 2x + 1, x^2 + y^2 = 25, x^2/4 - y^2/9 = 1"
                     spellCheck={false}
                     autoFocus={i === d.fungsi.length - 1 && !awal}
                     onChange={(e) => ubahFungsi(i, e.target.value)}
@@ -136,8 +133,9 @@ export function PanelGrafik({
           </div>
 
           <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
-            Uses x. Supports + − × ÷ ^, sin cos tan, sqrt, abs, ln, log, exp, pi, e. Implicit
-            products like 2x and 3sin(x) work.
+            Write a function of x (e.g. 2x + 1) or a full equation with x and y for circles,
+            ellipses, and hyperbolas (e.g. x^2 + y^2 = 25). Supports + − × ÷ ^, sin cos tan, sqrt,
+            abs, ln, log, exp, pi, e. Implicit products like 2x and 3sin(x) work.
           </p>
 
           <div className="flex flex-wrap gap-2">

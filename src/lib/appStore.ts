@@ -10,7 +10,9 @@ import { create } from 'zustand'
 export interface TempelanTertunda {
   /** Sketsa tujuan; dikerjakan begitu kanvas itu selesai dimuat. */
   idKanvas: string
-  url: string
+  /** Kosong berarti tidak ada lampiran baru — cuma penanda "kanvas ini baru
+   *  dibuka untuk dibahas", supaya layar tetap dibawa ke halaman terakhirnya. */
+  url?: string
   nama: string
 }
 

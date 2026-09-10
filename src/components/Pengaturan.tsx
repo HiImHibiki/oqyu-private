@@ -193,12 +193,21 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
   const [publik, setPublik] = useState('')
   const [pinKustom, setPinKustom] = useState('')
   const [sandiAdmin, setSandiAdmin] = useState('')
+  const [zoomMurid, setZoomMurid] = useState(88)
 
   useEffect(() => {
     if (!buka) return
     void getSetting('alamat_publik').then((v) => setPublik(v ?? '')).catch(() => {})
     void getSetting('sandi_admin').then((v) => setSandiAdmin(v ?? '')).catch(() => {})
+    void getSetting('murid_zoom')
+      .then((v) => setZoomMurid(v ? Math.max(50, Math.min(100, Number(v))) : 88))
+      .catch(() => {})
   }, [buka])
+
+  async function simpanZoomMurid(persen: number) {
+    setZoomMurid(persen)
+    await setSetting('murid_zoom', String(persen))
+  }
 
   async function simpanSandiAdmin(sandi: string) {
     const bersih = sandi.trim()
@@ -401,6 +410,25 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
               and the class PIN as the class code; after that they sign in with phone and password —
               the PIN never appears in their address bar. Teacher link asks for the admin password.
               TV link carries the PIN.
+            </p>
+            <label className="ex-label flex items-center gap-2" style={{ color: 'var(--ink-soft)' }}>
+              Student zoom
+              <input
+                type="range"
+                min={50}
+                max={100}
+                step={2}
+                value={zoomMurid}
+                onChange={(e) => void simpanZoomMurid(Number(e.target.value))}
+                style={{ flex: 1 }}
+              />
+              <span className="ex-num" style={{ color: 'var(--ink)', width: 34, textAlign: 'right' }}>
+                {zoomMurid}%
+              </span>
+            </label>
+            <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
+              How tightly a phone screen (portrait) fills with the teacher's view. Lower if it feels
+              too zoomed in. Takes effect on students' next refresh — up to 20 seconds.
             </p>
           </div>
         </div>

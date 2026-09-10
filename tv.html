@@ -112,6 +112,8 @@
       #pilih small { color: var(--ink-faint); }
       #ikuti { position: absolute; right: 12px; top: 12px; padding: 10px 14px; border-radius: 999px; border: 0; background: var(--accent); color: #fff;
         font: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+      #kembali-riwayat { position: absolute; left: 12px; top: 12px; padding: 10px 14px; border-radius: 999px; border: 0; background: var(--ink); color: #fff;
+        font: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
       .hp #aktif { touch-action: none; }
     </style>
   </head>
@@ -123,9 +125,11 @@
 
     <div id="kabar"></div>
     <button id="ikuti" hidden>↩ Follow the teacher</button>
+    <button id="kembali-riwayat" hidden>← Back to today</button>
     <div id="status-saya"></div>
     <div id="bilah">
       <button id="tombol-grup" title="Study group">👥 Group</button>
+      <button id="tombol-ekspor" title="Export your canvas as a PDF">📄 PDF</button>
       <button id="tombol-tangan">✋ Raise hand</button>
       <button id="tombol-tanya" class="utama">❓ Ask</button>
       <button id="tombol-paham" disabled>✅ Got it</button>
@@ -185,6 +189,10 @@
           </div>
         </div>
         <div id="grup-daftar"></div>
+        <div id="grup-riwayat" hidden>
+          <p style="margin:4px 0 2px;font-size:12px;color:var(--ink-faint)">Past days</p>
+          <div id="grup-riwayat-daftar"></div>
+        </div>
         <button id="grup-tutup">Close</button>
       </div>
     </div>

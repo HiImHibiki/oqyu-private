@@ -344,6 +344,7 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/api/kelas/grup/daftar", get(crate::kelas::api_grup_daftar))
         .route("/api/kelas/grup/gabung", axum::routing::post(crate::kelas::api_grup_gabung))
         .route("/api/kelas/grup/keluar", axum::routing::post(crate::kelas::api_grup_keluar))
+        .route("/api/kelas/grup/riwayat", get(crate::kelas::api_grup_riwayat))
         .route("/ws", get(ws_masuk))
         .fallback(aset_lain)
         .layer(axum::middleware::from_fn(cors))

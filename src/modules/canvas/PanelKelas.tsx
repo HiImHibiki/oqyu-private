@@ -42,6 +42,11 @@ export function PanelKelas({
   onBahas: (t: Tanya, urlFoto: string | null) => void
 }) {
   const [tab, setTab] = useState<Tab>('antrian')
+  const [cariMurid, setCariMurid] = useState('')
+  // window.prompt() tidak menampilkan apa pun di WKWebView (app Mac) — jadi
+  // input sandi baru dibuka inline di sini, bukan lewat dialog bawaan browser.
+  const [resetId, setResetId] = useState<string | null>(null)
+  const [resetSandi, setResetSandi] = useState('')
   const { data: daftarSketsa } = useData('canvas', daftarKanvas, [])
   const klien = useSinkron((s) => s.klien)
   const { data: antrian } = useData('kelas', daftarTanya, [])
@@ -145,7 +150,18 @@ export function PanelKelas({
               No students yet today. They join from the TV link on their phone.
             </p>
           )}
-          {murid.map((m) => {
+          {murid.length > 0 && (
+            <input
+              className="ex-input"
+              style={{ padding: '4px 8px', fontSize: 'var(--fs-label)' }}
+              placeholder="Search students…"
+              value={cariMurid}
+              onChange={(e) => setCariMurid(e.target.value)}
+            />
+          )}
+          {murid
+            .filter((m) => m.name.toLowerCase().includes(cariMurid.trim().toLowerCase()))
+            .map((m) => {
             const k = hadir.get(m.id)
             const warna = !k ? 'var(--ink-faint)' : k.tunggu ? 'var(--accent-2)' : k.fokus ? 'var(--up)' : 'var(--down)'
             const judul = !k
@@ -169,15 +185,49 @@ export function PanelKelas({
                     {k.keluar}×
                   </span>
                 )}
-                {m.phone && (
+                {m.phone && resetId === m.id && (
+                  <form
+                    className="flex items-center gap-1"
+                    onSubmit={(e) => {
+                      e.preventDefault()
+                      if (resetSandi.length < 4) return
+                      resetSandiAkun(m.id, resetSandi)
+                        .then(() => {
+                          toast(`Password for ${m.name} changed.`)
+                          setResetId(null)
+                          setResetSandi('')
+                        })
+                        .catch(toastGalat)
+                    }}
+                  >
+                    <input
+                      className="ex-input ex-num"
+                      style={{ width: 90, padding: '2px 6px', fontSize: 11 }}
+                      placeholder="new password"
+                      autoFocus
+                      value={resetSandi}
+                      onChange={(e) => setResetSandi(e.target.value)}
+                    />
+                    <IconButton nama="centang" label="Save" ukuran={12} type="submit" aktif={resetSandi.length >= 4} />
+                    <IconButton
+                      nama="silang"
+                      label="Cancel"
+                      ukuran={12}
+                      onClick={() => {
+                        setResetId(null)
+                        setResetSandi('')
+                      }}
+                    />
+                  </form>
+                )}
+                {m.phone && resetId !== m.id && (
                   <IconButton
                     nama="gembok"
                     label="Reset this student's password"
                     ukuran={12}
                     onClick={() => {
-                      const sandi = window.prompt(`New password for ${m.name} (at least 4 characters):`)
-                      if (!sandi || sandi.length < 4) return
-                      resetSandiAkun(m.id, sandi).then(() => toast(`Password for ${m.name} changed.`)).catch(toastGalat)
+                      setResetId(m.id)
+                      setResetSandi('')
                     }}
                   />
                 )}

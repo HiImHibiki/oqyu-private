@@ -5,6 +5,7 @@ import { bukaJendelaBaru } from '@/lib/layar'
 import { useViewport } from '@/lib/useViewport'
 import { jam, kunciTanggal, tanggalPendek } from '@/lib/tanggal'
 import { newId } from '@/lib/id'
+import { ANGGARAN_PDF, padatkanHalaman } from '@/lib/pdf'
 import { IconButton } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { KERTAS_BAWAAN, berkasBaru, bacaKanvas, simpanKanvas } from './data'
@@ -187,61 +188,6 @@ const JUDUL_PANEL: Record<KelompokAlat, string> = {
  * halaman menghasilkan berkas yang tidak bisa dilampirkan ke mana-mana. Angka
  * ini yang menentukan seberapa jauh tiap halaman boleh dipadatkan.
  */
-const ANGGARAN_PDF = 10 * 1024 * 1024
-
-type RupaGambar = 'PNG' | 'JPEG'
-
-/** Ukuran byte sebenarnya dari sebuah data URL base64. */
-function byteDataUrl(url: string): number {
-  const isi = url.slice(url.indexOf(',') + 1)
-  const bantalan = isi.endsWith('==') ? 2 : isi.endsWith('=') ? 1 : 0
-  return Math.floor((isi.length * 3) / 4) - bantalan
-}
-
-function kecilkanKanvas(c: HTMLCanvasElement, faktor: number): HTMLCanvasElement {
-  if (faktor >= 1) return c
-  const k = document.createElement('canvas')
-  k.width = Math.max(1, Math.round(c.width * faktor))
-  k.height = Math.max(1, Math.round(c.height * faktor))
-  const ctx = k.getContext('2d')
-  if (!ctx) return c
-  ctx.imageSmoothingEnabled = true
-  ctx.imageSmoothingQuality = 'high'
-  ctx.drawImage(c, 0, 0, k.width, k.height)
-  return k
-}
-
-/**
- * Padatkan satu halaman sampai muat anggarannya, sekecil mungkin kerugiannya.
- *
- * PNG dicoba lebih dulu: garis hitam di atas putih sering justru lebih kecil
- * sekaligus utuh sepenuhnya. Kalau tidak muat, mutu JPEG diturunkan bertahap,
- * dan baru sesudah mutu habis ukuran pikselnya yang dikecilkan — menurunkan
- * mutu lebih dulu menjaga garis tetap tajam, sedangkan mengecilkan piksel
- * lebih dulu membuatnya kabur pada mutu berapa pun.
- */
-function padatkanHalaman(
-  c: HTMLCanvasElement,
-  sasaran: number,
-): { data: string; rupa: RupaGambar; byte: number } {
-  const png = c.toDataURL('image/png')
-  let terkecil = { data: png, rupa: 'PNG' as RupaGambar, byte: byteDataUrl(png) }
-  if (terkecil.byte <= sasaran) return terkecil
-
-  for (const faktor of [1, 0.8, 0.65, 0.5, 0.4]) {
-    const kecil = kecilkanKanvas(c, faktor)
-    for (const mutu of [0.92, 0.85, 0.78, 0.7]) {
-      const jpg = kecil.toDataURL('image/jpeg', mutu)
-      const byte = byteDataUrl(jpg)
-      if (byte <= sasaran) return { data: jpg, rupa: 'JPEG', byte }
-      if (byte < terkecil.byte) terkecil = { data: jpg, rupa: 'JPEG', byte }
-    }
-  }
-  // Tidak ada yang muat: kembalikan yang paling kecil dan biarkan pemanggil
-  // memberitahu bahwa anggarannya terlampaui, bukan diam-diam mengira berhasil.
-  return terkecil
-}
-
 /** Berkas kantor yang bisa diseret ke kanvas; sisanya ditolak dengan jelas. */
 const EKSTENSI_KANTOR = ['doc', 'docx', 'rtf', 'odt', 'wordml', 'ppt', 'pptx', 'odp', 'key', 'pages']
 
@@ -347,7 +293,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         judulTujuan = `Grup · ${grup.name} · ${tanggalPendek(new Date())}`
         idTujuan = grup.sketch_day === hari && (await adaSketsa(grup.sketch_id)) ? grup.sketch_id : null
         if (!idTujuan) {
-          idTujuan = await buatKanvas(judulTujuan)
+          idTujuan = await buatKanvas(judulTujuan, grup.id)
           await x('UPDATE groups SET sketch_id = ?, sketch_day = ? WHERE id = ?', [idTujuan, hari, grup.id])
         }
       } else {
@@ -372,10 +318,16 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       return
     }
     // Pertanyaan yang sudah dibahas: lampirannya sudah ada di kanvas itu.
-    // Membuka lagi hanya kembali ke kanvasnya, tidak menempel halaman baru.
+    // Membuka lagi hanya kembali ke kanvasnya, tidak menempel halaman baru —
+    // tapi penanda ini tetap dikirim (tanpa url) supaya layar tetap dibawa ke
+    // halaman terakhir begitu kanvasnya termuat, bukan cuma saat ada lampiran.
     const sudahDitempel = t.status === 'dibahas'
-    const tempelan = urlLampiran && !sudahDitempel ? { idKanvas: idTujuan, url: urlLampiran, nama: t.name } : null
+    const tempelan =
+      urlLampiran && !sudahDitempel ? { idKanvas: idTujuan, url: urlLampiran, nama: t.name } : { idKanvas: idTujuan, nama: t.name }
     if (idTujuan === idKanvas) {
+      // Kanvas ini sudah terbuka: jumlahHalaman di sini sudah pasti segar,
+      // beda dari kanvas yang baru saja termuat lewat cabang di bawah.
+      if (!tempelan.url) keHalaman(jumlahHalaman - 1)
       await kerjakanTempelan(tempelan)
       return
     }
@@ -384,9 +336,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     useApp.getState().mintaBukaSketsa(idTujuan, judulTujuan)
   }
 
-  /** Tempel foto/PDF pertanyaan ke halaman baru, lalu siap menulis. */
-  async function kerjakanTempelan(tempelan: { url: string; nama: string } | null) {
-    if (tempelan) {
+  /** Tempel foto/PDF pertanyaan (kalau ada) ke halaman baru, lalu siap menulis. */
+  async function kerjakanTempelan(tempelan: { url?: string; nama: string } | null) {
+    if (tempelan?.url) {
       try {
         const r = await fetch(tempelan.url)
         const blob = await r.blob()
@@ -722,19 +674,34 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       setKertas(kertasIni)
       // Pertanyaan murid yang menunggu kanvas ini terbuka: dikerjakan sesudah
       // render pertama, saat ref-ref isi sudah menunjuk ke data yang dimuat.
+      // Jeda tetap (mis. 50ms) pernah dipakai di sini, tapi di tablet yang
+      // memuat kanvas lewat Wi-Fi (bukan disk lokal seperti Mac) itu kadang
+      // tidak cukup — foto sempat tertempel ke state yang belum sinkron dan
+      // hilang tanpa galat saat tertimpa data yang baru selesai dimuat. Dua
+      // requestAnimationFrame menjamin commit render sudah lewat, seberapa
+      // pun lambat perangkatnya, bukan menebak angka yang "biasanya" cukup.
       const tertunda = useApp.getState().tempelanTertunda
-      if (b && tertunda && tertunda.idKanvas === idKanvas) {
+      const bukaUntukBahas = !!(b && tertunda && tertunda.idKanvas === idKanvas)
+      if (bukaUntukBahas) {
         useApp.getState().setTempelanTertunda(null)
-        window.setTimeout(() => void kerjakanTempelan(tertunda), 50)
+        requestAnimationFrame(() => requestAnimationFrame(() => void kerjakanTempelan(tertunda)))
       }
-      setJumlahHalaman(Math.max(1, Math.round(b?.pages ?? 1)))
+      const jumlahHalamanBaru = Math.max(1, Math.round(b?.pages ?? 1))
+      setJumlahHalaman(jumlahHalamanBaru)
       setDisimpan(b?.updated_at ?? null)
       panggang.current = null
-      // Halaman pertama dibawa ke tengah layar dan dimuat penuh tingginya:
-      // membuka sketsa seharusnya memperlihatkan kertasnya, bukan sudut kirinya.
       const k = KERTAS.find((x2) => x2.id === kertasIni)
       const el = wadahRef.current
-      if (k && k.w > 0 && el) {
+      // Sedang membuka kanvas ini untuk membahas pertanyaan yang sudah pernah
+      // dibahas (tanpa lampiran baru): langsung ke halaman terakhir, tempat
+      // pembahasan terakhir kali berhenti — pakai jumlah halaman yang baru
+      // saja dibaca di atas, bukan state React yang belum tentu segar di sini.
+      if (bukaUntukBahas && !tertunda?.url && k && k.w > 0 && jumlahHalamanBaru > 1) {
+        const kh = kotakHalaman(k, jumlahHalamanBaru - 1)
+        v.setTampilan((t) => ({ ...t, y: -kh.y1 * t.skala + 24 }))
+      } else if (k && k.w > 0 && el) {
+        // Halaman pertama dibawa ke tengah layar dan dimuat penuh tingginya:
+        // membuka sketsa seharusnya memperlihatkan kertasnya, bukan sudut kirinya.
         const r = el.getBoundingClientRect()
         const skala = Math.min(1.5, Math.max(0.3, (r.height - 56) / k.h))
         v.setTampilan({ skala, x: (r.width - k.w * skala) / 2, y: 24 })

@@ -64,7 +64,12 @@ export async function daftarKanvas(): Promise<MetaKanvas[]> {
   return q<MetaKanvas>('SELECT * FROM canvases ORDER BY updated_at DESC')
 }
 
-export async function buatKanvas(judul = 'New sketch'): Promise<string> {
+/**
+ * `grupId`: dicap ke baris index-nya (bukan berkas JSON-nya) supaya grup itu
+ * bisa membuka kembali kanvas harian lamanya lewat riwayat — sekali dicap
+ * saat kanvas dibuat, cap ini tidak pernah tertimpa oleh penyimpanan berikutnya.
+ */
+export async function buatKanvas(judul = 'New sketch', grupId?: string): Promise<string> {
   const id = newId('cnv')
   await simpanKanvas({
     id,
@@ -80,6 +85,7 @@ export async function buatKanvas(judul = 'New sketch'): Promise<string> {
     pages: 1,
     updated_at: Date.now(),
   })
+  if (grupId) await x('UPDATE canvases SET group_id = ? WHERE id = ?', [grupId, id])
   return id
 }
 
