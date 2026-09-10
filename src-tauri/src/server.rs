@@ -314,6 +314,7 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/", get(halaman_utama))
         .route("/admin", get(halaman_admin))
         .route("/tv", get(halaman_tv))
+        .route("/api/boot", get(api_boot))
         .route("/api/vault", get(api_vault))
         .route("/api/admin/cek", get(api_admin_cek))
         .route("/api/canvas", get(api_canvas_list))
@@ -575,6 +576,15 @@ async fn halaman_tv(State(hub): State<Arc<Hub>>) -> Response {
 
 async fn aset_lain(State(hub): State<Arc<Hub>>, uri: axum::http::Uri) -> Response {
     balas_aset(&hub.app, uri.path())
+}
+
+/// Berubah tiap kali aplikasi Mac dibuka ulang (baru dibangun, tidak cuma
+/// halaman disegarkan). Tablet/browser membandingkannya secara berkala dan
+/// memuat ulang sendiri kalau berubah — supaya versi baru yang baru dipasang
+/// di Mac tidak diam-diam tertahan di tab lama yang masih membawa kode lama.
+/// Tanpa PIN dengan sengaja: cuma angka acak, tidak membocorkan apa pun.
+async fn api_boot(State(hub): State<Arc<Hub>>) -> Response {
+    Json(json!({ "boot": hub.token_app })).into_response()
 }
 
 /* ── API vault ─────────────────────────────────────────────────────── */

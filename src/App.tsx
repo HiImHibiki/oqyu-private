@@ -64,6 +64,7 @@ export default function App() {
   useAksi()
   usePenjagaWal()
   useBerbagi(siap)
+  usePantauVersi(siap)
 
   if (galat) return <LayarGalat pesan={galat} />
   if (!inTauri && perluAdmin) {
@@ -101,6 +102,41 @@ export default function App() {
       <Toast />
     </>
   )
+}
+
+/**
+ * Tablet/browser bisa tetap membuka tab lamanya sementara Mac-nya sudah
+ * dipasangi versi baru aplikasi — tanpa ini, tab itu diam-diam terus
+ * menjalankan kode lama (ini yang berkali-kali membuat perbaikan yang sudah
+ * dipasang di Mac terasa "belum berhasil" padahal cuma tabnya yang basi).
+ * Dicek berkala; begitu boot id server berubah (Mac dibuka ulang dengan
+ * pemasangan baru), tawarkan muat ulang alih-alih memaksanya diam-diam.
+ */
+function usePantauVersi(siap: boolean) {
+  useEffect(() => {
+    if (!siap || inTauri) return
+    let bootAwal: string | null = null
+    let ditawarkan = false
+    const cek = async () => {
+      if (ditawarkan) return
+      try {
+        const r = await api<{ boot: string }>('/api/boot')
+        if (bootAwal === null) {
+          bootAwal = r.boot
+          return
+        }
+        if (r.boot !== bootAwal) {
+          ditawarkan = true
+          toast('A new version was installed on the Mac.', { label: 'Refresh', jalankan: () => location.reload() })
+        }
+      } catch {
+        // Server sedang tidak terjangkau — coba lagi di siklus berikutnya.
+      }
+    }
+    void cek()
+    const id = window.setInterval(() => void cek(), 45_000)
+    return () => window.clearInterval(id)
+  }, [siap])
 }
 
 /**
