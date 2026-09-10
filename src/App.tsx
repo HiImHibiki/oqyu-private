@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { inTauri, windowLabel } from '@/lib/runtime'
+import { inTauri, sentuh, windowLabel } from '@/lib/runtime'
 import { pasangTema, useTema, type TemaId } from '@/lib/theme'
 import { useApp } from '@/lib/appStore'
 import { getSetting, lipatWal } from '@/lib/db'
@@ -19,10 +19,7 @@ const label = windowLabel()
 // Layar sentuh (tablet Android/iPad): panel dan tombol dibesarkan lewat CSS.
 // Jari butuh sasaran yang lebih lapang daripada kursor, dan di tablet 11 inci
 // panel seukuran desktop terasa seperti mainan.
-if (typeof window !== 'undefined' && !inTauri) {
-  const sentuh = window.matchMedia?.('(pointer: coarse)').matches || /Android|iPad|iPhone/.test(navigator.userAgent)
-  if (sentuh) document.documentElement.classList.add('ex-sentuh')
-}
+if (sentuh) document.documentElement.classList.add('ex-sentuh')
 
 export interface InfoBerbagi {
   url: string

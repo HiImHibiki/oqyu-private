@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useApp } from '@/lib/appStore'
-import { inTauri } from '@/lib/runtime'
+import { inTauri, sentuh as layarSentuh } from '@/lib/runtime'
 import { bukaJendelaBaru } from '@/lib/layar'
 import { useViewport } from '@/lib/useViewport'
 import { jam, kunciTanggal, tanggalPendek } from '@/lib/tanggal'
@@ -345,31 +345,36 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       let gagal = 0
       // Diambil sekaligus (bukan satu-satu) — biasanya semuanya di server
       // lokal yang sama, jadi tidak ada untungnya dibikin berurutan.
+      type HasilTempel = { jenis: 'gambar'; g: { src: string; w: number; h: number } } | { jenis: 'pdf' } | { jenis: 'gagal' }
       const hasil = await Promise.allSettled(
-        tempelan.urls.map(async (url) => {
+        tempelan.urls.map(async (url): Promise<HasilTempel> => {
           const r = await fetch(url)
           const blob = await r.blob()
           const pdf = blob.type.includes('pdf') || url.includes('.pdf')
           if (pdf) {
             await terimaRef.current(new File([blob], `${tempelan.nama}.pdf`, { type: 'application/pdf' }))
-            return null
+            return { jenis: 'pdf' }
           }
-          return keDataUrl(blob)
+          const g = await keDataUrl(blob)
+          return g ? { jenis: 'gambar', g } : { jenis: 'gagal' }
         }),
       )
       for (const r of hasil) {
-        if (r.status === 'fulfilled' && r.value) gambarBaru.push(r.value)
-        else if (r.status === 'rejected') gagal++
+        if (r.status === 'fulfilled' && r.value.jenis === 'gambar') gambarBaru.push(r.value.g)
+        else if (r.status === 'rejected' || r.value.jenis === 'gagal') gagal++
       }
       if (gambarBaru.length) tempelBeberapaKeHalamanBaru(gambarBaru)
       if (gagal) beriTahu(gagal === tempelan.urls.length ? 'Could not fetch the attachment.' : `Could not fetch ${gagal} of the attachments.`)
     }
     // Langsung pena dan panel dilipat: yang ditunggu murid adalah coretan,
     // bukan pemilihan gambar atau bilah alat. Esc atau ⌘. membukanya lagi.
+    // Di tablet rel alatnya sudah kecil dan menetap di bawah — dilipat di
+    // sana cuma berarti mengejar tombol "tampilkan" tiap kali membahas soal,
+    // jadi di situ dibiarkan tetap terbuka.
     setGambarTerpilih(null)
     setAlat(alatTulisTerakhir.current)
     setPanelAlat(null)
-    setMenuTampil(false)
+    if (!layarSentuh) setMenuTampil(false)
     // Umumkan diri sebagai editor aktif supaya layar di ruangan ini berpindah ke sini.
     kirim({ t: 'pandangan', idKanvas, tampilan: tampilanRef.current, layar: ukuranLayarRef.current })
     beriTahu(tempelan ? `${tempelan.nama}'s question is on the canvas — draw away.` : 'Discussing — draw away.')
@@ -3064,6 +3069,23 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     beriTahu('Updated.')
   }
 
+  /** Muat gambar lewat <img>+object URL — cadangan untuk browser yang menolak createImageBitmap pada berkas tertentu. */
+  function muatGambarDariBlob(blob: Blob): Promise<HTMLImageElement> {
+    return new Promise((res, rej) => {
+      const url = URL.createObjectURL(blob)
+      const img = new Image()
+      img.onload = () => {
+        URL.revokeObjectURL(url)
+        res(img)
+      }
+      img.onerror = () => {
+        URL.revokeObjectURL(url)
+        rej(new Error('Unreadable image'))
+      }
+      img.src = url
+    })
+  }
+
   /**
    * Blob gambar → data URL, diperkecil kalau sisinya keterlaluan.
    *
@@ -3072,25 +3094,40 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * tetap ringan tanpa terlihat kehilangan ketajaman di layar.
    */
   async function keDataUrl(blob: Blob): Promise<{ src: string; w: number; h: number } | null> {
-    const bitmap = await createImageBitmap(blob).catch(() => null)
-    if (!bitmap) return null
-    const rasio = Math.min(1, SISI_MAKS / Math.max(bitmap.width, bitmap.height))
-    if (rasio === 1 && blob.type === 'image/png') {
+    let sumber: CanvasImageSource
+    let wAsli: number
+    let hAsli: number
+    let bitmapAsli: ImageBitmap | null = await createImageBitmap(blob).catch(() => null)
+    if (bitmapAsli) {
+      sumber = bitmapAsli
+      wAsli = bitmapAsli.width
+      hAsli = bitmapAsli.height
+    } else {
+      // createImageBitmap menolak sebagian berkas di sebagian browser (mis.
+      // Safari di tablet/iPad) — <img> lewat object URL biasanya masih bisa.
+      const img = await muatGambarDariBlob(blob).catch(() => null)
+      if (!img || !img.naturalWidth) return null
+      sumber = img
+      wAsli = img.naturalWidth
+      hAsli = img.naturalHeight
+    }
+    const rasio = Math.min(1, SISI_MAKS / Math.max(wAsli, hAsli))
+    if (rasio === 1 && blob.type === 'image/png' && bitmapAsli) {
       const src = await new Promise<string>((res) => {
         const fr = new FileReader()
         fr.onload = () => res(String(fr.result))
         fr.readAsDataURL(blob)
       })
-      return { src, w: bitmap.width, h: bitmap.height }
+      return { src, w: wAsli, h: hAsli }
     }
-    const w = Math.round(bitmap.width * rasio)
-    const h = Math.round(bitmap.height * rasio)
+    const w = Math.round(wAsli * rasio)
+    const h = Math.round(hAsli * rasio)
     const c = document.createElement('canvas')
     c.width = w
     c.height = h
     const ctx = c.getContext('2d')
     if (!ctx) return null
-    ctx.drawImage(bitmap, 0, 0, w, h)
+    ctx.drawImage(sumber, 0, 0, w, h)
     return { src: c.toDataURL('image/png'), w, h }
   }
 
@@ -3851,11 +3888,16 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
             }}
           />
         )}
-        <IconButton
-          nama="sembunyi"
-          label="Hide all panels for a clean canvas (Esc or ⌘.)"
-          onClick={() => setMenuTampil(false)}
-        />
+        {/* Di tablet, rel ini menetap di bawah dan selalu terbuka — tidak ada
+            tombol untuk melipatnya sendiri, supaya tidak perlu mengejar
+            tombol "tampilkan" tiap kali mau memakai alat. */}
+        {!layarSentuh && (
+          <IconButton
+            nama="sembunyi"
+            label="Hide all panels for a clean canvas (Esc or ⌘.)"
+            onClick={() => setMenuTampil(false)}
+          />
+        )}
       </div>
 
       {/* Panel isi, muncul di sebelah rel. Tingginya dibatasi tinggi kanvas —
