@@ -275,7 +275,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * foto atau PDF-nya masuk di halaman baru kanvas itu, jadi riwayat satu anak
    * tinggal berurutan di satu tempat, dan anak lain tidak bercampur.
    */
-  async function bahasTanya(t: Tanya, urlLampiran: string[] | null) {
+  async function bahasTanya(t: Tanya, urlLampiran: string[] | null, paksaTempel = false) {
     // Anggota grup berbagi satu kanvas grup; murid tanpa grup punya kanvasnya
     // sendiri. Keduanya dibuat saat pertama dibutuhkan dan dipakai lagi seterusnya.
     let idTujuan: string | null = null
@@ -321,7 +321,10 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     // Membuka lagi hanya kembali ke kanvasnya, tidak menempel halaman baru —
     // tapi penanda ini tetap dikirim (tanpa url) supaya layar tetap dibawa ke
     // halaman terakhir begitu kanvasnya termuat, bukan cuma saat ada lampiran.
-    const sudahDitempel = t.status === 'dibahas'
+    // `paksaTempel` (tombol "sisip ulang" di panel) melewati penjagaan ini —
+    // jalan keluar kalau penempelan pertama gagal dan pertanyaannya sudah
+    // kadung tercatat "dibahas".
+    const sudahDitempel = t.status === 'dibahas' && !paksaTempel
     const tempelan =
       urlLampiran && urlLampiran.length > 0 && !sudahDitempel
         ? { idKanvas: idTujuan, urls: urlLampiran, nama: t.name }
@@ -4333,7 +4336,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
             </>
           )}
 
-          {panelAlat === 'kelas' && <PanelKelas onBahas={(t, url) => void bahasTanya(t, url)} />}
+          {panelAlat === 'kelas' && <PanelKelas onBahas={(t, url, paksaTempel) => void bahasTanya(t, url, paksaTempel)} />}
 
           {panelAlat === 'ekspor' && (
             <>

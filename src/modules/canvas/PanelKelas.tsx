@@ -38,8 +38,10 @@ type Tab = 'antrian' | 'murid' | 'grup'
 export function PanelKelas({
   onBahas,
 }: {
-  /** Guru membuka pertanyaan: URL tiap lampiran (kalau ada) untuk ditempel ke kanvas. */
-  onBahas: (t: Tanya, urlFoto: string[] | null) => void
+  /** Guru membuka pertanyaan: URL tiap lampiran (kalau ada) untuk ditempel ke kanvas.
+   *  `paksaTempel` menempel ulang meski pertanyaan ini sudah pernah "dibahas" — jalan
+   *  keluar manual kalau penempelan pertama gagal (mis. galat baca foto di tablet). */
+  onBahas: (t: Tanya, urlFoto: string[] | null, paksaTempel?: boolean) => void
 }) {
   const [tab, setTab] = useState<Tab>('antrian')
   const [cariMurid, setCariMurid] = useState('')
@@ -107,7 +109,9 @@ export function PanelKelas({
               key={t.id}
               t={t}
               grup={grup.find((g) => g.id === petaGrupMurid.get(t.student_id)) ?? null}
-              onBahas={() => onBahas(t, t.photos.length ? t.photos.map((f) => urlDenganPin(`/api/kelas/foto/${encodeURIComponent(f)}`)) : null)}
+              onBahas={(paksaTempel) =>
+                onBahas(t, t.photos.length ? t.photos.map((f) => urlDenganPin(`/api/kelas/foto/${encodeURIComponent(f)}`)) : null, paksaTempel)
+              }
               onSelesai={() => void ubahTanya(t.id, 'selesai').catch(() => toastGalat('Could not close it.'))}
             />
           ))}
@@ -305,7 +309,7 @@ function BarisTanya({
 }: {
   t: Tanya
   grup: Grup | null
-  onBahas: () => void
+  onBahas: (paksaTempel?: boolean) => void
   onSelesai: () => void
 }) {
   const [, setTick] = useState(0)
@@ -352,7 +356,7 @@ function BarisTanya({
         </div>
       ) : null}
       <div className="flex gap-1">
-        <button className="ex-btn flex-1" data-variant={dibahas ? 'ghost' : 'accent'} style={{ padding: '4px 0' }} onClick={onBahas}>
+        <button className="ex-btn flex-1" data-variant={dibahas ? 'ghost' : 'accent'} style={{ padding: '4px 0' }} onClick={() => onBahas()}>
           <Icon nama="pena" ukuran={13} />{' '}
           {dibahas
             ? 'Back to canvas'
@@ -364,6 +368,20 @@ function BarisTanya({
                   : 'Open on canvas'
               : 'Discuss'}
         </button>
+        {/* Kalau penempelan pertama gagal (mis. galat baca foto di tablet),
+            pertanyaan ini sudah kadung "dibahas" dan tombol di atas cuma
+            berpindah kanvas — jalan ini menempel ulang secara eksplisit. */}
+        {dibahas && t.photos.length > 0 && (
+          <button
+            className="ex-btn"
+            data-variant="ghost"
+            style={{ padding: '4px 8px' }}
+            onClick={() => onBahas(true)}
+            title={t.photos.length > 1 ? `Insert the ${t.photos.length} photos onto the canvas again` : 'Insert the photo onto the canvas again'}
+          >
+            <Icon nama="sisip" ukuran={13} />
+          </button>
+        )}
         <button className="ex-btn" data-variant="ghost" style={{ padding: '4px 8px' }} onClick={onSelesai} title="Done">
           <Icon nama="centang" ukuran={13} />
         </button>
