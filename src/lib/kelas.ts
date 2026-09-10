@@ -16,10 +16,26 @@ export interface Tanya {
   name: string
   room: number
   text: string | null
-  photo: string | null
+  /** Nama berkas di vault/tanya, satu per lampiran (foto-foto, atau satu PDF). */
+  photos: string[]
   status: 'menunggu' | 'dibahas' | 'selesai'
   created_at: number
   handled_at: number | null
+}
+
+/** Baris mentah dari SQLite: `photos` masih JSON, belum diurai. */
+type BarisTanya = Omit<Tanya, 'photos'> & { photos: string | null }
+
+function uraiTanya(b: BarisTanya): Tanya {
+  let photos: string[] = []
+  if (b.photos) {
+    try {
+      photos = JSON.parse(b.photos)
+    } catch {
+      photos = []
+    }
+  }
+  return { ...b, photos }
 }
 
 export interface Murid {
@@ -62,13 +78,15 @@ export interface Grup {
 /* ── Antrian ───────────────────────────────────────────────────────── */
 
 export async function daftarTanya(): Promise<Tanya[]> {
-  return q<Tanya>(
+  const baris = await q<BarisTanya>(
     "SELECT * FROM questions WHERE status != 'selesai' ORDER BY CASE status WHEN 'dibahas' THEN 0 ELSE 1 END, created_at ASC",
   )
+  return baris.map(uraiTanya)
 }
 
 export async function riwayatTanya(batas = 30): Promise<Tanya[]> {
-  return q<Tanya>("SELECT * FROM questions WHERE status = 'selesai' ORDER BY handled_at DESC LIMIT ?", [batas])
+  const baris = await q<BarisTanya>("SELECT * FROM questions WHERE status = 'selesai' ORDER BY handled_at DESC LIMIT ?", [batas])
+  return baris.map(uraiTanya)
 }
 
 /** Lewat server, bukan SQL langsung: HP murid (dan grupnya) harus dikabari. */

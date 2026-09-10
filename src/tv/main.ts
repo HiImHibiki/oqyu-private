@@ -949,42 +949,85 @@ function perbaruiStatusSaya() {
       : `Waiting · <b>#${tanyaSaya.urutan ?? '?'}</b> in the queue`
 }
 
-let fotoData = ''
+/** Paling banyak sekian foto sekaligus — sejalan dengan batas di server. */
+const MAKS_FOTO = 8
+
+let fotoDataList: string[] = []
+let pdfData = ''
 
 function pasangBilahMurid() {
   el('bilah').classList.add('tampil')
   const lembar = el('lembar')
   const teks = el('teks-tanya') as HTMLTextAreaElement
-  const pratinjau = el('pratinjau-foto') as HTMLImageElement
+  const pratinjau = el('pratinjau-foto') as HTMLDivElement
   const pratinjauPdf = el('pratinjau-pdf')
   const berkas = el('berkas-foto') as HTMLInputElement
   const berkasPdf = el('berkas-pdf') as HTMLInputElement
 
-  el('tombol-tangan').onclick = () => void kirimTanya('', '')
+  // Galeri gambar dari foto yang sudah dipilih, masing-masing bisa dilepas
+  // satu-satu sebelum dikirim.
+  function gambarUlangPratinjau() {
+    pratinjau.innerHTML = ''
+    fotoDataList.forEach((src, i) => {
+      const item = document.createElement('div')
+      item.className = 'foto-item'
+      const img = document.createElement('img')
+      img.src = src
+      img.alt = ''
+      const hapus = document.createElement('button')
+      hapus.textContent = '×'
+      hapus.type = 'button'
+      hapus.setAttribute('aria-label', 'Remove this photo')
+      hapus.onclick = () => {
+        fotoDataList.splice(i, 1)
+        gambarUlangPratinjau()
+      }
+      item.append(img, hapus)
+      pratinjau.append(item)
+    })
+    pratinjau.hidden = fotoDataList.length === 0
+  }
+
+  el('tombol-tangan').onclick = () => void kirimTanya('', [])
   el('tombol-tanya').onclick = () => {
     teks.value = ''
-    fotoData = ''
-    pratinjau.hidden = true
+    fotoDataList = []
+    pdfData = ''
+    gambarUlangPratinjau()
     pratinjauPdf.hidden = true
     lembar.classList.add('tampil')
   }
   el('tombol-batal').onclick = () => lembar.classList.remove('tampil')
   el('tombol-foto').onclick = () => berkas.click()
+  // Tanpa "capture" di HTML, HP menawarkan kamera ATAU galeri; "multiple"
+  // mengizinkan memilih beberapa foto sekaligus dari galeri.
   berkas.onchange = async () => {
-    const f = berkas.files?.[0]
+    const berkasTerpilih = Array.from(berkas.files ?? [])
     berkas.value = ''
-    if (!f) return
-    try {
-      fotoData = await perkecilFoto(f)
-      pratinjau.src = fotoData
-      pratinjau.hidden = false
-      pratinjauPdf.hidden = true
-    } catch {
-      tampilkanStatus('Could not read that photo — try taking another one.', true)
+    if (!berkasTerpilih.length) return
+    const sisaSlot = MAKS_FOTO - fotoDataList.length
+    if (sisaSlot <= 0) {
+      tampilkanStatus(`You can attach up to ${MAKS_FOTO} photos.`, true)
+      return
     }
+    const dipakai = berkasTerpilih.slice(0, sisaSlot)
+    let gagal = 0
+    for (const f of dipakai) {
+      try {
+        fotoDataList.push(await perkecilFoto(f))
+      } catch {
+        gagal++
+      }
+    }
+    if (berkasTerpilih.length > dipakai.length) tampilkanStatus(`Only added ${dipakai.length} — max ${MAKS_FOTO} photos.`, true)
+    else if (gagal) tampilkanStatus(gagal === dipakai.length ? 'Could not read those photos — try again.' : `Could not read ${gagal} of the photos.`, true)
+    pdfData = ''
+    pratinjauPdf.hidden = true
+    gambarUlangPratinjau()
   }
   // PDF dikirim apa adanya (maks 40 MB); guru membukanya halaman per halaman
-  // di kanvas khusus anak ini.
+  // di kanvas khusus anak ini. Satu PDF saja per pertanyaan — memilihnya
+  // mengganti foto-foto yang sudah dipilih, bukan menambah.
   el('tombol-pdf').onclick = () => berkasPdf.click()
   berkasPdf.onchange = async () => {
     const f = berkasPdf.files?.[0]
@@ -994,24 +1037,31 @@ function pasangBilahMurid() {
       tampilkanStatus('That PDF is over 40 MB — too big to send.', true)
       return
     }
-    fotoData = await new Promise<string>((res) => {
+    const dibaca = await new Promise<string>((res) => {
       const fr = new FileReader()
       fr.onload = () => res(String(fr.result))
       fr.onerror = () => res('')
       fr.readAsDataURL(f)
     })
-    pratinjau.hidden = true
+    if (!dibaca) {
+      tampilkanStatus('Could not read that PDF — try again.', true)
+      return
+    }
+    pdfData = dibaca
+    fotoDataList = []
+    gambarUlangPratinjau()
     pratinjauPdf.textContent = `📄 ${f.name} · ${(f.size / 1024 / 1024).toFixed(1)} MB`
     pratinjauPdf.hidden = false
   }
   const tombolKirim = el('tombol-kirim') as HTMLButtonElement
   const labelKirim = tombolKirim.textContent
   tombolKirim.onclick = () => {
-    // Lembar (dan fotonya) tetap terbuka kalau gagal — supaya murid tidak
-    // perlu memfoto ulang hanya karena Wi-Fi/tunnel sempat tersendat.
+    // Lembar (dan foto-fotonya) tetap terbuka kalau gagal — supaya murid
+    // tidak perlu memfoto ulang hanya karena Wi-Fi/tunnel sempat tersendat.
     tombolKirim.disabled = true
     tombolKirim.textContent = 'Sending…'
-    void kirimTanya(teks.value, fotoData).then((ok) => {
+    const lampiran = pdfData ? [pdfData] : fotoDataList
+    void kirimTanya(teks.value, lampiran).then((ok) => {
       tombolKirim.disabled = false
       tombolKirim.textContent = labelKirim
       if (ok) lembar.classList.remove('tampil')
@@ -1322,12 +1372,21 @@ function kunciTombol(detik: number) {
   timerKunci = window.setInterval(tik, 1000)
 }
 
-async function kirimTanya(teks: string, foto: string): Promise<boolean> {
+async function kirimTanya(teks: string, fotos: string[]): Promise<boolean> {
   try {
-    // Foto bisa beberapa ratus KB; lewat Wi-Fi/tunnel yang lemah butuh waktu —
-    // 45 s cukup longgar tapi tetap memberi kabar alih-alih menggantung diam.
-    await api('/api/kelas/tanya', { method: 'POST', json: { murid: muridId, nama: namaSaya, teks, foto }, timeoutMs: 45000 })
-    tampilkanStatus(foto.startsWith('data:application/pdf') ? 'PDF sent.' : foto || teks ? 'Question sent.' : 'Hand raised.')
+    // Foto-foto bisa beberapa ratus KB sampai beberapa MB total; lewat
+    // Wi-Fi/tunnel yang lemah butuh waktu — 45 s cukup longgar tapi tetap
+    // memberi kabar alih-alih menggantung diam.
+    await api('/api/kelas/tanya', { method: 'POST', json: { murid: muridId, nama: namaSaya, teks, fotos }, timeoutMs: 45000 })
+    tampilkanStatus(
+      fotos[0]?.startsWith('data:application/pdf')
+        ? 'PDF sent.'
+        : fotos.length > 1
+          ? `${fotos.length} photos sent.`
+          : fotos.length === 1 || teks
+            ? 'Question sent.'
+            : 'Hand raised.',
+    )
     kunciTombol(20)
     await segarkanSaya()
     return true

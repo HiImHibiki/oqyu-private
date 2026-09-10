@@ -58,6 +58,11 @@
       #lembar button { flex: 1; font: inherit; font-size: 15px; padding: 11px 8px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--ink); }
       #lembar button.utama { background: var(--accent); color: #fff; border-color: var(--accent); }
       #lembar img { max-height: 160px; width: auto; max-width: 100%; border-radius: 8px; border: 1px solid var(--line); align-self: flex-start; }
+      #pratinjau-foto { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
+      #pratinjau-foto[hidden] { display: none; }
+      #pratinjau-foto .foto-item { position: relative; flex: 0 0 auto; }
+      #pratinjau-foto .foto-item img { display: block; height: 90px; max-height: 90px; width: auto; border-radius: 8px; border: 1px solid var(--line); }
+      #pratinjau-foto .foto-item button { position: absolute; top: -6px; right: -6px; width: 22px; height: 22px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); font-size: 14px; line-height: 1; padding: 0; display: flex; align-items: center; justify-content: center; }
 
       #grup { position: absolute; inset: 0; display: none; align-items: flex-end; background: rgba(36, 38, 43, 0.35); }
       #grup.tampil { display: flex; }
@@ -163,15 +168,17 @@
       <div class="isi">
         <strong>Ask the teacher</strong>
         <textarea id="teks-tanya" placeholder="Type your question (optional)…"></textarea>
-        <img id="pratinjau-foto" alt="" hidden />
+        <div id="pratinjau-foto" hidden></div>
         <div id="pratinjau-pdf" hidden style="font-size:14px;color:var(--ink-soft)"></div>
         <div class="baris">
-          <button id="tombol-foto">📷 Photo</button>
+          <button id="tombol-foto">📷 Photos</button>
           <button id="tombol-pdf">📄 PDF</button>
           <button id="tombol-kirim" class="utama">Send</button>
         </div>
         <button id="tombol-batal">Cancel</button>
-        <input id="berkas-foto" type="file" accept="image/*" capture="environment" hidden />
+        <!-- Tanpa "capture": HP menawarkan kamera ATAU galeri, dan "multiple"
+             mengizinkan pilih beberapa foto sekaligus dari galeri. -->
+        <input id="berkas-foto" type="file" accept="image/*" multiple hidden />
         <input id="berkas-pdf" type="file" accept="application/pdf,.pdf" hidden />
       </div>
     </div>

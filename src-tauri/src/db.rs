@@ -66,6 +66,12 @@ pub fn migrations() -> Vec<Migration> {
             sql: "ALTER TABLE canvases ADD COLUMN group_id TEXT;
                   CREATE INDEX IF NOT EXISTS idx_canvases_grup ON canvases(group_id);",
         },
+        Migration {
+            version: 10,
+            description: "pertanyaan boleh bawa beberapa foto sekaligus",
+            kind: MigrationKind::Up,
+            sql: "ALTER TABLE questions ADD COLUMN photos TEXT;",
+        },
     ]
 }
 

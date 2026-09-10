@@ -275,7 +275,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * foto atau PDF-nya masuk di halaman baru kanvas itu, jadi riwayat satu anak
    * tinggal berurutan di satu tempat, dan anak lain tidak bercampur.
    */
-  async function bahasTanya(t: Tanya, urlLampiran: string | null) {
+  async function bahasTanya(t: Tanya, urlLampiran: string[] | null) {
     // Anggota grup berbagi satu kanvas grup; murid tanpa grup punya kanvasnya
     // sendiri. Keduanya dibuat saat pertama dibutuhkan dan dipakai lagi seterusnya.
     let idTujuan: string | null = null
@@ -323,11 +323,13 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     // halaman terakhir begitu kanvasnya termuat, bukan cuma saat ada lampiran.
     const sudahDitempel = t.status === 'dibahas'
     const tempelan =
-      urlLampiran && !sudahDitempel ? { idKanvas: idTujuan, url: urlLampiran, nama: t.name } : { idKanvas: idTujuan, nama: t.name }
+      urlLampiran && urlLampiran.length > 0 && !sudahDitempel
+        ? { idKanvas: idTujuan, urls: urlLampiran, nama: t.name }
+        : { idKanvas: idTujuan, nama: t.name }
     if (idTujuan === idKanvas) {
       // Kanvas ini sudah terbuka: jumlahHalaman di sini sudah pasti segar,
       // beda dari kanvas yang baru saja termuat lewat cabang di bawah.
-      if (!tempelan.url) keHalaman(jumlahHalaman - 1)
+      if (!tempelan.urls) keHalaman(jumlahHalaman - 1)
       await kerjakanTempelan(tempelan)
       return
     }
@@ -336,22 +338,31 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     useApp.getState().mintaBukaSketsa(idTujuan, judulTujuan)
   }
 
-  /** Tempel foto/PDF pertanyaan (kalau ada) ke halaman baru, lalu siap menulis. */
-  async function kerjakanTempelan(tempelan: { url?: string; nama: string } | null) {
-    if (tempelan?.url) {
-      try {
-        const r = await fetch(tempelan.url)
-        const blob = await r.blob()
-        const pdf = blob.type.includes('pdf') || tempelan.url.includes('.pdf')
-        if (pdf) {
-          await terimaRef.current(new File([blob], `${tempelan.nama}.pdf`, { type: 'application/pdf' }))
-        } else {
-          const hasil = await keDataUrl(blob)
-          if (hasil) tempelKeHalamanBaru(hasil.src, hasil.w, hasil.h)
-        }
-      } catch {
-        beriTahu('Could not fetch the attachment.')
+  /** Tempel foto-foto/PDF pertanyaan (kalau ada) ke halaman baru, lalu siap menulis. */
+  async function kerjakanTempelan(tempelan: { urls?: string[]; nama: string } | null) {
+    if (tempelan?.urls?.length) {
+      const gambarBaru: { src: string; w: number; h: number }[] = []
+      let gagal = 0
+      // Diambil sekaligus (bukan satu-satu) — biasanya semuanya di server
+      // lokal yang sama, jadi tidak ada untungnya dibikin berurutan.
+      const hasil = await Promise.allSettled(
+        tempelan.urls.map(async (url) => {
+          const r = await fetch(url)
+          const blob = await r.blob()
+          const pdf = blob.type.includes('pdf') || url.includes('.pdf')
+          if (pdf) {
+            await terimaRef.current(new File([blob], `${tempelan.nama}.pdf`, { type: 'application/pdf' }))
+            return null
+          }
+          return keDataUrl(blob)
+        }),
+      )
+      for (const r of hasil) {
+        if (r.status === 'fulfilled' && r.value) gambarBaru.push(r.value)
+        else if (r.status === 'rejected') gagal++
       }
+      if (gambarBaru.length) tempelBeberapaKeHalamanBaru(gambarBaru)
+      if (gagal) beriTahu(gagal === tempelan.urls.length ? 'Could not fetch the attachment.' : `Could not fetch ${gagal} of the attachments.`)
     }
     // Langsung pena dan panel dilipat: yang ditunggu murid adalah coretan,
     // bukan pemilihan gambar atau bilah alat. Esc atau ⌘. membukanya lagi.
@@ -394,6 +405,63 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     setGambar((g) => [...g, baru])
     gambarRef.current = [...gambarRef.current, baru]
     if (src.length < 700_000) kirim({ t: 'ubah', idKanvas, tambah: { gambar: [baru] } })
+    v.setTampilan((t) => ({ ...t, y: -(y0 - 24) * t.skala + 24 }))
+    jadwalkanSimpan(coretanRef.current)
+  }
+
+  /**
+   * Beberapa foto sekaligus (mis. dari galeri) ditempel ke satu halaman baru,
+   * disusun sebagai kisi — bukan satu per halaman — supaya langsung terlihat
+   * berdampingan dan siap dicoret bareng. Satu foto memakai jalur lama di atas.
+   */
+  function tempelBeberapaKeHalamanBaru(daftar: { src: string; w: number; h: number }[]) {
+    if (daftar.length === 0) return
+    if (daftar.length === 1) {
+      tempelKeHalamanBaru(daftar[0].src, daftar[0].w, daftar[0].h)
+      return
+    }
+    const isiAda = kotakSemua(coretanRef.current, gambarRef.current, objekRef.current, teksRef.current)
+    const kolom = daftar.length <= 4 ? 2 : 3
+    const gap = 16
+    let lebarBlok: number
+    let x0: number
+    let y0: number
+    if (halaman.w > 0) {
+      const slot = halaman.h + JARAK_HALAMAN
+      const indeks = isiAda ? Math.floor(isiAda.y2 / slot) + 1 : 0
+      const k = kotakHalaman(halaman, indeks)
+      lebarBlok = halaman.w * 0.9
+      x0 = k.x1 + (halaman.w - lebarBlok) / 2
+      y0 = k.y1 + 24
+    } else {
+      lebarBlok = 900
+      x0 = 0
+      y0 = isiAda ? isiAda.y2 + 40 : 0
+    }
+    const lebarSel = (lebarBlok - gap * (kolom - 1)) / kolom
+    const baris = Math.ceil(daftar.length / kolom)
+    const tinggiSelTarget = halaman.w > 0 ? (halaman.h * 0.9 - gap * (baris - 1)) / baris : 260
+
+    const baru: Gambar[] = []
+    let y = y0
+    for (let i = 0; i < daftar.length; i += kolom) {
+      const potong = daftar.slice(i, i + kolom)
+      const ditempatkan = potong.map((g) => {
+        const skala = Math.min(lebarSel / g.w, tinggiSelTarget / g.h, 1)
+        return { src: g.src, w: g.w * skala, h: g.h * skala }
+      })
+      const tinggiBaris = Math.max(...ditempatkan.map((g) => g.h))
+      let x = x0
+      for (const g of ditempatkan) {
+        baru.push({ id: newId('img'), layer: lapisan, x: x + (lebarSel - g.w) / 2, y: y + (tinggiBaris - g.h) / 2, w: g.w, h: g.h, src: g.src })
+        x += lebarSel + gap
+      }
+      y += tinggiBaris + gap
+    }
+    setGambar((g) => [...g, ...baru])
+    gambarRef.current = [...gambarRef.current, ...baru]
+    const kecil = baru.filter((g) => g.src.length < 700_000)
+    if (kecil.length) kirim({ t: 'ubah', idKanvas, tambah: { gambar: kecil } })
     v.setTampilan((t) => ({ ...t, y: -(y0 - 24) * t.skala + 24 }))
     jadwalkanSimpan(coretanRef.current)
   }
@@ -696,7 +764,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       // dibahas (tanpa lampiran baru): langsung ke halaman terakhir, tempat
       // pembahasan terakhir kali berhenti — pakai jumlah halaman yang baru
       // saja dibaca di atas, bukan state React yang belum tentu segar di sini.
-      if (bukaUntukBahas && !tertunda?.url && k && k.w > 0 && jumlahHalamanBaru > 1) {
+      if (bukaUntukBahas && !tertunda?.urls?.length && k && k.w > 0 && jumlahHalamanBaru > 1) {
         const kh = kotakHalaman(k, jumlahHalamanBaru - 1)
         v.setTampilan((t) => ({ ...t, y: -kh.y1 * t.skala + 24 }))
       } else if (k && k.w > 0 && el) {

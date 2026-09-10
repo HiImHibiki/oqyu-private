@@ -490,15 +490,19 @@ fn tulis_coretan_murid(id: &str, ops: &[Value]) -> Result<(), String> {
 
 /* ── Pertanyaan ────────────────────────────────────────────────────── */
 
+/// Paling banyak sekian lampiran (foto atau satu PDF) per pertanyaan.
+const MAKS_LAMPIRAN: usize = 8;
+
 #[derive(Deserialize)]
 pub struct Tanya {
     pub murid: String,
     pub nama: String,
     #[serde(default)]
     pub teks: String,
-    /// Data URL JPEG yang sudah diperkecil di HP; boleh kosong (angkat tangan).
+    /// Data URL tiap lampiran (JPEG yang sudah diperkecil di HP, atau satu
+    /// PDF); boleh kosong (angkat tangan), boleh beberapa (galeri, pilih banyak).
     #[serde(default)]
-    pub foto: String,
+    pub fotos: Vec<String>,
 }
 
 pub async fn api_tanya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(t): Json<Tanya>) -> Response {
@@ -553,39 +557,45 @@ pub async fn api_tanya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(t):
             )
             .ok();
         if let Some((status, dibuat)) = &terbuka {
-            if status == "menunggu" && t.teks.trim().is_empty() && t.foto.is_empty() {
+            if status == "menunggu" && t.teks.trim().is_empty() && t.fotos.is_empty() {
                 let urutan: i64 = c
                     .query_row("SELECT COUNT(*) FROM questions WHERE status = 'menunggu' AND created_at < ?1", rusqlite::params![dibuat], |r| r.get(0))
                     .unwrap_or(0);
                 return Err(format!("ANTRE:You're already in the queue, #{}. The teacher will get to you.", urutan + 1));
             }
         }
-        let mut nama_foto: Option<String> = None;
-        if !t.foto.is_empty() {
-            let (mime, bytes) = crate::server::dekode_data_url(&t.foto).ok_or("Attachment is not a data URL.")?;
-            let pdf = mime.contains("pdf");
-            // Foto sudah diperkecil di HP; PDF boleh lebih besar, tapi tetap ada pagarnya.
-            if bytes.len() > if pdf { 40 * 1024 * 1024 } else { 4 * 1024 * 1024 } {
-                return Err(if pdf { "PDF is too large (max 40 MB)." } else { "Photo is too large." }.into());
-            }
-            let ext = if pdf { "pdf" } else if mime.contains("png") { "png" } else { "jpg" };
-            let nama = format!("{id}.{ext}");
+        if t.fotos.len() > MAKS_LAMPIRAN {
+            return Err(format!("Too many attachments — max {MAKS_LAMPIRAN} at a time."));
+        }
+        let mut nama_foto: Vec<String> = Vec::new();
+        if !t.fotos.is_empty() {
             std::fs::create_dir_all(vault::tanya_dir()).map_err(|e| e.to_string())?;
-            std::fs::write(vault::tanya_dir().join(&nama), bytes).map_err(|e| e.to_string())?;
-            nama_foto = Some(nama);
+            for (i, data_url) in t.fotos.iter().enumerate() {
+                let (mime, bytes) = crate::server::dekode_data_url(data_url).ok_or("Attachment is not a data URL.")?;
+                let pdf = mime.contains("pdf");
+                // Foto sudah diperkecil di HP; PDF boleh lebih besar, tapi tetap ada pagarnya.
+                if bytes.len() > if pdf { 40 * 1024 * 1024 } else { 4 * 1024 * 1024 } {
+                    return Err(if pdf { "PDF is too large (max 40 MB)." } else { "One of the photos is too large." }.into());
+                }
+                let ext = if pdf { "pdf" } else if mime.contains("png") { "png" } else { "jpg" };
+                let nama = format!("{id}-{i}.{ext}");
+                std::fs::write(vault::tanya_dir().join(&nama), bytes).map_err(|e| e.to_string())?;
+                nama_foto.push(nama);
+            }
         }
         let teks = t.teks.trim().chars().take(400).collect::<String>();
+        let foto_json = if nama_foto.is_empty() { None } else { Some(serde_json::to_string(&nama_foto).unwrap()) };
         // Satu murid satu pertanyaan terbuka: yang lama ditutup dulu.
         let _ = c.execute(
             "UPDATE questions SET status = 'selesai', handled_at = ?1 WHERE student_id = ?2 AND status != 'selesai'",
             rusqlite::params![kini, t.murid],
         );
         c.execute(
-            "INSERT INTO questions (id, student_id, name, room, text, photo, status, created_at) VALUES (?1, ?2, ?3, 1, ?4, ?5, 'menunggu', ?6)",
-            rusqlite::params![id, t.murid, t.nama.trim().chars().take(40).collect::<String>(), if teks.is_empty() { None } else { Some(teks.clone()) }, nama_foto, kini],
+            "INSERT INTO questions (id, student_id, name, room, text, photos, status, created_at) VALUES (?1, ?2, ?3, 1, ?4, ?5, 'menunggu', ?6)",
+            rusqlite::params![id, t.murid, t.nama.trim().chars().take(40).collect::<String>(), if teks.is_empty() { None } else { Some(teks.clone()) }, foto_json, kini],
         )
         .map_err(|e| e.to_string())?;
-        Ok(json!({ "id": id, "nama": t.nama, "teks": teks, "foto": nama_foto.is_some() }))
+        Ok(json!({ "id": id, "nama": t.nama, "teks": teks, "foto": !nama_foto.is_empty() }))
     })
     .await;
     match hasil {
@@ -802,11 +812,25 @@ pub async fn api_terbaru(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(
 pub fn bersihkan() {
     let Ok(c) = koneksi() else { return };
     let batas = sekarang() - UMUR_FOTO_MS;
-    if let Ok(mut st) = c.prepare("SELECT photo FROM questions WHERE created_at < ?1 AND photo IS NOT NULL") {
-        if let Ok(rows) = st.query_map(rusqlite::params![batas], |r| r.get::<_, String>(0)) {
-            for nama in rows.flatten() {
-                if let Ok(p) = vault::resolve_within(&vault::tanya_dir(), &nama) {
-                    let _ = std::fs::remove_file(p);
+    // `photo` (lama, satu nama) dan `photos` (JSON array) dibersihkan berdua —
+    // baris lama yang belum sempat kedaluwarsa saat fitur ini dipasang tetap kebersih.
+    if let Ok(mut st) = c.prepare("SELECT photo, photos FROM questions WHERE created_at < ?1 AND (photo IS NOT NULL OR photos IS NOT NULL)") {
+        let baris = st.query_map(rusqlite::params![batas], |r| Ok((r.get::<_, Option<String>>(0)?, r.get::<_, Option<String>>(1)?)));
+        if let Ok(baris) = baris {
+            for (lama, daftar_json) in baris.flatten() {
+                if let Some(nama) = lama {
+                    if let Ok(p) = vault::resolve_within(&vault::tanya_dir(), &nama) {
+                        let _ = std::fs::remove_file(p);
+                    }
+                }
+                if let Some(daftar_json) = daftar_json {
+                    if let Ok(daftar) = serde_json::from_str::<Vec<String>>(&daftar_json) {
+                        for nama in daftar {
+                            if let Ok(p) = vault::resolve_within(&vault::tanya_dir(), &nama) {
+                                let _ = std::fs::remove_file(p);
+                            }
+                        }
+                    }
                 }
             }
         }
