@@ -961,7 +961,8 @@ function pasangBilahMurid() {
   const teks = el('teks-tanya') as HTMLTextAreaElement
   const pratinjau = el('pratinjau-foto') as HTMLDivElement
   const pratinjauPdf = el('pratinjau-pdf')
-  const berkas = el('berkas-foto') as HTMLInputElement
+  const berkasKamera = el('berkas-foto') as HTMLInputElement
+  const berkasGaleri = el('berkas-galeri') as HTMLInputElement
   const berkasPdf = el('berkas-pdf') as HTMLInputElement
 
   // Galeri gambar dari foto yang sudah dipilih, masing-masing bisa dilepas
@@ -998,12 +999,10 @@ function pasangBilahMurid() {
     lembar.classList.add('tampil')
   }
   el('tombol-batal').onclick = () => lembar.classList.remove('tampil')
-  el('tombol-foto').onclick = () => berkas.click()
-  // Tanpa "capture" di HTML, HP menawarkan kamera ATAU galeri; "multiple"
-  // mengizinkan memilih beberapa foto sekaligus dari galeri.
-  berkas.onchange = async () => {
-    const berkasTerpilih = Array.from(berkas.files ?? [])
-    berkas.value = ''
+
+  // Dipakai oleh kamera (satu foto) dan galeri (boleh banyak) — sama-sama
+  // berakhir di antrean foto yang sama, siap dikirim bareng.
+  async function tambahFoto(berkasTerpilih: File[]) {
     if (!berkasTerpilih.length) return
     const sisaSlot = MAKS_FOTO - fotoDataList.length
     if (sisaSlot <= 0) {
@@ -1024,6 +1023,22 @@ function pasangBilahMurid() {
     pdfData = ''
     pratinjauPdf.hidden = true
     gambarUlangPratinjau()
+  }
+
+  // Kamera: "capture" di HTML membuka kamera langsung, satu foto tiap ketuk —
+  // bisa diketuk berkali-kali untuk menambah lebih dari satu.
+  el('tombol-foto').onclick = () => berkasKamera.click()
+  berkasKamera.onchange = async () => {
+    const f = berkasKamera.files?.[0]
+    berkasKamera.value = ''
+    if (f) await tambahFoto([f])
+  }
+  // Galeri: tanpa "capture", dengan "multiple" — pilih beberapa foto sekaligus.
+  el('tombol-galeri').onclick = () => berkasGaleri.click()
+  berkasGaleri.onchange = async () => {
+    const berkasTerpilih = Array.from(berkasGaleri.files ?? [])
+    berkasGaleri.value = ''
+    await tambahFoto(berkasTerpilih)
   }
   // PDF dikirim apa adanya (maks 40 MB); guru membukanya halaman per halaman
   // di kanvas khusus anak ini. Satu PDF saja per pertanyaan — memilihnya

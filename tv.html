@@ -171,14 +171,19 @@
         <div id="pratinjau-foto" hidden></div>
         <div id="pratinjau-pdf" hidden style="font-size:14px;color:var(--ink-soft)"></div>
         <div class="baris">
-          <button id="tombol-foto">📷 Photos</button>
+          <button id="tombol-foto">📷 Camera</button>
+          <button id="tombol-galeri">🖼 Gallery</button>
           <button id="tombol-pdf">📄 PDF</button>
-          <button id="tombol-kirim" class="utama">Send</button>
         </div>
+        <button id="tombol-kirim" class="utama">Send</button>
         <button id="tombol-batal">Cancel</button>
-        <!-- Tanpa "capture": HP menawarkan kamera ATAU galeri, dan "multiple"
-             mengizinkan pilih beberapa foto sekaligus dari galeri. -->
-        <input id="berkas-foto" type="file" accept="image/*" multiple hidden />
+        <!-- Dua input terpisah: "capture" pada yang pertama membuka kamera
+             langsung (satu foto); yang kedua tanpa capture tapi dengan
+             "multiple" membuka galeri dengan pilih-banyak. Menggabungkan
+             keduanya ke satu input tidak selalu menawarkan kamera lagi di
+             Android saat "multiple" terpasang. -->
+        <input id="berkas-foto" type="file" accept="image/*" capture="environment" hidden />
+        <input id="berkas-galeri" type="file" accept="image/*" multiple hidden />
         <input id="berkas-pdf" type="file" accept="application/pdf,.pdf" hidden />
       </div>
     </div>
