@@ -8,7 +8,7 @@
  * Mac di depan kelas, atau tablet yang dibawa berkeliling.
  */
 
-import { api, pinTersimpan, namaPerangkat, sesiAktif, simpanPin, simpanSesi } from '@/lib/api'
+import { api as apiTanpaBatas, pinTersimpan, namaPerangkat, sesiAktif, simpanPin, simpanSesi } from '@/lib/api'
 import { dengarkanLangsung, kirim, mulaiSinkron, useSinkron, type PesanLangsung } from '@/lib/sinkron'
 import { bunyi } from '@/lib/kelas'
 import { pilihTujuan, tulisBerkas } from '@/lib/berkas'
@@ -31,6 +31,17 @@ import {
 } from '@/modules/canvas/strokes'
 import { gambarObjek, type Objek } from '@/modules/canvas/objek'
 import { gambarInstrumen, type Instrumen } from '@/modules/canvas/instrumen'
+
+/**
+ * HP murid sering di Wi-Fi lemah atau tunnel yang goyah. Tanpa batas waktu,
+ * satu permintaan yang macet bisa mengunci tombol (mis. "Sending…" tidak
+ * pernah kembali) walau permintaan sebelumnya sudah sukses terkirim — jadi
+ * semua panggilan di halaman ini punya batas waktu bawaan, bisa ditimpa
+ * lewat `timeoutMs` (seperti kirim foto, yang butuh lebih longgar).
+ */
+function api<T>(path: string, init: { method?: string; body?: BodyInit; json?: unknown; timeoutMs?: number } = {}): Promise<T> {
+  return apiTanpaBatas<T>(path, { timeoutMs: 20000, ...init })
+}
 
 interface Tampilan {
   skala: number
