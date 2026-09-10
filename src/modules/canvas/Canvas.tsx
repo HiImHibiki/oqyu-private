@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useApp } from '@/lib/appStore'
+import { api, urlDenganPin } from '@/lib/api'
 import { inTauri, sentuh as layarSentuh } from '@/lib/runtime'
 import { bukaJendelaBaru } from '@/lib/layar'
 import { useViewport } from '@/lib/useViewport'
@@ -275,7 +276,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * foto atau PDF-nya masuk di halaman baru kanvas itu, jadi riwayat satu anak
    * tinggal berurutan di satu tempat, dan anak lain tidak bercampur.
    */
-  async function bahasTanya(t: Tanya, urlLampiran: string[] | null, paksaTempel = false) {
+  async function bahasTanya(t: Tanya, lampiran: string[] | null, paksaTempel = false) {
     // Anggota grup berbagi satu kanvas grup; murid tanpa grup punya kanvasnya
     // sendiri. Keduanya dibuat saat pertama dibutuhkan dan dipakai lagi seterusnya.
     let idTujuan: string | null = null
@@ -326,13 +327,13 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     // kadung tercatat "dibahas".
     const sudahDitempel = t.status === 'dibahas' && !paksaTempel
     const tempelan =
-      urlLampiran && urlLampiran.length > 0 && !sudahDitempel
-        ? { idKanvas: idTujuan, urls: urlLampiran, nama: t.name }
+      lampiran && lampiran.length > 0 && !sudahDitempel
+        ? { idKanvas: idTujuan, lampiran, nama: t.name }
         : { idKanvas: idTujuan, nama: t.name }
     if (idTujuan === idKanvas) {
       // Kanvas ini sudah terbuka: jumlahHalaman di sini sudah pasti segar,
       // beda dari kanvas yang baru saja termuat lewat cabang di bawah.
-      if (!tempelan.urls) keHalaman(jumlahHalaman - 1)
+      if (!tempelan.lampiran) keHalaman(jumlahHalaman - 1)
       await kerjakanTempelan(tempelan)
       return
     }
@@ -341,33 +342,47 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     useApp.getState().mintaBukaSketsa(idTujuan, judulTujuan)
   }
 
-  /** Tempel foto-foto/PDF pertanyaan (kalau ada) ke halaman baru, lalu siap menulis. */
-  async function kerjakanTempelan(tempelan: { urls?: string[]; nama: string } | null) {
-    if (tempelan?.urls?.length) {
-      const gambarBaru: { src: string; w: number; h: number }[] = []
+  /**
+   * Tempel foto-foto/PDF pertanyaan (kalau ada) ke halaman baru, lalu siap menulis.
+   *
+   * Foto dibaca dan dikodekan di server (`/api/kelas/foto-data`), bukan
+   * diambil lewat jaringan lalu didekode di sini — supaya guru pun kalau
+   * membuka dari tablet/browser tidak lagi bergantung pada createImageBitmap
+   * perangkat itu, yang berkali-kali terbukti gagal diam-diam. PDF tetap
+   * lewat fetch biasa (butuh byte utuh untuk pdf.js, bukan bagian yang bermasalah).
+   */
+  async function kerjakanTempelan(tempelan: { lampiran?: string[]; nama: string } | null) {
+    if (tempelan?.lampiran?.length) {
       let gagal = 0
-      // Diambil sekaligus (bukan satu-satu) — biasanya semuanya di server
-      // lokal yang sama, jadi tidak ada untungnya dibikin berurutan.
-      type HasilTempel = { jenis: 'gambar'; g: { src: string; w: number; h: number } } | { jenis: 'pdf' } | { jenis: 'gagal' }
-      const hasil = await Promise.allSettled(
-        tempelan.urls.map(async (url): Promise<HasilTempel> => {
-          const r = await fetch(url)
+      const namaPdf = tempelan.lampiran.filter((n) => n.endsWith('.pdf'))
+      const namaFoto = tempelan.lampiran.filter((n) => !n.endsWith('.pdf'))
+
+      for (const n of namaPdf) {
+        try {
+          const r = await fetch(urlDenganPin(`/api/kelas/foto/${encodeURIComponent(n)}`))
           const blob = await r.blob()
-          const pdf = blob.type.includes('pdf') || url.includes('.pdf')
-          if (pdf) {
-            await terimaRef.current(new File([blob], `${tempelan.nama}.pdf`, { type: 'application/pdf' }))
-            return { jenis: 'pdf' }
-          }
-          const g = await keDataUrl(blob)
-          return g ? { jenis: 'gambar', g } : { jenis: 'gagal' }
-        }),
-      )
-      for (const r of hasil) {
-        if (r.status === 'fulfilled' && r.value.jenis === 'gambar') gambarBaru.push(r.value.g)
-        else if (r.status === 'rejected' || r.value.jenis === 'gagal') gagal++
+          await terimaRef.current(new File([blob], `${tempelan.nama}.pdf`, { type: 'application/pdf' }))
+        } catch {
+          gagal++
+        }
       }
-      if (gambarBaru.length) tempelBeberapaKeHalamanBaru(gambarBaru)
-      if (gagal) beriTahu(gagal === tempelan.urls.length ? 'Could not fetch the attachment.' : `Could not fetch ${gagal} of the attachments.`)
+
+      if (namaFoto.length) {
+        try {
+          const hasil = await api<({ src: string; w: number; h: number } | null)[]>('/api/kelas/foto-data', {
+            method: 'POST',
+            json: { nama: namaFoto },
+            timeoutMs: 30000,
+          })
+          const gambarBaru = hasil.filter((g): g is { src: string; w: number; h: number } => g !== null)
+          gagal += hasil.length - gambarBaru.length
+          if (gambarBaru.length) tempelBeberapaKeHalamanBaru(gambarBaru)
+        } catch {
+          gagal += namaFoto.length
+        }
+      }
+
+      if (gagal) beriTahu(gagal === tempelan.lampiran.length ? 'Could not fetch the attachment.' : `Could not fetch ${gagal} of the attachments.`)
     }
     // Langsung pena dan panel dilipat: yang ditunggu murid adalah coretan,
     // bukan pemilihan gambar atau bilah alat. Esc atau ⌘. membukanya lagi.
@@ -772,7 +787,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       // dibahas (tanpa lampiran baru): langsung ke halaman terakhir, tempat
       // pembahasan terakhir kali berhenti — pakai jumlah halaman yang baru
       // saja dibaca di atas, bukan state React yang belum tentu segar di sini.
-      if (bukaUntukBahas && !tertunda?.urls?.length && k && k.w > 0 && jumlahHalamanBaru > 1) {
+      if (bukaUntukBahas && !tertunda?.lampiran?.length && k && k.w > 0 && jumlahHalamanBaru > 1) {
         const kh = kotakHalaman(k, jumlahHalamanBaru - 1)
         v.setTampilan((t) => ({ ...t, y: -kh.y1 * t.skala + 24 }))
       } else if (k && k.w > 0 && el) {
@@ -4336,7 +4351,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
             </>
           )}
 
-          {panelAlat === 'kelas' && <PanelKelas onBahas={(t, url, paksaTempel) => void bahasTanya(t, url, paksaTempel)} />}
+          {panelAlat === 'kelas' && <PanelKelas onBahas={(t, lampiran, paksaTempel) => void bahasTanya(t, lampiran, paksaTempel)} />}
 
           {panelAlat === 'ekspor' && (
             <>

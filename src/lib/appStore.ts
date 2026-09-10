@@ -10,10 +10,11 @@ import { create } from 'zustand'
 export interface TempelanTertunda {
   /** Sketsa tujuan; dikerjakan begitu kanvas itu selesai dimuat. */
   idKanvas: string
-  /** Kosong/tidak ada berarti tidak ada lampiran baru — cuma penanda "kanvas
-   *  ini baru dibuka untuk dibahas", supaya layar tetap dibawa ke halaman
-   *  terakhirnya. Satu PDF datang sebagai array berisi satu url. */
-  urls?: string[]
+  /** Nama berkas di vault/tanya (bukan URL) — server yang membaca/mengkodekannya,
+   *  klien tinggal menaruh hasilnya (lihat kerjakanTempelan). Kosong/tidak ada
+   *  berarti tidak ada lampiran baru — cuma penanda "kanvas ini baru dibuka
+   *  untuk dibahas", supaya layar tetap dibawa ke halaman terakhirnya. */
+  lampiran?: string[]
   nama: string
 }
 

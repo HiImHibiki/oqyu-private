@@ -29,6 +29,10 @@ futures-util = "0.3"
 rusqlite = { version = "0.32", features = ["bundled"] }
 qrcode = { version = "0.14.1", default-features = false, features = ["svg"] }
 base64 = "0.22"
+# Baca lebar/tinggi foto pertanyaan murid di server, tanpa mendekode penuh —
+# supaya menempel ke kanvas tidak lagi bergantung pada browser (tablet, dll)
+# yang mengambil dan mendekode ulang gambarnya sendiri.
+image = { version = "0.25", default-features = false, features = ["jpeg", "png"] }
 # Akun murid: PBKDF2-HMAC-SHA256 dan garam/token acak.
 sha2 = "0.10"
 hmac = "0.12"

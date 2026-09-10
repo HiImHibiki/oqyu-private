@@ -735,6 +735,50 @@ pub async fn api_foto(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
 }
 
 #[derive(Deserialize)]
+pub struct FotoDataMinta {
+    pub nama: Vec<String>,
+}
+
+/// Data URL + lebar/tinggi tiap foto pertanyaan, dibaca dan dikodekan di sini
+/// (server) alih-alih oleh klien yang membuka panel Class — tablet/browser
+/// yang mengambil fotonya lewat jaringan lalu mendekode ulang sendiri
+/// berkali-kali terbukti tidak stabil (createImageBitmap gagal diam-diam di
+/// sebagian perangkat). Dengan ini klien tinggal menaruh hasilnya ke kanvas,
+/// tanpa fetch atau dekode gambar sama sekali. Urutan hasil sama dengan
+/// urutan `nama`; entri yang gagal dibaca/diurai jadi null.
+pub async fn api_foto_data(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(m): Json<FotoDataMinta>) -> Response {
+    if !sah(&hub, &headers, None) {
+        return tolak();
+    }
+    if !admin_sah(&hub, &headers, None) {
+        return (StatusCode::UNAUTHORIZED, "Admin password required.").into_response();
+    }
+    let hasil = tokio::task::spawn_blocking(move || -> Vec<Value> {
+        m.nama
+            .iter()
+            .map(|n| {
+                let Ok(p) = vault::resolve_within(&vault::tanya_dir(), n) else { return Value::Null };
+                let Ok(bytes) = std::fs::read(&p) else { return Value::Null };
+                let Some((w, h)) = image::ImageReader::new(std::io::Cursor::new(&bytes))
+                    .with_guessed_format()
+                    .ok()
+                    .and_then(|r| r.into_dimensions().ok())
+                else {
+                    return Value::Null;
+                };
+                let mime = if n.ends_with(".png") { "image/png" } else { "image/jpeg" };
+                use base64::Engine;
+                let b64 = base64::engine::general_purpose::STANDARD.encode(&bytes);
+                json!({ "src": format!("data:{mime};base64,{b64}"), "w": w, "h": h })
+            })
+            .collect()
+    })
+    .await
+    .unwrap_or_default();
+    Json(hasil).into_response()
+}
+
+#[derive(Deserialize)]
 pub struct Paham {
     pub murid: String,
 }

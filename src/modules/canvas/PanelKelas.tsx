@@ -38,10 +38,11 @@ type Tab = 'antrian' | 'murid' | 'grup'
 export function PanelKelas({
   onBahas,
 }: {
-  /** Guru membuka pertanyaan: URL tiap lampiran (kalau ada) untuk ditempel ke kanvas.
-   *  `paksaTempel` menempel ulang meski pertanyaan ini sudah pernah "dibahas" — jalan
-   *  keluar manual kalau penempelan pertama gagal (mis. galat baca foto di tablet). */
-  onBahas: (t: Tanya, urlFoto: string[] | null, paksaTempel?: boolean) => void
+  /** Guru membuka pertanyaan: nama berkas tiap lampiran (kalau ada, bukan URL —
+   *  server yang membaca/mengkodekannya) untuk ditempel ke kanvas. `paksaTempel`
+   *  menempel ulang meski pertanyaan ini sudah pernah "dibahas" — jalan keluar
+   *  manual kalau penempelan pertama gagal (mis. galat baca foto di tablet). */
+  onBahas: (t: Tanya, lampiran: string[] | null, paksaTempel?: boolean) => void
 }) {
   const [tab, setTab] = useState<Tab>('antrian')
   const [cariMurid, setCariMurid] = useState('')
@@ -109,9 +110,7 @@ export function PanelKelas({
               key={t.id}
               t={t}
               grup={grup.find((g) => g.id === petaGrupMurid.get(t.student_id)) ?? null}
-              onBahas={(paksaTempel) =>
-                onBahas(t, t.photos.length ? t.photos.map((f) => urlDenganPin(`/api/kelas/foto/${encodeURIComponent(f)}`)) : null, paksaTempel)
-              }
+              onBahas={(paksaTempel) => onBahas(t, t.photos.length ? t.photos : null, paksaTempel)}
               onSelesai={() => void ubahTanya(t.id, 'selesai').catch(() => toastGalat('Could not close it.'))}
             />
           ))}

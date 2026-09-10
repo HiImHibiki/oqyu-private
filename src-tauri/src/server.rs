@@ -329,6 +329,7 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/api/kelas/tanya", axum::routing::post(crate::kelas::api_tanya))
         .route("/api/kelas/ubah", axum::routing::post(crate::kelas::api_ubah_tanya))
         .route("/api/kelas/foto/{nama}", get(crate::kelas::api_foto))
+        .route("/api/kelas/foto-data", axum::routing::post(crate::kelas::api_foto_data))
         .route("/api/kelas/paham", axum::routing::post(crate::kelas::api_paham))
         .route("/api/kelas/izin", axum::routing::post(crate::kelas::api_izin))
         .route("/api/akun/daftar", axum::routing::post(crate::akun::api_daftar))
