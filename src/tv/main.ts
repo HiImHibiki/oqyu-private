@@ -1453,6 +1453,11 @@ async function perkecilFoto(f: File): Promise<string> {
   c.height = Math.round(h * skala)
   const ctx = c.getContext('2d')
   if (!ctx) throw new Error('Canvas unavailable')
+  // Kanvas kosong itu transparan; JPEG tidak punya alpha, jadi tanpa latar
+  // putih di sini, foto dengan transparansi (mis. screenshot PNG dari galeri)
+  // akan keluar hitam di bagian yang tadinya transparan.
+  ctx.fillStyle = '#ffffff'
+  ctx.fillRect(0, 0, c.width, c.height)
   ctx.drawImage(sumber, 0, 0, c.width, c.height)
   const url = c.toDataURL('image/jpeg', 0.72)
   if (!url || url === 'data:,') throw new Error('Could not encode photo')
