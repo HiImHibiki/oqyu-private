@@ -52,13 +52,32 @@ export function PanelKelas({
   const [resetSandi, setResetSandi] = useState('')
   const { data: daftarSketsa } = useData('canvas', daftarKanvas, [])
   const klien = useSinkron((s) => s.klien)
-  const { data: antrian } = useData('kelas', daftarTanya, [])
-  const { data: murid } = useData('kelas', daftarMurid, [])
-  const { data: grup } = useData('kelas', daftarGrup, [])
-  const { data: anggota } = useData('kelas', anggotaGrup, [])
-  const { data: akun } = useData('kelas', daftarAkun, [])
-  const { data: semuaMurid } = useData('kelas', daftarMuridSemua, [])
+  const qAntrian = useData('kelas', daftarTanya, [])
+  const qMurid = useData('kelas', daftarMurid, [])
+  const qGrup = useData('kelas', daftarGrup, [])
+  const qAnggota = useData('kelas', anggotaGrup, [])
+  const qAkun = useData('kelas', daftarAkun, [])
+  const qSemuaMurid = useData('kelas', daftarMuridSemua, [])
+  const { data: antrian } = qAntrian
+  const { data: murid } = qMurid
+  const { data: grup } = qGrup
+  const { data: anggota } = qAnggota
+  const { data: akun } = qAkun
+  const { data: semuaMurid } = qSemuaMurid
   const menungguSetuju = akun.filter((a) => !a.disetujui)
+
+  /**
+   * Pemuatan yang gagal tidak boleh menyamar jadi kelas yang kosong.
+   *
+   * `useData` sudah menyimpan galatnya, tapi panel ini dulu hanya membaca
+   * `data` — yang tetap `[]` saat kueri gagal. Hasilnya guru membaca "No
+   * students yet today" padahal kelasnya penuh, dan satu-satunya petunjuk
+   * bahwa ada yang salah adalah rasa "kok kadang-kadang begini".
+   */
+  const kueri = [qAntrian, qMurid, qGrup, qAnggota, qAkun, qSemuaMurid]
+  const galat = kueri.find((k) => k.galat)?.galat ?? null
+  const memuat = kueri.some((k) => k.memuat)
+  const muatUlangSemua = () => kueri.forEach((k) => k.muatUlang())
 
   const petaGrupMurid = useMemo(() => new Map(anggota.map((a) => [a.student_id, a.group_id])), [anggota])
   const hadir = useMemo(() => new Map(klien.filter((k) => k.murid).map((k) => [k.murid, k])), [klien])
@@ -87,6 +106,23 @@ export function PanelKelas({
         ))}
       </div>
 
+      {galat && (
+        <div className="ex-card flex flex-col gap-1 p-2" style={{ borderColor: 'var(--down)' }}>
+          <span className="ex-label" style={{ color: 'var(--down)' }}>
+            Class data could not be loaded
+          </span>
+          <span style={{ fontSize: 11, color: 'var(--ink-soft)', wordBreak: 'break-word' }}>{galat}</span>
+          <button
+            className="ex-btn self-start"
+            data-variant="ghost"
+            style={{ padding: '3px 8px', fontSize: 11 }}
+            onClick={muatUlangSemua}
+          >
+            Try again
+          </button>
+        </div>
+      )}
+
       {tab === 'antrian' && (
         <div className="flex flex-col gap-1">
           {antrian.length > 1 && (
@@ -100,7 +136,7 @@ export function PanelKelas({
               <Icon nama="silang" ukuran={12} /> Clear queue
             </button>
           )}
-          {antrian.length === 0 && (
+          {antrian.length === 0 && !galat && !memuat && (
             <p className="ex-label" style={{ color: 'var(--ink-faint)' }}>
               No one is waiting. Students raise a hand or send a question from their phone.
             </p>
@@ -148,7 +184,7 @@ export function PanelKelas({
               ))}
             </div>
           )}
-          {murid.length === 0 && (
+          {murid.length === 0 && !galat && !memuat && (
             <p className="ex-label" style={{ color: 'var(--ink-faint)' }}>
               No students yet today. They join from the TV link on their phone.
             </p>
