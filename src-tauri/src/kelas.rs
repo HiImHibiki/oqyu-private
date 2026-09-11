@@ -241,13 +241,54 @@ fn sketsa_murid(c: &rusqlite::Connection, murid: &str) -> Option<String> {
     sendiri.filter(|s| ada(s))
 }
 
+/// Kanvas murid ini, dibuatkan kalau belum ada — kembaliannya
+/// `(kanvas, baru_dibuat)`.
+///
+/// Dulu pembuatan ini hanya terjadi di endpoint izin, jadi sekali berkas
+/// kanvasnya lenyap (terhapus, atau kanvas grup kemarin yang sudah lewat hari)
+/// `sketsa_murid` mengembalikan `None` selamanya. Akibatnya di HP murid tidak
+/// tampak sebagai galat: `coretan_murid` membuang goresannya tanpa suara —
+/// tidak disiarkan ke layar lain, tidak pula disimpan — jadi tulisannya seolah
+/// hilang begitu halaman dimuat ulang. Memulihkannya di sini membuat jalur
+/// menggambar sembuh sendiri.
+fn pastikan_sketsa_murid(c: &rusqlite::Connection, murid: &str) -> Result<(Option<String>, Option<String>), String> {
+    if let Some(id) = sketsa_murid(c, murid) {
+        return Ok((Some(id), None));
+    }
+    let nama: String = c
+        .query_row("SELECT name FROM students WHERE id = ?1", rusqlite::params![murid], |r| r.get(0))
+        .map_err(|_| "Student not found.".to_string())?;
+    // Bergrup → kanvas grup hari ini; sendiri → kanvas pribadi.
+    let grup: Option<(String, String)> = c
+        .query_row(
+            "SELECT g.id, g.name FROM groups g JOIN group_members m ON m.group_id = g.id WHERE m.student_id = ?1 ORDER BY g.sort_order LIMIT 1",
+            rusqlite::params![murid],
+            |r| Ok((r.get(0)?, r.get(1)?)),
+        )
+        .ok();
+    let id = match &grup {
+        Some((gid, gnama)) => {
+            let id = buat_sketsa_kosong(c, &format!("Grup · {gnama} · {}", tanggal_pendek()))?;
+            c.execute("UPDATE groups SET sketch_id = ?1, sketch_day = ?2 WHERE id = ?3", rusqlite::params![id, hari_ini(), gid])
+                .map_err(|e| e.to_string())?;
+            id
+        }
+        None => {
+            let id = buat_sketsa_kosong(c, &format!("Tanya · {nama}"))?;
+            c.execute("UPDATE students SET sketch_id = ?1 WHERE id = ?2", rusqlite::params![id, murid]).map_err(|e| e.to_string())?;
+            id
+        }
+    };
+    Ok((Some(id.clone()), Some(id)))
+}
+
 /// (boleh mencoret?, kanvas yang boleh dicoret).
 pub fn izin_murid(c: &rusqlite::Connection, murid: &str) -> (bool, Option<String>) {
     let boleh: bool = c
         .query_row("SELECT can_draw FROM students WHERE id = ?1", rusqlite::params![murid], |r| r.get::<_, i64>(0))
         .map(|n| n != 0)
         .unwrap_or(false);
-    let sketsa = if boleh { sketsa_murid(c, murid) } else { None };
+    let sketsa = if boleh { pastikan_sketsa_murid(c, murid).map(|(s, _)| s).unwrap_or(None) } else { None };
     (boleh && sketsa.is_some(), sketsa)
 }
 
@@ -345,40 +386,15 @@ pub async fn api_izin(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(z): 
     let boleh = z.boleh;
     let hasil = tokio::task::spawn_blocking(move || -> Result<(Option<String>, Option<String>), String> {
         let c = koneksi()?;
-        let nama: String = c
-            .query_row("SELECT name FROM students WHERE id = ?1", rusqlite::params![murid], |r| r.get(0))
+        // Namanya kini dipakai `pastikan_sketsa_murid`; di sini cukup pagar
+        // bahwa muridnya memang ada sebelum izinnya diubah.
+        c.query_row("SELECT 1 FROM students WHERE id = ?1", rusqlite::params![murid], |_| Ok(()))
             .map_err(|_| "Student not found.".to_string())?;
         c.execute("UPDATE students SET can_draw = ?1 WHERE id = ?2", rusqlite::params![boleh as i64, murid]).map_err(|e| e.to_string())?;
         if !boleh {
             return Ok((None, None));
         }
-        let mut baru = None;
-        let mut sketsa = sketsa_murid(&c, &murid);
-        if sketsa.is_none() {
-            // Bergrup → kanvas grup; sendiri → kanvas pribadi.
-            let grup: Option<(String, String)> = c
-                .query_row(
-                    "SELECT g.id, g.name FROM groups g JOIN group_members m ON m.group_id = g.id WHERE m.student_id = ?1 ORDER BY g.sort_order LIMIT 1",
-                    rusqlite::params![murid],
-                    |r| Ok((r.get(0)?, r.get(1)?)),
-                )
-                .ok();
-            let id = match &grup {
-                Some((gid, gnama)) => {
-                    let id = buat_sketsa_kosong(&c, &format!("Grup · {gnama} · {}", tanggal_pendek()))?;
-                    c.execute("UPDATE groups SET sketch_id = ?1, sketch_day = ?2 WHERE id = ?3", rusqlite::params![id, hari_ini(), gid])
-                        .map_err(|e| e.to_string())?;
-                    id
-                }
-                None => {
-                    let id = buat_sketsa_kosong(&c, &format!("Tanya · {nama}"))?;
-                    c.execute("UPDATE students SET sketch_id = ?1 WHERE id = ?2", rusqlite::params![id, murid]).map_err(|e| e.to_string())?;
-                    id
-                }
-            };
-            baru = Some(id.clone());
-            sketsa = Some(id);
-        }
+        let (sketsa, baru) = pastikan_sketsa_murid(&c, &murid)?;
         Ok((sketsa, baru))
     })
     .await;
@@ -441,15 +457,20 @@ pub fn antre_coretan_murid(hub: Arc<Hub>, id_kanvas: String, ubah: Value) {
 pub fn goresan_milik(id_kanvas: &str, murid: &str) -> std::collections::HashSet<String> {
     let Ok(Some(teks)) = vault::canvas_read(id_kanvas.to_string()) else { return Default::default() };
     let Ok(d) = serde_json::from_str::<Value>(&teks) else { return Default::default() };
-    d["strokes"]
-        .as_array()
-        .map(|s| {
-            s.iter()
-                .filter(|c| c["murid"].as_str() == Some(murid))
-                .filter_map(|c| c["id"].as_str().map(|i| i.to_string()))
-                .collect()
-        })
-        .unwrap_or_default()
+    // Coretan dan bentuk sama-sama bercap `murid`: keduanya perlu dikenali,
+    // kalau tidak bentuk yang ia buat kemarin tak bisa ia hapus hari ini.
+    let bercap = |kunci: &str| -> Vec<String> {
+        d[kunci]
+            .as_array()
+            .map(|s| {
+                s.iter()
+                    .filter(|c| c["murid"].as_str() == Some(murid))
+                    .filter_map(|c| c["id"].as_str().map(|i| i.to_string()))
+                    .collect()
+            })
+            .unwrap_or_default()
+    };
+    bercap("strokes").into_iter().chain(bercap("objects")).collect()
 }
 
 fn tulis_coretan_murid(id: &str, ops: &[Value]) -> Result<(), String> {
@@ -503,11 +524,45 @@ fn tulis_coretan_murid(id: &str, ops: &[Value]) -> Result<(), String> {
             }
         }
     }
+    // Bentuk dari mode shape murid — disatukan ke `objects`, sama seperti
+    // coretan ke `strokes` dan foto ke `images`.
+    if !d["objects"].is_array() {
+        d["objects"] = Value::Array(vec![]);
+    }
+    {
+        let objects = d["objects"].as_array_mut().expect("array");
+        for op in ops {
+            if let Some(hapus) = op["hapus"]["objek"].as_array() {
+                let ids: std::collections::HashSet<&str> = hapus.iter().filter_map(|x| x.as_str()).collect();
+                if !ids.is_empty() {
+                    objects.retain(|o| !o["id"].as_str().map(|i| ids.contains(i)).unwrap_or(false));
+                }
+            }
+            if let Some(tambah) = op["tambah"]["objek"].as_array() {
+                for o in tambah {
+                    let Some(oid) = o["id"].as_str() else { continue };
+                    if let Some(ada) = objects.iter_mut().find(|x| x["id"].as_str() == Some(oid)) {
+                        *ada = o.clone();
+                    } else {
+                        objects.push(o.clone());
+                    }
+                }
+            }
+        }
+    }
     let kini = sekarang();
     d["updated_at"] = json!(kini);
     vault::canvas_write(id.to_string(), d.to_string())?;
     let c = koneksi()?;
-    let _ = c.execute("UPDATE canvases SET updated_at = ?1 WHERE id = ?2", rusqlite::params![kini, id]);
+    // Upsert, bukan UPDATE: baris yang hilang membuat `sketsa_murid` menganggap
+    // kanvasnya tidak ada lagi, dan sejak itu goresan murid dibuang diam-diam.
+    // Judulnya dipertahankan kalau barisnya memang sudah ada.
+    let judul = d["title"].as_str().unwrap_or("Sketch");
+    let _ = c.execute(
+        "INSERT INTO canvases (id, title, updated_at) VALUES (?1, ?2, ?3)
+         ON CONFLICT(id) DO UPDATE SET updated_at = excluded.updated_at",
+        rusqlite::params![id, judul, kini],
+    );
     Ok(())
 }
 

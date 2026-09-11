@@ -973,13 +973,42 @@ fn coretan_murid(
                     && g["src"].as_str().map(|s| s.starts_with("data:image/") && s.len() <= 900_000).unwrap_or(false)
             });
             gambar.truncate(8);
-            if tambah.is_empty() && hapus.is_empty() && gambar.is_empty() {
+            // Bentuk hasil mode shape murid (garis, persegi, bulat). Sama
+            // seperti coretan: dicap namanya supaya ia — dan hanya ia — bisa
+            // menghapus atau mengurungkannya lagi sesudah halaman dimuat ulang.
+            let mut objek: Vec<Value> = v["tambah"]["objek"].as_array().cloned().unwrap_or_default();
+            objek.retain(|o| {
+                o["id"].is_string()
+                    && o["jenis"].is_string()
+                    && o["titik"]
+                        .as_array()
+                        .map(|ts| {
+                            !ts.is_empty()
+                                && ts.len() <= 64
+                                && ts.iter().all(|q| {
+                                    q.as_array().map(|xy| xy.len() == 2 && xy.iter().all(|n| n.is_number())).unwrap_or(false)
+                                })
+                        })
+                        .unwrap_or(false)
+            });
+            objek.truncate(50);
+            for o in &mut objek {
+                if let Some(id) = o["id"].as_str() {
+                    punya.insert(id.to_string());
+                }
+                o["murid"] = Value::String(murid.to_string());
+            }
+            let hapus_objek: Vec<Value> = v["hapus"]["objek"]
+                .as_array()
+                .map(|h| h.iter().filter(|x| x.as_str().map(|s| punya.contains(s)).unwrap_or(false)).cloned().collect())
+                .unwrap_or_default();
+            if tambah.is_empty() && hapus.is_empty() && gambar.is_empty() && objek.is_empty() && hapus_objek.is_empty() {
                 return None;
             }
             json!({
                 "t": "ubah", "idKanvas": kanvas, "src": v.get("src").cloned().unwrap_or(Value::Null),
-                "hapus": { "coretan": hapus, "objek": [] },
-                "tambah": { "coretan": tambah, "objek": [], "gambar": gambar },
+                "hapus": { "coretan": hapus, "objek": hapus_objek },
+                "tambah": { "coretan": tambah, "objek": objek, "gambar": gambar },
             })
         }
         _ => return None,
