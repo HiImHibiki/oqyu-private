@@ -30,7 +30,18 @@ import {
   type Lapisan,
 } from '@/modules/canvas/strokes'
 import { gambarObjek, type Objek } from '@/modules/canvas/objek'
-import { gambarInstrumen, type Instrumen } from '@/modules/canvas/instrumen'
+import {
+  buatInstrumen,
+  gambarInstrumen,
+  kenaInstrumen,
+  kuncianDi,
+  kunciTitik,
+  terapkanSeret,
+  type Instrumen,
+  type Kuncian,
+  type Seretan,
+} from '@/modules/canvas/instrumen'
+import { kenaliBentuk } from '@/modules/canvas/bentuk'
 import { newId } from '@/lib/id'
 
 /**
@@ -111,6 +122,20 @@ let tampilan: Tampilan = { skala: 1, x: 0, y: 0 }
 const goresanHidup = new Map<string, Coretan>()
 let objekPratinjau: Objek | null = null
 let instrumen: Instrumen | null = null
+/**
+ * Penggaris milik murid sendiri — terpisah dari `instrumen` milik guru, yang
+ * datang lewat siaran dan tidak boleh ia geser.
+ */
+let penggarisKu: Instrumen | null = null
+let seretPenggaris: Seretan | null = null
+/** Kuncian tepi penggaris untuk goresan yang sedang ditarik. */
+let kuncianKu: Kuncian | null = null
+/** Mode bentuk: coretan kasar dirapikan jadi garis/kotak/bulat saat diangkat. */
+let bentukAktif = false
+/** Lebih lama dari ini (ms) bukan ketukan lagi, melainkan jari yang menahan. */
+const AMBANG_KETUK_MS = 400
+/** Gestur sentuh berjalan: dipakai mengenali ketukan dua jari (undo). */
+let gesturKetuk: { mulai: number; maksJari: number; bergeser: boolean } | null = null
 let kursor: { x: number; y: number } | null = null
 let kotorDasar = true
 let kotorAktif = true
@@ -260,6 +285,7 @@ function gambarAktif() {
     gambarObjek(ctx, objekPratinjau, warnaToken(objekPratinjau.color), `${Math.max(13, 14 / skala)}px ui-monospace, monospace`)
   }
   if (instrumen) gambarInstrumen(ctx, instrumen, skala)
+  if (penggarisKu) gambarInstrumen(ctx, penggarisKu, skala)
   if (kursor) {
     // Titik pena sebagai penunjuk: murid melihat ke mana guru menunjuk,
     // bukan hanya apa yang sudah ditulis.
@@ -1584,6 +1610,24 @@ function pasangGestur() {
   aktif.addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return
     aktif.setPointerCapture(e.pointerId)
+    // Ketukan dua jari = undo (konvensi Procreate). Dicatat di sini, diputuskan
+    // saat jari terakhir diangkat: yang turun-diam-naik cepat adalah ketukan,
+    // yang bergeser adalah cubit/geser biasa.
+    if (jari.size === 0 && !goresanSaya && !hapusanSaya) {
+      gesturKetuk = { mulai: performance.now(), maksJari: 1, bergeser: false }
+    } else if (gesturKetuk) {
+      gesturKetuk.maksJari = Math.max(gesturKetuk.maksJari, jari.size + 1)
+    }
+    // Pegangan penggaris didahulukan: menyeretnya bukan menggambar.
+    if (modeCoret && penggarisKu && jari.size === 0 && !goresanSaya && !hapusanSaya) {
+      const p = keDunia(e.clientX, e.clientY)
+      const mode = kenaInstrumen(penggarisKu, p, tampilan.skala)
+      if (mode) {
+        seretPenggaris = { mode, awal: p, asal: penggarisKu }
+        gesturKetuk = null
+        return
+      }
+    }
     // Mode coret: satu jari/pena menggambar; jari kedua membatalkan goresan
     // itu dan mengambil alih sebagai cubit/geser.
     if (modeCoret && jari.size === 0 && !goresanSaya && !hapusanSaya) {
@@ -1606,6 +1650,11 @@ function pasangGestur() {
     susun()
   })
   aktif.addEventListener('pointermove', (e) => {
+    if (seretPenggaris) {
+      penggarisKu = terapkanSeret(seretPenggaris, keDunia(e.clientX, e.clientY))
+      kotorAktif = true
+      return
+    }
     if (goresanSaya && goresanSaya.pointer === e.pointerId) {
       lanjutGoresan(e)
       return
@@ -1615,6 +1664,7 @@ function pasangGestur() {
       return
     }
     if (!jari.has(e.pointerId)) return
+    if (gesturKetuk) gesturKetuk.bergeser = true
     jari.set(e.pointerId, { x: e.clientX, y: e.clientY })
     const daftar = Array.from(jari.values())
     if (cubit && daftar.length >= 2) {
@@ -1643,6 +1693,10 @@ function pasangGestur() {
     }
   })
   const lepas = (e: PointerEvent) => {
+    if (seretPenggaris) {
+      seretPenggaris = null
+      return
+    }
     if (goresanSaya && goresanSaya.pointer === e.pointerId) {
       if (e.type === 'pointercancel') batalGoresan()
       else selesaiGoresan()
@@ -1653,6 +1707,15 @@ function pasangGestur() {
       return
     }
     jari.delete(e.pointerId)
+    // Jari terakhir diangkat: dua jari yang cuma menempel sebentar tanpa
+    // bergeser adalah ketukan undo, bukan cubit yang gagal.
+    if (jari.size === 0 && gesturKetuk) {
+      const g = gesturKetuk
+      gesturKetuk = null
+      if (modeCoret && !g.bergeser && g.maksJari === 2 && performance.now() - g.mulai < AMBANG_KETUK_MS) {
+        urungkanKu()
+      }
+    }
     susun()
   }
   aktif.addEventListener('pointerup', lepas)
@@ -1696,7 +1759,7 @@ const milikKu = new Set<string>()
  * Riwayat untuk undo: satu langkah = goresan yang ditambah dan/atau dibuang.
  * Undo menulis balik: yang ditambah dihapus, yang dibuang dikembalikan.
  */
-const riwayatKu: { tambah: Coretan[]; hapus: Coretan[] }[] = []
+const riwayatKu: { tambah: Coretan[]; hapus: Coretan[]; objek?: Objek[] }[] = []
 let bingkaiKirim: number | null = null
 
 /** Goresan ini milik saya? Dari sesi ini, atau bercap id akun saya di berkas. */
@@ -1704,9 +1767,51 @@ function milikSaya(c: Coretan): boolean {
   return milikKu.has(c.id) || (!!muridId && c.murid === muridId)
 }
 
-function catatRiwayat(langkah: { tambah: Coretan[]; hapus: Coretan[] }) {
+function catatRiwayat(langkah: { tambah: Coretan[]; hapus: Coretan[]; objek?: Objek[] }) {
   riwayatKu.push(langkah)
   if (riwayatKu.length > 200) riwayatKu.shift()
+}
+
+/** Urungkan satu langkah saya — dari tombol, atau dari ketukan dua jari. */
+function urungkanKu() {
+  const langkah = riwayatKu.pop()
+  if (!langkah || !sketsa || !idSketsa) return
+  const buang = new Set(langkah.tambah.map((c) => c.id))
+  sketsa.strokes = [...sketsa.strokes.filter((c) => !buang.has(c.id)), ...langkah.hapus]
+  const buangObjek = new Set((langkah.objek ?? []).map((o) => o.id))
+  if (buangObjek.size) sketsa.objects = (sketsa.objects ?? []).filter((o) => !buangObjek.has(o.id))
+  kotorDasar = true
+  kotorAktif = true
+  kirim({
+    t: 'ubah',
+    idKanvas: idSketsa,
+    hapus: { coretan: langkah.tambah.map((c) => c.id), objek: Array.from(buangObjek) },
+    tambah: { coretan: langkah.hapus, objek: [] },
+  })
+}
+
+function setBentuk(nyala: boolean) {
+  bentukAktif = nyala
+  el('coret-bentuk').classList.toggle('aktif', nyala)
+  if (nyala) setAlatCoret('pen')
+}
+
+/**
+ * Penggaris murid: ditaruh di tengah layarnya sendiri, bukan mengikuti guru.
+ * Menggambar di tepinya menghasilkan garis lurus; pegangannya untuk menggeser
+ * dan memutar.
+ */
+function setPenggaris(nyala: boolean) {
+  if (!nyala) {
+    penggarisKu = null
+    seretPenggaris = null
+  } else {
+    const r = aktif.getBoundingClientRect()
+    const tengah = keDunia(r.width / 2, r.height / 2)
+    penggarisKu = buatInstrumen('penggaris', tengah, r.width / tampilan.skala, r.height / tampilan.skala)
+  }
+  el('coret-penggaris').classList.toggle('aktif', nyala)
+  kotorAktif = true
 }
 
 function setAlatCoret(alat: 'pen' | 'hapus') {
@@ -1752,6 +1857,12 @@ function selesaiCoret() {
   if (goresanSaya) selesaiGoresan()
   if (hapusanSaya) selesaiHapus()
   setAlatCoret('pen')
+  // Perkakas murid ikut dibereskan: penggaris yang tertinggal akan tetap
+  // tergambar di layar padahal ia sudah tidak bisa memakainya.
+  setBentuk(false)
+  setPenggaris(false)
+  gesturKetuk = null
+  kuncianKu = null
   modeCoret = false
   document.documentElement.classList.remove('mencoret')
   el('tombol-coret').classList.remove('aktif')
@@ -1855,19 +1966,9 @@ function pasangCoret() {
     await sisipFotoKanvas(berkasTerpilih)
   }
   el('coret-selesai').onclick = selesaiCoret
-  el('coret-undo').onclick = () => {
-    const langkah = riwayatKu.pop()
-    if (!langkah || !sketsa || !idSketsa) return
-    const buang = new Set(langkah.tambah.map((c) => c.id))
-    sketsa.strokes = [...sketsa.strokes.filter((c) => !buang.has(c.id)), ...langkah.hapus]
-    kotorDasar = true
-    kirim({
-      t: 'ubah',
-      idKanvas: idSketsa,
-      hapus: { coretan: langkah.tambah.map((c) => c.id), objek: [] },
-      tambah: { coretan: langkah.hapus, objek: [] },
-    })
-  }
+  el('coret-undo').onclick = urungkanKu
+  el('coret-bentuk').onclick = () => setBentuk(!bentukAktif)
+  el('coret-penggaris').onclick = () => setPenggaris(!penggarisKu)
   el('coret-hapus').onclick = () => setAlatCoret(alatCoret === 'hapus' ? 'pen' : 'hapus')
   const alat = el('alat-coret')
   alat.querySelectorAll<HTMLButtonElement>('button.warna').forEach((b) => {
@@ -1892,7 +1993,10 @@ function keDunia(x: number, y: number): [number, number] {
 
 function mulaiGoresan(e: PointerEvent) {
   if (!sketsa || !idSketsa) return
-  const [x, y] = keDunia(e.clientX, e.clientY)
+  const mentah = keDunia(e.clientX, e.clientY)
+  // Dimulai di tepi penggaris? Seluruh goresan ini ikut tepinya.
+  kuncianKu = penggarisKu ? kuncianDi(penggarisKu, mentah, tampilan.skala) : null
+  const [x, y] = kuncianKu ? kunciTitik(kuncianKu, mentah).q : mentah
   const tekanan = e.pointerType === 'pen' && e.pressure > 0 ? e.pressure : 0.5
   const c: Coretan = {
     id: `sk_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`,
@@ -1917,7 +2021,8 @@ function lanjutGoresan(e: PointerEvent) {
   const c = goresanSaya.c
   const daftar = 'getCoalescedEvents' in e ? e.getCoalescedEvents() : [e]
   for (const ev of daftar.length ? daftar : [e]) {
-    const [x, y] = keDunia(ev.clientX, ev.clientY)
+    const mentah = keDunia(ev.clientX, ev.clientY)
+    const [x, y] = kuncianKu ? kunciTitik(kuncianKu, mentah).q : mentah
     const akhir = c.points[c.points.length - 1]
     if (akhir && Math.hypot(akhir[0] - x, akhir[1] - y) * tampilan.skala < 1.2) continue
     c.points.push([x, y, ev.pointerType === 'pen' && ev.pressure > 0 ? ev.pressure : 0.5])
@@ -1943,11 +2048,39 @@ function jadwalkanKirimGoresan() {
 function selesaiGoresan() {
   const g = goresanSaya
   goresanSaya = null
+  // Kuncian penggaris berlaku per goresan; dibaca dulu, baru dilepas.
+  const terkunci = kuncianKu !== null
+  kuncianKu = null
   if (!g || !sketsa || !idSketsa) return
   goresanHidup.delete(g.c.id)
   if (g.c.points.length < 2) {
     kotorAktif = true
     return
+  }
+  // Mode bentuk: coretan kasar jadi objek rapi. Yang ditarik di tepi penggaris
+  // dibiarkan tinta — kelurusannya sudah dijamin penggarisnya, dan memaksanya
+  // jadi bentuk justru membuang maksud si penggaris.
+  if (bentukAktif && !terkunci && g.c.points.length >= 8) {
+    const tebak = kenaliBentuk(g.c.points, 24 / tampilan.skala)
+    if (tebak) {
+      const o: Objek = {
+        id: newId('obj'),
+        jenis: tebak.jenis,
+        layer: g.c.layer,
+        color: g.c.color,
+        size: Math.max(1.5, g.c.size * 0.55),
+        titik: tebak.titik,
+        putar: tebak.putar,
+      }
+      sketsa.objects = [...(sketsa.objects ?? []), o]
+      milikKu.add(o.id)
+      catatRiwayat({ tambah: [], hapus: [], objek: [o] })
+      kotorDasar = true
+      kotorAktif = true
+      kirim({ t: 'goresan-selesai', idKanvas: idSketsa, id: g.c.id, batal: true })
+      kirim({ t: 'ubah', idKanvas: idSketsa, hapus: { coretan: [], objek: [] }, tambah: { coretan: [], objek: [o] } })
+      return
+    }
   }
   sketsa.strokes.push(g.c)
   milikKu.add(g.c.id)
@@ -1995,6 +2128,7 @@ function selesaiHapus() {
 }
 
 function batalGoresan() {
+  kuncianKu = null
   const g = goresanSaya
   goresanSaya = null
   if (!g) return
