@@ -536,9 +536,9 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const geserSentuh = useRef<{ x: number; y: number; tx: number; ty: number } | null>(null)
   const cubit = useRef<{ jarak: number; tengah: { x: number; y: number }; awal: { skala: number; x: number; y: number } } | null>(null)
   /**
-   * Ketukan dua/tiga jari untuk undo/redo (konvensi Procreate) — tanpa
-   * menyentuh apa pun yang sudah ada di atas: jari yang turun-diam-naik
-   * dengan cepat dan tanpa geser dianggap ketukan, bukan cubit/geser.
+   * Ketukan dua jari untuk undo (konvensi Procreate) — tanpa menyentuh apa
+   * pun yang sudah ada di atas: jari yang turun-diam-naik dengan cepat dan
+   * tanpa geser dianggap ketukan, bukan cubit/geser.
    */
   const posisiTurunJari = useRef(new Map<number, { x: number; y: number }>())
   const gesturKetuk = useRef<{ mulai: number; maksJari: number; bergeser: boolean } | null>(null)
@@ -2300,19 +2300,14 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       posisiTurunJari.current.delete(e.pointerId)
       mulaiGestur()
       // Jari terakhir baru saja terangkat: nilai apakah gesturnya tadi
-      // ketukan dua/tiga jari yang cepat dan tanpa geser (ala Procreate) —
-      // bukan cubit atau geser pandangan.
+      // ketukan dua jari yang cepat dan tanpa geser (ala Procreate) — bukan
+      // cubit atau geser pandangan.
       if (sentuh.current.size === 0 && gesturKetuk.current) {
         const g = gesturKetuk.current
         gesturKetuk.current = null
-        if (!g.bergeser && performance.now() - g.mulai < AMBANG_DURASI_KETUK) {
-          if (g.maksJari === 2) {
-            urungkan()
-            beriTahu('Undo')
-          } else if (g.maksJari === 3) {
-            ulangi()
-            beriTahu('Redo')
-          }
+        if (!g.bergeser && g.maksJari === 2 && performance.now() - g.mulai < AMBANG_DURASI_KETUK) {
+          urungkan()
+          beriTahu('Undo')
         }
       }
       return
