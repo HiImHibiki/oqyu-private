@@ -3448,8 +3448,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   async function imporPdf(berkas: Blob) {
     setSibuk('Reading PDF…')
     try {
-      const pdfjs = await import('pdfjs-dist')
-      const pekerja = (await import('pdfjs-dist/build/pdf.worker.min.mjs?url')).default
+      // Build "legacy": pdf.js sendiri menyediakannya untuk lingkungan tanpa
+      // fitur JavaScript terbaru (lihat README-nya) — WKWebView aplikasi ini
+      // ternyata belum punya Promise.withResolvers maupun Iterator global,
+      // dan build biasa gagal diam-diam dengan galat WebKit yang membingungkan.
+      const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs')
+      const pekerja = (await import('pdfjs-dist/legacy/build/pdf.worker.min.mjs?url')).default
       pdfjs.GlobalWorkerOptions.workerSrc = pekerja
 
       const data = new Uint8Array(await berkas.arrayBuffer())

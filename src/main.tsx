@@ -23,6 +23,18 @@ if (typeof promiseMungkinBelumPunya.withResolvers !== 'function') {
   }
 }
 
+// Sama alasannya: sebagian WKWebView belum punya global `Iterator` (usulan
+// "Iterator Helpers" ES2025) sama sekali. pdf.js sudah membawa pengisi
+// metode-metodenya sendiri (map/filter/drop/dst.) di dalam kodenya sendiri —
+// tapi pengisi itu cuma menambah metode ke `Iterator.prototype` yang SUDAH
+// ADA; kalau globalnya sendiri tidak ada, ia gagal duluan dengan "Can't find
+// variable: Iterator". Kerangka kosong di sini cukup: sisanya pdf.js sendiri
+// yang mengisi.
+const globalMungkinBelumPunyaIterator = globalThis as unknown as { Iterator?: new () => object }
+if (typeof globalMungkinBelumPunyaIterator.Iterator === 'undefined') {
+  globalMungkinBelumPunyaIterator.Iterator = class {}
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
