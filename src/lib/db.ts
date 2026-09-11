@@ -73,14 +73,45 @@ export function db(): Promise<Database> {
   return koneksi
 }
 
+/** Berapa kali kueri diulang saat database terkunci, dan jeda dasarnya (ms). */
+const ULANG_MAKS = 6
+const JEDA_ULANG = 60
+
+/**
+ * Ulangi pekerjaan yang gagal hanya karena database sedang terkunci.
+ *
+ * Berkas ini ditulis dari banyak arah sekaligus: aplikasi memegang
+ * koneksinya sendiri, sementara tiap permintaan HTTP dari HP murid membuka
+ * koneksi baru — dan tiap denyut kehadiran murid adalah satu UPDATE. Di
+ * atasnya, `lipatWal()` sesekali meminta kunci eksklusif.
+ *
+ * Mengulang di sini aman, termasuk untuk tulisan: SQLITE_BUSY berarti
+ * kuncinya tidak didapat, jadi pernyataannya belum sempat berjalan sama
+ * sekali. Dulu `terkunci()` hanya dipakai saat membuka koneksi, dan satu
+ * bentrokan sesaat menggugurkan kuerinya — di layar itu tidak tampak
+ * sebagai galat, melainkan sebagai daftar yang kosong.
+ */
+async function ulangiSaatTerkunci<T>(kerja: () => Promise<T>): Promise<T> {
+  for (let percobaan = 0; ; percobaan++) {
+    try {
+      return await kerja()
+    } catch (e) {
+      if (!terkunci(e) || percobaan >= ULANG_MAKS) throw e
+      await jeda(JEDA_ULANG * (percobaan + 1))
+    }
+  }
+}
+
 /** SELECT. */
 export async function q<T>(sql: string, params: unknown[] = []): Promise<T[]> {
-  if (!inTauri) {
-    const r = await api<{ rows: T[] }>('/api/sql', { method: 'POST', json: { sql, params } })
-    return r.rows
-  }
-  const d = await db()
-  return d.select<T[]>(sql, params)
+  return ulangiSaatTerkunci(async () => {
+    if (!inTauri) {
+      const r = await api<{ rows: T[] }>('/api/sql', { method: 'POST', json: { sql, params } })
+      return r.rows
+    }
+    const d = await db()
+    return d.select<T[]>(sql, params)
+  })
 }
 
 /** SELECT satu baris. */
@@ -91,12 +122,14 @@ export async function q1<T>(sql: string, params: unknown[] = []): Promise<T | nu
 
 /** INSERT / UPDATE / DELETE. */
 export async function x(sql: string, params: unknown[] = []): Promise<void> {
-  if (!inTauri) {
-    await api('/api/sql', { method: 'POST', json: { sql, params } })
-    return
-  }
-  const d = await db()
-  await d.execute(sql, params)
+  await ulangiSaatTerkunci(async () => {
+    if (!inTauri) {
+      await api('/api/sql', { method: 'POST', json: { sql, params } })
+      return
+    }
+    const d = await db()
+    await d.execute(sql, params)
+  })
 }
 
 /* ── settings: key/value sederhana ─────────────────────────────────── */
