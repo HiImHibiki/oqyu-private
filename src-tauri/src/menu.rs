@@ -141,8 +141,33 @@ fn ke_ui(app: &AppHandle, id: &str) {
     let _ = app.emit_to(windows::FOCUS, "ui:menu", id.to_string());
 }
 
+/// Ikon di menu bar: aplikasi tetap melayani TV dan HP murid walau jendelanya
+/// ditutup, jadi harus ada tanda yang terlihat bahwa ia masih hidup — dan satu
+/// jalan kembali ke jendelanya tanpa lewat Dock.
+pub fn buat_tray(app: &AppHandle) -> tauri::Result<()> {
+    use tauri::menu::{Menu, MenuItem, PredefinedMenuItem};
+    use tauri::tray::TrayIconBuilder;
+
+    let buka = MenuItem::with_id(app, "tray:buka", "Buka Exact Canvas", true, None::<&str>)?;
+    let pisah = PredefinedMenuItem::separator(app)?;
+    let keluar = PredefinedMenuItem::quit(app, Some("Keluar"))?;
+    let daftar = Menu::with_items(app, &[&buka, &pisah, &keluar])?;
+
+    let mut b = TrayIconBuilder::with_id("utama").menu(&daftar).tooltip("Exact Canvas");
+    if let Some(ikon) = app.default_window_icon().cloned() {
+        b = b.icon(ikon);
+    }
+    b.on_menu_event(|app, e| tangani(app, e.id().as_ref())).build(app)?;
+    Ok(())
+}
+
 pub fn tangani(app: &AppHandle, id: &str) {
     match id {
+        // Sama dengan "window:focus", tapi dinamai sendiri supaya jelas dari
+        // mana datangnya kalau nanti ada yang perlu dibedakan.
+        "tray:buka" => {
+            let _ = windows::open_window(app.clone(), windows::FOCUS.into(), None);
+        }
         "aksi:vault" => {
             use tauri_plugin_opener::OpenerExt;
             let _ = app.opener().reveal_item_in_dir(vault::root());

@@ -67,6 +67,7 @@ pub fn run() {
             let daftar_menu = menu::buat_menu(&handle)?;
             app.set_menu(daftar_menu)?;
             app.on_menu_event(|app, event| menu::tangani(app, event.id().as_ref()));
+            menu::buat_tray(&handle)?;
             windows::siapkan(&handle)?;
             Ok(())
         })
