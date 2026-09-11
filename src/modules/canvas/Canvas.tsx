@@ -138,6 +138,11 @@ const PETAK = 32
 /** Sisi pegangan ubah-ukuran gambar, dalam piksel layar. */
 const PEGANGAN = 14
 
+/** Ketukan jari untuk undo/redo: geser lebih dari ini batal jadi cubit/pan. */
+const AMBANG_GESER_KETUK = 20
+/** Lebih lama dari ini (ms) dianggap tahan, bukan ketuk. */
+const AMBANG_DURASI_KETUK = 400
+
 /** Sisi terpanjang tangkapan layar yang ditempel; lebih dari ini diperkecil. */
 const SISI_MAKS = 2200
 
@@ -530,6 +535,13 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const sentuh = useRef(new Map<number, { x: number; y: number }>())
   const geserSentuh = useRef<{ x: number; y: number; tx: number; ty: number } | null>(null)
   const cubit = useRef<{ jarak: number; tengah: { x: number; y: number }; awal: { skala: number; x: number; y: number } } | null>(null)
+  /**
+   * Ketukan dua/tiga jari untuk undo/redo (konvensi Procreate) — tanpa
+   * menyentuh apa pun yang sudah ada di atas: jari yang turun-diam-naik
+   * dengan cepat dan tanpa geser dianggap ketukan, bukan cubit/geser.
+   */
+  const posisiTurunJari = useRef(new Map<number, { x: number; y: number }>())
+  const gesturKetuk = useRef<{ mulai: number; maksJari: number; bergeser: boolean } | null>(null)
   /** Kapan pena terakhir menyentuh — telapak yang mendarat sesudahnya diabaikan. */
   const terakhirPena = useRef(0)
   const tampilanRef = useRef(v.tampilan)
@@ -1648,6 +1660,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     if (e.pointerType === 'touch') {
       if (performance.now() - terakhirPena.current < 700 || aktifCoretan.current) return
       e.currentTarget.setPointerCapture(e.pointerId)
+      if (sentuh.current.size === 0) {
+        gesturKetuk.current = { mulai: performance.now(), maksJari: 1, bergeser: false }
+      } else if (gesturKetuk.current) {
+        gesturKetuk.current.maksJari = Math.max(gesturKetuk.current.maksJari, sentuh.current.size + 1)
+      }
+      posisiTurunJari.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
       sentuh.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
       mulaiGestur()
       return
@@ -2037,6 +2055,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     if (e.pointerType === 'touch') {
       if (!sentuh.current.has(e.pointerId)) return
       sentuh.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      if (gesturKetuk.current && !gesturKetuk.current.bergeser) {
+        const td = posisiTurunJari.current.get(e.pointerId)
+        if (td && Math.hypot(e.clientX - td.x, e.clientY - td.y) > AMBANG_GESER_KETUK) {
+          gesturKetuk.current.bergeser = true
+        }
+      }
       const jari = Array.from(sentuh.current.values())
       if (cubit.current && jari.length >= 2) {
         const [a, b] = jari
@@ -2273,7 +2297,24 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const naik = (e: React.PointerEvent<HTMLCanvasElement>) => {
     if (e.pointerType === 'touch') {
       sentuh.current.delete(e.pointerId)
+      posisiTurunJari.current.delete(e.pointerId)
       mulaiGestur()
+      // Jari terakhir baru saja terangkat: nilai apakah gesturnya tadi
+      // ketukan dua/tiga jari yang cepat dan tanpa geser (ala Procreate) —
+      // bukan cubit atau geser pandangan.
+      if (sentuh.current.size === 0 && gesturKetuk.current) {
+        const g = gesturKetuk.current
+        gesturKetuk.current = null
+        if (!g.bergeser && performance.now() - g.mulai < AMBANG_DURASI_KETUK) {
+          if (g.maksJari === 2) {
+            urungkan()
+            beriTahu('Undo')
+          } else if (g.maksJari === 3) {
+            ulangi()
+            beriTahu('Redo')
+          }
+        }
+      }
       return
     }
     if (bingkaiAktif.current !== null) {
