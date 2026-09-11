@@ -213,6 +213,8 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const [coretan, setCoretan] = useState<Coretan[]>([])
   const [gambar, setGambar] = useState<Gambar[]>([])
   const [gambarTerpilih, setGambarTerpilih] = useState<string | null>(null)
+  /** Gambar yang baru saja ditempel — lihat `bisaDipilihGambar`. */
+  const [gambarBaruDitempel, setGambarBaruDitempel] = useState<string | null>(null)
   const [objek, setObjek] = useState<Objek[]>([])
   const [objekTerpilih, setObjekTerpilih] = useState<string | null>(null)
   const [teks, setTeks] = useState<Teks[]>([])
@@ -558,7 +560,19 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const [autoBentuk, setAutoBentuk] = useState(false)
   /** Gambar tempelan (PDF, foto) kebal laso; grafik/tabel tetap bisa dipilih. */
   const [kunciGambar, setKunciGambar] = useState(true)
-  const bisaDipilihGambar = (g: Gambar) => !kunciGambar || !!g.meta
+  /**
+   * Yang baru saja ditempel dikecualikan selama masih terpilih. Tanpa ini,
+   * pesan "Pasted. Drag to move" berbohong: gambarnya digambar lengkap dengan
+   * garis pilihan dan pegangan sudut, tapi laso melewatinya, jadi tak bergeser
+   * sedikit pun. Sekali diklik di luar, ia ikut terkunci seperti tempelan lain.
+   *
+   * Syaratnya dua-duanya, bukan `g.id === gambarTerpilih` saja: pemanggil yang
+   * sudah memegang gambar terpilih (mis. pegangan putar) selalu memenuhi paruh
+   * itu, jadi pengecualiannya akan menelan penjaganya sendiri dan tempelan
+   * terkunci ikut bisa diputar.
+   */
+  const bisaDipilihGambar = (g: Gambar) =>
+    !kunciGambar || !!g.meta || (g.id === gambarBaruDitempel && g.id === gambarTerpilih)
   /** Editor sisipan yang sedang terbuka; `id` terisi saat menyunting yang sudah ada. */
   const [editorGrafik, setEditorGrafik] = useState<{ awal: DefinisiGrafik | null; id: string | null } | null>(null)
   const [editorTabel, setEditorTabel] = useState<{ awal: DefinisiTabel | null; id: string | null } | null>(null)
@@ -1927,6 +1941,10 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     // Mulai menggambar lagi berarti sudah selesai dengan bentuk sebelumnya —
     // titik-titiknya ikut hilang, bukan menggantung di atas coretan baru.
     if (objekTerpilih) setObjekTerpilih(null)
+    // Begitu anotasi dimulai, tempelan yang baru ditaruh kembali jadi alas:
+    // pilihannya dilepas, jadi kuncinya berlaku lagi dan gambarnya tidak
+    // ikut tergeser oleh sentuhan berikutnya.
+    if (gambarTerpilih) setGambarTerpilih(null)
     titikDiam.current = { x: e.clientX, y: e.clientY }
     // Tahan-untuk-bentuk tidak berlaku di tepi instrumen: garisnya sudah garis.
     if (!kuncian) jadwalkanTahan()
@@ -3080,6 +3098,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       }
       setGambar((g) => [...g, baru])
       setGambarTerpilih(baru.id)
+      setGambarBaruDitempel(baru.id)
       setAlat('laso')
       // Layar lain melihat tempelannya sekarang juga; yang sangat besar
       // menyusul lewat berkas supaya tidak menyumbat Wi-Fi 40 HP sekaligus.
@@ -4372,7 +4391,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         <label
           className="ex-label flex items-center gap-2"
           style={{ color: 'var(--ink-soft)' }}
-          title="PDF pages, photos and pasted pictures can't be selected or moved by the lasso — only your annotations are. Turn off to reposition a picture."
+          title="PDF pages, photos and pasted pictures can't be selected or moved by the lasso — only your annotations are. A picture you just added stays draggable until you click away; turn this off to reposition an older one."
         >
           <input
             type="checkbox"
