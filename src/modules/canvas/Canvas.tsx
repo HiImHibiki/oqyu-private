@@ -1722,6 +1722,35 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       }
     }
 
+    // Pegangan gambar terpilih (foto pertanyaan, halaman PDF) — sama seperti
+    // objek di atas, ditangkap lebih dulu apa pun alat yang aktif. Memutar
+    // foto yang salah orientasi atau membetulkan ukuran halaman PDF tidak
+    // seharusnya memutus alur menulis dengan pena hanya untuk ganti ke Laso.
+    const gambarKini = gambar.find((g) => g.id === gambarTerpilih)
+    if (
+      gambarKini &&
+      bisaDipilihGambar(gambarKini) &&
+      (lapisanInfo[gambarKini.layer]?.tampak ?? true) &&
+      !(lapisanInfo[gambarKini.layer]?.kunci ?? false)
+    ) {
+      const [rx, ry] = peganganPutarGambar(gambarKini, v.tampilan.skala)
+      if (Math.hypot(rx - d.x, ry - d.y) <= (TITIK_KENDALI + 4) / v.tampilan.skala) {
+        const poros = porosGambar(gambarKini)
+        seretPutarGambar.current = {
+          id: gambarKini.id,
+          awal: Math.atan2(d.y - poros[1], d.x - poros[0]),
+          sudutAwal: gambarKini.putar ?? 0,
+        }
+        return
+      }
+      const pg = PEGANGAN / v.tampilan.skala
+      const [pgx, pgy] = sudutGambar(gambarKini)[2]
+      if (Math.hypot(pgx - d.x, pgy - d.y) <= pg) {
+        seretGambar.current = { id: gambarKini.id, mode: 'ukur', x: d.x, y: d.y, w: gambarKini.w, h: gambarKini.h }
+        return
+      }
+    }
+
     // Lapisan terkunci menolak goresan baru; yang tersembunyi dimunculkan
     // kembali, karena menggambar ke tempat yang tak terlihat selalu tidak
     // disengaja.
@@ -1811,36 +1840,8 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       }
       setObjekTerpilih(null)
 
-      // Pegangan sudut dari gambar yang sedang terpilih menang atas apa pun
-      // yang ada di bawahnya — itu target paling kecil di layar.
-      const terpilih = gambar.find((g) => g.id === gambarTerpilih)
-      if (terpilih && bisaDipilihGambar(terpilih)) {
-        const [rx, ry] = peganganPutarGambar(terpilih, v.tampilan.skala)
-        if (Math.hypot(rx - d.x, ry - d.y) <= (TITIK_KENDALI + 4) / v.tampilan.skala) {
-          const poros = porosGambar(terpilih)
-          seretPutarGambar.current = {
-            id: terpilih.id,
-            awal: Math.atan2(d.y - poros[1], d.x - poros[0]),
-            sudutAwal: terpilih.putar ?? 0,
-          }
-          return
-        }
-        const p = PEGANGAN / v.tampilan.skala
-        // Sudut kanan bawah gambar, di posisi terlihatnya.
-        const [px, py] = sudutGambar(terpilih)[2]
-        const dalamPegangan = Math.hypot(px - d.x, py - d.y) <= p
-        if (dalamPegangan) {
-          seretGambar.current = {
-            id: terpilih.id,
-            mode: 'ukur',
-            x: d.x,
-            y: d.y,
-            w: terpilih.w,
-            h: terpilih.h,
-          }
-          return
-        }
-      }
+      // Pegangan gambar (putar/ukur) sudah ditangkap lebih dulu di atas, apa
+      // pun alat yang aktif — di sini tinggal urusan pemilihan gambar baru.
 
       // Gambar teratas yang kena, pada lapisan yang terlihat dan tidak terkunci.
       // Saat gambar dikunci, halaman PDF dan foto dilewati: laso jatuh ke
