@@ -38,6 +38,7 @@ import {
   kunciTitik,
   terapkanSeret,
   type Instrumen,
+  type JenisInstrumen,
   type Kuncian,
   type Seretan,
 } from '@/modules/canvas/instrumen'
@@ -123,12 +124,13 @@ const goresanHidup = new Map<string, Coretan>()
 let objekPratinjau: Objek | null = null
 let instrumen: Instrumen | null = null
 /**
- * Penggaris milik murid sendiri — terpisah dari `instrumen` milik guru, yang
- * datang lewat siaran dan tidak boleh ia geser.
+ * Instrumen (penggaris/busur/jangka) milik murid sendiri — terpisah dari
+ * `instrumen` milik guru, yang datang lewat siaran dan tidak boleh ia geser.
+ * Satu saja pada satu waktu, sama seperti di editor guru.
  */
-let penggarisKu: Instrumen | null = null
-let seretPenggaris: Seretan | null = null
-/** Kuncian tepi penggaris untuk goresan yang sedang ditarik. */
+let instrumenKu: Instrumen | null = null
+let seretInstrumenKu: Seretan | null = null
+/** Kuncian tepi/lengkung instrumen untuk goresan yang sedang ditarik. */
 let kuncianKu: Kuncian | null = null
 /** Mode bentuk: coretan kasar dirapikan jadi garis/kotak/bulat saat diangkat. */
 let bentukAktif = false
@@ -285,7 +287,7 @@ function gambarAktif() {
     gambarObjek(ctx, objekPratinjau, warnaToken(objekPratinjau.color), `${Math.max(13, 14 / skala)}px ui-monospace, monospace`)
   }
   if (instrumen) gambarInstrumen(ctx, instrumen, skala)
-  if (penggarisKu) gambarInstrumen(ctx, penggarisKu, skala)
+  if (instrumenKu) gambarInstrumen(ctx, instrumenKu, skala)
   if (kursor) {
     // Titik pena sebagai penunjuk: murid melihat ke mana guru menunjuk,
     // bukan hanya apa yang sudah ditulis.
@@ -1618,12 +1620,12 @@ function pasangGestur() {
     } else if (gesturKetuk) {
       gesturKetuk.maksJari = Math.max(gesturKetuk.maksJari, jari.size + 1)
     }
-    // Pegangan penggaris didahulukan: menyeretnya bukan menggambar.
-    if (modeCoret && penggarisKu && jari.size === 0 && !goresanSaya && !hapusanSaya) {
+    // Pegangan instrumen didahulukan: menyeretnya bukan menggambar.
+    if (modeCoret && instrumenKu && jari.size === 0 && !goresanSaya && !hapusanSaya) {
       const p = keDunia(e.clientX, e.clientY)
-      const mode = kenaInstrumen(penggarisKu, p, tampilan.skala)
+      const mode = kenaInstrumen(instrumenKu, p, tampilan.skala)
       if (mode) {
-        seretPenggaris = { mode, awal: p, asal: penggarisKu }
+        seretInstrumenKu = { mode, awal: p, asal: instrumenKu }
         gesturKetuk = null
         return
       }
@@ -1650,8 +1652,8 @@ function pasangGestur() {
     susun()
   })
   aktif.addEventListener('pointermove', (e) => {
-    if (seretPenggaris) {
-      penggarisKu = terapkanSeret(seretPenggaris, keDunia(e.clientX, e.clientY))
+    if (seretInstrumenKu) {
+      instrumenKu = terapkanSeret(seretInstrumenKu, keDunia(e.clientX, e.clientY))
       kotorAktif = true
       return
     }
@@ -1693,8 +1695,8 @@ function pasangGestur() {
     }
   })
   const lepas = (e: PointerEvent) => {
-    if (seretPenggaris) {
-      seretPenggaris = null
+    if (seretInstrumenKu) {
+      seretInstrumenKu = null
       return
     }
     if (goresanSaya && goresanSaya.pointer === e.pointerId) {
@@ -1797,20 +1799,23 @@ function setBentuk(nyala: boolean) {
 }
 
 /**
- * Penggaris murid: ditaruh di tengah layarnya sendiri, bukan mengikuti guru.
- * Menggambar di tepinya menghasilkan garis lurus; pegangannya untuk menggeser
- * dan memutar.
+ * Instrumen murid: ditaruh di tengah layarnya sendiri, bukan mengikuti guru.
+ * Satu saja pada satu waktu — memasang yang lain melepas yang lama. Menggambar
+ * di tepi/lengkungnya mengunci goresan ke situ; pegangannya untuk menggeser,
+ * memutar, atau mengubah ukurannya.
  */
-function setPenggaris(nyala: boolean) {
-  if (!nyala) {
-    penggarisKu = null
-    seretPenggaris = null
+function setInstrumenKu(jenis: JenisInstrumen | null) {
+  if (!jenis) {
+    instrumenKu = null
+    seretInstrumenKu = null
   } else {
     const r = aktif.getBoundingClientRect()
     const tengah = keDunia(r.width / 2, r.height / 2)
-    penggarisKu = buatInstrumen('penggaris', tengah, r.width / tampilan.skala, r.height / tampilan.skala)
+    instrumenKu = buatInstrumen(jenis, tengah, r.width / tampilan.skala, r.height / tampilan.skala)
   }
-  el('coret-penggaris').classList.toggle('aktif', nyala)
+  el('coret-penggaris').classList.toggle('aktif', jenis === 'penggaris')
+  el('coret-busur').classList.toggle('aktif', jenis === 'busur')
+  el('coret-jangka').classList.toggle('aktif', jenis === 'jangka')
   kotorAktif = true
 }
 
@@ -1857,10 +1862,10 @@ function selesaiCoret() {
   if (goresanSaya) selesaiGoresan()
   if (hapusanSaya) selesaiHapus()
   setAlatCoret('pen')
-  // Perkakas murid ikut dibereskan: penggaris yang tertinggal akan tetap
+  // Perkakas murid ikut dibereskan: instrumen yang tertinggal akan tetap
   // tergambar di layar padahal ia sudah tidak bisa memakainya.
   setBentuk(false)
-  setPenggaris(false)
+  setInstrumenKu(null)
   gesturKetuk = null
   kuncianKu = null
   modeCoret = false
@@ -1968,7 +1973,9 @@ function pasangCoret() {
   el('coret-selesai').onclick = selesaiCoret
   el('coret-undo').onclick = urungkanKu
   el('coret-bentuk').onclick = () => setBentuk(!bentukAktif)
-  el('coret-penggaris').onclick = () => setPenggaris(!penggarisKu)
+  el('coret-penggaris').onclick = () => setInstrumenKu(instrumenKu?.jenis === 'penggaris' ? null : 'penggaris')
+  el('coret-busur').onclick = () => setInstrumenKu(instrumenKu?.jenis === 'busur' ? null : 'busur')
+  el('coret-jangka').onclick = () => setInstrumenKu(instrumenKu?.jenis === 'jangka' ? null : 'jangka')
   el('coret-hapus').onclick = () => setAlatCoret(alatCoret === 'hapus' ? 'pen' : 'hapus')
   const alat = el('alat-coret')
   alat.querySelectorAll<HTMLButtonElement>('button.warna').forEach((b) => {
@@ -1994,8 +2001,8 @@ function keDunia(x: number, y: number): [number, number] {
 function mulaiGoresan(e: PointerEvent) {
   if (!sketsa || !idSketsa) return
   const mentah = keDunia(e.clientX, e.clientY)
-  // Dimulai di tepi penggaris? Seluruh goresan ini ikut tepinya.
-  kuncianKu = penggarisKu ? kuncianDi(penggarisKu, mentah, tampilan.skala) : null
+  // Dimulai di tepi/lengkung instrumen? Seluruh goresan ini ikut kuncian itu.
+  kuncianKu = instrumenKu ? kuncianDi(instrumenKu, mentah, tampilan.skala) : null
   const [x, y] = kuncianKu ? kunciTitik(kuncianKu, mentah).q : mentah
   const tekanan = e.pointerType === 'pen' && e.pressure > 0 ? e.pressure : 0.5
   const c: Coretan = {
