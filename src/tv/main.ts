@@ -42,7 +42,7 @@ import {
   type Kuncian,
   type Seretan,
 } from '@/modules/canvas/instrumen'
-import { kenaliBentuk } from '@/modules/canvas/bentuk'
+import { AMBANG_DIAM, JEDA_TAHAN, kenaliBentuk } from '@/modules/canvas/bentuk'
 import { newId } from '@/lib/id'
 
 /**
@@ -134,6 +134,15 @@ let seretInstrumenKu: Seretan | null = null
 let kuncianKu: Kuncian | null = null
 /** Mode bentuk: coretan kasar dirapikan jadi garis/kotak/bulat saat diangkat. */
 let bentukAktif = false
+/**
+ * Tahan-untuk-bentuk: aktif selalu, seperti di editor guru — tidak perlu
+ * menyalakan mode apa pun dulu. Menahan pena diam sebentar di tengah goresan
+ * mengunci pratinjau bentuknya; goresan yang dikuncikan ke tepi instrumen
+ * dikecualikan, karena kelurusannya sudah dijamin instrumen itu.
+ */
+let bentukSnapKu: Objek | null = null
+let timerTahanKu: number | null = null
+let titikDiamKu: { x: number; y: number } | null = null
 /** Lebih lama dari ini (ms) bukan ketukan lagi, melainkan jari yang menahan. */
 const AMBANG_KETUK_MS = 400
 /** Gestur sentuh berjalan: dipakai mengenali ketukan dua jari (undo). */
@@ -282,7 +291,13 @@ function gambarAktif() {
   ctx.save()
   ctx.translate(x, y)
   ctx.scale(skala, skala)
-  for (const c of goresanHidup.values()) if (c.points.length > 1) gambarCoretan(ctx, c)
+  for (const c of goresanHidup.values()) {
+    if (bentukSnapKu && goresanSaya && c.id === goresanSaya.c.id) continue
+    if (c.points.length > 1) gambarCoretan(ctx, c)
+  }
+  if (bentukSnapKu) {
+    gambarObjek(ctx, bentukSnapKu, warnaToken(bentukSnapKu.color), `${Math.max(13, 14 / skala)}px ui-monospace, monospace`)
+  }
   if (objekPratinjau) {
     gambarObjek(ctx, objekPratinjau, warnaToken(objekPratinjau.color), `${Math.max(13, 14 / skala)}px ui-monospace, monospace`)
   }
@@ -2018,12 +2033,49 @@ function mulaiGoresan(e: PointerEvent) {
   }
   goresanSaya = { c, pointer: e.pointerId, terkirim: 0, layar: { x: e.clientX, y: e.clientY } }
   goresanHidup.set(c.id, c)
+  titikDiamKu = { x: e.clientX, y: e.clientY }
+  // Tahan-untuk-bentuk tidak berlaku di tepi/lengkung instrumen: bentuknya
+  // sudah dijamin instrumen itu.
+  if (!kuncianKu) jadwalkanTahanKu()
   kotorAktif = true
   jadwalkanKirimGoresan()
 }
 
+/** Mulai hitung mundur diam; dipanggil ulang tiap kali tangan bergerak. */
+function jadwalkanTahanKu() {
+  batalTahanKu()
+  timerTahanKu = window.setTimeout(kunciBentukKu, JEDA_TAHAN)
+}
+
+function batalTahanKu() {
+  if (timerTahanKu !== null) window.clearTimeout(timerTahanKu)
+  timerTahanKu = null
+}
+
+/** Pena murid sudah diam cukup lama — coba baca goresannya sebagai bentuk. */
+function kunciBentukKu() {
+  timerTahanKu = null
+  const g = goresanSaya
+  if (!g) return
+  const tebak = kenaliBentuk(g.c.points, 24 / tampilan.skala)
+  if (!tebak) return
+  bentukSnapKu = {
+    id: newId('obj'),
+    jenis: tebak.jenis,
+    layer: g.c.layer,
+    color: g.c.color,
+    size: Math.max(1.5, g.c.size * 0.55),
+    titik: tebak.titik,
+    putar: tebak.putar,
+  }
+  kotorAktif = true
+}
+
 function lanjutGoresan(e: PointerEvent) {
   if (!goresanSaya) return
+  // Bentuk yang sudah terkunci bertahan: tangan yang bergeser sedikit
+  // sesudahnya bukan pembatalan, cuma tangan yang bergeser.
+  if (bentukSnapKu) return
   goresanSaya.layar = { x: e.clientX, y: e.clientY }
   const c = goresanSaya.c
   const daftar = 'getCoalescedEvents' in e ? e.getCoalescedEvents() : [e]
@@ -2033,6 +2085,14 @@ function lanjutGoresan(e: PointerEvent) {
     const akhir = c.points[c.points.length - 1]
     if (akhir && Math.hypot(akhir[0] - x, akhir[1] - y) * tampilan.skala < 1.2) continue
     c.points.push([x, y, ev.pointerType === 'pen' && ev.pressure > 0 ? ev.pressure : 0.5])
+  }
+  // Diukur di piksel layar, bukan dunia: yang dinilai adalah tangan yang
+  // berhenti, dan itu tidak berubah artinya saat kanvas di-zoom.
+  const diam = titikDiamKu
+  const bergeser = !diam || Math.hypot(e.clientX - diam.x, e.clientY - diam.y) > AMBANG_DIAM
+  if (bergeser && !kuncianKu) {
+    titikDiamKu = { x: e.clientX, y: e.clientY }
+    jadwalkanTahanKu()
   }
   kotorAktif = true
   jadwalkanKirimGoresan()
@@ -2052,14 +2112,35 @@ function jadwalkanKirimGoresan() {
   })
 }
 
+/** Goresan kasar `c` diganti objek `o` yang sudah rapi: coretan dibuang total. */
+function komitBentukKu(c: Coretan, o: Objek) {
+  if (!sketsa || !idSketsa) return
+  sketsa.objects = [...(sketsa.objects ?? []), o]
+  milikKu.add(o.id)
+  catatRiwayat({ tambah: [], hapus: [], objek: [o] })
+  kotorDasar = true
+  kotorAktif = true
+  kirim({ t: 'goresan-selesai', idKanvas: idSketsa, id: c.id, batal: true })
+  kirim({ t: 'ubah', idKanvas: idSketsa, hapus: { coretan: [], objek: [] }, tambah: { coretan: [], objek: [o] } })
+}
+
 function selesaiGoresan() {
   const g = goresanSaya
   goresanSaya = null
+  batalTahanKu()
+  titikDiamKu = null
+  const snap = bentukSnapKu
+  bentukSnapKu = null
   // Kuncian penggaris berlaku per goresan; dibaca dulu, baru dilepas.
   const terkunci = kuncianKu !== null
   kuncianKu = null
   if (!g || !sketsa || !idSketsa) return
   goresanHidup.delete(g.c.id)
+  // Tahan-untuk-bentuk sudah mengunci pratinjaunya sebelum pena terangkat.
+  if (snap) {
+    komitBentukKu(g.c, snap)
+    return
+  }
   if (g.c.points.length < 2) {
     kotorAktif = true
     return
@@ -2079,13 +2160,7 @@ function selesaiGoresan() {
         titik: tebak.titik,
         putar: tebak.putar,
       }
-      sketsa.objects = [...(sketsa.objects ?? []), o]
-      milikKu.add(o.id)
-      catatRiwayat({ tambah: [], hapus: [], objek: [o] })
-      kotorDasar = true
-      kotorAktif = true
-      kirim({ t: 'goresan-selesai', idKanvas: idSketsa, id: g.c.id, batal: true })
-      kirim({ t: 'ubah', idKanvas: idSketsa, hapus: { coretan: [], objek: [] }, tambah: { coretan: [], objek: [o] } })
+      komitBentukKu(g.c, o)
       return
     }
   }
@@ -2136,6 +2211,9 @@ function selesaiHapus() {
 
 function batalGoresan() {
   kuncianKu = null
+  batalTahanKu()
+  titikDiamKu = null
+  bentukSnapKu = null
   const g = goresanSaya
   goresanSaya = null
   if (!g) return
