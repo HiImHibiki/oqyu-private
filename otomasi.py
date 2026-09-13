@@ -357,6 +357,18 @@ def _lampirkan(s, berkas, batas=120):
     raise RuntimeError('Gemini tidak selesai memproses foto dalam batas waktu')
 
 
+def _kelas_henti():
+    """Kelas galat penghentian, diambil malas supaya otomasi tidak mengimpor buat."""
+    try:
+        import buat
+        return buat.Dihentikan
+    except Exception:
+        return ()
+
+
+_HENTI_KELAS = _kelas_henti()
+
+
 class Ditolak(RuntimeError):
     """Gemini menjawab dengan penolakan, bukan dengan isi."""
 
@@ -397,15 +409,17 @@ def _bingkai(perintah, ke):
 
 
 def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=2, lampiran=None,
-                 mode=None):
+                 mode=None, henti=None):
     """Kirim ke Gemini, dengan beberapa cara membujuk bila ditolak."""
     galat_akhir = None
     for ke in range(ulang + 1):
         try:
             return _tanya_sekali(_bingkai(perintah, ke), batas, stabil, lapor, lampiran,
-                                 mode or MODE_BAKU[min(ke, len(MODE_BAKU) - 1)])
+                                 mode or MODE_BAKU[min(ke, len(MODE_BAKU) - 1)], henti)
         except BelumMasuk:
             raise
+        except _HENTI_KELAS:
+            raise                      # permintaan berhenti bukan kegagalan
         except Exception as e:
             galat_akhir = e
             if ke >= ulang:
@@ -458,11 +472,17 @@ TEGURAN = (
 )
 
 
-def _panen(s, batas, stabil, lapor=None):
-    """Tunggu Gemini selesai menulis, kembalikan teks jawabannya apa adanya."""
+def _panen(s, batas, stabil, lapor=None, henti=None):
+    """Tunggu Gemini selesai menulis, kembalikan teks jawabannya apa adanya.
+
+    henti: fungsi tanpa argumen yang dipanggil tiap putaran. Kalau ia melempar,
+    penantian berhenti di situ — ini tahap terlama, jadi tombol berhenti harus
+    berlaku di sini, bukan cuma di batas antar langkah.
+    """
     t0, terakhir, sejak = time.time(), '', None
     while time.time() - t0 < batas:
         time.sleep(2)
+        if henti: henti()
         k = s.evaluasi(JS_BACA) or ''
         if k == 'KOSONG': continue
         sibuk = k.startswith('SIBUK:')
@@ -478,7 +498,7 @@ def _panen(s, batas, stabil, lapor=None):
 
 
 def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None, lampiran=None,
-                  mode=None):
+                  mode=None, henti=None):
     perintah = perintah + BUNGKUS
     s = _sesi(URL_GEMINI, 'gemini.google.com/app')
     try:
@@ -508,12 +528,12 @@ def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None, lampiran=None,
         # mengirim ulang perintah 8.000 karakter dari nol itu mahal dan lambat,
         # padahal Gemini masih mengingat permintaannya — satu kalimat pelurus
         # biasanya cukup, dan ongkosnya hanya beberapa detik.
-        teks = _panen(s, batas, stabil, lapor)
+        teks = _panen(s, batas, stabil, lapor, henti)
         for pelurus in TEGURAN:
             if not (teks and PENOLAKAN.search(teks[:400])):
                 break
             _kirim(s, pelurus)
-            teks = _panen(s, batas, stabil, lapor)
+            teks = _panen(s, batas, stabil, lapor, henti)
         return _periksa(teks)
     finally:
         s.tutup()

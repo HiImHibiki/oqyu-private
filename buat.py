@@ -106,6 +106,39 @@ class Antrean:
 
 ANTREAN = Antrean()
 
+# Tugas yang diminta berhenti oleh pemakainya. Dibuat terpisah dari antrean
+# karena sifatnya lain: antrean membatalkan yang BELUM mulai, sedangkan ini
+# menghentikan yang SEDANG berjalan.
+#
+# Penghentiannya bekerja sama, bukan paksa: tugas memeriksa tanda ini di
+# batas-batas langkah dan saat menunggu Gemini. Membunuh utasnya di tengah
+# jalan akan meninggalkan tab Chrome dan berkas separuh jadi, dan itu justru
+# merepotkan pemakaian berikutnya.
+HENTI = set()
+
+
+class Dihentikan(RuntimeError):
+    """Pemakainya menekan tombol berhenti."""
+
+
+def minta_henti(jid):
+    """Tandai satu tugas untuk berhenti. True bila tugasnya memang ada."""
+    if ANTREAN.batalkan(jid):
+        return True
+    with KUNCI:
+        t = TUGAS.get(jid)
+        if not t or t.get('selesai'):
+            return False
+    HENTI.add(jid)
+    return True
+
+
+def periksa_henti(jid):
+    """Lempar Dihentikan bila tugas ini diminta berhenti."""
+    if jid in HENTI:
+        HENTI.discard(jid)
+        raise Dihentikan('Dihentikan atas permintaan Anda.')
+
 SINGKATAN = {'matematika': 'MATH', 'mathematics': 'MATH', 'math': 'MATH', 'mtk': 'MATH',
              'fisika': 'PHYS', 'physics': 'PHYS', 'kimia': 'CHEM', 'chemistry': 'CHEM',
              'biologi': 'BIO', 'biology': 'BIO', 'ipa': 'IPA', 'science': 'SCI',
@@ -265,7 +298,7 @@ def _isian_rangkuman(mapel, kelas, bahasa, instruksi, topik, bagian, materi):
 
 
 def _tanya(mesin, perintah, lampiran=None, mode='flash', batas=300,
-           format=None, isian=None, lapor=None):
+           format=None, isian=None, lapor=None, henti=None):
     """Kirim permintaan ke mesin yang dipilih, kembalikan naskah jawabannya.
 
     perintah : perintah lengkap berisi spesifikasi format — dipakai Gemini.
@@ -331,11 +364,13 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
             isian = _isian_pembahasan(mapel, kelas, bahasa, instruksi, naskah_foto)
             hasil_teks = _tanya(mesin, perintah, lampiran, mode,
                                 format='pembahasan', isian=isian,
-                                lapor=lambda m: _catat(jid, m, 45))
+                                lapor=lambda m: _catat(jid, m, 45),
+                                henti=lambda: periksa_henti(jid))
         finally:
             for x in jalur:
                 try: os.unlink(x)
                 except OSError: pass
+        periksa_henti(jid)
         _catat(jid, f'Jawaban diterima ({len(hasil_teks)} karakter)', 70)
 
         judul_lbr, butir = _jwb.urai(hasil_teks)
@@ -368,9 +403,12 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
         otomasi.cetak_halaman(f'http://127.0.0.1:7790/lembar-jawab?k={kode}', tuju)
         subprocess.run(['open', tuju], capture_output=True)
         _catat(jid, f'Selesai — {os.path.basename(tuju)}', 100, selesai=True, pdf=tuju)
+    except Dihentikan as e:
+        _catat(jid, None, galat=str(e))
     except Exception as e:
         _catat(jid, None, galat=f'{type(e).__name__}: {e}')
     finally:
+        HENTI.discard(jid)
         ANTREAN.keluar(jid)
 
 
@@ -413,12 +451,14 @@ def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
                                      n_bagian, naskah_materi)
             hasil_teks = _tanya(mesin, perintah, lampiran, mode,
                                 format='rangkuman', isian=isian,
-                                lapor=lambda m: _catat(jid, m, 45))
+                                lapor=lambda m: _catat(jid, m, 45),
+                                henti=lambda: periksa_henti(jid))
         finally:
             for x in jalur:
                 try: os.unlink(x)
                 except OSError: pass
 
+        periksa_henti(jid)
         _catat(jid, f'Rangkuman diterima ({len(hasil_teks)} karakter)', 70)
         judul_lbr, inti, bagian_isi = _rk.urai(hasil_teks)
         if not bagian_isi:
@@ -448,9 +488,12 @@ def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
         otomasi.cetak_halaman(f'http://127.0.0.1:{PORT}/lembar-jawab?k={kode}', tuju)
         subprocess.run(['open', tuju], capture_output=True)
         _catat(jid, f'Selesai — {os.path.basename(tuju)}', 100, selesai=True, pdf=tuju)
+    except Dihentikan as e:
+        _catat(jid, None, galat=str(e))
     except Exception as e:
         _catat(jid, None, galat=f'{type(e).__name__}: {e}')
     finally:
+        HENTI.discard(jid)
         ANTREAN.keluar(jid)
 
 
@@ -528,7 +571,8 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
                                isian=_isian_soal(mapel, jenjang, kelas, topik,
                                                  jumlah, n_set, sulit, bahasa,
                                                  instruksi, acuan),
-                               lapor=lambda m: _catat(jid, m, 45))
+                               lapor=lambda m: _catat(jid, m, 45),
+                                henti=lambda: periksa_henti(jid))
             except RuntimeError as e:
                 # Penolakan biasanya muncul saat naskah acuannya panjang. Coba
                 # sekali lagi dengan perintah polos tanpa naskah acuan.
@@ -557,6 +601,7 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
         if len(utuh) != len(jawab):
             _catat(jid, 'Gemini menulis dua kali — draf pendeknya dibuang', 66)
             jawab = utuh
+        periksa_henti(jid)
         _catat(jid, f'Naskah diterima ({len(jawab)} karakter)', 68)
 
         # 4. serahkan ke perender asli
@@ -622,9 +667,12 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
             otomasi.worksheet_pdf(jawab, tuju, kop=kop)
             subprocess.run(['open', tuju], capture_output=True)
             _catat(jid, 'Selesai — PDF terbuka', 100, selesai=True, pdf=tuju)
+    except Dihentikan as e:
+        _catat(jid, None, galat=str(e))
     except Exception as e:
         _catat(jid, None, galat=f'{type(e).__name__}: {e}')
     finally:
+        HENTI.discard(jid)
         ANTREAN.keluar(jid)
 
 GAYA = """
@@ -707,6 +755,9 @@ background:var(--aksen);color:#fff;font-weight:700;font-size:14px;text-decoratio
 .tugasIsi{display:flex;gap:10px;align-items:center;justify-content:space-between;
  flex-wrap:wrap;font-size:13px}
 .tugasIsi b{font-weight:600}
+button.mini.henti{flex:none;padding:5px 12px;border:1px solid var(--tepi);border-radius:7px;
+ background:var(--bg);color:var(--redup);font-size:12px;cursor:pointer}
+button.mini.henti:disabled{opacity:.5}
 .antre{margin-top:9px;padding:10px 12px;border:1px solid var(--tepi);border-radius:9px;
  background:var(--bg);font-size:13px;line-height:1.6}
 .antre b{color:var(--aksen)}
@@ -863,8 +914,16 @@ function barisTugas(t) {
   } else {
     kanan = '<span class=kcl>' + ((s.langkah || ['Mulai…']).slice(-1)[0]) + '</span>';
   }
+  const bisaHenti = !s.selesai && !s.galat;
   el.innerHTML = '<div class=bar><i style="width:' + (s.maju || 0) + '%"></i></div>'
-    + '<div class=tugasIsi><b>' + t.judul + '</b>' + kanan + '</div>';
+    + '<div class=tugasIsi><b>' + t.judul + '</b>' + kanan
+    + (bisaHenti ? '<button type=button class="mini henti" data-jid="' + t.jid + '">Hentikan</button>' : '')
+    + '</div>';
+  const bh = el.querySelector('.henti');
+  if (bh) bh.onclick = async () => {
+    bh.disabled = true; bh.textContent = 'menghentikan…';
+    try { await fetch('/batal?jid=' + t.jid); } catch (e) {}
+  };
 }
 
 async function pantau(t) {

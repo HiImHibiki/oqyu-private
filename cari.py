@@ -410,7 +410,9 @@ class H(BaseHTTPRequestHandler):
         if u.path == '/batal':
             import buat
             jid = (qs.get('jid') or [''])[0]
-            ok = buat.ANTREAN.batalkan(jid)
+            # minta_henti menangani dua keadaan: masih mengantre (dibatalkan)
+            # dan sedang berjalan (ditandai supaya berhenti di titik aman).
+            ok = buat.minta_henti(jid)
             b = json.dumps({'batal': ok}).encode()
             self.send_response(200); self.send_header('Content-Type','application/json')
             self.send_header('Content-Length',str(len(b))); self.end_headers()

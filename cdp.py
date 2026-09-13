@@ -295,46 +295,6 @@ class Sesi:
     def ketik(self, teks):
         self.perintah('Input.insertText', text=teks)
 
-    def ketik_alami(self, pemilih, teks, potong=70, jeda=0.045, ekor=90):
-        """Isi kotak seperti orang mengetik, bukan sekali tempel.
-
-        Input.insertText memasukkan ribuan karakter dalam satu peristiwa —
-        pola yang tidak mungkin dihasilkan tangan manusia. Di sini teksnya
-        dipecah jadi potongan pendek berjeda, dan beberapa karakter TERAKHIR
-        dikirim sebagai peristiwa papan tik sungguhan, supaya kejadian terakhir
-        yang dilihat halaman sebelum tombol kirim ditekan adalah ketikan.
-
-        Mengetik SELURUHNYA karakter demi karakter tidak dilakukan: tiap huruf
-        berarti dua perjalanan bolak-balik ke Chrome, jadi perintah 7.000
-        karakter akan memakan beberapa menit — jauh lebih mahal daripada
-        masalah yang sedang dihindari. Yang dipakai: potongan pendek berjeda
-        untuk badannya, dan ketikan huruf-per-huruf sungguhan untuk ekornya.
-        """
-        self.evaluasi(f"""(function(){{
-          const e = document.querySelector({pemilih!r});
-          if (!e) return 0;
-          e.focus();
-          const r = document.createRange();
-          r.selectNodeContents(e);
-          const sel = window.getSelection();
-          sel.removeAllRanges(); sel.addRange(r);
-          return 1;
-        }})()""")
-        badan, sisa = (teks[:-ekor], teks[-ekor:]) if len(teks) > ekor else (teks, '')
-        pertama = True
-        for i in range(0, len(badan), potong):
-            self.perintah('Input.insertText', text=badan[i:i + potong])
-            if pertama:
-                pertama = False          # potongan pertama MENGGANTI seleksi
-            time.sleep(jeda)
-        for c in sisa:
-            self.perintah('Input.dispatchKeyEvent', type='keyDown', text=c,
-                          unmodifiedText=c)
-            self.perintah('Input.dispatchKeyEvent', type='keyUp', text=c,
-                          unmodifiedText=c)
-            time.sleep(0.03)
-        return True
-
     def tombol(self, kunci='Enter', kode_vm=13):
         for jenis in ('keyDown', 'keyUp'):
             self.perintah('Input.dispatchKeyEvent', type=jenis, key=kunci,
@@ -366,44 +326,89 @@ class Sesi:
         }})()""")
         self.perintah('Input.insertText', text=teks)
 
-    def ketik_alami(self, pemilih, teks, potong=70, jeda=0.045, ekor=90):
-        """Isi kotak seperti orang mengetik, bukan sekali tempel.
+    def _isi_editor(self, pemilih):
+        return self.evaluasi(
+            f"(document.querySelector({pemilih!r})||{{}}).innerText||''") or ''
 
-        Input.insertText memasukkan ribuan karakter dalam satu peristiwa —
-        pola yang tidak mungkin dihasilkan tangan manusia. Di sini teksnya
-        dipecah jadi potongan pendek berjeda, dan beberapa karakter TERAKHIR
-        dikirim sebagai peristiwa papan tik sungguhan, supaya kejadian terakhir
-        yang dilihat halaman sebelum tombol kirim ditekan adalah ketikan.
+    @staticmethod
+    def _padat(teks):
+        """Panjang tanpa spasi apa pun.
 
-        Mengetik SELURUHNYA karakter demi karakter tidak dilakukan: tiap huruf
-        berarti dua perjalanan bolak-balik ke Chrome, jadi perintah 7.000
-        karakter akan memakan beberapa menit — jauh lebih mahal daripada
-        masalah yang sedang dihindari. Yang dipakai: potongan pendek berjeda
-        untuk badannya, dan ketikan huruf-per-huruf sungguhan untuk ekornya.
+        innerText TIDAK sepanjang teks yang dimasukkan: tiap paragraf Quill
+        menambah ganti baris sendiri, jadi membandingkan panjang mentah selalu
+        meleset belasan karakter dan memicu galat palsu. Yang dibandingkan
+        karakter bukan-spasi — itu tidak berubah oleh penataan.
         """
-        self.evaluasi(f"""(function(){{
-          const e = document.querySelector({pemilih!r});
-          if (!e) return 0;
-          e.focus();
-          const r = document.createRange();
-          r.selectNodeContents(e);
-          const sel = window.getSelection();
-          sel.removeAllRanges(); sel.addRange(r);
-          return 1;
-        }})()""")
-        badan, sisa = (teks[:-ekor], teks[-ekor:]) if len(teks) > ekor else (teks, '')
-        pertama = True
-        for i in range(0, len(badan), potong):
-            self.perintah('Input.insertText', text=badan[i:i + potong])
-            if pertama:
-                pertama = False          # potongan pertama MENGGANTI seleksi
+        return len(''.join((teks or '').split()))
+
+    def _panjang_editor(self, pemilih):
+        return self._padat(self._isi_editor(pemilih))
+
+    def ketik_alami(self, pemilih, teks, potong=500, jeda=0.04, ekor=25):
+        """Isi kotak bertahap seperti mengetik, TAPI pastikan isinya benar.
+
+        Versi pertama hanya menembakkan potongan demi potongan tanpa memeriksa
+        apa pun. Akibatnya fatal dan tidak kelihatan dari sini: isi lama TIDAK
+        terhapus, lalu perintah baru menempel di belakangnya — Gemini menerima
+        dua perintah bertumpuk dan menjawab kacau. Potongan yang tiba tidak
+        berurutan juga mengacak hurufnya ("diagramnya.nyihama/J Ktn kakaage").
+
+        Karena itu tiap tahap diperiksa panjangnya sebelum lanjut, dan yang
+        tidak mendarat diulang. Pemeriksaan itu satu perjalanan bolak-balik
+        per potongan — jauh lebih murah daripada satu lembar yang gagal.
+        """
+        daftar = [teks[i:i + potong] for i in range(0, len(teks), potong)] or ['']
+        if len(daftar[-1]) > ekor and ekor:
+            sisa = daftar[-1][-ekor:]
+            daftar[-1] = daftar[-1][:-ekor]
+        else:
+            sisa = ''
+
+        # 1) KOSONGKAN dulu, sebagai langkah tersendiri. Menggabungkan
+        #    pengosongan dengan pengisian potongan pertama membuat kegagalannya
+        #    tidak bisa dibedakan: isi lama yang tersisa dan potongan yang tidak
+        #    mendarat sama-sama tampak sebagai "panjangnya tidak sesuai".
+        for coba in range(4):
+            self.evaluasi(f"""(function(){{
+              const e = document.querySelector({pemilih!r});
+              if (!e) return 0;
+              e.focus();
+              const r = document.createRange();
+              r.selectNodeContents(e);
+              const sel = window.getSelection();
+              sel.removeAllRanges(); sel.addRange(r);
+              return 1;
+            }})()""")
+            self.perintah('Input.insertText', text='')
+            time.sleep(0.4)
+            if self._panjang_editor(pemilih) == 0:
+                break
+        else:
+            raise GagalCDP('Isi lama kotak Gemini tidak bisa dikosongkan')
+
+        # 2) seluruh potongan ditambahkan, tiap potongan dipastikan mendarat
+        sudah = 0
+        for bagian in daftar:
+            self.perintah('Input.insertText', text=bagian)
             time.sleep(jeda)
+            sudah += self._padat(bagian)
+            kini = self._panjang_editor(pemilih)
+            if kini != sudah:
+                raise GagalCDP(f'Potongan perintah tidak mendarat utuh '
+                               f'({kini} dari {sudah} karakter)')
+
+        # 3) ekor diketik huruf demi huruf, supaya kejadian terakhir sebelum
+        #    tombol kirim ditekan adalah ketikan sungguhan
         for c in sisa:
             self.perintah('Input.dispatchKeyEvent', type='keyDown', text=c,
                           unmodifiedText=c)
             self.perintah('Input.dispatchKeyEvent', type='keyUp', text=c,
                           unmodifiedText=c)
-            time.sleep(0.03)
+            time.sleep(0.02)
+        akhir = self._panjang_editor(pemilih)
+        if akhir != self._padat(teks):
+            raise GagalCDP(f'Perintah tidak utuh di kotak Gemini '
+                           f'({akhir} dari {self._padat(teks)} karakter)')
         return True
 
     def klik_di(self, x, y):
