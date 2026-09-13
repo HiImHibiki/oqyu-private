@@ -20,6 +20,7 @@ def _tampilkan(s):
     tanpa galat. Inilah sebab kegagalan "Perintah tidak terkirim" yang muncul
     acak: berhasil hanya ketika tabnya kebetulan sedang di depan.
     """
+    s.ukuran()                    # viewport layak, bukan 800x600 bawaan headless
     try:
         s.perintah('Page.bringToFront')
     except Exception:
@@ -109,6 +110,22 @@ def _periksa(teks):
         raise RuntimeError(f'Jawaban Gemini terlalu pendek ({len(t)} karakter): ' + t[:120])
     return normalkan_rumus(buang_pagar(t))
 
+def _tunggu_selesai_menulis(s, batas=180):
+    """Tunggu sampai Gemini berhenti menulis jawaban sebelumnya.
+
+    Selagi menulis, tombol kirim DIGANTI tombol "Stop response" — jadi mencari
+    tombol kirim saat itu selalu gagal dengan gejala "tombol tidak aktif",
+    padahal sebenarnya cuma perlu menunggu.
+    """
+    t0 = time.time()
+    while time.time() - t0 < batas:
+        sibuk = s.evaluasi("""!!document.querySelector(
+            'button[aria-label*="Stop" i], [data-test-id="stop-button"]')""")
+        if not sibuk:
+            return True
+        time.sleep(2)
+    return False
+
 def _kirim(s, perintah):
     """Isi kotak lalu tekan tombol kirim.
 
@@ -118,6 +135,7 @@ def _kirim(s, perintah):
       2. Tombol kirim diklik lewat Input.dispatchMouseEvent di koordinatnya,
          bukan .click() — peristiwa buatan JavaScript diabaikan juga.
     """
+    _tunggu_selesai_menulis(s)
     s.ganti_isi_editor('div.ql-editor', perintah)
     time.sleep(1.4)
     for _ in range(12):
@@ -130,7 +148,8 @@ def _kirim(s, perintah):
         if pos: break
         time.sleep(0.5)
     else:
-        raise RuntimeError('Tombol kirim Gemini tidak aktif — teksnya mungkin tidak masuk')
+        raise RuntimeError('Tombol kirim Gemini tidak aktif. Kemungkinan Gemini '
+                           'masih menulis jawaban sebelumnya, atau teks tidak masuk.')
     s.klik_di(pos[0], pos[1])
     for _ in range(20):
         time.sleep(1)

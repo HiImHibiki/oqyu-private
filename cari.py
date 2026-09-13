@@ -540,8 +540,11 @@ class H(BaseHTTPRequestHandler):
             else:
                 try:
                     pesan = _h.cetak(pth, [int(x) for x in halaman if x.isdigit()],
-                                     medan.get('printer',''), medan.get('salinan','1'))
-                    jawab = {'pesan': f'{len(halaman)} halaman dikirim ke printer · {pesan[:70]}'}
+                                     medan.get('printer',''), medan.get('salinan','1'),
+                                     lewat_gambar=('gambar' in medan))
+                    cara = 'lewat gambar' if 'gambar' in medan else 'PDF langsung'
+                    jawab = {'pesan': f'{len(halaman)} halaman dikirim ke printer '
+                                      f'({cara}) · {pesan[:60]}'}
                 except Exception as e:
                     jawab = {'galat': str(e)[:160]}
             b = json.dumps(jawab).encode()

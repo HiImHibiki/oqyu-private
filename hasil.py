@@ -60,20 +60,58 @@ def printer():
         pass
     return daftar, bawaan
 
-def cetak(path, halaman, nama_printer='', salinan=1, dua_sisi=False):
-    """Cetak halaman terpilih. `halaman` daftar nomor; kosong = semua."""
+def cetak(path, halaman, nama_printer='', salinan=1, lewat_gambar=True, dpi=300):
+    """Cetak halaman terpilih.
+
+    `lewat_gambar` (bawaan) mengubah tiap halaman jadi JPEG abu-abu lebih dulu,
+    lalu mengirim gambarnya. Printer monokrom sering tersendat menafsirkan PDF
+    langsung dari macOS — rumus, bayangan, dan SVG diagram adalah pemicu yang
+    umum. Gambar tidak menyisakan apa pun untuk ditafsirkan printer.
+
+    Semua gambar dikirim dalam SATU pekerjaan lp, jadi urutannya terjaga dan
+    tidak muncul sebagai belasan pekerjaan terpisah di antrean.
+    """
+    import tempfile, shutil, glob as _g
+    if not halaman:
+        halaman = list(range(1, (n_halaman(path) or 1) + 1))
+    halaman = sorted(set(int(h) for h in halaman))
+
     arg = ['lp']
     if nama_printer: arg += ['-d', nama_printer]
-    if salinan and int(salinan) > 1: arg += ['-n', str(int(salinan))]
-    if halaman:
-        arg += ['-o', 'page-ranges=' + ','.join(str(h) for h in sorted(set(halaman)))]
-    if dua_sisi: arg += ['-o', 'sides=two-sided-long-edge']
-    arg.append(path)
-    r = subprocess.run(arg, capture_output=True, timeout=60)
-    keluar = (r.stdout + r.stderr).decode('utf-8', 'replace').strip()
-    if r.returncode != 0:
-        raise RuntimeError(keluar or 'perintah cetak gagal')
-    return keluar
+    try:
+        n = int(salinan)
+    except (TypeError, ValueError):
+        n = 1
+    if n > 1: arg += ['-n', str(n)]
+    arg += ['-t', os.path.basename(path)[:60]]
+
+    if not lewat_gambar:
+        arg += ['-o', 'page-ranges=' + ','.join(str(h) for h in halaman), path]
+        r = subprocess.run(arg, capture_output=True, timeout=120)
+        keluar = (r.stdout + r.stderr).decode('utf-8', 'replace').strip()
+        if r.returncode != 0: raise RuntimeError(keluar or 'perintah cetak gagal')
+        return keluar
+
+    tmp = tempfile.mkdtemp(prefix='cetak-')
+    try:
+        berkas = []
+        for h in halaman:
+            dasar = os.path.join(tmp, f'{h:04d}')
+            subprocess.run(['pdftoppm', '-jpeg', '-gray', '-r', str(dpi),
+                            '-f', str(h), '-l', str(h), path, dasar],
+                           capture_output=True, timeout=180)
+            cocok = sorted(_g.glob(dasar + '*.jpg'))
+            if cocok: berkas.append(cocok[0])
+        if not berkas:
+            raise RuntimeError('gagal mengubah halaman jadi gambar')
+        arg += ['-o', 'fit-to-page', '-o', 'media=A4'] + berkas
+        r = subprocess.run(arg, capture_output=True, timeout=300)
+        keluar = (r.stdout + r.stderr).decode('utf-8', 'replace').strip()
+        if r.returncode != 0: raise RuntimeError(keluar or 'perintah cetak gagal')
+        return keluar
+    finally:
+        # Antrean CUPS menyalin berkasnya sendiri, jadi aman dibersihkan.
+        shutil.rmtree(tmp, ignore_errors=True)
 
 GAYA = """
 :root{--bg:#fbfbfa;--kartu:#fff;--tepi:#e3e3e0;--teks:#1a1a19;--redup:#6b6b66;--aksen:#c4572a}
@@ -155,6 +193,8 @@ target=_blank>buka PDF</a></div>
   <button type=button class=abu id=takada>Kosongkan</button>
   <select name=printer>{opsi}</select>
   <input type=number name=salinan value=1 min=1 max=20 style=width:74px title=salinan>
+  <label style="font-size:12.5px;color:var(--redup);display:flex;gap:6px;align-items:center">
+    <input type=checkbox name=gambar checked> lewat gambar (printer monokrom)</label>
   <button type=submit id=go>Cetak</button>
   <span class=info id=info></span>
 </div>

@@ -394,11 +394,33 @@ document.getElementById('f').onsubmit = async e => {
   const fd = new FormData(e.target);
   fd.delete('gambar');
   berkas.forEach(f => fd.append('gambar', f, f.name));
-  const r = await fetch('/buat', {method:'POST', body: fd});
-  const jid = (await r.json()).jid;
+  let jid;
+  try {
+    const r = await fetch('/buat', {method:'POST', body: fd});
+    jid = (await r.json()).jid;
+  } catch (err) {
+    log.innerHTML = '<div class=err>Tidak bisa menghubungi server. '
+      + 'Pastikan aplikasinya masih menyala, lalu coba lagi.</div>';
+    document.getElementById('go').disabled = false; return;
+  }
+  if (!jid) {
+    log.innerHTML = '<div class=err>Server tidak memulai tugas. Coba lagi.</div>';
+    document.getElementById('go').disabled = false; return;
+  }
   const isi = document.getElementById('isi');
+  let gagal = 0;
   const timer = setInterval(async () => {
-    const s = await (await fetch('/status?jid=' + jid)).json();
+    let s;
+    try {
+      s = await (await fetch('/status?jid=' + jid)).json();
+    } catch (err) {
+      // Server mungkin sedang dinyalakan ulang; beri kesempatan beberapa kali
+      if (++gagal < 8) return;
+      clearInterval(timer);
+      log.innerHTML += '<div class=err>Sambungan ke server terputus.</div>';
+      document.getElementById('go').disabled = false; return;
+    }
+    gagal = 0;
     isi.style.width = (s.maju || 0) + '%';
     log.innerHTML = (s.langkah || []).map((x, i, a) =>
       '<div class="' + (i === a.length-1 && !s.selesai ? 'now' : '') + '">' + x + '</div>').join('');

@@ -95,9 +95,12 @@ def nyalakan(tampil=None):
         tampil = os.environ.get('EXACT_TAMPIL') in ('1', 'ya', 'true')
     if hidup(): return False
     os.makedirs(PROFIL, exist_ok=True)
+    # Ukuran jendela WAJIB disetel: tanpa jendela, Chrome memakai 800x600 dan
+    # tata letak Gemini jadi sempit — tombol berpindah tempat, sebagian elemen
+    # tidak muncul sama sekali.
     bendera = [KROM, f'--remote-debugging-port={PORT}', f'--user-data-dir={PROFIL}',
                '--no-first-run', '--no-default-browser-check',
-               '--remote-allow-origins=*']
+               '--window-size=1400,1000', '--remote-allow-origins=*']
     if not tampil: bendera.append('--headless=new')
     subprocess.Popen(bendera, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     for _ in range(40):
@@ -143,6 +146,19 @@ class Sesi:
             if pesan.get('id') != self.id: continue        # lewati peristiwa
             if 'error' in pesan: raise GagalCDP(pesan['error'].get('message', 'galat CDP'))
             return pesan.get('result', {})
+    def ukuran(self, lebar=1400, tinggi=1000):
+        """Setel ukuran viewport.
+
+        Bendera --window-size tidak digubris pada mode tanpa jendela: Chrome
+        tetap memakai 800x600, dan tata letak Gemini jadi sempit sehingga
+        tombolnya berpindah atau hilang. Emulation.* bekerja di kedua mode.
+        """
+        try:
+            self.perintah('Emulation.setDeviceMetricsOverride', width=lebar,
+                          height=tinggi, deviceScaleFactor=1, mobile=False)
+        except Exception:
+            pass
+
     def evaluasi(self, ekspresi, tunggu_janji=False):
         r = self.perintah('Runtime.evaluate', expression=ekspresi, returnByValue=True,
                           awaitPromise=tunggu_janji)
