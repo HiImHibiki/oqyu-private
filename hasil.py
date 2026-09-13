@@ -301,7 +301,7 @@ def halaman_daftar(cari=''):
                   f'</div></div>')
     if not kartu:
         kartu = ('<div class=kosong>Tidak ada lembar yang cocok.</div>' if cari else
-                 '<div class=kosong>Belum ada lembar. Buat dulu di tab "Buat dengan AI".</div>')
+                 '<div class=kosong>Belum ada lembar. Buat dulu di tab "Buat Soal".</div>')
     return f"""<!doctype html><meta charset=utf-8><title>Hasil</title>
 <meta name=viewport content="width=device-width,initial-scale=1"><style>{GAYA}
 <div class=b><h1>Lembar yang sudah jadi</h1>

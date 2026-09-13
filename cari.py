@@ -267,7 +267,7 @@ class H(BaseHTTPRequestHandler):
             c.close()
             if not terpilih:
                 return self.balas_teks('Bank soal belum punya soal yang cocok. '
-                                       'Buat dulu lewat tab "Buat dengan AI".', 404)
+                                       'Buat dulu lewat tab "Buat Soal".', 404)
             butir = [{'jenis': r['jenis_soal'] or 'PG', 'batang': r['batang'],
                       'opsi': json.loads(r['opsi'] or '{}'), 'kunci': r['kunci'] or '',
                       'bobot': r['bobot'], 'sub': []} for r in terpilih]
@@ -1072,7 +1072,7 @@ iframe{border:0;width:100%;min-height:calc(100vh - 47px);display:block;backgroun
   <img src="/statik/logo.png" alt="" class=logo>
   <div class=merek><b>Exact Course</b><span>Worksheet Maker</span></div>
   <nav>
-    <button data-u="/buat" class=aktif>Buat dengan AI</button>
+    <button data-u="/buat" class=aktif>Buat Soal</button>
     <button data-u="/jawab">Kunci Jawaban</button>
     <button data-u="/rangkum">Rangkuman</button>
     <button data-u="/hasil">Hasil &amp; Cetak</button>
