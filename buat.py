@@ -102,7 +102,20 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
 
         # 4. Gemini lewat Chrome
         _catat(jid, 'Mengirim ke Gemini lewat Chrome kendali…', 45)
-        jawab = otomasi.gemini_tanya(perintah, batas=300)
+        try:
+            jawab = otomasi.gemini_tanya(perintah, batas=300)
+        except RuntimeError as e:
+            # Penolakan biasanya muncul saat lampirannya panjang atau mencampur
+            # beberapa naskah bertopik beda. Coba sekali lagi tanpa lampiran.
+            if 'menolak' not in str(e) or not lampiran:
+                raise
+            _catat(jid, 'Gemini menolak — mencoba ulang tanpa lampiran…', 50)
+            ringkas = wsmaker.isi_blok(
+                wsmaker.perintah_baku(mapel or 'Matematika'),
+                topik=topik or (acuan.strip()[:120] if acuan.strip() else ''),
+                jenjang=jenjang or (f'Kelas {kelas}' if kelas else ''),
+                set=n_set, jumlah=jumlah, sulit=sulit, bahasa=bahasa)
+            jawab = otomasi.gemini_tanya(ringkas, batas=300)
         _catat(jid, f'Gemini menjawab ({len(jawab)} karakter)', 68)
 
         # 5. serahkan ke perender asli
@@ -143,8 +156,11 @@ color:var(--redup);font-size:13px;cursor:pointer}
 .kcl{font-size:11.5px;opacity:.7;margin-top:4px}
 .gal{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
 .gal figure{position:relative;margin:0;width:92px}
-.gal img{width:92px;height:70px;object-fit:cover;border-radius:7px;
+.gal img,.gal .pdfkartu{width:92px;height:70px;border-radius:7px;
 border:1px solid var(--tepi);display:block}
+.gal img{object-fit:cover}
+.gal .pdfkartu{background:var(--bg);color:var(--aksen);font-weight:700;font-size:15px;
+display:flex;align-items:center;justify-content:center;letter-spacing:1px}
 .gal figcaption{font-size:10.5px;color:var(--redup);margin-top:3px;
 overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .gal button{position:absolute;top:-7px;right:-7px;width:21px;height:21px;padding:0;
@@ -154,8 +170,11 @@ border:2px solid var(--kartu);cursor:pointer}
 .kcl{font-size:11.5px;opacity:.7;margin-top:4px}
 .gal{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
 .gal figure{position:relative;margin:0;width:92px}
-.gal img{width:92px;height:70px;object-fit:cover;border-radius:7px;
+.gal img,.gal .pdfkartu{width:92px;height:70px;border-radius:7px;
 border:1px solid var(--tepi);display:block}
+.gal img{object-fit:cover}
+.gal .pdfkartu{background:var(--bg);color:var(--aksen);font-weight:700;font-size:15px;
+display:flex;align-items:center;justify-content:center;letter-spacing:1px}
 .gal figcaption{font-size:10.5px;color:var(--redup);margin-top:3px;
 overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .gal button{position:absolute;top:-7px;right:-7px;width:21px;height:21px;padding:0;
@@ -190,8 +209,16 @@ function gambarkan(){
   gal.innerHTML = '';
   berkas.forEach((f, i) => {
     const fig = document.createElement('figure');
-    const img = document.createElement('img');
-    img.src = URL.createObjectURL(f);
+    const pdf = f.type === 'application/pdf' || /\.pdf$/i.test(f.name || '');
+    let img;
+    if (pdf) {
+      img = document.createElement('div');
+      img.className = 'pdfkartu';
+      img.textContent = 'PDF';
+    } else {
+      img = document.createElement('img');
+      img.src = URL.createObjectURL(f);
+    }
     const cap = document.createElement('figcaption');
     cap.textContent = f.name || ('tempelan ' + (i+1));
     const x = document.createElement('button');
@@ -201,20 +228,21 @@ function gambarkan(){
   });
   const sisa = MAKS - berkas.length;
   j.firstChild.textContent = berkas.length
-    ? berkas.length + ' gambar dipilih' + (sisa ? ' \\u00b7 bisa tambah ' + sisa + ' lagi' : ' \\u00b7 penuh')
-    : 'tempel tangkapan layar (\\u2318V), jatuhkan foto, atau klik untuk memilih';
+    ? berkas.length + ' berkas dipilih' + (sisa ? ' \\u00b7 bisa tambah ' + sisa + ' lagi' : ' \\u00b7 penuh')
+    : 'tempel tangkapan layar (\\u2318V), jatuhkan foto atau PDF, atau klik untuk memilih';
   j.classList.toggle('aktif', berkas.length > 0);
 }
 
 function tambah(daftar){
   let ditolak = 0;
   for (const f of daftar) {
-    if (!f || !f.type.startsWith('image/')) continue;
+    const pdf = f && (f.type === 'application/pdf' || /\.pdf$/i.test(f.name || ''));
+    if (!f || !(f.type.startsWith('image/') || pdf)) continue;
     if (berkas.length >= MAKS) { ditolak++; continue; }
     berkas.push(f);
   }
   gambarkan();
-  if (ditolak) alert('Maksimal ' + MAKS + ' gambar. ' + ditolak + ' gambar terakhir diabaikan.');
+  if (ditolak) alert('Maksimal ' + MAKS + ' berkas. ' + ditolak + ' berkas terakhir diabaikan.');
 }
 
 // Jalur paling andal di Mac: server membaca papan klip sendiri, jadi tidak
@@ -230,6 +258,13 @@ document.getElementById('btnKlip').onclick = async () => {
     tambah([new File([b], 'klip-' + cap + '.png', {type:'image/png'})]);
     kabar.textContent = '';
   } catch (e) { kabar.textContent = 'gagal: ' + e.message; }
+};
+
+const preset = document.getElementById('preset');
+if (preset) preset.onchange = () => {
+  if (!preset.value) return;
+  document.querySelector('[name=jumlah]').value = preset.value;
+  preset.selectedIndex = 0;          // kembali ke label, nilainya sudah pindah
 };
 
 j.onclick = () => fi.click();
@@ -287,10 +322,13 @@ document.getElementById('f').onsubmit = async e => {
 """
 
 
+SULIT_BAWAAN = 'sama dengan naskah acuan'
+
 def halaman(izin_chrome=True, setel=None):
     import setelan as _s
     st = setel or _s.muat()
     n = lambda k: html.escape(st.get(k, '') or '')
+    tgl_ini = time.strftime('%d%m')
     c = lambda k: ' checked' if st.get(k) else ''
     peringatan = ''
     return f"""<!doctype html><meta charset=utf-8><title>Exact Worksheet Maker</title>
@@ -302,9 +340,9 @@ Mac ini menata, PDF terbuka sendiri.</div>
 {peringatan}
 <form id=f>
 <div class=k>
-  <div class=j id=j tabindex=0>tempel tangkapan layar (&#8984;V), jatuhkan foto, atau klik untuk memilih
-    <div class=kcl>sampai 10 gambar</div>
-    <input type=file name=gambar id=file accept="image/*" multiple hidden></div>
+  <div class=j id=j tabindex=0>tempel tangkapan layar (&#8984;V), jatuhkan foto atau PDF, atau klik untuk memilih
+    <div class=kcl>sampai 10 berkas</div>
+    <input type=file name=gambar id=file accept="image/*,.pdf,application/pdf" multiple hidden></div>
   <div class=r style="margin-top:9px">
     <button type=button id=btnKlip class=abu>Ambil dari papan klip</button>
     <span class=kcl id=kabarKlip style="margin:0"></span>
@@ -316,9 +354,18 @@ Mac ini menata, PDF terbuka sendiri.</div>
   </div>
   <div class=r>
     <input name=jenjang placeholder="kelas/jenjang" value="{n('jenjang')}" size=12>
-    <input name=jumlah placeholder="5 PG + 2 B + 2 I + 1 E" value="{n('jumlah')}" style="flex:1;min-width:170px">
-    <input name=n_set placeholder="set" value="{n('n_set')}" size=4 title="jumlah set">
-    <input name=sulit placeholder="kesulitan" value="{n('sulit')}" size=10>
+    <select id=preset title="komposisi siap pakai" style="min-width:150px">
+      <option value="">komposisi…</option>
+      <option>10 PG + 5 Esai</option>
+      <option>10 Esai</option>
+      <option>20 PG</option>
+      <option>30 PG</option>
+      <option>5 PG + 2 B + 2 I + 1 E</option>
+      <option>15 PG + 5 Isian</option>
+    </select>
+    <input name=jumlah placeholder="atau tulis sendiri" value="{n('jumlah')}" style="flex:1;min-width:150px">
+    <input name=n_set placeholder="set" value="{n('n_set') or '2'}" size=4 title="jumlah set">
+    <input name=sulit placeholder="kesulitan" value="{n('sulit') or SULIT_BAWAAN}" style="min-width:170px">
     <select name=bahasa><option{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option><option{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option></select>
   </div>
   <textarea name=instruksi rows=2 style="margin-top:11px"
@@ -326,7 +373,7 @@ Mac ini menata, PDF terbuka sendiri.</div>
   <div class=r>
     <input name=lembaga placeholder="nama lembaga" value="{n('lembaga')}" style="flex:1;min-width:150px">
     <input name=sekolah placeholder="kode sekolah" value="{n('sekolah')}" size=10>
-    <input name=tanggal placeholder="tgl (1309)" size=8>
+    <input name=tanggal placeholder="tgl" value="{tgl_ini}" size=7>
   </div>
   <div class=r>
     <label class=kcl><input type=checkbox name=kunci{c('kunci')}> kunci jawaban</label>

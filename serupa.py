@@ -22,13 +22,32 @@ def kunci_cari(teks, maks=12):
         lihat.add(w); urut.append(w)
     return urut[:maks]
 
-def baca_gambar(jalur, alat):
+def baca_berkas(jalur, alat, maks_hal=12):
+    """Baca gambar ATAU PDF.
+
+    PDF menghasilkan satu baris JSON per halaman; versi lama hanya mengambil
+    baris pertama, sehingga PDF berhalaman banyak terpotong di halaman 1.
+    """
     try:
-        o = subprocess.run([alat, jalur], capture_output=True, timeout=120)
-        ln = o.stdout.decode('utf-8', 'replace').strip().splitlines()
-        return json.loads(ln[0])['teks'] if ln else ''
+        o = subprocess.run([alat, jalur], capture_output=True, timeout=600)
     except Exception:
         return ''
+    hal = []
+    for ln in o.stdout.decode('utf-8', 'replace').splitlines():
+        try:
+            d = json.loads(ln)
+        except Exception:
+            continue
+        t = (d.get('teks') or '').strip()
+        if len(t) >= 25:
+            hal.append(t)
+        if len(hal) >= maks_hal:
+            break
+    return '\n\n'.join(hal)
+
+
+# nama lama dipertahankan agar pemanggil lama tetap jalan
+baca_gambar = baca_berkas
 
 PERINTAH = """Buatkan {n} soal BARU yang setara dengan soal berikut — topik dan tingkat kesulitan sama, tetapi angka, konteks, dan kalimatnya berbeda. Jangan menyalin ulang soal aslinya.
 
