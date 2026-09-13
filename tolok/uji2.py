@@ -1,6 +1,6 @@
 import os, sys, sqlite3, random
 from concurrent.futures import ProcessPoolExecutor
-sys.path.insert(0, os.path.expanduser('~/ExactWorksheet'))
+sys.path.insert(0, os.path.expanduser('~/Documents/PROJECT EXACT GROUP/Exact Worksheet'))
 from pecah_soal import baris_halaman, urutkan, potong, urai_opsi, AKAR
 
 def nilai(rel):
@@ -17,7 +17,7 @@ def nilai(rel):
     return (rel, pg, pl)
 
 if __name__ == '__main__':
-    db = sqlite3.connect(os.path.expanduser('~/ExactWorksheet/exact.db'))
+    db = sqlite3.connect(os.path.expanduser('~/Documents/PROJECT EXACT GROUP/Exact Worksheet/exact.db'))
     rows = [r[0] for r in db.execute("""SELECT rel FROM dokumen WHERE dup_dari IS NULL AND n_hal_teks>1
             AND (jenis IN ('PAS/UAS','PTS/UTS','UN/UNBK','Try Out','Ulangan','Olimpiade','Internasional','SBMPTN/UTBK') OR jenis IS NULL)""")]
     random.seed(11); sampel = random.sample(rows, 300)

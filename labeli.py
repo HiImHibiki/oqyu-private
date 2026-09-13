@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tahap 2: baca label dari isi dokumen + tandai duplikat."""
 import os, re, sqlite3, hashlib, unicodedata
-DB = os.path.expanduser('~/ExactWorksheet/exact.db')
+DB = os.path.expanduser('~/Documents/PROJECT EXACT GROUP/Exact Worksheet/exact.db')
 
 ROMAWI = {'i':1,'ii':2,'iii':3,'iv':4,'v':5,'vi':6,'vii':7,'viii':8,'ix':9,'x':10,'xi':11,'xii':12}
 EJAAN  = {'satu':1,'dua':2,'tiga':3,'empat':4,'lima':5,'enam':6,'tujuh':7,'delapan':8,

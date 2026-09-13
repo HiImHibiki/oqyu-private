@@ -3,7 +3,7 @@
 Murni Python — tanpa pustaka luar, tanpa GPU."""
 import os, re, sqlite3, math, random, unicodedata
 from collections import defaultdict, Counter
-DB = os.path.expanduser('~/ExactWorksheet/exact.db')
+DB = os.path.expanduser('~/Documents/PROJECT EXACT GROUP/Exact Worksheet/exact.db')
 
 STOP = set('''yang dan di ke dari untuk pada dengan adalah ini itu atau tidak dalam akan
 dapat oleh sebagai karena jika maka the of and to in a is for are be on as by with an at

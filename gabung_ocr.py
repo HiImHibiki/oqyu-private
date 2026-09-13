@@ -4,7 +4,7 @@
 Dijalankan SETELAH jalankan_ocr.py selesai. Aman diulang.
 """
 import os, sqlite3, sys
-DB = os.path.expanduser('~/ExactWorksheet/exact.db')
+DB = os.path.expanduser('~/Documents/PROJECT EXACT GROUP/Exact Worksheet/exact.db')
 
 def main(kering=False):
     db = sqlite3.connect(DB, timeout=60)

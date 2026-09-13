@@ -2,9 +2,9 @@
 """Tahap 3: panen soal satuan dari seluruh arsip ke tabel `soal`."""
 import os, sys, re, json, sqlite3, hashlib
 from concurrent.futures import ProcessPoolExecutor
-sys.path.insert(0, os.path.expanduser('~/ExactWorksheet'))
+sys.path.insert(0, os.path.expanduser('~/Documents/PROJECT EXACT GROUP/Exact Worksheet'))
 from pecah_soal import baris_halaman, urutkan, potong, urai_opsi, AKAR
-DB = os.path.expanduser('~/ExactWorksheet/exact.db')
+DB = os.path.expanduser('~/Documents/PROJECT EXACT GROUP/Exact Worksheet/exact.db')
 
 ISYARAT = re.compile(r'\?|\.\.\.|…|\badalah\b|\bberapa\b|\bhitung|\btentukan\b|\bjelaskan\b|'
                      r'\bsebutkan\b|\btuliskan\b|\bmengapa\b|\bcarilah?\b|\bfind\b|\bcalculate\b|'
