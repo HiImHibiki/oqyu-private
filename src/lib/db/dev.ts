@@ -474,7 +474,7 @@ const devDbRaw: FullDb = {
      * «Kuota try out habis» dalam keadaan yang sama, jadi paywall-nya ada di
      * produksi tetapi tidak ada di mode pengembangan — dan justru mode itulah
      * yang dipakai untuk mengujinya. */
-    if (!input.isDemo) {
+    if (!input.isDemo && input.exam !== "LATIHAN") {
       const ent = d.entitlements.find(
         (e) =>
           e.userId === input.userId &&

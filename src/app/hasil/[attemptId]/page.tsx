@@ -132,7 +132,7 @@ export default async function HasilPage({ params }: { params: Promise<{ attemptI
         </div>
       </div>
 
-      {quotaLeft === 0 && (
+      {quotaLeft === 0 && exam !== "LATIHAN" && (
         <section className="card mb-6 flex flex-wrap items-center gap-4 p-5">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
             style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>

@@ -180,6 +180,27 @@ export async function devSignIn(input: {
   return ok({ userId: u.id, isNew: !existing });
 }
 
+/** Pendaftaran murid Exact Practice: email + nama + kata sandi, dijaga kode
+ *  kelas dari guru (EXACT_KODE_KELAS). Tanpa Supabase tidak ada Google, dan
+ *  murid bimbel tidak perlu OAuth — cukup akun lokal di berkas. */
+export async function daftarMurid(input: {
+  email: string; fullName: string; password: string; kode: string;
+}): Promise<Result<{ userId: string }>> {
+  if (!usingDev()) return fail("Pendaftaran lokal hanya untuk mode berkas.");
+  const kodeKelas = (process.env.EXACT_KODE_KELAS ?? "").trim();
+  if (!kodeKelas) return fail("Pendaftaran belum dibuka: EXACT_KODE_KELAS belum diatur di server.");
+  if (input.kode.trim().toLowerCase() !== kodeKelas.toLowerCase()) return fail("Kode kelas salah. Minta kode ke guru.");
+  const email = input.email.trim().toLowerCase();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return fail("Alamat email tidak valid");
+  if (!input.fullName.trim()) return fail("Nama wajib diisi");
+  if (input.password.length < 6) return fail("Kata sandi minimal 6 karakter");
+  if (await devAuth.userByEmail(email)) return fail("Email ini sudah terdaftar — silakan masuk.");
+  const u = await devAuth.upsertUser({ email, fullName: input.fullName.trim(), phone: "" });
+  await devAuth.setPassword(u.id, input.password);
+  await setSessionCookie(await devAuth.createSession(u.id));
+  return ok({ userId: u.id });
+}
+
 /* ------------------------------------------------------------ kata sandi */
 
 /* Hanya untuk jalur admin. Peserta tidak pernah melihat layar kata sandi. */

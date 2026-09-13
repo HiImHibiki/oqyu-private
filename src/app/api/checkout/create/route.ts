@@ -67,7 +67,7 @@ export async function POST(req: Request) {
       orderId: order.id,
       amount: order.amount,
       currency: order.currency,
-      itemName: `${pkg?.name ?? order.packageId} — Exact Try Out`,
+      itemName: `${pkg?.name ?? order.packageId} — Exact Practice`,
       customerEmail: profile?.email ?? "",
       successUrl: `${returnTo}?order=${order.id}&paid=1`,
       cancelUrl: `${returnTo}?order=${order.id}`,

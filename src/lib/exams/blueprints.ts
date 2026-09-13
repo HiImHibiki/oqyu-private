@@ -539,7 +539,32 @@ export const TKA_SMA: ExamBlueprint = {
   ],
 };
 
-export const BLUEPRINTS = { SAT, UTBK, CSCA, ALEVEL, TKA_SMP, TKA_SMA } as const;
+/* =========================================================================
+ * LATIHAN — paket latihan bimbel (Exact Practice)
+ *
+ * Bukan ujian resmi: soalnya dibuat guru lewat Exact Worksheet atau disusun
+ * dari bank, satu section, durasi ditetapkan per paket saat attempt dibuat
+ * (formLayout dibekukan seperti try out lain). Skalanya tka_scaled supaya
+ * nilainya 0–100 dan dibaca murid sebagai persentase benar.
+ * ========================================================================= */
+export const LATIHAN: ExamBlueprint = {
+  code: "LATIHAN",
+  name: "Latihan",
+  tagline: "Paket latihan dari guru — bisa dicetak, bisa dikerjakan online",
+  locales: ["id", "en"],
+  totalDurationSec: 30 * M,
+  scoring: { kind: "tka_scaled", perSectionRange: [0, 100], totalRange: [0, 100] },
+  sections: [
+    {
+      code: "latihan", name: "Latihan", nameId: "Latihan",
+      durationSec: 30 * M, questionCount: 10, calculatorAllowed: true,
+      allowedTypes: ["mcq_single", "spr_numeric", "short_text"],
+      domains: [{ name: "Umum", weight: 1, skills: ["Latihan"] }],
+    },
+  ],
+};
+
+export const BLUEPRINTS = { SAT, UTBK, CSCA, ALEVEL, TKA_SMP, TKA_SMA, LATIHAN } as const;
 export const EXAM_LIST = [SAT, UTBK, CSCA, ALEVEL, TKA_SMP, TKA_SMA];
 
 export function getBlueprint(code: string): ExamBlueprint | undefined {

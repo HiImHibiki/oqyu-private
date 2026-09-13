@@ -22,9 +22,9 @@ export const viewport: Viewport = {
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   return {
-    title: { default: "Exact Try Out", template: "%s · Exact Try Out" },
+    title: { default: "Exact Practice", template: "%s · Exact Practice" },
     description: translate(locale, "landing.sub"),
-    applicationName: "Exact Try Out",
+    applicationName: "Exact Practice",
     alternates: { languages: { en: "/", id: "/", "zh-CN": "/" } },
   };
 }

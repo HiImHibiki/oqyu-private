@@ -5,7 +5,7 @@ import { GoogleSignIn } from "@/components/auth/GoogleSignIn";
 import { usingDev } from "@/lib/db";
 import { getT } from "@/lib/i18n";
 import { safePath } from "@/lib/redirects";
-import { DevQuickSignIn } from "./DevQuickSignIn";
+import { FormMasuk } from "@/components/auth/FormMasuk";
 
 export const metadata = { title: "Masuk" };
 
@@ -40,11 +40,14 @@ export default async function MasukPage({
             </div>
           )}
 
-          <GoogleSignIn label={t("auth.googleContinue")} next={next} />
-
-          <p className="mt-4 text-center text-xs muted">{t("auth.googleNote")}</p>
-
-          {dev && <DevQuickSignIn next={next} />}
+          {dev ? (
+            <FormMasuk next={next} />
+          ) : (
+            <>
+              <GoogleSignIn label={t("auth.googleContinue")} next={next} />
+              <p className="mt-4 text-center text-xs muted">{t("auth.googleNote")}</p>
+            </>
+          )}
 
           <hr className="my-6" style={{ borderColor: "var(--border)" }} />
 

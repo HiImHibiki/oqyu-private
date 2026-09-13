@@ -1,5 +1,5 @@
 /* =========================================================================
- * Exact Try Out — Skema Data Inti
+ * Exact Practice — Skema Data Inti
  * File ini adalah "kontrak" antara:
  *   (1) prompt AI penghasil soal  -> lihat /prompts
  *   (2) validator ingest          -> src/lib/exams/validate.ts
@@ -7,7 +7,7 @@
  * Perubahan di sini WAJIB diikuti perubahan di /prompts/_schema/question.schema.json
  * ========================================================================= */
 
-export type ExamCode = "SAT" | "CSCA" | "UTBK" | "ALEVEL" | "TKA_SMP" | "TKA_SMA";
+export type ExamCode = "SAT" | "CSCA" | "UTBK" | "ALEVEL" | "TKA_SMP" | "TKA_SMA" | "LATIHAN";
 export type Difficulty = "E" | "M" | "H";
 export type Locale = "en" | "id" | "zh";
 

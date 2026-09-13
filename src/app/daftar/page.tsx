@@ -2,6 +2,8 @@ import Link from "next/link";
 import { PlayCircle, Zap } from "lucide-react";
 import { SiteHeader } from "@/components/ui/SiteHeader";
 import { GoogleSignIn } from "@/components/auth/GoogleSignIn";
+import { FormDaftar } from "@/components/auth/FormDaftar";
+import { usingDev } from "@/lib/db";
 import { normalizeCode } from "@/lib/affiliate";
 import { packageById } from "@/lib/packages";
 import { getT } from "@/lib/i18n";
@@ -43,7 +45,7 @@ export default async function DaftarPage({
           <h1 className="display mb-1 text-2xl">{t("auth.createTitle")}</h1>
           <p className="mb-6 text-sm muted">{t("auth.createSub")}</p>
 
-          <GoogleSignIn label={t("auth.googleContinue")} refCode={refCode} next={next} />
+          {usingDev() ? <FormDaftar next={next ?? ""} /> : <GoogleSignIn label={t("auth.googleContinue")} refCode={refCode} next={next} />}
 
           <p className="mt-4 text-center text-xs muted">
             {t("legal.consentInline")}{" "}

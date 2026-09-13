@@ -5,7 +5,7 @@
 
 import { translate, type Locale } from "@/lib/i18n/dictionaries";
 
-const FROM = process.env.EMAIL_FROM || "Exact Try Out <onboarding@resend.dev>";
+const FROM = process.env.EMAIL_FROM || "Exact Practice <onboarding@resend.dev>";
 
 /* Surat transaksional mengikuti bahasa yang dipilih pembeli, bukan bahasa
  * pemilik toko. Aplikasi ini menjual SAT ke Nigeria dan CSCA ke Kazakhstan;
@@ -16,7 +16,7 @@ const FROM = process.env.EMAIL_FROM || "Exact Try Out <onboarding@resend.dev>";
  * templatenya sendiri, dan bahasanya diatur di dasbor Supabase. */
 const shell = (title: string, inner: string) => `
   <div style="font-family:Inter,Segoe UI,sans-serif;max-width:520px;margin:0 auto;padding:32px 24px;color:#1a1c1a">
-    <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f6b;margin:0 0 6px">Exact Try Out</p>
+    <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6b6f6b;margin:0 0 6px">Exact Practice</p>
     <h1 style="font-size:22px;margin:0 0 14px">${escapeHtml(title)}</h1>
     ${inner}
   </div>`;
@@ -39,7 +39,7 @@ export async function sendMail(to: string, subject: string, html: string) {
      * yang tertulis di log server sama saja dengan kunci yang tergeletak. */
     if (process.env.NODE_ENV === "production") {
       /* Subjeknya disensor lebih dulu: subjek OTP memuat kodenya sendiri
-       * ("Kode aktivasi Exact Try Out: 680392"), sehingga mencetaknya utuh
+       * ("Kode aktivasi Exact Practice: 680392"), sehingga mencetaknya utuh
        * memindahkan kebocoran dari respons HTTP ke berkas log — tempat yang
        * lebih sering dibagikan daripada disadari. */
       console.error(

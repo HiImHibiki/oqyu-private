@@ -1,12 +1,14 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { BookMarked, ClipboardCheck, FileQuestion, Gauge, Gift, LogOut, Receipt, ShieldCheck, Users, PenLine } from "lucide-react";
+import { BookMarked, ClipboardCheck, FileQuestion, Gauge, Gift, LogOut, Receipt, ShieldCheck, Users, PenLine, Sparkles, Eye } from "lucide-react";
 import { Logo } from "@/components/ui/SiteHeader";
 import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
 
 const NAV = [
   { href: "/admin", label: "Ringkasan", icon: Gauge },
+  { href: "/admin/latihan", label: "Buat latihan", icon: Sparkles },
+  { href: "/admin/kelas", label: "Pantau kelas", icon: Eye },
   { href: "/admin/soal", label: "Bank soal", icon: FileQuestion },
   { href: "/admin/tinjauan", label: "Antrean tinjauan", icon: ClipboardCheck },
   { href: "/admin/esai", label: "Penilaian esai", icon: PenLine },

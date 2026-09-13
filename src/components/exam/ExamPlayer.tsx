@@ -1,8 +1,7 @@
 "use client";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  AlertTriangle, BookOpen, Calculator as CalcIcon, ChevronLeft, ChevronRight, Clock,
-  Eye, EyeOff, Flag, Highlighter, LayoutGrid, Loader2, Maximize, ShieldCheck, WifiOff,
+  AlertTriangle, BookOpen, Calculator as CalcIcon, ChevronLeft, ChevronRight, Clock, Eye, EyeOff, Flag, Highlighter, LayoutGrid, Loader2, Maximize, ShieldCheck, WifiOff, MessageCircleQuestion,
 } from "lucide-react";
 import type { ExamCode, Question, ResponseValue } from "@/lib/types";
 import { QuestionView } from "./QuestionView";
@@ -98,6 +97,12 @@ export function ExamPlayer(props: ExamPlayerProps) {
   const [showTimer, setShowTimer] = useState(true);
   const [navOpen, setNavOpen] = useState(true);
   const [calcOpen, setCalcOpen] = useState(false);
+  /* "Tanya guru": soal yang sedang dibuka dikirim ke Exact Canvas (lengkap
+   * dengan gambarnya), lalu tab layar murid dibuka supaya ia bisa menyimak
+   * pembahasan gurunya. Hanya untuk paket latihan — try out resmi tidak boleh
+   * ada bantuan. */
+  const [asking, setAsking] = useState<"idle" | "busy" | "done" | "fail">("idle");
+  const [askMsg, setAskMsg] = useState("");
   const [sheetOpen, setSheetOpen] = useState(false);
   const [hlMode, setHlMode] = useState(false);
   const [onBreak, setOnBreak] = useState(false);
@@ -437,6 +442,29 @@ export function ExamPlayer(props: ExamPlayerProps) {
           {section.formulaSheet && (
             <button className="btn btn-ghost !px-2" onClick={() => setSheetOpen(true)} title={t("exam.formulaSheet")}>
               <BookOpen size={16} />
+            </button>
+          )}
+          {props.examCode === "LATIHAN" && question && (
+            <button className={`btn btn-ghost !px-2 ${asking === "done" ? "!bg-[var(--accent-soft)]" : ""}`}
+              disabled={asking === "busy"}
+              title={askMsg || t("exam.askTeacher")}
+              onClick={async () => {
+                setAsking("busy"); setAskMsg(t("exam.asking"));
+                /* Tab dibuka SEBELUM await: peramban ponsel memblokir window.open
+                 * yang tidak lagi berada di dalam gestur klik. */
+                const tab = window.open("", "_blank");
+                try {
+                  const r = await fetch("/api/latihan/tanya", {
+                    method: "POST", headers: { "content-type": "application/json" },
+                    body: JSON.stringify({ attemptId: props.attemptId, questionId: question.id, number: qi + 1 }),
+                  });
+                  const j = await r.json();
+                  if (j.url) { if (tab) tab.location.href = j.url; else window.open(j.url, "_blank"); setAsking("done"); setAskMsg(t("exam.asked")); }
+                  else { tab?.close(); setAsking("fail"); setAskMsg(j.error || "Gagal"); }
+                } catch { tab?.close(); setAsking("fail"); setAskMsg("Gagal menghubungi server"); }
+              }}>
+              <MessageCircleQuestion size={16} />
+              <span className="hidden sm:inline text-xs">{asking === "idle" ? t("exam.askTeacher") : askMsg}</span>
             </button>
           )}
           {section.calculatorAllowed && (

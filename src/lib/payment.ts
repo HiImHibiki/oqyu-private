@@ -73,7 +73,7 @@ export function confirmationMessage(input: {
   ref: string; packageName: string; amount: string; name?: string;
 }) {
   return [
-    "Halo Admin Exact Try Out,",
+    "Halo Admin Exact Practice,",
     "",
     `Saya sudah transfer untuk pesanan ${input.ref}.`,
     `Paket : ${input.packageName}`,

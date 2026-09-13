@@ -230,6 +230,23 @@ export const EXAM_REFERENCE: Record<ExamCode, ExamReference> = {
       "Mapel soshum (Ekonomi, Sosiologi, Geografi, Sejarah) belum disiapkan - menambahkannya cukup dengan menambah section di blueprints.ts dan mengisi bank soalnya.",
     ],
   },
+  /* -------------------------------------------------------------- LATIHAN */
+  LATIHAN: {
+    code: "LATIHAN",
+    officialName: "Paket latihan Exact Course",
+    localName: "Latihan",
+    body: "Exact Course (internal)",
+    website: "https://practice.exactprintsolution.com",
+    delivery: "Online di Exact Practice, atau dicetak lewat Exact Worksheet",
+    sittingsPerYear: "Kapan saja",
+    scoreScale: "0-100 (proporsi benar)",
+    scoreValidity: "Hanya untuk pemantauan belajar di bimbel",
+    confidence: "verified",
+    lastVerified: D,
+    sources: [],
+    recheck: [],
+    notes: ["Bukan ujian resmi: soal dibuat guru (Gemini lewat Exact Worksheet) atau disusun dari bank."],
+  },
 };
 
 /* ------------------------------------------------- matriks mata uji CSCA */
@@ -365,6 +382,13 @@ export const SCORING_MODELS: Record<ExamCode, ScoringModel> = {
       "Rumus penskalaan resmi belum dipublikasikan - kurva ini rancangan sendiri.",
       "Cara skor TKA dipakai dalam seleksi masuk perguruan tinggi berada di luar jangkauan aplikasi ini dan berubah antar tahun.",
     ],
+  },
+  LATIHAN: {
+    exam: "LATIHAN",
+    method: "Proporsi benar diskalakan ke 100 poin (kurva TKA)",
+    scale: "0-100",
+    howItWorks: ["Setiap soal berbobot sesuai bobotnya di lembar; skor = 100 x proporsi poin yang benar."],
+    limitations: ["Soal esai tidak dinilai otomatis dan tidak masuk skor."],
   },
 };
 
