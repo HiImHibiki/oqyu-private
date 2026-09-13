@@ -150,6 +150,19 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/apk':
+            # Unduh aplikasi Android dari tablet: buka http://<alamat>:7790/apk
+            fp = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                              'android', 'ExactWorksheet.apk')
+            if not os.path.isfile(fp):
+                return self.send_error(404, 'APK belum dibangun (android/bangun.sh)')
+            d = open(fp, 'rb').read()
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/vnd.android.package-archive')
+            self.send_header('Content-Disposition', 'attachment; filename="ExactWorksheet.apk"')
+            self.send_header('Content-Length', str(len(d))); self.end_headers()
+            self.wfile.write(d); return
+
         if u.path == '/thumb':
             import hasil as _h
             f = (qs.get('f') or [''])[0]
@@ -570,6 +583,70 @@ class H(BaseHTTPRequestHandler):
                     jawab = {'galat': str(e)[:160]}
             b = json.dumps(jawab).encode()
             self.send_response(200); self.send_header('Content-Type','application/json')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
+        if u.path == '/terima':
+            # Dipanggil aplikasi Android: satu berkas masuk, langsung dikerjakan
+            # memakai setelan tersimpan. Jawabannya ringkas supaya mudah dibaca
+            # di layar ponsel.
+            panjang = int(self.headers.get('Content-Length') or 0)
+            mentah = self.rfile.read(panjang) if panjang else b''
+            jenis = self.headers.get('Content-Type', '')
+            nama, isi, medan = 'kiriman', b'', {}
+            if jenis.startswith('multipart/form-data'):
+                batas = jenis.split('boundary=')[-1].strip('"').encode()
+                for bagian in mentah.split(b'--' + batas):
+                    if b'\r\n\r\n' not in bagian: continue
+                    kepala, _, nilai = bagian.partition(b'\r\n\r\n')
+                    mn = re.search(rb'name="([^"]+)"', kepala)
+                    if not mn: continue
+                    k = mn.group(1).decode()
+                    nilai = nilai.rstrip(b'\r\n-')
+                    if b'filename="' in kepala:
+                        fn = re.search(rb'filename="([^"]*)"', kepala).group(1).decode()
+                        if nilai: nama, isi = (fn or 'kiriman'), nilai
+                    else:
+                        medan[k] = nilai.decode('utf-8','replace')
+            else:
+                isi = mentah
+                nama = self.headers.get('X-Nama-Berkas') or 'kiriman.pdf'
+            if not isi:
+                b = json.dumps({'galat': 'tidak ada berkas'}).encode()
+                self.send_response(400)
+            else:
+                import buat, setelan, threading, uuid
+                st = setelan.muat()
+                jid = uuid.uuid4().hex[:12]
+                buat.TUGAS[jid] = {'langkah': [f'Menerima {nama[:40]}…'], 'maju': 3,
+                                   'selesai': False}
+                kls = (st.get('kelas') or '').strip()
+                mode = medan.get('mode') or 'buat'
+                if mode == 'jawab':
+                    sasaran, kw = buat.jalankan_jawab, dict(
+                        jid=jid, gambar=[(nama, isi)], instruksi='',
+                        mapel=st.get('mapel') or None,
+                        kelas=int(kls) if kls.isdigit() else None, judul='',
+                        bahasa=st.get('bahasa') or 'Indonesia',
+                        lembaga=st.get('lembaga',''), sekolah=st.get('sekolah',''),
+                        tanggal='', kolom='1')
+                else:
+                    sasaran, kw = buat.jalankan, dict(
+                        jid=jid, gambar=[(nama, isi)], instruksi=st.get('instruksi',''),
+                        jumlah=st.get('jumlah',''), mapel=st.get('mapel') or None,
+                        kelas=int(kls) if kls.isdigit() else None, judul='',
+                        api=os.environ.get('EXACT_API'), topik='',
+                        jenjang=st.get('jenjang',''), n_set=st.get('n_set',''),
+                        sulit=st.get('sulit',''), bahasa=st.get('bahasa') or 'Indonesia',
+                        lembaga=st.get('lembaga',''), sekolah=st.get('sekolah',''),
+                        tanggal='', kunci=st.get('kunci', True),
+                        pembahasan=st.get('pembahasan', True), kolom=st.get('kolom','2'),
+                        dua_berkas=st.get('dua_berkas', False),
+                        kerapatan=st.get('kerapatan','Normal'), garis=st.get('garis','1.5'))
+                threading.Thread(target=sasaran, kwargs=kw, daemon=True).start()
+                b = json.dumps({'jid': jid, 'pesan': f'{nama[:40]} diterima, sedang dikerjakan'}).encode()
+                self.send_response(200)
+            self.send_header('Content-Type','application/json')
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 

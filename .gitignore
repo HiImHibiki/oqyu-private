@@ -29,3 +29,5 @@ menubar/dist/
 menubar/ExactWorksheetBar
 naskah/
 cadangan-soal-*.sql.gz
+android/build/
+android/*.apk

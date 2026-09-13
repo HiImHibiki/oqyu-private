@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout android:orientation="vertical" android:padding="22dp"
+  android:layout_width="match_parent" android:layout_height="wrap_content">
+
+  <TextView android:id="@+id/judul" android:text="Exact Worksheet"
+    android:textSize="22sp" android:textStyle="bold"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+  <TextView android:text="Kirim soal ke Mac, jadi lembar kerja PDF."
+    android:textSize="14sp" android:paddingBottom="18dp"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+  <TextView android:text="Mac tujuan" android:textStyle="bold" android:paddingTop="6dp"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+  <RadioGroup android:id="@+id/pilihMac" android:orientation="vertical"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RadioButton android:id="@+id/macRico" android:text="Mac mini Rico — 100.83.25.73"
+      android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <RadioButton android:id="@+id/macVelisia" android:text="Mac mini Velisia — 100.70.73.4"
+      android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <RadioButton android:id="@+id/macLain" android:text="Alamat lain"
+      android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  </RadioGroup>
+  <EditText android:id="@+id/alamat" android:hint="100.x.x.x atau 192.168.x.x"
+    android:inputType="text" android:textSize="16sp"
+    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+  <TextView android:text="Kiriman diperlakukan sebagai" android:textStyle="bold"
+    android:paddingTop="18dp"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+  <RadioGroup android:id="@+id/pilihMode" android:orientation="vertical"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RadioButton android:id="@+id/modeBuat" android:text="Bahan membuat soal baru"
+      android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <RadioButton android:id="@+id/modeJawab" android:text="Soal yang perlu kunci &amp; pembahasan"
+      android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  </RadioGroup>
+
+  <Button android:id="@+id/uji" android:text="Uji sambungan" android:layout_marginTop="18dp"
+    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  <Button android:id="@+id/buka" android:text="Buka aplikasi di Mac" android:layout_marginTop="8dp"
+    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  <TextView android:id="@+id/kabar" android:paddingTop="16dp" android:textSize="14sp"
+    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+</LinearLayout>
+</ScrollView>
