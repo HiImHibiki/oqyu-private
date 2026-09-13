@@ -131,47 +131,44 @@ def ambil_pdf(tujuan, tunggu=3.0):
 # sendiri tidak berubah, jadi perendernya tetap mengerti hasilnya.
 BARIS_DIAGRAM = re.compile(r'^   (\w[\w()]*)\s+— ')
 
-# Selalu disertakan: dipakai lintas mata pelajaran, atau menyediakan ruang jawab.
-SELALU = {'bangun', 'bangunruang', 'tabel', 'tabelkosong', 'figur', 'garisjawab',
-          'statistik', 'garisbilangan', 'sudut', 'anotasi', '(anotasi)'}
-
-# Kata pemicu tiap jenis. Dicocokkan ke topik, mapel, dan catatan guru.
-PEMICU = {
-    'grafik': 'grafik fungsi kuadrat linear parabola kurva persamaan garis',
-    'programlinear': 'program linear pertidaksamaan optimasi maksimum minimum',
-    'transformasi': 'transformasi translasi refleksi rotasi dilatasi geometri',
-    'pohonpeluang': 'peluang probabilitas probability kejadian dadu koin',
-    'vektor': 'vektor resultan perpindahan gaya',
-    'bearing': 'bearing arah mata angin navigasi sudut jurusan',
-    'ogive': 'ogive frekuensi kumulatif kuartil statistika data',
-    'boxplot': 'boxplot kotak garis kuartil sebaran statistika data',
-    'venn': 'himpunan venn irisan gabungan komplemen',
-    'pohonfaktor': 'faktor prima fpb kpk pemfaktoran bilangan',
-    'pembagian': 'pembagian bersusun bagi panjang aritmetika',
-    'piktogram': 'piktogram diagram gambar data statistika',
-    'lingkaranteorema': 'lingkaran busur tali sudut pusat keliling teorema',
-    'jaring': 'jaring jaring net bangun ruang luas permukaan',
-    'pandangan': 'pandangan proyeksi depan samping atas bangun ruang',
-    'pencar': 'pencar scatter korelasi regresi data',
-    'histogram': 'histogram frekuensi kelas interval statistika data',
-    'batangdaun': 'batang daun stem leaf data statistika',
-    'kertasgrafik': 'plot gambarlah grafik kertas grafik sumbu',
+# DAFTAR PUTIH — hanya jenis diagram di sini yang ditawarkan ke Gemini.
+#
+# Dari 28 jenis yang didukung mesinnya, sebagian besar hasilnya sering tidak
+# akurat menurut pemakaiannya sehari-hari. Menawarkan jenis yang hasilnya
+# meleset bukan cuma memboroskan perintah — Gemini jadi memakainya, dan lembar
+# yang tercetak salah gambar. Yang tersisa di sini yang mekanismenya sederhana
+# dan hasilnya bisa dipercaya.
+#
+# Menambah jenis: tulis namanya di sini. Catatan untuk 'bangun' dan
+# 'bangunruang' — keduanya sempat tercetak selebar 12 piksel karena parameter
+# 'lebar' salah diartikan (lihat patch di wsm/diagrams.js). Kalau dulu terlihat
+# buruk gara-gara itu, sekarang layak dicoba lagi sebelum diputuskan.
+DIPAKAI = {
+    'tabel',          # tabel data
+    'tabelkosong',    # tabel berheader, baris kosong untuk diisi siswa
+    'kertasgrafik',   # kertas grafik kosong berskala untuk diplot siswa
+    'garisjawab',     # garis bertitik sebagai ruang menulis jawaban
+    'garisbilangan',  # garis bilangan dengan titik berlabel
 }
 
+# Bukan jenis diagram, melainkan parameter tambahan — selalu ikut.
+SELALU = {'anotasi', '(anotasi)'}
 
-def ringkas_diagram(perintah, konteks):
-    """Buang jenis diagram yang jelas tidak relevan dengan permintaan ini."""
-    kata = set(re.findall(r'[a-z]{3,}', (konteks or '').lower()))
+def ringkas_diagram(perintah, konteks=''):
+    """Sisakan hanya jenis diagram yang dipakai.
+
+    konteks tidak lagi dipakai untuk menyaring: daftar putihnya sudah pendek,
+    dan menyaring lagi per topik hanya membuat lembar kehilangan tabel atau
+    ruang jawab yang sebetulnya selalu berguna.
+    """
     keluar, dibuang = [], 0
     for baris in perintah.split('\n'):
         m = BARIS_DIAGRAM.match(baris)
         if m:
             jenis = m.group(1).strip('()').lower()
-            if jenis not in SELALU:
-                pemicu = set(PEMICU.get(jenis, jenis).split())
-                if not (kata & pemicu):
-                    dibuang += 1
-                    continue
+            if jenis not in DIPAKAI and jenis not in SELALU:
+                dibuang += 1
+                continue
         keluar.append(baris)
     return '\n'.join(keluar), dibuang
 

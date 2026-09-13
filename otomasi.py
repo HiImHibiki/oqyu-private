@@ -37,6 +37,11 @@ def _sesi(url, potongan):
     Versi pertama mengambil tab pertama yang ada lalu mengarahkannya ulang —
     akibatnya tab Gemini yang sudah login ikut terbajak saat giliran Worksheet
     Maker, dan larian berikutnya gagal karena Gemini-nya sudah hilang.
+
+    Potongan URL-nya harus SPESIFIK. Mencocokkan "gemini.google.com" saja
+    membuat halaman setelan seperti /saved-info ikut terpilih — halaman itu
+    tidak punya kotak ketik, jadi gejalanya "Halaman Gemini tidak siap di
+    jendela kendali" padahal sesinya sehat.
     """
     cdp.nyalakan()
     tab = cdp.cari_tab(potongan)
@@ -414,7 +419,7 @@ def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=2, lampiran=No
             if isinstance(e, Ditolak):
                 time.sleep(3)
             elif ke == 0:
-                s = _sesi(URL_GEMINI, 'gemini.google.com')
+                s = _sesi(URL_GEMINI, 'gemini.google.com/app')
                 try:
                     s.buka(URL_GEMINI)      # muat ulang penuh
                     time.sleep(5)
@@ -471,7 +476,7 @@ def _panen(s, batas, stabil, lapor=None):
 def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None, lampiran=None,
                   mode=None):
     perintah = perintah + BUNGKUS
-    s = _sesi(URL_GEMINI, 'gemini.google.com')
+    s = _sesi(URL_GEMINI, 'gemini.google.com/app')
     try:
         for _ in range(20):
             k = s.evaluasi(JS_SUDAH_MASUK)
