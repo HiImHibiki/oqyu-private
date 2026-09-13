@@ -31,13 +31,16 @@ else
   kurang=1
 fi
 
-(( kurang )) && { print -r -- "\nLengkapi dulu yang kurang di atas, lalu jalankan ulang."; exit 1; }
+(( kurang )) && { print -r -- "
+Lengkapi dulu yang kurang di atas, lalu jalankan ulang."; exit 1; }
 
-print -r -- "\n=== Mengompilasi alat OCR ==="
+print -r -- "
+=== Mengompilasi alat OCR ==="
 swiftc -O ocr-mac/VisionOCR.swift -o ocr-mac/visionocr
 print -r -- "  ocr-mac/visionocr siap ($(du -h ocr-mac/visionocr | cut -f1))"
 
-print -r -- "\n=== Menyiapkan basis data ==="
+print -r -- "
+=== Menyiapkan basis data ==="
 if [[ -f exact.db ]]; then
   print -r -- "  exact.db sudah ada, dibiarkan"
 else
@@ -64,6 +67,7 @@ fi
 mkdir -p "$HOME/Documents/Lembar Kerja"
 chmod +x mulai.sh 2>/dev/null || true
 
-print -r -- "\n=== Selesai ==="
+print -r -- "
+=== Selesai ==="
 print -r -- "Jalankan:  ./mulai.sh"
 print -r -- "Pemakaian pertama akan membuka Chrome berprofil khusus — login Google sekali di situ."
