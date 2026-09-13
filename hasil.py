@@ -4,7 +4,7 @@
 Dirancang untuk dibuka dari tablet — kartu besar, sasaran sentuh lebar, dan
 gambar halaman dikecilkan lebih dulu supaya ringan di jaringan.
 """
-import os, re, html, subprocess, glob, time
+import os, re, html, json, subprocess, glob, time
 
 AKAR = os.path.dirname(os.path.abspath(__file__))
 THUMB = os.path.join(AKAR, 'thumb')
@@ -13,9 +13,19 @@ def folder_keluar():
     import buat
     return buat.KELUAR
 
-def daftar_pdf(batas=60):
+def daftar_pdf(batas=400, cari=''):
+    """PDF di folder keluaran, yang terbaru di atas.
+
+    Folder ini Desktop Rico, yang sudah berisi ratusan lembar lama. Batas 60
+    dulu memotongnya diam-diam sehingga berkas lama tak pernah bisa dibuka dari
+    sini; sekarang dibatasi jauh lebih longgar dan bisa disaring namanya.
+    """
     p = sorted(glob.glob(os.path.join(folder_keluar(), '*.pdf')),
                key=os.path.getmtime, reverse=True)
+    cari = (cari or '').strip().lower()
+    if cari:
+        kata = cari.split()
+        p = [x for x in p if all(k in os.path.basename(x).lower() for k in kata)]
     return p[:batas]
 
 def n_halaman(path):
@@ -164,6 +174,14 @@ color:#fff;font-weight:700;font-size:15px;cursor:pointer}
 .bar button.abu{background:var(--tepi);color:var(--teks);font-weight:600;padding:12px 16px}
 .bar .info{color:var(--redup);font-size:13px;margin-left:auto}
 .kosong{color:var(--redup);padding:40px 0;text-align:center}
+.cari{width:100%;padding:10px 13px;margin-bottom:14px;border:1px solid var(--tepi);
+ border-radius:9px;background:var(--kartu);color:var(--teks);font-size:14px}
+.aksi{display:flex;gap:6px;margin-top:8px}
+.mini{flex:1;text-align:center;padding:7px 4px;border:1px solid var(--tepi);border-radius:7px;
+ background:var(--bg);color:var(--teks);font-size:12px;font-weight:600;cursor:pointer;
+ text-decoration:none;display:block}
+.mini:disabled{opacity:.5}
+.kabar{margin-top:14px;color:var(--redup);font-size:12.5px;min-height:18px}
 </style>"""
 
 def bersihkan_cache(maks_berkas=400, maks_hari=30):
@@ -195,25 +213,77 @@ def bersihkan_cache(maks_berkas=400, maks_hari=30):
             except OSError: pass
     return dibuang
 
-def halaman_daftar():
+def halaman_daftar(cari=''):
     try: bersihkan_cache()
     except Exception: pass
-    berkas = daftar_pdf()
+    berkas = daftar_pdf(cari=cari)
+    daftar_p, bawaan = printer()
+    try:
+        import setelan as _s
+        st = _s.muat()
+        if st.get('printer') in daftar_p: bawaan = st['printer']
+    except Exception:
+        pass
     kartu = ''
     for p in berkas:
         nama = os.path.basename(p)
+        e = html.escape(nama, quote=True)
         n = n_halaman(p)
-        kartu += (f'<a class=kartu href="/hasil?f={html.escape(nama, quote=True)}">'
-                  f'<img src="/thumb?f={html.escape(nama, quote=True)}&p=1&w=300" alt="" loading=lazy>'
-                  f'<div class=n>{html.escape(nama[:52])}<br>{n} halaman · '
-                  f'{time.strftime("%d %b %H:%M", time.localtime(os.path.getmtime(p)))}</div></a>')
+        kartu += (f'<div class=kartu>'
+                  f'<a href="/hasil?f={e}">'
+                  f'<img src="/thumb?f={e}&p=1&w=300" alt="" loading=lazy>'
+                  f'<div class=n>{html.escape(nama[:52])}<br>{n} halaman &middot; '
+                  f'{time.strftime("%d %b %H:%M", time.localtime(os.path.getmtime(p)))}'
+                  f'</div></a>'
+                  f'<div class=aksi>'
+                  f'<button type=button class=mini data-cetak="{e}">Cetak</button>'
+                  f'<a class=mini href="/berkas?unduh=1&f={e}" download>Kirim</a>'
+                  f'</div></div>')
     if not kartu:
-        kartu = '<div class=kosong>Belum ada lembar. Buat dulu di tab "Buat dengan AI".</div>'
+        kartu = ('<div class=kosong>Tidak ada lembar yang cocok.</div>' if cari else
+                 '<div class=kosong>Belum ada lembar. Buat dulu di tab "Buat dengan AI".</div>')
     return f"""<!doctype html><meta charset=utf-8><title>Hasil</title>
 <meta name=viewport content="width=device-width,initial-scale=1"><style>{GAYA}
 <div class=b><h1>Lembar yang sudah jadi</h1>
-<div class=s>Ketuk salah satu untuk melihat halamannya, memilih, dan mencetak.</div>
-<div class=grid>{kartu}</div></div>"""
+<div class=s>Berkas PDF di Desktop Mac, yang terbaru di atas. Ketuk gambarnya
+untuk memilih halaman, atau pakai tombol di bawahnya.</div>
+<input id=cari class=cari placeholder="saring nama berkas — mis. MATH 8"
+ value="{html.escape(cari, quote=True)}" autocomplete=off>
+<div class=grid>{kartu}</div>
+<div id=kabar class=kabar></div></div>
+<script>
+// Menyaring di sisi server: 525 berkas terlalu banyak untuk dikirim semuanya
+// beserta gambar kecilnya, dan pencarian nama berkas memang murah di sana.
+(() => {{
+  const c = document.getElementById('cari');
+  let jeda;
+  c.oninput = () => {{
+    clearTimeout(jeda);
+    jeda = setTimeout(() => {{
+      location.href = '/hasil?cari=' + encodeURIComponent(c.value.trim());
+    }}, 400);
+  }};
+  c.onkeydown = e => {{ if (e.key === 'Enter') {{ clearTimeout(jeda); c.oninput(); }} }};
+
+  const kabar = document.getElementById('kabar');
+  document.querySelectorAll('[data-cetak]').forEach(b => b.onclick = async () => {{
+    const nama = b.dataset.cetak;
+    b.disabled = true; b.textContent = 'mengirim…';
+    try {{
+      const fd = new FormData();
+      fd.append('f', nama); fd.append('semua', '1');
+      fd.append('printer', {json.dumps(bawaan or '')});
+      const r = await fetch('/cetak', {{method: 'POST', body: fd}});
+      const j = await r.json();
+      b.textContent = j.galat ? 'gagal' : 'terkirim';
+      kabar.textContent = j.galat || (nama + ' dikirim ke ' + ({json.dumps(bawaan or 'printer')}));
+    }} catch (e) {{
+      b.textContent = 'gagal'; kabar.textContent = e.message;
+    }}
+    setTimeout(() => {{ b.disabled = false; b.textContent = 'Cetak'; }}, 2500);
+  }});
+}})();
+</script>"""
 
 def halaman_berkas(nama):
     p = os.path.join(folder_keluar(), nama)

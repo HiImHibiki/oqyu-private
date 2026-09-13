@@ -7,6 +7,28 @@ belakang. Anak membacanya mengalir dari atas ke bawah.
 """
 import html, re
 
+# Baris langkah hitung: memuat rumus, atau pembuka/penutup hitungan.
+_LANGKAH = re.compile(r'\$.+\$|^\s*(Diketahui|Ditanya|Jadi|Maka)\b', re.I)
+# Nomor soal sudah dicetak pada lencana di sebelah kiri; kalau nomor bawaan
+# dari naskah dibiarkan, tiap soal terbaca "1  1. ..." — bernomor dua kali.
+_NOMOR = re.compile(r'^\s*\(?\d{1,3}[.)]\s+')
+# Keterangan gambar ditandai supaya terlihat sebagai catatan, bukan bagian soal.
+_GAMBAR = re.compile(r'\[GAMBAR:\s*(.+?)\]', re.I | re.S)
+
+
+def _soal(t):
+    """Siapkan kalimat soal: buang nomor ganda, tandai keterangan gambar."""
+    t = _NOMOR.sub('', (t or '').strip())
+    bagian = _GAMBAR.split(t)
+    keluar = ''
+    for i, x in enumerate(bagian):
+        if i % 2:
+            keluar += f'<span class=gbr>Gambar: {html.escape(x.strip())}</span>'
+        else:
+            keluar += _rumus(x)
+    return keluar
+
+
 def _rumus(t):
     """Biarkan $...$ utuh untuk KaTeX; sisanya di-escape."""
     keping, pos = [], 0
@@ -43,6 +65,8 @@ body{margin:0;background:#fff;color:#14140f;
  font-weight:700;font-family:ui-sans-serif,-apple-system,sans-serif;
  margin-right:8px;vertical-align:2px}
 .soal{display:inline;white-space:pre-wrap}
+.gbr{display:block;margin:7px 0 0;padding:7px 10px;border-left:3px solid #cfcfc8;
+ color:#5f5f58;font-size:11pt;font-style:italic}
 .kotakSoal{background:#faf9f4;border-left:4px solid #c4572a;padding:12px 15px;
  margin-bottom:16px;break-inside:avoid}
 .jawab{font-size:12.5pt;margin:0 0 14px;padding:9px 14px;background:#f2f7f2;
@@ -53,6 +77,10 @@ body{margin:0;background:#fff;color:#14140f;
  letter-spacing:.5px;text-transform:uppercase;color:#6b6b62;margin-bottom:8px}
 .bahas p{margin:0 0 13px;text-align:justify}
 .bahas p:last-child{margin-bottom:0}
+/* Baris hitungan bukan paragraf bacaan: rata kiri, sedikit menjorok, dan
+   jaraknya rapat supaya satu rangkaian langkah terbaca sebagai satu kesatuan. */
+.bahas p.langkah{text-align:left;margin:0 0 5px;padding-left:14px}
+.bahas p.langkah + p:not(.langkah){margin-top:11px}
 .kaki{margin-top:20px;padding-top:8px;border-top:1px solid #e6e6df;
  font-size:9pt;color:#8a8a80;display:flex;justify-content:space-between;
  font-family:ui-sans-serif,-apple-system,sans-serif}
@@ -65,13 +93,14 @@ def buat(judul, butir, kop=None):
                                  kop.get('mapel'), kop.get('kelas')) if x)
     isi = ''
     for i, b in enumerate(butir, 1):
-        alinea = ''.join(f'<p>{_rumus(a)}</p>' for a in b['bahas']) or \
-                 '<p>(pembahasan tidak tersedia)</p>'
+        alinea = ''.join(
+            f'<p class=langkah>{_rumus(a)}</p>' if _LANGKAH.search(a) else f'<p>{_rumus(a)}</p>'
+            for a in b['bahas']) or '<p>(pembahasan tidak tersedia)</p>'
         jawab = (f'<div class=jawab><b>Jawaban</b>{_rumus(b["jawab"])}</div>'
                  if b.get('jawab') else '')
         isi += (f'<div class=butir>'
                 f'<div class=kotakSoal><span class=no>{i}</span>'
-                f'<span class=soal>{_rumus(b["soal"])}</span></div>'
+                f'<span class=soal>{_soal(b["soal"])}</span></div>'
                 f'{jawab}'
                 f'<div class=labelBahas>Pembahasan</div>'
                 f'<div class=bahas>{alinea}</div></div>')

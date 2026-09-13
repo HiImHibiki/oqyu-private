@@ -165,7 +165,8 @@ class H(BaseHTTPRequestHandler):
         if u.path == '/hasil':
             import hasil as _h
             f = (qs.get('f') or [''])[0]
-            isi = _h.halaman_berkas(f) if f else _h.halaman_daftar()
+            isi = (_h.halaman_berkas(f) if f
+                   else _h.halaman_daftar((qs.get('cari') or [''])[0]))
             if isi is None: return self.send_error(404, 'berkas tidak ada')
             b = isi.encode()
             self.send_response(200)
@@ -234,6 +235,12 @@ class H(BaseHTTPRequestHandler):
             if not os.path.isfile(pth): return self.send_error(404)
             d = open(pth, 'rb').read()
             self.send_response(200); self.send_header('Content-Type','application/pdf')
+            # unduh=1 memaksa berkas tersimpan di perangkat, bukan dibuka di tab.
+            # Itu satu-satunya jalan membagikannya ke WhatsApp dari Android:
+            # halaman ini diakses lewat HTTP biasa, jadi navigator.share tidak ada.
+            if (qs.get('unduh') or [''])[0]:
+                self.send_header('Content-Disposition',
+                                 'attachment; filename="%s"' % f.replace('"', ''))
             self.send_header('Content-Length',str(len(d))); self.end_headers()
             self.wfile.write(d); return
 
@@ -633,8 +640,27 @@ class H(BaseHTTPRequestHandler):
                 halaman = d.get('h', [])
                 medan = {k: v[0] for k, v in d.items()}
             import hasil as _h, setelan as _st
+            # Cetak cepat dari daftar hasil hanya mengirim nama berkas. Setelan
+            # cetak yang tersimpan dipakai apa adanya dan TIDAK ditimpa, supaya
+            # satu ketukan cepat tidak diam-diam mengubah pilihan printer,
+            # bolak-balik, dan jumlah salinan milik halaman cetak penuh.
+            if medan.get('semua'):
+                st = _st.muat()
+                medan.setdefault('printer', st.get('printer', ''))
+                medan['salinan'] = st.get('salinan') or '1'
+                # Cetak cepat selalu lewat gambar dan selalu bolak-balik. Printer
+                # Rico monokrom dan sering menolak PDF berwarna langsung; setelan
+                # tersimpan bisa saja ikut mati karena satu borang dikirim tanpa
+                # centangnya, dan kegagalan itu baru ketahuan di depan printer.
+                medan['gambar'] = '1'
+                medan['bolak'] = st.get('bolak') or 'otomatis'
+                f0 = medan.get('f', '')
+                p0 = os.path.join(_h.folder_keluar(), f0)
+                if '/' not in f0 and '..' not in f0 and os.path.isfile(p0):
+                    halaman = [str(i) for i in range(1, _h.n_halaman(p0) + 1)]
             # ingat pilihan cetak untuk berikutnya
             try:
+                if medan.get('semua'): raise StopIteration
                 lama = _st.muat()
                 lama.update({'printer': medan.get('printer',''),
                              'bolak': medan.get('bolak','otomatis'),
@@ -642,6 +668,8 @@ class H(BaseHTTPRequestHandler):
                 if 'gambar' in medan: lama['gambar'] = True
                 else: lama.pop('gambar', None)
                 _st.simpan(lama)
+            except StopIteration:
+                pass
             except Exception:
                 pass
             f = medan.get('f', '')
