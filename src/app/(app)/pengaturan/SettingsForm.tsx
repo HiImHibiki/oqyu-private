@@ -38,7 +38,7 @@ export function SettingsForm({ user, canSetPassword }: {
       <section className="card p-5">
         <h2 className="mb-4 font-semibold">Ganti kata sandi</h2>
         <p className="mb-4 text-sm muted">
-          Dipakai di halaman masuk admin. Peserta masuk lewat Google.
+          Dipakai untuk masuk ke Exact Practice.
         </p>
         <div className="grid gap-3 sm:grid-cols-2">
           <label className="block">

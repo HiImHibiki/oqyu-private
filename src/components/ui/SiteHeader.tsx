@@ -18,7 +18,7 @@ export function Logo({ small }: { small?: boolean }) {
         EX
       </span>
       <span className="display leading-tight" style={{ fontSize: small ? 15 : 17 }}>
-        Exact <span className="muted">Try Out</span>
+        Exact <span className="muted">Practice</span>
       </span>
     </Link>
   );
