@@ -5,7 +5,7 @@ Aplikasi itu SUDAH bisa mengurai format naskah lengkap (bagian PG/B/I/E, bobot
 nilai, sub-soal berjenjang) dan merender 39 jenis diagram [[...]]. Jadi jangan
 dibangun ulang — cukup diisi naskahnya dan diambil hasil rendernya.
 """
-import os, json, re, subprocess, time, tempfile, urllib.request
+import re, os, json, subprocess, time, tempfile, urllib.request
 
 # Mesin Worksheet Maker kini ikut di dalam repo ini (folder wsm/) dan disajikan
 # oleh server aplikasi sendiri — tidak ada lagi jalur luar yang dipaku, tidak ada
@@ -120,3 +120,95 @@ def ambil_pdf(tujuan, tunggu=3.0):
     if not os.path.isfile(tujuan):
         raise GagalWS('Chrome gagal mencetak PDF')
     return tujuan
+
+# Kosakata diagram memakan lebih dari separuh perintah: sekitar 30 baris, ±9.000
+# karakter. Satu lembar tidak pernah memakai semuanya — naskah Pythagoras tidak
+# perlu diberi tahu soal ogive atau diagram batang-daun. Perintah sepanjang itu
+# membuat Gemini lebih sering membalas "saya hanya model bahasa", jadi jenis
+# yang jelas tidak relevan dibuang sebelum dikirim.
+#
+# Yang dibuang hanya menghilangkan KEMUNGKINAN diagram itu dipakai; formatnya
+# sendiri tidak berubah, jadi perendernya tetap mengerti hasilnya.
+BARIS_DIAGRAM = re.compile(r'^   (\w[\w()]*)\s+— ')
+
+# Selalu disertakan: dipakai lintas mata pelajaran, atau menyediakan ruang jawab.
+SELALU = {'bangun', 'bangunruang', 'tabel', 'tabelkosong', 'figur', 'garisjawab',
+          'statistik', 'garisbilangan', 'sudut', 'anotasi', '(anotasi)'}
+
+# Kata pemicu tiap jenis. Dicocokkan ke topik, mapel, dan catatan guru.
+PEMICU = {
+    'grafik': 'grafik fungsi kuadrat linear parabola kurva persamaan garis',
+    'programlinear': 'program linear pertidaksamaan optimasi maksimum minimum',
+    'transformasi': 'transformasi translasi refleksi rotasi dilatasi geometri',
+    'pohonpeluang': 'peluang probabilitas probability kejadian dadu koin',
+    'vektor': 'vektor resultan perpindahan gaya',
+    'bearing': 'bearing arah mata angin navigasi sudut jurusan',
+    'ogive': 'ogive frekuensi kumulatif kuartil statistika data',
+    'boxplot': 'boxplot kotak garis kuartil sebaran statistika data',
+    'venn': 'himpunan venn irisan gabungan komplemen',
+    'pohonfaktor': 'faktor prima fpb kpk pemfaktoran bilangan',
+    'pembagian': 'pembagian bersusun bagi panjang aritmetika',
+    'piktogram': 'piktogram diagram gambar data statistika',
+    'lingkaranteorema': 'lingkaran busur tali sudut pusat keliling teorema',
+    'jaring': 'jaring jaring net bangun ruang luas permukaan',
+    'pandangan': 'pandangan proyeksi depan samping atas bangun ruang',
+    'pencar': 'pencar scatter korelasi regresi data',
+    'histogram': 'histogram frekuensi kelas interval statistika data',
+    'batangdaun': 'batang daun stem leaf data statistika',
+    'kertasgrafik': 'plot gambarlah grafik kertas grafik sumbu',
+}
+
+
+def ringkas_diagram(perintah, konteks):
+    """Buang jenis diagram yang jelas tidak relevan dengan permintaan ini."""
+    kata = set(re.findall(r'[a-z]{3,}', (konteks or '').lower()))
+    keluar, dibuang = [], 0
+    for baris in perintah.split('\n'):
+        m = BARIS_DIAGRAM.match(baris)
+        if m:
+            jenis = m.group(1).strip('()').lower()
+            if jenis not in SELALU:
+                pemicu = set(PEMICU.get(jenis, jenis).split())
+                if not (kata & pemicu):
+                    dibuang += 1
+                    continue
+        keluar.append(baris)
+    return '\n'.join(keluar), dibuang
+
+
+# Dua blok panjang yang hanya berlaku pada keadaan tertentu. Kalau keadaannya
+# tidak ada, kalimatnya cuma jadi beban: satu blok mengatur pembuatan BEBERAPA
+# set, satu lagi mengatur cara memperlakukan lampiran contoh naskah.
+_AWAL_SET = 'PENTING — KALAU "Jumlah set"'
+_AWAL_LAMPIRAN = 'KALAU SAYA MELAMPIRKAN PDF/FOTO/TANGKAPAN LAYAR'
+
+
+def _buang_blok(perintah, awal):
+    """Buang satu alinea yang dimulai dengan penanda tertentu."""
+    baris = perintah.split('\n')
+    for i, b in enumerate(baris):
+        if b.startswith(awal):
+            j = i
+            while j < len(baris) and baris[j].strip():
+                j += 1
+            # ikut buang baris contoh "SET 1 / SET 2 / ...dan seterusnya"
+            while j < len(baris) and (not baris[j].strip()
+                                      or baris[j].startswith(('SET ', '[naskah set', '...dan seterusnya'))):
+                j += 1
+            return '\n'.join(baris[:i] + baris[j:])
+    return perintah
+
+
+def ringkas(perintah, konteks='', banyak_set=False, ada_lampiran=False):
+    """Persingkat perintah sesuai permintaan yang sedang dikirim.
+
+    Formatnya tidak diubah sedikit pun — yang dibuang hanya penjelasan tentang
+    kemungkinan yang tidak sedang terjadi. Perintah yang lebih pendek lebih
+    jarang dibalas penolakan oleh Gemini.
+    """
+    hasil, _ = ringkas_diagram(perintah, konteks)
+    if not banyak_set:
+        hasil = _buang_blok(hasil, _AWAL_SET)
+    if not ada_lampiran:
+        hasil = _buang_blok(hasil, _AWAL_LAMPIRAN)
+    return hasil

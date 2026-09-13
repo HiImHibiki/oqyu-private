@@ -63,24 +63,48 @@ JS_SUDAH_MASUK = r"""
 # tanda $ hilang — naskahnya jadi tidak berguna untuk Worksheet Maker.
 # Karena itu jawaban diminta dibungkus blok kode, yang TIDAK dirender, lalu
 # dibaca dari elemen <pre>/<code>-nya.
-BUNGKUS = ("\n\nSANGAT PENTING: tulis SELURUH jawabanmu di dalam SATU blok kode "
-           "(diawali tiga tanda backtick dan diakhiri tiga tanda backtick), tanpa "
-           "teks apa pun di luar blok itu. Ini wajib supaya tanda $ pada rumus "
-           "tidak hilang saat disalin.")
+# Dulu tiap perintah diakhiri permintaan membungkus jawaban dalam satu blok
+# kode, supaya tanda $ pada rumus tidak hilang saat disalin. Permintaan itu
+# dicabut: ia justru sering membuat Gemini menolak atau malah membalas dengan
+# skrip Python. Sekarang Gemini menulis biasa saja, dan rumusnya diselamatkan
+# di sisi kita — normalkan_rumus() menukar \(...\) dan \[...\] jadi $...$.
+# Kosong dengan sengaja. Tidak ada lagi permintaan cara menulis: rumusnya
+# diambil dari atribut data-math di halaman (lihat JS_BACA), jadi Gemini boleh
+# menulis sewajarnya. Tiap aturan format tambahan adalah satu alasan lagi
+# baginya untuk menolak.
+BUNGKUS = ""
 
 JS_BACA = r"""
 (function(){
   const b = document.querySelectorAll('.model-response-text, message-content, model-response');
   if(!b.length) return 'KOSONG';
   const akhir = b[b.length-1];
-  const kode = akhir.querySelector('pre code, code-block pre, pre');
-  const t = kode ? (kode.innerText || '') : (akhir.innerText || '');
   const sibuk = !!document.querySelector('button[aria-label*="Stop" i], [data-test-id="stop-button"]');
+
+  // Rumus tidak lagi diminta dalam blok kode, jadi Gemini merendernya dengan
+  // KaTeX dan innerText hanya memberi pecahan glif: "c=", "a", "2", "+b".
+  // LaTeX aslinya masih ada di atribut data-math pada pembungkusnya, jadi tiap
+  // rumus ditukar kembali jadi $...$ sebelum teksnya dibaca.
+  //
+  // Penukaran dilakukan pada SALINAN yang ditempel sementara di luar layar:
+  // innerText perlu tata letak (salinan lepas hanya memberi textContent tanpa
+  // ganti baris), sementara mengubah simpul aslinya berarti mengutak-atik
+  // halaman yang mungkin masih ditulisi Gemini.
+  const salinan = akhir.cloneNode(true);
+  salinan.querySelectorAll('[data-math]').forEach(function(e){
+    const r = (e.getAttribute('data-math') || '').trim();
+    if (r) e.replaceWith(document.createTextNode('$' + r + '$'));
+  });
+  const bayang = document.createElement('div');
+  bayang.style.cssText = 'position:absolute;left:-99999px;top:0;width:900px';
+  bayang.appendChild(salinan);
+  document.body.appendChild(bayang);
+  const t = salinan.innerText || salinan.textContent || '';
+  bayang.remove();
+
   return (sibuk ? 'SIBUK:' : 'SELESAI:') + t;
 })()
 """
-
-PAGAR = re.compile(r'^\s*```[a-zA-Z]*\s*\n?|\n?\s*```\s*$')
 
 def buang_pagar(teks):
     """Buang pagar blok kode. Jawaban diminta dibungkus ``` agar LaTeX-nya utuh,
@@ -157,8 +181,12 @@ def _kirim(s, perintah):
             return True
     raise RuntimeError('Perintah tidak terkirim — kotak masih terisi')
 
+# Gemini menolak dengan kata-kata yang berubah-ubah: "hanya model bahasa",
+# "sebagai model bahasa", "tidak diprogram", "tidak dirancang". Yang tetap cuma
+# frasa "model bahasa", jadi itu yang dicocokkan — bukan kalimat utuhnya.
 PENOLAKAN = re.compile(
-    r'tidak bisa membantu|tidak dapat membantu|hanya model bahasa|'
+    r'tidak bisa membantu|tidak dapat membantu|model bahasa|'
+    r'tidak diprogram|tidak dirancang|belum bisa membantu|tidak mampu memahami|'
     r"i can't help|i'm unable|as a language model|maaf, saya", re.I)
 
 # Mode Gemini yang dipakai. Bawaan akunnya "Flash", yang paling sering membalas
@@ -253,20 +281,38 @@ def _lampirkan(s, berkas, batas=120):
     berkas = [str(x) for x in (berkas or [])]
     if not berkas: return 0
     _tampilkan(s)                               # tab tersembunyi tidak menerima klik
-    for _ in range(20):                         # tombolnya muncul belakangan setelah utas baru
-        if s.evaluasi("!!document.querySelector('button[aria-label=\"Upload & tools\"]')"):
-            break
-        time.sleep(0.5)
-    for percobaan in range(4):
-        s.klik_elemen('button[aria-label="Upload & tools"]')
-        time.sleep(1.5 + percobaan)
+    # input[type=file] dibuat sekali saat menu unggah pertama kali dibuka, lalu
+    # bertahan selama halaman tidak dimuat ulang. Mencoba langsung lebih dulu
+    # menghindari klik menu yang sering meleset — dan setiap kegagalan unggah
+    # membakar satu percobaan, yang berikutnya sering berakhir jadi penolakan.
+    sudah = False
+    try:
+        sudah = bool(s.evaluasi("!!document.querySelector('input[type=file]')"))
+    except Exception:
+        pass
+    if sudah:
         try:
-            if s.unggah_ke_input('input[type=file]', berkas): break
+            if s.unggah_ke_input('input[type=file]', berkas):
+                sudah = True
+            else:
+                sudah = False
         except Exception:
-            pass
-        s.tombol('Escape', 27); time.sleep(1)
-    else:
-        raise RuntimeError('Kotak unggah Gemini tidak ditemukan')
+            sudah = False
+    if not sudah:
+        for _ in range(20):                     # tombolnya muncul belakangan
+            if s.evaluasi("!!document.querySelector('button[aria-label=\"Upload & tools\"]')"):
+                break
+            time.sleep(0.5)
+        for percobaan in range(5):
+            s.klik_elemen('button[aria-label="Upload & tools"]')
+            time.sleep(1.5 + percobaan * 0.7)
+            try:
+                if s.unggah_ke_input('input[type=file]', berkas): break
+            except Exception:
+                pass
+            s.tombol('Escape', 27); time.sleep(1)
+        else:
+            raise RuntimeError('Kotak unggah Gemini tidak ditemukan')
     s.tombol('Escape', 27)                      # tutup menu agar tidak menutupi kotak ketik
     t0 = time.time()
     while time.time() - t0 < batas:
@@ -288,21 +334,31 @@ class Ditolak(RuntimeError):
 #   2. diberi kalimat pembuka yang menjelaskan ini tugas mengajar — penolakan
 #      "saya hanya model bahasa" biasanya muncul karena perintahnya terbaca
 #      sebagai templat kaku tanpa permintaan yang jelas
-#   3. tanpa tuntutan blok kode — tuntutan itu sendiri sering jadi pemicunya;
-#      rumusnya masih bisa diselamatkan normalkan_rumus() dari bentuk \(...\)
+#   3. tanpa embel-embel cara menulis sama sekali, hanya permintaan intinya
 PEMBUKA = ("Saya guru bimbel dan sedang menyiapkan bahan belajar untuk murid saya. "
            "Tolong kerjakan permintaan di bawah ini.\n\n")
 
+# Satu kalimat pembuka yang menyebut bentuk keluarannya. Tanpa ini, perintah
+# dibuka langsung oleh spesifikasi format — dan permintaan yang terbaca sebagai
+# templat kaku itulah yang paling sering dibalas "saya hanya model bahasa".
+# Menyebut "daftar" membuatnya terbaca sebagai pekerjaan menulis biasa.
+DAFTAR = "Tolong buatkan dalam bentuk daftar, mengikuti susunan di bawah ini.\n\n"
 
-# Flash untuk semua percobaan: itu mode termurah, dan Rico memang memilihnya.
-# Yang berubah tiap percobaan hanyalah bingkai kalimatnya. Mode lain tetap bisa
-# dipilih dari halaman lewat setelan, untuk naskah yang memang berat.
-MODE_BAKU = ('flash', 'flash', 'flash')
+
+# Dua percobaan pertama memakai Flash — mode termurah, dan memang yang dipilih
+# Rico. Percobaan TERAKHIR naik ke Pro, dan hanya itu.
+#
+# Alasannya dari catatan kegagalan, bukan tebakan: kalau Flash menolak, ia
+# menolak ketiga-tiganya, sehingga lembarnya batal sama sekali. Satu permintaan
+# Pro pada percobaan terakhir lebih hemat daripada satu lembar gagal yang
+# ujungnya dikerjakan ulang dengan tangan. Kalau percobaan pertama berhasil —
+# dan itu yang biasa terjadi — Pro tidak pernah tersentuh.
+MODE_BAKU = ('flash', 'flash', 'pro')
 
 
 def _bingkai(perintah, ke):
-    if ke == 0: return perintah + BUNGKUS
-    if ke == 1: return PEMBUKA + perintah + BUNGKUS
+    if ke == 0: return DAFTAR + perintah + BUNGKUS
+    if ke == 1: return PEMBUKA + DAFTAR + perintah + BUNGKUS
     return PEMBUKA + perintah
 
 

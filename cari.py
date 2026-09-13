@@ -441,6 +441,12 @@ class H(BaseHTTPRequestHandler):
             tipe = mimetypes.guess_type(fp)[0] or 'application/octet-stream'
             d = open(fp, 'rb').read()
             self.send_response(200); self.send_header('Content-Type', tipe)
+            # Tanpa aturan ini peramban menebak sendiri berapa lama berkas mesin
+            # boleh disimpan, dan tab yang sudah lama terbuka tetap memakai
+            # versi lama setelah wsm/ disunting — perbaikan terlihat "tidak
+            # berpengaruh" padahal sudah benar. Di localhost, memeriksa ulang
+            # tiap kali tidak ada ongkosnya.
+            self.send_header('Cache-Control', 'no-cache')
             self.send_header('Content-Length', str(len(d))); self.end_headers()
             self.wfile.write(d); return
 

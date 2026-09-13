@@ -4580,7 +4580,18 @@ function renderDiagramTag(rawTagContent, depth) {
   // "lebar" (width, in pt) is accepted on every diagram/table type to make
   // it bigger/smaller on the page; height follows automatically (SVGs keep
   // their own aspect ratio via viewBox; a table just wraps at that width).
-  const widthPt = params.lebar ? numOrDefault(params.lebar, 260) : null;
+  //
+  // PATCH EXACTSEARCH (hilang bila wsm/ disinkronkan ulang lewat
+  // perbarui-mesin.sh): dua jenis memakai "lebar" sebagai UKURAN BENDA, bukan
+  // ukuran tampilan — balok (bangunruang) dan persegipanjang (bangun). Untuk
+  // "[[bangunruang: bentuk=balok; panjang=12; lebar=9; tinggi=8]]" lebar 9 itu
+  // 9 cm, tapi dibaca sebagai 9pt sehingga gambarnya tercetak 12 piksel: nyaris
+  // tak terlihat, dan tidak ada pesan galat apa pun. Untuk kedua jenis itu
+  // lebar tampilan harus ditulis "lebargambar".
+  const LEBAR_ADALAH_UKURAN = { bangunruang: 1, ruang: 1, bangun: 1 };
+  const lebarTampilan = params.lebargambar
+    || (LEBAR_ADALAH_UKURAN[type] ? null : params.lebar);
+  const widthPt = lebarTampilan ? numOrDefault(lebarTampilan, 260) : null;
   const widthStyle = widthPt ? ` style="max-width:${widthPt}pt"` : '';
 
   // HTML-rendered types (tables, imported pictures, ruled answer space) —

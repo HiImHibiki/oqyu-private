@@ -404,8 +404,16 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
                              'langsung dari foto, termasuk gambar dan diagramnya.\n\n')
             if instruksi.strip():
                 lampiran += '\nCATATAN GURU: ' + instruksi.strip()
+            # Perintah baku ±16.000 karakter; separuhnya menjelaskan kemungkinan
+            # yang tidak sedang terjadi. Dipangkas dulu — perintah yang lebih
+            # pendek jauh lebih jarang dibalas penolakan oleh Gemini.
+            banyak = str(n_set or '').strip() not in ('', '0', '1')
             perintah = wsmaker.isi_blok(
-                wsmaker.perintah_baku(mapel or 'Matematika'),
+                wsmaker.ringkas(wsmaker.perintah_baku(mapel or 'Matematika'),
+                                konteks=' '.join([topik or '', mapel or '',
+                                                  instruksi or '', acuan[:600]]),
+                                banyak_set=banyak,
+                                ada_lampiran=bool(lampiran_foto)),
                 topik=topik, jenjang=jenjang or (f'Kelas {kelas}' if kelas else ''),
                 set=n_set, jumlah=jumlah, sulit=sulit, bahasa=bahasa,
                 acuan='lihat lampiran di bawah' if lampiran else '')
@@ -430,7 +438,8 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
                     raise
                 _catat(jid, 'Gemini menolak — mencoba ulang tanpa naskah acuan…', 50)
                 ringkas = wsmaker.isi_blok(
-                    wsmaker.perintah_baku(mapel or 'Matematika'),
+                    wsmaker.ringkas(wsmaker.perintah_baku(mapel or 'Matematika'),
+                                    konteks=' '.join([topik or '', mapel or ''])),
                     topik=topik or (acuan.strip()[:120] if acuan.strip() else ''),
                     jenjang=jenjang or (f'Kelas {kelas}' if kelas else ''),
                     set=n_set, jumlah=jumlah, sulit=sulit, bahasa=bahasa)
@@ -582,6 +591,13 @@ button.abu{background:var(--tepi);color:var(--teks);font-weight:600}
 .tombolCetak{display:inline-block;padding:11px 22px;border-radius:9px;
 background:var(--aksen);color:#fff;font-weight:700;font-size:14px;text-decoration:none}
 .err{color:#c0392b;font-size:13.5px}
+.tugas{border:1px solid var(--tepi);border-radius:10px;padding:10px 12px;margin-bottom:9px;
+ background:var(--kartu)}
+.tugas .bar{height:4px;background:var(--tepi);border-radius:3px;overflow:hidden;margin-bottom:8px}
+.tugas .bar i{display:block;height:100%;background:var(--aksen);transition:width .4s}
+.tugasIsi{display:flex;gap:10px;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;font-size:13px}
+.tugasIsi b{font-weight:600}
 .antre{margin-top:9px;padding:10px 12px;border:1px solid var(--tepi);border-radius:9px;
  background:var(--bg);font-size:13px;line-height:1.6}
 .antre b{color:var(--aksen)}
@@ -708,6 +724,56 @@ document.addEventListener('paste', e => {
 j.addEventListener('dragleave', v => { v.preventDefault(); });
 j.addEventListener('drop', v => { v.preventDefault(); tambah(v.dataTransfer.files); });
 
+// Beberapa lembar boleh diantre sekaligus. Tombol kirim TIDAK dikunci selama
+// satu tugas berjalan: server sudah punya antrean bergiliran, jadi yang perlu
+// di sini hanyalah menampilkan tiap tugas pada barisnya sendiri. Dulu halaman
+// ini langsung berpindah ke pratinjau begitu satu lembar jadi — itu memutus
+// antrean, karena borangnya ikut hilang sebelum lembar berikutnya dikirim.
+const TUGAS = [];
+
+function barisTugas(t) {
+  const hal = document.getElementById('antrean');
+  let el = document.getElementById('t-' + t.jid);
+  if (!el) {
+    el = document.createElement('div');
+    el.className = 'tugas'; el.id = 't-' + t.jid;
+    hal.prepend(el);
+  }
+  const s = t.s || {};
+  const q = s.antre;
+  let kanan = '';
+  if (s.galat) kanan = '<span class=err>' + s.galat + '</span>';
+  else if (s.pdf) {
+    const nama = s.pdf.split('/').pop();
+    kanan = '<a class=tombolCetak href="/hasil?f=' + encodeURIComponent(nama)
+          + '" target=_top>Lihat &amp; Cetak</a>';
+  } else if (q && q.nomor) {
+    kanan = '<span class=kcl>antrean ke-' + q.nomor
+          + (q.kerja ? ' &middot; ' + q.kerja.nama + ' ' + Math.floor(q.kerja.detik/60) + ' mnt' : '')
+          + '</span>';
+  } else {
+    kanan = '<span class=kcl>' + ((s.langkah || ['Mulai…']).slice(-1)[0]) + '</span>';
+  }
+  el.innerHTML = '<div class=bar><i style="width:' + (s.maju || 0) + '%"></i></div>'
+    + '<div class=tugasIsi><b>' + t.judul + '</b>' + kanan + '</div>';
+}
+
+async function pantau(t) {
+  let gagal = 0;
+  const timer = setInterval(async () => {
+    try {
+      t.s = await (await fetch('/status?jid=' + t.jid)).json();
+      gagal = 0;
+    } catch (err) {
+      if (++gagal < 8) return;
+      clearInterval(timer);
+      t.s = {galat: 'Sambungan ke server terputus.', selesai: true};
+    }
+    barisTugas(t);
+    if (t.s.selesai) clearInterval(timer);
+  }, 1500);
+}
+
 document.getElementById('f').onsubmit = async e => {
   e.preventDefault();
   const panel = document.getElementById('panel'), log = document.getElementById('log');
@@ -717,11 +783,16 @@ document.getElementById('f').onsubmit = async e => {
       + 'atau tempel minimal satu gambar soal (\u2318V).</div>';
     return;
   }
-  document.getElementById('go').disabled = true;
-  document.getElementById('panel').style.display = 'block';
+  log.innerHTML = '';
+  panel.style.display = 'block';
+  const go = document.getElementById('go');
   const fd = new FormData(e.target);
   fd.delete('gambar');
   berkas.forEach(f => fd.append('gambar', f, f.name));
+  const judul = (fd.get('judul') || '').toString().trim()
+             || (fd.get('topik') || '').toString().trim()
+             || (berkas.length ? berkas.length + ' foto' : 'Lembar');
+  go.disabled = true;                       // hanya selama kiriman berlangsung
   let jid;
   try {
     const r = await fetch('/buat', {method:'POST', body: fd});
@@ -729,63 +800,16 @@ document.getElementById('f').onsubmit = async e => {
   } catch (err) {
     log.innerHTML = '<div class=err>Tidak bisa menghubungi server. '
       + 'Pastikan aplikasinya masih menyala, lalu coba lagi.</div>';
-    document.getElementById('go').disabled = false; return;
+    go.disabled = false; return;
+  } finally {
+    go.disabled = false;
   }
-  if (!jid) {
-    log.innerHTML = '<div class=err>Server tidak memulai tugas. Coba lagi.</div>';
-    document.getElementById('go').disabled = false; return;
-  }
-  const isi = document.getElementById('isi');
-  let gagal = 0;
-  const timer = setInterval(async () => {
-    let s;
-    try {
-      s = await (await fetch('/status?jid=' + jid)).json();
-    } catch (err) {
-      // Server mungkin sedang dinyalakan ulang; beri kesempatan beberapa kali
-      if (++gagal < 8) return;
-      clearInterval(timer);
-      log.innerHTML += '<div class=err>Sambungan ke server terputus.</div>';
-      document.getElementById('go').disabled = false; return;
-    }
-    gagal = 0;
-    isi.style.width = (s.maju || 0) + '%';
-    log.innerHTML = (s.langkah || []).map((x, i, a) =>
-      '<div class="' + (i === a.length-1 && !s.selesai ? 'now' : '') + '">' + x + '</div>').join('');
-    // Antrean ditulis lengkap: nomor, apa yang sedang dikerjakan, dan lamanya.
-    // Menunggu tanpa keterangan tidak bisa dibedakan dari macet.
-    const q = s.antre;
-    if (q && q.nomor) {
-      const k = q.kerja;
-      const menit = k ? Math.floor(k.detik / 60) + ' mnt ' + (k.detik % 60) + ' dtk' : '';
-      log.innerHTML += '<div class=antre><b>Antrean nomor ' + q.nomor + ' dari ' + q.panjang + '</b>'
-        + (k ? '<br>sedang dikerjakan: ' + k.nama + ' — sudah ' + menit : '')
-        + '<br><button type=button class=batal id=btBatal>Batalkan antrean saya</button></div>';
-      const bb = document.getElementById('btBatal');
-      if (bb) bb.onclick = async () => {
-        bb.disabled = true;
-        await fetch('/batal?jid=' + jid);
-      };
-    }
-    if (s.galat) log.innerHTML += '<div class=err>' + s.galat + '</div>';
-    if (s.selesai) {
-      clearInterval(timer); document.getElementById('go').disabled = false;
-      if (s.pdf) {
-        // PDF-nya terbuka di layar Mac, bukan di perangkat ini. Jadi perangkat
-        // yang mengirim langsung diarahkan ke halaman cetaknya — di situ ada
-        // pratinjau tiap halaman dan tombol cetak.
-        const nama = s.pdf.split('/').pop();
-        const tuju = '/hasil?f=' + encodeURIComponent(nama);
-        log.innerHTML += '<div style="margin-top:10px">'
-          + '<a class=tombolCetak href="' + tuju + '" target=_top>Lihat &amp; Cetak &rarr;</a>'
-          + '<div class=kcl style="margin-top:6px">membuka pratinjau…</div></div>';
-        setTimeout(() => {
-          try { (window.top || window).location.href = tuju; }
-          catch (e) { location.href = tuju; }
-        }, 1200);
-      }
-    }
-  }, 1200);
+  if (!jid) { log.innerHTML = '<div class=err>Server tidak memulai tugas. Coba lagi.</div>'; return; }
+  const t = {jid: jid, judul: judul, s: {maju: 3, langkah: ['Mulai…']}};
+  TUGAS.push(t); barisTugas(t); pantau(t);
+  // Foto dikosongkan supaya lembar berikutnya tidak diam-diam memakai foto yang
+  // sama; isian lain sengaja dibiarkan agar tinggal diubah sedikit lalu kirim.
+  berkas.length = 0; gambarkan();
 };
 """
 
@@ -880,8 +904,8 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
 </div>
 </form>
 <div class=k id=panel style=display:none>
-  <div class=bar><i id=isi></i></div>
   <div class=lg id=log></div>
+  <div id=antrean></div>
 </div>
 </div>
 <input type=hidden name=titip value="{html.escape(titip, quote=True)}">
@@ -992,8 +1016,8 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
 </div>
 </form>
 <div class=k id=panel style=display:none>
-  <div class=bar><i id=isi></i></div>
   <div class=lg id=log></div>
+  <div id=antrean></div>
 </div>
 </div>
 <input type=hidden name=titip value="{html.escape(titip, quote=True)}">
@@ -1077,8 +1101,8 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
 </div>
 </form>
 <div class=k id=panel style=display:none>
-  <div class=bar><i id=isi></i></div>
   <div class=lg id=log></div>
+  <div id=antrean></div>
 </div>
 </div>
 <input type=hidden name=titip value="{html.escape(titip, quote=True)}">
