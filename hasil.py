@@ -189,6 +189,15 @@ def halaman_berkas(nama):
     if not os.path.isfile(p): return None
     n = n_halaman(p)
     daftar_p, bawaan = printer()
+    try:
+        import setelan as _s
+        st = _s.muat()
+    except Exception:
+        st = {}
+    if st.get('printer') in daftar_p: bawaan = st['printer']
+    bolak_pilih = st.get('bolak') or 'otomatis'
+    gambar_pilih = st.get('gambar', True)
+    salinan_pilih = st.get('salinan') or '1'
     kartu = ''
     for i in range(1, n + 1):
         kartu += (f'<label class="kartu hal" data-h="{i}">'
@@ -198,6 +207,7 @@ def halaman_berkas(nama):
                   f'alt="halaman {i}" loading=lazy></label>')
     opsi = ''.join(f'<option{" selected" if d == bawaan else ""}>{html.escape(d)}</option>'
                    for d in daftar_p) or '<option value="">(tidak ada printer)</option>'
+    bl = lambda v: ' selected' if bolak_pilih == v else ''
     return f"""<!doctype html><meta charset=utf-8><title>{html.escape(nama[:40])}</title>
 <meta name=viewport content="width=device-width,initial-scale=1"><style>{GAYA}
 <div class=b>
@@ -212,14 +222,14 @@ target=_blank>buka PDF</a></div>
   <button type=button class=abu id=semua>Semua</button>
   <button type=button class=abu id=takada>Kosongkan</button>
   <select name=printer>{opsi}</select>
-  <input type=number name=salinan value=1 min=1 max=20 style=width:74px title=salinan>
+  <input type=number name=salinan value={html.escape(str(salinan_pilih))} min=1 max=20 style=width:74px title=salinan>
   <select name=bolak title="bolak-balik">
-    <option value=otomatis>bolak-balik otomatis</option>
-    <option value=manual>bolak-balik 2 tahap</option>
-    <option value=tidak>satu sisi</option>
+    <option value=otomatis{bl('otomatis')}>bolak-balik otomatis</option>
+    <option value=manual{bl('manual')}>bolak-balik 2 tahap</option>
+    <option value=tidak{bl('tidak')}>satu sisi</option>
   </select>
   <label style="font-size:12.5px;color:var(--redup);display:flex;gap:6px;align-items:center">
-    <input type=checkbox name=gambar checked> lewat gambar</label>
+    <input type=checkbox name=gambar{' checked' if gambar_pilih else ''}> lewat gambar</label>
   <button type=submit id=go>Cetak</button>
   <button type=button id=sisi2 class=abu style=display:none>Cetak sisi kedua</button>
   <span class=info id=info></span>

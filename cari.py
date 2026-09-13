@@ -531,7 +531,18 @@ class H(BaseHTTPRequestHandler):
                 d = urllib.parse.parse_qs(mentah.decode('utf-8','replace'))
                 halaman = d.get('h', [])
                 medan = {k: v[0] for k, v in d.items()}
-            import hasil as _h
+            import hasil as _h, setelan as _st
+            # ingat pilihan cetak untuk berikutnya
+            try:
+                lama = _st.muat()
+                lama.update({'printer': medan.get('printer',''),
+                             'bolak': medan.get('bolak','otomatis'),
+                             'salinan': medan.get('salinan','1')})
+                if 'gambar' in medan: lama['gambar'] = True
+                else: lama.pop('gambar', None)
+                _st.simpan(lama)
+            except Exception:
+                pass
             f = medan.get('f', '')
             pth = os.path.join(_h.folder_keluar(), f)
             jawab = {}
