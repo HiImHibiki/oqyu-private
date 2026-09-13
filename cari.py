@@ -773,7 +773,8 @@ class H(BaseHTTPRequestHandler):
                         kelas=int(kls) if kls.isdigit() else None, judul='',
                         bahasa=st.get('bahasa') or 'Indonesia',
                         lembaga=st.get('lembaga',''), sekolah=st.get('sekolah',''),
-                        tanggal='', kolom='1', mata=st.get('mata') or 'vision')
+                        tanggal='', kolom='1', mata=st.get('mata') or 'vision',
+                        mode=st.get('mode') or 'flash')
                 else:
                     sasaran, kw = buat.jalankan, dict(
                         jid=jid, gambar=semua, instruksi=st.get('instruksi',''),
@@ -908,7 +909,8 @@ class H(BaseHTTPRequestHandler):
             topik=medan.get('topik',''), bahasa=medan.get('bahasa','Indonesia'),
             lembaga=st.get('lembaga',''), sekolah=st.get('sekolah',''), tanggal='',
             bagian=medan.get('bagian','5'),
-            mata=medan.get('mata') or 'vision'), daemon=True).start()
+            mata=medan.get('mata') or 'vision',
+            mode=medan.get('mode') or 'flash'), daemon=True).start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')
         self.send_header('Content-Length',str(len(b))); self.end_headers()
@@ -933,7 +935,8 @@ class H(BaseHTTPRequestHandler):
             bahasa=medan.get('bahasa','Indonesia'), lembaga=st.get('lembaga',''),
             sekolah=st.get('sekolah',''), tanggal='',
             kolom=medan.get('kolom','1'),
-            mata=medan.get('mata') or 'vision'), daemon=True).start()
+            mata=medan.get('mata') or 'vision',
+            mode=medan.get('mode') or 'flash'), daemon=True).start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')
         self.send_header('Content-Length',str(len(b))); self.end_headers()

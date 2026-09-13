@@ -16,7 +16,7 @@ BERKAS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'setelan.json'
 # Lebih aman kosong: Rico mengisinya sendiri kalau memang perlu.
 MEDAN = ('jumlah', 'n_set', 'sulit', 'bahasa',
          'lembaga', 'sekolah', 'instruksi', 'kolom', 'kerapatan', 'garis',
-         'printer', 'bolak', 'salinan', 'mata')
+         'printer', 'bolak', 'salinan', 'mata', 'mode')
 CENTANG = ('kunci', 'pembahasan', 'dua_berkas', 'gambar')
 
 def muat():

@@ -105,7 +105,7 @@ def _periksa(teks):
     """Tolak penolakan dan jawaban kerdil — jangan sampai jadi PDF kosong."""
     t = (teks or '').strip()
     if PENOLAKAN.search(t[:400]):
-        raise RuntimeError('Gemini menolak permintaan: ' + t[:120])
+        raise Ditolak('Gemini menolak permintaan: ' + t[:120])
     if len(t) < 200:
         raise RuntimeError(f'Jawaban Gemini terlalu pendek ({len(t)} karakter): ' + t[:120])
     return normalkan_rumus(buang_pagar(t))
@@ -160,6 +160,59 @@ def _kirim(s, perintah):
 PENOLAKAN = re.compile(
     r'tidak bisa membantu|tidak dapat membantu|hanya model bahasa|'
     r"i can't help|i'm unable|as a language model|maaf, saya", re.I)
+
+# Mode Gemini yang dipakai. Bawaan akunnya "Flash", yang paling sering membalas
+# "saya hanya model bahasa dan tidak mampu memahami" untuk permintaan panjang
+# berformat kaku seperti naskah soal. Mode penalaran menolak jauh lebih jarang
+# dan hitungannya lebih bisa dipercaya — itu yang dibutuhkan lembar bimbel.
+# Nilainya pola, bukan potongan teks. Mencocokkan potongan "Flash" saja membuat
+# "3.5 Flash-Lite" terpilih lebih dulu karena ia lebih atas di daftar — dan
+# Flash-Lite jawabannya paling dangkal dari semuanya.
+MODE = {
+    'flash': r'\bflash\b(?!-)',   # "3.8 Flash", bukan "3.5 Flash-Lite"
+    'pro': r'\bpro\b',            # 3.1 Pro — penalaran, untuk naskah berat
+    'panjang': r'extended',        # Extended thinking — paling lambat
+}
+# Nama yang muncul di tombol setelah terpilih, untuk memeriksa mode yang aktif.
+NAMA_MODE = {'flash': 'Flash', 'pro': 'Pro', 'panjang': 'Extended'}
+
+
+def pilih_mode(s, mau='pro'):
+    """Pilih mode Gemini sebelum bertanya. False bila pemilihnya tidak ada."""
+    mau = mau if mau in MODE else 'flash'
+    pola, nama = MODE[mau], NAMA_MODE[mau]
+    try:
+        kini = s.evaluasi(
+            "((document.querySelector('button[aria-label^=\"Open mode picker\"]')"
+            " || {}).getAttribute ? document.querySelector("
+            "'button[aria-label^=\"Open mode picker\"]').getAttribute('aria-label') : '')")
+    except Exception:
+        return False
+    if not kini:
+        return False
+    import re as _re
+    if _re.search(pola, kini, _re.I):
+        return True                       # sudah pada mode yang diminta
+    if not s.klik_elemen('button[aria-label^="Open mode picker"]'):
+        return False
+    time.sleep(1.5)
+    ok = s.evaluasi("""(function(pola){
+      const p = new RegExp(pola, 'i');
+      const a = [...document.querySelectorAll('[role=menuitem],[role=option],button')];
+      const t = a.find(e => p.test((e.innerText||'').trim()));
+      if (!t) return false;
+      const r = t.getBoundingClientRect();
+      window.__exactTitik = [r.left + r.width/2, r.top + r.height/2];
+      return true;
+    })(%s)""" % json.dumps(pola))
+    if not ok:
+        s.tombol('Escape', 27)
+        return False
+    titik = s.evaluasi("window.__exactTitik")
+    s.klik_di(titik[0], titik[1])
+    time.sleep(2)
+    return True
+
 
 def percakapan_baru(s):
     """Mulai obrolan baru sebelum tiap permintaan.
@@ -224,24 +277,80 @@ def _lampirkan(s, berkas, batas=120):
     raise RuntimeError('Gemini tidak selesai memproses foto dalam batas waktu')
 
 
-def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=1, lampiran=None):
-    """Kirim ke Gemini. Bila gagal, segarkan halaman lalu coba sekali lagi."""
-    try:
-        return _tanya_sekali(perintah, batas, stabil, lapor, lampiran)
-    except BelumMasuk:
-        raise
-    except Exception as e:
-        if ulang <= 0:
-            raise
-        s = _sesi(URL_GEMINI, 'gemini.google.com')
-        try:
-            s.buka(URL_GEMINI)          # muat ulang penuh: keadaan bersih
-            time.sleep(5)
-        finally:
-            s.tutup()
-        return gemini_tanya(perintah, batas, stabil, lapor, ulang - 1, lampiran)
+class Ditolak(RuntimeError):
+    """Gemini menjawab dengan penolakan, bukan dengan isi."""
 
-def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None, lampiran=None):
+
+# Cara membujuk ulang, dipakai berurutan. Mengirim teks yang PERSIS SAMA setelah
+# ditolak hampir selalu ditolak lagi — yang berubah harus bingkainya, bukan cuma
+# percobaannya. Urutannya dari yang paling kecil perubahannya:
+#   1. apa adanya
+#   2. diberi kalimat pembuka yang menjelaskan ini tugas mengajar — penolakan
+#      "saya hanya model bahasa" biasanya muncul karena perintahnya terbaca
+#      sebagai templat kaku tanpa permintaan yang jelas
+#   3. tanpa tuntutan blok kode — tuntutan itu sendiri sering jadi pemicunya;
+#      rumusnya masih bisa diselamatkan normalkan_rumus() dari bentuk \(...\)
+PEMBUKA = ("Saya guru bimbel dan sedang menyiapkan bahan belajar untuk murid saya. "
+           "Tolong kerjakan permintaan di bawah ini.\n\n")
+
+
+# Flash untuk semua percobaan: itu mode termurah, dan Rico memang memilihnya.
+# Yang berubah tiap percobaan hanyalah bingkai kalimatnya. Mode lain tetap bisa
+# dipilih dari halaman lewat setelan, untuk naskah yang memang berat.
+MODE_BAKU = ('flash', 'flash', 'flash')
+
+
+def _bingkai(perintah, ke):
+    if ke == 0: return perintah + BUNGKUS
+    if ke == 1: return PEMBUKA + perintah + BUNGKUS
+    return PEMBUKA + perintah
+
+
+def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=2, lampiran=None,
+                 mode=None):
+    """Kirim ke Gemini, dengan beberapa cara membujuk bila ditolak."""
+    galat_akhir = None
+    for ke in range(ulang + 1):
+        try:
+            return _tanya_sekali(_bingkai(perintah, ke), batas, stabil, lapor, lampiran,
+                                 mode or MODE_BAKU[min(ke, len(MODE_BAKU) - 1)])
+        except BelumMasuk:
+            raise
+        except Exception as e:
+            galat_akhir = e
+            if ke >= ulang:
+                break
+            _catat_galat(ke + 1, e)
+            # Penolakan cukup dijawab dengan bingkai lain di utas baru; memuat
+            # ulang halaman hanya berguna untuk kegagalan teknis (sesi kacau,
+            # tab menggantung), dan lambat.
+            if not isinstance(e, Ditolak):
+                s = _sesi(URL_GEMINI, 'gemini.google.com')
+                try:
+                    s.buka(URL_GEMINI)      # muat ulang penuh: keadaan bersih
+                    time.sleep(5)
+                finally:
+                    s.tutup()
+            else:
+                time.sleep(3)
+    raise galat_akhir
+
+
+def _catat_galat(ke, e):
+    """Tulis kegagalan ke keluaran layanan supaya frekuensinya terukur.
+
+    Sebelumnya galat hanya tersimpan di memori tugas, jadi pertanyaan "kenapa
+    sering muncul?" tidak punya satu pun angka untuk dijawab.
+    """
+    try:
+        print(f'[gemini] percobaan {ke} gagal: {type(e).__name__}: '
+              f'{str(e)[:160]}', flush=True)
+    except Exception:
+        pass
+
+
+def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None, lampiran=None,
+                  mode=None):
     perintah = perintah + BUNGKUS
     s = _sesi(URL_GEMINI, 'gemini.google.com')
     try:
@@ -259,6 +368,10 @@ def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None, lampiran=None):
         for _ in range(20):
             if s.evaluasi(JS_SUDAH_MASUK) == 'MASUK': break
             time.sleep(1)
+        try:
+            pilih_mode(s, mode or MODE_BAKU[0])
+        except Exception:
+            pass                          # mode gagal dipilih bukan alasan batal
         if lampiran:
             _lampirkan(s, lampiran)
         _kirim(s, perintah)

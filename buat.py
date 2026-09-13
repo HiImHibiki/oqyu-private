@@ -212,7 +212,7 @@ MATA = ('vision', 'gemini', 'dua')
 
 def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesia',
                    lembaga='', sekolah='', tanggal='', kolom='1',
-                   kerapatan='Normal', garis='0.5', mata='vision'):
+                   kerapatan='Normal', garis='0.5', mata='vision', mode='flash'):
     """Foto soal anak -> kunci jawaban + pembahasan -> PDF.
 
     Soalnya TIDAK dikarang: disalin apa adanya dari foto, lalu diberi kunci dan
@@ -243,7 +243,7 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
                                    str(kelas or ''), ada_lampiran=bool(lampiran))
             _catat(jid, ('Mengunggah foto ke Gemini…' if lampiran
                          else 'Meminta kunci jawaban dan pembahasan…'), 40)
-            hasil_teks = otomasi.gemini_tanya(perintah, batas=300, lampiran=lampiran)
+            hasil_teks = otomasi.gemini_tanya(perintah, batas=300, lampiran=lampiran, mode=mode)
         finally:
             for x in jalur:
                 try: os.unlink(x)
@@ -288,7 +288,7 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
 
 def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
                      bahasa='Indonesia', lembaga='', sekolah='', tanggal='',
-                     bagian='5', mata='vision'):
+                     bagian='5', mata='vision', mode='flash'):
     """Materi (foto/PDF atau sekadar topik) -> lembar rangkuman -> PDF.
 
     Bahannya boleh kosong: kalau hanya topik yang diisi, rangkumannya disusun
@@ -322,7 +322,7 @@ def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
                                   topik=topik, ada_lampiran=bool(lampiran))
             _catat(jid, ('Mengunggah materi ke Gemini…' if lampiran
                          else 'Menyusun rangkuman…'), 40)
-            hasil_teks = otomasi.gemini_tanya(perintah, batas=300, lampiran=lampiran)
+            hasil_teks = otomasi.gemini_tanya(perintah, batas=300, lampiran=lampiran, mode=mode)
         finally:
             for x in jalur:
                 try: os.unlink(x)
@@ -849,6 +849,13 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
     </select>
   </div>
   <div class=kcl id=ketMata style="margin-top:5px"></div>
+  <div class=r>
+    <select name=mode style="flex:1;min-width:220px">
+      <option value=flash{" selected" if st.get("mode","flash")!="pro" and st.get("mode")!="panjang" else ""}>Gemini Flash &mdash; hemat, untuk sehari-hari</option>
+      <option value=pro{" selected" if st.get("mode")=="pro" else ""}>Gemini Pro &mdash; lebih jarang menolak, lebih boros</option>
+      <option value=panjang{" selected" if st.get("mode")=="panjang" else ""}>Extended thinking &mdash; naskah berat, paling lambat</option>
+    </select>
+  </div>
   <textarea name=instruksi rows=2 style="margin-top:11px"
     placeholder="Catatan (mis. 'jelaskan sampai langkah hitungannya', 'pakai cara kelas 8')"></textarea>
   <div class="r kirim">
@@ -1024,6 +1031,13 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
     </select>
   </div>
   <div class=kcl id=ketMata style="margin-top:5px"></div>
+  <div class=r>
+    <select name=mode style="flex:1;min-width:220px">
+      <option value=flash{" selected" if st.get("mode","flash")!="pro" and st.get("mode")!="panjang" else ""}>Gemini Flash &mdash; hemat, untuk sehari-hari</option>
+      <option value=pro{" selected" if st.get("mode")=="pro" else ""}>Gemini Pro &mdash; lebih jarang menolak, lebih boros</option>
+      <option value=panjang{" selected" if st.get("mode")=="panjang" else ""}>Extended thinking &mdash; naskah berat, paling lambat</option>
+    </select>
+  </div>
   <textarea name=instruksi rows=2 style="margin-top:11px"
     placeholder="Catatan (mis. 'fokus ke rumus saja', 'sertakan contoh soal UN')"></textarea>
   <div class="r kirim">
