@@ -214,7 +214,12 @@ def _baca_foto(jalur, lapor=None):
 #            terbaca karena Gemini melihat gambarnya sendiri. Lebih lambat.
 #   dua    — teks hasil Vision dikirim SEKALIGUS dengan fotonya, jadi ejaan
 #            teks cetak ikut terjaga sementara gambarnya tetap terlihat.
-MATA = ('vision', 'gemini', 'dua')
+# Bawaannya mata AI, bukan Apple Vision. Vision cepat dan tidak mengirim foto
+# ke mana pun, tapi ia kehilangan diagram, grafik, dan tulisan tangan tanpa
+# memberi tanda apa pun — soal bergambar jadi terbaca setengah dan kesalahannya
+# baru terasa di lembar yang sudah tercetak. Vision tetap bisa dipilih untuk
+# soal yang murni ketikan.
+MATA = ('gemini', 'vision', 'dua')
 
 # Dua mesin, dua jalur yang sangat berbeda ongkos gagalnya:
 #   gemini — lewat Chrome kendali. Tidak perlu langganan Claude, tapi harus
@@ -292,7 +297,7 @@ def _tanya(mesin, perintah, lampiran=None, mode='flash', batas=300,
 
 def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesia',
                    lembaga='', sekolah='', tanggal='', kolom='1',
-                   kerapatan='Normal', garis='0.5', mata='vision', mode='flash',
+                   kerapatan='Normal', garis='0.5', mata='gemini', mode='flash',
                    mesin='gemini'):
     """Foto soal anak -> kunci jawaban + pembahasan -> PDF.
 
@@ -371,7 +376,7 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
 
 def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
                      bahasa='Indonesia', lembaga='', sekolah='', tanggal='',
-                     bagian='5', mata='vision', mode='flash', mesin='gemini'):
+                     bagian='5', mata='gemini', mode='flash', mesin='gemini'):
     """Materi (foto/PDF atau sekadar topik) -> lembar rangkuman -> PDF.
 
     Bahannya boleh kosong: kalau hanya topik yang diisi, rangkumannya disusun
@@ -453,7 +458,7 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
              topik='', jenjang='', n_set='', sulit='', bahasa='Indonesia',
              lembaga='', sekolah='', tanggal='', kunci=True, pembahasan=True,
              kolom='2', dua_berkas=False, kerapatan='Normal', garis='1.5',
-             mata='vision', mode='flash', mesin='gemini'):
+             mata='gemini', mode='flash', mesin='gemini'):
     """Alur penuh: foto atau deskripsi -> Gemini -> Exact Worksheet Maker -> PDF.
 
     Arsip tidak lagi ikut. Dulu enam soal lama dilampirkan sebagai "contoh gaya",
@@ -540,6 +545,14 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
             for x in jalur:
                 try: os.unlink(x)
                 except OSError: pass
+        # Draf ganda dibuang SEBELUM apa pun memakainya: berkas naskah, bank
+        # soal, dan perenderan harus melihat naskah yang sama. Kalau hanya
+        # perenderannya yang dibersihkan, bank soal ikut menyimpan draf yang
+        # cuma berisi satu soal.
+        utuh = otomasi.buang_draf(jawab)
+        if len(utuh) != len(jawab):
+            _catat(jid, 'Gemini menulis dua kali — draf pendeknya dibuang', 66)
+            jawab = utuh
         _catat(jid, f'Naskah diterima ({len(jawab)} karakter)', 68)
 
         # 4. serahkan ke perender asli
@@ -989,8 +1002,8 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
   </div>
   <div class=r>
     <select name=mata id=mata style="flex:1;min-width:220px">
-      <option value=vision{" selected" if st.get("mata","vision")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, teks cetak</option>
-      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata AI &mdash; tulisan tangan &amp; gambar</option>
+      <option value=gemini{" selected" if st.get("mata","gemini")!="vision" and st.get("mata")!="dua" else ""}>Mata AI &mdash; tulisan tangan, diagram &amp; grafik</option>
+      <option value=vision{" selected" if st.get("mata")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, hanya teks ketikan</option>
       <option value=dua{" selected" if st.get("mata")=="dua" else ""}>Keduanya &mdash; paling teliti, paling lama</option>
     </select>
   </div>
@@ -1109,8 +1122,8 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
   </div>
   <div class=r>
     <select name=mata id=mata style="flex:1;min-width:220px">
-      <option value=vision{" selected" if st.get("mata","vision")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, teks cetak</option>
-      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata AI &mdash; tulisan tangan &amp; gambar</option>
+      <option value=gemini{" selected" if st.get("mata","gemini")!="vision" and st.get("mata")!="dua" else ""}>Mata AI &mdash; tulisan tangan, diagram &amp; grafik</option>
+      <option value=vision{" selected" if st.get("mata")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, hanya teks ketikan</option>
       <option value=dua{" selected" if st.get("mata")=="dua" else ""}>Keduanya &mdash; paling teliti, paling lama</option>
     </select>
   </div>
@@ -1198,8 +1211,8 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
   </div>
   <div class=r>
     <select name=mata id=mata style="flex:1;min-width:220px">
-      <option value=vision{" selected" if st.get("mata","vision")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, teks cetak</option>
-      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata AI &mdash; tulisan tangan &amp; gambar</option>
+      <option value=gemini{" selected" if st.get("mata","gemini")!="vision" and st.get("mata")!="dua" else ""}>Mata AI &mdash; tulisan tangan, diagram &amp; grafik</option>
+      <option value=vision{" selected" if st.get("mata")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, hanya teks ketikan</option>
       <option value=dua{" selected" if st.get("mata")=="dua" else ""}>Keduanya &mdash; paling teliti, paling lama</option>
     </select>
   </div>

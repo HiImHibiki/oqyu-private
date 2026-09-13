@@ -518,16 +518,46 @@ def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None, lampiran=None,
     finally:
         s.tutup()
 
+AWAL_BAGIAN = re.compile(r'^\s*Bagian\s+1\s*:', re.I)
+BUTIR_SOAL = re.compile(r'^\s*(?:PG|B|I|E|M|IB)\d{1,3}\.', re.I | re.M)
+
+
+def buang_draf(naskah):
+    """Ambil satu naskah saja ketika Gemini menulis lebih dari sekali.
+
+    Gemini kadang menampilkan draf pendek lebih dulu lalu menulis ulang versi
+    lengkapnya, dan keduanya ikut terbaca dari halaman. Gejalanya persis yang
+    dilaporkan: diminta 10 esai, yang tercetak cuma 1 — karena naskahnya memuat
+    "Bagian 1: (E)" DUA KALI, yang pertama berisi satu soal dan yang kedua
+    berisi sepuluh, lalu perendernya memakai yang pertama.
+
+    Penanda awalnya "Bagian 1:", bukan judul: judul naskah tidak punya bentuk
+    tetap, sedangkan penomoran bagian selalu dimulai dari 1. Kepala naskah
+    (judul dan daftar rumus) diambil dari bagian PERTAMA karena di situ
+    tempatnya, lalu disambung dengan badan yang paling lengkap.
+    """
+    baris = (naskah or '').replace('\r', '').split('\n')
+    awal = [i for i, b in enumerate(baris) if AWAL_BAGIAN.match(b)]
+    if len(awal) < 2:
+        return naskah or ''
+    kepala = baris[:awal[0]]
+    batas = awal + [len(baris)]
+    badan = ['\n'.join(baris[batas[i]:batas[i + 1]]) for i in range(len(batas) - 1)]
+    terbaik = max(badan, key=lambda t: (len(BUTIR_SOAL.findall(t)), len(t)))
+    return '\n'.join(kepala + terbaik.split('\n')).strip()
+
+
 AWAL_SOAL = re.compile(r'^\s*((?:PG|B|I|E|M|IB)\d{1,3}\.|\(?[a-h]\)|\((?:i{1,3}|iv|v|vi{1,3})\))\s')
 BOBOT = re.compile(r'\s*\[(\d{1,2})\]\s*')
 
 def rapikan_naskah(teks):
-    """Pindahkan bobot nilai yang nyasar ke akhir kalimat soalnya.
+    """Buang draf ganda, lalu pindahkan bobot nilai yang nyasar ke akhir soalnya.
 
     Format menuntut "[3]" di AKHIR kalimat, tapi Gemini kadang menaruhnya di
     tengah — "Hitunglah nilai dari: [2] 18 - 15 ...". Aplikasi lalu mencetaknya
     sebagai teks biasa di badan soal, bukan di kolom nilai.
     """
+    teks = buang_draf(teks)
     keluar = []
     for b in teks.split('\n'):
         if AWAL_SOAL.match(b):

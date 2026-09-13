@@ -295,7 +295,7 @@ class Sesi:
     def ketik(self, teks):
         self.perintah('Input.insertText', text=teks)
 
-    def ketik_alami(self, pemilih, teks, potong=220, jeda=0.05, ekor=12):
+    def ketik_alami(self, pemilih, teks, potong=70, jeda=0.045, ekor=90):
         """Isi kotak seperti orang mengetik, bukan sekali tempel.
 
         Input.insertText memasukkan ribuan karakter dalam satu peristiwa —
@@ -304,9 +304,11 @@ class Sesi:
         dikirim sebagai peristiwa papan tik sungguhan, supaya kejadian terakhir
         yang dilihat halaman sebelum tombol kirim ditekan adalah ketikan.
 
-        Mengetik SELURUHNYA karakter demi karakter tidak dilakukan: perintah
-        7.000 karakter akan memakan menit, dan itu jauh lebih mahal daripada
-        masalah yang sedang dihindari.
+        Mengetik SELURUHNYA karakter demi karakter tidak dilakukan: tiap huruf
+        berarti dua perjalanan bolak-balik ke Chrome, jadi perintah 7.000
+        karakter akan memakan beberapa menit — jauh lebih mahal daripada
+        masalah yang sedang dihindari. Yang dipakai: potongan pendek berjeda
+        untuk badannya, dan ketikan huruf-per-huruf sungguhan untuk ekornya.
         """
         self.evaluasi(f"""(function(){{
           const e = document.querySelector({pemilih!r});
@@ -364,7 +366,7 @@ class Sesi:
         }})()""")
         self.perintah('Input.insertText', text=teks)
 
-    def ketik_alami(self, pemilih, teks, potong=220, jeda=0.05, ekor=12):
+    def ketik_alami(self, pemilih, teks, potong=70, jeda=0.045, ekor=90):
         """Isi kotak seperti orang mengetik, bukan sekali tempel.
 
         Input.insertText memasukkan ribuan karakter dalam satu peristiwa —
@@ -373,9 +375,11 @@ class Sesi:
         dikirim sebagai peristiwa papan tik sungguhan, supaya kejadian terakhir
         yang dilihat halaman sebelum tombol kirim ditekan adalah ketikan.
 
-        Mengetik SELURUHNYA karakter demi karakter tidak dilakukan: perintah
-        7.000 karakter akan memakan menit, dan itu jauh lebih mahal daripada
-        masalah yang sedang dihindari.
+        Mengetik SELURUHNYA karakter demi karakter tidak dilakukan: tiap huruf
+        berarti dua perjalanan bolak-balik ke Chrome, jadi perintah 7.000
+        karakter akan memakan beberapa menit — jauh lebih mahal daripada
+        masalah yang sedang dihindari. Yang dipakai: potongan pendek berjeda
+        untuk badannya, dan ketikan huruf-per-huruf sungguhan untuk ekornya.
         """
         self.evaluasi(f"""(function(){{
           const e = document.querySelector({pemilih!r});
