@@ -157,22 +157,30 @@ class Sesi:
                           code=kunci, windowsVirtualKeyCode=kode_vm,
                           nativeVirtualKeyCode=kode_vm)
 
-    def kosongkan_editor(self, pemilih):
-        """Kosongkan kotak contenteditable lewat masukan TEPERCAYA.
+    def ganti_isi_editor(self, pemilih, teks):
+        """Ganti seluruh isi kotak contenteditable dengan teks baru.
 
-        Menyetel innerHTML='' hanya mengubah DOM; kerangka seperti Gemini
-        mengabaikannya, sehingga model internalnya masih menyimpan teks lama.
-        Akibatnya isian berikutnya menumpuk dan tombol kirim jadi mati tanpa
-        sebab yang kelihatan. Pilih-semua lalu hapus melewati masalah itu.
+        Menyetel innerHTML hanya mengubah DOM — kerangka seperti Gemini
+        mengabaikannya, sehingga model internalnya menyimpan teks lama dan
+        tombol kirim mati tanpa gejala. Cmd+A lewat Input.dispatchKeyEvent juga
+        tidak bekerja: di macOS itu perintah tingkat peramban, bukan peristiwa
+        papan tik, dan hanya menghapus satu huruf.
+
+        Yang bekerja: seleksi lewat Selection API (murni menandai, bukan
+        mengubah isi), lalu Input.insertText yang MENGGANTI seleksi itu melalui
+        jalur masukan tepercaya.
         """
-        self.evaluasi(f"(function(){{const e=document.querySelector({pemilih!r});"
-                      f"if(e) e.focus(); return 1}})()")
-        for jenis in ('keyDown', 'keyUp'):          # Cmd+A
-            self.perintah('Input.dispatchKeyEvent', type=jenis, key='a', code='KeyA',
-                          modifiers=4, windowsVirtualKeyCode=65, nativeVirtualKeyCode=65)
-        for jenis in ('keyDown', 'keyUp'):          # Delete
-            self.perintah('Input.dispatchKeyEvent', type=jenis, key='Delete', code='Delete',
-                          windowsVirtualKeyCode=46, nativeVirtualKeyCode=46)
+        self.evaluasi(f"""(function(){{
+          const e = document.querySelector({pemilih!r});
+          if (!e) return 0;
+          e.focus();
+          const r = document.createRange();
+          r.selectNodeContents(e);
+          const sel = window.getSelection();
+          sel.removeAllRanges(); sel.addRange(r);
+          return 1;
+        }})()""")
+        self.perintah('Input.insertText', text=teks)
 
     def klik_di(self, x, y):
         for jenis in ('mousePressed', 'mouseReleased'):

@@ -12,6 +12,24 @@ URL_GEMINI = 'https://gemini.google.com/app'
 
 class BelumMasuk(Exception): pass
 
+def _tampilkan(s):
+    """Bawa tab ke depan dan tunggu sampai benar-benar terlihat.
+
+    Peristiwa tetikus dari DevTools TIDAK sampai ke tab yang berstatus hidden —
+    tab itu tetap bisa dibaca dan diisi teksnya, tapi klik tombol kirim diam
+    tanpa galat. Inilah sebab kegagalan "Perintah tidak terkirim" yang muncul
+    acak: berhasil hanya ketika tabnya kebetulan sedang di depan.
+    """
+    try:
+        s.perintah('Page.bringToFront')
+    except Exception:
+        pass
+    for _ in range(10):
+        if s.evaluasi("document.visibilityState") == 'visible':
+            break
+        time.sleep(0.4)
+    return s
+
 def _sesi(url, potongan):
     """Cari tab yang sudah ada; kalau belum ada, BUKA TAB BARU.
 
@@ -22,13 +40,13 @@ def _sesi(url, potongan):
     cdp.nyalakan()
     tab = cdp.cari_tab(potongan)
     if tab:
-        return cdp.Sesi(tab)
+        return _tampilkan(cdp.Sesi(tab))
     tab = cdp.buka_tab(url)
     for _ in range(20):
         time.sleep(0.8)
         t = cdp.cari_tab(potongan)
-        if t: return cdp.Sesi(t)
-    return cdp.Sesi(tab)
+        if t: return _tampilkan(cdp.Sesi(t))
+    return _tampilkan(cdp.Sesi(tab))
 
 JS_SUDAH_MASUK = r"""
 (function(){
@@ -90,10 +108,8 @@ def _kirim(s, perintah):
       2. Tombol kirim diklik lewat Input.dispatchMouseEvent di koordinatnya,
          bukan .click() — peristiwa buatan JavaScript diabaikan juga.
     """
-    s.kosongkan_editor('div.ql-editor')
-    time.sleep(0.5)
-    s.ketik(perintah)
-    time.sleep(1.2)
+    s.ganti_isi_editor('div.ql-editor', perintah)
+    time.sleep(1.4)
     for _ in range(12):
         pos = s.evaluasi("""(function(){
           const b=[...document.querySelectorAll('button')]
@@ -133,7 +149,24 @@ def percakapan_baru(s):
     time.sleep(3)
     return True
 
-def gemini_tanya(perintah, batas=300, stabil=5, lapor=None):
+def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=1):
+    """Kirim ke Gemini. Bila gagal, segarkan halaman lalu coba sekali lagi."""
+    try:
+        return _tanya_sekali(perintah, batas, stabil, lapor)
+    except BelumMasuk:
+        raise
+    except Exception as e:
+        if ulang <= 0:
+            raise
+        s = _sesi(URL_GEMINI, 'gemini.google.com')
+        try:
+            s.buka(URL_GEMINI)          # muat ulang penuh: keadaan bersih
+            time.sleep(5)
+        finally:
+            s.tutup()
+        return gemini_tanya(perintah, batas, stabil, lapor, ulang - 1)
+
+def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None):
     perintah = perintah + BUNGKUS
     s = _sesi(URL_GEMINI, 'gemini.google.com')
     try:

@@ -120,3 +120,8 @@ penghematan, dan keluarannya malah berubah.
 **Model bahasa lokal sebagai pengurai cadangan.** Pada naskah yang terurai dua
 soal bersih, model mengembalikan empat "soal" — satu di antaranya blok rumus.
 Cadangan hanya dipanggil bila pengurai deterministik tidak menghasilkan apa pun.
+
+**Tab yang tersembunyi tidak menerima peristiwa tetikus.** Peristiwa `Input.*`
+dari DevTools tidak sampai ke tab ber-`visibilityState: hidden` — tab itu tetap
+bisa dibaca dan diisi teksnya, tapi klik tombol kirim diam tanpa galat apa pun.
+Selalu `Page.bringToFront` dan tunggu sampai `visible` sebelum mengklik.
