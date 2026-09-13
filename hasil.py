@@ -4,10 +4,21 @@
 Dirancang untuk dibuka dari tablet — kartu besar, sasaran sentuh lebar, dan
 gambar halaman dikecilkan lebih dulu supaya ringan di jaringan.
 """
-import os, re, html, json, subprocess, glob, time
+import os, re, html, json, subprocess, glob, time, urllib.parse
 
 AKAR = os.path.dirname(os.path.abspath(__file__))
 THUMB = os.path.join(AKAR, 'thumb')
+
+def _url(nama):
+    """Nama berkas untuk dipakai di dalam URL.
+
+    html.escape() saja tidak cukup: ia menangani HTML, bukan URL. Nama lembar
+    Rico berpola "... - Soal+Jawaban.pdf", dan tanda + pada query string dibaca
+    server sebagai SPASI — jadi seluruh lembar berkunci kehilangan gambar
+    kecilnya dan tautannya 404, sementara lembar tanpa + tampak baik-baik saja.
+    """
+    return html.escape(urllib.parse.quote(nama, safe=''), quote=True)
+
 
 def folder_keluar():
     import buat
@@ -227,17 +238,18 @@ def halaman_daftar(cari=''):
     kartu = ''
     for p in berkas:
         nama = os.path.basename(p)
-        e = html.escape(nama, quote=True)
+        e = _url(nama)                      # untuk href dan src
+        a = html.escape(nama, quote=True)   # untuk atribut data: dikirim apa adanya
         n = n_halaman(p)
         kartu += (f'<div class=kartu>'
                   f'<a href="/hasil?f={e}">'
-                  f'<img src="/thumb?f={e}&p=1&w=300" alt="" loading=lazy>'
+                  f'<img src="/thumb?f={e}&amp;p=1&amp;w=300" alt="" loading=lazy>'
                   f'<div class=n>{html.escape(nama[:52])}<br>{n} halaman &middot; '
                   f'{time.strftime("%d %b %H:%M", time.localtime(os.path.getmtime(p)))}'
                   f'</div></a>'
                   f'<div class=aksi>'
-                  f'<button type=button class=mini data-cetak="{e}">Cetak</button>'
-                  f'<a class=mini href="/berkas?unduh=1&f={e}" download>Kirim</a>'
+                  f'<button type=button class=mini data-cetak="{a}">Cetak</button>'
+                  f'<a class=mini href="/berkas?unduh=1&amp;f={e}" download>Kirim</a>'
                   f'</div></div>')
     if not kartu:
         kartu = ('<div class=kosong>Tidak ada lembar yang cocok.</div>' if cari else
@@ -304,7 +316,7 @@ def halaman_berkas(nama):
         kartu += (f'<label class="kartu hal" data-h="{i}">'
                   f'<input type=checkbox name=h value="{i}" checked>'
                   f'<span class=no>{i}</span>'
-                  f'<img src="/thumb?f={html.escape(nama, quote=True)}&p={i}&w=300" '
+                  f'<img src="/thumb?f={_url(nama)}&amp;p={i}&amp;w=300" '
                   f'alt="halaman {i}" loading=lazy></label>')
     opsi = ''.join(f'<option{" selected" if d == bawaan else ""}>{html.escape(d)}</option>'
                    for d in daftar_p) or '<option value="">(tidak ada printer)</option>'
@@ -314,7 +326,7 @@ def halaman_berkas(nama):
 <div class=b>
 <h1>{html.escape(nama[:60])}</h1>
 <div class=s><a href="/hasil">&larr; semua lembar</a> &middot; {n} halaman &middot;
-ketuk halaman untuk memilih &middot; <a href="/berkas?f={html.escape(nama, quote=True)}"
+ketuk halaman untuk memilih &middot; <a href="/berkas?f={_url(nama)}"
 target=_blank>buka PDF</a></div>
 <form id=f method=post action="/cetak">
 <input type=hidden name=f value="{html.escape(nama, quote=True)}">
