@@ -537,10 +537,18 @@ document.getElementById('f').onsubmit = async e => {
     if (s.selesai) {
       clearInterval(timer); document.getElementById('go').disabled = false;
       if (s.pdf) {
+        // PDF-nya terbuka di layar Mac, bukan di perangkat ini. Jadi perangkat
+        // yang mengirim langsung diarahkan ke halaman cetaknya — di situ ada
+        // pratinjau tiap halaman dan tombol cetak.
         const nama = s.pdf.split('/').pop();
+        const tuju = '/hasil?f=' + encodeURIComponent(nama);
         log.innerHTML += '<div style="margin-top:10px">'
-          + '<a class=tombolCetak href="/hasil?f=' + encodeURIComponent(nama)
-          + '" target=_top>Lihat &amp; Cetak &rarr;</a></div>';
+          + '<a class=tombolCetak href="' + tuju + '" target=_top>Lihat &amp; Cetak &rarr;</a>'
+          + '<div class=kcl style="margin-top:6px">membuka pratinjau…</div></div>';
+        setTimeout(() => {
+          try { (window.top || window).location.href = tuju; }
+          catch (e) { location.href = tuju; }
+        }, 1200);
       }
     }
   }, 1200);
