@@ -1,0 +1,25 @@
+# Basis data arsip — 960 MB, dibangun ulang dari PDF di mesin tujuan
+exact.db
+exact.db-shm
+exact.db-wal
+
+# Profil Chrome kendali — berisi sesi login pribadi, jangan pernah dibagikan
+chrome-otomatis/
+
+# Paket pindahan dan hasil ekspor
+kirim-ke-pc/
+exact-untuk-pc.tar.gz
+*.tar.gz
+
+# Setelan pribadi tiap mesin
+setelan.json
+
+# Binari hasil kompilasi (dibuat oleh pasang.sh)
+ocr-mac/visionocr
+
+# Berkas kerja & keluaran sementara
+*.csv
+/tmp/
+__pycache__/
+*.pyc
+.DS_Store
