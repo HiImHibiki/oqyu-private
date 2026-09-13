@@ -300,7 +300,10 @@ GAYA = """
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--teks);
 font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",sans-serif}
 .b{max-width:760px;margin:0 auto;padding:26px 18px 70px}
-h1{font-size:21px;margin:0 0 3px}.s{color:var(--redup);font-size:13px;margin-bottom:18px}
+h1{font-size:21px;margin:0 0 3px}
+.kopApp{display:flex;align-items:center;gap:12px;margin-bottom:14px;
+padding-bottom:12px;border-bottom:2px solid var(--teks)}
+.kopApp img{height:40px;width:auto}.s{color:var(--redup);font-size:13px;margin-bottom:18px}
 .k{background:var(--kartu);border:1px solid var(--tepi);border-radius:12px;padding:16px;margin-bottom:12px}
 .j{border:2px dashed var(--tepi);border-radius:11px;padding:26px;text-align:center;
 color:var(--redup);font-size:13px;cursor:pointer}
@@ -354,6 +357,8 @@ button.abu{background:var(--tepi);color:var(--teks);font-weight:600}
 .bar i{display:block;height:100%;background:var(--aksen);width:0;transition:width .4s}
 .lg{font-size:13px;color:var(--redup)}.lg div{padding:2px 0}
 .lg div.now{color:var(--teks);font-weight:600}
+.tombolCetak{display:inline-block;padding:11px 22px;border-radius:9px;
+background:var(--aksen);color:#fff;font-weight:700;font-size:14px;text-decoration:none}
 .err{color:#c0392b;font-size:13.5px}
 .pr{background:#fff8f0;border:1px solid #f0d8c0;border-radius:9px;padding:11px;font-size:13px;color:#8a5a2a}
 @media(prefers-color-scheme:dark){.pr{background:#2a2118;border-color:#4a3a28;color:#d8a870}}
@@ -427,6 +432,21 @@ if (preset) preset.onchange = () => {
   document.querySelector('[name=jumlah]').value = preset.value;
   preset.selectedIndex = 0;          // kembali ke label, nilainya sudah pindah
 };
+
+// Berkas yang dititipkan aplikasi Android ditarik balik jadi bagian galeri,
+// supaya terlihat dan bisa dihapus seperti berkas lain.
+if (typeof TITIP !== 'undefined' && TITIP) {
+  (async () => {
+    for (let i = 0; i < 10; i++) {
+      const r = await fetch('/titipan?k=' + TITIP + '&n=' + i);
+      if (!r.ok) break;
+      const b = await r.blob();
+      const cd = r.headers.get('Content-Disposition') || '';
+      const m = cd.match(/filename="([^"]*)"/);
+      tambah([new File([b], m ? m[1] : ('titipan-' + (i+1)), {type: b.type})]);
+    }
+  })();
+}
 
 j.onclick = () => fi.click();
 fi.onchange = () => { tambah(fi.files); fi.value = ''; };
@@ -507,8 +527,15 @@ document.getElementById('f').onsubmit = async e => {
     log.innerHTML = (s.langkah || []).map((x, i, a) =>
       '<div class="' + (i === a.length-1 && !s.selesai ? 'now' : '') + '">' + x + '</div>').join('');
     if (s.galat) log.innerHTML += '<div class=err>' + s.galat + '</div>';
-    if (s.selesai) { clearInterval(timer); document.getElementById('go').disabled = false;
-      if (s.pdf) log.innerHTML += '<div><b>PDF terbuka otomatis</b></div>'; }
+    if (s.selesai) {
+      clearInterval(timer); document.getElementById('go').disabled = false;
+      if (s.pdf) {
+        const nama = s.pdf.split('/').pop();
+        log.innerHTML += '<div style="margin-top:10px">'
+          + '<a class=tombolCetak href="/hasil?f=' + encodeURIComponent(nama)
+          + '" target=_top>Lihat &amp; Cetak &rarr;</a></div>';
+      }
+    }
   }, 1200);
 };
 """
@@ -521,7 +548,7 @@ SKRIP_JAWAB = SKRIP.replace("fetch('/buat'", "fetch('/jawab'").replace(
     "!berkas.length")
 
 
-def halaman_jawab():
+def halaman_jawab(titip=''):
     """Tab Jawaban: foto soal anak -> kunci + pembahasan."""
     import setelan as _s
     st = _s.muat()
@@ -529,7 +556,9 @@ def halaman_jawab():
     return f"""<!doctype html><meta charset=utf-8><title>Kunci Jawaban</title>
 <meta name=viewport content="width=device-width,initial-scale=1"><style>{GAYA}</style>
 <div class=b>
-<h1>Kunci Jawaban &amp; Pembahasan</h1>
+<div class=kopApp><img src="/statik/logo.png" alt=""><div>
+  <h1>Kunci Jawaban &amp; Pembahasan</h1>
+  <div class=s style="margin:0">Exact Course &middot; Worksheet Maker</div></div></div>
 <div class=s>Foto soal anak, lalu jadi PDF berisi soalnya beserta kunci dan
 pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikarang.</div>
 <form id=f>
@@ -563,10 +592,11 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
   <div class=lg id=log></div>
 </div>
 </div>
-<script>{SKRIP_JAWAB}</script>"""
+<input type=hidden name=titip value="{html.escape(titip, quote=True)}">
+<script>const TITIP={json.dumps(titip)};{SKRIP_JAWAB}</script>"""
 
 
-def halaman(izin_chrome=True, setel=None):
+def halaman(izin_chrome=True, setel=None, titip=''):
     import setelan as _s
     st = setel or _s.muat()
     n = lambda k: html.escape(st.get(k, '') or '')
@@ -582,7 +612,9 @@ def halaman(izin_chrome=True, setel=None):
     return f"""<!doctype html><meta charset=utf-8><title>Exact Worksheet Maker</title>
 <meta name=viewport content="width=device-width,initial-scale=1"><style>{GAYA}</style>
 <div class=b>
-<h1>Exact Worksheet Maker</h1>
+<div class=kopApp><img src="/statik/logo.png" alt=""><div>
+  <h1>Buat Soal Baru</h1>
+  <div class=s style="margin:0">Exact Course &middot; Worksheet Maker</div></div></div>
 <div class=s>Tempel tangkapan layar soal dan isi kriteria. Gemini mengarang,
 Mac ini menata, PDF terbuka sendiri.</div>
 <div class=s style="margin-top:-10px">Bank soal: {n_bank:,} soal tersimpan &mdash;
@@ -657,4 +689,5 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
   <div class=lg id=log></div>
 </div>
 </div>
-<script>{SKRIP}</script>"""
+<input type=hidden name=titip value="{html.escape(titip, quote=True)}">
+<script>const TITIP={json.dumps(titip)};{SKRIP}</script>"""

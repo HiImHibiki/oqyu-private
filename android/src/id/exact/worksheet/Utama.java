@@ -129,32 +129,55 @@ public class Utama extends Activity {
             .show();
     }
 
-    private void mulai(ArrayList<Uri> kirim, String mode) {
+    private void mulai(ArrayList<Uri> kirim, final String mode) {
         p.edit().putString("mode", mode).apply();
         Toast.makeText(this, "Mengirim " + kirim.size() + " berkas ke Mac…",
                 Toast.LENGTH_SHORT).show();
         new Thread(() -> {
-            int ok = 0; String galat = null;
+            int ok = 0; String galat = null; String buka = null;
             for (Uri u : kirim) {
-                try { unggah(u); ok++; }
-                catch (Exception e) {
+                try {
+                    String jawab = unggah(u, mode);
+                    ok++;
+                    if (buka == null) buka = ambilNilai(jawab, "buka");
+                } catch (Exception e) {
                     galat = e.getClass().getSimpleName() + ": " + e.getMessage();
                     Log.e("ExactWS", "gagal unggah " + u, e);
                 }
             }
-            final int n = ok; final String g = galat;
+            final int n = ok; final String g = galat; final String url = buka;
             new Handler(Looper.getMainLooper()).post(() -> {
-                Toast.makeText(this, n > 0
-                        ? n + " berkas dikirim. Lembar sedang dibuat di Mac."
-                        : "Gagal mengirim: " + g, Toast.LENGTH_LONG).show();
+                if (n > 0 && url != null) {
+                    // Berkasnya DITITIPKAN, belum dikerjakan — aplikasi di Mac
+                    // dibuka supaya kriteria dan acuannya bisa dilengkapi dulu.
+                    Toast.makeText(this, "Membuka aplikasi di Mac…", Toast.LENGTH_SHORT).show();
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(dasar() + url)));
+                    } catch (Exception e) {
+                        Toast.makeText(this, "Terkirim, buka " + dasar() + url,
+                                Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(this, n > 0 ? "Terkirim." : "Gagal mengirim: " + g,
+                            Toast.LENGTH_LONG).show();
+                }
                 finish();
             });
         }).start();
     }
 
-    private void unggah(Uri u) throws IOException {
+    /** Ambil satu nilai dari JSON sederhana tanpa pustaka luar. */
+    private String ambilNilai(String json, String kunci) {
+        if (json == null) return null;
+        int i = json.indexOf("\"" + kunci + "\"");
+        if (i < 0) return null;
+        int a = json.indexOf('"', json.indexOf(':', i) + 1);
+        int b = json.indexOf('"', a + 1);
+        return (a < 0 || b < 0) ? null : json.substring(a + 1, b);
+    }
+
+    private String unggah(Uri u, String sasaran) throws IOException {
         String nama = namaBerkas(u);
-        String mode = p.getString("mode", "buat");
         String batas = "----exact" + System.currentTimeMillis();
 
         // Badan disusun di memori dulu supaya Content-Length bisa dipastikan.
@@ -162,7 +185,9 @@ public class Utama extends Activity {
         // karena BaseHTTPRequestHandler tidak menguraikan transfer chunked.
         ByteArrayOutputStream badan = new ByteArrayOutputStream();
         tulis(badan, "--" + batas + "\r\n");
-        tulis(badan, "Content-Disposition: form-data; name=\"mode\"\r\n\r\n" + mode + "\r\n");
+        tulis(badan, "Content-Disposition: form-data; name=\"mode\"\r\n\r\ntitip\r\n");
+        tulis(badan, "--" + batas + "\r\n");
+        tulis(badan, "Content-Disposition: form-data; name=\"sasaran\"\r\n\r\n" + sasaran + "\r\n");
         tulis(badan, "--" + batas + "\r\n");
         tulis(badan, "Content-Disposition: form-data; name=\"berkas\"; filename=\"" + nama + "\"\r\n");
         tulis(badan, "Content-Type: application/octet-stream\r\n\r\n");
@@ -186,7 +211,12 @@ public class Utama extends Activity {
         }
         int kode = c.getResponseCode();
         if (kode != 200) throw new IOException("server menjawab " + kode);
-        c.getInputStream().close();
+        ByteArrayOutputStream jawab = new ByteArrayOutputStream();
+        try (InputStream in = c.getInputStream()) {
+            byte[] buf = new byte[4096]; int n;
+            while ((n = in.read(buf)) > 0) jawab.write(buf, 0, n);
+        }
+        return jawab.toString("UTF-8");
     }
 
     private void tulis(OutputStream o, String s) throws IOException {

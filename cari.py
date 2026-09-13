@@ -125,7 +125,7 @@ class H(BaseHTTPRequestHandler):
         u = urllib.parse.urlparse(self.path); qs = urllib.parse.parse_qs(u.query)
         if u.path == '/jawab':
             import buat
-            b = buat.halaman_jawab().encode()
+            b = buat.halaman_jawab((qs.get('titip') or [''])[0]).encode()
             self.send_response(200)
             self.send_header('Content-Type','text/html; charset=utf-8')
             self.send_header('Content-Length',str(len(b))); self.end_headers()
@@ -133,7 +133,7 @@ class H(BaseHTTPRequestHandler):
 
         if u.path == '/buat':
             import buat
-            b = buat.halaman().encode()
+            b = buat.halaman(titip=(qs.get('titip') or [''])[0]).encode()
             self.send_response(200)
             self.send_header('Content-Type','text/html; charset=utf-8')
             self.send_header('Content-Length',str(len(b))); self.end_headers()
@@ -149,6 +149,19 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Type','text/html; charset=utf-8')
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
+
+        if u.path == '/titipan':
+            import titipan
+            kode = (qs.get('k') or [''])[0]
+            urut = int((qs.get('n') or ['0'])[0] or 0)
+            b = titipan.berkas_ke(kode, urut)
+            if not b: return self.send_error(404)
+            nama, isi = b
+            tipe = mimetypes.guess_type(nama)[0] or 'application/octet-stream'
+            self.send_response(200); self.send_header('Content-Type', tipe)
+            self.send_header('Content-Disposition', f'inline; filename="{nama}"')
+            self.send_header('Content-Length', str(len(isi))); self.end_headers()
+            self.wfile.write(isi); return
 
         if u.path == '/apk':
             # Unduh aplikasi Android dari tablet: buka http://<alamat>:7790/apk
@@ -430,7 +443,21 @@ class H(BaseHTTPRequestHandler):
             self.send_response(200); self.send_header('Content-Type','application/pdf')
             self.send_header('Content-Length',str(len(d))); self.end_headers(); self.wfile.write(d); return
         if u.path == '/':
-            b = KERANGKA.encode()
+            import titipan
+            kode = (qs.get('titip') or [''])[0]
+            awal = '/buat'
+            if kode:
+                d = titipan.lihat(kode)
+                if d:
+                    awal = ('/jawab' if d['mode'] == 'jawab' else '/buat') + f'?titip={kode}'
+            b = KERANGKA.replace('src="/buat"', f'src="{html.escape(awal, quote=True)}"') \
+                        .replace("data-u=\"/buat\" class=aktif",
+                                 f'data-u="{html.escape(awal, quote=True)}" class=aktif'
+                                 if awal.startswith('/buat') else 'data-u="/buat"') \
+                        .replace('<button data-u="/jawab">',
+                                 f'<button data-u="{html.escape(awal, quote=True)}" class=aktif>'
+                                 if awal.startswith('/jawab') else '<button data-u="/jawab">')
+            b = b.encode()
             self.send_response(200)
             self.send_header('Content-Type','text/html; charset=utf-8')
             self.send_header('Content-Length',str(len(b))); self.end_headers()
@@ -630,7 +657,16 @@ class H(BaseHTTPRequestHandler):
                 b = json.dumps({'galat': 'tidak ada berkas'}).encode()
                 self.send_response(400)
             else:
-                import buat, setelan, threading, uuid
+                import buat, setelan, threading, uuid, titipan
+                mode0 = medan.get('mode') or 'buat'
+                if mode0 == 'titip':
+                    kode = titipan.titip([(nama, isi)], medan.get('sasaran') or 'buat')
+                    b = json.dumps({'titip': kode,
+                                    'buka': f'/?titip={kode}'}).encode()
+                    self.send_response(200)
+                    self.send_header('Content-Type','application/json')
+                    self.send_header('Content-Length',str(len(b))); self.end_headers()
+                    self.wfile.write(b); return
                 st = setelan.muat()
                 jid = uuid.uuid4().hex[:12]
                 buat.TUGAS[jid] = {'langkah': [f'Menerima {nama[:40]}…'], 'maju': 3,
@@ -730,7 +766,11 @@ class H(BaseHTTPRequestHandler):
         self.send_response(303); self.send_header('Location', tuju); self.end_headers()
 
     def mulai_buat(self, medan, berkas):
-        import buat, threading, uuid, setelan
+        import buat, threading, uuid, setelan, titipan
+        k = (medan.get('titip') or '').strip()
+        if k:
+            d = titipan.ambil(k)
+            if d: berkas = list(d['berkas']) + list(berkas or [])
         setelan.simpan(medan)          # apa pun yang dipakai sekarang jadi bawaan berikutnya
         jid = uuid.uuid4().hex[:12]
         buat.TUGAS[jid] = {'langkah': ['Mulai…'], 'maju': 3, 'selesai': False}
@@ -755,7 +795,11 @@ class H(BaseHTTPRequestHandler):
         self.wfile.write(b)
 
     def mulai_jawab(self, medan, berkas):
-        import buat, threading, uuid, setelan
+        import buat, threading, uuid, setelan, titipan
+        k = (medan.get('titip') or '').strip()
+        if k:
+            d = titipan.ambil(k)
+            if d: berkas = list(d['berkas']) + list(berkas or [])
         try: setelan.simpan(medan)
         except Exception: pass
         jid = uuid.uuid4().hex[:12]
@@ -884,7 +928,11 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--teks);
 font:15px/1.5 ui-sans-serif,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
 header{display:flex;align-items:center;gap:8px;padding:9px 14px;
 background:var(--kartu);border-bottom:1px solid var(--tepi)}
-header b{font-size:14px;margin-right:6px;letter-spacing:.2px}
+header .logo{height:30px;width:auto}
+header .merek{display:flex;flex-direction:column;line-height:1.15;margin-right:10px}
+header .merek b{font-size:14px;letter-spacing:.2px}
+header .merek span{font-size:10.5px;color:var(--redup);letter-spacing:.4px;
+text-transform:uppercase}
 nav{display:flex;gap:6px;flex-wrap:wrap}
 nav button{padding:7px 14px;border:1px solid var(--tepi);border-radius:8px;
 background:var(--bg);color:var(--redup);font-size:12.5px;cursor:pointer;font-weight:600}
@@ -892,7 +940,8 @@ nav button.aktif{background:var(--aksen);color:#fff;border-color:var(--aksen)}
 iframe{border:0;width:100%;height:calc(100vh - 47px);display:block;background:var(--bg)}
 </style>
 <header>
-  <b>Exact Worksheet</b>
+  <img src="/statik/logo.png" alt="" class=logo>
+  <div class=merek><b>Exact Course</b><span>Worksheet Maker</span></div>
   <nav>
     <button data-u="/buat" class=aktif>Buat dengan AI</button>
     <button data-u="/cari?mode=soal&amp;q=">Bank Soal</button>
