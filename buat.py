@@ -162,6 +162,22 @@ def _catat(jid, pesan, maju=None, selesai=False, galat=None, pdf=None):
 def _db():
     c = sqlite3.connect(DB, timeout=60); c.row_factory = sqlite3.Row; return c
 
+def _simpan_naskah(nama, teks):
+    """Simpan naskah mentah dari Gemini.
+
+    Dulu hanya disimpan setelah pengurai berhasil. Justru pada saat GAGAL itulah
+    naskahnya paling dibutuhkan — tanpa itu penyebabnya cuma bisa ditebak.
+    """
+    try:
+        os.makedirs(NASKAH, exist_ok=True)
+        cap = time.strftime('%Y-%m-%d %H%M')
+        with open(os.path.join(NASKAH, f'{nama} — {cap}.txt'), 'w',
+                  encoding='utf-8') as f:
+            f.write(teks or '')
+    except OSError:
+        pass
+
+
 def _simpan_sementara(gambar):
     """Tulis foto ke berkas sementara; pemanggil wajib menghapusnya."""
     import tempfile
@@ -236,7 +252,9 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
 
         judul_lbr, butir = _jwb.urai(hasil_teks)
         if not butir:
-            raise RuntimeError('Jawaban Gemini tidak bisa diurai jadi pembahasan')
+            _simpan_naskah('GAGAL-pembahasan', hasil_teks)
+            raise RuntimeError('Jawaban Gemini tidak bisa diurai jadi pembahasan. '
+                               'Naskah mentahnya disimpan di folder naskah/.')
         judul = judul.strip() or judul_lbr or 'Pembahasan Soal'
         _catat(jid, f'{len(butir)} soal beserta pembahasannya', 80)
 
@@ -260,6 +278,83 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
             for k in list(HALAMAN_JAWAB)[:-40]: HALAMAN_JAWAB.pop(k, None)
         tuju = os.path.join(KELUAR, f'{nama}.pdf')
         otomasi.cetak_halaman(f'http://127.0.0.1:7790/lembar-jawab?k={kode}', tuju)
+        subprocess.run(['open', tuju], capture_output=True)
+        _catat(jid, f'Selesai — {os.path.basename(tuju)}', 100, selesai=True, pdf=tuju)
+    except Exception as e:
+        _catat(jid, None, galat=f'{type(e).__name__}: {e}')
+    finally:
+        ANTREAN.keluar(jid)
+
+
+def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
+                     bahasa='Indonesia', lembaga='', sekolah='', tanggal='',
+                     bagian='5', mata='vision'):
+    """Materi (foto/PDF atau sekadar topik) -> lembar rangkuman -> PDF.
+
+    Bahannya boleh kosong: kalau hanya topik yang diisi, rangkumannya disusun
+    dari materi baku. Itu membuat tab ini tetap berguna saat bukunya tidak ada
+    di tangan.
+    """
+    import otomasi, rangkum as _rk, lembar_rangkum as _lr, uuid
+    if not ANTREAN.masuk(jid, 'Rangkuman', lambda m: _catat(jid, m, 4)):
+        return _catat(jid, None, galat='Dibatalkan sebelum mulai.')
+    try:
+        mata = mata if mata in MATA else 'vision'
+        jalur = _simpan_sementara(gambar)
+        try:
+            if not jalur and not (topik or '').strip():
+                return _catat(jid, None, galat='Beri foto/PDF materinya, '
+                                               'atau tulis topiknya.')
+            naskah_materi = ''
+            if jalur and mata in ('vision', 'dua'):
+                _catat(jid, f'Membaca {len(jalur)} berkas dengan Apple Vision…', 12)
+                naskah_materi = _baca_foto(jalur)
+                _catat(jid, f'Terbaca {len(naskah_materi.split())} kata', 24)
+            if jalur and mata == 'vision' and len(naskah_materi.strip()) < 40:
+                return _catat(jid, None, galat='Materinya tidak terbaca. Coba foto '
+                                               'lebih terang, atau pilih "mata Gemini".')
+            lampiran = jalur if (jalur and mata in ('gemini', 'dua')) else None
+
+            try: n_bagian = max(2, min(12, int(str(bagian).strip() or 5)))
+            except ValueError: n_bagian = 5
+            perintah = _rk.bangun(naskah_materi, bahasa, instruksi, mapel,
+                                  str(kelas or ''), bagian=n_bagian,
+                                  topik=topik, ada_lampiran=bool(lampiran))
+            _catat(jid, ('Mengunggah materi ke Gemini…' if lampiran
+                         else 'Menyusun rangkuman…'), 40)
+            hasil_teks = otomasi.gemini_tanya(perintah, batas=300, lampiran=lampiran)
+        finally:
+            for x in jalur:
+                try: os.unlink(x)
+                except OSError: pass
+
+        _catat(jid, f'Rangkuman diterima ({len(hasil_teks)} karakter)', 70)
+        judul_lbr, inti, bagian_isi = _rk.urai(hasil_teks)
+        if not bagian_isi:
+            _simpan_naskah('GAGAL-rangkuman', hasil_teks)
+            raise RuntimeError('Jawaban Gemini tidak bisa diurai jadi rangkuman. '
+                               'Naskah mentahnya disimpan di folder naskah/.')
+        judul = judul.strip() or judul_lbr or topik.strip() or 'Rangkuman'
+        _catat(jid, f'{len(bagian_isi)} bagian rangkuman', 80)
+
+        kop = dict(lembaga=lembaga or 'Exact Course', mapel=mapel or '',
+                   kelas=(f'Kelas {kelas}' if kelas else ''))
+        os.makedirs(KELUAR, exist_ok=True)
+        kode_kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
+                        sekolah=sekolah, kelas=str(kelas or ''),
+                        tanggal=tanggal or time.strftime('%d%m'))
+        nama = nama_berkas(kode_kop, False, KELUAR) + ' - Rangkuman'
+        os.makedirs(NASKAH, exist_ok=True)
+        open(os.path.join(NASKAH, f'{nama} — {time.strftime("%Y-%m-%d %H%M")}.txt'),
+             'w', encoding='utf-8').write(hasil_teks)
+
+        _catat(jid, 'Menyusun lembar lalu mencetak PDF…', 90)
+        kode = uuid.uuid4().hex[:10]
+        HALAMAN_JAWAB[kode] = _lr.buat(judul, inti, bagian_isi, kop)
+        if len(HALAMAN_JAWAB) > 40:
+            for k in list(HALAMAN_JAWAB)[:-40]: HALAMAN_JAWAB.pop(k, None)
+        tuju = os.path.join(KELUAR, f'{nama}.pdf')
+        otomasi.cetak_halaman(f'http://127.0.0.1:{PORT}/lembar-jawab?k={kode}', tuju)
         subprocess.run(['open', tuju], capture_output=True)
         _catat(jid, f'Selesai — {os.path.basename(tuju)}', 100, selesai=True, pdf=tuju)
     except Exception as e:
@@ -866,3 +961,81 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
 </div>
 <input type=hidden name=titip value="{html.escape(titip, quote=True)}">
 <script>const TITIP={json.dumps(titip)};{SKRIP}</script>"""
+
+
+SKRIP_RANGKUM = SKRIP.replace("fetch('/buat'", "fetch('/rangkum'").replace(
+    "!berkas.length && !document.querySelector('[name=topik]').value.trim()",
+    "!berkas.length && !document.querySelector('[name=topik]').value.trim()") + """
+// Keterangan pilihan mata, sama seperti di tab Kunci Jawaban.
+(() => {
+  const KET = {
+    vision: 'Materi dibaca di Mac dan tidak dikirim ke mana pun. Paling cepat, dan paling tepat untuk teks ketikan.',
+    gemini: 'Materi diunggah ke Gemini, jadi diagram, grafik, dan tulisan tangan ikut terbaca. Lebih lambat.',
+    dua: 'Teks hasil Apple Vision dikirim bersama berkasnya. Ejaan terjaga sekaligus gambarnya tetap terlihat.'
+  };
+  const s = document.getElementById('mata'), k = document.getElementById('ketMata');
+  if (!s || !k) return;
+  const gambar = () => k.textContent = KET[s.value] || '';
+  s.onchange = gambar; gambar();
+})();
+"""
+
+
+def halaman_rangkum(titip=''):
+    """Tab Rangkuman: materi -> lembar rangkuman untuk dibaca ulang."""
+    import setelan as _s
+    st = _s.muat()
+    n = lambda k: html.escape(st.get(k, '') or '')
+    return f"""<!doctype html><meta charset=utf-8><title>Rangkuman</title>
+<meta name=viewport content="width=device-width,initial-scale=1"><style>{GAYA}</style>
+<div class=b>
+<div class=kopApp><img src="/statik/logo.png" alt=""><div>
+  <h1>Rangkuman &amp; Ringkasan</h1>
+  <div class=s style="margin:0">Exact Course &middot; Worksheet Maker</div></div></div>
+<div class=s>Foto atau PDF materinya, lalu jadi lembar rangkuman: inti materi,
+poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
+&mdash; cukup tulis topiknya.</div>
+<form id=f>
+<div class=k>
+  <div class=j id=j tabindex=0>foto materi atau jatuhkan gambar/PDF
+    <div class=kcl>boleh dikosongkan kalau hanya mengisi topik</div>
+    <input type=file name=gambar id=file accept="image/*,.pdf,application/pdf" multiple hidden>
+    <input type=file id=kamera accept="image/*" capture="environment" multiple hidden></div>
+  <div class=r style="margin-top:9px">
+    <button type=button id=btnFoto class=abu>Foto materi</button>
+    <button type=button id=btnKlip class=abu>Ambil dari papan klip</button>
+    <span class=kcl id=kabarKlip style="margin:0"></span>
+  </div>
+  <div class=gal id=gal></div>
+  <div class=r>
+    <input name=topik placeholder="topik (mis. 'Teorema Pythagoras')" style="flex:2;min-width:190px">
+  </div>
+  <div class=r>
+    <input name=mapel placeholder="mapel" value="{n('mapel')}" style="flex:1;min-width:140px">
+    <input name=kelas placeholder="kelas" value="{n('kelas')}" size=6>
+    <input name=bagian placeholder="bagian" value="5" size=6 title="berapa sub-bab">
+    <select name=bahasa><option{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option><option{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option></select>
+  </div>
+  <div class=r>
+    <select name=mata id=mata style="flex:1;min-width:220px">
+      <option value=vision{" selected" if st.get("mata","vision")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, teks cetak</option>
+      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata Gemini &mdash; tulisan tangan &amp; gambar</option>
+      <option value=dua{" selected" if st.get("mata")=="dua" else ""}>Keduanya &mdash; paling teliti, paling lama</option>
+    </select>
+  </div>
+  <div class=kcl id=ketMata style="margin-top:5px"></div>
+  <textarea name=instruksi rows=2 style="margin-top:11px"
+    placeholder="Catatan (mis. 'fokus ke rumus saja', 'sertakan contoh soal UN')"></textarea>
+  <div class="r kirim">
+    <input name=judul placeholder="judul (opsional)" style="flex:1;min-width:150px">
+    <button id=go type=submit>Buat Rangkuman</button>
+  </div>
+</div>
+</form>
+<div class=k id=panel style=display:none>
+  <div class=bar><i id=isi></i></div>
+  <div class=lg id=log></div>
+</div>
+</div>
+<input type=hidden name=titip value="{html.escape(titip, quote=True)}">
+<script>const TITIP={json.dumps(titip)};{SKRIP_RANGKUM}</script>"""

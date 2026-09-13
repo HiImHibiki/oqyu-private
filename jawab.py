@@ -75,10 +75,16 @@ def bangun(naskah, bahasa='Indonesia', catatan='', mapel='', kelas='',
     return PERINTAH.format(bahasa=bahasa, catatan=ket, naskah=blok,
                            jenjang=jenjang, tanya=TANYA, sumber=sumber)
 
-AWAL = re.compile(r'^\s*SOAL\s+(\d{1,3})\s*$', re.I | re.M)
-JAWAB = re.compile(r'^\s*JAWAB\s*:\s*(.*)$', re.I)
-BAHAS = re.compile(r'^\s*BAHAS\s*:?\s*(.*)$', re.I)
-JUDUL = re.compile(r'^\s*JUDUL\s*:\s*(.+)$', re.I)
+# Gemini tidak selalu menuliskan penanda persis seperti yang diminta: kadang
+# ditebalkan (**SOAL 1**), diberi titik dua, diberi tanda pagar, atau dinomori
+# "Soal 1." Semua ragam itu tetap satu penanda yang sama, jadi hiasannya
+# dilonggarkan di pola — bukan diserahkan pada kepatuhan Gemini, karena satu
+# variasi saja membuat seluruh lembar gagal terurai.
+_HIAS = r'[\s*#_>`-]*'
+AWAL = re.compile(rf'^{_HIAS}SOAL{_HIAS}(\d{{1,3}}){_HIAS}[.:)]?{_HIAS}$', re.I | re.M)
+JAWAB = re.compile(rf'^{_HIAS}JAWAB(?:AN)?{_HIAS}[:.]{_HIAS}(.*)$', re.I)
+BAHAS = re.compile(rf'^{_HIAS}(?:BAHAS|PEMBAHASAN|PENYELESAIAN){_HIAS}[:.]?{_HIAS}(.*)$', re.I)
+JUDUL = re.compile(rf'^{_HIAS}JUDUL{_HIAS}[:.]{_HIAS}(.+)$', re.I)
 # Baris yang tidak boleh disambung ke baris lain: ada rumusnya, atau memang
 # baris pembuka/penutup langkah hitung.
 SENDIRI = re.compile(r'\$.+\$|^\s*(Diketahui|Ditanya|Jadi|Maka)\b', re.I)
