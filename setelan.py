@@ -10,7 +10,11 @@ BERKAS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'setelan.json'
 
 # Yang diingat. Sengaja TIDAK termasuk topik, judul, dan tanggal: ketiganya
 # berbeda tiap lembar, jadi mengingatnya justru merepotkan.
-MEDAN = ('mapel', 'jenjang', 'kelas', 'jumlah', 'n_set', 'sulit', 'bahasa',
+# mapel, jenjang, dan kelas sengaja TIDAK diingat. Ketiganya berganti tiap
+# lembar — satu lembar Fisika kelas 10 membuat lembar Matematika kelas 7
+# berikutnya terisi salah diam-diam, dan salahnya baru ketahuan di kop PDF.
+# Lebih aman kosong: Rico mengisinya sendiri kalau memang perlu.
+MEDAN = ('jumlah', 'n_set', 'sulit', 'bahasa',
          'lembaga', 'sekolah', 'instruksi', 'kolom', 'kerapatan', 'garis',
          'printer', 'bolak', 'salinan', 'mata')
 CENTANG = ('kunci', 'pembahasan', 'dua_berkas', 'gambar')

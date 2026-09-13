@@ -836,8 +836,8 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
   </div>
   <div class=gal id=gal></div>
   <div class=r>
-    <input name=mapel placeholder="mapel" value="{n('mapel')}" style="flex:1;min-width:140px">
-    <input name=kelas placeholder="kelas" value="{n('kelas')}" size=6>
+    <input name=mapel placeholder="mapel" style="flex:1;min-width:140px">
+    <input name=kelas placeholder="kelas" size=6>
     <select name=bahasa><option{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option><option{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option></select>
     <select name=kolom><option value=1>1 kolom</option><option value=2>2 kolom</option></select>
   </div>
@@ -903,11 +903,11 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
   </div>
   <div class=gal id=gal></div>
   <div class=r>
-    <input name=mapel placeholder="mapel" value="{n('mapel')}" style="flex:1;min-width:150px">
+    <input name=mapel placeholder="mapel" style="flex:1;min-width:150px">
     <input name=topik placeholder="topik (kosongkan jika pakai gambar)" style="flex:2;min-width:190px">
   </div>
   <div class=r>
-    <input name=jenjang placeholder="kelas/jenjang" value="{n('jenjang')}" size=12>
+    <input name=jenjang placeholder="kelas/jenjang" size=12>
     <select id=preset title="komposisi siap pakai" style="min-width:150px">
       <option value="">komposisi…</option>
       <option>10 PG + 5 Esai</option>
@@ -1011,8 +1011,8 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
     <input name=topik placeholder="topik (mis. 'Teorema Pythagoras')" style="flex:2;min-width:190px">
   </div>
   <div class=r>
-    <input name=mapel placeholder="mapel" value="{n('mapel')}" style="flex:1;min-width:140px">
-    <input name=kelas placeholder="kelas" value="{n('kelas')}" size=6>
+    <input name=mapel placeholder="mapel" style="flex:1;min-width:140px">
+    <input name=kelas placeholder="kelas" size=6>
     <input name=bagian placeholder="bagian" value="5" size=6 title="berapa sub-bab">
     <select name=bahasa><option{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option><option{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option></select>
   </div>
