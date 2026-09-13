@@ -176,16 +176,13 @@ def _kirim(s, perintah):
     s.ganti_isi_editor('div.ql-editor', perintah)
     time.sleep(JEDA_SEBELUM_KIRIM)
 
-    # Coba Enter lebih dulu — itu yang dilakukan orang, dan tidak bergantung
-    # pada letak tombol yang bisa bergeser. Kalau kotaknya belum kosong, baru
-    # tombolnya diklik.
-    kosong_js = ("((document.querySelector('div.ql-editor')||{}).innerText||'')"
-                 ".trim().length")
-    s.tombol('Enter', 13)
-    for _ in range(6):
-        time.sleep(1)
-        if (s.evaluasi(kosong_js) or 0) <= 1:
-            return True
+    # Pengirimannya lewat KLIK tombol kirim, bukan Enter.
+    #
+    # Enter memang mengirim — tapi hanya untuk pesan satu baris. Perintah kita
+    # bertingkat banyak baris, dan di kotak seperti itu Enter berarti "baris
+    # baru": diuji dengan perintah 7.227 karakter, kotaknya tetap terisi penuh
+    # setelah enam detik. Uji dengan pesan pendek sempat menyesatkan karena di
+    # situ Enter justru berhasil.
     for _ in range(12):
         pos = s.evaluasi("""(function(){
           const b=[...document.querySelectorAll('button')]

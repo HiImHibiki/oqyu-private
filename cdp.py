@@ -305,10 +305,24 @@ class Sesi:
         self.perintah('Input.insertText', text=teks)
 
     def tombol(self, kunci='Enter', kode_vm=13):
-        for jenis in ('keyDown', 'keyUp'):
-            self.perintah('Input.dispatchKeyEvent', type=jenis, key=kunci,
-                          code=kunci, windowsVirtualKeyCode=kode_vm,
+        """Tekan satu tombol papan tik.
+
+        Urutannya rawKeyDown -> char -> keyUp, bukan keyDown -> keyUp. Quill —
+        penyunting yang dipakai Gemini — mendengarkan peristiwa char untuk
+        Enter; tanpa itu tombolnya tercatat ditekan tapi tidak berbuat apa-apa,
+        dan perintah yang sudah ditempel diam saja di kotaknya.
+        """
+        teks = {'Enter': '\r', 'Escape': '\x1b', 'Tab': '\t'}.get(kunci)
+        self.perintah('Input.dispatchKeyEvent', type='rawKeyDown', key=kunci,
+                      code=kunci, windowsVirtualKeyCode=kode_vm,
+                      nativeVirtualKeyCode=kode_vm)
+        if teks:
+            self.perintah('Input.dispatchKeyEvent', type='char', text=teks,
+                          key=kunci, windowsVirtualKeyCode=kode_vm,
                           nativeVirtualKeyCode=kode_vm)
+        self.perintah('Input.dispatchKeyEvent', type='keyUp', key=kunci,
+                      code=kunci, windowsVirtualKeyCode=kode_vm,
+                      nativeVirtualKeyCode=kode_vm)
 
     def ganti_isi_editor(self, pemilih, teks):
         """Ganti seluruh isi kotak contenteditable dengan teks baru.
