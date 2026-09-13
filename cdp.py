@@ -311,20 +311,35 @@ class Sesi:
         papan tik, dan hanya menghapus satu huruf.
 
         Yang bekerja: seleksi lewat Selection API (murni menandai, bukan
-        mengubah isi), lalu Input.insertText yang MENGGANTI seleksi itu melalui
-        jalur masukan tepercaya.
+        mengubah isi), lalu SATU Input.insertText yang mengganti seleksi itu.
+
+        Satu insertText, bukan potongan berjeda. Versi yang memotongnya supaya
+        menyerupai ketikan manusia membuat potongannya tiba TIDAK BERURUTAN dan
+        saling menyisip — perintah 7.000 karakter sampai ke Gemini sebagai
+        teks teracak, dan Gemini menolaknya. Mengetik huruf demi huruf pun
+        tidak bisa: peristiwa papan tik mendarat di posisi karet yang basi,
+        jadi ekornya nyelip ke tengah.
+
+        Hasilnya diperiksa, bukan diasumsikan: isi lama yang gagal terhapus
+        membuat perintah baru menempel di belakangnya, dan Gemini menerima dua
+        perintah bertumpuk tanpa ada yang tahu.
         """
-        self.evaluasi(f"""(function(){{
-          const e = document.querySelector({pemilih!r});
-          if (!e) return 0;
-          e.focus();
-          const r = document.createRange();
-          r.selectNodeContents(e);
-          const sel = window.getSelection();
-          sel.removeAllRanges(); sel.addRange(r);
-          return 1;
-        }})()""")
-        self.perintah('Input.insertText', text=teks)
+        for coba in range(4):
+            self.evaluasi(f"""(function(){{
+              const e = document.querySelector({pemilih!r});
+              if (!e) return 0;
+              e.focus();
+              const r = document.createRange();
+              r.selectNodeContents(e);
+              const sel = window.getSelection();
+              sel.removeAllRanges(); sel.addRange(r);
+              return 1;
+            }})()""")
+            self.perintah('Input.insertText', text=teks)
+            time.sleep(0.5)
+            if self._padat(self._isi_editor(pemilih)) == self._padat(teks):
+                return True
+        raise GagalCDP('Isi kotak Gemini tidak sama dengan perintah yang dikirim')
 
     def _isi_editor(self, pemilih):
         return self.evaluasi(
@@ -343,73 +358,6 @@ class Sesi:
 
     def _panjang_editor(self, pemilih):
         return self._padat(self._isi_editor(pemilih))
-
-    def ketik_alami(self, pemilih, teks, potong=500, jeda=0.04, ekor=25):
-        """Isi kotak bertahap seperti mengetik, TAPI pastikan isinya benar.
-
-        Versi pertama hanya menembakkan potongan demi potongan tanpa memeriksa
-        apa pun. Akibatnya fatal dan tidak kelihatan dari sini: isi lama TIDAK
-        terhapus, lalu perintah baru menempel di belakangnya — Gemini menerima
-        dua perintah bertumpuk dan menjawab kacau. Potongan yang tiba tidak
-        berurutan juga mengacak hurufnya ("diagramnya.nyihama/J Ktn kakaage").
-
-        Karena itu tiap tahap diperiksa panjangnya sebelum lanjut, dan yang
-        tidak mendarat diulang. Pemeriksaan itu satu perjalanan bolak-balik
-        per potongan — jauh lebih murah daripada satu lembar yang gagal.
-        """
-        daftar = [teks[i:i + potong] for i in range(0, len(teks), potong)] or ['']
-        if len(daftar[-1]) > ekor and ekor:
-            sisa = daftar[-1][-ekor:]
-            daftar[-1] = daftar[-1][:-ekor]
-        else:
-            sisa = ''
-
-        # 1) KOSONGKAN dulu, sebagai langkah tersendiri. Menggabungkan
-        #    pengosongan dengan pengisian potongan pertama membuat kegagalannya
-        #    tidak bisa dibedakan: isi lama yang tersisa dan potongan yang tidak
-        #    mendarat sama-sama tampak sebagai "panjangnya tidak sesuai".
-        for coba in range(4):
-            self.evaluasi(f"""(function(){{
-              const e = document.querySelector({pemilih!r});
-              if (!e) return 0;
-              e.focus();
-              const r = document.createRange();
-              r.selectNodeContents(e);
-              const sel = window.getSelection();
-              sel.removeAllRanges(); sel.addRange(r);
-              return 1;
-            }})()""")
-            self.perintah('Input.insertText', text='')
-            time.sleep(0.4)
-            if self._panjang_editor(pemilih) == 0:
-                break
-        else:
-            raise GagalCDP('Isi lama kotak Gemini tidak bisa dikosongkan')
-
-        # 2) seluruh potongan ditambahkan, tiap potongan dipastikan mendarat
-        sudah = 0
-        for bagian in daftar:
-            self.perintah('Input.insertText', text=bagian)
-            time.sleep(jeda)
-            sudah += self._padat(bagian)
-            kini = self._panjang_editor(pemilih)
-            if kini != sudah:
-                raise GagalCDP(f'Potongan perintah tidak mendarat utuh '
-                               f'({kini} dari {sudah} karakter)')
-
-        # 3) ekor diketik huruf demi huruf, supaya kejadian terakhir sebelum
-        #    tombol kirim ditekan adalah ketikan sungguhan
-        for c in sisa:
-            self.perintah('Input.dispatchKeyEvent', type='keyDown', text=c,
-                          unmodifiedText=c)
-            self.perintah('Input.dispatchKeyEvent', type='keyUp', text=c,
-                          unmodifiedText=c)
-            time.sleep(0.02)
-        akhir = self._panjang_editor(pemilih)
-        if akhir != self._padat(teks):
-            raise GagalCDP(f'Perintah tidak utuh di kotak Gemini '
-                           f'({akhir} dari {self._padat(teks)} karakter)')
-        return True
 
     def klik_di(self, x, y):
         for jenis in ('mousePressed', 'mouseReleased'):

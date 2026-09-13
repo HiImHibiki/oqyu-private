@@ -155,22 +155,37 @@ def _tunggu_selesai_menulis(s, batas=180):
         time.sleep(2)
     return False
 
+# Jeda setelah perintah ditempel, sebelum dikirim. Bukan sekadar berjaga-jaga:
+# Gemini baru menyalakan tombol kirimnya dan mengaitkan lampiran ke pesan
+# setelah isinya diproses, dan mengirim terlalu cepat membuatnya menjawab
+# seolah tidak ada bahan yang dikirim.
+JEDA_SEBELUM_KIRIM = 2
+
+
 def _kirim(s, perintah):
-    """Isi kotak lalu tekan tombol kirim.
+    """Isi kotak, tunggu sebentar, lalu kirim.
 
     Dua hal yang WAJIB, dan dua-duanya sempat gagal:
       1. Teks dimasukkan lewat Input.insertText (CDP), bukan innerHTML —
          Gemini mengabaikan perubahan DOM dari JavaScript.
-      2. Tombol kirim diklik lewat Input.dispatchMouseEvent di koordinatnya,
-         bukan .click() — peristiwa buatan JavaScript diabaikan juga.
+      2. Pengirimannya lewat peristiwa masukan tepercaya (tombol Enter atau
+         klik di koordinat), bukan .click() — peristiwa buatan JavaScript
+         diabaikan juga.
     """
     _tunggu_selesai_menulis(s)
-    # EXACT_TEMPEL=1 mengembalikan cara lama (sekali tempel) untuk membandingkan.
-    if os.environ.get('EXACT_TEMPEL') in ('1', 'ya', 'true'):
-        s.ganti_isi_editor('div.ql-editor', perintah)
-    else:
-        s.ketik_alami('div.ql-editor', perintah)
-    time.sleep(1.4)
+    s.ganti_isi_editor('div.ql-editor', perintah)
+    time.sleep(JEDA_SEBELUM_KIRIM)
+
+    # Coba Enter lebih dulu — itu yang dilakukan orang, dan tidak bergantung
+    # pada letak tombol yang bisa bergeser. Kalau kotaknya belum kosong, baru
+    # tombolnya diklik.
+    kosong_js = ("((document.querySelector('div.ql-editor')||{}).innerText||'')"
+                 ".trim().length")
+    s.tombol('Enter', 13)
+    for _ in range(6):
+        time.sleep(1)
+        if (s.evaluasi(kosong_js) or 0) <= 1:
+            return True
     for _ in range(12):
         pos = s.evaluasi("""(function(){
           const b=[...document.querySelectorAll('button')]
