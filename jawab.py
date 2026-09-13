@@ -7,7 +7,7 @@ mengalir ke bawah, tanpa bagian kunci yang terpisah di belakang.
 """
 import re
 
-PERINTAH = """Kamu diberi naskah soal hasil pemindaian foto. Tugasmu BUKAN membuat soal baru.
+PERINTAH = """Kamu diberi {sumber}. Tugasmu BUKAN membuat soal baru.
 
 Untuk SETIAP soal: tulis ulang soalnya, beri jawabannya, lalu jelaskan
 langkah demi langkah dengan bahasa yang mudah dipahami anak {jenjang}.
@@ -30,32 +30,70 @@ SOAL 2
 Aturan:
 - Rumus matematika, fisika, atau kimia dibungkus tanda dolar $...$
 - Jangan memakai markdown: tanpa **tebal**, tanpa #, tanpa daftar bertanda -
-- Kalau ada bagian foto yang tidak terbaca jelas, tulis apa adanya lalu
+- Kalau ada bagian yang tidak terbaca jelas, tulis apa adanya lalu
   tambahkan "(tidak terbaca jelas)" — JANGAN mengarang isinya
 - Kalau soal punya gambar, tulis [GAMBAR: keterangan singkat] di posisinya
 - Bahasa: {bahasa}
-{catatan}
-NASKAH HASIL PEMINDAIAN:
-{naskah}"""
+{catatan}{naskah}"""
 
 TANYA = "<tulis ulang soalnya apa adanya, termasuk pilihan jawabannya bila ada>"
 
-def bangun(naskah, bahasa='Indonesia', catatan='', mapel='', kelas=''):
+def bangun(naskah, bahasa='Indonesia', catatan='', mapel='', kelas='',
+           ada_lampiran=False):
+    """Susun perintah pembahasan.
+
+    ada_lampiran menandai bahwa fotonya sendiri ikut diunggah ke Gemini. Itu
+    mengubah sumber soal: tanpa lampiran Gemini hanya punya teks hasil OCR,
+    dengan lampiran ia melihat gambar, diagram, dan tulisan tangannya langsung.
+    """
     tambahan = []
     if mapel: tambahan.append(f'Mata pelajaran: {mapel}.')
     if catatan.strip(): tambahan.append(catatan.strip())
     ket = ('\n' + ' '.join(tambahan) + '\n') if tambahan else '\n'
     jenjang = f'kelas {kelas}' if kelas else 'seusia itu'
-    return PERINTAH.format(bahasa=bahasa, catatan=ket, naskah=naskah.strip()[:9000],
-                           jenjang=jenjang, tanya=TANYA)
+    naskah = (naskah or '').strip()[:9000]
+    if ada_lampiran and naskah:
+        sumber = ('foto naskah soal yang terlampir, beserta hasil pemindaian '
+                  'teksnya sebagai pembanding ejaan')
+        blok = ('\nBacalah soalnya dari FOTO. Hasil pemindaian di bawah ini hanya '
+                'pembanding; bila keduanya berbeda, yang benar adalah foto.\n\n'
+                'HASIL PEMINDAIAN:\n' + naskah)
+    elif ada_lampiran:
+        sumber = 'foto naskah soal yang terlampir'
+        blok = ('\nBacalah soalnya langsung dari foto, termasuk gambar, diagram, '
+                'grafik, dan tulisan tangan yang ada di dalamnya.')
+    else:
+        sumber = 'naskah soal hasil pemindaian foto'
+        blok = '\nNASKAH HASIL PEMINDAIAN:\n' + naskah
+    return PERINTAH.format(bahasa=bahasa, catatan=ket, naskah=blok,
+                           jenjang=jenjang, tanya=TANYA, sumber=sumber)
 
-AWAL = re.compile(r'^\s*SOAL\s+(\d{1,3})\s*$', re.I)
+AWAL = re.compile(r'^\s*SOAL\s+(\d{1,3})\s*$', re.I | re.M)
 JAWAB = re.compile(r'^\s*JAWAB\s*:\s*(.*)$', re.I)
 BAHAS = re.compile(r'^\s*BAHAS\s*:?\s*(.*)$', re.I)
 JUDUL = re.compile(r'^\s*JUDUL\s*:\s*(.+)$', re.I)
 
+def _blok_terlengkap(teks):
+    """Ambil satu jawaban saja ketika Gemini menulis lebih dari sekali.
+
+    Gemini kadang menampilkan draf singkat lebih dulu lalu menulis ulang versi
+    lengkapnya, dan keduanya ikut terbaca dari halaman. Gejalanya di PDF: soal
+    nomor 1 muncul dua kali, dan soal terakhir raib karena tertimpa. Tiap
+    jawaban dimulai dengan barisnya sendiri "JUDUL:", jadi teks dipecah di
+    situ lalu dipilih blok dengan soal terbanyak — draf selalu lebih pendek.
+    """
+    baris = (teks or '').replace('\r', '').split('\n')
+    awal = [i for i, b in enumerate(baris) if JUDUL.match(b)]
+    if len(awal) < 2:
+        return teks or ''
+    awal.append(len(baris))
+    blok = ['\n'.join(baris[awal[i]:awal[i + 1]]) for i in range(len(awal) - 1)]
+    return max(blok, key=lambda t: (len(AWAL.findall(t)), len(t)))
+
+
 def urai(teks):
     """Kembalikan (judul, [{no, soal, jawab, bahas}])."""
+    teks = _blok_terlengkap(teks)
     judul, butir, kini, bagian = '', [], None, None
     for b in (teks or '').replace('\r', '').split('\n'):
         m = JUDUL.match(b)

@@ -25,7 +25,85 @@ HALAMAN_JAWAB = {}      # kode -> HTML lembar pembahasan, dibaca rute /lembar-ja
 # Hanya SATU lembar boleh dikerjakan pada satu waktu. Dua tugas bersamaan akan
 # berebut tab Gemini yang sama: yang satu mengganti isi kotak perintah milik
 # yang lain, dan keduanya gagal dengan gejala yang membingungkan.
-GILIRAN = threading.Lock()
+#
+# Dulu ini cuma threading.Lock(). Akibatnya "Menunggu lembar sebelumnya selesai…"
+# tidak bisa menjawab satu pun pertanyaan yang wajar: nomor berapa saya, yang
+# dikerjakan apa, sudah berapa lama, dan kapan kira-kira giliran saya. Lebih
+# buruk lagi, tugas yang menggantung menahan kunci itu selamanya. Antrean di
+# bawah ini menyimpan urutannya, memberi batas waktu, dan bisa dibatalkan.
+BATAS_KERJA = 15 * 60          # tugas macet melepas giliran, bukan menahan selamanya
+
+
+class Antrean:
+    """Giliran tunggal yang bisa dilihat isinya."""
+
+    def __init__(self):
+        self._k = threading.Condition()
+        self._tunggu = []                   # [{jid, nama, sejak}] menunggu giliran
+        self._kerja = None                  # {jid, nama, sejak}
+        self._batal = set()
+
+    def _kedaluwarsa(self):
+        """Bebaskan giliran yang sudah dipegang terlalu lama."""
+        k = self._kerja
+        if k and time.time() - k['sejak'] > BATAS_KERJA:
+            self._kerja = None
+            return True
+        return False
+
+    def masuk(self, jid, nama, lapor=None):
+        """Antre sampai giliran tiba. False bila dibatalkan."""
+        with self._k:
+            self._tunggu.append({'jid': jid, 'nama': nama, 'sejak': time.time()})
+            dilaporkan = None
+            while True:
+                self._kedaluwarsa()
+                if jid in self._batal:
+                    self._batal.discard(jid)
+                    self._tunggu = [x for x in self._tunggu if x['jid'] != jid]
+                    return False
+                antre = [x['jid'] for x in self._tunggu]
+                if self._kerja is None and antre and antre[0] == jid:
+                    self._tunggu.pop(0)
+                    self._kerja = {'jid': jid, 'nama': nama, 'sejak': time.time()}
+                    return True
+                if lapor:
+                    posisi = antre.index(jid) + 1 if jid in antre else 1
+                    if posisi != dilaporkan:
+                        dilaporkan = posisi
+                        k = self._kerja
+                        ket = (f'sedang dikerjakan: {k["nama"]} '
+                               f'({int(time.time() - k["sejak"])//60} menit)') if k else 'menyiapkan giliran'
+                        lapor(f'Antrean nomor {posisi} — {ket}')
+                self._k.wait(5)
+
+    def keluar(self, jid):
+        with self._k:
+            if self._kerja and self._kerja['jid'] == jid:
+                self._kerja = None
+            self._k.notify_all()
+
+    def batalkan(self, jid):
+        with self._k:
+            if any(x['jid'] == jid for x in self._tunggu):
+                self._batal.add(jid)
+                self._k.notify_all()
+                return True
+            return False
+
+    def lihat(self):
+        with self._k:
+            self._kedaluwarsa()
+            k = self._kerja
+            return {
+                'kerja': ({'jid': k['jid'], 'nama': k['nama'],
+                           'detik': int(time.time() - k['sejak'])} if k else None),
+                'tunggu': [{'jid': x['jid'], 'nama': x['nama'],
+                            'detik': int(time.time() - x['sejak'])} for x in self._tunggu],
+            }
+
+
+ANTREAN = Antrean()
 
 SINGKATAN = {'matematika': 'MATH', 'mathematics': 'MATH', 'math': 'MATH', 'mtk': 'MATH',
              'fisika': 'PHYS', 'physics': 'PHYS', 'kimia': 'CHEM', 'chemistry': 'CHEM',
@@ -84,39 +162,76 @@ def _catat(jid, pesan, maju=None, selesai=False, galat=None, pdf=None):
 def _db():
     c = sqlite3.connect(DB, timeout=60); c.row_factory = sqlite3.Row; return c
 
+def _simpan_sementara(gambar):
+    """Tulis foto ke berkas sementara; pemanggil wajib menghapusnya."""
+    import tempfile
+    jalur = []
+    for nama, isi in gambar or []:
+        ext = os.path.splitext(nama)[1] or '.png'
+        with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as f:
+            f.write(isi); jalur.append(f.name)
+    return jalur
+
+
+def _baca_foto(jalur, lapor=None):
+    """OCR Apple Vision: cepat, jalan di Mac, dan tidak mengirim foto ke mana pun."""
+    import serupa
+    alat = os.path.join(AKAR, 'ocr-mac', 'visionocr')
+    teks = ''
+    for pth in jalur:
+        teks += serupa.baca_berkas(pth, alat) + '\n\n'
+    return teks
+
+
+# Dua cara membaca foto, dengan kekuatan yang berbeda:
+#   vision — Apple Vision di Mac. Cepat, gratis, foto tidak keluar dari Mac,
+#            dan sangat baik untuk teks cetak. Tapi gambar, diagram, dan
+#            tulisan tangan hilang atau salah baca.
+#   gemini — foto diunggah ke Gemini. Diagram, grafik, dan tulisan tangan ikut
+#            terbaca karena Gemini melihat gambarnya sendiri. Lebih lambat.
+#   dua    — teks hasil Vision dikirim SEKALIGUS dengan fotonya, jadi ejaan
+#            teks cetak ikut terjaga sementara gambarnya tetap terlihat.
+MATA = ('vision', 'gemini', 'dua')
+
+
 def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesia',
                    lembaga='', sekolah='', tanggal='', kolom='1',
-                   kerapatan='Normal', garis='0.5'):
+                   kerapatan='Normal', garis='0.5', mata='vision'):
     """Foto soal anak -> kunci jawaban + pembahasan -> PDF.
 
     Soalnya TIDAK dikarang: disalin apa adanya dari foto, lalu diberi kunci dan
     pembahasan. Karena itu tidak ada langkah 'acuan gaya dari arsip'.
     """
     import serupa, otomasi, jawab as _jwb, lembar_jawab as _lj, uuid
-    if not GILIRAN.acquire(blocking=False):
-        _catat(jid, 'Menunggu lembar sebelumnya selesai…', 4)
-        GILIRAN.acquire()
+    if not ANTREAN.masuk(jid, 'Kunci Jawaban', lambda m: _catat(jid, m, 4)):
+        return _catat(jid, None, galat='Dibatalkan sebelum mulai.')
     try:
-        naskah_foto = ''
-        if gambar:
-            _catat(jid, f'Membaca {len(gambar)} foto di Mac…', 12)
-            alat = os.path.join(AKAR, 'ocr-mac', 'visionocr')
-            import tempfile
-            for nama, isi in gambar:
-                ext = os.path.splitext(nama)[1] or '.png'
-                with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as f:
-                    f.write(isi); pth = f.name
-                try: naskah_foto += serupa.baca_berkas(pth, alat) + '\n\n'
-                finally: os.unlink(pth)
-        if len(naskah_foto.strip()) < 40:
-            return _catat(jid, None, galat='Tidak ada soal yang terbaca dari foto. '
-                                           'Coba foto lebih dekat dan lebih terang.')
-        _catat(jid, f'Terbaca {len(naskah_foto.split())} kata dari foto', 28)
+        mata = mata if mata in MATA else 'vision'
+        jalur = _simpan_sementara(gambar)
+        try:
+            naskah_foto = ''
+            if jalur and mata in ('vision', 'dua'):
+                _catat(jid, f'Membaca {len(jalur)} foto dengan Apple Vision…', 12)
+                naskah_foto = _baca_foto(jalur)
+                _catat(jid, f'Terbaca {len(naskah_foto.split())} kata dari foto', 24)
+            if mata == 'vision' and len(naskah_foto.strip()) < 40:
+                return _catat(jid, None, galat='Tidak ada soal yang terbaca dari foto. '
+                                               'Coba foto lebih dekat dan lebih terang, '
+                                               'atau pilih "mata Gemini" jika soalnya '
+                                               'tulisan tangan atau bergambar.')
+            if mata != 'vision' and not jalur:
+                return _catat(jid, None, galat='Tidak ada foto yang dikirim.')
 
-        perintah = _jwb.bangun(naskah_foto, bahasa, instruksi, mapel,
-                               str(kelas or ''))
-        _catat(jid, 'Meminta kunci jawaban dan pembahasan…', 40)
-        hasil_teks = otomasi.gemini_tanya(perintah, batas=300)
+            lampiran = jalur if mata in ('gemini', 'dua') else None
+            perintah = _jwb.bangun(naskah_foto, bahasa, instruksi, mapel,
+                                   str(kelas or ''), ada_lampiran=bool(lampiran))
+            _catat(jid, ('Mengunggah foto ke Gemini…' if lampiran
+                         else 'Meminta kunci jawaban dan pembahasan…'), 40)
+            hasil_teks = otomasi.gemini_tanya(perintah, batas=300, lampiran=lampiran)
+        finally:
+            for x in jalur:
+                try: os.unlink(x)
+                except OSError: pass
         _catat(jid, f'Jawaban diterima ({len(hasil_teks)} karakter)', 70)
 
         judul_lbr, butir = _jwb.urai(hasil_teks)
@@ -150,7 +265,7 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
     except Exception as e:
         _catat(jid, None, galat=f'{type(e).__name__}: {e}')
     finally:
-        GILIRAN.release()
+        ANTREAN.keluar(jid)
 
 
 def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
@@ -159,9 +274,8 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
              kolom='2', dua_berkas=False, kerapatan='Normal', garis='1.5'):
     """Alur penuh: foto -> arsip -> Gemini -> Exact Worksheet Maker -> PDF."""
     import serupa, wsmaker, otomasi
-    if not GILIRAN.acquire(blocking=False):
-        _catat(jid, 'Menunggu lembar sebelumnya selesai…', 4)
-        GILIRAN.acquire()
+    if not ANTREAN.masuk(jid, 'Buat Soal', lambda m: _catat(jid, m, 4)):
+        return _catat(jid, None, galat='Dibatalkan sebelum mulai.')
     try:
         # 1. baca foto di Mac
         acuan = ''
@@ -298,7 +412,7 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
     except Exception as e:
         _catat(jid, None, galat=f'{type(e).__name__}: {e}')
     finally:
-        GILIRAN.release()
+        ANTREAN.keluar(jid)
 
 GAYA = """
 :root{--bg:#fbfbfa;--kartu:#fff;--tepi:#e3e3e0;--teks:#1a1a19;--redup:#6b6b66;--aksen:#c4572a}
@@ -373,6 +487,10 @@ button.abu{background:var(--tepi);color:var(--teks);font-weight:600}
 .tombolCetak{display:inline-block;padding:11px 22px;border-radius:9px;
 background:var(--aksen);color:#fff;font-weight:700;font-size:14px;text-decoration:none}
 .err{color:#c0392b;font-size:13.5px}
+.antre{margin-top:9px;padding:10px 12px;border:1px solid var(--tepi);border-radius:9px;
+ background:var(--bg);font-size:13px;line-height:1.6}
+.antre b{color:var(--aksen)}
+button.batal{margin-top:8px;background:var(--tepi);color:var(--teks);font-size:12.5px;padding:6px 12px}
 .pr{background:#fff8f0;border:1px solid #f0d8c0;border-radius:9px;padding:11px;font-size:13px;color:#8a5a2a}
 @media(prefers-color-scheme:dark){.pr{background:#2a2118;border-color:#4a3a28;color:#d8a870}}
 """
@@ -539,6 +657,21 @@ document.getElementById('f').onsubmit = async e => {
     isi.style.width = (s.maju || 0) + '%';
     log.innerHTML = (s.langkah || []).map((x, i, a) =>
       '<div class="' + (i === a.length-1 && !s.selesai ? 'now' : '') + '">' + x + '</div>').join('');
+    // Antrean ditulis lengkap: nomor, apa yang sedang dikerjakan, dan lamanya.
+    // Menunggu tanpa keterangan tidak bisa dibedakan dari macet.
+    const q = s.antre;
+    if (q && q.nomor) {
+      const k = q.kerja;
+      const menit = k ? Math.floor(k.detik / 60) + ' mnt ' + (k.detik % 60) + ' dtk' : '';
+      log.innerHTML += '<div class=antre><b>Antrean nomor ' + q.nomor + ' dari ' + q.panjang + '</b>'
+        + (k ? '<br>sedang dikerjakan: ' + k.nama + ' — sudah ' + menit : '')
+        + '<br><button type=button class=batal id=btBatal>Batalkan antrean saya</button></div>';
+      const bb = document.getElementById('btBatal');
+      if (bb) bb.onclick = async () => {
+        bb.disabled = true;
+        await fetch('/batal?jid=' + jid);
+      };
+    }
     if (s.galat) log.innerHTML += '<div class=err>' + s.galat + '</div>';
     if (s.selesai) {
       clearInterval(timer); document.getElementById('go').disabled = false;
@@ -566,7 +699,20 @@ SULIT_BAWAAN = 'sama dengan naskah acuan'
 
 SKRIP_JAWAB = SKRIP.replace("fetch('/buat'", "fetch('/jawab'").replace(
     "!berkas.length && !document.querySelector('[name=topik]').value.trim()",
-    "!berkas.length")
+    "!berkas.length") + """
+// Keterangan singkat tiap pilihan: bedanya nyata, jadi jangan dibiarkan ditebak.
+(() => {
+  const KET = {
+    vision: 'Foto dibaca di Mac dan tidak dikirim ke mana pun. Paling cepat, dan paling tepat untuk soal ketikan. Gambar, diagram, dan tulisan tangan tidak ikut terbaca.',
+    gemini: 'Foto diunggah ke Gemini, jadi diagram, grafik, dan tulisan tangan ikut terbaca. Lebih lambat, dan fotonya keluar dari Mac.',
+    dua: 'Teks hasil Apple Vision dikirim bersama fotonya. Ejaan teks cetak terjaga sekaligus gambarnya tetap terlihat.'
+  };
+  const s = document.getElementById('mata'), k = document.getElementById('ketMata');
+  if (!s || !k) return;
+  const gambar = () => k.textContent = KET[s.value] || '';
+  s.onchange = gambar; gambar();
+})();
+"""
 
 
 def halaman_jawab(titip=''):
@@ -600,6 +746,14 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
     <select name=bahasa><option{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option><option{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option></select>
     <select name=kolom><option value=1>1 kolom</option><option value=2>2 kolom</option></select>
   </div>
+  <div class=r>
+    <select name=mata id=mata style="flex:1;min-width:220px">
+      <option value=vision{" selected" if st.get("mata","vision")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, teks cetak</option>
+      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata Gemini &mdash; tulisan tangan &amp; gambar</option>
+      <option value=dua{" selected" if st.get("mata")=="dua" else ""}>Keduanya &mdash; paling teliti, paling lama</option>
+    </select>
+  </div>
+  <div class=kcl id=ketMata style="margin-top:5px"></div>
   <textarea name=instruksi rows=2 style="margin-top:11px"
     placeholder="Catatan (mis. 'jelaskan sampai langkah hitungannya', 'pakai cara kelas 8')"></textarea>
   <div class="r kirim">

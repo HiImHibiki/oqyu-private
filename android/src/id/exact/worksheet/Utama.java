@@ -134,23 +134,23 @@ public class Utama extends Activity {
         Toast.makeText(this, "Mengirim " + kirim.size() + " berkas ke Mac…",
                 Toast.LENGTH_SHORT).show();
         new Thread(() -> {
-            int ok = 0; String galat = null; String buka = null;
-            for (Uri u : kirim) {
-                try {
-                    String jawab = unggah(u, mode);
-                    ok++;
-                    if (buka == null) buka = ambilNilai(jawab, "buka");
-                } catch (Exception e) {
-                    galat = e.getClass().getSimpleName() + ": " + e.getMessage();
-                    Log.e("ExactWS", "gagal unggah " + u, e);
-                }
+            String buka = null, galat = null; int ok = 0;
+            try {
+                // SEMUA berkas dikirim dalam SATU permintaan. Versi sebelumnya
+                // mengirim satu per satu, sehingga tiap foto jadi titipan
+                // terpisah dan hanya yang pertama terbuka di aplikasi.
+                String jawab = unggahSemua(kirim, mode);
+                ok = kirim.size();
+                buka = ambilNilai(jawab, "buka");
+            } catch (Exception e) {
+                galat = e.getClass().getSimpleName() + ": " + e.getMessage();
+                Log.e("ExactWS", "gagal unggah", e);
             }
             final int n = ok; final String g = galat; final String url = buka;
             new Handler(Looper.getMainLooper()).post(() -> {
                 if (n > 0 && url != null) {
-                    // Berkasnya DITITIPKAN, belum dikerjakan — aplikasi di Mac
-                    // dibuka supaya kriteria dan acuannya bisa dilengkapi dulu.
-                    Toast.makeText(this, "Membuka aplikasi di Mac…", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, n + " berkas terkirim. Membuka aplikasi…",
+                            Toast.LENGTH_SHORT).show();
                     try {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(dasar() + url)));
                     } catch (Exception e) {
@@ -158,8 +158,7 @@ public class Utama extends Activity {
                                 Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(this, n > 0 ? "Terkirim." : "Gagal mengirim: " + g,
-                            Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Gagal mengirim: " + g, Toast.LENGTH_LONG).show();
                 }
                 finish();
             });
@@ -176,27 +175,29 @@ public class Utama extends Activity {
         return (a < 0 || b < 0) ? null : json.substring(a + 1, b);
     }
 
-    private String unggah(Uri u, String sasaran) throws IOException {
-        String nama = namaBerkas(u);
+    private String unggahSemua(ArrayList<Uri> daftar, String sasaran) throws IOException {
         String batas = "----exact" + System.currentTimeMillis();
 
         // Badan disusun di memori dulu supaya Content-Length bisa dipastikan.
-        // Mode chunked membuat server membaca nol byte dan menolak dengan 400,
-        // karena BaseHTTPRequestHandler tidak menguraikan transfer chunked.
+        // Mode chunked membuat server membaca nol byte dan menolak dengan 400.
         ByteArrayOutputStream badan = new ByteArrayOutputStream();
         tulis(badan, "--" + batas + "\r\n");
         tulis(badan, "Content-Disposition: form-data; name=\"mode\"\r\n\r\ntitip\r\n");
         tulis(badan, "--" + batas + "\r\n");
         tulis(badan, "Content-Disposition: form-data; name=\"sasaran\"\r\n\r\n" + sasaran + "\r\n");
-        tulis(badan, "--" + batas + "\r\n");
-        tulis(badan, "Content-Disposition: form-data; name=\"berkas\"; filename=\"" + nama + "\"\r\n");
-        tulis(badan, "Content-Type: application/octet-stream\r\n\r\n");
-        try (InputStream in = getContentResolver().openInputStream(u)) {
-            if (in == null) throw new IOException("berkas tidak bisa dibuka");
-            byte[] buf = new byte[64 * 1024]; int n;
-            while ((n = in.read(buf)) > 0) badan.write(buf, 0, n);
+        for (Uri u : daftar) {
+            String nama = namaBerkas(u);
+            tulis(badan, "--" + batas + "\r\n");
+            tulis(badan, "Content-Disposition: form-data; name=\"berkas\"; filename=\"" + nama + "\"\r\n");
+            tulis(badan, "Content-Type: application/octet-stream\r\n\r\n");
+            try (InputStream in = getContentResolver().openInputStream(u)) {
+                if (in == null) throw new IOException("berkas tidak bisa dibuka: " + nama);
+                byte[] buf = new byte[64 * 1024]; int n;
+                while ((n = in.read(buf)) > 0) badan.write(buf, 0, n);
+            }
+            tulis(badan, "\r\n");
         }
-        tulis(badan, "\r\n--" + batas + "--\r\n");
+        tulis(badan, "--" + batas + "--\r\n");
         byte[] isi = badan.toByteArray();
 
         HttpURLConnection c = (HttpURLConnection) new URL(dasar() + "/terima").openConnection();

@@ -146,6 +146,76 @@ class Sesi:
             if pesan.get('id') != self.id: continue        # lewati peristiwa
             if 'error' in pesan: raise GagalCDP(pesan['error'].get('message', 'galat CDP'))
             return pesan.get('result', {})
+    def tunggu_peristiwa(self, nama, batas=15):
+        """Tunggu satu peristiwa CDP, misalnya Page.fileChooserOpened.
+
+        perintah() membuang semua peristiwa; pengunggahan berkas justru perlu
+        membacanya, karena backendNodeId kotak pilih berkas hanya muncul di sana.
+        """
+        tenggat = time.time() + batas
+        while time.time() < tenggat:
+            sisa = tenggat - time.time()
+            self.ws.sock.settimeout(max(0.5, min(sisa, 5)))
+            try:
+                pesan = json.loads(self.ws.terima())
+            except Exception:
+                continue
+            if pesan.get('method') == nama:
+                return pesan.get('params', {})
+        return None
+
+    def unggah_berkas(self, jalur, pemilih_pembuka=None, batas=20):
+        """Serahkan berkas ke kotak unggah halaman tanpa dialog macOS.
+
+        Input.dispatchMouseEvent pada tombol unggah biasanya memunculkan dialog
+        berkas milik sistem yang tidak bisa disentuh dari CDP. Dengan
+        Page.setInterceptFileChooserDialog, Chrome menahan dialog itu dan
+        mengirim Page.fileChooserOpened berisi backendNodeId, sehingga berkas
+        dapat disuntikkan lewat DOM.setFileInputFiles.
+        """
+        self.perintah('Page.enable')
+        self.perintah('DOM.enable')
+        self.perintah('Page.setInterceptFileChooserDialog', enabled=True)
+        try:
+            if pemilih_pembuka and not self.klik_elemen(pemilih_pembuka):
+                return False
+            ev = self.tunggu_peristiwa('Page.fileChooserOpened', batas)
+            if not ev or 'backendNodeId' not in ev:
+                return False
+            self.perintah('DOM.setFileInputFiles',
+                          files=[str(x) for x in (jalur if isinstance(jalur, (list, tuple)) else [jalur])],
+                          backendNodeId=ev['backendNodeId'])
+            return True
+        finally:
+            try: self.perintah('Page.setInterceptFileChooserDialog', enabled=False)
+            except Exception: pass
+
+    def unggah_ke_input(self, pemilih, jalur):
+        """Suntikkan berkas ke sebuah input[type=file] yang sudah ada di DOM.
+
+        Atribut accept hanya penyaring dialog sistem; DOM.setFileInputFiles
+        melewatinya, jadi foto tetap masuk walau accept cuma menyebut dokumen.
+        """
+        self.perintah('DOM.enable')
+        # pierce=True agar input yang bersembunyi di shadow DOM tetap terjangkau
+        akar = self.perintah('DOM.getDocument', depth=-1, pierce=True)['root']['nodeId']
+        try:
+            nid = self.perintah('DOM.querySelector', nodeId=akar, selector=pemilih).get('nodeId')
+        except Exception:
+            nid = None
+        if not nid:
+            # jalur cadangan: cari lewat objek JS, lalu terjemahkan ke nodeId
+            obj = self.perintah('Runtime.evaluate',
+                                expression=f'document.querySelector({pemilih!r})'
+                                ).get('result', {}).get('objectId')
+            if not obj: return False
+            nid = self.perintah('DOM.requestNode', objectId=obj).get('nodeId')
+        if not nid: return False
+        daftar = jalur if isinstance(jalur, (list, tuple)) else [jalur]
+        self.perintah('DOM.setFileInputFiles',
+                      files=[os.path.abspath(str(x)) for x in daftar], nodeId=nid)
+        return True
+
     def ukuran(self, lebar=1400, tinggi=1000):
         """Setel ukuran viewport.
 

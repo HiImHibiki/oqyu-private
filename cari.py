@@ -372,7 +372,26 @@ class H(BaseHTTPRequestHandler):
             with buat.KUNCI:
                 d = dict(buat.TUGAS.get(jid, {'langkah': [], 'maju': 0, 'selesai': True,
                                               'galat': 'tugas tidak dikenal'}))
+            # Ikutkan keadaan antrean supaya "menunggu" bisa menyebut nomor,
+            # apa yang sedang dikerjakan, dan sudah berapa lama.
+            if not d.get('selesai'):
+                a = buat.ANTREAN.lihat()
+                urut = [x['jid'] for x in a['tunggu']]
+                d['antre'] = {
+                    'nomor': urut.index(jid) + 1 if jid in urut else 0,
+                    'panjang': len(urut),
+                    'kerja': a['kerja'],
+                }
             b = json.dumps(d).encode()
+            self.send_response(200); self.send_header('Content-Type','application/json')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
+        if u.path == '/batal':
+            import buat
+            jid = (qs.get('jid') or [''])[0]
+            ok = buat.ANTREAN.batalkan(jid)
+            b = json.dumps({'batal': ok}).encode()
             self.send_response(200); self.send_header('Content-Type','application/json')
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
@@ -669,7 +688,9 @@ class H(BaseHTTPRequestHandler):
             else:
                 mentah = b''
             jenis = self.headers.get('Content-Type', '')
-            nama, isi, medan = 'kiriman', b'', {}
+            # Kumpulkan SEMUA berkas, bukan hanya yang terakhir: satu kiriman
+            # bisa berisi beberapa foto yang dipilih sekaligus.
+            semua, medan = [], {}
             if jenis.startswith('multipart/form-data'):
                 batas = jenis.split('boundary=')[-1].strip('"').encode()
                 for bagian in mentah.split(b'--' + batas):
@@ -681,21 +702,23 @@ class H(BaseHTTPRequestHandler):
                     nilai = nilai.rstrip(b'\r\n-')
                     if b'filename="' in kepala:
                         fn = re.search(rb'filename="([^"]*)"', kepala).group(1).decode()
-                        if nilai: nama, isi = (fn or 'kiriman'), nilai
+                        if nilai: semua.append((fn or f'kiriman-{len(semua)+1}', nilai))
                     else:
                         medan[k] = nilai.decode('utf-8','replace')
             else:
-                isi = mentah
-                nama = self.headers.get('X-Nama-Berkas') or 'kiriman.pdf'
-            if not isi:
+                if mentah:
+                    semua.append((self.headers.get('X-Nama-Berkas') or 'kiriman.pdf', mentah))
+            nama = semua[0][0] if semua else 'kiriman'
+            isi = semua[0][1] if semua else b''
+            if not semua:
                 b = json.dumps({'galat': 'tidak ada berkas'}).encode()
                 self.send_response(400)
             else:
                 import buat, setelan, threading, uuid, titipan
                 mode0 = medan.get('mode') or 'buat'
                 if mode0 == 'titip':
-                    kode = titipan.titip([(nama, isi)], medan.get('sasaran') or 'buat')
-                    b = json.dumps({'titip': kode,
+                    kode = titipan.titip(semua, medan.get('sasaran') or 'buat')
+                    b = json.dumps({'titip': kode, 'jumlah': len(semua),
                                     'buka': f'/?titip={kode}'}).encode()
                     self.send_response(200)
                     self.send_header('Content-Type','application/json')
@@ -709,15 +732,15 @@ class H(BaseHTTPRequestHandler):
                 mode = medan.get('mode') or 'buat'
                 if mode == 'jawab':
                     sasaran, kw = buat.jalankan_jawab, dict(
-                        jid=jid, gambar=[(nama, isi)], instruksi='',
+                        jid=jid, gambar=semua, instruksi='',
                         mapel=st.get('mapel') or None,
                         kelas=int(kls) if kls.isdigit() else None, judul='',
                         bahasa=st.get('bahasa') or 'Indonesia',
                         lembaga=st.get('lembaga',''), sekolah=st.get('sekolah',''),
-                        tanggal='', kolom='1')
+                        tanggal='', kolom='1', mata=st.get('mata') or 'vision')
                 else:
                     sasaran, kw = buat.jalankan, dict(
-                        jid=jid, gambar=[(nama, isi)], instruksi=st.get('instruksi',''),
+                        jid=jid, gambar=semua, instruksi=st.get('instruksi',''),
                         jumlah=st.get('jumlah',''), mapel=st.get('mapel') or None,
                         kelas=int(kls) if kls.isdigit() else None, judul='',
                         api=os.environ.get('EXACT_API'), topik='',
@@ -729,7 +752,8 @@ class H(BaseHTTPRequestHandler):
                         dua_berkas=st.get('dua_berkas', False),
                         kerapatan=st.get('kerapatan','Normal'), garis=st.get('garis','1.5'))
                 threading.Thread(target=sasaran, kwargs=kw, daemon=True).start()
-                b = json.dumps({'jid': jid, 'pesan': f'{nama[:40]} diterima, sedang dikerjakan'}).encode()
+                b = json.dumps({'jid': jid,
+                                'pesan': f'{len(semua)} berkas diterima, sedang dikerjakan'}).encode()
                 self.send_response(200)
             self.send_header('Content-Type','application/json')
             self.send_header('Content-Length',str(len(b))); self.end_headers()
@@ -846,7 +870,8 @@ class H(BaseHTTPRequestHandler):
             kelas=int(kls) if kls.isdigit() else None, judul=medan.get('judul',''),
             bahasa=medan.get('bahasa','Indonesia'), lembaga=st.get('lembaga',''),
             sekolah=st.get('sekolah',''), tanggal='',
-            kolom=medan.get('kolom','1')), daemon=True).start()
+            kolom=medan.get('kolom','1'),
+            mata=medan.get('mata') or 'vision'), daemon=True).start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')
         self.send_header('Content-Length',str(len(b))); self.end_headers()

@@ -12,7 +12,7 @@ BERKAS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'setelan.json'
 # berbeda tiap lembar, jadi mengingatnya justru merepotkan.
 MEDAN = ('mapel', 'jenjang', 'kelas', 'jumlah', 'n_set', 'sulit', 'bahasa',
          'lembaga', 'sekolah', 'instruksi', 'kolom', 'kerapatan', 'garis',
-         'printer', 'bolak', 'salinan')
+         'printer', 'bolak', 'salinan', 'mata')
 CENTANG = ('kunci', 'pembahasan', 'dua_berkas', 'gambar')
 
 def muat():

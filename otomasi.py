@@ -178,10 +178,56 @@ def percakapan_baru(s):
     time.sleep(3)
     return True
 
-def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=1):
+JS_UNGGAHAN_SIAP = r"""
+(function(){
+  const pra = document.querySelectorAll('uploader-file-preview').length;
+  if (!pra) return 'KOSONG';
+  const putar = [...document.querySelectorAll('mat-spinner,[class*=spinner],[class*=progress]')]
+                  .filter(e => e.offsetParent).length;
+  return putar ? 'PROSES' : 'SIAP:' + pra;
+})()
+"""
+
+
+def _lampirkan(s, berkas, batas=120):
+    """Unggah foto ke Gemini supaya matanya sendiri yang membaca.
+
+    Dipakai untuk tulisan tangan dan gambar/diagram, yang tidak bisa diwakili
+    teks hasil OCR. input[type=file] baru dibuat setelah menu "Upload & tools"
+    dibuka, dan menu itu kadang belum terpasang saat diklik pertama kali —
+    karena itu pembukaannya diulang beberapa kali sebelum menyerah.
+    """
+    berkas = [str(x) for x in (berkas or [])]
+    if not berkas: return 0
+    _tampilkan(s)                               # tab tersembunyi tidak menerima klik
+    for _ in range(20):                         # tombolnya muncul belakangan setelah utas baru
+        if s.evaluasi("!!document.querySelector('button[aria-label=\"Upload & tools\"]')"):
+            break
+        time.sleep(0.5)
+    for percobaan in range(4):
+        s.klik_elemen('button[aria-label="Upload & tools"]')
+        time.sleep(1.5 + percobaan)
+        try:
+            if s.unggah_ke_input('input[type=file]', berkas): break
+        except Exception:
+            pass
+        s.tombol('Escape', 27); time.sleep(1)
+    else:
+        raise RuntimeError('Kotak unggah Gemini tidak ditemukan')
+    s.tombol('Escape', 27)                      # tutup menu agar tidak menutupi kotak ketik
+    t0 = time.time()
+    while time.time() - t0 < batas:
+        time.sleep(2)
+        k = s.evaluasi(JS_UNGGAHAN_SIAP) or ''
+        if k.startswith('SIAP:'):
+            return int(k.split(':', 1)[1] or 0)
+    raise RuntimeError('Gemini tidak selesai memproses foto dalam batas waktu')
+
+
+def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=1, lampiran=None):
     """Kirim ke Gemini. Bila gagal, segarkan halaman lalu coba sekali lagi."""
     try:
-        return _tanya_sekali(perintah, batas, stabil, lapor)
+        return _tanya_sekali(perintah, batas, stabil, lapor, lampiran)
     except BelumMasuk:
         raise
     except Exception as e:
@@ -193,9 +239,9 @@ def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=1):
             time.sleep(5)
         finally:
             s.tutup()
-        return gemini_tanya(perintah, batas, stabil, lapor, ulang - 1)
+        return gemini_tanya(perintah, batas, stabil, lapor, ulang - 1, lampiran)
 
-def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None):
+def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None, lampiran=None):
     perintah = perintah + BUNGKUS
     s = _sesi(URL_GEMINI, 'gemini.google.com')
     try:
@@ -213,6 +259,8 @@ def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None):
         for _ in range(20):
             if s.evaluasi(JS_SUDAH_MASUK) == 'MASUK': break
             time.sleep(1)
+        if lampiran:
+            _lampirkan(s, lampiran)
         _kirim(s, perintah)
 
         t0, terakhir, sejak = time.time(), '', None
