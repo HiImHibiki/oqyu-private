@@ -3,7 +3,7 @@
 import os, re, sqlite3, json, html, urllib.parse, mimetypes, subprocess
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 
-DB   = os.path.expanduser('~/ExactSearch/exact.db')
+DB   = os.path.expanduser('~/ExactWorksheet/exact.db')
 AKAR = os.path.expanduser('~/Documents/EXACT COURSE')
 PORT = 7790
 

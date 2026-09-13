@@ -35,8 +35,8 @@ Bila aplikasi Exact Worksheet Maker aslinya diperbarui, segarkan salinannya:
 ## Pemasangan
 
 ```sh
-git clone <repo> ~/ExactSearch
-cd ~/ExactSearch
+git clone <repo> ~/ExactWorksheet
+cd ~/ExactWorksheet
 ./pasang.sh
 ```
 

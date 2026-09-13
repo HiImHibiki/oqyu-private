@@ -1,6 +1,6 @@
 import sys, os, re, json
 from concurrent.futures import ProcessPoolExecutor
-sys.path.insert(0, os.path.expanduser('~/ExactSearch'))
+sys.path.insert(0, os.path.expanduser('~/ExactWorksheet'))
 from pecah_soal import baris_halaman, urutkan, potong, urai_opsi
 from kolom import urutkan_kolom
 AKAR = os.path.expanduser('~/Documents/EXACT COURSE')

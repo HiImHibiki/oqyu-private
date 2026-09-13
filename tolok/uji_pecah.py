@@ -2,7 +2,7 @@
 """Ukur berapa persen dokumen yang bisa dipecah jadi soal satuan."""
 import os, sys, sqlite3, random, re
 from concurrent.futures import ProcessPoolExecutor
-sys.path.insert(0, os.path.expanduser('~/ExactSearch'))
+sys.path.insert(0, os.path.expanduser('~/ExactWorksheet'))
 from pecah_soal import baris_halaman, urutkan, potong, urai_opsi, AKAR
 
 def nilai(rel):
@@ -21,7 +21,7 @@ def nilai(rel):
     return (rel, n_soal, n_lengkap, kolom2)
 
 if __name__ == '__main__':
-    db = sqlite3.connect(os.path.expanduser('~/ExactSearch/exact.db'))
+    db = sqlite3.connect(os.path.expanduser('~/ExactWorksheet/exact.db'))
     rows = [r[0] for r in db.execute("""SELECT rel FROM dokumen WHERE dup_dari IS NULL AND n_hal_teks>1
             AND (jenis IN ('PAS/UAS','PTS/UTS','UN/UNBK','Try Out','Ulangan','Olimpiade','Internasional','SBMPTN/UTBK')
                  OR jenis IS NULL)""")]

@@ -5,7 +5,7 @@ Mengirim SEMUA halaman matematika ke VLM itu pemborosan: banyak yang teksnya
 sudah utuh. Yang perlu hanya halaman dengan ciri rumus RUSAK.
 """
 import os, re, sqlite3, sys
-DB = os.path.expanduser('~/ExactSearch/exact.db')
+DB = os.path.expanduser('~/ExactWorksheet/exact.db')
 
 AKAR_RUSAK = re.compile(r'\bV\d|\bV[a-z]\b|√\s')          # √ jadi V, atau √ menggantung
 PECAHAN_RUSAK = re.compile(r'\b\d{1,3}\s+\d{1,3}\b')       # "30 1" = 1/30

@@ -10,7 +10,7 @@ Konsekuensi: profilnya terpisah, jadi login Google dilakukan sekali di jendela i
 import base64, json, os, socket, struct, subprocess, time, urllib.request, uuid
 
 KROM = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-PROFIL = os.path.expanduser('~/ExactSearch/chrome-otomatis')
+PROFIL = os.path.expanduser('~/ExactWorksheet/chrome-otomatis')
 PORT = 9222
 
 class GagalCDP(Exception): pass

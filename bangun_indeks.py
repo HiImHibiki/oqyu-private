@@ -4,7 +4,7 @@ import os, re, sys, sqlite3, subprocess, unicodedata
 from concurrent.futures import ProcessPoolExecutor
 
 AKAR = os.path.expanduser('~/Documents/EXACT COURSE')
-DB   = os.path.expanduser('~/ExactSearch/exact.db')
+DB   = os.path.expanduser('~/ExactWorksheet/exact.db')
 
 JENJANG = [(r'\b(sd|grade\s*[1-6]\b|kelas\s*[1-6]\b|primary)\b','SD'),
            (r'\b(smp|grade\s*[7-9]\b|kelas\s*[7-9]\b|junior|g0?[789]\b)\b','SMP'),

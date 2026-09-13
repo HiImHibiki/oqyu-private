@@ -4,7 +4,7 @@ Bisa dihentikan dan dilanjutkan — kemajuan tercatat di tabel halaman_ocr."""
 import os, sys, json, sqlite3, subprocess, time, argparse
 from concurrent.futures import ThreadPoolExecutor
 AKAR = os.environ.get('EXACT_AKAR') or os.path.expanduser('~/Documents/EXACT COURSE')
-DB   = os.environ.get('EXACT_DB')   or os.path.expanduser('~/ExactSearch/exact.db')
+DB   = os.environ.get('EXACT_DB')   or os.path.expanduser('~/ExactWorksheet/exact.db')
 ALAT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'visionocr')
 
 def olah(tugas):

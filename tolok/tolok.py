@@ -1,6 +1,6 @@
 import sqlite3, subprocess, json, os, time, random
 AKAR = os.path.expanduser('~/Documents/EXACT COURSE')
-db = sqlite3.connect(os.path.expanduser('~/ExactSearch/exact.db'))
+db = sqlite3.connect(os.path.expanduser('~/ExactWorksheet/exact.db'))
 rows = db.execute("SELECT rel, n_hal FROM dokumen WHERE dup_dari IS NULL AND n_hal_teks=0 AND n_hal BETWEEN 2 AND 60").fetchall()
 random.seed(5); sampel = random.sample(rows, 25)
 t0 = time.time(); hal = 0; kosong = 0; yakin = []; huruf = 0
