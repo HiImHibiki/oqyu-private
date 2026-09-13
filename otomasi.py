@@ -133,6 +133,8 @@ def normalkan_rumus(teks):
 def _periksa(teks):
     """Tolak penolakan dan jawaban kerdil — jangan sampai jadi PDF kosong."""
     t = (teks or '').strip()
+    if TANPA_BAHAN.search(t[:500]):
+        raise TanpaBahan('Gemini tidak menerima bahannya: ' + t[:120])
     if PENOLAKAN.search(t[:400]):
         raise Ditolak('Gemini menolak permintaan: ' + t[:120])
     if len(t) < 200:
@@ -225,6 +227,15 @@ def _kirim(s, perintah):
 # Gemini menolak dengan kata-kata yang berubah-ubah: "hanya model bahasa",
 # "sebagai model bahasa", "tidak diprogram", "tidak dirancang". Yang tetap cuma
 # frasa "model bahasa", jadi itu yang dicocokkan — bukan kalimat utuhnya.
+# "Belum terlampir", "belum tersalin", "tidak ada gambar", "silakan kirimkan
+# materinya" - Gemini bilang ia tidak menerima bahan. Balasannya sering lebih
+# dari 200 karakter, jadi lolos ambang panjang dan baru ketahuan saat pengurai
+# gagal - dengan pesan yang tidak menyebut sebab sebenarnya.
+TANPA_BAHAN = re.compile(
+    r'belum terlampir|tidak terlampir|belum tersalin|tidak tersalin|'
+    r'belum (?:ada|dilampirkan)|tidak (?:ada|menemukan) (?:gambar|foto|lampiran|berkas)|'
+    r'silakan (?:kirim|lampir|unggah)|sepertinya belum', re.I)
+
 PENOLAKAN = re.compile(
     r'tidak bisa membantu|tidak dapat membantu|model bahasa|'
     r'tidak diprogram|tidak dirancang|belum bisa membantu|tidak mampu memahami|'
@@ -430,6 +441,16 @@ def _kelas_henti():
 _HENTI_KELAS = _kelas_henti()
 
 
+class TanpaBahan(RuntimeError):
+    """Gemini menjawab bahwa materinya tidak terlampir/tersalin.
+
+    Ini bukan penolakan dan bukan jawaban - ini tanda pesannya terkirim
+    SEBELUM lampirannya tuntas, atau lampirannya terlepas saat dikirim.
+    Dibedakan dari Ditolak karena pemulihannya lain: bukan ganti bingkai
+    kalimat, melainkan tunggu unggahan lebih lama lalu ulangi.
+    """
+
+
 class Ditolak(RuntimeError):
     """Gemini menjawab dengan penolakan, bukan dengan isi."""
 
@@ -496,7 +517,7 @@ def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=2, lampiran=No
             # pertamanya justru unggahan yang belum rampung.
             return _tanya_sekali(_bingkai(perintah, ke), batas, stabil, lapor, lampiran,
                                  mode or MODE_BAKU[min(ke, len(MODE_BAKU) - 1)], henti,
-                                 jeda_unggah=(5 if ke == 0 else 10))
+                                 jeda_unggah=(5, 10, 20)[min(ke, 2)])
         except BelumMasuk:
             raise
         except _HENTI_KELAS:
@@ -519,7 +540,7 @@ def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=2, lampiran=No
             # pekerja layanan basi, dan tab menggantung bertahan melewatinya.
             # Menutup Chrome membuang semuanya, dan profilnya tetap di disk
             # sehingga login Google tidak ikut hilang.
-            if isinstance(e, Ditolak):
+            if isinstance(e, (Ditolak, TanpaBahan)):
                 time.sleep(3)
             elif ke == 0:
                 s = _sesi(URL_GEMINI, 'gemini.google.com/app')
