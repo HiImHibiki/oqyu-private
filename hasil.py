@@ -60,7 +60,8 @@ def printer():
         pass
     return daftar, bawaan
 
-def cetak(path, halaman, nama_printer='', salinan=1, lewat_gambar=True, dpi=300):
+def cetak(path, halaman, nama_printer='', salinan=1, lewat_gambar=True, dpi=300,
+          bolak_balik='otomatis', sisi='semua'):
     """Cetak halaman terpilih.
 
     `lewat_gambar` (bawaan) mengubah tiap halaman jadi JPEG abu-abu lebih dulu,
@@ -70,11 +71,27 @@ def cetak(path, halaman, nama_printer='', salinan=1, lewat_gambar=True, dpi=300)
 
     Semua gambar dikirim dalam SATU pekerjaan lp, jadi urutannya terjaga dan
     tidak muncul sebagai belasan pekerjaan terpisah di antrean.
+
+    `bolak_balik`:
+      'otomatis' — kirim sides=two-sided-long-edge; berhasil hanya bila
+                   printernya memang punya duplex otomatis
+      'manual'   — dicetak dua tahap; `sisi` memilih 'ganjil' lalu 'genap'
+      'tidak'    — satu sisi saja
     """
     import tempfile, shutil, glob as _g
     if not halaman:
         halaman = list(range(1, (n_halaman(path) or 1) + 1))
     halaman = sorted(set(int(h) for h in halaman))
+
+    if bolak_balik == 'manual':
+        # Tahap pertama mencetak sisi depan, tahap kedua sisi belakang.
+        # Urutan tahap kedua DIBALIK supaya cocok dengan tumpukan yang sudah
+        # dibalik penggunanya.
+        urut = list(halaman)
+        if sisi == 'ganjil':
+            halaman = urut[0::2]
+        elif sisi == 'genap':
+            halaman = urut[1::2][::-1]
 
     arg = ['lp']
     if nama_printer: arg += ['-d', nama_printer]
@@ -84,6 +101,9 @@ def cetak(path, halaman, nama_printer='', salinan=1, lewat_gambar=True, dpi=300)
         n = 1
     if n > 1: arg += ['-n', str(n)]
     arg += ['-t', os.path.basename(path)[:60]]
+
+    if bolak_balik == 'otomatis':
+        arg += ['-o', 'sides=two-sided-long-edge']
 
     if not lewat_gambar:
         arg += ['-o', 'page-ranges=' + ','.join(str(h) for h in halaman), path]
@@ -193,9 +213,15 @@ target=_blank>buka PDF</a></div>
   <button type=button class=abu id=takada>Kosongkan</button>
   <select name=printer>{opsi}</select>
   <input type=number name=salinan value=1 min=1 max=20 style=width:74px title=salinan>
+  <select name=bolak title="bolak-balik">
+    <option value=otomatis>bolak-balik otomatis</option>
+    <option value=manual>bolak-balik 2 tahap</option>
+    <option value=tidak>satu sisi</option>
+  </select>
   <label style="font-size:12.5px;color:var(--redup);display:flex;gap:6px;align-items:center">
-    <input type=checkbox name=gambar checked> lewat gambar (printer monokrom)</label>
+    <input type=checkbox name=gambar checked> lewat gambar</label>
   <button type=submit id=go>Cetak</button>
+  <button type=button id=sisi2 class=abu style=display:none>Cetak sisi kedua</button>
   <span class=info id=info></span>
 </div>
 </form></div>
@@ -212,15 +238,33 @@ document.querySelectorAll('.hal').forEach(l => l.addEventListener('click', e => 
 }}));
 document.getElementById('semua').onclick = () => {{ kotak().forEach(k => k.checked = true); segar(); }};
 document.getElementById('takada').onclick = () => {{ kotak().forEach(k => k.checked = false); segar(); }};
+async function kirimCetak(sisi) {{
+  const go = document.getElementById('go'), info = document.getElementById('info');
+  const s2 = document.getElementById('sisi2');
+  const fd = new FormData(document.getElementById('f'));
+  if (sisi) fd.set('sisi', sisi);
+  go.disabled = true; s2.disabled = true; info.textContent = 'mengirim ke printer…';
+  const r = await fetch('/cetak', {{method:'POST', body: fd}});
+  const j = await r.json();
+  info.textContent = j.pesan || j.galat || 'selesai';
+  go.disabled = false; s2.disabled = false;
+  const manual = document.querySelector('[name=bolak]').value === 'manual';
+  if (manual && sisi !== 'genap' && !j.galat) {{
+    s2.style.display = '';
+    info.textContent = 'Sisi pertama tercetak. Balik tumpukan kertasnya, '
+      + 'lalu tekan "Cetak sisi kedua".';
+  }} else {{
+    s2.style.display = 'none';
+  }}
+}}
+document.getElementById('sisi2').onclick = () => kirimCetak('genap');
 document.getElementById('f').onsubmit = async e => {{
   e.preventDefault();
   const go = document.getElementById('go'), info = document.getElementById('info');
   if (!kotak().some(k => k.checked)) {{ info.textContent = 'pilih dulu halamannya'; return; }}
   go.disabled = true; info.textContent = 'mengirim ke printer…';
-  const r = await fetch('/cetak', {{method:'POST', body:new FormData(e.target)}});
-  const j = await r.json();
-  info.textContent = j.pesan || j.galat || 'selesai';
-  go.disabled = false;
+  const manual = document.querySelector('[name=bolak]').value === 'manual';
+  await kirimCetak(manual ? 'ganjil' : '');
 }};
 segar();
 </script>"""

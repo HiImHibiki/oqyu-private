@@ -541,7 +541,9 @@ class H(BaseHTTPRequestHandler):
                 try:
                     pesan = _h.cetak(pth, [int(x) for x in halaman if x.isdigit()],
                                      medan.get('printer',''), medan.get('salinan','1'),
-                                     lewat_gambar=('gambar' in medan))
+                                     lewat_gambar=('gambar' in medan),
+                                     bolak_balik=medan.get('bolak', 'otomatis'),
+                                     sisi=medan.get('sisi', 'semua'))
                     cara = 'lewat gambar' if 'gambar' in medan else 'PDF langsung'
                     jawab = {'pesan': f'{len(halaman)} halaman dikirim ke printer '
                                       f'({cara}) · {pesan[:60]}'}
