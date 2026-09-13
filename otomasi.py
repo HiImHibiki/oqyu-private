@@ -320,6 +320,18 @@ JS_JAWABAN = r"""
 })(%s)
 """
 
+def cetak_halaman(url, tujuan, tunggu=3.5):
+    """Cetak halaman apa pun di server ini jadi PDF — dipakai lembar pembahasan
+    yang punya tata letak sendiri, di luar Exact Worksheet Maker."""
+    s = _sesi(url, url.split('//')[-1].split('?')[0])
+    try:
+        s.buka(url)
+        time.sleep(tunggu)                # beri waktu KaTeX merender
+        return s.pdf(tujuan, margin_mm=(16, 15))
+    finally:
+        s.tutup()
+
+
 def worksheet_pdf(naskah, tujuan, tunggu=4.0, kop=None, tujuan_kunci=None):
     """Suapkan naskah ke Exact Worksheet Maker, lalu cetak PDF dari tabnya.
 

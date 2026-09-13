@@ -173,6 +173,17 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/lembar-jawab':
+            import buat as _b
+            k = (qs.get('k') or [''])[0]
+            h = _b.HALAMAN_JAWAB.get(k)
+            if not h: return self.send_error(404)
+            b = h.encode()
+            self.send_response(200)
+            self.send_header('Content-Type','text/html; charset=utf-8')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
         if u.path == '/titipan':
             import titipan
             kode = (qs.get('k') or [''])[0]

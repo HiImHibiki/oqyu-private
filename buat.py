@@ -21,6 +21,7 @@ PORT = 7790
 
 TUGAS = {}
 KUNCI = threading.Lock()
+HALAMAN_JAWAB = {}      # kode -> HTML lembar pembahasan, dibaca rute /lembar-jawab
 # Hanya SATU lembar boleh dikerjakan pada satu waktu. Dua tugas bersamaan akan
 # berebut tab Gemini yang sama: yang satu mengganti isi kotak perintah milik
 # yang lain, dan keduanya gagal dengan gejala yang membingungkan.
@@ -91,7 +92,7 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
     Soalnya TIDAK dikarang: disalin apa adanya dari foto, lalu diberi kunci dan
     pembahasan. Karena itu tidak ada langkah 'acuan gaya dari arsip'.
     """
-    import serupa, otomasi, jawab as _jwb
+    import serupa, otomasi, jawab as _jwb, lembar_jawab as _lj, uuid
     if not GILIRAN.acquire(blocking=False):
         _catat(jid, 'Menunggu lembar sebelumnya selesai…', 4)
         GILIRAN.acquire()
@@ -118,27 +119,32 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
         hasil_teks = otomasi.gemini_tanya(perintah, batas=300)
         _catat(jid, f'Jawaban diterima ({len(hasil_teks)} karakter)', 70)
 
-        try:
-            import naskah as _nsk
-            butir, meta = _nsk.urai(hasil_teks)
-            judul = judul.strip() or (meta.get('judul') or 'Kunci Jawaban')
-        except Exception:
-            butir = []
-        _catat(jid, f'{len(butir)} soal terbaca beserta kuncinya', 80)
+        judul_lbr, butir = _jwb.urai(hasil_teks)
+        if not butir:
+            raise RuntimeError('Jawaban Gemini tidak bisa diurai jadi pembahasan')
+        judul = judul.strip() or judul_lbr or 'Pembahasan Soal'
+        _catat(jid, f'{len(butir)} soal beserta pembahasannya', 80)
 
-        kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
-                   sekolah=sekolah, kelas=str(kelas or ''),
-                   tanggal=tanggal or time.strftime('%d%m'),
-                   kunci=True, pembahasan=True, kolom=str(kolom or '1'),
-                   kerapatan=kerapatan or 'Normal', garis_per_nilai=garis or '0.5')
+        kop = dict(lembaga=lembaga or 'Exact Course', mapel=mapel or '',
+                   kelas=(f'Kelas {kelas}' if kelas else ''))
         os.makedirs(KELUAR, exist_ok=True)
-        nama = nama_berkas(kop, True, KELUAR)
+        kode_kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
+                        sekolah=sekolah, kelas=str(kelas or ''),
+                        tanggal=tanggal or time.strftime('%d%m'))
+        nama = nama_berkas(kode_kop, True, KELUAR)
         os.makedirs(NASKAH, exist_ok=True)
         open(os.path.join(NASKAH, f'{nama} — {time.strftime("%Y-%m-%d %H%M")}.txt'),
              'w', encoding='utf-8').write(hasil_teks)
-        _catat(jid, 'Merender lalu mencetak PDF…', 90)
+
+        # Lembar pembahasan memakai tata letaknya sendiri — satu kolom, lapang,
+        # soal menyatu dengan pembahasannya. Bukan format naskah ujian.
+        _catat(jid, 'Menyusun lembar lalu mencetak PDF…', 90)
+        kode = uuid.uuid4().hex[:10]
+        HALAMAN_JAWAB[kode] = _lj.buat(judul, butir, kop)
+        if len(HALAMAN_JAWAB) > 40:
+            for k in list(HALAMAN_JAWAB)[:-40]: HALAMAN_JAWAB.pop(k, None)
         tuju = os.path.join(KELUAR, f'{nama}.pdf')
-        otomasi.worksheet_pdf(hasil_teks, tuju, kop=kop)
+        otomasi.cetak_halaman(f'http://127.0.0.1:7790/lembar-jawab?k={kode}', tuju)
         subprocess.run(['open', tuju], capture_output=True)
         _catat(jid, f'Selesai — {os.path.basename(tuju)}', 100, selesai=True, pdf=tuju)
     except Exception as e:
