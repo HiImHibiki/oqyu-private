@@ -10,6 +10,14 @@
 # "Belum ada lembar" padahal ada ratusan berkas di Desktop.
 set -e
 LABEL=com.exactcourse.worksheet
+# kickstart saja kadang TIDAK cukup: prosesnya hidup lagi tapi kehilangan izin
+# membaca Desktop, dan gejalanya halaman Hasil berkata "Belum ada lembar".
+# bootout+bootstrap memasang ulang agennya dari awal dan izinnya kembali.
+muat_ulang() {
+  launchctl bootout "gui/$(id -u)/$LABEL" 2>/dev/null || true
+  sleep 2
+  launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/$LABEL.plist" 2>/dev/null || true
+}
 launchctl kickstart -k "gui/$(id -u)/$LABEL"
 for i in $(seq 1 20); do
   sleep 1
@@ -17,7 +25,17 @@ for i in $(seq 1 20); do
     # grep -c menghitung BARIS, sedangkan seluruh kartu ada di satu baris
     n=$(curl -s -m 20 http://127.0.0.1:7790/hasil | grep -o 'class=kartu' | wc -l | tr -d ' ')
     echo "Layanan jalan. Lembar terbaca: $n"
-    [ "$n" -eq 0 ] && echo "PERINGATAN: nol lembar — periksa /diag, mungkin izin Desktop." >&2
+    if [ "$n" -eq 0 ]; then
+      echo "Nol lembar — memasang ulang agennya untuk memulihkan izin Desktop…"
+      muat_ulang
+      for j in $(seq 1 20); do
+        sleep 1
+        curl -sf -m 3 http://127.0.0.1:7790/status >/dev/null 2>&1 && break
+      done
+      n=$(curl -s -m 20 http://127.0.0.1:7790/hasil | grep -o 'class=kartu' | wc -l | tr -d ' ')
+      echo "Sesudah dipasang ulang, lembar terbaca: $n"
+      [ "$n" -eq 0 ] && echo "MASIH nol — periksa /diag dan izin Full Disk Access untuk /usr/bin/python3." >&2
+    fi
     exit 0
   fi
 done

@@ -179,6 +179,7 @@ class Sesi:
     def __init__(self, tab, timeout=180):
         self.ws = WS(tab['webSocketDebuggerUrl'], timeout=timeout)
         self.id = 0
+        self._ukuran_disetel = False
     def perintah(self, metode, **param):
         self.id += 1
         self.ws.kirim(json.dumps({'id': self.id, 'method': metode, 'params': param}))
@@ -257,16 +258,24 @@ class Sesi:
                       files=[os.path.abspath(str(x)) for x in daftar], nodeId=nid)
         return True
 
-    def ukuran(self, lebar=1400, tinggi=1000):
+    def ukuran(self, lebar=1400, tinggi=1000, paksa=False):
         """Setel ukuran viewport.
 
         Bendera --window-size tidak digubris pada mode tanpa jendela: Chrome
         tetap memakai 800x600, dan tata letak Gemini jadi sempit sehingga
         tombolnya berpindah atau hilang. Emulation.* bekerja di kedua mode.
         """
+        # Hanya sekali per sesi, kecuali dipaksa. setDeviceMetricsOverride
+        # memicu tata letak ulang, dan tata letak ulang MENUTUP menu yang sedang
+        # terbuka — menu unggah Gemini terbuka lalu lenyap dalam sekejap, dengan
+        # gejala yang mirip klik yang tidak sampai. Dulu ini dipanggil tiap kali
+        # tab dibawa ke depan, jadi tiap interaksi menu berebut dengan layout.
+        if self._ukuran_disetel and not paksa:
+            return
         try:
             self.perintah('Emulation.setDeviceMetricsOverride', width=lebar,
                           height=tinggi, deviceScaleFactor=1, mobile=False)
+            self._ukuran_disetel = True
         except Exception:
             pass
 
