@@ -407,6 +407,25 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/api/soal':
+            # Soal yang sudah terurai dari sebuah pekerjaan /buat, untuk Exact
+            # Practice. Kunci jawaban ikut - ini antarmuka guru, bukan murid.
+            import buat, naskah as _nsk
+            jid = (qs.get('jid') or [''])[0]
+            with buat.KUNCI:
+                d = dict(buat.TUGAS.get(jid) or {})
+            if not d:
+                return self.send_error(404, 'tugas tidak dikenal')
+            teks = d.get('naskah') or ''
+            butir, meta = (_nsk.urai(teks) if teks else ([], {}))
+            b = json.dumps({'jid': jid, 'selesai': d.get('selesai'), 'galat': d.get('galat'),
+                            'pdf': os.path.basename(d['pdf']) if d.get('pdf') else None,
+                            'judul': meta.get('judul'), 'butir': butir},
+                           ensure_ascii=False).encode()
+            self.send_response(200); self.send_header('Content-Type','application/json; charset=utf-8')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
         if u.path == '/layar':
             # Potret tab kendali. Chrome-nya tanpa jendela, jadi ini satu-satunya
             # cara melihat apa yang sedang terjadi di sana saat sebuah lembar
@@ -657,6 +676,83 @@ class H(BaseHTTPRequestHandler):
         u = urllib.parse.urlparse(self.path)
         print(f'[POST] {u.path} dari {self.client_address[0]} '
               f'({self.headers.get("Content-Length","?")} byte)', flush=True)
+        if u.path == '/api/render':
+            # Daftar soal (bentuk keluaran naskah.urai) -> naskah -> PDF lewat
+            # Exact Worksheet Maker. Dipakai Exact Practice untuk mencetak paket
+            # yang disusun dari bank tanpa AI. Chrome kendali dipakai bersama,
+            # jadi ikut antrean yang sama dengan pekerjaan Gemini.
+            import buat, naskah as _nsk, otomasi as _o, uuid as _uuid, time as _tm
+            panjang = int(self.headers.get('Content-Length') or 0)
+            try:
+                d = json.loads(self.rfile.read(panjang).decode('utf-8') if panjang else '{}')
+            except Exception:
+                return self.send_error(400, 'JSON tidak sah')
+            butir = d.get('butir') or []
+            if not butir: return self.send_error(400, 'butir kosong')
+            judul = (d.get('judul') or 'Latihan').strip()
+            kop = d.get('kop') or {}
+            teks = _nsk.ke_naskah(butir, judul)
+            jid = 'render-' + _uuid.uuid4().hex[:8]
+            if not buat.ANTREAN.masuk(jid, 'Cetak paket'):
+                return self.send_error(503, 'antrean sibuk')
+            try:
+                os.makedirs(buat.KELUAR, exist_ok=True)
+                nama = buat.nama_berkas(dict(mapel=buat.kode_mapel(kop.get('mapel') or ''),
+                                             sekolah=kop.get('sekolah') or '',
+                                             kelas=str(kop.get('kelas') or ''),
+                                             tanggal=_tm.strftime('%d%m')),
+                                        bool(d.get('kunci')), buat.KELUAR)
+                tuju = os.path.join(buat.KELUAR, f'{nama}.pdf')
+                _o.worksheet_pdf(teks, tuju, kop=dict(
+                    lembaga=kop.get('lembaga') or 'Exact Course', mapel=buat.kode_mapel(kop.get('mapel') or ''),
+                    sekolah=kop.get('sekolah') or '', kelas=str(kop.get('kelas') or ''),
+                    tanggal=_tm.strftime('%d%m'), kunci=bool(d.get('kunci')),
+                    pembahasan=bool(d.get('pembahasan')), kolom=str(d.get('kolom') or '1'),
+                    kerapatan='Normal', garis_per_nilai='1.5'))
+            except Exception as e:
+                buat.ANTREAN.keluar(jid)
+                b = json.dumps({'galat': f'{type(e).__name__}: {e}'}).encode()
+                self.send_response(500); self.send_header('Content-Type','application/json')
+                self.send_header('Content-Length',str(len(b))); self.end_headers(); self.wfile.write(b); return
+            buat.ANTREAN.keluar(jid)
+            b = json.dumps({'pdf': os.path.basename(tuju), 'unduh': f'/berkas?unduh=1&f={urllib.parse.quote(os.path.basename(tuju))}'}).encode()
+            self.send_response(200); self.send_header('Content-Type','application/json')
+            self.send_header('Content-Length',str(len(b))); self.end_headers(); self.wfile.write(b); return
+
+        if u.path == '/api/potret-html':
+            # HTML -> PNG lewat Chrome kendali. Exact Practice memakainya untuk
+            # menggambar satu soal (dengan rumus KaTeX) sebagai foto yang
+            # dikirim ke antrean pertanyaan Exact Canvas.
+            import buat, cdp as _cdp, uuid as _uuid, base64 as _b64, time as _tm
+            panjang = int(self.headers.get('Content-Length') or 0)
+            try:
+                d = json.loads(self.rfile.read(panjang).decode('utf-8') if panjang else '{}')
+            except Exception:
+                return self.send_error(400, 'JSON tidak sah')
+            html = d.get('html') or ''
+            if not html: return self.send_error(400, 'html kosong')
+            lebar = int(d.get('lebar') or 900); tinggi = int(d.get('tinggi') or 600)
+            jid = 'potret-' + _uuid.uuid4().hex[:8]
+            if not buat.ANTREAN.masuk(jid, 'Potret soal'):
+                return self.send_error(503, 'antrean sibuk')
+            try:
+                _cdp.nyalakan()
+                tab = _cdp.buka_tab('data:text/html;charset=utf-8,' + urllib.parse.quote(html), paksa_baru=True)
+                s = _cdp.Sesi(tab); s.ukuran(lebar, tinggi, paksa=True); _tm.sleep(1.6)
+                # tinggi mengikuti isi supaya soal panjang tidak terpotong
+                h = int(s.evaluasi('Math.min(2200, Math.max(document.body.scrollHeight, 200))') or tinggi)
+                s.ukuran(lebar, h, paksa=True); _tm.sleep(0.4)
+                png = _b64.b64decode(s.perintah('Page.captureScreenshot', format='png')['data'])
+                s.tutup()
+                try: urllib.request.urlopen(f'http://127.0.0.1:{_cdp.PORT}/json/close/{tab["id"]}', timeout=5).read()
+                except Exception: pass
+            except Exception as e:
+                buat.ANTREAN.keluar(jid)
+                return self.send_error(500, f'{type(e).__name__}: {e}')
+            buat.ANTREAN.keluar(jid)
+            self.send_response(200); self.send_header('Content-Type','image/png')
+            self.send_header('Content-Length',str(len(png))); self.end_headers(); self.wfile.write(png); return
+
         if u.path == '/cetak':
             panjang = int(self.headers.get('Content-Length') or 0)
             mentah = self.rfile.read(panjang) if panjang else b''

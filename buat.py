@@ -613,6 +613,11 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
             jawab = utuh
         periksa_henti(jid)
         _catat(jid, f'Naskah diterima ({len(jawab)} karakter)', 68)
+        # Naskahnya ikut disimpan di catatan tugas supaya aplikasi lain (Exact
+        # Practice) bisa mengambil soalnya yang sudah terurai lewat /api/soal,
+        # tanpa harus menebak nama berkas di folder naskah.
+        with KUNCI:
+            TUGAS.setdefault(jid, {})['naskah'] = jawab
 
         # 4. serahkan ke perender asli
         if len(jawab.strip()) < 200 or jawab.count('\n') < 5:
