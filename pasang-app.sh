@@ -53,8 +53,14 @@ cat > "$PLIST" <<PL
 </dict></plist>
 PL
 
+# bootout berjalan asinkron: kalau bootstrap dipanggil sebelum label benar-benar
+# hilang, launchd menjawab "Input/output error" (5). Tunggu sampai lepas.
 launchctl bootout "gui/$(id -u)/$LABEL" 2>/dev/null || true
-launchctl bootstrap "gui/$(id -u)" "$PLIST"
+for i in $(seq 1 20); do
+  launchctl print "gui/$(id -u)/$LABEL" >/dev/null 2>&1 || break
+  sleep 0.5
+done
+launchctl bootstrap "gui/$(id -u)" "$PLIST" || launchctl kickstart -k "gui/$(id -u)/$LABEL"
 for i in $(seq 1 30); do
   sleep 1
   if curl -s -o /dev/null -m 3 "http://127.0.0.1:$PORT/masuk"; then
