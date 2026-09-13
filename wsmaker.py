@@ -196,6 +196,22 @@ def _buang_blok(perintah, awal):
     return perintah
 
 
+# Soal koordinat: sediakan kertas grafiknya, jangan gambarkan grafiknya.
+#
+# Menggambar grafik jadi sering meleset — titiknya bergeser, skalanya tidak
+# cocok dengan angka di soal. Kertas grafik kosong tidak punya masalah itu
+# karena tidak ada yang bisa salah digambar, dan justru lebih berguna: murid
+# memplot sendiri, yang memang keterampilan yang sedang diuji.
+ATURAN_KOORDINAT = """
+PENTING untuk soal yang memakai koordinat, grafik, garis lurus, atau bidang
+kartesius: JANGAN menggambarkan grafik atau kurvanya. Sediakan kertas grafik
+KOSONG dengan [[kertasgrafik: ...]], lalu perintahkan murid memplot sendiri —
+sebutkan rentang sumbu yang cukup untuk semua titik yang akan diplot, beserta
+nama dan satuan tiap sumbunya. Hal yang sama berlaku untuk soal yang meminta
+membuat tabel pengamatan: sediakan [[tabelkosong: ...]], bukan tabel terisi.
+"""
+
+
 def ringkas(perintah, konteks='', banyak_set=False, ada_lampiran=False):
     """Persingkat perintah sesuai permintaan yang sedang dikirim.
 
@@ -204,6 +220,7 @@ def ringkas(perintah, konteks='', banyak_set=False, ada_lampiran=False):
     jarang dibalas penolakan oleh Gemini.
     """
     hasil, _ = ringkas_diagram(perintah, konteks)
+    hasil = hasil.rstrip() + '\n' + ATURAN_KOORDINAT
     if not banyak_set:
         hasil = _buang_blok(hasil, _AWAL_SET)
     if not ada_lampiran:

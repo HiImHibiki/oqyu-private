@@ -917,6 +917,25 @@ const SOLID_PRESETS = {
   },
 };
 
+// PATCH EXACTSEARCH (hilang bila wsm/ disinkronkan ulang lewat perbarui-mesin.sh):
+// Kolom tabel dipisah koma, tapi koma juga sah muncul DI DALAM rumus — misalnya
+// "header=$x$,$y$,$(x\text{, }y)$" yang seharusnya 3 kolom. Memecah mentah
+// membuatnya jadi 4 kolom dengan potongan LaTeX terbelah, dan yang tercetak
+// adalah "$(x\text{" lalu "}y)$" di kolom berbeda. Jadi koma di antara sepasang
+// tanda dolar tidak dihitung sebagai pemisah.
+function pisahKolom(teks) {
+  const keluar = [];
+  let kini = '', dalamRumus = false;
+  for (let i = 0; i < teks.length; i++) {
+    const c = teks[i];
+    if (c === '$' && teks[i - 1] !== '\\') dalamRumus = !dalamRumus;
+    if (c === ',' && !dalamRumus) { keluar.push(kini); kini = ''; continue; }
+    kini += c;
+  }
+  keluar.push(kini);
+  return keluar.map((x) => x.trim()).filter(Boolean);
+}
+
 function renderSolidSVG(cfg) {
   const preset = SOLID_PRESETS[cfg.bentuk] || SOLID_PRESETS.kubus;
   const shape = preset(cfg);
@@ -3204,7 +3223,7 @@ function renderEcoPyramidSVG(cfg) {
 // Rows use "|" between rows and "," between cells (not SVG — plain HTML
 // <table>, since a data/frequency table is text, not a coordinate drawing).
 function renderTableHTML(cfg) {
-  const headers = String(cfg.header || '').split(',').map((s) => s.trim()).filter(Boolean);
+  const headers = pisahKolom(String(cfg.header || ''));
   const rows = String(cfg.baris || '')
     .split('|')
     .map((r) => r.split(',').map((c) => c.trim()))
@@ -4444,7 +4463,7 @@ function renderGraphPaperSVG(cfg) {
 }
 
 function renderBlankTableHTML(cfg) {
-  const headers = String(cfg.header || '').split(',').map((s) => s.trim()).filter(Boolean);
+  const headers = pisahKolom(String(cfg.header || ''));
   const rowCount = Math.max(1, Math.min(30, Math.round(numOrDefault(cfg.baris, 5))));
   const cols = Math.max(1, headers.length || Math.round(numOrDefault(cfg.kolom, 2)));
   const rowH = Math.max(10, Math.min(40, numOrDefault(cfg.tinggi, 20)));
