@@ -431,11 +431,8 @@ def halaman(izin_chrome=True, setel=None):
 <h1>Exact Worksheet Maker</h1>
 <div class=s>Tempel tangkapan layar soal dan isi kriteria. Gemini mengarang,
 Mac ini menata, PDF terbuka sendiri.</div>
-<div class=nav>
-  <span class=aktif>Buat dengan AI</span>
-  <a href="/?mode=soal">Bank Soal — susun tanpa AI ({n_bank:,} soal)</a>
-  <a href="/?mode=halaman">Cari di arsip</a>
-</div>
+<div class=s style="margin-top:-10px">Bank soal: {n_bank:,} soal tersimpan &mdash;
+bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
 {peringatan}
 <form id=f>
 <div class=k>

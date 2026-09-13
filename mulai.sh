@@ -12,4 +12,4 @@ else
     curl -s -o /dev/null --max-time 2 http://localhost:7790/ && break
   done
 fi
-open http://localhost:7790/buat
+open http://localhost:7790/

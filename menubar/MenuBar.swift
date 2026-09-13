@@ -45,7 +45,7 @@ final class Delegate: NSObject, NSApplicationDelegate {
         mKerja.target = self
         menu.addItem(mKerja)
 
-        tambah("Buka Worksheet Maker", #selector(bukaHalaman))
+        tambah("Buka aplikasi", #selector(bukaHalaman))
         tambah("Buka folder hasil", #selector(bukaHasil))
         menu.addItem(.separator())
 
@@ -124,7 +124,7 @@ final class Delegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    @objc func bukaHalaman() { NSWorkspace.shared.open(url("/buat")) }
+    @objc func bukaHalaman() { NSWorkspace.shared.open(url("/")) }
 
     @objc func bukaHasil() {
         NSWorkspace.shared.open(URL(fileURLWithPath: NSHomeDirectory() + "/Desktop"))

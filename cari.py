@@ -103,7 +103,7 @@ font-weight:600;font-size:13px;cursor:pointer}
 <div class=bungkus>
 <h1>Arsip Exact Course</h1>__TAB__
 <div class=sub>__RINGKAS__</div>
-<form><div class=baris>
+<form action="/cari"><div class=baris>
 <input type=search name=q placeholder="cari apa saja — mis. listrik dinamis, trigonometri, photosynthesis" value="__Q__" autofocus>
 <button>Cari</button></div>
 <div class=baris style="margin-top:8px">__FILTER__</div></form>
@@ -320,6 +320,14 @@ class H(BaseHTTPRequestHandler):
             d = open(p,'rb').read()
             self.send_response(200); self.send_header('Content-Type','application/pdf')
             self.send_header('Content-Length',str(len(d))); self.end_headers(); self.wfile.write(d); return
+        if u.path == '/':
+            b = KERANGKA.encode()
+            self.send_response(200)
+            self.send_header('Content-Type','text/html; charset=utf-8')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+        if u.path != '/cari': return self.send_error(404)
+
         q = (qs.get('q') or [''])[0]
         mode = (qs.get('mode') or ['halaman'])[0]
         filt = {k:(qs.get(k) or [''])[0] for k in ('folder','jenjang','mapel','jenis','kelas','sekolah','bentuk')}
@@ -336,11 +344,10 @@ class H(BaseHTTPRequestHandler):
         c = db()
         ns = c.execute("SELECT COUNT(*) FROM soal WHERE dup=0").fetchone()[0]; c.close()
         sel = lambda v: ' class=aktif' if mode == v else ''
-        tab = (f'<div class=tab><a href="?mode=halaman&q={urllib.parse.quote(q)}"{sel("halaman")}>Halaman</a>'
-               f'<a href="?mode=soal&q={urllib.parse.quote(q)}"{sel("soal")}>Soal satuan ({ns:,})</a>'
-               f'<a href="?mode=soal&folder=DIBUAT&q=a">Buatan sendiri ({n_dibuat:,})</a>'
-               f'<a href="/buat" style="margin-left:auto">&larr; Buat dengan AI</a>'
-               f'<a href="/impor">Impor Gemini</a></div>')
+        tab = (f'<div class=tab>'
+               f'<a href="/cari?mode=halaman&q={urllib.parse.quote(q)}"{sel("halaman")}>Halaman</a>'
+               f'<a href="/cari?mode=soal&q={urllib.parse.quote(q)}"{sel("soal")}>Soal satuan ({ns:,})</a>'
+               '</div>')
         fil = f'<input type=hidden name=mode value="{html.escape(mode)}">' + fil
         if mode == 'soal':
             b2 = ''.join(f'<option{" selected" if filt["bentuk"]==v else ""}>{v}</option>' for v in ('Pilihan ganda','Uraian'))
@@ -592,6 +599,43 @@ fi.onchange=()=>{if(fi.files[0]){j.textContent=fi.files[0].name;j.classList.add(
 j.addEventListener('drop',ev=>{fi.files=ev.dataTransfer.files;
  if(fi.files[0]){j.textContent=fi.files[0].name;j.classList.add('aktif')}});
 </script>"""
+
+KERANGKA = """<!doctype html><meta charset=utf-8><title>Exact Worksheet</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>
+:root{--bg:#fbfbfa;--kartu:#fff;--tepi:#e3e3e0;--teks:#1a1a19;--redup:#6b6b66;--aksen:#c4572a}
+@media(prefers-color-scheme:dark){:root{--bg:#1a1a19;--kartu:#232322;--tepi:#37372f;--teks:#f0efea;--redup:#9a9a92}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--teks);
+font:15px/1.5 ui-sans-serif,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+header{display:flex;align-items:center;gap:8px;padding:9px 14px;
+background:var(--kartu);border-bottom:1px solid var(--tepi)}
+header b{font-size:14px;margin-right:6px;letter-spacing:.2px}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav button{padding:7px 14px;border:1px solid var(--tepi);border-radius:8px;
+background:var(--bg);color:var(--redup);font-size:12.5px;cursor:pointer;font-weight:600}
+nav button.aktif{background:var(--aksen);color:#fff;border-color:var(--aksen)}
+iframe{border:0;width:100%;height:calc(100vh - 47px);display:block;background:var(--bg)}
+</style>
+<header>
+  <b>Exact Worksheet</b>
+  <nav>
+    <button data-u="/buat" class=aktif>Buat dengan AI</button>
+    <button data-u="/cari?mode=soal&amp;q=">Bank Soal</button>
+    <button data-u="/cari?mode=soal&amp;folder=DIBUAT&amp;q=a">Buatan sendiri</button>
+    <button data-u="/cari?mode=halaman&amp;q=">Arsip</button>
+  </nav>
+</header>
+<iframe id=bingkai src="/buat"></iframe>
+<script>
+const bingkai = document.getElementById('bingkai');
+document.querySelectorAll('nav button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('nav button').forEach(x => x.classList.remove('aktif'));
+  b.classList.add('aktif');
+  bingkai.src = b.dataset.u;
+});
+</script>"""
+
 
 if __name__ == '__main__':
     print(f"Mesin pencari jalan di  http://localhost:{PORT}")
