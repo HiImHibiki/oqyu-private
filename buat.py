@@ -32,7 +32,12 @@ HALAMAN_JAWAB = {}      # kode -> HTML lembar pembahasan, dibaca rute /lembar-ja
 # dikerjakan apa, sudah berapa lama, dan kapan kira-kira giliran saya. Lebih
 # buruk lagi, tugas yang menggantung menahan kunci itu selamanya. Antrean di
 # bawah ini menyimpan urutannya, memberi batas waktu, dan bisa dibatalkan.
-BATAS_KERJA = 15 * 60          # tugas macet melepas giliran, bukan menahan selamanya
+# Satu lembar paling lama sekitar dua menit. Enam menit berarti benar-benar
+# macet — dan yang macet harus DITANDAI GAGAL, bukan cuma melepas gilirannya.
+# Sebelumnya gilirannya dilepas tapi tugasnya tetap tercatat 'sedang berjalan'
+# selamanya, jadi halaman menampilkan bilah yang tidak pernah bergerak dan
+# pemakainya menunggu sesuatu yang tidak akan datang.
+BATAS_KERJA = 6 * 60
 
 
 class Antrean:
@@ -45,10 +50,15 @@ class Antrean:
         self._batal = set()
 
     def _kedaluwarsa(self):
-        """Bebaskan giliran yang sudah dipegang terlalu lama."""
+        """Bebaskan giliran yang sudah dipegang terlalu lama, dan tandai gagal."""
         k = self._kerja
         if k and time.time() - k['sejak'] > BATAS_KERJA:
             self._kerja = None
+            menit = int(BATAS_KERJA // 60)
+            _catat(k['jid'], None,
+                   galat=f'Berhenti sendiri: tidak ada kemajuan selama {menit} menit. '
+                         f'Coba lagi — kalau berulang, periksa jendela Chrome kendali.')
+            HENTI.add(k['jid'])      # supaya utasnya ikut berhenti di titik aman
             return True
         return False
 
