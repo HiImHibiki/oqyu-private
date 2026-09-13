@@ -114,10 +114,16 @@ def cari_tab(potongan_url):
         if potongan_url in (t.get('url') or ''): return t
     return None
 
-def buka_tab(url):
-    """Buka tab baru. Chrome baru menuntut metode PUT untuk /json/new."""
-    t = cari_tab(url.split('//')[-1].split('/')[0])
-    if t: return t
+def buka_tab(url, paksa_baru=False):
+    """Buka tab baru. Chrome baru menuntut metode PUT untuk /json/new.
+
+    `paksa_baru` penting bila beberapa halaman berbagi host yang sama: mencocokkan
+    host saja akan mengembalikan tab lain yang kebetulan sealamat, lalu perintah
+    dijalankan di halaman yang salah.
+    """
+    if not paksa_baru:
+        t = cari_tab(url.split('//')[-1].split('/')[0])
+        if t: return t
     alamat = f'http://127.0.0.1:{PORT}/json/new?{urllib.parse.quote(url, safe=":/?&=")}'
     req = urllib.request.Request(alamat, method='PUT')
     d = urllib.request.urlopen(req, timeout=15).read()

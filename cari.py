@@ -92,6 +92,15 @@ color:var(--redup);font-size:13px;background:var(--kartu)}
 .opsi{font-size:13.5px;color:var(--redup);padding-left:10px}
 .meta a{color:var(--redup)}
 .pilih{float:right;font-size:12px;color:var(--redup);cursor:pointer;user-select:none}
+.oto{background:var(--kartu);border:1px solid var(--tepi);border-radius:11px;
+padding:12px 14px;margin-bottom:13px;font-size:13px;color:var(--redup)}
+.oto b{color:var(--teks)}
+.oto .r2{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+.oto input{padding:8px 11px;border:1px solid var(--tepi);border-radius:7px;
+background:var(--bg);color:var(--teks);font-size:13px}
+.oto input[name=topik]{flex:1;min-width:150px}
+.oto button{padding:8px 16px;border:0;border-radius:7px;background:var(--aksen);
+color:#fff;font-weight:600;font-size:13px;cursor:pointer}
 .aksi{position:sticky;bottom:0;background:var(--kartu);border:1px solid var(--tepi);
 border-radius:11px;padding:10px 13px;margin-top:14px;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
 .aksi input[name=judul]{flex:1;min-width:180px;padding:7px 10px;border:1px solid var(--tepi);
@@ -121,6 +130,47 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Type','text/html; charset=utf-8')
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
+
+        if u.path == '/otomatis':
+            # Pilihkan soal paling sesuai lalu langsung susun — tanpa mencentang
+            # satu per satu, tanpa AI.
+            import pilih as _p, naskah as _nsk, buat as _b, otomasi as _o, setelan as _st, time as _t
+            topik = (qs.get('topik') or [''])[0]
+            komposisi = (qs.get('komposisi') or [''])[0]
+            mapel = (qs.get('mapel') or [''])[0]
+            kls = (qs.get('kelas') or [''])[0]
+            c = db()
+            terpilih, catatan = _p.pilih(c, topik=topik, mapel=mapel,
+                                         kelas=int(kls) if kls.isdigit() else None,
+                                         komposisi=komposisi)
+            c.close()
+            if not terpilih:
+                return self.balas_teks('Bank soal belum punya soal yang cocok. '
+                                       'Buat dulu lewat tab "Buat dengan AI".', 404)
+            butir = [{'jenis': r['jenis_soal'] or 'PG', 'batang': r['batang'],
+                      'opsi': json.loads(r['opsi'] or '{}'), 'kunci': r['kunci'] or '',
+                      'bobot': r['bobot'], 'sub': []} for r in terpilih]
+            judul = (qs.get('judul') or [''])[0] or (topik.title() if topik else 'Latihan')
+            teks = _nsk.ke_naskah(butir, judul)
+            st = _st.muat()
+            kop = dict(lembaga=st.get('lembaga') or 'Exact Course',
+                       mapel=_b.kode_mapel(mapel or st.get('mapel','')),
+                       sekolah=st.get('sekolah',''), kelas=kls or st.get('kelas',''),
+                       tanggal=_t.strftime('%d%m'), kunci=True, pembahasan=False,
+                       kolom=st.get('kolom','2'), kerapatan=st.get('kerapatan','Normal'),
+                       garis_per_nilai=st.get('garis','1.5'))
+            os.makedirs(_b.KELUAR, exist_ok=True)
+            nama = _b.nama_berkas(kop, True, _b.KELUAR)
+            tuju = os.path.join(_b.KELUAR, f'{nama}.pdf')
+            try:
+                _o.worksheet_pdf(teks, tuju, kop=kop)
+            except Exception as e:
+                return self.balas_teks(f'Gagal menyusun: {e}', 500)
+            subprocess.run(['open', tuju], capture_output=True)
+            rinci = ' · '.join(f"{k}: {v['didapat']}/{v['diminta']}" for k, v in catatan.items())
+            return self.balas_teks(
+                f'{len(butir)} soal dipilih otomatis ({rinci}) → '
+                f'{os.path.basename(tuju)} (terbuka)')
 
         if u.path == '/susun':
             # Susun lembar dari soal yang SUDAH ada di bank — tanpa Gemini,
@@ -355,7 +405,17 @@ class H(BaseHTTPRequestHandler):
         badan = ''
         if q and mode == 'soal':
             rows, n = cari_soal(q, filt)
-            badan = ('<form action="/susun" method=get id=fLembar>'
+            badan = ('<form action="/otomatis" method=get class=oto>'
+                     '<b>Pilih otomatis</b> — sebutkan topik dan komposisinya, '
+                     'soal dipilihkan sendiri:'
+                     '<div class=r2>'
+                     f'<input name=topik placeholder="topik" value="{html.escape(q)}">'
+                     '<input name=komposisi placeholder="10 PG + 2 Esai" size=16>'
+                     '<input name=mapel placeholder="mapel" size=9>'
+                     '<input name=kelas placeholder="kls" size=4>'
+                     '<button type=submit>Susun Otomatis</button>'
+                     '</div></form>'
+                     '<form action="/susun" method=get id=fLembar>'
                      f'<div class=jml>{n:,} soal cocok · menampilkan {len(rows)}</div>')
             if not rows: badan += '<div class=kosong>tidak ada soal cocok</div>'
             for r in rows:

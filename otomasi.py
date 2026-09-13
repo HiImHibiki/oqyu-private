@@ -41,7 +41,7 @@ def _sesi(url, potongan):
     tab = cdp.cari_tab(potongan)
     if tab:
         return _tampilkan(cdp.Sesi(tab))
-    tab = cdp.buka_tab(url)
+    tab = cdp.buka_tab(url, paksa_baru=True)
     for _ in range(20):
         time.sleep(0.8)
         t = cdp.cari_tab(potongan)
