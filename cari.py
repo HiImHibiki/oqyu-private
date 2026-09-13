@@ -355,7 +355,8 @@ class H(BaseHTTPRequestHandler):
                 bahasa=st.get('bahasa') or 'Indonesia', lembaga=st.get('lembaga',''),
                 sekolah=st.get('sekolah',''), tanggal='',
                 kunci=st.get('kunci', True), pembahasan=st.get('pembahasan', True),
-                kolom=st.get('kolom','2'), dua_berkas=st.get('dua_berkas', False)),
+                kolom=st.get('kolom','2'), dua_berkas=st.get('dua_berkas', False),
+                mata=st.get('mata') or 'vision', mode=st.get('mode') or 'flash'),
                 daemon=True).start()
             b = json.dumps({'jid': jid}).encode()
             self.send_response(200); self.send_header('Content-Type','application/json')
@@ -883,7 +884,9 @@ class H(BaseHTTPRequestHandler):
             tanggal=medan.get('tanggal', ''),
             kunci='kunci' in medan, pembahasan='pembahasan' in medan,
             kolom=medan.get('kolom', '2'), dua_berkas='dua_berkas' in medan,
-            kerapatan=medan.get('kerapatan', 'Normal'), garis=medan.get('garis', '1.5')), daemon=True)
+            kerapatan=medan.get('kerapatan', 'Normal'), garis=medan.get('garis', '1.5'),
+            mata=medan.get('mata') or 'vision',
+            mode=medan.get('mode') or 'flash'), daemon=True)
         t.start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')

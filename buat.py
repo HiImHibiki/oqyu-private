@@ -366,87 +366,87 @@ def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
 def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
              topik='', jenjang='', n_set='', sulit='', bahasa='Indonesia',
              lembaga='', sekolah='', tanggal='', kunci=True, pembahasan=True,
-             kolom='2', dua_berkas=False, kerapatan='Normal', garis='1.5'):
-    """Alur penuh: foto -> arsip -> Gemini -> Exact Worksheet Maker -> PDF."""
-    import serupa, wsmaker, otomasi
+             kolom='2', dua_berkas=False, kerapatan='Normal', garis='1.5',
+             mata='vision', mode='flash'):
+    """Alur penuh: foto atau deskripsi -> Gemini -> Exact Worksheet Maker -> PDF.
+
+    Arsip tidak lagi ikut. Dulu enam soal lama dilampirkan sebagai "contoh gaya",
+    tapi soal acuannya datang dari foto milik Rico sendiri — gaya yang mau ditiru
+    sudah ada di situ. Contoh tambahan dari naskah bertopik lain justru menarik
+    hasilnya menjauh, dan memperpanjang perintah tanpa menambah apa pun.
+    """
+    import wsmaker, otomasi
     if not ANTREAN.masuk(jid, 'Buat Soal', lambda m: _catat(jid, m, 4)):
         return _catat(jid, None, galat='Dibatalkan sebelum mulai.')
     try:
-        # 1. baca foto di Mac
-        acuan = ''
-        if gambar:
-            _catat(jid, f'Membaca {len(gambar)} gambar di Mac…', 8)
-            alat = os.path.join(AKAR, 'ocr-mac', 'visionocr')
-            import tempfile
-            for nama, isi in gambar:
-                ext = os.path.splitext(nama)[1] or '.png'
-                with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as f:
-                    f.write(isi); pth = f.name
-                try: acuan += serupa.baca_gambar(pth, alat) + '\n\n'
-                finally: os.unlink(pth)
-            _catat(jid, f'Terbaca {len(acuan.split())} kata dari gambar', 18)
-
-        # 2. penuntun gaya dari arsip sendiri
-        _catat(jid, 'Mencari soal serupa di arsip…', 26)
-        mirip, c = [], None
-        kata = serupa.kunci_cari(acuan or topik or instruksi)
-        if kata:
-            c = _db()
-            try:
-                mirip = c.execute("""SELECT s.batang, s.opsi, d.nama FROM soal_fts f
-                                     JOIN soal s ON s.id=f.soal_id JOIN dokumen d ON d.id=s.dok_id
-                                     WHERE soal_fts MATCH ? AND s.dup=0 AND s.mutu=2
-                                     ORDER BY rank LIMIT 6""", (' OR '.join(kata),)).fetchall()
-            except sqlite3.OperationalError: pass
-            c.close()
-        _catat(jid, f'{len(mirip)} soal arsip dipakai sebagai acuan gaya', 32)
-
-        # 3. perintah diambil dari prompt-builder.js milik Exact Worksheet Maker,
-        #    bukan disalin — supaya tidak pernah kedaluwarsa terhadap versinya.
-        _catat(jid, 'Menyusun perintah dari format Exact Worksheet Maker…', 38)
-        lampiran = ''
-        if acuan.strip():
-            lampiran += 'NASKAH ACUAN HASIL PEMINDAIAN FOTO:\n' + acuan.strip()[:2500] + '\n\n'
-        if mirip:
-            lampiran += ('CONTOH GAYA — soal asli yang dipakai di kelas kami, '
-                         'tiru gaya bahasa dan kedalaman penalarannya:\n')
-            for n, r in enumerate(mirip, 1):
-                op = json.loads(r['opsi'] or '{}')
-                lampiran += f"{n}. {r['batang'][:320]}\n"
-                for k2, v in sorted(op.items()): lampiran += f"   {k2}. {v[:110]}\n"
-        if instruksi.strip():
-            lampiran += '\nCATATAN GURU: ' + instruksi.strip()
-        perintah = wsmaker.isi_blok(
-            wsmaker.perintah_baku(mapel or 'Matematika'),
-            topik=topik, jenjang=jenjang or (f'Kelas {kelas}' if kelas else ''),
-            set=n_set, jumlah=jumlah, sulit=sulit, bahasa=bahasa,
-            acuan='lihat lampiran di bawah' if lampiran else '')
-        if lampiran: perintah += '\n\n' + lampiran
-
-        # 4. Gemini lewat Chrome
-        _catat(jid, 'Mengirim ke Gemini lewat Chrome kendali…', 45)
+        mata = mata if mata in MATA else 'vision'
+        jalur = _simpan_sementara(gambar)
         try:
-            jawab = otomasi.gemini_tanya(perintah, batas=300)
-        except RuntimeError as e:
-            # Penolakan biasanya muncul saat lampirannya panjang atau mencampur
-            # beberapa naskah bertopik beda. Coba sekali lagi tanpa lampiran.
-            if 'menolak' not in str(e) or not lampiran:
-                raise
-            _catat(jid, 'Gemini menolak — mencoba ulang tanpa lampiran…', 50)
-            ringkas = wsmaker.isi_blok(
+            # 1. bahan: foto, atau kalau tidak ada, deskripsi yang ditulis sendiri
+            acuan = ''
+            if jalur and mata in ('vision', 'dua'):
+                _catat(jid, f'Membaca {len(jalur)} gambar dengan Apple Vision…', 8)
+                acuan = _baca_foto(jalur)
+                _catat(jid, f'Terbaca {len(acuan.split())} kata dari gambar', 18)
+            if not jalur and not (topik or '').strip() and not instruksi.strip():
+                return _catat(jid, None, galat='Beri foto soalnya, atau tulis '
+                                               'topik/deskripsi soal yang diinginkan.')
+            lampiran_foto = jalur if (jalur and mata in ('gemini', 'dua')) else None
+
+            # 2. perintah diambil dari prompt-builder.js milik Exact Worksheet
+            #    Maker, bukan disalin — supaya tidak kedaluwarsa terhadap versinya.
+            _catat(jid, 'Menyusun perintah dari format Exact Worksheet Maker…', 30)
+            lampiran = ''
+            if acuan.strip():
+                lampiran += 'NASKAH ACUAN HASIL PEMINDAIAN FOTO:\n' + acuan.strip()[:2500] + '\n\n'
+            elif lampiran_foto:
+                lampiran += ('Soal acuannya ada pada foto yang terlampir. Baca '
+                             'langsung dari foto, termasuk gambar dan diagramnya.\n\n')
+            if instruksi.strip():
+                lampiran += '\nCATATAN GURU: ' + instruksi.strip()
+            perintah = wsmaker.isi_blok(
                 wsmaker.perintah_baku(mapel or 'Matematika'),
-                topik=topik or (acuan.strip()[:120] if acuan.strip() else ''),
-                jenjang=jenjang or (f'Kelas {kelas}' if kelas else ''),
-                set=n_set, jumlah=jumlah, sulit=sulit, bahasa=bahasa)
-            jawab = otomasi.gemini_tanya(ringkas, batas=300)
+                topik=topik, jenjang=jenjang or (f'Kelas {kelas}' if kelas else ''),
+                set=n_set, jumlah=jumlah, sulit=sulit, bahasa=bahasa,
+                acuan='lihat lampiran di bawah' if lampiran else '')
+            if lampiran: perintah += '\n\n' + lampiran
+        except Exception:
+            for x in jalur:
+                try: os.unlink(x)
+                except OSError: pass
+            raise
+
+        # 3. Gemini lewat Chrome
+        _catat(jid, ('Mengunggah foto ke Gemini…' if lampiran_foto
+                     else 'Mengirim ke Gemini lewat Chrome kendali…'), 45)
+        try:
+            try:
+                jawab = otomasi.gemini_tanya(perintah, batas=300,
+                                             lampiran=lampiran_foto, mode=mode)
+            except RuntimeError as e:
+                # Penolakan biasanya muncul saat naskah acuannya panjang. Coba
+                # sekali lagi dengan perintah polos tanpa naskah acuan.
+                if 'menolak' not in str(e) or not lampiran:
+                    raise
+                _catat(jid, 'Gemini menolak — mencoba ulang tanpa naskah acuan…', 50)
+                ringkas = wsmaker.isi_blok(
+                    wsmaker.perintah_baku(mapel or 'Matematika'),
+                    topik=topik or (acuan.strip()[:120] if acuan.strip() else ''),
+                    jenjang=jenjang or (f'Kelas {kelas}' if kelas else ''),
+                    set=n_set, jumlah=jumlah, sulit=sulit, bahasa=bahasa)
+                jawab = otomasi.gemini_tanya(ringkas, batas=300, mode=mode)
+        finally:
+            for x in jalur:
+                try: os.unlink(x)
+                except OSError: pass
         _catat(jid, f'Gemini menjawab ({len(jawab)} karakter)', 68)
 
-        # 5. serahkan ke perender asli
+        # 4. serahkan ke perender asli
         if len(jawab.strip()) < 200 or jawab.count('\n') < 5:
             raise RuntimeError('Naskah dari Gemini terlalu pendek untuk jadi lembar kerja')
         _catat(jid, 'Memuat ke Exact Worksheet Maker…', 76)
 
-        # 6. simpan salinan mentah + ambil PDF
+        # 5. simpan salinan mentah + ambil PDF
         judul = judul.strip() or (topik.strip() or f'Latihan {time.strftime("%d %b %H:%M")}')
         kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
                    sekolah=sekolah, kelas=str(kelas or '') or (jenjang or ''),
@@ -792,6 +792,21 @@ document.getElementById('f').onsubmit = async e => {
 
 SULIT_BAWAAN = 'sama dengan naskah acuan'
 
+KET_MATA = """
+// Keterangan singkat tiap pilihan baca foto.
+(() => {
+  const KET = {
+    vision: 'Foto dibaca di Mac dan tidak dikirim ke mana pun. Paling cepat, dan paling tepat untuk soal ketikan. Gambar, diagram, dan tulisan tangan tidak ikut terbaca.',
+    gemini: 'Foto diunggah ke Gemini, jadi diagram, grafik, dan tulisan tangan ikut terbaca. Lebih lambat, dan fotonya keluar dari Mac.',
+    dua: 'Teks hasil Apple Vision dikirim bersama fotonya. Ejaan teks cetak terjaga sekaligus gambarnya tetap terlihat.'
+  };
+  const s = document.getElementById('mata'), k = document.getElementById('ketMata');
+  if (!s || !k) return;
+  const gambar = () => k.textContent = KET[s.value] || '';
+  s.onchange = gambar; gambar();
+})();
+"""
+
 SKRIP_JAWAB = SKRIP.replace("fetch('/buat'", "fetch('/jawab'").replace(
     "!berkas.length && !document.querySelector('[name=topik]').value.trim()",
     "!berkas.length") + """
@@ -955,6 +970,21 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
     <label class=kcl><input type=checkbox name=kunci{c('kunci')}> kunci jawaban</label>
     <label class=kcl><input type=checkbox name=pembahasan{c('pembahasan')}> pembahasan</label>
   </div>
+  <div class=r>
+    <select name=mata id=mata style="flex:1;min-width:220px">
+      <option value=vision{" selected" if st.get("mata","vision")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, teks cetak</option>
+      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata Gemini &mdash; tulisan tangan &amp; gambar</option>
+      <option value=dua{" selected" if st.get("mata")=="dua" else ""}>Keduanya &mdash; paling teliti, paling lama</option>
+    </select>
+  </div>
+  <div class=kcl id=ketMata style="margin-top:5px"></div>
+  <div class=r>
+    <select name=mode style="flex:1;min-width:220px">
+      <option value=flash{" selected" if st.get("mode","flash")!="pro" and st.get("mode")!="panjang" else ""}>Gemini Flash &mdash; hemat, untuk sehari-hari</option>
+      <option value=pro{" selected" if st.get("mode")=="pro" else ""}>Gemini Pro &mdash; lebih jarang menolak, lebih boros</option>
+      <option value=panjang{" selected" if st.get("mode")=="panjang" else ""}>Extended thinking &mdash; naskah berat, paling lambat</option>
+    </select>
+  </div>
   <div class="r kirim">
     <input name=judul placeholder="judul berkas (opsional)" style="flex:1;min-width:150px">
     <button id=go type=submit>Buat PDF</button>
@@ -967,7 +997,7 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
 </div>
 </div>
 <input type=hidden name=titip value="{html.escape(titip, quote=True)}">
-<script>const TITIP={json.dumps(titip)};{SKRIP}</script>"""
+<script>const TITIP={json.dumps(titip)};{SKRIP}{KET_MATA}</script>"""
 
 
 SKRIP_RANGKUM = SKRIP.replace("fetch('/buat'", "fetch('/rangkum'").replace(
