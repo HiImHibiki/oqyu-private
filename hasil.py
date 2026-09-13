@@ -9,6 +9,14 @@ import os, re, html, json, subprocess, glob, time, urllib.parse
 AKAR = os.path.dirname(os.path.abspath(__file__))
 THUMB = os.path.join(AKAR, 'thumb')
 
+class TakBerizin(PermissionError):
+    """macOS menolak server membaca folder keluaran."""
+
+    def __init__(self, folder):
+        self.folder = folder
+        super().__init__(folder)
+
+
 def _url(nama):
     """Nama berkas untuk dipakai di dalam URL.
 
@@ -31,7 +39,17 @@ def daftar_pdf(batas=400, cari=''):
     dulu memotongnya diam-diam sehingga berkas lama tak pernah bisa dibuka dari
     sini; sekarang dibatasi jauh lebih longgar dan bisa disaring namanya.
     """
-    p = sorted(glob.glob(os.path.join(folder_keluar(), '*.pdf')),
+    folder = folder_keluar()
+    # glob() menelan PermissionError dan mengembalikan daftar kosong. Di macOS
+    # itu berbahaya: server yang dijalankan launchd TIDAK punya izin membaca
+    # Desktop (TCC), dan halamannya lalu berkata "belum ada lembar" — padahal
+    # ada 525 berkas di sana. Ditanya lebih dulu supaya sebab sebenarnya bisa
+    # disampaikan, bukan disamarkan jadi folder kosong.
+    try:
+        os.listdir(folder)
+    except PermissionError as e:
+        raise TakBerizin(folder) from e
+    p = sorted(glob.glob(os.path.join(folder, '*.pdf')),
                key=os.path.getmtime, reverse=True)
     cari = (cari or '').strip().lower()
     if cari:
@@ -193,6 +211,11 @@ color:#fff;font-weight:700;font-size:15px;cursor:pointer}
  text-decoration:none;display:block}
 .mini:disabled{opacity:.5}
 .kabar{margin-top:14px;color:var(--redup);font-size:12.5px;min-height:18px}
+.kotakIzin{background:var(--kartu);border:1px solid var(--tepi);border-radius:12px;
+ padding:16px 18px;margin-top:16px;font-size:14px;line-height:1.7}
+.kotakIzin ol{margin:9px 0 0;padding-left:20px}
+.kotakIzin li{margin-bottom:7px}
+.kotakIzin code{background:var(--bg);padding:2px 6px;border-radius:5px;font-size:13px}
 </style>"""
 
 def bersihkan_cache(maks_berkas=400, maks_hari=30):
@@ -224,10 +247,35 @@ def bersihkan_cache(maks_berkas=400, maks_hari=30):
             except OSError: pass
     return dibuang
 
+def _halaman_izin(folder):
+    """Halaman yang menyebutkan sebab sebenarnya, beserta cara memperbaikinya."""
+    return f"""<!doctype html><meta charset=utf-8><title>Hasil</title>
+<meta name=viewport content="width=device-width,initial-scale=1"><style>{GAYA}
+<div class=b><h1>Mac belum mengizinkan akses folder ini</h1>
+<div class=s>Berkasnya ada, tapi macOS menolak server membacanya:
+<br><code>{html.escape(folder)}</code></div>
+<div class=kotakIzin>
+ <b>Cara memperbaiki, di Mac:</b>
+ <ol>
+  <li>Buka <b>System Settings &rarr; Privacy &amp; Security &rarr; Full Disk Access</b></li>
+  <li>Tekan <b>+</b>, tekan <b>Cmd&nbsp;+&nbsp;Shift&nbsp;+&nbsp;G</b>, ketik
+      <code>/usr/bin/python3</code>, lalu pilih berkas itu</li>
+  <li>Pastikan sakelarnya menyala</li>
+  <li>Jalankan ulang layanannya &mdash; atau nyalakan ulang Mac</li>
+ </ol>
+ <div class=s style="margin:10px 0 0">Ini terjadi karena layanannya dijalankan
+ otomatis oleh macOS saat login. Saat dijalankan dari Terminal, izinnya ikut
+ dari Terminal sehingga tidak pernah terlihat bermasalah.</div>
+</div></div>"""
+
+
 def halaman_daftar(cari=''):
     try: bersihkan_cache()
     except Exception: pass
-    berkas = daftar_pdf(cari=cari)
+    try:
+        berkas = daftar_pdf(cari=cari)
+    except TakBerizin as e:
+        return _halaman_izin(e.folder)
     daftar_p, bawaan = printer()
     try:
         import setelan as _s
