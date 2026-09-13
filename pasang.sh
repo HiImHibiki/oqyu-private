@@ -39,12 +39,18 @@ print -r -- "  ocr-mac/visionocr siap ($(du -h ocr-mac/visionocr | cut -f1))"
 
 print -r -- "
 === Menyiapkan basis data ==="
-if [[ -f exact.db ]]; then
-  print -r -- "  exact.db sudah ada, dibiarkan"
-else
-  python3 - <<'PY'
-import sqlite3
-db = sqlite3.connect('exact.db')
+# Basis datanya TIDAK di folder ini. lokasi.py menaruhnya di
+# ~/Library/Application Support/Exact Worksheet supaya selamat melewati
+# pemasangan ulang aplikasi, dan supaya folder sumber bebas dipindah.
+python3 - <<'PYDB'
+import os, sqlite3, sys
+sys.path.insert(0, os.getcwd())
+import lokasi
+jalur = lokasi.data('exact.db')
+if os.path.isfile(jalur):
+    print(f'  sudah ada, dibiarkan: {jalur}')
+    raise SystemExit(0)
+db = sqlite3.connect(jalur)
 db.executescript("""
   PRAGMA journal_mode=WAL;
   CREATE TABLE IF NOT EXISTS dokumen(id INTEGER PRIMARY KEY, rel TEXT UNIQUE, nama TEXT,
@@ -58,9 +64,9 @@ db.executescript("""
     tokenize='unicode61 remove_diacritics 2');
 """)
 db.commit(); db.close()
-print('  exact.db kosong dibuat (bank soal bisa dibangun kemudian)')
-PY
-fi
+print(f'  basis data kosong dibuat: {jalur}')
+print('  (bank soal bisa dibangun kemudian; fitur sehari-hari tidak memerlukannya)')
+PYDB
 
 mkdir -p "$HOME/Documents/Lembar Kerja"
 chmod +x mulai.sh 2>/dev/null || true

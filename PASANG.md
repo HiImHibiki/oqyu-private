@@ -10,6 +10,19 @@ Tujuannya satu server Python di port 7790 yang mengendalikan Chrome tanpa jendel
 untuk bicara ke Gemini, lalu merender PDF lewat mesin Exact Worksheet Maker yang
 ikut di dalam repo.
 
+Tiga hal terpisah menurut sifatnya — jangan dicampur:
+
+| Apa | Di mana | Sifat |
+|---|---|---|
+| Aplikasi | `/Applications/Exact Worksheet.app` | dijalankan, hanya dibaca |
+| Kode sumber | folder repo (di mana saja) | boleh dipindah kapan saja |
+| Data | `~/Library/Application Support/Exact Worksheet` | `exact.db`, profil Chrome, setelan, naskah |
+
+Pemisahan ini bukan kerapian. `/Applications` tidak dilindungi TCC sedangkan
+`~/Documents` dan `~/Desktop` iya, jadi layanan launchd selalu boleh membaca
+kodenya di sana. Dan data yang berada di luar bundel selamat melewati pemasangan
+ulang aplikasi.
+
 ---
 
 ## 0. Sebelum mulai — yang harus disiapkan pemakai
@@ -63,13 +76,28 @@ cd "<folder proyek>"
 ```
 
 Skrip ini memeriksa kebutuhan, mengompilasi `ocr-mac/visionocr` dengan swiftc, dan
-membuat `exact.db` kosong kalau belum ada.
+membuat basis data kosong di folder data kalau belum ada.
 
 **Verifikasi:**
 
 ```bash
 test -x ocr-mac/visionocr && echo "alat OCR siap"
 ```
+
+Lalu bangun aplikasinya dan pasang ke `/Applications`:
+
+```bash
+./bangun-app.sh
+```
+
+**Verifikasi:**
+
+```bash
+test -d "/Applications/Exact Worksheet.app" && echo "aplikasi terpasang"
+```
+
+Ulangi `./bangun-app.sh` setiap kali kodenya berubah — bundelnya salinan, bukan
+tautan. Datanya tidak ikut tersentuh.
 
 ---
 
@@ -111,6 +139,9 @@ Harus `MASUK`. Kalau `BELUM`, loginnya belum selesai — ulangi, jangan lanjut.
 ```bash
 ./pasang-autostart.sh --lan          # --lan supaya bisa dibuka dari tablet/HP
 ```
+
+Layanannya menunjuk ke `/Applications/Exact Worksheet.app`, bukan ke folder repo —
+jadi setelah ini folder sumbernya boleh dipindah tanpa mematikan apa pun.
 
 Ini memasang dua hal: **server** (hidup tiap login, hidup lagi kalau mati) dan
 **penjaga** (memeriksa tiap 2 menit, menyalakan ulang kalau tidak menyahut dua
