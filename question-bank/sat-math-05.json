@@ -1,0 +1,996 @@
+[
+  {
+    "id": "sat-mth-h01",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The system $\\begin{cases} 6x - 4y = 10 \\\\ 9x + ky = 15 \\end{cases}$ has infinitely many solutions. What is the value of $k$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-6$"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "$-4$"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Infinitely many solutions means the two equations describe the same line, so every term scales by the same factor.\n\nFrom $6 \\to 9$ the factor is $\\dfrac{3}{2}$. Checking the constants: $10 \\times \\dfrac{3}{2} = 15$, which matches. So $k = -4 \\times \\dfrac{3}{2} = -6$.",
+    "distractorRationale": {
+      "B": "Drops the negative sign.",
+      "C": "Copies the coefficient without scaling.",
+      "D": "Correct magnitude, wrong sign."
+    },
+    "tags": [
+      "infinitely-many-solutions",
+      "proportional-equations"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h02",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A worker earns 18 dollars per hour on weekdays and 27 dollars per hour at weekends. In one week the worker put in $x$ weekday hours and $y$ weekend hours, worked no more than 40 hours in total, and earned at least 810 dollars. Which system represents these conditions?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x + y \\ge 40$ and $18x + 27y \\le 810$"
+      },
+      {
+        "id": "B",
+        "text": "$x + y \\le 40$ and $18x + 27y \\ge 810$"
+      },
+      {
+        "id": "C",
+        "text": "$x + y \\le 40$ and $27x + 18y \\ge 810$"
+      },
+      {
+        "id": "D",
+        "text": "$18x + 27y \\le 40$ and $x + y \\ge 810$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "«No more than 40 hours» caps the total, giving $x + y \\le 40$. «At least 810 dollars» sets a floor on earnings, giving $18x + 27y \\ge 810$.\n\nThe rates must stay attached to their own variables: 18 with weekday hours $x$, 27 with weekend hours $y$.",
+    "distractorRationale": {
+      "A": "Reverses both inequality directions.",
+      "C": "Swaps the two pay rates.",
+      "D": "Swaps the roles of the hours constraint and the earnings constraint."
+    },
+    "tags": [
+      "system-of-inequalities",
+      "modelling"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h03",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in two variables",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Line $\\ell$ is perpendicular to the line $2x + 5y = 20$ and passes through $(4, 1)$. What is the $y$-intercept of line $\\ell$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-\\dfrac{3}{5}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{13}{5}$"
+      },
+      {
+        "id": "C",
+        "text": "$-9$"
+      },
+      {
+        "id": "D",
+        "text": "$11$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Rewriting the given line as $y = -\\dfrac{2}{5}x + 4$ shows its slope is $-\\dfrac{2}{5}$. The perpendicular slope is the negative reciprocal, $\\dfrac{5}{2}$.\n\nUsing the point: $1 = \\dfrac{5}{2}(4) + b = 10 + b$, so $b = -9$.",
+    "distractorRationale": {
+      "A": "Uses the original slope rather than the perpendicular one.",
+      "B": "Uses the reciprocal without changing the sign.",
+      "D": "Adds 10 instead of subtracting it."
+    },
+    "tags": [
+      "perpendicular-lines",
+      "y-intercept"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h04",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $\\dfrac{3}{x - 2} = \\dfrac{5}{x + 6}$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 14
+    },
+    "explanation": "Cross-multiplying gives $3(x + 6) = 5(x - 2)$, so $3x + 18 = 5x - 10$.\n\nRearranging: $28 = 2x$, so $x = 14$. Neither denominator is zero at $x = 14$, so the solution is valid.",
+    "tags": [
+      "proportion",
+      "cross-multiplication"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-h05",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "For the linear function $f$, $f(3) = 11$ and $f(7) = 3$. What is $f(10)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5"
+      },
+      {
+        "id": "B",
+        "text": "1"
+      },
+      {
+        "id": "C",
+        "text": "$-1$"
+      },
+      {
+        "id": "D",
+        "text": "$-3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The slope is $\\dfrac{3 - 11}{7 - 3} = \\dfrac{-8}{4} = -2$.\n\nFrom $f(7) = 3$, three more steps of $-2$ give $f(10) = 3 - 6 = -3$.",
+    "distractorRationale": {
+      "A": "Uses a positive slope.",
+      "B": "Uses a slope of $-2$ but only one step.",
+      "C": "Uses two steps instead of three."
+    },
+    "tags": [
+      "linear-function",
+      "extrapolation"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h06",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A cinema sold 240 tickets and took 2,760 dollars. Adult tickets cost 15 dollars and child tickets cost 8 dollars. How many child tickets were sold?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 120
+    },
+    "explanation": "Let $a$ be adult tickets and $c$ child tickets. Then $a + c = 240$ and $15a + 8c = 2760$.\n\nSubstituting $a = 240 - c$ gives $3600 - 15c + 8c = 2760$, so $-7c = -840$ and $c = 120$.",
+    "tags": [
+      "system-of-equations",
+      "ticket-problem"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-h07",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which of the following is equivalent to $\\dfrac{2 - 5x}{3} > 4$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x < -2$"
+      },
+      {
+        "id": "B",
+        "text": "$x < 2$"
+      },
+      {
+        "id": "C",
+        "text": "$x > 2$"
+      },
+      {
+        "id": "D",
+        "text": "$x > -2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Multiplying by 3 gives $2 - 5x > 12$, so $-5x > 10$.\n\nDividing by $-5$ reverses the inequality: $x < -2$.",
+    "distractorRationale": {
+      "B": "Direction reversed correctly but the sign of 2 is wrong.",
+      "C": "Both the sign and the direction are wrong.",
+      "D": "Correct value but the direction was not reversed."
+    },
+    "tags": [
+      "inequality",
+      "sign-reversal"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h08",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $9 - 2x = 1$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4
+    },
+    "explanation": "Subtracting 9 from both sides gives $-2x = -8$, so $x = 4$.",
+    "tags": [
+      "linear-equation",
+      "two-step"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-h09",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The equation $x^2 + 8x + c = 0$ has exactly one real solution. What is the value of $c$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 16
+    },
+    "explanation": "Exactly one real solution means the discriminant is zero: $b^2 - 4ac = 0$.\n\nHere $64 - 4c = 0$, so $c = 16$. The equation becomes $(x+4)^2 = 0$, with the single root $x = -4$.",
+    "tags": [
+      "discriminant",
+      "double-root"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-h10",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A quantity decays so that it is halved every 12 years. What fraction of the original quantity remains after 36 years?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{16}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{8}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{4}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Thirty-six years is three halving periods, since $\\dfrac{36}{12} = 3$.\n\nThree halvings leave $\\left(\\dfrac{1}{2}\\right)^3 = \\dfrac{1}{8}$.",
+    "distractorRationale": {
+      "A": "Uses four halvings.",
+      "C": "Divides by the number of periods rather than halving repeatedly.",
+      "D": "Uses two halvings."
+    },
+    "tags": [
+      "exponential-decay",
+      "half-life"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h11",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $\\dfrac{1}{x} + \\dfrac{1}{x + 3}$ for $x \\ne 0$ and $x \\ne -3$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{x + 3}{x}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{2}{2x + 3}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{2x + 3}{x(x + 3)}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{x(x+3)}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The common denominator is $x(x+3)$. The first fraction becomes $\\dfrac{x+3}{x(x+3)}$ and the second $\\dfrac{x}{x(x+3)}$.\n\nAdding the numerators gives $\\dfrac{2x+3}{x(x+3)}$.",
+    "distractorRationale": {
+      "A": "Divides one fraction by the other.",
+      "B": "Adds numerators and denominators separately, which is not how fractions add.",
+      "D": "Multiplies the fractions instead of adding them."
+    },
+    "tags": [
+      "rational-expressions",
+      "common-denominator"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h12",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $h$ is defined by $h(x) = -2(x + 1)(x - 5)$. At what value of $x$ does $h$ attain its maximum?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 2
+    },
+    "explanation": "The zeros are $x = -1$ and $x = 5$, and a parabola is symmetric about the midpoint of its zeros.\n\nThat midpoint is $\\dfrac{-1 + 5}{2} = 2$. Since the leading coefficient is negative, the parabola opens downwards, so this point is a maximum.",
+    "tags": [
+      "parabola",
+      "axis-of-symmetry"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-h13",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $(3x - 2)^2$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$9x^2 + 4$"
+      },
+      {
+        "id": "B",
+        "text": "$9x^2 - 4$"
+      },
+      {
+        "id": "C",
+        "text": "$9x^2 - 6x + 4$"
+      },
+      {
+        "id": "D",
+        "text": "$9x^2 - 12x + 4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Squaring a binomial gives $a^2 - 2ab + b^2$: here $9x^2 - 2(3x)(2) + 4 = 9x^2 - 12x + 4$.",
+    "distractorRationale": {
+      "A": "Same error with a sign mistake as well.",
+      "B": "Squares each term separately and drops the middle term.",
+      "C": "Halves the middle term."
+    },
+    "tags": [
+      "binomial-square",
+      "expanding"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h14",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the positive solution to $x^2 - 6x = 16$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "Rearranging gives $x^2 - 6x - 16 = 0$, which factors as $(x - 8)(x + 2) = 0$.\n\nThe roots are 8 and $-2$; the positive one is 8.",
+    "tags": [
+      "quadratic",
+      "factoring"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-h15",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $f(x) = 3x - 1$ and $g(x) = x^2$, what is $f(g(2))$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11"
+      },
+      {
+        "id": "B",
+        "text": "5"
+      },
+      {
+        "id": "C",
+        "text": "25"
+      },
+      {
+        "id": "D",
+        "text": "36"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Work from the inside out: $g(2) = 4$, then $f(4) = 3(4) - 1 = 11$.",
+    "distractorRationale": {
+      "B": "Computes $f(2)$ only.",
+      "C": "Computes $g(f(2))$, applying the functions in the wrong order.",
+      "D": "Squares the result of $f(2)$ incorrectly."
+    },
+    "tags": [
+      "function-composition",
+      "order"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h16",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Percentages",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "After a 25% increase, a subscription costs 60 dollars per year. The provider then reduces the new price by 10%. What is the final price, in dollars?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 54
+    },
+    "explanation": "The 10% reduction applies to the current price of 60, not the original.\n\nSo the final price is $60 \\times 0.9 = 54$. The original price of 48 is not needed for the answer.",
+    "tags": [
+      "percentage-change",
+      "correct-base"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-h17",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "One-variable data",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Two data sets have the same mean. Set P is 18, 19, 20, 21, 22 and set Q is 10, 15, 20, 25, 30. Which statement is true?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The two sets have equal standard deviations."
+      },
+      {
+        "id": "B",
+        "text": "Set Q has the larger standard deviation."
+      },
+      {
+        "id": "C",
+        "text": "Set P has the larger standard deviation."
+      },
+      {
+        "id": "D",
+        "text": "Standard deviation cannot be compared without more information."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Both sets have mean 20. Standard deviation measures spread about the mean.\n\nSet P's values sit within 2 of the mean; set Q's spread out to 10 away. Set Q is far more dispersed, so its standard deviation is larger.",
+    "distractorRationale": {
+      "A": "Equal means do not imply equal spread.",
+      "C": "Set P is the tightly clustered one.",
+      "D": "Both full data sets are given, so the comparison can be made."
+    },
+    "tags": [
+      "standard-deviation",
+      "spread"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h18",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Inference from sample statistics",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A researcher surveys 200 randomly selected members of a sports club about a proposed fee change. Which conclusion is best supported by the results?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "A conclusion about all sports club members in the country"
+      },
+      {
+        "id": "B",
+        "text": "A conclusion about all residents of the city"
+      },
+      {
+        "id": "C",
+        "text": "A conclusion about all members of that sports club"
+      },
+      {
+        "id": "D",
+        "text": "A conclusion about the 200 surveyed members only"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "A random sample supports inference about the population it was drawn from — here, the membership of that one club.\n\nRandom selection is what licenses generalising beyond the individuals surveyed, so restricting the conclusion to those 200 discards the value of the design.",
+    "distractorRationale": {
+      "A": "The sample came from one club, not from clubs nationally.",
+      "B": "Non-members were never sampled.",
+      "D": "Understates what a random sample supports."
+    },
+    "tags": [
+      "sampling",
+      "generalisability"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h19",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Ratios, rates, proportional relationships, units",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A map uses a scale of 1 centimetre to 4.5 kilometres. Two towns are 14 centimetres apart on the map. What is the actual distance between them, in kilometres?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 63
+    },
+    "explanation": "Each centimetre stands for 4.5 kilometres, so $14 \\times 4.5 = 63$ kilometres.",
+    "tags": [
+      "scale",
+      "proportion"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-h20",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Circles",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A circle has centre $(3, -1)$ and passes through $(7, 2)$. What is its radius?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "The radius is the distance from the centre to the point on the circle: $\\sqrt{(7-3)^2 + (2-(-1))^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5$.",
+    "tags": [
+      "circle",
+      "distance-formula"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-h21",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Area and volume",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A cube's edge length is tripled. By what factor does its volume increase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9"
+      },
+      {
+        "id": "B",
+        "text": "3"
+      },
+      {
+        "id": "C",
+        "text": "81"
+      },
+      {
+        "id": "D",
+        "text": "27"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Volume depends on the cube of the edge: if the edge becomes $3s$, the volume becomes $(3s)^3 = 27s^3$.\n\nSo the volume increases by a factor of 27.",
+    "distractorRationale": {
+      "A": "The factor for an area.",
+      "B": "The factor for a length, not a volume.",
+      "C": "Comes from raising 3 to the fourth power."
+    },
+    "tags": [
+      "scaling",
+      "volume"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-h22",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangles and trigonometry",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In right triangle $ABC$, the right angle is at $C$. If $\\sin A = \\cos B$, which statement must be true?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The relationship always holds, because angles $A$ and $B$ are complementary."
+      },
+      {
+        "id": "B",
+        "text": "The relationship holds only when angle $A$ is larger than angle $B$."
+      },
+      {
+        "id": "C",
+        "text": "Angles $A$ and $B$ must each measure 45 degrees."
+      },
+      {
+        "id": "D",
+        "text": "The triangle must be equilateral."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "In a right triangle the two acute angles sum to 90 degrees, so they are complementary.\n\nFor complementary angles, the sine of one equals the cosine of the other. The relationship therefore holds for every right triangle, whatever the acute angles happen to be.",
+    "distractorRationale": {
+      "B": "The relationship does not depend on which acute angle is larger.",
+      "C": "Equal angles are one case, not a requirement.",
+      "D": "An equilateral triangle has no right angle."
+    },
+    "tags": [
+      "complementary-angles",
+      "sine-cosine"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

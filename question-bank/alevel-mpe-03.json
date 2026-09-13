@@ -1,0 +1,688 @@
+[
+  {
+    "id": "al-mth-k01",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Quadratics",
+    "skill": "Completing the square",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The curve $y = x^2 + 8x + 3$ has a minimum point. Find the $y$-coordinate of that minimum point.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": -13
+    },
+    "explanation": "Complete the square: $x^2 + 8x + 3 = (x + 4)^2 - 16 + 3 = (x + 4)^2 - 13$.\\n\\nA square is never negative, so the smallest value the expression can take is $-13$, reached when $x = -4$. The completed square form gives the vertex directly, without differentiating.",
+    "tags": [
+      "completing-the-square",
+      "minimum-point"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-mth-k02",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Trigonometry",
+    "skill": "Equations",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Solve $2\\sin x = 1$ for $0^\\circ \\le x \\le 90^\\circ$. Give $x$ in degrees.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 30
+    },
+    "explanation": "Divide by 2: $\\sin x = \\dfrac{1}{2}$. Within the interval $0^\\circ$ to $90^\\circ$ the sine function increases from 0 to 1 and takes the value $\\tfrac{1}{2}$ exactly once, at $x = 30^\\circ$.\\n\\nThe second solution of $\\sin x = \\tfrac{1}{2}$, namely $150^\\circ$, lies outside the stated interval and is therefore rejected.",
+    "tags": [
+      "trigonometric-equation",
+      "exact-value"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-mth-k03",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Circular measure",
+    "skill": "Arc length & sector area",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A sector of a circle has radius $8\\ \\text{cm}$ and angle $0.75$ radians at the centre. Find the arc length in cm as {{n1}} and the sector area in $\\text{cm}^2$ as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "arc length in cm"
+      },
+      {
+        "id": "n2",
+        "label": "sector area in cm^2"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 6
+        },
+        {
+          "key": "n2",
+          "value": 24
+        }
+      ]
+    },
+    "explanation": "With the angle in radians the formulae are direct: arc length $s = r\\theta = 8 \\times 0.75 = 6\\ \\text{cm}$, and area $A = \\tfrac{1}{2}r^2\\theta = \\tfrac{1}{2} \\times 64 \\times 0.75 = 24\\ \\text{cm}^2$.\\n\\nBoth formulae hold only for radians; converting to degrees first and using the degree versions is a common and avoidable detour.",
+    "tags": [
+      "radians",
+      "sector"
+    ],
+    "estimatedTimeSec": 180,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-mth-k04",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Quadratics",
+    "skill": "Discriminant",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The equation $x^2 + kx + 9 = 0$ has two equal roots, and $k$ is positive. Find $k$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 6
+    },
+    "explanation": "Equal roots mean the discriminant is zero: $b^2 - 4ac = 0$, so $k^2 - 4(1)(9) = 0$ and $k^2 = 36$.\\n\\nThat gives $k = 6$ or $k = -6$; the question restricts $k$ to positive values, so $k = 6$. Both values are genuine solutions of the discriminant condition, which is why the restriction is stated.",
+    "tags": [
+      "discriminant",
+      "equal-roots"
+    ],
+    "estimatedTimeSec": 170,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-mth-k05",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Coordinate geometry",
+    "skill": "Circles",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A circle has equation $x^2 + y^2 - 6x + 4y - 12 = 0$. Find its radius.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "Complete the square in both variables: $(x - 3)^2 - 9 + (y + 2)^2 - 4 - 12 = 0$, so $(x - 3)^2 + (y + 2)^2 = 25$.\\n\\nComparing with $(x - a)^2 + (y - b)^2 = r^2$ gives centre $(3, -2)$ and radius $r = 5$. Note that the radius is $\\sqrt{25}$, not 25 itself.",
+    "tags": [
+      "circle-equation",
+      "completing-the-square"
+    ],
+    "estimatedTimeSec": 180,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-mth-k06",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Series",
+    "skill": "Binomial expansion",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Find the coefficient of $x^3$ in the expansion of $(1 + 2x)^5$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 80
+    },
+    "explanation": "The general term is $\\binom{5}{r}(2x)^r$. For $x^3$ take $r = 3$: $\\binom{5}{3}(2)^3 = 10 \\times 8 = 80$.\\n\\nThe factor $2^3$ is where marks are usually lost — the 2 is part of the term being raised to the power, not a multiplier left outside it.",
+    "tags": [
+      "binomial-expansion",
+      "coefficient"
+    ],
+    "estimatedTimeSec": 180,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-mth-k07",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Series",
+    "skill": "GP",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A geometric progression has first term $12$ and common ratio $\\dfrac{1}{4}$. Find its sum to infinity.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 16
+    },
+    "explanation": "The sum to infinity exists because $|r| < 1$. Using $S_\\infty = \\dfrac{a}{1 - r} = \\dfrac{12}{1 - \\tfrac{1}{4}} = \\dfrac{12}{\\tfrac{3}{4}} = 16$.\\n\\nThe answer is larger than the first term, as it must be: every later term adds something, however small.",
+    "tags": [
+      "geometric-progression",
+      "sum-to-infinity"
+    ],
+    "estimatedTimeSec": 170,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-mth-k08",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Integration",
+    "skill": "Volume of revolution",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The region bounded by $y = \\sqrt{x}$, the $x$-axis and the line $x = 4$ is rotated completely about the $x$-axis. The volume of the solid formed is $k\\pi$. Find $k$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "The volume of revolution about the $x$-axis is $V = \\pi \\int_0^4 y^2\\,dx$. Here $y^2 = x$, so $V = \\pi \\int_0^4 x\\,dx = \\pi\\left[\\dfrac{x^2}{2}\\right]_0^4 = \\pi \\times 8$.\\n\\nSquaring $y$ first is the step that matters: the integrand is $y^2$, not $y$, so the square root disappears before integrating and the integral becomes elementary. Hence $k = 8$.",
+    "tags": [
+      "volume-of-revolution",
+      "definite-integral"
+    ],
+    "estimatedTimeSec": 300,
+    "points": 6,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-phy-k01",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Kinematics & Dynamics",
+    "skill": "Motion graphs",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A car travels $150\\ \\text{m}$ in $12\\ \\text{s}$. Calculate its average speed, in $\\text{m}\\,\\text{s}^{-1}$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 12.5
+    },
+    "explanation": "Average speed is total distance divided by total time: $\\dfrac{150}{12} = 12.5\\ \\text{m}\\,\\text{s}^{-1}$.\\n\\nThis is an average over the whole journey; the instantaneous speed may have been higher or lower at any moment, which is exactly what the gradient of a distance-time graph would show.",
+    "tags": [
+      "average-speed",
+      "kinematics"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-phy-k02",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Electricity",
+    "skill": "Current & p.d.",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A current of $0.25\\ \\text{A}$ flows through a lamp for $60\\ \\text{s}$. Calculate the charge that passes through the lamp, in coulombs.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 15
+    },
+    "explanation": "Charge is current multiplied by time: $Q = It = 0.25 \\times 60 = 15\\ \\text{C}$.\\n\\nThe definition works because current is the rate of flow of charge; one ampere is one coulomb per second, so the units follow directly from the equation.",
+    "tags": [
+      "charge",
+      "current"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-phy-k03",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Kinematics & Dynamics",
+    "skill": "Motion graphs",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A body starts from rest and accelerates uniformly at $2.5\\ \\text{m}\\,\\text{s}^{-2}$ for $8.0\\ \\text{s}$. Calculate the distance travelled, in metres.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 80
+    },
+    "explanation": "With $u = 0$, the equation $s = ut + \\tfrac{1}{2}at^2$ reduces to $s = \\tfrac{1}{2}at^2 = \\tfrac{1}{2} \\times 2.5 \\times 64 = 80\\ \\text{m}$.\\n\\nA check: the final speed is $at = 20\\ \\text{m}\\,\\text{s}^{-1}$, so the average speed is $10\\ \\text{m}\\,\\text{s}^{-1}$ and the distance is $10 \\times 8.0 = 80\\ \\text{m}$. The two routes agree because the acceleration is uniform.",
+    "tags": [
+      "suvat",
+      "uniform-acceleration"
+    ],
+    "estimatedTimeSec": 200,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-phy-k04",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Forces & Energy",
+    "skill": "Work-energy",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A car of mass $1500\\ \\text{kg}$ travels at $20\\ \\text{m}\\,\\text{s}^{-1}$. Calculate its kinetic energy, in kilojoules.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 300
+    },
+    "explanation": "Kinetic energy is $E_k = \\tfrac{1}{2}mv^2 = \\tfrac{1}{2} \\times 1500 \\times 20^2 = \\tfrac{1}{2} \\times 1500 \\times 400 = 300\\,000\\ \\text{J}$, which is $300\\ \\text{kJ}$.\\n\\nThe square on the speed is what matters physically: doubling the speed quadruples the kinetic energy, and therefore roughly quadruples the braking distance.",
+    "tags": [
+      "kinetic-energy",
+      "unit-conversion"
+    ],
+    "estimatedTimeSec": 200,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-phy-k05",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Waves",
+    "skill": "Progressive waves",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A sound wave of frequency $850\\ \\text{Hz}$ travels through air at $340\\ \\text{m}\\,\\text{s}^{-1}$. Calculate its wavelength, in metres.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 0.4
+    },
+    "explanation": "Use the wave equation $v = f\\lambda$, so $\\lambda = \\dfrac{v}{f} = \\dfrac{340}{850} = 0.40\\ \\text{m}$.\\n\\nWhen this sound passes into another medium its speed and wavelength both change, but the frequency does not — the frequency is set by the source.",
+    "tags": [
+      "wave-equation",
+      "wavelength"
+    ],
+    "estimatedTimeSec": 200,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-phy-k06",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Electricity",
+    "skill": "D.C. circuits",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A $6.0\\ \\Omega$ resistor and a $3.0\\ \\Omega$ resistor are connected in parallel across a battery of e.m.f. $12\\ \\text{V}$ and negligible internal resistance. Enter the combined resistance in $\\Omega$ as {{n1}} and the total current drawn from the battery in A as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "combined resistance in ohms"
+      },
+      {
+        "id": "n2",
+        "label": "total current in A"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 2
+        },
+        {
+          "key": "n2",
+          "value": 6
+        }
+      ]
+    },
+    "explanation": "For resistors in parallel, $\\dfrac{1}{R} = \\dfrac{1}{6.0} + \\dfrac{1}{3.0} = \\dfrac{1}{6.0} + \\dfrac{2}{6.0} = \\dfrac{3}{6.0}$, so $R = 2.0\\ \\Omega$.\\n\\nThe total current is then $I = \\dfrac{V}{R} = \\dfrac{12}{2.0} = 6.0\\ \\text{A}$. As a check, each resistor has the full $12\\ \\text{V}$ across it, giving $2.0\\ \\text{A}$ and $4.0\\ \\text{A}$, which sum to $6.0\\ \\text{A}$.\\n\\nNote that the combined resistance is smaller than either resistor — adding a parallel path always gives the current somewhere else to go.",
+    "tags": [
+      "parallel-resistors",
+      "ohms-law"
+    ],
+    "estimatedTimeSec": 330,
+    "points": 6,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-eco-k01",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Microeconomics",
+    "skill": "Elasticity",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "The price of a good rises by $10\\%$ and the quantity demanded falls by $5\\%$. What is the price elasticity of demand, and what does it imply for the producer's total revenue?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-2.0$; demand is elastic, so total revenue falls"
+      },
+      {
+        "id": "B",
+        "text": "$-0.5$; demand is inelastic, so total revenue rises"
+      },
+      {
+        "id": "C",
+        "text": "$-0.5$; demand is elastic, so total revenue falls"
+      },
+      {
+        "id": "D",
+        "text": "$-2.0$; demand is inelastic, so total revenue rises"
+      }
+    ],
+    "distractorRationale": {
+      "A": "Divides price change by quantity change, inverting the formula.",
+      "C": "Computes the elasticity correctly but calls a magnitude below 1 elastic.",
+      "D": "Inverts the formula and then mislabels the result."
+    },
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Price elasticity of demand is the percentage change in quantity divided by the percentage change in price: $\\dfrac{-5}{+10} = -0.5$. A magnitude below 1 means demand is price inelastic.\\n\\nWhen demand is inelastic, quantity falls proportionally less than price rises, so total revenue increases — here by roughly $10\\% - 5\\% = 5\\%$.",
+    "tags": [
+      "elasticity",
+      "total-revenue"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 2,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-eco-k02",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Macroeconomics",
+    "skill": "AD/AS",
+    "difficulty": "E",
+    "irtB": -0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An economy is operating with substantial spare capacity. The government increases spending on infrastructure. What is the most likely short-run effect?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Real output is unchanged and the price level rises sharply"
+      },
+      {
+        "id": "B",
+        "text": "Both real output and the price level fall"
+      },
+      {
+        "id": "C",
+        "text": "Aggregate supply shifts left, reducing output"
+      },
+      {
+        "id": "D",
+        "text": "Real output rises with only a small rise in the price level"
+      }
+    ],
+    "distractorRationale": {
+      "A": "Describes what happens when the economy is already at full capacity.",
+      "B": "Would follow from a fall in aggregate demand, not a rise.",
+      "C": "Government spending is a component of aggregate demand, not of aggregate supply."
+    },
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "With spare capacity the short-run aggregate supply curve is relatively flat: firms can raise output without bidding up wages and input prices much. An increase in government spending shifts aggregate demand to the right, so real output and employment rise while the price level rises only modestly.\\n\\nThe same policy applied at full capacity would do the opposite — almost all of the effect would land on prices.",
+    "tags": [
+      "aggregate-demand",
+      "spare-capacity"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 2,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-eco-k03",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Microeconomics",
+    "skill": "Market failure",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A government is considering a specific tax on sugary drinks. Health officials estimate that treating conditions linked to their consumption costs the public health service $1.2\\text{bn}$ a year. In a neighbouring country, a similar tax raised the average retail price by $18$ per cent, after which sales volumes fell by $8$ per cent in the first year."
+    },
+    "stem": "With reference to the data, explain how a specific tax on sugary drinks is intended to correct the market failure, and discuss one reason it may fail to do so. [8 marks]",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "Identifies the market failure",
+          "points": 2,
+          "descriptor": "States that consumption generates external costs — here the healthcare costs of $1.2\\text{bn}$ — so the marginal social cost exceeds the marginal private cost and the free-market quantity is above the socially optimal one."
+        },
+        {
+          "criterion": "Explains the mechanism of the tax",
+          "points": 3,
+          "descriptor": "Explains that a specific tax raises the supply price by a fixed amount per unit, shifting supply upward and raising the price paid; the intention is to make the private cost equal the social cost so that consumption falls towards the optimum."
+        },
+        {
+          "criterion": "Evaluates one limitation using the data",
+          "points": 3,
+          "descriptor": "Uses the low elasticity implied by the data — an $18\\%$ price rise producing only an $8\\%$ fall in volume — to argue that consumption falls little, so the tax raises revenue and burdens consumers more than it corrects behaviour. Substitution to untaxed drinks or reformulation may also be credited."
+        }
+      ],
+      "exemplar": "The market fails because consumption of sugary drinks imposes costs on people other than the buyer. The data put the associated healthcare cost at $1.2\\text{bn}$ a year, met by the taxpayer rather than by the consumer. Marginal social cost therefore exceeds marginal private cost, and the free market produces more than the socially optimal quantity.\\n\\nA specific tax of a fixed amount per litre shifts the supply curve vertically upward by the amount of the tax. The equilibrium price rises and the quantity traded falls. If the tax is set equal to the external cost per unit, the private cost the consumer faces becomes the full social cost, and consumption falls to the socially optimal level. This is internalising the externality.\\n\\nThe data suggest the correction is weak. An $18$ per cent rise in price produced only an $8$ per cent fall in volume, which implies a price elasticity of demand of about $-0.44$. Demand is inelastic, so most of the tax is passed to consumers as a higher price rather than expressed as reduced consumption. The tax then works mainly as a revenue raiser, and because low-income households spend a larger share of income on such goods, it is also regressive. Whether it is still worthwhile depends on whether the revenue is used to offset the external cost — and on whether producers respond by reformulating their drinks, which the data do not tell us."
+    },
+    "explanation": "A full answer needs three things: the externality named and located in the data, the mechanism of a specific tax explained through the supply curve, and an evaluation grounded in the elasticity the data imply rather than asserted in general terms.",
+    "tags": [
+      "externalities",
+      "indirect-tax",
+      "elasticity"
+    ],
+    "estimatedTimeSec": 900,
+    "points": 8,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-eco-k04",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Macroeconomics",
+    "skill": "Trade & exchange rates",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Over one year a country's currency depreciated by $15$ per cent against those of its main trading partners. Six months later, the country's trade deficit had widened from $2.1\\text{bn}$ to $2.6\\text{bn}$. Around $70$ per cent of the country's imports are components used by its own exporters."
+    },
+    "stem": "Explain how the depreciation described might affect the country's trade balance, and discuss why the effect may not appear immediately. [8 marks]",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "Explains the price effect of depreciation",
+          "points": 3,
+          "descriptor": "States that a weaker currency makes exports cheaper in foreign currency and imports dearer in domestic currency, so export volumes are expected to rise and import volumes to fall."
+        },
+        {
+          "criterion": "Applies the elasticity condition",
+          "points": 3,
+          "descriptor": "Recognises that the trade balance improves only if demand is sufficiently price elastic — the Marshall-Lerner condition, that the elasticities of demand for exports and imports sum to more than one in magnitude."
+        },
+        {
+          "criterion": "Explains the delay",
+          "points": 2,
+          "descriptor": "Explains the J-curve: contracts are already agreed and volumes adjust slowly, so in the short run the higher import prices dominate and the balance worsens before it improves."
+        }
+      ],
+      "exemplar": "A depreciation of $15$ per cent means each unit of domestic currency buys less foreign currency. Exports priced in domestic currency become cheaper to foreign buyers, so foreign demand for them should rise. Imports priced in foreign currency become dearer at home, so domestic demand for them should fall. Both movements point towards an improvement in the trade balance.\\n\\nWhether the balance actually improves depends on how responsive those quantities are. The trade balance is price multiplied by quantity, and the depreciation moves prices in an unhelpful direction for imports: each imported unit now costs more. Only if the volumes respond strongly enough will the value effect be outweighed. Formally, the sum of the magnitudes of the price elasticities of demand for exports and imports must exceed one.\\n\\nThe data show the delay clearly. Six months after the depreciation the deficit had widened, not narrowed. In the short run, contracts are already signed at agreed volumes, buyers need time to find new suppliers, and firms need time to expand export capacity. So quantities barely move while import prices have already risen, and the balance worsens. As contracts are renewed and buyers switch, volumes adjust and the balance improves — the J-curve. The extent of the eventual improvement still depends on whether the economy has spare capacity to produce the extra exports."
+    },
+    "explanation": "The answer must separate the price effect from the volume effect. Depreciation improves the trade balance only if volumes respond enough to outweigh dearer imports, which is why the elasticity condition and the delay are both examinable rather than incidental.",
+    "tags": [
+      "depreciation",
+      "marshall-lerner",
+      "j-curve"
+    ],
+    "estimatedTimeSec": 900,
+    "points": 8,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  }
+]

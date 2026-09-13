@@ -1,0 +1,587 @@
+[
+  {
+    "id": "al-sample-math-01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Differentiation",
+    "skill": "Stationary points",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A curve has equation $y = x^{3} - 6x^{2} + 9x + 2$.\n\n**(a)** Find the $x$-coordinates of the two stationary points of the curve. **[3]**\n\n**(b)** Determine the $y$-coordinate of the local maximum. **[2]**",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "x1",
+        "label": "(a) smaller x-coordinate"
+      },
+      {
+        "id": "x2",
+        "label": "(a) larger x-coordinate"
+      },
+      {
+        "id": "ymax",
+        "label": "(b) y at the local maximum"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "x1",
+          "value": 1
+        },
+        {
+          "key": "x2",
+          "value": 3
+        },
+        {
+          "key": "ymax",
+          "value": 6
+        }
+      ]
+    },
+    "explanation": "**(a)** Differentiate: $\\dfrac{dy}{dx} = 3x^{2} - 12x + 9$ (M1). Set it to zero and factorise: $3(x^{2} - 4x + 3) = 3(x-1)(x-3) = 0$ (M1), giving $x = 1$ and $x = 3$ (A1).\n\n**(b)** The second derivative is $\\dfrac{d^{2}y}{dx^{2}} = 6x - 12$. At $x = 1$ this equals $-6 < 0$, so $x = 1$ is the maximum (M1). Substituting: $y = 1 - 6 + 9 + 2 = 6$ (A1).\n\nA sign test on $\\dfrac{dy}{dx}$ either side of $x = 1$ earns the same M1 as the second-derivative test.",
+    "hints": [
+      "Titik stasioner berarti $\\dfrac{dy}{dx} = 0$.",
+      "Turunan kedua yang bernilai negatif menandai titik maksimum."
+    ],
+    "formulaRefs": [
+      "alevel_mf19"
+    ],
+    "tags": [
+      "stationary-points",
+      "second-derivative-test"
+    ],
+    "estimatedTimeSec": 450,
+    "points": 5,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-sample-math-02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Circular measure",
+    "skill": "Arc length & sector area",
+    "difficulty": "H",
+    "irtB": 0.85,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The diagram shows a sector $OAB$ of a circle with centre $O$, radius $8\\ \\mathrm{cm}$ and angle $AOB = 0.75$ radians. The chord $AB$ divides the sector into a triangle $OAB$ and a segment.\n\n**(a)** Find the length of the arc $AB$. **[2]**\n\n**(b)** Find the area of the sector $OAB$. **[2]**\n\n**(c)** Show that the area of the segment is $24 - 32\\sin 0.75$. **[2]**",
+    "type": "essay_rubric",
+    "figure": {
+      "kind": "geometry",
+      "alt": "A sector OAB of a circle with centre O at the lower left. Two radii of length 8 cm run to points A and B, and the angle between them at O is 0.75 radians. The chord AB is drawn, separating a triangle from the shaded segment beyond the chord.",
+      "viewBox": [
+        0,
+        0,
+        280,
+        200
+      ],
+      "elements": [
+        {
+          "t": "line",
+          "from": [
+            40,
+            170
+          ],
+          "to": [
+            230,
+            170
+          ]
+        },
+        {
+          "t": "line",
+          "from": [
+            40,
+            170
+          ],
+          "to": [
+            178,
+            40
+          ]
+        },
+        {
+          "t": "arc",
+          "c": [
+            40,
+            170
+          ],
+          "r": 190,
+          "start": -0.75,
+          "end": 0
+        },
+        {
+          "t": "line",
+          "from": [
+            230,
+            170
+          ],
+          "to": [
+            178,
+            40
+          ],
+          "dashed": true
+        },
+        {
+          "t": "angle",
+          "at": [
+            40,
+            170
+          ],
+          "from": [
+            230,
+            170
+          ],
+          "to": [
+            178,
+            40
+          ],
+          "label": "0.75 rad"
+        },
+        {
+          "t": "point",
+          "at": [
+            40,
+            170
+          ],
+          "label": "O"
+        },
+        {
+          "t": "point",
+          "at": [
+            230,
+            170
+          ],
+          "label": "A"
+        },
+        {
+          "t": "point",
+          "at": [
+            178,
+            40
+          ],
+          "label": "B"
+        },
+        {
+          "t": "label",
+          "at": [
+            135,
+            186
+          ],
+          "text": "8 cm"
+        }
+      ]
+    },
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "B1",
+          "points": 1,
+          "descriptor": "Uses $s = r\\theta$ with $r = 8$ and $\\theta = 0.75$"
+        },
+        {
+          "criterion": "A1",
+          "points": 1,
+          "descriptor": "Obtains arc length $= 6\\ \\mathrm{cm}$"
+        },
+        {
+          "criterion": "B1",
+          "points": 1,
+          "descriptor": "Uses $A = \\tfrac12 r^{2}\\theta$"
+        },
+        {
+          "criterion": "A1",
+          "points": 1,
+          "descriptor": "Obtains sector area $= 24\\ \\mathrm{cm^{2}}$"
+        },
+        {
+          "criterion": "M1",
+          "points": 1,
+          "descriptor": "Uses triangle area $= \\tfrac12 r^{2}\\sin\\theta$ and subtracts it from the sector area"
+        },
+        {
+          "criterion": "A1",
+          "points": 1,
+          "descriptor": "Reaches $24 - 32\\sin 0.75$ with the working shown (answer given, so working must be complete)"
+        }
+      ],
+      "exemplar": "(a) Arc length $s = r\\theta = 8 \\times 0.75 = 6\\ \\mathrm{cm}$.\n\n(b) Sector area $= \\tfrac12 r^{2}\\theta = \\tfrac12 \\times 8^{2} \\times 0.75 = \\tfrac12 \\times 64 \\times 0.75 = 24\\ \\mathrm{cm^{2}}$.\n\n(c) Area of triangle $OAB = \\tfrac12 r^{2}\\sin\\theta = \\tfrac12 \\times 64 \\times \\sin 0.75 = 32\\sin 0.75$.\n\nArea of segment $=$ area of sector $-$ area of triangle $= 24 - 32\\sin 0.75$, as required."
+    },
+    "explanation": "Bagian (c) adalah soal **'show that'**: hasil akhirnya sudah diberikan, sehingga nilai hanya diperoleh bila seluruh langkahnya ditulis. Menuliskan jawaban akhir tanpa penurunan tidak mendapat mark.\n\nDua jebakan yang paling sering: (1) memakai rumus derajat $\\tfrac{\\theta}{360}\\times\\pi r^{2}$ padahal sudutnya dalam radian, dan (2) menghitung $\\sin 0.75$ dengan kalkulator dalam mode derajat. Seluruh topik Circular measure di 9709 memakai radian.",
+    "formulaRefs": [
+      "alevel_mf19"
+    ],
+    "tags": [
+      "radians",
+      "sector-and-segment",
+      "show-that"
+    ],
+    "estimatedTimeSec": 540,
+    "points": 6,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-sample-phys-01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Electricity",
+    "skill": "D.C. circuits",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A battery of electromotive force $12.0\\ \\mathrm{V}$ and internal resistance $0.60\\ \\Omega$ is connected to two resistors of resistance $4.0\\ \\Omega$ and $6.0\\ \\Omega$ joined in parallel.\n\n**(a)** Calculate the combined resistance of the parallel arrangement. **[2]**\n\n**(b)** Calculate the current supplied by the battery. **[2]**\n\n**(c)** Calculate the terminal potential difference of the battery. **[1]**\n\nGive each answer to two significant figures.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "rp",
+        "label": "(a) combined parallel resistance",
+        "unit": "Ω"
+      },
+      {
+        "id": "i",
+        "label": "(b) current from battery",
+        "unit": "A"
+      },
+      {
+        "id": "vt",
+        "label": "(c) terminal potential difference",
+        "unit": "V"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "rp",
+          "value": 2.4,
+          "tolerance": 0.05
+        },
+        {
+          "key": "i",
+          "value": 4,
+          "tolerance": 0.05
+        },
+        {
+          "key": "vt",
+          "value": 9.6,
+          "tolerance": 0.1
+        }
+      ]
+    },
+    "explanation": "**(a)** For resistors in parallel, $\\dfrac{1}{R_p} = \\dfrac{1}{4.0} + \\dfrac{1}{6.0} = \\dfrac{3+2}{12} = \\dfrac{5}{12}$ (M1), so $R_p = 2.4\\ \\Omega$ (A1).\n\n**(b)** The internal resistance is in series with $R_p$, so the total circuit resistance is $2.4 + 0.60 = 3.0\\ \\Omega$ (M1). Then $I = \\dfrac{E}{R_{\\text{total}}} = \\dfrac{12.0}{3.0} = 4.0\\ \\mathrm{A}$ (A1).\n\n**(c)** Terminal p.d. $= E - Ir = 12.0 - (4.0)(0.60) = 12.0 - 2.4 = 9.6\\ \\mathrm{V}$ (A1). Equivalently, $V = IR_p = 4.0 \\times 2.4 = 9.6\\ \\mathrm{V}$.\n\n**Kesalahan yang paling sering:** melupakan hambatan dalam pada bagian (b) sehingga memperoleh $I = 12.0/2.4 = 5.0\\ \\mathrm{A}$, lalu menyimpulkan terminal p.d. sama dengan ggl. Di 9702, satuan wajib ditulis — jawaban tanpa satuan kehilangan mark akurasinya.",
+    "formulaRefs": [
+      "alevel_physics"
+    ],
+    "tags": [
+      "internal-resistance",
+      "parallel-combination",
+      "terminal-pd"
+    ],
+    "estimatedTimeSec": 450,
+    "points": 5,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-sample-phys-02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Waves",
+    "skill": "Superposition",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A stationary wave is formed on a stretched string fixed at both ends.\n\nExplain, in terms of the superposition of waves, why the string has points that never move (nodes) and points that oscillate with maximum amplitude (antinodes). **[4]**",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "B1",
+          "points": 1,
+          "descriptor": "States that two waves of the same frequency and (approximately) equal amplitude travel in opposite directions along the string"
+        },
+        {
+          "criterion": "B1",
+          "points": 1,
+          "descriptor": "States that the two waves superpose / their displacements add at every point"
+        },
+        {
+          "criterion": "B1",
+          "points": 1,
+          "descriptor": "Node: the two waves are always in antiphase (path difference an odd number of half-wavelengths), so displacements cancel — destructive superposition"
+        },
+        {
+          "criterion": "B1",
+          "points": 1,
+          "descriptor": "Antinode: the two waves are always in phase, so displacements add — constructive superposition giving maximum amplitude"
+        }
+      ],
+      "exemplar": "The wave sent along the string reflects at the fixed end and travels back, so two waves of the same frequency and nearly equal amplitude move through each other in opposite directions.\n\nWhere they meet, their displacements superpose — that is, the displacements add at every instant.\n\nAt certain fixed positions the two waves always arrive in antiphase, because the path difference between them is an odd number of half-wavelengths. Their displacements are equal and opposite at all times, so they cancel completely and the string never moves there. These are the nodes.\n\nHalfway between them the two waves always arrive in phase, so their displacements reinforce. The resultant amplitude is twice that of either wave, and these points oscillate with maximum amplitude. These are the antinodes."
+    },
+    "explanation": "Soal `Explain` di 9702 menilai **butir fisika yang berbeda**, bukan panjang jawaban. Empat mark di sini menuntut empat gagasan berbeda: dua gelombang berlawanan arah, superposisi, penjelasan node, dan penjelasan antinode.\n\nJawaban yang gagal biasanya mengulang gagasan yang sama dengan kata berbeda ('gelombang bertemu lalu saling meniadakan' tiga kali) atau hanya menyebut istilah *konstruktif* dan *destruktif* tanpa menjelaskan **mengapa** fase di titik itu selalu sama atau selalu berlawanan.\n\nMenyebut 'beda lintasan berupa kelipatan ganjil setengah panjang gelombang' adalah cara paling aman mendapatkan mark node.",
+    "formulaRefs": [
+      "alevel_physics"
+    ],
+    "tags": [
+      "stationary-waves",
+      "superposition",
+      "explain-question"
+    ],
+    "estimatedTimeSec": 360,
+    "points": 4,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-sample-chem-01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Across Period 3, first ionisation energy generally increases. However, two elements have a first ionisation energy **lower** than that of the element immediately preceding them.\n\nWhich element is one of these two?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\mathrm{Mg}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\mathrm{Al}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\mathrm{Si}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\mathrm{Cl}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The two dips in Period 3 occur at **Al** and at **S**. Aluminium's outermost electron is removed from a $3p$ subshell, which is higher in energy and better shielded than the $3s$ subshell from which magnesium's electron is removed. The $3p$ electron is therefore easier to remove, despite aluminium having the greater nuclear charge.\n\n(The second dip, at sulfur, arises because its $3p^{4}$ configuration has one pair of electrons in the same orbital, and the repulsion between that pair makes one electron easier to remove than in phosphorus's half-filled $3p^{3}$.)",
+    "distractorRationale": {
+      "A": "Magnesium justru NAIK dibanding natrium: $3s^{2}$ terisi penuh dan muatan intinya lebih besar.",
+      "C": "Silikon mengikuti tren normal, naik dibanding aluminium.",
+      "D": "Klorin juga mengikuti tren normal; penurunan kedua terjadi di belerang, satu unsur sebelumnya."
+    },
+    "tags": [
+      "ionisation-energy",
+      "period-3-anomaly",
+      "subshell"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-sample-chem-02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Analytical techniques",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which compound gives a positive result when warmed with Tollens' reagent?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "propanoic acid, $\\mathrm{CH_3CH_2COOH}$"
+      },
+      {
+        "id": "B",
+        "text": "propanone, $\\mathrm{CH_3COCH_3}$"
+      },
+      {
+        "id": "C",
+        "text": "propanal, $\\mathrm{CH_3CH_2CHO}$"
+      },
+      {
+        "id": "D",
+        "text": "propan-1-ol, $\\mathrm{CH_3CH_2CH_2OH}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Tollens' reagent contains the diamminesilver(I) ion, $[\\mathrm{Ag(NH_3)_2}]^{+}$, a mild oxidising agent. It oxidises **aldehydes** to carboxylates while the silver(I) is reduced to metallic silver, which deposits as the characteristic silver mirror. Propanal is the only aldehyde among the options.\n\nPropanone is a ketone: its carbonyl carbon carries no hydrogen atom, so it cannot be oxidised without breaking a carbon-carbon bond, and Tollens' reagent is too mild for that.",
+    "distractorRationale": {
+      "A": "Asam karboksilat sudah berada pada tingkat oksidasi tertinggi untuk rantai itu.",
+      "B": "Sama-sama punya gugus karbonil, sehingga terasa setara — padahal keton tidak punya atom H pada karbon karbonilnya dan tidak teroksidasi.",
+      "D": "Alkohol primer dapat dioksidasi, tetapi memerlukan pengoksidasi yang jauh lebih kuat seperti $\\mathrm{K_2Cr_2O_7}$ dalam suasana asam."
+    },
+    "tags": [
+      "tollens",
+      "aldehyde-vs-ketone",
+      "silver-mirror"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-sample-chem-03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Use the following mean bond energies to calculate the enthalpy change of the reaction $\\mathrm{H_2(g) + Cl_2(g) \\rightarrow 2HCl(g)}$.\n\n| Bond | Mean bond energy / $\\mathrm{kJ\\,mol^{-1}}$ |\n|---|---|\n| $\\mathrm{H-H}$ | 436 |\n| $\\mathrm{Cl-Cl}$ | 242 |\n| $\\mathrm{H-Cl}$ | 431 |",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$+184\\ \\mathrm{kJ\\,mol^{-1}}$"
+      },
+      {
+        "id": "B",
+        "text": "$+247\\ \\mathrm{kJ\\,mol^{-1}}$"
+      },
+      {
+        "id": "C",
+        "text": "$-1540\\ \\mathrm{kJ\\,mol^{-1}}$"
+      },
+      {
+        "id": "D",
+        "text": "$-184\\ \\mathrm{kJ\\,mol^{-1}}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$\\Delta H = \\sum(\\text{bonds broken}) - \\sum(\\text{bonds formed})$.\n\nBonds broken: one $\\mathrm{H-H}$ and one $\\mathrm{Cl-Cl}$, so $436 + 242 = 678\\ \\mathrm{kJ\\,mol^{-1}}$.\nBonds formed: **two** $\\mathrm{H-Cl}$, so $2 \\times 431 = 862\\ \\mathrm{kJ\\,mol^{-1}}$.\n\n$\\Delta H = 678 - 862 = -184\\ \\mathrm{kJ\\,mol^{-1}}$. The negative sign indicates an exothermic reaction, which is consistent with more energy being released on forming bonds than is absorbed in breaking them.",
+    "distractorRationale": {
+      "A": "Membalik rumusnya menjadi ikatan terbentuk dikurangi ikatan putus — kesalahan tanda paling sering pada soal energi ikatan.",
+      "B": "Lupa mengalikan $\\mathrm{H-Cl}$ dengan 2: $678 - 431 = 247$.",
+      "C": "Menjumlahkan seluruh energi ikatan alih-alih mengurangkannya."
+    },
+    "formulaRefs": [
+      "alevel_chem"
+    ],
+    "tags": [
+      "bond-energy",
+      "sign-convention",
+      "exothermic"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-sample-econ-01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Microeconomics",
+    "skill": "Market failure",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "text",
+      "title": "Source material",
+      "content": "The coastal economy of Valdara introduced a tax of 20 cents per litre on sugar-sweetened drinks in 2023. In the following year, sales of taxed drinks fell by 14 per cent. Sales of untaxed fruit juices, which contain a similar quantity of sugar per litre, rose by 9 per cent over the same period. Producers absorbed roughly one third of the tax rather than passing it on in full.\n\nA household survey found that spending on sugary drinks as a share of income fell by 0.4 percentage points among the highest-income fifth of households, and by 1.1 percentage points among the lowest-income fifth."
+    },
+    "stem": "Discuss whether a tax on sugar-sweetened drinks is likely to be an effective way of reducing the consumption of sugar in Valdara. **[8]**",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "AO1",
+          "points": 2,
+          "descriptor": "Identifies the drinks as a demerit good with negative externalities of consumption, and explains that the tax internalises the external cost by raising private cost towards social cost"
+        },
+        {
+          "criterion": "AO2",
+          "points": 2,
+          "descriptor": "Applies the data: the 14% fall in taxed sales, the 9% rise in untaxed juice sales, the one-third absorbed by producers, and the differing effects by income group"
+        },
+        {
+          "criterion": "AO3",
+          "points": 2,
+          "descriptor": "Analyses the mechanism through price elasticity of demand and the availability of substitutes; shows why partial pass-through weakens the price signal"
+        },
+        {
+          "criterion": "AO4",
+          "points": 2,
+          "descriptor": "Evaluates with a supported judgement: distinguishes reducing consumption of taxed DRINKS from reducing consumption of SUGAR, notes the regressive incidence, and states the conditions under which the tax would be effective"
+        }
+      ],
+      "exemplar": "Sugar-sweetened drinks are a demerit good: consumers under-estimate the private health cost, and the healthcare burden falls partly on others, so the marginal social cost exceeds the marginal private cost and the free market over-consumes. An indirect tax raises the supply curve by the amount of the tax, reduces the equilibrium quantity, and moves output towards the socially optimal level.\n\nThe Valdaran data show the mechanism working in part. Sales of taxed drinks fell 14 per cent, which indicates demand is responsive to price over this range. However, two features weaken the outcome. First, producers absorbed roughly one third of the tax, so consumer price rose by less than 20 cents per litre and the price signal reaching consumers was correspondingly smaller. Second, and more seriously, sales of untaxed fruit juices with a similar sugar content rose 9 per cent. Consumers substituted rather than reduced, so the fall in sugar consumption is smaller than the fall in taxed-drink sales suggests, and may be close to zero.\n\nThe incidence is also regressive. Spending on these drinks as a share of income fell 1.1 percentage points among the poorest fifth but only 0.4 among the richest, which indicates the burden falls disproportionately on low-income households. That is an equity cost that must be weighed against the health benefit.\n\nOverall the tax is likely to be only partially effective as currently designed. It reduces consumption of the taxed product, but because a close and untaxed substitute exists, it does not clearly reduce total sugar consumption — the actual policy objective. The tax would be considerably more effective if the base were widened to all drinks above a sugar threshold, removing the substitution route, and if it were combined with measures that shift preferences rather than only prices. Its effectiveness therefore depends less on the rate than on the breadth of the tax base."
+    },
+    "explanation": "Kata perintah **Discuss** menuntut dua sisi dan sebuah simpulan yang beralasan; AO4 (evaluasi) memegang bobot terbesar dan paling sering hilang.\n\nInti soal ini adalah membedakan **konsumsi minuman yang dikenai pajak** dari **konsumsi gula** — datanya sengaja memuat kenaikan 9% jus buah tak dikenai pajak dengan kandungan gula serupa. Jawaban yang hanya menghitung penurunan 14% tanpa melihat substitusi berhenti di AO3 dan tidak akan menembus tingkat atas.\n\nDua data lain juga harus dipakai, bukan sekadar dikutip: pass-through sepertiga melemahkan sinyal harga, dan perbedaan dampak antar-kelompok pendapatan menunjukkan sifat regresif. Simpulan terbaik menyatakan **syarat** keberhasilan (memperluas basis pajak), bukan sekadar 'efektif' atau 'tidak efektif'.",
+    "tags": [
+      "demerit-good",
+      "indirect-tax",
+      "substitution-effect",
+      "regressive",
+      "evaluation"
+    ],
+    "estimatedTimeSec": 720,
+    "points": 8,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1
+    }
+  }
+]

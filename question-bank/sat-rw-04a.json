@@ -1,0 +1,710 @@
+[
+  {
+    "id": "sat-rw-p01",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The pigments in Roman wall paintings have kept their intensity for two thousand years. Modern acrylics, by comparison, are far more ______: some fade noticeably within a single decade of gallery light."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "fugitive"
+      },
+      {
+        "id": "B",
+        "text": "expensive"
+      },
+      {
+        "id": "C",
+        "text": "opaque"
+      },
+      {
+        "id": "D",
+        "text": "elaborate"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The colon explains the blank: modern acrylics fade within a decade. \"Fugitive\" is the standard term for a pigment that does not hold its colour, and it fits the contrast with pigments that have lasted two thousand years.",
+    "distractorRationale": {
+      "B": "Cost is never mentioned and would not explain the fading.",
+      "C": "Opacity concerns how much light a paint blocks, not how long it lasts.",
+      "D": "Elaborate describes complexity of design, not permanence."
+    },
+    "tags": [
+      "words-in-context",
+      "vocabulary"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-p02",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Before the 1960s, plate tectonics was dismissed as speculation. The theory did not win acceptance through argument alone; magnetic stripes on the ocean floor, mapped in symmetrical bands either side of the mid-ocean ridges, made the case ______ in a way that reasoning had not."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "contested"
+      },
+      {
+        "id": "B",
+        "text": "tangible"
+      },
+      {
+        "id": "C",
+        "text": "abstract"
+      },
+      {
+        "id": "D",
+        "text": "provisional"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The sentence contrasts what argument alone could not do with what physical evidence did. Mapped magnetic stripes made the case concrete — something that could be pointed at. \"Tangible\" names exactly that shift from reasoning to physical evidence.",
+    "distractorRationale": {
+      "A": "The passage describes the theory winning acceptance, not being disputed further.",
+      "C": "Abstract is what the theory already was before the evidence arrived.",
+      "D": "Provisional means temporary, which would weaken rather than strengthen the case."
+    },
+    "tags": [
+      "words-in-context",
+      "vocabulary"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-p03",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Beavers were reintroduced to the river in 2016 to see whether their dams would slow floodwater. They did. What the project had not predicted was the change in the fish counts: within four years the pools behind the dams held three times as many juvenile trout as the free-flowing stretches upstream."
+    },
+    "stem": "Which choice best states the main purpose of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "To question whether the trout counts were measured accurately"
+      },
+      {
+        "id": "B",
+        "text": "To explain how beavers construct their dams"
+      },
+      {
+        "id": "C",
+        "text": "To report that a project achieved its aim and produced an unanticipated benefit"
+      },
+      {
+        "id": "D",
+        "text": "To argue that beaver reintroduction should replace conventional flood defences"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The text states the aim, confirms it in two words — \"They did\" — and then devotes the rest to a result the project had not predicted. Reporting both the intended outcome and the unexpected one is its purpose.",
+    "distractorRationale": {
+      "A": "The counts are reported as fact, not questioned.",
+      "B": "Dam construction is never described.",
+      "D": "No comparison with conventional defences is made and no recommendation is given."
+    },
+    "tags": [
+      "text-structure",
+      "purpose"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-p04",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Cross-Text Connections",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Text 1: The value of a museum's collection lies in what is on display. Objects in storage serve no public purpose, and institutions holding ninety per cent of their holdings out of sight should transfer them to museums that will show them.\n\nText 2: Display is one use among several. A stored object remains available for research, for loan, and for study by communities whose claims to it are still being negotiated. Judging a collection by its display rate measures the building, not the collection."
+    },
+    "stem": "Based on the texts, how would the author of Text 2 most likely respond to the recommendation in Text 1?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "By agreeing that transfer is appropriate for objects with no research value"
+      },
+      {
+        "id": "B",
+        "text": "By conceding that stored objects serve no purpose but defending the practice on cost grounds"
+      },
+      {
+        "id": "C",
+        "text": "By noting that most museums lack the storage space such a policy would require"
+      },
+      {
+        "id": "D",
+        "text": "By arguing that display rate is the wrong measure of a collection's usefulness"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Text 2's closing sentence answers Text 1 directly: judging by display rate measures the building rather than the collection. Its whole case is that the metric Text 1 relies on is the wrong one.",
+    "distractorRationale": {
+      "A": "Text 2 lists several uses of stored objects and does not concede any category for transfer.",
+      "B": "Text 2 denies exactly that premise, so it would not concede it.",
+      "C": "Storage space is not mentioned in either text."
+    },
+    "tags": [
+      "cross-text",
+      "comparison"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-p05",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Central Ideas and Details",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A saguaro cactus can take seventy years to grow its first arm and two hundred to reach full height. Nearly all of them begin life beneath a mesquite or palo verde, which shades the seedling from a sun that would otherwise kill it. The nurse tree usually dies long before the cactus matures."
+    },
+    "stem": "Which choice best states the main idea of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The saguaro's slow start depends on shelter from another plant that does not survive to see it grown."
+      },
+      {
+        "id": "B",
+        "text": "Mesquite and palo verde trees are short-lived."
+      },
+      {
+        "id": "C",
+        "text": "Saguaros grow more slowly than any other cactus."
+      },
+      {
+        "id": "D",
+        "text": "Desert seedlings are usually killed by direct sun."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The three sentences build one point: the saguaro grows very slowly, it needs a nurse plant to survive that slow start, and the nurse plant dies first. Choice A is the only option holding all of it together.",
+    "distractorRationale": {
+      "B": "The nurse tree's death is a detail in the argument, not the point of it.",
+      "C": "No other cactus is mentioned, so no comparison is made.",
+      "D": "True of saguaro seedlings as stated, but it is the supporting reason rather than the main idea."
+    },
+    "tags": [
+      "central-idea",
+      "main-idea"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-p06",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Textual)",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A historian argues that the medieval English village's open-field system persisted for centuries not because it was efficient but because it spread the risk of crop failure across many scattered strips of land."
+    },
+    "stem": "Which finding, if true, would most directly support the historian's argument?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Open-field villages were more common in regions with poor soil."
+      },
+      {
+        "id": "B",
+        "text": "Villages that consolidated their strips produced higher average yields but suffered far more total-loss years."
+      },
+      {
+        "id": "C",
+        "text": "Scattered strips required more time to travel between during harvest."
+      },
+      {
+        "id": "D",
+        "text": "The open-field system was abandoned in the eighteenth century."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The argument is that scattering traded efficiency for protection against total loss. A finding that consolidation raised average yields — more efficient — while producing far more total-loss years is precisely that trade-off observed.",
+    "distractorRationale": {
+      "A": "Soil quality gives an alternative explanation rather than evidence for risk-spreading.",
+      "C": "Supports the claim that scattering was inefficient, which the historian already grants.",
+      "D": "When the system ended says nothing about why it lasted."
+    },
+    "tags": [
+      "textual-evidence",
+      "support"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-p07",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Cuneiform tablets were written on damp clay and then usually left to dry rather than fired. Unfired clay dissolves in water and crumbles under pressure. The tablets that survive in quantity today come overwhelmingly from archives that ______"
+    },
+    "stem": "Which choice most logically completes the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "were kept by the wealthiest households."
+      },
+      {
+        "id": "B",
+        "text": "recorded religious rather than commercial matters."
+      },
+      {
+        "id": "C",
+        "text": "burned down."
+      },
+      {
+        "id": "D",
+        "text": "were copied onto papyrus."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The passage sets up a contrast: unfired clay does not last, so the surviving tablets must somehow have been fired. A fire in the archive would fire the tablets, which is why destruction by fire preserved them.",
+    "distractorRationale": {
+      "A": "Wealth would not protect unfired clay from water or pressure.",
+      "B": "Subject matter has no bearing on whether clay survives.",
+      "D": "Copies on papyrus would not preserve the clay tablets themselves."
+    },
+    "tags": [
+      "inference",
+      "logical-completion"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-p08",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Emperor penguins huddle in colonies of thousands, and the birds at the centre reach temperatures they cannot tolerate for long. The huddle solves this by moving: individuals shuffle forward a few centimetres at a time, so that the whole mass rotates slowly. ______ every bird spends part of its time on the cold outer edge and part in the warm centre."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Nevertheless,"
+      },
+      {
+        "id": "B",
+        "text": "Earlier,"
+      },
+      {
+        "id": "C",
+        "text": "For instance,"
+      },
+      {
+        "id": "D",
+        "text": "As a result,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The final sentence states the consequence of the rotation just described. \"As a result\" marks that cause-and-effect link.",
+    "distractorRationale": {
+      "A": "Signals contrast, but the sentence follows from the rotation rather than opposing it.",
+      "B": "Signals a shift in time, which the passage does not make.",
+      "C": "Signals an example, but no general claim is being illustrated."
+    },
+    "tags": [
+      "transitions",
+      "logical-relationship"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-p09",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical Synthesis",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "While researching a topic, a student has taken the following notes:\n\n- The Iron Age hillfort at Danebury was occupied for around 500 years.\n- Excavators found more than 5,000 storage pits inside the ramparts.\n- Grain stored in sealed pits keeps for a year or more.\n- The number of pits far exceeds what the fort's own population could have used."
+    },
+    "stem": "The student wants to explain why the pits suggest Danebury served the surrounding area, not just its own residents. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The five thousand pits are far more than the fort's own population needed, suggesting it stored grain for the wider area."
+      },
+      {
+        "id": "B",
+        "text": "Grain kept in sealed pits remains edible for a year or more."
+      },
+      {
+        "id": "C",
+        "text": "Excavators found more than five thousand storage pits inside the ramparts of the hillfort."
+      },
+      {
+        "id": "D",
+        "text": "The hillfort at Danebury was occupied for around five hundred years."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The goal is to explain why the pits point beyond the fort's own residents. Only choice A states the mismatch between the number of pits and the population and draws the conclusion from it.",
+    "distractorRationale": {
+      "B": "Explains how pit storage works but not who it was for.",
+      "C": "States the number of pits without the comparison that makes it meaningful.",
+      "D": "Gives the duration of occupation, which does not bear on who the storage served."
+    },
+    "tags": [
+      "rhetorical-synthesis",
+      "notes"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-p10",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The Silk Road was never a single ______ it was a shifting web of routes that traders joined and left over stretches of a few hundred kilometres at a time."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "road"
+      },
+      {
+        "id": "B",
+        "text": "road;"
+      },
+      {
+        "id": "C",
+        "text": "road, and"
+      },
+      {
+        "id": "D",
+        "text": "road,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Both halves stand alone as sentences: \"The Silk Road was never a single road\" and \"it was a shifting web of routes.\" Two independent clauses may be joined by a semicolon.",
+    "distractorRationale": {
+      "A": "Runs the clauses together with no punctuation.",
+      "C": "The coordinating conjunction is grammatical but \"and\" wrongly signals addition where the second clause corrects the first.",
+      "D": "Joins two independent clauses with a comma alone, a comma splice."
+    },
+    "tags": [
+      "boundaries",
+      "punctuation"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-p11",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ada Lovelace's notes on the Analytical ______ longer than the paper they were appended ______ describe how the machine could operate on symbols rather than only on numbers."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Engine three times longer than the paper they were appended to"
+      },
+      {
+        "id": "B",
+        "text": "Engine, three times, to,"
+      },
+      {
+        "id": "C",
+        "text": "Engine, three times longer than the paper they were appended to,"
+      },
+      {
+        "id": "D",
+        "text": "Engine; three times longer than the paper they were appended to;"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The phrase \"three times longer than the paper they were appended to\" interrupts the sentence between subject and verb, so it is set off with a comma on each side. Removing it leaves a complete sentence, which is the test for a non-essential element.",
+    "distractorRationale": {
+      "A": "Leaves the interrupting phrase unmarked, so the subject runs into its modifier.",
+      "B": "Breaks the phrase apart with commas in places that separate words belonging together.",
+      "D": "Semicolons cannot enclose a phrase that is not an independent clause."
+    },
+    "tags": [
+      "boundaries",
+      "punctuation"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-p12",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The curator argued that the fragments, which had been catalogued separately for a century and ______ in three different rooms, belonged to a single vessel."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "having displayed"
+      },
+      {
+        "id": "B",
+        "text": "were displayed"
+      },
+      {
+        "id": "C",
+        "text": "displaying"
+      },
+      {
+        "id": "D",
+        "text": "displayed"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The relative clause already has its verb phrase, \"had been catalogued.\" The second item in the pair must match it, and after \"had been\" the correct form is the past participle \"displayed\": had been catalogued and displayed.",
+    "distractorRationale": {
+      "A": "Also makes the fragments the agent, and the perfect participle contradicts the timeline.",
+      "B": "Repeats a finite verb where the auxiliary \"had been\" already governs the phrase, breaking the parallel.",
+      "C": "The present participle makes the fragments do the displaying rather than be displayed."
+    },
+    "tags": [
+      "form-structure-sense",
+      "grammar"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  }
+]

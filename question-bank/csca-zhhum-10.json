@@ -1,0 +1,5046 @@
+[
+  {
+    "id": "csca-zhh-r01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「意象」在文学批评中指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "融入了作者主观情思的具体物象"
+      },
+      {
+        "id": "B",
+        "text": "文章的段落结构"
+      },
+      {
+        "id": "C",
+        "text": "作者的写作意图"
+      },
+      {
+        "id": "D",
+        "text": "读者的想象力"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "意象是「意」与「象」的结合：客观物象经作者情思浸染后所形成的艺术形象。\n\n「枯藤老树昏鸦」中的三个物象本身平常，正因承载了羁旅之愁才成为意象。只有物象而无情思，是描写；只有情思而无物象，是抒情——二者相融才是意象。",
+    "distractorRationale": {
+      "B": "结构属于章法。",
+      "C": "写作意图是创作动机，不是意象。",
+      "D": "读者的想象是接受活动。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 意象 (image) mean in literary criticism?",
+        "explanation": "An 意象 joins 意 (the subjective) to 象 (the object): a concrete thing steeped in the writer's feeling until it becomes an artistic image.\n\nThe withered vine, old tree and dusk crow of the famous line are ordinary things; they become images only by carrying a traveller's melancholy. Object without feeling is description; feeling without object is effusion. Only their fusion is an image."
+      }
+    },
+    "tags": [
+      "literary-terms",
+      "imagery"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「白描」这一手法的特点是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "刻意追求辞藻华美"
+      },
+      {
+        "id": "B",
+        "text": "用简练朴素的文字勾勒，不加渲染烘托"
+      },
+      {
+        "id": "C",
+        "text": "以议论为主"
+      },
+      {
+        "id": "D",
+        "text": "大量使用比喻和排比"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "白描本是国画术语，指不着颜色、只用墨线勾勒；移用于文学，指以最简省的笔墨直接勾画人物或场景。\n\n《背影》写父亲攀月台，几乎全是动作词的直陈，不加一句形容——力量正来自这种不加渲染。",
+    "distractorRationale": {
+      "A": "华美辞藻与白描的朴素相对。",
+      "C": "白描是描写手法。",
+      "D": "多用修辞与白描相反。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What characterises 白描 (plain-line depiction)?",
+        "explanation": "白描 comes from ink painting: outline in line alone, without colour. Carried into literature, it means sketching a person or scene in the barest possible strokes.\n\nZhu Ziqing's father climbing the platform in «The Back» is almost nothing but verbs of action, with not one adjective added — and the force comes precisely from that refusal to embellish."
+      }
+    },
+    "tags": [
+      "literary-terms",
+      "technique"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「铺垫」与「伏笔」的区别在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "伏笔只出现在结尾"
+      },
+      {
+        "id": "B",
+        "text": "铺垫只用于小说"
+      },
+      {
+        "id": "C",
+        "text": "铺垫是为后文蓄势，笔墨较显；伏笔是暗中埋线，笔墨隐蔽"
+      },
+      {
+        "id": "D",
+        "text": "两者完全相同"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "铺垫为主要情节蓄势，往往用较多笔墨，读者当时便能察觉是在「作准备」；伏笔则一笔带过，不着痕迹，直到后文照应时才回过头来明白其用意。\n\n一显一隐，是二者最实用的分辨方法。",
+    "distractorRationale": {
+      "A": "伏笔埋在前文，照应在后文。",
+      "B": "铺垫在各类文体中都有。",
+      "D": "二者显隐不同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 铺垫 (build-up) and 伏笔 (foreshadowing) differ?",
+        "explanation": "A 铺垫 gathers momentum for the main event, usually at some length, and the reader senses at the time that preparation is under way. A 伏笔 is dropped in passing, leaving no mark, and its purpose is understood only when the later passage answers to it.\n\nOne is overt, the other covert — the most usable way to tell them apart."
+      }
+    },
+    "tags": [
+      "literary-terms",
+      "narrative"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「反讽」的基本特征是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "使用夸张"
+      },
+      {
+        "id": "B",
+        "text": "结构对称"
+      },
+      {
+        "id": "C",
+        "text": "语气强烈"
+      },
+      {
+        "id": "D",
+        "text": "字面意义与实际意图相反"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "反讽的核心是言与意的背离：说的是一回事，要表达的是另一回事，常是其反面。\n\n它依赖读者能察觉这一落差；若读者只按字面理解，反讽便失效。这正是反讽比直接批评更难把握、也更耐读的原因。",
+    "distractorRationale": {
+      "A": "夸张是另一种辞格。",
+      "B": "结构对称是对偶。",
+      "C": "语气强烈的是感叹。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the defining feature of 反讽 (irony)?",
+        "explanation": "Irony turns on a gap between what is said and what is meant: one thing on the surface, another — often its opposite — beneath.\n\nIt depends on the reader noticing that gap; taken literally, irony simply fails. This is why irony is harder to handle than direct criticism, and why it rewards rereading."
+      }
+    },
+    "tags": [
+      "literary-terms",
+      "irony"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「叙述视角」中的「第三人称限知视角」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "叙述者用第三人称，但所知不超出某一人物的见闻"
+      },
+      {
+        "id": "B",
+        "text": "叙述者无所不知"
+      },
+      {
+        "id": "C",
+        "text": "以「我」讲述"
+      },
+      {
+        "id": "D",
+        "text": "由多人轮流讲述"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "限知视角虽用「他」，叙述范围却被限制在某个人物的感知之内：他看不到的、想不到的，叙述中就不出现。\n\n这与全知视角形成对照——全知者可自由出入任何人物的内心。限知的好处在于制造悬念：读者与人物一样，只能一步步知道。",
+    "distractorRationale": {
+      "B": "这是全知视角。",
+      "C": "这是第一人称。",
+      "D": "这是多重视角。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is third-person limited point of view?",
+        "explanation": "It uses «he», yet confines the telling to one character's perception: what that character cannot see or does not think never enters the narration.\n\nThe contrast is the omniscient view, which enters any mind at will. The limited view's advantage is suspense — the reader learns only as the character does."
+      }
+    },
+    "tags": [
+      "literary-terms",
+      "point-of-view"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「典型」在文学理论中指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "历史上真实存在的人物"
+      },
+      {
+        "id": "B",
+        "text": "通过鲜明个性显示出普遍意义的艺术形象"
+      },
+      {
+        "id": "C",
+        "text": "最常见的人物类型"
+      },
+      {
+        "id": "D",
+        "text": "作者的自我写照"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "典型的要义在于个性与共性的统一：人物必须足够独特，独特到只能是他一个人；又必须由这独特性折射出一类人、一个时代的普遍处境。\n\n只有共性便沦为概念的图解，只有个性则不过是一份特例记录。二者缺一，都称不上典型。",
+    "distractorRationale": {
+      "A": "典型可以虚构。",
+      "C": "常见不等于典型。",
+      "D": "自我写照未必具有普遍意义。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 典型 (the typical) mean in literary theory?",
+        "explanation": "The point of the typical is the union of the individual and the general: the figure must be distinctive enough to be no one but himself, and through that distinctiveness must refract the condition of a whole class or age.\n\nGenerality alone yields an illustrated concept; individuality alone yields a case record. Neither, by itself, is typical."
+      }
+    },
+    "tags": [
+      "literary-terms",
+      "typicality"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「意境」与「意象」的关系是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "意象由意境组成"
+      },
+      {
+        "id": "B",
+        "text": "意境只指自然景物"
+      },
+      {
+        "id": "C",
+        "text": "意境由意象组合而成，是整体氛围；意象是其中的单个形象"
+      },
+      {
+        "id": "D",
+        "text": "二者是同一概念"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "意象是砖，意境是屋：单个物象承载情思，是意象；多个意象组织起来所生成的浑然氛围与情感空间，才是意境。\n\n「小桥流水人家」是一串意象，而全篇所造成的苍凉羁旅之感是意境。层次一高一低，不可互换。",
+    "distractorRationale": {
+      "A": "关系恰好相反。",
+      "B": "意境不限于自然景物。",
+      "D": "二者层次不同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 意境 and 意象 relate?",
+        "explanation": "The image is the brick, the 意境 the house: a single object charged with feeling is an image; the unified atmosphere and emotional space generated when many images are organised together is the 意境.\n\n«Small bridge, running water, houses» is a string of images; the desolation of the exile that the whole piece produces is the 意境. One is the higher level, and they cannot be swapped."
+      }
+    },
+    "tags": [
+      "literary-terms",
+      "atmosphere"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「散文」中的「形散神不散」，其中「神」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "文章的体裁"
+      },
+      {
+        "id": "B",
+        "text": "文章的字数"
+      },
+      {
+        "id": "C",
+        "text": "作者的名气"
+      },
+      {
+        "id": "D",
+        "text": "贯穿全文的中心情思或主旨"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "散文取材自由、笔法灵活，看似东一句西一句，是为「形散」；但所有材料都归向同一情思或主旨，是为「神不散」。\n\n若连这一条主线也断了，便不是散文的洒脱，而是拼凑。",
+    "distractorRationale": {
+      "A": "体裁是外在分类。",
+      "B": "与篇幅无关。",
+      "C": "与作者名气无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In the maxim that prose is «loose in form but not in spirit», what is the 神?",
+        "explanation": "Prose ranges freely in material and method, seeming to wander — that is looseness of form. Yet every piece of material bends towards one feeling or thesis — that is the spirit holding.\n\nWhen that thread breaks too, the result is not the ease of the essay but a patchwork."
+      }
+    },
+    "tags": [
+      "literary-terms",
+      "prose"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「本体论」研究的核心问题是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "存在本身及其根本性质"
+      },
+      {
+        "id": "B",
+        "text": "知识如何获得"
+      },
+      {
+        "id": "C",
+        "text": "什么是善"
+      },
+      {
+        "id": "D",
+        "text": "语言的结构"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "本体论追问「有什么存在」以及「存在意味着什么」，是关于存在本身的学问。\n\n知识如何可能属于认识论，什么是善属于伦理学，语言结构属于语言哲学——四者各有其问，不宜混同。",
+    "distractorRationale": {
+      "B": "这是认识论。",
+      "C": "这是伦理学。",
+      "D": "这是语言哲学。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the central question of 本体论 (ontology)?",
+        "explanation": "Ontology asks what there is, and what it means for anything to be — the study of being as such.\n\nHow knowledge is possible belongs to epistemology, what is good to ethics, and the structure of language to philosophy of language. Four distinct questions."
+      }
+    },
+    "tags": [
+      "philosophy-terms",
+      "ontology"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「归纳」与「演绎」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "演绎只用于数学"
+      },
+      {
+        "id": "B",
+        "text": "归纳由个别推向一般，演绎由一般推向个别"
+      },
+      {
+        "id": "C",
+        "text": "二者结论都必然为真"
+      },
+      {
+        "id": "D",
+        "text": "归纳更可靠"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "归纳从若干个案概括出普遍结论，结论超出前提所含信息，因而只是或然的；演绎从普遍前提推出个别结论，若前提为真且形式有效，结论必然为真。\n\n方向相反，可靠性也不同——这正是选项 C 不成立的原因。",
+    "distractorRationale": {
+      "A": "演绎在各领域都适用。",
+      "C": "归纳结论不必然为真。",
+      "D": "归纳结论只是或然的。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do induction and deduction differ?",
+        "explanation": "Induction generalises from particular cases, so its conclusion carries more than the premises contain and is only probable. Deduction moves from a general premise to a particular conclusion, and given true premises and a valid form the conclusion must be true.\n\nOpposite directions, and unequal certainty — which is why the claim that both yield necessary truth fails."
+      }
+    },
+    "tags": [
+      "philosophy-terms",
+      "logic"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「必要条件」的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "导致结果的直接原因"
+      },
+      {
+        "id": "B",
+        "text": "有它结果一定成立"
+      },
+      {
+        "id": "C",
+        "text": "没有它结果一定不成立，但有它未必成立"
+      },
+      {
+        "id": "D",
+        "text": "与结果同时发生的条件"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "必要条件是「无之必不然」：缺了它结果不可能出现，但具备它还不够。\n\n氧气是燃烧的必要条件——没有氧气必不燃烧，有氧气却未必燃烧。「有它一定成立」说的是充分条件，二者方向相反。",
+    "distractorRationale": {
+      "A": "直接原因是另一概念。",
+      "B": "这是充分条件。",
+      "D": "同时发生不等于必要。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is a necessary condition?",
+        "explanation": "A necessary condition is one without which the result cannot occur — but having it is not enough.\n\nOxygen is necessary for combustion: without it nothing burns, yet its presence alone does not set anything alight. «If present, the result follows» describes a sufficient condition — the opposite direction."
+      }
+    },
+    "tags": [
+      "philosophy-terms",
+      "conditions"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「相对主义」的基本主张是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "物质决定意识"
+      },
+      {
+        "id": "B",
+        "text": "知识来自经验"
+      },
+      {
+        "id": "C",
+        "text": "一切事物都在运动"
+      },
+      {
+        "id": "D",
+        "text": "真理或价值随立场、文化或个人而异，没有绝对标准"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "相对主义否认存在超越具体立场的绝对标准，认为真假善恶都相对于某个框架而言。\n\n常见的混淆是把它与「事物变化」等同——变化说的是对象，相对主义说的是判断标准，二者不是一回事。",
+    "distractorRationale": {
+      "A": "这是唯物主义。",
+      "B": "这是经验主义。",
+      "C": "这是关于变化的主张。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does relativism hold?",
+        "explanation": "Relativism denies any standard that stands above particular standpoints: truth and value hold only relative to some framework.\n\nThe common confusion is with «everything changes» — but change is a claim about objects, whereas relativism is a claim about standards of judgement. They are not the same thesis."
+      }
+    },
+    "tags": [
+      "philosophy-terms",
+      "relativism"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「异化」一词在哲学中通常指",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "人的活动或产物反过来成为支配人的力量"
+      },
+      {
+        "id": "B",
+        "text": "人与人之间的疏远"
+      },
+      {
+        "id": "C",
+        "text": "文化的差异"
+      },
+      {
+        "id": "D",
+        "text": "语言的变迁"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "异化的核心结构是「反转」：本应属于人、由人创造的东西，脱离人的控制，反过来支配人。\n\n人与人疏远只是异化的一种表现，不是定义本身；把表现当定义，就丢掉了「反转」这一关键。",
+    "distractorRationale": {
+      "B": "这是异化的一种表现，不是定义。",
+      "C": "文化差异是另一议题。",
+      "D": "语言变迁属于语言学。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 异化 (alienation) normally mean in philosophy?",
+        "explanation": "The core structure is inversion: what belongs to human beings and was made by them escapes their control and comes to rule over them.\n\nEstrangement between people is one manifestation, not the definition. Taking the manifestation for the definition loses the inversion, which is the whole point."
+      }
+    },
+    "tags": [
+      "philosophy-terms",
+      "alienation"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「先验」与「经验」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "先验指事先猜测"
+      },
+      {
+        "id": "B",
+        "text": "先验指不依赖于经验而成立的知识，经验指来自感官观察的知识"
+      },
+      {
+        "id": "C",
+        "text": "经验指个人阅历，先验指理论"
+      },
+      {
+        "id": "D",
+        "text": "二者指时间先后"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "先验知识的成立不依赖于任何特定观察，如数学命题；经验知识则须由观察检验，如自然规律。\n\n关键在于「依赖与否」，不在于时间先后：先验并非「先发生」，而是「不以经验为根据」。日常语中把「先验」当作事先猜测，是最常见的误用。",
+    "distractorRationale": {
+      "A": "这是日常语中的误用。",
+      "C": "过于笼统，未抓住依赖关系。",
+      "D": "区别不在时间先后。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do the a priori and the empirical differ?",
+        "explanation": "A priori knowledge holds without depending on any particular observation — mathematical propositions, for instance. Empirical knowledge must answer to observation, as laws of nature do.\n\nThe criterion is dependence, not chronology: a priori does not mean «earlier», it means «not grounded in experience». Everyday usage, which reads it as guessing in advance, is the commonest error."
+      }
+    },
+    "tags": [
+      "philosophy-terms",
+      "a-priori"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「因果」与「相关」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "二者相同"
+      },
+      {
+        "id": "B",
+        "text": "因果无法研究"
+      },
+      {
+        "id": "C",
+        "text": "相关只表明两量同变，因果还要求一者引起另一者"
+      },
+      {
+        "id": "D",
+        "text": "相关比因果更强"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "两量同升同降只说明存在统计关联，可能源于共同的第三因素，也可能纯属巧合。因果则断言干预其一会改变另一，这是更强的主张。\n\n冰淇淋销量与溺水人数同升，共同原因是气温——由相关直接跳到因果，是社会科学中最常见的推理失误。",
+    "distractorRationale": {
+      "A": "因果是更强的主张。",
+      "B": "因果可通过实验与控制研究。",
+      "D": "因果比相关更强。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do causation and correlation differ?",
+        "explanation": "Two quantities rising and falling together establishes only a statistical association, which may come from a shared third factor or from chance. Causation asserts that intervening on one would change the other — a far stronger claim.\n\nIce-cream sales and drownings rise together because both follow the temperature. Leaping from correlation to cause is the commonest inferential failure in the social sciences."
+      }
+    },
+    "tags": [
+      "philosophy-terms",
+      "causation"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「悖论」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "错误的观点"
+      },
+      {
+        "id": "B",
+        "text": "两个人的争论"
+      },
+      {
+        "id": "C",
+        "text": "难懂的道理"
+      },
+      {
+        "id": "D",
+        "text": "由看似合理的前提出发却推出自相矛盾结论的论证"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "悖论的价值不在于「难懂」，而在于它逼人回头检查前提：结论既然不可接受，某个看似无害的前提就必定有问题。\n\n历史上不少概念的澄清，正是从追查一个悖论开始的。",
+    "distractorRationale": {
+      "A": "错误观点未必构成悖论。",
+      "B": "争论不是悖论。",
+      "C": "难懂不是悖论的定义。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is a paradox?",
+        "explanation": "The value of a paradox lies not in being hard to follow but in forcing a return to the premises: since the conclusion cannot be accepted, some innocuous-looking premise must be at fault.\n\nMany conceptual clarifications in history began as the pursuit of one paradox."
+      }
+    },
+    "tags": [
+      "philosophy-terms",
+      "paradox"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「法人」在法律上指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "具有法律人格、能独立享有权利承担义务的组织"
+      },
+      {
+        "id": "B",
+        "text": "懂法律的人"
+      },
+      {
+        "id": "C",
+        "text": "法院的工作人员"
+      },
+      {
+        "id": "D",
+        "text": "公司的法定代表人"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "法人是与自然人并列的一类法律主体，指依法成立、能以自己名义享有权利并承担义务的组织。\n\n最常见的误解是把「法人」当成公司的负责人——那是「法定代表人」，两个词只差三字，指的一个是组织本身，一个是代表该组织行事的自然人。",
+    "distractorRationale": {
+      "B": "懂法律的是法律工作者。",
+      "C": "法院工作人员是自然人。",
+      "D": "那是法定代表人。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is a 法人 (legal person) in law?",
+        "explanation": "A legal person stands alongside the natural person as a category of legal subject: an organisation lawfully constituted and able, in its own name, to hold rights and bear duties.\n\nThe usual mistake is to read it as the head of a company — that is the 法定代表人. Three characters apart, and one denotes the organisation itself while the other denotes the individual who acts for it."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "legal-person"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「举证责任」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "法官调查取证的义务"
+      },
+      {
+        "id": "B",
+        "text": "当事人对自己主张的事实提供证据加以证明的责任"
+      },
+      {
+        "id": "C",
+        "text": "证人出庭的义务"
+      },
+      {
+        "id": "D",
+        "text": "律师的辩护义务"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "举证责任解决的是：当某项事实真伪不明时，由谁承担不利后果。\n\n一般原则是「谁主张，谁举证」——提出主张的一方须拿出证据，拿不出则其主张不被采纳。",
+    "distractorRationale": {
+      "A": "法官居中裁判，通常不主动取证。",
+      "C": "这是作证义务。",
+      "D": "这是辩护职责。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the burden of proof?",
+        "explanation": "The burden of proof settles who bears the loss when a fact remains unproven either way.\n\nThe general rule is that whoever asserts must prove: the party making a claim must produce evidence, and failing that the claim is not accepted."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "burden-of-proof"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「无罪推定」的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "证据不足即判无罪"
+      },
+      {
+        "id": "B",
+        "text": "法官应同情被告"
+      },
+      {
+        "id": "C",
+        "text": "未经依法判决有罪之前，任何人都应被视为无罪"
+      },
+      {
+        "id": "D",
+        "text": "被告人不必到庭"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "无罪推定确立了刑事诉讼的起点：被追诉者在生效判决前的法律地位是无罪的。\n\n由此推出举证责任在控方、疑罪从无等一系列规则。选项中「证据不足即判无罪」是无罪推定的一项推论，而非其含义本身。",
+    "distractorRationale": {
+      "A": "这是无罪推定的推论，不是含义本身。",
+      "B": "无罪推定是法律规则，不是情感态度。",
+      "D": "到庭与否另有规定。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the presumption of innocence?",
+        "explanation": "It sets the starting point of a criminal proceeding: before a binding judgment of guilt, the accused stands in law as innocent.\n\nFrom this follow the prosecution's burden of proof and the rule that doubt favours the accused. «Insufficient evidence means acquittal» is one consequence of the presumption, not the presumption itself."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "presumption-of-innocence"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「时效」制度的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "限制律师的收费"
+      },
+      {
+        "id": "B",
+        "text": "规定案件审理的时长"
+      },
+      {
+        "id": "C",
+        "text": "确定法律何时生效"
+      },
+      {
+        "id": "D",
+        "text": "经过法定期间未行使权利，权利人将丧失请求法律保护的资格"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "时效督促权利人及时行使权利，同时使长期稳定的事实状态获得确定性，避免陈年旧账无休止地翻起。\n\n它与「法律生效时间」是两回事：一个针对个案中的请求权，一个针对法律规范本身。",
+    "distractorRationale": {
+      "A": "与收费无关。",
+      "B": "这是审限。",
+      "C": "这是法律的生效时间。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does a statute of limitations do?",
+        "explanation": "It presses the holder of a right to act in good time, and it lends certainty to states of affairs long settled, so that old accounts cannot be reopened indefinitely.\n\nIt is not the same as when a law takes effect: one concerns a claim in a particular case, the other the norm itself."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "limitation"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r21",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「合同」成立的核心要素是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "当事人意思表示一致"
+      },
+      {
+        "id": "B",
+        "text": "必须有第三方见证"
+      },
+      {
+        "id": "C",
+        "text": "必须经过公证"
+      },
+      {
+        "id": "D",
+        "text": "必须采用书面形式"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "合同的本质是合意：一方要约、另一方承诺，意思表示一致即告成立。\n\n书面、公证、见证在特定情形下可能被法律要求或有助于举证，但它们是形式要求或证据手段，不是成立的核心要素。",
+    "distractorRationale": {
+      "B": "见证不是成立要件。",
+      "C": "公证并非普遍要件。",
+      "D": "多数合同不限形式。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the core element in the formation of a contract?",
+        "explanation": "A contract is at bottom an agreement of wills: one party offers, the other accepts, and on the meeting of intentions it is formed.\n\nWriting, notarisation and witnesses may be required in particular cases or help in proving the contract, but they are formal requirements or evidentiary aids, not the core of formation."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "contract"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r22",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「程序正义」与「实体正义」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "程序正义只适用于民事案件"
+      },
+      {
+        "id": "B",
+        "text": "程序正义关注过程是否公正，实体正义关注结果是否公正"
+      },
+      {
+        "id": "C",
+        "text": "实体正义指法律条文本身"
+      },
+      {
+        "id": "D",
+        "text": "二者相同"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "程序正义要求过程本身合乎公正：平等对待、听取双方、裁判者中立。实体正义则问最终的权利义务分配是否公道。\n\n二者可能不一致——程序无瑕而结果未必最优，结果看似公道也可能建立在草率的过程之上。现代法治强调程序，正因过程是唯一能被普遍监督的部分。",
+    "distractorRationale": {
+      "A": "程序正义适用于各类诉讼。",
+      "C": "实体正义指结果的公正，不是条文。",
+      "D": "二者关注不同层面。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do procedural and substantive justice differ?",
+        "explanation": "Procedural justice asks whether the process itself is fair: equal treatment, both sides heard, a neutral decision-maker. Substantive justice asks whether the final allocation of rights and duties is fair.\n\nThe two can come apart — a flawless procedure need not produce the best outcome, and a seemingly fair outcome may rest on a careless process. Modern legal systems stress procedure because the process is the part that can be scrutinised at all."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "justice"
+    ],
+    "estimatedTimeSec": 145,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r23",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「不告不理」原则的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "没有证据就不受理"
+      },
+      {
+        "id": "B",
+        "text": "当事人不到庭则不审理"
+      },
+      {
+        "id": "C",
+        "text": "法院不主动追究，须有当事人起诉才受理并在其请求范围内裁判"
+      },
+      {
+        "id": "D",
+        "text": "不告知被告则不能审理"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "该原则划定了司法权的边界：法院居中裁判而不主动出击，审理范围也受当事人诉讼请求的限制，判超所请为违法。\n\n这既保证了裁判者的中立，也保障了当事人对自己权利的处分自由。",
+    "distractorRationale": {
+      "A": "证据不足是实体判断，不是受理条件。",
+      "B": "缺席审判在一定条件下允许。",
+      "D": "送达是程序要求，不是此原则。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the principle of «no trial without a complaint» mean?",
+        "explanation": "The principle marks the boundary of judicial power: the court adjudicates between parties rather than initiating action, and its scope is confined to what the parties have asked for — ruling beyond the claim is unlawful.\n\nThis secures the neutrality of the adjudicator and the parties' freedom to dispose of their own rights."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "adjudication"
+    ],
+    "estimatedTimeSec": 145,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r24",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「知识产权」不包括下列哪一项",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "专利权"
+      },
+      {
+        "id": "B",
+        "text": "著作权"
+      },
+      {
+        "id": "C",
+        "text": "商标权"
+      },
+      {
+        "id": "D",
+        "text": "不动产所有权"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "知识产权保护的是智力成果与商业标识，包括著作权、专利权、商标权等无形客体。\n\n不动产所有权指向土地房屋这类有体物，属于物权，不在其列。有形与无形，是二者的分界。",
+    "distractorRationale": {
+      "A": "专利权属于知识产权。",
+      "B": "著作权属于知识产权。",
+      "C": "商标权属于知识产权。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which is NOT an intellectual property right?",
+        "explanation": "Intellectual property protects intellectual creations and commercial identifiers — copyright, patents, trade marks and the like, all intangible.\n\nOwnership of land and buildings concerns tangible things and belongs to property rights proper. Tangible against intangible is the dividing line."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "intellectual-property"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r25",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「即」与「既」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "「即」表示就是、立刻，「既」表示已经"
+      },
+      {
+        "id": "B",
+        "text": "「即」只用于文言"
+      },
+      {
+        "id": "C",
+        "text": "二字通用"
+      },
+      {
+        "id": "D",
+        "text": "「既」表示立刻"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「即」意为就是、当下，如即刻、即日、成功在即；「既」意为已经，如既往、既定、既成事实。\n\n「既然……就……」与「即使……也……」是两组固定搭配，写错一字，句子的逻辑关系随之改变。",
+    "distractorRationale": {
+      "B": "「即」在现代汉语中常用。",
+      "C": "二字意义不同。",
+      "D": "「既」表示已经。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 即 and 既 differ?",
+        "explanation": "即 means «namely» or «at once» — 即刻, 即日, 成功在即. 既 means «already» — 既往, 既定, 既成事实.\n\n既然…就… and 即使…也… are two fixed frames; getting the character wrong changes the logical relation the sentence asserts."
+      }
+    },
+    "tags": [
+      "characters",
+      "word-choice"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r26",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「须」与「需」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "二字通用"
+      },
+      {
+        "id": "B",
+        "text": "「须」表示必须，「需」表示需要"
+      },
+      {
+        "id": "C",
+        "text": "「需」表示必须"
+      },
+      {
+        "id": "D",
+        "text": "「须」只用于人名"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「须」侧重义务或必要，如必须、务须、须知；「需」侧重需求，如需要、需求、急需。\n\n「必须」不能写成「必需」——前者作状语修饰动作，后者是「必需品」这类名词性搭配。",
+    "distractorRationale": {
+      "A": "二字侧重不同。",
+      "C": "「需」表示需要。",
+      "D": "「须」是常用字。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 须 and 需 differ?",
+        "explanation": "须 leans towards obligation or necessity — 必须, 务须, 须知. 需 leans towards need or demand — 需要, 需求, 急需.\n\n必须 must not be written 必需: the first modifies an action adverbially, the second belongs to nominal collocations such as 必需品."
+      }
+    },
+    "tags": [
+      "characters",
+      "word-choice"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r27",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列词语中没有错别字的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "竞然、布署、脉胳"
+      },
+      {
+        "id": "B",
+        "text": "竞然、部署、脉胳"
+      },
+      {
+        "id": "C",
+        "text": "竟然、部署、脉络"
+      },
+      {
+        "id": "D",
+        "text": "竟然、布署、脉络"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "正确写法为「竟然」（出乎意料）、「部署」（安排布置）、「脉络」（条理）。\n\n「竞」是竞争，「布」虽有分布义但「部署」用「部」，「胳」是胳膊——三处都是常见的形近或音近误写。",
+    "distractorRationale": {
+      "A": "三处均误。",
+      "B": "「竞然」「脉胳」均误。",
+      "D": "「布署」应为「部署」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which group contains no character errors?",
+        "explanation": "The correct forms are 竟然 (unexpectedly), 部署 (to deploy, to arrange) and 脉络 (the thread of an argument).\n\n竞 means to compete, 部署 takes 部 despite 布 carrying a sense of distributing, and 胳 belongs to 胳膊, the arm. All three are common slips of shape or sound."
+      }
+    },
+    "tags": [
+      "characters",
+      "proofreading"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r28",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「以至」与「以致」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "二者通用"
+      },
+      {
+        "id": "B",
+        "text": "「以至」表示不良结果"
+      },
+      {
+        "id": "C",
+        "text": "「以致」只用于书面语"
+      },
+      {
+        "id": "D",
+        "text": "「以至」表示程度或范围的延伸，「以致」表示导致不好的结果"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「以至」相当于「直到、甚至」，用于程度递进，褒贬皆可；「以致」引出的是由前因造成的、通常不如意的结果。\n\n「他反复推敲，以至于通宵未眠」用「以至」；「他准备不足，以致失败」用「以致」。",
+    "distractorRationale": {
+      "A": "二者用法有别。",
+      "B": "不良结果用「以致」。",
+      "C": "二者都可用于书面语。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 以至 and 以致 differ?",
+        "explanation": "以至 means «up to» or «even», marking an extension of degree, and is neutral in tone. 以致 introduces a consequence brought about by what precedes, and that consequence is normally unwelcome.\n\n«He revised repeatedly, 以至于 staying up all night» takes 以至; «He prepared poorly, 以致 he failed» takes 以致."
+      }
+    },
+    "tags": [
+      "characters",
+      "word-choice"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r29",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「文采」与「文彩」中，规范写法是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "文采"
+      },
+      {
+        "id": "B",
+        "text": "文彩"
+      },
+      {
+        "id": "C",
+        "text": "二者皆可"
+      },
+      {
+        "id": "D",
+        "text": "视语境而定"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "规范写法是「文采」：「采」有文辞华美之义，如神采、丰采、风采。\n\n「彩」指颜色，如色彩、彩虹、五彩。二字同音，但分工明确。",
+    "distractorRationale": {
+      "B": "「彩」指颜色。",
+      "C": "规范写法只有一种。",
+      "D": "此处不因语境改变。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which is the standard form, 文采 or 文彩?",
+        "explanation": "The standard form is 文采: 采 carries the sense of literary lustre, as in 神采, 丰采, 风采.\n\n彩 denotes colour — 色彩, 彩虹, 五彩. The two are homophones with a clear division of labour."
+      }
+    },
+    "tags": [
+      "characters",
+      "standard-form"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r30",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「的」「地」「得」的用法，正确的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "状语后用「的」"
+      },
+      {
+        "id": "B",
+        "text": "定语后用「的」，状语后用「地」，补语前用「得」"
+      },
+      {
+        "id": "C",
+        "text": "三者可以通用"
+      },
+      {
+        "id": "D",
+        "text": "补语前用「地」"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "三者各守其位：修饰名词的用「的」（美丽的花），修饰动词形容词的用「地」（认真地写），连接补语的用「得」（写得认真）。\n\n「认真地写」与「写得认真」意思相近而结构不同：前者是状语在前，后者是补语在后——这正是「地」与「得」不能互换的原因。",
+    "distractorRationale": {
+      "A": "状语后用「地」。",
+      "C": "三者分工明确。",
+      "D": "补语前用「得」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which describes the correct use of 的, 地 and 得?",
+        "explanation": "Each keeps its place: 的 after an attributive (美丽的花), 地 after an adverbial (认真地写), 得 before a complement (写得认真).\n\n认真地写 and 写得认真 mean nearly the same thing but are built differently — adverbial before, complement after. That is exactly why 地 and 得 cannot be swapped."
+      }
+    },
+    "tags": [
+      "characters",
+      "particles"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r31",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「戴」与「带」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "二字通用"
+      },
+      {
+        "id": "B",
+        "text": "「带」指加在身上"
+      },
+      {
+        "id": "C",
+        "text": "「戴」指把东西加在头、面、颈、手等处，「带」指携带"
+      },
+      {
+        "id": "D",
+        "text": "「戴」只用于比喻"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「戴」用于戴帽子、戴眼镜、戴手表——东西加在身体特定部位并保持在那里；「带」用于带书、带钱——把东西随身携走。\n\n「戴上手套出门，还带了一把伞」，一句之中两字各司其职。",
+    "distractorRationale": {
+      "A": "二字用法不同。",
+      "B": "加在身上用「戴」。",
+      "D": "「戴」多用于实指。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 戴 and 带 differ?",
+        "explanation": "戴 is for putting something on the head, face, neck or wrist and keeping it there — a hat, glasses, a watch. 带 is for carrying something along — a book, money.\n\n«He 戴 his gloves and went out, and 带 an umbrella too»: one sentence, each character at its own post."
+      }
+    },
+    "tags": [
+      "characters",
+      "word-choice"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r32",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "这部小说对人物心理的刻画十分____。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "细小"
+      },
+      {
+        "id": "B",
+        "text": "细长"
+      },
+      {
+        "id": "C",
+        "text": "细致入微地"
+      },
+      {
+        "id": "D",
+        "text": "细腻"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「细腻」形容描写精细而有层次，与「心理刻画」是常见搭配。\n\n「细小」形容体积，「细长」形容形状，均不能修饰刻画；「细致入微地」是状语形式，不能作「十分」后的谓语。",
+    "distractorRationale": {
+      "A": "形容体积小。",
+      "B": "形容形状。",
+      "C": "是状语形式，不能作谓语。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «The novel's rendering of the characters' inner life is extremely ___»?",
+        "explanation": "细腻 describes writing that is fine-grained and layered, and it is the standard collocation with psychological portrayal.\n\n细小 describes size and 细长 shape, neither of which can modify portrayal; 细致入微地 is adverbial in form and cannot serve as the predicate after 十分."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "collocation"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r33",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "这一政策的影响是____的，需要长期观察。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "深远"
+      },
+      {
+        "id": "B",
+        "text": "深厚"
+      },
+      {
+        "id": "C",
+        "text": "深刻"
+      },
+      {
+        "id": "D",
+        "text": "深沉"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「深远」兼指程度深与时间长，与「需要长期观察」正相呼应。\n\n「深刻」侧重认识的透彻，「深厚」多形容感情或基础，「深沉」形容含蓄不外露，都不含时间维度。",
+    "distractorRationale": {
+      "B": "多形容感情或基础。",
+      "C": "侧重认识透彻。",
+      "D": "形容含蓄不外露。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «The effects of the policy are ___, and need long observation»?",
+        "explanation": "深远 carries both depth and length of time, matching «need long observation» exactly.\n\n深刻 stresses penetration of insight, 深厚 usually describes feeling or foundations, and 深沉 describes reserve — none carries the temporal dimension."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "collocation"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r34",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "作者在文中____了三种不同的观点，并逐一评析。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "罗嗦"
+      },
+      {
+        "id": "B",
+        "text": "罗列"
+      },
+      {
+        "id": "C",
+        "text": "排列"
+      },
+      {
+        "id": "D",
+        "text": "陈列"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「罗列」指一一列举，与「三种观点」「逐一评析」相合。\n\n「陈列」多指实物摆放展示，「排列」侧重顺序安排，「罗嗦」是形容词，指说话繁复。",
+    "distractorRationale": {
+      "A": "是形容词，指说话繁复。",
+      "C": "侧重顺序安排。",
+      "D": "多指实物摆放。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «The author ___ three different views in the text and assesses each in turn»?",
+        "explanation": "罗列 means to set out one by one, matching «three views» and «each in turn».\n\n陈列 refers to displaying physical objects, 排列 stresses arrangement in order, and 罗嗦 is an adjective describing long-windedness."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "precision"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r35",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "证据尚不充分，结论只能____提出。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "坚决地"
+      },
+      {
+        "id": "B",
+        "text": "热情地"
+      },
+      {
+        "id": "C",
+        "text": "审慎地"
+      },
+      {
+        "id": "D",
+        "text": "随意地"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "证据不足时，「审慎」正表达留有余地、不作绝对断言的态度。\n\n「坚决」与证据不足相矛盾，「随意」是治学之忌，「热情」与论证的严谨无关。",
+    "distractorRationale": {
+      "A": "与证据不足矛盾。",
+      "B": "与论证严谨无关。",
+      "D": "治学不应随意。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «The evidence is not yet sufficient, so the conclusion can only be advanced ___»?",
+        "explanation": "With evidence lacking, 审慎 expresses exactly the reserve of one who leaves room and refuses an absolute claim.\n\n坚决 contradicts insufficient evidence, 随意 is a scholarly vice, and 热情 has nothing to do with rigour."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "register"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r36",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "他的论述____了前人的成果，又有自己的发现。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "才吸收"
+      },
+      {
+        "id": "B",
+        "text": "仅吸收"
+      },
+      {
+        "id": "C",
+        "text": "虽吸收"
+      },
+      {
+        "id": "D",
+        "text": "既吸收"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "后半句「又有自己的发现」提示前半句应用「既……又……」这一并列结构。\n\n「虽」引出转折，「才」表条件或时间，「仅」表限制，都与「又」不成搭配。",
+    "distractorRationale": {
+      "A": "表条件或时间。",
+      "B": "表限制，与「又有」矛盾。",
+      "C": "引出转折，与「又」不搭。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which fills the blank: «His account ___ the work of predecessors, and also contains findings of his own»?",
+        "explanation": "The second clause «and also contains findings of his own» calls for the paired frame 既…又….\n\n虽 introduces a contrast, 才 a condition or a point in time, and 仅 a restriction; none pairs with 又."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "conjunctions"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r37",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "这一说法____缺乏史料支撑，____在学界流传甚广。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "虽然……却……"
+      },
+      {
+        "id": "B",
+        "text": "因为……所以……"
+      },
+      {
+        "id": "C",
+        "text": "不但……而且……"
+      },
+      {
+        "id": "D",
+        "text": "只要……就……"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "缺乏支撑与流传甚广之间是让步转折关系：按理不该流传，事实却流传了。\n\n若用因果，等于说缺乏史料反而导致广泛流传；若用递进，则把「缺乏支撑」也读成一项优点。二者都讲不通。",
+    "distractorRationale": {
+      "B": "缺乏史料不会导致广泛流传。",
+      "C": "会把缺陷读成优点。",
+      "D": "二者不是条件关系。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which pair fills the blanks: «This claim ___ lacks documentary support, ___ it circulates widely in the field»?",
+        "explanation": "Lacking support and circulating widely stand in concession: it ought not to have spread, yet it did.\n\nA causal pair would say that lacking sources produced the wide circulation; an escalating pair would read «lacks support» as a further merit. Neither holds."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "conjunctions"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r38",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "这份档案的发现，为研究这段历史提供了____的材料。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "第二手"
+      },
+      {
+        "id": "B",
+        "text": "第一手"
+      },
+      {
+        "id": "C",
+        "text": "转述"
+      },
+      {
+        "id": "D",
+        "text": "二手"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "档案是原始记录，属第一手材料，价值高于转述与引用。\n\n「第二手」「二手」「转述」都指经他人加工传递的材料，与「档案的发现」这一语境相反。",
+    "distractorRationale": {
+      "A": "指经他人转述的材料。",
+      "C": "档案是原始记录，非转述。",
+      "D": "指经他人转述的材料。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «The discovery of this archive supplies ___ material for the study of the period»?",
+        "explanation": "An archive is an original record — first-hand material, worth more than any retelling or citation.\n\n第二手, 二手 and 转述 all denote material passed on through someone else, contradicting the discovery of an archive."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "historiography"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r39",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "史料并非天然可信。传世文献中既有出于各种动机的伪作，也有辗转抄录中产生的讹误。研究者若不先分辨材料的真伪与来历，便径直据以立论，其结论再精密也建立在流沙之上。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此应只采用官方记载。"
+      },
+      {
+        "id": "B",
+        "text": "所以历史无法认识。"
+      },
+      {
+        "id": "C",
+        "text": "可见对史料的辨伪，是研究得以开始的前提，而不是可以省略的步骤。"
+      },
+      {
+        "id": "D",
+        "text": "因此史料越多越好。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "前文说明伪造与讹传的史料若不加辨别便直接使用，结论必然不可靠。由此得出的结论是：辨伪必不可少。\n\n「历史无法认识」把困难说成绝境；「只用官方记载」则以另一种偏信取代辨别。",
+    "distractorRationale": {
+      "A": "官方记载同样需要辨伪。",
+      "B": "把困难说成绝境。",
+      "D": "数量不解决真伪问题。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The passage explains that forged and corrupted sources, used without scrutiny, make any conclusion unreliable. What follows is that authentication cannot be skipped.\n\n«History is unknowable» turns a difficulty into an impasse; «use only official records» replaces scrutiny with another form of credulity."
+      }
+    },
+    "tags": [
+      "paragraph-completion"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r40",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "凡是纳入考核的内容，学生便反复练习；未被考核的部分，纵然重要，也往往被搁置。教师为提高成绩，教学重心亦随之偏移。这一现象在各国教育中反复出现，与具体科目无关。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此死记硬背是最好的学习方法。"
+      },
+      {
+        "id": "B",
+        "text": "所以应当取消一切标准。"
+      },
+      {
+        "id": "C",
+        "text": "因此考试制度毫无价值。"
+      },
+      {
+        "id": "D",
+        "text": "可见任何选拔标准一旦确立，就会反过来塑造被选拔者的准备方式。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "前文举出的现象是：考什么，学生就练什么，教学也随之调整。横线处应把这一现象概括为一般规律——标准反过来塑造行为。\n\n这是对现象的提炼，不是对制度的全盘否定；说「毫无价值」或「取消一切标准」，都跳出了前文所支持的范围。",
+    "distractorRationale": {
+      "A": "前文并未主张死记硬背。",
+      "B": "超出前文支持的范围。",
+      "C": "前文未否定考试制度本身。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The passage describes how students drill whatever is examined and teaching follows suit. The blank should distil this into a general rule: a standard, once fixed, reshapes the behaviour of those measured by it.\n\nThat is a distillation, not a wholesale rejection. «Worthless» and «abolish all standards» both go beyond what the passage supports."
+      }
+    },
+    "tags": [
+      "paragraph-completion"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r41",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "一个词在原文中所唤起的联想、它所携带的历史与习俗，往往在另一种语言中没有对应之物。译者若强求字面对等，读者得到的是一具空壳；若放手改写，又可能失去原作的分寸。实际的翻译总是在两难之间反复权衡。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "可见好的翻译不是逐字对应，而是在两种语言的可能性之间作出取舍。"
+      },
+      {
+        "id": "B",
+        "text": "因此翻译是不可能的。"
+      },
+      {
+        "id": "C",
+        "text": "因此译者不必懂原文。"
+      },
+      {
+        "id": "D",
+        "text": "所以应当只读原文。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "前文指出：词语的联想与文化负载无法逐字移植，译者必须有所舍弃、有所补偿。这正是「取舍」二字的含义。\n\n「翻译不可能」与前文所述译者实际所做的工作矛盾；「只读原文」回避了问题而非回答问题。",
+    "distractorRationale": {
+      "B": "与前文所述译者的实际工作矛盾。",
+      "C": "与译者须权衡取舍相矛盾。",
+      "D": "回避问题，并非前文的结论。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The passage notes that a word's associations and cultural freight cannot be carried across intact, so the translator must give something up and compensate elsewhere. That is precisely what «choosing between possibilities» names.\n\n«Translation is impossible» contradicts the work the passage shows translators doing, and «read the original only» sidesteps the question rather than answering it."
+      }
+    },
+    "tags": [
+      "paragraph-completion"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r42",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "一条道路的走向、一片街区的密度，一旦建成便在数十年内难以更改。当年为缓解拥堵而拓宽的干道，可能在几十年后把社区一分为二；当年被认为多余的绿地，则可能成为城市中最稀缺的空间。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此城市不应扩张。"
+      },
+      {
+        "id": "B",
+        "text": "可见城市规划必须同时考虑当下的需要与几十年后的后果。"
+      },
+      {
+        "id": "C",
+        "text": "所以规划毫无用处。"
+      },
+      {
+        "id": "D",
+        "text": "因此道路越宽越好。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "前文的关键是「几十年」这一时间跨度：一条路、一片区域一旦建成便长期不可更改，当初的便利可能成为日后的束缚。\n\n结论应落在时间维度上；「道路越宽越好」恰是前文所警示的那种只顾眼前的思路。",
+    "distractorRationale": {
+      "A": "前文未反对扩张本身。",
+      "C": "前文正说明规划的重要。",
+      "D": "正是前文所警示的短视思路。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The decisive element is the span of decades: once a road or a district is built it stays for a long time, and today's convenience can become tomorrow's constraint.\n\nThe conclusion must fall on that temporal dimension. «The wider the road the better» is exactly the short-sighted reasoning the passage warns against."
+      }
+    },
+    "tags": [
+      "paragraph-completion"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r43",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "同一位亲历者在不同年份对同一事件的讲述，细节往往并不一致。研究表明，人在回忆时会不自觉地填补空缺、吸收后来听到的说法，甚至根据听众的反应调整叙述的重点。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此只有文字记录可信。"
+      },
+      {
+        "id": "B",
+        "text": "因此不应记录口述史。"
+      },
+      {
+        "id": "C",
+        "text": "可见记忆并非录像，而是每次回想时的重新建构。"
+      },
+      {
+        "id": "D",
+        "text": "所以老年人的话不可信。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "前文所述的现象——细节随时间改变、受后来信息影响、随讲述场合调整——共同指向一个结论：回忆是建构而非播放。\n\n由此并不能推出口述史无价值：正因为知道记忆如何工作，研究者才懂得如何使用它。选项 D 更是把认识上的谨慎变成了对一类人的贬低。",
+    "distractorRationale": {
+      "A": "文字记录同样有其局限。",
+      "B": "了解记忆的性质正是为了更好地使用口述史。",
+      "D": "把认识上的谨慎变成对人的贬低。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The phenomena described — details shifting over time, later information seeping in, the telling adjusting to its occasion — all point one way: recollection is construction, not playback.\n\nIt does not follow that oral history is worthless; knowing how memory works is precisely what lets a researcher use it well. Option D turns epistemic caution into a slight against a group of people."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "memory"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r44",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "「今年降雨量为八百毫米」是事实陈述，「今年雨水偏多」则已包含比较的基准；「会议持续了三小时」是事实，「会议冗长」则已含评价。有些句子看似客观，实则在选词之际便作出了判断。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此不必区分事实与意见。"
+      },
+      {
+        "id": "B",
+        "text": "所以一切陈述都是意见。"
+      },
+      {
+        "id": "C",
+        "text": "因此新闻报道毫无价值。"
+      },
+      {
+        "id": "D",
+        "text": "可见事实与意见的界线，有时需要经过考察才能划定，而不是一眼可辨。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "前文给出的例子说明：形式上像陈述事实的句子，其中已嵌入了评价性的选择（用哪个词、比较哪个基准）。这说明界线需要考察，而非取消。\n\n「一切都是意见」把「有时难分」推到极端，反而抹掉了前文赖以立论的区分本身。",
+    "distractorRationale": {
+      "A": "前文正说明区分的必要。",
+      "B": "把「有时难分」推到极端。",
+      "C": "前文未否定新闻的价值。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The examples show that a sentence shaped like a statement of fact can already carry evaluative choices — which word, which baseline for comparison. That means the line must be examined, not that it must be erased.\n\n«Everything is opinion» pushes «sometimes hard to tell» to an extreme, and in doing so destroys the very distinction the passage argues from."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "fact-opinion"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r45",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "纸的普及改变了知识传播的成本结构。在纸张广泛使用之前，书写材料本身昂贵而笨重：简牍占据大量空间，缣帛价格高昂，二者都使抄写与收藏成为少数人的特权。\n\n纸的出现使单位文字的载体成本大幅下降，抄本随之增多，私人藏书与讲学得以扩展。但抄写仍需人力，一部书的复制依旧以月计，错讹也随抄次累积。\n\n印刷术的意义正在于此：它把复制从「逐字重写」变为「一次制版、多次刷印」。成本不再随份数线性增长，同一版本的文字也不再因抄手而异。此后，读者第一次可以指着某一页某一行与远方的人讨论同一句话。"
+    },
+    "stem": "根据文章，纸普及之前书写材料的问题是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "简牍笨重、缣帛昂贵"
+      },
+      {
+        "id": "B",
+        "text": "不能长期保存"
+      },
+      {
+        "id": "C",
+        "text": "不便于书写"
+      },
+      {
+        "id": "D",
+        "text": "容易被火烧毁"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "文章第一段指出：简牍占据大量空间，缣帛价格高昂。\n\n笨重与昂贵这两项共同使抄写与收藏成为少数人的特权，这正是纸所改变的。",
+    "distractorRationale": {
+      "B": "文章未论保存年限。",
+      "C": "文章未提书写难易。",
+      "D": "文章未提火灾。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what was wrong with writing materials before paper?",
+        "explanation": "The first paragraph states it: bamboo strips took up great space and silk was expensive.\n\nBulk and cost together made copying and collecting the privilege of a few — precisely what paper changed."
+      }
+    },
+    "tags": [
+      "history",
+      "detail"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r46",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "纸的普及改变了知识传播的成本结构。在纸张广泛使用之前，书写材料本身昂贵而笨重：简牍占据大量空间，缣帛价格高昂，二者都使抄写与收藏成为少数人的特权。\n\n纸的出现使单位文字的载体成本大幅下降，抄本随之增多，私人藏书与讲学得以扩展。但抄写仍需人力，一部书的复制依旧以月计，错讹也随抄次累积。\n\n印刷术的意义正在于此：它把复制从「逐字重写」变为「一次制版、多次刷印」。成本不再随份数线性增长，同一版本的文字也不再因抄手而异。此后，读者第一次可以指着某一页某一行与远方的人讨论同一句话。"
+    },
+    "stem": "根据文章，纸的普及所解决与未解决的问题分别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两个问题都解决了"
+      },
+      {
+        "id": "B",
+        "text": "解决了载体成本，未解决复制所需的人力与抄写错讹"
+      },
+      {
+        "id": "C",
+        "text": "两个问题都未解决"
+      },
+      {
+        "id": "D",
+        "text": "解决了复制速度，未解决成本"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "文章第二段说得明确：载体成本大幅下降，但抄写仍需人力，一部书的复制依旧以月计，错讹也随抄次累积。\n\n这一「解决一半」的状态，正是下一段引出印刷术的理由。",
+    "distractorRationale": {
+      "A": "抄写人力与错讹仍未解决。",
+      "C": "载体成本已大幅下降。",
+      "D": "复制速度正是未解决的部分。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what did paper solve and what did it leave unsolved?",
+        "explanation": "The second paragraph is explicit: the cost of the medium fell sharply, but copying still took human labour, a single book still took months, and errors still accumulated with each copying.\n\nThat half-solved state is exactly why the next paragraph turns to printing."
+      }
+    },
+    "tags": [
+      "history",
+      "comparison"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r47",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "纸的普及改变了知识传播的成本结构。在纸张广泛使用之前，书写材料本身昂贵而笨重：简牍占据大量空间，缣帛价格高昂，二者都使抄写与收藏成为少数人的特权。\n\n纸的出现使单位文字的载体成本大幅下降，抄本随之增多，私人藏书与讲学得以扩展。但抄写仍需人力，一部书的复制依旧以月计，错讹也随抄次累积。\n\n印刷术的意义正在于此：它把复制从「逐字重写」变为「一次制版、多次刷印」。成本不再随份数线性增长，同一版本的文字也不再因抄手而异。此后，读者第一次可以指着某一页某一行与远方的人讨论同一句话。"
+    },
+    "stem": "根据文章，印刷术在成本上的关键改变是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "制版本身变得便宜"
+      },
+      {
+        "id": "B",
+        "text": "纸张价格下降"
+      },
+      {
+        "id": "C",
+        "text": "成本不再随份数线性增长"
+      },
+      {
+        "id": "D",
+        "text": "识字的人增多"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "文章指出：复制由「逐字重写」变为「一次制版、多次刷印」，成本不再随份数线性增长。\n\n换言之，制版是一次性投入，印得越多，每份分摊的成本越低——这一结构性变化，是抄写永远无法达到的。",
+    "distractorRationale": {
+      "A": "文章未说制版便宜，只说是一次性投入。",
+      "B": "纸价下降属于上一阶段。",
+      "D": "识字人数不是文中所论的成本机制。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What was printing's key change in the structure of cost?",
+        "explanation": "The passage says it: copying shifted from rewriting word by word to cutting one block and pulling many impressions, so cost no longer grew in proportion to the number of copies.\n\nThe block is a one-off outlay, and the more copies pulled the less each bears — a structural change no amount of copying by hand could reach."
+      }
+    },
+    "tags": [
+      "history",
+      "causation"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r48",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "纸的普及改变了知识传播的成本结构。在纸张广泛使用之前，书写材料本身昂贵而笨重：简牍占据大量空间，缣帛价格高昂，二者都使抄写与收藏成为少数人的特权。\n\n纸的出现使单位文字的载体成本大幅下降，抄本随之增多，私人藏书与讲学得以扩展。但抄写仍需人力，一部书的复制依旧以月计，错讹也随抄次累积。\n\n印刷术的意义正在于此：它把复制从「逐字重写」变为「一次制版、多次刷印」。成本不再随份数线性增长，同一版本的文字也不再因抄手而异。此后，读者第一次可以指着某一页某一行与远方的人讨论同一句话。"
+    },
+    "stem": "文章末句「读者第一次可以指着某一页某一行与远方的人讨论同一句话」意在说明",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "印刷降低了书价"
+      },
+      {
+        "id": "B",
+        "text": "读者开始互相通信"
+      },
+      {
+        "id": "C",
+        "text": "印刷提高了阅读速度"
+      },
+      {
+        "id": "D",
+        "text": "印刷使同一版本的文字得以固定，从而使精确的远距离讨论成为可能"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "抄本时代每一部书都略有差异，「第三页第五行」在不同抄本中并非同一句话。印刷使版本统一，页行才成为可共享的坐标。\n\n这一句是对上文「文字不再因抄手而异」的具体化，说的是版本固定带来的学术后果，而非价格或速度。",
+    "distractorRationale": {
+      "A": "价格在前文已述，该句另有所指。",
+      "B": "通信本身不依赖印刷。",
+      "C": "速度不是该句所论。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the closing sentence illustrate?",
+        "explanation": "In the age of manuscripts every copy differed slightly, so «page three, line five» named different words in different copies. Printing fixed the text, and only then did page and line become a shared coordinate.\n\nThe sentence concretises the earlier point that the wording no longer varied with the copyist. It is about what a fixed text made possible for scholarship, not about price or speed."
+      }
+    },
+    "tags": [
+      "history",
+      "inference"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r49",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "历史分期是研究者为便于叙述而作的划分，并非史事本身固有的界限。以某一年份作为时代的起讫，往往取其标志性，而当时的人并不会在那一天感到自己进入了新时代。\n\n分期有其用处：它使庞杂的史事获得结构，便于比较与教学。但它也带来风险——一旦界线被反复使用，人们便容易把界线两侧看作性质截然不同的两段，忽略了跨越界线的延续。\n\n因此成熟的做法是：使用分期，同时随时准备质疑它。当某种延续现象无法被现有分期容纳时，需要调整的是分期，而不是把现象说成例外。"
+    },
+    "stem": "根据文章，历史分期的性质是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "研究者为便于叙述而作的划分"
+      },
+      {
+        "id": "B",
+        "text": "史事本身固有的界限"
+      },
+      {
+        "id": "C",
+        "text": "由当时的人确定的"
+      },
+      {
+        "id": "D",
+        "text": "不可更改的标准"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "文章首句即点明：分期是研究者为便于叙述而作的划分，并非史事本身固有的界限。\n\n后文更指出，当时的人并不会在某一天感到自己进入了新时代——界线是后设的。",
+    "distractorRationale": {
+      "B": "文章明确否定这一点。",
+      "C": "当时的人并无此感。",
+      "D": "文章主张分期可以调整。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What kind of thing is periodisation, according to the passage?",
+        "explanation": "The opening sentence says it: a division made by researchers for ease of narration, not a boundary inherent in events.\n\nThe passage adds that people alive at the time felt no entry into a new age on any given day — the line is drawn afterwards."
+      }
+    },
+    "tags": [
+      "history",
+      "definition"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r50",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "历史分期是研究者为便于叙述而作的划分，并非史事本身固有的界限。以某一年份作为时代的起讫，往往取其标志性，而当时的人并不会在那一天感到自己进入了新时代。\n\n分期有其用处：它使庞杂的史事获得结构，便于比较与教学。但它也带来风险——一旦界线被反复使用，人们便容易把界线两侧看作性质截然不同的两段，忽略了跨越界线的延续。\n\n因此成熟的做法是：使用分期，同时随时准备质疑它。当某种延续现象无法被现有分期容纳时，需要调整的是分期，而不是把现象说成例外。"
+    },
+    "stem": "根据文章，分期带来的风险是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "使年代记忆混乱"
+      },
+      {
+        "id": "B",
+        "text": "容易把界线两侧看作性质截然不同的两段，忽略延续"
+      },
+      {
+        "id": "C",
+        "text": "使教学难以进行"
+      },
+      {
+        "id": "D",
+        "text": "使史事变得零散"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "文章第二段直接给出这一风险：界线被反复使用后，人们便倾向于夸大两侧的差异而忽略跨越界线的延续。\n\n分期的好处是提供结构，风险是这一结构反过来遮蔽了它本要整理的内容。",
+    "distractorRationale": {
+      "A": "文章未论年代记忆。",
+      "C": "文章说分期便于教学。",
+      "D": "分期正是为了使史事有结构。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What risk does periodisation carry, according to the passage?",
+        "explanation": "The second paragraph states it: once a boundary is used often enough, people tend to exaggerate the difference across it and overlook what continues through it.\n\nThe benefit of periodisation is structure; the risk is that the structure comes to obscure what it was meant to organise."
+      }
+    },
+    "tags": [
+      "history",
+      "reasoning"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r51",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "历史分期是研究者为便于叙述而作的划分，并非史事本身固有的界限。以某一年份作为时代的起讫，往往取其标志性，而当时的人并不会在那一天感到自己进入了新时代。\n\n分期有其用处：它使庞杂的史事获得结构，便于比较与教学。但它也带来风险——一旦界线被反复使用，人们便容易把界线两侧看作性质截然不同的两段，忽略了跨越界线的延续。\n\n因此成熟的做法是：使用分期，同时随时准备质疑它。当某种延续现象无法被现有分期容纳时，需要调整的是分期，而不是把现象说成例外。"
+    },
+    "stem": "根据文章，当某种延续现象无法被现有分期容纳时，作者主张",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "忽略该现象"
+      },
+      {
+        "id": "B",
+        "text": "把该现象视为例外"
+      },
+      {
+        "id": "C",
+        "text": "调整分期"
+      },
+      {
+        "id": "D",
+        "text": "放弃分期"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "文章末段明确：需要调整的是分期，而不是把现象说成例外。\n\n这一主张的分量在于它规定了何者服从何者——分期是工具，史事是对象，不合便改工具。把不合的现象一概称作例外，等于让工具反过来裁剪对象。",
+    "distractorRationale": {
+      "A": "忽略现象与治学态度相悖。",
+      "B": "这正是文章反对的做法。",
+      "D": "文章主张使用分期，只是随时准备质疑。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "When a continuity cannot be accommodated by the existing periodisation, what does the author advocate?",
+        "explanation": "The final paragraph is explicit: it is the periodisation that must be adjusted, not the phenomenon that must be called an exception.\n\nThe weight of the claim lies in what it subordinates to what. The scheme is a tool and the events are its object; when they do not fit, the tool changes. Calling every misfit an exception lets the tool trim the object instead."
+      }
+    },
+    "tags": [
+      "history",
+      "argument"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r52",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "历史分期是研究者为便于叙述而作的划分，并非史事本身固有的界限。以某一年份作为时代的起讫，往往取其标志性，而当时的人并不会在那一天感到自己进入了新时代。\n\n分期有其用处：它使庞杂的史事获得结构，便于比较与教学。但它也带来风险——一旦界线被反复使用，人们便容易把界线两侧看作性质截然不同的两段，忽略了跨越界线的延续。\n\n因此成熟的做法是：使用分期，同时随时准备质疑它。当某种延续现象无法被现有分期容纳时，需要调整的是分期，而不是把现象说成例外。"
+    },
+    "stem": "根据文章，作者对历史分期的总体态度是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "完全接受"
+      },
+      {
+        "id": "B",
+        "text": "不置可否"
+      },
+      {
+        "id": "C",
+        "text": "完全否定"
+      },
+      {
+        "id": "D",
+        "text": "使用它，同时随时准备质疑它"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "文章末段以「成熟的做法」四字给出态度：使用分期，同时随时准备质疑。\n\n既承认其组织功能，又警惕其固化倾向——这是一种有条件的接受，不是取消，也不是照单全收。",
+    "distractorRationale": {
+      "A": "文章指出分期的风险。",
+      "B": "文章态度明确。",
+      "C": "文章承认分期的用处。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the author's overall stance on periodisation?",
+        "explanation": "The final paragraph names it outright as the mature practice: use periodisation, and stand ready to question it.\n\nIts organising function is granted and its tendency to harden is watched — a conditional acceptance, neither abolition nor wholesale endorsement."
+      }
+    },
+    "tags": [
+      "history",
+      "stance"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r53",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "历史分期是研究者为便于叙述而作的划分，并非史事本身固有的界限。以某一年份作为时代的起讫，往往取其标志性，而当时的人并不会在那一天感到自己进入了新时代。\n\n分期有其用处：它使庞杂的史事获得结构，便于比较与教学。但它也带来风险——一旦界线被反复使用，人们便容易把界线两侧看作性质截然不同的两段，忽略了跨越界线的延续。\n\n因此成熟的做法是：使用分期，同时随时准备质疑它。当某种延续现象无法被现有分期容纳时，需要调整的是分期，而不是把现象说成例外。"
+    },
+    "stem": "文章二第二段与第三段的关系是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "第二段指出利弊，第三段据此提出应对做法"
+      },
+      {
+        "id": "B",
+        "text": "二者无关"
+      },
+      {
+        "id": "C",
+        "text": "第三段重复第二段"
+      },
+      {
+        "id": "D",
+        "text": "第三段反驳第二段"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "第二段先说分期的用处，再说其风险；第三段承接这一利弊并存的局面，给出「用而疑之」的做法。\n\n这是「分析—对策」的顺承关系。",
+    "distractorRationale": {
+      "B": "二者紧密相承。",
+      "C": "第三段提出了新内容。",
+      "D": "第三段并未否定第二段。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How does the third paragraph of the second passage relate to the second?",
+        "explanation": "The second paragraph gives first the use of periodisation and then its risk; the third takes up that balance and supplies a practice — use it, and doubt it.\n\nThe relation is analysis followed by response."
+      }
+    },
+    "tags": [
+      "history",
+      "structure"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r54",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "班级授课制在十七世纪被系统提出，其设计针对的是当时最迫切的问题：如何用有限的教师，使尽可能多的儿童接受基本教育。把同龄学生编入固定班级，按统一进度授课，使教学的组织成本大幅下降。\n\n这一制度沿用至今，其效率至今没有更经济的替代方案。但它内含一个假设：同龄的学生具有相近的准备程度与学习速度。这个假设在多数情况下大致成立，在个别学生身上却明显不成立。\n\n此后种种改革——分层教学、走班制、个别辅导——大都可以看作对这一假设的修补，而非对班级授课制的替代。"
+    },
+    "stem": "根据文章，班级授课制最初针对的问题是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "如何编写教材"
+      },
+      {
+        "id": "B",
+        "text": "如何用有限的教师使尽可能多的儿童接受基本教育"
+      },
+      {
+        "id": "C",
+        "text": "如何减轻教师负担"
+      },
+      {
+        "id": "D",
+        "text": "如何提高尖子生的成绩"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "文章首段写明：其设计针对当时最迫切的问题——用有限的教师使尽可能多的儿童受教育。\n\n把握这一初衷，才能理解为何该制度以「统一进度」为核心。",
+    "distractorRationale": {
+      "A": "教材编写是另一议题。",
+      "C": "减负不是首要设计目标。",
+      "D": "这不是该制度的初衷。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What problem was the class system originally designed to solve?",
+        "explanation": "The first paragraph says it: the most pressing problem of the day — reaching as many children as possible with a limited number of teachers.\n\nGrasping that original purpose is what makes the system's insistence on a uniform pace intelligible."
+      }
+    },
+    "tags": [
+      "education",
+      "detail"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r55",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "班级授课制在十七世纪被系统提出，其设计针对的是当时最迫切的问题：如何用有限的教师，使尽可能多的儿童接受基本教育。把同龄学生编入固定班级，按统一进度授课，使教学的组织成本大幅下降。\n\n这一制度沿用至今，其效率至今没有更经济的替代方案。但它内含一个假设：同龄的学生具有相近的准备程度与学习速度。这个假设在多数情况下大致成立，在个别学生身上却明显不成立。\n\n此后种种改革——分层教学、走班制、个别辅导——大都可以看作对这一假设的修补，而非对班级授课制的替代。"
+    },
+    "stem": "根据文章，班级授课制内含的假设是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "教材内容不变"
+      },
+      {
+        "id": "B",
+        "text": "所有学生都愿意学习"
+      },
+      {
+        "id": "C",
+        "text": "同龄学生具有相近的准备程度与学习速度"
+      },
+      {
+        "id": "D",
+        "text": "教师水平相同"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "文章第二段直接点出这一假设，并说明它在多数情况下大致成立，在个别学生身上明显不成立。\n\n正是这个「大致成立」的假设，既支撑了制度的效率，也埋下了后续改革的动因。",
+    "distractorRationale": {
+      "A": "文章未论教材变动。",
+      "B": "文章未提学习意愿。",
+      "D": "文章未论教师水平。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What assumption is built into the class system?",
+        "explanation": "The second paragraph names it: that children of the same age are similarly prepared and learn at similar speeds — broadly true in most cases, plainly false for particular students.\n\nThat «broadly true» assumption both underwrites the system's efficiency and plants the motive for every later reform."
+      }
+    },
+    "tags": [
+      "education",
+      "assumption"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r56",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "班级授课制在十七世纪被系统提出，其设计针对的是当时最迫切的问题：如何用有限的教师，使尽可能多的儿童接受基本教育。把同龄学生编入固定班级，按统一进度授课，使教学的组织成本大幅下降。\n\n这一制度沿用至今，其效率至今没有更经济的替代方案。但它内含一个假设：同龄的学生具有相近的准备程度与学习速度。这个假设在多数情况下大致成立，在个别学生身上却明显不成立。\n\n此后种种改革——分层教学、走班制、个别辅导——大都可以看作对这一假设的修补，而非对班级授课制的替代。"
+    },
+    "stem": "根据文章，作者如何看待分层教学、走班制等改革",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "毫无必要"
+      },
+      {
+        "id": "B",
+        "text": "与班级授课制无关"
+      },
+      {
+        "id": "C",
+        "text": "已经取代了班级授课制"
+      },
+      {
+        "id": "D",
+        "text": "是对班级授课制某一假设的修补，而非对该制度的替代"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "文章末段的判断很克制：这些改革大都可以看作对「同龄同速」这一假设的修补，而非对制度本身的替代。\n\n理由在上一段——该制度的效率至今没有更经济的替代方案。承认其效率，同时修补其假设，是文章的基本立场。",
+    "distractorRationale": {
+      "A": "文章承认假设在个别学生身上不成立，改革有其理由。",
+      "B": "改革正是针对该制度的假设。",
+      "C": "文章说没有更经济的替代方案。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How does the author view reforms such as streaming and rotating classes?",
+        "explanation": "The closing judgment is measured: such reforms mostly patch the assumption of equal age and equal pace rather than replace the system.\n\nThe reason lies in the preceding paragraph — no more economical alternative to its efficiency has appeared. Granting the efficiency while patching the assumption is the article's position."
+      }
+    },
+    "tags": [
+      "education",
+      "stance"
+    ],
+    "estimatedTimeSec": 145,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r57",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "班级授课制在十七世纪被系统提出，其设计针对的是当时最迫切的问题：如何用有限的教师，使尽可能多的儿童接受基本教育。把同龄学生编入固定班级，按统一进度授课，使教学的组织成本大幅下降。\n\n这一制度沿用至今，其效率至今没有更经济的替代方案。但它内含一个假设：同龄的学生具有相近的准备程度与学习速度。这个假设在多数情况下大致成立，在个别学生身上却明显不成立。\n\n此后种种改革——分层教学、走班制、个别辅导——大都可以看作对这一假设的修补，而非对班级授课制的替代。"
+    },
+    "stem": "根据文章，班级授课制沿用至今的主要原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "其组织效率至今没有更经济的替代方案"
+      },
+      {
+        "id": "B",
+        "text": "法律的规定"
+      },
+      {
+        "id": "C",
+        "text": "传统的力量"
+      },
+      {
+        "id": "D",
+        "text": "家长的要求"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "文章第二段给出理由：该制度的效率至今没有更经济的替代方案。\n\n这是一个成本论证，而非诉诸传统或规定——文章始终把该制度当作对资源约束的回应来讨论。",
+    "distractorRationale": {
+      "B": "文章未提法律。",
+      "C": "文章以效率论证，不诉诸传统。",
+      "D": "文章未提家长。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why has the class system persisted, according to the passage?",
+        "explanation": "The second paragraph gives the reason: no more economical alternative to its efficiency has yet appeared.\n\nThis is an argument from cost, not from tradition or regulation — the passage treats the system throughout as a response to a resource constraint."
+      }
+    },
+    "tags": [
+      "education",
+      "causation"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r58",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "评价学生有两种取向。一种以选拔为目的，关心的是学生之间的相对位置，因此题目须有足够的区分度，成绩通常按名次或百分位呈现。\n\n另一种以诊断为目的，关心的是学生是否掌握了特定内容，因此题目直接对应教学目标，结果以「已掌握／未掌握」呈现，人人达标是可以接受甚至期待的结果。\n\n两种取向的题目形式可能相似，但对同一份成绩的解读完全不同。把诊断性测验的结果拿来排名，或用选拔性考试判断教学目标是否达成，都是把工具用错了地方。"
+    },
+    "stem": "根据文章，以选拔为目的的评价关心的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "学生是否掌握特定内容"
+      },
+      {
+        "id": "B",
+        "text": "学生之间的相对位置"
+      },
+      {
+        "id": "C",
+        "text": "教师的教学方法"
+      },
+      {
+        "id": "D",
+        "text": "课程的难度"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "文章第一段写明：以选拔为目的的评价关心学生之间的相对位置，因此需要足够的区分度。\n\n「相对」二字是关键——它决定了成绩必须按名次或百分位呈现。",
+    "distractorRationale": {
+      "A": "这是诊断性评价。",
+      "C": "评价对象是学生。",
+      "D": "难度是手段而非目的。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does selection-oriented assessment attend to?",
+        "explanation": "The first paragraph says it: the relative standing of students, which is why the items must discriminate.\n\nThe word «relative» is decisive — it is what forces results into ranks or percentiles."
+      }
+    },
+    "tags": [
+      "education",
+      "assessment"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r59",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "评价学生有两种取向。一种以选拔为目的，关心的是学生之间的相对位置，因此题目须有足够的区分度，成绩通常按名次或百分位呈现。\n\n另一种以诊断为目的，关心的是学生是否掌握了特定内容，因此题目直接对应教学目标，结果以「已掌握／未掌握」呈现，人人达标是可以接受甚至期待的结果。\n\n两种取向的题目形式可能相似，但对同一份成绩的解读完全不同。把诊断性测验的结果拿来排名，或用选拔性考试判断教学目标是否达成，都是把工具用错了地方。"
+    },
+    "stem": "根据文章，诊断性评价中「人人达标」应被视为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "评价失败的标志"
+      },
+      {
+        "id": "B",
+        "text": "应当避免的情况"
+      },
+      {
+        "id": "C",
+        "text": "可以接受甚至期待的结果"
+      },
+      {
+        "id": "D",
+        "text": "题目太易的证据"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "文章明确指出：在诊断取向下，人人达标是可以接受甚至期待的结果。\n\n因为它衡量的是掌握与否，而非相互比较。若在选拔性考试中人人满分，才说明区分度不足——两种取向对同一现象的判断恰好相反。",
+    "distractorRationale": {
+      "A": "恰恰可能是教学成功。",
+      "B": "文章说这是可期待的结果。",
+      "D": "在诊断取向下这不构成缺陷。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In diagnostic assessment, how should «everyone passes» be regarded?",
+        "explanation": "The passage states it: under a diagnostic orientation, universal mastery is acceptable and even hoped for.\n\nWhat is measured is mastery, not comparison. Universal full marks would signal poor discrimination only in a selection test — the same result, judged oppositely by the two orientations."
+      }
+    },
+    "tags": [
+      "education",
+      "assessment"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r60",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "评价学生有两种取向。一种以选拔为目的，关心的是学生之间的相对位置，因此题目须有足够的区分度，成绩通常按名次或百分位呈现。\n\n另一种以诊断为目的，关心的是学生是否掌握了特定内容，因此题目直接对应教学目标，结果以「已掌握／未掌握」呈现，人人达标是可以接受甚至期待的结果。\n\n两种取向的题目形式可能相似，但对同一份成绩的解读完全不同。把诊断性测验的结果拿来排名，或用选拔性考试判断教学目标是否达成，都是把工具用错了地方。"
+    },
+    "stem": "根据文章，把诊断性测验的结果拿来排名，其错误在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "题目太难"
+      },
+      {
+        "id": "B",
+        "text": "评分不客观"
+      },
+      {
+        "id": "C",
+        "text": "样本太小"
+      },
+      {
+        "id": "D",
+        "text": "用衡量掌握程度的工具去回答相对位置的问题"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "诊断性测验的题目对应教学目标，未必具备区分度；用它排名，等于用一把只标注「及格线」的尺子去测量细微差别。\n\n错在工具与问题不匹配，而非题目难易或评分是否客观——文章末句「把工具用错了地方」正是此意。",
+    "distractorRationale": {
+      "A": "难度不是问题所在。",
+      "B": "文章未论评分客观性。",
+      "C": "文章未论样本。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is wrong with ranking students by the results of a diagnostic test?",
+        "explanation": "A diagnostic test's items track teaching objectives and need not discriminate at all; ranking by them is measuring fine differences with a ruler marked only at the pass line.\n\nThe fault is a mismatch between tool and question, not the difficulty of the items or the objectivity of the marking — which is what the closing phrase «using the tool in the wrong place» names."
+      }
+    },
+    "tags": [
+      "education",
+      "inference"
+    ],
+    "estimatedTimeSec": 155,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r61",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "评价学生有两种取向。一种以选拔为目的，关心的是学生之间的相对位置，因此题目须有足够的区分度，成绩通常按名次或百分位呈现。\n\n另一种以诊断为目的，关心的是学生是否掌握了特定内容，因此题目直接对应教学目标，结果以「已掌握／未掌握」呈现，人人达标是可以接受甚至期待的结果。\n\n两种取向的题目形式可能相似，但对同一份成绩的解读完全不同。把诊断性测验的结果拿来排名，或用选拔性考试判断教学目标是否达成，都是把工具用错了地方。"
+    },
+    "stem": "根据文章，两种评价取向的题目形式",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "可能相似，但对成绩的解读完全不同"
+      },
+      {
+        "id": "B",
+        "text": "文章未提及"
+      },
+      {
+        "id": "C",
+        "text": "完全相同"
+      },
+      {
+        "id": "D",
+        "text": "必然完全不同"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "文章末段明确：两种取向的题目形式可能相似，但对同一份成绩的解读完全不同。\n\n这一点提醒人：不能凭卷面判断一次测验属于哪种取向，须问它为何而设。",
+    "distractorRationale": {
+      "B": "文章末段明确提及。",
+      "C": "解读完全不同。",
+      "D": "文章说形式可能相似。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, how do the item formats of the two orientations compare?",
+        "explanation": "The final paragraph is explicit: the formats may look alike, while the reading of the same set of scores differs completely.\n\nThe point warns that one cannot tell an assessment's orientation from the paper itself; one must ask what it was built for."
+      }
+    },
+    "tags": [
+      "education",
+      "detail"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r62",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "评价学生有两种取向。一种以选拔为目的，关心的是学生之间的相对位置，因此题目须有足够的区分度，成绩通常按名次或百分位呈现。\n\n另一种以诊断为目的，关心的是学生是否掌握了特定内容，因此题目直接对应教学目标，结果以「已掌握／未掌握」呈现，人人达标是可以接受甚至期待的结果。\n\n两种取向的题目形式可能相似，但对同一份成绩的解读完全不同。把诊断性测验的结果拿来排名，或用选拔性考试判断教学目标是否达成，都是把工具用错了地方。"
+    },
+    "stem": "根据文章，诊断性评价的结果通常以什么方式呈现",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "名次"
+      },
+      {
+        "id": "B",
+        "text": "已掌握／未掌握"
+      },
+      {
+        "id": "C",
+        "text": "标准分"
+      },
+      {
+        "id": "D",
+        "text": "百分位"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "文章第二段写明：诊断性评价的结果以「已掌握／未掌握」呈现。\n\n名次与百分位都是相对位置的表达方式，属于选拔取向。",
+    "distractorRationale": {
+      "A": "名次属于选拔取向。",
+      "C": "标准分同样表达相对位置。",
+      "D": "百分位属于选拔取向。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How are diagnostic results normally reported?",
+        "explanation": "The second paragraph says it: as mastered or not mastered.\n\nRanks and percentiles both express relative standing and belong to the selection orientation."
+      }
+    },
+    "tags": [
+      "education",
+      "detail"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r63",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共物品在经济学上有两个特征：一是非排他性，即难以阻止未付费者享用；二是非竞争性，即一个人的使用不减少他人可用的数量。路灯是常被引用的例子：它无法只照亮付费者，也不会因多一个人经过而变暗。\n\n这两个特征使公共物品难以由市场单独提供。若人人都指望他人付费而自己搭便车，最终可能无人付费，物品也就无从产生。这被称为集体行动的困境。\n\n因此公共物品通常由公共部门筹资提供，或由社会组织以其他机制解决付费问题。困难不在于人们不需要这些物品，恰恰相反——正因人人都能享用，才没有人有动机单独承担成本。"
+    },
+    "stem": "根据文章，公共物品的两个特征是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "稀缺性与可分割性"
+      },
+      {
+        "id": "B",
+        "text": "地方性与时效性"
+      },
+      {
+        "id": "C",
+        "text": "非排他性与非竞争性"
+      },
+      {
+        "id": "D",
+        "text": "有偿性与可交易性"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "文章首句即列出两项：非排他性与非竞争性。\n\n路灯之所以成为标准例子，正因它同时具备这两点——挡不住不付费的人，也不会因多一人经过而变暗。",
+    "distractorRationale": {
+      "A": "这些是私人物品的特征。",
+      "B": "文章未以此界定。",
+      "D": "公共物品恰恰难以按付费排他。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What two features define a public good, according to the passage?",
+        "explanation": "The opening sentence lists them: non-excludability and non-rivalry.\n\nThe street lamp is the standard example because it has both at once — it cannot shut out those who have not paid, and it does not dim because one more person passes."
+      }
+    },
+    "tags": [
+      "politics",
+      "public-goods"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r64",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共物品在经济学上有两个特征：一是非排他性，即难以阻止未付费者享用；二是非竞争性，即一个人的使用不减少他人可用的数量。路灯是常被引用的例子：它无法只照亮付费者，也不会因多一个人经过而变暗。\n\n这两个特征使公共物品难以由市场单独提供。若人人都指望他人付费而自己搭便车，最终可能无人付费，物品也就无从产生。这被称为集体行动的困境。\n\n因此公共物品通常由公共部门筹资提供，或由社会组织以其他机制解决付费问题。困难不在于人们不需要这些物品，恰恰相反——正因人人都能享用，才没有人有动机单独承担成本。"
+    },
+    "stem": "根据文章，「搭便车」问题产生的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "人们不需要公共物品"
+      },
+      {
+        "id": "B",
+        "text": "公共物品质量太差"
+      },
+      {
+        "id": "C",
+        "text": "公共物品数量不足"
+      },
+      {
+        "id": "D",
+        "text": "无法阻止未付费者享用，因而人人都指望他人付费"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "非排他性使付费与享用脱钩：不付费同样能用，理性的个体便倾向于等待他人付费。\n\n文章末段特意澄清：困难不在于人们不需要，恰恰在于人人都能享用——这一句正是用来堵住「不需要」这一误解的。",
+    "distractorRationale": {
+      "A": "文章明确否定这一点。",
+      "B": "文章未论质量。",
+      "C": "数量不足是结果而非原因。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why does free-riding arise, according to the passage?",
+        "explanation": "Non-excludability severs payment from enjoyment: one may use the good without paying, so a rational individual waits for someone else to pay.\n\nThe final paragraph is at pains to say that the difficulty is not that people do not want the good — it is that everyone can have it. That sentence exists to block exactly this misreading."
+      }
+    },
+    "tags": [
+      "politics",
+      "collective-action"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r65",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共物品在经济学上有两个特征：一是非排他性，即难以阻止未付费者享用；二是非竞争性，即一个人的使用不减少他人可用的数量。路灯是常被引用的例子：它无法只照亮付费者，也不会因多一个人经过而变暗。\n\n这两个特征使公共物品难以由市场单独提供。若人人都指望他人付费而自己搭便车，最终可能无人付费，物品也就无从产生。这被称为集体行动的困境。\n\n因此公共物品通常由公共部门筹资提供，或由社会组织以其他机制解决付费问题。困难不在于人们不需要这些物品，恰恰相反——正因人人都能享用，才没有人有动机单独承担成本。"
+    },
+    "stem": "根据文章，公共物品难以由市场单独提供，其根本原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "无法通过收费机制回收成本"
+      },
+      {
+        "id": "B",
+        "text": "政府禁止私人经营"
+      },
+      {
+        "id": "C",
+        "text": "消费者购买力不足"
+      },
+      {
+        "id": "D",
+        "text": "生产技术不成熟"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "市场依靠收费筛选使用者并回收成本；非排他性使这一机制失效——收不到费，成本自然无从回收。\n\n文章讨论的是机制上的失灵，不是技术、法律或购买力的问题。",
+    "distractorRationale": {
+      "B": "文章未提禁止。",
+      "C": "文章未论购买力。",
+      "D": "文章未论技术。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why can markets not supply public goods on their own?",
+        "explanation": "A market relies on charging to sort users and recover costs; non-excludability disables that mechanism — no charge can be collected, so no cost can be recovered.\n\nThe passage is discussing a failure of mechanism, not of technology, law or purchasing power."
+      }
+    },
+    "tags": [
+      "politics",
+      "market-failure"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r66",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共物品在经济学上有两个特征：一是非排他性，即难以阻止未付费者享用；二是非竞争性，即一个人的使用不减少他人可用的数量。路灯是常被引用的例子：它无法只照亮付费者，也不会因多一个人经过而变暗。\n\n这两个特征使公共物品难以由市场单独提供。若人人都指望他人付费而自己搭便车，最终可能无人付费，物品也就无从产生。这被称为集体行动的困境。\n\n因此公共物品通常由公共部门筹资提供，或由社会组织以其他机制解决付费问题。困难不在于人们不需要这些物品，恰恰相反——正因人人都能享用，才没有人有动机单独承担成本。"
+    },
+    "stem": "根据文章可以推断，下列最接近公共物品特征的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "一杯咖啡"
+      },
+      {
+        "id": "B",
+        "text": "国防"
+      },
+      {
+        "id": "C",
+        "text": "一张电影票"
+      },
+      {
+        "id": "D",
+        "text": "一间出租房"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "国防同时具备两项特征：无法只保护付费者，也不因人口增加而按人分薄。\n\n咖啡喝掉就没有了（竞争性），电影票与出租房都可凭付费排他——三者都不符合。",
+    "distractorRationale": {
+      "A": "喝掉即消耗，具有竞争性。",
+      "C": "凭票入场，具有排他性。",
+      "D": "租户占用后他人不能使用。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which of the following comes closest to being a public good?",
+        "explanation": "National defence has both features at once: it cannot protect only those who have paid, and it is not divided up as the population grows.\n\nA cup of coffee is consumed and gone (rivalrous), and a cinema ticket and a rented room both exclude by payment. None of the three qualifies."
+      }
+    },
+    "tags": [
+      "politics",
+      "application"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r67",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共政策的评估至少要问三个不同的问题。第一是产出：投入的资源变成了多少可数的成果，例如建成多少所学校。第二是结果：这些成果是否带来了预期的改变，例如入学率与学业水平是否提高。第三是影响：这一改变中有多少确实由该政策造成，而非同期其他因素所致。\n\n三者递进，回答的难度也依次上升。产出可由账目核对，结果需要统计数据，而影响必须设法排除其他解释，往往要借助对照或时间序列。\n\n只报告产出而不追问结果与影响，是政策评估中最常见的省略。它并不必然出于掩饰——追问后两者既费时又可能得出令人不快的答案。"
+    },
+    "stem": "根据文章，政策评估要问的第一个问题是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "成本"
+      },
+      {
+        "id": "B",
+        "text": "影响"
+      },
+      {
+        "id": "C",
+        "text": "产出"
+      },
+      {
+        "id": "D",
+        "text": "结果"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "文章列举的顺序是产出、结果、影响，第一项是产出——投入的资源变成了多少可数的成果。\n\n它最易核实，也最不足以说明政策是否有效。",
+    "distractorRationale": {
+      "A": "文章未把成本列为三问之一。",
+      "B": "影响是第三个问题。",
+      "D": "结果是第二个问题。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the first question in policy evaluation, according to the passage?",
+        "explanation": "The passage lists outputs, outcomes and impact in that order, beginning with outputs — how many countable results the resources became.\n\nIt is the easiest to verify and the least capable of showing whether the policy worked."
+      }
+    },
+    "tags": [
+      "politics",
+      "evaluation"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r68",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共政策的评估至少要问三个不同的问题。第一是产出：投入的资源变成了多少可数的成果，例如建成多少所学校。第二是结果：这些成果是否带来了预期的改变，例如入学率与学业水平是否提高。第三是影响：这一改变中有多少确实由该政策造成，而非同期其他因素所致。\n\n三者递进，回答的难度也依次上升。产出可由账目核对，结果需要统计数据，而影响必须设法排除其他解释，往往要借助对照或时间序列。\n\n只报告产出而不追问结果与影响，是政策评估中最常见的省略。它并不必然出于掩饰——追问后两者既费时又可能得出令人不快的答案。"
+    },
+    "stem": "根据文章，「影响」这一层面追问的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "花了多少钱"
+      },
+      {
+        "id": "B",
+        "text": "建成了多少所学校"
+      },
+      {
+        "id": "C",
+        "text": "入学率是否提高"
+      },
+      {
+        "id": "D",
+        "text": "改变中有多少确实由该政策造成"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "影响层面要把政策的作用从同期其他因素中分离出来，回答的是归因问题。\n\n建校数是产出，入学率是结果——三者依次递进，不可互相代替。",
+    "distractorRationale": {
+      "A": "这是投入。",
+      "B": "这是产出。",
+      "C": "这是结果。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the «impact» level ask?",
+        "explanation": "The impact level separates the policy's contribution from everything else happening at the same time; it is a question of attribution.\n\nSchools built is an output and enrolment is an outcome. The three rise in sequence and cannot substitute for one another."
+      }
+    },
+    "tags": [
+      "politics",
+      "attribution"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r69",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共政策的评估至少要问三个不同的问题。第一是产出：投入的资源变成了多少可数的成果，例如建成多少所学校。第二是结果：这些成果是否带来了预期的改变，例如入学率与学业水平是否提高。第三是影响：这一改变中有多少确实由该政策造成，而非同期其他因素所致。\n\n三者递进，回答的难度也依次上升。产出可由账目核对，结果需要统计数据，而影响必须设法排除其他解释，往往要借助对照或时间序列。\n\n只报告产出而不追问结果与影响，是政策评估中最常见的省略。它并不必然出于掩饰——追问后两者既费时又可能得出令人不快的答案。"
+    },
+    "stem": "根据文章，为何「只报告产出」是最常见的省略",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "产出最易核实，而追问结果与影响既费时又可能得出令人不快的答案"
+      },
+      {
+        "id": "B",
+        "text": "影响与政策无关"
+      },
+      {
+        "id": "C",
+        "text": "产出最重要"
+      },
+      {
+        "id": "D",
+        "text": "结果无法测量"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "文章给出两重理由：难度上，产出可由账目核对，影响却须排除其他解释；动机上，后两问可能得出不利的答案。\n\n文章同时指出「并不必然出于掩饰」——把省略仅仅归因于隐瞒，反而漏掉了成本与难度这一更普遍的原因。",
+    "distractorRationale": {
+      "B": "影响正是政策归因问题。",
+      "C": "文章认为产出最不足以说明有效性。",
+      "D": "文章说结果需要统计数据，并非无法测量。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why is reporting outputs alone the commonest omission?",
+        "explanation": "The passage gives two reasons at once. In difficulty: outputs can be checked against the accounts, while impact requires ruling out competing explanations. In motive: the later two questions may yield unwelcome answers.\n\nIt also notes that the omission need not be concealment — attributing it to concealment alone misses the more general cause, which is cost and difficulty."
+      }
+    },
+    "tags": [
+      "politics",
+      "inference"
+    ],
+    "estimatedTimeSec": 160,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r70",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共政策的评估至少要问三个不同的问题。第一是产出：投入的资源变成了多少可数的成果，例如建成多少所学校。第二是结果：这些成果是否带来了预期的改变，例如入学率与学业水平是否提高。第三是影响：这一改变中有多少确实由该政策造成，而非同期其他因素所致。\n\n三者递进，回答的难度也依次上升。产出可由账目核对，结果需要统计数据，而影响必须设法排除其他解释，往往要借助对照或时间序列。\n\n只报告产出而不追问结果与影响，是政策评估中最常见的省略。它并不必然出于掩饰——追问后两者既费时又可能得出令人不快的答案。"
+    },
+    "stem": "根据文章，回答「影响」这一问题通常需要",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "核对账目"
+      },
+      {
+        "id": "B",
+        "text": "借助对照或时间序列以排除其他解释"
+      },
+      {
+        "id": "C",
+        "text": "询问执行人员"
+      },
+      {
+        "id": "D",
+        "text": "收集统计数据即可"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "文章明确：影响必须设法排除其他解释，往往要借助对照或时间序列。\n\n核对账目对应产出，统计数据对应结果——三种方法各配一层，不能越级使用。",
+    "distractorRationale": {
+      "A": "这对应产出层面。",
+      "C": "文章未提及此法。",
+      "D": "这对应结果层面。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does answering the impact question normally require?",
+        "explanation": "The passage says it: other explanations must be ruled out, usually by means of a comparison group or a time series.\n\nChecking accounts answers outputs and statistics answer outcomes. Each method belongs to its own level and cannot be borrowed upward."
+      }
+    },
+    "tags": [
+      "politics",
+      "method"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r71",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共政策的评估至少要问三个不同的问题。第一是产出：投入的资源变成了多少可数的成果，例如建成多少所学校。第二是结果：这些成果是否带来了预期的改变，例如入学率与学业水平是否提高。第三是影响：这一改变中有多少确实由该政策造成，而非同期其他因素所致。\n\n三者递进，回答的难度也依次上升。产出可由账目核对，结果需要统计数据，而影响必须设法排除其他解释，往往要借助对照或时间序列。\n\n只报告产出而不追问结果与影响，是政策评估中最常见的省略。它并不必然出于掩饰——追问后两者既费时又可能得出令人不快的答案。"
+    },
+    "stem": "文章二对「省略后两问」的态度是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "严厉谴责"
+      },
+      {
+        "id": "B",
+        "text": "完全认可"
+      },
+      {
+        "id": "C",
+        "text": "指出其常见并解释成因，同时说明不必然出于掩饰"
+      },
+      {
+        "id": "D",
+        "text": "未作评价"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "文章既指出这是最常见的省略，也说明其成因（费时、可能得出不快的答案），并特意声明「并不必然出于掩饰」。\n\n这是一种有分寸的批评：指出问题，同时避免把结构性困难简化为动机问题。",
+    "distractorRationale": {
+      "A": "文章语气克制，未作谴责。",
+      "B": "文章称之为省略，含批评意味。",
+      "D": "文章明确作出了评价。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the second passage's attitude towards omitting the later two questions?",
+        "explanation": "It names the omission as the commonest one, explains what produces it — the time it costs and the answers it may yield — and expressly states that it need not be concealment.\n\nThis is criticism with proportion: the problem is named, while a structural difficulty is kept from being reduced to a question of motive."
+      }
+    },
+    "tags": [
+      "politics",
+      "tone"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r72",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "外祖母的院子里有一口井。井台是青石铺的，被几十年的水磨得发亮，边缘微微下凹。夏天的午后，我趴在井沿往下看，圆圆的一片天嵌在黑色的水面上，云在里面缓缓地走。\n\n外祖母打水从不用力。她把桶放下去，手腕一抖，绳子一松，桶便斜着吃满了水。我学过很多次，桶总是浮在水面上打转，怎么也不肯下沉。她在旁边看着，不说话，也不来帮忙。\n\n多年以后我才明白，那不是她不肯教。有些事情说不清楚，只能等手自己记住。"
+    },
+    "stem": "文段一中「被几十年的水磨得发亮，边缘微微下凹」这一细节主要说明",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "外祖母勤于打扫"
+      },
+      {
+        "id": "B",
+        "text": "天气潮湿"
+      },
+      {
+        "id": "C",
+        "text": "井台的材质名贵"
+      },
+      {
+        "id": "D",
+        "text": "这口井被长期频繁地使用"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "石头被磨亮、磨凹，靠的是年复一年的水与脚步。这一细节不写人，却写出了几十年的日常。\n\n作者不说「这口井用了很久」，而让石头自己说——这正是细节描写的用处。",
+    "distractorRationale": {
+      "A": "磨损来自使用，非打扫。",
+      "B": "文中未写天气常年潮湿。",
+      "C": "青石是常见石材。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the polished, slightly hollowed stone of the wellhead chiefly convey?",
+        "explanation": "Stone is worn bright and worn concave only by water and footsteps repeated year after year. The detail mentions no one, yet it renders decades of daily life.\n\nThe writer does not say «this well was long in use»; the stone says it. That is what a detail is for."
+      }
+    },
+    "tags": [
+      "literature",
+      "detail"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r73",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "外祖母的院子里有一口井。井台是青石铺的，被几十年的水磨得发亮，边缘微微下凹。夏天的午后，我趴在井沿往下看，圆圆的一片天嵌在黑色的水面上，云在里面缓缓地走。\n\n外祖母打水从不用力。她把桶放下去，手腕一抖，绳子一松，桶便斜着吃满了水。我学过很多次，桶总是浮在水面上打转，怎么也不肯下沉。她在旁边看着，不说话，也不来帮忙。\n\n多年以后我才明白，那不是她不肯教。有些事情说不清楚，只能等手自己记住。"
+    },
+    "stem": "文段一中「圆圆的一片天嵌在黑色的水面上，云在里面缓缓地走」一句的表达效果是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "以井中倒影写出夏日午后的静谧与孩童的凝神"
+      },
+      {
+        "id": "B",
+        "text": "暗示天气将变"
+      },
+      {
+        "id": "C",
+        "text": "表现井水污浊"
+      },
+      {
+        "id": "D",
+        "text": "说明井水很深"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「嵌」字使天与水面结成一体，「缓缓」则把时间放慢。一个孩子能看见云在井里走，说明他趴了很久、看得极专注。\n\n景语即情语：写的是井，透出的是那个午后的安静。",
+    "distractorRationale": {
+      "B": "文中无天气变化的暗示。",
+      "C": "「黑色」是背光所致，非污浊。",
+      "D": "文中未写深度。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What effect does the reflected sky and the slowly moving clouds create?",
+        "explanation": "The word «set» fuses sky and water into one surface, and «slowly» stretches the time. A child who sees clouds walking inside a well has been lying there a long while, watching very closely.\n\nThe scene is the feeling: the well is described, and the quiet of that afternoon comes through."
+      }
+    },
+    "tags": [
+      "literature",
+      "imagery"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r74",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "外祖母的院子里有一口井。井台是青石铺的，被几十年的水磨得发亮，边缘微微下凹。夏天的午后，我趴在井沿往下看，圆圆的一片天嵌在黑色的水面上，云在里面缓缓地走。\n\n外祖母打水从不用力。她把桶放下去，手腕一抖，绳子一松，桶便斜着吃满了水。我学过很多次，桶总是浮在水面上打转，怎么也不肯下沉。她在旁边看着，不说话，也不来帮忙。\n\n多年以后我才明白，那不是她不肯教。有些事情说不清楚，只能等手自己记住。"
+    },
+    "stem": "文段一中外祖母「在旁边看着，不说话，也不来帮忙」，其用意是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "她在生气"
+      },
+      {
+        "id": "B",
+        "text": "让「我」在反复尝试中自己体会手上的分寸"
+      },
+      {
+        "id": "C",
+        "text": "她不会教"
+      },
+      {
+        "id": "D",
+        "text": "她没有注意到"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "末段已给出答案：那不是她不肯教，有些事情说不清楚，只能等手自己记住。\n\n她在旁边看着，正说明她一直在场；不帮忙，是因为帮了就学不会。这份沉默里有耐心。",
+    "distractorRationale": {
+      "A": "文中无生气的迹象。",
+      "C": "末段明说不是不肯教。",
+      "D": "她一直在旁边看着。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why does the grandmother stand by, silent and unhelping?",
+        "explanation": "The final paragraph answers it: not that she would not teach, but that some things cannot be told and must wait until the hands remember them.\n\nThat she stands by shows she is present throughout; that she does not help is because helping would prevent the learning. The silence holds patience."
+      }
+    },
+    "tags": [
+      "literature",
+      "characterisation"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r75",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "外祖母的院子里有一口井。井台是青石铺的，被几十年的水磨得发亮，边缘微微下凹。夏天的午后，我趴在井沿往下看，圆圆的一片天嵌在黑色的水面上，云在里面缓缓地走。\n\n外祖母打水从不用力。她把桶放下去，手腕一抖，绳子一松，桶便斜着吃满了水。我学过很多次，桶总是浮在水面上打转，怎么也不肯下沉。她在旁边看着，不说话，也不来帮忙。\n\n多年以后我才明白，那不是她不肯教。有些事情说不清楚，只能等手自己记住。"
+    },
+    "stem": "文段一末句「只能等手自己记住」中「手自己记住」的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "打水需要力气"
+      },
+      {
+        "id": "B",
+        "text": "手的记忆力比大脑好"
+      },
+      {
+        "id": "C",
+        "text": "有些技能属于身体的经验，无法通过言语传授"
+      },
+      {
+        "id": "D",
+        "text": "应当多做笔记"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「手自己记住」是把身体当作记忆的主体，说的是那种只能在反复操作中形成、无法转述的经验。\n\n文段前面写外祖母「手腕一抖」——这一抖的分寸正是无法用语言传递的部分，也是全文所指之处。",
+    "distractorRationale": {
+      "A": "文中写外祖母打水从不用力。",
+      "B": "这不是字面比较记忆力。",
+      "D": "文中未涉及笔记。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does «wait until the hands remember» mean?",
+        "explanation": "It makes the body the subject of memory, naming the kind of knowledge that forms only through repetition and cannot be handed over in words.\n\nEarlier the grandmother gives her wrist «a flick» — the exact measure of that flick is what language cannot carry, and it is what the whole piece points at."
+      }
+    },
+    "tags": [
+      "literature",
+      "interpretation"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r76",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "列车开动的时候，父亲还站在月台上。他没有挥手，只是把两只手插在裤袋里，微微抬着下巴，像是在看车顶，又像是在看什么更远的地方。\n\n我隔着玻璃看他。玻璃上有雨，他的轮廓被水痕拉长、揉碎，又在下一秒重新聚拢。车走得慢，我看了很久，久到足以看清他鬓角的白，也久到足以看清他并没有在看我。\n\n后来我常想起那个下午。他大约是不知道该把眼睛放在哪里。一个不习惯说话的人，连告别也需要找一个借口。"
+    },
+    "stem": "文段二中父亲「把两只手插在裤袋里，微微抬着下巴」，这一动作表现的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "对儿子的不满"
+      },
+      {
+        "id": "B",
+        "text": "急于离开"
+      },
+      {
+        "id": "C",
+        "text": "身体不适"
+      },
+      {
+        "id": "D",
+        "text": "不知如何表达离别情绪的拘谨"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "不挥手、手插口袋、下巴微抬、目光游移——一连串动作都指向同一件事：他不知道该把自己放在哪里。\n\n末段「一个不习惯说话的人，连告别也需要找一个借口」正是对这组动作的解释。",
+    "distractorRationale": {
+      "A": "文中无不满的表示。",
+      "B": "他一直站在月台上。",
+      "C": "文中无身体不适的描写。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What do the father's hands in his pockets and slightly raised chin convey?",
+        "explanation": "No wave, hands pocketed, chin lifted, gaze wandering — every gesture points the same way: he does not know where to put himself.\n\nThe closing line, that a man unused to speaking needs a pretext even for goodbye, is the explanation of this cluster of gestures."
+      }
+    },
+    "tags": [
+      "literature",
+      "gesture"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r77",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "列车开动的时候，父亲还站在月台上。他没有挥手，只是把两只手插在裤袋里，微微抬着下巴，像是在看车顶，又像是在看什么更远的地方。\n\n我隔着玻璃看他。玻璃上有雨，他的轮廓被水痕拉长、揉碎，又在下一秒重新聚拢。车走得慢，我看了很久，久到足以看清他鬓角的白，也久到足以看清他并没有在看我。\n\n后来我常想起那个下午。他大约是不知道该把眼睛放在哪里。一个不习惯说话的人，连告别也需要找一个借口。"
+    },
+    "stem": "文段二中「玻璃上有雨，他的轮廓被水痕拉长、揉碎，又在下一秒重新聚拢」的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "以视觉的模糊与重聚映衬「我」情绪的起伏"
+      },
+      {
+        "id": "B",
+        "text": "交代季节"
+      },
+      {
+        "id": "C",
+        "text": "说明当天雨很大"
+      },
+      {
+        "id": "D",
+        "text": "表现列车速度很快"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "轮廓的碎与聚不只是雨水的物理效果——它随着「我」的注视一次次散开又合拢，正对应看着亲人远去时那种反复的失落与挽留。\n\n借景写情而不点破，是这一句的分寸所在。",
+    "distractorRationale": {
+      "B": "文中未交代季节。",
+      "C": "雨的大小不是重点。",
+      "D": "文中说车走得慢。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the rain-blurred outline breaking and reassembling accomplish?",
+        "explanation": "The scattering and gathering of the outline is not merely what rain does to glass — it comes apart and closes again under the narrator's gaze, matching the repeated losing and holding of someone watching a parent recede.\n\nThe restraint lies in letting the scene carry the feeling without naming it."
+      }
+    },
+    "tags": [
+      "literature",
+      "technique"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r78",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "列车开动的时候，父亲还站在月台上。他没有挥手，只是把两只手插在裤袋里，微微抬着下巴，像是在看车顶，又像是在看什么更远的地方。\n\n我隔着玻璃看他。玻璃上有雨，他的轮廓被水痕拉长、揉碎，又在下一秒重新聚拢。车走得慢，我看了很久，久到足以看清他鬓角的白，也久到足以看清他并没有在看我。\n\n后来我常想起那个下午。他大约是不知道该把眼睛放在哪里。一个不习惯说话的人，连告别也需要找一个借口。"
+    },
+    "stem": "文段二中「久到足以看清他鬓角的白，也久到足以看清他并没有在看我」一句，其表达效果在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "表现「我」视力很好"
+      },
+      {
+        "id": "B",
+        "text": "两个「久到」并置，把凝视的深情与未被回望的失落同时呈现"
+      },
+      {
+        "id": "C",
+        "text": "强调列车行驶缓慢"
+      },
+      {
+        "id": "D",
+        "text": "说明父亲年老"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "同一段凝视，前一半看见的是父亲的衰老，后一半看见的是自己没有被看见。两个发现都由「久」带来，因而无法分开。\n\n若只留其一，深情或失落便各自单薄；并置之下，这一句才有分量。",
+    "distractorRationale": {
+      "A": "与视力无关。",
+      "C": "车速是条件而非表达重点。",
+      "D": "父亲年老只是所见之一。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the effect of the twin «long enough» clauses?",
+        "explanation": "One and the same act of watching yields, in its first half, the father's ageing, and in its second, the fact of not being looked at. Both discoveries come from the same duration and cannot be separated.\n\nEither clause alone would be thin — tenderness or disappointment by itself. Set together, the sentence carries its weight."
+      }
+    },
+    "tags": [
+      "literature",
+      "interpretation"
+    ],
+    "estimatedTimeSec": 155,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r79",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "列车开动的时候，父亲还站在月台上。他没有挥手，只是把两只手插在裤袋里，微微抬着下巴，像是在看车顶，又像是在看什么更远的地方。\n\n我隔着玻璃看他。玻璃上有雨，他的轮廓被水痕拉长、揉碎，又在下一秒重新聚拢。车走得慢，我看了很久，久到足以看清他鬓角的白，也久到足以看清他并没有在看我。\n\n后来我常想起那个下午。他大约是不知道该把眼睛放在哪里。一个不习惯说话的人，连告别也需要找一个借口。"
+    },
+    "stem": "文段二末句「连告别也需要找一个借口」中的「借口」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "提前离开的理由"
+      },
+      {
+        "id": "B",
+        "text": "不说话的理由"
+      },
+      {
+        "id": "C",
+        "text": "抬头看车顶这类可以掩饰目光无处安放的举动"
+      },
+      {
+        "id": "D",
+        "text": "不来送行的理由"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "第一段已写他「像是在看车顶，又像是在看什么更远的地方」——这正是那个借口：给游移的目光找一个正当的去处。\n\n他并未不来，也未提前走，只是不知道该怎样站着。",
+    "distractorRationale": {
+      "A": "他一直站在月台上。",
+      "B": "借口指的是动作，不是沉默本身。",
+      "D": "他确实来送行了。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the «pretext» in the final sentence?",
+        "explanation": "The first paragraph already supplies it: he seems to be looking at the carriage roof, or at something further off. That is the pretext — a respectable destination for a gaze with nowhere to rest.\n\nHe did not stay away and did not leave early; he simply did not know how to stand there."
+      }
+    },
+    "tags": [
+      "literature",
+      "interpretation"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-r80",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "列车开动的时候，父亲还站在月台上。他没有挥手，只是把两只手插在裤袋里，微微抬着下巴，像是在看车顶，又像是在看什么更远的地方。\n\n我隔着玻璃看他。玻璃上有雨，他的轮廓被水痕拉长、揉碎，又在下一秒重新聚拢。车走得慢，我看了很久，久到足以看清他鬓角的白，也久到足以看清他并没有在看我。\n\n后来我常想起那个下午。他大约是不知道该把眼睛放在哪里。一个不习惯说话的人，连告别也需要找一个借口。"
+    },
+    "stem": "文段一与文段二在写法上的共同点是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "都以景物描写开篇并贯穿全文"
+      },
+      {
+        "id": "B",
+        "text": "都以对话推动情节"
+      },
+      {
+        "id": "C",
+        "text": "都采用第三人称叙述"
+      },
+      {
+        "id": "D",
+        "text": "都以细节动作写不曾说出口的情感，并在末段点出多年后的理解"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "两段都写沉默的长辈：一个不说话、不帮忙，一个不挥手、不看人；情感全部落在动作上。两段也都以「多年以后」「后来我常想起」收束，由当时的不解转为此刻的懂得。\n\n两文均无对话，均用第一人称；文段二以人物动作而非景物开篇——其余三项都与文本不符。",
+    "distractorRationale": {
+      "A": "文段二以人物动作开篇。",
+      "B": "两段均无对话。",
+      "C": "两段均为第一人称。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What do the two passages share in method?",
+        "explanation": "Both portray a silent elder — one who neither speaks nor helps, one who neither waves nor looks — and let the gestures carry all the feeling. Both close with «years later» and «afterwards I often thought of it», turning incomprehension at the time into understanding now.\n\nNeither contains dialogue; both are in the first person; and the second opens on a person's gestures, not on scenery. The other three options do not match the texts."
+      }
+    },
+    "tags": [
+      "literature",
+      "comparison"
+    ],
+    "estimatedTimeSec": 170,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  }
+]

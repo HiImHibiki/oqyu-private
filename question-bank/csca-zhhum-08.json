@@ -1,0 +1,1246 @@
+[
+  {
+    "id": "csca-zhh-h01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「一蹴而就」中的「蹴」读作",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "chù"
+      },
+      {
+        "id": "B",
+        "text": "zú"
+      },
+      {
+        "id": "C",
+        "text": "jiù"
+      },
+      {
+        "id": "D",
+        "text": "cù"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「蹴」读 cù，本义是踏、踩。「一蹴而就」字面意思是踏一步就成功，多用于否定，形容事情不可能一下子办成。",
+    "distractorRationale": {
+      "A": "「触」读 chù，与「蹴」形音都有别。",
+      "B": "「足」读 zú，与「蹴」形近而音不同。",
+      "C": "「就」读 jiù，是成语中的另一个字。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How is 蹴 pronounced in the idiom 一蹴而就?",
+        "explanation": "蹴 is read cù and originally means to tread or step. 一蹴而就 literally means to succeed in a single step, and is most often used in the negative, describing something that cannot be achieved all at once."
+      }
+    },
+    "tags": [
+      "pronunciation",
+      "idiom"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "这部小说的语言看似平淡，____细读之下自有深意。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "然而"
+      },
+      {
+        "id": "B",
+        "text": "而且"
+      },
+      {
+        "id": "C",
+        "text": "因为"
+      },
+      {
+        "id": "D",
+        "text": "所以"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "前后两句是转折关系：「看似平淡」与「自有深意」相对，须用表转折的关联词。「看似」二字已经预告了后文的翻转。",
+    "distractorRationale": {
+      "B": "「而且」表递进，但两句在语义上是相反而非同向。",
+      "C": "「因为」表原因，两句之间不是因果关系。",
+      "D": "「所以」表结果，同样不合。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«The novel's language seems plain, ____ close reading reveals depth in it.» Which connective best fills the blank?",
+        "explanation": "The two clauses stand in contrast — «seems plain» against «has real depth» — so a contrastive connective is required. The word 看似 already announces the reversal to come."
+      }
+    },
+    "tags": [
+      "connectives",
+      "contrast"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "面对种种非议，他始终____，不为所动。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "手足无措"
+      },
+      {
+        "id": "B",
+        "text": "泰然自若"
+      },
+      {
+        "id": "C",
+        "text": "斤斤计较"
+      },
+      {
+        "id": "D",
+        "text": "洋洋得意"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「泰然自若」形容遇事镇定，与后文「不为所动」相互印证，两处说的是同一种状态。",
+    "distractorRationale": {
+      "A": "「手足无措」正是不镇定，与「不为所动」矛盾。",
+      "C": "「斤斤计较」指过分计较，与「不为所动」相反。",
+      "D": "「洋洋得意」含自满之意，与面对非议的语境不合。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«Faced with all manner of criticism he remained ____, unmoved.» Which idiom best fills the blank?",
+        "explanation": "泰然自若 describes composure under pressure and echoes the «unmoved» that follows; both name the same state."
+      }
+    },
+    "tags": [
+      "idiom",
+      "consistency"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "翻译从来不只是换一套词。同一句话在两种语言中往往牵连着不同的联想、语气与文化背景，____。因此优秀的译者常说，最难译的不是生僻的词，而是最平常的那几个。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "所以翻译毫无价值"
+      },
+      {
+        "id": "B",
+        "text": "只要逐字对应就能保证准确"
+      },
+      {
+        "id": "C",
+        "text": "字面对应反而可能丢失原意"
+      },
+      {
+        "id": "D",
+        "text": "词典可以解决全部问题"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "空格前说同一句话在两种语言中牵连不同的联想与背景，空格后以「因此」引出「最平常的词最难译」。中间一环必须说明字面对应之不足，因果链才连得上。",
+    "distractorRationale": {
+      "A": "全段是在讨论如何译好，不是否定翻译。",
+      "B": "与前后文的论述方向完全相反。",
+      "D": "若词典能解决一切，末句的感慨便无从谈起。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "Before the blank, the same sentence carries different associations and backgrounds in each language; after it, 因此 introduces «the commonest words are the hardest». The middle link must state the insufficiency of literal correspondence for the chain to hold."
+      }
+    },
+    "tags": [
+      "cohesion",
+      "translation"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列各句中没有错别字的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "这篇文章立义深刻，值得反复品味。"
+      },
+      {
+        "id": "B",
+        "text": "这篇文章立意深刻，值得反腹品味。"
+      },
+      {
+        "id": "C",
+        "text": "这篇文章立意深刻，值得反复品位。"
+      },
+      {
+        "id": "D",
+        "text": "这篇文章立意深刻，值得反复品味。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「品味」作动词指细细体会，「品位」是名词，指格调或档次。「立意」指确立主旨，不作「立义」。「反复」不能写作「反腹」。",
+    "distractorRationale": {
+      "A": "「立义」不成词，应为「立意」。",
+      "B": "「反腹」不成词，应为「反复」。",
+      "C": "「品位」是名词，此处需要动词「品味」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence contains no miswritten characters?",
+        "explanation": "品味 as a verb means to savour carefully; 品位 is a noun meaning taste or grade. 立意 means to establish a theme and is never written 立义. 反复 cannot be written 反腹."
+      }
+    },
+    "tags": [
+      "orthography",
+      "verb-noun"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "这份史料的真伪尚有____，学界至今没有定论。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "争议"
+      },
+      {
+        "id": "B",
+        "text": "争吵"
+      },
+      {
+        "id": "C",
+        "text": "争气"
+      },
+      {
+        "id": "D",
+        "text": "争夺"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「争议」指对某事看法不一而有不同意见，是学术语境的中性用词，与「没有定论」正相呼应。",
+    "distractorRationale": {
+      "B": "「争吵」指口角，带情绪色彩，不用于学术分歧。",
+      "C": "「争气」指不甘落后而努力，与语境无关。",
+      "D": "「争夺」的对象是利益或地位。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«The authenticity of this source is still in ____; scholars have reached no settled view.» Which word best fills the blank?",
+        "explanation": "争议 denotes divergent opinions on a matter and is the neutral term of academic usage, answering directly to «no settled view»."
+      }
+    },
+    "tags": [
+      "word-choice",
+      "academic-register"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "stimulus": {
+      "type": "passage",
+      "content": "史料的价值不在于新旧，而在于能否回答我们提出的问题。____，也可能因为提问的角度改变而重新获得意义。因此史学的进展，有时并非来自新材料的发现，而是来自新问题的提出。"
+    },
+    "locale": "zh",
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "一份刚刚出土的新材料"
+      },
+      {
+        "id": "B",
+        "text": "一份被反复引用的旧材料"
+      },
+      {
+        "id": "C",
+        "text": "一份伪造的材料"
+      },
+      {
+        "id": "D",
+        "text": "一份已经失传的材料"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "末句点出「进展并非来自新材料，而是来自新问题」，中间一句须以旧材料为例才能支撑这一结论。若填新材料，与末句的论断相冲突。",
+    "distractorRationale": {
+      "A": "新材料恰恰是末句要排除的那一路。",
+      "C": "真伪问题是另一议题，与提问角度无关。",
+      "D": "失传的材料无法被重新解读。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which phrase best fills the blank?",
+        "explanation": "The closing sentence holds that progress comes «not from new material but from new questions», so the middle clause must take old material as its example. Filling in new material would contradict that conclusion."
+      }
+    },
+    "tags": [
+      "cohesion",
+      "historiography"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「差」在下列词语中读音不同于其他三项的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "差异"
+      },
+      {
+        "id": "B",
+        "text": "差距"
+      },
+      {
+        "id": "C",
+        "text": "参差"
+      },
+      {
+        "id": "D",
+        "text": "差别"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「参差」读 cēn cī，形容长短高低不齐；其余三词中的「差」都读 chā，表示不同或差距。「差」还有 chāi（出差）、chà（差劲）等读音，是常见的多音字。",
+    "distractorRationale": {
+      "A": "「差异」读 chā yì。",
+      "B": "「差距」读 chā jù。",
+      "D": "「差别」读 chā bié。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In which word is 差 pronounced differently from the other three?",
+        "explanation": "参差 is read cēn cī and describes things uneven in height or length; in the other three, 差 is chā, meaning difference or gap. 差 also has the readings chāi (出差) and chà (差劲) — a common polyphone."
+      }
+    },
+    "tags": [
+      "polyphone",
+      "pronunciation"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "作者在书中____了大量一手档案，使论证格外扎实。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "征召"
+      },
+      {
+        "id": "B",
+        "text": "征求"
+      },
+      {
+        "id": "C",
+        "text": "征收"
+      },
+      {
+        "id": "D",
+        "text": "征引"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「征引」指引用文献材料以为佐证，正是学术著作中使用档案的说法，与「论证扎实」相配。",
+    "distractorRationale": {
+      "A": "「征召」的对象是人员。",
+      "B": "「征求」的对象是意见。",
+      "C": "「征收」的对象是税费或土地。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«In the book the author ____ a great deal of primary archival material, making the argument especially solid.» Which word best fills the blank?",
+        "explanation": "征引 means to cite documentary material in support, which is precisely how scholarly work draws on archives and fits «a solid argument»."
+      }
+    },
+    "tags": [
+      "academic-verbs",
+      "collocation"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "stimulus": {
+      "type": "passage",
+      "content": "一部作品能否成为经典，往往不由它问世时的评价决定。有的书初出时无人问津，数十年后忽然被大量阅读；有的书曾风行一时，如今只留下名字。____，而这一点在当时是无法预知的。"
+    },
+    "locale": "zh",
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "决定其命运的是后世读者持续的选择"
+      },
+      {
+        "id": "B",
+        "text": "决定其命运的是问世时的销量"
+      },
+      {
+        "id": "C",
+        "text": "决定其命运的是作者的名气"
+      },
+      {
+        "id": "D",
+        "text": "经典的地位一经确立便永不改变"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "前两个例子都在说明当时的评价与后来的地位不一致，空格须由此归纳出结论；末句「当时无法预知」也要求所填内容指向后世而非当时。",
+    "distractorRationale": {
+      "B": "「曾风行一时」的例子正说明销量不能决定命运。",
+      "C": "名气与销量同理，都属于当时的评价。",
+      "D": "与首句「不由问世时的评价决定」不成因果，也与末句无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "Both examples show that contemporary reception and later standing diverge, so the blank must draw the conclusion from them; and «could not be foreseen at the time» requires it to point forward to later readers rather than back to the moment of publication."
+      }
+    },
+    "tags": [
+      "cohesion",
+      "inference"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "这两种说法看似相似，实则____，不可混为一谈。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "不谋而合"
+      },
+      {
+        "id": "B",
+        "text": "大相径庭"
+      },
+      {
+        "id": "C",
+        "text": "如出一辙"
+      },
+      {
+        "id": "D",
+        "text": "殊途同归"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「大相径庭」指彼此相差很远，与「看似相似」构成对照，也与后文「不可混为一谈」呼应。其余三个成语都表示相同或趋同，方向相反。",
+    "distractorRationale": {
+      "A": "「不谋而合」指未经商量而见解一致。",
+      "C": "「如出一辙」指完全一样。",
+      "D": "「殊途同归」指方法不同而结果相同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«The two statements look alike but are in fact ____ and must not be conflated.» Which idiom best fills the blank?",
+        "explanation": "大相径庭 means widely divergent, standing against «look alike» and answering to «must not be conflated». The other three all denote sameness or convergence and point the wrong way."
+      }
+    },
+    "tags": [
+      "idiom",
+      "contrast"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「即」与「既」的用法，正确的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "「既然」写作「即然」"
+      },
+      {
+        "id": "B",
+        "text": "两字可以互换"
+      },
+      {
+        "id": "C",
+        "text": "「即使」表示假设让步，「既然」表示已成的前提"
+      },
+      {
+        "id": "D",
+        "text": "「即」只用于人名"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「即」有「就是、即便」之意，「即使」引出尚未发生的假设；「既」表示已经，「既然」承接已经成立的事实。字形只差一笔，语法功能却相反：一个指向未然，一个指向已然。",
+    "distractorRationale": {
+      "A": "「既然」不能写作「即然」。",
+      "B": "两字意义与用法都不同，不可互换。",
+      "D": "「即」是常用虚词，并不限于人名。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which statement about the use of 即 and 既 is correct?",
+        "explanation": "即 carries the sense of «namely, even if», and 即使 introduces a hypothetical not yet realised; 既 means «already», and 既然 takes up a fact already established. The two characters differ by a single stroke but work in opposite directions: one points at the unrealised, the other at the accomplished."
+      }
+    },
+    "tags": [
+      "character-distinction",
+      "grammar"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "这项政策的效果如何，还需要时间来____。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "检举"
+      },
+      {
+        "id": "B",
+        "text": "检讨"
+      },
+      {
+        "id": "C",
+        "text": "检修"
+      },
+      {
+        "id": "D",
+        "text": "检验"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「检验」指查验是否符合预期，「时间检验」是固定搭配，用于尚待观察其成效的事物。",
+    "distractorRationale": {
+      "A": "「检举」指向有关部门揭发。",
+      "B": "「检讨」指对过失的反省。",
+      "C": "「检修」的对象是机器设备。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«How effective this policy proves still needs time to ____.» Which word best fills the blank?",
+        "explanation": "检验 means to test whether something meets expectations, and 时间检验 is a set collocation used of things whose effects remain to be seen."
+      }
+    },
+    "tags": [
+      "collocation",
+      "policy-language"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "stimulus": {
+      "type": "passage",
+      "content": "文物修复讲求「可逆」：所用的材料与手法应当能够在将来被去除，以便后人采用更好的技术重新处理。____，这一原则背后是一种谦逊——承认今天的最佳做法未必是最终的答案。"
+    },
+    "locale": "zh",
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "看似只是技术规范"
+      },
+      {
+        "id": "B",
+        "text": "修复工作因此毫无必要"
+      },
+      {
+        "id": "C",
+        "text": "这是唯一正确的修复方式"
+      },
+      {
+        "id": "D",
+        "text": "后人不会有更好的技术"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "空格后说「这一原则背后是一种谦逊」，是把表层与深层作对比。空格须先点出表层——一条技术规范——「背后」二字才有着落。",
+    "distractorRationale": {
+      "B": "全段是在阐述修复的原则，并未否定修复。",
+      "C": "「唯一正确」与末句所说的谦逊自相矛盾。",
+      "D": "与「以便后人采用更好的技术」直接冲突。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which phrase best fills the blank?",
+        "explanation": "After the blank comes «behind this principle lies a kind of humility», setting surface against depth. The blank must first name the surface — a technical rule — for «behind» to have anything to stand on."
+      }
+    },
+    "tags": [
+      "cohesion",
+      "conservation"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列词语中，加点字的意思与其他三项不同的是：「文」",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "文献"
+      },
+      {
+        "id": "B",
+        "text": "文火"
+      },
+      {
+        "id": "C",
+        "text": "文章"
+      },
+      {
+        "id": "D",
+        "text": "文字"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「文火」的「文」指火势小而缓，与「武火」相对，是形容词性的用法；其余三项的「文」都与文字、文章有关。同一个字在不同词中义项可以相去甚远。",
+    "distractorRationale": {
+      "A": "「文献」的「文」指典籍文书。",
+      "C": "「文章」的「文」指文辞。",
+      "D": "「文字」的「文」指书写符号。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In which word does 文 differ in meaning from the other three?",
+        "explanation": "In 文火 the character means a low, gentle flame, in contrast to 武火, and functions adjectivally; in the other three 文 relates to writing and texts. One character can carry senses that lie far apart."
+      }
+    },
+    "tags": [
+      "polysemy",
+      "character-meaning"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "作者对这一现象的批评相当____，既指出问题，也体谅其中的难处。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "含糊"
+      },
+      {
+        "id": "B",
+        "text": "尖锐"
+      },
+      {
+        "id": "C",
+        "text": "中肯"
+      },
+      {
+        "id": "D",
+        "text": "刻薄"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「中肯」指切中要害而又恰如其分，与后文「既指出问题，也体谅难处」的两面性正相符合。其余三词都只顾一面。",
+    "distractorRationale": {
+      "A": "「含糊」意味着未能指出问题。",
+      "B": "「尖锐」只强调锋利，与「体谅」不相称。",
+      "D": "「刻薄」含贬义，更与体谅相悖。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«The author's criticism of this phenomenon is quite ____: it names the problem while allowing for the difficulties involved.» Which word best fills the blank?",
+        "explanation": "中肯 means apt and to the point without excess, matching the two-sidedness of «names the problem while allowing for the difficulties». The other three attend to one side only."
+      }
+    },
+    "tags": [
+      "evaluative-language",
+      "balance"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "stimulus": {
+      "type": "passage",
+      "content": "口述历史保存了文献中难以见到的细节：普通人的日常、感受与判断。但记忆会随时间重塑，讲述者也可能受当下处境影响而调整叙述。____。承认这一点，并不削弱口述史的价值，反而是使用它的前提。"
+    },
+    "locale": "zh",
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此记忆是完全准确的"
+      },
+      {
+        "id": "B",
+        "text": "因此口述材料不应被使用"
+      },
+      {
+        "id": "C",
+        "text": "因此文献材料完全可靠"
+      },
+      {
+        "id": "D",
+        "text": "因此口述材料同样需要与其他证据相互印证"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "空格前指出口述的两点局限，空格后说「承认这一点……是使用它的前提」——可见所填内容须是一种审慎的使用方式，而非弃用。相互印证正是这样的方式。",
+    "distractorRationale": {
+      "A": "与「记忆会随时间重塑」相反。",
+      "B": "与末句「不削弱其价值」直接矛盾。",
+      "C": "文献的可靠性不是本段的话题，且前文并未如此断言。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "Before the blank come two limitations of oral testimony; after it, «acknowledging this ... is the precondition for using it». What fills the blank must therefore be a careful way of using such material, not a reason to discard it. Cross-checking against other evidence is exactly that."
+      }
+    },
+    "tags": [
+      "cohesion",
+      "oral-history"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "这两位学者的观点虽有分歧，但都建立在扎实的材料之上，可谓____。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "各有所长"
+      },
+      {
+        "id": "B",
+        "text": "无稽之谈"
+      },
+      {
+        "id": "C",
+        "text": "各执一词"
+      },
+      {
+        "id": "D",
+        "text": "针锋相对"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "句中「虽有分歧，但都建立在扎实的材料之上」是先让步后肯定，收尾处须是褒义的评价。「各有所长」正合此意。",
+    "distractorRationale": {
+      "B": "「无稽之谈」是彻底的否定，与「扎实的材料」矛盾。",
+      "C": "「各执一词」偏中性甚至略含贬义，只写出分歧而不含肯定。",
+      "D": "「针锋相对」强调对立的激烈程度，与肯定语气不合。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«The two scholars differ, yet both build on solid material — one might call it ____.» Which idiom best fills the blank?",
+        "explanation": "«They differ, yet both build on solid material» concedes and then affirms, so the closing evaluation must be favourable. 各有所长 — each has its strengths — fits exactly."
+      }
+    },
+    "tags": [
+      "idiom",
+      "evaluative-tone"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「以身作则」中的「则」意思是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "规则的数量单位"
+      },
+      {
+        "id": "B",
+        "text": "准则、榜样"
+      },
+      {
+        "id": "C",
+        "text": "责任"
+      },
+      {
+        "id": "D",
+        "text": "就、便"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「以身作则」意为用自身的行为作为榜样，「则」在此是名词，指准则、法度。「则」另有连词用法（「学而不思则罔」中的「则」即「就」），此处不取。",
+    "distractorRationale": {
+      "A": "「则」虽可作量词（如「新闻两则」），但成语中不取此义。",
+      "C": "「责任」是「责」，与「则」形近而义不同。",
+      "D": "这是「则」作连词时的意思，此处「则」是名词。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 则 mean in the idiom 以身作则?",
+        "explanation": "以身作则 means to make one's own conduct the model, where 则 is a noun meaning standard or norm. 则 also works as a conjunction (as in 学而不思则罔, where it means «then»), but not here."
+      }
+    },
+    "tags": [
+      "idiom",
+      "character-meaning"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-h20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "stimulus": {
+      "type": "passage",
+      "content": "博物馆的展签写得好不好，直接影响观众能获得多少。写得太专业，普通观众读不懂；____。真正的难处在于，用日常的语言说清楚专业的内容，而不损失其准确。"
+    },
+    "locale": "zh",
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "观众通常不看展签"
+      },
+      {
+        "id": "B",
+        "text": "写得太专业，专家也读不懂"
+      },
+      {
+        "id": "C",
+        "text": "写得太简略，又提供不了有价值的信息"
+      },
+      {
+        "id": "D",
+        "text": "展签的长度必须统一"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "分号前后应构成对举，分别指出两个极端；末句「用日常语言说清专业内容而不损失准确」也正是在这两端之间求平衡。所填句须是与「太专业」相反的另一端。",
+    "distractorRationale": {
+      "A": "观众是否阅读是另一议题，与写法的两难无关。",
+      "B": "重复了前半句的方向，构不成对举。",
+      "D": "长度问题与后文的平衡无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "The clauses either side of the semicolon should form a pair naming two extremes, and the closing sentence — plain language that stays accurate — seeks the balance between them. What fills the blank must be the opposite pole from «too technical»."
+      }
+    },
+    "tags": [
+      "cohesion",
+      "parallel-structure"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

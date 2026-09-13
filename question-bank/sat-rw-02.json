@@ -1,0 +1,1631 @@
+[
+  {
+    "id": "sat-rw-b01",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The engineer Hilda Bantz was known for designs that looked almost crude beside those of her contemporaries. Her bridges used fewer members, thicker sections, and no ornament at all. What her rivals read as a lack of refinement was in fact ______ : every element she kept was one she could calculate exactly, and she declined to include any she could not."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "extravagant"
+      },
+      {
+        "id": "B",
+        "text": "accidental"
+      },
+      {
+        "id": "C",
+        "text": "conventional"
+      },
+      {
+        "id": "D",
+        "text": "deliberate"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The colon explains that Bantz kept only elements she could calculate and refused the rest. That is a rule she chose and applied, so the apparent crudeness was **deliberate**.",
+    "distractorRationale": {
+      "A": "Her designs used fewer members and no ornament, so extravagance is contradicted directly.",
+      "B": "The text describes a consistent principle, which is the opposite of accident.",
+      "C": "She is contrasted with her contemporaries, so her approach was unusual rather than conventional."
+    },
+    "tags": [
+      "words-in-context",
+      "colon-clue"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b02",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Reviewers of the exhibition kept reaching for the word *revival*, but the curator resisted it. A revival, she pointed out, presumes a practice that had stopped. The weavers whose work filled the gallery had never stopped; they had simply worked where no reviewer was looking. The term, she suggested, described the critics' ______ rather than the weavers' history."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "inattention"
+      },
+      {
+        "id": "B",
+        "text": "generosity"
+      },
+      {
+        "id": "C",
+        "text": "impatience"
+      },
+      {
+        "id": "D",
+        "text": "expertise"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The weavers \"had never stopped; they had simply worked where no reviewer was looking.\" What ended and restarted was the critics' notice, not the practice. **Inattention** names precisely that failure to look.",
+    "distractorRationale": {
+      "B": "The curator's remark is a correction, and calling the error generous would blunt her point.",
+      "C": "Impatience concerns speed; the critics' error was one of coverage, not haste.",
+      "D": "The passage identifies a gap in the critics' knowledge, which is the opposite of expertise."
+    },
+    "tags": [
+      "words-in-context",
+      "irony"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b03",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Field guides describe the plant's flowering as unpredictable, but that word may be too ______ . Over eleven years of observation, flowering followed every summer in which rainfall exceeded a threshold, and followed no summer in which it did not. The pattern is not random; it is conditional on a variable that field guides do not record."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "generous"
+      },
+      {
+        "id": "B",
+        "text": "strong"
+      },
+      {
+        "id": "C",
+        "text": "technical"
+      },
+      {
+        "id": "D",
+        "text": "cautious"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The observations show flowering is fully determined by a rainfall threshold. Calling it *unpredictable* therefore overstates the case, so the word is too **strong** — that is, it claims more disorder than the data support.",
+    "distractorRationale": {
+      "A": "Generous would imply excessive praise, which does not fit a word describing disorder.",
+      "C": "The objection is that the word is inaccurate, not that it is jargon.",
+      "D": "A cautious word would understate the claim, but *unpredictable* overstates it."
+    },
+    "tags": [
+      "words-in-context",
+      "degree"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b04",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The following text is adapted from a 2024 article on materials science.\n\nSelf-healing concrete works by embedding bacteria that lie dormant until a crack admits water, at which point they wake and precipitate limestone. The idea is elegant, and small test panels seal cracks up to a millimetre wide. The difficulty is arithmetic: a highway bridge contains thousands of times more concrete than a test panel, and the bacterial capsules cost more per cubic metre than the concrete itself."
+    },
+    "stem": "What is the main purpose of the final sentence of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "To explain the chemical mechanism by which the bacteria seal cracks"
+      },
+      {
+        "id": "B",
+        "text": "To question whether the test panel results were accurately reported"
+      },
+      {
+        "id": "C",
+        "text": "To identify a practical obstacle that the promising laboratory result does not address"
+      },
+      {
+        "id": "D",
+        "text": "To propose a cheaper substitute for the bacterial capsules"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The first two sentences establish that the technique works at small scale. The final sentence introduces scale and cost as barriers — \"the difficulty is arithmetic.\" Its function is to name an obstacle the laboratory success leaves untouched, which is **C**.",
+    "distractorRationale": {
+      "A": "The mechanism is given earlier, in the first sentence, not in the final one.",
+      "B": "The panel results are accepted as accurate; the objection concerns scaling them up.",
+      "D": "The sentence identifies the cost problem but offers no alternative material."
+    },
+    "tags": [
+      "purpose",
+      "sentence-function"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b05",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Anthologies of early jazz recordings almost always open with a 1917 studio session, and almost always add a footnote explaining that the musicians on it were imitators rather than originators. The footnote is accurate. What it cannot supply is a recording of the originators, who were playing in cities where no recording equipment had yet been installed. The anthology's first track is thus a record not of the music's beginning but of the arrival of the machine that could capture it."
+    },
+    "stem": "Which choice best describes the function of the last sentence in the text as a whole?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It recommends that anthologies begin with a later and better-documented recording."
+      },
+      {
+        "id": "B",
+        "text": "It disputes the accuracy of the footnote mentioned in the first sentence."
+      },
+      {
+        "id": "C",
+        "text": "It explains why recording equipment was installed in some cities before others."
+      },
+      {
+        "id": "D",
+        "text": "It reinterprets what the anthology's opening track actually documents, given the limitation described earlier."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The passage builds a gap: the originators were never recorded because no equipment existed where they played. The last sentence uses that gap to reread the opening track as evidence about recording technology rather than about the music's origin — a reinterpretation, which is **D**.",
+    "distractorRationale": {
+      "A": "No alternative track is proposed; the point is what the existing track means.",
+      "B": "The text calls the footnote \"accurate\" outright, so it is not being disputed.",
+      "C": "The uneven spread of equipment is assumed as background, never explained."
+    },
+    "tags": [
+      "text-structure",
+      "sentence-function"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b06",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Cross-Text Connections",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "**Text 1**\n\nRequiring students to submit a draft before the final essay improves writing. In a semester-long trial, classes with a mandatory draft produced final essays scored a full grade higher on average than classes without one.\n\n**Text 2**\n\nWe replicated the draft requirement in nine classes and found the same gap — but it disappeared once we accounted for feedback. Where instructors returned written comments on the draft, scores rose. Where drafts were collected and returned unmarked, scores were identical to those of the no-draft classes. The draft is a container; what changes writing is what the instructor puts in it."
+    },
+    "stem": "Based on the texts, the authors of Text 2 would most likely characterize the conclusion drawn in Text 1 as",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "correct about the observed improvement but mistaken about what produced it."
+      },
+      {
+        "id": "B",
+        "text": "applicable only to students who were already strong writers."
+      },
+      {
+        "id": "C",
+        "text": "based on a trial too short to detect changes in student writing."
+      },
+      {
+        "id": "D",
+        "text": "contradicted by their own data, which showed no improvement at all."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Text 2 reports finding \"the same gap,\" so the improvement is real. Its objection is causal: the gain came from instructor feedback rather than from the draft requirement itself. That is agreement on the effect plus disagreement on the cause — **A**.",
+    "distractorRationale": {
+      "B": "Students' prior ability is not discussed in either text.",
+      "C": "Text 2 never raises the trial's duration as a problem.",
+      "D": "Text 2 explicitly found the same gap, so it did observe improvement."
+    },
+    "tags": [
+      "cross-text",
+      "causation"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b07",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Cross-Text Connections",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "**Text 1**\n\nRewilding should aim to restore an ecosystem to its state before large-scale human intervention. That baseline gives managers a definite target and a way to measure progress.\n\n**Text 2**\n\nEvery baseline is a date someone chose. Pollen cores from a single European valley show four distinct stable vegetation states over eight thousand years, each lasting long enough to look permanent to anyone living through it. Restoration must therefore be justified by what a landscape should do — hold water, support species — rather than by which past it should copy."
+    },
+    "stem": "Based on the texts, the author of Text 2 would most likely argue that the \"baseline\" referred to in Text 1 is",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "useful for measuring progress but expensive to establish."
+      },
+      {
+        "id": "B",
+        "text": "an arbitrary selection from among several equally valid past states."
+      },
+      {
+        "id": "C",
+        "text": "impossible to determine because pollen evidence is unreliable."
+      },
+      {
+        "id": "D",
+        "text": "appropriate for European valleys but not for other regions."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Text 2 opens with \"every baseline is a date someone chose\" and supports it with four stable states, each of which could serve as the target. The objection is that choosing among them is arbitrary — **B**.",
+    "distractorRationale": {
+      "A": "Cost is never mentioned; the objection is conceptual rather than practical.",
+      "C": "Text 2 relies on pollen cores as evidence, so it treats them as reliable.",
+      "D": "The valley is an example illustrating a general claim, not a limit on where the claim applies."
+    },
+    "tags": [
+      "cross-text",
+      "author-response"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b08",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Central Ideas and Details",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The following text is adapted from a 2023 study of urban birds.\n\nGreat tits living in cities sing at a higher pitch than those in nearby woodland, a difference usually explained as an adaptation: low-frequency traffic noise masks low notes, so higher songs carry further. Recordings made inside city parks at dawn, before traffic builds, found the same elevated pitch. Whatever raised these birds' songs, it is not something they adjust from moment to moment."
+    },
+    "stem": "Which choice best states the main idea of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Traffic noise has been shown to have no effect on how birds communicate in cities."
+      },
+      {
+        "id": "B",
+        "text": "Great tits in cities sing more often at dawn than at any other time of day."
+      },
+      {
+        "id": "C",
+        "text": "Evidence from quiet periods suggests the pitch difference is not a moment-to-moment response to noise."
+      },
+      {
+        "id": "D",
+        "text": "Woodland great tits are better able to adjust their songs than city great tits are."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The dawn recordings remove the masking noise, yet the pitch stays high. The text's conclusion is about the *kind* of cause — not a real-time adjustment — which is **C**.",
+    "distractorRationale": {
+      "A": "Too strong: the finding rules out moment-to-moment adjustment, not any effect of noise over longer timescales.",
+      "B": "Singing frequency at different hours is never compared.",
+      "D": "No claim is made about woodland birds' flexibility."
+    },
+    "tags": [
+      "central-idea",
+      "inference"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b09",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Central Ideas and Details",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "In 1911 a physicist proposed that a certain metal's resistance would fall smoothly toward zero as it approached absolute zero. Cooling experiments instead showed resistance dropping abruptly to zero at a temperature well above the predicted one, and staying there. The discrepancy was not a matter of degree. A smooth approach and a sudden vanishing call for different explanations, and the second required a physics the first had no room for."
+    },
+    "stem": "According to the text, why was the experimental result significant?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It confirmed the 1911 prediction at a lower temperature than expected."
+      },
+      {
+        "id": "B",
+        "text": "It showed that resistance never reaches exactly zero in any metal."
+      },
+      {
+        "id": "C",
+        "text": "It demonstrated that the cooling apparatus had been miscalibrated."
+      },
+      {
+        "id": "D",
+        "text": "Its form, not merely its numerical value, was incompatible with the existing prediction."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The text stresses that \"the discrepancy was not a matter of degree\": a gradual approach and an abrupt vanishing are different kinds of behaviour, needing different explanations. The significance lies in the shape of the result, which is **D**.",
+    "distractorRationale": {
+      "A": "The result contradicted the prediction rather than confirming it, and the transition occurred *above* the predicted temperature.",
+      "B": "The text says resistance dropped to zero and stayed there, the opposite of this claim.",
+      "C": "Miscalibration is never suggested; the result is treated as genuine."
+    },
+    "tags": [
+      "detail",
+      "significance"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b10",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Textual)",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A linguist proposed that a village's two neighbouring dialects had not diverged from a common ancestor, as had long been assumed, but had converged: speakers of two originally unrelated varieties, living side by side for centuries, had gradually made their speech more alike."
+    },
+    "stem": "Which finding, if true, would most strongly support the linguist's proposal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The two dialects share vocabulary and sentence structure but differ systematically in their oldest inherited word forms, which cannot be derived from each other."
+      },
+      {
+        "id": "B",
+        "text": "Speakers of both dialects report being able to understand each other without difficulty."
+      },
+      {
+        "id": "C",
+        "text": "Both dialects have borrowed a large number of words from the national standard language."
+      },
+      {
+        "id": "D",
+        "text": "The village has been continuously inhabited for more than eight hundred years."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Convergence predicts a specific split: surface features grow alike through contact, while the deepest inherited layer keeps the separate origins visible. Choice **A** reports exactly that pattern, and the phrase \"cannot be derived from each other\" is what rules out common descent.",
+    "distractorRationale": {
+      "B": "Mutual intelligibility follows from similarity however it arose, so it cannot distinguish the two accounts.",
+      "C": "Borrowing from a third language is consistent with divergence too, so it settles nothing.",
+      "D": "Long habitation makes contact possible but is equally compatible with a single ancestral dialect splitting."
+    },
+    "tags": [
+      "command-of-evidence",
+      "hypothesis-support"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b11",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Textual)",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A curator argued that a small painting long catalogued as a workshop copy was in fact an autograph work by the master, painted first and later copied by assistants."
+    },
+    "stem": "Which finding, if true, would most directly support the curator's argument?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The painting's frame was made in the same city where the master's workshop operated."
+      },
+      {
+        "id": "B",
+        "text": "Infrared imaging revealed extensive changes of composition beneath the paint surface, none of which appear in the other known versions."
+      },
+      {
+        "id": "C",
+        "text": "The painting uses a pigment that was widely available throughout the period."
+      },
+      {
+        "id": "D",
+        "text": "The painting is smaller than the other known versions of the composition."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Copyists work from a settled design, so their panels rarely show reworking. Extensive hidden changes indicate a composition being invented, and their absence in the other versions marks this panel as the one that came first — **B**.",
+    "distractorRationale": {
+      "A": "Frames are often replaced and were made for copies too, so this locates the object without dating the painting.",
+      "C": "A common pigment is consistent with any hand in the period and distinguishes nothing.",
+      "D": "Size alone does not indicate priority; copies were routinely made at different scales."
+    },
+    "tags": [
+      "command-of-evidence",
+      "attribution"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b12",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Quantitative)",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Four schools introduced a later start time in different years. Researchers recorded the mean nightly sleep reported by students before the change and one year afterward."
+    },
+    "figure": {
+      "kind": "table",
+      "alt": "Table of mean nightly sleep in hours before and after a later school start time at four schools, showing gains of about half an hour except at one school.",
+      "caption": "Mean nightly sleep, in hours",
+      "headers": [
+        "School",
+        "Before",
+        "After"
+      ],
+      "rows": [
+        [
+          "Ashgrove",
+          "6.8",
+          "7.4"
+        ],
+        [
+          "Belmont",
+          "7.1",
+          "7.6"
+        ],
+        [
+          "Carrow",
+          "6.9",
+          "6.9"
+        ],
+        [
+          "Dunmore",
+          "7.0",
+          "7.5"
+        ]
+      ]
+    },
+    "stem": "Which choice most effectively uses data from the table to complete the statement?\n\nThe later start time was followed by longer sleep at three of the four schools, but the result was not universal, since ______",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "students at Belmont reported the longest sleep after the change, at 7.6 hours."
+      },
+      {
+        "id": "B",
+        "text": "students at Ashgrove gained more sleep than students at Dunmore did."
+      },
+      {
+        "id": "C",
+        "text": "students at Carrow reported 6.9 hours both before and after the change."
+      },
+      {
+        "id": "D",
+        "text": "students at Ashgrove reported the shortest sleep before the change, at 6.8 hours."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The statement needs the exception that makes the result \"not universal.\" Carrow is the only school whose figure did not move — 6.9 before and after — so **C** supplies the required evidence.",
+    "distractorRationale": {
+      "A": "Reports the largest post-change value, which illustrates the general gain rather than the exception.",
+      "B": "Compares two schools that both improved, so it does not identify a school that failed to.",
+      "D": "Gives a starting value; the claim concerns change, not the initial level."
+    },
+    "tags": [
+      "quantitative-evidence",
+      "table"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b13",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Quantitative)",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A team measured how quickly four coastal soils released stored carbon after being flooded with seawater, hypothesizing that soils with more clay would hold their carbon longest."
+    },
+    "figure": {
+      "kind": "scatter",
+      "alt": "Scatter plot of clay content against days for half the stored carbon to be released, showing three soils on a rising trend and one soil far below it.",
+      "caption": "Clay content versus carbon half-release time",
+      "xLabel": "Clay content (%)",
+      "yLabel": "Days to release half of stored carbon",
+      "points": [
+        {
+          "x": 8,
+          "y": 12,
+          "label": "Soil W"
+        },
+        {
+          "x": 16,
+          "y": 21,
+          "label": "Soil X"
+        },
+        {
+          "x": 24,
+          "y": 31,
+          "label": "Soil Y"
+        },
+        {
+          "x": 33,
+          "y": 14,
+          "label": "Soil Z"
+        }
+      ]
+    },
+    "stem": "Which statement about the data is most accurate?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Half-release time increased steadily with clay content across all four soils."
+      },
+      {
+        "id": "B",
+        "text": "Soil W had both the lowest clay content and the longest half-release time."
+      },
+      {
+        "id": "C",
+        "text": "No relationship between clay content and half-release time appears in the data."
+      },
+      {
+        "id": "D",
+        "text": "Three soils fit the predicted pattern, but Soil Z has the highest clay content and one of the shortest half-release times."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Soils W, X, and Y rise together — 8% with 12 days, 16% with 21, 24% with 31. Soil Z breaks the pattern: the highest clay content, 33%, pairs with just 14 days, second-shortest of the four. **D** states both halves correctly.",
+    "distractorRationale": {
+      "A": "Soil Z falls well below the trend, so the increase is not steady across all four.",
+      "B": "Soil W has the lowest clay content but the shortest half-release time, not the longest.",
+      "C": "Too strong: three of the four points show a clear rising relationship."
+    },
+    "tags": [
+      "quantitative-evidence",
+      "scatter-plot",
+      "outlier"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b14",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Museums increasingly publish high-resolution images of their holdings without charge. Curators worried this would reduce visits, since anyone could now see the objects from home. Attendance figures at twelve participating museums instead rose, and the sharpest increases were at institutions whose collections were least known before. This suggests that for lesser-known collections, free images function less as a substitute for visiting than as ______"
+    },
+    "stem": "Which choice most logically completes the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "a way of becoming known to people who would not otherwise have heard of them."
+      },
+      {
+        "id": "B",
+        "text": "evidence that curators' predictions are usually accurate."
+      },
+      {
+        "id": "C",
+        "text": "a means of preserving fragile objects that cannot safely be displayed."
+      },
+      {
+        "id": "D",
+        "text": "a source of licensing revenue that offsets the cost of digitization."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Attendance rose most where collections were \"least known before,\" which ties the gain to visibility. If free images act as discovery rather than replacement, that pattern follows — **A**.",
+    "distractorRationale": {
+      "B": "The curators' prediction failed, since attendance rose instead of falling.",
+      "C": "Preservation is never mentioned, and the passage concerns attendance.",
+      "D": "The images are published without charge, so they generate no licensing revenue."
+    },
+    "tags": [
+      "inference",
+      "completion"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b15",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "H",
+    "irtB": 1.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A widely used test of soil fertility measures how much nitrogen a sample releases when incubated in the laboratory at a constant warm temperature. Fields ranked as fertile by this test often disappoint in practice. One agronomist notes that the test's constant warmth resembles no field anywhere: real soils swing between day and night temperatures, and the microbes that release nitrogen fastest are precisely those least tolerant of that swing. It follows that the test may systematically ______"
+    },
+    "stem": "Which choice most logically completes the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "underestimate the total quantity of nitrogen stored in a soil."
+      },
+      {
+        "id": "B",
+        "text": "overestimate the nitrogen that fields will actually supply to crops."
+      },
+      {
+        "id": "C",
+        "text": "produce different results when the same sample is tested twice."
+      },
+      {
+        "id": "D",
+        "text": "confuse nitrogen release with the release of other nutrients."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The fastest nitrogen-releasing microbes thrive in the laboratory's steady warmth but not under real temperature swings. The test therefore lets them contribute more than they could in a field, inflating the predicted supply — and that matches the fields that \"disappoint in practice.\" So **B**.",
+    "distractorRationale": {
+      "A": "The bias runs the other way, and the passage concerns released nitrogen rather than total stored nitrogen.",
+      "C": "The problem described is a consistent bias, not inconsistency between repeated tests.",
+      "D": "Only nitrogen is discussed; no other nutrient is mentioned."
+    },
+    "tags": [
+      "inference",
+      "measurement-bias"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b16",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Paper made from cotton rag survives for centuries with little deterioration. Paper made from wood pulp, introduced in the nineteenth century, contains acids that slowly destroy the sheet from within. ______ many books printed in the 1850s are in better condition today than books printed in the 1950s."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Nonetheless,"
+      },
+      {
+        "id": "B",
+        "text": "For instance,"
+      },
+      {
+        "id": "C",
+        "text": "As a result,"
+      },
+      {
+        "id": "D",
+        "text": "By comparison,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The first two sentences establish that rag paper lasts and pulp paper self-destructs. The third states the consequence: older books outlast newer ones. **As a result** marks that causal link.",
+    "distractorRationale": {
+      "A": "Signals a contrast, but the third sentence follows directly from the first two.",
+      "B": "The condition of the books is a consequence of the chemistry, not an example of it.",
+      "D": "The comparison was already made; this sentence reports its outcome."
+    },
+    "tags": [
+      "transitions",
+      "cause-effect"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b17",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The satellite's instrument was designed to measure ocean surface temperature and was calibrated only for that purpose. Analysts later found that its readings over sea ice, long discarded as noise, varied in a regular way with ice thickness. ______ a dataset assembled for one measurement turned out to contain a second one that nobody had set out to collect."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Meanwhile,"
+      },
+      {
+        "id": "B",
+        "text": "Admittedly,"
+      },
+      {
+        "id": "C",
+        "text": "Otherwise,"
+      },
+      {
+        "id": "D",
+        "text": "In effect,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The final sentence restates the preceding discovery in more general terms — discarded readings turned out to carry a second measurement. **In effect** introduces exactly that kind of summarizing restatement.",
+    "distractorRationale": {
+      "A": "Marks simultaneous events, and the last sentence is a conclusion rather than a parallel event.",
+      "B": "Concedes a point against the argument, whereas this sentence extends it.",
+      "C": "Signals an alternative outcome, but no alternative is under discussion."
+    },
+    "tags": [
+      "transitions",
+      "restatement"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b18",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Most accounts credit a single inventor with the first practical sewing machine. Patent records from the same decade list eleven mechanisms with the same essential arrangement of needle and shuttle, filed in four countries. ______ the machine appears to have been arrived at repeatedly rather than invented once."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "On this evidence,"
+      },
+      {
+        "id": "B",
+        "text": "Despite this,"
+      },
+      {
+        "id": "C",
+        "text": "Similarly,"
+      },
+      {
+        "id": "D",
+        "text": "In particular,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The patent records are evidence, and the final sentence states the conclusion drawn from them. **On this evidence** marks that inferential step.",
+    "distractorRationale": {
+      "B": "Would signal that the conclusion holds in spite of the records, but it rests on them.",
+      "C": "No parallel case is offered; the third sentence interprets the second.",
+      "D": "Introduces a specific instance, whereas this sentence generalizes."
+    },
+    "tags": [
+      "transitions",
+      "inference"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b19",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical Synthesis",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "While researching a topic, a student has taken the following notes:\n\n- Green roofs are layers of soil and vegetation installed on top of buildings.\n- They absorb rainfall that would otherwise run into storm drains.\n- A 2021 study measured runoff from two identical buildings in the same city.\n- The building with a green roof released 43% less water during heavy rain.\n- The green roof also lowered the building's peak summer cooling load by 11%."
+    },
+    "stem": "The student wants to present the runoff finding to an audience already familiar with green roofs. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Green roofs, which are layers of soil and vegetation installed on top of buildings, absorb rainfall that would otherwise run into storm drains."
+      },
+      {
+        "id": "B",
+        "text": "In a 2021 study of two identical buildings in the same city, the one with a green roof released 43% less water during heavy rain."
+      },
+      {
+        "id": "C",
+        "text": "A 2021 study found that a green roof lowered a building's peak summer cooling load by 11%."
+      },
+      {
+        "id": "D",
+        "text": "Because green roofs are covered in soil and vegetation, they can absorb rainfall and also reduce cooling costs."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The audience already knows what a green roof is, so definitions waste the sentence. Only **B** reports the runoff result itself, with the comparison design that makes it meaningful.",
+    "distractorRationale": {
+      "A": "Defines green roofs for an audience that already knows, and reports no finding.",
+      "C": "Accurate but concerns cooling load, not the runoff finding requested.",
+      "D": "Explains a mechanism and mentions two benefits without giving the measured result."
+    },
+    "tags": [
+      "rhetorical-synthesis",
+      "audience"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b20",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical Synthesis",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "While researching a topic, a student has taken the following notes:\n\n- The Aral Sea lost most of its volume after its feeder rivers were diverted for irrigation.\n- A dam completed in 2005 separated the smaller northern basin from the rest.\n- Water levels in the northern basin rose by about 4 metres within four years.\n- Fish catches in the northern basin recovered from near zero to several thousand tonnes per year.\n- The southern basin, left outside the dam, has continued to shrink."
+    },
+    "stem": "The student wants to make a generalization about the effect of the dam, supported by specific evidence. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The Aral Sea lost most of its volume after its feeder rivers were diverted for irrigation, and a dam completed in 2005 separated the smaller northern basin from the rest."
+      },
+      {
+        "id": "B",
+        "text": "Water levels in the northern basin rose by about 4 metres within four years of the dam's completion."
+      },
+      {
+        "id": "C",
+        "text": "The 2005 dam reversed the decline in the northern basin, where water levels rose about 4 metres in four years and fish catches recovered from near zero to several thousand tonnes per year, while the southern basin has continued to shrink."
+      },
+      {
+        "id": "D",
+        "text": "Although the southern basin has continued to shrink, the Aral Sea's decline was originally caused by the diversion of its feeder rivers for irrigation."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The goal has two parts: a generalization and specific support. **C** generalizes — the dam reversed the northern decline — then supplies both measurements, and the contrast with the southern basin shows the effect tracks the dam.",
+    "distractorRationale": {
+      "A": "Gives background only, with no outcome and therefore no generalization.",
+      "B": "Supplies one piece of evidence but states no general claim.",
+      "D": "Combines the outcome in the wrong basin with the original cause, and generalizes about neither."
+    },
+    "tags": [
+      "rhetorical-synthesis",
+      "generalization"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b21",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The team's radio telescope detects signals far weaker than a mobile phone's ______ consequently, the entire valley is closed to wireless transmission."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": ","
+      },
+      {
+        "id": "B",
+        "text": ""
+      },
+      {
+        "id": "C",
+        "text": ": and"
+      },
+      {
+        "id": "D",
+        "text": ";"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Both halves are independent clauses, and *consequently* is a conjunctive adverb rather than a coordinating conjunction. Joining the clauses therefore requires a semicolon before it.",
+    "distractorRationale": {
+      "A": "A comma before a conjunctive adverb joining two independent clauses is a comma splice.",
+      "B": "With no punctuation the two clauses fuse into a run-on sentence.",
+      "C": "A colon followed by *and* is not a valid construction, and *and consequently* is redundant."
+    },
+    "tags": [
+      "boundaries",
+      "semicolon"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b22",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The rescued manuscripts were sent to three institutions ______ the national library, which took the bound volumes; a regional archive, which took the loose sheets; and a university, which took the fragments."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": ":"
+      },
+      {
+        "id": "B",
+        "text": ","
+      },
+      {
+        "id": "C",
+        "text": ";"
+      },
+      {
+        "id": "D",
+        "text": ""
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The independent clause ends at *three institutions*, and what follows is a list naming them. A colon is the mark that introduces such a list after a complete clause. The internal semicolons are correct because each item already contains a comma.",
+    "distractorRationale": {
+      "B": "A comma cannot introduce a list whose items are themselves separated by semicolons.",
+      "C": "A semicolon would set the list apart as a separate clause, but the list is a fragment.",
+      "D": "Without punctuation, *three institutions the national library* is ungrammatical."
+    },
+    "tags": [
+      "boundaries",
+      "colon",
+      "list"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b23",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Because the tide reaches the cave mouth twice a day ______ the excavation can proceed for only four hours at a stretch."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": ";"
+      },
+      {
+        "id": "B",
+        "text": ","
+      },
+      {
+        "id": "C",
+        "text": ":"
+      },
+      {
+        "id": "D",
+        "text": ", so"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "*Because the tide reaches the cave mouth twice a day* is a dependent clause opening the sentence. When such a clause comes first, a comma separates it from the main clause that follows.",
+    "distractorRationale": {
+      "A": "A semicolon joins two independent clauses, but the first clause here is dependent.",
+      "C": "A colon must follow a complete independent clause, which *Because…* is not.",
+      "D": "*Because* already signals cause, so adding *so* states the same relationship twice."
+    },
+    "tags": [
+      "boundaries",
+      "dependent-clause"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b24",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Neither the pilot logs nor the maintenance record ______ any indication that the instrument had failed before the flight."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "were containing"
+      },
+      {
+        "id": "B",
+        "text": "have contained"
+      },
+      {
+        "id": "C",
+        "text": "contains"
+      },
+      {
+        "id": "D",
+        "text": "contain"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "With *neither…nor*, the verb agrees with the nearer subject. That subject is *the maintenance record*, which is singular, so the singular **contains** is required.",
+    "distractorRationale": {
+      "A": "Plural and uses a past progressive that does not fit a statement of present fact.",
+      "B": "Plural and also shifts to the present perfect without cause.",
+      "D": "Plural, agreeing with the more distant *logs* rather than the nearer subject."
+    },
+    "tags": [
+      "subject-verb-agreement",
+      "neither-nor"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b25",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The chemist's notebooks, which had been stored in a damp cellar for forty years and ______ nearly discarded during a renovation, are now the collection's most consulted holding."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "being"
+      },
+      {
+        "id": "B",
+        "text": "having been"
+      },
+      {
+        "id": "C",
+        "text": "was"
+      },
+      {
+        "id": "D",
+        "text": "were"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The relative clause contains two verbs joined by *and*: *had been stored* and the blank. Parallel structure and the plural subject *which* (standing for *notebooks*) call for **were nearly discarded**.",
+    "distractorRationale": {
+      "A": "A participle cannot serve as the second finite verb in a clause that already has one.",
+      "B": "Also non-finite, and it duplicates the perfect aspect already carried by *had been stored*.",
+      "C": "Singular, so it fails to agree with the plural *notebooks*."
+    },
+    "tags": [
+      "parallel-structure",
+      "agreement"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b26",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The committee praised the proposal for its clarity, its low cost, and ______"
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "its short timeline."
+      },
+      {
+        "id": "B",
+        "text": "because the timeline was short."
+      },
+      {
+        "id": "C",
+        "text": "how short the timeline was."
+      },
+      {
+        "id": "D",
+        "text": "the timeline being short."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The series runs *its clarity, its low cost, and ______*. The first two items are possessive noun phrases, so the third must match: **its short timeline**.",
+    "distractorRationale": {
+      "B": "A subordinate clause cannot sit in a series of noun phrases.",
+      "C": "An embedded question does not match the form of the preceding items.",
+      "D": "A gerund phrase breaks the pattern set by the two possessive noun phrases."
+    },
+    "tags": [
+      "parallel-structure",
+      "series"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-b27",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The survey team mapped the reef in 1994 and returned in 2019. In the intervening years the coral cover ______ by more than half, a decline the team attributes chiefly to repeated bleaching."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "is falling"
+      },
+      {
+        "id": "B",
+        "text": "had fallen"
+      },
+      {
+        "id": "C",
+        "text": "will fall"
+      },
+      {
+        "id": "D",
+        "text": "falls"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The decline was complete by the time of the 2019 return, which is itself in the past. An action finished before another past event takes the past perfect, **had fallen**.",
+    "distractorRationale": {
+      "A": "Present progressive describes an ongoing action now, not one completed before a past visit.",
+      "C": "Future tense contradicts a change that had already occurred by 2019.",
+      "D": "Present tense clashes with the past-tense narrative set by *mapped* and *returned*."
+    },
+    "tags": [
+      "verb-tense",
+      "past-perfect"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

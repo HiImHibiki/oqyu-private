@@ -1,0 +1,831 @@
+[
+  {
+    "id": "al-mth-a01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Quadratics",
+    "skill": "Completing the square",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The expression $2x^2 - 12x + 23$ can be written in the form $a(x + b)^2 + c$. Enter the values of $a$, $b$ and $c$.\n\n$a = $ {{n1}}, $b = $ {{n2}}, $c = $ {{n3}}",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "a"
+      },
+      {
+        "id": "n2",
+        "label": "b"
+      },
+      {
+        "id": "n3",
+        "label": "c"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 2
+        },
+        {
+          "key": "n2",
+          "value": -3
+        },
+        {
+          "key": "n3",
+          "value": 5
+        }
+      ]
+    },
+    "explanation": "Take the factor of $2$ out of the terms in $x$: $2(x^2 - 6x) + 23$. Completing the square inside gives $x^2 - 6x = (x - 3)^2 - 9$, so the expression becomes $2\\big[(x - 3)^2 - 9\\big] + 23 = 2(x - 3)^2 - 18 + 23 = 2(x - 3)^2 + 5$.\n\nComparing with $a(x + b)^2 + c$ gives $a = 2$, $b = -3$ and $c = 5$.",
+    "tags": [
+      "completing-the-square",
+      "quadratics"
+    ],
+    "estimatedTimeSec": 200,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-mth-a02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Quadratics",
+    "skill": "Discriminant",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The line $y = mx + 2$ is a tangent to the curve $y = x^2 + 4x + 6$. Find the larger of the two possible values of $m$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "Setting the expressions equal gives $x^2 + 4x + 6 = mx + 2$, so $x^2 + (4 - m)x + 4 = 0$. A tangent meets the curve exactly once, so the discriminant is zero:\n\n$(4 - m)^2 - 16 = 0$, hence $(4 - m)^2 = 16$ and $4 - m = \\pm 4$.\n\nThis gives $m = 0$ or $m = 8$, so the larger value is $8$.",
+    "tags": [
+      "tangent-condition",
+      "discriminant"
+    ],
+    "estimatedTimeSec": 260,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-mth-a03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Circular measure",
+    "skill": "Arc length & sector area",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A sector of a circle has radius $8\\ \\text{cm}$ and angle $1.5\\ \\text{radians}$ at the centre. Enter the arc length in cm as {{n1}} and the sector area in $\\text{cm}^2$ as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "arc length",
+        "unit": "cm"
+      },
+      {
+        "id": "n2",
+        "label": "sector area",
+        "unit": "cm²"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 12
+        },
+        {
+          "key": "n2",
+          "value": 48
+        }
+      ]
+    },
+    "explanation": "With the angle in radians, arc length $s = r\\theta = 8 \\times 1.5 = 12\\ \\text{cm}$.\n\nSector area $A = \\dfrac{1}{2}r^2\\theta = \\dfrac{1}{2} \\times 64 \\times 1.5 = 48\\ \\text{cm}^2$.\n\nBoth formulae require radians; degrees would need conversion first.",
+    "tags": [
+      "radians",
+      "sector"
+    ],
+    "estimatedTimeSec": 180,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-mth-a04",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Series",
+    "skill": "Binomial expansion",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Find the coefficient of $x^3$ in the expansion of $(2 + 3x)^5$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 1080
+    },
+    "explanation": "The general term is $\\binom{5}{r}(2)^{5-r}(3x)^r$. For $x^3$ take $r = 3$:\n\n$\\binom{5}{3}(2)^2(3)^3 = 10 \\times 4 \\times 27 = 1080$.",
+    "tags": [
+      "binomial-expansion",
+      "coefficients"
+    ],
+    "estimatedTimeSec": 220,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-mth-a05",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Series",
+    "skill": "GP",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A geometric progression has first term $18$ and common ratio $\\dfrac{2}{3}$. Find the sum to infinity.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 54
+    },
+    "explanation": "Since $|r| = \\dfrac{2}{3} < 1$, the sum to infinity converges and equals $S_\\infty = \\dfrac{a}{1 - r}$.\n\n$S_\\infty = \\dfrac{18}{1 - \\frac{2}{3}} = \\dfrac{18}{\\frac{1}{3}} = 54$.",
+    "tags": [
+      "geometric-progression",
+      "sum-to-infinity"
+    ],
+    "estimatedTimeSec": 200,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-mth-a06",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Differentiation",
+    "skill": "Stationary points",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The curve $y = x^3 - 6x^2 + 9x + 2$ has two stationary points. Enter the smaller $x$-coordinate as {{n1}} and the larger as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "smaller x"
+      },
+      {
+        "id": "n2",
+        "label": "larger x"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 1
+        },
+        {
+          "key": "n2",
+          "value": 3
+        }
+      ]
+    },
+    "explanation": "Differentiate: $\\dfrac{dy}{dx} = 3x^2 - 12x + 9$. Stationary points occur where this is zero:\n\n$3(x^2 - 4x + 3) = 0$, so $3(x - 1)(x - 3) = 0$ and $x = 1$ or $x = 3$.\n\nThe second derivative $\\dfrac{d^2y}{dx^2} = 6x - 12$ is negative at $x = 1$ (a maximum) and positive at $x = 3$ (a minimum).",
+    "tags": [
+      "differentiation",
+      "stationary-points"
+    ],
+    "estimatedTimeSec": 300,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-mth-a07",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Integration",
+    "skill": "Area under curve",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Find the area of the region enclosed between the curve $y = 4x - x^2$ and the $x$-axis.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 10.667,
+      "tolerance": 0.02,
+      "acceptedForms": [
+        "32/3",
+        "10.67",
+        "10.667"
+      ]
+    },
+    "explanation": "The curve meets the $x$-axis where $4x - x^2 = 0$, that is $x(4 - x) = 0$, giving $x = 0$ and $x = 4$. Between these limits the curve lies above the axis, so\n\n$A = \\displaystyle\\int_0^4 (4x - x^2)\\,dx = \\left[2x^2 - \\dfrac{x^3}{3}\\right]_0^4 = 32 - \\dfrac{64}{3} = \\dfrac{32}{3} \\approx 10.67$.",
+    "tags": [
+      "definite-integral",
+      "area"
+    ],
+    "estimatedTimeSec": 300,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-mth-a08",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Functions",
+    "skill": "Composite & inverse",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $f$ is defined by $f(x) = \\dfrac{3x + 1}{x - 2}$ for $x > 2$. Find $f^{-1}(4)$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 9
+    },
+    "explanation": "Rather than invert the whole function, solve $f(x) = 4$ directly:\n\n$\\dfrac{3x + 1}{x - 2} = 4$, so $3x + 1 = 4x - 8$ and $x = 9$.\n\nSince $9 > 2$, this lies in the domain, so $f^{-1}(4) = 9$.",
+    "tags": [
+      "inverse-function",
+      "rational-function"
+    ],
+    "estimatedTimeSec": 240,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-mth-a09",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Trigonometry",
+    "skill": "Equations",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Solve $2\\sin^2\\theta = 3\\cos\\theta$ for $0^\\circ \\le \\theta \\le 180^\\circ$. Give your answer in degrees.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 60
+    },
+    "explanation": "Use the identity $\\sin^2\\theta = 1 - \\cos^2\\theta$:\n\n$2(1 - \\cos^2\\theta) = 3\\cos\\theta$, so $2\\cos^2\\theta + 3\\cos\\theta - 2 = 0$.\n\nFactorising gives $(2\\cos\\theta - 1)(\\cos\\theta + 2) = 0$. Since $\\cos\\theta$ cannot equal $-2$, we need $\\cos\\theta = \\dfrac{1}{2}$, giving $\\theta = 60^\\circ$ in the stated interval.",
+    "tags": [
+      "trigonometric-equation",
+      "identities"
+    ],
+    "estimatedTimeSec": 320,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-phy-a01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Kinematics & Dynamics",
+    "skill": "Motion graphs",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A car accelerates uniformly from rest to $24\\ \\text{m s}^{-1}$ in $12\\ \\text{s}$, travels at that speed for $20\\ \\text{s}$, then decelerates uniformly to rest in $8\\ \\text{s}$."
+    },
+    "stem": "Enter the acceleration during the first stage in $\\text{m s}^{-2}$ as {{n1}}, and the total distance travelled during the whole journey in m as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "acceleration",
+        "unit": "m s⁻²"
+      },
+      {
+        "id": "n2",
+        "label": "total distance",
+        "unit": "m"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 2
+        },
+        {
+          "key": "n2",
+          "value": 720
+        }
+      ]
+    },
+    "explanation": "Acceleration $= \\dfrac{\\Delta v}{\\Delta t} = \\dfrac{24 - 0}{12} = 2\\ \\text{m s}^{-2}$.\n\nDistance is the area under the velocity–time graph, a trapezium made of three parts:\n\nStage 1: $\\dfrac{1}{2} \\times 12 \\times 24 = 144\\ \\text{m}$.\nStage 2: $20 \\times 24 = 480\\ \\text{m}$.\nStage 3: $\\dfrac{1}{2} \\times 8 \\times 24 = 96\\ \\text{m}$.\n\nTotal $= 144 + 480 + 96 = 720\\ \\text{m}$.",
+    "tags": [
+      "kinematics",
+      "velocity-time-graph"
+    ],
+    "estimatedTimeSec": 300,
+    "points": 6,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-phy-a02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Forces & Energy",
+    "skill": "Work-energy",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A crate of mass $45\\ \\text{kg}$ is pulled $12\\ \\text{m}$ along a horizontal floor by a constant horizontal force of $180\\ \\text{N}$. A constant frictional force of $110\\ \\text{N}$ opposes the motion."
+    },
+    "stem": "Enter the work done by the applied force in J as {{n1}}, and the kinetic energy gained by the crate in J as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "work done by applied force",
+        "unit": "J"
+      },
+      {
+        "id": "n2",
+        "label": "kinetic energy gained",
+        "unit": "J"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 2160
+        },
+        {
+          "key": "n2",
+          "value": 840
+        }
+      ]
+    },
+    "explanation": "Work done by the applied force $= Fd = 180 \\times 12 = 2160\\ \\text{J}$.\n\nWork done against friction $= 110 \\times 12 = 1320\\ \\text{J}$. The kinetic energy gained is the net work done:\n\n$2160 - 1320 = 840\\ \\text{J}$.\n\nThe mass is not needed for either part; it would only be required to find the final speed.",
+    "tags": [
+      "work-energy",
+      "friction"
+    ],
+    "estimatedTimeSec": 280,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-phy-a03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Electricity",
+    "skill": "D.C. circuits",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A battery of e.m.f. $12.0\\ \\text{V}$ and internal resistance $0.50\\ \\Omega$ is connected to two resistors of $4.0\\ \\Omega$ and $6.0\\ \\Omega$ joined in parallel."
+    },
+    "stem": "Enter the total resistance of the parallel combination in Ω as {{n1}}, and the current drawn from the battery in A as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "parallel resistance",
+        "unit": "Ω"
+      },
+      {
+        "id": "n2",
+        "label": "current from battery",
+        "unit": "A"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 2.4,
+          "tolerance": 0.01
+        },
+        {
+          "key": "n2",
+          "value": 4.14,
+          "tolerance": 0.02
+        }
+      ]
+    },
+    "explanation": "For resistors in parallel, $\\dfrac{1}{R} = \\dfrac{1}{4.0} + \\dfrac{1}{6.0} = \\dfrac{5}{12}$, so $R = 2.4\\ \\Omega$.\n\nThe internal resistance is in series with this, giving a total circuit resistance of $2.4 + 0.50 = 2.9\\ \\Omega$.\n\nCurrent $I = \\dfrac{E}{R_{\\text{total}}} = \\dfrac{12.0}{2.9} = 4.14\\ \\text{A}$.\n\nOmitting the internal resistance would give $5.0\\ \\text{A}$, which is the most common error here.",
+    "tags": [
+      "parallel-resistors",
+      "internal-resistance"
+    ],
+    "estimatedTimeSec": 320,
+    "points": 6,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-phy-a04",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Waves",
+    "skill": "Superposition",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "In a double-slit experiment, light of wavelength $6.0 \\times 10^{-7}\\ \\text{m}$ passes through two slits separated by $4.0 \\times 10^{-4}\\ \\text{m}$. The fringes are observed on a screen $2.5\\ \\text{m}$ away."
+    },
+    "stem": "Calculate the separation between adjacent bright fringes, in metres.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 0.00375,
+      "tolerance": 0.0001,
+      "acceptedForms": [
+        "3.75e-3",
+        "0.00375",
+        "3.75 × 10^-3"
+      ]
+    },
+    "explanation": "Fringe separation is given by $x = \\dfrac{\\lambda D}{a}$, where $D$ is the slit-to-screen distance and $a$ the slit separation:\n\n$x = \\dfrac{6.0 \\times 10^{-7} \\times 2.5}{4.0 \\times 10^{-4}} = \\dfrac{1.5 \\times 10^{-6}}{4.0 \\times 10^{-4}} = 3.75 \\times 10^{-3}\\ \\text{m}$.\n\nThat is about $3.8\\ \\text{mm}$, a spacing wide enough to measure directly on the screen.",
+    "tags": [
+      "double-slit",
+      "fringe-separation"
+    ],
+    "estimatedTimeSec": 280,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-phy-a05",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Measurement",
+    "skill": "Uncertainties",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A student measures the sides of a rectangular metal plate as $(50.0 \\pm 0.5)\\ \\text{mm}$ and $(20.0 \\pm 0.5)\\ \\text{mm}$."
+    },
+    "stem": "Enter the area of the plate in $\\text{mm}^2$ as {{n1}}, and its percentage uncertainty as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "area",
+        "unit": "mm²"
+      },
+      {
+        "id": "n2",
+        "label": "percentage uncertainty",
+        "unit": "%"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 1000
+        },
+        {
+          "key": "n2",
+          "value": 3.5,
+          "tolerance": 0.05
+        }
+      ]
+    },
+    "explanation": "Area $= 50.0 \\times 20.0 = 1000\\ \\text{mm}^2$.\n\nWhen quantities are multiplied, percentage uncertainties add:\n\nLength: $\\dfrac{0.5}{50.0} \\times 100 = 1.0\\%$.\nWidth: $\\dfrac{0.5}{20.0} \\times 100 = 2.5\\%$.\n\nTotal $= 1.0 + 2.5 = 3.5\\%$. Note that the smaller measurement contributes the larger uncertainty, even though its absolute error is the same.",
+    "tags": [
+      "uncertainties",
+      "measurement"
+    ],
+    "estimatedTimeSec": 280,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-phy-a06",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Kinematics & Dynamics",
+    "skill": "Momentum",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A trolley of mass $2.0\\ \\text{kg}$ moving at $3.0\\ \\text{m s}^{-1}$ collides head-on with a stationary trolley of mass $4.0\\ \\text{kg}$. The two trolleys stick together after the collision."
+    },
+    "stem": "Explain, with calculation, whether this collision is elastic or inelastic. State the common velocity after the collision and compare the total kinetic energy before and after.",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "States and applies conservation of momentum",
+          "points": 2,
+          "descriptor": "Writes $m_1u_1 + m_2u_2 = (m_1 + m_2)v$ and substitutes correctly."
+        },
+        {
+          "criterion": "Calculates the common velocity",
+          "points": 1,
+          "descriptor": "Obtains $v = 1.0\\ \\text{m s}^{-1}$."
+        },
+        {
+          "criterion": "Calculates kinetic energy before and after",
+          "points": 2,
+          "descriptor": "Obtains $9.0\\ \\text{J}$ before and $3.0\\ \\text{J}$ after."
+        },
+        {
+          "criterion": "Draws the correct conclusion",
+          "points": 1,
+          "descriptor": "States the collision is inelastic because kinetic energy is not conserved, while momentum is."
+        }
+      ],
+      "exemplar": "Momentum is conserved in all collisions, so $(2.0)(3.0) + (4.0)(0) = (6.0)v$, giving $6.0 = 6.0v$ and $v = 1.0\\ \\text{m s}^{-1}$.\n\nKinetic energy before $= \\dfrac{1}{2}(2.0)(3.0)^2 = 9.0\\ \\text{J}$.\nKinetic energy after $= \\dfrac{1}{2}(6.0)(1.0)^2 = 3.0\\ \\text{J}$.\n\nSince $6.0\\ \\text{J}$ of kinetic energy has been lost — transferred mainly to internal energy and sound — the collision is inelastic. Momentum is still conserved, as it is in every collision; it is kinetic energy that distinguishes elastic from inelastic."
+    },
+    "explanation": "The key idea is that momentum conservation alone cannot classify a collision, since it holds in every case. The test is whether kinetic energy is also conserved. Here two-thirds of the kinetic energy is lost, so the collision is inelastic.",
+    "tags": [
+      "momentum",
+      "inelastic-collision"
+    ],
+    "estimatedTimeSec": 420,
+    "points": 6,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-eco-a01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Microeconomics",
+    "skill": "Elasticity",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A city raises the price of on-street parking by 30 per cent. In the following year, revenue from parking charges rises by 12 per cent, while the number of parking sessions falls by 14 per cent. Bus ridership in the same period rises by 4 per cent."
+    },
+    "stem": "Using the data, analyse the price elasticity of demand for on-street parking, and explain what the change in bus ridership suggests about the relationship between the two services. [8 marks]",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "Calculates or reasons about PED correctly",
+          "points": 2,
+          "descriptor": "Recognises PED $= \\dfrac{-14\\%}{+30\\%} \\approx -0.47$, or reasons from revenue rising as price rises."
+        },
+        {
+          "criterion": "Classifies the elasticity",
+          "points": 2,
+          "descriptor": "States demand is price-inelastic, since the magnitude of PED is less than 1."
+        },
+        {
+          "criterion": "Links elasticity to the revenue outcome",
+          "points": 2,
+          "descriptor": "Explains that with inelastic demand, a price rise raises total revenue because quantity falls proportionally less than price rises."
+        },
+        {
+          "criterion": "Interprets the cross-elasticity evidence",
+          "points": 2,
+          "descriptor": "Identifies buses and parking as substitutes, since the price of one rose and demand for the other rose, giving positive XED."
+        }
+      ],
+      "exemplar": "Price elasticity of demand is the percentage change in quantity demanded divided by the percentage change in price. Here that is $\\dfrac{-14}{+30} \\approx -0.47$. Since the magnitude is below 1, demand for on-street parking is price-inelastic over this range.\n\nThis is consistent with the revenue data. When demand is inelastic, quantity falls proportionally less than price rises, so total revenue increases — as it did, by 12 per cent. Drivers appear to have limited short-run alternatives for journeys they have already decided to make.\n\nThe rise in bus ridership suggests a positive cross-elasticity of demand: the price of parking rose and the quantity of bus travel demanded also rose, which is the defining pattern for substitutes. However, the 4 per cent rise is smaller than the 14 per cent fall in parking sessions, so buses absorbed only part of the displaced demand. Some journeys may have been cancelled, moved to off-street parking, or shifted to other modes not captured in the data."
+    },
+    "explanation": "A complete answer must do three things: compute or infer the elasticity, use it to explain why revenue rose despite fewer sessions, and read the bus figure as evidence of substitutability. Strong answers also note that the two percentage changes do not match, so buses cannot account for all the lost parking demand.",
+    "tags": [
+      "price-elasticity",
+      "cross-elasticity",
+      "data-response"
+    ],
+    "estimatedTimeSec": 900,
+    "points": 8,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-eco-a02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Microeconomics",
+    "skill": "Market failure",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Discuss whether a tax on sugary drinks is an effective way of correcting the market failure associated with their consumption. [12 marks]",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "Identifies the market failure",
+          "points": 3,
+          "descriptor": "Explains negative externalities of consumption and information failure, with reference to marginal social cost exceeding marginal private cost."
+        },
+        {
+          "criterion": "Explains the mechanism of the tax",
+          "points": 3,
+          "descriptor": "Shows how an indirect tax raises price towards the socially optimal level and reduces the welfare loss; diagram or equivalent verbal reasoning credited."
+        },
+        {
+          "criterion": "Evaluates limitations",
+          "points": 3,
+          "descriptor": "Considers inelastic demand, regressivity, substitution to untaxed products, and difficulty of setting the tax at the correct level."
+        },
+        {
+          "criterion": "Reaches a supported judgement",
+          "points": 3,
+          "descriptor": "Weighs the arguments and concludes with reasoning, rather than merely listing both sides."
+        }
+      ],
+      "exemplar": "Consumption of sugary drinks generates negative externalities: health costs borne by the taxpayer through publicly funded healthcare, and productivity losses that fall on employers and society. Marginal social cost therefore exceeds marginal private cost, and the free-market quantity exceeds the socially optimal quantity, creating a deadweight welfare loss. Information failure compounds this, since consumers may underestimate the long-run health effects of a purchase whose costs arrive decades later.\n\nAn indirect tax internalises the externality. It shifts the supply curve upward by the amount of the tax, raising the market price and contracting quantity towards the social optimum. If set equal to the marginal external cost, the tax eliminates the welfare loss in theory, and it also raises revenue that could fund health education — a double benefit.\n\nEffectiveness is limited in practice. Demand for sugary drinks is habit-forming and relatively price-inelastic, so a modest tax may reduce consumption far less than intended while raising substantial revenue. The tax is regressive: lower-income households spend a larger share of income on such goods, so the burden falls disproportionately on those least able to bear it. Consumers may also substitute towards untaxed products of similar sugar content, leaving total sugar consumption unchanged. Setting the tax correctly requires quantifying the marginal external cost, which is difficult and contested.\n\nOn balance, the tax is likely to be effective as one instrument among several rather than as a complete solution. Evidence from several countries suggests the strongest effect has come not from consumers paying more but from producers reformulating products to fall below the tax threshold — an outcome that depends on how the tax is designed. A tax banded by sugar content, combined with education and clear labelling, is therefore more likely to correct the failure than a flat levy on volume."
+    },
+    "explanation": "The command word *discuss* requires evaluation, not description. A strong answer establishes the externality with precise economic language, explains the corrective mechanism, then tests it against real limitations — elasticity, regressivity, substitution, and measurement — before reaching a judgement that follows from the analysis rather than sitting alongside it.",
+    "tags": [
+      "externalities",
+      "indirect-tax",
+      "evaluation"
+    ],
+    "estimatedTimeSec": 1500,
+    "points": 12,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "al-eco-a03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Macroeconomics",
+    "skill": "Policy",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "An economy is experiencing inflation of 7 per cent, unemployment of 4 per cent, and a current account deficit equal to 5 per cent of GDP. The central bank is considering raising its policy interest rate by two percentage points."
+    },
+    "stem": "Assess the likely effects of this interest rate rise on the economy's macroeconomic objectives. [12 marks]",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "Explains the transmission mechanism",
+          "points": 3,
+          "descriptor": "Links the rate rise to consumption, investment, and the exchange rate, and hence to aggregate demand."
+        },
+        {
+          "criterion": "Analyses the effect on inflation",
+          "points": 3,
+          "descriptor": "Explains the contraction of AD and reduced demand-pull pressure; recognises time lags."
+        },
+        {
+          "criterion": "Analyses conflicts between objectives",
+          "points": 3,
+          "descriptor": "Identifies the trade-off with unemployment and growth, and the ambiguous effect on the current account."
+        },
+        {
+          "criterion": "Reaches a supported judgement",
+          "points": 3,
+          "descriptor": "Weighs the objectives against one another with reference to the data given, rather than listing effects."
+        }
+      ],
+      "exemplar": "A two-percentage-point rise raises the cost of borrowing and the return on saving. Households with variable-rate mortgages face higher repayments, reducing disposable income and consumption; firms postpone investment projects whose expected returns no longer exceed the higher cost of capital. Both components of aggregate demand contract, shifting AD leftward and easing demand-pull inflationary pressure. With inflation at 7 per cent, well above a typical target, this is the central bank's primary aim.\n\nThe policy conflicts with other objectives. Lower aggregate demand reduces derived demand for labour, so unemployment is likely to rise above its current 4 per cent — the familiar short-run trade-off. Growth slows as investment falls, which may also weaken long-run productive capacity.\n\nThe effect on the current account is ambiguous. Higher interest rates attract capital inflows, appreciating the currency; exports become dearer abroad and imports cheaper at home, which tends to widen the 5 per cent deficit. Working against this, weaker domestic demand reduces import volumes. Which effect dominates depends on the relative price elasticities of demand for exports and imports — if the Marshall–Lerner condition holds, the appreciation effect is likely to dominate and the deficit widens.\n\nJudgement depends on the source of the inflation. If it is demand-pull, the rate rise addresses the cause directly and the cost in unemployment may be worth bearing. If it is cost-push — imported energy or food prices — then monetary tightening suppresses output without treating the cause, and the appreciation offers only limited relief on import prices. Given that all three indicators are under strain simultaneously, monetary policy alone cannot achieve every objective; supply-side measures would be needed alongside it. Time lags of up to eighteen months also mean the full effect will arrive after conditions have changed."
+    },
+    "explanation": "This question rewards recognition that macroeconomic objectives conflict. The strongest answers trace the transmission mechanism carefully, note that the current account effect runs in two opposing directions, and make the final judgement conditional on the source of the inflation rather than asserting a single outcome.",
+    "tags": [
+      "monetary-policy",
+      "policy-conflicts",
+      "evaluation"
+    ],
+    "estimatedTimeSec": 1500,
+    "points": 12,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  }
+]

@@ -1,0 +1,1024 @@
+[
+  {
+    "id": "al-mth-f01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Quadratics",
+    "skill": "Quadratic inequalities",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Solve the inequality $x^2 - 5x - 14 > 0$. Enter the lower critical value as {{n1}} and the upper critical value as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "lower critical value"
+      },
+      {
+        "id": "n2",
+        "label": "upper critical value"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": -2
+        },
+        {
+          "key": "n2",
+          "value": 7
+        }
+      ]
+    },
+    "explanation": "Factorise: $x^2 - 5x - 14 = (x + 2)(x - 7)$, so the critical values are $x = -2$ and $x = 7$.\n\nThe parabola opens upward, so the expression is positive outside the roots. The solution set is $x < -2$ or $x > 7$ — note that it is two separate intervals, not one.",
+    "tags": [
+      "quadratic-inequality",
+      "critical-values"
+    ],
+    "estimatedTimeSec": 240,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-mth-f02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Functions",
+    "skill": "Domain & range",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $f$ is defined by $f(x) = x^2 - 6x + 11$ for $x \\ge 3$. Find the least value in the range of $f$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 2
+    },
+    "explanation": "Complete the square: $f(x) = (x - 3)^2 + 2$. The vertex is at $x = 3$, which is included in the domain, so the least value is $f(3) = 2$.\n\nThe restriction $x \\ge 3$ makes $f$ one-to-one, which is why it is stated — it allows an inverse to be defined.",
+    "tags": [
+      "completing-the-square",
+      "range"
+    ],
+    "estimatedTimeSec": 200,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-mth-f03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Coordinate geometry",
+    "skill": "Circles",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A circle has centre $(3, -1)$ and passes through the point $(7, 2)$. Find its radius.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "The radius is the distance from the centre to the point on the circle:\n\n$r = \\sqrt{(7 - 3)^2 + (2 - (-1))^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5$.",
+    "tags": [
+      "circle",
+      "distance"
+    ],
+    "estimatedTimeSec": 180,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-mth-f04",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Circular measure",
+    "skill": "Radians",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Convert $135^\\circ$ to radians, giving your answer as a multiple of $\\pi$. Enter the numerator as {{n1}} and the denominator as {{n2}} for the form $\\dfrac{n_1\\pi}{n_2}$ in lowest terms.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "numerator"
+      },
+      {
+        "id": "n2",
+        "label": "denominator"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 3
+        },
+        {
+          "key": "n2",
+          "value": 4
+        }
+      ]
+    },
+    "explanation": "Multiply by $\\dfrac{\\pi}{180}$: $135 \\times \\dfrac{\\pi}{180} = \\dfrac{135\\pi}{180}$.\n\nDividing numerator and denominator by $45$ gives $\\dfrac{3\\pi}{4}$.",
+    "tags": [
+      "radians",
+      "conversion"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-mth-f05",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Trigonometry",
+    "skill": "Identities",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Given that $\\sin\\theta = \\dfrac{5}{13}$ and $\\theta$ is obtuse, find the exact value of $\\tan\\theta$. Enter the numerator as {{n1}} and the denominator as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "numerator"
+      },
+      {
+        "id": "n2",
+        "label": "denominator"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": -5
+        },
+        {
+          "key": "n2",
+          "value": 12
+        }
+      ]
+    },
+    "explanation": "From $\\sin^2\\theta + \\cos^2\\theta = 1$: $\\cos^2\\theta = 1 - \\dfrac{25}{169} = \\dfrac{144}{169}$, so $\\cos\\theta = \\pm\\dfrac{12}{13}$.\n\nAn obtuse angle lies in the second quadrant, where cosine is negative, so $\\cos\\theta = -\\dfrac{12}{13}$.\n\nTherefore $\\tan\\theta = \\dfrac{\\sin\\theta}{\\cos\\theta} = \\dfrac{5/13}{-12/13} = -\\dfrac{5}{12}$.",
+    "tags": [
+      "trigonometric-identities",
+      "quadrant-signs"
+    ],
+    "estimatedTimeSec": 280,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-mth-f06",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Series",
+    "skill": "AP",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "An arithmetic progression has first term $7$ and common difference $4$. Find the sum of the first $20$ terms.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 900
+    },
+    "explanation": "Use $S_n = \\dfrac{n}{2}\\big[2a + (n-1)d\\big]$ with $a = 7$, $d = 4$ and $n = 20$:\n\n$S_{20} = 10\\big[14 + 19 \\times 4\\big] = 10\\big[14 + 76\\big] = 10 \\times 90 = 900$.",
+    "tags": [
+      "arithmetic-progression",
+      "sum"
+    ],
+    "estimatedTimeSec": 200,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-mth-f07",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Series",
+    "skill": "Binomial expansion",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Find the constant term in the expansion of $\\left(x + \\dfrac{2}{x}\\right)^6$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 160
+    },
+    "explanation": "The general term is $\\binom{6}{r}x^{6-r}\\left(\\dfrac{2}{x}\\right)^r = \\binom{6}{r}2^r x^{6-2r}$.\n\nThe term is constant when $6 - 2r = 0$, so $r = 3$:\n\n$\\binom{6}{3}2^3 = 20 \\times 8 = 160$.",
+    "tags": [
+      "binomial-expansion",
+      "constant-term"
+    ],
+    "estimatedTimeSec": 300,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-mth-f08",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Differentiation",
+    "skill": "Chain rule",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The curve $y = (3x - 1)^4$ has a gradient at $x = 1$. Find that gradient.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 96
+    },
+    "explanation": "By the chain rule, $\\dfrac{dy}{dx} = 4(3x - 1)^3 \\times 3 = 12(3x - 1)^3$.\n\nAt $x = 1$: $12(3 - 1)^3 = 12 \\times 8 = 96$.\n\nForgetting the factor of $3$ from differentiating the inside is the usual slip; it would give $32$.",
+    "tags": [
+      "chain-rule",
+      "gradient"
+    ],
+    "estimatedTimeSec": 220,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-mth-f09",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Differentiation",
+    "skill": "Rates of change",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A spherical balloon is inflated so that its volume increases at a constant rate of $50\\ \\text{cm}^3\\ \\text{s}^{-1}$. The volume of a sphere is $V = \\dfrac{4}{3}\\pi r^3$."
+    },
+    "stem": "Find the rate at which the radius is increasing, in $\\text{cm s}^{-1}$, at the instant when $r = 5\\ \\text{cm}$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 0.159,
+      "tolerance": 0.002,
+      "acceptedForms": [
+        "1/(2pi)",
+        "0.159"
+      ]
+    },
+    "explanation": "Differentiate the volume with respect to $r$: $\\dfrac{dV}{dr} = 4\\pi r^2$.\n\nBy the chain rule, $\\dfrac{dr}{dt} = \\dfrac{dV}{dt} \\div \\dfrac{dV}{dr} = \\dfrac{50}{4\\pi r^2}$.\n\nAt $r = 5$: $\\dfrac{50}{4\\pi \\times 25} = \\dfrac{50}{100\\pi} = \\dfrac{1}{2\\pi} \\approx 0.159\\ \\text{cm s}^{-1}$.",
+    "tags": [
+      "connected-rates",
+      "chain-rule"
+    ],
+    "estimatedTimeSec": 320,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-mth-f10",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Integration",
+    "skill": "Definite integrals",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Evaluate $\\displaystyle\\int_1^4 \\left(2x + \\dfrac{3}{\\sqrt{x}}\\right)dx$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 21
+    },
+    "explanation": "Write $\\dfrac{3}{\\sqrt{x}}$ as $3x^{-1/2}$. An antiderivative is $x^2 + 6x^{1/2}$.\n\nAt $x = 4$: $16 + 6(2) = 28$. At $x = 1$: $1 + 6(1) = 7$.\n\nThe definite integral is $28 - 7 = 21$.",
+    "tags": [
+      "definite-integral",
+      "fractional-powers"
+    ],
+    "estimatedTimeSec": 280,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-mth-f11",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Integration",
+    "skill": "Volume of revolution",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The region under $y = \\sqrt{x}$ from $x = 0$ to $x = 4$ is rotated completely about the $x$-axis. The volume is $k\\pi$. Find $k$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "The volume of revolution about the $x$-axis is $V = \\pi\\displaystyle\\int_a^b y^2\\,dx$.\n\nHere $y^2 = x$, so $V = \\pi\\displaystyle\\int_0^4 x\\,dx = \\pi\\left[\\dfrac{x^2}{2}\\right]_0^4 = \\pi \\times 8$.\n\nTherefore $k = 8$. Note that squaring $y$ removes the square root, which is why this integral is straightforward.",
+    "tags": [
+      "volume-of-revolution",
+      "integration"
+    ],
+    "estimatedTimeSec": 300,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-phy-f01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Measurement",
+    "skill": "SI units",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The drag force $F$ on a sphere moving slowly through a fluid is given by $F = 6\\pi\\eta r v$, where $r$ is the radius, $v$ the speed, and $\\eta$ a property of the fluid."
+    },
+    "stem": "Express the SI base units of $\\eta$ in the form $\\text{kg}\\ \\text{m}^{a}\\ \\text{s}^{b}$. Enter $a$ as {{n1}} and $b$ as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "power of m"
+      },
+      {
+        "id": "n2",
+        "label": "power of s"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": -1
+        },
+        {
+          "key": "n2",
+          "value": -1
+        }
+      ]
+    },
+    "explanation": "Rearranging, $\\eta = \\dfrac{F}{6\\pi r v}$, so the units are $\\dfrac{\\text{N}}{\\text{m} \\times \\text{m s}^{-1}}$.\n\nSince $\\text{N} = \\text{kg m s}^{-2}$, this becomes $\\dfrac{\\text{kg m s}^{-2}}{\\text{m}^2 \\text{s}^{-1}} = \\text{kg m}^{-1}\\text{s}^{-1}$.\n\nSo $a = -1$ and $b = -1$. The constant $6\\pi$ is dimensionless and plays no part.",
+    "tags": [
+      "base-units",
+      "homogeneity"
+    ],
+    "estimatedTimeSec": 300,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-phy-f02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Kinematics & Dynamics",
+    "skill": "Motion graphs",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A ball is projected vertically upward from ground level with a speed of $24.5\\ \\text{m s}^{-1}$. Take $g = 9.81\\ \\text{m s}^{-2}$ and ignore air resistance."
+    },
+    "stem": "Enter the maximum height reached in metres as {{n1}}, and the total time of flight in seconds as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "maximum height",
+        "unit": "m"
+      },
+      {
+        "id": "n2",
+        "label": "time of flight",
+        "unit": "s"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 30.6,
+          "tolerance": 0.3
+        },
+        {
+          "key": "n2",
+          "value": 5,
+          "tolerance": 0.1
+        }
+      ]
+    },
+    "explanation": "At the highest point the velocity is zero. Using $v^2 = u^2 - 2gs$ with $v = 0$:\n\n$s = \\dfrac{u^2}{2g} = \\dfrac{24.5^2}{2 \\times 9.81} = \\dfrac{600.25}{19.62} = 30.6\\ \\text{m}$.\n\nTime to the top is $t = \\dfrac{u}{g} = \\dfrac{24.5}{9.81} = 2.50\\ \\text{s}$. The descent takes the same time, so the flight lasts $5.0\\ \\text{s}$.",
+    "tags": [
+      "projectile",
+      "suvat"
+    ],
+    "estimatedTimeSec": 320,
+    "points": 6,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-phy-f03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Forces & Energy",
+    "skill": "Moments",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A uniform beam of weight $120\\ \\text{N}$ and length $4.0\\ \\text{m}$ rests on two supports, one at each end. A load of $200\\ \\text{N}$ is placed $1.0\\ \\text{m}$ from the left support."
+    },
+    "stem": "Find the upward force exerted by the right-hand support, in newtons.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 110
+    },
+    "explanation": "Take moments about the left support, so its own force has no moment.\n\nClockwise: the load at $1.0\\ \\text{m}$ gives $200 \\times 1.0 = 200$; the beam's weight acts at its centre, $2.0\\ \\text{m}$ along, giving $120 \\times 2.0 = 240$. Total $440\\ \\text{N m}$.\n\nAnticlockwise: the right support at $4.0\\ \\text{m}$ gives $4.0R$.\n\nSetting them equal: $4.0R = 440$, so $R = 110\\ \\text{N}$.",
+    "tags": [
+      "moments",
+      "equilibrium"
+    ],
+    "estimatedTimeSec": 330,
+    "points": 6,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-phy-f04",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Waves",
+    "skill": "Progressive waves",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A sound wave of frequency $512\\ \\text{Hz}$ travels through air at $340\\ \\text{m s}^{-1}$ and then enters water, where its speed becomes $1500\\ \\text{m s}^{-1}$."
+    },
+    "stem": "Enter the wavelength in air in metres as {{n1}}, and the wavelength in water in metres as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "wavelength in air",
+        "unit": "m"
+      },
+      {
+        "id": "n2",
+        "label": "wavelength in water",
+        "unit": "m"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 0.664,
+          "tolerance": 0.005
+        },
+        {
+          "key": "n2",
+          "value": 2.93,
+          "tolerance": 0.02
+        }
+      ]
+    },
+    "explanation": "Use $v = f\\lambda$, so $\\lambda = \\dfrac{v}{f}$.\n\nIn air: $\\dfrac{340}{512} = 0.664\\ \\text{m}$. In water: $\\dfrac{1500}{512} = 2.93\\ \\text{m}$.\n\nThe frequency is set by the source and does not change when the wave enters a new medium — it is the wavelength that adjusts to the new speed.",
+    "tags": [
+      "wave-equation",
+      "medium-change"
+    ],
+    "estimatedTimeSec": 280,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-phy-f05",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Electricity",
+    "skill": "Resistance",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A wire of length $2.0\\ \\text{m}$ and cross-sectional area $0.50\\ \\text{mm}^2$ is made of a metal of resistivity $1.7 \\times 10^{-8}\\ \\Omega\\ \\text{m}$."
+    },
+    "stem": "Calculate the resistance of the wire, in ohms.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 0.068,
+      "tolerance": 0.002
+    },
+    "explanation": "Use $R = \\dfrac{\\rho L}{A}$, converting the area to square metres first: $0.50\\ \\text{mm}^2 = 0.50 \\times 10^{-6}\\ \\text{m}^2$.\n\n$R = \\dfrac{1.7 \\times 10^{-8} \\times 2.0}{0.50 \\times 10^{-6}} = \\dfrac{3.4 \\times 10^{-8}}{5.0 \\times 10^{-7}} = 0.068\\ \\Omega$.\n\nThe area conversion is where most marks are lost: $1\\ \\text{mm}^2 = 10^{-6}\\ \\text{m}^2$, not $10^{-3}$.",
+    "tags": [
+      "resistivity",
+      "unit-conversion"
+    ],
+    "estimatedTimeSec": 300,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-phy-f06",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Electricity",
+    "skill": "D.C. circuits",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A cell of e.m.f. $1.50\\ \\text{V}$ is connected to a $4.0\\ \\Omega$ resistor. The potential difference measured across the resistor is $1.20\\ \\text{V}$."
+    },
+    "stem": "Enter the current in the circuit in amperes as {{n1}}, and the internal resistance of the cell in ohms as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "current",
+        "unit": "A"
+      },
+      {
+        "id": "n2",
+        "label": "internal resistance",
+        "unit": "Ω"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 0.3,
+          "tolerance": 0.01
+        },
+        {
+          "key": "n2",
+          "value": 1,
+          "tolerance": 0.05
+        }
+      ]
+    },
+    "explanation": "The current follows from Ohm's law applied to the external resistor: $I = \\dfrac{1.20}{4.0} = 0.30\\ \\text{A}$.\n\nThe missing $1.50 - 1.20 = 0.30\\ \\text{V}$ is the 'lost volts' dropped across the internal resistance:\n\n$r = \\dfrac{0.30}{0.30} = 1.0\\ \\Omega$.",
+    "tags": [
+      "internal-resistance",
+      "lost-volts"
+    ],
+    "estimatedTimeSec": 330,
+    "points": 6,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-phy-f07",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Forces & Energy",
+    "skill": "Density & pressure",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A diving tank is filled with seawater of density $1030\\ \\text{kg m}^{-3}$ to a depth of $12.0\\ \\text{m}$. Take $g = 9.81\\ \\text{m s}^{-2}$ and atmospheric pressure as $1.01 \\times 10^5\\ \\text{Pa}$."
+    },
+    "stem": "Calculate the total pressure at the bottom of the tank, in pascals.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 222300,
+      "tolerance": 2000
+    },
+    "explanation": "The pressure due to the water column is $\\rho g h = 1030 \\times 9.81 \\times 12.0 = 1.21 \\times 10^5\\ \\text{Pa}$.\n\nTotal pressure adds the atmosphere pressing on the surface:\n\n$1.21 \\times 10^5 + 1.01 \\times 10^5 = 2.22 \\times 10^5\\ \\text{Pa}$.\n\nThe word *total* is what requires the atmospheric term; a question asking for the pressure *due to the water* would not.",
+    "tags": [
+      "hydrostatic-pressure",
+      "total-vs-gauge"
+    ],
+    "estimatedTimeSec": 300,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-phy-f08",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Waves",
+    "skill": "Superposition",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A stationary wave is set up on a string of length $1.20\\ \\text{m}$ fixed at both ends. The string vibrates in its third harmonic."
+    },
+    "stem": "Explain how the stationary wave is formed, state how many nodes and antinodes appear between and including the ends, and calculate the wavelength.",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "Explains formation by superposition",
+          "points": 2,
+          "descriptor": "States that a wave travelling along the string reflects at the fixed end and superposes with the incoming wave; the two have equal frequency and similar amplitude but opposite direction."
+        },
+        {
+          "criterion": "Identifies nodes and antinodes",
+          "points": 2,
+          "descriptor": "States 4 nodes (including both fixed ends) and 3 antinodes for the third harmonic."
+        },
+        {
+          "criterion": "Relates length to wavelength",
+          "points": 1,
+          "descriptor": "Uses $L = \\dfrac{3\\lambda}{2}$ for the third harmonic."
+        },
+        {
+          "criterion": "Calculates the wavelength",
+          "points": 1,
+          "descriptor": "Obtains $\\lambda = 0.80\\ \\text{m}$."
+        }
+      ],
+      "exemplar": "A wave travelling along the string reflects at the fixed end and travels back. The reflected wave has the same frequency and speed as the incoming one but travels in the opposite direction, so the two superpose. Where they are always in antiphase the displacement is permanently zero — a node; where they are always in phase the displacement varies between maxima — an antinode.\n\nFixed ends must be nodes. The third harmonic has three antinodes and four nodes, counting both ends.\n\nEach loop between adjacent nodes is half a wavelength, and there are three loops:\n\n$L = \\dfrac{3\\lambda}{2}$, so $\\lambda = \\dfrac{2L}{3} = \\dfrac{2 \\times 1.20}{3} = 0.80\\ \\text{m}$."
+    },
+    "explanation": "The examinable core is that a stationary wave requires two waves of the same frequency travelling in opposite directions, and that fixed ends are forced to be nodes. Counting loops rather than memorising a formula is the reliable route to the wavelength.",
+    "tags": [
+      "stationary-waves",
+      "harmonics"
+    ],
+    "estimatedTimeSec": 420,
+    "points": 6,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-eco-f01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Microeconomics",
+    "skill": "Price mechanism",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "After a poor harvest, the wholesale price of a staple grain rose by 60 per cent in four months. Retail bread prices rose by 12 per cent over the same period. Bakeries reported that grain accounts for roughly a fifth of their total costs."
+    },
+    "stem": "Using the data, explain why the retail price rose by much less than the wholesale price. [8 marks]",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "Identifies grain as one input among several",
+          "points": 2,
+          "descriptor": "States that grain is roughly 20% of bakery costs, so other costs (labour, energy, rent, distribution) make up the rest and did not rise."
+        },
+        {
+          "criterion": "Performs the proportional reasoning",
+          "points": 3,
+          "descriptor": "Shows that a 60% rise on a fifth of costs raises total costs by about 12%, matching the observed retail rise."
+        },
+        {
+          "criterion": "Comments on the pass-through",
+          "points": 3,
+          "descriptor": "Notes that the pass-through appears close to complete, and considers what could change it — competition, menu costs, or demand elasticity."
+        }
+      ],
+      "exemplar": "Grain is an input, not the product. If it accounts for about one fifth of a bakery's total costs, then a 60 per cent rise in its price raises total costs by roughly $0.60 \\times 0.20 = 0.12$, or 12 per cent. The remaining four fifths — labour, energy, rent, packaging and distribution — were unchanged, so they dilute the shock.\n\nThe observed 12 per cent retail rise matches that calculation closely, which suggests bakeries passed the cost increase through almost fully. That is consistent with a market where all producers face the same shock simultaneously, so none can gain share by absorbing it.\n\nSeveral things could have produced a smaller pass-through. If demand for bread were more price-elastic, bakeries would have absorbed part of the rise in their margins rather than lose volume. Menu costs and contracts with retailers can delay adjustment, so the full effect may appear later than four months. Conversely, if firms expected the harvest failure to persist, they might have raised prices by more than costs to rebuild margins."
+    },
+    "explanation": "The question is really about input shares. A large price shock to a small share of costs produces a small shock to total costs, and the arithmetic $0.60 \\times 0.20 = 0.12$ is what turns the observation into an explanation. Strong answers then examine whether near-complete pass-through is what we should expect.",
+    "tags": [
+      "cost-pass-through",
+      "input-shares",
+      "data-response"
+    ],
+    "estimatedTimeSec": 900,
+    "points": 8,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-eco-f02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Microeconomics",
+    "skill": "Firm behaviour",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Discuss whether a firm in a monopoly position will always produce less and charge more than the same industry would under perfect competition. [12 marks]",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "Sets out the standard comparison",
+          "points": 3,
+          "descriptor": "Explains that a monopolist sets $MC = MR$ with $MR$ below price, giving lower output and higher price than the competitive $P = MC$ outcome; diagram or equivalent verbal reasoning credited."
+        },
+        {
+          "criterion": "Explains the welfare consequence",
+          "points": 3,
+          "descriptor": "Identifies the deadweight loss and the transfer from consumer to producer surplus."
+        },
+        {
+          "criterion": "Challenges the 'always'",
+          "points": 3,
+          "descriptor": "Considers economies of scale, natural monopoly, dynamic efficiency and innovation, and price discrimination as cases where the simple conclusion weakens."
+        },
+        {
+          "criterion": "Reaches a supported judgement",
+          "points": 3,
+          "descriptor": "Concludes with reasoning about when the standard result holds and when it does not, rather than listing both sides."
+        }
+      ],
+      "exemplar": "Under perfect competition each firm is a price taker, so price equals marginal cost and output settles where the two are equal. A monopolist faces the whole downward-sloping demand curve, so selling an extra unit requires lowering the price on all units and marginal revenue lies below price. Profit is maximised where $MC = MR$, which occurs at a lower output; the price charged is read off the demand curve and exceeds marginal cost. Output is restricted and price raised, creating a deadweight loss and transferring surplus from consumers to the producer.\n\nThe word *always* is where the claim becomes vulnerable. If the industry has large economies of scale, a single firm may produce at a far lower average cost than many small ones could. In a natural monopoly the competitive outcome is not merely worse but infeasible, and the monopolist's output can exceed what fragmented firms would manage even after restriction.\n\nSupernormal profit may also fund research. Where innovation matters more than static allocation — pharmaceuticals, semiconductors — the dynamic gains can outweigh the deadweight loss, which is the reasoning behind granting patents deliberately.\n\nPrice discrimination complicates it further. A monopolist able to charge different prices to different groups expands output beyond the single-price level, and under perfect discrimination output reaches the competitive quantity, though all surplus accrues to the firm.\n\nOn balance the standard result holds for a single-price monopolist in an industry with constant returns to scale, and that is the case the model is built for. It weakens where scale economies are large, where innovation is the main source of welfare, or where discrimination is possible. The proposition is a reliable default rather than a universal law — which is precisely why competition authorities examine industries case by case instead of prohibiting monopoly outright."
+    },
+    "explanation": "The command word *discuss* and the absolute *always* together signal that the answer must establish the standard model properly and then test it. The strongest answers name specific conditions under which the conclusion fails — scale economies, dynamic efficiency, price discrimination — rather than gesturing at 'it depends'.",
+    "tags": [
+      "monopoly",
+      "market-structure",
+      "evaluation"
+    ],
+    "estimatedTimeSec": 1500,
+    "points": 12,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-eco-f03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Macroeconomics",
+    "skill": "Trade & exchange rates",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A country's currency depreciates by 20 per cent against its main trading partners. Over the following year, export volumes rise by 6 per cent and import volumes fall by 4 per cent, but the current account deficit widens before beginning to narrow in the second year."
+    },
+    "stem": "Explain why the current account deficit widened before improving, and assess whether depreciation is a reliable way to correct a deficit. [12 marks]",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "Explains the initial worsening",
+          "points": 3,
+          "descriptor": "Identifies the J-curve: prices adjust immediately while volumes respond with a lag, so import bills rise before export earnings catch up."
+        },
+        {
+          "criterion": "Uses the elasticity condition",
+          "points": 3,
+          "descriptor": "Applies the Marshall–Lerner condition — the sum of export and import demand elasticities must exceed one for depreciation to improve the balance."
+        },
+        {
+          "criterion": "Evaluates reliability",
+          "points": 3,
+          "descriptor": "Considers imported inflation, dependence on imported inputs, partner retaliation, and whether the deficit is structural rather than price-driven."
+        },
+        {
+          "criterion": "Reaches a supported judgement",
+          "points": 3,
+          "descriptor": "Concludes on when depreciation works and when it does not, with reference to the data given."
+        }
+      ],
+      "exemplar": "Depreciation changes prices at once but volumes only slowly. Contracts are already signed, supply chains cannot be redirected in weeks, and buyers take time to notice the change. In the short run the country pays more in domestic currency for the same volume of imports, so the import bill rises immediately while export earnings have not yet grown. The deficit therefore widens first and improves later, tracing the J-curve.\n\nWhether it improves at all depends on elasticities. The Marshall–Lerner condition states that depreciation improves the balance only if the sum of the price elasticities of demand for exports and imports exceeds one. The data here are consistent with that: a 20 per cent depreciation produced a 6 per cent rise in export volumes and a 4 per cent fall in import volumes, and the deficit did begin to narrow in the second year.\n\nReliability is another matter. Depreciation raises the domestic price of imports, which feeds into inflation — particularly where energy and food are imported. If an economy relies on imported components, exporters' own costs rise and the competitiveness gain is partly cancelled. Trading partners may respond with their own depreciations, in which case the relative advantage disappears. And where the deficit reflects structural weakness — low productivity, a narrow export base — a cheaper currency treats the symptom while leaving the cause untouched.\n\nDepreciation is therefore a real but limited instrument. It works where demand is reasonably elastic, imported input dependence is low, and the underlying problem is genuinely one of price. Where the deficit is structural, it buys time rather than a solution, and the inflation it imports is a cost paid in the meantime."
+    },
+    "explanation": "This question rewards two named pieces of theory used correctly — the J-curve for the timing and Marshall–Lerner for the condition — and then a judgement that distinguishes price-driven from structural deficits. Answers that stop at 'exports become cheaper' miss both the lag and the elasticity requirement.",
+    "tags": [
+      "j-curve",
+      "marshall-lerner",
+      "evaluation"
+    ],
+    "estimatedTimeSec": 1500,
+    "points": 12,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "al-eco-f04",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Macroeconomics",
+    "skill": "Growth & development",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Two countries record the same rate of GDP growth over a decade. In country X, growth came mainly from extracting and exporting a mineral. In country Y, it came from expanding manufacturing and services employment."
+    },
+    "stem": "Assess whether the two countries have experienced equally valuable economic development. [12 marks]",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "Distinguishes growth from development",
+          "points": 3,
+          "descriptor": "Explains that GDP growth measures output while development concerns living standards, distribution, health, education and opportunity."
+        },
+        {
+          "criterion": "Analyses the composition of growth",
+          "points": 3,
+          "descriptor": "Notes that extraction is capital-intensive with limited employment and depletes a finite asset, while manufacturing and services create broad employment and transferable skills."
+        },
+        {
+          "criterion": "Considers counterarguments",
+          "points": 3,
+          "descriptor": "Acknowledges that resource revenue can fund infrastructure and education, and that manufacturing growth may be low-wage or environmentally costly."
+        },
+        {
+          "criterion": "Reaches a supported judgement",
+          "points": 3,
+          "descriptor": "Concludes with reasoning about what would need to be true for X's growth to be equally valuable."
+        }
+      ],
+      "exemplar": "Equal GDP growth does not imply equal development. GDP counts output; development concerns whether people's lives improve — incomes, health, education, security and the range of choices open to them.\n\nThe composition of growth matters for that. Mineral extraction is capital-intensive and employs relatively few people, so the income it generates tends to concentrate among owners and the state rather than spreading through wages. It also draws down a finite asset: the same tonne cannot be sold twice, so today's GDP partly represents the consumption of a stock rather than the creation of a flow. Currency appreciation driven by resource exports can further squeeze other tradeable sectors — the mechanism known as Dutch disease.\n\nCountry Y's pattern spreads income more widely through employment and builds skills that remain when any single firm closes. Those skills are transferable, so the productive capacity persists.\n\nThe conclusion is not automatic, however. Resource revenue can be invested rather than consumed: a sovereign wealth fund, or spending on schools, clinics and transport, converts a depleting asset into lasting capacity — Norway and Botswana are the standard illustrations. Conversely, manufacturing growth built on very low wages, unsafe conditions or heavy pollution may raise output while doing little for welfare.\n\nOn balance country Y's growth is more likely to constitute development, because its mechanism distributes income and builds human capital by default. Country X's growth could be equally valuable, but only conditionally: it requires deliberate policy to convert finite revenue into durable assets. Where that policy is absent, the same GDP figure conceals a weaker position than country Y's."
+    },
+    "explanation": "The core distinction is growth versus development, and the strongest answers use the *composition* of growth to make it concrete rather than asserting it. The judgement should be conditional — X can match Y, but only if the revenue is converted into lasting capacity — rather than a blanket ranking of sectors.",
+    "tags": [
+      "growth-vs-development",
+      "resource-curse",
+      "evaluation"
+    ],
+    "estimatedTimeSec": 1500,
+    "points": 12,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  }
+]

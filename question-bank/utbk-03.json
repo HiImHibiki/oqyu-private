@@ -1,0 +1,1190 @@
+[
+  {
+    "id": "utbk-pm-k01",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Rasio & proporsi",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Tiga orang pekerja menyelesaikan sebuah pagar dalam 12 hari. Bila pekerjaan itu dikerjakan oleh 4 orang dengan kecepatan kerja yang sama, pagar itu selesai dalam ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "16 hari"
+      },
+      {
+        "id": "B",
+        "text": "9 hari"
+      },
+      {
+        "id": "C",
+        "text": "8 hari"
+      },
+      {
+        "id": "D",
+        "text": "10 hari"
+      },
+      {
+        "id": "E",
+        "text": "6 hari"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Total pekerjaan tetap: $3 \\times 12 = 36$ hari-orang.\n\nDengan 4 pekerja, waktunya $36 : 4 = 9$ hari. Perbandingannya berbalik nilai — semakin banyak pekerja, semakin sedikit harinya — sehingga jumlah pekerja dan waktu dikalikan, bukan dibagi berpasangan.",
+    "distractorRationale": {
+      "A": "Memakai perbandingan senilai: $12 \\times \\frac{4}{3}$.",
+      "C": "Mengurangi 12 dengan 4 tanpa dasar.",
+      "D": "Menaksir tanpa menghitung total hari-orang.",
+      "E": "Membagi 12 dengan 2, seolah pekerjanya berlipat dua."
+    },
+    "tags": [
+      "perbandingan-berbalik-nilai",
+      "pekerjaan"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pm-k02",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Operasi kontekstual",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah tas berharga Rp150.000,00 mendapat diskon 20%. Harga yang harus dibayar adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp130.000,00"
+      },
+      {
+        "id": "B",
+        "text": "Rp135.000,00"
+      },
+      {
+        "id": "C",
+        "text": "Rp120.000,00"
+      },
+      {
+        "id": "D",
+        "text": "Rp125.000,00"
+      },
+      {
+        "id": "E",
+        "text": "Rp110.000,00"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Diskon $20\\%$ dari Rp150.000 adalah $\\dfrac{20}{100} \\times 150.000 = 30.000$ rupiah.\n\nHarga bayar: $150.000 - 30.000 = 120.000$ rupiah. Cara lebih cepat: membayar $80\\%$ dari harga awal, yaitu $0{,}8 \\times 150.000 = 120.000$.",
+    "distractorRationale": {
+      "A": "Mengurangi Rp20.000, memperlakukan persen sebagai nominal.",
+      "B": "Menghitung diskon $10\\%$.",
+      "D": "Menghitung diskon $16{,}7\\%$.",
+      "E": "Menghitung diskon $26{,}7\\%$."
+    },
+    "tags": [
+      "persen",
+      "diskon"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pm-k03",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Analisis data nyata",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai ulangan lima siswa adalah 70, 80, 65, 90, dan 75. Rata-rata nilai kelima siswa itu adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "75"
+      },
+      {
+        "id": "B",
+        "text": "78"
+      },
+      {
+        "id": "C",
+        "text": "80"
+      },
+      {
+        "id": "D",
+        "text": "76"
+      },
+      {
+        "id": "E",
+        "text": "72"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Jumlahkan seluruh nilai: $70 + 80 + 65 + 90 + 75 = 380$.\n\nRata-rata adalah jumlah dibagi banyaknya data: $\\dfrac{380}{5} = 76$. Nilai 76 memang wajar karena terletak di antara nilai terkecil 65 dan terbesar 90.",
+    "distractorRationale": {
+      "A": "Mengambil nilai tengah setelah diurutkan, yaitu median, bukan rata-rata.",
+      "B": "Salah menjumlah, memperoleh 390.",
+      "C": "Membulatkan ke puluhan terdekat.",
+      "E": "Salah menjumlah, memperoleh 360."
+    },
+    "tags": [
+      "rata-rata",
+      "statistika"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pm-k04",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun & volume kontekstual",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah bak berbentuk balok berukuran panjang 1 m, lebar 50 cm, dan tinggi 40 cm. Bila diisi penuh, volume air yang tertampung adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "20 liter"
+      },
+      {
+        "id": "B",
+        "text": "2.000 liter"
+      },
+      {
+        "id": "C",
+        "text": "200 liter"
+      },
+      {
+        "id": "D",
+        "text": "20.000 liter"
+      },
+      {
+        "id": "E",
+        "text": "2 liter"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Samakan satuan lebih dahulu: $1\\ \\text{m} = 100\\ \\text{cm}$.\n\nVolume $= 100 \\times 50 \\times 40 = 200.000\\ \\text{cm}^3$. Karena $1\\ \\text{liter} = 1.000\\ \\text{cm}^3$, volumenya $200$ liter.",
+    "distractorRationale": {
+      "A": "Membagi dengan 10.000, bukan 1.000.",
+      "B": "Lupa mengubah 1 m menjadi 100 cm dan memakai angka 1.",
+      "D": "Menuliskan hasil dalam sentimeter kubik dibagi 10.",
+      "E": "Membagi dengan 100.000."
+    },
+    "tags": [
+      "volume-balok",
+      "konversi-satuan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pm-k05",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Pemodelan persamaan",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Tarif parkir sebuah mal adalah Rp3.000,00 untuk satu jam pertama dan Rp2.000,00 untuk setiap jam berikutnya. Bila seseorang membayar Rp13.000,00, lama ia parkir adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5 jam"
+      },
+      {
+        "id": "B",
+        "text": "7 jam"
+      },
+      {
+        "id": "C",
+        "text": "4 jam"
+      },
+      {
+        "id": "D",
+        "text": "6 jam"
+      },
+      {
+        "id": "E",
+        "text": "8 jam"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Misalkan lama parkir $t$ jam dengan $t \\ge 1$. Biayanya $3.000 + 2.000(t - 1) = 13.000$.\n\nMaka $2.000(t - 1) = 10.000$, sehingga $t - 1 = 5$ dan $t = 6$ jam.\n\nJam pertama sengaja dipisahkan karena tarifnya berbeda; memakai $2.000t$ saja akan menghitung jam pertama terlalu murah.",
+    "distractorRationale": {
+      "A": "Membagi 10.000 dengan 2.000 lalu lupa menambahkan jam pertama.",
+      "B": "Membagi 13.000 dengan 2.000 lalu membulatkan.",
+      "C": "Memakai tarif Rp3.000 untuk seluruh jam.",
+      "E": "Memakai tarif Rp2.000 sejak jam pertama, memperoleh 6,5 lalu membulatkan ke atas."
+    },
+    "tags": [
+      "pemodelan",
+      "tarif-bertingkat"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pm-k06",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Skala & denah",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Pada sebuah denah berskala $1 : 500$, panjang sebuah ruangan tergambar 6 cm. Panjang ruangan yang sebenarnya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3 m"
+      },
+      {
+        "id": "B",
+        "text": "60 m"
+      },
+      {
+        "id": "C",
+        "text": "300 m"
+      },
+      {
+        "id": "D",
+        "text": "50 m"
+      },
+      {
+        "id": "E",
+        "text": "30 m"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Skala $1 : 500$ berarti 1 cm pada denah mewakili 500 cm sesungguhnya.\n\nPanjang sebenarnya $= 6 \\times 500 = 3.000\\ \\text{cm} = 30\\ \\text{m}$.\n\nMengubah ke meter pada langkah terakhir lebih aman daripada di awal, karena skala dinyatakan dalam satuan yang sama di kedua sisi.",
+    "distractorRationale": {
+      "A": "Membagi dengan 500 alih-alih mengalikan, lalu salah satuan.",
+      "B": "Mengalikan dengan 1.000 seolah skalanya $1 : 1.000$.",
+      "C": "Berhenti pada 3.000 cm tetapi menuliskannya sebagai meter yang salah.",
+      "D": "Memakai 5 m per sentimeter secara kasar tanpa dasar."
+    },
+    "tags": [
+      "skala",
+      "denah"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pm-k07",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Peluang kontekstual",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kotak berisi 4 bola merah dan 6 bola putih. Diambil satu bola secara acak, dicatat warnanya, lalu dikembalikan. Kemudian diambil satu bola lagi. Peluang terambil dua bola merah berturut-turut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{2}{15}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{4}{25}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{2}{5}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{5}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{6}{25}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Karena bola dikembalikan, isi kotak kembali seperti semula dan kedua pengambilan saling bebas.\n\nPeluang merah pada satu pengambilan $= \\dfrac{4}{10} = \\dfrac{2}{5}$. Peluang dua kali merah $= \\dfrac{2}{5} \\times \\dfrac{2}{5} = \\dfrac{4}{25}$.",
+    "distractorRationale": {
+      "A": "Memperlakukan pengambilan tanpa pengembalian: $\\dfrac{4}{10} \\times \\dfrac{3}{9}$.",
+      "C": "Memberikan peluang satu kali pengambilan saja.",
+      "D": "Menjumlahkan peluang alih-alih mengalikannya lalu menyederhanakan.",
+      "E": "Memakai peluang bola putih, $\\dfrac{6}{10}$, untuk salah satu pengambilan."
+    },
+    "tags": [
+      "peluang",
+      "kejadian-bebas"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pm-k08",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Sistem persamaan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Harga 2 buku dan 3 pena adalah Rp29.000,00. Harga 4 buku dan 1 pena adalah Rp33.000,00. Harga sebuah buku adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp8.500,00"
+      },
+      {
+        "id": "B",
+        "text": "Rp6.000,00"
+      },
+      {
+        "id": "C",
+        "text": "Rp7.500,00"
+      },
+      {
+        "id": "D",
+        "text": "Rp7.000,00"
+      },
+      {
+        "id": "E",
+        "text": "Rp9.000,00"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Misalkan $b$ harga buku dan $p$ harga pena.\n\n$2b + 3p = 29.000$ dan $4b + p = 33.000$.\n\nDari persamaan kedua, $p = 33.000 - 4b$. Substitusikan: $2b + 3(33.000 - 4b) = 29.000$, sehingga $2b + 99.000 - 12b = 29.000$ dan $-10b = -70.000$, jadi $b = 7.000$.\n\nPeriksa: $p = 33.000 - 28.000 = 5.000$, dan $2(7.000) + 3(5.000) = 29.000$. Cocok.",
+    "distractorRationale": {
+      "A": "Membagi 33.000 dengan 4 tanpa memperhitungkan pena.",
+      "B": "Menukar hasil buku dengan hasil pena.",
+      "C": "Salah tanda saat substitusi sehingga memperoleh $-10b = -75.000$.",
+      "E": "Mengurangi kedua persamaan tanpa menyamakan koefisien."
+    },
+    "tags": [
+      "spldv",
+      "substitusi"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pk-k01",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Persen",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari $15\\%$ dari 240 adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "30"
+      },
+      {
+        "id": "B",
+        "text": "36"
+      },
+      {
+        "id": "C",
+        "text": "24"
+      },
+      {
+        "id": "D",
+        "text": "40"
+      },
+      {
+        "id": "E",
+        "text": "45"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "$15\\%$ berarti $\\dfrac{15}{100}$, sehingga $\\dfrac{15}{100} \\times 240 = \\dfrac{3.600}{100} = 36$.\n\nCara cepat: $10\\%$ dari 240 adalah 24, dan $5\\%$ adalah separuhnya, yaitu 12. Jumlahnya $24 + 12 = 36$.",
+    "distractorRationale": {
+      "A": "Menghitung $12{,}5\\%$.",
+      "C": "Menghitung $10\\%$ saja.",
+      "D": "Membagi 240 dengan 6.",
+      "E": "Menghitung $18{,}75\\%$."
+    },
+    "tags": [
+      "persen",
+      "operasi-dasar"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pk-k02",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Barisan",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Suku ke-10 dari barisan aritmetika $3, 7, 11, 15, \\ldots$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "43"
+      },
+      {
+        "id": "B",
+        "text": "40"
+      },
+      {
+        "id": "C",
+        "text": "39"
+      },
+      {
+        "id": "D",
+        "text": "35"
+      },
+      {
+        "id": "E",
+        "text": "47"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Beda barisan $b = 7 - 3 = 4$ dan suku pertama $a = 3$.\n\nSuku ke-$n$: $U_n = a + (n-1)b$, sehingga $U_{10} = 3 + 9 \\times 4 = 3 + 36 = 39$.\n\nPengalinya adalah $n - 1$, bukan $n$ — suku pertama belum menambah beda satu kali pun.",
+    "distractorRationale": {
+      "A": "Memakai $a + nb = 3 + 40$.",
+      "B": "Mengalikan $4 \\times 10$ saja, mengabaikan suku pertama.",
+      "D": "Memakai beda 3 alih-alih 4.",
+      "E": "Memakai $a + (n+1)b$."
+    },
+    "tags": [
+      "barisan-aritmetika",
+      "suku-ke-n"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pk-k03",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah persegi panjang memiliki keliling 36 cm dan panjang 12 cm. Luas persegi panjang itu adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$72\\ \\text{cm}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$60\\ \\text{cm}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$96\\ \\text{cm}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$144\\ \\text{cm}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$108\\ \\text{cm}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Keliling $= 2(p + l)$, sehingga $36 = 2(12 + l)$ dan $12 + l = 18$, jadi lebarnya $l = 6$ cm.\n\nLuas $= p \\times l = 12 \\times 6 = 72\\ \\text{cm}^2$.",
+    "distractorRationale": {
+      "B": "Memakai lebar 5 cm.",
+      "C": "Memakai lebar 8 cm, hasil dari $36 : 2 - 10$.",
+      "D": "Menganggap bangunnya persegi dengan sisi 12 cm.",
+      "E": "Memakai lebar 9 cm, yaitu seperempat keliling."
+    },
+    "tags": [
+      "persegi-panjang",
+      "keliling-luas"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pk-k04",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "SPLDV",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Diketahui $x + y = 12$ dan $x - y = 4$. Nilai dari $xy$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "48"
+      },
+      {
+        "id": "B",
+        "text": "36"
+      },
+      {
+        "id": "C",
+        "text": "24"
+      },
+      {
+        "id": "D",
+        "text": "32"
+      },
+      {
+        "id": "E",
+        "text": "64"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Jumlahkan kedua persamaan: $2x = 16$, sehingga $x = 8$. Substitusikan: $y = 12 - 8 = 4$.\n\nMaka $xy = 8 \\times 4 = 32$.\n\nAlternatifnya lewat identitas: $xy = \\dfrac{(x+y)^2 - (x-y)^2}{4} = \\dfrac{144 - 16}{4} = 32$.",
+    "distractorRationale": {
+      "A": "Memakai $x = 12$ dan $y = 4$, yaitu nilai ruas kanan kedua persamaan.",
+      "B": "Menghitung $(x+y) \\times 3$.",
+      "C": "Menjumlahkan $x$ dan $y$ lalu mengalikan dengan 2.",
+      "E": "Mengkuadratkan $x = 8$."
+    },
+    "tags": [
+      "spldv",
+      "eliminasi"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pk-k05",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Eksponen & logaritma",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari $\\log 40 + \\log 25$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$1.000$"
+      },
+      {
+        "id": "D",
+        "text": "$3$"
+      },
+      {
+        "id": "E",
+        "text": "$65$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Sifat logaritma: $\\log a + \\log b = \\log(ab)$.\n\nMaka $\\log 40 + \\log 25 = \\log 1.000 = 3$, karena $10^3 = 1.000$ dan basis logaritma di sini adalah 10.\n\nMengalikan bilangannya lebih dahulu jauh lebih cepat daripada mencari nilai masing-masing logaritma.",
+    "distractorRationale": {
+      "A": "Membagi alih-alih mengalikan: $\\log(40 : 25)$ lalu dibulatkan.",
+      "B": "Menjumlahkan pangkat secara keliru.",
+      "C": "Berhenti pada 1.000 tanpa mengambil logaritmanya.",
+      "E": "Menjumlahkan bilangannya, $40 + 25$."
+    },
+    "tags": [
+      "logaritma",
+      "sifat-logaritma"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pk-k06",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Statistika deskriptif",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Median dari data 6, 9, 4, 8, 7, 10, 5 adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8"
+      },
+      {
+        "id": "B",
+        "text": "6"
+      },
+      {
+        "id": "C",
+        "text": "7,5"
+      },
+      {
+        "id": "D",
+        "text": "9"
+      },
+      {
+        "id": "E",
+        "text": "7"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Urutkan lebih dahulu: 4, 5, 6, 7, 8, 9, 10.\n\nBanyaknya data ganjil, yaitu 7, sehingga mediannya adalah datum ke-4, yaitu 7.\n\nMengambil nilai tengah tanpa mengurutkan adalah kesalahan yang paling sering terjadi pada soal ini — data mentahnya menaruh 8 di posisi tengah.",
+    "distractorRationale": {
+      "A": "Mengambil datum ke-4 dari data yang belum diurutkan.",
+      "B": "Mengambil datum pertama dari data mentah.",
+      "C": "Merata-ratakan dua nilai tengah, cara untuk data berjumlah genap.",
+      "D": "Mengambil datum ke-6 setelah diurutkan."
+    },
+    "tags": [
+      "median",
+      "statistika"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pk-k07",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kubus memiliki luas permukaan $150\\ \\text{cm}^2$. Panjang diagonal ruang kubus itu adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$5\\sqrt{2}\\ \\text{cm}$"
+      },
+      {
+        "id": "B",
+        "text": "$5\\sqrt{3}\\ \\text{cm}$"
+      },
+      {
+        "id": "C",
+        "text": "$25\\ \\text{cm}$"
+      },
+      {
+        "id": "D",
+        "text": "$15\\ \\text{cm}$"
+      },
+      {
+        "id": "E",
+        "text": "$10\\sqrt{3}\\ \\text{cm}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Luas permukaan kubus $= 6s^2$, sehingga $6s^2 = 150$ dan $s^2 = 25$, jadi $s = 5$ cm.\n\nDiagonal ruang kubus $= s\\sqrt{3} = 5\\sqrt{3}$ cm.\n\nDua diagonal mudah tertukar: diagonal sisi adalah $s\\sqrt{2}$, sedangkan diagonal ruang menembus kubus dan bernilai $s\\sqrt{3}$.",
+    "distractorRationale": {
+      "A": "Memberikan diagonal sisi, bukan diagonal ruang.",
+      "C": "Memberikan $s^2$, bukan panjang diagonal.",
+      "D": "Mengalikan sisi dengan 3 alih-alih dengan $\\sqrt{3}$.",
+      "E": "Memakai sisi 10 cm, hasil dari $150 : 15$."
+    },
+    "tags": [
+      "kubus",
+      "diagonal-ruang"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pbm-k01",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Penyuntingan kata",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Bentuk kata baku yang tepat untuk melengkapi kalimat \"Panitia telah ... jadwal kegiatan bulan depan\" adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "merubah"
+      },
+      {
+        "id": "B",
+        "text": "mengubah"
+      },
+      {
+        "id": "C",
+        "text": "merobah"
+      },
+      {
+        "id": "D",
+        "text": "mengrubah"
+      },
+      {
+        "id": "E",
+        "text": "merubahkan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kata dasarnya adalah *ubah*, bukan *rubah*. Dengan awalan *me-*, kata berawal huruf vokal luluh menjadi *meng-*, sehingga bentuk bakunya *mengubah*.\n\n*Rubah* adalah nama hewan; menuliskan *merubah* mengganti kata dasarnya dan karena itu tidak baku, meskipun sangat lazim terdengar.",
+    "distractorRationale": {
+      "A": "Memakai kata dasar *rubah* yang berarti hewan.",
+      "C": "Ejaan lama yang sudah tidak dipakai.",
+      "D": "Menggabungkan dua awalan sekaligus.",
+      "E": "Menambah akhiran *-kan* yang tidak diperlukan di sini."
+    },
+    "tags": [
+      "kata-baku",
+      "penyuntingan"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pbm-k02",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Konjungsi & transisi",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "\"Harga tiket kereta naik cukup tajam. ..., jumlah penumpang justru bertambah pada musim liburan.\" Konjungsi yang tepat untuk mengisi bagian rumpang adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Oleh karena itu"
+      },
+      {
+        "id": "B",
+        "text": "Selain itu"
+      },
+      {
+        "id": "C",
+        "text": "Namun"
+      },
+      {
+        "id": "D",
+        "text": "Sebagai contoh"
+      },
+      {
+        "id": "E",
+        "text": "Dengan demikian"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat kedua menyatakan hal yang berlawanan dengan harapan yang timbul dari kalimat pertama: harga naik, tetapi penumpang bertambah. Hubungan seperti itu ditandai konjungsi pertentangan, yaitu *Namun*.\n\nKata *justru* pada kalimat kedua sudah memberi isyarat pertentangan, sehingga konjungsi sebab-akibat akan bertabrakan dengannya.",
+    "distractorRationale": {
+      "A": "Menandai akibat, padahal kenaikan harga tidak menyebabkan penumpang bertambah.",
+      "B": "Menandai penambahan informasi sejenis, bukan pertentangan.",
+      "D": "Menandai pemberian contoh.",
+      "E": "Menandai simpulan atau akibat, sama seperti pilihan A."
+    },
+    "tags": [
+      "konjungsi",
+      "pertentangan"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pbm-k03",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Gagasan utama paragraf",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Suhu rata-rata di sejumlah sentra kopi Nusantara naik sekitar satu derajat Celsius dalam tiga dekade terakhir. Bagi kopi arabika, yang menuntut udara sejuk, kenaikan sekecil itu berarti batas ketinggian tanam yang layak bergerak naik ratusan meter. Sebagian petani di lereng yang lebih rendah mulai mengganti tanamannya dengan robusta yang lebih tahan panas dan penyakit, sementara sebagian lain memindahkan kebunnya lebih tinggi ke arah puncak. Peta wilayah tanam yang selama ini dianggap tetap pun perlahan digambar ulang."
+    },
+    "stem": "Gagasan utama paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Kopi robusta lebih tahan penyakit daripada kopi arabika"
+      },
+      {
+        "id": "B",
+        "text": "Petani di dataran tinggi mulai meninggalkan kopi arabika"
+      },
+      {
+        "id": "C",
+        "text": "Suhu rata-rata di sentra kopi naik satu derajat dalam tiga dekade"
+      },
+      {
+        "id": "D",
+        "text": "Perubahan iklim mengubah peta wilayah tanam kopi arabika"
+      },
+      {
+        "id": "E",
+        "text": "Harga kopi arabika dunia akan terus meningkat"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Gagasan utama adalah pernyataan yang dijelaskan oleh seluruh kalimat lain, bukan salah satu penjelasnya.\n\nKenaikan suhu, naiknya batas ketinggian tanam, dan perpindahan petani semuanya berfungsi menjelaskan satu hal: wilayah yang cocok untuk arabika sedang bergeser karena iklim berubah. Itulah gagasan utamanya.",
+    "distractorRationale": {
+      "A": "Perbandingan dengan robusta hanya muncul sebagai keterangan tambahan.",
+      "B": "Merupakan salah satu akibat yang disebutkan, bukan gagasan yang menaungi paragraf.",
+      "C": "Merupakan data pendukung, bukan gagasan utama.",
+      "E": "Tidak disebutkan dalam paragraf; ini simpulan yang ditambahkan sendiri."
+    },
+    "tags": [
+      "gagasan-utama",
+      "paragraf"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pbm-k04",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Penyuntingan kalimat",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat berikut yang paling efektif adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Bagi para peserta yang hadir diharapkan agar supaya mengisi daftar hadir."
+      },
+      {
+        "id": "B",
+        "text": "Para peserta yang hadir diharapkan mengisi daftar hadir."
+      },
+      {
+        "id": "C",
+        "text": "Untuk para peserta-peserta yang hadir agar mengisi daftar hadir."
+      },
+      {
+        "id": "D",
+        "text": "Kepada para peserta yang hadir diharapkan supaya agar mengisi daftar hadir."
+      },
+      {
+        "id": "E",
+        "text": "Bagi peserta yang hadir supaya mengisi daftar hadir."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat efektif menuntut subjek yang jelas dan tidak ada kata mubazir.\n\nPilihan B memiliki subjek *Para peserta yang hadir* dan predikat *diharapkan mengisi*, tanpa kata berlebih. Awalan *bagi*, *untuk*, atau *kepada* di depan subjek justru mengubah subjek menjadi keterangan sehingga kalimat kehilangan subjeknya, sedangkan pasangan *agar supaya* mengulang makna yang sama dua kali.",
+    "distractorRationale": {
+      "A": "Diawali *Bagi* sehingga tidak bersubjek, dan memakai *agar supaya* yang mubazir.",
+      "C": "Mengulang bentuk jamak: *para* dan *peserta-peserta*.",
+      "D": "Tidak bersubjek dan memakai *supaya agar* yang mubazir.",
+      "E": "Tidak bersubjek dan tidak memiliki predikat yang lengkap."
+    },
+    "tags": [
+      "kalimat-efektif",
+      "kemubaziran"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "utbk-pbm-k05",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Simpulan bacaan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah penelitian terhadap 1.400 siswa sekolah menengah membandingkan capaian belajar dengan kebiasaan tidur mereka selama satu semester. Kelompok yang tidur tujuh jam pada jam yang hampir sama setiap malam memiliki rata-rata nilai lebih tinggi daripada kelompok yang juga tidur tujuh jam tetapi dengan waktu mulai yang berubah-ubah lebih dari dua jam antarhari. Peneliti menekankan bahwa temuan itu bersifat kaitan, bukan sebab-akibat, karena banyak faktor lain yang tidak dikendalikan."
+    },
+    "stem": "Simpulan yang paling tepat berdasarkan paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Jumlah jam tidur menentukan seluruh capaian akademik siswa"
+      },
+      {
+        "id": "B",
+        "text": "Siswa yang tidur larut malam pasti memperoleh nilai rendah"
+      },
+      {
+        "id": "C",
+        "text": "Keteraturan waktu tidur berkaitan lebih erat dengan capaian belajar daripada jumlah jamnya"
+      },
+      {
+        "id": "D",
+        "text": "Penelitian itu membuktikan bahwa tidur menyebabkan naiknya nilai ujian"
+      },
+      {
+        "id": "E",
+        "text": "Sekolah sebaiknya memundurkan jam masuk agar siswa dapat tidur lebih lama"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Paragraf membandingkan dua kelompok dengan jumlah jam tidur yang sama tetapi keteraturan yang berbeda, dan perbedaan capaian muncul pada kelompok yang jadwalnya tidak teratur. Simpulan yang sah persis sejauh itu.\n\nPerhatikan pula kata *berkaitan* pada teks: penelitian korelasional tidak berhak menyimpulkan sebab-akibat, sehingga pilihan yang menyebut *menyebabkan* atau *membuktikan* melampaui datanya.",
+    "distractorRationale": {
+      "A": "Melebih-lebihkan; teks justru menyebut jumlah jam bukan pembedanya.",
+      "B": "Menggunakan kata *pasti*, padahal temuannya berupa kecenderungan.",
+      "D": "Menyimpulkan sebab-akibat dari penelitian yang hanya menunjukkan kaitan.",
+      "E": "Berupa saran kebijakan yang tidak dibahas dalam paragraf."
+    },
+    "tags": [
+      "simpulan",
+      "penalaran-teks"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  }
+]

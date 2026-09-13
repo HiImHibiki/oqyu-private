@@ -1,0 +1,1218 @@
+[
+  {
+    "id": "csca-zhh-e01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "都江堰建于战国末期，至今仍在灌溉成都平原。它不修高坝拦水，而是用鱼嘴分流、飞沙堰泄洪、宝瓶口控制入水量，三者相互配合。工程顺应岷江的水势与河床坡度，把治水变成了导水。两千多年来它需要的只是每年一次的岁修淘沙，而非重建。"
+    },
+    "stem": "根据短文，都江堰长期有效的关键在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "所用石料格外坚固"
+      },
+      {
+        "id": "B",
+        "text": "历代不断进行大规模重建"
+      },
+      {
+        "id": "C",
+        "text": "顺应水势加以引导，而非以高坝强行拦截"
+      },
+      {
+        "id": "D",
+        "text": "岷江的水量始终保持稳定"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文用「治水变成了导水」概括其思路：不与水争，而是借水势分流泄洪。正因为不强行对抗，工程才只需岁修淘沙而无需重建。",
+    "distractorRationale": {
+      "A": "石料质量未被提及，短文强调的是设计思路。",
+      "B": "短文说需要的只是岁修淘沙，「而非重建」。",
+      "D": "岷江水量的变化正是三大工程要应对的问题。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why has Dujiangyan remained effective for so long?",
+        "explanation": "The passage sums up its principle as turning 治水 (controlling water) into 导水 (guiding water): rather than fighting the river, the works divert and discharge using its own momentum.\n\nBecause nothing is forced, the system needs only annual desilting rather than rebuilding."
+      }
+    },
+    "tags": [
+      "history-reading",
+      "engineering"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "货币史研究常以「白银流入」解释明代中后期的经济变化。但白银本身并不创造财富，它的作用在于降低交易成本：赋税折银使实物征收的运输与损耗大幅减少，长途贸易也因有了通行的支付手段而扩大。因此重要的不是白银的数量，而是它进入了怎样的制度环境。"
+    },
+    "stem": "根据短文，作者认为解释明代经济变化时应当强调",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "流入白银的绝对数量"
+      },
+      {
+        "id": "B",
+        "text": "白银本身所具有的价值"
+      },
+      {
+        "id": "C",
+        "text": "实物赋税制度的优越性"
+      },
+      {
+        "id": "D",
+        "text": "白银所处的制度环境及其降低交易成本的作用"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文先否定「白银创造财富」的直觉，再给出真正的机制——降低交易成本，最后落到结论：「重要的不是白银的数量，而是它进入了怎样的制度环境」。",
+    "distractorRationale": {
+      "A": "这正是短文明确要淡化的因素。",
+      "B": "短文说白银本身并不创造财富。",
+      "C": "短文指出赋税折银减少了实物征收的损耗，态度与此相反。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what should explanations of Ming economic change emphasise?",
+        "explanation": "The passage first rejects the intuitive claim that silver creates wealth, then supplies the real mechanism — reduced transaction costs — and closes with the conclusion: what matters is not the quantity of silver but the institutional environment it entered.\n\nCommuting taxes to silver cut the transport and spoilage losses of payment in kind, and a common medium of exchange widened long-distance trade."
+      }
+    },
+    "tags": [
+      "history-reading",
+      "economic-history"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "敦煌藏经洞在二十世纪初被发现，洞中封存了约五万件写本与绢画，年代跨越四至十一世纪。这批材料之所以珍贵，不仅因为数量，更因为它们并非精选的名家名作，而是当时寺院与民间实际使用的文书：借贷契约、学童习字、药方、账簿。它们记录的是历史的日常层面。"
+    },
+    "stem": "根据短文，藏经洞文书的特殊价值在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "它们保存了未经筛选的日常文书，展现历史的普通层面"
+      },
+      {
+        "id": "B",
+        "text": "它们都出自著名书法家之手"
+      },
+      {
+        "id": "C",
+        "text": "它们的年代比其他文献更古老"
+      },
+      {
+        "id": "D",
+        "text": "它们的数量是同类发现中最多的"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文用「不仅……更因为……」把重点从数量转向性质：这些是当时实际使用的文书，未经后人挑选，因而保留了历史中通常不会被记录的日常。",
+    "distractorRationale": {
+      "B": "短文正说明它们「并非精选的名家名作」。",
+      "C": "年代跨度虽长，但短文未与其他文献比较古老程度。",
+      "D": "数量是次要理由，短文明确把重点放在性质上。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what makes the Dunhuang manuscripts especially valuable?",
+        "explanation": "The 不仅…更因为… construction shifts the emphasis from quantity to character: these were documents in actual use — loan contracts, children's writing practice, prescriptions, account books — not works selected for their fame.\n\nBecause no one curated them, they preserve the ordinary layer of history that records usually omit."
+      }
+    },
+    "tags": [
+      "history-reading",
+      "primary-sources"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "历史分期是研究的工具，而非事实本身。把某一年定为「近代的开端」，便于叙述与教学，却也可能造成误解：似乎这一年之前与之后判然两分。实际上，制度、观念与生活方式的变化各有节奏，有的在分期线之前很久已经开始，有的在其后很久仍未发生。"
+    },
+    "stem": "根据短文，历史分期可能带来的误解是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "使历史研究失去时间线索"
+      },
+      {
+        "id": "B",
+        "text": "使人误以为各方面的变化在同一时点整齐发生"
+      },
+      {
+        "id": "C",
+        "text": "使教学变得更加困难"
+      },
+      {
+        "id": "D",
+        "text": "使史料的年代无法确定"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文的关键在最后一句：制度、观念与生活方式「各有节奏」。分期用一条线切开时间，容易让人以为线两侧的一切都同步改变，而实际的变化是参差的。",
+    "distractorRationale": {
+      "A": "分期恰恰提供了时间线索，短文也承认它「便于叙述与教学」。",
+      "C": "短文说分期便于教学，方向相反。",
+      "D": "史料的年代由考订确定，与分期无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what misunderstanding can periodisation produce?",
+        "explanation": "The decisive sentence is the last: institutions, ideas and ways of life each change at their own pace. Drawing a line across time invites the impression that everything on either side shifted together.\n\nIn reality the changes are staggered — some long predating the line, some long postdating it."
+      }
+    },
+    "tags": [
+      "history-reading",
+      "methodology"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "「学然后知不足，教然后知困」出自《礼记·学记》。前半句说学习使人发现自己的欠缺，后半句说教人才知道自己理解得不透。二者并非并列，而是递进：只有当你必须把一件事讲清楚，你才会遇到那些自以为懂却讲不出的地方。"
+    },
+    "stem": "根据短文，作者认为「教然后知困」比「学然后知不足」更进一层，因为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "教书比读书更辛苦"
+      },
+      {
+        "id": "B",
+        "text": "讲授迫使人暴露那些自以为懂却说不清的部分"
+      },
+      {
+        "id": "C",
+        "text": "学生的提问总是很难回答"
+      },
+      {
+        "id": "D",
+        "text": "教师的地位高于学生"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文用「只有当你必须把一件事讲清楚」点明机制：学习时的模糊可以蒙混过去，讲授却要求外化，模糊之处便无从躲藏。这正是递进关系的依据。",
+    "distractorRationale": {
+      "A": "辛苦程度不是「知困」的含义。",
+      "C": "学生提问是外部因素，短文强调的是自我认识。",
+      "D": "地位高低与原句意思无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why does 教然后知困 go a step beyond 学然后知不足?",
+        "explanation": "The passage names the mechanism: 只有当你必须把一件事讲清楚 — only when you must make something clear to another person.\n\nWhile learning, vague understanding can pass unnoticed; teaching forces it outward, and the fuzzy places have nowhere to hide. That is what makes the second clause an advance on the first rather than a parallel to it."
+      }
+    },
+    "tags": [
+      "education-reading",
+      "classical-text"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "一项对阅读能力的追踪研究发现，识字量相近的两组儿童，几年后阅读理解水平出现明显差距。差距的来源不在识字本身，而在背景知识：知道更多关于世界的事实的孩子，能更快把句子连成完整的图景。识字打开了门，背景知识决定了你能走多远。"
+    },
+    "stem": "根据短文，两组儿童阅读理解水平拉开差距的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两组儿童的识字量差异越来越大"
+      },
+      {
+        "id": "B",
+        "text": "阅读材料的难度不同"
+      },
+      {
+        "id": "C",
+        "text": "背景知识的多少影响了把文字整合为完整意义的能力"
+      },
+      {
+        "id": "D",
+        "text": "一组儿童阅读速度更快"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文明确排除了识字量这一因素（两组「相近」），把原因归于背景知识：它决定读者能否把句子连成完整的图景。末句的比喻也在重申这一点。",
+    "distractorRationale": {
+      "A": "研究的前提正是两组识字量相近。",
+      "B": "材料难度并非研究中的变量。",
+      "D": "速度未被提及，且速度快不等于理解好。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why did the two groups' reading comprehension diverge?",
+        "explanation": "The passage rules out vocabulary size explicitly — the two groups were comparable there — and attributes the gap to background knowledge, which determines whether a reader can assemble sentences into a coherent picture.\n\nThe closing image restates it: literacy opens the door; background knowledge decides how far you can walk."
+      }
+    },
+    "tags": [
+      "education-reading",
+      "reading-research"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "评语「你很聪明」与「你很努力」看似都是表扬，效果却不同。研究发现，前者容易使儿童把成绩归因于固定的天赋，遇到困难时倾向于回避，以免暴露「不够聪明」；后者把成绩与可控的付出相联系，遇到困难时更愿意尝试。表扬的对象是什么，决定了孩子如何理解失败。"
+    },
+    "stem": "根据短文，表扬「聪明」可能带来的负面影响是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "儿童变得过于自信而轻视学习"
+      },
+      {
+        "id": "B",
+        "text": "儿童不再相信教师的评价"
+      },
+      {
+        "id": "C",
+        "text": "儿童的实际能力会下降"
+      },
+      {
+        "id": "D",
+        "text": "儿童为避免暴露天赋不足而回避有难度的任务"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文指出的因果链是：把成绩归因于固定天赋 → 困难成为对天赋的检验 → 回避困难以免暴露不足。回避的动机是保护自我形象，而非骄傲或不信任。",
+    "distractorRationale": {
+      "A": "回避困难源于害怕失败，与轻视学习不同。",
+      "B": "短文未提及信任问题。",
+      "C": "受影响的是面对困难的态度，而非能力本身。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what harm can praising a child as 聪明 do?",
+        "explanation": "The chain runs: attributing success to fixed talent → difficulty becomes a test of that talent → the child avoids difficulty to keep from revealing a shortfall.\n\nThe motive is protecting a self-image, not arrogance. What changes is how the child interprets failure, not their underlying ability."
+      }
+    },
+    "tags": [
+      "education-reading",
+      "praise-and-mindset"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "在线课程的完成率普遍很低，常被解释为学习者缺乏自律。但比较研究显示，同样一批学习者在有固定上课时间与同伴的班级中完成率显著更高。这提示我们，「自律」并非纯粹的个人品质，它在很大程度上由外部结构支撑：时间的约定、他人的在场、进度的可见。"
+    },
+    "stem": "根据短文，作者对「自律」的理解是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "自律很大程度上依赖外部结构的支撑，而非纯粹的个人品质"
+      },
+      {
+        "id": "B",
+        "text": "自律完全由天生的性格决定"
+      },
+      {
+        "id": "C",
+        "text": "在线学习者普遍缺乏自律"
+      },
+      {
+        "id": "D",
+        "text": "自律与学习效果没有关系"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "关键在于比较研究的设计：同一批学习者在不同结构下表现不同。既然人没有变，差异就必须归于结构，「自律」因而不能被当作纯粹的个人属性。",
+    "distractorRationale": {
+      "B": "这正是短文要修正的看法。",
+      "C": "短文说明这些学习者在有结构时完成率很高。",
+      "D": "短文讨论的是自律的来源，并未否认其作用。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, how does the author understand 自律?",
+        "explanation": "The comparative design carries the argument: the *same* learners completed at higher rates when placed in a class with fixed times and peers. Since the people did not change, the difference must lie in the structure.\n\nSelf-discipline is therefore propped up by external scaffolding — appointed times, the presence of others, visible progress — rather than being a purely personal trait."
+      }
+    },
+    "tags": [
+      "education-reading",
+      "self-discipline"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共信息的发布不仅要准确，还要可理解。一份技术上无懈可击但充满专业术语的通告，对多数居民而言与没有发布无异。真正的公开包含两个层次：信息被放出来，以及信息被接收到。只完成第一层的公开，形式上成立，实质上落空。"
+    },
+    "stem": "根据短文，作者所说的「实质上落空」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "信息的内容存在错误"
+      },
+      {
+        "id": "B",
+        "text": "信息虽已发布，但公众实际上无法理解和使用"
+      },
+      {
+        "id": "C",
+        "text": "信息发布的时间太晚"
+      },
+      {
+        "id": "D",
+        "text": "信息发布的渠道太少"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文把公开拆成「放出来」与「被接收到」两层。术语堆砌的通告完成了第一层而止步于第二层，因此形式成立、实质落空。问题不在内容真伪，而在可理解性。",
+    "distractorRationale": {
+      "A": "短文说该通告「技术上无懈可击」，内容没有错误。",
+      "C": "时效问题未被提及。",
+      "D": "渠道数量不是短文所论的层次。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what does 实质上落空 refer to?",
+        "explanation": "The passage splits disclosure into two layers: information being released, and information being received. A notice packed with jargon clears the first and stops at the second.\n\nThe failing is not accuracy — the notice is described as technically flawless — but comprehensibility."
+      }
+    },
+    "tags": [
+      "politics-reading",
+      "transparency"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "城市治理中，「看得见的问题」往往优先获得资源：坑洼的路面、堆积的垃圾，投诉集中，整改效果立竿见影。而地下管网老化、消防隐患这类「看不见的问题」，平时无人过问，一旦发生事故却代价高昂。资源分配若完全由投诉量驱动，就会系统性地偏向前者。"
+    },
+    "stem": "根据短文，完全依据投诉量分配治理资源的问题在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "会使投诉数量不断增加"
+      },
+      {
+        "id": "B",
+        "text": "会导致路面和垃圾问题得不到解决"
+      },
+      {
+        "id": "C",
+        "text": "会持续忽略那些平时不显眼但后果严重的隐患"
+      },
+      {
+        "id": "D",
+        "text": "会使治理成本大幅上升"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "投诉量反映的是可见性，而非严重性。地下管网与消防隐患平时不产生投诉，在这一机制下便长期得不到资源，直到事故发生。「系统性地偏向」一词点明这不是偶然疏忽而是机制使然。",
+    "distractorRationale": {
+      "A": "投诉总量的变化不是短文的论点。",
+      "B": "恰恰相反，这类问题会优先得到解决。",
+      "D": "短文讨论的是分配方向，而非成本高低。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what is wrong with allocating resources purely by complaint volume?",
+        "explanation": "Complaint volume tracks visibility, not severity. Ageing underground pipes and fire risks generate no complaints day to day, so under this mechanism they go unfunded until something fails.\n\nThe phrase 系统性地偏向 (systematically biased) marks this as a property of the mechanism rather than an occasional oversight."
+      }
+    },
+    "tags": [
+      "politics-reading",
+      "resource-allocation"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "法律条文的稳定性与社会变化的速度之间始终存在张力。条文改得太频繁，人们无法形成稳定预期；改得太迟缓，则与现实脱节，执行时只能依赖变通。司法解释在一定程度上缓解了这一矛盾：它不改动条文本身，却能调整条文在新情境中的适用。"
+    },
+    "stem": "根据短文，司法解释的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "替代立法机关制定新的法律"
+      },
+      {
+        "id": "B",
+        "text": "加快法律条文的修改速度"
+      },
+      {
+        "id": "C",
+        "text": "使法律条文永远不需要修改"
+      },
+      {
+        "id": "D",
+        "text": "在不修改条文的前提下调整其适用范围，兼顾稳定与适应"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文先摆出两难：改得太快或太慢都有代价。司法解释的巧妙之处在于绕开这个两难——条文不动，故预期稳定；适用可调，故不与现实脱节。",
+    "distractorRationale": {
+      "A": "司法解释不制定新法，只解释既有条文的适用。",
+      "B": "它恰恰是修改之外的另一条路径。",
+      "C": "短文只说「在一定程度上缓解」，并未取消修改的必要。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what role does judicial interpretation play?",
+        "explanation": "The passage sets up a dilemma: amend too often and expectations become unstable; amend too slowly and the law drifts from reality.\n\nJudicial interpretation sidesteps the dilemma — the text stays fixed, so expectations hold, while its application can be adjusted, so the law keeps pace. Note the hedge 在一定程度上: it eases the tension without removing the need for amendment."
+      }
+    },
+    "tags": [
+      "politics-reading",
+      "legal-system"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "有人主张，公共决策应当完全交给专家，因为普通人缺乏专业知识。这一主张混淆了两类问题：技术问题与价值问题。桥梁能否承重是技术问题，应由工程师判断；桥梁修在哪里、由谁承担代价，则是价值问题，涉及不同群体的利益权衡，没有任何专业训练能提供唯一正确的答案。"
+    },
+    "stem": "根据短文，作者反对「决策完全交给专家」的理由是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "公共决策包含价值权衡，而专业知识无法为此提供唯一答案"
+      },
+      {
+        "id": "B",
+        "text": "专家的技术判断经常出错"
+      },
+      {
+        "id": "C",
+        "text": "普通人比专家更了解实际情况"
+      },
+      {
+        "id": "D",
+        "text": "专家人数不足以处理所有决策"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "作者的反驳方式是划分领域，而非贬低专家：技术问题交给专家是恰当的，但价值问题涉及利益权衡，专业训练在此处并不提供答案。混淆两者才是问题所在。",
+    "distractorRationale": {
+      "B": "短文肯定工程师在技术问题上的判断。",
+      "C": "短文并未主张普通人更了解情况。",
+      "D": "人数多寡与论证无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why does the author reject leaving decisions entirely to experts?",
+        "explanation": "The author's move is to draw a boundary rather than disparage expertise: whether a bridge can bear a load is technical and belongs to engineers; where it is built and who bears the cost is a question of value, weighing the interests of different groups.\n\nNo amount of training yields a single correct answer to the second kind of question. The error lies in conflating the two."
+      }
+    },
+    "tags": [
+      "politics-reading",
+      "expertise-and-values"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "父亲退休后开始学写字。他买了字帖，每天写两页，写完压在玻璃板下。我回家时翻看，发现最早那几页笔画歪斜，后来渐渐端正，再后来又变得歪斜——不是退步，是他开始不照字帖了。"
+    },
+    "stem": "文末「不是退步，是他开始不照字帖了」一句表明",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "父亲买错了字帖"
+      },
+      {
+        "id": "B",
+        "text": "父亲从模仿转向了自己的写法"
+      },
+      {
+        "id": "C",
+        "text": "父亲对写字失去了兴趣"
+      },
+      {
+        "id": "D",
+        "text": "父亲的视力开始下降"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "叙述者先描述「歪—正—歪」的曲线，再否定「退步」这一自然读法，给出另一种解释：后一次的歪与最初的歪不同，前者出于生疏，后者出于脱离范本的自主。",
+    "distractorRationale": {
+      "A": "字帖本身并非叙述的重点。",
+      "C": "他仍在坚持每天写两页。",
+      "D": "视力问题文中没有任何提示。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the closing line reveal?",
+        "explanation": "The narrator traces a curve — crooked, then upright, then crooked again — and then blocks the obvious reading, 退步 (regression), with another explanation.\n\nThe second crookedness is not the first: the earlier one came from inexperience, the later one from leaving the model behind and writing his own way."
+      }
+    },
+    "tags": [
+      "literature-reading",
+      "interpretation"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "父亲退休后开始学写字。他买了字帖，每天写两页，写完压在玻璃板下。我回家时翻看，发现最早那几页笔画歪斜，后来渐渐端正，再后来又变得歪斜——不是退步，是他开始不照字帖了。"
+    },
+    "stem": "「写完压在玻璃板下」这一细节的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "说明父亲爱惜纸张"
+      },
+      {
+        "id": "B",
+        "text": "表现家中陈设的简朴"
+      },
+      {
+        "id": "C",
+        "text": "为后文「我」能翻看整段历程作了铺垫，使变化得以被看见"
+      },
+      {
+        "id": "D",
+        "text": "暗示父亲不愿被人看见自己的字"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "若写完即弃，「我」便无从翻看，那条从歪到正再到歪的曲线也就不存在。这个看似随意的动作，实际上是全文得以成立的前提。",
+    "distractorRationale": {
+      "A": "爱惜纸张是可能的联想，但与全文的发现无关。",
+      "B": "陈设并非文章关注的对象。",
+      "D": "压在玻璃板下正是便于看见，与不愿示人相反。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What function does the detail 写完压在玻璃板下 serve?",
+        "explanation": "Had the sheets been thrown away, the narrator could never have leafed through them, and the curve from crooked to upright to crooked would not exist to be noticed.\n\nThis apparently incidental habit is what makes the whole piece possible — the accumulation is the record."
+      }
+    },
+    "tags": [
+      "literature-reading",
+      "detail-function"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "**旧钟**\n\n它慢了七分钟，走了四十年。\n没有人去调，\n因为全家都学会了在心里加上那七分钟。\n后来钟停了，\n我们才发现，\n自己早已不会读准确的时间。"
+    },
+    "stem": "这首诗最主要表达的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "钟表的精度非常重要"
+      },
+      {
+        "id": "B",
+        "text": "旧物应当及时更换"
+      },
+      {
+        "id": "C",
+        "text": "家人之间缺乏沟通"
+      },
+      {
+        "id": "D",
+        "text": "长期的迁就会内化为习惯，使人失去原本的能力"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "全家没有修钟，而是修改了自己——把七分钟的误差装进心里。四十年后钟停，他们才发现代偿已经取代了原来的能力。诗写的是适应的代价。",
+    "distractorRationale": {
+      "A": "精度只是引子，不是主题。",
+      "B": "诗中并无更换旧物的主张，重心在人的变化。",
+      "C": "全家「都学会了」，恰恰说明有共同的默契。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the poem chiefly express?",
+        "explanation": "The family never fixed the clock; they adjusted themselves, folding the seven-minute error into how they read the time. When the clock stops after forty years, they find the compensation has replaced the original ability.\n\nThe poem is about the cost of adapting — accommodation becomes habit, and habit quietly takes something away."
+      }
+    },
+    "tags": [
+      "poetry-reading",
+      "theme"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "**旧钟**\n\n它慢了七分钟，走了四十年。\n没有人去调，\n因为全家都学会了在心里加上那七分钟。\n后来钟停了，\n我们才发现，\n自己早已不会读准确的时间。"
+    },
+    "stem": "第二行「没有人去调」在诗中的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "以最简单的解决办法被搁置，凸显后文代偿的荒谬与深刻"
+      },
+      {
+        "id": "B",
+        "text": "说明这家人不懂修理钟表"
+      },
+      {
+        "id": "C",
+        "text": "表现家庭成员之间互相推诿"
+      },
+      {
+        "id": "D",
+        "text": "交代钟表已经无法修理"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "调钟只需片刻，全家却用四十年去适应。诗人特意把这个最容易的选项摆出来又放下，读者才会对随后的「学会加上七分钟」感到惊心——那不是无奈，而是选择。",
+    "distractorRationale": {
+      "B": "诗中没有能力不足的暗示。",
+      "C": "全家「都学会了」，是一致行为而非推诿。",
+      "D": "若不能修理，「没有人去调」就失去了张力。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the second line 没有人去调 accomplish?",
+        "explanation": "Setting the clock right would take a moment; the family spent forty years adapting instead. The poet deliberately places the easiest option in view and then lets it lie.\n\nOnly against that does the line about learning to add seven minutes land — the accommodation was not forced on them. It was chosen."
+      }
+    },
+    "tags": [
+      "poetry-reading",
+      "structure"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "祖母不识字，却能准确说出每一封信是谁寄来的。她看信封上的字：这个人写「祖」字最后一笔总要拖长，那个人的邮票永远贴歪。四十年里她没读过一封信的内容，但她知道谁还记得她。"
+    },
+    "stem": "文末「她知道谁还记得她」一句的深层含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "祖母其实认识一些字"
+      },
+      {
+        "id": "B",
+        "text": "被牵挂这件事本身，比信中写了什么更重要"
+      },
+      {
+        "id": "C",
+        "text": "寄信的人写字都不工整"
+      },
+      {
+        "id": "D",
+        "text": "祖母希望有人教她读信"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "祖母读不了内容，却读得出寄信人。信在这里不是信息的载体，而是牵挂的凭证——它到达本身就已经说完了要说的话。",
+    "distractorRationale": {
+      "A": "她辨认的是笔迹习惯与邮票位置，不是字义。",
+      "C": "笔迹特征只是辨认的线索，不含评价。",
+      "D": "文中没有这样的愿望，反而显出她的自足。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the deeper meaning of the closing line 她知道谁还记得她?",
+        "explanation": "The grandmother cannot read the contents, yet she can read the sender. In this piece a letter is not a vehicle for information but evidence of being remembered.\n\nIts arrival has already said what needed saying."
+      }
+    },
+    "tags": [
+      "literature-reading",
+      "theme"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "祖母不识字，却能准确说出每一封信是谁寄来的。她看信封上的字：这个人写「祖」字最后一笔总要拖长，那个人的邮票永远贴歪。四十年里她没读过一封信的内容，但她知道谁还记得她。"
+    },
+    "stem": "文中「拖长的一笔」与「贴歪的邮票」两个细节的共同点是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "都说明寄信人做事马虎"
+      },
+      {
+        "id": "B",
+        "text": "都是祖母特意要求对方做的"
+      },
+      {
+        "id": "C",
+        "text": "都是无意留下的个人痕迹，反而成了最可靠的标识"
+      },
+      {
+        "id": "D",
+        "text": "都与信件的内容有关"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "两个细节都出于习惯而非用意：写字的人不会刻意拖长那一笔，贴邮票的人也不会存心贴歪。恰恰因为无意，它们才稳定、才无法伪造，成为比署名更可靠的辨认依据。",
+    "distractorRationale": {
+      "A": "文中并无评价之意，叙述者的语气是温和的。",
+      "B": "若是刻意约定，就不成其为个人痕迹了。",
+      "D": "两者都在信封上，与内容无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What do the elongated stroke and the crooked stamp have in common?",
+        "explanation": "Both are habits rather than intentions: no one deliberately drags out that final stroke, and no one means to stick the stamp askew.\n\nBecause they are unintentional they are consistent and impossible to fake, which makes them a more reliable identifier than a signature would be."
+      }
+    },
+    "tags": [
+      "literature-reading",
+      "detail-analysis"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-e19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "村里最后一位会打铁的人去世那天，铺子的门没有关。邻居们说，他生前总说门锁坏了要修，一拖十几年。后来才知道，门锁一直是好的。"
+    },
+    "stem": "文末「门锁一直是好的」这一转折的用意是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "暗示铺子里没有值钱的东西"
+      },
+      {
+        "id": "B",
+        "text": "表现铁匠不善于修理门锁"
+      },
+      {
+        "id": "C",
+        "text": "说明铁匠记性不好"
+      },
+      {
+        "id": "D",
+        "text": "揭示铁匠是有意让铺子始终敞开，供人随时来用"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "一个打铁的人修不好门锁，本就不合情理。末句戳破这个借口，读者随即明白：他从未想锁门。十几年的推托，是为了不必说出自己的用意。",
+    "distractorRationale": {
+      "A": "铺内财物文中未提，且不能解释他的借口。",
+      "B": "打铁匠修锁并非难事，这正是破绽所在。",
+      "C": "十几年反复提起同一件事，恰恰说明他记得。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the point of the final reversal 门锁一直是好的?",
+        "explanation": "A blacksmith unable to fix a lock never made sense. The last line punctures the excuse, and the reader understands at once: he never intended to lock up.\n\nThe decade of putting it off was a way of not having to say so."
+      }
+    },
+    "tags": [
+      "literature-reading",
+      "reversal"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

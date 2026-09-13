@@ -1,0 +1,1718 @@
+[
+  {
+    "id": "csca-phy-b08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A heater rated $220\\ \\text{V}$, $1100\\ \\text{W}$ operates at its rated voltage. What is its resistance?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$44\\ \\Omega$"
+      },
+      {
+        "id": "B",
+        "text": "$5\\ \\Omega$"
+      },
+      {
+        "id": "C",
+        "text": "$220\\ \\Omega$"
+      },
+      {
+        "id": "D",
+        "text": "$0.2\\ \\Omega$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "From $P = \\dfrac{U^2}{R}$, we get $R = \\dfrac{U^2}{P} = \\dfrac{220^2}{1100} = \\dfrac{48400}{1100} = 44\\ \\Omega$.",
+    "distractorRationale": {
+      "B": "Computes the current $I = \\dfrac{P}{U} = 5\\ \\text{A}$ and reports it as a resistance.",
+      "C": "Copies the rated voltage.",
+      "D": "Divides current by voltage instead of the reverse."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "标有 $220\\ \\text{V}$、$1100\\ \\text{W}$ 的电热器在额定电压下工作，其电阻为",
+        "explanation": "由 $P = \\dfrac{U^2}{R}$ 得 $R = \\dfrac{U^2}{P} = \\dfrac{220^2}{1100} = \\dfrac{48400}{1100} = 44\\ \\Omega$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$44\\ \\Omega$"
+          },
+          {
+            "id": "B",
+            "text": "$5\\ \\Omega$"
+          },
+          {
+            "id": "C",
+            "text": "$220\\ \\Omega$"
+          },
+          {
+            "id": "D",
+            "text": "$0.2\\ \\Omega$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "electrical-power",
+      "resistance"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Coulomb's law 库仑定律",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two identical conducting spheres carry charges $+6q$ and $-2q$. They are touched together and then separated. What charge does each carry afterwards?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$+4q$ each"
+      },
+      {
+        "id": "B",
+        "text": "$+2q$ each"
+      },
+      {
+        "id": "C",
+        "text": "$+3q$ and $-q$"
+      },
+      {
+        "id": "D",
+        "text": "Zero each"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Charge is conserved, and identical spheres in contact share it equally. The total is $+6q + (-2q) = +4q$, so each sphere ends with $\\dfrac{4q}{2} = +2q$.",
+    "distractorRationale": {
+      "A": "Reports the total charge rather than the share on each sphere.",
+      "C": "Halves each original charge separately instead of sharing the total.",
+      "D": "Would require the charges to be equal and opposite, which they are not."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "两个完全相同的导体球分别带电 $+6q$ 与 $-2q$。接触后分开，各自带电量为",
+        "explanation": "电荷守恒，且完全相同的导体球接触后平分电荷。总电荷为 $+6q + (-2q) = +4q$，故每球带电 $\\dfrac{4q}{2} = +2q$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "各带 $+4q$"
+          },
+          {
+            "id": "B",
+            "text": "各带 $+2q$"
+          },
+          {
+            "id": "C",
+            "text": "分别为 $+3q$ 与 $-q$"
+          },
+          {
+            "id": "D",
+            "text": "均不带电"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "charge-conservation",
+      "conductors"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Lorentz force 洛伦兹力",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A charged particle moves in a circle in a uniform magnetic field. If its speed doubles while the field stays the same, how does the radius change?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It quadruples."
+      },
+      {
+        "id": "B",
+        "text": "It stays the same."
+      },
+      {
+        "id": "C",
+        "text": "It doubles."
+      },
+      {
+        "id": "D",
+        "text": "It halves."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Equating the magnetic force to the centripetal force gives $qvB = \\dfrac{mv^2}{r}$, so $r = \\dfrac{mv}{qB}$. The radius is directly proportional to speed, so doubling $v$ doubles $r$. The period, by contrast, stays unchanged.",
+    "distractorRationale": {
+      "A": "Uses $v^2$, but one power of $v$ cancels when the equations are combined.",
+      "B": "Confuses radius with period; it is the period that is independent of speed.",
+      "D": "Reverses the proportionality."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "带电粒子在匀强磁场中做圆周运动。若磁场不变而速率增大为两倍，则半径",
+        "explanation": "由洛伦兹力提供向心力得 $qvB = \\dfrac{mv^2}{r}$，故 $r = \\dfrac{mv}{qB}$。半径与速率成正比，速率加倍则半径加倍。而周期则保持不变。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "变为四倍"
+          },
+          {
+            "id": "B",
+            "text": "保持不变"
+          },
+          {
+            "id": "C",
+            "text": "变为两倍"
+          },
+          {
+            "id": "D",
+            "text": "变为一半"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "circular-motion-in-field",
+      "radius"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Magnetic induction 磁感应",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the magnetic flux through a flat coil of area $0.02\\ \\text{m}^2$ placed perpendicular to a uniform field of $0.5\\ \\text{T}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$25\\ \\text{Wb}$"
+      },
+      {
+        "id": "B",
+        "text": "$0.52\\ \\text{Wb}$"
+      },
+      {
+        "id": "C",
+        "text": "$0.04\\ \\text{Wb}$"
+      },
+      {
+        "id": "D",
+        "text": "$0.01\\ \\text{Wb}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "When the coil plane is perpendicular to the field, $\\Phi = BA = 0.5 \\times 0.02 = 0.01\\ \\text{Wb}$.",
+    "distractorRationale": {
+      "A": "Divides field by area instead of multiplying.",
+      "B": "Adds the two quantities.",
+      "C": "Divides area by field."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "面积为 $0.02\\ \\text{m}^2$ 的平面线圈垂直放置于 $0.5\\ \\text{T}$ 的匀强磁场中，穿过线圈的磁通量为",
+        "explanation": "线圈平面与磁场垂直时 $\\Phi = BA = 0.5 \\times 0.02 = 0.01\\ \\text{Wb}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$25\\ \\text{Wb}$"
+          },
+          {
+            "id": "B",
+            "text": "$0.52\\ \\text{Wb}$"
+          },
+          {
+            "id": "C",
+            "text": "$0.04\\ \\text{Wb}$"
+          },
+          {
+            "id": "D",
+            "text": "$0.01\\ \\text{Wb}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "magnetic-flux",
+      "field"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Faraday's law 法拉第定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In which situation is an e.m.f. induced in a closed coil?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The coil is rotated inside a uniform magnetic field."
+      },
+      {
+        "id": "B",
+        "text": "The coil rests at an angle in a steady magnetic field."
+      },
+      {
+        "id": "C",
+        "text": "The coil is moved parallel to itself in a uniform field."
+      },
+      {
+        "id": "D",
+        "text": "A steady current flows through a nearby wire."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Induction requires the magnetic flux through the coil to change. Rotating the coil changes the angle between its plane and the field, so the flux changes and an e.m.f. appears.",
+    "distractorRationale": {
+      "B": "The flux is constant, however large it may be, so no e.m.f. is induced.",
+      "C": "In a uniform field, translating the coil does not change the flux through it.",
+      "D": "A steady current produces a steady field, so the flux does not change."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列哪种情形会在闭合线圈中产生感应电动势？",
+        "explanation": "产生感应电动势的条件是穿过线圈的磁通量发生变化。线圈转动会改变其平面与磁场的夹角，磁通量随之改变，故产生感应电动势。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "线圈在匀强磁场中转动"
+          },
+          {
+            "id": "B",
+            "text": "线圈倾斜静止于恒定磁场中"
+          },
+          {
+            "id": "C",
+            "text": "线圈在匀强磁场中平行移动"
+          },
+          {
+            "id": "D",
+            "text": "附近导线中通有恒定电流"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "electromagnetic-induction",
+      "flux-change"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Three identical resistors of $6\\ \\Omega$ are connected in series across a $9\\ \\text{V}$ supply of negligible internal resistance. What current flows?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$4.5\\ \\text{A}$"
+      },
+      {
+        "id": "B",
+        "text": "$0.5\\ \\text{A}$"
+      },
+      {
+        "id": "C",
+        "text": "$1.5\\ \\text{A}$"
+      },
+      {
+        "id": "D",
+        "text": "$3\\ \\text{A}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Resistances in series add: $R = 6 + 6 + 6 = 18\\ \\Omega$. Then $I = \\dfrac{U}{R} = \\dfrac{9}{18} = 0.5\\ \\text{A}$.",
+    "distractorRationale": {
+      "A": "Treats the three resistors as being in parallel, giving $2\\ \\Omega$.",
+      "C": "Uses a single resistor of $6\\ \\Omega$ instead of the series total.",
+      "D": "Divides $9$ by $3$, using the number of resistors rather than the resistance."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "三个 $6\\ \\Omega$ 的相同电阻串联接在内阻可忽略的 $9\\ \\text{V}$ 电源上，电路中的电流为",
+        "explanation": "串联电阻相加：$R = 6 + 6 + 6 = 18\\ \\Omega$。故 $I = \\dfrac{U}{R} = \\dfrac{9}{18} = 0.5\\ \\text{A}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$4.5\\ \\text{A}$"
+          },
+          {
+            "id": "B",
+            "text": "$0.5\\ \\text{A}$"
+          },
+          {
+            "id": "C",
+            "text": "$1.5\\ \\text{A}$"
+          },
+          {
+            "id": "D",
+            "text": "$3\\ \\text{A}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "series-circuit",
+      "current"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-c01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Ideal gas equation 理想气体状态方程",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A fixed mass of ideal gas at constant temperature has its volume halved. What happens to its pressure?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It halves."
+      },
+      {
+        "id": "B",
+        "text": "It quadruples."
+      },
+      {
+        "id": "C",
+        "text": "It doubles."
+      },
+      {
+        "id": "D",
+        "text": "It stays the same."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "At constant temperature Boyle's law applies: $pV$ is constant. Halving $V$ therefore doubles $p$.",
+    "distractorRationale": {
+      "A": "Treats pressure and volume as directly proportional.",
+      "B": "Applies an inverse-square relationship, which does not hold for gases.",
+      "D": "Would require both $p$ and $V$ to be unchanged."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "一定质量的理想气体在温度不变时体积减半，则压强",
+        "explanation": "温度不变时适用玻意耳定律，$pV$ 为常量。体积减半，压强变为原来的两倍。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "变为一半"
+          },
+          {
+            "id": "B",
+            "text": "变为四倍"
+          },
+          {
+            "id": "C",
+            "text": "变为两倍"
+          },
+          {
+            "id": "D",
+            "text": "保持不变"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "boyles-law",
+      "ideal-gas"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-c02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Molecular theory 分子动理论",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "According to kinetic molecular theory, what does the absolute temperature of an ideal gas measure?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The total energy contained in the gas"
+      },
+      {
+        "id": "B",
+        "text": "The speed of the fastest molecule"
+      },
+      {
+        "id": "C",
+        "text": "The number of molecules present"
+      },
+      {
+        "id": "D",
+        "text": "The average kinetic energy of its molecules"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Absolute temperature is proportional to the mean translational kinetic energy of the molecules. It is an average, so it does not depend on how many molecules there are.",
+    "distractorRationale": {
+      "A": "Total energy depends on the amount of gas as well as its temperature.",
+      "B": "Molecular speeds follow a distribution; temperature reflects the average, not the maximum.",
+      "C": "Temperature is independent of the quantity of gas present."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "根据分子动理论，理想气体的热力学温度反映的是",
+        "explanation": "热力学温度与分子平均平动动能成正比。它是一个平均量，与分子数目无关。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "气体所含的总能量"
+          },
+          {
+            "id": "B",
+            "text": "速度最快的分子的速率"
+          },
+          {
+            "id": "C",
+            "text": "分子的数目"
+          },
+          {
+            "id": "D",
+            "text": "分子的平均动能"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "kinetic-theory",
+      "temperature"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-c03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "First law of thermodynamics 热力学第一定律",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A gas absorbs $500\\ \\text{J}$ of heat and does $200\\ \\text{J}$ of work on its surroundings. What is the change in its internal energy?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$+300\\ \\text{J}$"
+      },
+      {
+        "id": "B",
+        "text": "$+700\\ \\text{J}$"
+      },
+      {
+        "id": "C",
+        "text": "$-300\\ \\text{J}$"
+      },
+      {
+        "id": "D",
+        "text": "$+200\\ \\text{J}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The first law gives $\\Delta U = Q - W$, where $W$ is work done *by* the gas. So $\\Delta U = 500 - 200 = +300\\ \\text{J}$.",
+    "distractorRationale": {
+      "B": "Adds the work instead of subtracting it, as if the gas had been compressed.",
+      "C": "Reverses the sign of the result.",
+      "D": "Reports the work done rather than the change in internal energy."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "气体吸收 $500\\ \\text{J}$ 的热量，同时对外做功 $200\\ \\text{J}$，其内能变化为",
+        "explanation": "由热力学第一定律 $\\Delta U = Q - W$（$W$ 为气体对外所做的功），得 $\\Delta U = 500 - 200 = +300\\ \\text{J}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$+300\\ \\text{J}$"
+          },
+          {
+            "id": "B",
+            "text": "$+700\\ \\text{J}$"
+          },
+          {
+            "id": "C",
+            "text": "$-300\\ \\text{J}$"
+          },
+          {
+            "id": "D",
+            "text": "$+200\\ \\text{J}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "first-law",
+      "internal-energy"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-c04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Ideal gas equation 理想气体状态方程",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A sealed rigid container holds gas at $27\\ ^\\circ\\text{C}$ and pressure $p$. It is heated to $327\\ ^\\circ\\text{C}$. What is the new pressure?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$12p$"
+      },
+      {
+        "id": "B",
+        "text": "$2p$"
+      },
+      {
+        "id": "C",
+        "text": "$p$"
+      },
+      {
+        "id": "D",
+        "text": "$1.2p$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Convert to kelvin: $27\\ ^\\circ\\text{C} = 300\\ \\text{K}$ and $327\\ ^\\circ\\text{C} = 600\\ \\text{K}$. At constant volume $\\dfrac{p}{T}$ is constant, so doubling the absolute temperature doubles the pressure.\n\nUsing Celsius values directly would give a ratio of $\\dfrac{327}{27} \\approx 12$, which is the classic error here.",
+    "distractorRationale": {
+      "A": "Uses Celsius temperatures directly instead of converting to kelvin.",
+      "C": "Assumes pressure is unaffected by temperature at constant volume.",
+      "D": "Uses an incorrect ratio that does not follow from either scale."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "密闭刚性容器中的气体在 $27\\ ^\\circ\\text{C}$ 时压强为 $p$，加热至 $327\\ ^\\circ\\text{C}$ 后压强为",
+        "explanation": "先化为热力学温度：$27\\ ^\\circ\\text{C} = 300\\ \\text{K}$，$327\\ ^\\circ\\text{C} = 600\\ \\text{K}$。体积不变时 $\\dfrac{p}{T}$ 为常量，绝对温度加倍则压强加倍。\n\n若直接用摄氏温度计算，会得到 $\\dfrac{327}{27} \\approx 12$ 的错误比值。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$12p$"
+          },
+          {
+            "id": "B",
+            "text": "$2p$"
+          },
+          {
+            "id": "C",
+            "text": "$p$"
+          },
+          {
+            "id": "D",
+            "text": "$1.2p$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "gay-lussac",
+      "kelvin-conversion"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-c05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Molecular theory 分子动理论",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Brownian motion of smoke particles in air is evidence for which statement?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Smoke particles are electrically charged."
+      },
+      {
+        "id": "B",
+        "text": "Air is denser than smoke."
+      },
+      {
+        "id": "C",
+        "text": "Air molecules are in constant random motion."
+      },
+      {
+        "id": "D",
+        "text": "Heat always flows from hot to cold."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The irregular, unpredictable path of a smoke particle results from uneven bombardment by air molecules from different directions. The motion is visible evidence that those molecules move constantly and randomly.",
+    "distractorRationale": {
+      "A": "The motion occurs whether or not particles carry charge, and no electrical effect is involved.",
+      "B": "Density differences would cause steady sinking or rising, not random jitter.",
+      "D": "This is a separate thermodynamic principle unrelated to the observation."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "空气中烟尘颗粒的布朗运动可以说明",
+        "explanation": "烟尘颗粒路径不规则，是因为各方向空气分子的撞击并不均衡。这一现象直接说明空气分子在不停地做无规则运动。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "烟尘颗粒带电"
+          },
+          {
+            "id": "B",
+            "text": "空气的密度大于烟尘"
+          },
+          {
+            "id": "C",
+            "text": "空气分子在不停地做无规则运动"
+          },
+          {
+            "id": "D",
+            "text": "热量总是从高温物体传向低温物体"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "brownian-motion",
+      "molecular-motion"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-c06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "First law of thermodynamics 热力学第一定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A gas is compressed adiabatically, meaning no heat enters or leaves. What happens to its internal energy?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It decreases, because the volume falls."
+      },
+      {
+        "id": "B",
+        "text": "It stays the same, because no heat is transferred."
+      },
+      {
+        "id": "C",
+        "text": "It first increases, then returns to its original value."
+      },
+      {
+        "id": "D",
+        "text": "It increases, because work is done on the gas."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "With $Q = 0$, the first law reduces to $\\Delta U = -W$, where $W$ is work done by the gas. Compression means work is done *on* the gas, so $W$ is negative and $\\Delta U$ is positive: the gas warms.",
+    "distractorRationale": {
+      "A": "Volume alone does not determine internal energy; the work done is what matters.",
+      "B": "Confuses zero heat transfer with zero energy change; work still transfers energy.",
+      "C": "Nothing in the process returns the gas to its original state."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "气体经历绝热压缩（无热量进出），其内能的变化是",
+        "explanation": "$Q = 0$ 时，热力学第一定律化为 $\\Delta U = -W$（$W$ 为气体对外做的功）。压缩意味着外界对气体做功，$W$ 为负，故 $\\Delta U$ 为正，气体温度升高。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "减小，因为体积变小"
+          },
+          {
+            "id": "B",
+            "text": "不变，因为没有热量交换"
+          },
+          {
+            "id": "C",
+            "text": "先增大后回到原值"
+          },
+          {
+            "id": "D",
+            "text": "增大，因为外界对气体做了功"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "adiabatic-process",
+      "first-law"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-c07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Ideal gas equation 理想气体状态方程",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A gas occupies $3\\ \\text{L}$ at $300\\ \\text{K}$ under constant pressure. What volume does it occupy at $400\\ \\text{K}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$4\\ \\text{L}$"
+      },
+      {
+        "id": "B",
+        "text": "$3.3\\ \\text{L}$"
+      },
+      {
+        "id": "C",
+        "text": "$2.25\\ \\text{L}$"
+      },
+      {
+        "id": "D",
+        "text": "$1.33\\ \\text{L}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "At constant pressure, $\\dfrac{V}{T}$ is constant, so $V_2 = V_1 \\times \\dfrac{T_2}{T_1} = 3 \\times \\dfrac{400}{300} = 4\\ \\text{L}$.",
+    "distractorRationale": {
+      "B": "Adds a tenth of the volume rather than applying the ratio.",
+      "C": "Inverts the temperature ratio.",
+      "D": "Reports the temperature ratio itself rather than the new volume."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "一定质量的气体在恒定压强下于 $300\\ \\text{K}$ 时体积为 $3\\ \\text{L}$，在 $400\\ \\text{K}$ 时体积为",
+        "explanation": "压强不变时 $\\dfrac{V}{T}$ 为常量，故 $V_2 = V_1 \\times \\dfrac{T_2}{T_1} = 3 \\times \\dfrac{400}{300} = 4\\ \\text{L}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$4\\ \\text{L}$"
+          },
+          {
+            "id": "B",
+            "text": "$3.3\\ \\text{L}$"
+          },
+          {
+            "id": "C",
+            "text": "$2.25\\ \\text{L}$"
+          },
+          {
+            "id": "D",
+            "text": "$1.33\\ \\text{L}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "charles-law",
+      "isobaric"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-d01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Refraction 折射",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Light passes from air into glass. Which quantity remains unchanged?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Wavelength"
+      },
+      {
+        "id": "B",
+        "text": "Frequency"
+      },
+      {
+        "id": "C",
+        "text": "Speed"
+      },
+      {
+        "id": "D",
+        "text": "Direction of travel"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Frequency is set by the source and does not change when light enters a new medium. Speed and wavelength both decrease in the denser medium, and the direction changes unless the light strikes the surface normally.",
+    "distractorRationale": {
+      "A": "Wavelength shortens in proportion to the speed reduction.",
+      "C": "Speed falls to $\\dfrac{c}{n}$ in the glass.",
+      "D": "Refraction bends the light unless it enters along the normal."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "光从空气射入玻璃时，下列哪个量保持不变？",
+        "explanation": "频率由光源决定，进入新介质时不改变。速度与波长在光密介质中都会减小，除非垂直入射，否则传播方向也会改变。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "波长"
+          },
+          {
+            "id": "B",
+            "text": "频率"
+          },
+          {
+            "id": "C",
+            "text": "速度"
+          },
+          {
+            "id": "D",
+            "text": "传播方向"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "refraction",
+      "wave-properties"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-d02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Interference 干涉",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In a double-slit experiment, what happens to the fringe spacing if the slit separation is increased?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The fringes move further apart."
+      },
+      {
+        "id": "B",
+        "text": "The spacing is unchanged."
+      },
+      {
+        "id": "C",
+        "text": "The fringes move closer together."
+      },
+      {
+        "id": "D",
+        "text": "The fringes disappear entirely."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Fringe spacing is $x = \\dfrac{\\lambda D}{a}$, where $a$ is the slit separation. Since $x$ is inversely proportional to $a$, increasing the separation narrows the spacing.",
+    "distractorRationale": {
+      "A": "Reverses the inverse relationship.",
+      "B": "The formula depends explicitly on $a$, so the spacing must change.",
+      "D": "Fringes still form; only their spacing changes."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "在双缝干涉实验中，若增大双缝间距，则条纹间距",
+        "explanation": "条纹间距 $x = \\dfrac{\\lambda D}{a}$，其中 $a$ 为双缝间距。$x$ 与 $a$ 成反比，故间距增大时条纹变密。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "变大"
+          },
+          {
+            "id": "B",
+            "text": "不变"
+          },
+          {
+            "id": "C",
+            "text": "变小"
+          },
+          {
+            "id": "D",
+            "text": "条纹完全消失"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "double-slit",
+      "fringe-spacing"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-d03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Reflection 反射",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A ray strikes a plane mirror at $30^\\circ$ to the mirror surface. What is the angle of reflection, measured from the normal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$90^\\circ$"
+      },
+      {
+        "id": "B",
+        "text": "$45^\\circ$"
+      },
+      {
+        "id": "C",
+        "text": "$30^\\circ$"
+      },
+      {
+        "id": "D",
+        "text": "$60^\\circ$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Angles in the law of reflection are measured from the normal, not from the surface. A ray at $30^\\circ$ to the surface makes $90^\\circ - 30^\\circ = 60^\\circ$ with the normal, and the reflected ray does the same.",
+    "distractorRationale": {
+      "A": "Would mean the ray travels along the mirror surface.",
+      "B": "A value that does not follow from the given geometry.",
+      "C": "Uses the angle to the surface directly, without converting to the normal."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "一束光线与平面镜镜面成 $30^\\circ$ 角入射，则反射角（自法线量起）为",
+        "explanation": "反射定律中的角度自法线量起，而非自镜面量起。与镜面成 $30^\\circ$ 的光线与法线成 $90^\\circ - 30^\\circ = 60^\\circ$，反射角与之相等。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$90^\\circ$"
+          },
+          {
+            "id": "B",
+            "text": "$45^\\circ$"
+          },
+          {
+            "id": "C",
+            "text": "$30^\\circ$"
+          },
+          {
+            "id": "D",
+            "text": "$60^\\circ$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "reflection",
+      "normal-angle"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-d04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Diffraction 衍射",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Diffraction of light becomes noticeable when",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the size of the obstacle or aperture is comparable to the wavelength."
+      },
+      {
+        "id": "B",
+        "text": "the obstacle is much larger than the wavelength."
+      },
+      {
+        "id": "C",
+        "text": "the light source is extremely bright."
+      },
+      {
+        "id": "D",
+        "text": "the light passes through a vacuum."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Diffraction is significant only when the aperture or obstacle has a size close to the wavelength. Visible light has a wavelength of a few hundred nanometres, which is why everyday objects cast sharp shadows.",
+    "distractorRationale": {
+      "B": "Large obstacles produce nearly straight-edged shadows with negligible diffraction.",
+      "C": "Brightness affects intensity, not the geometry of the spreading.",
+      "D": "Diffraction depends on the aperture, not on the medium."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "光的衍射现象明显的条件是",
+        "explanation": "只有当障碍物或孔的尺寸与波长相当时，衍射才明显。可见光波长仅几百纳米，因此日常物体投下的影子边缘清晰。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "障碍物或孔的尺寸与波长相当"
+          },
+          {
+            "id": "B",
+            "text": "障碍物远大于波长"
+          },
+          {
+            "id": "C",
+            "text": "光源非常明亮"
+          },
+          {
+            "id": "D",
+            "text": "光在真空中传播"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "diffraction",
+      "wavelength-scale"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-d05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Refraction 折射",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A medium has refractive index $1.5$. Total internal reflection can occur when light travels",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "in either direction, provided the angle exceeds $45^\\circ$."
+      },
+      {
+        "id": "B",
+        "text": "from this medium into air, at angles beyond the critical angle."
+      },
+      {
+        "id": "C",
+        "text": "from air into this medium, at large angles only."
+      },
+      {
+        "id": "D",
+        "text": "from air into this medium, at any angle."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Total internal reflection requires light to travel from a denser medium into a less dense one, and to strike the boundary beyond the critical angle. Going from glass into air satisfies the first condition.",
+    "distractorRationale": {
+      "A": "The direction of travel is essential, and the critical angle for $n = 1.5$ is about $42^\\circ$, not $45^\\circ$.",
+      "C": "Direction matters more than angle; from air into glass the light always enters.",
+      "D": "Entering a denser medium always allows refraction, so no total reflection occurs."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某介质的折射率为 $1.5$。发生全反射的条件是光",
+        "explanation": "全反射要求光由光密介质射向光疏介质，且入射角大于临界角。由该介质射入空气满足第一个条件。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "两个方向均可，只要角度大于 $45^\\circ$"
+          },
+          {
+            "id": "B",
+            "text": "由该介质射向空气，且入射角大于临界角"
+          },
+          {
+            "id": "C",
+            "text": "由空气射入该介质，且入射角较大"
+          },
+          {
+            "id": "D",
+            "text": "由空气射入该介质，任意角度均可"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "total-internal-reflection",
+      "critical-angle"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-e01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Photoelectric effect 光电效应",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In the photoelectric effect, increasing the intensity of light above the threshold frequency causes",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "no emission at all until the frequency is also raised."
+      },
+      {
+        "id": "B",
+        "text": "both more electrons and greater kinetic energy per electron."
+      },
+      {
+        "id": "C",
+        "text": "more electrons to be emitted, each with unchanged maximum kinetic energy."
+      },
+      {
+        "id": "D",
+        "text": "the same number of electrons, each with greater kinetic energy."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Each photon ejects at most one electron, and the maximum kinetic energy depends on photon energy, hence on frequency alone. Raising the intensity delivers more photons per second, so more electrons are emitted, but each carries the same maximum energy.",
+    "distractorRationale": {
+      "A": "The frequency is already above threshold, so emission is occurring.",
+      "B": "Combines both effects, but intensity alone cannot raise the energy per electron.",
+      "D": "Kinetic energy is set by frequency, not intensity."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "在光电效应中，若入射光频率已高于极限频率，增大光强会使",
+        "explanation": "每个光子最多打出一个电子，而最大初动能只由光子能量（即频率）决定。增大光强意味着单位时间内光子数增多，故光电子数增多，但每个电子的最大初动能不变。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "不发生光电效应，除非同时提高频率"
+          },
+          {
+            "id": "B",
+            "text": "光电子数与最大初动能都增大"
+          },
+          {
+            "id": "C",
+            "text": "光电子数增多，最大初动能不变"
+          },
+          {
+            "id": "D",
+            "text": "光电子数不变，最大初动能增大"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "photoelectric-effect",
+      "intensity"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-e02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Atomic structure 原子结构",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Rutherford's alpha-particle scattering experiment showed that",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "electrons occupy fixed circular orbits with quantised energy."
+      },
+      {
+        "id": "B",
+        "text": "positive charge is spread evenly throughout the atom."
+      },
+      {
+        "id": "C",
+        "text": "neutrons exist inside the nucleus."
+      },
+      {
+        "id": "D",
+        "text": "an atom's positive charge and nearly all its mass are concentrated in a tiny nucleus."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Most alpha particles passed straight through, showing the atom is mostly empty. A very few rebounded sharply, which requires a small, dense, positively charged core.",
+    "distractorRationale": {
+      "A": "Quantised orbits came from Bohr's later model, not from the scattering data.",
+      "B": "This is the plum-pudding model, which the experiment disproved.",
+      "C": "Neutrons were discovered later, by Chadwick."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "卢瑟福的 α 粒子散射实验表明",
+        "explanation": "绝大多数 α 粒子直接穿过，说明原子内部大部分是空的；极少数发生大角度偏转，说明存在体积极小、带正电且集中了几乎全部质量的原子核。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "电子在能量量子化的固定轨道上运动"
+          },
+          {
+            "id": "B",
+            "text": "正电荷均匀分布在整个原子中"
+          },
+          {
+            "id": "C",
+            "text": "原子核内存在中子"
+          },
+          {
+            "id": "D",
+            "text": "原子的正电荷与几乎全部质量集中在极小的原子核内"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "rutherford-scattering",
+      "nuclear-model"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-e03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Nuclear physics 原子核物理",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A nucleus $^{238}_{92}\\text{U}$ emits an alpha particle. What is the resulting nucleus?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$^{234}_{90}\\text{Th}$"
+      },
+      {
+        "id": "B",
+        "text": "$^{236}_{90}\\text{Th}$"
+      },
+      {
+        "id": "C",
+        "text": "$^{234}_{92}\\text{U}$"
+      },
+      {
+        "id": "D",
+        "text": "$^{238}_{90}\\text{Th}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "An alpha particle is $^{4}_{2}\\text{He}$. Emission reduces the nucleon number by $4$ and the proton number by $2$, giving $^{234}_{90}\\text{Th}$.",
+    "distractorRationale": {
+      "B": "Subtracts only $2$ from the nucleon number.",
+      "C": "Changes the nucleon number but leaves the proton number unchanged.",
+      "D": "Changes the proton number but leaves the nucleon number unchanged."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$^{238}_{92}\\text{U}$ 发生 α 衰变后生成的原子核是",
+        "explanation": "α 粒子即 $^{4}_{2}\\text{He}$。衰变使质量数减 $4$、质子数减 $2$，故生成 $^{234}_{90}\\text{Th}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$^{234}_{90}\\text{Th}$"
+          },
+          {
+            "id": "B",
+            "text": "$^{236}_{90}\\text{Th}$"
+          },
+          {
+            "id": "C",
+            "text": "$^{234}_{92}\\text{U}$"
+          },
+          {
+            "id": "D",
+            "text": "$^{238}_{90}\\text{Th}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "alpha-decay",
+      "nuclear-equations"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-e04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Photoelectric effect 光电效应",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A metal has work function $W$. Light of photon energy $E$ falls on it, with $E > W$. What is the maximum kinetic energy of the emitted electrons?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$W - E$"
+      },
+      {
+        "id": "B",
+        "text": "$E - W$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{E}{W}$"
+      },
+      {
+        "id": "D",
+        "text": "$E + W$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Einstein's photoelectric equation is $E_{k,\\max} = h\\nu - W$. The photon supplies energy $E$; the work function $W$ is the minimum needed to escape the surface, and whatever remains appears as kinetic energy.",
+    "distractorRationale": {
+      "A": "Reverses the subtraction and would be negative, since $E > W$.",
+      "C": "A ratio of energies is not itself an energy.",
+      "D": "Adds the escape energy instead of subtracting it, which would create energy."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某金属的逸出功为 $W$，光子能量为 $E$ 的光照射其表面（$E > W$），则光电子的最大初动能为",
+        "explanation": "爱因斯坦光电效应方程为 $E_{k,\\max} = h\\nu - W$。光子提供能量 $E$，其中 $W$ 用于电子逸出表面，剩余部分转化为动能。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$W - E$"
+          },
+          {
+            "id": "B",
+            "text": "$E - W$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{E}{W}$"
+          },
+          {
+            "id": "D",
+            "text": "$E + W$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "einstein-equation",
+      "work-function"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

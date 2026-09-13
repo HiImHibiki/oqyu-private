@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "csca-zhh-a01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「借景抒情」这一手法的特点是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "直接说出作者的心情"
+      },
+      {
+        "id": "B",
+        "text": "只客观描写景物而不带情感"
+      },
+      {
+        "id": "C",
+        "text": "通过描写景物来寄托作者的情感"
+      },
+      {
+        "id": "D",
+        "text": "用对话推动情节发展"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "借景抒情属于间接抒情：情感不直接说出，而是附着在景物描写之中，由读者从景中体味。与之相对的是「直抒胸臆」。",
+    "distractorRationale": {
+      "A": "这是「直抒胸臆」，与借景抒情正好相对。",
+      "B": "纯客观的景物描写不含情感寄托，不构成抒情手法。",
+      "D": "这属于叙事手法，与抒情方式无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What characterises the technique 借景抒情?",
+        "explanation": "借景抒情 (expressing feeling through scenery) is a form of indirect expression: the emotion is not stated outright but embedded in the description of a landscape, for the reader to draw out.\n\nIts opposite is 直抒胸臆 (stating feeling directly), which is what 直接说出作者的心情 describes."
+      }
+    },
+    "tags": [
+      "literary-technique",
+      "terminology"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「伏笔」在叙事作品中的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "对前文已经写过的内容加以补充"
+      },
+      {
+        "id": "B",
+        "text": "把故事的结局提前告诉读者"
+      },
+      {
+        "id": "C",
+        "text": "描写人物的外貌特征"
+      },
+      {
+        "id": "D",
+        "text": "为后文将要出现的情节预先作出暗示"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "伏笔是在前文埋下不引人注意的线索，等到后文事件发生时，读者才恍然大悟。它要求「伏」得隐蔽而「应」得自然，与「照应」构成前后呼应的一对。",
+    "distractorRationale": {
+      "A": "补充前文的是「补叙」。",
+      "B": "直接告知结局是「预叙」，与伏笔的隐蔽性相反。",
+      "C": "这是「肖像描写」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What function does 伏笔 serve in a narrative?",
+        "explanation": "伏笔 (foreshadowing) plants an inconspicuous clue early on, so that when the event arrives later the reader recognises it in retrospect.\n\nThe craft lies in hiding it well and paying it off naturally; the paired term is 照应 (the answering echo later in the text)."
+      }
+    },
+    "tags": [
+      "narrative-technique",
+      "terminology"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列诗句中使用了「对偶」手法的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两个黄鹂鸣翠柳，一行白鹭上青天"
+      },
+      {
+        "id": "B",
+        "text": "问君能有几多愁"
+      },
+      {
+        "id": "C",
+        "text": "白发三千丈"
+      },
+      {
+        "id": "D",
+        "text": "举头望明月"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "对偶要求两句字数相等、结构相同、词性相对。「两个」对「一行」，「黄鹂」对「白鹭」，「鸣翠柳」对「上青天」，工整成对。",
+    "distractorRationale": {
+      "B": "这是设问，且为单句。",
+      "C": "这是夸张。",
+      "D": "这是单句叙述，没有与之相对的另一句。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which line uses 对偶 (parallel couplet)?",
+        "explanation": "对偶 requires two lines of equal length with matching structure and corresponding parts of speech. Here 两个 pairs with 一行, 黄鹂 with 白鹭, and 鸣翠柳 with 上青天 — a precise match throughout.\n\n白发三千丈 is 夸张 (hyperbole), and 问君能有几多愁 is 设问 (a rhetorical question)."
+      }
+    },
+    "tags": [
+      "rhetorical-devices",
+      "poetry"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「以小见大」这一写作手法指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "把小事夸大以吸引读者"
+      },
+      {
+        "id": "B",
+        "text": "通过细小的事物或事件反映重大的主题"
+      },
+      {
+        "id": "C",
+        "text": "先写小事再写大事"
+      },
+      {
+        "id": "D",
+        "text": "用短小的篇幅写长篇故事"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "以小见大的关键在「见」：所写的对象虽小，却能折射出时代、社会或人性的重大主题。一枚旧邮票、一顿家常饭，都可能承载巨大的分量。",
+    "distractorRationale": {
+      "A": "夸大属于「夸张」，且以小见大并不改变事物本身的分量。",
+      "C": "这只是叙述顺序，不构成手法。",
+      "D": "篇幅长短与主题的大小无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the technique 以小见大 mean?",
+        "explanation": "The key character is 见 (to reveal): the subject written about is small, yet it refracts a large theme — an era, a society, a truth about human nature.\n\nAn old stamp or an ordinary family meal can carry enormous weight. The technique does not inflate the small thing; it lets the reader see through it."
+      }
+    },
+    "tags": [
+      "writing-technique",
+      "terminology"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「白描」作为一种描写手法，其特点是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "用大量形容词细致铺陈"
+      },
+      {
+        "id": "B",
+        "text": "用比喻和拟人使描写生动"
+      },
+      {
+        "id": "C",
+        "text": "用最简练的文字勾勒轮廓，不加渲染烘托"
+      },
+      {
+        "id": "D",
+        "text": "只描写白色的景物"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "白描本是中国画的技法，指不施色彩、只用墨线勾勒。移用到文学中，指用朴素简练的语言直接呈现，不作过多修饰，力量恰在克制之中。",
+    "distractorRationale": {
+      "A": "铺陈渲染正是白描所避免的。",
+      "B": "多用修辞属于「工笔」或「细描」。",
+      "D": "「白」指不着色，不是指颜色本身。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What characterises 白描 as a descriptive technique?",
+        "explanation": "白描 comes from Chinese painting, where it means outlining in ink alone without applying colour. Transferred to writing, it means presenting a subject in plain, spare language with no elaboration.\n\nThe force of the technique lies precisely in that restraint. Its opposite, 工笔, uses dense figurative detail."
+      }
+    },
+    "tags": [
+      "descriptive-technique",
+      "terminology"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「意象」与「意境」的区别在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "意象是抽象的，意境是具体的"
+      },
+      {
+        "id": "B",
+        "text": "两者是同一概念的不同说法"
+      },
+      {
+        "id": "C",
+        "text": "意象用于散文，意境用于诗歌"
+      },
+      {
+        "id": "D",
+        "text": "意象是承载情感的具体物象，意境是这些物象共同营造的整体氛围"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "意象是单个的、可指认的：明月、孤舟、寒鸦。意境则是这些意象组合后在读者心中生成的整体境界，无法逐一指出，却能被感受到。前者是砖石，后者是建成的房子。",
+    "distractorRationale": {
+      "A": "两者的抽象与具体关系恰好说反。",
+      "B": "一个是构成要素，一个是整体效果，层次不同。",
+      "C": "两个概念在诗歌与散文中都适用。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What distinguishes 意象 from 意境?",
+        "explanation": "意象 (image) is a single identifiable object charged with feeling: a bright moon, a lone boat, a winter crow. 意境 (imagistic realm) is the whole atmosphere those images generate together in the reader's mind — felt rather than pointed to.\n\nThe images are the bricks; the 意境 is the house they build."
+      }
+    },
+    "tags": [
+      "poetics",
+      "terminology"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "儒家所说的「仁」，其核心含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "推己及人的爱人之心"
+      },
+      {
+        "id": "B",
+        "text": "严格遵守法律条文"
+      },
+      {
+        "id": "C",
+        "text": "顺应自然而不作为"
+      },
+      {
+        "id": "D",
+        "text": "追求个人的功名利禄"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "《论语》中孔子答弟子问仁曰「爱人」，又说「己所不欲，勿施于人」。仁的根本在于由自身推及他人的同情与体谅，是儒家伦理的核心范畴。",
+    "distractorRationale": {
+      "B": "重视法律条文的是法家。",
+      "C": "顺应自然、无为而治是道家的主张。",
+      "D": "追逐功利与儒家的义利之辨相违。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the core meaning of the Confucian concept 仁?",
+        "explanation": "In the *Analects*, Confucius answers a disciple's question about 仁 with 爱人 — to love others — and elsewhere with 己所不欲，勿施于人 (do not impose on others what you do not desire yourself).\n\n仁 (often rendered *benevolence* or *humaneness*) rests on extending one's own feeling outward to others, and is the central ethical category of Confucianism."
+      }
+    },
+    "tags": [
+      "confucianism",
+      "philosophy-terms"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "道家「无为」的准确含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "什么事都不做"
+      },
+      {
+        "id": "B",
+        "text": "不妄为、不强行干预，顺应事物本身的规律"
+      },
+      {
+        "id": "C",
+        "text": "无论做什么都可以"
+      },
+      {
+        "id": "D",
+        "text": "只做对自己有利的事"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「无为」不是消极的不动，而是不违背事物本性地强行作为。《道德经》有「无为而无不为」之说：正因为不横加干预，万物反而各得其所。",
+    "distractorRationale": {
+      "A": "这是对无为最常见的误读，忽略了「无不为」的另一半。",
+      "C": "无为恰恰包含明确的取舍标准。",
+      "D": "功利算计与道家思想不符。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the Daoist term 无为 accurately mean?",
+        "explanation": "无为 is not passive inaction but the refusal to act *against* the nature of things — to force or over-manage.\n\nThe *Daodejing* pairs it with 无不为: precisely because nothing is forced, everything finds its place. Reading 无为 as simply doing nothing drops the second half of the idea."
+      }
+    },
+    "tags": [
+      "daoism",
+      "philosophy-terms"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「知行合一」是哪位思想家提出的核心命题？其含义是什么？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "朱熹；先求知而后力行"
+      },
+      {
+        "id": "B",
+        "text": "老子；知识越多越难行动"
+      },
+      {
+        "id": "C",
+        "text": "王阳明；认识与实践本为一体，不可分作两截"
+      },
+      {
+        "id": "D",
+        "text": "韩非；行动比知识更重要"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "王阳明针对当时「知先行后」的通行说法提出知行合一，认为真知必然表现为行，未能行便说明知得不真。二者是同一过程的两面，而非先后两段。",
+    "distractorRationale": {
+      "A": "朱熹主张「知先行后」，正是王阳明所要纠正的观点。",
+      "B": "老子并未提出这一命题。",
+      "D": "韩非属法家，关注的是法术势而非知行关系。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Who proposed 知行合一, and what does it mean?",
+        "explanation": "Wang Yangming (王阳明) advanced 知行合一 (the unity of knowing and acting) against the then-standard view that knowledge comes first and action follows.\n\nHis claim is that genuine knowing necessarily issues in action; failure to act shows the knowing was never real. The two are aspects of one process, not consecutive stages — which is exactly the position Zhu Xi held and Wang was correcting."
+      }
+    },
+    "tags": [
+      "neo-confucianism",
+      "philosophy-terms"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「实事求是」一词的本义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "老老实实地承认错误"
+      },
+      {
+        "id": "B",
+        "text": "把事情办得实实在在"
+      },
+      {
+        "id": "C",
+        "text": "只讲事实而不讲道理"
+      },
+      {
+        "id": "D",
+        "text": "从客观事实出发去探求事物的规律"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "语出《汉书》，原指治学态度。「实事」指客观存在的事物，「是」指其内部规律，「求」即探求。合起来即从实际出发，探求事物固有的规律。",
+    "distractorRationale": {
+      "A": "承认错误是「实事求是」的一种表现，但不是词义本身。",
+      "B": "这偏向「踏实」，未涉及求规律的一层。",
+      "C": "求「是」正是讲道理，二者并不对立。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 实事求是 originally mean?",
+        "explanation": "The phrase comes from the *Book of Han*, where it described an attitude to scholarship. 实事 means things as they objectively exist, 是 means the pattern or law within them, and 求 means to seek it out.\n\nTogether: to proceed from actual conditions and seek the laws inherent in them. Note that seeking 是 *is* reasoning, so the phrase does not oppose fact to argument."
+      }
+    },
+    "tags": [
+      "philosophy-terms",
+      "classical-idiom"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「辩证」一词在哲学语境中的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "从事物内部的矛盾和联系中把握其发展"
+      },
+      {
+        "id": "B",
+        "text": "为自己的观点进行辩护"
+      },
+      {
+        "id": "C",
+        "text": "把事情分辨得清清楚楚"
+      },
+      {
+        "id": "D",
+        "text": "在法庭上进行辩论"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "哲学上的辩证强调事物内部对立面的统一与转化，主张在联系和发展中认识对象，与孤立、静止的形而上学方法相对。\n\n日常汉语中「辩证地看问题」也已引申为「全面地、不片面地」看待，但其哲学根源在此。",
+    "distractorRationale": {
+      "B": "这是「辩护」，字形相近而义不同。",
+      "C": "这偏向「辨别」，「辨」与「辩」是两个字。",
+      "D": "这是法律程序中的「辩论」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In a philosophical context, what does 辩证 mean?",
+        "explanation": "Philosophically, 辩证 (dialectical) means grasping a thing through the contradictions and connections within it — understanding it in relation and in development, as opposed to the isolated, static approach labelled 形而上学 (metaphysical).\n\nIn everyday Chinese 辩证地看问题 has come to mean \"see it from all sides\", but this is its source.\n\nNote the character trap: 辩 (argue) is distinct from 辨 (distinguish)."
+      }
+    },
+    "tags": [
+      "dialectics",
+      "philosophy-terms"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「因材施教」体现的教育思想是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "所有学生都应接受相同的教育"
+      },
+      {
+        "id": "B",
+        "text": "根据学生各自的特点采用不同的教育方法"
+      },
+      {
+        "id": "C",
+        "text": "只教授有用的学科"
+      },
+      {
+        "id": "D",
+        "text": "让学生自学而不加指导"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「材」指学生的资质、性情与所长，「因」即依据。这一原则出自孔子的教学实践：《论语》中他对同一问题给不同弟子以不同回答，正是着眼于各人的具体情况。",
+    "distractorRationale": {
+      "A": "整齐划一恰恰是因材施教所反对的。",
+      "C": "「材」指学生而非学科。",
+      "D": "因材施教强调有针对性的指导，而非放任。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What educational principle does 因材施教 express?",
+        "explanation": "材 refers to a student's aptitude, temperament and strengths; 因 means \"in accordance with\". The principle: teach each according to what that student is.\n\nIt derives from Confucius's practice in the *Analects*, where he gives different disciples different answers to the same question, tailored to each person's situation."
+      }
+    },
+    "tags": [
+      "education-philosophy",
+      "confucianism"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "法律上「无罪推定」原则的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "所有被告最终都会被判无罪"
+      },
+      {
+        "id": "B",
+        "text": "被告人必须证明自己无罪"
+      },
+      {
+        "id": "C",
+        "text": "未经依法判决，任何人不得被确定为有罪"
+      },
+      {
+        "id": "D",
+        "text": "只有认罪的人才会被定罪"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "无罪推定要求在法院依法作出有罪判决之前，任何人都被视为无罪。由此派生出举证责任由控方承担、疑罪从无等具体规则。",
+    "distractorRationale": {
+      "A": "原则关乎证明的程序，不预设结果。",
+      "B": "举证责任在控方，被告不负自证无罪的义务，这正是该原则的要点。",
+      "D": "证据充分即可定罪，并不以认罪为前提。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the legal principle 无罪推定 mean?",
+        "explanation": "无罪推定 (presumption of innocence) holds that no one may be treated as guilty until a court has so ruled according to law.\n\nTwo rules follow from it: the burden of proof rests on the prosecution, and doubt is resolved in the defendant's favour (疑罪从无). The defendant is never required to prove innocence."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "criminal-procedure"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「法人」在法律上指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "懂得法律的人"
+      },
+      {
+        "id": "B",
+        "text": "企业的负责人"
+      },
+      {
+        "id": "C",
+        "text": "在法院工作的人员"
+      },
+      {
+        "id": "D",
+        "text": "依法成立、能独立承担民事责任的组织"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "法人是与「自然人」相对的法律主体，指公司、社团等依法成立、拥有独立财产并能独立承担责任的组织。\n\n注意「法人」与「法定代表人」是两个概念：前者是组织本身，后者是代表该组织行使职权的自然人。这是最常见的混淆。",
+    "distractorRationale": {
+      "A": "懂法律的人是「法律工作者」，与法人无关。",
+      "B": "企业负责人通常是「法定代表人」，而非法人本身。",
+      "C": "法院工作人员是法官、书记员等具体职务。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In law, what is a 法人?",
+        "explanation": "法人 (legal person) is the counterpart of 自然人 (natural person): an organisation established by law that holds property independently and bears civil liability in its own name — a company, an association, and so on.\n\nThe usual confusion is with 法定代表人 (legal representative), the individual authorised to act for the organisation. The 法人 is the entity; the 法定代表人 is a human being."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "civil-law"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「诉讼时效」的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "权利人请求法院保护其权利的法定期限"
+      },
+      {
+        "id": "B",
+        "text": "法院审理案件所需的时间"
+      },
+      {
+        "id": "C",
+        "text": "判决书生效的日期"
+      },
+      {
+        "id": "D",
+        "text": "当事人上诉的次数限制"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "诉讼时效是法律为权利行使设定的期限，超过该期限，权利人虽仍可起诉，但对方可提出时效抗辩，法院将不再强制保护该权利。其目的在于督促权利人及时行使权利，维护交易秩序的稳定。",
+    "distractorRationale": {
+      "B": "这是「审理期限」，规范的是法院而非当事人。",
+      "C": "这是「生效日期」，属于另一概念。",
+      "D": "上诉次数由审级制度规定，与时效无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 诉讼时效 mean?",
+        "explanation": "诉讼时效 (limitation period) is the statutory window within which a right-holder may ask a court to protect a right.\n\nAfter it expires the claim may still be filed, but the other party can raise a limitation defence and the court will no longer enforce the right. The purpose is to press right-holders to act promptly and keep commercial relations stable."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "limitation-period"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「民事责任」与「刑事责任」的主要区别在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "民事责任比刑事责任更严厉"
+      },
+      {
+        "id": "B",
+        "text": "民事责任以赔偿损失、恢复原状为主，刑事责任以刑罚为主"
+      },
+      {
+        "id": "C",
+        "text": "两者由同一部法律规定"
+      },
+      {
+        "id": "D",
+        "text": "民事责任只适用于自然人"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "民事责任的目的是填补受害人的损失，方式包括赔偿、返还、赔礼道歉等；刑事责任则是国家对犯罪的否定评价，方式为管制、拘役、有期徒刑等刑罚。二者性质、目的与后果都不同，同一行为也可能同时引发两种责任。",
+    "distractorRationale": {
+      "A": "刑事责任涉及人身自由乃至生命，远比民事责任严厉。",
+      "C": "分别由民法典与刑法规定。",
+      "D": "法人同样可以承担民事责任。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What mainly distinguishes 民事责任 from 刑事责任?",
+        "explanation": "民事责任 (civil liability) aims to make the victim whole — through compensation, restitution, or apology. 刑事责任 (criminal liability) expresses the state's condemnation of an offence and is imposed through punishment: detention, imprisonment and so on.\n\nThey differ in nature, purpose and consequence, and one act can trigger both at once."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "liability-types"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「烘托」这一手法的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "隐去主要对象不写"
+      },
+      {
+        "id": "B",
+        "text": "把两个对象放在一起比较优劣"
+      },
+      {
+        "id": "C",
+        "text": "用次要事物从旁映衬，使主要对象更加突出"
+      },
+      {
+        "id": "D",
+        "text": "直接赞美主要对象"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "烘托取「烘云托月」之意：不直接画月，而是渲染周围的云，月自然显出。文学中即以环境、他人或次要事物从侧面映衬，使主体更为鲜明。",
+    "distractorRationale": {
+      "A": "烘托仍要写主体，只是借旁物加强。",
+      "B": "并列比较是「对比」，两者地位相当。",
+      "D": "直接赞美属于正面描写，不是烘托。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the technique 烘托 achieve?",
+        "explanation": "烘托 comes from the painter's phrase 烘云托月 — shade the clouds and the moon appears. Rather than depicting the moon directly, the artist works on what surrounds it.\n\nIn writing, the setting, minor characters or secondary details are developed so that the main subject stands out by contrast. This differs from 对比 (contrast), where two subjects carry equal weight."
+      }
+    },
+    "tags": [
+      "literary-technique",
+      "terminology"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「用典」在古典诗文中的作用不包括",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "含蓄地表达不便直说的态度"
+      },
+      {
+        "id": "B",
+        "text": "以简短文字唤起丰富的历史联想"
+      },
+      {
+        "id": "C",
+        "text": "增强文章的文化厚度"
+      },
+      {
+        "id": "D",
+        "text": "使文字更加通俗易懂"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "用典是借前人故事或语句表达今意。它以极少的字唤起大量背景，因而凝练、含蓄、厚重；但也正因为要求读者熟悉典故，反而增加了理解门槛，绝不会使文字更通俗。",
+    "distractorRationale": {
+      "A": "借古讽今是用典的常见用途。",
+      "B": "这正是用典的主要功能。",
+      "C": "典故的积累确实增加文化厚度。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which is NOT a function of 用典 in classical Chinese writing?",
+        "explanation": "用典 (allusion) invokes an earlier story or phrase to convey a present meaning. Very few characters can summon a large body of background, which makes the writing concentrated, indirect and resonant.\n\nBut that same quality raises the barrier to understanding: the reader must already know the allusion. Allusion never makes a text more accessible."
+      }
+    },
+    "tags": [
+      "allusion",
+      "classical-literature"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「和而不同」出自《论语》，其含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "保持和谐相处，同时容许各自见解不同"
+      },
+      {
+        "id": "B",
+        "text": "为了和谐必须放弃自己的观点"
+      },
+      {
+        "id": "C",
+        "text": "只有意见完全一致才能和谐"
+      },
+      {
+        "id": "D",
+        "text": "表面和气而内心不合"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "原文为「君子和而不同，小人同而不和」。「和」指不同事物相互协调而成整体，如音乐中的多声部；「同」指简单的一致。孔子认为真正的和谐建立在差异之上，而非取消差异。",
+    "distractorRationale": {
+      "B": "放弃己见就成了「同」，不是「和」。",
+      "C": "这正是孔子所批评的「同」。",
+      "D": "这是「面和心不和」，与原义相反。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 和而不同, from the *Analects*, mean?",
+        "explanation": "The full line is 君子和而不同，小人同而不和 — the noble person harmonises without conforming; the petty person conforms without harmonising.\n\n和 means distinct elements coordinating into a whole, as separate voices do in music; 同 means mere sameness. Confucius holds that real harmony is built on difference rather than by erasing it."
+      }
+    },
+    "tags": [
+      "confucianism",
+      "classical-idiom"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-a20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「合同」在法律上成立的基本条件是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "必须经过公证"
+      },
+      {
+        "id": "B",
+        "text": "当事人意思表示一致"
+      },
+      {
+        "id": "C",
+        "text": "必须采用书面形式"
+      },
+      {
+        "id": "D",
+        "text": "必须由律师起草"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "合同的本质是合意，即双方意思表示达成一致，通过要约与承诺完成。书面、公证、律师起草等都只是形式要件或证据手段，法律另有规定的除外。",
+    "distractorRationale": {
+      "A": "公证不是合同成立的普遍条件。",
+      "C": "口头合同同样有效，只有特定类型才要求书面形式。",
+      "D": "当事人可以自行订立合同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the basic condition for a 合同 to be formed in law?",
+        "explanation": "A 合同 (contract) is essentially an agreement of intent: the parties' declarations must coincide, achieved through offer (要约) and acceptance (承诺).\n\nWritten form, notarisation and legal drafting are matters of formality or evidence, required only for particular categories of contract. An oral contract is generally valid."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "contract-law"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

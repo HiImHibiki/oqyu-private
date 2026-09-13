@@ -1,0 +1,975 @@
+[
+  {
+    "id": "sat-mth-e01",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "E",
+    "irtB": -1.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $4x + 7 = 31$, what is the value of $x$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6$"
+      },
+      {
+        "id": "B",
+        "text": "$5$"
+      },
+      {
+        "id": "C",
+        "text": "$7$"
+      },
+      {
+        "id": "D",
+        "text": "$9$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Subtract $7$ from both sides: $4x = 24$. Divide by $4$: $x = 6$.",
+    "distractorRationale": {
+      "B": "Comes from $4x = 20$, subtracting $11$ instead of $7$.",
+      "C": "Comes from dividing $31 - 3$ by $4$.",
+      "D": "Comes from subtracting $4$ rather than dividing by it: $31 - 7 - 18$."
+    },
+    "tags": [
+      "linear-equation",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e02",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "E",
+    "irtB": -1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $f$ is defined by $f(x) = 3x - 4$. What is $f(6)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$22$"
+      },
+      {
+        "id": "B",
+        "text": "$14$"
+      },
+      {
+        "id": "C",
+        "text": "$2$"
+      },
+      {
+        "id": "D",
+        "text": "$18$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Substitute $x = 6$: $f(6) = 3(6) - 4 = 18 - 4 = 14$.",
+    "distractorRationale": {
+      "A": "Adds $4$ instead of subtracting it.",
+      "C": "Computes $6 - 4$, ignoring the coefficient $3$.",
+      "D": "Computes $3 \\times 6$ and stops before subtracting $4$."
+    },
+    "tags": [
+      "function-evaluation",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e03",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in two variables",
+    "difficulty": "E",
+    "irtB": -0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the slope of the line $y = -2x + 9$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2$"
+      },
+      {
+        "id": "B",
+        "text": "$-9$"
+      },
+      {
+        "id": "C",
+        "text": "$-2$"
+      },
+      {
+        "id": "D",
+        "text": "$9$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "In the form $y = mx + b$, the slope is the coefficient $m$ of $x$. Here $m = -2$.",
+    "distractorRationale": {
+      "A": "Drops the negative sign.",
+      "B": "Negates the $y$-intercept instead of reading the slope.",
+      "D": "This is the $y$-intercept $b$, not the slope."
+    },
+    "tags": [
+      "slope",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 40,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e04",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $x + y = 12$ and $x - y = 4$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "Adding the two equations eliminates $y$: $2x = 16$, so $x = 8$. Substituting back gives $y = 4$, and both original equations check out.",
+    "tags": [
+      "system",
+      "elimination",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier"
+    }
+  },
+  {
+    "id": "sat-mth-e05",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which values of $x$ satisfy $3x - 5 > 7$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x > 12$"
+      },
+      {
+        "id": "B",
+        "text": "$x > \\dfrac{2}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$x < 4$"
+      },
+      {
+        "id": "D",
+        "text": "$x > 4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Add $5$ to both sides: $3x > 12$. Divide by $3$: $x > 4$. The inequality sign does not flip because $3$ is positive.",
+    "distractorRationale": {
+      "A": "Stops at $3x > 12$ without dividing.",
+      "B": "Subtracts $5$ instead of adding it, giving $3x > 2$.",
+      "C": "Flips the sign, which is only required when dividing by a negative number."
+    },
+    "tags": [
+      "inequality",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e06",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "M",
+    "irtB": -0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A gym charges a joining fee of \\$40 plus \\$25 per month. Which function gives the total cost $C$ after $m$ months?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$C(m) = 25m + 40$"
+      },
+      {
+        "id": "B",
+        "text": "$C(m) = 40m + 25$"
+      },
+      {
+        "id": "C",
+        "text": "$C(m) = 65m$"
+      },
+      {
+        "id": "D",
+        "text": "$C(m) = 25 + 40 + m$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The joining fee is paid once, so it is the constant term. The \\$25 recurs each month, so it multiplies $m$. That gives $C(m) = 25m + 40$.",
+    "distractorRationale": {
+      "B": "Swaps the two: it charges the joining fee monthly and the monthly fee once.",
+      "C": "Charges both amounts every month.",
+      "D": "Adds a single month rather than multiplying by the monthly rate."
+    },
+    "tags": [
+      "linear-model",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e07",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "M",
+    "irtB": -0.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $\\dfrac{x}{5} + 3 = 11$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 40
+    },
+    "explanation": "Subtract $3$ from both sides: $\\dfrac{x}{5} = 8$. Multiply both sides by $5$: $x = 40$.",
+    "tags": [
+      "linear-equation",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier"
+    }
+  },
+  {
+    "id": "sat-mth-e08",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in two variables",
+    "difficulty": "M",
+    "irtB": -0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A line passes through $(0, 5)$ and $(4, 13)$. What is its slope?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 2
+    },
+    "explanation": "Slope is the change in $y$ divided by the change in $x$: $\\dfrac{13 - 5}{4 - 0} = \\dfrac{8}{4} = 2$.",
+    "tags": [
+      "slope",
+      "two-points",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier"
+    }
+  },
+  {
+    "id": "sat-mth-e09",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "E",
+    "irtB": -1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $(x + 3)(x + 5)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x^2 + 15$"
+      },
+      {
+        "id": "B",
+        "text": "$x^2 + 8x + 15$"
+      },
+      {
+        "id": "C",
+        "text": "$x^2 + 8x$"
+      },
+      {
+        "id": "D",
+        "text": "$2x + 8$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Multiply term by term: $x \\cdot x = x^2$, $x \\cdot 5 = 5x$, $3 \\cdot x = 3x$, $3 \\cdot 5 = 15$. Combining the middle terms gives $x^2 + 8x + 15$.",
+    "distractorRationale": {
+      "A": "Multiplies only the first and last terms, omitting the cross terms.",
+      "C": "Keeps the cross terms but drops the constant $15$.",
+      "D": "Adds the binomials instead of multiplying them."
+    },
+    "tags": [
+      "expanding",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e10",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What are the solutions to $x^2 - 9 = 0$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x = 3$ only"
+      },
+      {
+        "id": "B",
+        "text": "$x = 9$ and $x = -9$"
+      },
+      {
+        "id": "C",
+        "text": "$x = 3$ and $x = -3$"
+      },
+      {
+        "id": "D",
+        "text": "$x = 4.5$ only"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "This is a difference of squares: $x^2 - 9 = (x - 3)(x + 3) = 0$, so $x = 3$ or $x = -3$. Both squares give $9$.",
+    "distractorRationale": {
+      "A": "Misses the negative root, which also squares to $9$.",
+      "B": "Takes $9$ itself as the root instead of its square root.",
+      "D": "Halves $9$ rather than taking its square root."
+    },
+    "tags": [
+      "difference-of-squares",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e11",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "M",
+    "irtB": -0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $g$ is defined by $g(x) = (x - 4)^2 + 1$. What is the minimum value of $g$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-4$"
+      },
+      {
+        "id": "B",
+        "text": "$17$"
+      },
+      {
+        "id": "C",
+        "text": "$4$"
+      },
+      {
+        "id": "D",
+        "text": "$1$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "A square is never negative, so $(x-4)^2$ is smallest when it equals $0$, at $x = 4$. The minimum value of $g$ is then $0 + 1 = 1$.",
+    "distractorRationale": {
+      "A": "Negates the $x$-value of the vertex.",
+      "B": "Evaluates $g(0) = 16 + 1$, which is not the minimum.",
+      "C": "Gives the $x$-value where the minimum occurs rather than the minimum itself."
+    },
+    "tags": [
+      "vertex-form",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e12",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "M",
+    "irtB": -0.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $\\dfrac{6x^3}{2x}$ for $x \\ne 0$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3x^2$"
+      },
+      {
+        "id": "B",
+        "text": "$3x^3$"
+      },
+      {
+        "id": "C",
+        "text": "$4x^2$"
+      },
+      {
+        "id": "D",
+        "text": "$3x^4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Divide the coefficients: $\\dfrac{6}{2} = 3$. Subtract the exponents: $x^{3-1} = x^2$. The result is $3x^2$.",
+    "distractorRationale": {
+      "B": "Divides the coefficients but leaves the exponent unchanged.",
+      "C": "Subtracts the coefficients instead of dividing them.",
+      "D": "Adds the exponents rather than subtracting."
+    },
+    "tags": [
+      "exponents",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e13",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "M",
+    "irtB": -0.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A population of $500$ bacteria triples every hour. How many bacteria are there after $2$ hours?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4500
+    },
+    "explanation": "After one hour: $500 \\times 3 = 1500$. After two hours: $1500 \\times 3 = 4500$. Equivalently $500 \\times 3^2 = 4500$.",
+    "tags": [
+      "exponential-growth",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier"
+    }
+  },
+  {
+    "id": "sat-mth-e14",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the sum of the solutions to $x^2 - 8x + 12 = 0$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "Factorising gives $(x - 2)(x - 6) = 0$, so the roots are $2$ and $6$ and their sum is $8$. The shortcut $-\\dfrac{b}{a} = \\dfrac{8}{1}$ gives the same answer without factorising.",
+    "tags": [
+      "quadratic",
+      "sum-of-roots",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier"
+    }
+  },
+  {
+    "id": "sat-mth-e15",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "M",
+    "irtB": 0,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $\\dfrac{x^2 - 4}{x + 2}$ for $x \\ne -2$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x - 4$"
+      },
+      {
+        "id": "B",
+        "text": "$x - 2$"
+      },
+      {
+        "id": "C",
+        "text": "$x + 2$"
+      },
+      {
+        "id": "D",
+        "text": "$x^2 - 2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The numerator is a difference of squares: $x^2 - 4 = (x - 2)(x + 2)$. Cancelling the common factor $x + 2$ leaves $x - 2$.",
+    "distractorRationale": {
+      "A": "Subtracts $4$ from $x$, treating the numerator as $x - 4$.",
+      "C": "Cancels the wrong factor, keeping $x + 2$ instead of $x - 2$.",
+      "D": "Subtracts inside the expression rather than factorising."
+    },
+    "tags": [
+      "factoring",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e16",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Percentages",
+    "difficulty": "E",
+    "irtB": -0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A shirt costs \\$40. During a sale it is reduced by $15\\%$. What is the sale price in dollars?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 34
+    },
+    "explanation": "The discount is $0.15 \\times 40 = 6$ dollars, so the sale price is $40 - 6 = 34$ dollars. Equivalently $0.85 \\times 40 = 34$.",
+    "tags": [
+      "percentage",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier"
+    }
+  },
+  {
+    "id": "sat-mth-e17",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Ratios, rates, proportional relationships, units",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A printer produces $18$ pages per minute. How many pages does it produce in $7$ minutes?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 126
+    },
+    "explanation": "Multiply the rate by the time: $18 \\times 7 = 126$ pages.",
+    "tags": [
+      "rate",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier"
+    }
+  },
+  {
+    "id": "sat-mth-e18",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "One-variable data",
+    "difficulty": "M",
+    "irtB": -0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The five values $4, 7, 7, 9, 13$ are recorded. What is the median?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$8$"
+      },
+      {
+        "id": "B",
+        "text": "$9$"
+      },
+      {
+        "id": "C",
+        "text": "$7$"
+      },
+      {
+        "id": "D",
+        "text": "$13$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The values are already in order and there are five of them, so the median is the third: $7$.",
+    "distractorRationale": {
+      "A": "This is the mean, $\\dfrac{40}{5} = 8$, not the median.",
+      "B": "Takes the fourth value instead of the middle one.",
+      "D": "Takes the largest value."
+    },
+    "tags": [
+      "median",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e19",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Probability",
+    "difficulty": "M",
+    "irtB": -0.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A bag holds $5$ red marbles and $15$ blue marbles. One marble is drawn at random. What is the probability that it is red?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{3}{4}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{5}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{4}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "There are $5 + 15 = 20$ marbles altogether, of which $5$ are red. The probability is $\\dfrac{5}{20} = \\dfrac{1}{4}$.",
+    "distractorRationale": {
+      "A": "Uses $\\dfrac{5}{15}$, comparing red to blue rather than to the total.",
+      "B": "Gives the probability of drawing blue.",
+      "C": "Uses the number of red marbles as the denominator."
+    },
+    "tags": [
+      "probability",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-e20",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Lines, angles, and triangles",
+    "difficulty": "E",
+    "irtB": -0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Two angles of a triangle measure $50^\\circ$ and $65^\\circ$. What is the measure of the third angle, in degrees?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 65
+    },
+    "explanation": "The angles of a triangle sum to $180^\\circ$, so the third angle is $180 - 50 - 65 = 65$ degrees.",
+    "tags": [
+      "angle-sum",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier"
+    }
+  },
+  {
+    "id": "sat-mth-e21",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Area and volume",
+    "difficulty": "M",
+    "irtB": -0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A rectangular box measures $4$ cm by $5$ cm by $6$ cm. What is its volume in cubic centimetres?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 120
+    },
+    "explanation": "Volume of a rectangular box is length times width times height: $4 \\times 5 \\times 6 = 120$ cubic centimetres.",
+    "tags": [
+      "volume",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier"
+    }
+  },
+  {
+    "id": "sat-mth-e22",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangles and trigonometry",
+    "difficulty": "M",
+    "irtB": -0.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A right triangle has legs of length $6$ and $8$. What is the length of the hypotenuse?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 10
+    },
+    "explanation": "By the Pythagorean theorem, the hypotenuse is $\\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$.",
+    "tags": [
+      "pythagoras",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier"
+    }
+  }
+]

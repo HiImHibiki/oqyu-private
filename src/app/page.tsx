@@ -1,0 +1,301 @@
+import Link from "next/link";
+import {
+  BarChart3, BookOpen, Calculator, Check, Gift, Globe2, LayoutGrid,
+  PlayCircle, ShieldCheck, Sparkles, Timer, Trophy,
+} from "lucide-react";
+import { SiteHeader } from "@/components/ui/SiteHeader";
+import { EXAM_LIST } from "@/lib/exams/blueprints";
+import { money, priceOf, strikeOf, visiblePackages } from "@/lib/packages";
+import { currentUser } from "@/lib/auth";
+import { AFFILIATE } from "@/lib/affiliate";
+import { getLocale, intlTag, translatorFor } from "@/lib/i18n";
+import type { Currency } from "@/lib/geo";
+import type { MessageKey } from "@/lib/i18n/dictionaries";
+
+/** Mata uang yang ditampilkan sebelum pengunjung memilih negaranya.
+ *  Harga final ditetapkan dari negara yang dipilih saat mendaftar. */
+const CURRENCY_FOR_LOCALE: Record<string, Currency> = { id: "IDR", zh: "CNY", en: "USD" };
+
+export default async function Landing() {
+  const [user, locale] = await Promise.all([currentUser(), getLocale()]);
+  const t = translatorFor(locale);
+  const tag = intlTag(locale);
+  const currency = CURRENCY_FOR_LOCALE[locale] ?? "USD";
+  const packages = visiblePackages(currency);
+
+  return (
+    <>
+      <SiteHeader authed={Boolean(user)} />
+
+      {/* ------------------------------------------------------------- hero */}
+      <section className="mx-auto max-w-6xl px-5 pb-16 pt-14 md:pt-24">
+        <div className="grid items-center gap-12 md:grid-cols-[1.05fr_.95fr]">
+          <div className="rise">
+            <span className="chip mb-5"><Sparkles size={12} /> {t("landing.badge")}</span>
+            <h1 className="display text-4xl leading-[1.08] md:text-[3.4rem]">
+              {t("landing.headline")}<span style={{ color: "var(--accent)" }}>.</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed muted">{t("landing.sub")}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/daftar" className="btn btn-primary !px-5 !py-3">{t("landing.ctaBuy")}</Link>
+              <Link href="/demo" className="btn btn-ghost !px-5 !py-3">
+                <PlayCircle size={17} /> {t("landing.ctaDemo")}
+              </Link>
+            </div>
+            <p className="mt-3 text-xs muted">{t("landing.ctaNote")}</p>
+          </div>
+
+          <MockExam />
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------ ujian */}
+      <section id="exams" className="border-y" style={{ background: "var(--bg-elev)" }}>
+        <div className="mx-auto max-w-6xl px-5 py-16">
+          <SectionTitle eyebrow={t("landing.examsEyebrow")} title={t("landing.examsTitle")} />
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {EXAM_LIST.map((e) => (
+              <article key={e.code} className="card p-5">
+                <div className="mb-3 flex items-center gap-2">
+                  <span className="chip">{e.code}</span>
+                  {e.locales.length > 1 && <span className="chip"><Globe2 size={11} /> {e.locales.join(" / ")}</span>}
+                </div>
+                <h3 className="display mb-1 text-lg">{e.name}</h3>
+                <p className="mb-4 text-sm muted">{e.tagline}</p>
+                <dl className="space-y-1.5 text-[13px]">
+                  <Row k={t("landing.rowSections")} v={String(e.sections.length)} />
+                  <Row k={t("landing.rowQuestions")} v={String(e.sections.reduce((a, s) => a + s.questionCount, 0))} />
+                  <Row
+                    k={t("landing.rowDuration")}
+                    v={e.totalDurationSec
+                      ? `${Math.round(e.totalDurationSec / 60)} ${t("common.minutes")}`
+                      : t("landing.perComponent")}
+                  />
+                  <Row k={t("landing.rowScale")} v={e.scoring.totalRange ? `${e.scoring.totalRange[0]}–${e.scoring.totalRange[1]}` : "A*–E"} />
+                </dl>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------ fitur */}
+      <section id="features" className="mx-auto max-w-6xl px-5 py-16">
+        <SectionTitle eyebrow={t("landing.featuresEyebrow")} title={t("landing.featuresTitle")} />
+        <div className="grid gap-4 md:grid-cols-3">
+          <Feature icon={<LayoutGrid size={18} />} title={t("landing.f1t")} body={t("landing.f1b")} />
+          <Feature icon={<Calculator size={18} />} title={t("landing.f2t")} body={t("landing.f2b")} />
+          <Feature icon={<BookOpen size={18} />} title={t("landing.f3t")} body={t("landing.f3b")} />
+          <Feature icon={<BarChart3 size={18} />} title={t("landing.f4t")} body={t("landing.f4b")} />
+          <Feature icon={<ShieldCheck size={18} />} title={t("landing.f5t")} body={t("landing.f5b")} />
+          <Feature icon={<Timer size={18} />} title={t("landing.f6t")} body={t("landing.f6b")} />
+        </div>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <Feature icon={<Trophy size={18} />} title={t("landing.f7t")} body={t("landing.f7b")} />
+          <Feature icon={<Sparkles size={18} />} title={t("landing.f8t")} body={t("landing.f8b")} />
+          <Feature icon={<Globe2 size={18} />} title={t("landing.f9t")} body={t("landing.f9b")} />
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------ harga */}
+      <section id="pricing" className="border-y" style={{ background: "var(--bg-elev)" }}>
+        <div className="mx-auto max-w-6xl px-5 py-16">
+          <SectionTitle eyebrow={t("landing.pricingEyebrow")} title={t("landing.pricingTitle")} />
+          <div className="grid gap-4 md:grid-cols-3">
+            {packages.map((p) => {
+              const price = priceOf(p, currency);
+              const strike = strikeOf(p, currency);
+              return (
+                <article key={p.id} className="card relative flex flex-col p-6"
+                  style={p.popular ? { borderColor: "var(--accent)", borderWidth: 1.5 } : undefined}>
+                  {p.popular && (
+                    <span className="absolute -top-2.5 left-6 rounded-full px-2.5 py-0.5 text-[10px] font-semibold"
+                      style={{ background: "var(--accent)", color: "var(--accent-fg)" }}>
+                      ★
+                    </span>
+                  )}
+                  <div className="mb-1 flex items-center gap-2">
+                    <span className="chip">{p.exam}</span>
+                    <span className="text-xs muted">{p.attempts} {t("landing.packages")}</span>
+                  </div>
+                  <h3 className="display text-xl">{p.name}</h3>
+                  <p className="mb-4 text-sm muted">{p.blurb}</p>
+                  <div className="mb-1 flex flex-wrap items-end gap-2">
+                    <span className="display text-3xl">{money(price, currency, tag)}</span>
+                    {strike && <span className="mb-1 text-sm line-through muted">{money(strike, currency, tag)}</span>}
+                    {strike && (
+                      <span className="mb-1.5 rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                        style={{ background: "color-mix(in srgb, var(--ok) 16%, transparent)", color: "var(--ok)" }}>
+                        {t("packages.save", { percent: Math.round((1 - price / strike) * 100) })}
+                      </span>
+                    )}
+                  </div>
+                  <p className="mb-4 text-xs muted">
+                    {t("packages.perTest", { amount: money(Math.round(price / p.attempts), currency, tag) })}
+                  </p>
+                  <ul className="mb-6 flex-1 space-y-2 text-sm">
+                    {p.features.map((f) => (
+                      <li key={f} className="flex gap-2">
+                        <Check size={15} className="mt-0.5 shrink-0" style={{ color: "var(--ok)" }} />
+                        <span className="muted">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href={`/daftar?paket=${p.id}`} className={`btn ${p.popular ? "btn-primary" : "btn-ghost"} w-full`}>
+                    {t("landing.choosePackage")}
+                  </Link>
+                </article>
+              );
+            })}
+          </div>
+
+          <p className="mt-6 flex flex-wrap items-center justify-center gap-2 text-center text-sm">
+            <ShieldCheck size={16} style={{ color: "var(--ok)" }} />
+            <span className="muted">{t("packages.guarantee")}</span>
+          </p>
+
+          <p className="mt-3 text-center text-sm muted">
+            {t("landing.unsure")} <Link href="/demo" className="underline">{t("landing.unsureLink")}</Link> {t("landing.unsureTail")}
+          </p>
+
+          {/* Pertanyaan yang benar-benar menahan orang menekan tombol beli:
+              bagaimana kalau tidak cocok, sampai kapan berlaku, dan apakah
+              soalnya bocoran. Dijawab di sini, bukan di halaman ketentuan
+              yang tidak akan dibuka siapa pun sebelum membayar. */}
+          <div className="mt-10">
+            <h3 className="display mb-4 text-center text-xl">{t("faq.title")}</h3>
+            <div className="mx-auto grid max-w-3xl gap-2">
+              {([1, 2, 3, 4, 5] as const).map((i) => (
+                <details key={i} className="card px-5 py-4">
+                  <summary className="cursor-pointer list-none font-medium">
+                    {t(`faq.q${i}` as MessageKey)}
+                  </summary>
+                  <p className="mt-2 text-sm leading-relaxed muted">{t(`faq.a${i}` as MessageKey)}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+
+          <div className="card mt-8 flex flex-wrap items-center gap-5 p-6">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
+              style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
+              <Gift size={22} />
+            </span>
+            <div className="min-w-0 flex-1">
+              <h3 className="display text-lg">{t("landing.affTitle")}</h3>
+              <p className="mt-1 text-sm muted">
+                {t("landing.affBody", {
+                  rate: Math.round(AFFILIATE.defaultRate * 100),
+                  bonus: AFFILIATE.refereeBonusAttempts,
+                })}
+              </p>
+            </div>
+            <Link href="/afiliasi" className="btn btn-ghost">{t("landing.affCta")}</Link>
+          </div>
+        </div>
+      </section>
+
+      <footer className="mx-auto max-w-6xl px-5 py-10 text-sm muted">
+        <div className="flex flex-wrap items-center gap-4">
+          <span>© {new Date().getFullYear()} Exact Try Out</span>
+          <Link href="/ketentuan" className="underline">{t("legal.terms")}</Link>
+          <Link href="/privasi" className="underline">{t("legal.privacy")}</Link>
+          <span className="ml-auto">{t("landing.footerNote")}</span>
+        </div>
+        <p className="mt-4 max-w-3xl text-xs leading-relaxed">{t("landing.disclaimer")}</p>
+      </footer>
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ potongan */
+
+function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <div className="mb-8">
+      <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[.16em] muted">{eyebrow}</p>
+      <h2 className="display text-2xl md:text-3xl">{title}</h2>
+    </div>
+  );
+}
+
+function Row({ k, v }: { k: string; v: string }) {
+  return (
+    <div className="flex justify-between border-b pb-1.5" style={{ borderColor: "var(--border)" }}>
+      <dt className="muted">{k}</dt>
+      <dd className="font-medium">{v}</dd>
+    </div>
+  );
+}
+
+function Feature({ icon, title, body }: { icon: React.ReactNode; title: string; body: string }) {
+  return (
+    <article className="card p-5">
+      <span className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg"
+        style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
+        {icon}
+      </span>
+      <h3 className="mb-1.5 font-semibold">{title}</h3>
+      <p className="text-sm leading-relaxed muted">{body}</p>
+    </article>
+  );
+}
+
+/* Pratinjau statis ruang ujian — sengaja tetap berbahasa Inggris karena
+ * ia menampilkan soal SAT, yang memang berbahasa Inggris. */
+function MockExam() {
+  return (
+    <div className="card overflow-hidden rise">
+      <div className="flex items-center gap-2 border-b px-3 py-2 text-[11px]">
+        <LayoutGrid size={13} />
+        <span className="font-semibold">Math — Module 1</span>
+        <span className="display ml-auto text-base tabular-nums">34:12</span>
+        <Calculator size={13} className="ml-2" />
+        <BookOpen size={13} />
+      </div>
+      <div className="flex">
+        <div className="w-[86px] shrink-0 border-r p-2">
+          <div className="grid grid-cols-3 gap-1">
+            {Array.from({ length: 15 }, (_, i) => (
+              <span key={i} className="flex h-6 items-center justify-center rounded text-[9px]"
+                style={{
+                  background: i === 4 ? "var(--accent)" : i < 4 ? "var(--accent-soft)" : "transparent",
+                  color: i === 4 ? "var(--accent-fg)" : "var(--fg-muted)",
+                  border: i > 4 ? "1px solid var(--border)" : "1px solid transparent",
+                }}>
+                {i + 1}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="flex-1 p-4">
+          <p className="mb-2 text-[10px] font-semibold uppercase tracking-wider muted">Question 5</p>
+          <p className="mb-3 text-[13px] leading-relaxed">
+            The quadratic function <em>f</em> has vertex (2, 9) and passes through (5, 0).
+            What is the value of <em>a</em> + <em>h</em> + <em>k</em>?
+          </p>
+          <div className="space-y-1.5">
+            {["8", "9", "10", "12"].map((v, i) => (
+              <div key={v}
+                className="flex items-center gap-2 rounded-lg border px-2.5 py-1.5 text-[12px]"
+                style={{
+                  borderColor: i === 2 ? "var(--accent)" : "var(--border)",
+                  background: i === 2 ? "var(--accent-soft)" : "transparent",
+                }}>
+                <span className="flex h-4 w-4 items-center justify-center rounded-full text-[9px]"
+                  style={{
+                    background: i === 2 ? "var(--accent)" : "transparent",
+                    color: i === 2 ? "var(--accent-fg)" : "var(--fg-muted)",
+                    border: i === 2 ? "none" : "1px solid var(--border-strong)",
+                  }}>
+                  {"ABCD"[i]}
+                </span>
+                {v}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

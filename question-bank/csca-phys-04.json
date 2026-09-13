@@ -1,0 +1,1898 @@
+[
+  {
+    "id": "csca-phy-g08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A $10\\ \\Omega$ resistor dissipates power when a current of $2\\ \\text{A}$ passes through it. What is the power dissipated?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$5\\ \\text{W}$"
+      },
+      {
+        "id": "B",
+        "text": "$400\\ \\text{W}$"
+      },
+      {
+        "id": "C",
+        "text": "$20\\ \\text{W}$"
+      },
+      {
+        "id": "D",
+        "text": "$40\\ \\text{W}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Power dissipated in a resistor is $P = I^2R = 4 \\times 10 = 40\\ \\text{W}$.",
+    "distractorRationale": {
+      "A": "Divides resistance by current.",
+      "B": "Uses $I^2R^2$, squaring the resistance as well.",
+      "C": "Computes $IR$, which gives voltage, not power."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$2\\ \\text{A}$ 的电流通过 $10\\ \\Omega$ 的电阻，该电阻消耗的功率为",
+        "explanation": "电阻消耗的功率为 $P = I^2R = 4 \\times 10 = 40\\ \\text{W}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$5\\ \\text{W}$"
+          },
+          {
+            "id": "B",
+            "text": "$400\\ \\text{W}$"
+          },
+          {
+            "id": "C",
+            "text": "$20\\ \\text{W}$"
+          },
+          {
+            "id": "D",
+            "text": "$40\\ \\text{W}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "power-dissipation",
+      "joule-heating"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-g09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Coulomb's law 库仑定律",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two identical charged spheres are brought into contact and then separated. Their charges before contact were $+8\\ \\mu\\text{C}$ and $-2\\ \\mu\\text{C}$. What is the charge on each afterwards?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$+3\\ \\mu\\text{C}$"
+      },
+      {
+        "id": "B",
+        "text": "$0$"
+      },
+      {
+        "id": "C",
+        "text": "$+5\\ \\mu\\text{C}$"
+      },
+      {
+        "id": "D",
+        "text": "$+6\\ \\mu\\text{C}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Charge is conserved and, because the spheres are identical, it divides equally. The total is $+8 + (-2) = +6\\ \\mu\\text{C}$, so each carries $+3\\ \\mu\\text{C}$.",
+    "distractorRationale": {
+      "B": "Would require the charges to be equal and opposite.",
+      "C": "Averages the magnitudes, ignoring the sign of the second charge.",
+      "D": "This is the total charge, not the share on each sphere."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "两个完全相同的带电小球接触后再分开，接触前的电荷量分别为 $+8\\ \\mu\\text{C}$ 与 $-2\\ \\mu\\text{C}$。分开后每球带电量为",
+        "explanation": "电荷守恒，且两球完全相同，故电荷平分。总电荷为 $+8 + (-2) = +6\\ \\mu\\text{C}$，每球带 $+3\\ \\mu\\text{C}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$+3\\ \\mu\\text{C}$"
+          },
+          {
+            "id": "B",
+            "text": "$0$"
+          },
+          {
+            "id": "C",
+            "text": "$+5\\ \\mu\\text{C}$"
+          },
+          {
+            "id": "D",
+            "text": "$+6\\ \\mu\\text{C}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "charge-conservation",
+      "electrostatics"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-g10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Faraday's law 法拉第定律",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A coil sits in a constant, unchanging magnetic field. What emf is induced in it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "An emf proportional to the coil area"
+      },
+      {
+        "id": "B",
+        "text": "Zero"
+      },
+      {
+        "id": "C",
+        "text": "An emf proportional to the field strength"
+      },
+      {
+        "id": "D",
+        "text": "An emf that alternates in direction"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Faraday's law depends on the *rate of change* of flux, not on the flux itself. A field that does not change produces no change in flux, so no emf is induced however strong the field is.",
+    "distractorRationale": {
+      "A": "Area affects the flux but not its rate of change when nothing moves.",
+      "C": "Confuses flux with the rate of change of flux.",
+      "D": "An alternating emf requires a changing flux, typically from rotation."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "线圈处于恒定不变的磁场中，其中产生的感应电动势是",
+        "explanation": "法拉第定律取决于磁通量的**变化率**，而非磁通量本身。磁场不变则磁通量不变，无论磁场多强都不产生感应电动势。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "与线圈面积成正比的电动势"
+          },
+          {
+            "id": "B",
+            "text": "零"
+          },
+          {
+            "id": "C",
+            "text": "与磁感应强度成正比的电动势"
+          },
+          {
+            "id": "D",
+            "text": "方向交替变化的电动势"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "faradays-law",
+      "rate-of-change"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-g11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Lorentz force 洛伦兹力",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An electron enters a uniform magnetic field perpendicular to the field lines. What path does it follow, and what happens to its speed?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "A parabola while speeding up"
+      },
+      {
+        "id": "B",
+        "text": "A straight line at constant speed"
+      },
+      {
+        "id": "C",
+        "text": "A circle at constant speed"
+      },
+      {
+        "id": "D",
+        "text": "A circle while slowing down"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The magnetic force is always perpendicular to the velocity, so it changes the direction of motion but never the speed — it does no work. A constant-magnitude force always at right angles to the motion produces uniform circular motion.",
+    "distractorRationale": {
+      "A": "A parabolic path arises from a constant force in a fixed direction, as in projectile motion.",
+      "B": "A perpendicular entry means a non-zero force, so the path must curve.",
+      "D": "The magnetic force does no work, so the speed cannot fall."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "电子垂直于磁感线射入匀强磁场，它的轨迹如何？速率又如何变化？",
+        "explanation": "磁场力始终垂直于速度，因此只改变运动方向而不改变速率——它不做功。大小恒定且始终垂直于运动方向的力产生匀速圆周运动。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "做抛物线运动并逐渐加速"
+          },
+          {
+            "id": "B",
+            "text": "以恒定速率沿直线运动"
+          },
+          {
+            "id": "C",
+            "text": "以恒定速率做圆周运动"
+          },
+          {
+            "id": "D",
+            "text": "做圆周运动并逐渐减速"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "lorentz-force",
+      "circular-path"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-g12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Three $4\\ \\Omega$ resistors are connected in series across a $24\\ \\text{V}$ supply. What current flows?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$18\\ \\text{A}$"
+      },
+      {
+        "id": "B",
+        "text": "$6\\ \\text{A}$"
+      },
+      {
+        "id": "C",
+        "text": "$12\\ \\text{A}$"
+      },
+      {
+        "id": "D",
+        "text": "$2\\ \\text{A}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Resistances in series add: $4 + 4 + 4 = 12\\ \\Omega$. Then $I = \\dfrac{V}{R} = \\dfrac{24}{12} = 2\\ \\text{A}$.",
+    "distractorRationale": {
+      "A": "Treats the three resistors as reducing the resistance.",
+      "B": "Uses a single resistor's value rather than the series total.",
+      "C": "Divides the supply by $2$ instead of by the total resistance."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "三个 $4\\ \\Omega$ 的电阻串联接在 $24\\ \\text{V}$ 电源上，电路中的电流为",
+        "explanation": "串联电阻相加：$4 + 4 + 4 = 12\\ \\Omega$。故 $I = \\dfrac{V}{R} = \\dfrac{24}{12} = 2\\ \\text{A}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$18\\ \\text{A}$"
+          },
+          {
+            "id": "B",
+            "text": "$6\\ \\text{A}$"
+          },
+          {
+            "id": "C",
+            "text": "$12\\ \\text{A}$"
+          },
+          {
+            "id": "D",
+            "text": "$2\\ \\text{A}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "series-circuit",
+      "ohms-law"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-g13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Magnetic induction 磁感应",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which arrangement produces a magnetic field most like that of a bar magnet?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "A current-carrying solenoid"
+      },
+      {
+        "id": "B",
+        "text": "A charged parallel-plate capacitor"
+      },
+      {
+        "id": "C",
+        "text": "A pair of stationary charges"
+      },
+      {
+        "id": "D",
+        "text": "A single straight current-carrying wire"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "A solenoid's many loops each contribute a field in the same direction along the axis, producing a field with a north and a south end that closely resembles a bar magnet's.",
+    "distractorRationale": {
+      "B": "Produces a uniform electric field between the plates.",
+      "C": "Stationary charges produce an electric field, not a magnetic one.",
+      "D": "Produces concentric circular field lines around the wire, with no poles."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列哪种装置产生的磁场与条形磁铁的磁场最相似？",
+        "explanation": "螺线管的每一匝线圈都沿轴向贡献同方向的磁场，合成后形成有北极和南极的磁场，与条形磁铁十分相似。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "通电螺线管"
+          },
+          {
+            "id": "B",
+            "text": "带电的平行板电容器"
+          },
+          {
+            "id": "C",
+            "text": "一对静止的电荷"
+          },
+          {
+            "id": "D",
+            "text": "一根通电直导线"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "solenoid",
+      "field-pattern"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-g14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Lenz's law 楞次定律",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A copper ring is dropped over a vertical bar magnet. Compared with a ring made of an insulating material of the same mass and shape, the copper ring falls",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "faster, because the magnet attracts the copper"
+      },
+      {
+        "id": "B",
+        "text": "more slowly, because induced currents oppose the change in flux"
+      },
+      {
+        "id": "C",
+        "text": "more slowly, because copper is diamagnetic"
+      },
+      {
+        "id": "D",
+        "text": "at the same rate, since gravity acts equally on both"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Copper conducts, so the changing flux drives an induced current around the ring. By Lenz's law that current opposes the change, producing a retarding force. The insulating ring cannot carry a current, so nothing opposes its fall.",
+    "distractorRationale": {
+      "A": "Copper is not ferromagnetic and is not attracted by a magnet at rest.",
+      "C": "Diamagnetism in copper is far too weak to explain the effect; the cause is induced current.",
+      "D": "Gravity is the same, but the copper ring also experiences an induced magnetic force."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "把铜环套着竖直的条形磁铁下落。与质量、形状相同的绝缘材料环相比，铜环下落",
+        "explanation": "铜能导电，磁通量的变化在环中驱动感应电流。由楞次定律，该电流阻碍这一变化，产生阻碍下落的力。绝缘环无法形成电流，故没有任何力阻碍它下落。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "更快，因为磁铁吸引铜"
+          },
+          {
+            "id": "B",
+            "text": "更慢，因为感应电流阻碍磁通量的变化"
+          },
+          {
+            "id": "C",
+            "text": "更慢，因为铜具有抗磁性"
+          },
+          {
+            "id": "D",
+            "text": "一样快，因为重力对两者作用相同"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "lenzs-law",
+      "eddy-currents"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-h01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Ideal gas equation 理想气体状态方程",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A fixed mass of ideal gas is held at constant temperature. Its volume is halved. What happens to its pressure?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It quadruples"
+      },
+      {
+        "id": "B",
+        "text": "It is unchanged"
+      },
+      {
+        "id": "C",
+        "text": "It doubles"
+      },
+      {
+        "id": "D",
+        "text": "It halves"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "At constant temperature, $pV$ is constant. Halving $V$ therefore doubles $p$.",
+    "distractorRationale": {
+      "A": "Would follow from an inverse-square relation, which does not apply here.",
+      "B": "Would require both $p$ and $V$ to stay fixed.",
+      "D": "Treats pressure as proportional to volume rather than inversely proportional."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "一定质量的理想气体保持温度不变，体积减小一半，其压强将",
+        "explanation": "温度不变时 $pV$ 为常量。体积减半，压强因此加倍。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "变为四倍"
+          },
+          {
+            "id": "B",
+            "text": "保持不变"
+          },
+          {
+            "id": "C",
+            "text": "加倍"
+          },
+          {
+            "id": "D",
+            "text": "减半"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "boyles-law",
+      "isothermal"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-h02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Molecular theory 分子动理论",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What does the temperature of a gas measure, at the molecular level?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The total energy of all the molecules"
+      },
+      {
+        "id": "B",
+        "text": "The number of molecules present"
+      },
+      {
+        "id": "C",
+        "text": "The average speed of the molecules"
+      },
+      {
+        "id": "D",
+        "text": "The average kinetic energy of the molecules"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Temperature is a measure of the *average* random kinetic energy of the molecules. Two gases at the same temperature have the same average molecular kinetic energy, even if their molecules have different masses and therefore different average speeds.",
+    "distractorRationale": {
+      "A": "The total depends on how much gas there is; temperature does not.",
+      "B": "Amount of gas is a separate quantity from temperature.",
+      "C": "Close, but heavier molecules move more slowly at the same temperature — energy, not speed, is what temperature fixes."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "从分子层面看，气体的温度衡量的是什么？",
+        "explanation": "温度是分子无规则运动**平均**动能的量度。温度相同的两种气体，分子平均动能相同，尽管分子质量不同、平均速率也不同。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "所有分子的总能量"
+          },
+          {
+            "id": "B",
+            "text": "分子的数目"
+          },
+          {
+            "id": "C",
+            "text": "分子的平均速率"
+          },
+          {
+            "id": "D",
+            "text": "分子的平均动能"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "kinetic-theory",
+      "temperature"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-h03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "First law of thermodynamics 热力学第一定律",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A gas absorbs $500\\ \\text{J}$ of heat and does $200\\ \\text{J}$ of work on its surroundings. What is the change in its internal energy?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$300\\ \\text{J}$"
+      },
+      {
+        "id": "B",
+        "text": "$-300\\ \\text{J}$"
+      },
+      {
+        "id": "C",
+        "text": "$200\\ \\text{J}$"
+      },
+      {
+        "id": "D",
+        "text": "$700\\ \\text{J}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The first law gives $\\Delta U = Q - W$, where $W$ is the work done *by* the gas. So $\\Delta U = 500 - 200 = 300\\ \\text{J}$.",
+    "distractorRationale": {
+      "B": "Reverses the sign, as if the gas had released heat.",
+      "C": "Reports the work rather than the change in internal energy.",
+      "D": "Adds the work instead of subtracting it."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "气体吸收 $500\\ \\text{J}$ 的热量并对外做功 $200\\ \\text{J}$，其内能变化量为",
+        "explanation": "由热力学第一定律 $\\Delta U = Q - W$，其中 $W$ 是气体**对外**所做的功。故 $\\Delta U = 500 - 200 = 300\\ \\text{J}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$300\\ \\text{J}$"
+          },
+          {
+            "id": "B",
+            "text": "$-300\\ \\text{J}$"
+          },
+          {
+            "id": "C",
+            "text": "$200\\ \\text{J}$"
+          },
+          {
+            "id": "D",
+            "text": "$700\\ \\text{J}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "first-law",
+      "internal-energy"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-h04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Ideal gas equation 理想气体状态方程",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A sealed rigid container of ideal gas is heated from $300\\ \\text{K}$ to $600\\ \\text{K}$. What happens to the pressure?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It increases by $300$ units"
+      },
+      {
+        "id": "B",
+        "text": "It doubles"
+      },
+      {
+        "id": "C",
+        "text": "It is unchanged"
+      },
+      {
+        "id": "D",
+        "text": "It halves"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The container is rigid, so the volume is fixed and $\\dfrac{p}{T}$ is constant. Doubling the absolute temperature doubles the pressure.\n\nThe temperatures must be in kelvin for this to work; using degrees Celsius would give the wrong ratio.",
+    "distractorRationale": {
+      "A": "Pressure and temperature are proportional, not related by a fixed offset.",
+      "C": "Would apply only if the container could expand freely.",
+      "D": "Treats pressure as inversely proportional to temperature."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "密封的刚性容器中的理想气体从 $300\\ \\text{K}$ 加热到 $600\\ \\text{K}$，其压强将",
+        "explanation": "容器刚性，体积不变，故 $\\dfrac{p}{T}$ 为常量。绝对温度加倍，压强也加倍。\n\n温度必须用开尔文，若用摄氏度则比值错误。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "增加 $300$ 个单位"
+          },
+          {
+            "id": "B",
+            "text": "加倍"
+          },
+          {
+            "id": "C",
+            "text": "保持不变"
+          },
+          {
+            "id": "D",
+            "text": "减半"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "gay-lussac",
+      "isochoric"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-h05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Molecular theory 分子动理论",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Why does a drop of ink spread through still water without stirring?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Because gravity pulls the ink through the water"
+      },
+      {
+        "id": "B",
+        "text": "Because the ink is less dense than water"
+      },
+      {
+        "id": "C",
+        "text": "Because molecules are in constant random motion"
+      },
+      {
+        "id": "D",
+        "text": "Because water molecules attract the ink chemically"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Diffusion is direct evidence of molecular motion: molecules move randomly and continuously, and over time this random wandering carries the ink into regions where it was absent.",
+    "distractorRationale": {
+      "A": "Gravity acts downward only; diffusion spreads the ink in every direction, upward included.",
+      "B": "Density differences cause bulk flow, but diffusion happens even when densities match.",
+      "D": "No chemical reaction is needed for diffusion to occur."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "一滴墨水在静水中不经搅拌也会散开，原因是什么？",
+        "explanation": "扩散是分子运动的直接证据：分子永不停息地做无规则运动，久而久之这种随机游走把墨水带到原本没有墨水的区域。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "重力把墨水拉过水层"
+          },
+          {
+            "id": "B",
+            "text": "墨水的密度比水小"
+          },
+          {
+            "id": "C",
+            "text": "分子在不停地做无规则运动"
+          },
+          {
+            "id": "D",
+            "text": "水分子对墨水产生化学吸引"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "diffusion",
+      "brownian-motion"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-h06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "First law of thermodynamics 热力学第一定律",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An ideal gas expands with no heat exchange with its surroundings. What happens to its temperature?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It rises"
+      },
+      {
+        "id": "B",
+        "text": "It stays the same"
+      },
+      {
+        "id": "C",
+        "text": "It depends on the mass of the gas"
+      },
+      {
+        "id": "D",
+        "text": "It falls"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "With $Q = 0$, the first law becomes $\\Delta U = -W$. The expanding gas does work on its surroundings, so $W$ is positive and $\\Delta U$ is negative. For an ideal gas, internal energy depends only on temperature, so the temperature falls.\n\nThis is why compressed air feels cold as it escapes a nozzle.",
+    "distractorRationale": {
+      "A": "Would require energy to be supplied, but no heat enters and the gas is doing work.",
+      "B": "That describes an isothermal expansion, which requires heat to flow in.",
+      "C": "The direction of the temperature change does not depend on how much gas there is."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "理想气体在与外界无热交换的情况下膨胀，其温度将",
+        "explanation": "$Q = 0$ 时，第一定律化为 $\\Delta U = -W$。气体膨胀对外做功，$W$ 为正，故 $\\Delta U$ 为负。理想气体的内能只取决于温度，故温度下降。\n\n压缩空气从喷嘴喷出时感觉冰凉，正是这个道理。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "升高"
+          },
+          {
+            "id": "B",
+            "text": "保持不变"
+          },
+          {
+            "id": "C",
+            "text": "取决于气体的质量"
+          },
+          {
+            "id": "D",
+            "text": "降低"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "adiabatic",
+      "first-law"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-h07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Ideal gas equation 理想气体状态方程",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A gas at $27^\\circ\\text{C}$ is heated at constant pressure until its volume doubles. What is its new temperature?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$327^\\circ\\text{C}$"
+      },
+      {
+        "id": "B",
+        "text": "$600^\\circ\\text{C}$"
+      },
+      {
+        "id": "C",
+        "text": "$54^\\circ\\text{C}$"
+      },
+      {
+        "id": "D",
+        "text": "$300^\\circ\\text{C}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Convert to kelvin first: $27^\\circ\\text{C} = 300\\ \\text{K}$. At constant pressure $\\dfrac{V}{T}$ is constant, so doubling the volume doubles the absolute temperature to $600\\ \\text{K}$. Converting back gives $600 - 273 = 327^\\circ\\text{C}$.\n\nDoubling the Celsius reading is the classic error — the gas laws work only in kelvin.",
+    "distractorRationale": {
+      "B": "Gives the answer in kelvin but labels it as Celsius.",
+      "C": "Doubles the Celsius temperature instead of the absolute temperature.",
+      "D": "Reports the initial temperature in kelvin, mislabelled."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$27^\\circ\\text{C}$ 的气体在压强不变的条件下加热，直到体积加倍，此时温度为",
+        "explanation": "先换算为开尔文：$27^\\circ\\text{C} = 300\\ \\text{K}$。等压时 $\\dfrac{V}{T}$ 为常量，体积加倍则绝对温度加倍至 $600\\ \\text{K}$。换算回摄氏度得 $600 - 273 = 327^\\circ\\text{C}$。\n\n把摄氏读数直接加倍是典型错误——气体定律只在开尔文下成立。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$327^\\circ\\text{C}$"
+          },
+          {
+            "id": "B",
+            "text": "$600^\\circ\\text{C}$"
+          },
+          {
+            "id": "C",
+            "text": "$54^\\circ\\text{C}$"
+          },
+          {
+            "id": "D",
+            "text": "$300^\\circ\\text{C}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "charles-law",
+      "kelvin-conversion"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-i01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Refraction 折射",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Light passes from air into glass. Which quantity stays the same?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Its speed"
+      },
+      {
+        "id": "B",
+        "text": "Its frequency"
+      },
+      {
+        "id": "C",
+        "text": "Its wavelength"
+      },
+      {
+        "id": "D",
+        "text": "Its direction of travel"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Frequency is set by the source and does not change when light enters a new medium. Speed and wavelength both decrease in glass, in the same proportion, so that $v = f\\lambda$ still holds.",
+    "distractorRationale": {
+      "A": "Light travels more slowly in glass than in air.",
+      "C": "Wavelength shortens in step with the reduced speed.",
+      "D": "The direction bends unless the light enters along the normal."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "光从空气射入玻璃，下列哪个量保持不变？",
+        "explanation": "频率由光源决定，进入新介质时不改变。速度与波长在玻璃中都按同一比例减小，使 $v = f\\lambda$ 仍然成立。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "传播速度"
+          },
+          {
+            "id": "B",
+            "text": "频率"
+          },
+          {
+            "id": "C",
+            "text": "波长"
+          },
+          {
+            "id": "D",
+            "text": "传播方向"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "refraction",
+      "frequency-invariance"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-i02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Reflection 反射",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A ray strikes a plane mirror at $30^\\circ$ to the mirror surface. What is the angle of reflection, measured from the normal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$90^\\circ$"
+      },
+      {
+        "id": "B",
+        "text": "$30^\\circ$"
+      },
+      {
+        "id": "C",
+        "text": "$60^\\circ$"
+      },
+      {
+        "id": "D",
+        "text": "$15^\\circ$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Angles in the law of reflection are measured from the normal, not from the surface. A ray at $30^\\circ$ to the surface makes $90 - 30 = 60^\\circ$ with the normal, and the angle of reflection equals it.",
+    "distractorRationale": {
+      "A": "The sum of the two angles about the surface, not a single angle.",
+      "B": "Measures from the surface instead of from the normal.",
+      "D": "Halves the given angle, which the law of reflection does not do."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "光线以与平面镜面成 $30^\\circ$ 的方向入射，其反射角（从法线量起）为",
+        "explanation": "反射定律中的角度从法线量起，而非从镜面量起。与镜面成 $30^\\circ$ 的光线与法线成 $90 - 30 = 60^\\circ$，反射角与之相等。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$90^\\circ$"
+          },
+          {
+            "id": "B",
+            "text": "$30^\\circ$"
+          },
+          {
+            "id": "C",
+            "text": "$60^\\circ$"
+          },
+          {
+            "id": "D",
+            "text": "$15^\\circ$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "reflection",
+      "normal-angle"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-i03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Interference 干涉",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In a double-slit experiment, what happens to the spacing of the bright fringes if the slit separation is increased?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The fringes move further apart"
+      },
+      {
+        "id": "B",
+        "text": "The fringes disappear entirely"
+      },
+      {
+        "id": "C",
+        "text": "The spacing is unchanged"
+      },
+      {
+        "id": "D",
+        "text": "The fringes move closer together"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Fringe spacing is $\\Delta y = \\dfrac{\\lambda L}{d}$, where $d$ is the slit separation. Increasing $d$ therefore decreases the spacing.\n\nThis is why the slits must be very close together for the pattern to be visible at all.",
+    "distractorRationale": {
+      "A": "Would follow if spacing were proportional to $d$, but the relation is inverse.",
+      "B": "The pattern narrows but does not vanish.",
+      "C": "The spacing depends on all three of $\\lambda$, $L$ and $d$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "双缝干涉实验中，增大双缝间距后，亮条纹的间距将",
+        "explanation": "条纹间距为 $\\Delta y = \\dfrac{\\lambda L}{d}$，其中 $d$ 为双缝间距。增大 $d$ 使间距减小。\n\n这也说明为何双缝必须靠得很近，图样才能看得见。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "变得更疏"
+          },
+          {
+            "id": "B",
+            "text": "条纹完全消失"
+          },
+          {
+            "id": "C",
+            "text": "保持不变"
+          },
+          {
+            "id": "D",
+            "text": "变得更密"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "double-slit",
+      "fringe-spacing"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-i04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Diffraction 衍射",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Diffraction of a wave is most noticeable when the obstacle or gap is",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "comparable to the wavelength"
+      },
+      {
+        "id": "B",
+        "text": "much larger than the wavelength"
+      },
+      {
+        "id": "C",
+        "text": "of any size, since diffraction is always equally strong"
+      },
+      {
+        "id": "D",
+        "text": "much smaller than the wavelength"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Diffraction becomes pronounced when the gap or obstacle is of the same order of size as the wavelength. This is why sound, with wavelengths of around a metre, bends around a doorway readily, while visible light with wavelengths under a micrometre does not.",
+    "distractorRationale": {
+      "B": "The wave then travels almost straight through, with little spreading.",
+      "C": "The effect depends strongly on the ratio of size to wavelength.",
+      "D": "Very little energy passes through such a gap to spread at all."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "波的衍射现象在障碍物或缝隙的尺寸满足什么条件时最明显？",
+        "explanation": "当缝隙或障碍物的尺寸与波长处于同一数量级时，衍射最为明显。这正是波长约一米的声音容易绕过门口，而波长不足一微米的可见光却不能的原因。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "与波长相当"
+          },
+          {
+            "id": "B",
+            "text": "远大于波长"
+          },
+          {
+            "id": "C",
+            "text": "任何尺寸都一样，因为衍射强度与尺寸无关"
+          },
+          {
+            "id": "D",
+            "text": "远小于波长"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "diffraction",
+      "wavelength-scale"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-i05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Refraction 折射",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Total internal reflection can occur when light travels",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "from air into water at any angle"
+      },
+      {
+        "id": "B",
+        "text": "from glass into air beyond the critical angle"
+      },
+      {
+        "id": "C",
+        "text": "between any two media at exactly $45^\\circ$"
+      },
+      {
+        "id": "D",
+        "text": "from air into glass beyond the critical angle"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Two conditions are needed: the light must travel from a denser medium into a less dense one, and the angle of incidence must exceed the critical angle. Glass to air satisfies the first; exceeding the critical angle satisfies the second.\n\nThis is the principle behind optical fibres.",
+    "distractorRationale": {
+      "A": "Air is the less dense medium, so light entering water bends toward the normal and always refracts.",
+      "C": "The critical angle depends on the two media involved; it is not fixed at $45^\\circ$.",
+      "D": "Wrong direction — the light must go from denser to less dense."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "全反射可能发生在光",
+        "explanation": "需要同时满足两个条件：光必须由光密介质射向光疏介质，且入射角大于临界角。玻璃射向空气满足第一条，超过临界角满足第二条。\n\n光纤正是基于这一原理。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "以任意角度由空气射入水中时"
+          },
+          {
+            "id": "B",
+            "text": "由玻璃射向空气且入射角大于临界角时"
+          },
+          {
+            "id": "C",
+            "text": "在任意两种介质间恰以 $45^\\circ$ 入射时"
+          },
+          {
+            "id": "D",
+            "text": "由空气射入玻璃且入射角大于临界角时"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "total-internal-reflection",
+      "critical-angle"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-j01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Photoelectric effect 光电效应",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In the photoelectric effect, increasing the intensity of light of a fixed frequency above the threshold increases",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the threshold frequency of the metal"
+      },
+      {
+        "id": "B",
+        "text": "the maximum kinetic energy of the emitted electrons"
+      },
+      {
+        "id": "C",
+        "text": "the number of electrons emitted per second"
+      },
+      {
+        "id": "D",
+        "text": "the work function of the metal"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Greater intensity means more photons per second, so more electrons are ejected per second. The energy of each photon, and hence the maximum kinetic energy of each electron, depends on frequency alone.\n\nThis is precisely the observation that classical wave theory could not explain.",
+    "distractorRationale": {
+      "A": "A property of the metal, unaffected by the light shone on it.",
+      "B": "Set by the photon energy, which depends on frequency, not intensity.",
+      "D": "Also a property of the metal itself."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "光电效应中，保持频率不变（高于极限频率）而增大光强，会增大",
+        "explanation": "光强增大意味着单位时间内光子数增多，故单位时间内逸出的电子数增多。每个光子的能量、从而每个电子的最大动能，只取决于频率。\n\n这正是经典波动理论无法解释的现象。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "金属的极限频率"
+          },
+          {
+            "id": "B",
+            "text": "逸出电子的最大动能"
+          },
+          {
+            "id": "C",
+            "text": "单位时间内逸出的电子数"
+          },
+          {
+            "id": "D",
+            "text": "金属的逸出功"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "photoelectric-effect",
+      "intensity"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-j02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Atomic structure 原子结构",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What did Rutherford's scattering experiment establish about the atom?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The atom is indivisible"
+      },
+      {
+        "id": "B",
+        "text": "Positive charge is spread evenly throughout the atom"
+      },
+      {
+        "id": "C",
+        "text": "Electrons occupy fixed energy levels"
+      },
+      {
+        "id": "D",
+        "text": "Almost all the mass is concentrated in a tiny nucleus"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Most particles passed straight through, showing the atom is mostly empty space, but a small fraction bounced back sharply. Only a very small, massive, positively charged core could deflect them so strongly.",
+    "distractorRationale": {
+      "A": "The experiment did the opposite — it revealed internal structure.",
+      "B": "This was the earlier model that the experiment overturned.",
+      "C": "That came from Bohr's model and from spectral evidence, not from scattering."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "卢瑟福散射实验确立了关于原子的什么结论？",
+        "explanation": "绝大多数粒子径直穿过，说明原子内部大部分是空的；但极少数被大角度反弹回来。只有一个体积极小、质量很大、带正电的核才能造成如此强烈的偏折。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "原子不可再分"
+          },
+          {
+            "id": "B",
+            "text": "正电荷均匀分布在整个原子中"
+          },
+          {
+            "id": "C",
+            "text": "电子处于固定的能级上"
+          },
+          {
+            "id": "D",
+            "text": "几乎全部质量集中在极小的原子核中"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "rutherford",
+      "nuclear-model"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-j03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Nuclear physics 原子核物理",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A nucleus emits an alpha particle. How do its mass number and atomic number change?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Mass number falls by $4$, atomic number falls by $2$"
+      },
+      {
+        "id": "B",
+        "text": "Mass number unchanged, atomic number rises by $1$"
+      },
+      {
+        "id": "C",
+        "text": "Mass number falls by $4$, atomic number unchanged"
+      },
+      {
+        "id": "D",
+        "text": "Mass number falls by $2$, atomic number falls by $4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "An alpha particle is a helium nucleus, carrying two protons and two neutrons. Emitting it removes $4$ from the mass number and $2$ from the atomic number.",
+    "distractorRationale": {
+      "B": "This describes beta-minus decay.",
+      "C": "Losing two protons must change the atomic number.",
+      "D": "Swaps the two changes."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "原子核放出一个 $\\alpha$ 粒子后，其质量数与原子序数如何变化？",
+        "explanation": "$\\alpha$ 粒子是氦核，含两个质子和两个中子。放出后质量数减 $4$，原子序数减 $2$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "质量数减 $4$，原子序数减 $2$"
+          },
+          {
+            "id": "B",
+            "text": "质量数不变，原子序数加 $1$"
+          },
+          {
+            "id": "C",
+            "text": "质量数减 $4$，原子序数不变"
+          },
+          {
+            "id": "D",
+            "text": "质量数减 $2$，原子序数减 $4$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "alpha-decay",
+      "nuclear-notation"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-j04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Nuclear physics 原子核物理",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A radioactive sample has a half-life of $6$ days. What fraction of the original nuclei remains after $18$ days?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{8}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{4}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "$18$ days is three half-lives. Each halves what remains: $\\dfrac{1}{2} \\to \\dfrac{1}{4} \\to \\dfrac{1}{8}$.",
+    "distractorRationale": {
+      "A": "Divides by the number of half-lives, but decay is exponential, not linear.",
+      "C": "After two half-lives.",
+      "D": "After one half-life only."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某放射性样品的半衰期为 $6$ 天，经过 $18$ 天后剩余的原子核占原来的比例是",
+        "explanation": "$18$ 天为三个半衰期，每经过一个半衰期剩余量减半：$\\dfrac{1}{2} \\to \\dfrac{1}{4} \\to \\dfrac{1}{8}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{1}{3}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{1}{8}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{1}{4}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{1}{2}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "half-life",
+      "exponential-decay"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-j05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Photoelectric effect 光电效应",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Light below a metal's threshold frequency shines on it very brightly for a long time. What is observed?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Electrons are emitted after a delay while energy accumulates"
+      },
+      {
+        "id": "B",
+        "text": "Electrons are emitted only if the metal is heated as well"
+      },
+      {
+        "id": "C",
+        "text": "No electrons are emitted at all"
+      },
+      {
+        "id": "D",
+        "text": "Electrons are emitted immediately"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Each photon carries energy $hf$, and below the threshold frequency no single photon has enough energy to free an electron. Brightness supplies more photons, not more energetic ones, so no emission occurs however long or brightly the light shines.\n\nClassical wave theory predicted that energy would accumulate until emission began; the fact that it never does was decisive evidence for the photon model.",
+    "distractorRationale": {
+      "A": "This is exactly the classical prediction that experiment refuted.",
+      "B": "Heating can free electrons thermally, but that is a different effect from the photoelectric one.",
+      "D": "Requires the frequency to exceed the threshold, which it does not."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "用频率低于金属极限频率的光长时间强烈照射金属，会观察到什么？",
+        "explanation": "每个光子携带能量 $hf$，频率低于极限频率时，任何单个光子的能量都不足以使电子逸出。增大亮度只是增加光子数目而非提高单个光子的能量，故无论照射多久多强都不会有电子逸出。\n\n经典波动理论预言能量会逐渐积累直至发射电子；事实上从未发生，这成为光子模型的决定性证据。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "能量积累一段时间后有电子逸出"
+          },
+          {
+            "id": "B",
+            "text": "只有同时加热金属才有电子逸出"
+          },
+          {
+            "id": "C",
+            "text": "始终没有电子逸出"
+          },
+          {
+            "id": "D",
+            "text": "立即有电子逸出"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "threshold-frequency",
+      "photon-model"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

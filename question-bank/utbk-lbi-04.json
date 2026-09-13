@@ -1,0 +1,1720 @@
+[
+  {
+    "id": "utbk-lbi-p01",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pada 1998 sebuah tim memasang 12 alat perekam suara di hutan Kalimantan untuk menghitung populasi orangutan. Metode sebelumnya mengandalkan penghitungan sarang dari udara, yang memerlukan penerbangan mahal dan tidak dapat membedakan sarang lama dari sarang baru. Rekaman suara panggilan panjang jantan dewasa ternyata dapat dikenali satu per satu, seperti sidik jari. Dalam tiga tahun, biaya pemantauan turun 60 persen, tetapi cakupannya menyempit: alat perekam hanya menjangkau radius satu kilometer, sementara penerbangan mencakup ribuan hektare sekali jalan."
+    },
+    "stem": "Berdasarkan bacaan, alat perekam suara menjangkau ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "radius satu kilometer"
+      },
+      {
+        "id": "B",
+        "text": "radius sepuluh kilometer"
+      },
+      {
+        "id": "C",
+        "text": "dua belas titik saja tanpa radius"
+      },
+      {
+        "id": "D",
+        "text": "ribuan hektare"
+      },
+      {
+        "id": "E",
+        "text": "seluruh hutan Kalimantan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Informasi ini tertulis langsung pada kalimat terakhir bacaan: alat perekam hanya menjangkau radius satu kilometer.\n\nAngka «ribuan hektare» pada kalimat yang sama merujuk cakupan penerbangan, bukan alat perekam.",
+    "distractorRationale": {
+      "B": "Angka yang tidak muncul dalam bacaan.",
+      "C": "Jumlah alat memang 12, tetapi bacaan tetap menyebutkan radiusnya.",
+      "D": "Merupakan cakupan penerbangan, bukan alat perekam.",
+      "E": "Tidak dinyatakan dalam bacaan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p02",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pada 1998 sebuah tim memasang 12 alat perekam suara di hutan Kalimantan untuk menghitung populasi orangutan. Metode sebelumnya mengandalkan penghitungan sarang dari udara, yang memerlukan penerbangan mahal dan tidak dapat membedakan sarang lama dari sarang baru. Rekaman suara panggilan panjang jantan dewasa ternyata dapat dikenali satu per satu, seperti sidik jari. Dalam tiga tahun, biaya pemantauan turun 60 persen, tetapi cakupannya menyempit: alat perekam hanya menjangkau radius satu kilometer, sementara penerbangan mencakup ribuan hektare sekali jalan."
+    },
+    "stem": "Kelemahan metode penghitungan sarang dari udara menurut bacaan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "memerlukan waktu tiga tahun"
+      },
+      {
+        "id": "B",
+        "text": "biayanya mahal dan tidak dapat membedakan usia sarang"
+      },
+      {
+        "id": "C",
+        "text": "hanya mencakup radius satu kilometer"
+      },
+      {
+        "id": "D",
+        "text": "tidak dapat mengenali suara jantan dewasa"
+      },
+      {
+        "id": "E",
+        "text": "merusak tajuk hutan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bacaan menyebut dua kelemahan metode lama secara berdampingan: memerlukan penerbangan yang mahal, dan tidak dapat membedakan sarang lama dari sarang baru.",
+    "distractorRationale": {
+      "A": "Tiga tahun adalah rentang pengamatan penurunan biaya.",
+      "C": "Radius satu kilometer adalah batas metode baru.",
+      "D": "Pengenalan suara adalah keunggulan metode baru, bukan kelemahan metode lama.",
+      "E": "Kerusakan tajuk tidak disebutkan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p03",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pada 1998 sebuah tim memasang 12 alat perekam suara di hutan Kalimantan untuk menghitung populasi orangutan. Metode sebelumnya mengandalkan penghitungan sarang dari udara, yang memerlukan penerbangan mahal dan tidak dapat membedakan sarang lama dari sarang baru. Rekaman suara panggilan panjang jantan dewasa ternyata dapat dikenali satu per satu, seperti sidik jari. Dalam tiga tahun, biaya pemantauan turun 60 persen, tetapi cakupannya menyempit: alat perekam hanya menjangkau radius satu kilometer, sementara penerbangan mencakup ribuan hektare sekali jalan."
+    },
+    "stem": "Simpulan yang tepat berdasarkan bacaan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Penghitungan sarang dari udara sebaiknya dihentikan"
+      },
+      {
+        "id": "B",
+        "text": "Populasi orangutan meningkat sejak 1998"
+      },
+      {
+        "id": "C",
+        "text": "Kedua metode memiliki keunggulan pada aspek yang berbeda"
+      },
+      {
+        "id": "D",
+        "text": "Metode perekaman suara lebih unggul dalam segala hal"
+      },
+      {
+        "id": "E",
+        "text": "Biaya pemantauan akan terus menurun"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bacaan menempatkan dua metode secara berimbang: perekaman suara jauh lebih murah dan dapat mengenali individu, tetapi jangkauannya sempit; penerbangan mencakup wilayah luas sekali jalan meski mahal.\n\nSimpulan yang sah adalah bahwa keunggulan keduanya terletak pada aspek yang berbeda.",
+    "distractorRationale": {
+      "A": "Bacaan tidak menganjurkan penghentian.",
+      "B": "Perubahan populasi tidak dibahas.",
+      "D": "Bertentangan dengan keterangan tentang cakupan yang menyempit.",
+      "E": "Ramalan biaya tidak dinyatakan."
+    },
+    "tags": [
+      "interpretasi"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p04",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pada 1998 sebuah tim memasang 12 alat perekam suara di hutan Kalimantan untuk menghitung populasi orangutan. Metode sebelumnya mengandalkan penghitungan sarang dari udara, yang memerlukan penerbangan mahal dan tidak dapat membedakan sarang lama dari sarang baru. Rekaman suara panggilan panjang jantan dewasa ternyata dapat dikenali satu per satu, seperti sidik jari. Dalam tiga tahun, biaya pemantauan turun 60 persen, tetapi cakupannya menyempit: alat perekam hanya menjangkau radius satu kilometer, sementara penerbangan mencakup ribuan hektare sekali jalan."
+    },
+    "stem": "Pernyataan yang paling tepat untuk menilai kalimat «biaya pemantauan turun 60 persen» adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Angka itu tidak relevan dengan tujuan penelitian"
+      },
+      {
+        "id": "B",
+        "text": "Angka itu membuktikan metode baru lebih baik secara keseluruhan"
+      },
+      {
+        "id": "C",
+        "text": "Angka itu seharusnya dinyatakan dalam rupiah"
+      },
+      {
+        "id": "D",
+        "text": "Angka itu perlu dibaca bersama keterangan tentang menyempitnya cakupan"
+      },
+      {
+        "id": "E",
+        "text": "Angka itu menunjukkan penelitian dilakukan dengan tergesa-gesa"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Penurunan biaya adalah keunggulan, tetapi bacaan menempatkannya berdampingan dengan kata «tetapi»: cakupannya menyempit. Menilai angka itu sendirian akan mengabaikan bagian kalimat yang sengaja mempertentangkannya.",
+    "distractorRationale": {
+      "A": "Biaya justru salah satu pokok pembahasan bacaan.",
+      "B": "Melompat dari satu keunggulan ke penilaian menyeluruh.",
+      "C": "Satuan penyajian bukan persoalan yang diangkat.",
+      "E": "Kecepatan penelitian tidak dipersoalkan."
+    },
+    "tags": [
+      "evaluasi"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p05",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sungai Citarum pernah disebut salah satu sungai paling tercemar di dunia. Program pemulihan yang dimulai 2018 menggabungkan penindakan terhadap pabrik pembuang limbah, pembangunan instalasi pengolahan, dan penataan permukiman bantaran. Indeks kualitas air naik dari kategori «tercemar berat» menjadi «tercemar sedang» dalam lima tahun. Namun peneliti mencatat bahwa perbaikan terbesar terjadi pada parameter yang paling mudah diukur dan ditindak, yaitu limbah cair pabrik, sedangkan pencemaran dari limbah rumah tangga dan pertanian nyaris tidak berubah."
+    },
+    "stem": "Program pemulihan Sungai Citarum dimulai pada tahun ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1998"
+      },
+      {
+        "id": "B",
+        "text": "2008"
+      },
+      {
+        "id": "C",
+        "text": "2023"
+      },
+      {
+        "id": "D",
+        "text": "2020"
+      },
+      {
+        "id": "E",
+        "text": "2018"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Tahun mulainya disebutkan langsung dalam bacaan: program pemulihan dimulai pada 2018.\n\nAngka «lima tahun» sesudahnya menunjukkan rentang waktu perbaikan, bukan tahun mulai.",
+    "distractorRationale": {
+      "A": "Tahun yang muncul pada bacaan lain, bukan bacaan ini.",
+      "B": "Tidak disebutkan.",
+      "C": "Kira-kira lima tahun setelah program dimulai, bukan tahun mulainya.",
+      "D": "Tidak disebutkan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p06",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sungai Citarum pernah disebut salah satu sungai paling tercemar di dunia. Program pemulihan yang dimulai 2018 menggabungkan penindakan terhadap pabrik pembuang limbah, pembangunan instalasi pengolahan, dan penataan permukiman bantaran. Indeks kualitas air naik dari kategori «tercemar berat» menjadi «tercemar sedang» dalam lima tahun. Namun peneliti mencatat bahwa perbaikan terbesar terjadi pada parameter yang paling mudah diukur dan ditindak, yaitu limbah cair pabrik, sedangkan pencemaran dari limbah rumah tangga dan pertanian nyaris tidak berubah."
+    },
+    "stem": "Maksud penulis menyebut «parameter yang paling mudah diukur dan ditindak» adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Menunjukkan bahwa perbaikan terjadi pada bagian yang paling mudah, bukan pada seluruh sumber pencemaran"
+      },
+      {
+        "id": "B",
+        "text": "Memuji ketelitian pelaksana program"
+      },
+      {
+        "id": "C",
+        "text": "Membandingkan Citarum dengan sungai lain"
+      },
+      {
+        "id": "D",
+        "text": "Menjelaskan cara kerja instalasi pengolahan"
+      },
+      {
+        "id": "E",
+        "text": "Mengusulkan parameter pengukuran baru"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat itu berfungsi membatasi kesan keberhasilan yang baru saja disebutkan. Perbaikan indeks memang nyata, tetapi terpusat pada limbah pabrik — sumber yang paling mudah diukur dan ditindak — sedangkan limbah rumah tangga dan pertanian nyaris tidak berubah.",
+    "distractorRationale": {
+      "B": "Nadanya membatasi, bukan memuji.",
+      "C": "Tidak ada perbandingan dengan sungai lain.",
+      "D": "Cara kerja instalasi tidak dijelaskan.",
+      "E": "Tidak ada usulan parameter baru."
+    },
+    "tags": [
+      "interpretasi"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p07",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sungai Citarum pernah disebut salah satu sungai paling tercemar di dunia. Program pemulihan yang dimulai 2018 menggabungkan penindakan terhadap pabrik pembuang limbah, pembangunan instalasi pengolahan, dan penataan permukiman bantaran. Indeks kualitas air naik dari kategori «tercemar berat» menjadi «tercemar sedang» dalam lima tahun. Namun peneliti mencatat bahwa perbaikan terbesar terjadi pada parameter yang paling mudah diukur dan ditindak, yaitu limbah cair pabrik, sedangkan pencemaran dari limbah rumah tangga dan pertanian nyaris tidak berubah."
+    },
+    "stem": "Kelemahan yang paling tepat ditunjukkan terhadap klaim keberhasilan program tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Penindakan terhadap pabrik melanggar hak usaha"
+      },
+      {
+        "id": "B",
+        "text": "Kenaikan indeks dapat mencerminkan perbaikan pada satu sumber saja, bukan pada pencemaran secara keseluruhan"
+      },
+      {
+        "id": "C",
+        "text": "Penataan permukiman tidak pernah berhasil di mana pun"
+      },
+      {
+        "id": "D",
+        "text": "Lima tahun terlalu singkat untuk menilai program apa pun"
+      },
+      {
+        "id": "E",
+        "text": "Indeks kualitas air bukan ukuran yang diakui"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bacaan sendiri menyediakan dasar untuk kelemahan itu: perbaikan terbesar terjadi pada limbah cair pabrik, sedangkan limbah rumah tangga dan pertanian nyaris tidak berubah. Indeks yang naik karena satu sumber membaik tidak berarti seluruh pencemaran berkurang.",
+    "distractorRationale": {
+      "A": "Aspek hukum tidak dibahas.",
+      "C": "Klaim berlebihan yang tidak berdasar pada bacaan.",
+      "D": "Panjang waktu tidak dipersoalkan bacaan.",
+      "E": "Bacaan memakai indeks itu tanpa mempersoalkan keabsahannya."
+    },
+    "tags": [
+      "evaluasi"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p08",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pengrajin tenun di sebuah desa di Nusa Tenggara masih memakai pewarna dari akar mengkudu dan daun indigo. Satu helai kain memerlukan waktu enam bulan: memintal, mengikat motif, mencelup berulang kali, lalu menenun. Ketika kain serupa diproduksi mesin dengan pewarna sintetis, harganya seperlima dan waktunya dua hari. Yang tidak dapat ditiru mesin adalah gradasi warna yang muncul karena setiap celupan menyerap tidak merata — justru ketidaksempurnaan itulah yang dicari kolektor."
+    },
+    "stem": "Berdasarkan bacaan, waktu yang diperlukan untuk menghasilkan satu helai kain tenun tangan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "lima tahun"
+      },
+      {
+        "id": "B",
+        "text": "dua hari"
+      },
+      {
+        "id": "C",
+        "text": "enam bulan"
+      },
+      {
+        "id": "D",
+        "text": "tiga tahun"
+      },
+      {
+        "id": "E",
+        "text": "satu bulan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bacaan menyebutnya langsung: satu helai kain memerlukan waktu enam bulan, mencakup memintal, mengikat motif, mencelup berulang, dan menenun.\n\nAngka «dua hari» merujuk produksi mesin.",
+    "distractorRationale": {
+      "A": "Tidak disebutkan dalam bacaan ini.",
+      "B": "Waktu produksi mesin, bukan tenun tangan.",
+      "D": "Tidak disebutkan dalam bacaan ini.",
+      "E": "Tidak disebutkan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p09",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pengrajin tenun di sebuah desa di Nusa Tenggara masih memakai pewarna dari akar mengkudu dan daun indigo. Satu helai kain memerlukan waktu enam bulan: memintal, mengikat motif, mencelup berulang kali, lalu menenun. Ketika kain serupa diproduksi mesin dengan pewarna sintetis, harganya seperlima dan waktunya dua hari. Yang tidak dapat ditiru mesin adalah gradasi warna yang muncul karena setiap celupan menyerap tidak merata — justru ketidaksempurnaan itulah yang dicari kolektor."
+    },
+    "stem": "Berdasarkan bacaan, alasan kolektor menghargai kain tenun tangan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "warnanya lebih tahan lama"
+      },
+      {
+        "id": "B",
+        "text": "harganya lebih murah"
+      },
+      {
+        "id": "C",
+        "text": "motifnya lebih rumit daripada kain mesin"
+      },
+      {
+        "id": "D",
+        "text": "gradasi warna yang muncul dari celupan yang tidak merata"
+      },
+      {
+        "id": "E",
+        "text": "bahannya berasal dari luar negeri"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat terakhir menyatakannya secara langsung sekaligus menjelaskan sebabnya: setiap celupan menyerap tidak merata, dan gradasi yang lahir dari ketidaksempurnaan itulah yang dicari kolektor.",
+    "distractorRationale": {
+      "A": "Ketahanan warna tidak dibandingkan.",
+      "B": "Bacaan menyebut harga kain mesin justru seperlima.",
+      "C": "Kerumitan motif tidak dibandingkan.",
+      "E": "Bahannya justru lokal: akar mengkudu dan daun indigo."
+    },
+    "tags": [
+      "interpretasi"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p10",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pengrajin tenun di sebuah desa di Nusa Tenggara masih memakai pewarna dari akar mengkudu dan daun indigo. Satu helai kain memerlukan waktu enam bulan: memintal, mengikat motif, mencelup berulang kali, lalu menenun. Ketika kain serupa diproduksi mesin dengan pewarna sintetis, harganya seperlima dan waktunya dua hari. Yang tidak dapat ditiru mesin adalah gradasi warna yang muncul karena setiap celupan menyerap tidak merata — justru ketidaksempurnaan itulah yang dicari kolektor."
+    },
+    "stem": "Pernyataan yang paling sesuai dengan sikap penulis terhadap produksi mesin adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Menganggapnya setara dengan tenun tangan"
+      },
+      {
+        "id": "B",
+        "text": "Tidak memberikan penilaian apa pun"
+      },
+      {
+        "id": "C",
+        "text": "Menolaknya karena merusak tradisi"
+      },
+      {
+        "id": "D",
+        "text": "Menyarankan pengrajin beralih ke pewarna sintetis"
+      },
+      {
+        "id": "E",
+        "text": "Mengakui keunggulannya dalam harga dan waktu, tetapi menunjukkan satu hal yang tidak dapat ditirunya"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Penulis menyebut keunggulan mesin apa adanya — harga seperlima dan waktu dua hari — lalu menutup dengan hal yang berada di luar jangkauannya, yaitu gradasi warna dari celupan yang tidak merata.\n\nSikapnya bukan penolakan, melainkan penempatan batas: mesin unggul pada hal yang dapat diukur, dan kalah pada hal yang justru lahir dari ketidaksempurnaan.",
+    "distractorRationale": {
+      "A": "Bacaan justru menunjukkan perbedaan yang tidak terjembatani.",
+      "B": "Kalimat terakhir jelas mengandung penilaian.",
+      "C": "Tidak ada nada penolakan dalam bacaan.",
+      "D": "Tidak ada saran seperti itu."
+    },
+    "tags": [
+      "evaluasi",
+      "sikap-penulis"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p11",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pengrajin tenun di sebuah desa di Nusa Tenggara masih memakai pewarna dari akar mengkudu dan daun indigo. Satu helai kain memerlukan waktu enam bulan: memintal, mengikat motif, mencelup berulang kali, lalu menenun. Ketika kain serupa diproduksi mesin dengan pewarna sintetis, harganya seperlima dan waktunya dua hari. Yang tidak dapat ditiru mesin adalah gradasi warna yang muncul karena setiap celupan menyerap tidak merata — justru ketidaksempurnaan itulah yang dicari kolektor."
+    },
+    "stem": "Hubungan antara kalimat «harganya seperlima dan waktunya dua hari» dengan kalimat sesudahnya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "keunggulan dan batasannya"
+      },
+      {
+        "id": "B",
+        "text": "sebab dan akibat"
+      },
+      {
+        "id": "C",
+        "text": "pengulangan dengan kata lain"
+      },
+      {
+        "id": "D",
+        "text": "pernyataan dan contoh"
+      },
+      {
+        "id": "E",
+        "text": "pertanyaan dan jawaban"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat itu menyebutkan dua keunggulan mesin, sedangkan kalimat sesudahnya dibuka dengan «yang tidak dapat ditiru mesin» — yaitu batas dari keunggulan tersebut.\n\nPola seperti ini lazim dipakai penulis untuk menahan pembaca agar tidak menyimpulkan terlalu cepat dari satu sisi saja.",
+    "distractorRationale": {
+      "B": "Harga murah bukan sebab dari gradasi warna.",
+      "C": "Isinya berbeda, bukan pengulangan.",
+      "D": "Kalimat sesudahnya bukan contoh dari keunggulan itu.",
+      "E": "Tidak ada pertanyaan dalam bacaan."
+    },
+    "tags": [
+      "interpretasi",
+      "hubungan-kalimat"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p12",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sungai Citarum pernah disebut salah satu sungai paling tercemar di dunia. Program pemulihan yang dimulai 2018 menggabungkan penindakan terhadap pabrik pembuang limbah, pembangunan instalasi pengolahan, dan penataan permukiman bantaran. Indeks kualitas air naik dari kategori «tercemar berat» menjadi «tercemar sedang» dalam lima tahun. Namun peneliti mencatat bahwa perbaikan terbesar terjadi pada parameter yang paling mudah diukur dan ditindak, yaitu limbah cair pabrik, sedangkan pencemaran dari limbah rumah tangga dan pertanian nyaris tidak berubah."
+    },
+    "stem": "Ketiga unsur program pemulihan Citarum yang disebut bacaan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "penindakan pabrik, penghijauan, pengerukan sungai"
+      },
+      {
+        "id": "B",
+        "text": "penindakan pabrik, instalasi pengolahan, penataan permukiman"
+      },
+      {
+        "id": "C",
+        "text": "penyuluhan, pengerukan, pembangunan bendungan"
+      },
+      {
+        "id": "D",
+        "text": "instalasi pengolahan, pengerukan, penyuluhan petani"
+      },
+      {
+        "id": "E",
+        "text": "penataan permukiman, penghijauan, larangan pertanian"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Ketiganya disebut berurutan dalam satu kalimat: penindakan terhadap pabrik pembuang limbah, pembangunan instalasi pengolahan, dan penataan permukiman bantaran.\n\nPenghijauan, pengerukan, dan penyuluhan tidak disebut sama sekali.",
+    "distractorRationale": {
+      "A": "Memuat dua unsur yang tidak disebutkan.",
+      "C": "Seluruhnya tidak disebutkan.",
+      "D": "Memuat dua unsur yang tidak disebutkan.",
+      "E": "Memuat unsur yang tidak disebutkan dan larangan yang tidak ada."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p13",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pada 1998 sebuah tim memasang 12 alat perekam suara di hutan Kalimantan untuk menghitung populasi orangutan. Metode sebelumnya mengandalkan penghitungan sarang dari udara, yang memerlukan penerbangan mahal dan tidak dapat membedakan sarang lama dari sarang baru. Rekaman suara panggilan panjang jantan dewasa ternyata dapat dikenali satu per satu, seperti sidik jari. Dalam tiga tahun, biaya pemantauan turun 60 persen, tetapi cakupannya menyempit: alat perekam hanya menjangkau radius satu kilometer, sementara penerbangan mencakup ribuan hektare sekali jalan."
+    },
+    "stem": "Bila ingin memperkuat simpulan bahwa metode perekaman suara layak menggantikan penghitungan sarang, data tambahan yang paling diperlukan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "jumlah alat perekam yang rusak selama tiga tahun"
+      },
+      {
+        "id": "B",
+        "text": "daftar jenis burung yang ikut terekam"
+      },
+      {
+        "id": "C",
+        "text": "perbandingan hasil hitungan kedua metode pada wilayah yang sama"
+      },
+      {
+        "id": "D",
+        "text": "luas total hutan Kalimantan"
+      },
+      {
+        "id": "E",
+        "text": "biaya penerbangan per jam pada 1998"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bacaan sudah memberi data biaya dan cakupan, tetapi belum satu pun tentang ketepatan hasilnya. Yang menentukan kelayakan penggantian adalah apakah kedua metode menghasilkan angka populasi yang sebanding pada wilayah yang sama.\n\nTanpa data itu, penghematan biaya tidak dapat dinilai sepadan atau tidak.",
+    "distractorRationale": {
+      "A": "Berguna untuk keandalan alat, bukan untuk ketepatan hasil.",
+      "B": "Tidak berkaitan dengan penghitungan orangutan.",
+      "D": "Luas hutan tidak menjawab soal ketepatan.",
+      "E": "Menambah rincian biaya yang arahnya sudah diketahui."
+    },
+    "tags": [
+      "evaluasi",
+      "data-tambahan"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p14",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sungai Citarum pernah disebut salah satu sungai paling tercemar di dunia. Program pemulihan yang dimulai 2018 menggabungkan penindakan terhadap pabrik pembuang limbah, pembangunan instalasi pengolahan, dan penataan permukiman bantaran. Indeks kualitas air naik dari kategori «tercemar berat» menjadi «tercemar sedang» dalam lima tahun. Namun peneliti mencatat bahwa perbaikan terbesar terjadi pada parameter yang paling mudah diukur dan ditindak, yaitu limbah cair pabrik, sedangkan pencemaran dari limbah rumah tangga dan pertanian nyaris tidak berubah."
+    },
+    "stem": "Kalimat yang paling tepat merangkum keseluruhan bacaan tentang Citarum adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Indeks kualitas air bukan alat ukur yang dapat dipercaya"
+      },
+      {
+        "id": "B",
+        "text": "Pabrik adalah satu-satunya penyebab pencemaran Citarum"
+      },
+      {
+        "id": "C",
+        "text": "Penataan permukiman bantaran adalah unsur terpenting program"
+      },
+      {
+        "id": "D",
+        "text": "Program pemulihan Citarum berhasil pada sumber pencemaran yang paling mudah ditangani, sementara sumber lainnya belum tersentuh"
+      },
+      {
+        "id": "E",
+        "text": "Citarum kini bersih setelah lima tahun program pemulihan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Rangkuman harus memuat kedua sisi yang dibangun bacaan: indeks naik dari tercemar berat ke tercemar sedang, tetapi perbaikan terpusat pada limbah pabrik sementara limbah rumah tangga dan pertanian nyaris tidak berubah.\n\nPilihan lain hanya memuat satu sisi atau menambahkan klaim yang tidak ada.",
+    "distractorRationale": {
+      "A": "Bacaan memakai indeks itu tanpa mempersoalkannya.",
+      "B": "Bacaan justru menyebut sumber lain yang belum tersentuh.",
+      "C": "Tidak ada penilaian mana unsur terpenting.",
+      "E": "Bacaan menyebut kategorinya masih «tercemar sedang», bukan bersih."
+    },
+    "tags": [
+      "interpretasi",
+      "rangkuman"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p15",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu selalu menakar beras dengan gelas belimbing yang sama, gelas yang sudah retak di bibirnya sejak aku kelas dua. Ketika panen gagal, takarannya tetap satu gelas; yang berubah hanya jumlah air. «Biar kelihatan banyak,» katanya, sambil menutup panci lebih cepat dari biasanya. Aku baru mengerti puluhan tahun kemudian, ketika anakku sendiri bertanya mengapa buburnya lebih encer di akhir bulan."
+    },
+    "stem": "Benda yang dipakai ibu untuk menakar beras dalam kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "mangkuk kecil"
+      },
+      {
+        "id": "B",
+        "text": "sendok takar"
+      },
+      {
+        "id": "C",
+        "text": "kaleng bekas"
+      },
+      {
+        "id": "D",
+        "text": "panci"
+      },
+      {
+        "id": "E",
+        "text": "gelas belimbing yang retak"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat pertama menyebutkannya langsung: ibu menakar beras dengan gelas belimbing yang sama, yang sudah retak di bibirnya.\n\nPanci memang muncul dalam kutipan, tetapi sebagai tempat memasak, bukan alat menakar.",
+    "distractorRationale": {
+      "A": "Tidak disebutkan.",
+      "B": "Tidak disebutkan.",
+      "C": "Tidak disebutkan.",
+      "D": "Disebutkan sebagai tempat memasak, bukan penakar."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "sastra"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p16",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu selalu menakar beras dengan gelas belimbing yang sama, gelas yang sudah retak di bibirnya sejak aku kelas dua. Ketika panen gagal, takarannya tetap satu gelas; yang berubah hanya jumlah air. «Biar kelihatan banyak,» katanya, sambil menutup panci lebih cepat dari biasanya. Aku baru mengerti puluhan tahun kemudian, ketika anakku sendiri bertanya mengapa buburnya lebih encer di akhir bulan."
+    },
+    "stem": "Makna tersirat dari kalimat «yang berubah hanya jumlah air» adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Keluarga itu sedang menghemat karena beras berkurang"
+      },
+      {
+        "id": "B",
+        "text": "Ibu lupa takaran yang biasa dipakai"
+      },
+      {
+        "id": "C",
+        "text": "Anak-anak tidak menyukai nasi kering"
+      },
+      {
+        "id": "D",
+        "text": "Air di rumah itu berlimpah"
+      },
+      {
+        "id": "E",
+        "text": "Ibu ingin bubur terasa lebih segar"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Takaran beras tetap satu gelas sementara airnya bertambah, artinya jumlah beras tidak dapat ditambah. Keterangan «ketika panen gagal» menjelaskan sebabnya.\n\nKalimat ibu «biar kelihatan banyak» menegaskan bahwa yang diusahakan adalah kesan, bukan jumlah.",
+    "distractorRationale": {
+      "B": "Takarannya justru tetap sama, bukan terlupa.",
+      "C": "Selera anak tidak disinggung.",
+      "D": "Ketersediaan air bukan pokok kutipan.",
+      "E": "Kesegaran bukan yang dipersoalkan kutipan."
+    },
+    "tags": [
+      "interpretasi",
+      "sastra"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p17",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu selalu menakar beras dengan gelas belimbing yang sama, gelas yang sudah retak di bibirnya sejak aku kelas dua. Ketika panen gagal, takarannya tetap satu gelas; yang berubah hanya jumlah air. «Biar kelihatan banyak,» katanya, sambil menutup panci lebih cepat dari biasanya. Aku baru mengerti puluhan tahun kemudian, ketika anakku sendiri bertanya mengapa buburnya lebih encer di akhir bulan."
+    },
+    "stem": "Fungsi kalimat terakhir dalam kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Mengkritik cara ibu mengelola rumah tangga"
+      },
+      {
+        "id": "B",
+        "text": "Menunjukkan bahwa tokoh aku akhirnya memahami keadaan masa kecilnya"
+      },
+      {
+        "id": "C",
+        "text": "Membandingkan harga beras dulu dan sekarang"
+      },
+      {
+        "id": "D",
+        "text": "Memperkenalkan tokoh baru dalam cerita"
+      },
+      {
+        "id": "E",
+        "text": "Menjelaskan resep bubur yang benar"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat terakhir memindahkan cerita ke masa kini dan menempatkan tokoh aku pada posisi ibunya dulu. Pertanyaan anaknya sendiri itulah yang membuat ia mengerti apa yang dahulu tidak dipahaminya.\n\nItulah sebabnya kalimat itu ditutup dengan «puluhan tahun kemudian».",
+    "distractorRationale": {
+      "A": "Nadanya penuh pengertian, bukan celaan.",
+      "C": "Harga beras tidak disebut.",
+      "D": "Anak tokoh aku muncul sebagai penanda waktu, bukan tokoh yang dikembangkan.",
+      "E": "Tidak ada resep yang dijelaskan."
+    },
+    "tags": [
+      "evaluasi",
+      "sastra"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p18",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu selalu menakar beras dengan gelas belimbing yang sama, gelas yang sudah retak di bibirnya sejak aku kelas dua. Ketika panen gagal, takarannya tetap satu gelas; yang berubah hanya jumlah air. «Biar kelihatan banyak,» katanya, sambil menutup panci lebih cepat dari biasanya. Aku baru mengerti puluhan tahun kemudian, ketika anakku sendiri bertanya mengapa buburnya lebih encer di akhir bulan."
+    },
+    "stem": "Watak ibu yang tergambar dalam kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "keras dan mudah marah"
+      },
+      {
+        "id": "B",
+        "text": "boros dan ceroboh"
+      },
+      {
+        "id": "C",
+        "text": "penyabar dan berusaha menjaga perasaan anak-anaknya"
+      },
+      {
+        "id": "D",
+        "text": "penakut dan mudah menyerah"
+      },
+      {
+        "id": "E",
+        "text": "acuh terhadap keadaan keluarga"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Ibu tidak mengeluh dan tidak menjelaskan keadaan kepada anak-anaknya. Ia menutup panci lebih cepat dan berkata «biar kelihatan banyak» — usaha menjaga agar kekurangan itu tidak terasa.\n\nWatak seperti itu terbaca dari tindakannya, bukan dari pernyataan langsung pengarang.",
+    "distractorRationale": {
+      "A": "Tidak ada kemarahan dalam kutipan.",
+      "B": "Justru sangat berhemat.",
+      "D": "Ia tetap memasak dan mengusahakan jalan keluar.",
+      "E": "Justru sangat memperhatikan keadaan keluarganya."
+    },
+    "tags": [
+      "interpretasi",
+      "penokohan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p19",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Di tepi jalan itu tumbuh pohon asam yang sudah ada sebelum jalannya diaspal. Setiap kali pelebaran direncanakan, seseorang mengusulkan menebangnya, dan setiap kali pula rapat berakhir tanpa keputusan. Orang-orang menyebutnya pohon keramat, tetapi yang sesungguhnya menahan gergaji adalah bayangannya: tukang becak, pedagang es, dan anak-anak pulang sekolah sama-sama berteduh di bawahnya, dan tak seorang pun mau menjadi orang yang menghapus keteduhan itu dari peta."
+    },
+    "stem": "Menurut kutipan, pohon asam itu sudah ada sejak ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sejak sekolah dibangun"
+      },
+      {
+        "id": "B",
+        "text": "setelah pelebaran jalan pertama"
+      },
+      {
+        "id": "C",
+        "text": "sejak becak dilarang"
+      },
+      {
+        "id": "D",
+        "text": "sebelum jalannya diaspal"
+      },
+      {
+        "id": "E",
+        "text": "sejak pedagang es berjualan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat pertama menyebutnya langsung: pohon asam itu sudah ada sebelum jalannya diaspal.\n\nBecak, sekolah, dan pedagang es muncul kemudian sebagai orang-orang yang berteduh, bukan sebagai penanda waktu.",
+    "distractorRationale": {
+      "A": "Sekolah tidak dijadikan penanda waktu.",
+      "B": "Pelebaran justru berkali-kali diusulkan sesudahnya.",
+      "C": "Tidak ada larangan becak dalam kutipan.",
+      "E": "Pedagang es disebut sebagai orang yang berteduh."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "sastra"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p20",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Di tepi jalan itu tumbuh pohon asam yang sudah ada sebelum jalannya diaspal. Setiap kali pelebaran direncanakan, seseorang mengusulkan menebangnya, dan setiap kali pula rapat berakhir tanpa keputusan. Orang-orang menyebutnya pohon keramat, tetapi yang sesungguhnya menahan gergaji adalah bayangannya: tukang becak, pedagang es, dan anak-anak pulang sekolah sama-sama berteduh di bawahnya, dan tak seorang pun mau menjadi orang yang menghapus keteduhan itu dari peta."
+    },
+    "stem": "Maksud kalimat «yang sesungguhnya menahan gergaji adalah bayangannya» adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Bayangan pohon membuat gergaji sulit digunakan"
+      },
+      {
+        "id": "B",
+        "text": "Pohon itu benar-benar keramat sehingga tidak dapat ditebang"
+      },
+      {
+        "id": "C",
+        "text": "Gergaji yang tersedia tidak cukup tajam"
+      },
+      {
+        "id": "D",
+        "text": "Petugas takut bekerja di bawah pohon besar"
+      },
+      {
+        "id": "E",
+        "text": "Yang membuat pohon itu bertahan adalah keteduhan yang dinikmati banyak orang, bukan kepercayaan tentang keramat"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat itu membedakan alasan yang disebut orang dengan alasan yang sebenarnya bekerja. Orang menyebutnya keramat, tetapi yang benar-benar menahan penebangan adalah kepentingan bersama atas keteduhan itu.\n\n«Bayangan» di sini bermakna kiasan: naungan yang dinikmati tukang becak, pedagang es, dan anak sekolah.",
+    "distractorRationale": {
+      "A": "Membaca kata «bayangan» secara harfiah.",
+      "B": "Kutipan justru menyebut keramat sebagai sebutan orang, bukan sebab sesungguhnya.",
+      "C": "Ketajaman gergaji tidak dibahas.",
+      "D": "Rasa takut petugas tidak disinggung."
+    },
+    "tags": [
+      "interpretasi",
+      "majas"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p21",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Di tepi jalan itu tumbuh pohon asam yang sudah ada sebelum jalannya diaspal. Setiap kali pelebaran direncanakan, seseorang mengusulkan menebangnya, dan setiap kali pula rapat berakhir tanpa keputusan. Orang-orang menyebutnya pohon keramat, tetapi yang sesungguhnya menahan gergaji adalah bayangannya: tukang becak, pedagang es, dan anak-anak pulang sekolah sama-sama berteduh di bawahnya, dan tak seorang pun mau menjadi orang yang menghapus keteduhan itu dari peta."
+    },
+    "stem": "Amanat yang paling sesuai dengan kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sesuatu dapat bertahan karena manfaatnya dirasakan bersama"
+      },
+      {
+        "id": "B",
+        "text": "Pohon tua sebaiknya diganti dengan pohon muda"
+      },
+      {
+        "id": "C",
+        "text": "Rapat yang tidak menghasilkan keputusan adalah pemborosan"
+      },
+      {
+        "id": "D",
+        "text": "Kepercayaan tradisional harus dipertahankan apa pun risikonya"
+      },
+      {
+        "id": "E",
+        "text": "Pembangunan jalan selalu merugikan masyarakat"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kutipan menutup dengan alasan yang berlaku bagi semua orang: tak seorang pun mau menjadi orang yang menghapus keteduhan itu. Yang menahan penebangan adalah manfaat yang dirasakan bersama.\n\nAmanat yang lain menambahkan penilaian yang tidak dibangun oleh kutipan.",
+    "distractorRationale": {
+      "B": "Penggantian pohon tidak dibahas.",
+      "C": "Rapat tanpa keputusan digambarkan tanpa celaan.",
+      "D": "Kutipan justru menempatkan kepercayaan keramat sebagai bukan alasan sesungguhnya.",
+      "E": "Tidak ada penilaian menyeluruh tentang pembangunan jalan."
+    },
+    "tags": [
+      "evaluasi",
+      "amanat"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p22",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Di tepi jalan itu tumbuh pohon asam yang sudah ada sebelum jalannya diaspal. Setiap kali pelebaran direncanakan, seseorang mengusulkan menebangnya, dan setiap kali pula rapat berakhir tanpa keputusan. Orang-orang menyebutnya pohon keramat, tetapi yang sesungguhnya menahan gergaji adalah bayangannya: tukang becak, pedagang es, dan anak-anak pulang sekolah sama-sama berteduh di bawahnya, dan tak seorang pun mau menjadi orang yang menghapus keteduhan itu dari peta."
+    },
+    "stem": "Latar tempat yang tergambar dalam kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "halaman sekolah"
+      },
+      {
+        "id": "B",
+        "text": "tepi jalan yang sudah diaspal"
+      },
+      {
+        "id": "C",
+        "text": "ruang rapat"
+      },
+      {
+        "id": "D",
+        "text": "pasar desa"
+      },
+      {
+        "id": "E",
+        "text": "kebun asam"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kutipan dibuka dengan «di tepi jalan itu» dan menyebut bahwa jalannya sudah diaspal. Sekolah dan rapat memang disinggung, tetapi tidak sebagai tempat berlangsungnya peristiwa.",
+    "distractorRationale": {
+      "A": "Anak sekolah disebut sebagai orang yang lewat, bukan latar tempatnya.",
+      "C": "Rapat disebut sebagai peristiwa, bukan latar utama kutipan.",
+      "D": "Pasar tidak disebutkan.",
+      "E": "Hanya ada satu pohon asam, bukan kebun."
+    },
+    "tags": [
+      "latar",
+      "sastra"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p23",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Di tepi jalan itu tumbuh pohon asam yang sudah ada sebelum jalannya diaspal. Setiap kali pelebaran direncanakan, seseorang mengusulkan menebangnya, dan setiap kali pula rapat berakhir tanpa keputusan. Orang-orang menyebutnya pohon keramat, tetapi yang sesungguhnya menahan gergaji adalah bayangannya: tukang becak, pedagang es, dan anak-anak pulang sekolah sama-sama berteduh di bawahnya, dan tak seorang pun mau menjadi orang yang menghapus keteduhan itu dari peta."
+    },
+    "stem": "Orang-orang yang disebut berteduh di bawah pohon adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "hanya anak-anak sekolah"
+      },
+      {
+        "id": "B",
+        "text": "pedagang kain dan penjual buah"
+      },
+      {
+        "id": "C",
+        "text": "tukang becak, pedagang es, dan anak sekolah"
+      },
+      {
+        "id": "D",
+        "text": "peserta rapat"
+      },
+      {
+        "id": "E",
+        "text": "petugas pelebaran jalan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Ketiganya disebut berurutan dalam satu kalimat: tukang becak, pedagang es, dan anak-anak pulang sekolah sama-sama berteduh di bawahnya.",
+    "distractorRationale": {
+      "A": "Menyebut satu dari tiga kelompok saja.",
+      "B": "Keduanya tidak disebutkan.",
+      "D": "Peserta rapat tidak disebut berteduh.",
+      "E": "Petugas tidak disebut berteduh."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "sastra"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p24",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Di tepi jalan itu tumbuh pohon asam yang sudah ada sebelum jalannya diaspal. Setiap kali pelebaran direncanakan, seseorang mengusulkan menebangnya, dan setiap kali pula rapat berakhir tanpa keputusan. Orang-orang menyebutnya pohon keramat, tetapi yang sesungguhnya menahan gergaji adalah bayangannya: tukang becak, pedagang es, dan anak-anak pulang sekolah sama-sama berteduh di bawahnya, dan tak seorang pun mau menjadi orang yang menghapus keteduhan itu dari peta."
+    },
+    "stem": "Sikap pengarang terhadap usulan penebangan pohon dalam kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menyerahkan keputusan kepada pembaca tanpa memberi keterangan apa pun"
+      },
+      {
+        "id": "B",
+        "text": "menolak dengan keras dan menyebut pengusulnya serakah"
+      },
+      {
+        "id": "C",
+        "text": "menganggap usulan itu tidak pernah benar-benar diajukan"
+      },
+      {
+        "id": "D",
+        "text": "tidak menghakimi, tetapi memperlihatkan alasan yang membuat usulan itu selalu gagal"
+      },
+      {
+        "id": "E",
+        "text": "mendukung karena jalan perlu diperlebar"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Pengarang tidak menyebut pengusul sebagai pihak yang salah dan tidak pula menyetujui penebangan. Ia hanya menunjukkan mengapa usulan itu selalu berakhir tanpa keputusan: keteduhan itu dinikmati semua orang, dan tak seorang pun mau menjadi penghapusnya.\n\nSikap seperti itu memperlihatkan sebab tanpa menjatuhkan penilaian.",
+    "distractorRationale": {
+      "A": "Pengarang justru memberi keterangan yang jelas tentang sebabnya.",
+      "B": "Tidak ada celaan terhadap pengusul.",
+      "C": "Kutipan menyebut usulan itu berulang kali diajukan.",
+      "E": "Tidak ada dukungan terhadap penebangan."
+    },
+    "tags": [
+      "evaluasi",
+      "sikap-pengarang"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p25",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Di tepi jalan itu tumbuh pohon asam yang sudah ada sebelum jalannya diaspal. Setiap kali pelebaran direncanakan, seseorang mengusulkan menebangnya, dan setiap kali pula rapat berakhir tanpa keputusan. Orang-orang menyebutnya pohon keramat, tetapi yang sesungguhnya menahan gergaji adalah bayangannya: tukang becak, pedagang es, dan anak-anak pulang sekolah sama-sama berteduh di bawahnya, dan tak seorang pun mau menjadi orang yang menghapus keteduhan itu dari peta."
+    },
+    "stem": "Ungkapan «menghapus keteduhan itu dari peta» dalam kutipan bermakna ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "melarang orang berhenti di tepi jalan"
+      },
+      {
+        "id": "B",
+        "text": "menutup jalan bagi kendaraan"
+      },
+      {
+        "id": "C",
+        "text": "memindahkan pohon ke lokasi lain"
+      },
+      {
+        "id": "D",
+        "text": "mengubah gambar peta kota"
+      },
+      {
+        "id": "E",
+        "text": "menghilangkan tempat berteduh yang selama ini ada bagi banyak orang"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "«Peta» di sini bukan lembar gambar, melainkan kiasan untuk kehidupan sehari-hari orang banyak — tempat-tempat yang mereka andalkan. Menghapus keteduhan dari peta berarti meniadakan satu tempat berteduh yang selama ini ada.\n\nKekuatan kalimat itu justru pada kiasannya: menebang pohon digambarkan sebagai menghapus sesuatu dari kehidupan orang, bukan sekadar menghilangkan tanaman.",
+    "distractorRationale": {
+      "A": "Tidak ada larangan berhenti dalam kutipan.",
+      "B": "Penutupan jalan tidak dibahas.",
+      "C": "Pemindahan pohon tidak disebutkan.",
+      "D": "Membaca kata «peta» secara harfiah."
+    },
+    "tags": [
+      "interpretasi",
+      "majas"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p26",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu selalu menakar beras dengan gelas belimbing yang sama, gelas yang sudah retak di bibirnya sejak aku kelas dua. Ketika panen gagal, takarannya tetap satu gelas; yang berubah hanya jumlah air. «Biar kelihatan banyak,» katanya, sambil menutup panci lebih cepat dari biasanya. Aku baru mengerti puluhan tahun kemudian, ketika anakku sendiri bertanya mengapa buburnya lebih encer di akhir bulan."
+    },
+    "stem": "Sudut pandang yang dipakai dalam kutipan tentang ibu adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "orang pertama pelaku utama"
+      },
+      {
+        "id": "B",
+        "text": "campuran orang pertama dan ketiga"
+      },
+      {
+        "id": "C",
+        "text": "orang ketiga pengamat"
+      },
+      {
+        "id": "D",
+        "text": "orang pertama pelaku sampingan"
+      },
+      {
+        "id": "E",
+        "text": "orang ketiga serbatahu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Cerita dituturkan dengan kata ganti «aku», dan tokoh «aku» itulah yang mengalami sendiri peristiwanya — dari masa kecil sampai memiliki anak.\n\nSudut pandang seperti itu disebut orang pertama pelaku utama.",
+    "distractorRationale": {
+      "B": "Seluruh kutipan memakai satu sudut pandang.",
+      "C": "Penuturnya terlibat, bukan sekadar mengamati.",
+      "D": "Tokoh «aku» adalah pusat cerita, bukan tokoh sampingan.",
+      "E": "Tidak ada penutur di luar cerita yang mengetahui isi hati semua tokoh."
+    },
+    "tags": [
+      "sudut-pandang",
+      "sastra"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-p27",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu selalu menakar beras dengan gelas belimbing yang sama, gelas yang sudah retak di bibirnya sejak aku kelas dua. Ketika panen gagal, takarannya tetap satu gelas; yang berubah hanya jumlah air. «Biar kelihatan banyak,» katanya, sambil menutup panci lebih cepat dari biasanya. Aku baru mengerti puluhan tahun kemudian, ketika anakku sendiri bertanya mengapa buburnya lebih encer di akhir bulan.\n\nDi tepi jalan itu tumbuh pohon asam yang sudah ada sebelum jalannya diaspal. Setiap kali pelebaran direncanakan, seseorang mengusulkan menebangnya, dan setiap kali pula rapat berakhir tanpa keputusan. Orang-orang menyebutnya pohon keramat, tetapi yang sesungguhnya menahan gergaji adalah bayangannya: tukang becak, pedagang es, dan anak-anak pulang sekolah sama-sama berteduh di bawahnya, dan tak seorang pun mau menjadi orang yang menghapus keteduhan itu dari peta."
+    },
+    "stem": "Kesamaan tema kedua kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "hubungan ibu dan anak"
+      },
+      {
+        "id": "B",
+        "text": "hal sederhana yang menyimpan makna besar bagi orang banyak"
+      },
+      {
+        "id": "C",
+        "text": "kemiskinan yang tidak dapat diatasi"
+      },
+      {
+        "id": "D",
+        "text": "perubahan iklim dan dampaknya"
+      },
+      {
+        "id": "E",
+        "text": "kegagalan pembangunan di daerah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kutipan pertama memusatkan perhatian pada gelas belimbing retak dan jumlah air; kutipan kedua pada bayangan sebatang pohon asam. Keduanya benda dan hal sehari-hari yang tampak kecil, tetapi menyimpan makna besar bagi orang yang bergantung padanya.\n\nTema itulah yang menaungi kedua kutipan sekaligus, sedangkan hubungan ibu-anak hanya ada pada kutipan pertama.",
+    "distractorRationale": {
+      "A": "Hanya ada pada kutipan pertama.",
+      "C": "Kemiskinan hanya tersirat pada kutipan pertama.",
+      "D": "Tidak dibahas pada kutipan mana pun.",
+      "E": "Pembangunan hanya disinggung pada kutipan kedua."
+    },
+    "tags": [
+      "tema",
+      "perbandingan-teks"
+    ],
+    "estimatedTimeSec": 155,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  }
+]

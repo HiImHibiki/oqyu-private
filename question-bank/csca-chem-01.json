@@ -1,0 +1,1796 @@
+[
+  {
+    "id": "csca-chm-a01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "Chemical equations 化学方程式",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the coefficient of $\\text{O}_2$ when the equation $\\text{C}_2\\text{H}_6 + \\text{O}_2 \\rightarrow \\text{CO}_2 + \\text{H}_2\\text{O}$ is balanced with the smallest whole numbers?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$4$"
+      },
+      {
+        "id": "B",
+        "text": "$7$"
+      },
+      {
+        "id": "C",
+        "text": "$3$"
+      },
+      {
+        "id": "D",
+        "text": "$5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Balancing gives $2\\text{C}_2\\text{H}_6 + 7\\text{O}_2 \\rightarrow 4\\text{CO}_2 + 6\\text{H}_2\\text{O}$. The oxygen atoms on the right total $8 + 6 = 14$, requiring $7$ molecules of $\\text{O}_2$.",
+    "distractorRationale": {
+      "A": "Uses only the oxygen in carbon dioxide.",
+      "C": "Corresponds to a single $\\text{C}_2\\text{H}_6$ without clearing the fraction.",
+      "D": "Balances carbon and hydrogen but miscounts the oxygen in water."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "配平方程式 $\\text{C}_2\\text{H}_6 + \\text{O}_2 \\rightarrow \\text{CO}_2 + \\text{H}_2\\text{O}$（取最小整数系数）后，$\\text{O}_2$ 的系数为",
+        "explanation": "配平后为 $2\\text{C}_2\\text{H}_6 + 7\\text{O}_2 \\rightarrow 4\\text{CO}_2 + 6\\text{H}_2\\text{O}$。右侧氧原子共 $8 + 6 = 14$ 个，故需 $7$ 个 $\\text{O}_2$ 分子。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$4$"
+          },
+          {
+            "id": "B",
+            "text": "$7$"
+          },
+          {
+            "id": "C",
+            "text": "$3$"
+          },
+          {
+            "id": "D",
+            "text": "$5$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "balancing-equations",
+      "combustion"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-a02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "Solution pH and concentration 溶液pH与浓度",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the pH of a $0.01\\ \\text{mol/L}$ solution of hydrochloric acid?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$1$"
+      },
+      {
+        "id": "B",
+        "text": "$12$"
+      },
+      {
+        "id": "C",
+        "text": "$2$"
+      },
+      {
+        "id": "D",
+        "text": "$0.01$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Hydrochloric acid is strong and fully dissociates, so $[\\text{H}^{+}] = 0.01 = 10^{-2}\\ \\text{mol/L}$. Hence $\\text{pH} = -\\log(10^{-2}) = 2$.",
+    "distractorRationale": {
+      "A": "Corresponds to $0.1\\ \\text{mol/L}$, ten times more concentrated.",
+      "B": "Gives the pOH rather than the pH.",
+      "D": "Reports the concentration itself instead of its negative logarithm."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$0.01\\ \\text{mol/L}$ 盐酸溶液的 pH 为",
+        "explanation": "盐酸为强酸，完全电离，故 $[\\text{H}^{+}] = 0.01 = 10^{-2}\\ \\text{mol/L}$，$\\text{pH} = -\\log(10^{-2}) = 2$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$1$"
+          },
+          {
+            "id": "B",
+            "text": "$12$"
+          },
+          {
+            "id": "C",
+            "text": "$2$"
+          },
+          {
+            "id": "D",
+            "text": "$0.01$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "ph",
+      "strong-acid"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-a03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "Ideal gas law 理想气体定律",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "At standard temperature and pressure, what volume does $0.5\\ \\text{mol}$ of any ideal gas occupy? (Molar volume at STP $= 22.4\\ \\text{L/mol}$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$44.8\\ \\text{L}$"
+      },
+      {
+        "id": "B",
+        "text": "$22.4\\ \\text{L}$"
+      },
+      {
+        "id": "C",
+        "text": "$5.6\\ \\text{L}$"
+      },
+      {
+        "id": "D",
+        "text": "$11.2\\ \\text{L}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Volume $= n \\times V_m = 0.5 \\times 22.4 = 11.2\\ \\text{L}$. Avogadro's law means the identity of the gas is irrelevant.",
+    "distractorRationale": {
+      "A": "Corresponds to $2\\ \\text{mol}$.",
+      "B": "The molar volume itself, corresponding to $1\\ \\text{mol}$.",
+      "C": "Corresponds to $0.25\\ \\text{mol}$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "在标准状况下，$0.5\\ \\text{mol}$ 任意理想气体所占的体积为（标准状况摩尔体积为 $22.4\\ \\text{L/mol}$）",
+        "explanation": "体积 $= n \\times V_m = 0.5 \\times 22.4 = 11.2\\ \\text{L}$。由阿伏加德罗定律可知与气体种类无关。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$44.8\\ \\text{L}$"
+          },
+          {
+            "id": "B",
+            "text": "$22.4\\ \\text{L}$"
+          },
+          {
+            "id": "C",
+            "text": "$5.6\\ \\text{L}$"
+          },
+          {
+            "id": "D",
+            "text": "$11.2\\ \\text{L}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "molar-volume",
+      "stp"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-a04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "State changes 状态变化",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which process is described as sublimation?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Solid changing directly to gas"
+      },
+      {
+        "id": "B",
+        "text": "Solid changing to liquid"
+      },
+      {
+        "id": "C",
+        "text": "Gas changing to liquid"
+      },
+      {
+        "id": "D",
+        "text": "Liquid changing to gas"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Sublimation is the direct conversion from solid to gas without passing through the liquid state. Solid carbon dioxide and iodine both sublime at ordinary pressures.",
+    "distractorRationale": {
+      "B": "This is melting or fusion.",
+      "C": "This is condensation.",
+      "D": "This is vaporisation or boiling."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列哪个过程称为升华？",
+        "explanation": "升华是固态不经过液态直接变为气态的过程。干冰与碘在常压下都会升华。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "固态直接变为气态"
+          },
+          {
+            "id": "B",
+            "text": "固态变为液态"
+          },
+          {
+            "id": "C",
+            "text": "气态变为液态"
+          },
+          {
+            "id": "D",
+            "text": "液态变为气态"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "state-change",
+      "sublimation"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-a05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "Solution pH and concentration 溶液pH与浓度",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What mass of $\\text{NaOH}$ is needed to prepare $500\\ \\text{mL}$ of $0.2\\ \\text{mol/L}$ solution? ($M = 40\\ \\text{g/mol}$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.4\\ \\text{g}$"
+      },
+      {
+        "id": "B",
+        "text": "$4\\ \\text{g}$"
+      },
+      {
+        "id": "C",
+        "text": "$40\\ \\text{g}$"
+      },
+      {
+        "id": "D",
+        "text": "$8\\ \\text{g}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Moles $= c \\times V = 0.2 \\times 0.500 = 0.1\\ \\text{mol}$. Mass $= n \\times M = 0.1 \\times 40 = 4\\ \\text{g}$.",
+    "distractorRationale": {
+      "A": "Misplaces the decimal point by a factor of ten.",
+      "C": "Reports the molar mass rather than the required mass.",
+      "D": "Uses $500\\ \\text{mL}$ as $1\\ \\text{L}$, doubling the amount."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "配制 $500\\ \\text{mL}$ 浓度为 $0.2\\ \\text{mol/L}$ 的 $\\text{NaOH}$ 溶液，需 $\\text{NaOH}$ 的质量为（$M = 40\\ \\text{g/mol}$）",
+        "explanation": "物质的量 $n = c \\times V = 0.2 \\times 0.500 = 0.1\\ \\text{mol}$。质量 $m = n \\times M = 0.1 \\times 40 = 4\\ \\text{g}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.4\\ \\text{g}$"
+          },
+          {
+            "id": "B",
+            "text": "$4\\ \\text{g}$"
+          },
+          {
+            "id": "C",
+            "text": "$40\\ \\text{g}$"
+          },
+          {
+            "id": "D",
+            "text": "$8\\ \\text{g}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "solution-preparation",
+      "concentration"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-a06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "Chemical equations 化学方程式",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "How many moles of $\\text{CO}_2$ are produced when $0.3\\ \\text{mol}$ of $\\text{CaCO}_3$ decomposes completely?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.6\\ \\text{mol}$"
+      },
+      {
+        "id": "B",
+        "text": "$1\\ \\text{mol}$"
+      },
+      {
+        "id": "C",
+        "text": "$0.3\\ \\text{mol}$"
+      },
+      {
+        "id": "D",
+        "text": "$0.15\\ \\text{mol}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The decomposition is $\\text{CaCO}_3 \\rightarrow \\text{CaO} + \\text{CO}_2$, a $1:1$ ratio. So $0.3\\ \\text{mol}$ of carbonate gives $0.3\\ \\text{mol}$ of carbon dioxide.",
+    "distractorRationale": {
+      "A": "Applies a $1:2$ ratio, which the equation does not have.",
+      "B": "Ignores the given quantity entirely.",
+      "D": "Halves the amount, as if two carbonates were needed per gas molecule."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$0.3\\ \\text{mol}$ 的 $\\text{CaCO}_3$ 完全分解，生成 $\\text{CO}_2$ 的物质的量为",
+        "explanation": "分解反应为 $\\text{CaCO}_3 \\rightarrow \\text{CaO} + \\text{CO}_2$，比例为 $1:1$。故 $0.3\\ \\text{mol}$ 碳酸钙生成 $0.3\\ \\text{mol}$ 二氧化碳。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.6\\ \\text{mol}$"
+          },
+          {
+            "id": "B",
+            "text": "$1\\ \\text{mol}$"
+          },
+          {
+            "id": "C",
+            "text": "$0.3\\ \\text{mol}$"
+          },
+          {
+            "id": "D",
+            "text": "$0.15\\ \\text{mol}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "stoichiometry",
+      "decomposition"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-a07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "State changes 状态变化",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Why does the temperature of a pure substance stay constant while it melts, even though heat is still being supplied?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The substance stops absorbing heat once melting begins."
+      },
+      {
+        "id": "B",
+        "text": "The thermometer cannot detect changes during melting."
+      },
+      {
+        "id": "C",
+        "text": "Melting releases heat that cancels the heat supplied."
+      },
+      {
+        "id": "D",
+        "text": "The energy supplied is used to overcome forces between particles rather than to increase their kinetic energy."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Temperature reflects average kinetic energy. During melting, the incoming energy goes into potential energy — separating particles from their fixed positions — so the average kinetic energy, and hence the temperature, does not rise.",
+    "distractorRationale": {
+      "A": "Heat absorption continues throughout melting; that is why melting takes time.",
+      "B": "The thermometer reads correctly; the temperature genuinely does not change.",
+      "C": "Melting absorbs heat rather than releasing it."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "纯净物熔化过程中持续吸热，为何温度保持不变？",
+        "explanation": "温度反映的是分子平均动能。熔化过程中吸收的能量转化为势能，用于克服粒子间的作用力使其脱离固定位置，平均动能不变，故温度不变。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "开始熔化后物质不再吸热"
+          },
+          {
+            "id": "B",
+            "text": "温度计在熔化过程中无法测出变化"
+          },
+          {
+            "id": "C",
+            "text": "熔化放出的热恰好抵消吸收的热"
+          },
+          {
+            "id": "D",
+            "text": "吸收的能量用于克服粒子间作用力，而非增大动能"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "latent-heat",
+      "phase-change"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-a08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "Ideal gas law 理想气体定律",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Equal volumes of hydrogen and oxygen are compared at the same temperature and pressure. Which statement is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "They contain equal numbers of molecules, but the oxygen sample has greater mass."
+      },
+      {
+        "id": "B",
+        "text": "The hydrogen sample contains more molecules because its molecules are smaller."
+      },
+      {
+        "id": "C",
+        "text": "They contain equal numbers of molecules and have equal mass."
+      },
+      {
+        "id": "D",
+        "text": "The oxygen sample contains more molecules because it is denser."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Avogadro's law states that equal volumes of gases at the same temperature and pressure contain equal numbers of molecules. Since $\\text{O}_2$ has a molar mass of $32$ against $2$ for $\\text{H}_2$, the oxygen sample is heavier.",
+    "distractorRationale": {
+      "B": "Molecular size does not affect the count under Avogadro's law.",
+      "C": "Equal molecule counts do not imply equal masses when molar masses differ.",
+      "D": "Greater density here comes from heavier molecules, not from more of them."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "同温同压下比较等体积的氢气与氧气，正确的说法是",
+        "explanation": "由阿伏加德罗定律，同温同压下等体积气体含有相同数目的分子。$\\text{O}_2$ 的摩尔质量为 $32$，$\\text{H}_2$ 为 $2$，故氧气样品质量更大。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "分子数相同，但氧气质量更大"
+          },
+          {
+            "id": "B",
+            "text": "氢气分子数更多，因为分子更小"
+          },
+          {
+            "id": "C",
+            "text": "分子数相同，质量也相同"
+          },
+          {
+            "id": "D",
+            "text": "氧气分子数更多，因为密度更大"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "avogadros-law",
+      "molar-mass"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-a09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "Solution pH and concentration 溶液pH与浓度",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A solution of pH $3$ is diluted with water to ten times its original volume. What is the new pH?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$30$"
+      },
+      {
+        "id": "D",
+        "text": "$0.3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Tenfold dilution divides $[\\text{H}^{+}]$ by $10$, from $10^{-3}$ to $10^{-4}\\ \\text{mol/L}$, so the pH rises by one unit to $4$. Note that this reasoning applies to a strong acid; a weak acid would shift less because further dissociation partly compensates.",
+    "distractorRationale": {
+      "A": "Moves the pH in the wrong direction; dilution makes an acid less acidic.",
+      "C": "Multiplies the pH by ten, but pH is already logarithmic.",
+      "D": "Divides the pH by ten, again treating it as a linear scale."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "pH 为 $3$ 的溶液加水稀释至原体积的 $10$ 倍，稀释后的 pH 为",
+        "explanation": "稀释 $10$ 倍使 $[\\text{H}^{+}]$ 由 $10^{-3}$ 降为 $10^{-4}\\ \\text{mol/L}$，pH 上升一个单位变为 $4$。注意此结论适用于强酸；弱酸因会继续电离，pH 变化会小一些。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$2$"
+          },
+          {
+            "id": "B",
+            "text": "$4$"
+          },
+          {
+            "id": "C",
+            "text": "$30$"
+          },
+          {
+            "id": "D",
+            "text": "$0.3$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "dilution",
+      "ph-scale"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-a10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "Chemical equations 化学方程式",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which statement about a balanced chemical equation is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The number of molecules is the same on both sides."
+      },
+      {
+        "id": "B",
+        "text": "The total volume of gases is always conserved."
+      },
+      {
+        "id": "C",
+        "text": "The number of atoms of each element is the same on both sides."
+      },
+      {
+        "id": "D",
+        "text": "The number of chemical bonds is the same on both sides."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Balancing expresses conservation of mass through conservation of atoms: every element must appear in equal numbers on both sides. Molecules, bonds, and gas volumes may all change.",
+    "distractorRationale": {
+      "A": "Molecule counts often differ, as in $2\\text{H}_2 + \\text{O}_2 \\rightarrow 2\\text{H}_2\\text{O}$.",
+      "B": "Gas volume changes whenever the number of gas moles changes.",
+      "D": "Bonds are broken and formed, so their number generally changes."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "关于配平的化学方程式，下列说法正确的是",
+        "explanation": "配平体现质量守恒，具体表现为原子守恒：反应前后每种元素的原子数目必须相等。分子数、化学键数与气体体积都可能改变。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "反应前后分子数目相等"
+          },
+          {
+            "id": "B",
+            "text": "气体总体积一定守恒"
+          },
+          {
+            "id": "C",
+            "text": "反应前后各元素原子数目相等"
+          },
+          {
+            "id": "D",
+            "text": "反应前后化学键数目相等"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "conservation-of-mass",
+      "balancing"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-a11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "State changes 状态变化",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which arrangement lists the three states of matter in order of increasing particle separation?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Gas, liquid, solid"
+      },
+      {
+        "id": "B",
+        "text": "Liquid, solid, gas"
+      },
+      {
+        "id": "C",
+        "text": "Solid, gas, liquid"
+      },
+      {
+        "id": "D",
+        "text": "Solid, liquid, gas"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Particles in a solid are held in fixed positions and are closest together; in a liquid they touch but can slide past one another; in a gas they are far apart with negligible attraction between them.",
+    "distractorRationale": {
+      "A": "Reverses the correct order.",
+      "B": "Places liquids below solids, but solids are the most closely packed.",
+      "C": "Places gases below liquids, but gases have by far the greatest separation."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列哪一顺序按粒子间距由小到大排列三种物态？",
+        "explanation": "固体中粒子位置固定、间距最小；液体中粒子相互接触但可以滑动；气体中粒子相距很远，相互作用可忽略。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "气体、液体、固体"
+          },
+          {
+            "id": "B",
+            "text": "液体、固体、气体"
+          },
+          {
+            "id": "C",
+            "text": "固体、气体、液体"
+          },
+          {
+            "id": "D",
+            "text": "固体、液体、气体"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "states-of-matter",
+      "particle-model"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Acids, bases and salts 酸碱盐",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which product always forms when an acid reacts with a metal carbonate?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Carbon dioxide"
+      },
+      {
+        "id": "B",
+        "text": "Hydrogen"
+      },
+      {
+        "id": "C",
+        "text": "Oxygen"
+      },
+      {
+        "id": "D",
+        "text": "Ammonia"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Acid plus carbonate gives salt, water and carbon dioxide. The effervescence of $\\text{CO}_2$, which turns limewater milky, is the standard test for a carbonate.",
+    "distractorRationale": {
+      "B": "Hydrogen forms when an acid reacts with a reactive metal, not with a carbonate.",
+      "C": "Oxygen is not a product of this reaction type.",
+      "D": "Ammonia forms when an ammonium salt reacts with an alkali."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "酸与金属碳酸盐反应时一定生成的产物是",
+        "explanation": "酸与碳酸盐反应生成盐、水和二氧化碳。产生的气泡能使澄清石灰水变浑浊，这是检验碳酸盐的常用方法。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "二氧化碳"
+          },
+          {
+            "id": "B",
+            "text": "氢气"
+          },
+          {
+            "id": "C",
+            "text": "氧气"
+          },
+          {
+            "id": "D",
+            "text": "氨气"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "acid-carbonate",
+      "gas-test"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Redox reactions 氧化还原反应",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In the reaction $\\text{Zn} + \\text{CuSO}_4 \\rightarrow \\text{ZnSO}_4 + \\text{Cu}$, which species is oxidised?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{Cu}^{2+}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{Zn}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{SO}_4^{2-}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{Cu}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Zinc goes from oxidation number $0$ to $+2$, losing electrons, which is oxidation. Copper ions gain those electrons and are reduced.",
+    "distractorRationale": {
+      "A": "Copper ions gain electrons, so they are reduced rather than oxidised.",
+      "C": "The sulfate ion is a spectator and keeps its oxidation numbers unchanged.",
+      "D": "Copper metal is the product of reduction, not the species oxidised."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "在反应 $\\text{Zn} + \\text{CuSO}_4 \\rightarrow \\text{ZnSO}_4 + \\text{Cu}$ 中，被氧化的是",
+        "explanation": "锌的化合价由 $0$ 升至 $+2$，失去电子，被氧化。铜离子得到电子，被还原。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\text{Cu}^{2+}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\text{Zn}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\text{SO}_4^{2-}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\text{Cu}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "redox",
+      "oxidation"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Metals 金属",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which metal will displace copper from copper(II) sulfate solution?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Silver"
+      },
+      {
+        "id": "B",
+        "text": "Platinum"
+      },
+      {
+        "id": "C",
+        "text": "Iron"
+      },
+      {
+        "id": "D",
+        "text": "Gold"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "A metal displaces another only if it is more reactive. Iron sits above copper in the activity series, so it displaces copper; silver, gold and platinum all sit below.",
+    "distractorRationale": {
+      "A": "Silver is less reactive than copper.",
+      "B": "Platinum is also less reactive than copper.",
+      "D": "Gold is among the least reactive metals."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列金属中能从硫酸铜溶液中置换出铜的是",
+        "explanation": "只有活动性更强的金属才能发生置换。铁在金属活动性顺序中位于铜之前，故能置换出铜；银、金、铂都排在铜之后。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "银"
+          },
+          {
+            "id": "B",
+            "text": "铂"
+          },
+          {
+            "id": "C",
+            "text": "铁"
+          },
+          {
+            "id": "D",
+            "text": "金"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "displacement",
+      "activity-series"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Hydrocarbons 烃",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which reagent distinguishes ethene from ethane?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Limewater"
+      },
+      {
+        "id": "B",
+        "text": "Sodium hydroxide solution"
+      },
+      {
+        "id": "C",
+        "text": "Sodium chloride solution"
+      },
+      {
+        "id": "D",
+        "text": "Bromine water"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Ethene contains a carbon–carbon double bond and decolourises bromine water through addition. Ethane, being saturated, produces no change under the same conditions.",
+    "distractorRationale": {
+      "A": "Limewater tests for carbon dioxide, which neither gas is.",
+      "B": "Neither hydrocarbon reacts with sodium hydroxide.",
+      "C": "Sodium chloride solution reacts with neither."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列试剂中能区分乙烯与乙烷的是",
+        "explanation": "乙烯含碳碳双键，能与溴水发生加成反应而使其褪色；乙烷为饱和烃，在相同条件下无明显变化。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "澄清石灰水"
+          },
+          {
+            "id": "B",
+            "text": "氢氧化钠溶液"
+          },
+          {
+            "id": "C",
+            "text": "氯化钠溶液"
+          },
+          {
+            "id": "D",
+            "text": "溴水"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "alkene-test",
+      "bromine-water"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Ion reactions 离子反应",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which pair of ions can coexist in the same solution without reacting?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{Na}^{+}$ and $\\text{NO}_3^{-}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{Ag}^{+}$ and $\\text{Cl}^{-}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{Ba}^{2+}$ and $\\text{SO}_4^{2-}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{H}^{+}$ and $\\text{OH}^{-}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Ions can coexist only if they form no precipitate, gas or weak electrolyte. All sodium salts and all nitrates are soluble, so this pair remains in solution.",
+    "distractorRationale": {
+      "B": "Forms the insoluble white precipitate silver chloride.",
+      "C": "Forms the insoluble white precipitate barium sulfate.",
+      "D": "Combine to form water, a weak electrolyte."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列各组离子中能在同一溶液中大量共存的是",
+        "explanation": "离子能大量共存的条件是彼此不生成沉淀、气体或弱电解质。钠盐与硝酸盐均可溶，故该组离子可以共存。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\text{Na}^{+}$ 与 $\\text{NO}_3^{-}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\text{Ag}^{+}$ 与 $\\text{Cl}^{-}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\text{Ba}^{2+}$ 与 $\\text{SO}_4^{2-}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\text{H}^{+}$ 与 $\\text{OH}^{-}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "ion-coexistence",
+      "solubility"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Acids, bases and salts 酸碱盐",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An aqueous solution of sodium carbonate is",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "alkaline, because sodium reacts with water"
+      },
+      {
+        "id": "B",
+        "text": "alkaline, because the carbonate ion hydrolyses"
+      },
+      {
+        "id": "C",
+        "text": "neutral, because it is a salt"
+      },
+      {
+        "id": "D",
+        "text": "acidic, because it is a salt of a weak acid"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Sodium carbonate comes from a strong base and a weak acid. The carbonate ion takes a proton from water, releasing hydroxide ions and making the solution alkaline.",
+    "distractorRationale": {
+      "A": "Sodium ions in solution are already hydrated and do not react with water.",
+      "C": "Only salts of a strong acid and a strong base are neutral.",
+      "D": "Correct premise, wrong conclusion: a weak-acid salt with a strong base gives an alkaline solution."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "碳酸钠水溶液显",
+        "explanation": "碳酸钠是强碱弱酸盐。碳酸根离子会结合水电离出的氢离子，使溶液中氢氧根离子增多，故显碱性。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "碱性，因为钠与水反应"
+          },
+          {
+            "id": "B",
+            "text": "碱性，因为碳酸根发生水解"
+          },
+          {
+            "id": "C",
+            "text": "中性，因为它是盐"
+          },
+          {
+            "id": "D",
+            "text": "酸性，因为它是弱酸的盐"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "salt-hydrolysis",
+      "acidity"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Redox reactions 氧化还原反应",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the oxidation number of manganese in $\\text{KMnO}_4$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$+4$"
+      },
+      {
+        "id": "B",
+        "text": "$+2$"
+      },
+      {
+        "id": "C",
+        "text": "$+7$"
+      },
+      {
+        "id": "D",
+        "text": "$+6$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Potassium contributes $+1$ and each oxygen $-2$. For a neutral compound, $+1 + x + 4(-2) = 0$, so $x = +7$.",
+    "distractorRationale": {
+      "A": "The value in $\\text{MnO}_2$.",
+      "B": "The value in $\\text{Mn}^{2+}$, the reduced form in acid solution.",
+      "D": "The value in the manganate ion $\\text{MnO}_4^{2-}$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$\\text{KMnO}_4$ 中锰元素的化合价为",
+        "explanation": "钾为 $+1$，每个氧为 $-2$。化合物整体为电中性，故 $+1 + x + 4 \\times (-2) = 0$，得 $x = +7$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$+4$"
+          },
+          {
+            "id": "B",
+            "text": "$+2$"
+          },
+          {
+            "id": "C",
+            "text": "$+7$"
+          },
+          {
+            "id": "D",
+            "text": "$+6$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "oxidation-number",
+      "permanganate"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Metals 金属",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Why does aluminium resist corrosion despite being a reactive metal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Aluminium does not react with oxygen at all."
+      },
+      {
+        "id": "B",
+        "text": "Aluminium is denser than iron and so less permeable."
+      },
+      {
+        "id": "C",
+        "text": "Aluminium is always coated with paint during manufacture."
+      },
+      {
+        "id": "D",
+        "text": "A thin, adherent oxide layer forms and protects the metal beneath."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Aluminium reacts readily with oxygen, but the resulting $\\text{Al}_2\\text{O}_3$ is dense and sticks tightly to the surface, sealing the metal from further attack. Iron's oxide flakes away instead, which is why iron keeps rusting.",
+    "distractorRationale": {
+      "A": "Aluminium is highly reactive with oxygen; that is precisely how the protective layer forms.",
+      "B": "Aluminium is less dense than iron, and density is not the mechanism.",
+      "C": "The protection is chemical and occurs naturally, without any coating."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "铝是活泼金属，为什么却具有较好的抗腐蚀性？",
+        "explanation": "铝极易与氧气反应，但生成的 $\\text{Al}_2\\text{O}_3$ 致密且牢固地附着在表面，隔绝了内部金属。铁的氧化物则疏松易脱落，因此铁会持续生锈。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "铝根本不与氧气反应"
+          },
+          {
+            "id": "B",
+            "text": "铝的密度比铁大，不易渗透"
+          },
+          {
+            "id": "C",
+            "text": "铝制品出厂时都涂有油漆"
+          },
+          {
+            "id": "D",
+            "text": "表面生成致密的氧化膜，保护了内部金属"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "passivation",
+      "corrosion"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Hydrocarbons 烃",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Methane reacts with chlorine in the presence of light. What type of reaction is this?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Substitution"
+      },
+      {
+        "id": "B",
+        "text": "Addition"
+      },
+      {
+        "id": "C",
+        "text": "Polymerisation"
+      },
+      {
+        "id": "D",
+        "text": "Elimination"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Methane is saturated, so it has no double bond to add across. Chlorine atoms replace hydrogen atoms one at a time, releasing hydrogen chloride — a substitution reaction.",
+    "distractorRationale": {
+      "B": "Addition requires a multiple bond, which methane does not have.",
+      "C": "Polymerisation joins many monomers, typically unsaturated ones.",
+      "D": "Elimination removes a small molecule to create a double bond, which does not occur here."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "甲烷在光照条件下与氯气反应，属于哪类反应？",
+        "explanation": "甲烷是饱和烃，没有可供加成的双键。氯原子逐个取代氢原子并放出氯化氢，属于取代反应。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "取代反应"
+          },
+          {
+            "id": "B",
+            "text": "加成反应"
+          },
+          {
+            "id": "C",
+            "text": "聚合反应"
+          },
+          {
+            "id": "D",
+            "text": "消去反应"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "substitution",
+      "alkanes"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Ion reactions 离子反应",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the ionic equation for the reaction between dilute hydrochloric acid and sodium hydroxide solution?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{Na}^{+} + \\text{Cl}^{-} \\rightarrow \\text{NaCl}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{H}^{+} + \\text{OH}^{-} \\rightarrow \\text{H}_2\\text{O}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{HCl} + \\text{NaOH} \\rightarrow \\text{NaCl} + \\text{H}_2\\text{O}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{H}^{+} + \\text{Cl}^{-} \\rightarrow \\text{HCl}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "An ionic equation shows only the species that change. Sodium and chloride ions remain in solution as spectators, so the reaction reduces to hydrogen ions combining with hydroxide ions to form water.",
+    "distractorRationale": {
+      "A": "Sodium chloride is fully dissociated in solution and does not form as a product.",
+      "C": "This is the full molecular equation, not the ionic one.",
+      "D": "Hydrochloric acid is strong and stays dissociated; it does not re-form."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "稀盐酸与氢氧化钠溶液反应的离子方程式是",
+        "explanation": "离子方程式只写出真正发生变化的粒子。钠离子与氯离子留在溶液中，属于旁观离子，故反应实质为氢离子与氢氧根离子结合生成水。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\text{Na}^{+} + \\text{Cl}^{-} \\rightarrow \\text{NaCl}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\text{H}^{+} + \\text{OH}^{-} \\rightarrow \\text{H}_2\\text{O}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\text{HCl} + \\text{NaOH} \\rightarrow \\text{NaCl} + \\text{H}_2\\text{O}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\text{H}^{+} + \\text{Cl}^{-} \\rightarrow \\text{HCl}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "ionic-equation",
+      "neutralisation"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Acids, bases and salts 酸碱盐",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Equal volumes of $0.1\\ \\text{mol/L}$ hydrochloric acid and $0.1\\ \\text{mol/L}$ ethanoic acid are compared. Which statement is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "They have the same pH and neutralise equal amounts of base."
+      },
+      {
+        "id": "B",
+        "text": "Hydrochloric acid neutralises more base because it is stronger."
+      },
+      {
+        "id": "C",
+        "text": "They neutralise equal amounts of sodium hydroxide, but hydrochloric acid has the lower pH."
+      },
+      {
+        "id": "D",
+        "text": "Ethanoic acid has the lower pH because it dissociates in stages."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Both acids supply one mole of replaceable hydrogen per mole, so equal concentrations neutralise equal amounts of base. But hydrochloric acid is fully dissociated while ethanoic acid is not, so its $[\\text{H}^{+}]$ is higher and its pH lower.\n\nThis is the standard distinction between acid *strength*, which affects pH, and acid *concentration*, which determines neutralising capacity.",
+    "distractorRationale": {
+      "A": "The pH values differ, because dissociation differs.",
+      "B": "Confuses strength with capacity; the total available hydrogen is the same.",
+      "D": "Ethanoic acid is weaker, so its pH is higher, and it is monoprotic."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "取等体积的 $0.1\\ \\text{mol/L}$ 盐酸与 $0.1\\ \\text{mol/L}$ 醋酸进行比较，正确的说法是",
+        "explanation": "两者每摩尔都提供一个可电离的氢，故等浓度时中和碱的量相同。但盐酸完全电离而醋酸部分电离，故盐酸的 $[\\text{H}^{+}]$ 更大、pH 更小。\n\n这正是酸的**强弱**（影响 pH）与酸的**浓度**（决定中和能力）之间的区别。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "pH 相同，中和碱的量也相同"
+          },
+          {
+            "id": "B",
+            "text": "盐酸更强，故能中和更多的碱"
+          },
+          {
+            "id": "C",
+            "text": "中和氢氧化钠的量相同，但盐酸的 pH 更小"
+          },
+          {
+            "id": "D",
+            "text": "醋酸的 pH 更小，因为它分步电离"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "strong-vs-weak-acid",
+      "neutralising-capacity"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Metals 金属",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which gas is produced when zinc reacts with dilute sulfuric acid?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Oxygen"
+      },
+      {
+        "id": "B",
+        "text": "Sulfur dioxide"
+      },
+      {
+        "id": "C",
+        "text": "Carbon dioxide"
+      },
+      {
+        "id": "D",
+        "text": "Hydrogen"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "A reactive metal displaces hydrogen from a dilute acid: $\\text{Zn} + \\text{H}_2\\text{SO}_4 \\rightarrow \\text{ZnSO}_4 + \\text{H}_2$. The gas burns with a squeaky pop, the standard test for hydrogen.",
+    "distractorRationale": {
+      "A": "Oxygen is not a product of a metal–acid reaction.",
+      "B": "Sulfur dioxide forms with *concentrated* sulfuric acid, not dilute.",
+      "C": "Carbon dioxide requires a carbonate, which is not present."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "锌与稀硫酸反应产生的气体是",
+        "explanation": "活泼金属能置换稀酸中的氢：$\\text{Zn} + \\text{H}_2\\text{SO}_4 \\rightarrow \\text{ZnSO}_4 + \\text{H}_2$。该气体点燃时发出爆鸣声，是检验氢气的常用方法。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "氧气"
+          },
+          {
+            "id": "B",
+            "text": "二氧化硫"
+          },
+          {
+            "id": "C",
+            "text": "二氧化碳"
+          },
+          {
+            "id": "D",
+            "text": "氢气"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "metal-acid",
+      "hydrogen-test"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

@@ -1,0 +1,1283 @@
+[
+  {
+    "id": "csca-zst-b01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "用托盘天平称量固体药品时，应先调节天平平衡，再在左盘放置药品、右盘放置砝码。砝码需用镊子夹取，不得用手直接接触。称量易潮解或有腐蚀性的药品时，必须放在玻璃器皿中进行，不可直接置于托盘上。称量完毕后，应将砝码放回盒中，游码归零。"
+    },
+    "stem": "根据短文，称量氢氧化钠固体时正确的做法是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "称量后将砝码留在盘中"
+      },
+      {
+        "id": "B",
+        "text": "用手直接夹取砝码"
+      },
+      {
+        "id": "C",
+        "text": "放在玻璃器皿中称量"
+      },
+      {
+        "id": "D",
+        "text": "直接放在左盘的纸片上"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "氢氧化钠既易潮解又有腐蚀性，短文明确规定这类药品「必须放在玻璃器皿中进行，不可直接置于托盘上」。",
+    "distractorRationale": {
+      "A": "短文要求称量完毕后将砝码放回盒中。",
+      "B": "短文规定砝码须用镊子夹取。",
+      "D": "纸片不能防止腐蚀，短文要求使用玻璃器皿。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what is the correct way to weigh solid sodium hydroxide?",
+        "explanation": "Sodium hydroxide is both 易潮解 (deliquescent) and 有腐蚀性 (corrosive). The passage states that such substances 必须放在玻璃器皿中进行 — they must be weighed in a glass vessel and never placed directly on the pan."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "reading-comprehension"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "过滤操作应遵循「一贴二低三靠」的要求。「一贴」指滤纸紧贴漏斗内壁，中间不留气泡；「二低」指滤纸边缘低于漏斗口，液面低于滤纸边缘；「三靠」指盛液烧杯口紧靠玻璃棒，玻璃棒下端轻靠三层滤纸处，漏斗颈末端紧靠承接烧杯内壁。"
+    },
+    "stem": "根据短文，玻璃棒下端应轻靠在哪个位置？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "滤纸一层的一侧"
+      },
+      {
+        "id": "B",
+        "text": "漏斗的内壁"
+      },
+      {
+        "id": "C",
+        "text": "承接烧杯的内壁"
+      },
+      {
+        "id": "D",
+        "text": "滤纸三层的一侧"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文在「三靠」中明确写道「玻璃棒下端轻靠三层滤纸处」。滤纸对折后一侧为三层、一侧为一层，靠在三层处可避免戳破滤纸。",
+    "distractorRationale": {
+      "A": "一层处最薄，容易被玻璃棒戳破。",
+      "B": "紧靠漏斗内壁的是盛液烧杯口，不是玻璃棒。",
+      "C": "紧靠承接烧杯内壁的是漏斗颈末端。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, where should the lower end of the glass rod rest?",
+        "explanation": "The passage's 三靠 rule states 玻璃棒下端轻靠三层滤纸处 — the rod rests against the three-layer side of the filter paper.\n\nFolded filter paper has three layers on one side and one on the other; resting the rod on the thicker side prevents it from puncturing the paper."
+      }
+    },
+    "tags": [
+      "filtration",
+      "detail-retrieval"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "超导体是指在某一温度以下电阻突然降为零的材料。这一温度称为临界温度。早期发现的超导体临界温度极低，需用液氦冷却，成本高昂。二十世纪八十年代发现的铜氧化物超导体，临界温度已高于液氮的沸点，而液氮的价格仅为液氦的百分之一左右。这一差别使超导技术从实验室走向了实际应用。"
+    },
+    "stem": "根据短文，铜氧化物超导体的重要意义在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "可用价格低廉的液氮冷却，大幅降低了使用成本"
+      },
+      {
+        "id": "B",
+        "text": "在常温下即可实现超导"
+      },
+      {
+        "id": "C",
+        "text": "电阻比早期超导体更低"
+      },
+      {
+        "id": "D",
+        "text": "不需要任何冷却设备"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文的因果链是：临界温度高于液氮沸点 → 可用液氮代替液氦 → 液氮价格仅为液氦的百分之一 → 成本大降 → 走向实际应用。意义正在于成本，而非温度本身。",
+    "distractorRationale": {
+      "B": "短文只说临界温度高于液氮沸点（约 $-196\\ ^\\circ\\text{C}$），远低于常温。",
+      "C": "所有超导体的电阻都是零，无法再低。",
+      "D": "仍需冷却，只是冷却剂更便宜。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why were copper-oxide superconductors significant?",
+        "explanation": "The passage builds a causal chain: the critical temperature rose above the boiling point of liquid nitrogen → nitrogen could replace helium → nitrogen costs about one hundredth as much → the cost fell sharply → practical application became possible.\n\nThe significance is economic, not thermal. Note that liquid nitrogen boils at roughly $-196\\ ^\\circ\\text{C}$, so this is still far from room temperature."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "causal-chain"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "植物在光合作用中吸收二氧化碳，在呼吸作用中释放二氧化碳。白天光照充足时，光合作用强于呼吸作用，植物表现为净吸收；夜间没有光照，只进行呼吸作用，表现为净释放。因此，判断一片森林是否为「碳汇」，不能只看白天的测量数据，必须计算全年的净收支。"
+    },
+    "stem": "根据短文，只测量白天数据会导致什么问题？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "低估森林的固碳能力"
+      },
+      {
+        "id": "B",
+        "text": "高估森林的固碳能力"
+      },
+      {
+        "id": "C",
+        "text": "无法测出二氧化碳浓度"
+      },
+      {
+        "id": "D",
+        "text": "混淆光合作用与呼吸作用"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "白天是净吸收，夜间是净释放。只取白天数据等于漏掉了释放的那一部分，得出的固碳量必然偏大，即高估。",
+    "distractorRationale": {
+      "A": "方向恰好相反：遗漏的是释放而非吸收。",
+      "C": "白天同样可以测出浓度，问题在于数据不完整。",
+      "D": "短文已把两个过程区分得很清楚，不存在混淆。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what problem arises from measuring only daytime data?",
+        "explanation": "Daytime is net absorption; night is net release. Taking only daytime figures omits the release side entirely, so the calculated carbon uptake comes out too large — an overestimate.\n\nThe passage's point is that 碳汇 (carbon sink) status requires a full-year net balance, not a partial sample."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "inference"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "figure": {
+      "kind": "table",
+      "alt": "表格列出四种金属的密度、熔点与导电性排序，用于比较材料性质。",
+      "caption": "四种金属的部分物理性质",
+      "headers": [
+        "金属",
+        "密度 (g/cm³)",
+        "熔点 (°C)",
+        "导电性排序"
+      ],
+      "rows": [
+        [
+          "铝",
+          "2.70",
+          "660",
+          "3"
+        ],
+        [
+          "铜",
+          "8.96",
+          "1085",
+          "2"
+        ],
+        [
+          "银",
+          "10.49",
+          "962",
+          "1"
+        ],
+        [
+          "铁",
+          "7.87",
+          "1538",
+          "4"
+        ]
+      ]
+    },
+    "stem": "根据表中数据，下列说法正确的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "熔点越高的金属密度越大"
+      },
+      {
+        "id": "B",
+        "text": "密度越大的金属导电性越好"
+      },
+      {
+        "id": "C",
+        "text": "导电性最好的金属并非熔点最高的金属"
+      },
+      {
+        "id": "D",
+        "text": "铝的导电性在四者中最差"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "导电性排第一的是银（熔点 $962\\ ^\\circ\\text{C}$），而熔点最高的是铁（$1538\\ ^\\circ\\text{C}$），二者并非同一种金属，故 A 正确。",
+    "distractorRationale": {
+      "A": "铁熔点最高但密度小于银，反例成立。",
+      "B": "铁的密度（$7.87$）小于铜（$8.96$），但导电性排第四，与铜的第二不符。",
+      "D": "排序第四的是铁，铝排第三。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which statement is supported by the data in the table?",
+        "explanation": "Silver ranks first for conductivity but melts at $962\\ ^\\circ\\text{C}$, while iron has the highest melting point at $1538\\ ^\\circ\\text{C}$. They are different metals, so the statement that the best conductor is not the highest-melting metal holds.\n\nThe other options each fail against a specific row: iron is less dense than copper yet conducts worse, and iron melts highest yet is less dense than silver."
+      }
+    },
+    "tags": [
+      "table-reading",
+      "material-properties"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "figure": {
+      "kind": "line_chart",
+      "alt": "折线图显示某物质在不同温度下的溶解度，随温度升高而持续增大。",
+      "caption": "某固体物质的溶解度曲线（每 100 g 水）",
+      "categories": [
+        "0 °C",
+        "20 °C",
+        "40 °C",
+        "60 °C",
+        "80 °C"
+      ],
+      "series": [
+        {
+          "name": "溶解度 (g)",
+          "values": [
+            13,
+            32,
+            64,
+            110,
+            169
+          ]
+        }
+      ]
+    },
+    "stem": "根据溶解度曲线，$60\\ ^\\circ\\text{C}$ 时将 $150\\ \\text{g}$ 该物质加入 $100\\ \\text{g}$ 水中，充分搅拌后",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "有 $150\\ \\text{g}$ 固体不能溶解"
+      },
+      {
+        "id": "B",
+        "text": "全部溶解，溶液恰好饱和"
+      },
+      {
+        "id": "C",
+        "text": "全部溶解，溶液未饱和"
+      },
+      {
+        "id": "D",
+        "text": "有 $40\\ \\text{g}$ 固体不能溶解"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$60\\ ^\\circ\\text{C}$ 时溶解度为每 $100\\ \\text{g}$ 水溶解 $110\\ \\text{g}$。加入 $150\\ \\text{g}$ 超过了这一上限，故只能溶解 $110\\ \\text{g}$，剩余 $150 - 110 = 40\\ \\text{g}$ 以固体形式存在。",
+    "distractorRationale": {
+      "A": "水仍能溶解 $110\\ \\text{g}$，并非完全不溶。",
+      "B": "恰好饱和需要加入 $110\\ \\text{g}$，而非 $150\\ \\text{g}$。",
+      "C": "$150\\ \\text{g}$ 已超过该温度的溶解度，不可能全部溶解。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Using the solubility curve, what happens when $150\\ \\text{g}$ of the solid is stirred into $100\\ \\text{g}$ of water at $60\\ ^\\circ\\text{C}$?",
+        "explanation": "At $60\\ ^\\circ\\text{C}$ the solubility is $110\\ \\text{g}$ per $100\\ \\text{g}$ of water. Adding $150\\ \\text{g}$ exceeds that limit, so only $110\\ \\text{g}$ dissolves and $150 - 110 = 40\\ \\text{g}$ remains as undissolved solid.\n\nThe solution is saturated, with excess solid at the bottom."
+      }
+    },
+    "tags": [
+      "solubility-curve",
+      "graph-reading"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "北斗卫星导航系统通过测量信号从卫星传到接收机所需的时间来确定距离。由于电磁波速度极快，微小的时间误差就会造成很大的距离偏差：时间差一微秒，距离便相差约三百米。因此卫星上装有原子钟，其误差在数百万年内不超过一秒。"
+    },
+    "stem": "根据短文，卫星必须使用原子钟的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "电磁波速度极快，极小的计时误差会被放大为很大的距离误差"
+      },
+      {
+        "id": "B",
+        "text": "普通时钟在太空中无法工作"
+      },
+      {
+        "id": "C",
+        "text": "原子钟可以直接测量距离"
+      },
+      {
+        "id": "D",
+        "text": "原子钟的体积比普通时钟小"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文给出了具体量级：一微秒的时间差对应约三百米的距离偏差。正因为这种放大关系，计时精度必须极高，才需要原子钟。",
+    "distractorRationale": {
+      "B": "短文未提及普通时钟在太空中的工作状况。",
+      "C": "原子钟测量的是时间，距离要由时间乘以速度算出。",
+      "D": "体积问题完全没有涉及。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why must the satellites carry atomic clocks?",
+        "explanation": "The passage gives the magnitude directly: an error of one microsecond corresponds to a distance error of about three hundred metres. Because the signal travels so fast, tiny timing errors are amplified into large positional errors, which is why extreme timing precision is required."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "cause"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "使用酒精灯时应注意：点燃前须检查灯内酒精量，不得少于容积的四分之一，也不得超过三分之二；点燃时必须用火柴，严禁用另一盏燃着的酒精灯对火；熄灭时应用灯帽盖灭，不可用嘴吹灭。"
+    },
+    "stem": "根据短文，熄灭酒精灯的正确方法是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "用嘴吹灭"
+      },
+      {
+        "id": "B",
+        "text": "用灯帽盖灭"
+      },
+      {
+        "id": "C",
+        "text": "用水浇灭"
+      },
+      {
+        "id": "D",
+        "text": "等待酒精自然烧尽"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文最后一句直接规定「熄灭时应用灯帽盖灭，不可用嘴吹灭」。盖灭是隔绝氧气，吹灭则可能把火焰压入灯内引燃酒精蒸气。",
+    "distractorRationale": {
+      "A": "短文明确禁止这种做法。",
+      "C": "短文未提及，且水会污染酒精。",
+      "D": "浪费酒精且存在长时间明火的危险。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, how should an alcohol lamp be extinguished?",
+        "explanation": "The final sentence states it directly: 用灯帽盖灭，不可用嘴吹灭 — cover it with the cap, never blow it out.\n\nCapping cuts off the oxygen supply. Blowing risks pushing the flame down into the lamp and igniting the vapour inside."
+      }
+    },
+    "tags": [
+      "lab-safety",
+      "detail-retrieval"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "抗生素通过抑制细菌的某些生命过程发挥作用。在一个细菌群体中，个别细菌可能天生带有抵抗该抗生素的基因。使用抗生素后，敏感的细菌死亡，带有抗性基因的细菌却存活下来并大量繁殖。因此，抗生素并没有「制造」抗药性，它只是把原本罕见的抗药个体筛选了出来。"
+    },
+    "stem": "根据短文，作者强调「抗生素并没有制造抗药性」，其用意是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "说明抗生素对细菌完全无效"
+      },
+      {
+        "id": "B",
+        "text": "证明抗药性细菌不会大量繁殖"
+      },
+      {
+        "id": "C",
+        "text": "澄清抗药性的来源是原有的变异，而抗生素起的是筛选作用"
+      },
+      {
+        "id": "D",
+        "text": "建议停止使用一切抗生素"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文先说明抗性基因是「天生」就存在的，再说明抗生素杀死敏感个体而使抗性个体得以繁殖。最后一句正是要区分两件事：变异的来源与选择的作用。",
+    "distractorRationale": {
+      "A": "短文说敏感细菌会死亡，说明抗生素确实有效。",
+      "B": "短文恰恰说抗药个体会「大量繁殖」。",
+      "D": "短文只解释机理，并未提出使用建议。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why does the author stress that antibiotics do not *create* resistance?",
+        "explanation": "The passage establishes that resistance genes are 天生 — already present in a few individuals — and that the antibiotic kills the susceptible bacteria, leaving the resistant ones to multiply.\n\nThe closing sentence separates two things that are easily confused: the *origin* of the variation (pre-existing mutation) and the *role* of the antibiotic (selection). This is the standard distinction between mutation and natural selection."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "author-purpose"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "figure": {
+      "kind": "bar_chart",
+      "alt": "柱状图比较五种交通方式每人每公里的二氧化碳排放量，飞机最高，铁路最低。",
+      "caption": "每人每公里二氧化碳排放量（克）",
+      "categories": [
+        "高铁",
+        "公交车",
+        "小汽车",
+        "飞机",
+        "自行车"
+      ],
+      "series": [
+        {
+          "name": "排放量",
+          "values": [
+            30,
+            68,
+            165,
+            250,
+            0
+          ]
+        }
+      ]
+    },
+    "stem": "根据柱状图，小汽车的每人每公里排放量约为高铁的多少倍？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2.4$ 倍"
+      },
+      {
+        "id": "B",
+        "text": "$135$ 倍"
+      },
+      {
+        "id": "C",
+        "text": "$1.5$ 倍"
+      },
+      {
+        "id": "D",
+        "text": "$5.5$ 倍"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "小汽车为 $165$ 克，高铁为 $30$ 克，两者之比为 $\\dfrac{165}{30} = 5.5$。",
+    "distractorRationale": {
+      "A": "这是小汽车与公交车之比（$165 \\div 68$）。",
+      "B": "这是两者之差（$165 - 30$），不是倍数。",
+      "C": "这是飞机与小汽车之比（$250 \\div 165$）。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "From the bar chart, roughly how many times greater is the per-passenger-kilometre emission of a car than that of high-speed rail?",
+        "explanation": "The car emits $165\\ \\text{g}$ and high-speed rail $30\\ \\text{g}$, so the ratio is $\\dfrac{165}{30} = 5.5$.\n\nWatch for the distractor $135$, which is the *difference* rather than the ratio."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "ratio"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "海水淡化主要有两种途径。蒸馏法通过加热使水变为蒸汽再冷凝，能耗较高，但对水质要求低。反渗透法用高压将海水压过半透膜，只让水分子通过，能耗较低，但膜易被杂质堵塞，需要预处理。选择哪种方法，取决于当地能源价格与海水的洁净程度。"
+    },
+    "stem": "根据短文，在能源昂贵而海水较为洁净的地区，更适合采用",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "反渗透法"
+      },
+      {
+        "id": "B",
+        "text": "蒸馏法"
+      },
+      {
+        "id": "C",
+        "text": "两种方法效果相同"
+      },
+      {
+        "id": "D",
+        "text": "两种方法都不适合"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "反渗透法的优点是能耗低，缺点是怕杂质。题目设定的条件恰好是能源昂贵（放大了低能耗的优势）且海水洁净（消除了堵塞的顾虑），因此反渗透法更合适。",
+    "distractorRationale": {
+      "B": "蒸馏法能耗高，在能源昂贵的地区最不划算。",
+      "C": "短文明确指出两法各有优劣，需按条件选择。",
+      "D": "题设条件正好适合其中一种方法。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, which method suits a region where energy is expensive and the seawater is relatively clean?",
+        "explanation": "Reverse osmosis (反渗透法) has low energy consumption but is vulnerable to fouling by impurities. The stated conditions maximise its advantage (expensive energy) and remove its drawback (clean water), so it is the better fit.\n\nThis question tests whether the reader can apply a stated trade-off to a new situation rather than simply retrieve a fact."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "application"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "配制一定物质的量浓度的溶液时，须先用天平称取所需固体，在烧杯中用适量蒸馏水溶解并冷却至室温，再转移至容量瓶中。转移后应用蒸馏水洗涤烧杯和玻璃棒两至三次，洗涤液一并注入容量瓶。最后加水至刻度线，塞紧瓶塞反复颠倒摇匀。"
+    },
+    "stem": "根据短文，若省略洗涤烧杯这一步，所配溶液的浓度将",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "不受影响"
+      },
+      {
+        "id": "B",
+        "text": "偏高，因为溶剂减少了"
+      },
+      {
+        "id": "C",
+        "text": "偏低，因为部分溶质残留在烧杯中"
+      },
+      {
+        "id": "D",
+        "text": "无法判断"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "洗涤的目的是把附着在烧杯和玻璃棒上的溶质全部转入容量瓶。省略这一步，溶质的实际量少于称取量，而最终体积仍加到刻度线，故浓度偏低。",
+    "distractorRationale": {
+      "A": "短文特意要求洗涤两至三次，说明这一步影响结果。",
+      "B": "体积由刻度线决定，不会因省略洗涤而减少。",
+      "D": "偏差方向是确定的：溶质减少而体积不变，浓度必然偏低。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what happens to the concentration if the rinsing step is omitted?",
+        "explanation": "Rinsing transfers the solute clinging to the beaker and glass rod into the volumetric flask. Skipping it means less solute reaches the flask, while the volume is still made up to the graduation mark — so the concentration comes out too low.\n\nThe direction of the error is determinate, which is why 无法判断 is wrong."
+      }
+    },
+    "tags": [
+      "solution-preparation",
+      "error-analysis"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "figure": {
+      "kind": "table",
+      "alt": "表格记录同一实验在四次重复中测得的数值，其中一次明显偏离其余三次。",
+      "caption": "四次重复测量的结果",
+      "headers": [
+        "次数",
+        "测量值 (mL)"
+      ],
+      "rows": [
+        [
+          "第一次",
+          "24.8"
+        ],
+        [
+          "第二次",
+          "24.9"
+        ],
+        [
+          "第三次",
+          "31.6"
+        ],
+        [
+          "第四次",
+          "24.7"
+        ]
+      ]
+    },
+    "stem": "处理上述数据时，最恰当的做法是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "取最小值作为结果"
+      },
+      {
+        "id": "B",
+        "text": "检查第三次测量是否存在操作失误，必要时舍弃后再取平均"
+      },
+      {
+        "id": "C",
+        "text": "取最大值作为结果"
+      },
+      {
+        "id": "D",
+        "text": "直接把四次结果取平均值"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "第一、二、四次结果集中在 $24.7$ 至 $24.9$ 之间，第三次的 $31.6$ 明显偏离，属于可疑值。规范做法是先追查原因，确认为操作失误后再舍弃，而不是不加分析地纳入平均。",
+    "distractorRationale": {
+      "A": "取最小值同样是没有依据的挑选。",
+      "C": "取最大值等于让最可疑的数据决定结论。",
+      "D": "把明显异常的数据纳入平均会把结果拉高约 $1.7\\ \\text{mL}$。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the most appropriate way to handle this data?",
+        "explanation": "Readings one, two and four cluster between $24.7$ and $24.9$, while the third, $31.6$, lies far outside — a suspect value.\n\nProper practice is to investigate the cause first and discard the reading only if an operational error is confirmed. Averaging it in without analysis would pull the result up by about $1.7\\ \\text{mL}$."
+      }
+    },
+    "tags": [
+      "outliers",
+      "data-handling"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "锂离子电池充电时，锂离子从正极脱出，经电解液进入负极的石墨层间；放电时过程相反。由于锂离子只是在两极之间往返「摇椅」式移动，并未生成新的物质，因此这类电池可以反复充放电。然而每次循环都会有极少量锂离子被固定在电极表面而无法返回，这正是电池容量随使用次数缓慢下降的原因。"
+    },
+    "stem": "根据短文，锂离子电池容量下降的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "电解液在充电时被完全消耗"
+      },
+      {
+        "id": "B",
+        "text": "石墨负极在放电时溶解"
+      },
+      {
+        "id": "C",
+        "text": "每次循环都有少量锂离子被固定而无法参与往返"
+      },
+      {
+        "id": "D",
+        "text": "锂离子在循环中转变为其他元素"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文最后一句直接指出：每次循环都有极少量锂离子被固定在电极表面而无法返回，可用的锂离子逐渐减少，容量因而缓慢下降。",
+    "distractorRationale": {
+      "A": "短文未提及电解液被消耗。",
+      "B": "短文说锂离子进入石墨层间，并未说石墨溶解。",
+      "D": "元素不会在电池反应中改变种类，短文也强调「并未生成新的物质」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why does a lithium-ion battery lose capacity over time?",
+        "explanation": "The final sentence states it directly: in every cycle a very small number of lithium ions become fixed at the electrode surface and cannot return. The pool of mobile ions shrinks gradually, and capacity falls with it.\n\nNote the passage's 摇椅 (rocking-chair) metaphor: the ions shuttle back and forth without new substances forming, which is what makes the battery rechargeable in the first place."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "mechanism"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "读取量筒中液体体积时，量筒应放置在水平桌面上，视线要与量筒内液体凹液面的最低处保持水平。若俯视读数，读得的数值会偏大于实际值；若仰视读数，读得的数值会偏小于实际值。"
+    },
+    "stem": "根据短文，若量取 $50\\ \\text{mL}$ 液体时采用仰视读数，实际量取的体积将",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "大于 $50\\ \\text{mL}$"
+      },
+      {
+        "id": "B",
+        "text": "小于 $50\\ \\text{mL}$"
+      },
+      {
+        "id": "C",
+        "text": "恰好等于 $50\\ \\text{mL}$"
+      },
+      {
+        "id": "D",
+        "text": "无法确定"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "仰视时读出的数值偏小于实际值。操作者看到刻度显示 $50$ 便停止，而实际液体已超过 $50\\ \\text{mL}$，故量取的体积偏大。\n\n关键在于分清「读数偏小」与「实际量偏大」——两者方向相反。",
+    "distractorRationale": {
+      "B": "把读数的偏差方向直接当作实际体积的偏差方向。",
+      "C": "只有视线水平时才能准确量取。",
+      "D": "短文已给出仰视的偏差方向，可以确定推出。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, if you read from below the meniscus while measuring out $50\\ \\text{mL}$, how much liquid do you actually obtain?",
+        "explanation": "Reading from below (仰视) gives a value *smaller* than the true one. The operator stops when the scale appears to read $50$, but the liquid has already passed $50\\ \\text{mL}$ — so the volume actually collected is greater.\n\nThe trap is confusing \"the reading is too low\" with \"the amount is too low\". The two run in opposite directions."
+      }
+    },
+    "tags": [
+      "measurement",
+      "parallax-error"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "三维打印按照数字模型逐层堆积材料成形，与传统的切削加工正好相反：后者从整块材料上去除多余部分，前者则从无到有添加材料。因此三维打印在制造内部结构复杂的零件时几乎没有额外成本，而切削加工则受刀具能否进入的限制。"
+    },
+    "stem": "根据短文，三维打印相对于切削加工的优势主要体现在",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "加工速度总是更快"
+      },
+      {
+        "id": "B",
+        "text": "所用材料的价格更低"
+      },
+      {
+        "id": "C",
+        "text": "大批量生产简单零件"
+      },
+      {
+        "id": "D",
+        "text": "制造内部结构复杂的零件"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文的对比落在一点上：切削受刀具能否进入的限制，而逐层堆积不受此限，故复杂内部结构「几乎没有额外成本」。这正是三维打印的相对优势。",
+    "distractorRationale": {
+      "A": "短文没有比较速度，「总是」的说法也过于绝对。",
+      "B": "材料价格没有被提及。",
+      "C": "短文未比较批量生产的效率。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, where does 3D printing hold an advantage over machining?",
+        "explanation": "The passage turns on one contrast: machining is limited by whether a cutting tool can physically reach the material, whereas layer-by-layer addition faces no such constraint. Complex internal geometry therefore costs almost nothing extra to produce.\n\nSpeed, material cost and batch production are never compared in the passage."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "comparison"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "figure": {
+      "kind": "table",
+      "alt": "表格显示三种催化剂条件下同一反应在不同时间点的转化率。",
+      "caption": "不同催化剂下的转化率（%）",
+      "headers": [
+        "时间 (min)",
+        "催化剂甲",
+        "催化剂乙",
+        "无催化剂"
+      ],
+      "rows": [
+        [
+          "10",
+          "42",
+          "18",
+          "5"
+        ],
+        [
+          "30",
+          "78",
+          "51",
+          "14"
+        ],
+        [
+          "60",
+          "91",
+          "88",
+          "27"
+        ],
+        [
+          "120",
+          "92",
+          "92",
+          "48"
+        ]
+      ]
+    },
+    "stem": "根据表中数据，下列判断正确的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "甲、乙最终达到的转化率相同，但甲达到平衡所需时间更短"
+      },
+      {
+        "id": "B",
+        "text": "无催化剂时反应不会发生"
+      },
+      {
+        "id": "C",
+        "text": "甲能使最终转化率高于乙"
+      },
+      {
+        "id": "D",
+        "text": "乙在任何时刻的转化率都高于甲"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "$120$ 分钟时甲、乙的转化率同为 $92\\%$，说明二者最终结果相同；但在 $10$ 与 $30$ 分钟时甲远高于乙，说明甲反应更快。这正体现催化剂只改变速率、不改变平衡位置。",
+    "distractorRationale": {
+      "B": "无催化剂时 $120$ 分钟仍达到 $48\\%$，反应确实在进行。",
+      "C": "最终两者都是 $92\\%$，并无差别。",
+      "D": "各时刻甲的数值都高于乙，方向说反了。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which conclusion does the table support?",
+        "explanation": "At $120$ minutes both catalysts reach $92\\%$, so their final conversions are identical; but at $10$ and $30$ minutes catalyst 甲 is far ahead, so it reaches that endpoint sooner.\n\nThis is exactly the textbook property of a catalyst: it changes the rate, not the position of equilibrium. The uncatalysed column confirms the reaction proceeds regardless, just far more slowly."
+      }
+    },
+    "tags": [
+      "table-reading",
+      "catalysis"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-b18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "疫苗的作用原理是让免疫系统先「认识」病原体的特征，从而在真正感染时能够迅速反应。传统灭活疫苗使用被杀死的病原体，安全但制备周期长；信使核糖核酸疫苗则直接提供制造病原体特征蛋白的指令，让人体细胞自行合成，因而研发和量产的速度快得多。"
+    },
+    "stem": "根据短文，信使核糖核酸疫苗速度更快的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "它使用的病原体毒性更弱"
+      },
+      {
+        "id": "B",
+        "text": "不必培养和灭活病原体，只需提供合成指令"
+      },
+      {
+        "id": "C",
+        "text": "它不需要经过临床试验"
+      },
+      {
+        "id": "D",
+        "text": "它可以直接杀死体内的病原体"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文把两类疫苗并列比较：灭活疫苗需要培养并杀死病原体，周期长；信使核糖核酸疫苗只提供指令，由人体细胞自行合成蛋白，省去了培养环节，因此更快。",
+    "distractorRationale": {
+      "A": "这类疫苗根本不含病原体，谈不上毒性强弱。",
+      "C": "短文没有提到临床试验，任何疫苗都必须经过。",
+      "D": "疫苗的作用是训练免疫系统，而非直接杀灭病原体。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why can mRNA vaccines be developed faster?",
+        "explanation": "The passage sets the two types side by side: an inactivated vaccine requires culturing the pathogen and then killing it, which takes time. An mRNA vaccine supplies only the instructions, letting the body's own cells make the protein — removing the culturing step entirely.\n\nNote that speed here refers to development and manufacture, not to any shortcut in clinical testing."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "comparison"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

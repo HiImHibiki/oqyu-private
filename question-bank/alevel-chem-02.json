@@ -1,0 +1,2202 @@
+[
+  {
+    "id": "al-chm-f01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which species has the same number of electrons as an atom of neon?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{Na}^{+}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{Mg}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{K}^{+}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{Cl}^{-}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Neon has 10 electrons. Sodium has 11; losing one gives $\\text{Na}^{+}$ with 10, so the two are isoelectronic.",
+    "distractorRationale": {
+      "B": "Magnesium atoms have 12 electrons.",
+      "C": "Potassium has 19 and loses one, giving 18.",
+      "D": "Chlorine has 17 electrons and gains one, giving 18 — the same as argon."
+    },
+    "tags": [
+      "isoelectronic",
+      "atomic-structure"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The first four ionisation energies of an element, in $\\text{kJ mol}^{-1}$, are 590, 1150, 4940 and 6480. In which group of the Periodic Table does the element lie?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Group 14"
+      },
+      {
+        "id": "B",
+        "text": "Group 2"
+      },
+      {
+        "id": "C",
+        "text": "Group 1"
+      },
+      {
+        "id": "D",
+        "text": "Group 13"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The large jump comes between the second and third values, from 1150 to 4940. That means two electrons are removed comparatively easily and the third comes from an inner shell — the signature of Group 2.",
+    "distractorRationale": {
+      "A": "Group 14 would show it after the fourth.",
+      "C": "A Group 1 element would show the jump after the first ionisation energy.",
+      "D": "Group 13 would show it after the third."
+    },
+    "tags": [
+      "ionisation-energy",
+      "group-identification"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What mass of calcium oxide is produced when $25.0\\ \\text{g}$ of calcium carbonate decomposes completely? ($M_r$: $\\text{CaCO}_3 = 100.0$, $\\text{CaO} = 56.0$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$11.0\\ \\text{g}$"
+      },
+      {
+        "id": "B",
+        "text": "$25.0\\ \\text{g}$"
+      },
+      {
+        "id": "C",
+        "text": "$14.0\\ \\text{g}$"
+      },
+      {
+        "id": "D",
+        "text": "$44.6\\ \\text{g}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Moles of $\\text{CaCO}_3 = \\dfrac{25.0}{100.0} = 0.250$. The equation $\\text{CaCO}_3 \\rightarrow \\text{CaO} + \\text{CO}_2$ is $1:1$, so $0.250\\ \\text{mol}$ of $\\text{CaO}$ forms. Its mass is $0.250 \\times 56.0 = 14.0\\ \\text{g}$.",
+    "distractorRationale": {
+      "A": "Gives the mass of carbon dioxide released instead of the oxide.",
+      "B": "Assumes mass is unchanged, ignoring the gas that leaves.",
+      "D": "Divides by the wrong relative mass."
+    },
+    "tags": [
+      "stoichiometry",
+      "thermal-decomposition"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f04",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "$0.100\\ \\text{mol}$ of a hydrocarbon burns completely to give $0.400\\ \\text{mol}$ of carbon dioxide and $0.500\\ \\text{mol}$ of water. What is its molecular formula?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{C}_4\\text{H}_5$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{C}_8\\text{H}_{10}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{C}_2\\text{H}_5$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{C}_4\\text{H}_{10}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Each mole of hydrocarbon gives $\\dfrac{0.400}{0.100} = 4$ moles of $\\text{CO}_2$, so there are 4 carbon atoms. It gives $\\dfrac{0.500}{0.100} = 5$ moles of water, and each water carries 2 hydrogens, so there are 10 hydrogen atoms. The formula is $\\text{C}_4\\text{H}_{10}$.",
+    "distractorRationale": {
+      "A": "Counts moles of water as hydrogen atoms, forgetting the factor of 2.",
+      "B": "Doubles the carbon count without cause.",
+      "C": "Reduces to an empirical formula that is not even consistent with the carbon count."
+    },
+    "tags": [
+      "combustion-analysis",
+      "molecular-formula"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f05",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which process is always endothermic?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Breaking a covalent bond"
+      },
+      {
+        "id": "B",
+        "text": "Forming a covalent bond"
+      },
+      {
+        "id": "C",
+        "text": "Condensing a vapour"
+      },
+      {
+        "id": "D",
+        "text": "Neutralising an acid with an alkali"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Bond breaking always requires energy to overcome the attraction holding the atoms together, so it is endothermic without exception. Whether a whole reaction is exothermic depends on the balance between bonds broken and bonds formed.",
+    "distractorRationale": {
+      "B": "Bond formation releases energy and is always exothermic.",
+      "C": "Condensation releases energy as the particles come together.",
+      "D": "Neutralisation is exothermic, typically about $-57\\ \\text{kJ mol}^{-1}$."
+    },
+    "tags": [
+      "bond-enthalpy",
+      "energetics"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f06",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Using bond energies $\\text{H–H} = 436$, $\\text{Cl–Cl} = 242$ and $\\text{H–Cl} = 431\\ \\text{kJ mol}^{-1}$, what is $\\Delta H$ for $\\text{H}_2 + \\text{Cl}_2 \\rightarrow 2\\text{HCl}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-247\\ \\text{kJ mol}^{-1}$"
+      },
+      {
+        "id": "B",
+        "text": "$-184\\ \\text{kJ mol}^{-1}$"
+      },
+      {
+        "id": "C",
+        "text": "$-862\\ \\text{kJ mol}^{-1}$"
+      },
+      {
+        "id": "D",
+        "text": "$+184\\ \\text{kJ mol}^{-1}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "$\\Delta H$ = bonds broken − bonds formed. Broken: $436 + 242 = 678$. Formed: $2 \\times 431 = 862$. So $\\Delta H = 678 - 862 = -184\\ \\text{kJ mol}^{-1}$.",
+    "distractorRationale": {
+      "A": "Uses only one $\\text{H–Cl}$ bond instead of two.",
+      "C": "Reports the bonds formed alone, without subtracting those broken.",
+      "D": "Reverses the subtraction, giving formed minus broken."
+    },
+    "tags": [
+      "bond-energies",
+      "enthalpy-change"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f07",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "For $\\text{N}_2\\text{O}_4(g) \\rightleftharpoons 2\\text{NO}_2(g)$, what is the expression for $K_c$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{[\\text{N}_2\\text{O}_4]}{[\\text{NO}_2]^2}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{2[\\text{NO}_2]}{[\\text{N}_2\\text{O}_4]}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{[\\text{NO}_2]^2}{[\\text{N}_2\\text{O}_4]}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{[\\text{NO}_2]}{[\\text{N}_2\\text{O}_4]}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "$K_c$ places products over reactants, each raised to the power of its stoichiometric coefficient. With a coefficient of 2 on $\\text{NO}_2$, the numerator is $[\\text{NO}_2]^2$.",
+    "distractorRationale": {
+      "A": "Inverts the expression, putting reactants on top.",
+      "B": "Multiplies by the coefficient instead of using it as a power.",
+      "D": "Omits the power entirely."
+    },
+    "tags": [
+      "equilibrium-constant",
+      "kc"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f08",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A buffer contains $0.20\\ \\text{mol dm}^{-3}$ of a weak acid ($K_a = 2.0 \\times 10^{-5}$) and $0.20\\ \\text{mol dm}^{-3}$ of its sodium salt. What is the pH?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2.7$"
+      },
+      {
+        "id": "B",
+        "text": "$5.0$"
+      },
+      {
+        "id": "C",
+        "text": "$9.3$"
+      },
+      {
+        "id": "D",
+        "text": "$4.7$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "For a buffer, $[\\text{H}^{+}] = K_a \\times \\dfrac{[\\text{acid}]}{[\\text{salt}]}$. The two concentrations are equal, so $[\\text{H}^{+}] = K_a = 2.0 \\times 10^{-5}$ and $\\text{pH} = -\\log(2.0 \\times 10^{-5}) = 4.7$.\n\nWhen acid and salt are equal, pH equals $\\text{p}K_a$ — worth recognising without calculation.",
+    "distractorRationale": {
+      "A": "Treats the acid as fully dissociated at $0.20\\ \\text{mol dm}^{-3}$.",
+      "B": "Rounds $\\text{p}K_a$ to the exponent alone, ignoring the factor of 2.",
+      "C": "Gives the pOH rather than the pH."
+    },
+    "tags": [
+      "buffer",
+      "ph-calculation"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f09",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Kinetics",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Why does a small rise in temperature produce a large increase in reaction rate?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The proportion of molecules with energy above the activation energy rises sharply."
+      },
+      {
+        "id": "B",
+        "text": "The activation energy of the reaction falls."
+      },
+      {
+        "id": "C",
+        "text": "The concentration of the reactants increases."
+      },
+      {
+        "id": "D",
+        "text": "The molecules become physically larger and collide more often."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The Boltzmann distribution has a long tail. Shifting it slightly to the right moves a disproportionately large fraction of molecules past the activation energy, which matters far more than the modest increase in collision frequency.",
+    "distractorRationale": {
+      "B": "Activation energy is a property of the reaction pathway and is unchanged by temperature.",
+      "C": "Heating a fixed amount usually lowers concentration slightly through expansion.",
+      "D": "Molecular size does not change with temperature."
+    },
+    "tags": [
+      "boltzmann-distribution",
+      "temperature-effect"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f10",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Kinetics",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A reaction is first order in P and zero order in Q. What happens to the rate when the concentrations of both P and Q are doubled?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It quadruples."
+      },
+      {
+        "id": "B",
+        "text": "It doubles."
+      },
+      {
+        "id": "C",
+        "text": "It stays the same."
+      },
+      {
+        "id": "D",
+        "text": "It increases eightfold."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The rate equation is $\\text{rate} = k[\\text{P}]$, since a zero-order species does not appear. Doubling $[\\text{P}]$ therefore doubles the rate, and doubling $[\\text{Q}]$ has no effect at all.",
+    "distractorRationale": {
+      "A": "Would apply if the reaction were first order in both.",
+      "C": "Would apply only if it were zero order in both.",
+      "D": "Would require the orders to sum to three."
+    },
+    "tags": [
+      "rate-equation",
+      "reaction-order"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f11",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "How many molecules are present in $0.50\\ \\text{mol}$ of oxygen gas? ($L = 6.0 \\times 10^{23}\\ \\text{mol}^{-1}$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6.0 \\times 10^{23}$"
+      },
+      {
+        "id": "B",
+        "text": "$1.2 \\times 10^{24}$"
+      },
+      {
+        "id": "C",
+        "text": "$3.0 \\times 10^{23}$"
+      },
+      {
+        "id": "D",
+        "text": "$1.5 \\times 10^{23}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Number of molecules $=$ moles $\\times$ Avogadro constant $= 0.50 \\times 6.0 \\times 10^{23} = 3.0 \\times 10^{23}$.\n\nNote the question asks for molecules, not atoms; there are twice as many oxygen atoms.",
+    "distractorRationale": {
+      "A": "Gives the number in one mole rather than half a mole.",
+      "B": "Gives the number of atoms in one mole of $\\text{O}_2$.",
+      "D": "Divides by four instead of two."
+    },
+    "tags": [
+      "avogadro-constant",
+      "moles"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f12",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The pH of a solution changes from 5 to 3. By what factor does the hydrogen ion concentration change?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It decreases 100-fold."
+      },
+      {
+        "id": "B",
+        "text": "It increases twofold."
+      },
+      {
+        "id": "C",
+        "text": "It decreases twofold."
+      },
+      {
+        "id": "D",
+        "text": "It increases 100-fold."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "pH is a negative logarithm, so each unit is a factor of ten. Falling from 5 to 3 is two units, giving a hundredfold increase from $10^{-5}$ to $10^{-3}\\ \\text{mol dm}^{-3}$.",
+    "distractorRationale": {
+      "A": "Gets the size right but the direction wrong; lower pH means more acid.",
+      "B": "Treats the pH scale as linear.",
+      "C": "Linear and in the wrong direction."
+    },
+    "tags": [
+      "ph-scale",
+      "logarithms"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f13",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Chlorine has two isotopes, $^{35}\\text{Cl}$ and $^{37}\\text{Cl}$, with relative abundances of $75\\%$ and $25\\%$. What is its relative atomic mass?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$35.5$"
+      },
+      {
+        "id": "B",
+        "text": "$36.0$"
+      },
+      {
+        "id": "C",
+        "text": "$35.0$"
+      },
+      {
+        "id": "D",
+        "text": "$37.0$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Take the weighted mean: $(35 \\times 0.75) + (37 \\times 0.25) = 26.25 + 9.25 = 35.5$.",
+    "distractorRationale": {
+      "B": "Takes a simple average of the two mass numbers, ignoring the abundances.",
+      "C": "Reports the more abundant isotope alone.",
+      "D": "Reports the less abundant isotope alone."
+    },
+    "tags": [
+      "relative-atomic-mass",
+      "isotopes"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f14",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which statement describes the standard enthalpy change of combustion?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The enthalpy change when one mole of a compound is formed from its elements."
+      },
+      {
+        "id": "B",
+        "text": "The enthalpy change when one mole of a substance is burned completely in excess oxygen under standard conditions."
+      },
+      {
+        "id": "C",
+        "text": "The enthalpy change when one mole of water is formed in a neutralisation."
+      },
+      {
+        "id": "D",
+        "text": "The energy needed to break one mole of bonds in the gaseous state."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The definition fixes three things: one mole of the substance, complete combustion, and excess oxygen so nothing limits the reaction. All species are in standard states.",
+    "distractorRationale": {
+      "A": "This defines the enthalpy change of formation.",
+      "C": "This defines the enthalpy change of neutralisation.",
+      "D": "This defines bond dissociation enthalpy."
+    },
+    "tags": [
+      "enthalpy-definitions",
+      "combustion"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f15",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Kinetics",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "For a zero-order reaction, which graph gives a straight line?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The logarithm of concentration against time"
+      },
+      {
+        "id": "B",
+        "text": "The reciprocal of concentration against time"
+      },
+      {
+        "id": "C",
+        "text": "Concentration against time"
+      },
+      {
+        "id": "D",
+        "text": "Rate against the square of concentration"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "In a zero-order reaction the rate is constant, so the concentration falls by equal amounts in equal times. A plot of concentration against time is therefore a straight line with a constant negative gradient.",
+    "distractorRationale": {
+      "A": "A logarithmic plot is linear for a first-order reaction.",
+      "B": "A reciprocal plot is linear for a second-order reaction.",
+      "D": "This would suit a reaction second order in that species."
+    },
+    "tags": [
+      "zero-order",
+      "graphical-analysis"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-g01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which Period 3 oxide is amphoteric?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{Na}_2\\text{O}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{P}_4\\text{O}_{10}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{MgO}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{Al}_2\\text{O}_3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Aluminium oxide sits at the boundary between metallic and non-metallic character, so it reacts with both acids and alkalis — the definition of amphoteric.",
+    "distractorRationale": {
+      "A": "Sodium oxide is strongly basic only.",
+      "B": "Phosphorus(V) oxide is acidic only.",
+      "C": "Magnesium oxide is basic only."
+    },
+    "tags": [
+      "amphoteric",
+      "period-3-oxides"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-g02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 2",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Going down Group 2, why does reactivity with water increase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The outer electrons are further from the nucleus and more shielded, so they are lost more easily."
+      },
+      {
+        "id": "B",
+        "text": "The atoms have more protons, so they attract water more strongly."
+      },
+      {
+        "id": "C",
+        "text": "The melting points decrease down the group."
+      },
+      {
+        "id": "D",
+        "text": "The oxides become more soluble."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Reactivity here means how readily the metal loses two electrons. Down the group the outer shell is further out and screened by more inner shells, so the ionisation energies fall and the reaction proceeds more easily.",
+    "distractorRationale": {
+      "B": "Extra protons are outweighed by the greater distance and shielding.",
+      "C": "Melting point is a physical property and does not drive electron loss.",
+      "D": "Oxide solubility is a consequence of the trend, not its cause."
+    },
+    "tags": [
+      "group-2",
+      "reactivity-trend"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-g03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 17",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Concentrated sulfuric acid is added to solid potassium iodide. Which product shows that iodide is a stronger reducing agent than chloride?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Hydrogen chloride"
+      },
+      {
+        "id": "B",
+        "text": "Hydrogen sulfide"
+      },
+      {
+        "id": "C",
+        "text": "Potassium sulfate"
+      },
+      {
+        "id": "D",
+        "text": "Water"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Iodide reduces sulfuric acid all the way from $+6$ to $-2$, giving $\\text{H}_2\\text{S}$. Chloride cannot reduce it at all, so with potassium chloride only $\\text{HCl}$ is produced. The depth of reduction is the evidence.",
+    "distractorRationale": {
+      "A": "Hydrogen chloride comes from the chloride reaction and shows no reduction.",
+      "C": "A salt formed in both cases, so it distinguishes nothing.",
+      "D": "Water is produced in many reactions and carries no information about reduction."
+    },
+    "tags": [
+      "halide-reducing-power",
+      "concentrated-sulfuric-acid"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-g04",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Nitrogen & sulfur",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Why is nitrogen gas so unreactive at room temperature?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Nitrogen molecules are too small to collide effectively."
+      },
+      {
+        "id": "B",
+        "text": "Nitrogen has a full outer shell as an atom."
+      },
+      {
+        "id": "C",
+        "text": "The triple bond between the atoms has a very high bond enthalpy."
+      },
+      {
+        "id": "D",
+        "text": "Nitrogen is denser than air and settles out of reach."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The $\\text{N}\\equiv\\text{N}$ bond enthalpy is about $945\\ \\text{kJ mol}^{-1}$, among the strongest of any bond. Breaking it demands so much energy that most reactions have a very high activation energy.",
+    "distractorRationale": {
+      "A": "Small molecules collide more often, not less.",
+      "B": "A nitrogen atom has five outer electrons; it is the molecule that is stable.",
+      "D": "Nitrogen is slightly less dense than air, and density is irrelevant here."
+    },
+    "tags": [
+      "nitrogen",
+      "bond-enthalpy"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-g05",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Across Period 3, which property shows a general increase from sodium to chlorine?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Atomic radius"
+      },
+      {
+        "id": "B",
+        "text": "Metallic character"
+      },
+      {
+        "id": "C",
+        "text": "Ionic radius of the cations formed"
+      },
+      {
+        "id": "D",
+        "text": "First ionisation energy"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Nuclear charge rises while electrons enter the same shell, so the outer electrons are held more tightly and more energy is needed to remove one. The trend has small dips at aluminium and sulfur but rises overall.",
+    "distractorRationale": {
+      "A": "Atomic radius decreases as the nuclear pull strengthens.",
+      "B": "Metallic character decreases from left to right.",
+      "C": "Cation radii decrease as charge increases and electrons are lost."
+    },
+    "tags": [
+      "periodic-trends",
+      "ionisation-energy"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-g06",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 2",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which Group 2 hydroxide is the least soluble in water?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{Mg(OH)}_2$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{Ca(OH)}_2$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{Sr(OH)}_2$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{Ba(OH)}_2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Group 2 hydroxide solubility increases down the group, so magnesium hydroxide at the top is the least soluble. This is why it is used as a suspension in indigestion remedies rather than as a solution.",
+    "distractorRationale": {
+      "B": "More soluble than magnesium hydroxide — limewater is a solution of it.",
+      "C": "More soluble again, being further down the group.",
+      "D": "The most soluble of the four."
+    },
+    "tags": [
+      "group-2",
+      "solubility"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-g07",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 17",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Chlorine is bubbled into cold dilute sodium hydroxide. What are the chlorine-containing products?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{NaCl}$ and $\\text{NaClO}_3$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{NaCl}$ and $\\text{NaClO}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{NaCl}$ only"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{NaClO}_3$ only"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "In cold dilute alkali chlorine disproportionates, going to $-1$ in the chloride and $+1$ in the chlorate(I): $\\text{Cl}_2 + 2\\text{NaOH} \\rightarrow \\text{NaCl} + \\text{NaClO} + \\text{H}_2\\text{O}$.",
+    "distractorRationale": {
+      "A": "This is the hot concentrated alkali result, not the cold dilute one.",
+      "C": "Disproportionation requires both a reduced and an oxidised product.",
+      "D": "Chlorate(V) needs hot concentrated alkali, and chloride still forms alongside it."
+    },
+    "tags": [
+      "disproportionation",
+      "chlorine"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-g08",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Nitrogen & sulfur",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the oxidation number of nitrogen in the nitrate ion, $\\text{NO}_3^{-}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-3$"
+      },
+      {
+        "id": "B",
+        "text": "$+6$"
+      },
+      {
+        "id": "C",
+        "text": "$+5$"
+      },
+      {
+        "id": "D",
+        "text": "$+3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Each oxygen is $-2$ and the ion carries a charge of $-1$, so $x + 3(-2) = -1$, giving $x = +5$.",
+    "distractorRationale": {
+      "A": "This is the value in ammonia.",
+      "B": "Ignores the ionic charge when balancing.",
+      "D": "This is the value in the nitrite ion, $\\text{NO}_2^{-}$."
+    },
+    "tags": [
+      "oxidation-number",
+      "nitrate"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-g09",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which Period 3 element has the highest electrical conductivity?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sodium"
+      },
+      {
+        "id": "B",
+        "text": "Silicon"
+      },
+      {
+        "id": "C",
+        "text": "Sulfur"
+      },
+      {
+        "id": "D",
+        "text": "Aluminium"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Metallic conductivity depends on the number of delocalised electrons each atom contributes. Aluminium contributes three, sodium one, so aluminium conducts best of the Period 3 metals.",
+    "distractorRationale": {
+      "A": "Contributes only one delocalised electron per atom.",
+      "B": "Silicon is a semiconductor, far less conductive than any of the metals.",
+      "C": "Sulfur is a simple molecular non-metal and an insulator."
+    },
+    "tags": [
+      "metallic-bonding",
+      "conductivity"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the general formula of the alkenes?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{C}_n\\text{H}_{2n}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{C}_n\\text{H}_{2n-2}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{C}_n\\text{H}_{2n+1}\\text{OH}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{C}_n\\text{H}_{2n+2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "One carbon–carbon double bond removes two hydrogens compared with the corresponding alkane, giving $\\text{C}_n\\text{H}_{2n}$.",
+    "distractorRationale": {
+      "B": "This corresponds to alkynes or to compounds with two double bonds.",
+      "C": "This is the general formula of the alcohols.",
+      "D": "This is the general formula of the alkanes."
+    },
+    "tags": [
+      "homologous-series",
+      "alkenes"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which step in the free-radical substitution of methane is the propagation step?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2\\text{Cl}\\cdot \\rightarrow \\text{Cl}_2$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{CH}_4 + \\text{Cl}\\cdot \\rightarrow \\text{CH}_3\\cdot + \\text{HCl}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{Cl}_2 \\rightarrow 2\\text{Cl}\\cdot$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{CH}_3\\cdot + \\text{Cl}\\cdot \\rightarrow \\text{CH}_3\\text{Cl}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Propagation consumes one radical and produces another, so the chain continues. Here a chlorine radical is used and a methyl radical is made.",
+    "distractorRationale": {
+      "A": "Also termination, removing two radicals.",
+      "C": "This is initiation: radicals are created from a non-radical.",
+      "D": "This is termination: two radicals combine and the chain stops."
+    },
+    "tags": [
+      "free-radical-substitution",
+      "mechanism-steps"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Halogenoalkanes",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "1-bromopropane is warmed with ethanolic potassium cyanide. What is the organic product?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Propene"
+      },
+      {
+        "id": "B",
+        "text": "Propanenitrile"
+      },
+      {
+        "id": "C",
+        "text": "Butanenitrile"
+      },
+      {
+        "id": "D",
+        "text": "Propan-1-ol"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The cyanide ion replaces the bromine, and its carbon joins the chain. Three carbons plus the nitrile carbon gives a four-carbon compound, butanenitrile.\n\nThe lengthening of the chain is the point of this reaction, and the naming trap that follows from it.",
+    "distractorRationale": {
+      "A": "This is the elimination product with ethanolic potassium hydroxide.",
+      "B": "Keeps the original three-carbon count, forgetting that the nitrile carbon is added.",
+      "D": "This is the product with aqueous potassium hydroxide."
+    },
+    "tags": [
+      "nucleophilic-substitution",
+      "chain-lengthening"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h04",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Alcohols",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A primary alcohol is heated with acidified potassium dichromate(VI) and the product distilled off immediately. What is obtained?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "A carboxylic acid"
+      },
+      {
+        "id": "B",
+        "text": "A ketone"
+      },
+      {
+        "id": "C",
+        "text": "An alkene"
+      },
+      {
+        "id": "D",
+        "text": "An aldehyde"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Distilling immediately removes the aldehyde as it forms, before it can be oxidised further. Refluxing instead would keep it in the flask and carry the oxidation on to the carboxylic acid.",
+    "distractorRationale": {
+      "A": "Requires reflux so the intermediate stays in contact with the oxidising agent.",
+      "B": "Ketones come from secondary alcohols.",
+      "C": "Alkenes require dehydration with concentrated sulfuric acid."
+    },
+    "tags": [
+      "oxidation",
+      "distillation-vs-reflux"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h05",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Carbonyls",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which reagent reduces propanone to propan-2-ol?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{NaBH}_4$ in aqueous solution"
+      },
+      {
+        "id": "B",
+        "text": "Acidified $\\text{K}_2\\text{Cr}_2\\text{O}_7$"
+      },
+      {
+        "id": "C",
+        "text": "Concentrated $\\text{H}_2\\text{SO}_4$"
+      },
+      {
+        "id": "D",
+        "text": "Tollens' reagent"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Sodium tetrahydridoborate supplies hydride ions that attack the carbonyl carbon, converting the ketone to a secondary alcohol.",
+    "distractorRationale": {
+      "B": "This is an oxidising agent, working in the opposite direction.",
+      "C": "Concentrated sulfuric acid dehydrates alcohols rather than reducing ketones.",
+      "D": "Tollens' reagent oxidises aldehydes and does not react with ketones."
+    },
+    "tags": [
+      "reduction",
+      "carbonyls"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h06",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Analytical techniques",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A broad infrared absorption between $2500$ and $3300\\ \\text{cm}^{-1}$, together with a sharp peak near $1710\\ \\text{cm}^{-1}$, indicates which functional group?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Alkene"
+      },
+      {
+        "id": "B",
+        "text": "Carboxylic acid"
+      },
+      {
+        "id": "C",
+        "text": "Alcohol"
+      },
+      {
+        "id": "D",
+        "text": "Ketone"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The very broad band is the $\\text{O}\\text{–}\\text{H}$ of a carboxylic acid, much wider than an alcohol's, and the sharp band is its $\\text{C=O}$. Only a carboxylic acid shows both together.",
+    "distractorRationale": {
+      "A": "An alkene shows a $\\text{C=C}$ band near $1650\\ \\text{cm}^{-1}$ and neither of these.",
+      "C": "An alcohol shows an $\\text{O}\\text{–}\\text{H}$ band but no carbonyl absorption.",
+      "D": "A ketone shows the carbonyl but no $\\text{O}\\text{–}\\text{H}$."
+    },
+    "tags": [
+      "infrared-spectroscopy",
+      "functional-groups"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h07",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "How many structural isomers with the formula $\\text{C}_4\\text{H}_8$ contain a carbon–carbon double bond?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The three are but-1-ene, but-2-ene and 2-methylpropene. Cyclobutane and methylcyclopropane share the formula but contain no double bond, so they are excluded by the question.\n\nNote that *cis*- and *trans*-but-2-ene are stereoisomers of one structure, not separate structural isomers.",
+    "distractorRationale": {
+      "A": "Misses the branched isomer, 2-methylpropene.",
+      "B": "Counts *cis*- and *trans*-but-2-ene as separate structural isomers.",
+      "D": "Includes the cyclic isomers, which have no double bond."
+    },
+    "tags": [
+      "structural-isomerism",
+      "alkenes"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h08",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Halogenoalkanes",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Why do primary halogenoalkanes tend to react by an $\\text{S}_\\text{N}2$ mechanism rather than $\\text{S}_\\text{N}1$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The carbon–halogen bond is stronger in primary halogenoalkanes."
+      },
+      {
+        "id": "B",
+        "text": "Primary halogenoalkanes are less soluble in water."
+      },
+      {
+        "id": "C",
+        "text": "The halogen is more electronegative in primary compounds."
+      },
+      {
+        "id": "D",
+        "text": "The primary carbocation is too unstable to form readily, and the carbon is open to attack."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Two factors point the same way. A primary carbocation has only one alkyl group to stabilise it, so the $\\text{S}_\\text{N}1$ route is costly; and with little steric bulk around the carbon, a nucleophile can reach it directly for the one-step $\\text{S}_\\text{N}2$ attack.",
+    "distractorRationale": {
+      "A": "Bond strength depends on the halogen, not on the class of halogenoalkane.",
+      "B": "Solubility does not determine the mechanism.",
+      "C": "Electronegativity is a property of the halogen and does not vary in this way."
+    },
+    "tags": [
+      "sn1-sn2",
+      "carbocation-stability"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h09",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Alcohols",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which alcohol cannot be oxidised by acidified potassium dichromate(VI)?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2-methylpropan-2-ol"
+      },
+      {
+        "id": "B",
+        "text": "Propan-1-ol"
+      },
+      {
+        "id": "C",
+        "text": "Butan-1-ol"
+      },
+      {
+        "id": "D",
+        "text": "Butan-2-ol"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Oxidation requires a hydrogen atom on the carbon bearing the hydroxyl group. In a tertiary alcohol that carbon carries three alkyl groups and no hydrogen, so oxidation cannot proceed without breaking the carbon skeleton.",
+    "distractorRationale": {
+      "B": "Also primary, and readily oxidised.",
+      "C": "A primary alcohol, oxidised to an aldehyde and then a carboxylic acid.",
+      "D": "A secondary alcohol, oxidised to a ketone."
+    },
+    "tags": [
+      "tertiary-alcohols",
+      "oxidation"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h10",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Carbonyls",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Ethanal reacts with hydrogen cyanide. What type of mechanism operates, and what is formed?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Electrophilic addition, giving 2-hydroxypropanenitrile"
+      },
+      {
+        "id": "B",
+        "text": "Nucleophilic addition, giving 2-hydroxypropanenitrile"
+      },
+      {
+        "id": "C",
+        "text": "Nucleophilic substitution, giving propanenitrile"
+      },
+      {
+        "id": "D",
+        "text": "Free radical addition, giving ethanenitrile"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The carbonyl carbon carries a partial positive charge, so the cyanide ion attacks it as a nucleophile and the double bond opens. Adding $\\text{HCN}$ across $\\text{CH}_3\\text{CHO}$ gives $\\text{CH}_3\\text{CH(OH)CN}$, and the extra carbon makes it a three-carbon nitrile.",
+    "distractorRationale": {
+      "A": "The attacking species is the cyanide ion, a nucleophile, not an electrophile.",
+      "C": "Nothing is displaced, so the reaction is addition rather than substitution.",
+      "D": "No radicals are involved, and the carbon count would be wrong."
+    },
+    "tags": [
+      "nucleophilic-addition",
+      "carbonyls"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h11",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Analytical techniques",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In a mass spectrum, what does the peak at the highest $m/z$ value normally represent?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The most abundant fragment"
+      },
+      {
+        "id": "B",
+        "text": "The base peak"
+      },
+      {
+        "id": "C",
+        "text": "The molecular ion, giving the relative molecular mass"
+      },
+      {
+        "id": "D",
+        "text": "The heaviest atom in the molecule"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The molecular ion is the whole molecule minus one electron, so nothing in the spectrum can be heavier. Its position gives the relative molecular mass directly.",
+    "distractorRationale": {
+      "A": "The most abundant fragment is usually lighter than the whole molecule.",
+      "B": "The base peak is the tallest, not the heaviest.",
+      "D": "Individual atoms are lighter than the molecule containing them."
+    },
+    "tags": [
+      "mass-spectrometry",
+      "molecular-ion"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h12",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which reagent and condition converts ethene into ethanol in industry?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Acidified potassium dichromate(VI) under reflux"
+      },
+      {
+        "id": "B",
+        "text": "Bromine water at room temperature"
+      },
+      {
+        "id": "C",
+        "text": "Hydrogen with a nickel catalyst"
+      },
+      {
+        "id": "D",
+        "text": "Steam with a phosphoric acid catalyst under pressure"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Direct hydration adds water across the double bond, catalysed by phosphoric acid at high temperature and pressure. This is how most industrial ethanol is made, in contrast with fermentation.",
+    "distractorRationale": {
+      "A": "Dichromate oxidises alcohols; it does not make them from alkenes.",
+      "B": "Bromine water gives a dibromoalkane, and is used as a test for unsaturation.",
+      "C": "Hydrogen and nickel add hydrogen, giving ethane."
+    },
+    "tags": [
+      "hydration",
+      "industrial-process"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h13",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Alcohols",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Ethanol and methoxymethane both have the formula $\\text{C}_2\\text{H}_6\\text{O}$, yet ethanol boils at $78\\ ^\\circ\\text{C}$ and methoxymethane at $-24\\ ^\\circ\\text{C}$. Why?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Ethanol has an $\\text{O}\\text{–}\\text{H}$ group and can form hydrogen bonds; the ether cannot."
+      },
+      {
+        "id": "B",
+        "text": "Ethanol has a higher relative molecular mass."
+      },
+      {
+        "id": "C",
+        "text": "The covalent bonds in ethanol are stronger."
+      },
+      {
+        "id": "D",
+        "text": "Methoxymethane is ionic and forms a lattice."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Hydrogen bonding requires hydrogen bonded directly to oxygen, nitrogen or fluorine. Ethanol has that; in methoxymethane the oxygen sits between two carbons, so only weaker dipole and dispersion forces act between its molecules.",
+    "distractorRationale": {
+      "B": "The two are isomers with identical relative molecular masses.",
+      "C": "Boiling separates molecules and does not break covalent bonds.",
+      "D": "Methoxymethane is covalent, and an ionic lattice would raise the boiling point, not lower it."
+    },
+    "tags": [
+      "hydrogen-bonding",
+      "isomers"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-h14",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Carbonyls",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which compound gives an orange precipitate with 2,4-dinitrophenylhydrazine but no silver mirror with Tollens' reagent?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Butan-1-ol"
+      },
+      {
+        "id": "B",
+        "text": "Butanone"
+      },
+      {
+        "id": "C",
+        "text": "Butanoic acid"
+      },
+      {
+        "id": "D",
+        "text": "Butanal"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "2,4-DNPH detects any carbonyl group, so both aldehydes and ketones give the orange precipitate. Tollens' reagent oxidises only aldehydes. A compound that responds to the first and not the second must therefore be a ketone.",
+    "distractorRationale": {
+      "A": "An alcohol has no carbonyl group and gives no precipitate with 2,4-DNPH.",
+      "C": "A carboxylic acid gives no precipitate with 2,4-DNPH either.",
+      "D": "An aldehyde, so it responds to both reagents."
+    },
+    "tags": [
+      "carbonyl-tests",
+      "ketones"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-g10",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 2",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Barium chloride solution, acidified with hydrochloric acid, is added to an unknown solution and a white precipitate forms. Which ion is present?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Chloride"
+      },
+      {
+        "id": "B",
+        "text": "Nitrate"
+      },
+      {
+        "id": "C",
+        "text": "Sulfate"
+      },
+      {
+        "id": "D",
+        "text": "Carbonate"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Barium sulfate is insoluble and gives the white precipitate. The acid is added first precisely to destroy any carbonate, which would otherwise also precipitate and give a false positive.",
+    "distractorRationale": {
+      "A": "Barium chloride is itself the reagent, so chloride cannot be what precipitates.",
+      "B": "All nitrates are soluble.",
+      "D": "Barium carbonate would precipitate, but the added acid removes carbonate as carbon dioxide beforehand."
+    },
+    "tags": [
+      "sulfate-test",
+      "qualitative-analysis"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-f16",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A reaction at equilibrium is heated and the value of $K_c$ increases. What does this indicate?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The forward reaction is exothermic."
+      },
+      {
+        "id": "B",
+        "text": "A catalyst has been added."
+      },
+      {
+        "id": "C",
+        "text": "The pressure must have been increased."
+      },
+      {
+        "id": "D",
+        "text": "The forward reaction is endothermic."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "A larger $K_c$ means the equilibrium has shifted towards the products. By Le Chatelier's principle, heating shifts an equilibrium in the endothermic direction, so the forward reaction must absorb heat.\n\nNote that only temperature changes $K_c$; concentration and pressure shift the position without altering the constant.",
+    "distractorRationale": {
+      "A": "An exothermic forward reaction would give a smaller $K_c$ on heating.",
+      "B": "A catalyst changes neither the position of equilibrium nor $K_c$.",
+      "C": "Pressure can shift the position of a gaseous equilibrium but leaves $K_c$ unchanged."
+    },
+    "tags": [
+      "equilibrium-constant",
+      "temperature-dependence"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

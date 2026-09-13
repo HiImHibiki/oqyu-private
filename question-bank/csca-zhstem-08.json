@@ -1,0 +1,1246 @@
+[
+  {
+    "id": "csca-zst-i01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列词语中，加点字读音正确的一项是：「溶解」的「溶」",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sōng"
+      },
+      {
+        "id": "B",
+        "text": "yóng"
+      },
+      {
+        "id": "C",
+        "text": "lóng"
+      },
+      {
+        "id": "D",
+        "text": "róng"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「溶」读 róng，与「熔」「融」同音。三字在化学与物理中含义不同：溶指溶解于液体，熔指受热变为液态，融多指冰雪化开或事物融合。",
+    "distractorRationale": {
+      "A": "「松」读 sōng，声母韵母均不合。",
+      "B": "无此读音。",
+      "C": "「笼」「龙」读 lóng，与「溶」形音都不同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which pinyin is correct for 溶 in 溶解 (to dissolve)?",
+        "explanation": "溶 is read róng, a homophone of 熔 and 融. The three differ in meaning across chemistry and physics: 溶 is dissolving in a liquid, 熔 is melting under heat, and 融 usually refers to ice thawing or things merging."
+      }
+    },
+    "tags": [
+      "pronunciation",
+      "homophone"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列各组词语中，没有错别字的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "试管夹　酒精灯　坩埚"
+      },
+      {
+        "id": "B",
+        "text": "试管夹　酒精灯　坩锅"
+      },
+      {
+        "id": "C",
+        "text": "试管夹　酒经灯　坩埚"
+      },
+      {
+        "id": "D",
+        "text": "试管加　酒精灯　坩埚"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「坩埚」的「埚」从土，指盛放高温物质的器皿，不可写作「锅」。「夹」是夹持之意，「精」指酒精，三者皆不可换。",
+    "distractorRationale": {
+      "B": "「坩锅」的「锅」应为「埚」。",
+      "C": "「酒经灯」的「经」应为「精」。",
+      "D": "「试管加」的「加」应为「夹」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which group of laboratory terms contains no miswritten characters?",
+        "explanation": "坩埚 (crucible) takes 埚 with the earth radical, a vessel for high-temperature material, never 锅. 夹 means to grip, and 精 refers to alcohol; none of the three may be substituted."
+      }
+    },
+    "tags": [
+      "orthography",
+      "lab-vocabulary"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "实验数据存在少量偏差，我们不能____地下结论，而应重复实验加以验证。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "轻便"
+      },
+      {
+        "id": "B",
+        "text": "轻率"
+      },
+      {
+        "id": "C",
+        "text": "轻快"
+      },
+      {
+        "id": "D",
+        "text": "轻松"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「轻率」指做事不慎重、不加考虑，与后文「应重复实验加以验证」的告诫恰好呼应。其余三词都是中性或褒义，不含「不慎重」之意。",
+    "distractorRationale": {
+      "A": "「轻便」形容器物便于携带。",
+      "C": "「轻快」形容动作或心情，不能修饰下结论的态度。",
+      "D": "「轻松」指不费力，与是否慎重无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«The data show slight deviations, so we must not draw conclusions ____ but should repeat the experiment to verify them.» Which word best fills the blank?",
+        "explanation": "轻率 means rashly, without due care, which answers directly to the warning that follows about repeating the experiment. The other three are neutral or positive and carry no sense of carelessness."
+      }
+    },
+    "tags": [
+      "word-choice",
+      "academic-register"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "这项研究的结论虽然新颖，但样本量偏小，其普遍性尚待____。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "考验"
+      },
+      {
+        "id": "B",
+        "text": "考察"
+      },
+      {
+        "id": "C",
+        "text": "检验"
+      },
+      {
+        "id": "D",
+        "text": "试验"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「检验」指用一定标准查验是否符合，正合「结论的普遍性是否成立尚待查证」之意，是学术语境中的常用搭配。",
+    "distractorRationale": {
+      "A": "「考验」指通过困难来检测意志品格，对象是人。",
+      "B": "「考察」多指实地观察调查，对象通常是现象或人。",
+      "D": "「试验」指为了解性能而进行的实际操作，与「普遍性」搭配不当。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«The conclusion is novel, but the sample is small, so its generality remains to be ____.» Which word best fills the blank?",
+        "explanation": "检验 means to test against a standard to see whether something holds, which fits «whether the conclusion generalises remains to be established» and is the standard collocation in academic writing."
+      }
+    },
+    "tags": [
+      "word-choice",
+      "near-synonyms"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "科学结论并非一成不变。当新的观测与旧有理论不符时，科学家首先会检查观测是否可靠；若观测经得起反复验证，____。这正是科学不断自我修正的方式。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "就应当忽略这些观测，坚持原有理论"
+      },
+      {
+        "id": "B",
+        "text": "说明科学方法本身是错误的"
+      },
+      {
+        "id": "C",
+        "text": "就可以不再进行任何观测"
+      },
+      {
+        "id": "D",
+        "text": "则需要修改甚至放弃原有理论"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "空格前是「若观测经得起反复验证」，空格后说这是「科学不断自我修正的方式」。所填内容必须体现「修正」，即理论让位于可靠的观测。",
+    "distractorRationale": {
+      "A": "坚持原有理论不是自我修正，与末句矛盾。",
+      "B": "整段是在肯定科学方法，而非否定它。",
+      "C": "与「不断」二字所含的持续性相悖。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "The clause before the blank grants that the observations survive repeated checks; the sentence after calls this «how science corrects itself». What fills the blank must embody that correction — the theory yielding to reliable observation."
+      }
+    },
+    "tags": [
+      "cohesion",
+      "paragraph-completion"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「测量」的「量」在此处读作",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "liáng"
+      },
+      {
+        "id": "B",
+        "text": "lāng"
+      },
+      {
+        "id": "C",
+        "text": "liǎng"
+      },
+      {
+        "id": "D",
+        "text": "liàng"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「量」是多音字。作动词表示「用工具测定」时读 liáng，如测量、丈量；作名词表示数量时读 liàng，如质量、能量。此处「测量」是动作，故读 liáng。",
+    "distractorRationale": {
+      "B": "无此读音。",
+      "C": "无此读音。",
+      "D": "这是名词义的读音，如「质量」「数量」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How is 量 pronounced in 测量 (to measure)?",
+        "explanation": "量 has two readings. As a verb meaning «to determine with an instrument» it is liáng, as in 测量 and 丈量; as a noun meaning quantity it is liàng, as in 质量 and 能量. Here 测量 is an action, so liáng."
+      }
+    },
+    "tags": [
+      "polyphone",
+      "pronunciation"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "两组数据____，说明实验重复性良好。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "配合"
+      },
+      {
+        "id": "B",
+        "text": "吻合"
+      },
+      {
+        "id": "C",
+        "text": "结合"
+      },
+      {
+        "id": "D",
+        "text": "符号"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「吻合」指完全一致、相符，用于描述两组数据的关系最为贴切，也是科技文中的常用说法。",
+    "distractorRationale": {
+      "A": "「配合」指协同动作，用于人或部件。",
+      "C": "「结合」指连成一体，数据之间不用此词。",
+      "D": "「符号」是名词，不能作谓语。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«The two sets of data ____, showing good reproducibility.» Which word best fills the blank?",
+        "explanation": "吻合 means to agree exactly, and is the natural — and conventional — way to describe the relation between two sets of data in scientific Chinese."
+      }
+    },
+    "tags": [
+      "collocation",
+      "data-language"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "在测量长度时，读数应估读到最小刻度的下一位。例如最小刻度为毫米的直尺，读数应精确到零点一毫米。____，否则测量结果的精度就被人为夸大了。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "刻度越密越好"
+      },
+      {
+        "id": "B",
+        "text": "长度单位应统一为米"
+      },
+      {
+        "id": "C",
+        "text": "估读的位数不宜再多"
+      },
+      {
+        "id": "D",
+        "text": "直尺必须由专人保管"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "空格后说「否则测量结果的精度就被人为夸大了」，指向的正是估读位数过多的问题。所填句必须与这一后果构成因果，故应是对估读位数的限制。",
+    "distractorRationale": {
+      "A": "刻度疏密属于仪器选择，与估读位数无关。",
+      "B": "单位统一不会造成精度夸大。",
+      "D": "保管问题与精度无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "The clause after the blank warns that otherwise the precision would be artificially inflated — which points squarely at estimating too many digits. What fills the blank must stand as the cause of that consequence, so it has to limit the number of estimated digits."
+      }
+    },
+    "tags": [
+      "cohesion",
+      "measurement"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列句子中用字正确的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "铁在潮湿空气中容易生秀，这属于化学变化。"
+      },
+      {
+        "id": "B",
+        "text": "铁在潮湿空气中容易生莠，这属于化学变化。"
+      },
+      {
+        "id": "C",
+        "text": "铁在潮湿空气中容易生绣，这属于化学变化。"
+      },
+      {
+        "id": "D",
+        "text": "铁在潮湿空气中容易生锈，这属于化学变化。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「锈」从金，指金属表面的氧化物，故写作「生锈」。「绣」从纟，指刺绣；「秀」指优异或植物抽穗；「莠」指狗尾草。四字同音而偏旁不同，偏旁正提示了字义。",
+    "distractorRationale": {
+      "A": "「秀」与金属氧化无关。",
+      "B": "「莠」是一种杂草。",
+      "C": "「绣」是丝线刺绣之意。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence uses the correct character?",
+        "explanation": "锈, with the metal radical, denotes the oxide layer on a metal surface, so 生锈 is correct. 绣, with the silk radical, means embroidery; 秀 means outstanding or to head (of grain); 莠 is foxtail grass. All four are homophones, and the radical is precisely what signals the meaning."
+      }
+    },
+    "tags": [
+      "orthography",
+      "radical-meaning"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "该模型能____地预测常温常压下的反应速率，但在高温高压条件下误差明显增大。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "较好"
+      },
+      {
+        "id": "B",
+        "text": "绝对"
+      },
+      {
+        "id": "C",
+        "text": "完全"
+      },
+      {
+        "id": "D",
+        "text": "彻底"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "后半句用「但」转折，指出模型在另一条件下误差增大，可见前半句的肯定应有分寸。「较好」留有余地，与转折句相称；「绝对」「完全」「彻底」都过于绝对，与后文冲突。",
+    "distractorRationale": {
+      "B": "语气过于绝对，与后文的误差说法矛盾。",
+      "C": "同样把话说满，不留转折余地。",
+      "D": "「彻底」多修饰改变或解决，与「预测」搭配也不当。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«The model predicts reaction rates ____ at ordinary temperature and pressure, but its error grows markedly at high temperature and pressure.» Which word best fills the blank?",
+        "explanation": "The second clause turns on 但, conceding larger errors under other conditions, so the first clause must be measured. 较好 leaves room for that turn; 绝对, 完全 and 彻底 are all absolute and clash with what follows."
+      }
+    },
+    "tags": [
+      "hedging",
+      "register"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "对照实验要求除待研究的因素外，其余条件全部保持一致。____，才能确认所观察到的差异确实由该因素引起，而不是别的原因造成的。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "尽管如此"
+      },
+      {
+        "id": "B",
+        "text": "只有做到这一点"
+      },
+      {
+        "id": "C",
+        "text": "与此相反"
+      },
+      {
+        "id": "D",
+        "text": "换句话说"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "后半句用「才能」，这是「只有……才……」这一固定搭配的后半。前文提出条件，空格处须承接为「只有做到这一点」。",
+    "distractorRationale": {
+      "A": "「尽管如此」表转折，与「才能」不搭配。",
+      "C": "「与此相反」引出相反情况，与文意不合。",
+      "D": "「换句话说」表示换一种说法，但后文是推论而非复述。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which phrase best fills the blank?",
+        "explanation": "The following clause uses 才能, the second half of the fixed pairing 只有……才…… . The preceding sentence lays down the condition, so the blank must complete it as «only by doing this»."
+      }
+    },
+    "tags": [
+      "connectives",
+      "controlled-experiment"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「密度」与「秘密」中的「密」「秘」，正确的说法是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两字完全相同，可以互换"
+      },
+      {
+        "id": "B",
+        "text": "两字读音不同"
+      },
+      {
+        "id": "C",
+        "text": "两字读音相同，字形不同，不可互换"
+      },
+      {
+        "id": "D",
+        "text": "「密度」应写作「秘度」"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "两字都读 mì，但「密」有稠密、紧密之意，「秘」有隐藏不公开之意。物理量「密度」指单位体积的质量，取稠密之义，只能用「密」。",
+    "distractorRationale": {
+      "A": "字义不同，不能互换。",
+      "B": "两字读音相同，都是 mì。",
+      "D": "「秘度」不成词。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Regarding 密 in 密度 (density) and 秘 in 秘密 (secret), which statement is correct?",
+        "explanation": "Both are read mì, but 密 means dense or close, while 秘 means hidden or undisclosed. The physical quantity 密度, mass per unit volume, takes the sense of denseness, so only 密 will do."
+      }
+    },
+    "tags": [
+      "homophone",
+      "character-distinction"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "这一发现____了此前学界的普遍看法，引起广泛讨论。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "推脱"
+      },
+      {
+        "id": "B",
+        "text": "推倒"
+      },
+      {
+        "id": "C",
+        "text": "颠倒"
+      },
+      {
+        "id": "D",
+        "text": "颠覆"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「颠覆」指从根本上推翻，常与「看法」「认知」「观念」搭配，正合语境。",
+    "distractorRationale": {
+      "A": "「推脱」指推卸责任，与语境无关。",
+      "B": "「推倒」多指推倒具体物体，如墙、建筑。",
+      "C": "「颠倒」指次序上下反置，对象通常是具体事物或黑白是非。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«This finding ____ the view previously held in the field and prompted wide discussion.» Which word best fills the blank?",
+        "explanation": "颠覆 means to overturn fundamentally and collocates naturally with 看法, 认知 and 观念 — exactly what the context calls for."
+      }
+    },
+    "tags": [
+      "collocation",
+      "academic-verbs"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "误差可分为系统误差与偶然误差两类。系统误差来自仪器本身或方法的缺陷，多次测量取平均值无法消除；____，因此增加测量次数有助于减小它的影响。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "偶然误差则时大时小、时正时负"
+      },
+      {
+        "id": "B",
+        "text": "系统误差同样无规律可循"
+      },
+      {
+        "id": "C",
+        "text": "误差与测量次数无关"
+      },
+      {
+        "id": "D",
+        "text": "两类误差都可以完全消除"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "分号前讲系统误差取平均无法消除，分号后说「增加测量次数有助于减小它的影响」，可见空格处必须转到偶然误差，并说明其正负随机、可相互抵消的特点。",
+    "distractorRationale": {
+      "B": "重复谈系统误差，与后文「增加次数有帮助」矛盾。",
+      "C": "与后半句的结论相反。",
+      "D": "与前半句「无法消除」直接冲突。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "Before the semicolon, systematic error resists averaging; after it, taking more measurements helps. The blank must therefore switch to random error and note that it varies in size and sign, so that repeated readings cancel it out."
+      }
+    },
+    "tags": [
+      "cohesion",
+      "error-analysis"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "论文的结论部分应当____，避免使用含糊其辞的表述。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "明白"
+      },
+      {
+        "id": "B",
+        "text": "明确"
+      },
+      {
+        "id": "C",
+        "text": "明显"
+      },
+      {
+        "id": "D",
+        "text": "明亮"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「明确」指清晰而确定，与后文「避免含糊其辞」构成正反呼应，是学术写作的固定要求。",
+    "distractorRationale": {
+      "A": "「明白」多用于理解或口语，学术语境中不如「明确」贴切。",
+      "C": "「明显」指容易看出，侧重可察觉程度而非表述的确定性。",
+      "D": "「明亮」形容光线或色彩。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«A paper's conclusion should be ____ and avoid vague wording.» Which word best fills the blank?",
+        "explanation": "明确 means clear and definite, standing in direct opposition to the «vague wording» that follows, and is the standard requirement in academic writing."
+      }
+    },
+    "tags": [
+      "near-synonyms",
+      "academic-writing"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「熔点」中的「熔」与下列哪个字的含义最接近？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "容"
+      },
+      {
+        "id": "B",
+        "text": "溶"
+      },
+      {
+        "id": "C",
+        "text": "融"
+      },
+      {
+        "id": "D",
+        "text": "化"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「熔」从火，指固体受热变为液体，「融」在「融化」中义近，也指受热化开。「溶」从水，指溶解于液体，是另一回事：食盐在水中是溶解，不是熔化。",
+    "distractorRationale": {
+      "A": "「容」指容纳、容器，与熔化无关。",
+      "B": "「溶」指溶解，与受热无关。",
+      "D": "「化」意义宽泛，不专指受热变液态。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In 熔点 (melting point), 熔 is closest in meaning to which character?",
+        "explanation": "熔 takes the fire radical and means a solid turning liquid under heat; 融, as in 融化, is close in sense and likewise means to melt. 溶 takes the water radical and means dissolving in a liquid — a different matter: salt in water dissolves, it does not melt."
+      }
+    },
+    "tags": [
+      "character-distinction",
+      "radical-meaning"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "许多人以为科学理论一旦提出便应当永远正确，其实不然。____。牛顿力学在低速情形下依然精确适用，只是在接近光速时须由相对论取代。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "科学理论都是暂时的猜测，不必认真对待"
+      },
+      {
+        "id": "B",
+        "text": "只有最新的理论才值得学习"
+      },
+      {
+        "id": "C",
+        "text": "旧理论被取代后就毫无价值了"
+      },
+      {
+        "id": "D",
+        "text": "一个理论被取代，往往意味着它的适用范围被划定得更清楚"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "空格后举牛顿力学为例：它并未被废弃，而是被确定了适用范围。所填句必须概括这一点，才能与例证相扣。",
+    "distractorRationale": {
+      "A": "语气轻慢，且与举例说明的严肃论证不符。",
+      "B": "后文恰恰说明旧理论仍有用武之地。",
+      "C": "与后文「依然精确适用」直接矛盾。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "The example that follows is Newtonian mechanics: not discarded, but given a defined range of validity. The blank must state that general point for the example to support it."
+      }
+    },
+    "tags": [
+      "cohesion",
+      "philosophy-of-science"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "为排除干扰，实验在恒温箱中进行，温度____控制在 $25\\ ℃$。填入横线最恰当的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "严格"
+      },
+      {
+        "id": "B",
+        "text": "严厉"
+      },
+      {
+        "id": "C",
+        "text": "严重"
+      },
+      {
+        "id": "D",
+        "text": "严肃"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「严格」指遵守标准毫不放松，可用于条件、程序、控制等，与「控制在某温度」搭配自然。其余三词的对象都是人或事态，不能修饰实验条件。",
+    "distractorRationale": {
+      "B": "「严厉」形容对人的态度。",
+      "C": "「严重」形容事态的程度，多含贬义。",
+      "D": "「严肃」形容态度或气氛。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "«To exclude interference the experiment ran in an incubator, with temperature ____ held at $25\\ ℃$.» Which word best fills the blank?",
+        "explanation": "严格 means strictly, without relaxing a standard, and applies to conditions, procedures and controls — a natural fit with holding a temperature. The other three describe people or situations and cannot modify an experimental condition."
+      }
+    },
+    "tags": [
+      "collocation",
+      "experimental-writing"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列句子中没有错别字的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "该反应需要在密闭容器中进行，以防气体逸矢。"
+      },
+      {
+        "id": "B",
+        "text": "该反应需要在密闭容器中进行，以防气体逸失。"
+      },
+      {
+        "id": "C",
+        "text": "该反应需要在密闭容器中进行，以防气体溢失。"
+      },
+      {
+        "id": "D",
+        "text": "该反应需要在蜜闭容器中进行，以防气体逸失。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「逸失」指散失、跑掉，用于气体最为贴切；「密闭」的「密」表紧密封闭。「矢」是箭，「蜜」是蜂蜜，「溢」指液体满而流出，都与此处文意不合。",
+    "distractorRationale": {
+      "A": "「矢」是箭，应为「失」。",
+      "C": "「溢」用于液体满溢，气体散失应用「逸」。",
+      "D": "「蜜」应为「密」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence contains no miswritten characters?",
+        "explanation": "逸失 means to escape or be lost, which suits a gas exactly; the 密 of 密闭 means tightly sealed. 矢 is an arrow, 蜜 is honey, and 溢 refers to liquid overflowing — none fits this sentence."
+      }
+    },
+    "tags": [
+      "orthography",
+      "homophone-confusion"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-i20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "同行评议是学术发表的重要环节。审稿人独立审读稿件，指出其中的疏漏与不足。____，但它至少能过滤掉大量明显有缺陷的研究。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "这一制度并不能保证发表的每篇论文都正确"
+      },
+      {
+        "id": "B",
+        "text": "这一制度只适用于自然科学"
+      },
+      {
+        "id": "C",
+        "text": "这一制度可以确保论文毫无差错"
+      },
+      {
+        "id": "D",
+        "text": "这一制度已被学界废弃"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "空格后以「但」转折，并把评议的作用限定为「至少能过滤掉大量明显有缺陷的研究」。这一让步语气要求前半句先承认其局限。",
+    "distractorRationale": {
+      "B": "适用学科范围与后文的作用评价无关。",
+      "C": "语气与「但……至少」的让步结构相反。",
+      "D": "与首句「是重要环节」矛盾。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "The clause after the blank turns on 但 and limits the value of review to «at least filtering out much clearly flawed research». That concessive movement requires the first half to acknowledge the limitation."
+      }
+    },
+    "tags": [
+      "cohesion",
+      "concession"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

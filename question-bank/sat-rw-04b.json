@@ -1,0 +1,1418 @@
+[
+  {
+    "id": "sat-rw-q01",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The archive holds nine thousand letters, and until last year no catalogue existed. Researchers who wanted a particular correspondent had to read through boxes at random, a method that was ______ rather than systematic."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "haphazard"
+      },
+      {
+        "id": "B",
+        "text": "recent"
+      },
+      {
+        "id": "C",
+        "text": "expensive"
+      },
+      {
+        "id": "D",
+        "text": "rigorous"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The sentence contrasts the blank with \"systematic,\" and describes reading boxes at random. \"Haphazard\" names exactly that lack of system.",
+    "distractorRationale": {
+      "B": "The method is old, not recent; the catalogue is what is new.",
+      "C": "Cost is not discussed anywhere in the passage.",
+      "D": "Means thorough and systematic, the opposite of what the contrast requires."
+    },
+    "tags": [
+      "words-in-context",
+      "vocabulary"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q02",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Lichens grow so slowly that they can be used to date rock surfaces. On a headstone of known age, a colony's diameter gives a growth rate, and that rate can then be used to ______ the age of colonies on undated stone nearby."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "shorten"
+      },
+      {
+        "id": "B",
+        "text": "estimate"
+      },
+      {
+        "id": "C",
+        "text": "record"
+      },
+      {
+        "id": "D",
+        "text": "dispute"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "A known growth rate applied to an undated surface yields an approximate age, not a certain one. \"Estimate\" is the precise word for producing that figure.",
+    "distractorRationale": {
+      "A": "The age is being worked out, not made shorter.",
+      "C": "Recording implies the age is already known, which is what the method sets out to find.",
+      "D": "Nothing is being disputed; a figure is being produced."
+    },
+    "tags": [
+      "words-in-context",
+      "vocabulary"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q03",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kintsugi repairs broken pottery with lacquer mixed with gold, so that the break is visible rather than hidden. Critics who treat the technique as merely decorative miss its argument: the repair is not meant to ______ the damage but to record it."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "predict"
+      },
+      {
+        "id": "B",
+        "text": "withstand"
+      },
+      {
+        "id": "C",
+        "text": "efface"
+      },
+      {
+        "id": "D",
+        "text": "exaggerate"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The contrast is with \"record it,\" and the first sentence says the break is made visible rather than hidden. The word must mean to erase or hide, which is what \"efface\" means.",
+    "distractorRationale": {
+      "A": "Prediction has nothing to do with the visibility of the break.",
+      "B": "Withstanding concerns resisting force, not concealing a repair.",
+      "D": "Exaggerating would also make the damage visible, so it does not oppose \"record.\""
+    },
+    "tags": [
+      "words-in-context",
+      "vocabulary"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q04",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Historians of technology often present the shipping container as a straightforward improvement. Marc Levinson's account is more ______: the container reduced freight costs by an order of magnitude and simultaneously hollowed out the port districts of a dozen cities, and his book refuses to settle which of those facts is the story."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "conventional"
+      },
+      {
+        "id": "B",
+        "text": "derivative"
+      },
+      {
+        "id": "C",
+        "text": "condensed"
+      },
+      {
+        "id": "D",
+        "text": "equivocal"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The passage says the account holds two opposing facts together and refuses to decide between them. \"Equivocal\" names precisely that refusal to come down on one side, and it contrasts with the \"straightforward\" reading in the first sentence.",
+    "distractorRationale": {
+      "A": "Conventional is what the other historians are, and the contrast requires the opposite.",
+      "B": "Derivative would mean unoriginal, but the passage praises the account's complexity.",
+      "C": "Condensed refers to length, which the passage does not discuss."
+    },
+    "tags": [
+      "words-in-context",
+      "vocabulary"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q05",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The metric system was designed so that its units would derive from nature: the metre was defined as one ten-millionth of the distance from the equator to the North Pole. The surveys that measured that distance contained small errors, and the metre we use is very slightly wrong. It has been kept anyway, because a standard that everyone shares matters more than one that matches the earth."
+    },
+    "stem": "Which choice best states the main purpose of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "To explain why an acknowledged error in a standard was allowed to stand"
+      },
+      {
+        "id": "B",
+        "text": "To describe how a meridian survey was carried out"
+      },
+      {
+        "id": "C",
+        "text": "To argue that the metric system should be redefined"
+      },
+      {
+        "id": "D",
+        "text": "To criticise the surveyors who measured the meridian"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The passage states the intended definition, admits the measurement was slightly wrong, and then gives the reason the error was kept. Explaining why the error stands is the point.",
+    "distractorRationale": {
+      "B": "The survey method is never described.",
+      "C": "The passage defends keeping the standard as it is.",
+      "D": "The errors are called small and no blame is assigned."
+    },
+    "tags": [
+      "text-structure",
+      "purpose"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q06",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "In 1977 the biologist Lynn Margulis was still being told that her account of the origin of mitochondria was implausible. Fifteen papers had rejected it. The evidence that settled the question was not new argument but new sequencing: mitochondrial DNA turned out to resemble that of bacteria more than that of the cells it lives in."
+    },
+    "stem": "Which choice best describes the function of the last sentence in the text as a whole?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It proposes an experiment that has yet to be performed."
+      },
+      {
+        "id": "B",
+        "text": "It identifies the kind of evidence that resolved the dispute described earlier."
+      },
+      {
+        "id": "C",
+        "text": "It concedes that Margulis's critics were right on the central point."
+      },
+      {
+        "id": "D",
+        "text": "It provides biographical background about Margulis's career."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The first two sentences establish a dispute and its long resistance. The last sentence names what ended it, and specifies that it was sequencing data rather than argument. Identifying the decisive evidence is its function.",
+    "distractorRationale": {
+      "A": "The sequencing described is work already done, not proposed.",
+      "C": "The evidence supports Margulis, so the critics are not vindicated.",
+      "D": "No career detail beyond the dispute itself is given."
+    },
+    "tags": [
+      "text-structure",
+      "purpose"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q07",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Cross-Text Connections",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Text 1: Wildfire suppression in the western United States has been a costly failure. A century of putting out every fire allowed fuel to accumulate, and the fires that now escape control are larger and hotter than any the policy was designed to prevent.\n\nText 2: Suppression did what it was asked to do. Between 1930 and 1990 it protected an expanding population that had built directly into fire-prone land. Calling it a failure judges a policy against a goal — ecological balance — that was never the one it was given."
+    },
+    "stem": "Based on the texts, the author of Text 2 would most likely characterise the judgement in Text 1 as",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "mistaken, because fuel accumulation has been exaggerated."
+      },
+      {
+        "id": "B",
+        "text": "correct but incomplete, since it omits the cost of suppression."
+      },
+      {
+        "id": "C",
+        "text": "unfair, because it measures the policy against an aim it was never set."
+      },
+      {
+        "id": "D",
+        "text": "premature, because the largest fires have yet to occur."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Text 2 does not deny the fuel accumulation. Its objection is about the standard of judgement: the policy was given the goal of protecting people, and calling it a failure applies a goal it was never assigned.",
+    "distractorRationale": {
+      "A": "Text 2 never disputes the accumulation of fuel.",
+      "B": "Text 2 defends the policy rather than adding to the charge against it.",
+      "D": "Text 2 makes no claim about future fires."
+    },
+    "tags": [
+      "cross-text",
+      "comparison"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q08",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Central Ideas and Details",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The Antonine Wall was built of turf, not stone, and was abandoned within twenty years of completion. Its garrisons withdrew south to Hadrian's Wall, which was already a generation old. Rome had built the newer frontier, held it briefly, and then chose the older one."
+    },
+    "stem": "Which choice best states the main idea of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The Antonine Wall took twenty years to build."
+      },
+      {
+        "id": "B",
+        "text": "Hadrian's Wall was more heavily garrisoned than the Antonine Wall."
+      },
+      {
+        "id": "C",
+        "text": "Turf walls are less durable than stone walls."
+      },
+      {
+        "id": "D",
+        "text": "Rome abandoned a newly built frontier in favour of an older one."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The final sentence states the point the first two build towards: the newer wall was held briefly and then given up for the older frontier. That reversal is the main idea.",
+    "distractorRationale": {
+      "A": "The passage says it was abandoned within twenty years of completion, not that construction took that long.",
+      "B": "Garrison sizes are never compared.",
+      "C": "The material is a detail; the passage does not attribute the abandonment to it."
+    },
+    "tags": [
+      "central-idea",
+      "main-idea"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q09",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Central Ideas and Details",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sign languages are not manual codes for spoken languages. Nicaraguan Sign Language emerged in the 1980s among deaf children who had been brought together in a new school with no shared language between them. Within a decade the younger cohorts had produced a grammar with features the first cohort's signing did not have, including consistent verb agreement."
+    },
+    "stem": "Which choice best states the main idea of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Nicaraguan Sign Language shows that a full grammar can arise among learners with no shared language to borrow from."
+      },
+      {
+        "id": "B",
+        "text": "Deaf children learn language more quickly than hearing children do."
+      },
+      {
+        "id": "C",
+        "text": "Verb agreement is the most important feature of any grammar."
+      },
+      {
+        "id": "D",
+        "text": "Schools should teach sign language to all children."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The first sentence rejects the idea that sign languages are borrowed codes; the rest gives a case in which a grammar appeared among children who had nothing to borrow from, and grew richer in the younger cohorts. That is the point being made.",
+    "distractorRationale": {
+      "B": "No comparison with hearing children is made.",
+      "C": "Verb agreement is one example of the new grammar, not a claim about importance.",
+      "D": "No recommendation about schooling is offered."
+    },
+    "tags": [
+      "central-idea",
+      "main-idea"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q10",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Textual)",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A researcher proposes that the decorated caves of the Upper Palaeolithic were chosen for their acoustics rather than their shape, arguing that painting concentrates in the chambers where sound resonates most strongly."
+    },
+    "stem": "Which finding, if true, would most directly support the researcher's proposal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Decorated chambers are on average further from cave entrances than undecorated ones."
+      },
+      {
+        "id": "B",
+        "text": "Painted panels cluster in chambers with the longest measured reverberation times, even where those chambers are cramped and awkward to reach."
+      },
+      {
+        "id": "C",
+        "text": "Some undecorated chambers have unusual acoustic properties."
+      },
+      {
+        "id": "D",
+        "text": "The pigments used in decorated chambers were sourced locally."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The proposal claims acoustics rather than shape or convenience explains where paintings appear. Painting clustering in the most resonant chambers even when they are cramped and awkward isolates acoustics from every competing advantage.",
+    "distractorRationale": {
+      "A": "Distance from the entrance is a different explanation, not evidence for acoustics.",
+      "C": "This weakens the proposal rather than supporting it.",
+      "D": "Pigment sourcing says nothing about why particular chambers were chosen."
+    },
+    "tags": [
+      "textual-evidence",
+      "support"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q11",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Textual)",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A team argues that the sudden disappearance of a bee species from an orchard was caused by a fungicide rather than by the loss of nearby hedgerows, noting that the fungicide was first applied in the same season the bees vanished."
+    },
+    "stem": "Which finding, if true, would most weaken the team's argument?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The fungicide was applied at the recommended rate."
+      },
+      {
+        "id": "B",
+        "text": "The fungicide is known to be harmful to bees at high concentrations."
+      },
+      {
+        "id": "C",
+        "text": "The hedgerows had been removed two seasons before the bees disappeared, and the same delay appeared at four other orchards where no fungicide was used."
+      },
+      {
+        "id": "D",
+        "text": "Other insect populations in the orchard were unaffected that season."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The team's case rests on the coincidence of timing. A finding that hedgerow loss produces the disappearance after a two-season delay — observed at four orchards with no fungicide at all — supplies an alternative cause that fits the same timing without the fungicide.",
+    "distractorRationale": {
+      "A": "Application rate alone does not establish or rule out an effect.",
+      "B": "Supports the team's argument rather than weakening it.",
+      "D": "Is consistent with a bee-specific cause and does not favour either explanation."
+    },
+    "tags": [
+      "textual-evidence",
+      "support"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q12",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Iceland has almost no mosquitoes, though its neighbours Greenland and Norway have many. The usual explanation is temperature, but Iceland is not colder than either. Its winters instead thaw and refreeze several times, and mosquito larvae need a stable frozen period followed by a single thaw. The absence therefore suggests that what matters to the larvae is not how cold a winter is but ______"
+    },
+    "stem": "Which choice most logically completes the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "how much rain falls during it."
+      },
+      {
+        "id": "B",
+        "text": "how long it lasts."
+      },
+      {
+        "id": "C",
+        "text": "how early it begins."
+      },
+      {
+        "id": "D",
+        "text": "how many times it changes."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The passage rules out temperature and points to Iceland's repeated thaw-and-refreeze cycles as the difference. What distinguishes Iceland is the number of changes, not the depth or length of the cold.",
+    "distractorRationale": {
+      "A": "Rainfall is never mentioned.",
+      "B": "Duration is a form of \"how cold a winter is\" in effect, and the passage has set that aside.",
+      "C": "The timing of onset is not discussed."
+    },
+    "tags": [
+      "inference",
+      "logical-completion"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q13",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Radiocarbon dates from a shell midden appear to run several centuries older than dates from charcoal in the same layers. Marine organisms take up carbon that has circulated in deep water for centuries before reaching the surface, and that carbon is already depleted when the shell forms. Archaeologists working with shell dates must therefore ______"
+    },
+    "stem": "Which choice most logically completes the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "apply a correction for the age of the carbon the ocean supplied."
+      },
+      {
+        "id": "B",
+        "text": "avoid radiocarbon dating at coastal sites."
+      },
+      {
+        "id": "C",
+        "text": "treat charcoal dates as the less reliable of the two."
+      },
+      {
+        "id": "D",
+        "text": "assume the midden was built over several centuries."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The passage explains that shells incorporate carbon that was already old when the animal lived, which makes shell dates read too old by a known kind of offset. The response that follows is to correct for that offset rather than to distrust the method wholesale.",
+    "distractorRationale": {
+      "B": "Abandoning the method is not implied when the cause of the offset is understood.",
+      "C": "The charcoal dates are the ones the passage treats as unaffected.",
+      "D": "The discrepancy is explained by the carbon source, not by the span of construction."
+    },
+    "tags": [
+      "inference",
+      "logical-completion"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q14",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Venice's foundations rest on wooden piles driven into the lagoon mud more than a thousand years ago. Wood submerged in oxygen-poor water does not rot; it slowly mineralises instead. ______ the piles beneath the city are now closer to stone than to timber."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "In contrast,"
+      },
+      {
+        "id": "B",
+        "text": "Consequently,"
+      },
+      {
+        "id": "C",
+        "text": "Meanwhile,"
+      },
+      {
+        "id": "D",
+        "text": "However,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The last sentence states the result of the mineralisation described immediately before it. \"Consequently\" marks that consequence.",
+    "distractorRationale": {
+      "A": "Also signals contrast, and nothing is being set against anything.",
+      "C": "Signals simultaneity, but the relationship here is causal.",
+      "D": "Signals contrast, but the sentence follows from the preceding one."
+    },
+    "tags": [
+      "transitions",
+      "logical-relationship"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q15",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Most fonts are designed to be invisible: a reader should notice the words, not the letterforms. Typefaces intended for road signs are built on the opposite principle. ______ they are designed to be legible at speed and at a distance, even at the cost of looking awkward on a page."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Nevertheless,"
+      },
+      {
+        "id": "B",
+        "text": "Similarly,"
+      },
+      {
+        "id": "C",
+        "text": "Instead,"
+      },
+      {
+        "id": "D",
+        "text": "For example,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The passage says road-sign typefaces work on the opposite principle, and the final sentence gives what they do instead. \"Instead\" marks that substitution.",
+    "distractorRationale": {
+      "A": "Signals concession, but nothing is being conceded.",
+      "B": "Signals likeness, contradicting \"the opposite principle.\"",
+      "D": "Signals an illustration of the preceding claim rather than the alternative itself."
+    },
+    "tags": [
+      "transitions",
+      "logical-relationship"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q16",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Coral bleaching is often described as coral death, but a bleached colony is alive: it has expelled the algae that feed it and can take them back if conditions cool within a few weeks. ______ the distinction matters for reef surveys, where a bleached reef counted as dead will not be monitored for the recovery that may follow."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "In other words,"
+      },
+      {
+        "id": "B",
+        "text": "Admittedly,"
+      },
+      {
+        "id": "C",
+        "text": "By contrast,"
+      },
+      {
+        "id": "D",
+        "text": "Practically speaking,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The final sentence moves from a biological correction to its practical consequence for surveying. \"Practically speaking\" marks that shift from the fact to what follows from it in practice.",
+    "distractorRationale": {
+      "A": "Signals restatement, but the sentence introduces a new consequence.",
+      "B": "Signals a concession to an opposing view, which is not what follows.",
+      "C": "Signals contrast, but the sentence extends the point rather than opposing it."
+    },
+    "tags": [
+      "transitions",
+      "logical-relationship"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q17",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical Synthesis",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "While researching a topic, a student has taken the following notes:\n\n- The Great Barrier Reef is made up of about 3,000 separate reefs.\n- Reef-building corals need light, so they grow in shallow water.\n- Sea levels were about 120 metres lower during the last ice age.\n- The present reef structure began forming roughly 8,000 years ago."
+    },
+    "stem": "The student wants to explain why the reef is younger than it appears. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Because sea levels were 120 metres lower during the last ice age, the shallow water corals need did not exist here until about 8,000 years ago."
+      },
+      {
+        "id": "B",
+        "text": "The Great Barrier Reef is made up of about three thousand separate reefs."
+      },
+      {
+        "id": "C",
+        "text": "Reef-building corals need light and therefore grow only in shallow water."
+      },
+      {
+        "id": "D",
+        "text": "The present reef structure began forming roughly eight thousand years ago."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Explaining why the reef is young requires linking the low ice-age sea level to the absence of the shallow water corals need, and then to the date the present structure began. Only one choice joins all three.",
+    "distractorRationale": {
+      "B": "Gives the reef's extent, which has no bearing on its age.",
+      "C": "States the requirement without connecting it to sea level or to the date.",
+      "D": "Gives the date without explaining why it is so recent."
+    },
+    "tags": [
+      "rhetorical-synthesis",
+      "notes"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q18",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical Synthesis",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "While researching a topic, a student has taken the following notes:\n\n- Florence Nightingale's 1858 report used a polar-area diagram to show causes of death in the Crimean War.\n- The diagram showed deaths from preventable disease dwarfing deaths from wounds.\n- Parliamentary readers had already been given the same figures in tables.\n- Sanitary reform of army barracks began the following year."
+    },
+    "stem": "The student wants to argue that the diagram's contribution was rhetorical rather than informational. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Nightingale's 1858 report used a polar-area diagram to show the causes of death in the Crimean War."
+      },
+      {
+        "id": "B",
+        "text": "Parliament already had the same figures in tables, so what the diagram added was not information but a form in which the disparity could not be overlooked."
+      },
+      {
+        "id": "C",
+        "text": "Sanitary reform of army barracks began the year after the report appeared."
+      },
+      {
+        "id": "D",
+        "text": "The diagram showed that deaths from preventable disease dwarfed deaths from wounds."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The argument is that the diagram added persuasion, not facts. That requires the point that the figures were already available in tables, and then the claim about what the visual form contributed. Only one choice makes both moves.",
+    "distractorRationale": {
+      "A": "Describes the diagram without arguing anything about its effect.",
+      "C": "Reports the outcome without connecting it to the diagram's form.",
+      "D": "States the finding, which was already in the tables, so it cannot show what the diagram added."
+    },
+    "tags": [
+      "rhetorical-synthesis",
+      "notes"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q19",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The first photograph of a person was taken by accident. Daguerre's 1838 view of a Paris boulevard required a ten-minute ______ every moving carriage vanished, but a man having his boots polished stood still long enough to appear."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "exposure,"
+      },
+      {
+        "id": "B",
+        "text": "exposure"
+      },
+      {
+        "id": "C",
+        "text": "exposure:"
+      },
+      {
+        "id": "D",
+        "text": "exposure; and"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Both parts are independent clauses, and the second explains the consequence of the first. A colon introduces that explanation.",
+    "distractorRationale": {
+      "A": "Joins two independent clauses with a comma alone, a comma splice.",
+      "B": "Runs the two clauses together with no punctuation.",
+      "D": "Pairs a semicolon with a coordinating conjunction, which is redundant."
+    },
+    "tags": [
+      "boundaries",
+      "punctuation"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q20",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Mary Anning, who found the first complete ichthyosaur skeleton at the age of ______ was barred from the Geological Society of London for her entire life."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "twelve;"
+      },
+      {
+        "id": "B",
+        "text": "twelve:"
+      },
+      {
+        "id": "C",
+        "text": "twelve"
+      },
+      {
+        "id": "D",
+        "text": "twelve,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The clause \"who found the first complete ichthyosaur skeleton at the age of twelve\" is a non-essential relative clause, and it opened with a comma after \"Anning.\" It must close with one too, before the main verb.",
+    "distractorRationale": {
+      "A": "A semicolon cannot close a relative clause inside a sentence.",
+      "B": "A colon introduces an explanation and cannot close an interrupting clause.",
+      "C": "Leaves the relative clause unclosed, running it into the main verb."
+    },
+    "tags": [
+      "boundaries",
+      "punctuation"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q21",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Rosalind Franklin's Photograph ______ the clearest X-ray diffraction image of DNA yet ______ showed the cross pattern that a helix produces."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "51, taken,"
+      },
+      {
+        "id": "B",
+        "text": "51, taken"
+      },
+      {
+        "id": "C",
+        "text": "51,, taken"
+      },
+      {
+        "id": "D",
+        "text": "51 — taken"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The phrase \"taken, the clearest X-ray diffraction image of DNA yet\" — read as the appositive \"the clearest X-ray diffraction image of DNA yet\" — interrupts between the subject and its verb, so it needs a comma at each end. Choice A closes the interruption before the verb \"showed.\"",
+    "distractorRationale": {
+      "B": "Opens the interruption without closing it.",
+      "C": "Doubles the comma, which is never correct.",
+      "D": "A dash may open an interruption, but it must be matched by a dash at the other end."
+    },
+    "tags": [
+      "boundaries",
+      "punctuation"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q22",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Neither the crew nor the captain ______ aware that the chronometer had stopped three days earlier."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "are"
+      },
+      {
+        "id": "B",
+        "text": "was"
+      },
+      {
+        "id": "C",
+        "text": "have been"
+      },
+      {
+        "id": "D",
+        "text": "were"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "With \"neither ... nor,\" the verb agrees with the nearer subject, which here is \"the captain\" — singular. The singular \"was\" is correct, and the past tense matches \"had stopped.\"",
+    "distractorRationale": {
+      "A": "Present tense contradicts the past-tense narrative.",
+      "C": "Plural and in the wrong tense for a completed past situation.",
+      "D": "Agrees with \"crew\" rather than the nearer subject."
+    },
+    "tags": [
+      "form-structure-sense",
+      "grammar"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q23",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "By the time the survey ship reached the atoll, the reef it had been sent to chart ______ beneath more than a metre of new sand."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "will disappear"
+      },
+      {
+        "id": "B",
+        "text": "disappearing"
+      },
+      {
+        "id": "C",
+        "text": "had disappeared"
+      },
+      {
+        "id": "D",
+        "text": "disappears"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The disappearance was complete before the ship arrived, and the arrival is itself in the past. An action finished before another past action takes the past perfect.",
+    "distractorRationale": {
+      "A": "Future tense contradicts a sequence entirely in the past.",
+      "B": "A participle leaves the clause without a finite verb.",
+      "D": "Present tense contradicts the past setting."
+    },
+    "tags": [
+      "form-structure-sense",
+      "grammar"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-q24",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The report praised the design team for its economy of material, for its attention to daylight, and ______"
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "dismantling and reusing the building."
+      },
+      {
+        "id": "B",
+        "text": "because the building could be dismantled and reused."
+      },
+      {
+        "id": "C",
+        "text": "the capacity of the building to be dismantled and reused."
+      },
+      {
+        "id": "D",
+        "text": "for the building's capacity to be dismantled and reused."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The sentence builds a series of prepositional phrases: \"for its economy of material, for its attention to daylight, and for ...\". The third item must take the same form, which one choice supplies.",
+    "distractorRationale": {
+      "A": "A gerund phrase without the preposition, so the parallel breaks.",
+      "B": "Switches from a prepositional phrase to a subordinate clause.",
+      "C": "Drops the preposition, leaving a noun phrase that does not match the first two items."
+    },
+    "tags": [
+      "form-structure-sense",
+      "grammar"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  }
+]

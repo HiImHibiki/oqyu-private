@@ -1,0 +1,1044 @@
+[
+  {
+    "id": "sat-mth-a01",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "E",
+    "irtB": -0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $5(x - 3) + 2 = 3x + 7$, what is the value of $x$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$4$"
+      },
+      {
+        "id": "B",
+        "text": "$8$"
+      },
+      {
+        "id": "C",
+        "text": "$12$"
+      },
+      {
+        "id": "D",
+        "text": "$10$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Expand the left side: $5x - 15 + 2 = 5x - 13$. The equation becomes $5x - 13 = 3x + 7$. Subtract $3x$ from both sides to get $2x - 13 = 7$, then add $13$ to get $2x = 20$, so $x = 10$.",
+    "distractorRationale": {
+      "A": "Comes from distributing only to the $x$ term, giving $5x - 3 + 2 = 3x + 7$.",
+      "B": "Comes from subtracting $13$ instead of adding it: $2x = 20 - 4$.",
+      "C": "Comes from an arithmetic slip in $-15 + 2$, treating it as $-11$."
+    },
+    "tags": [
+      "linear-equation",
+      "one-variable"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a02",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A technician charges a fixed call-out fee plus an hourly rate. A $2$-hour visit costs \\$170 and a $5$-hour visit costs \\$320. What is the call-out fee, in dollars?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 70
+    },
+    "explanation": "Let $f$ be the fee and $r$ the hourly rate. Then $f + 2r = 170$ and $f + 5r = 320$. Subtracting gives $3r = 150$, so $r = 50$. Substituting back, $f + 100 = 170$, so $f = 70$.",
+    "tags": [
+      "linear-model",
+      "system"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-a03",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The system $\\begin{cases} 4x + 3y = 26 \\\\ 2x - y = 8 \\end{cases}$ has solution $(x, y)$. What is the value of $x + y$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$7$"
+      },
+      {
+        "id": "B",
+        "text": "$3$"
+      },
+      {
+        "id": "C",
+        "text": "$5$"
+      },
+      {
+        "id": "D",
+        "text": "$9$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "From the second equation, $y = 2x - 8$. Substituting into the first gives $4x + 3(2x - 8) = 26$, so $10x - 24 = 26$ and $x = 5$. Then $y = 2(5) - 8 = 2$. Checking: $4(5) + 3(2) = 26$ and $2(5) - 2 = 8$, so both equations hold. The question asks for $x + y = 5 + 2 = 7$.",
+    "distractorRationale": {
+      "B": "Comes from computing $x - y = 5 - 2$ instead of the requested sum.",
+      "C": "Comes from reporting $x$ alone and stopping before adding $y$.",
+      "D": "Comes from a sign error in $y = 2x - 8$, giving $y = 4$ and a sum of $9$."
+    },
+    "tags": [
+      "system-of-equations",
+      "substitution"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a04",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A delivery van can carry at most $900$ kg. It is loaded with $x$ crates weighing $35$ kg each and $y$ barrels weighing $60$ kg each, and the driver weighs $80$ kg. Which inequality represents the possible loads?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$35x + 60y \\le 900$"
+      },
+      {
+        "id": "B",
+        "text": "$35x + 60y \\le 820$"
+      },
+      {
+        "id": "C",
+        "text": "$35x + 60y \\ge 820$"
+      },
+      {
+        "id": "D",
+        "text": "$35x + 60y + 80 \\ge 900$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The driver's $80$ kg counts against the $900$ kg limit, leaving $900 - 80 = 820$ kg for cargo. The cargo weighs $35x + 60y$, and it must not exceed that remainder, so $35x + 60y \\le 820$.",
+    "distractorRationale": {
+      "A": "Ignores the driver's weight, which also loads the van.",
+      "C": "Reverses the inequality, requiring the van to be at least this heavy.",
+      "D": "Reverses the inequality and would force the van to exceed its limit."
+    },
+    "tags": [
+      "inequality",
+      "modeling"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a05",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear equations in two variables",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Line $\\ell$ passes through $(-2, 5)$ and is perpendicular to the line $3x + 4y = 12$. What is the slope of line $\\ell$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-\\dfrac{3}{4}$"
+      },
+      {
+        "id": "B",
+        "text": "$-\\dfrac{4}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{4}{3}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{3}{4}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Rewrite $3x + 4y = 12$ as $y = -\\dfrac{3}{4}x + 3$, so its slope is $-\\dfrac{3}{4}$. A perpendicular line has the negative reciprocal slope, which is $\\dfrac{4}{3}$. The point $(-2, 5)$ fixes the line's position but does not affect its slope.",
+    "distractorRationale": {
+      "A": "The slope of the given line itself, not of the perpendicular.",
+      "B": "Takes the reciprocal but keeps the negative sign, giving the wrong sign.",
+      "D": "Flips the sign without taking the reciprocal."
+    },
+    "tags": [
+      "slope",
+      "perpendicular"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a06",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $C(m) = 24 + 0.18m$ gives the monthly cost, in dollars, of a phone plan that includes $m$ minutes of international calling. What does the number $0.18$ represent?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The fixed monthly cost, in dollars, before any calls are made"
+      },
+      {
+        "id": "B",
+        "text": "The number of minutes included at no additional charge"
+      },
+      {
+        "id": "C",
+        "text": "The total monthly cost, in dollars, when no international calls are made"
+      },
+      {
+        "id": "D",
+        "text": "The cost, in dollars, of each additional minute of international calling"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "In a linear model $C(m) = b + am$, the coefficient $a$ is the rate of change: the amount the cost rises for each extra unit of $m$. Here that is \\$0.18 per additional minute.",
+    "distractorRationale": {
+      "A": "That is the constant term $24$, not the coefficient of $m$.",
+      "B": "The model charges from the first minute, so no free allowance appears in it.",
+      "C": "Setting $m = 0$ gives $C(0) = 24$, again the constant term rather than $0.18$."
+    },
+    "tags": [
+      "interpretation",
+      "slope-meaning"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a07",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "For which value of $k$ does the system $\\begin{cases} 6x - 9y = 15 \\\\ 4x + ky = 10 \\end{cases}$ have infinitely many solutions?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-6$"
+      },
+      {
+        "id": "B",
+        "text": "$6$"
+      },
+      {
+        "id": "C",
+        "text": "$4$"
+      },
+      {
+        "id": "D",
+        "text": "$-4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Infinitely many solutions means the two equations describe the same line, so all three coefficients must scale by the same factor. Comparing constants, $15 \\cdot \\dfrac{2}{3} = 10$, and comparing $x$-coefficients, $6 \\cdot \\dfrac{2}{3} = 4$, so the factor is $\\dfrac{2}{3}$. Then $k = -9 \\cdot \\dfrac{2}{3} = -6$.",
+    "distractorRationale": {
+      "B": "Correct magnitude but wrong sign, from ignoring that $-9$ is negative.",
+      "C": "Drops the negative sign carried by $-9$.",
+      "D": "Uses the $x$-coefficient of the second equation as the answer."
+    },
+    "tags": [
+      "system",
+      "infinitely-many"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a08",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In the equation $ax + 7 = 3x + b$, where $a$ and $b$ are constants, there is no solution for $x$. Which statement must be true?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$a = 3$ and $b = 7$"
+      },
+      {
+        "id": "B",
+        "text": "$a = 3$ and $b \\ne 7$"
+      },
+      {
+        "id": "C",
+        "text": "$a \\ne 3$ and $b = 7$"
+      },
+      {
+        "id": "D",
+        "text": "$a \\ne 3$ and $b \\ne 7$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Rearranged, the equation is $(a - 3)x = b - 7$. If $a \\ne 3$ we may divide and a unique solution always exists. So no solution requires $a - 3 = 0$, and then the equation reads $0 = b - 7$, which is false only when $b \\ne 7$.",
+    "distractorRationale": {
+      "A": "This gives $0 = 0$, which is true for every $x$ — infinitely many solutions, not none.",
+      "C": "With $a \\ne 3$ the coefficient of $x$ is nonzero, so a unique solution exists.",
+      "D": "Again $a \\ne 3$ guarantees a solution regardless of $b$."
+    },
+    "tags": [
+      "no-solution",
+      "parameters"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a09",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $\\dfrac{x^2 - 25}{x^2 + 8x + 15}$ for $x \\ne -5$ and $x \\ne -3$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{x - 5}{x - 3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{x + 5}{x + 3}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{x - 5}{x + 3}$"
+      },
+      {
+        "id": "D",
+        "text": "$x - 5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Factor both parts: the numerator is a difference of squares, $x^2 - 25 = (x - 5)(x + 5)$, and the denominator factors as $(x + 5)(x + 3)$. Cancelling the common factor $x + 5$ leaves $\\dfrac{x - 5}{x + 3}$.",
+    "distractorRationale": {
+      "A": "Factors the denominator incorrectly as $(x + 5)(x - 3)$; that would expand to $x^2 + 2x - 15$.",
+      "B": "Cancels the wrong factor, keeping $x + 5$ instead of $x - 5$.",
+      "D": "Cancels the entire denominator rather than only the shared factor."
+    },
+    "tags": [
+      "factoring",
+      "rational-expression"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a10",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the sum of the solutions to $2x^2 - 11x + 12 = 0$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5.5,
+      "tolerance": 0.01,
+      "acceptedForms": [
+        "11/2",
+        "5.5"
+      ]
+    },
+    "explanation": "For $ax^2 + bx + c = 0$, the sum of the roots is $-\\dfrac{b}{a}$. Here $a = 2$ and $b = -11$, so the sum is $\\dfrac{11}{2} = 5.5$. Factoring confirms it: $(2x - 3)(x - 4) = 0$ gives roots $\\dfrac{3}{2}$ and $4$, which add to $\\dfrac{11}{2}$.",
+    "tags": [
+      "quadratic",
+      "sum-of-roots"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-a11",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $h$ is defined by $h(x) = -2(x - 3)^2 + 8$. What is the maximum value of $h$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-8$"
+      },
+      {
+        "id": "B",
+        "text": "$3$"
+      },
+      {
+        "id": "C",
+        "text": "$-2$"
+      },
+      {
+        "id": "D",
+        "text": "$8$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The expression is in vertex form $a(x - h)^2 + k$ with $a = -2 < 0$, so the parabola opens downward and its vertex is a maximum. The vertex is at $(3, 8)$, so the maximum value of the function is $8$.",
+    "distractorRationale": {
+      "A": "Flips the sign of the vertex's $y$-coordinate.",
+      "B": "Gives the $x$-coordinate of the vertex, which is where the maximum occurs rather than its value.",
+      "C": "Reports the leading coefficient $a$ rather than the maximum value of the function."
+    },
+    "tags": [
+      "quadratic",
+      "vertex-form"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a12",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $\\sqrt{x + 9} = x - 3$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 7
+    },
+    "explanation": "Square both sides: $x + 9 = (x - 3)^2 = x^2 - 6x + 9$. This gives $0 = x^2 - 7x$, so $x(x - 7) = 0$ and $x = 0$ or $x = 7$.\n\nCheck both, since squaring can create extraneous roots. For $x = 0$: the left side is $3$ but the right side is $-3$, so it fails. For $x = 7$: both sides equal $4$. Only $x = 7$ works.",
+    "tags": [
+      "radical-equation",
+      "extraneous-root"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-a13",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A culture of bacteria doubles every $6$ hours. If it starts with $400$ cells, which function gives the number of cells after $t$ hours?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$N(t) = 400 \\cdot 2^{t/6}$"
+      },
+      {
+        "id": "B",
+        "text": "$N(t) = 400 \\cdot 2^{6t}$"
+      },
+      {
+        "id": "C",
+        "text": "$N(t) = 400 + 2^{t/6}$"
+      },
+      {
+        "id": "D",
+        "text": "$N(t) = 400 \\cdot 6^{t/2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Doubling means the base is $2$, and the exponent must count how many doubling periods have passed. In $t$ hours there are $\\dfrac{t}{6}$ periods of $6$ hours, so $N(t) = 400 \\cdot 2^{t/6}$. Checking $t = 6$ gives $400 \\cdot 2 = 800$, as required.",
+    "distractorRationale": {
+      "B": "At $t = 6$ this gives $400 \\cdot 2^{36}$, far more than one doubling.",
+      "C": "Adds the growth term instead of multiplying, which is linear-like rather than exponential.",
+      "D": "Swaps the base and the period, so the growth factor is wrong."
+    },
+    "tags": [
+      "exponential-growth",
+      "modeling"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a14",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The equation $x^2 + 6x + c = 0$ has exactly one real solution. What is the value of $c$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 9
+    },
+    "explanation": "A quadratic has exactly one real solution when its discriminant is zero: $b^2 - 4ac = 0$. Here $a = 1$ and $b = 6$, so $36 - 4c = 0$ and $c = 9$. The equation is then $(x + 3)^2 = 0$, whose only root is $x = -3$.",
+    "tags": [
+      "discriminant",
+      "repeated-root"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-a15",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "figure": {
+      "kind": "function_plot",
+      "alt": "Parabola opening upward that crosses the x-axis at x equals minus 1 and x equals 4, with its lowest point below the x-axis.",
+      "caption": "Graph of $y = g(x)$",
+      "window": {
+        "xMin": -4,
+        "xMax": 7,
+        "yMin": -8,
+        "yMax": 8
+      },
+      "series": [
+        {
+          "expr": "x^2 - 3*x - 4",
+          "label": "y = g(x)"
+        }
+      ]
+    },
+    "stem": "The graph of $y = g(x)$ is shown. For which values of $x$ is $g(x) < 0$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x < -1$ or $x > 4$"
+      },
+      {
+        "id": "B",
+        "text": "$-1 < x < 4$"
+      },
+      {
+        "id": "C",
+        "text": "$-4 < x < 1$"
+      },
+      {
+        "id": "D",
+        "text": "$x < 4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The parabola opens upward and crosses the $x$-axis at $x = -1$ and $x = 4$, so the curve lies below the axis exactly between those roots. Therefore $g(x) < 0$ when $-1 < x < 4$.",
+    "distractorRationale": {
+      "A": "Describes where the graph is above the axis, the opposite of what is asked.",
+      "C": "Uses the constant term $-4$ and the coefficient $1$ as if they were the roots.",
+      "D": "Includes values less than $-1$, where the curve has risen back above the axis."
+    },
+    "tags": [
+      "quadratic-inequality",
+      "graph-reading"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a16",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $\\dfrac{1}{a} + \\dfrac{1}{b} = \\dfrac{1}{4}$ and $ab = 48$, what is the value of $a + b$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 12
+    },
+    "explanation": "Combine the fractions: $\\dfrac{1}{a} + \\dfrac{1}{b} = \\dfrac{a + b}{ab}$. So $\\dfrac{a + b}{ab} = \\dfrac{1}{4}$, which gives $a + b = \\dfrac{ab}{4}$. Substituting $ab = 48$ yields $a + b = 12$.",
+    "tags": [
+      "algebraic-manipulation",
+      "fractions"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-a17",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Percentages",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A jacket is marked down by $20\\%$, and the reduced price is then reduced by a further $15\\%$. The final price is what percent of the original price?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$65\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$70\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$68\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$85\\%$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Successive discounts multiply. After the first markdown the price is $0.80$ of the original; after the second it is $0.85$ of that. So the final price is $0.80 \\times 0.85 = 0.68$, or $68\\%$ of the original.",
+    "distractorRationale": {
+      "A": "Adds the discounts as $20 + 15 = 35$ and subtracts, which double-counts the first reduction.",
+      "B": "A rounded guess between the two discount levels with no computation behind it.",
+      "D": "Applies only the second discount and forgets the first."
+    },
+    "tags": [
+      "successive-percent",
+      "discount"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a18",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "One-variable data",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A data set of $7$ values has a mean of $12$. When an eighth value is added, the mean becomes $13$. What is the eighth value?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 20
+    },
+    "explanation": "The first seven values total $7 \\times 12 = 84$. After adding one value the eight values total $8 \\times 13 = 104$. The new value is the difference, $104 - 84 = 20$.",
+    "tags": [
+      "mean",
+      "sum-of-values"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-a19",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Inference from sample statistics",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A researcher surveyed $300$ randomly selected members of a sports club and found that $54\\%$supported extending opening hours, with a margin of error of $4$ percentage points. Which conclusion is best supported?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Exactly $54\\%$ of all club members support extending opening hours."
+      },
+      {
+        "id": "B",
+        "text": "Between $50\\%$ and $58\\%$ of people in the surrounding city support extending opening hours."
+      },
+      {
+        "id": "C",
+        "text": "If the survey were repeated, $54\\%$ of respondents would again support extending opening hours."
+      },
+      {
+        "id": "D",
+        "text": "It is plausible that between $50\\%$ and $58\\%$ of all club members support extending opening hours."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "A margin of error gives an interval of plausible values for the population proportion: $54\\% \\pm 4\\%$, that is $50\\%$ to $58\\%$. The population sampled is club members, so the conclusion must be about them.",
+    "distractorRationale": {
+      "A": "A sample cannot pin the population value exactly; that is why a margin of error is reported at all.",
+      "B": "The sample was drawn from club members, so it supports no conclusion about the wider city.",
+      "C": "Repeated samples vary; the interval describes the population value, not the next sample's result."
+    },
+    "tags": [
+      "margin-of-error",
+      "population-inference"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a20",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Lines, angles, and triangles",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In a triangle, the measures of the three angles are $x$, $2x - 10$, and $3x + 4$ degrees. What is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 31
+    },
+    "explanation": "The angles of a triangle sum to $180$ degrees, so $x + (2x - 10) + (3x + 4) = 180$. Combining terms gives $6x - 6 = 180$, so $6x = 186$ and $x = 31$. The three angles are then $31$, $52$, and $97$ degrees, which sum to $180$.",
+    "tags": [
+      "triangle",
+      "angle-sum"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-a21",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangles and trigonometry",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In right triangle $ABC$, the right angle is at $B$, $AB = 9$, and $BC = 12$. What is the value of $\\sin A$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{4}{5}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{3}{5}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{3}{4}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{4}{3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The hypotenuse is $AC = \\sqrt{9^2 + 12^2} = \\sqrt{225} = 15$. The side opposite angle $A$ is $BC = 12$, so $\\sin A = \\dfrac{12}{15} = \\dfrac{4}{5}$.",
+    "distractorRationale": {
+      "B": "This is $\\cos A = \\dfrac{9}{15}$, using the adjacent side instead of the opposite one.",
+      "C": "This is $\\tan A$ inverted, or $\\dfrac{9}{12}$, which uses no hypotenuse at all.",
+      "D": "This is $\\tan A = \\dfrac{12}{9}$; a sine value can never exceed $1$."
+    },
+    "tags": [
+      "right-triangle",
+      "sine"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-a22",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Circles",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A circle in the $xy$-plane has equation $x^2 + y^2 - 10x + 4y + 13 = 0$. What is the radius of the circle?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\sqrt{13}$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$\\sqrt{29}$"
+      },
+      {
+        "id": "D",
+        "text": "$16$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Complete the square in each variable. For $x$: $x^2 - 10x = (x - 5)^2 - 25$. For $y$: $y^2 + 4y = (y + 2)^2 - 4$. Substituting gives $(x - 5)^2 + (y + 2)^2 - 29 + 13 = 0$, so $(x - 5)^2 + (y + 2)^2 = 16$ and the radius is $\\sqrt{16} = 4$.",
+    "distractorRationale": {
+      "A": "Takes the square root of the constant term $13$ without completing the square.",
+      "C": "Uses $25 + 4 = 29$ but forgets to subtract the constant $13$.",
+      "D": "Reports $r^2$ rather than $r$."
+    },
+    "tags": [
+      "circle-equation",
+      "completing-the-square"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

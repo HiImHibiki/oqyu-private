@@ -1,0 +1,1334 @@
+[
+  {
+    "id": "csca-zst-a01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "数学中符号 $\\ge$ 应读作",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "大于或等于"
+      },
+      {
+        "id": "B",
+        "text": "小于或等于"
+      },
+      {
+        "id": "C",
+        "text": "不等于"
+      },
+      {
+        "id": "D",
+        "text": "约等于"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "符号 $\\ge$ 由「大于号」与「等号」组合而成，表示两种情形中至少有一种成立，读作「大于或等于」，也可读作「不小于」。",
+    "distractorRationale": {
+      "B": "对应的是 $\\le$，开口方向相反。",
+      "C": "对应的是 $\\ne$。",
+      "D": "对应的是 $\\approx$。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In Chinese mathematical usage, how is the symbol $\\ge$ read aloud?",
+        "explanation": "The symbol $\\ge$ combines the greater-than sign with the equals sign, so it is read 大于或等于 (greater than or equal to). The alternative reading 不小于 (not less than) is also standard."
+      }
+    },
+    "tags": [
+      "math-symbols",
+      "reading-aloud"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-a02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「函数 $f$ 在区间 $I$ 上单调递增」中，「单调」一词的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "内容重复而枯燥"
+      },
+      {
+        "id": "B",
+        "text": "变化方向始终保持一致"
+      },
+      {
+        "id": "C",
+        "text": "变化幅度始终相同"
+      },
+      {
+        "id": "D",
+        "text": "只含有一个变量"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "数学术语「单调」指函数在整个区间上只朝一个方向变化：单调递增即自变量增大时函数值始终不减小。它与日常汉语中「单调乏味」的意思完全不同。",
+    "distractorRationale": {
+      "A": "这是日常用法，不是数学定义。",
+      "C": "变化幅度相同是「线性」的特征，而非「单调」。",
+      "D": "变量个数由「一元」「二元」表示，与单调性无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In the sentence 函数 $f$ 在区间 $I$ 上单调递增, what does the term 单调 mean?",
+        "explanation": "As a mathematical term, 单调 means the function changes in one direction only across the interval: 单调递增 means the value never decreases as the input increases.\n\nThis differs sharply from everyday Chinese, where 单调 means monotonous or dull — a false friend that regularly misleads international students."
+      }
+    },
+    "tags": [
+      "math-terminology",
+      "false-friend"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-a03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "物理学中「位移」与「路程」的区别在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "位移是标量，路程是矢量"
+      },
+      {
+        "id": "B",
+        "text": "两者含义完全相同"
+      },
+      {
+        "id": "C",
+        "text": "位移是矢量，路程是标量"
+      },
+      {
+        "id": "D",
+        "text": "位移只用于直线运动，路程只用于曲线运动"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "位移是由初位置指向末位置的有向线段，既有大小又有方向，属矢量；路程是运动轨迹的总长度，只有大小，属标量。物体绕圆周一周后位移为零，而路程等于周长。",
+    "distractorRationale": {
+      "A": "两者的属性恰好说反了。",
+      "B": "只有单向直线运动时两者大小才相等，一般情况下并不相同。",
+      "D": "两个概念对任何形式的运动都适用。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In Chinese physics terminology, what distinguishes 位移 from 路程?",
+        "explanation": "位移 (displacement) is the directed segment from the starting position to the finishing position: it has both magnitude and direction, making it a vector (矢量). 路程 (distance travelled) is the total length of the path, a scalar (标量).\n\nAfter one full circle the displacement is zero while the distance equals the circumference."
+      }
+    },
+    "tags": [
+      "physics-terminology",
+      "vector-scalar"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-a04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「该物体做匀速直线运动」意味着",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "速率不变，但方向可以改变"
+      },
+      {
+        "id": "B",
+        "text": "加速度恒定但不为零"
+      },
+      {
+        "id": "C",
+        "text": "物体保持静止"
+      },
+      {
+        "id": "D",
+        "text": "速度的大小和方向都不变"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「匀速」限定速度大小不变，「直线」限定方向不变。二者合起来意味着速度这一矢量完全不变，故加速度为零。\n\n若只说「匀速圆周运动」，则速率不变而方向不断改变，属于另一种情形。",
+    "distractorRationale": {
+      "A": "这是匀速圆周运动，而非匀速直线运动。",
+      "B": "速度不变意味着加速度恰为零。",
+      "C": "静止是速度为零的特例，而非本词的含义。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 匀速直线运动 mean?",
+        "explanation": "匀速 fixes the magnitude of the velocity and 直线 fixes its direction. Together they mean the velocity vector does not change at all, so the acceleration is exactly zero.\n\nContrast 匀速圆周运动 (uniform circular motion), where the speed is constant but the direction changes continuously."
+      }
+    },
+    "tags": [
+      "physics-terminology",
+      "kinematics"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-a05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "化学中「饱和溶液」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "在一定温度下不能再溶解该溶质的溶液"
+      },
+      {
+        "id": "B",
+        "text": "浓度很大的溶液"
+      },
+      {
+        "id": "C",
+        "text": "不含任何溶质的溶液"
+      },
+      {
+        "id": "D",
+        "text": "已经出现沉淀的溶液"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "饱和是相对于特定温度和特定溶质而言的：溶液中已溶解的量达到该条件下的最大值，再加入溶质便不能继续溶解。\n\n注意饱和与浓稀无关：溶解度很小的物质，其饱和溶液依然很稀。",
+    "distractorRationale": {
+      "B": "浓度大小与是否饱和是两回事。氢氧化钙的饱和溶液就很稀。",
+      "C": "这是纯溶剂，与饱和无关。",
+      "D": "出现沉淀说明超过饱和，但饱和溶液本身可以是澄清的。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In chemistry, what does 饱和溶液 mean?",
+        "explanation": "饱和溶液 (saturated solution) is defined relative to a specific temperature and a specific solute: the amount already dissolved has reached the maximum possible under those conditions, so adding more solute dissolves nothing further.\n\nNote that saturation is independent of concentration. A saturated solution of a sparingly soluble substance such as calcium hydroxide is still very dilute."
+      }
+    },
+    "tags": [
+      "chemistry-terminology",
+      "saturation"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-a06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列词语中，与「置换反应」含义最接近的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两种化合物互相交换成分"
+      },
+      {
+        "id": "B",
+        "text": "单质与化合物反应生成另一种单质和另一种化合物"
+      },
+      {
+        "id": "C",
+        "text": "多种物质生成一种物质"
+      },
+      {
+        "id": "D",
+        "text": "一种物质生成多种物质"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "置换反应的定义是：一种单质与一种化合物反应，生成另一种单质和另一种化合物，如 $\\text{Fe} + \\text{CuSO}_4 \\rightarrow \\text{FeSO}_4 + \\text{Cu}$。关键在于反应前后都恰有一种单质。",
+    "distractorRationale": {
+      "A": "这是复分解反应的定义。",
+      "C": "这是化合反应。",
+      "D": "这是分解反应。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which description matches the meaning of 置换反应?",
+        "explanation": "置换反应 (displacement reaction) is defined as an element reacting with a compound to produce a different element and a different compound, for example $\\text{Fe} + \\text{CuSO}_4 \\rightarrow \\text{FeSO}_4 + \\text{Cu}$. Exactly one element appears on each side.\n\nThe other three options define 复分解反应 (double decomposition), 化合反应 (combination) and 分解反应 (decomposition)."
+      }
+    },
+    "tags": [
+      "chemistry-terminology",
+      "reaction-types"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-a07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「若 $a$ 与 $b$ 互质」中，「互质」的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两数都是质数"
+      },
+      {
+        "id": "B",
+        "text": "两数的乘积为质数"
+      },
+      {
+        "id": "C",
+        "text": "两数的最大公约数为 $1$"
+      },
+      {
+        "id": "D",
+        "text": "两数之和为质数"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "互质（也称互素）指两数除 $1$ 以外没有公共因数，即最大公约数为 $1$。两数本身不必是质数：例如 $8$ 与 $9$ 都是合数，但它们互质。",
+    "distractorRationale": {
+      "A": "常见误解。$8$ 与 $9$ 均非质数，却互质。",
+      "B": "两个大于 $1$ 的整数之积必为合数。",
+      "D": "与互质的定义毫无关系。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In the phrase 若 $a$ 与 $b$ 互质, what does 互质 mean?",
+        "explanation": "互质 (coprime, also written 互素) means the two numbers share no common factor other than $1$ — their greatest common divisor is $1$.\n\nNeither number need be prime itself: $8$ and $9$ are both composite, yet they are coprime. This is the most common misreading of the term."
+      }
+    },
+    "tags": [
+      "math-terminology",
+      "number-theory"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-a08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「该电路处于串联状态」意味着各元件",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "并排连接，两端电压相同"
+      },
+      {
+        "id": "B",
+        "text": "彼此独立，互不影响"
+      },
+      {
+        "id": "C",
+        "text": "电流与电压都相同"
+      },
+      {
+        "id": "D",
+        "text": "首尾相接，通过的电流相同"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "串联电路中各元件首尾依次相接，只有一条电流通路，故电流处处相等，而总电压等于各部分电压之和。并联电路则相反：各支路电压相同，总电流等于各支路电流之和。",
+    "distractorRationale": {
+      "A": "这是并联电路的特征。",
+      "B": "串联电路中任一元件断路会使整个电路断开，彼此影响很大。",
+      "C": "只有当各元件完全相同时电压才相等，并非串联的定义。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 串联 mean for the components in a circuit?",
+        "explanation": "In a 串联 (series) circuit the components are joined end to end, forming a single path, so the current is the same everywhere and the total voltage is the sum of the individual voltages.\n\n并联 (parallel) is the opposite: each branch has the same voltage, and the total current is the sum of the branch currents."
+      }
+    },
+    "tags": [
+      "physics-terminology",
+      "circuits"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-a09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「催化剂」在化学反应中的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "改变反应速率，本身的质量和化学性质在反应前后不变"
+      },
+      {
+        "id": "B",
+        "text": "增加生成物的产量"
+      },
+      {
+        "id": "C",
+        "text": "使不能发生的反应变得可以发生"
+      },
+      {
+        "id": "D",
+        "text": "参与反应并被消耗"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "催化剂的定义包含两点：能改变反应速率，且反应前后自身质量和化学性质都不改变。它可以加快也可以减慢反应，前者称正催化剂，后者称负催化剂。",
+    "distractorRationale": {
+      "B": "催化剂只影响达到平衡的快慢，不改变平衡时的产量。",
+      "C": "催化剂无法使热力学上不可能的反应发生。",
+      "D": "催化剂在反应过程中可能暂时参与，但最终会被再生。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the role of a 催化剂 in a chemical reaction?",
+        "explanation": "The Chinese definition of 催化剂 (catalyst) has two parts: it changes the reaction rate, and its own mass and chemical properties are unchanged after the reaction.\n\nNote that Chinese textbooks distinguish 正催化剂 (which speeds a reaction up) from 负催化剂 (which slows it down); the term itself does not imply acceleration."
+      }
+    },
+    "tags": [
+      "chemistry-terminology",
+      "catalyst"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-a10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "数学题目中「充分不必要条件」的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "有它一定成立，没有它一定不成立"
+      },
+      {
+        "id": "B",
+        "text": "有它一定成立，没有它也可能成立"
+      },
+      {
+        "id": "C",
+        "text": "没有它一定不成立，有它未必成立"
+      },
+      {
+        "id": "D",
+        "text": "有它和没有它结果都一样"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "设条件为 $p$、结论为 $q$。充分意味着 $p \\Rightarrow q$：只要 $p$ 成立，$q$ 必成立。不必要意味着 $q \\nRightarrow p$：$q$ 成立时 $p$ 未必成立。\n\n例如「$x = 2$」是「$x^2 = 4$」的充分不必要条件，因为 $x = -2$ 时结论同样成立。",
+    "distractorRationale": {
+      "A": "这是「充要条件」，两个方向都成立。",
+      "C": "这是「必要不充分条件」，方向恰好相反。",
+      "D": "这说明条件与结论无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 充分不必要条件 mean in a mathematics question?",
+        "explanation": "Let the condition be $p$ and the conclusion $q$. 充分 (sufficient) means $p \\Rightarrow q$: whenever $p$ holds, $q$ must hold. 不必要 (not necessary) means $q \\nRightarrow p$: $q$ can hold without $p$.\n\nFor example, $x = 2$ is a sufficient but not necessary condition for $x^2 = 4$, since $x = -2$ also gives the conclusion."
+      }
+    },
+    "tags": [
+      "logic-terminology",
+      "sufficient-necessary"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-a11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「忽略空气阻力」这一表述在物理题中的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "说明空气阻力在现实中确实不存在"
+      },
+      {
+        "id": "B",
+        "text": "提示答案会与实际测量完全一致"
+      },
+      {
+        "id": "C",
+        "text": "设定一个简化的理想条件，使问题可以用已知规律求解"
+      },
+      {
+        "id": "D",
+        "text": "表示该题不涉及运动"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「忽略」是理想化的标志词，与「不计」「视为光滑」「视为质点」用法相同。它并不否认该因素存在，只是声明在本题的精度要求下可以不予考虑，从而使问题落入已学规律的适用范围。",
+    "distractorRationale": {
+      "A": "题目只是暂时不考虑它，并未否认其存在。",
+      "B": "理想化恰恰意味着结果与实测会有偏差。",
+      "D": "涉及空气阻力的题目几乎都与运动有关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the function of the phrase 忽略空气阻力 in a physics question?",
+        "explanation": "忽略 marks an idealisation, alongside 不计 (do not count), 视为光滑 (treat as frictionless) and 视为质点 (treat as a point mass). It does not deny that the factor exists; it states that, at the precision this question requires, the factor may be set aside so the problem falls within the laws already studied.\n\nRecognising these markers is essential, because they tell you which effects the expected solution is allowed to omit."
+      }
+    },
+    "tags": [
+      "physics-terminology",
+      "idealisation"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-a12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「摩尔」是国际单位制中哪个物理量的单位？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "体积"
+      },
+      {
+        "id": "B",
+        "text": "质量"
+      },
+      {
+        "id": "C",
+        "text": "浓度"
+      },
+      {
+        "id": "D",
+        "text": "物质的量"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "摩尔（mol）是「物质的量」这一基本物理量的单位，用来计量微观粒子的数目。\n\n注意「物质的量」是一个完整的术语，不可简称为「物质量」或「质量」——后者的单位是千克。",
+    "distractorRationale": {
+      "A": "体积的单位是立方米或升。",
+      "B": "质量的单位是千克或克。",
+      "C": "浓度的单位是 mol/L，是复合单位。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In the SI system, 摩尔 is the unit of which quantity?",
+        "explanation": "摩尔 (the mole) is the unit of 物质的量, the SI base quantity known in English as *amount of substance*, which counts numbers of particles.\n\nNote that 物质的量 is a fixed four-character term. Shortening it to 物质量 or confusing it with 质量 (mass, measured in kilograms) is a frequent error for learners."
+      }
+    },
+    "tags": [
+      "chemistry-terminology",
+      "si-units"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-c01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列词语中加点字的读音完全正确的一组是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "溶解（róng）　熔化（róng）　凝固（níng）"
+      },
+      {
+        "id": "B",
+        "text": "溶解（yóng）　熔化（róng）　凝固（níng）"
+      },
+      {
+        "id": "C",
+        "text": "溶解（róng）　熔化（yóng）　凝固（nínɡ）"
+      },
+      {
+        "id": "D",
+        "text": "溶解（róng）　熔化（róng）　凝固（yí）"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「溶」与「熔」同音，均读 róng，但意义不同：溶指物质分散在液体中，熔指固体受热变为液体。「凝」读 níng，指液体变为固体。",
+    "distractorRationale": {
+      "B": "「溶」不读 yóng。",
+      "C": "「熔」不读 yóng。",
+      "D": "「凝」不读 yí。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which group gives the correct pronunciation for every marked character?",
+        "explanation": "溶 and 熔 are homophones, both read róng, but their meanings differ: 溶 refers to a substance dispersing in a liquid (dissolving), while 熔 refers to a solid becoming liquid on heating (melting). 凝 is read níng and refers to solidification.\n\nThe pair 溶/熔 is a frequent source of error in Chinese science writing precisely because they sound identical."
+      }
+    },
+    "tags": [
+      "pronunciation",
+      "homophones"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-c02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的词语填入空格：\n\n实验数据必须 ______ 记录，不得事后凭记忆补写。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "确实"
+      },
+      {
+        "id": "B",
+        "text": "如实"
+      },
+      {
+        "id": "C",
+        "text": "真实"
+      },
+      {
+        "id": "D",
+        "text": "老实"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「如实」是副词，意为「按照实际情况」，直接修饰动词「记录」，与后半句「不得凭记忆补写」正好呼应。",
+    "distractorRationale": {
+      "A": "「确实」表示肯定语气，用于强调事情属实，不能修饰记录方式。",
+      "C": "「真实」是形容词，通常作定语或谓语，不能直接修饰动词。",
+      "D": "「老实」形容人的品性，不用于描述记录方式。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate word for the blank:\n\n实验数据必须 ______ 记录，不得事后凭记忆补写。\n\n(Experimental data must be recorded ______ ; it may not be filled in afterwards from memory.)",
+        "explanation": "如实 is an adverb meaning \"in accordance with the actual situation\", and it modifies the verb 记录 (record) directly. It matches the second clause, which forbids reconstructing data from memory.\n\n确实 asserts that something is true, 真实 is an adjective that cannot modify a verb directly, and 老实 describes a person's character. Only 如实 works adverbially here."
+      }
+    },
+    "tags": [
+      "word-choice",
+      "adverbs"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-c03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的词语填入空格：\n\n这项技术仍处于试验阶段，其长期效果有待进一步 ______ 。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "考验"
+      },
+      {
+        "id": "B",
+        "text": "检验"
+      },
+      {
+        "id": "C",
+        "text": "验证"
+      },
+      {
+        "id": "D",
+        "text": "验收"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「验证」指通过实验或事实来证明某种说法或效果是否成立，正与「长期效果有待进一步」的科研语境相合。",
+    "distractorRationale": {
+      "A": "「考验」指通过困难情境检验人的意志或品质，对象通常是人。",
+      "B": "「检验」侧重检查是否合格，多用于产品质量。",
+      "D": "「验收」指工程或货物完工后的接收查验，对象是成品而非效果。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate word for the blank:\n\n这项技术仍处于试验阶段，其长期效果有待进一步 ______ 。\n\n(This technology is still at the trial stage; its long-term effect awaits further ______ .)",
+        "explanation": "验证 means to confirm a claim or an effect through experiment or evidence, which fits the research context of long-term effects.\n\n验收 is formal acceptance of completed work, 检验 is inspection for conformity (usually of products), and 考验 tests a person's character under difficulty. All three take the wrong kind of object here."
+      }
+    },
+    "tags": [
+      "word-choice",
+      "academic-register"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-c04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "在设计对照实验时，必须保证除待研究的因素外，其他条件完全相同。______ 若两组同时改变了温度和光照，就无法判断结果究竟由哪一个因素引起。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "实验室的温度通常由空调控制。"
+      },
+      {
+        "id": "B",
+        "text": "光照强度可以用照度计测量。"
+      },
+      {
+        "id": "C",
+        "text": "对照实验最早由英国科学家提出。"
+      },
+      {
+        "id": "D",
+        "text": "这一要求看似简单，却常常被忽视。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "横线前提出「其他条件必须相同」的原则，横线后用「若……就……」举出违反该原则的后果。中间需要一句承上启下的过渡，指出这一要求容易被忽视，才能自然引出后面的反面例子。",
+    "distractorRationale": {
+      "A": "转入设备细节，打断了论述逻辑。",
+      "B": "转向测量方法，与「无法判断哪个因素」的论点脱节。",
+      "C": "插入历史信息，与前后的因果论述无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank in the passage?",
+        "explanation": "The sentence before the blank states the principle that all other conditions must be held constant. The sentence after it uses 若……就…… to give the consequence of breaking that principle.\n\nWhat is needed between them is a bridging sentence — noting that this easy-sounding requirement is often overlooked — which sets up the negative example that follows. The other options introduce equipment, history or measurement details that break the chain of reasoning."
+      }
+    },
+    "tags": [
+      "paragraph-cohesion",
+      "transition"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-c05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列句子中没有错别字的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "该反应需要在密闭容器中进行，以防气体逸出。"
+      },
+      {
+        "id": "B",
+        "text": "该反应需要在密闭容器中进行，以防气体易出。"
+      },
+      {
+        "id": "C",
+        "text": "该反应需要在蜜闭容器中进行，以防气体逸出。"
+      },
+      {
+        "id": "D",
+        "text": "该反映需要在密闭容器中进行，以防气体逸出。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "三个易错点：「反应」指化学变化，不可写作「反映」；「逸出」意为散逸而出，不可写作「易出」；「密闭」的「密」意为紧密，不可写作「蜜」。",
+    "distractorRationale": {
+      "B": "「易出」应为「逸出」。",
+      "C": "「蜜闭」应为「密闭」。",
+      "D": "「反映」应为「反应」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence contains no miswritten characters?",
+        "explanation": "Three homophone traps appear here. 反应 (chemical reaction) must not be written 反映 (to reflect). 逸出 (escape, of a gas) must not be written 易出. 密闭 (sealed) uses 密 (dense, tight), not 蜜 (honey).\n\nAll the wrong forms are pronounced identically to the right ones, which is why they are so common in scientific writing."
+      }
+    },
+    "tags": [
+      "character-errors",
+      "homophones"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-c06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "金属的导电性来自其内部大量可自由移动的电子。温度升高时，金属原子的振动加剧，电子在运动中受到的阻碍增多。______"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此，金属的电阻随温度升高而减小。"
+      },
+      {
+        "id": "B",
+        "text": "因此，金属的电阻随温度升高而增大。"
+      },
+      {
+        "id": "C",
+        "text": "因此，金属会在高温下熔化。"
+      },
+      {
+        "id": "D",
+        "text": "因此，电子的数目随温度升高而增加。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "前文已建立因果链：温度升高 → 原子振动加剧 → 电子受阻增多。阻碍增多即电阻增大，故横线处应顺势得出这一结论。",
+    "distractorRationale": {
+      "A": "与前文的因果方向相反。半导体才有电阻随温度升高而减小的特性。",
+      "C": "熔化是另一回事，与导电性的论述无关。",
+      "D": "前文只说电子受到的阻碍增多，未涉及电子数目的变化。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the passage?",
+        "explanation": "The passage builds a causal chain: higher temperature → stronger atomic vibration → more obstruction to the moving electrons. More obstruction means greater resistance, so the concluding sentence must state exactly that.\n\nOption A reverses the direction, which describes semiconductors rather than metals; the other two shift to unrelated topics."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "causal-chain"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-c07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的一组词语填入空格：\n\n该模型能较好地 ______ 观测数据，但在极端条件下的 ______ 能力仍然有限。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "符合／预报"
+      },
+      {
+        "id": "B",
+        "text": "适应／推测"
+      },
+      {
+        "id": "C",
+        "text": "拟合／预测"
+      },
+      {
+        "id": "D",
+        "text": "配合／估计"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「拟合」是统计与建模的专门术语，指模型曲线与观测数据相符的程度，可以带宾语。「预测」指对未知情形作出推断，与「极端条件下」相配。两者都是科技文的标准搭配。",
+    "distractorRationale": {
+      "A": "「符合」是不及物的，须说「与……符合」；「预报」多用于天气等具体业务。",
+      "B": "「适应」的主语通常是生物或人，用于模型不合适。",
+      "D": "「配合」指协同动作，「估计」口语色彩较重，均不符合学术语体。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate pair of words:\n\n该模型能较好地 ______ 观测数据，但在极端条件下的 ______ 能力仍然有限。\n\n(The model ______ the observational data well, but its ______ ability under extreme conditions remains limited.)",
+        "explanation": "拟合 is the technical term in statistics and modelling for how closely a model matches observed data, and it takes a direct object. 预测 (predict) pairs naturally with \"under extreme conditions\". Together they form standard scientific register.\n\n符合 cannot take a direct object (it requires 与…符合), 预报 belongs to operational forecasting such as weather, 适应 takes a living subject, and 配合/估计 are too colloquial for academic writing."
+      }
+    },
+    "tags": [
+      "collocation",
+      "scientific-register"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-c08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列各组词语中，字形完全正确的一组是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "浓度　粘度　温度　精度"
+      },
+      {
+        "id": "B",
+        "text": "农度　黏度　湿度　经度"
+      },
+      {
+        "id": "C",
+        "text": "浓度　黏度　适度　晶度"
+      },
+      {
+        "id": "D",
+        "text": "浓度　黏度　湿度　精度"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "四个词都是科技文中常见的「度」类术语，写法均正确。「黏度」表示流体内部的阻力，在规范用法中写作「黏」而非「粘」——后者读 zhān，作动词表示粘贴。",
+    "distractorRationale": {
+      "A": "「粘度」应写作「黏度」。「温度」本身正确，但整组因此不成立。",
+      "B": "「农度」应为「浓度」。「经度」虽是正确的词，但与本组的物理量语境不符。",
+      "C": "「晶度」不是规范术语，「适度」也与其他三项的物理量性质不一致。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which group of terms is written entirely correctly?",
+        "explanation": "All four are common 度 (measure) terms in scientific Chinese. The key point is 黏度 (viscosity): the standard written form uses 黏 (nián, sticky), not 粘 (zhān), which is a verb meaning to paste or stick something on.\n\nThe distinction is enforced in technical publishing even though many everyday texts blur it."
+      }
+    },
+    "tags": [
+      "character-errors",
+      "technical-terms"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-c09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "______ 因此，测量前必须先将仪器调零，否则所有读数都会带有同一方向的偏差。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "系统误差不会因重复测量而抵消。"
+      },
+      {
+        "id": "B",
+        "text": "测量结果通常保留三位有效数字。"
+      },
+      {
+        "id": "C",
+        "text": "实验仪器应当定期清洁和保养。"
+      },
+      {
+        "id": "D",
+        "text": "偶然误差可以通过多次测量取平均值来减小。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "横线后的「因此」要求前句提供理由，而后半句指出「所有读数都会带有同一方向的偏差」——这正是系统误差的定义特征。只有 A 与之构成完整的因果关系。",
+    "distractorRationale": {
+      "B": "有效数字属于记录规范，与误差方向无关。",
+      "C": "清洁保养与调零是两回事，不能推出该结论。",
+      "D": "偶然误差的方向随机，无法解释「同一方向的偏差」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank at the start of the passage?",
+        "explanation": "因此 (therefore) after the blank demands that the missing sentence supply a reason, and the second half names the consequence: every reading carries a bias in the same direction. That is precisely the defining property of 系统误差 (systematic error).\n\nOption D concerns 偶然误差 (random error), whose direction varies, so it cannot explain a one-directional bias."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "error-types"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-c10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的词语填入空格：\n\n两组数据之间存在明显的 ______ 关系，但这并不意味着其中一方是另一方的原因。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因果"
+      },
+      {
+        "id": "B",
+        "text": "相关"
+      },
+      {
+        "id": "C",
+        "text": "对立"
+      },
+      {
+        "id": "D",
+        "text": "从属"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "后半句明确否认因果，故空格处必须是一个弱于因果的概念。「相关」正指两组数据同步变化而不必互为原因，是统计学的标准术语。",
+    "distractorRationale": {
+      "A": "与后半句直接矛盾。",
+      "C": "「对立」指互相排斥，不描述数据的共变关系。",
+      "D": "「从属」表示层级关系，也不适用于两组数据。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate word for the blank:\n\n两组数据之间存在明显的 ______ 关系，但这并不意味着其中一方是另一方的原因。\n\n(There is a clear ______ relationship between the two data sets, but this does not mean one causes the other.)",
+        "explanation": "The second clause explicitly denies causation, so the blank needs a weaker notion. 相关 (correlation) is the standard statistical term for two quantities that vary together without either necessarily causing the other.\n\n因果 (causal) contradicts the second clause outright, while 对立 (opposed) and 从属 (subordinate) describe relationships of a different kind altogether."
+      }
+    },
+    "tags": [
+      "word-choice",
+      "statistics-vocabulary"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

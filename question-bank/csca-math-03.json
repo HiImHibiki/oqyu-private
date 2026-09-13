@@ -1,0 +1,1898 @@
+[
+  {
+    "id": "csca-mth-f01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Set operations 集合运算",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Let $A = \\{1, 2, 3, 4\\}$ and $B = \\{3, 4, 5\\}$. What is $A \\cup B$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\{3, 4\\}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\{5\\}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\{1, 2, 3, 4, 5\\}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\{1, 2\\}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The union collects every element appearing in either set, listing each once. Together the two sets contain $1, 2, 3, 4$ and $5$.",
+    "distractorRationale": {
+      "A": "This is the intersection $A \\cap B$.",
+      "B": "This is $B$ with the shared elements removed.",
+      "D": "This is $A$ with the shared elements removed."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "设 $A = \\{1, 2, 3, 4\\}$，$B = \\{3, 4, 5\\}$，则 $A \\cup B$ 等于",
+        "explanation": "并集包含出现在任一集合中的所有元素，重复的只写一次。两集合合起来含有 $1、2、3、4、5$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\{3, 4\\}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\{5\\}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\{1, 2, 3, 4, 5\\}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\{1, 2\\}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "union",
+      "set-operations"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-f02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Quadratic inequalities 一元二次不等式",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Solve $x^2 - 4x \\ge 0$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0 \\le x \\le 4$"
+      },
+      {
+        "id": "B",
+        "text": "$x \\ge 4$"
+      },
+      {
+        "id": "C",
+        "text": "$0 < x < 4$"
+      },
+      {
+        "id": "D",
+        "text": "$x \\le 0$ or $x \\ge 4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Factorise: $x(x - 4) \\ge 0$, with roots $0$ and $4$. The parabola opens upward, so the expression is non-negative outside the roots, and the roots themselves satisfy the equality.",
+    "distractorRationale": {
+      "A": "This is where the expression is negative or zero.",
+      "B": "Omits the branch $x \\le 0$, where both factors are negative.",
+      "C": "The strictly negative region, and it excludes the roots."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "解不等式 $x^2 - 4x \\ge 0$。",
+        "explanation": "因式分解得 $x(x - 4) \\ge 0$，两根为 $0$ 与 $4$。二次函数开口向上，故表达式在两根之外非负，且两根本身满足等号。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0 \\le x \\le 4$"
+          },
+          {
+            "id": "B",
+            "text": "$x \\ge 4$"
+          },
+          {
+            "id": "C",
+            "text": "$0 < x < 4$"
+          },
+          {
+            "id": "D",
+            "text": "$x \\le 0$ 或 $x \\ge 4$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "quadratic-inequality",
+      "roots"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-f03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Set operations 集合运算",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "The universal set is $U = \\{1, 2, 3, 4, 5, 6\\}$ and $A = \\{2, 4, 6\\}$. What is the complement of $A$ in $U$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\{1, 3, 5\\}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\{2, 4, 6\\}$"
+      },
+      {
+        "id": "C",
+        "text": "$U$"
+      },
+      {
+        "id": "D",
+        "text": "$\\varnothing$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The complement contains every element of the universal set that is not in $A$. Removing $2, 4, 6$ from $U$ leaves the odd numbers $1, 3, 5$.",
+    "distractorRationale": {
+      "B": "This is $A$ itself, not its complement.",
+      "C": "The whole universal set would be the complement only if $A$ were empty.",
+      "D": "The empty set would be the complement only if $A = U$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "全集为 $U = \\{1, 2, 3, 4, 5, 6\\}$，$A = \\{2, 4, 6\\}$，则 $A$ 在 $U$ 中的补集为",
+        "explanation": "补集由全集中不属于 $A$ 的元素组成。从 $U$ 中去掉 $2、4、6$ 后剩下奇数 $1、3、5$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\{1, 3, 5\\}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\{2, 4, 6\\}$"
+          },
+          {
+            "id": "C",
+            "text": "$U$"
+          },
+          {
+            "id": "D",
+            "text": "$\\varnothing$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "complement",
+      "set-operations"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-f04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Rational inequalities 分式不等式",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Solve $\\dfrac{2}{x - 3} < 1$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x > 5$"
+      },
+      {
+        "id": "B",
+        "text": "$x < 3$ or $x > 5$"
+      },
+      {
+        "id": "C",
+        "text": "$3 < x < 5$"
+      },
+      {
+        "id": "D",
+        "text": "$x < 5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Move everything to one side: $\\dfrac{2}{x-3} - 1 < 0$, which is $\\dfrac{2 - (x-3)}{x-3} < 0$, or $\\dfrac{5 - x}{x - 3} < 0$.\n\nThe critical values are $3$ and $5$. Testing the three intervals, the quotient is negative when $x < 3$ and when $x > 5$.\n\nMultiplying both sides by $x - 3$ directly is the classic error, because its sign is unknown.",
+    "distractorRationale": {
+      "A": "Only one of the two intervals; misses $x < 3$.",
+      "C": "This is where the quotient is positive.",
+      "D": "Includes $3 < x < 5$, where the inequality fails."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "解不等式 $\\dfrac{2}{x - 3} < 1$。",
+        "explanation": "移项得 $\\dfrac{2}{x-3} - 1 < 0$，即 $\\dfrac{5 - x}{x - 3} < 0$。\n\n临界值为 $3$ 与 $5$。分区间检验可知，当 $x < 3$ 或 $x > 5$ 时该分式为负。\n\n直接两边同乘 $x - 3$ 是典型错误，因为它的正负未知。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$x > 5$"
+          },
+          {
+            "id": "B",
+            "text": "$x < 3$ 或 $x > 5$"
+          },
+          {
+            "id": "C",
+            "text": "$3 < x < 5$"
+          },
+          {
+            "id": "D",
+            "text": "$x < 5$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "rational-inequality",
+      "sign-analysis"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-f05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Quadratic inequalities 一元二次不等式",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For which values of $m$ does $x^2 + mx + m = 0$ have two distinct real roots?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0 < m < 4$"
+      },
+      {
+        "id": "B",
+        "text": "$m = 0$ or $m = 4$"
+      },
+      {
+        "id": "C",
+        "text": "$m < 0$ or $m > 4$"
+      },
+      {
+        "id": "D",
+        "text": "$m > 4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Two distinct real roots require a positive discriminant: $m^2 - 4m > 0$, that is $m(m - 4) > 0$. This holds when $m < 0$ or $m > 4$.",
+    "distractorRationale": {
+      "A": "Here the discriminant is negative, so there are no real roots.",
+      "B": "These give a discriminant of zero, hence a repeated root.",
+      "D": "Only one of the two intervals."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "当 $m$ 取何值时，方程 $x^2 + mx + m = 0$ 有两个不相等的实根？",
+        "explanation": "两个不相等实根要求判别式大于零：$m^2 - 4m > 0$，即 $m(m - 4) > 0$，解得 $m < 0$ 或 $m > 4$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0 < m < 4$"
+          },
+          {
+            "id": "B",
+            "text": "$m = 0$ 或 $m = 4$"
+          },
+          {
+            "id": "C",
+            "text": "$m < 0$ 或 $m > 4$"
+          },
+          {
+            "id": "D",
+            "text": "$m > 4$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "discriminant",
+      "parameter-range"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-f06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Set operations 集合运算",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "If $A \\subseteq B$, which statement must be true?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$A = B$"
+      },
+      {
+        "id": "B",
+        "text": "$A \\cap B = B$"
+      },
+      {
+        "id": "C",
+        "text": "$A \\cup B = A$"
+      },
+      {
+        "id": "D",
+        "text": "$A \\cup B = B$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "If every element of $A$ lies in $B$, then combining the two adds nothing new to $B$, so the union is $B$ itself. For the same reason the intersection equals $A$, not $B$.",
+    "distractorRationale": {
+      "A": "Subset does not mean equal — $B$ may contain elements $A$ lacks.",
+      "B": "The intersection equals $A$, since $A$ is the smaller set.",
+      "C": "The union equals $B$; this would hold only if $B \\subseteq A$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "若 $A \\subseteq B$，则下列一定成立的是",
+        "explanation": "若 $A$ 的每个元素都属于 $B$，那么合并二者不会给 $B$ 增添任何新元素，故并集就是 $B$。同理交集等于 $A$ 而非 $B$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$A = B$"
+          },
+          {
+            "id": "B",
+            "text": "$A \\cap B = B$"
+          },
+          {
+            "id": "C",
+            "text": "$A \\cup B = A$"
+          },
+          {
+            "id": "D",
+            "text": "$A \\cup B = B$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "subset",
+      "set-identities"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-f07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Rational inequalities 分式不等式",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the domain of $f(x) = \\dfrac{1}{\\sqrt{4 - x^2}}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-2 < x < 2$"
+      },
+      {
+        "id": "B",
+        "text": "$-2 \\le x \\le 2$"
+      },
+      {
+        "id": "C",
+        "text": "$x < -2$ or $x > 2$"
+      },
+      {
+        "id": "D",
+        "text": "$x \\ne \\pm 2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The square root requires $4 - x^2 \\ge 0$, and because it also sits in a denominator it must not be zero. So $4 - x^2 > 0$, giving $x^2 < 4$ and therefore $-2 < x < 2$ with the endpoints excluded.",
+    "distractorRationale": {
+      "B": "Includes $x = \\pm 2$, where the denominator becomes zero.",
+      "C": "Here $4 - x^2$ is negative, so the square root is undefined.",
+      "D": "Allows values beyond $\\pm 2$, where the radicand is negative."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "函数 $f(x) = \\dfrac{1}{\\sqrt{4 - x^2}}$ 的定义域是",
+        "explanation": "根号内要求 $4 - x^2 \\ge 0$；又因其位于分母，故不能为零。于是 $4 - x^2 > 0$，得 $x^2 < 4$，即 $-2 < x < 2$，端点不取。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$-2 < x < 2$"
+          },
+          {
+            "id": "B",
+            "text": "$-2 \\le x \\le 2$"
+          },
+          {
+            "id": "C",
+            "text": "$x < -2$ 或 $x > 2$"
+          },
+          {
+            "id": "D",
+            "text": "$x \\ne \\pm 2$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "domain",
+      "radicand"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Domain and range 定义域与值域",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the range of $f(x) = -x^2 + 4x - 1$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$(-\\infty, 2]$"
+      },
+      {
+        "id": "B",
+        "text": "$(-\\infty, 3]$"
+      },
+      {
+        "id": "C",
+        "text": "$[-1, +\\infty)$"
+      },
+      {
+        "id": "D",
+        "text": "$[3, +\\infty)$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Complete the square: $f(x) = -(x - 2)^2 + 3$. The coefficient of the squared term is negative, so the parabola opens downward and $3$ is the maximum. The range runs from $3$ downward without bound.",
+    "distractorRationale": {
+      "A": "Uses the $x$-coordinate of the vertex instead of its value.",
+      "C": "Uses the constant term $-1$, which is $f(0)$, not an extremum.",
+      "D": "Would apply to an upward-opening parabola with minimum $3$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "函数 $f(x) = -x^2 + 4x - 1$ 的值域是",
+        "explanation": "配方得 $f(x) = -(x - 2)^2 + 3$。二次项系数为负，抛物线开口向下，故最大值为 $3$，值域自 $3$ 向下无界。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$(-\\infty, 2]$"
+          },
+          {
+            "id": "B",
+            "text": "$(-\\infty, 3]$"
+          },
+          {
+            "id": "C",
+            "text": "$[-1, +\\infty)$"
+          },
+          {
+            "id": "D",
+            "text": "$[3, +\\infty)$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "range",
+      "completing-the-square"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Parity 奇偶性",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which function is even?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$f(x) = x^3$"
+      },
+      {
+        "id": "B",
+        "text": "$f(x) = \\sin x$"
+      },
+      {
+        "id": "C",
+        "text": "$f(x) = x^2 + \\cos x$"
+      },
+      {
+        "id": "D",
+        "text": "$f(x) = x + 1$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "A function is even when $f(-x) = f(x)$. Both $x^2$ and $\\cos x$ are even, and the sum of two even functions is even.",
+    "distractorRationale": {
+      "A": "Odd: $(-x)^3 = -x^3$.",
+      "B": "Odd: $\\sin(-x) = -\\sin x$.",
+      "D": "Neither even nor odd; the constant breaks the symmetry."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列函数中为偶函数的是",
+        "explanation": "偶函数满足 $f(-x) = f(x)$。$x^2$ 与 $\\cos x$ 都是偶函数，两个偶函数之和仍为偶函数。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$f(x) = x^3$"
+          },
+          {
+            "id": "B",
+            "text": "$f(x) = \\sin x$"
+          },
+          {
+            "id": "C",
+            "text": "$f(x) = x^2 + \\cos x$"
+          },
+          {
+            "id": "D",
+            "text": "$f(x) = x + 1$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "parity",
+      "even-function"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Exponential functions 指数函数",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Solve $2^{x+1} = 8^{x-1}$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x = 3$"
+      },
+      {
+        "id": "B",
+        "text": "$x = 1$"
+      },
+      {
+        "id": "C",
+        "text": "$x = -2$"
+      },
+      {
+        "id": "D",
+        "text": "$x = 2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Write both sides with base $2$: $8^{x-1} = (2^3)^{x-1} = 2^{3x-3}$. Equating exponents gives $x + 1 = 3x - 3$, so $2x = 4$ and $x = 2$.",
+    "distractorRationale": {
+      "A": "Would give $2^4 = 8^2$, that is $16 = 64$.",
+      "B": "Would give $2^2 = 8^0$, that is $4 = 1$.",
+      "C": "Comes from a sign error when collecting terms."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "解方程 $2^{x+1} = 8^{x-1}$。",
+        "explanation": "化为同底：$8^{x-1} = (2^3)^{x-1} = 2^{3x-3}$。指数相等得 $x + 1 = 3x - 3$，故 $2x = 4$，$x = 2$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$x = 3$"
+          },
+          {
+            "id": "B",
+            "text": "$x = 1$"
+          },
+          {
+            "id": "C",
+            "text": "$x = -2$"
+          },
+          {
+            "id": "D",
+            "text": "$x = 2$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "exponential-equation",
+      "same-base"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Logarithmic functions 对数函数",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Simplify $\\log_2 48 - \\log_2 3$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$4$"
+      },
+      {
+        "id": "B",
+        "text": "$16$"
+      },
+      {
+        "id": "C",
+        "text": "$45$"
+      },
+      {
+        "id": "D",
+        "text": "$\\log_2 45$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "A difference of logarithms with the same base is the logarithm of the quotient: $\\log_2\\dfrac{48}{3} = \\log_2 16 = 4$.",
+    "distractorRationale": {
+      "B": "Stops at the argument $16$ without evaluating the logarithm.",
+      "C": "Subtracts the arguments instead of dividing them.",
+      "D": "Same error, left in logarithmic form."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "化简 $\\log_2 48 - \\log_2 3$。",
+        "explanation": "同底对数相减等于商的对数：$\\log_2\\dfrac{48}{3} = \\log_2 16 = 4$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$4$"
+          },
+          {
+            "id": "B",
+            "text": "$16$"
+          },
+          {
+            "id": "C",
+            "text": "$45$"
+          },
+          {
+            "id": "D",
+            "text": "$\\log_2 45$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "logarithm-rules",
+      "quotient"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Trigonometric functions 三角函数",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the maximum value of $y = 3\\sin x - 1$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-1$"
+      },
+      {
+        "id": "B",
+        "text": "$2$"
+      },
+      {
+        "id": "C",
+        "text": "$4$"
+      },
+      {
+        "id": "D",
+        "text": "$3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The sine function ranges from $-1$ to $1$, so $3\\sin x$ ranges from $-3$ to $3$. Subtracting $1$ shifts the whole range down, giving a maximum of $3 - 1 = 2$.",
+    "distractorRationale": {
+      "A": "This is the value when $\\sin x = 0$, not the maximum.",
+      "C": "Adds $1$ instead of subtracting it.",
+      "D": "The maximum of $3\\sin x$ before the shift is applied."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "函数 $y = 3\\sin x - 1$ 的最大值是",
+        "explanation": "正弦函数的取值范围为 $-1$ 到 $1$，故 $3\\sin x$ 的范围为 $-3$ 到 $3$。再减 $1$ 使整体下移，最大值为 $3 - 1 = 2$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$-1$"
+          },
+          {
+            "id": "B",
+            "text": "$2$"
+          },
+          {
+            "id": "C",
+            "text": "$4$"
+          },
+          {
+            "id": "D",
+            "text": "$3$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "trigonometric-range",
+      "amplitude"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Arithmetic sequences 等差数列",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In an arithmetic sequence, $a_1 = 3$ and $a_{10} = 30$. What is the common difference?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$9$"
+      },
+      {
+        "id": "B",
+        "text": "$2.7$"
+      },
+      {
+        "id": "C",
+        "text": "$3$"
+      },
+      {
+        "id": "D",
+        "text": "$27$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "There are nine steps from $a_1$ to $a_{10}$, so $9d = 30 - 3 = 27$ and $d = 3$.\n\nCounting ten steps instead of nine is the usual slip: the number of gaps is one less than the number of terms.",
+    "distractorRationale": {
+      "A": "Divides $27$ by $3$ instead of by $9$.",
+      "B": "Divides by $10$ rather than by the $9$ gaps.",
+      "D": "Reports the total increase without dividing."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "等差数列中 $a_1 = 3$，$a_{10} = 30$，则公差为",
+        "explanation": "从 $a_1$ 到 $a_{10}$ 共九个间隔，故 $9d = 30 - 3 = 27$，得 $d = 3$。\n\n常见错误是按十个间隔计算：间隔数总比项数少一。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$9$"
+          },
+          {
+            "id": "B",
+            "text": "$2.7$"
+          },
+          {
+            "id": "C",
+            "text": "$3$"
+          },
+          {
+            "id": "D",
+            "text": "$27$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "arithmetic-sequence",
+      "common-difference"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Geometric sequences 等比数列",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A geometric sequence has $a_1 = 2$ and common ratio $3$. What is the sum of the first four terms?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$162$"
+      },
+      {
+        "id": "B",
+        "text": "$54$"
+      },
+      {
+        "id": "C",
+        "text": "$26$"
+      },
+      {
+        "id": "D",
+        "text": "$80$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The terms are $2, 6, 18, 54$, and their sum is $80$. Using the formula: $S_4 = \\dfrac{a(q^4 - 1)}{q - 1} = \\dfrac{2(81 - 1)}{2} = 80$.",
+    "distractorRationale": {
+      "A": "This is the fifth term.",
+      "B": "This is the fourth term alone, not the sum.",
+      "C": "Sums only the first three terms."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "等比数列的首项为 $2$，公比为 $3$，则前四项之和为",
+        "explanation": "各项依次为 $2、6、18、54$，其和为 $80$。用公式计算：$S_4 = \\dfrac{a(q^4 - 1)}{q - 1} = \\dfrac{2(81 - 1)}{2} = 80$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$162$"
+          },
+          {
+            "id": "B",
+            "text": "$54$"
+          },
+          {
+            "id": "C",
+            "text": "$26$"
+          },
+          {
+            "id": "D",
+            "text": "$80$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "geometric-sequence",
+      "partial-sum"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Basics of derivatives 导数基础",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "If $f(x) = 2x^3 - 5x + 1$, what is $f'(x)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6x^2 - 5$"
+      },
+      {
+        "id": "B",
+        "text": "$6x^2 - 5 + 1$"
+      },
+      {
+        "id": "C",
+        "text": "$6x^2 - 5x$"
+      },
+      {
+        "id": "D",
+        "text": "$2x^2 - 5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Differentiate term by term: $2x^3$ gives $6x^2$, $-5x$ gives $-5$, and the constant $1$ gives $0$.",
+    "distractorRationale": {
+      "B": "Keeps the constant, which differentiates to zero.",
+      "C": "Leaves the $x$ attached after differentiating the linear term.",
+      "D": "Fails to multiply by the exponent $3$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "若 $f(x) = 2x^3 - 5x + 1$，则 $f'(x)$ 等于",
+        "explanation": "逐项求导：$2x^3$ 得 $6x^2$，$-5x$ 得 $-5$，常数项 $1$ 求导为 $0$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$6x^2 - 5$"
+          },
+          {
+            "id": "B",
+            "text": "$6x^2 - 5 + 1$"
+          },
+          {
+            "id": "C",
+            "text": "$6x^2 - 5x$"
+          },
+          {
+            "id": "D",
+            "text": "$2x^2 - 5$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "differentiation",
+      "polynomial"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Monotonicity 单调性",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "On which interval is $f(x) = x^2 - 4x + 3$ increasing?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$(-\\infty, +\\infty)$"
+      },
+      {
+        "id": "B",
+        "text": "$(2, +\\infty)$"
+      },
+      {
+        "id": "C",
+        "text": "$(-\\infty, 2)$"
+      },
+      {
+        "id": "D",
+        "text": "$(1, 3)$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The derivative is $f'(x) = 2x - 4$, which is positive when $x > 2$. Equivalently, the parabola opens upward with vertex at $x = 2$, so it rises to the right of the vertex.",
+    "distractorRationale": {
+      "A": "The function decreases on the left half, so it is not increasing everywhere.",
+      "C": "Here the derivative is negative, so the function decreases.",
+      "D": "This is the interval between the roots, where the function is negative — a different question."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "函数 $f(x) = x^2 - 4x + 3$ 的单调递增区间是",
+        "explanation": "导数为 $f'(x) = 2x - 4$，当 $x > 2$ 时为正。也可从图象看：抛物线开口向上，顶点在 $x = 2$，故在顶点右侧递增。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$(-\\infty, +\\infty)$"
+          },
+          {
+            "id": "B",
+            "text": "$(2, +\\infty)$"
+          },
+          {
+            "id": "C",
+            "text": "$(-\\infty, 2)$"
+          },
+          {
+            "id": "D",
+            "text": "$(1, 3)$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "monotonicity",
+      "derivative-sign"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Power functions 幂函数",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which power function is decreasing on $(0, +\\infty)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$y = x^{1/2}$"
+      },
+      {
+        "id": "B",
+        "text": "$y = x^3$"
+      },
+      {
+        "id": "C",
+        "text": "$y = x^{-1}$"
+      },
+      {
+        "id": "D",
+        "text": "$y = x^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "A power function $y = x^\\alpha$ decreases on $(0, +\\infty)$ exactly when $\\alpha < 0$. Here $y = x^{-1} = \\dfrac{1}{x}$, which falls as $x$ grows.",
+    "distractorRationale": {
+      "A": "Also increases, more slowly, since $\\alpha = \\dfrac{1}{2} > 0$.",
+      "B": "Increases, since $\\alpha = 3 > 0$.",
+      "D": "Increases on the positive axis, since $\\alpha = 2 > 0$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列幂函数中，在 $(0, +\\infty)$ 上单调递减的是",
+        "explanation": "幂函数 $y = x^\\alpha$ 在 $(0, +\\infty)$ 上递减的充要条件是 $\\alpha < 0$。此处 $y = x^{-1} = \\dfrac{1}{x}$，随 $x$ 增大而减小。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$y = x^{1/2}$"
+          },
+          {
+            "id": "B",
+            "text": "$y = x^3$"
+          },
+          {
+            "id": "C",
+            "text": "$y = x^{-1}$"
+          },
+          {
+            "id": "D",
+            "text": "$y = x^2$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "power-function",
+      "monotonicity"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Trigonometric functions 三角函数",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Evaluate $\\sin 30^\\circ \\cos 60^\\circ + \\cos 30^\\circ \\sin 60^\\circ$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{\\sqrt{3}}{2}$"
+      },
+      {
+        "id": "B",
+        "text": "$0$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "D",
+        "text": "$1$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The expression is the expansion of $\\sin(30^\\circ + 60^\\circ) = \\sin 90^\\circ = 1$.\n\nDirect substitution confirms it: $\\dfrac{1}{2} \\times \\dfrac{1}{2} + \\dfrac{\\sqrt{3}}{2} \\times \\dfrac{\\sqrt{3}}{2} = \\dfrac{1}{4} + \\dfrac{3}{4} = 1$.",
+    "distractorRationale": {
+      "A": "This is $\\sin 60^\\circ$, one factor rather than the whole expression.",
+      "B": "Would arise from using the cosine addition formula, which has a minus sign.",
+      "C": "The value of the first product alone would be $\\dfrac{1}{4}$; this is a different value entirely."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "求值：$\\sin 30^\\circ \\cos 60^\\circ + \\cos 30^\\circ \\sin 60^\\circ$。",
+        "explanation": "该式正是 $\\sin(30^\\circ + 60^\\circ)$ 的展开，故等于 $\\sin 90^\\circ = 1$。\n\n直接代入亦可验证：$\\dfrac{1}{2} \\times \\dfrac{1}{2} + \\dfrac{\\sqrt{3}}{2} \\times \\dfrac{\\sqrt{3}}{2} = \\dfrac{1}{4} + \\dfrac{3}{4} = 1$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{\\sqrt{3}}{2}$"
+          },
+          {
+            "id": "B",
+            "text": "$0$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{1}{2}$"
+          },
+          {
+            "id": "D",
+            "text": "$1$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "addition-formula",
+      "special-angles"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Basics of calculus 微积分基础",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Evaluate $\\displaystyle\\int_0^1 (4x^3 + 1)\\,dx$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2$"
+      },
+      {
+        "id": "B",
+        "text": "$1$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{5}{4}$"
+      },
+      {
+        "id": "D",
+        "text": "$5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "An antiderivative is $x^4 + x$. Evaluating between the limits: $(1 + 1) - (0 + 0) = 2$.",
+    "distractorRationale": {
+      "B": "Integrates only the constant term.",
+      "C": "Divides by $4$ instead of multiplying, misapplying the power rule.",
+      "D": "Differentiates instead of integrating and then substitutes."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "计算 $\\displaystyle\\int_0^1 (4x^3 + 1)\\,dx$。",
+        "explanation": "原函数为 $x^4 + x$。代入上下限得 $(1 + 1) - (0 + 0) = 2$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$2$"
+          },
+          {
+            "id": "B",
+            "text": "$1$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{5}{4}$"
+          },
+          {
+            "id": "D",
+            "text": "$5$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "definite-integral",
+      "antiderivative"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Domain and range 定义域与值域",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the domain of $f(x) = \\ln(x - 2) + \\dfrac{1}{x - 5}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x > 5$"
+      },
+      {
+        "id": "B",
+        "text": "$x > 2$ and $x \\ne 5$"
+      },
+      {
+        "id": "C",
+        "text": "$x > 2$"
+      },
+      {
+        "id": "D",
+        "text": "$x \\ge 2$ and $x \\ne 5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Two conditions must hold together. The logarithm requires $x - 2 > 0$, so $x > 2$; the fraction requires $x - 5 \\ne 0$, so $x \\ne 5$.",
+    "distractorRationale": {
+      "A": "Discards the interval $2 < x < 5$, which is perfectly valid.",
+      "C": "Forgets to exclude $x = 5$, where the denominator vanishes.",
+      "D": "Includes $x = 2$, where $\\ln 0$ is undefined."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "函数 $f(x) = \\ln(x - 2) + \\dfrac{1}{x - 5}$ 的定义域是",
+        "explanation": "两个条件必须同时满足：对数要求 $x - 2 > 0$，即 $x > 2$；分式要求 $x - 5 \\ne 0$，即 $x \\ne 5$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$x > 5$"
+          },
+          {
+            "id": "B",
+            "text": "$x > 2$ 且 $x \\ne 5$"
+          },
+          {
+            "id": "C",
+            "text": "$x > 2$"
+          },
+          {
+            "id": "D",
+            "text": "$x \\ge 2$ 且 $x \\ne 5$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "domain",
+      "combined-conditions"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Arithmetic sequences 等差数列",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In an arithmetic sequence, $a_3 + a_7 = 20$. What is $a_5$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$10$"
+      },
+      {
+        "id": "B",
+        "text": "$20$"
+      },
+      {
+        "id": "C",
+        "text": "$5$"
+      },
+      {
+        "id": "D",
+        "text": "Cannot be determined"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "In an arithmetic sequence, terms equally spaced either side of a given term average to it: $a_3 + a_7 = 2a_5$, since $3$ and $7$ are symmetric about $5$. So $a_5 = \\dfrac{20}{2} = 10$.\n\nNeither the first term nor the common difference is needed.",
+    "distractorRationale": {
+      "B": "Reports the given sum rather than the middle term.",
+      "C": "Divides by $4$ instead of $2$.",
+      "D": "The symmetry makes the value determinate without further information."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "等差数列中 $a_3 + a_7 = 20$，则 $a_5$ 等于",
+        "explanation": "等差数列中，关于某项对称的两项之和等于该项的两倍：因 $3$ 与 $7$ 关于 $5$ 对称，故 $a_3 + a_7 = 2a_5$，得 $a_5 = \\dfrac{20}{2} = 10$。\n\n首项与公差都不需要知道。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$10$"
+          },
+          {
+            "id": "B",
+            "text": "$20$"
+          },
+          {
+            "id": "C",
+            "text": "$5$"
+          },
+          {
+            "id": "D",
+            "text": "无法确定"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "arithmetic-sequence",
+      "symmetry"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Geometric sequences 等比数列",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An infinite geometric series has first term $12$ and sum $16$. What is the common ratio?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{4}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{4}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{3}{4}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "For an infinite geometric series, $S = \\dfrac{a}{1 - q}$. So $16 = \\dfrac{12}{1 - q}$, giving $1 - q = \\dfrac{12}{16} = \\dfrac{3}{4}$ and therefore $q = \\dfrac{1}{4}$.",
+    "distractorRationale": {
+      "A": "Would give a sum of $18$, not $16$.",
+      "B": "Greater than $1$, so the series would diverge and have no sum.",
+      "D": "This is $1 - q$, the intermediate value, not $q$ itself."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "无穷等比数列的首项为 $12$，各项和为 $16$，则公比为",
+        "explanation": "无穷等比数列求和公式为 $S = \\dfrac{a}{1 - q}$。故 $16 = \\dfrac{12}{1 - q}$，得 $1 - q = \\dfrac{12}{16} = \\dfrac{3}{4}$，故 $q = \\dfrac{1}{4}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{1}{3}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{4}{3}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{1}{4}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{3}{4}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "infinite-series",
+      "common-ratio"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Basics of derivatives 导数基础",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "The curve $y = x^3 - 3x^2 + 2$ has a tangent at $x = 1$. What is the gradient of that tangent?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0$"
+      },
+      {
+        "id": "B",
+        "text": "$-1$"
+      },
+      {
+        "id": "C",
+        "text": "$3$"
+      },
+      {
+        "id": "D",
+        "text": "$-3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Differentiate: $\\dfrac{dy}{dx} = 3x^2 - 6x$. At $x = 1$: $3 - 6 = -3$.",
+    "distractorRationale": {
+      "A": "Would require a stationary point, which occurs at $x = 0$ and $x = 2$, not $x = 1$.",
+      "B": "This is the value of $y$ at $x = 1$, not the gradient.",
+      "C": "Uses only the $3x^2$ term and drops $-6x$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "曲线 $y = x^3 - 3x^2 + 2$ 在 $x = 1$ 处切线的斜率是",
+        "explanation": "求导得 $\\dfrac{dy}{dx} = 3x^2 - 6x$。代入 $x = 1$：$3 - 6 = -3$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0$"
+          },
+          {
+            "id": "B",
+            "text": "$-1$"
+          },
+          {
+            "id": "C",
+            "text": "$3$"
+          },
+          {
+            "id": "D",
+            "text": "$-3$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "derivative",
+      "tangent-gradient"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-g17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Logarithmic functions 对数函数",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "If $\\log_a 2 = m$, what is $\\log_a 8$ in terms of $m$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3m$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{m}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$m^3$"
+      },
+      {
+        "id": "D",
+        "text": "$m + 3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Since $8 = 2^3$, the power rule gives $\\log_a 8 = \\log_a 2^3 = 3\\log_a 2 = 3m$.",
+    "distractorRationale": {
+      "B": "Divides rather than multiplies.",
+      "C": "Raises the logarithm to a power instead of multiplying by the exponent.",
+      "D": "Adds the exponent, which would correspond to multiplying the argument by $a^3$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "若 $\\log_a 2 = m$，则 $\\log_a 8$ 用 $m$ 表示为",
+        "explanation": "因 $8 = 2^3$，由对数幂的法则得 $\\log_a 8 = \\log_a 2^3 = 3\\log_a 2 = 3m$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$3m$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{m}{3}$"
+          },
+          {
+            "id": "C",
+            "text": "$m^3$"
+          },
+          {
+            "id": "D",
+            "text": "$m + 3$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "logarithm-rules",
+      "substitution"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

@@ -1,0 +1,3231 @@
+[
+  {
+    "id": "tka-smp-b01",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Berdasarkan bacaan, berapa lama tumpukan kompos berubah menjadi tanah gembur?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "enam sampai delapan minggu"
+      },
+      {
+        "id": "B",
+        "text": "dua sampai tiga minggu"
+      },
+      {
+        "id": "C",
+        "text": "empat sampai lima minggu"
+      },
+      {
+        "id": "D",
+        "text": "tiga sampai empat bulan"
+      },
+      {
+        "id": "E",
+        "text": "sepuluh sampai dua belas minggu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat (6) menyebutkannya langsung: dalam enam sampai delapan minggu tumpukan berubah menjadi tanah gembur berwarna gelap.\n\nAngka lain pada pilihan tidak muncul dalam bacaan.",
+    "distractorRationale": {
+      "B": "Tidak disebut bacaan.",
+      "C": "Tidak disebut bacaan.",
+      "D": "Tidak disebut bacaan.",
+      "E": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b02",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Berdasarkan bacaan, tumpukan kompos perlu dibalik setiap beberapa hari agar",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "serangga tidak datang"
+      },
+      {
+        "id": "B",
+        "text": "udara masuk"
+      },
+      {
+        "id": "C",
+        "text": "suhunya turun"
+      },
+      {
+        "id": "D",
+        "text": "warnanya menjadi gelap"
+      },
+      {
+        "id": "E",
+        "text": "baunya hilang"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat (5) menyebutkan alasannya: dibalik setiap beberapa hari agar udara masuk.\n\nWarna gelap adalah hasil akhir, bukan tujuan pembalikan.",
+    "distractorRationale": {
+      "A": "Tidak disebut bacaan.",
+      "C": "Tidak disebut sebagai alasan.",
+      "D": "Itu hasil akhir, bukan tujuan pembalikan.",
+      "E": "Bau muncul karena perbandingan bahan keliru."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b03",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Gagasan utama paragraf ketiga bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Pengomposan memerlukan alat khusus."
+      },
+      {
+        "id": "B",
+        "text": "Wadah kompos yang mahal sebaiknya dihindari."
+      },
+      {
+        "id": "C",
+        "text": "Perbandingan bahan lebih menentukan keberhasilan pengomposan daripada alat yang dipakai."
+      },
+      {
+        "id": "D",
+        "text": "Sisa dapur selalu membuat tumpukan berbau."
+      },
+      {
+        "id": "E",
+        "text": "Daun kering sulit terurai."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat (7) menyatakan gagasannya, lalu kalimat (8) dan (9) memberi bukti dari dua arah: terlalu banyak sisa dapur dan terlalu banyak daun kering sama-sama gagal, dan wadah mahal tidak menolong.\n\nKalimat tentang wadah mahal adalah penegasan, bukan gagasan utamanya.",
+    "distractorRationale": {
+      "A": "Bertentangan dengan kalimat (7).",
+      "B": "Bacaan menyebut wadah mahal tidak menolong, bukan harus dihindari.",
+      "D": "Hanya bila jumlahnya berlebihan.",
+      "E": "Bacaan menyebut daun kering memperlambat bila berlebihan."
+    },
+    "tags": [
+      "ide-pokok"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b04",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Maksud kalimat (1) «Sampah organik dari dapur sebenarnya bukan sampah» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "bahan itu tidak dapat diurai"
+      },
+      {
+        "id": "B",
+        "text": "bahan itu bukan berasal dari dapur"
+      },
+      {
+        "id": "C",
+        "text": "bahan itu tidak pernah dibuang orang"
+      },
+      {
+        "id": "D",
+        "text": "bahan itu masih berguna sehingga tidak layak disebut sampah"
+      },
+      {
+        "id": "E",
+        "text": "bahan itu tidak berbau sama sekali"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat (2) langsung menjelaskan maksudnya: sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman.\n\nJadi «bukan sampah» berarti masih bernilai, bukan berarti tidak pernah dibuang.",
+    "distractorRationale": {
+      "A": "Justru bahan ini yang dapat diurai.",
+      "B": "Bacaan menyebut asalnya dari dapur.",
+      "C": "Justru sering dibuang, itulah masalahnya.",
+      "E": "Bau tidak dibahas di kalimat itu."
+    },
+    "tags": [
+      "makna-kalimat"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b05",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Berdasarkan bacaan, masalah utama tempat sampah yang mencampur segala jenis sampah adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tempat sampahnya cepat penuh"
+      },
+      {
+        "id": "B",
+        "text": "tempat sampahnya berat diangkat"
+      },
+      {
+        "id": "C",
+        "text": "harganya mahal"
+      },
+      {
+        "id": "D",
+        "text": "warnanya cepat kusam"
+      },
+      {
+        "id": "E",
+        "text": "campurannya sulit diurai dan berakhir di tempat pembuangan akhir"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat (3) menyatakannya: campuran dengan plastik dan logam sulit diurai dan berakhir di tempat pembuangan akhir.\n\nAlasan lain pada pilihan tidak muncul dalam bacaan.",
+    "distractorRationale": {
+      "A": "Tidak disebut bacaan.",
+      "B": "Tidak disebut bacaan.",
+      "C": "Tidak disebut bacaan.",
+      "D": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b06",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Mengevaluasi argumen",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Pernyataan yang paling melemahkan gagasan pada paragraf ketiga adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Dua tumpukan dengan perbandingan bahan yang sama menghasilkan kompos berbeda kualitas: yang memakai wadah berventilasi jadi dalam enam minggu, yang memakai karung tertutup gagal terurai."
+      },
+      {
+        "id": "B",
+        "text": "Sebagian orang tidak punya waktu membalik tumpukan."
+      },
+      {
+        "id": "C",
+        "text": "Wadah kompos yang baik memang harganya mahal."
+      },
+      {
+        "id": "D",
+        "text": "Daun kering sulit didapat di kota."
+      },
+      {
+        "id": "E",
+        "text": "Kompos memerlukan waktu enam minggu."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Paragraf ketiga menyatakan perbandingan bahan lebih menentukan daripada alat. Jika perbandingan dibuat sama tetapi hasilnya berbeda karena wadahnya, maka alat ternyata ikut menentukan — persis yang dibantah paragraf itu.\n\nHarga, waktu, dan ketersediaan daun menyangkut kemudahan menjalankan, bukan benar tidaknya gagasan tersebut.",
+    "distractorRationale": {
+      "B": "Menyangkut kemudahan, bukan gagasannya.",
+      "C": "Menyangkut harga, bukan pengaruh alat terhadap hasil.",
+      "D": "Menyangkut ketersediaan bahan.",
+      "E": "Sesuai bacaan, tidak membantah apa pun."
+    },
+    "tags": [
+      "evaluasi-argumen"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b07",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Simpulan yang tepat untuk keseluruhan bacaan adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Plastik dapat diurai bila dicampur daun kering."
+      },
+      {
+        "id": "B",
+        "text": "Sisa dapur dapat diubah menjadi kompos melalui pemisahan dan perbandingan bahan yang tepat, bukan melalui alat mahal."
+      },
+      {
+        "id": "C",
+        "text": "Semua sampah rumah tangga dapat dikomposkan."
+      },
+      {
+        "id": "D",
+        "text": "Pengomposan tidak memerlukan perawatan apa pun."
+      },
+      {
+        "id": "E",
+        "text": "Kompos hanya bisa dibuat di daerah pedesaan."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Tiga paragraf bacaan bergerak dari nilai sisa dapur, ke cara memisah dan mengolahnya, lalu ke faktor penentu keberhasilannya.\n\nPlastik dan logam justru disebut sebagai yang tidak bisa diurai, dan bacaan menyebut tumpukan perlu dijaga kelembapan serta dibalik berkala.",
+    "distractorRationale": {
+      "A": "Plastik tetap tidak terurai.",
+      "C": "Plastik dan logam tidak dapat dikomposkan.",
+      "D": "Bacaan menyebut perlu dijaga dan dibalik.",
+      "E": "Lokasi tidak disinggung bacaan."
+    },
+    "tags": [
+      "simpulan"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b08",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Hubungan kalimat (8) dan kalimat (7) adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kalimat (8) memperkenalkan topik baru"
+      },
+      {
+        "id": "B",
+        "text": "kalimat (8) menjelaskan istilah pada kalimat (7)"
+      },
+      {
+        "id": "C",
+        "text": "kalimat (8) memberi bukti dua arah untuk gagasan pada kalimat (7)"
+      },
+      {
+        "id": "D",
+        "text": "kalimat (8) mengulang kalimat (7)"
+      },
+      {
+        "id": "E",
+        "text": "kalimat (8) membantah kalimat (7)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat (7) menyatakan perbandingan bahan yang menentukan. Kalimat (8) menunjukkan dua cara gagal — terlalu banyak sisa dapur dan terlalu banyak daun kering — yaitu kesalahan di dua arah perbandingan yang sama.\n\nMenunjukkan kegagalan di kedua sisi justru menguatkan, bukan membantah.",
+    "distractorRationale": {
+      "A": "Topiknya sama.",
+      "B": "Tidak ada istilah yang dijelaskan.",
+      "D": "Isinya berbeda: satu gagasan, satu bukti.",
+      "E": "Justru menguatkan."
+    },
+    "tags": [
+      "hubungan-antarkalimat"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b09",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Berdasarkan bacaan, bahan yang dilapiskan bersama sisa dapur adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "serbuk gergaji"
+      },
+      {
+        "id": "B",
+        "text": "abu dapur"
+      },
+      {
+        "id": "C",
+        "text": "kertas koran"
+      },
+      {
+        "id": "D",
+        "text": "daun kering"
+      },
+      {
+        "id": "E",
+        "text": "pasir"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat (5) menyebutkannya: sisa dapur ditumpuk berlapis dengan daun kering.\n\nBahan lain pada pilihan tidak muncul dalam bacaan.",
+    "distractorRationale": {
+      "A": "Tidak disebut bacaan.",
+      "B": "Tidak disebut bacaan.",
+      "C": "Tidak disebut bacaan.",
+      "E": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b10",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Mengevaluasi argumen",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Sikap penulis terhadap wadah kompos yang mahal adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menilainya wajib dimiliki"
+      },
+      {
+        "id": "B",
+        "text": "menilainya berbahaya"
+      },
+      {
+        "id": "C",
+        "text": "menilainya satu-satunya penentu"
+      },
+      {
+        "id": "D",
+        "text": "tidak memberikan penilaian"
+      },
+      {
+        "id": "E",
+        "text": "menilainya tidak menjamin keberhasilan bila perbandingan bahannya keliru"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat (9) menyatakannya: wadah yang mahal tidak menolong bila perbandingannya keliru.\n\nPenulis tidak melarang memakainya, hanya menolak menjadikannya penentu.",
+    "distractorRationale": {
+      "A": "Bertentangan dengan kalimat (9).",
+      "B": "Bahaya tidak disinggung.",
+      "C": "Justru yang dibantah penulis.",
+      "D": "Penilaiannya jelas dinyatakan."
+    },
+    "tags": [
+      "sikap-penulis"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b11",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Anggapan yang mendasari kalimat (9) adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "alat hanya bermanfaat bila syarat dasar prosesnya sudah dipenuhi"
+      },
+      {
+        "id": "B",
+        "text": "semua orang mampu membeli wadah mahal"
+      },
+      {
+        "id": "C",
+        "text": "pengomposan tidak memerlukan wadah"
+      },
+      {
+        "id": "D",
+        "text": "semua wadah kompos berkualitas sama"
+      },
+      {
+        "id": "E",
+        "text": "harga selalu berbanding terbalik dengan mutu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat (9) menyimpulkan bahwa wadah mahal tidak menolong bila perbandingan bahan keliru. Simpulan itu baru masuk akal bila alat dianggap hanya memperbaiki proses yang syarat dasarnya sudah benar.\n\nBacaan tidak menyatakan semua wadah sama, dan tidak pula bahwa wadah tidak diperlukan.",
+    "distractorRationale": {
+      "B": "Kemampuan membeli tidak disinggung.",
+      "C": "Tumpukan tetap memerlukan tempat.",
+      "D": "Bacaan tidak menyatakan hal itu.",
+      "E": "Bacaan tidak membalik hubungan harga dan mutu."
+    },
+    "tags": [
+      "asumsi"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b12",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Sampah organik dari dapur sebenarnya bukan sampah. (2) Sisa sayur, kulit buah, dan ampas kopi masih menyimpan unsur hara yang dibutuhkan tanaman. (3) Masalahnya muncul ketika semuanya dicampur dengan plastik dan logam di satu tempat sampah: campuran itu sulit diurai dan berakhir di tempat pembuangan akhir.\n\n(4) Pengomposan memisahkan yang bisa diurai dari yang tidak. (5) Sisa dapur ditumpuk berlapis dengan daun kering, dijaga kelembapannya, dan dibalik setiap beberapa hari agar udara masuk. (6) Dalam enam sampai delapan minggu, tumpukan itu berubah menjadi tanah gembur berwarna gelap.\n\n(7) Yang sering dilupakan, keberhasilan pengomposan lebih ditentukan oleh perbandingan bahan daripada oleh alatnya. (8) Terlalu banyak sisa dapur membuat tumpukan basah dan berbau; terlalu banyak daun kering membuatnya lambat terurai. (9) Wadah yang mahal tidak menolong bila perbandingannya keliru."
+    },
+    "stem": "Bila seseorang membuat kompos yang basah dan berbau, langkah yang paling sesuai dengan bacaan adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "mengganti wadah dengan yang lebih mahal"
+      },
+      {
+        "id": "B",
+        "text": "menambah daun kering ke dalam tumpukan"
+      },
+      {
+        "id": "C",
+        "text": "menutup rapat tumpukan agar bau tidak keluar"
+      },
+      {
+        "id": "D",
+        "text": "menyiram tumpukan dengan air"
+      },
+      {
+        "id": "E",
+        "text": "menambah sisa sayur agar prosesnya cepat"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat (8) menyebut tumpukan menjadi basah dan berbau karena terlalu banyak sisa dapur. Perbaikannya adalah menambah sisi yang kurang, yaitu daun kering.\n\nMenambah sisa sayur memperparah, menutup rapat menghalangi udara yang justru dibutuhkan, dan menyiram menambah kelembapan yang sudah berlebih.",
+    "distractorRationale": {
+      "A": "Wadah bukan penyebabnya.",
+      "C": "Menghalangi udara yang justru dibutuhkan.",
+      "D": "Menambah kelembapan yang sudah berlebih.",
+      "E": "Memperparah keadaan yang sudah terlalu basah."
+    },
+    "tags": [
+      "penerapan"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b13",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek menyimpan sepeda tuanya di gudang belakang. Catnya sudah mengelupas di banyak bagian, dan sadelnya ditambal kulit yang warnanya tidak sama. Setiap Minggu pagi Kakek mengeluarkannya, membersihkan jari-jarinya satu per satu dengan kain, lalu memasukkannya kembali tanpa pernah menaikinya.\n\nSuatu hari aku bertanya mengapa sepeda itu tidak dipakai saja. Kakek tertawa kecil. Katanya, dulu sepeda itu yang mengantarnya bekerja setiap hari selama dua puluh tahun, menempuh jalan yang sekarang sudah menjadi jalan raya.\n\n«Sekarang giliran Kakek yang merawatnya,» katanya sambil melipat kain lap."
+    },
+    "stem": "Latar tempat yang tergambar pada bacaan tentang sepeda Kakek adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "pasar"
+      },
+      {
+        "id": "B",
+        "text": "jalan raya"
+      },
+      {
+        "id": "C",
+        "text": "gudang belakang rumah"
+      },
+      {
+        "id": "D",
+        "text": "sekolah"
+      },
+      {
+        "id": "E",
+        "text": "bengkel sepeda"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bacaan menyebutkan sepeda disimpan di gudang belakang dan dikeluarkan setiap Minggu pagi di sana.\n\nJalan raya hanya disebut sebagai kenangan masa lalu, bukan tempat berlangsungnya peristiwa.",
+    "distractorRationale": {
+      "A": "Tidak disebut bacaan.",
+      "B": "Disebut sebagai kenangan, bukan tempat peristiwa.",
+      "D": "Tidak disebut bacaan.",
+      "E": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "latar"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b14",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek menyimpan sepeda tuanya di gudang belakang. Catnya sudah mengelupas di banyak bagian, dan sadelnya ditambal kulit yang warnanya tidak sama. Setiap Minggu pagi Kakek mengeluarkannya, membersihkan jari-jarinya satu per satu dengan kain, lalu memasukkannya kembali tanpa pernah menaikinya.\n\nSuatu hari aku bertanya mengapa sepeda itu tidak dipakai saja. Kakek tertawa kecil. Katanya, dulu sepeda itu yang mengantarnya bekerja setiap hari selama dua puluh tahun, menempuh jalan yang sekarang sudah menjadi jalan raya.\n\n«Sekarang giliran Kakek yang merawatnya,» katanya sambil melipat kain lap."
+    },
+    "stem": "Sudut pandang yang digunakan dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "orang ketiga pengamat"
+      },
+      {
+        "id": "B",
+        "text": "campuran"
+      },
+      {
+        "id": "C",
+        "text": "orang kedua"
+      },
+      {
+        "id": "D",
+        "text": "orang pertama pelaku sampingan"
+      },
+      {
+        "id": "E",
+        "text": "orang ketiga serba tahu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Cerita dituturkan dengan kata ganti «aku» yang bertanya kepada Kakek, sedangkan tokoh utamanya adalah Kakek.\n\nKarena «aku» hadir dan mengalami peristiwa tetapi bukan tokoh utamanya, sudut pandangnya orang pertama pelaku sampingan.",
+    "distractorRationale": {
+      "A": "«Aku» ikut hadir dalam cerita.",
+      "B": "Sudut pandangnya tidak berpindah.",
+      "C": "Tidak memakai «kamu».",
+      "E": "Tidak memakai kata ganti orang ketiga."
+    },
+    "tags": [
+      "sudut-pandang"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b15",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Makna tersirat",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek menyimpan sepeda tuanya di gudang belakang. Catnya sudah mengelupas di banyak bagian, dan sadelnya ditambal kulit yang warnanya tidak sama. Setiap Minggu pagi Kakek mengeluarkannya, membersihkan jari-jarinya satu per satu dengan kain, lalu memasukkannya kembali tanpa pernah menaikinya.\n\nSuatu hari aku bertanya mengapa sepeda itu tidak dipakai saja. Kakek tertawa kecil. Katanya, dulu sepeda itu yang mengantarnya bekerja setiap hari selama dua puluh tahun, menempuh jalan yang sekarang sudah menjadi jalan raya.\n\n«Sekarang giliran Kakek yang merawatnya,» katanya sambil melipat kain lap."
+    },
+    "stem": "Alasan Kakek tetap merawat sepeda yang tidak pernah dinaikinya adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sepeda itu titipan tetangga"
+      },
+      {
+        "id": "B",
+        "text": "sepeda itu masih baru"
+      },
+      {
+        "id": "C",
+        "text": "sepeda itu akan dijual dengan harga tinggi"
+      },
+      {
+        "id": "D",
+        "text": "sepeda itu akan diberikan kepada cucunya"
+      },
+      {
+        "id": "E",
+        "text": "sepeda itu pernah menemaninya bekerja selama dua puluh tahun"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kakek sendiri menjelaskannya: sepeda itu mengantarnya bekerja setiap hari selama dua puluh tahun.\n\nKalimat penutup «sekarang giliran Kakek yang merawatnya» menegaskan hubungan timbal balik itu.",
+    "distractorRationale": {
+      "A": "Sepeda itu miliknya sendiri.",
+      "B": "Catnya justru sudah mengelupas.",
+      "C": "Tidak ada niat menjual dalam cerita.",
+      "D": "Tidak disebut dalam cerita."
+    },
+    "tags": [
+      "makna-tersirat"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b16",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Amanat & nilai",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek menyimpan sepeda tuanya di gudang belakang. Catnya sudah mengelupas di banyak bagian, dan sadelnya ditambal kulit yang warnanya tidak sama. Setiap Minggu pagi Kakek mengeluarkannya, membersihkan jari-jarinya satu per satu dengan kain, lalu memasukkannya kembali tanpa pernah menaikinya.\n\nSuatu hari aku bertanya mengapa sepeda itu tidak dipakai saja. Kakek tertawa kecil. Katanya, dulu sepeda itu yang mengantarnya bekerja setiap hari selama dua puluh tahun, menempuh jalan yang sekarang sudah menjadi jalan raya.\n\n«Sekarang giliran Kakek yang merawatnya,» katanya sambil melipat kain lap."
+    },
+    "stem": "Amanat yang paling sesuai dengan bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Menghargai sesuatu yang pernah berjasa tidak harus dengan terus memakainya."
+      },
+      {
+        "id": "B",
+        "text": "Barang tua sebaiknya segera diganti."
+      },
+      {
+        "id": "C",
+        "text": "Anak muda harus rajin bertanya kepada orang tua."
+      },
+      {
+        "id": "D",
+        "text": "Bekerja keras selama dua puluh tahun pasti membuahkan hasil."
+      },
+      {
+        "id": "E",
+        "text": "Sepeda lebih baik daripada kendaraan bermotor."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kakek merawat sepeda itu justru tanpa menaikinya, dan menyebutnya sebagai giliran membalas. Di situlah maknanya: penghargaan tidak selalu berbentuk pemakaian.\n\nCerita tidak membandingkan jenis kendaraan dan tidak menganjurkan mengganti barang tua.",
+    "distractorRationale": {
+      "B": "Bertentangan dengan sikap Kakek.",
+      "C": "Pertanyaan «aku» hanya pemicu, bukan amanatnya.",
+      "D": "Bukan pokok cerita.",
+      "E": "Cerita tidak membandingkan kendaraan."
+    },
+    "tags": [
+      "amanat"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b17",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek menyimpan sepeda tuanya di gudang belakang. Catnya sudah mengelupas di banyak bagian, dan sadelnya ditambal kulit yang warnanya tidak sama. Setiap Minggu pagi Kakek mengeluarkannya, membersihkan jari-jarinya satu per satu dengan kain, lalu memasukkannya kembali tanpa pernah menaikinya.\n\nSuatu hari aku bertanya mengapa sepeda itu tidak dipakai saja. Kakek tertawa kecil. Katanya, dulu sepeda itu yang mengantarnya bekerja setiap hari selama dua puluh tahun, menempuh jalan yang sekarang sudah menjadi jalan raya.\n\n«Sekarang giliran Kakek yang merawatnya,» katanya sambil melipat kain lap."
+    },
+    "stem": "Watak Kakek dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "boros dan gemar berganti barang"
+      },
+      {
+        "id": "B",
+        "text": "telaten dan setia pada kenangan"
+      },
+      {
+        "id": "C",
+        "text": "pemarah dan tertutup"
+      },
+      {
+        "id": "D",
+        "text": "acuh terhadap sekitarnya"
+      },
+      {
+        "id": "E",
+        "text": "suka memamerkan miliknya"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Membersihkan jari-jari sepeda satu per satu setiap Minggu pagi menunjukkan ketelatenan; melakukannya bertahun-tahun untuk sepeda yang tidak dipakai menunjukkan kesetiaan pada kenangan.\n\nWataknya dibangun lewat tindakan, bukan lewat penjelasan langsung pengarang.",
+    "distractorRationale": {
+      "A": "Ia mempertahankan barang lamanya.",
+      "C": "Kakek justru tertawa kecil dan menjawab.",
+      "D": "Ia justru sangat memperhatikan.",
+      "E": "Sepeda itu disimpan di gudang, tidak dipamerkan."
+    },
+    "tags": [
+      "penokohan"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b18",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Makna tersirat",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek menyimpan sepeda tuanya di gudang belakang. Catnya sudah mengelupas di banyak bagian, dan sadelnya ditambal kulit yang warnanya tidak sama. Setiap Minggu pagi Kakek mengeluarkannya, membersihkan jari-jarinya satu per satu dengan kain, lalu memasukkannya kembali tanpa pernah menaikinya.\n\nSuatu hari aku bertanya mengapa sepeda itu tidak dipakai saja. Kakek tertawa kecil. Katanya, dulu sepeda itu yang mengantarnya bekerja setiap hari selama dua puluh tahun, menempuh jalan yang sekarang sudah menjadi jalan raya.\n\n«Sekarang giliran Kakek yang merawatnya,» katanya sambil melipat kain lap."
+    },
+    "stem": "Makna kalimat «Sekarang giliran Kakek yang merawatnya» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Kakek akan segera memakai sepeda itu lagi"
+      },
+      {
+        "id": "B",
+        "text": "Kakek baru mulai belajar merawat sepeda"
+      },
+      {
+        "id": "C",
+        "text": "hubungan Kakek dan sepeda itu berbalas: dulu sepeda yang menopang, kini Kakek yang menjaga"
+      },
+      {
+        "id": "D",
+        "text": "sepeda itu sudah tidak dapat diperbaiki"
+      },
+      {
+        "id": "E",
+        "text": "sebelumnya orang lain yang merawat sepeda itu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kata «giliran» mengandaikan ada pihak yang lebih dulu memberi. Dalam cerita, pihak itu adalah sepeda yang mengantar Kakek bekerja selama dua puluh tahun.\n\nJadi kalimat itu menyatakan pembalasan budi, bukan pergantian orang yang merawat.",
+    "distractorRationale": {
+      "A": "Justru ia tidak pernah menaikinya.",
+      "B": "«Giliran» mengacu pada balasan, bukan pada belajar.",
+      "D": "Sepeda itu dirawat, bukan dinyatakan rusak total.",
+      "E": "Tidak ada orang lain dalam cerita ini."
+    },
+    "tags": [
+      "makna-tersirat"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b19",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Gaya bahasa",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek menyimpan sepeda tuanya di gudang belakang. Catnya sudah mengelupas di banyak bagian, dan sadelnya ditambal kulit yang warnanya tidak sama. Setiap Minggu pagi Kakek mengeluarkannya, membersihkan jari-jarinya satu per satu dengan kain, lalu memasukkannya kembali tanpa pernah menaikinya.\n\nSuatu hari aku bertanya mengapa sepeda itu tidak dipakai saja. Kakek tertawa kecil. Katanya, dulu sepeda itu yang mengantarnya bekerja setiap hari selama dua puluh tahun, menempuh jalan yang sekarang sudah menjadi jalan raya.\n\n«Sekarang giliran Kakek yang merawatnya,» katanya sambil melipat kain lap."
+    },
+    "stem": "Kalimat «sadelnya ditambal kulit yang warnanya tidak sama» terutama berfungsi untuk",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menandakan sepeda itu sering dicuri"
+      },
+      {
+        "id": "B",
+        "text": "menunjukkan Kakek kurang mampu membeli sadel baru"
+      },
+      {
+        "id": "C",
+        "text": "menjelaskan bahan pembuat sadel"
+      },
+      {
+        "id": "D",
+        "text": "menunjukkan usia sepeda sekaligus bahwa sepeda itu selalu diperbaiki, bukan dibiarkan"
+      },
+      {
+        "id": "E",
+        "text": "menunjukkan sepeda itu jarang dibersihkan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Tambalan menandakan kerusakan yang pernah terjadi; keberadaan tambalan menandakan kerusakan itu diperbaiki. Warna yang tidak sama membuat riwayat perbaikan itu terlihat.\n\nDetail ini sejalan dengan seluruh cerita: sepeda tua yang dirawat, bukan sepeda tua yang ditinggalkan.",
+    "distractorRationale": {
+      "A": "Pencurian tidak disinggung.",
+      "B": "Kemampuan ekonomi tidak dibahas cerita.",
+      "C": "Bahan hanya disebut sepintas.",
+      "E": "Justru Kakek rutin membersihkannya."
+    },
+    "tags": [
+      "detail-sastra"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b20",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Amanat & nilai",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek menyimpan sepeda tuanya di gudang belakang. Catnya sudah mengelupas di banyak bagian, dan sadelnya ditambal kulit yang warnanya tidak sama. Setiap Minggu pagi Kakek mengeluarkannya, membersihkan jari-jarinya satu per satu dengan kain, lalu memasukkannya kembali tanpa pernah menaikinya.\n\nSuatu hari aku bertanya mengapa sepeda itu tidak dipakai saja. Kakek tertawa kecil. Katanya, dulu sepeda itu yang mengantarnya bekerja setiap hari selama dua puluh tahun, menempuh jalan yang sekarang sudah menjadi jalan raya.\n\n«Sekarang giliran Kakek yang merawatnya,» katanya sambil melipat kain lap."
+    },
+    "stem": "Alasan pengarang menyebut bahwa jalan yang dulu ditempuh Kakek «sekarang sudah menjadi jalan raya» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "untuk menjelaskan letak rumah Kakek"
+      },
+      {
+        "id": "B",
+        "text": "untuk menunjukkan Kakek pernah tersesat"
+      },
+      {
+        "id": "C",
+        "text": "untuk memuji pembangunan jalan"
+      },
+      {
+        "id": "D",
+        "text": "untuk menandakan Kakek ingin pindah rumah"
+      },
+      {
+        "id": "E",
+        "text": "untuk menunjukkan betapa jauh waktu telah berlalu, sehingga perawatan Kakek terasa makin panjang"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Jalan yang berubah menjadi jalan raya adalah ukuran waktu: perubahan sebesar itu memerlukan puluhan tahun. Dengan menyebutnya, pengarang membuat pembaca merasakan rentang waktu yang dilalui Kakek dan sepedanya.\n\nDetail itu tidak berfungsi menerangkan letak rumah maupun menilai pembangunan.",
+    "distractorRationale": {
+      "A": "Letak rumah tidak menjadi persoalan cerita.",
+      "B": "Tidak ada peristiwa tersesat.",
+      "C": "Pembangunan tidak dinilai.",
+      "D": "Kepindahan tidak disinggung."
+    },
+    "tags": [
+      "tujuan-pengarang"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b21",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Gaya bahasa",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek menyimpan sepeda tuanya di gudang belakang. Catnya sudah mengelupas di banyak bagian, dan sadelnya ditambal kulit yang warnanya tidak sama. Setiap Minggu pagi Kakek mengeluarkannya, membersihkan jari-jarinya satu per satu dengan kain, lalu memasukkannya kembali tanpa pernah menaikinya.\n\nSuatu hari aku bertanya mengapa sepeda itu tidak dipakai saja. Kakek tertawa kecil. Katanya, dulu sepeda itu yang mengantarnya bekerja setiap hari selama dua puluh tahun, menempuh jalan yang sekarang sudah menjadi jalan raya.\n\n«Sekarang giliran Kakek yang merawatnya,» katanya sambil melipat kain lap."
+    },
+    "stem": "Suasana yang paling menonjol dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "hangat dan penuh kenangan"
+      },
+      {
+        "id": "B",
+        "text": "tegang dan mencekam"
+      },
+      {
+        "id": "C",
+        "text": "sedih dan putus asa"
+      },
+      {
+        "id": "D",
+        "text": "riang dan jenaka"
+      },
+      {
+        "id": "E",
+        "text": "marah dan penuh pertengkaran"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Cerita bergerak lambat di sekitar kegiatan rutin yang penuh perhatian, ditutup dengan kalimat Kakek yang tenang sambil melipat kain lap.\n\nTidak ada konflik terbuka maupun keputusasaan — yang ada adalah keakraban dengan masa lalu.",
+    "distractorRationale": {
+      "B": "Tidak ada ketegangan.",
+      "C": "Tidak ada nada putus asa.",
+      "D": "Nadanya bukan jenaka meski Kakek tertawa kecil.",
+      "E": "Tidak ada pertengkaran."
+    },
+    "tags": [
+      "suasana"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b22",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kata baku & makna kata",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan kata baku yang tepat terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "apotik, praktek, ijin"
+      },
+      {
+        "id": "B",
+        "text": "apotek, praktik, izin"
+      },
+      {
+        "id": "C",
+        "text": "apotek, praktik, ijin"
+      },
+      {
+        "id": "D",
+        "text": "apotek, praktek, ijin"
+      },
+      {
+        "id": "E",
+        "text": "apotik, praktik, izin"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bentuk baku ketiganya adalah «apotek», «praktik», dan «izin».\n\n«Apotik», «praktek», dan «ijin» adalah bentuk tidak baku yang masih sering dipakai sehari-hari.",
+    "distractorRationale": {
+      "A": "Ketiganya tidak baku.",
+      "C": "«ijin» tidak baku.",
+      "D": "«praktek» dan «ijin» tidak baku.",
+      "E": "«apotik» tidak baku."
+    },
+    "tags": [
+      "kata-baku"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b23",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Ejaan & tanda baca",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan huruf kapital yang tepat terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Kami Berlibur ke Danau Toba pada bulan Juli."
+      },
+      {
+        "id": "B",
+        "text": "Kami berlibur ke danau toba pada bulan Juli."
+      },
+      {
+        "id": "C",
+        "text": "Kami berlibur ke Danau Toba pada bulan Juli."
+      },
+      {
+        "id": "D",
+        "text": "Kami berlibur ke danau Toba pada Bulan juli."
+      },
+      {
+        "id": "E",
+        "text": "Kami berlibur ke Danau toba pada bulan juli."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "«Danau Toba» adalah nama diri geografi sehingga kedua unsurnya berhuruf kapital, dan nama bulan «Juli» juga berhuruf kapital.\n\nKata «bulan» sendiri bukan nama diri, jadi ditulis dengan huruf kecil.",
+    "distractorRationale": {
+      "A": "«Berlibur» tidak perlu kapital.",
+      "B": "«danau toba» seharusnya kapital.",
+      "D": "«danau» dan «Bulan juli» tidak sesuai kaidah.",
+      "E": "«toba» dan «juli» seharusnya kapital."
+    },
+    "tags": [
+      "puebi",
+      "huruf-kapital"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b24",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kalimat efektif",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat berikut yang paling efektif adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Semua siswa-siswa diwajibkan untuk mengikuti upacara bendera."
+      },
+      {
+        "id": "B",
+        "text": "Bagi semua siswa wajib mengikuti upacara bendera."
+      },
+      {
+        "id": "C",
+        "text": "Untuk semua siswa wajib mengikuti upacara bendera."
+      },
+      {
+        "id": "D",
+        "text": "Semua siswa wajib mengikuti upacara bendera."
+      },
+      {
+        "id": "E",
+        "text": "Semua siswa-siswa wajib untuk mengikuti upacara bendera."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kata «semua» sudah menyatakan jamak, sehingga «siswa-siswa» menjadi berlebihan; kata «untuk» setelah «wajib» juga tidak diperlukan.\n\nAwalan «bagi» atau «untuk» di depan kalimat membuat bagian itu menjadi keterangan sehingga kalimatnya kehilangan subjek.",
+    "distractorRationale": {
+      "A": "Berlebihan berlapis.",
+      "B": "Kehilangan subjek karena diawali «bagi».",
+      "C": "Kehilangan subjek karena diawali «untuk».",
+      "E": "Berlebihan pada «siswa-siswa» dan «untuk»."
+    },
+    "tags": [
+      "kalimat-efektif"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b25",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Ejaan & tanda baca",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penggunaan tanda baca yang tepat terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Ibu membeli beras, gula dan, minyak goreng."
+      },
+      {
+        "id": "B",
+        "text": "Ibu membeli beras gula, dan minyak goreng."
+      },
+      {
+        "id": "C",
+        "text": "Ibu membeli, beras, gula, dan minyak goreng."
+      },
+      {
+        "id": "D",
+        "text": "Ibu membeli beras; gula; dan minyak goreng."
+      },
+      {
+        "id": "E",
+        "text": "Ibu membeli beras, gula, dan minyak goreng."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Perincian tiga unsur atau lebih dipisahkan dengan koma, termasuk koma sebelum kata «dan» pada unsur terakhir.\n\nKoma tidak diletakkan setelah predikat «membeli» maupun setelah kata «dan», dan titik koma tidak dipakai untuk perincian sesederhana ini.",
+    "distractorRationale": {
+      "A": "Koma salah tempat, seharusnya sebelum «dan».",
+      "B": "Kurang koma di antara «beras» dan «gula».",
+      "C": "Koma memisahkan predikat dari objeknya.",
+      "D": "Titik koma tidak tepat untuk perincian sederhana."
+    },
+    "tags": [
+      "puebi",
+      "tanda-baca"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b26",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kata baku & makna kata",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Makna kata «lestari» dalam kalimat «Hutan itu harus tetap lestari» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tetap seperti keadaan semula dan tidak berubah rusak"
+      },
+      {
+        "id": "B",
+        "text": "luas dan lebat"
+      },
+      {
+        "id": "C",
+        "text": "tumbuh dengan cepat"
+      },
+      {
+        "id": "D",
+        "text": "dilindungi undang-undang"
+      },
+      {
+        "id": "E",
+        "text": "terkenal di banyak daerah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "«Lestari» berarti tetap seperti keadaan semula, tidak berubah, dan tidak rusak — itulah sebabnya kata ini dipakai untuk pelestarian lingkungan.\n\nPerlindungan hukum adalah salah satu cara mencapai kelestarian, bukan arti katanya.",
+    "distractorRationale": {
+      "B": "Menyangkut ukuran, bukan keadaan bertahan.",
+      "C": "Pertumbuhan bukan arti kata ini.",
+      "D": "Itu salah satu cara, bukan artinya.",
+      "E": "Kepopuleran tidak berkaitan."
+    },
+    "tags": [
+      "makna-kata"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b27",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kepaduan paragraf",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan kalimat berikut.\n\n(1) Akibatnya, air hujan tidak terserap dan langsung mengalir ke jalan.\n(2) Halaman sekolah kami seluruhnya diplester semen.\n(3) Genangan pun muncul setiap kali hujan deras.\n(4) Sekolah akhirnya membongkar sebagian plester dan menggantinya dengan rumput.\n\nUrutan yang tepat agar membentuk paragraf padu adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(2), (3), (1), (4)"
+      },
+      {
+        "id": "B",
+        "text": "(2), (1), (3), (4)"
+      },
+      {
+        "id": "C",
+        "text": "(4), (2), (1), (3)"
+      },
+      {
+        "id": "D",
+        "text": "(3), (1), (2), (4)"
+      },
+      {
+        "id": "E",
+        "text": "(1), (2), (3), (4)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat (2) menyatakan keadaan awal, (1) menyebut akibat langsungnya dengan penanda «akibatnya», (3) menyebut akibat lanjutannya, dan (4) menutup dengan tindakan yang diambil.\n\nKata «akibatnya» pada kalimat (1) menuntut adanya sebab di depannya, sehingga kalimat itu tidak mungkin membuka paragraf.",
+    "distractorRationale": {
+      "A": "Genangan disebut sebelum dijelaskan mengapa air tidak terserap.",
+      "C": "Dimulai dari tindakan penyelesaian.",
+      "D": "Urutan sebab-akibatnya kacau.",
+      "E": "Kalimat berpenanda «akibatnya» tidak dapat membuka paragraf."
+    },
+    "tags": [
+      "struktur-paragraf"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b28",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kalimat efektif",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat berikut yang mengandung kesalahan struktur adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Penelitian itu menunjukkan bahwa kualitas udara membaik."
+      },
+      {
+        "id": "B",
+        "text": "Menurut penelitian itu, kualitas udara membaik."
+      },
+      {
+        "id": "C",
+        "text": "Menurut penelitian itu menunjukkan bahwa kualitas udara membaik."
+      },
+      {
+        "id": "D",
+        "text": "Hasil penelitian itu memperlihatkan perbaikan kualitas udara."
+      },
+      {
+        "id": "E",
+        "text": "Kualitas udara membaik menurut penelitian itu."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Frasa «menurut penelitian itu» adalah keterangan, sehingga kalimat pertama tidak memiliki subjek: tidak jelas apa yang menunjukkan.\n\nPerbaikannya ada dua jalan, dan keduanya muncul pada pilihan lain: menghapus «menurut» sehingga «penelitian itu» menjadi subjek, atau menghapus «menunjukkan bahwa» sehingga keterangan itu memodifikasi kalimat lengkap.",
+    "distractorRationale": {
+      "A": "Berstruktur lengkap.",
+      "B": "Berstruktur lengkap.",
+      "D": "Berstruktur lengkap.",
+      "E": "Berstruktur lengkap."
+    },
+    "tags": [
+      "kalimat-efektif",
+      "subjek"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b29",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kepaduan paragraf",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan paragraf berikut.\n\n«(1) Perpustakaan sekolah hanya memiliki satu petugas. (2) Ia harus melayani peminjaman sekaligus merapikan rak. (3) Koleksi buku di sana termasuk yang terlengkap di kecamatan. (4) Karena itu, antrean peminjaman sering panjang pada jam istirahat.»\n\nKalimat yang tidak padu adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kalimat (2)"
+      },
+      {
+        "id": "B",
+        "text": "semua kalimat sudah padu"
+      },
+      {
+        "id": "C",
+        "text": "kalimat (1)"
+      },
+      {
+        "id": "D",
+        "text": "kalimat (3)"
+      },
+      {
+        "id": "E",
+        "text": "kalimat (4)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Paragraf itu menjelaskan sebab antrean panjang: petugas hanya satu dan tugasnya rangkap. Kalimat (3) menyebut kelengkapan koleksi — hal yang tidak berkaitan dengan jumlah petugas maupun antrean.\n\nKalimat (3) baru menjadi padu bila diberi penanda hubungan, misalnya «meskipun koleksinya terlengkap di kecamatan».",
+    "distractorRationale": {
+      "A": "Memperkuat sebab utama.",
+      "B": "Kalimat (3) tidak sejalan dengan alur sebab.",
+      "C": "Menyebut sebab utama.",
+      "E": "Menyatakan akibatnya."
+    },
+    "tags": [
+      "kepaduan-paragraf"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-b30",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Ejaan & tanda baca",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan kata depan yang tepat terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Adik belajar di-kamar, sedangkan Kakak bermain di-halaman."
+      },
+      {
+        "id": "B",
+        "text": "Adik belajar dikamar, sedangkan Kakak bermain di halaman."
+      },
+      {
+        "id": "C",
+        "text": "Adik belajar di kamar, sedangkan Kakak bermain dihalaman."
+      },
+      {
+        "id": "D",
+        "text": "Adik belajar dikamar, sedangkan Kakak bermain dihalaman."
+      },
+      {
+        "id": "E",
+        "text": "Adik belajar di kamar, sedangkan Kakak bermain di halaman."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "«Di» sebagai kata depan penanda tempat ditulis terpisah dari kata yang mengikutinya: «di kamar», «di halaman».\n\nYang ditulis serangkai hanyalah «di-» sebagai awalan pembentuk kata kerja pasif, misalnya «dibaca» atau «ditulis». Tanda hubung tidak pernah dipakai untuk keduanya.",
+    "distractorRationale": {
+      "A": "Tanda hubung tidak dipakai pada kata depan.",
+      "B": "«dikamar» seharusnya terpisah.",
+      "C": "«dihalaman» seharusnya terpisah.",
+      "D": "Kata depan ditulis terpisah."
+    },
+    "tags": [
+      "puebi",
+      "kata-depan"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m01",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Operasi bilangan bulat & pecahan",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $-12 + 7 \\times (-3)$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-33"
+      },
+      {
+        "id": "B",
+        "text": "15"
+      },
+      {
+        "id": "C",
+        "text": "-15"
+      },
+      {
+        "id": "D",
+        "text": "-9"
+      },
+      {
+        "id": "E",
+        "text": "33"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Perkalian dikerjakan lebih dahulu: $7 \\times (-3) = -21$.\n\nKemudian $-12 + (-21) = -33$.",
+    "distractorRationale": {
+      "B": "Salah tanda pada hasil akhir.",
+      "C": "Mengerjakan penjumlahan lebih dahulu.",
+      "D": "Mengurangkan 21 dari 12 saja.",
+      "E": "Salah tanda pada kedua langkah."
+    },
+    "tags": [
+      "operasi-hitung"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m02",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Operasi bilangan bulat & pecahan",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $\\dfrac{2}{3} + \\dfrac{1}{4}$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{3}{7}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{11}{12}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{5}{12}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{2}{12}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{3}{12}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Samakan penyebut menjadi 12: $\\dfrac{2}{3} = \\dfrac{8}{12}$ dan $\\dfrac{1}{4} = \\dfrac{3}{12}$.\n\nJumlahnya $\\dfrac{8}{12} + \\dfrac{3}{12} = \\dfrac{11}{12}$.",
+    "distractorRationale": {
+      "A": "Menjumlahkan pembilang dan penyebut secara terpisah.",
+      "C": "Mengurangkan, bukan menjumlahkan.",
+      "D": "Mengalikan, bukan menjumlahkan.",
+      "E": "Hanya menuliskan salah satu pecahan."
+    },
+    "tags": [
+      "pecahan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m03",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Perbandingan & skala",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Pada denah berskala $1 : 400$, panjang sebuah lapangan tergambar 15 cm.\n\nPanjang sebenarnya lapangan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "600 meter"
+      },
+      {
+        "id": "B",
+        "text": "6.000 meter"
+      },
+      {
+        "id": "C",
+        "text": "60 meter"
+      },
+      {
+        "id": "D",
+        "text": "6 meter"
+      },
+      {
+        "id": "E",
+        "text": "40 meter"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Panjang sebenarnya $15 \\times 400 = 6.000$ cm.\n\nKarena $100$ cm $= 1$ meter, panjangnya $60$ meter.",
+    "distractorRationale": {
+      "A": "Tidak membagi dengan 100.",
+      "B": "Tidak mengubah sentimeter ke meter.",
+      "D": "Salah menempatkan koma desimal.",
+      "E": "Memakai skala 1 : 267."
+    },
+    "tags": [
+      "skala"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m04",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Persen",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah tas dijual Rp204.000 setelah diskon 15%.\n\nHarga tas sebelum diskon adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp225.000"
+      },
+      {
+        "id": "B",
+        "text": "Rp234.600"
+      },
+      {
+        "id": "C",
+        "text": "Rp260.000"
+      },
+      {
+        "id": "D",
+        "text": "Rp240.000"
+      },
+      {
+        "id": "E",
+        "text": "Rp219.000"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Setelah diskon 15%, yang dibayar adalah 85% dari harga awal.\n\nMaka $0{,}85p = 204.000$, sehingga $p = \\dfrac{204.000}{0{,}85} = 240.000$ rupiah.",
+    "distractorRationale": {
+      "A": "Memakai diskon 9,3%.",
+      "B": "Menambahkan 15% pada harga setelah diskon.",
+      "C": "Memakai diskon 21,5%.",
+      "E": "Menambahkan 15.000 begitu saja."
+    },
+    "tags": [
+      "persen"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m05",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Pola bilangan",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan bilangan: 4, 11, 18, 25, ...\n\nSuku ke-12 barisan tersebut adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 81
+    },
+    "explanation": "Barisan ini aritmetika dengan suku pertama 4 dan beda 7.\n\nSuku ke-12 adalah $4 + 11 \\times 7 = 4 + 77 = 81$.",
+    "tags": [
+      "pola-bilangan"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1
+    }
+  },
+  {
+    "id": "tka-smp-m06",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Pola bilangan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan: 2, 6, 18, 54, ...\n\nJumlah lima suku pertama barisan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "80"
+      },
+      {
+        "id": "B",
+        "text": "162"
+      },
+      {
+        "id": "C",
+        "text": "206"
+      },
+      {
+        "id": "D",
+        "text": "324"
+      },
+      {
+        "id": "E",
+        "text": "242"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Barisan ini geometri dengan rasio 3, sehingga suku kelimanya $54 \\times 3 = 162$.\n\nJumlah lima suku pertama $2 + 6 + 18 + 54 + 162 = 242$.",
+    "distractorRationale": {
+      "A": "Menjumlahkan empat suku pertama saja.",
+      "B": "Hanya menuliskan suku kelima.",
+      "C": "Menjumlahkan empat suku pertama lalu menambah 126.",
+      "D": "Menghitung suku keenam."
+    },
+    "tags": [
+      "barisan-geometri"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m07",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Bentuk aljabar",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Bentuk sederhana dari $5x - 3y + 2x + 7y$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$7x + 4y$"
+      },
+      {
+        "id": "B",
+        "text": "$7x - 4y$"
+      },
+      {
+        "id": "C",
+        "text": "$11xy$"
+      },
+      {
+        "id": "D",
+        "text": "$7x + 10y$"
+      },
+      {
+        "id": "E",
+        "text": "$3x + 4y$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kelompokkan suku sejenis: $5x + 2x = 7x$ dan $-3y + 7y = 4y$.\n\nHasilnya $7x + 4y$. Suku $x$ dan $y$ tidak dapat digabungkan karena berbeda variabel.",
+    "distractorRationale": {
+      "B": "Salah tanda pada suku $y$.",
+      "C": "Menggabungkan suku yang tidak sejenis.",
+      "D": "Menjumlahkan 3 dan 7 tanpa memperhatikan tanda.",
+      "E": "Mengurangkan koefisien $x$."
+    },
+    "tags": [
+      "bentuk-aljabar"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m08",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penyelesaian dari $4x - 9 = 15$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-6"
+      },
+      {
+        "id": "B",
+        "text": "6"
+      },
+      {
+        "id": "C",
+        "text": "1,5"
+      },
+      {
+        "id": "D",
+        "text": "24"
+      },
+      {
+        "id": "E",
+        "text": "4"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Tambahkan 9 pada kedua ruas: $4x = 24$.\n\nBagi dengan 4: $x = 6$. Periksa: $4(6) - 9 = 15$ ✓.",
+    "distractorRationale": {
+      "A": "Salah tanda.",
+      "C": "Membagi 6 dengan 4.",
+      "D": "Berhenti pada $4x = 24$.",
+      "E": "Mengurangkan 9, bukan menambahkan."
+    },
+    "tags": [
+      "persamaan-linear"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m09",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Himpunan penyelesaian dari $3x + 5 \\le 20$ untuk $x$ bilangan bulat positif adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\{6, 7, 8, \\ldots\\}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\{1, 2, 3, 4, 5, 6\\}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\{1, 2, 3, 4, 5\\}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\{5\\}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\{1, 2, 3, 4\\}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kurangkan 5: $3x \\le 15$, lalu bagi 3: $x \\le 5$.\n\nBilangan bulat positif yang memenuhi adalah 1, 2, 3, 4, dan 5.",
+    "distractorRationale": {
+      "A": "Membalik arah pertidaksamaan.",
+      "B": "Memasukkan 6 yang tidak memenuhi.",
+      "D": "Hanya mengambil nilai terbesar.",
+      "E": "Melewatkan $x = 5$ yang juga memenuhi."
+    },
+    "tags": [
+      "pertidaksamaan"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m10",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Relasi & fungsi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Fungsi $f$ dirumuskan $f(x) = 3x - 4$. Nilai $f(-2)$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-6"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "-2"
+      },
+      {
+        "id": "D",
+        "text": "-10"
+      },
+      {
+        "id": "E",
+        "text": "10"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Substitusikan: $f(-2) = 3(-2) - 4 = -6 - 4 = -10$.",
+    "distractorRationale": {
+      "A": "Berhenti pada $3(-2)$ tanpa mengurangi 4.",
+      "B": "Salah tanda pada perkalian.",
+      "C": "Menghitung $3(-2) + 4$.",
+      "E": "Menghitung $f(2) + 4$."
+    },
+    "tags": [
+      "fungsi"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m11",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "SPLDV",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Diketahui $2x + y = 11$ dan $x - y = 1$.\n\nNilai $x + 2y$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "14"
+      },
+      {
+        "id": "B",
+        "text": "12"
+      },
+      {
+        "id": "C",
+        "text": "13"
+      },
+      {
+        "id": "D",
+        "text": "11"
+      },
+      {
+        "id": "E",
+        "text": "10"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Jumlahkan kedua persamaan untuk menghilangkan $y$: $3x = 12$, sehingga $x = 4$.\n\nDari $x - y = 1$ diperoleh $y = 3$. Periksa pada persamaan pertama: $2(4) + 3 = 11$ ✓. Maka $x + 2y = 4 + 2(3) = 10$.",
+    "distractorRationale": {
+      "A": "Menghitung $2x + 2y$.",
+      "B": "Memakai $y = 4$.",
+      "C": "Memakai $y = 4{,}5$.",
+      "D": "Mengulang ruas kanan persamaan pertama."
+    },
+    "tags": [
+      "spldv"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m12",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Bentuk aljabar",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari $2a^2 - 3b$ untuk $a = 3$ dan $b = 4$ adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 6
+    },
+    "explanation": "$2a^2 = 2 \\times 9 = 18$ dan $3b = 12$.\n\nSelisihnya $18 - 12 = 6$. Perhatikan bahwa yang dikuadratkan adalah $a$, bukan $2a$.",
+    "tags": [
+      "substitusi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1
+    }
+  },
+  {
+    "id": "tka-smp-m13",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "SPLDV",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Harga 3 buku dan 2 pensil Rp31.000, sedangkan harga 2 buku dan 3 pensil Rp29.000.\n\nHarga sebuah buku adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp7.000"
+      },
+      {
+        "id": "B",
+        "text": "Rp6.000"
+      },
+      {
+        "id": "C",
+        "text": "Rp8.000"
+      },
+      {
+        "id": "D",
+        "text": "Rp9.000"
+      },
+      {
+        "id": "E",
+        "text": "Rp5.000"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Misalkan buku $b$ dan pensil $p$. Kurangkan persamaan kedua dari pertama: $b - p = 2.000$.\n\nJumlahkan keduanya: $5b + 5p = 60.000$, sehingga $b + p = 12.000$. Dari kedua hubungan itu diperoleh $b = 7.000$ dan $p = 5.000$. Periksa: $3(7.000) + 2(5.000) = 31.000$ ✓.",
+    "distractorRationale": {
+      "B": "Memakai $b - p = 0$.",
+      "C": "Memakai $b - p = 4.000$.",
+      "D": "Memakai $b + p = 14.000$.",
+      "E": "Ini harga pensil."
+    },
+    "tags": [
+      "spldv"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m14",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah bilangan dikalikan 5 lalu dikurangi 8, hasilnya sama dengan bilangan itu ditambah 20.\n\nBilangan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8"
+      },
+      {
+        "id": "B",
+        "text": "7"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      },
+      {
+        "id": "E",
+        "text": "4"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Misalkan bilangan itu $x$, maka $5x - 8 = x + 20$.\n\nKurangkan $x$ dan tambahkan 8: $4x = 28$, sehingga $x = 7$. Periksa: $5(7) - 8 = 27$ dan $7 + 20 = 27$ ✓.",
+    "distractorRationale": {
+      "A": "Memakai $4x = 32$.",
+      "C": "Memakai $4x = 20$.",
+      "D": "Memakai $4x = 24$.",
+      "E": "Memakai $4x = 16$."
+    },
+    "tags": [
+      "pemodelan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m15",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah jajargenjang memiliki alas 14 cm dan tinggi 9 cm.\n\nLuas jajargenjang tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$46\\ \\text{cm}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$252\\ \\text{cm}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$126\\ \\text{cm}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$23\\ \\text{cm}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$63\\ \\text{cm}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Luas jajargenjang adalah alas dikali tinggi: $14 \\times 9 = 126\\ \\text{cm}^2$.\n\nRumus setengah alas kali tinggi berlaku untuk segitiga, bukan jajargenjang.",
+    "distractorRationale": {
+      "A": "Menghitung keliling dua sisi.",
+      "B": "Menggandakan hasil yang benar.",
+      "D": "Menjumlahkan alas dan tinggi.",
+      "E": "Memakai rumus segitiga."
+    },
+    "tags": [
+      "bangun-datar"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m16",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Teorema Pythagoras",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah segitiga siku-siku memiliki sisi tegak 12 cm dan 16 cm.\n\nPanjang sisi miringnya adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "28 cm"
+      },
+      {
+        "id": "B",
+        "text": "22 cm"
+      },
+      {
+        "id": "C",
+        "text": "18 cm"
+      },
+      {
+        "id": "D",
+        "text": "20 cm"
+      },
+      {
+        "id": "E",
+        "text": "14 cm"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Menurut teorema Pythagoras, sisi miring $= \\sqrt{12^2 + 16^2} = \\sqrt{144 + 256} = \\sqrt{400} = 20$ cm.\n\nIni segitiga $3$–$4$–$5$ yang diperbesar empat kali.",
+    "distractorRationale": {
+      "A": "Menjumlahkan kedua sisi.",
+      "B": "Kesalahan perhitungan kuadrat.",
+      "C": "Kesalahan penarikan akar.",
+      "E": "Mengurangkan kedua sisi lalu menambah 10."
+    },
+    "tags": [
+      "pythagoras"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m17",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah balok berukuran $12\\ \\text{cm} \\times 8\\ \\text{cm} \\times 5\\ \\text{cm}$.\n\nVolume balok tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$400\\ \\text{cm}^3$"
+      },
+      {
+        "id": "B",
+        "text": "$240\\ \\text{cm}^3$"
+      },
+      {
+        "id": "C",
+        "text": "$25\\ \\text{cm}^3$"
+      },
+      {
+        "id": "D",
+        "text": "$960\\ \\text{cm}^3$"
+      },
+      {
+        "id": "E",
+        "text": "$480\\ \\text{cm}^3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Volume balok adalah hasil kali ketiga ukurannya: $12 \\times 8 \\times 5 = 480\\ \\text{cm}^3$.",
+    "distractorRationale": {
+      "A": "Kesalahan perkalian.",
+      "B": "Membagi hasil yang benar dengan 2.",
+      "C": "Menjumlahkan ketiga ukuran.",
+      "D": "Menggandakan hasil yang benar."
+    },
+    "tags": [
+      "bangun-ruang"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m18",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Kesebangunan & kekongruenan",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Dua segitiga sebangun memiliki perbandingan sisi $3 : 5$. Jika keliling segitiga kecil 24 cm, keliling segitiga besar adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "40 cm"
+      },
+      {
+        "id": "B",
+        "text": "45 cm"
+      },
+      {
+        "id": "C",
+        "text": "30 cm"
+      },
+      {
+        "id": "D",
+        "text": "36 cm"
+      },
+      {
+        "id": "E",
+        "text": "48 cm"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Pada bangun sebangun, keliling berbanding sama dengan sisi, yaitu $3 : 5$.\n\nMaka keliling besar $= 24 \\times \\dfrac{5}{3} = 40$ cm. Perhatikan bahwa yang berbanding kuadrat adalah luas, bukan keliling.",
+    "distractorRationale": {
+      "B": "Kesalahan perkalian.",
+      "C": "Menambahkan 6 begitu saja.",
+      "D": "Mengalikan dengan $\\dfrac{3}{2}$.",
+      "E": "Menggandakan keliling kecil."
+    },
+    "tags": [
+      "kesebangunan"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m19",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah lingkaran berjari-jari 14 cm. Dengan $\\pi = \\dfrac{22}{7}$, keliling lingkaran tersebut dalam sentimeter adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 88
+    },
+    "explanation": "Keliling lingkaran $= 2\\pi r = 2 \\times \\dfrac{22}{7} \\times 14$.\n\nKarena $\\dfrac{22}{7} \\times 14 = 44$, kelilingnya $2 \\times 44 = 88$ cm.",
+    "tags": [
+      "lingkaran"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1
+    }
+  },
+  {
+    "id": "tka-smp-m20",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kubus memiliki volume $512\\ \\text{cm}^3$.\n\nLuas permukaan kubus tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$288\\ \\text{cm}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$384\\ \\text{cm}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$216\\ \\text{cm}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$512\\ \\text{cm}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$256\\ \\text{cm}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Dari $s^3 = 512$ diperoleh $s = 8$ cm.\n\nLuas permukaan kubus $= 6s^2 = 6 \\times 64 = 384\\ \\text{cm}^2$.",
+    "distractorRationale": {
+      "A": "Memakai rusuk 6,9 cm.",
+      "C": "Memakai rusuk 6 cm.",
+      "D": "Mengulang angka volume.",
+      "E": "Menghitung $4s^2$."
+    },
+    "tags": [
+      "kubus"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m21",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Nilai ulangan matematika 24 siswa.\n\n| Nilai | Frekuensi |\n|---|---|\n| 5 | 3 |\n| 6 | 6 |\n| 7 | 8 |\n| 8 | 5 |\n| 9 | 2 |"
+    },
+    "stem": "Berdasarkan tabel, modus nilai ulangan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9"
+      },
+      {
+        "id": "B",
+        "text": "6"
+      },
+      {
+        "id": "C",
+        "text": "7"
+      },
+      {
+        "id": "D",
+        "text": "8"
+      },
+      {
+        "id": "E",
+        "text": "5"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Modus adalah nilai dengan frekuensi terbesar.\n\nFrekuensi tertinggi adalah 8, yaitu pada nilai 7.",
+    "distractorRationale": {
+      "A": "Frekuensinya 2.",
+      "B": "Frekuensinya 6.",
+      "D": "Frekuensinya 5.",
+      "E": "Frekuensinya 3."
+    },
+    "tags": [
+      "modus"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m22",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Nilai ulangan matematika 24 siswa.\n\n| Nilai | Frekuensi |\n|---|---|\n| 5 | 3 |\n| 6 | 6 |\n| 7 | 8 |\n| 8 | 5 |\n| 9 | 2 |"
+    },
+    "stem": "Berdasarkan tabel, rata-rata nilai ulangan 24 siswa tersebut adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 6.875
+    },
+    "explanation": "Jumlah seluruh nilai: $5(3) + 6(6) + 7(8) + 8(5) + 9(2) = 15 + 36 + 56 + 40 + 18 = 165$.\n\nRata-ratanya $\\dfrac{165}{24} = 6{,}875$.",
+    "tags": [
+      "rata-rata"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1
+    }
+  },
+  {
+    "id": "tka-smp-m23",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Penyajian data",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Nilai ulangan matematika 24 siswa.\n\n| Nilai | Frekuensi |\n|---|---|\n| 5 | 3 |\n| 6 | 6 |\n| 7 | 8 |\n| 8 | 5 |\n| 9 | 2 |"
+    },
+    "stem": "Berdasarkan tabel, banyak siswa yang memperoleh nilai minimal 7 adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8 siswa"
+      },
+      {
+        "id": "B",
+        "text": "13 siswa"
+      },
+      {
+        "id": "C",
+        "text": "7 siswa"
+      },
+      {
+        "id": "D",
+        "text": "15 siswa"
+      },
+      {
+        "id": "E",
+        "text": "10 siswa"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Nilai minimal 7 mencakup nilai 7, 8, dan 9, yaitu $8 + 5 + 2 = 15$ siswa.\n\nKata «minimal» berarti 7 ikut dihitung.",
+    "distractorRationale": {
+      "A": "Hanya menghitung nilai 7.",
+      "B": "Kesalahan penjumlahan.",
+      "C": "Hanya menghitung nilai 8 dan 9.",
+      "E": "Kesalahan penjumlahan."
+    },
+    "tags": [
+      "tabel-frekuensi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m24",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Peluang sederhana",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah dadu setimbang dilempar satu kali.\n\nPeluang muncul mata dadu lebih dari 4 adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{6}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{2}{3}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{5}{6}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{1}{3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Mata dadu lebih dari 4 adalah 5 dan 6, yaitu dua dari enam kemungkinan.\n\nPeluangnya $\\dfrac{2}{6} = \\dfrac{1}{3}$. Perhatikan bahwa 4 sendiri tidak termasuk karena syaratnya «lebih dari».",
+    "distractorRationale": {
+      "A": "Menghitung tiga kemungkinan.",
+      "B": "Menghitung satu kemungkinan.",
+      "C": "Menghitung empat kemungkinan.",
+      "D": "Menghitung lima kemungkinan."
+    },
+    "tags": [
+      "peluang"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-m25",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Rata-rata nilai 8 siswa adalah 75. Setelah seorang siswa baru bergabung, rata-ratanya menjadi 76.\n\nNilai siswa baru tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "84"
+      },
+      {
+        "id": "B",
+        "text": "80"
+      },
+      {
+        "id": "C",
+        "text": "90"
+      },
+      {
+        "id": "D",
+        "text": "78"
+      },
+      {
+        "id": "E",
+        "text": "76"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Jumlah nilai 8 siswa adalah $8 \\times 75 = 600$.\n\nSetelah 9 siswa, jumlahnya menjadi $9 \\times 76 = 684$. Nilai siswa baru $= 684 - 600 = 84$.",
+    "distractorRationale": {
+      "B": "Kesalahan perhitungan jumlah.",
+      "C": "Memakai rata-rata baru 76,7.",
+      "D": "Menambahkan 3 pada rata-rata lama.",
+      "E": "Mengira nilainya sama dengan rata-rata baru."
+    },
+    "tags": [
+      "rata-rata-gabungan"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 1,
+      "keyBalanced": 1
+    }
+  }
+]

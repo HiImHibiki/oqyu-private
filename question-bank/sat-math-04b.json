@@ -1,0 +1,897 @@
+[
+  {
+    "id": "sat-mth-p01",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $4(x + 2) = 28$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "Divide both sides by 4: $x + 2 = 7$, so $x = 5$.\\n\\nExpanding first gives $4x + 8 = 28$ and then $4x = 20$, the same answer by a longer route.",
+    "tags": [
+      "linear-equation"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-p02",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Ratios, rates, proportional relationships, units",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A machine fills $340$ bottles in $20$ minutes at a constant rate. How many bottles does it fill in one minute?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 17
+    },
+    "explanation": "Divide the total by the time: $\\dfrac{340}{20} = 17$ bottles per minute.\\n\\nChecking the units confirms the operation: bottles divided by minutes gives bottles per minute.",
+    "tags": [
+      "unit-rate",
+      "proportion"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-p03",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A student has $\\$60$ and buys a notebook for $\\$8$. Pens cost $\\$3$ each. What is the greatest number of pens the student can also buy?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 17
+    },
+    "explanation": "Let $p$ be the number of pens. Then $8 + 3p \\le 60$, so $3p \\le 52$ and $p \\le 17.33$.\\n\\nPens come whole, so the greatest number is 17. Subtracting the notebook before dividing is essential — dividing 60 by 3 first gives 20 and ignores the notebook entirely.",
+    "tags": [
+      "inequality",
+      "modelling"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-p04",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The expression $x^2 - 36$ is equivalent to $(x + a)(x + b)$. What is the value of $ab$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": -36
+    },
+    "explanation": "A difference of two squares factorises as $x^2 - 36 = (x + 6)(x - 6)$, so $a = 6$ and $b = -6$.\\n\\nTherefore $ab = 6 \\times (-6) = -36$. That is no coincidence: in $(x+a)(x+b)$ the constant term is always $ab$, and here the constant term is $-36$.",
+    "tags": [
+      "difference-of-squares",
+      "factoring"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-p05",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Lines, angles, and triangles",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In an isosceles triangle, the angle between the two equal sides measures $44^\\circ$. What is the measure, in degrees, of each of the other two angles?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 68
+    },
+    "explanation": "The two angles opposite the equal sides are equal. They share what remains of $180^\\circ$: $180 - 44 = 136$, and $\\dfrac{136}{2} = 68$.\\n\\nSo each of the other angles measures $68^\\circ$.",
+    "tags": [
+      "isosceles-triangle",
+      "angle-sum"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-p06",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The graph of $y = x^2 + 2x - 8$ crosses the $x$-axis at two points. What is the distance between them?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 6
+    },
+    "explanation": "Set $y = 0$ and factorise: $x^2 + 2x - 8 = (x + 4)(x - 2)$, so the crossings are at $x = -4$ and $x = 2$.\\n\\nThe distance between them is $2 - (-4) = 6$. Subtracting rather than adding matters: the roots lie on opposite sides of zero.",
+    "tags": [
+      "quadratic",
+      "roots"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q01",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $2(x + 5) = 24$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 7
+    },
+    "explanation": "Divide by 2: $x + 5 = 12$, so $x = 7$.\\n\\nSubstituting back gives $2(12) = 24$, which confirms it.",
+    "tags": [
+      "linear-equation"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q02",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $f$ is defined by $f(x) = 5x + 2$. What is the value of $f(3)$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 17
+    },
+    "explanation": "Substitute $x = 3$: $f(3) = 15 + 2 = 17$.\\n\\nThe notation asks for the output at input 3; it does not mean $f$ multiplied by 3.",
+    "tags": [
+      "function-notation"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q03",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $4x - 9 = 2x + 7$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "Collect the variable on one side: subtract $2x$ to get $2x - 9 = 7$, then add 9 to get $2x = 16$, so $x = 8$.\\n\\nMoving the smaller $x$ term keeps the coefficient positive and avoids a sign slip.",
+    "tags": [
+      "linear-equation",
+      "variables-both-sides"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q04",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $3x + 2y = 16$ and $x = 2y$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4
+    },
+    "explanation": "Substitute $x = 2y$ into the first equation: $3(2y) + 2y = 16$, so $8y = 16$ and $y = 2$.\\n\\nThen $x = 2y = 4$. Checking: $3(4) + 2(2) = 16$.",
+    "tags": [
+      "systems",
+      "substitution"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q05",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $5 - 2x \\ge 1$, what is the greatest possible value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 2
+    },
+    "explanation": "Subtract 5: $-2x \\ge -4$. Dividing by a negative number reverses the inequality, giving $x \\le 2$.\\n\\nThe greatest value is therefore 2. Forgetting to flip the sign is the standard error and would give $x \\ge 2$, which has no greatest value at all.",
+    "tags": [
+      "inequality",
+      "sign-reversal"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q06",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in two variables",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A line is parallel to the line $y = 3x - 4$ and passes through the point $(1, 5)$. What is the $y$-coordinate of its $y$-intercept?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 2
+    },
+    "explanation": "Parallel lines share a slope, so the new line is $y = 3x + b$. Substituting the point: $5 = 3(1) + b$, so $b = 2$.\\n\\nThe $y$-intercept is at $(0, 2)$, so the value asked for is 2.",
+    "tags": [
+      "parallel-lines",
+      "y-intercept"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q07",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The linear function $g$ satisfies $g(1) = 4$ and $g(4) = 19$. If $g(x) = ax + b$, what is the value of $a + b$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4
+    },
+    "explanation": "The slope is $a = \\dfrac{19 - 4}{4 - 1} = \\dfrac{15}{3} = 5$.\\n\\nUsing $g(1) = 4$: $5 + b = 4$, so $b = -1$. Therefore $a + b = 5 + (-1) = 4$.\\n\\nNote that $a + b$ also equals $g(1)$, which gives an instant check.",
+    "tags": [
+      "linear-function",
+      "slope-intercept"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q08",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "When $(x + 4)^2$ is expanded, what is the coefficient of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "Expanding gives $(x + 4)^2 = x^2 + 8x + 16$, so the coefficient of $x$ is 8.\\n\\nThe middle term is twice the product of the two terms in the bracket: $2 \\times 1 \\times 4 = 8$. Writing the square as $x^2 + 16$ is the usual error.",
+    "tags": [
+      "expanding",
+      "perfect-square"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q09",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $h$ is defined by $h(x) = x^2 + 3x$. What is the value of $h(-2)$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": -2
+    },
+    "explanation": "Substitute $x = -2$: $h(-2) = (-2)^2 + 3(-2) = 4 - 6 = -2$.\\n\\nThe square of a negative number is positive, so the first term is $+4$; only the second term stays negative.",
+    "tags": [
+      "evaluating-functions",
+      "negative-inputs"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q10",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The product $(3x^2)(4x^5)$ is equivalent to $cx^n$. What is the value of $n$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 7
+    },
+    "explanation": "Multiplying powers of the same base adds the exponents: $x^2 \\times x^5 = x^7$. The coefficients multiply separately, giving $12x^7$.\\n\\nSo $n = 7$. Multiplying the exponents instead would give 10, which is the common slip.",
+    "tags": [
+      "exponents",
+      "product-rule"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q11",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $x^2 - 5x = 0$ and $x > 0$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "Factorise: $x(x - 5) = 0$, so $x = 0$ or $x = 5$.\\n\\nThe condition $x > 0$ selects 5. Dividing both sides by $x$ to get $x = 5$ works here but silently discards the root $x = 0$ — which is why factorising is the safer habit.",
+    "tags": [
+      "quadratic",
+      "factoring"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q12",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The graph of $y = (x - 2)^2 - 9$ crosses the $x$-axis at two points. What is the greater of the two $x$-coordinates?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "Set $y = 0$: $(x - 2)^2 = 9$, so $x - 2 = 3$ or $x - 2 = -3$, giving $x = 5$ and $x = -1$.\\n\\nThe greater is 5. Taking only the positive square root would miss the second crossing entirely.",
+    "tags": [
+      "vertex-form",
+      "x-intercepts"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q13",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The equation $x^2 + kx + 16 = 0$ has exactly one solution, and $k$ is positive. What is the value of $k$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "One repeated solution means the discriminant is zero: $k^2 - 4(1)(16) = 0$, so $k^2 = 64$.\\n\\nThat gives $k = 8$ or $k = -8$; the question restricts $k$ to positive values, so $k = 8$.",
+    "tags": [
+      "discriminant",
+      "repeated-root"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q14",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A sample of a substance has mass $800\\ \\text{mg}$, and its mass halves every $5$ years. What is its mass, in milligrams, after $15$ years?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 100
+    },
+    "explanation": "Fifteen years contains $\\dfrac{15}{5} = 3$ halving periods.\\n\\nThe mass is $800 \\times \\left(\\dfrac{1}{2}\\right)^3 = 800 \\times \\dfrac{1}{8} = 100\\ \\text{mg}$. Counting the periods rather than the years is the whole problem — halving once per year would give a very different answer.",
+    "tags": [
+      "exponential-decay",
+      "half-life"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q15",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "One-variable data",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The mean of the four values $8$, $12$, $15$ and $k$ is $12$. What is the value of $k$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 13
+    },
+    "explanation": "If the mean of four values is 12, their total is $4 \\times 12 = 48$.\\n\\nThe three known values sum to $8 + 12 + 15 = 35$, so $k = 48 - 35 = 13$.\\n\\nWorking from the total is quicker than solving the fraction directly.",
+    "tags": [
+      "mean",
+      "missing-value"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q16",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Percentages",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A quantity decreases from $250$ to $200$. What is the percentage decrease?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 20
+    },
+    "explanation": "The decrease is $250 - 200 = 50$, and percentage change is measured against the original value: $\\dfrac{50}{250} \\times 100 = 20$.\\n\\nDividing by 200 instead gives 25, which answers a different question — the percentage increase needed to get back.",
+    "tags": [
+      "percent-decrease",
+      "base-value"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q17",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Probability",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A bag contains $12$ marbles, of which $3$ are red. One marble is drawn at random. What is the probability that it is red?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{4}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{3}{4}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{12}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Probability is favourable outcomes divided by total outcomes: $\\dfrac{3}{12} = \\dfrac{1}{4}$.\\n\\nEvery marble is equally likely to be drawn, which is what makes the simple ratio valid.",
+    "distractorRationale": {
+      "A": "Divides 12 by 3 and inverts, or counts only four groups of three.",
+      "C": "Gives the probability of not drawing red.",
+      "D": "Uses one red marble rather than three."
+    },
+    "tags": [
+      "probability",
+      "simple-events"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q18",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Circles",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A circle has diameter $14$. What is its circumference, in terms of $\\pi$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$7\\pi$"
+      },
+      {
+        "id": "B",
+        "text": "$49\\pi$"
+      },
+      {
+        "id": "C",
+        "text": "$14\\pi$"
+      },
+      {
+        "id": "D",
+        "text": "$28\\pi$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Circumference is $\\pi d$, so with $d = 14$ it is $14\\pi$.\\n\\nUsing $2\\pi r$ gives the same result, since the radius is 7: $2\\pi(7) = 14\\pi$. Using $2\\pi d$ doubles it wrongly.",
+    "distractorRationale": {
+      "A": "Gives $\\pi r$, using the radius where the diameter belongs.",
+      "B": "Gives the area, $\\pi r^2$, rather than the circumference.",
+      "D": "Applies $2\\pi d$, doubling the diameter as well as using it."
+    },
+    "tags": [
+      "circle",
+      "circumference"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q19",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Area and volume",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A right circular cone has radius $3$ and height $4$. What is its volume, in terms of $\\pi$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$12\\pi$"
+      },
+      {
+        "id": "B",
+        "text": "$36\\pi$"
+      },
+      {
+        "id": "C",
+        "text": "$16\\pi$"
+      },
+      {
+        "id": "D",
+        "text": "$4\\pi$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The volume of a cone is $V = \\dfrac{1}{3}\\pi r^2 h = \\dfrac{1}{3}\\pi (9)(4) = 12\\pi$.\\n\\nThe factor of one third is what distinguishes a cone from the cylinder of the same base and height, whose volume would be $36\\pi$.",
+    "distractorRationale": {
+      "B": "Omits the factor of one third, giving the cylinder's volume.",
+      "C": "Squares the height instead of the radius.",
+      "D": "Divides by 9 somewhere in the arithmetic."
+    },
+    "tags": [
+      "cone",
+      "volume"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "sat-mth-q20",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangles and trigonometry",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In right triangle $XYZ$, the right angle is at $Y$, $XY = 5$ and $YZ = 12$. What is the value of $\\cos X$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{12}{13}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{5}{12}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{13}{5}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{5}{13}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The hypotenuse is $XZ = \\sqrt{5^2 + 12^2} = \\sqrt{169} = 13$.\\n\\nFor angle $X$, the adjacent leg is $XY = 5$ and the hypotenuse is 13, so $\\cos X = \\dfrac{5}{13}$.\\n\\nThe side adjacent to $X$ is the leg that meets it — not the one opposite — and that identification is the whole difficulty.",
+    "distractorRationale": {
+      "A": "Gives $\\sin X$, using the opposite leg instead of the adjacent one.",
+      "B": "Gives $\\tan X$, the ratio of the two legs.",
+      "C": "Inverts the ratio, giving a value greater than 1, which no cosine can take."
+    },
+    "tags": [
+      "right-triangle",
+      "cosine"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  }
+]

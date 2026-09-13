@@ -1,0 +1,3230 @@
+[
+  {
+    "id": "tka-smp-t01",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Berdasarkan bacaan, sifat abu vulkanik yang masih segar adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kasar dan miskin unsur hara yang siap diserap akar"
+      },
+      {
+        "id": "B",
+        "text": "hangat dan menahan kelembapan"
+      },
+      {
+        "id": "C",
+        "text": "asam dan beracun bagi tanaman"
+      },
+      {
+        "id": "D",
+        "text": "padat dan tidak dapat ditembus air"
+      },
+      {
+        "id": "E",
+        "text": "halus dan langsung menyuburkan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat (4) menyebutkannya: abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar.\n\nKesuburan baru muncul setelah mineralnya terurai bertahun-tahun kemudian.",
+    "distractorRationale": {
+      "B": "Tidak disebut bacaan.",
+      "C": "Tidak disebut bacaan.",
+      "D": "Tidak disebut bacaan.",
+      "E": "Justru bertentangan dengan kalimat (4)."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t02",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Berdasarkan bacaan, cara petani lereng gunung menyiasati masa tunggu kesuburan adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menyingkirkan seluruh abu dari lahan"
+      },
+      {
+        "id": "B",
+        "text": "menanam jenis tanaman yang berbeda pada tahun-tahun pertama"
+      },
+      {
+        "id": "C",
+        "text": "menunda bertani selama sepuluh tahun"
+      },
+      {
+        "id": "D",
+        "text": "memindahkan lahan ke kaki gunung"
+      },
+      {
+        "id": "E",
+        "text": "menambahkan pupuk buatan setiap musim"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat (5) menyebutkannya secara tersurat: petani mengenal jeda itu dan menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\nCara lain pada pilihan tidak muncul dalam bacaan.",
+    "distractorRationale": {
+      "A": "Tidak disebut bacaan.",
+      "C": "Justru mereka tetap bertani.",
+      "D": "Tidak disebut bacaan.",
+      "E": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t03",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Gagasan utama paragraf kedua bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Tanaman tidak dapat tumbuh di tanah berabu."
+      },
+      {
+        "id": "B",
+        "text": "Petani lereng gunung selalu gagal panen."
+      },
+      {
+        "id": "C",
+        "text": "Kesuburan dari abu vulkanik memerlukan waktu bertahun-tahun sebelum dapat dimanfaatkan."
+      },
+      {
+        "id": "D",
+        "text": "Hujan dan panas merusak lahan pertanian."
+      },
+      {
+        "id": "E",
+        "text": "Abu vulkanik tidak pernah menjadi subur."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat (3) menyatakan prosesnya memerlukan waktu, (4) menjelaskan mengapa, dan (5) menunjukkan bagaimana petani menyesuaikan diri terhadap jeda itu.\n\nKetiganya berpusat pada satu hal: kesuburannya tidak datang seketika.",
+    "distractorRationale": {
+      "A": "Terlalu memutlakkan.",
+      "B": "Mereka justru menyiasatinya.",
+      "D": "Keduanya justru menguraikan mineral.",
+      "E": "Bertentangan dengan kalimat (2)."
+    },
+    "tags": [
+      "ide-pokok"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t04",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Maksud kalimat (7) «Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kesuburan tanah tidak berkaitan dengan letusan"
+      },
+      {
+        "id": "B",
+        "text": "lereng gunung sebaiknya tidak ditanami"
+      },
+      {
+        "id": "C",
+        "text": "letusan gunung selalu menguntungkan petani"
+      },
+      {
+        "id": "D",
+        "text": "kesuburan lereng gunung berasal dari letusan masa lalu yang abunya telah lapuk"
+      },
+      {
+        "id": "E",
+        "text": "kerusakan akibat letusan tidak pernah pulih"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat itu merangkum seluruh bacaan: abu yang dulu merusak panen adalah bahan yang kemudian menjadi tanah subur, setelah cukup lama terurai.\n\nKata «sudah cukup lama berlalu» menunjuk jeda yang dijelaskan paragraf kedua.",
+    "distractorRationale": {
+      "A": "Bertentangan dengan bacaan.",
+      "B": "Bacaan justru menggambarkan petani yang bertani di sana.",
+      "C": "Kalimat (2) menyebut kerugian pada musim itu.",
+      "E": "Bertentangan dengan seluruh bacaan."
+    },
+    "tags": [
+      "makna-kalimat"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t05",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Berdasarkan bacaan, yang membuat mineral dalam abu menjadi tersedia bagi tanaman adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "akar tanaman yang menembus abu"
+      },
+      {
+        "id": "B",
+        "text": "pupuk yang ditambahkan petani"
+      },
+      {
+        "id": "C",
+        "text": "letusan berikutnya"
+      },
+      {
+        "id": "D",
+        "text": "angin yang meratakan abu"
+      },
+      {
+        "id": "E",
+        "text": "hujan dan panas selama bertahun-tahun"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat (4) menyebutkannya: baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia.\n\nPenyebab lain pada pilihan tidak muncul dalam bacaan.",
+    "distractorRationale": {
+      "A": "Tidak disebut bacaan.",
+      "B": "Tidak disebut bacaan.",
+      "C": "Tidak disebut bacaan.",
+      "D": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t06",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Mengevaluasi argumen",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Pernyataan yang paling melemahkan gagasan pada paragraf kedua adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Lahan yang baru tertutup abu segar menghasilkan panen yang sama baiknya dengan lahan yang abunya sudah lapuk puluhan tahun."
+      },
+      {
+        "id": "B",
+        "text": "Sebagian petani memilih pindah setelah letusan besar."
+      },
+      {
+        "id": "C",
+        "text": "Letusan gunung sulit diramalkan waktunya."
+      },
+      {
+        "id": "D",
+        "text": "Abu vulkanik dapat terbawa angin hingga ratusan kilometer."
+      },
+      {
+        "id": "E",
+        "text": "Tanah dari batuan tua juga dapat dipupuk."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Paragraf kedua bersandar pada satu klaim: abu segar belum menyuburkan, dan kesuburannya baru muncul setelah bertahun-tahun. Panen yang sama baiknya pada abu segar langsung menggugurkan adanya jeda itu.\n\nSebaran abu dan sulitnya meramal letusan tidak menguji klaim tersebut.",
+    "distractorRationale": {
+      "B": "Menyangkut pilihan orang, bukan sifat abunya.",
+      "C": "Menyangkut peramalan, bukan proses pelapukan.",
+      "D": "Menyangkut sebaran, bukan jeda kesuburan.",
+      "E": "Tidak menyangkut jeda pada abu vulkanik."
+    },
+    "tags": [
+      "evaluasi-argumen"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t07",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Simpulan yang tepat untuk keseluruhan bacaan adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Petani sebaiknya meninggalkan lereng gunung."
+      },
+      {
+        "id": "B",
+        "text": "Letusan gunung merugikan dalam waktu dekat tetapi menyuburkan lahan dalam jangka panjang."
+      },
+      {
+        "id": "C",
+        "text": "Letusan gunung tidak pernah merugikan petani."
+      },
+      {
+        "id": "D",
+        "text": "Kesuburan tanah hanya ditentukan oleh pupuk."
+      },
+      {
+        "id": "E",
+        "text": "Abu vulkanik harus segera disingkirkan dari lahan."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bacaan bergerak dari kerugian musim itu, ke jeda pelapukan, lalu ke kesuburan yang muncul kemudian.\n\nKedua sisi itu — rugi sekarang, subur nanti — adalah inti seluruh bacaan.",
+    "distractorRationale": {
+      "A": "Bacaan justru menggambarkan mereka bertahan.",
+      "C": "Kalimat (2) menyebut tanaman mati pada musim itu.",
+      "D": "Pupuk tidak disinggung bacaan.",
+      "E": "Bertentangan dengan manfaat jangka panjangnya."
+    },
+    "tags": [
+      "simpulan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t08",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Fungsi kalimat (1) dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "membantah paragraf ketiga"
+      },
+      {
+        "id": "B",
+        "text": "menjelaskan proses terbentuknya gunung berapi"
+      },
+      {
+        "id": "C",
+        "text": "menyiapkan pembaca untuk sisi lain dari letusan yang akan diuraikan sesudahnya"
+      },
+      {
+        "id": "D",
+        "text": "memberikan contoh kerusakan akibat letusan"
+      },
+      {
+        "id": "E",
+        "text": "menyimpulkan seluruh isi bacaan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "«Gunung berapi tidak hanya merusak» mengakui kerusakannya sekaligus menandakan ada hal lain yang belum disebut.\n\nSeluruh bacaan setelahnya menguraikan hal lain itu, sehingga kalimat pertama berfungsi sebagai pembuka arah.",
+    "distractorRationale": {
+      "A": "Justru sejalan dengannya.",
+      "B": "Pembentukan gunung tidak dibahas.",
+      "D": "Tidak ada contoh yang diberikan.",
+      "E": "Simpulan justru ada di kalimat (6) dan (7)."
+    },
+    "tags": [
+      "fungsi-kalimat"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t09",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Berdasarkan bacaan, tanah dari abu vulkanik dibandingkan dengan",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tanah gambut"
+      },
+      {
+        "id": "B",
+        "text": "tanah liat"
+      },
+      {
+        "id": "C",
+        "text": "pasir pantai"
+      },
+      {
+        "id": "D",
+        "text": "tanah dari batuan tua"
+      },
+      {
+        "id": "E",
+        "text": "tanah rawa"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat (2) menyebut abu yang lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\nJenis tanah lain pada pilihan tidak disinggung bacaan.",
+    "distractorRationale": {
+      "A": "Tidak disebut bacaan.",
+      "B": "Tidak disebut bacaan.",
+      "C": "Tidak disebut bacaan.",
+      "E": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t10",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Bila sebuah lereng baru saja tertutup abu tebal, saran yang paling sesuai dengan bacaan adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menutup abu dengan tanah dari tempat lain"
+      },
+      {
+        "id": "B",
+        "text": "menanam jenis yang sama seperti sebelum letusan"
+      },
+      {
+        "id": "C",
+        "text": "menyiram lahan dengan air panas agar mineral cepat terurai"
+      },
+      {
+        "id": "D",
+        "text": "meninggalkan lahan itu selamanya"
+      },
+      {
+        "id": "E",
+        "text": "menanam jenis tanaman yang cocok untuk tahun-tahun awal sambil menunggu abunya lapuk"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat (5) menyebut petani menyiasati jeda itu dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\nDua saran lain pada pilihan tidak disinggung bacaan, dan meninggalkan lahan bertentangan dengan kesuburan yang akan datang.",
+    "distractorRationale": {
+      "A": "Tidak disinggung bacaan.",
+      "B": "Abu segar belum menyediakan unsur hara.",
+      "C": "Tidak disinggung bacaan.",
+      "D": "Bertentangan dengan kesuburan jangka panjangnya."
+    },
+    "tags": [
+      "penerapan"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t11",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Kata «jeda» pada kalimat (5) mengacu pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "masa antara turunnya abu dan tersedianya unsur hara bagi tanaman"
+      },
+      {
+        "id": "B",
+        "text": "waktu istirahat petani setelah panen"
+      },
+      {
+        "id": "C",
+        "text": "waktu antara hujan dan panas"
+      },
+      {
+        "id": "D",
+        "text": "selang waktu antara dua letusan"
+      },
+      {
+        "id": "E",
+        "text": "masa tanam yang ditetapkan pemerintah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat (4) baru saja menjelaskan bahwa mineral abu memerlukan bertahun-tahun untuk terurai.\n\n«Jeda» pada kalimat berikutnya menunjuk rentang itu — bukan istirahat petani maupun selang antarletusan.",
+    "distractorRationale": {
+      "B": "Bukan itu yang dibahas kalimat sebelumnya.",
+      "C": "Keduanya justru berlangsung bersamaan selama bertahun-tahun.",
+      "D": "Bacaan tidak membahas letusan berulang.",
+      "E": "Tidak disinggung bacaan."
+    },
+    "tags": [
+      "makna-kata"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t12",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Mengevaluasi argumen",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Gunung berapi tidak hanya merusak. (2) Abu vulkanik yang menutupi lahan pertanian memang mematikan tanaman pada musim itu, tetapi abu yang sama lapuk menjadi tanah yang jauh lebih subur daripada tanah dari batuan tua.\n\n(3) Prosesnya memerlukan waktu. (4) Abu segar bersifat kasar dan miskin unsur hara yang siap diserap akar; baru setelah bertahun-tahun terkena hujan dan panas, mineralnya terurai dan menjadi tersedia bagi tanaman. (5) Petani di lereng gunung mengenal jeda itu dan telah lama menyiasatinya dengan menanam jenis yang berbeda pada tahun-tahun pertama.\n\n(6) Karena itu kesuburan lereng gunung bukanlah hadiah yang datang seketika. (7) Ia adalah hasil dari kerusakan yang sudah cukup lama berlalu."
+    },
+    "stem": "Sikap penulis terhadap letusan gunung berapi adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menilainya sepenuhnya menguntungkan"
+      },
+      {
+        "id": "B",
+        "text": "mengakui kerugiannya sekaligus menunjukkan manfaatnya dalam jangka panjang"
+      },
+      {
+        "id": "C",
+        "text": "tidak memberikan penilaian apa pun"
+      },
+      {
+        "id": "D",
+        "text": "menilainya sepenuhnya merugikan"
+      },
+      {
+        "id": "E",
+        "text": "menilainya tidak berpengaruh pada pertanian"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat (2) mengakui tanaman mati pada musim itu, sedangkan kalimat (6) dan (7) menyebut kesuburan yang datang kemudian.\n\nPenulis menahan diri dari kedua sikap ekstrem — inilah sebabnya kalimat pembukanya berbunyi «tidak hanya merusak», bukan «tidak merusak».",
+    "distractorRationale": {
+      "A": "Kalimat (2) mengakui kerugian.",
+      "C": "Penilaiannya jelas dinyatakan.",
+      "D": "Bertentangan dengan kalimat (2) dan (6).",
+      "E": "Seluruh bacaan membahas pengaruhnya."
+    },
+    "tags": [
+      "sikap-penulis"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t13",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakak menyimpan buku tulis kelas enamnya di dalam tas plastik bening. Sampulnya sudah lepas, dan beberapa halaman terakhir kosong karena tahun ajaran keburu selesai.\n\nDi halaman-halaman awal, tulisannya rapi dan miring ke kanan. Semakin ke tengah, hurufnya makin cepat dan makin condong, sampai di bagian terakhir hampir tidak terbaca. Kakak bilang itu bagian yang ditulisnya sambil mendengarkan guru berbicara terlalu cepat.\n\nSekarang Kakak sudah bekerja dan menulis dengan papan ketik. Ia bilang tulisan tangannya sudah rusak. Tetapi buku itu masih ia simpan, dan setiap kali ada yang bertanya, ia membuka halaman pertama — bukan yang terakhir."
+    },
+    "stem": "Benda yang menjadi pusat cerita dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tas sekolah"
+      },
+      {
+        "id": "B",
+        "text": "sampul plastik"
+      },
+      {
+        "id": "C",
+        "text": "buku tulis kelas enam"
+      },
+      {
+        "id": "D",
+        "text": "meja belajar"
+      },
+      {
+        "id": "E",
+        "text": "papan ketik"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Seluruh cerita berkisar pada buku tulis kelas enam milik Kakak: bagaimana tulisannya berubah di dalamnya, dan mengapa buku itu tetap disimpan.\n\nPapan ketik hanya disebut sebagai alat yang dipakai Kakak sekarang.",
+    "distractorRationale": {
+      "A": "Yang disebut adalah tas plastik tempat menyimpan.",
+      "B": "Sekadar wadah penyimpanan.",
+      "D": "Tidak disebut bacaan.",
+      "E": "Hanya disebut sebagai alat sekarang."
+    },
+    "tags": [
+      "unsur-intrinsik"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t14",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Makna tersirat",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakak menyimpan buku tulis kelas enamnya di dalam tas plastik bening. Sampulnya sudah lepas, dan beberapa halaman terakhir kosong karena tahun ajaran keburu selesai.\n\nDi halaman-halaman awal, tulisannya rapi dan miring ke kanan. Semakin ke tengah, hurufnya makin cepat dan makin condong, sampai di bagian terakhir hampir tidak terbaca. Kakak bilang itu bagian yang ditulisnya sambil mendengarkan guru berbicara terlalu cepat.\n\nSekarang Kakak sudah bekerja dan menulis dengan papan ketik. Ia bilang tulisan tangannya sudah rusak. Tetapi buku itu masih ia simpan, dan setiap kali ada yang bertanya, ia membuka halaman pertama — bukan yang terakhir."
+    },
+    "stem": "Perubahan tulisan dari rapi menjadi hampir tidak terbaca dalam bacaan tersebut menggambarkan",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "perubahan alat tulis yang dipakai Kakak"
+      },
+      {
+        "id": "B",
+        "text": "penurunan nilai Kakak di sekolah"
+      },
+      {
+        "id": "C",
+        "text": "kerusakan buku akibat disimpan terlalu lama"
+      },
+      {
+        "id": "D",
+        "text": "usaha Kakak mengejar penjelasan guru yang berbicara terlalu cepat"
+      },
+      {
+        "id": "E",
+        "text": "kemalasan Kakak menjelang akhir tahun ajaran"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kakak sendiri menjelaskannya: bagian itu ditulis sambil mendengarkan guru berbicara terlalu cepat.\n\nHurufnya makin condong dan makin cepat karena tangannya berusaha mengimbangi, bukan karena ia berhenti berusaha.",
+    "distractorRationale": {
+      "A": "Alat tulis tidak disebut berubah.",
+      "B": "Nilai tidak disinggung.",
+      "C": "Yang berubah tulisannya, bukan kertasnya.",
+      "E": "Justru menunjukkan usaha, bukan kemalasan."
+    },
+    "tags": [
+      "makna-tersirat"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t15",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Makna tersirat",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakak menyimpan buku tulis kelas enamnya di dalam tas plastik bening. Sampulnya sudah lepas, dan beberapa halaman terakhir kosong karena tahun ajaran keburu selesai.\n\nDi halaman-halaman awal, tulisannya rapi dan miring ke kanan. Semakin ke tengah, hurufnya makin cepat dan makin condong, sampai di bagian terakhir hampir tidak terbaca. Kakak bilang itu bagian yang ditulisnya sambil mendengarkan guru berbicara terlalu cepat.\n\nSekarang Kakak sudah bekerja dan menulis dengan papan ketik. Ia bilang tulisan tangannya sudah rusak. Tetapi buku itu masih ia simpan, dan setiap kali ada yang bertanya, ia membuka halaman pertama — bukan yang terakhir."
+    },
+    "stem": "Alasan Kakak selalu membuka halaman pertama, bukan yang terakhir, paling tepat dipahami sebagai",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "halaman terakhir sudah hilang dari buku itu"
+      },
+      {
+        "id": "B",
+        "text": "halaman terakhir berisi nilai ujiannya"
+      },
+      {
+        "id": "C",
+        "text": "halaman pertama memuat namanya"
+      },
+      {
+        "id": "D",
+        "text": "ia lupa isi halaman terakhir"
+      },
+      {
+        "id": "E",
+        "text": "ia ingin menunjukkan bagian ketika tulisannya masih seperti yang ia inginkan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kakak menyebut tulisan tangannya «sudah rusak», jadi ia sadar akan perubahan itu. Halaman pertama adalah bagian yang tulisannya masih rapi.\n\nMemilih halaman itu setiap kali ditanya menunjukkan bagian mana dari dirinya yang ingin ia perlihatkan.",
+    "distractorRationale": {
+      "A": "Bacaan menyebut halaman terakhir kosong, bukan hilang.",
+      "B": "Tidak disebut bacaan.",
+      "C": "Tidak disebut bacaan.",
+      "D": "Ia justru menjelaskannya dengan rinci."
+    },
+    "tags": [
+      "makna-tersirat"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t16",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Amanat & nilai",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakak menyimpan buku tulis kelas enamnya di dalam tas plastik bening. Sampulnya sudah lepas, dan beberapa halaman terakhir kosong karena tahun ajaran keburu selesai.\n\nDi halaman-halaman awal, tulisannya rapi dan miring ke kanan. Semakin ke tengah, hurufnya makin cepat dan makin condong, sampai di bagian terakhir hampir tidak terbaca. Kakak bilang itu bagian yang ditulisnya sambil mendengarkan guru berbicara terlalu cepat.\n\nSekarang Kakak sudah bekerja dan menulis dengan papan ketik. Ia bilang tulisan tangannya sudah rusak. Tetapi buku itu masih ia simpan, dan setiap kali ada yang bertanya, ia membuka halaman pertama — bukan yang terakhir."
+    },
+    "stem": "Amanat yang paling sesuai dengan bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Jejak usaha seseorang layak disimpan meski hasilnya tidak sempurna."
+      },
+      {
+        "id": "B",
+        "text": "Guru sebaiknya berbicara lebih pelan."
+      },
+      {
+        "id": "C",
+        "text": "Buku lama sebaiknya dibuang agar tidak menumpuk."
+      },
+      {
+        "id": "D",
+        "text": "Tulisan tangan harus selalu dijaga kerapiannya."
+      },
+      {
+        "id": "E",
+        "text": "Papan ketik lebih baik daripada tulisan tangan."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Buku itu berisi tulisan yang makin kacau dan halaman yang tidak sempat terisi, namun tetap disimpan bertahun-tahun.\n\nCerita tidak menyalahkan siapa pun — bukan gurunya, bukan pula tulisan Kakak; yang ditunjukkan adalah nilai dari jejak itu sendiri.",
+    "distractorRationale": {
+      "B": "Bukan pokok cerita.",
+      "C": "Bertentangan dengan tindakan Kakak.",
+      "D": "Cerita tidak menuntut kerapian.",
+      "E": "Cerita tidak membandingkan mutu keduanya."
+    },
+    "tags": [
+      "amanat"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t17",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakak menyimpan buku tulis kelas enamnya di dalam tas plastik bening. Sampulnya sudah lepas, dan beberapa halaman terakhir kosong karena tahun ajaran keburu selesai.\n\nDi halaman-halaman awal, tulisannya rapi dan miring ke kanan. Semakin ke tengah, hurufnya makin cepat dan makin condong, sampai di bagian terakhir hampir tidak terbaca. Kakak bilang itu bagian yang ditulisnya sambil mendengarkan guru berbicara terlalu cepat.\n\nSekarang Kakak sudah bekerja dan menulis dengan papan ketik. Ia bilang tulisan tangannya sudah rusak. Tetapi buku itu masih ia simpan, dan setiap kali ada yang bertanya, ia membuka halaman pertama — bukan yang terakhir."
+    },
+    "stem": "Sudut pandang yang digunakan dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "orang ketiga pengamat"
+      },
+      {
+        "id": "B",
+        "text": "orang pertama pelaku sampingan"
+      },
+      {
+        "id": "C",
+        "text": "campuran orang pertama dan ketiga"
+      },
+      {
+        "id": "D",
+        "text": "orang kedua"
+      },
+      {
+        "id": "E",
+        "text": "orang ketiga serba tahu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Penutur menyebut tokohnya «Kakak» dan meneruskan apa yang Kakak katakan kepadanya, sehingga ia hadir dalam cerita sebagai orang yang mendengar.\n\nKarena penutur bukan tokoh utamanya, sudut pandangnya orang pertama pelaku sampingan.",
+    "distractorRationale": {
+      "A": "Penutur ikut hadir dan bertanya.",
+      "C": "Sudut pandangnya konsisten.",
+      "D": "Tidak memakai «kamu».",
+      "E": "Penutur hanya tahu apa yang Kakak katakan kepadanya."
+    },
+    "tags": [
+      "sudut-pandang"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t18",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Gaya bahasa",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakak menyimpan buku tulis kelas enamnya di dalam tas plastik bening. Sampulnya sudah lepas, dan beberapa halaman terakhir kosong karena tahun ajaran keburu selesai.\n\nDi halaman-halaman awal, tulisannya rapi dan miring ke kanan. Semakin ke tengah, hurufnya makin cepat dan makin condong, sampai di bagian terakhir hampir tidak terbaca. Kakak bilang itu bagian yang ditulisnya sambil mendengarkan guru berbicara terlalu cepat.\n\nSekarang Kakak sudah bekerja dan menulis dengan papan ketik. Ia bilang tulisan tangannya sudah rusak. Tetapi buku itu masih ia simpan, dan setiap kali ada yang bertanya, ia membuka halaman pertama — bukan yang terakhir."
+    },
+    "stem": "Detail «beberapa halaman terakhir kosong karena tahun ajaran keburu selesai» berfungsi untuk",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menjelaskan buku itu dibeli terlalu besar"
+      },
+      {
+        "id": "B",
+        "text": "menunjukkan buku itu pernah disobek"
+      },
+      {
+        "id": "C",
+        "text": "menandai bahwa buku itu berhenti bukan karena selesai melainkan karena waktunya habis"
+      },
+      {
+        "id": "D",
+        "text": "menunjukkan Kakak malas menulis"
+      },
+      {
+        "id": "E",
+        "text": "menandakan Kakak pindah sekolah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Halaman kosong di akhir menandakan buku itu belum penuh ketika berhenti dipakai — bukan karena isinya rampung, melainkan karena tahun ajarannya berakhir lebih dulu.\n\nDetail ini sejalan dengan seluruh cerita: yang tersimpan adalah jejak proses, bukan hasil yang rapi dan selesai.",
+    "distractorRationale": {
+      "A": "Ukuran buku tidak dipersoalkan.",
+      "B": "Halamannya kosong, bukan hilang.",
+      "D": "Bacaan justru menunjukkan ia berusaha mengejar guru.",
+      "E": "Tidak disinggung bacaan."
+    },
+    "tags": [
+      "detail-sastra"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t19",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakak menyimpan buku tulis kelas enamnya di dalam tas plastik bening. Sampulnya sudah lepas, dan beberapa halaman terakhir kosong karena tahun ajaran keburu selesai.\n\nDi halaman-halaman awal, tulisannya rapi dan miring ke kanan. Semakin ke tengah, hurufnya makin cepat dan makin condong, sampai di bagian terakhir hampir tidak terbaca. Kakak bilang itu bagian yang ditulisnya sambil mendengarkan guru berbicara terlalu cepat.\n\nSekarang Kakak sudah bekerja dan menulis dengan papan ketik. Ia bilang tulisan tangannya sudah rusak. Tetapi buku itu masih ia simpan, dan setiap kali ada yang bertanya, ia membuka halaman pertama — bukan yang terakhir."
+    },
+    "stem": "Alur yang digunakan dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "mundur sepenuhnya"
+      },
+      {
+        "id": "B",
+        "text": "tidak memiliki alur"
+      },
+      {
+        "id": "C",
+        "text": "melingkar dan kembali ke awal"
+      },
+      {
+        "id": "D",
+        "text": "maju, dari buku masa sekolah menuju keadaan Kakak sekarang"
+      },
+      {
+        "id": "E",
+        "text": "campuran dengan sorot balik panjang"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Cerita bergerak dari buku tulis kelas enam dan isinya, lalu ke keadaan Kakak sekarang yang sudah bekerja.\n\nUrutannya maju, tanpa memutar kembali ke masa lalu setelah masa kini diceritakan.",
+    "distractorRationale": {
+      "A": "Cerita tidak dimulai dari masa kini.",
+      "B": "Rangkaian peristiwanya jelas.",
+      "C": "Cerita tidak kembali ke titik awalnya.",
+      "E": "Tidak ada sorot balik."
+    },
+    "tags": [
+      "alur"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t20",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Amanat & nilai",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakak menyimpan buku tulis kelas enamnya di dalam tas plastik bening. Sampulnya sudah lepas, dan beberapa halaman terakhir kosong karena tahun ajaran keburu selesai.\n\nDi halaman-halaman awal, tulisannya rapi dan miring ke kanan. Semakin ke tengah, hurufnya makin cepat dan makin condong, sampai di bagian terakhir hampir tidak terbaca. Kakak bilang itu bagian yang ditulisnya sambil mendengarkan guru berbicara terlalu cepat.\n\nSekarang Kakak sudah bekerja dan menulis dengan papan ketik. Ia bilang tulisan tangannya sudah rusak. Tetapi buku itu masih ia simpan, dan setiap kali ada yang bertanya, ia membuka halaman pertama — bukan yang terakhir."
+    },
+    "stem": "Makna ungkapan Kakak bahwa tulisan tangannya «sudah rusak» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "bukunya rusak dimakan rayap"
+      },
+      {
+        "id": "B",
+        "text": "ia tidak pernah bisa menulis rapi sejak kecil"
+      },
+      {
+        "id": "C",
+        "text": "tulisannya benar-benar tidak dapat dibaca siapa pun"
+      },
+      {
+        "id": "D",
+        "text": "tangannya mengalami cedera"
+      },
+      {
+        "id": "E",
+        "text": "ia merasa kemampuan menulis tangannya menurun karena jarang dipakai"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat sebelumnya menyebut Kakak sekarang menulis dengan papan ketik, sehingga «rusak» di sini berarti tidak lagi terlatih.\n\nItu penilaian Kakak atas dirinya sendiri, bukan keterangan tentang cedera maupun kerusakan buku — dan justru penilaian itulah yang membuat ia memilih halaman pertama.",
+    "distractorRationale": {
+      "A": "Yang disebut rusak adalah tulisannya.",
+      "B": "Halaman pertama menunjukkan sebaliknya.",
+      "C": "Ungkapan itu berlebihan; halaman awalnya justru rapi.",
+      "D": "Cedera tidak disinggung."
+    },
+    "tags": [
+      "makna-ungkapan"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t21",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Gaya bahasa",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakak menyimpan buku tulis kelas enamnya di dalam tas plastik bening. Sampulnya sudah lepas, dan beberapa halaman terakhir kosong karena tahun ajaran keburu selesai.\n\nDi halaman-halaman awal, tulisannya rapi dan miring ke kanan. Semakin ke tengah, hurufnya makin cepat dan makin condong, sampai di bagian terakhir hampir tidak terbaca. Kakak bilang itu bagian yang ditulisnya sambil mendengarkan guru berbicara terlalu cepat.\n\nSekarang Kakak sudah bekerja dan menulis dengan papan ketik. Ia bilang tulisan tangannya sudah rusak. Tetapi buku itu masih ia simpan, dan setiap kali ada yang bertanya, ia membuka halaman pertama — bukan yang terakhir."
+    },
+    "stem": "Suasana yang paling menonjol dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tenang dengan rasa sayang pada masa lalu"
+      },
+      {
+        "id": "B",
+        "text": "riang dan penuh canda"
+      },
+      {
+        "id": "C",
+        "text": "marah dan penuh penyesalan"
+      },
+      {
+        "id": "D",
+        "text": "asing dan membingungkan"
+      },
+      {
+        "id": "E",
+        "text": "tegang dan penuh kekhawatiran"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Cerita bergerak lambat melalui isi sebuah buku tulis lama dan ditutup dengan kebiasaan membuka halaman pertama.\n\nTidak ada konflik maupun penyesalan yang diucapkan — yang ada adalah kelekatan pada sesuatu yang sudah lewat.",
+    "distractorRationale": {
+      "B": "Nadanya bukan canda.",
+      "C": "Tidak ada kemarahan yang diungkapkan.",
+      "D": "Latarnya justru akrab.",
+      "E": "Tidak ada ketegangan."
+    },
+    "tags": [
+      "suasana"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t22",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kata baku & makna kata",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan kata baku yang tepat terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kualitas, sekertaris, propinsi"
+      },
+      {
+        "id": "B",
+        "text": "kualitas, sekretaris, provinsi"
+      },
+      {
+        "id": "C",
+        "text": "kwalitas, sekertaris, propinsi"
+      },
+      {
+        "id": "D",
+        "text": "kwalitas, sekretaris, provinsi"
+      },
+      {
+        "id": "E",
+        "text": "kualitas, sekretaris, propinsi"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bentuk baku ketiganya adalah «kualitas», «sekretaris», dan «provinsi».\n\n«Kwalitas», «sekertaris», dan «propinsi» adalah bentuk tidak baku yang masih sering dijumpai dalam tulisan sehari-hari.",
+    "distractorRationale": {
+      "A": "«sekertaris» dan «propinsi» tidak baku.",
+      "C": "Ketiganya tidak baku.",
+      "D": "«kwalitas» tidak baku.",
+      "E": "«propinsi» tidak baku."
+    },
+    "tags": [
+      "kata-baku"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t23",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Ejaan & tanda baca",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penggunaan tanda hubung yang tepat terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Acara itu dihadiri anak anak dari se-Jawa Barat."
+      },
+      {
+        "id": "B",
+        "text": "Acara itu dihadiri anak-anak dari sejawa-barat."
+      },
+      {
+        "id": "C",
+        "text": "Acara itu dihadiri anak-anak dari se-Jawa Barat."
+      },
+      {
+        "id": "D",
+        "text": "Acara itu dihadiri anak-anak dari se Jawa Barat."
+      },
+      {
+        "id": "E",
+        "text": "Acara itu dihadiri anakanak dari se Jawa Barat."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Tanda hubung dipakai untuk kata ulang («anak-anak») dan untuk merangkaikan awalan «se-» dengan kata yang berhuruf kapital («se-Jawa Barat»).\n\nTanpa tanda hubung, kata ulang menjadi tidak jelas dan awalan «se-» terpisah dari nama diri yang mengikutinya.",
+    "distractorRationale": {
+      "A": "Kata ulang memerlukan tanda hubung.",
+      "B": "Nama diri kehilangan huruf kapitalnya.",
+      "D": "Awalan «se-» harus dirangkai dengan tanda hubung.",
+      "E": "Kata ulang dan awalan sama-sama keliru."
+    },
+    "tags": [
+      "puebi",
+      "tanda-hubung"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t24",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kalimat efektif",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat berikut yang paling efektif adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Siswa kelas IX adalah mengikuti bimbingan belajar setiap Sabtu."
+      },
+      {
+        "id": "B",
+        "text": "Bagi siswa kelas IX mengikuti bimbingan belajar setiap Sabtu."
+      },
+      {
+        "id": "C",
+        "text": "Siswa kelas IX mengikuti daripada bimbingan belajar setiap Sabtu."
+      },
+      {
+        "id": "D",
+        "text": "Siswa kelas IX mengikuti bimbingan belajar setiap Sabtu."
+      },
+      {
+        "id": "E",
+        "text": "Siswa-siswa kelas IX mengikuti bimbingan belajar pada setiap hari Sabtu."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat efektif menuntut subjek yang jelas dan bebas kata mubazir.\n\n«Pada setiap hari Sabtu» berlebihan, awalan «bagi» menghilangkan subjek, «adalah mengikuti» menumpuk dua predikat, dan «daripada» dipakai keliru sebagai penanda milik.",
+    "distractorRationale": {
+      "A": "«adalah mengikuti» menumpuk dua predikat.",
+      "B": "Kehilangan subjek karena diawali «bagi».",
+      "C": "«daripada» dipakai keliru.",
+      "E": "«pada setiap hari» berlebihan."
+    },
+    "tags": [
+      "kalimat-efektif"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t25",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kata baku & makna kata",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Makna kata «cermat» dalam kalimat «Ia cermat memeriksa hasil hitungannya» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "rajin mengerjakan tugas"
+      },
+      {
+        "id": "B",
+        "text": "sabar menunggu hasil"
+      },
+      {
+        "id": "C",
+        "text": "pandai berhitung"
+      },
+      {
+        "id": "D",
+        "text": "cepat dan tanpa ragu"
+      },
+      {
+        "id": "E",
+        "text": "teliti dan penuh kehati-hatian"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "«Cermat» berarti teliti, saksama, dan berhati-hati agar tidak ada yang terlewat.\n\nKecepatan, kepandaian, kesabaran, dan kerajinan adalah sifat lain yang bisa menyertainya, tetapi bukan artinya.",
+    "distractorRationale": {
+      "A": "Ini makna «rajin».",
+      "B": "Ini makna «sabar».",
+      "C": "Kepandaian bukan arti kata ini.",
+      "D": "Kecepatan justru sering berlawanan dengan kecermatan."
+    },
+    "tags": [
+      "makna-kata"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t26",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kepaduan paragraf",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan kalimat berikut.\n\n(1) Akibatnya, buku yang dicari sering tidak ditemukan meskipun sebenarnya ada di rak.\n(2) Perpustakaan sekolah kami belum memiliki katalog yang tertata.\n(3) Pengurus akhirnya menyusun daftar sederhana berdasarkan huruf awal judul.\n(4) Buku disusun hanya berdasarkan ukuran dan warna sampulnya.\n\nUrutan yang tepat agar membentuk paragraf padu adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(2), (4), (1), (3)"
+      },
+      {
+        "id": "B",
+        "text": "(2), (1), (4), (3)"
+      },
+      {
+        "id": "C",
+        "text": "(1), (2), (4), (3)"
+      },
+      {
+        "id": "D",
+        "text": "(3), (2), (4), (1)"
+      },
+      {
+        "id": "E",
+        "text": "(4), (1), (2), (3)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat (2) menyatakan keadaan umum, (4) merinci bagaimana buku disusun, (1) menyebut akibatnya dengan penanda «akibatnya», dan (3) menutup dengan tindakan pengurus.\n\nKalimat (1) harus berada setelah (4), sebab buku yang sulit ditemukan baru masuk akal setelah cara penyusunannya dijelaskan.",
+    "distractorRationale": {
+      "B": "Akibat disebut sebelum cara penyusunannya dijelaskan.",
+      "C": "Kalimat berpenanda «akibatnya» tidak dapat membuka paragraf.",
+      "D": "Dimulai dari tindakan penutup.",
+      "E": "Dimulai dari rincian tanpa keadaan umumnya."
+    },
+    "tags": [
+      "struktur-paragraf"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t27",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Ejaan & tanda baca",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan kalimat langsung yang tepat adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Ibu berkata, Simpan payung itu di dekat pintu."
+      },
+      {
+        "id": "B",
+        "text": "Ibu berkata, «Simpan payung itu di dekat pintu.»"
+      },
+      {
+        "id": "C",
+        "text": "Ibu berkata: «Simpan payung itu di dekat pintu»."
+      },
+      {
+        "id": "D",
+        "text": "Ibu berkata «Simpan payung itu di dekat pintu.»"
+      },
+      {
+        "id": "E",
+        "text": "Ibu berkata, «simpan payung itu di dekat pintu.»"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat langsung didahului koma setelah kalimat pengiring, dibuka dengan huruf kapital, dan tanda titik akhirnya diletakkan di dalam tanda petik.\n\nTitik dua dipakai bila pengiringnya berupa keterangan pelaku dalam naskah drama, bukan dalam kalimat langsung biasa.",
+    "distractorRationale": {
+      "A": "Kalimat langsung memerlukan tanda petik.",
+      "C": "Titik dua tidak tepat dan titik diletakkan di luar petik.",
+      "D": "Kurang koma setelah kalimat pengiring.",
+      "E": "Huruf awal kalimat langsung harus kapital."
+    },
+    "tags": [
+      "puebi",
+      "kalimat-langsung"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t28",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kalimat efektif",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat berikut yang mengandung kesalahan struktur adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Adanya perpustakaan baru membuat siswa lebih rajin membaca."
+      },
+      {
+        "id": "B",
+        "text": "Perpustakaan baru membuat siswa lebih rajin membaca."
+      },
+      {
+        "id": "C",
+        "text": "Dengan adanya perpustakaan baru membuat siswa lebih rajin membaca."
+      },
+      {
+        "id": "D",
+        "text": "Siswa menjadi lebih rajin membaca sejak perpustakaan baru dibuka."
+      },
+      {
+        "id": "E",
+        "text": "Dengan adanya perpustakaan baru, siswa menjadi lebih rajin membaca."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kata «dengan» menjadikan bagian depan kalimat sebagai keterangan, sehingga kalimat pertama tidak memiliki subjek: tidak jelas apa yang membuat siswa rajin.\n\nDua jalan memperbaikinya muncul pada pilihan lain: menghapus «dengan» sehingga frasa itu naik menjadi subjek, atau menambahkan subjek setelah tanda koma.",
+    "distractorRationale": {
+      "A": "Berstruktur lengkap.",
+      "B": "Berstruktur lengkap.",
+      "D": "Berstruktur lengkap.",
+      "E": "Berstruktur lengkap."
+    },
+    "tags": [
+      "kalimat-efektif",
+      "subjek"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t29",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kepaduan paragraf",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan paragraf berikut.\n\n«(1) Kantin sekolah kami hanya memiliki dua meja panjang. (2) Waktu istirahat berlangsung dua puluh menit. (3) Menu yang dijual di kantin cukup beragam. (4) Karena itu, sebagian siswa terpaksa makan sambil berdiri di koridor.»\n\nKalimat yang tidak padu adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kalimat (4)"
+      },
+      {
+        "id": "B",
+        "text": "kalimat (2)"
+      },
+      {
+        "id": "C",
+        "text": "semua kalimat sudah padu"
+      },
+      {
+        "id": "D",
+        "text": "kalimat (3)"
+      },
+      {
+        "id": "E",
+        "text": "kalimat (1)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Paragraf itu membangun satu rantai: meja hanya dua dan waktu istirahat singkat, sehingga sebagian siswa makan sambil berdiri.\n\nKalimat (3) menyebut keberagaman menu — hal yang tidak berkaitan dengan tempat duduk maupun waktu, dan bahkan bernada positif sehingga menyalahi arah paragraf.",
+    "distractorRationale": {
+      "A": "Menyebut akibatnya.",
+      "B": "Memperkuat sebab utama.",
+      "C": "Kalimat (3) keluar dari rantai sebab.",
+      "E": "Menyebut sebab utama."
+    },
+    "tags": [
+      "kepaduan-paragraf"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-t30",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kata baku & makna kata",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Panitia ______ seluruh peserta agar hadir tepat waktu.»\n\nKata yang paling tepat mengisi bagian rumpang adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menyerukan diri"
+      },
+      {
+        "id": "B",
+        "text": "mengajak diri"
+      },
+      {
+        "id": "C",
+        "text": "mengimbaukan"
+      },
+      {
+        "id": "D",
+        "text": "menghimbau"
+      },
+      {
+        "id": "E",
+        "text": "mengimbau"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Bentuk baku kata dasarnya adalah «imbau», sehingga bentuk berawalan «meN-» menjadi «mengimbau».\n\n«Menghimbau» adalah bentuk tidak baku yang sangat sering dipakai, dan justru karena kelaziman itulah kekeliruan ini bertahan.",
+    "distractorRationale": {
+      "A": "Bentuk yang tidak lazim dan tidak sesuai konteks.",
+      "B": "Bentuk yang tidak lazim.",
+      "C": "Imbuhan berlebihan.",
+      "D": "Bentuk tidak baku dari «mengimbau»."
+    },
+    "tags": [
+      "kata-baku"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u01",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Operasi bilangan bulat & pecahan",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $24 : (-6) - 3 \\times (-5)$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11"
+      },
+      {
+        "id": "B",
+        "text": "-19"
+      },
+      {
+        "id": "C",
+        "text": "-11"
+      },
+      {
+        "id": "D",
+        "text": "-4"
+      },
+      {
+        "id": "E",
+        "text": "19"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Pembagian dan perkalian dikerjakan lebih dahulu: $24 : (-6) = -4$ dan $3 \\times (-5) = -15$.\n\nKemudian $-4 - (-15) = -4 + 15 = 11$.",
+    "distractorRationale": {
+      "B": "Menghitung $-4 + (-15)$.",
+      "C": "Menegatifkan hasil yang benar.",
+      "D": "Berhenti pada hasil pembagian saja.",
+      "E": "Salah tanda pada suku pertama."
+    },
+    "tags": [
+      "operasi-hitung"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u02",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Operasi bilangan bulat & pecahan",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $\\dfrac{3}{5} : \\dfrac{9}{10}$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{3}{2}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{2}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{12}{15}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{27}{50}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{1}{2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Membagi pecahan sama dengan mengalikan dengan kebalikannya: $\\dfrac{3}{5} \\times \\dfrac{10}{9} = \\dfrac{30}{45}$.\n\nDisederhanakan dengan membagi keduanya dengan 15, hasilnya $\\dfrac{2}{3}$.",
+    "distractorRationale": {
+      "A": "Membalik pecahan yang keliru.",
+      "C": "Kesalahan perkalian.",
+      "D": "Mengalikan tanpa membalik pecahan kedua.",
+      "E": "Kesalahan penyederhanaan."
+    },
+    "tags": [
+      "pecahan"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u03",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Perbandingan & skala",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah mobil menempuh 180 km dengan 15 liter bahan bakar.\n\nBahan bakar yang diperlukan untuk menempuh 300 km adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "30 liter"
+      },
+      {
+        "id": "B",
+        "text": "18 liter"
+      },
+      {
+        "id": "C",
+        "text": "25 liter"
+      },
+      {
+        "id": "D",
+        "text": "22 liter"
+      },
+      {
+        "id": "E",
+        "text": "20 liter"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Konsumsinya $\\dfrac{180}{15} = 12$ km per liter.\n\nUntuk 300 km diperlukan $\\dfrac{300}{12} = 25$ liter.",
+    "distractorRationale": {
+      "A": "Memakai 10 km per liter.",
+      "B": "Kesalahan pembagian.",
+      "D": "Kesalahan pembagian.",
+      "E": "Memakai 15 km per liter."
+    },
+    "tags": [
+      "perbandingan-senilai"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u04",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Persen",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Harga sebuah tas naik 20% menjadi Rp288.000.\n\nHarga tas tersebut sebelum naik adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp250.000"
+      },
+      {
+        "id": "B",
+        "text": "Rp268.000"
+      },
+      {
+        "id": "C",
+        "text": "Rp230.400"
+      },
+      {
+        "id": "D",
+        "text": "Rp240.000"
+      },
+      {
+        "id": "E",
+        "text": "Rp345.600"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kenaikan 20% berarti harga barunya 120% dari harga lama.\n\nMaka $1{,}2p = 288.000$, sehingga $p = \\dfrac{288.000}{1{,}2} = 240.000$ rupiah.",
+    "distractorRationale": {
+      "A": "Memakai kenaikan 15,2%.",
+      "B": "Mengurangkan 20.000 begitu saja.",
+      "C": "Mengurangi 20% dari harga baru.",
+      "E": "Menambah 20% pada harga baru."
+    },
+    "tags": [
+      "persen"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u05",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Pola bilangan",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan bilangan: 2, 5, 10, 17, 26, ...\n\nSuku ke-10 barisan tersebut adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 101
+    },
+    "explanation": "Selisih antarsuku adalah 3, 5, 7, 9 — bertambah 2 setiap kali. Pola umumnya $n^2 + 1$: $1+1=2$, $4+1=5$, $9+1=10$.\n\nSuku ke-10 adalah $10^2 + 1 = 101$.",
+    "tags": [
+      "pola-bilangan"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "tka-smp-u06",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Operasi bilangan bulat & pecahan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $\\left(2\\dfrac{1}{4} - 1\\dfrac{1}{2}\\right) \\times 8$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "8"
+      },
+      {
+        "id": "D",
+        "text": "12"
+      },
+      {
+        "id": "E",
+        "text": "6"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Ubah menjadi pecahan biasa: $\\dfrac{9}{4} - \\dfrac{3}{2} = \\dfrac{9}{4} - \\dfrac{6}{4} = \\dfrac{3}{4}$.\n\nKemudian $\\dfrac{3}{4} \\times 8 = 6$.",
+    "distractorRationale": {
+      "A": "Kesalahan perkalian.",
+      "B": "Memakai selisih $\\dfrac{1}{2}$.",
+      "C": "Mengabaikan tanda kurung.",
+      "D": "Memakai selisih $\\dfrac{3}{2}$."
+    },
+    "tags": [
+      "pecahan-campuran"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u07",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Bentuk aljabar",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $2(3x + 4) - 3(x - 2)$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3x + 14$"
+      },
+      {
+        "id": "B",
+        "text": "$3x + 2$"
+      },
+      {
+        "id": "C",
+        "text": "$9x + 14$"
+      },
+      {
+        "id": "D",
+        "text": "$3x - 2$"
+      },
+      {
+        "id": "E",
+        "text": "$9x + 2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Distribusikan keduanya: $6x + 8$ dan $-3x + 6$ — perhatikan tanda kurang membalik tanda kedua suku.\n\nMaka $(6x - 3x) + (8 + 6) = 3x + 14$.",
+    "distractorRationale": {
+      "B": "Tidak membalik tanda pada $-2$.",
+      "C": "Menjumlahkan koefisien $x$.",
+      "D": "Salah tanda pada konstanta.",
+      "E": "Salah pada kedua bagian."
+    },
+    "tags": [
+      "bentuk-aljabar"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u08",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penyelesaian dari $\\dfrac{x}{3} + 5 = 11$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6"
+      },
+      {
+        "id": "B",
+        "text": "18"
+      },
+      {
+        "id": "C",
+        "text": "2"
+      },
+      {
+        "id": "D",
+        "text": "16"
+      },
+      {
+        "id": "E",
+        "text": "48"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kurangkan 5: $\\dfrac{x}{3} = 6$. Kalikan 3: $x = 18$.\n\nPeriksa: $\\dfrac{18}{3} + 5 = 11$ ✓.",
+    "distractorRationale": {
+      "A": "Berhenti pada $\\dfrac{x}{3} = 6$.",
+      "C": "Membagi, bukan mengalikan.",
+      "D": "Kesalahan penyelesaian.",
+      "E": "Memakai $\\dfrac{x}{3} = 16$."
+    },
+    "tags": [
+      "persamaan-linear"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u09",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai $x$ yang memenuhi $5 - 3x \\le 20$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x \\le -5$"
+      },
+      {
+        "id": "B",
+        "text": "$x \\le 5$"
+      },
+      {
+        "id": "C",
+        "text": "$x \\ge -5$"
+      },
+      {
+        "id": "D",
+        "text": "$x \\ge -15$"
+      },
+      {
+        "id": "E",
+        "text": "$x \\ge 5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kurangkan 5: $-3x \\le 15$.\n\nMembagi dengan $-3$ membalik arah pertidaksamaan, sehingga $x \\ge -5$.",
+    "distractorRationale": {
+      "A": "Tidak membalik arah setelah dibagi bilangan negatif.",
+      "B": "Salah arah dan salah tanda.",
+      "D": "Tidak membagi dengan 3.",
+      "E": "Kehilangan tanda negatif."
+    },
+    "tags": [
+      "pertidaksamaan"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u10",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Relasi & fungsi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Fungsi $f$ dirumuskan $f(x) = 4x + 7$. Jika $f(a) = -5$, nilai $a$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "12"
+      },
+      {
+        "id": "B",
+        "text": "-1"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "-3"
+      },
+      {
+        "id": "E",
+        "text": "-12"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Substitusikan: $4a + 7 = -5$, sehingga $4a = -12$ dan $a = -3$.",
+    "distractorRationale": {
+      "A": "Salah tanda dan tidak dibagi.",
+      "B": "Kesalahan pembagian.",
+      "C": "Salah tanda pada hasil akhir.",
+      "E": "Berhenti pada $4a = -12$."
+    },
+    "tags": [
+      "fungsi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u11",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "SPLDV",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Diketahui $2x + y = 13$ dan $x + 2y = 14$.\n\nNilai $x + y$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "14"
+      },
+      {
+        "id": "B",
+        "text": "11"
+      },
+      {
+        "id": "C",
+        "text": "13"
+      },
+      {
+        "id": "D",
+        "text": "7"
+      },
+      {
+        "id": "E",
+        "text": "9"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Jumlahkan kedua persamaan: $3x + 3y = 27$, sehingga $x + y = 9$.\n\nCara ini lebih singkat daripada mencari $x$ dan $y$ satu per satu. Bila diperiksa, $x = 4$ dan $y = 5$ — dan memang berjumlah 9.",
+    "distractorRationale": {
+      "A": "Mengulang ruas kanan persamaan kedua.",
+      "B": "Kesalahan pembagian.",
+      "C": "Mengulang ruas kanan persamaan pertama.",
+      "D": "Memakai $x = 3$ dan $y = 4$."
+    },
+    "tags": [
+      "spldv"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u12",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Bentuk aljabar",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari $2ab - b^2$ untuk $a = 5$ dan $b = 4$ adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 24
+    },
+    "explanation": "$2ab = 2 \\times 5 \\times 4 = 40$ dan $b^2 = 16$.\n\nSelisihnya $40 - 16 = 24$.",
+    "tags": [
+      "substitusi"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "tka-smp-u13",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "SPLDV",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Harga 3 kaus dan 2 celana Rp410.000, sedangkan harga 1 kaus dan 3 celana Rp370.000.\n\nHarga sebuah kaus adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp70.000"
+      },
+      {
+        "id": "B",
+        "text": "Rp90.000"
+      },
+      {
+        "id": "C",
+        "text": "Rp100.000"
+      },
+      {
+        "id": "D",
+        "text": "Rp60.000"
+      },
+      {
+        "id": "E",
+        "text": "Rp85.000"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalikan persamaan kedua dengan 3: $3k + 9c = 1.110.000$.\n\nKurangkan persamaan pertama darinya: $7c = 700.000$, sehingga $c = 100.000$. Substitusikan: $k + 300.000 = 370.000$, jadi $k = 70.000$. Periksa: $3(70.000) + 2(100.000) = 410.000$ ✓.",
+    "distractorRationale": {
+      "B": "Kesalahan pengurangan persamaan.",
+      "C": "Ini harga celana.",
+      "D": "Kesalahan substitusi.",
+      "E": "Merata-ratakan kedua harga."
+    },
+    "tags": [
+      "spldv"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u14",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Umur Rina sekarang sepertiga umur ibunya. Sepuluh tahun lagi, umur Rina menjadi setengah umur ibunya.\n\nUmur Rina sekarang adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8 tahun"
+      },
+      {
+        "id": "B",
+        "text": "10 tahun"
+      },
+      {
+        "id": "C",
+        "text": "15 tahun"
+      },
+      {
+        "id": "D",
+        "text": "20 tahun"
+      },
+      {
+        "id": "E",
+        "text": "12 tahun"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Misalkan umur Rina $x$, maka umur ibunya $3x$. Sepuluh tahun lagi: $x + 10 = \\dfrac{1}{2}(3x + 10)$.\n\nKalikan 2: $2x + 20 = 3x + 10$, sehingga $x = 10$. Periksa: Rina 10 dan ibunya 30; sepuluh tahun lagi 20 dan 40 ✓.",
+    "distractorRationale": {
+      "A": "Kesalahan penyelesaian persamaan.",
+      "C": "Memberi 25 dan 55 — bukan setengahnya.",
+      "D": "Ini umur Rina sepuluh tahun lagi.",
+      "E": "Memberi 22 dan 46 sepuluh tahun lagi — bukan setengahnya."
+    },
+    "tags": [
+      "pemodelan"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u15",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah layang-layang memiliki panjang diagonal 24 cm dan 14 cm.\n\nLuas layang-layang tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$84\\ \\text{cm}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$38\\ \\text{cm}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$168\\ \\text{cm}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$76\\ \\text{cm}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$336\\ \\text{cm}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Luas layang-layang adalah setengah hasil kali kedua diagonalnya.\n\nMaka $\\dfrac{24 \\times 14}{2} = \\dfrac{336}{2} = 168\\ \\text{cm}^2$.",
+    "distractorRationale": {
+      "A": "Kesalahan pembagian.",
+      "B": "Menjumlahkan kedua diagonal.",
+      "D": "Menghitung keliling dengan cara yang keliru.",
+      "E": "Lupa membagi dengan 2."
+    },
+    "tags": [
+      "bangun-datar"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u16",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Teorema Pythagoras",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah segitiga siku-siku memiliki sisi miring 25 cm dan salah satu sisi tegaknya 7 cm.\n\nPanjang sisi tegak yang lain adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "26 cm"
+      },
+      {
+        "id": "B",
+        "text": "18 cm"
+      },
+      {
+        "id": "C",
+        "text": "20 cm"
+      },
+      {
+        "id": "D",
+        "text": "24 cm"
+      },
+      {
+        "id": "E",
+        "text": "32 cm"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Menurut teorema Pythagoras, sisi yang dicari $= \\sqrt{25^2 - 7^2} = \\sqrt{625 - 49} = \\sqrt{576} = 24$ cm.\n\nIni tripel Pythagoras $7$–$24$–$25$.",
+    "distractorRationale": {
+      "A": "Menjumlahkan kuadrat, bukan mengurangkan.",
+      "B": "Mengurangkan panjang secara langsung.",
+      "C": "Kesalahan penarikan akar.",
+      "E": "Menjumlahkan kedua sisi."
+    },
+    "tags": [
+      "pythagoras"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u17",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah bola berjari-jari 21 cm. Dengan $\\pi = \\dfrac{22}{7}$, luas permukaan bola tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2.772\\ \\text{cm}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$11.088\\ \\text{cm}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$1.386\\ \\text{cm}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$4.158\\ \\text{cm}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$5.544\\ \\text{cm}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Luas permukaan bola adalah $4\\pi r^2 = 4 \\times \\dfrac{22}{7} \\times 441$.\n\nKarena $\\dfrac{22}{7} \\times 441 = 1.386$, luasnya $4 \\times 1.386 = 5.544\\ \\text{cm}^2$.",
+    "distractorRationale": {
+      "A": "Memakai $2\\pi r^2$.",
+      "B": "Memakai $8\\pi r^2$.",
+      "C": "Menghitung $\\pi r^2$, yaitu luas lingkaran.",
+      "D": "Memakai $3\\pi r^2$."
+    },
+    "tags": [
+      "bangun-ruang"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u18",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Kesebangunan & kekongruenan",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Dua segitiga sebangun memiliki perbandingan sisi $2 : 5$. Jika luas segitiga kecil $24\\ \\text{cm}^2$, luas segitiga besar adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$150\\ \\text{cm}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$60\\ \\text{cm}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$240\\ \\text{cm}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$96\\ \\text{cm}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$120\\ \\text{cm}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Pada bangun sebangun, perbandingan LUAS sama dengan kuadrat perbandingan sisinya: $2^2 : 5^2 = 4 : 25$.\n\nMaka luas besar $= 24 \\times \\dfrac{25}{4} = 150\\ \\text{cm}^2$. Mengalikan langsung dengan $\\dfrac{5}{2}$ adalah kekeliruan yang paling sering terjadi.",
+    "distractorRationale": {
+      "B": "Mengalikan dengan $\\dfrac{5}{2}$, bukan kuadratnya.",
+      "C": "Mengalikan dengan 10.",
+      "D": "Mengalikan dengan 4.",
+      "E": "Mengalikan dengan 5."
+    },
+    "tags": [
+      "kesebangunan"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u19",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah persegi panjang berukuran $18\\ \\text{cm} \\times 12\\ \\text{cm}$. Di dalamnya dibuat persegi panjang lain berjarak 2 cm dari setiap sisinya.\n\nLuas persegi panjang yang di dalam, dalam sentimeter persegi, adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 112
+    },
+    "explanation": "Jarak 2 cm dari setiap sisi mengurangi panjang dan lebar masing-masing sebanyak dua kali 2 cm.\n\nUkurannya menjadi $18 - 4 = 14$ cm dan $12 - 4 = 8$ cm, sehingga luasnya $14 \\times 8 = 112\\ \\text{cm}^2$.",
+    "tags": [
+      "bangun-datar"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "tka-smp-u20",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kubus dengan rusuk 12 cm dipotong menjadi kubus-kubus kecil berusuk 3 cm.\n\nBanyak kubus kecil yang terbentuk adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "96 buah"
+      },
+      {
+        "id": "B",
+        "text": "64 buah"
+      },
+      {
+        "id": "C",
+        "text": "36 buah"
+      },
+      {
+        "id": "D",
+        "text": "48 buah"
+      },
+      {
+        "id": "E",
+        "text": "16 buah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Sepanjang setiap rusuk terbentuk $\\dfrac{12}{3} = 4$ potongan.\n\nKarena pemotongan terjadi pada tiga arah, banyak kubus kecilnya $4^3 = 64$ buah. Membandingkan volumenya memberi hasil sama: $\\dfrac{1728}{27} = 64$.",
+    "distractorRationale": {
+      "A": "Kesalahan perkalian.",
+      "C": "Kesalahan perkalian.",
+      "D": "Kesalahan perkalian.",
+      "E": "Menghitung $4^2$, hanya dua arah."
+    },
+    "tags": [
+      "bangun-ruang"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u21",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Nilai ulangan 30 siswa.\n\n| Nilai | Frekuensi |\n|---|---|\n| 5 | 3 |\n| 6 | 6 |\n| 7 | 11 |\n| 8 | 8 |\n| 9 | 2 |"
+    },
+    "stem": "Berdasarkan tabel, modus nilai ulangan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8"
+      },
+      {
+        "id": "B",
+        "text": "6"
+      },
+      {
+        "id": "C",
+        "text": "7"
+      },
+      {
+        "id": "D",
+        "text": "9"
+      },
+      {
+        "id": "E",
+        "text": "5"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Modus adalah nilai dengan frekuensi terbesar.\n\nFrekuensi tertinggi adalah 11, yaitu pada nilai 7.",
+    "distractorRationale": {
+      "A": "Frekuensinya 8.",
+      "B": "Frekuensinya 6.",
+      "D": "Frekuensinya 2.",
+      "E": "Frekuensinya 3."
+    },
+    "tags": [
+      "modus"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u22",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Nilai ulangan 30 siswa.\n\n| Nilai | Frekuensi |\n|---|---|\n| 5 | 3 |\n| 6 | 6 |\n| 7 | 11 |\n| 8 | 8 |\n| 9 | 2 |"
+    },
+    "stem": "Berdasarkan tabel, rata-rata nilai ulangan 30 siswa tersebut adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 7
+    },
+    "explanation": "Jumlah seluruh nilai: $5(3) + 6(6) + 7(11) + 8(8) + 9(2) = 15 + 36 + 77 + 64 + 18 = 210$.\n\nRata-ratanya $\\dfrac{210}{30} = 7$.",
+    "tags": [
+      "rata-rata"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "tka-smp-u23",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Penyajian data",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Nilai ulangan 30 siswa.\n\n| Nilai | Frekuensi |\n|---|---|\n| 5 | 3 |\n| 6 | 6 |\n| 7 | 11 |\n| 8 | 8 |\n| 9 | 2 |"
+    },
+    "stem": "Berdasarkan tabel, banyak siswa yang memperoleh nilai minimal 7 adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10 siswa"
+      },
+      {
+        "id": "B",
+        "text": "11 siswa"
+      },
+      {
+        "id": "C",
+        "text": "19 siswa"
+      },
+      {
+        "id": "D",
+        "text": "21 siswa"
+      },
+      {
+        "id": "E",
+        "text": "24 siswa"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Nilai minimal 7 mencakup nilai 7, 8, dan 9, yaitu $11 + 8 + 2 = 21$ siswa.\n\nKata «minimal» berarti nilai 7 ikut dihitung.",
+    "distractorRationale": {
+      "A": "Hanya menghitung nilai 8 dan 9.",
+      "B": "Hanya menghitung nilai 7.",
+      "C": "Kesalahan penjumlahan.",
+      "E": "Memasukkan sebagian nilai 6."
+    },
+    "tags": [
+      "tabel-frekuensi"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u24",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Peluang sederhana",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kotak berisi 12 kartu bernomor 1 sampai 12. Satu kartu diambil secara acak.\n\nPeluang terambil kartu bernomor kelipatan 3 adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{6}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{5}{12}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{4}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{1}{3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kelipatan 3 dari 1 sampai 12 adalah 3, 6, 9, dan 12 — sebanyak empat kartu.\n\nPeluangnya $\\dfrac{4}{12} = \\dfrac{1}{3}$.",
+    "distractorRationale": {
+      "A": "Menghitung dua kartu saja.",
+      "B": "Menghitung enam kartu.",
+      "C": "Menghitung lima kartu.",
+      "D": "Menghitung tiga kartu saja."
+    },
+    "tags": [
+      "peluang"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-u25",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Rata-rata nilai 20 siswa adalah 78. Setelah nilai dua siswa yang masing-masing 58 dan 62 dikeluarkan, rata-rata sisanya adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "80"
+      },
+      {
+        "id": "B",
+        "text": "79"
+      },
+      {
+        "id": "C",
+        "text": "78"
+      },
+      {
+        "id": "D",
+        "text": "82"
+      },
+      {
+        "id": "E",
+        "text": "81"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Jumlah nilai 20 siswa adalah $20 \\times 78 = 1.560$.\n\nSetelah dua nilai dikeluarkan, jumlahnya $1.560 - 58 - 62 = 1.440$ dan banyak siswa menjadi 18, sehingga rata-ratanya $\\dfrac{1.440}{18} = 80$.",
+    "distractorRationale": {
+      "B": "Kesalahan pembagian.",
+      "C": "Mengira rata-rata tidak berubah.",
+      "D": "Kesalahan pengurangan.",
+      "E": "Kesalahan pembagian."
+    },
+    "tags": [
+      "rata-rata"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  }
+]

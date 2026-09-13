@@ -1,0 +1,1067 @@
+[
+  {
+    "id": "sat-mth-g01",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $7x + 4 = 39$, what is the value of $x$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5"
+      },
+      {
+        "id": "B",
+        "text": "7"
+      },
+      {
+        "id": "C",
+        "text": "35"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Subtract 4 from both sides: $7x = 35$. Divide by 7: $x = 5$.",
+    "distractorRationale": {
+      "B": "Uses the coefficient as the answer.",
+      "C": "This is $7x$, not $x$.",
+      "D": "Comes from an arithmetic slip in dividing 35 by 7."
+    },
+    "tags": [
+      "linear-equation",
+      "two-step"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g02",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The line $y = -3x + 11$ crosses the $y$-axis at which point?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$(11, 0)$"
+      },
+      {
+        "id": "B",
+        "text": "$(0, 11)$"
+      },
+      {
+        "id": "C",
+        "text": "$(0, -3)$"
+      },
+      {
+        "id": "D",
+        "text": "$(-3, 0)$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The $y$-intercept occurs where $x = 0$. Substituting gives $y = 11$, so the point is $(0, 11)$.",
+    "distractorRationale": {
+      "A": "Swaps the coordinates, giving an $x$-intercept form.",
+      "C": "Uses the slope as the $y$-value.",
+      "D": "Uses the slope and swaps the coordinates."
+    },
+    "tags": [
+      "slope-intercept",
+      "y-intercept"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g03",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $x + y = 14$ and $x - y = 2$, what is the value of $y$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8"
+      },
+      {
+        "id": "B",
+        "text": "12"
+      },
+      {
+        "id": "C",
+        "text": "6"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Subtracting the second equation from the first gives $2y = 12$, so $y = 6$.",
+    "distractorRationale": {
+      "A": "This is $x$, not $y$.",
+      "B": "This is $2y$.",
+      "D": "Comes from dividing 12 by 3."
+    },
+    "tags": [
+      "system-of-equations",
+      "elimination"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g04",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A delivery van can carry at most 1,200 kilograms. It is already loaded with 380 kilograms of equipment. If each crate weighs 26 kilograms, what is the greatest number of crates the van can carry?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "46"
+      },
+      {
+        "id": "B",
+        "text": "60"
+      },
+      {
+        "id": "C",
+        "text": "29"
+      },
+      {
+        "id": "D",
+        "text": "31"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The remaining capacity is $1200 - 380 = 820$ kilograms.\n\nSince $\\dfrac{820}{26} \\approx 31.5$, and a partial crate cannot be carried, the answer is 31.",
+    "distractorRationale": {
+      "A": "Divides 1,200 by 26 without subtracting the equipment.",
+      "B": "Comes from dividing the remaining capacity by a weight of about 13.",
+      "C": "Rounds down from a miscalculated quotient."
+    },
+    "tags": [
+      "inequality",
+      "capacity"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g05",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in two variables",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A line passes through $(-1, 4)$ and $(3, -8)$. What is its slope?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-3$"
+      },
+      {
+        "id": "B",
+        "text": "$3$"
+      },
+      {
+        "id": "C",
+        "text": "$-\\dfrac{1}{3}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The slope is $\\dfrac{-8 - 4}{3 - (-1)} = \\dfrac{-12}{4} = -3$.",
+    "distractorRationale": {
+      "B": "Correct magnitude but the sign is wrong.",
+      "C": "Inverts the fraction.",
+      "D": "Inverts the fraction and drops the sign."
+    },
+    "tags": [
+      "slope",
+      "two-points"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g06",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A tank holds 500 litres and drains at a constant 12 litres per minute. Which function gives the volume $V$, in litres, remaining after $t$ minutes of draining?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$V(t) = 500 - \\dfrac{t}{12}$"
+      },
+      {
+        "id": "B",
+        "text": "$V(t) = 500 - 12t$"
+      },
+      {
+        "id": "C",
+        "text": "$V(t) = 12t - 500$"
+      },
+      {
+        "id": "D",
+        "text": "$V(t) = 500 + 12t$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The tank starts at 500 litres, so that is the constant term. Draining removes 12 litres each minute, so the rate is subtracted.",
+    "distractorRationale": {
+      "A": "Divides by the rate rather than multiplying by it.",
+      "C": "Starts at $-500$, which has no meaning here.",
+      "D": "Adds the drained volume instead of removing it."
+    },
+    "tags": [
+      "linear-model",
+      "rate-of-change"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g07",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "At a bakery, 3 loaves and 2 rolls cost \\$17, while 1 loaf and 4 rolls cost \\$14. What is the cost of one loaf, in dollars?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4
+    },
+    "explanation": "Let $L$ be the loaf price and $r$ the roll price. Then $3L + 2r = 17$ and $L + 4r = 14$.\n\nDoubling the first equation gives $6L + 4r = 34$. Subtracting the second gives $5L = 20$, so $L = 4$.\n\nChecking: $r = 2.5$, and $3(4) + 2(2.5) = 17$.",
+    "tags": [
+      "system-of-equations",
+      "word-problem"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-g08",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In the equation $4(x - 3) + k = 4x - 5$, the equation has infinitely many solutions. What is the value of $k$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 7
+    },
+    "explanation": "Expanding the left side gives $4x - 12 + k$. For infinitely many solutions the two sides must be identical, so $-12 + k = -5$.\n\nTherefore $k = 7$.",
+    "tags": [
+      "infinitely-many-solutions",
+      "identity"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-g09",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $x^2 - 49$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$(x + 7)^2$"
+      },
+      {
+        "id": "B",
+        "text": "$(x - 7)^2$"
+      },
+      {
+        "id": "C",
+        "text": "$(x - 7)(x + 7)$"
+      },
+      {
+        "id": "D",
+        "text": "$(x - 49)(x + 1)$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "This is a difference of squares: $x^2 - 49 = x^2 - 7^2 = (x-7)(x+7)$.",
+    "distractorRationale": {
+      "A": "Expands to $x^2 + 14x + 49$.",
+      "B": "Expands to $x^2 - 14x + 49$.",
+      "D": "Expands to $x^2 - 48x - 49$."
+    },
+    "tags": [
+      "difference-of-squares",
+      "factoring"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g10",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What are the solutions to $x^2 - 5x - 24 = 0$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x = 4$ and $x = -6$"
+      },
+      {
+        "id": "B",
+        "text": "$x = -4$ and $x = 6$"
+      },
+      {
+        "id": "C",
+        "text": "$x = 3$ and $x = -8$"
+      },
+      {
+        "id": "D",
+        "text": "$x = -3$ and $x = 8$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Two numbers multiplying to $-24$ and adding to $-5$ are $-8$ and 3, so the factorisation is $(x+3)(x-8) = 0$.\n\nThe roots are $x = -3$ and $x = 8$.",
+    "distractorRationale": {
+      "A": "These multiply to $-24$ but sum to $-2$.",
+      "B": "These multiply to $-24$ but sum to $+2$.",
+      "C": "Reverses both signs; these sum to $+5$."
+    },
+    "tags": [
+      "quadratic",
+      "factoring"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g11",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $f(x) = x^2 - 4x$, what is $f(-2)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "12"
+      },
+      {
+        "id": "B",
+        "text": "$-12$"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "$-4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Substituting: $f(-2) = (-2)^2 - 4(-2) = 4 + 8 = 12$.\n\nBoth sign changes matter: squaring makes the first term positive, and subtracting a negative adds.",
+    "distractorRationale": {
+      "B": "Comes from $-4 - 8$, squaring incorrectly and mishandling the sign.",
+      "C": "Uses only the squared term.",
+      "D": "Comes from $4 - 8$, subtracting instead of adding."
+    },
+    "tags": [
+      "function-evaluation",
+      "negative-input"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g12",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $\\dfrac{6x^3 y^2}{2x y^5}$ for $x \\ne 0$ and $y \\ne 0$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{3}{x^2 y^3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{3x^2}{y^3}$"
+      },
+      {
+        "id": "C",
+        "text": "$3x^2 y^3$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{3x^4}{y^7}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Dividing coefficients gives 3. For $x$: $3 - 1 = 2$, so $x^2$ stays on top. For $y$: $2 - 5 = -3$, so $y^3$ moves to the bottom.",
+    "distractorRationale": {
+      "A": "Moves the $x$ power to the denominator as well.",
+      "C": "Keeps $y^3$ in the numerator, ignoring the negative exponent.",
+      "D": "Adds the exponents instead of subtracting them."
+    },
+    "tags": [
+      "exponent-rules",
+      "simplifying"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g13",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The parabola $y = (x - 4)^2 - 9$ crosses the $x$-axis at two points. What is the distance between them?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 6
+    },
+    "explanation": "Setting $y = 0$ gives $(x-4)^2 = 9$, so $x - 4 = \\pm 3$ and the roots are $x = 1$ and $x = 7$.\n\nThe distance between them is $7 - 1 = 6$.",
+    "tags": [
+      "parabola",
+      "x-intercepts"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-g14",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $2^{x+1} = 32$, what is the value of $x$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5"
+      },
+      {
+        "id": "B",
+        "text": "16"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Since $32 = 2^5$, the exponents must match: $x + 1 = 5$, so $x = 4$.",
+    "distractorRationale": {
+      "A": "Forgets to subtract 1 from the exponent.",
+      "B": "Halves 32 instead of using exponents.",
+      "D": "Comes from setting $x + 1 = 4$."
+    },
+    "tags": [
+      "exponential-equation",
+      "common-base"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g15",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The quadratic $y = ax^2 + bx + c$ has vertex $(2, -5)$ and passes through $(0, 3)$. What is the value of $a$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "$-2$"
+      },
+      {
+        "id": "D",
+        "text": "2"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "In vertex form, $y = a(x - 2)^2 - 5$.\n\nSubstituting the point $(0, 3)$: $3 = a(4) - 5$, so $4a = 8$ and $a = 2$.",
+    "distractorRationale": {
+      "A": "Comes from $4a = 4$ after a slip.",
+      "B": "This is $4a$ divided by 2, or the squared term left unused.",
+      "C": "Sign error when moving the $-5$ across."
+    },
+    "tags": [
+      "vertex-form",
+      "solving-for-a"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g16",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Ratios, rates, proportional relationships, units",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A recipe uses 3 cups of flour for every 2 cups of milk. If 12 cups of flour are used, how many cups of milk are needed?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8"
+      },
+      {
+        "id": "B",
+        "text": "9"
+      },
+      {
+        "id": "C",
+        "text": "18"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Twelve cups of flour is four times the 3 in the ratio, so the milk is also multiplied by four: $2 \\times 4 = 8$.",
+    "distractorRationale": {
+      "B": "Comes from scaling by three rather than four.",
+      "C": "Applies the ratio in the wrong direction.",
+      "D": "Uses a 2:1 ratio instead of 3:2."
+    },
+    "tags": [
+      "ratio",
+      "scaling"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g17",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Percentages",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A population of 4,500 increases by 20% in one year and then decreases by 20% the next. What is the population after the two years?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4,680"
+      },
+      {
+        "id": "B",
+        "text": "4,320"
+      },
+      {
+        "id": "C",
+        "text": "4,500"
+      },
+      {
+        "id": "D",
+        "text": "5,400"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "After the increase: $4500 \\times 1.2 = 5400$. After the decrease: $5400 \\times 0.8 = 4320$.\n\nThe percentages do not cancel, because the 20% decrease is taken from the larger figure of 5,400.",
+    "distractorRationale": {
+      "A": "Comes from applying both changes to the original 4,500.",
+      "C": "Assumes the two percentage changes cancel out.",
+      "D": "Stops after the increase."
+    },
+    "tags": [
+      "percentage-change",
+      "successive-changes"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g18",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "One-variable data",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The values 4, 7, 7, 9, 13, 20 are listed in order. What is the median?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "With six values, the median is the mean of the third and fourth: $\\dfrac{7 + 9}{2} = 8$.",
+    "tags": [
+      "median",
+      "even-count"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-g19",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Two-variable data",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A line of best fit for a scatterplot of study hours $h$ against test score $s$ is $s = 6.2h + 41$. What does the number 6.2 represent in this model?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The number of hours needed to reach a score of 41"
+      },
+      {
+        "id": "B",
+        "text": "The predicted score for a student who studies no hours"
+      },
+      {
+        "id": "C",
+        "text": "The predicted increase in score for each additional hour of study"
+      },
+      {
+        "id": "D",
+        "text": "The average score across all students"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "In a linear model, the coefficient of the input variable is the rate of change: each extra hour is associated with 6.2 more points.",
+    "distractorRationale": {
+      "A": "Confuses the intercept with a quantity of hours.",
+      "B": "That is the intercept, 41.",
+      "D": "No average is given by either coefficient."
+    },
+    "tags": [
+      "line-of-best-fit",
+      "interpreting-slope"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g20",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Lines, angles, and triangles",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Two angles of a triangle measure 47 degrees and 68 degrees. What is the measure of the third angle, in degrees?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 65
+    },
+    "explanation": "The angles of a triangle sum to 180 degrees, so the third is $180 - 47 - 68 = 65$.",
+    "tags": [
+      "triangle-angle-sum"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "sat-mth-g21",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Area and volume",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A rectangle has perimeter 44 and length 15. What is its area?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "60"
+      },
+      {
+        "id": "B",
+        "text": "135"
+      },
+      {
+        "id": "C",
+        "text": "225"
+      },
+      {
+        "id": "D",
+        "text": "105"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The perimeter gives $2(15 + w) = 44$, so $15 + w = 22$ and $w = 7$.\n\nThe area is $15 \\times 7 = 105$.",
+    "distractorRationale": {
+      "A": "Uses a width of 4.",
+      "B": "Uses a width of 9, from $44 - 2(15) = 14$ halved incorrectly.",
+      "C": "Treats the shape as a square of side 15."
+    },
+    "tags": [
+      "rectangle",
+      "perimeter-area"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-g22",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangles and trigonometry",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A right triangle has legs of length 9 and 12. What is the length of the hypotenuse?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 15
+    },
+    "explanation": "By the Pythagorean theorem, $9^2 + 12^2 = 81 + 144 = 225$, and $\\sqrt{225} = 15$.\n\nThis is the 3-4-5 triple scaled by three.",
+    "tags": [
+      "pythagorean-theorem",
+      "triple"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  }
+]

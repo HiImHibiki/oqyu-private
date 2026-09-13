@@ -1,0 +1,1898 @@
+[
+  {
+    "id": "csca-mth-h01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Lines 直线",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the slope of the line $3x + 2y - 6 = 0$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-\\dfrac{2}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$-\\dfrac{3}{2}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{3}{2}$"
+      },
+      {
+        "id": "D",
+        "text": "$3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Rearrange into slope-intercept form: $2y = -3x + 6$, so $y = -\\dfrac{3}{2}x + 3$. The coefficient of $x$ is the slope.",
+    "distractorRationale": {
+      "A": "This is the slope of a perpendicular line.",
+      "C": "Drops the negative sign when dividing.",
+      "D": "Reads the coefficient of $x$ from the original equation without dividing by $2$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "直线 $3x + 2y - 6 = 0$ 的斜率是",
+        "explanation": "化为斜截式：$2y = -3x + 6$，即 $y = -\\dfrac{3}{2}x + 3$，$x$ 的系数即为斜率。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$-\\dfrac{2}{3}$"
+          },
+          {
+            "id": "B",
+            "text": "$-\\dfrac{3}{2}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{3}{2}$"
+          },
+          {
+            "id": "D",
+            "text": "$3$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "line",
+      "slope"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Circles 圆",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the radius of the circle $x^2 + y^2 - 6x + 4y - 3 = 0$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3$"
+      },
+      {
+        "id": "B",
+        "text": "$\\sqrt{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$4$"
+      },
+      {
+        "id": "D",
+        "text": "$16$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Complete the square in both variables: $(x - 3)^2 - 9 + (y + 2)^2 - 4 - 3 = 0$, so $(x - 3)^2 + (y + 2)^2 = 16$. The radius is $\\sqrt{16} = 4$.",
+    "distractorRationale": {
+      "A": "This is the $x$-coordinate of the centre.",
+      "B": "Takes the square root of the constant term instead of completing the square.",
+      "D": "This is the square of the radius, not the radius."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "圆 $x^2 + y^2 - 6x + 4y - 3 = 0$ 的半径是",
+        "explanation": "对两个变量分别配方：$(x - 3)^2 - 9 + (y + 2)^2 - 4 - 3 = 0$，即 $(x - 3)^2 + (y + 2)^2 = 16$，故半径为 $\\sqrt{16} = 4$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$3$"
+          },
+          {
+            "id": "B",
+            "text": "$\\sqrt{3}$"
+          },
+          {
+            "id": "C",
+            "text": "$4$"
+          },
+          {
+            "id": "D",
+            "text": "$16$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "circle",
+      "completing-the-square"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Vectors 向量",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Given $\\vec{a} = (2, -1)$ and $\\vec{b} = (3, 4)$, what is $\\vec{a} \\cdot \\vec{b}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$10$"
+      },
+      {
+        "id": "B",
+        "text": "$-4$"
+      },
+      {
+        "id": "C",
+        "text": "$(6, -4)$"
+      },
+      {
+        "id": "D",
+        "text": "$2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The dot product multiplies corresponding components and adds: $2 \\times 3 + (-1) \\times 4 = 6 - 4 = 2$.",
+    "distractorRationale": {
+      "A": "Adds the magnitudes of the two products instead of respecting the sign.",
+      "B": "Uses only the second product.",
+      "C": "Multiplies component by component without adding — that is not a dot product."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "已知 $\\vec{a} = (2, -1)$，$\\vec{b} = (3, 4)$，则 $\\vec{a} \\cdot \\vec{b}$ 等于",
+        "explanation": "数量积为对应分量相乘后求和：$2 \\times 3 + (-1) \\times 4 = 6 - 4 = 2$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$10$"
+          },
+          {
+            "id": "B",
+            "text": "$-4$"
+          },
+          {
+            "id": "C",
+            "text": "$(6, -4)$"
+          },
+          {
+            "id": "D",
+            "text": "$2$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "dot-product",
+      "vectors"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Complex numbers 复数",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Compute $(2 + i)(1 - 3i)$, where $i^2 = -1$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$5 - 5i$"
+      },
+      {
+        "id": "B",
+        "text": "$5 + 5i$"
+      },
+      {
+        "id": "C",
+        "text": "$2 - 3i$"
+      },
+      {
+        "id": "D",
+        "text": "$-1 - 5i$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Expand: $2 - 6i + i - 3i^2 = 2 - 5i - 3(-1) = 2 - 5i + 3 = 5 - 5i$.\n\nThe common slip is treating $-3i^2$ as $-3$ instead of $+3$.",
+    "distractorRationale": {
+      "B": "Sign error on the imaginary part.",
+      "C": "Multiplies only the first terms of each bracket.",
+      "D": "Uses $i^2 = +1$, giving $2 - 3 = -1$ for the real part."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "计算 $(2 + i)(1 - 3i)$，其中 $i^2 = -1$。",
+        "explanation": "展开得 $2 - 6i + i - 3i^2 = 2 - 5i - 3(-1) = 2 - 5i + 3 = 5 - 5i$。\n\n常见错误是把 $-3i^2$ 当作 $-3$ 而非 $+3$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$5 - 5i$"
+          },
+          {
+            "id": "B",
+            "text": "$5 + 5i$"
+          },
+          {
+            "id": "C",
+            "text": "$2 - 3i$"
+          },
+          {
+            "id": "D",
+            "text": "$-1 - 5i$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "complex-multiplication",
+      "imaginary-unit"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Ellipses 椭圆",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For the ellipse $\\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$, what is the distance between the two foci?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$10$"
+      },
+      {
+        "id": "B",
+        "text": "$8$"
+      },
+      {
+        "id": "C",
+        "text": "$4$"
+      },
+      {
+        "id": "D",
+        "text": "$16$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Here $a^2 = 25$ and $b^2 = 9$, so $c^2 = 25 - 9 = 16$ and $c = 4$. The foci sit at $(\\pm 4, 0)$, so the distance between them is $2c = 8$.",
+    "distractorRationale": {
+      "A": "This is $2a$, the length of the major axis.",
+      "C": "This is $c$, the distance from the centre to one focus.",
+      "D": "This is $c^2$, left unrooted."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "椭圆 $\\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$ 的两焦点之间的距离是",
+        "explanation": "此处 $a^2 = 25$，$b^2 = 9$，故 $c^2 = 25 - 9 = 16$，$c = 4$。焦点位于 $(\\pm 4, 0)$，两焦点距离为 $2c = 8$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$10$"
+          },
+          {
+            "id": "B",
+            "text": "$8$"
+          },
+          {
+            "id": "C",
+            "text": "$4$"
+          },
+          {
+            "id": "D",
+            "text": "$16$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "ellipse",
+      "focal-distance"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Parabolas 抛物线",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What are the coordinates of the focus of the parabola $y^2 = 12x$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$(12, 0)$"
+      },
+      {
+        "id": "B",
+        "text": "$(6, 0)$"
+      },
+      {
+        "id": "C",
+        "text": "$(3, 0)$"
+      },
+      {
+        "id": "D",
+        "text": "$(0, 3)$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "In the standard form $y^2 = 4px$, the focus lies at $(p, 0)$. Here $4p = 12$, so $p = 3$ and the focus is $(3, 0)$.",
+    "distractorRationale": {
+      "A": "Uses the coefficient itself without dividing.",
+      "B": "Halves $12$ instead of dividing by $4$.",
+      "D": "Places the focus on the $y$-axis; this parabola opens along the $x$-axis."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "抛物线 $y^2 = 12x$ 的焦点坐标是",
+        "explanation": "标准形式 $y^2 = 4px$ 的焦点为 $(p, 0)$。此处 $4p = 12$，故 $p = 3$，焦点为 $(3, 0)$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$(12, 0)$"
+          },
+          {
+            "id": "B",
+            "text": "$(6, 0)$"
+          },
+          {
+            "id": "C",
+            "text": "$(3, 0)$"
+          },
+          {
+            "id": "D",
+            "text": "$(0, 3)$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "parabola",
+      "focus"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Lines 直线",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which line is perpendicular to $y = 4x - 7$ and passes through the origin?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$y = \\dfrac{1}{4}x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 4x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = -4x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = -\\dfrac{1}{4}x$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Perpendicular slopes multiply to $-1$, so the required slope is $-\\dfrac{1}{4}$. Passing through the origin means the intercept is zero.",
+    "distractorRationale": {
+      "A": "Takes the reciprocal without negating.",
+      "B": "Parallel to the given line, not perpendicular.",
+      "C": "Negates the slope without taking the reciprocal."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "与直线 $y = 4x - 7$ 垂直且过原点的直线是",
+        "explanation": "两直线垂直时斜率之积为 $-1$，故所求斜率为 $-\\dfrac{1}{4}$。过原点意味着截距为零。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$y = \\dfrac{1}{4}x$"
+          },
+          {
+            "id": "B",
+            "text": "$y = 4x$"
+          },
+          {
+            "id": "C",
+            "text": "$y = -4x$"
+          },
+          {
+            "id": "D",
+            "text": "$y = -\\dfrac{1}{4}x$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "perpendicular",
+      "slope"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Hyperbolas 双曲线",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What are the equations of the asymptotes of $\\dfrac{x^2}{9} - \\dfrac{y^2}{16} = 1$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$y = \\pm\\dfrac{4}{3}x$"
+      },
+      {
+        "id": "B",
+        "text": "$y = \\pm\\dfrac{16}{9}x$"
+      },
+      {
+        "id": "C",
+        "text": "$y = \\pm\\dfrac{3}{4}x$"
+      },
+      {
+        "id": "D",
+        "text": "$y = \\pm\\dfrac{5}{3}x$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "For $\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$ the asymptotes are $y = \\pm\\dfrac{b}{a}x$. Here $a = 3$ and $b = 4$, so the slopes are $\\pm\\dfrac{4}{3}$.",
+    "distractorRationale": {
+      "B": "Uses $\\dfrac{b^2}{a^2}$ without taking square roots.",
+      "C": "Inverts the ratio — that would apply to a hyperbola opening vertically.",
+      "D": "Uses $c = 5$ in place of $b$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "双曲线 $\\dfrac{x^2}{9} - \\dfrac{y^2}{16} = 1$ 的渐近线方程是",
+        "explanation": "对于 $\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$，渐近线为 $y = \\pm\\dfrac{b}{a}x$。此处 $a = 3$，$b = 4$，故斜率为 $\\pm\\dfrac{4}{3}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$y = \\pm\\dfrac{4}{3}x$"
+          },
+          {
+            "id": "B",
+            "text": "$y = \\pm\\dfrac{16}{9}x$"
+          },
+          {
+            "id": "C",
+            "text": "$y = \\pm\\dfrac{3}{4}x$"
+          },
+          {
+            "id": "D",
+            "text": "$y = \\pm\\dfrac{5}{3}x$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "hyperbola",
+      "asymptotes"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Vectors 向量",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For what value of $k$ are $\\vec{a} = (k, 2)$ and $\\vec{b} = (6, 3)$ parallel?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$k = 3$"
+      },
+      {
+        "id": "B",
+        "text": "$k = 4$"
+      },
+      {
+        "id": "C",
+        "text": "$k = 9$"
+      },
+      {
+        "id": "D",
+        "text": "$k = -1$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Two vectors are parallel when their components are proportional, that is $k \\times 3 - 2 \\times 6 = 0$. So $3k = 12$ and $k = 4$.\n\nSetting the dot product to zero instead would give perpendicularity, a different condition.",
+    "distractorRationale": {
+      "A": "Matches the second component of $\\vec{b}$ rather than solving the proportion.",
+      "C": "Comes from the ratio taken the wrong way round.",
+      "D": "This is the perpendicularity condition $6k + 6 = 0$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "当 $k$ 取何值时，$\\vec{a} = (k, 2)$ 与 $\\vec{b} = (6, 3)$ 平行？",
+        "explanation": "两向量平行的条件是分量成比例，即 $k \\times 3 - 2 \\times 6 = 0$，故 $3k = 12$，$k = 4$。\n\n若令数量积为零则得垂直条件，是另一回事。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$k = 3$"
+          },
+          {
+            "id": "B",
+            "text": "$k = 4$"
+          },
+          {
+            "id": "C",
+            "text": "$k = 9$"
+          },
+          {
+            "id": "D",
+            "text": "$k = -1$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "parallel-vectors",
+      "proportionality"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Solid geometry with space coordinates 立体几何与空间坐标",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the distance between the points $P(1, 2, 2)$ and $Q(3, 4, 3)$ in space?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$5$"
+      },
+      {
+        "id": "B",
+        "text": "$9$"
+      },
+      {
+        "id": "C",
+        "text": "$3$"
+      },
+      {
+        "id": "D",
+        "text": "$\\sqrt{5}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The differences are $2, 2, 1$. The distance is $\\sqrt{2^2 + 2^2 + 1^2} = \\sqrt{9} = 3$.",
+    "distractorRationale": {
+      "A": "Adds the differences instead of using the square root of their squares.",
+      "B": "This is the squared distance.",
+      "D": "Ignores the third coordinate."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "空间中两点 $P(1, 2, 2)$ 与 $Q(3, 4, 3)$ 之间的距离是",
+        "explanation": "各坐标之差为 $2、2、1$，距离为 $\\sqrt{2^2 + 2^2 + 1^2} = \\sqrt{9} = 3$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$5$"
+          },
+          {
+            "id": "B",
+            "text": "$9$"
+          },
+          {
+            "id": "C",
+            "text": "$3$"
+          },
+          {
+            "id": "D",
+            "text": "$\\sqrt{5}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "space-distance",
+      "coordinates"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Circles 圆",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "How many points do the line $y = x + 1$ and the circle $x^2 + y^2 = 1$ have in common?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Infinitely many"
+      },
+      {
+        "id": "B",
+        "text": "Exactly one"
+      },
+      {
+        "id": "C",
+        "text": "None"
+      },
+      {
+        "id": "D",
+        "text": "Exactly two"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Substituting gives $x^2 + (x+1)^2 = 1$, that is $2x^2 + 2x = 0$, so $x = 0$ or $x = -1$. Two solutions, hence two intersection points, $(0, 1)$ and $(-1, 0)$.\n\nThe distance check agrees: the centre is at the origin, and the distance to the line is $\\dfrac{1}{\\sqrt{2}} \\approx 0.71$, which is less than the radius $1$.",
+    "distractorRationale": {
+      "A": "A line and a circle can never share more than two points.",
+      "B": "Would require the line to be tangent, with distance exactly equal to the radius.",
+      "C": "Would require the distance from the centre to exceed the radius."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "直线 $y = x + 1$ 与圆 $x^2 + y^2 = 1$ 有几个公共点？",
+        "explanation": "代入得 $x^2 + (x+1)^2 = 1$，即 $2x^2 + 2x = 0$，解得 $x = 0$ 或 $x = -1$，故有两个交点 $(0, 1)$ 与 $(-1, 0)$。\n\n用距离判定亦可：圆心在原点，到该直线的距离为 $\\dfrac{1}{\\sqrt{2}} \\approx 0.71$，小于半径 $1$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "无穷多个"
+          },
+          {
+            "id": "B",
+            "text": "恰好一个"
+          },
+          {
+            "id": "C",
+            "text": "没有"
+          },
+          {
+            "id": "D",
+            "text": "恰好两个"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "line-circle-intersection",
+      "discriminant"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Complex numbers 复数",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the modulus of $z = 3 - 4i$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$5$"
+      },
+      {
+        "id": "B",
+        "text": "$25$"
+      },
+      {
+        "id": "C",
+        "text": "$7$"
+      },
+      {
+        "id": "D",
+        "text": "$1$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The modulus is $\\sqrt{3^2 + (-4)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.",
+    "distractorRationale": {
+      "B": "This is the square of the modulus.",
+      "C": "Adds the absolute values of the components.",
+      "D": "Subtracts the components."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "复数 $z = 3 - 4i$ 的模是",
+        "explanation": "模为 $\\sqrt{3^2 + (-4)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$5$"
+          },
+          {
+            "id": "B",
+            "text": "$25$"
+          },
+          {
+            "id": "C",
+            "text": "$7$"
+          },
+          {
+            "id": "D",
+            "text": "$1$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "modulus",
+      "complex-numbers"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Solid geometry with space coordinates 立体几何与空间坐标",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A cube has edge length $2$. What is the length of a space diagonal joining two opposite vertices?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6$"
+      },
+      {
+        "id": "B",
+        "text": "$2\\sqrt{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$4$"
+      },
+      {
+        "id": "D",
+        "text": "$2\\sqrt{2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Place one vertex at the origin and the opposite one at $(2, 2, 2)$. The diagonal is $\\sqrt{4 + 4 + 4} = \\sqrt{12} = 2\\sqrt{3}$.",
+    "distractorRationale": {
+      "A": "The sum of three edges, not a straight-line distance.",
+      "C": "Twice the edge, which underestimates the diagonal.",
+      "D": "This is the diagonal of one face, using only two dimensions."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "正方体的棱长为 $2$，则连接两个相对顶点的体对角线长为",
+        "explanation": "取一顶点为原点，相对顶点为 $(2, 2, 2)$，对角线长为 $\\sqrt{4 + 4 + 4} = \\sqrt{12} = 2\\sqrt{3}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$6$"
+          },
+          {
+            "id": "B",
+            "text": "$2\\sqrt{3}$"
+          },
+          {
+            "id": "C",
+            "text": "$4$"
+          },
+          {
+            "id": "D",
+            "text": "$2\\sqrt{2}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "cube",
+      "space-diagonal"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-h14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Ellipses 椭圆",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An ellipse has semi-major axis $5$ and eccentricity $0.6$. What is its semi-minor axis?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3$"
+      },
+      {
+        "id": "B",
+        "text": "$4.4$"
+      },
+      {
+        "id": "C",
+        "text": "$4$"
+      },
+      {
+        "id": "D",
+        "text": "$2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Eccentricity is $e = \\dfrac{c}{a}$, so $c = 0.6 \\times 5 = 3$. Then $b^2 = a^2 - c^2 = 25 - 9 = 16$, giving $b = 4$.",
+    "distractorRationale": {
+      "A": "This is $c$, the focal distance from the centre.",
+      "B": "Subtracts $c$ from $a$ scaled incorrectly; the relation is between squares, not lengths.",
+      "D": "Subtracts $c$ from a wrong value rather than using the Pythagorean relation."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "椭圆的半长轴为 $5$，离心率为 $0.6$，则半短轴为",
+        "explanation": "离心率 $e = \\dfrac{c}{a}$，故 $c = 0.6 \\times 5 = 3$。再由 $b^2 = a^2 - c^2 = 25 - 9 = 16$ 得 $b = 4$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$3$"
+          },
+          {
+            "id": "B",
+            "text": "$4.4$"
+          },
+          {
+            "id": "C",
+            "text": "$4$"
+          },
+          {
+            "id": "D",
+            "text": "$2$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "ellipse",
+      "eccentricity"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-i01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Classical probability 古典概型",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A bag holds $4$ red balls and $6$ white balls, identical apart from colour. One ball is drawn at random. What is the probability that it is red?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{4}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{2}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{3}{5}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{2}{5}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Each ball is equally likely, so the probability is $\\dfrac{4}{10} = \\dfrac{2}{5}$.",
+    "distractorRationale": {
+      "A": "Uses the number of red balls as a denominator.",
+      "B": "Uses the ratio of red to white, $\\dfrac{4}{6}$, instead of red to total.",
+      "C": "The probability of white."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "袋中有 $4$ 个红球和 $6$ 个白球，除颜色外完全相同。随机摸出一球，摸到红球的概率是",
+        "explanation": "每球等可能，故概率为 $\\dfrac{4}{10} = \\dfrac{2}{5}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{1}{4}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{2}{3}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{3}{5}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{2}{5}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "classical-probability",
+      "single-draw"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-i02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Mean 平均数",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "The five numbers $6, 8, 10, 12, 14$ have what mean?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$10$"
+      },
+      {
+        "id": "B",
+        "text": "$50$"
+      },
+      {
+        "id": "C",
+        "text": "$12$"
+      },
+      {
+        "id": "D",
+        "text": "$8$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The sum is $50$ and there are five values, so the mean is $\\dfrac{50}{5} = 10$. The data are evenly spaced, so the mean also equals the middle value.",
+    "distractorRationale": {
+      "B": "The total, not divided by the count.",
+      "C": "The fourth value.",
+      "D": "The second value, not the mean."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "五个数 $6、8、10、12、14$ 的平均数是",
+        "explanation": "总和为 $50$，共五个数，平均数为 $\\dfrac{50}{5} = 10$。这组数据等间距，故平均数也等于中间那个数。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$10$"
+          },
+          {
+            "id": "B",
+            "text": "$50$"
+          },
+          {
+            "id": "C",
+            "text": "$12$"
+          },
+          {
+            "id": "D",
+            "text": "$8$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "mean",
+      "descriptive-statistics"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-i03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Variance 方差",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the variance of the data set $2, 4, 4, 6$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$1$"
+      },
+      {
+        "id": "B",
+        "text": "$2$"
+      },
+      {
+        "id": "C",
+        "text": "$8$"
+      },
+      {
+        "id": "D",
+        "text": "$4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The mean is $\\dfrac{16}{4} = 4$. The squared deviations are $4, 0, 0, 4$, summing to $8$. The variance is $\\dfrac{8}{4} = 2$.",
+    "distractorRationale": {
+      "A": "Divides the sum of squared deviations by $8$.",
+      "C": "The sum of squared deviations before dividing by the count.",
+      "D": "This is the mean, not the variance."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "数据 $2、4、4、6$ 的方差是",
+        "explanation": "平均数为 $\\dfrac{16}{4} = 4$。各差的平方为 $4、0、0、4$，和为 $8$，故方差为 $\\dfrac{8}{4} = 2$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$1$"
+          },
+          {
+            "id": "B",
+            "text": "$2$"
+          },
+          {
+            "id": "C",
+            "text": "$8$"
+          },
+          {
+            "id": "D",
+            "text": "$4$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "variance",
+      "squared-deviation"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-i04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Classical probability 古典概型",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two fair dice are rolled. What is the probability that the total is $7$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{36}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{7}{36}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{6}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{12}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "There are $36$ equally likely ordered outcomes. Six of them total $7$: $(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)$. So the probability is $\\dfrac{6}{36} = \\dfrac{1}{6}$.",
+    "distractorRationale": {
+      "A": "The probability of one specific ordered pair.",
+      "B": "Uses the total $7$ as if it were a count of outcomes.",
+      "D": "Counts only three unordered pairs, forgetting that order distinguishes the dice."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "掷两枚均匀骰子，点数之和为 $7$ 的概率是",
+        "explanation": "共有 $36$ 种等可能的有序结果，其中和为 $7$ 的有六种：$(1,6)、(2,5)、(3,4)、(4,3)、(5,2)、(6,1)$。故概率为 $\\dfrac{6}{36} = \\dfrac{1}{6}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{1}{36}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{7}{36}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{1}{6}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{1}{12}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "dice",
+      "counting-outcomes"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-i05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Normal distribution 正态分布",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A variable follows a normal distribution with mean $70$. What is the probability that a randomly chosen value exceeds $70$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.68$"
+      },
+      {
+        "id": "B",
+        "text": "Depends on the standard deviation"
+      },
+      {
+        "id": "C",
+        "text": "$0.95$"
+      },
+      {
+        "id": "D",
+        "text": "$0.5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The normal curve is symmetric about its mean, so exactly half the area lies on each side. The standard deviation changes the spread but not this split.",
+    "distractorRationale": {
+      "A": "The proportion within one standard deviation of the mean, a different quantity.",
+      "B": "Symmetry makes the answer independent of the spread.",
+      "C": "The proportion within about two standard deviations."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某变量服从均值为 $70$ 的正态分布，随机取一个值大于 $70$ 的概率是",
+        "explanation": "正态曲线关于均值对称，故两侧面积各占一半。标准差改变的是分散程度，不改变这一对半划分。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.68$"
+          },
+          {
+            "id": "B",
+            "text": "取决于标准差"
+          },
+          {
+            "id": "C",
+            "text": "$0.95$"
+          },
+          {
+            "id": "D",
+            "text": "$0.5$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "normal-distribution",
+      "symmetry"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-i06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Mean 平均数",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A class of $20$ students has a mean score of $75$. One student who scored $95$ leaves the class. What is the new mean of the remaining $19$ students?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$74$"
+      },
+      {
+        "id": "B",
+        "text": "$76$"
+      },
+      {
+        "id": "C",
+        "text": "$73$"
+      },
+      {
+        "id": "D",
+        "text": "$75$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The original total is $20 \\times 75 = 1500$. Removing $95$ leaves $1405$, and $\\dfrac{1405}{19} = 73.9\\ldots$, which to the nearest whole number is $74$.\n\nMore precisely the new mean is about $73.95$, so of the choices given $74$ is the correct value.",
+    "distractorRationale": {
+      "B": "Moves the mean the wrong way — removing an above-average score lowers it.",
+      "C": "Overstates the drop; the departing score is only $20$ above the mean, spread over $19$ students.",
+      "D": "Would require the departing score to equal the mean."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某班 $20$ 名学生的平均分为 $75$。一名得 $95$ 分的学生转走后，剩余 $19$ 名学生的平均分是",
+        "explanation": "原总分为 $20 \\times 75 = 1500$，去掉 $95$ 后为 $1405$，而 $\\dfrac{1405}{19} = 73.9\\ldots$，取整为 $74$。\n\n更精确地说新平均分约为 $73.95$，故在所给选项中 $74$ 正确。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$74$"
+          },
+          {
+            "id": "B",
+            "text": "$76$"
+          },
+          {
+            "id": "C",
+            "text": "$73$"
+          },
+          {
+            "id": "D",
+            "text": "$75$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "mean",
+      "total-sum-method"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-i07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Classical probability 古典概型",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Three cards labelled $1$, $2$ and $3$ are shuffled and laid in a row. What is the probability that card $1$ is placed first?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{2}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{6}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "There are $3! = 6$ arrangements in total. Fixing card $1$ first leaves $2! = 2$ ways to arrange the rest, so the probability is $\\dfrac{2}{6} = \\dfrac{1}{3}$.\n\nBy symmetry each card is equally likely to be first, which gives $\\dfrac{1}{3}$ directly.",
+    "distractorRationale": {
+      "A": "The probability that card $1$ is not first.",
+      "C": "Would apply if there were only two cards.",
+      "D": "The probability of one specific complete arrangement."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "标有 $1、2、3$ 的三张卡片洗匀后排成一行，卡片 $1$ 排在首位的概率是",
+        "explanation": "共有 $3! = 6$ 种排法。固定卡片 $1$ 在首位后，其余两张有 $2! = 2$ 种排法，故概率为 $\\dfrac{2}{6} = \\dfrac{1}{3}$。\n\n由对称性，每张卡片排首位的可能性相同，直接得 $\\dfrac{1}{3}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{2}{3}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{1}{3}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{1}{2}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{1}{6}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "permutations",
+      "symmetry"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-i08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Variance 方差",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A data set has variance $9$. Every value is then multiplied by $2$. What is the variance of the new data set?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$9$"
+      },
+      {
+        "id": "B",
+        "text": "$18$"
+      },
+      {
+        "id": "C",
+        "text": "$36$"
+      },
+      {
+        "id": "D",
+        "text": "$11$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Multiplying every value by $k$ multiplies each deviation by $k$ and therefore each squared deviation by $k^2$. With $k = 2$ the variance becomes $4 \\times 9 = 36$.\n\nAdding a constant, by contrast, would leave the variance unchanged.",
+    "distractorRationale": {
+      "A": "Would be correct for adding a constant, not multiplying.",
+      "B": "Scales the variance by $k$ rather than $k^2$.",
+      "D": "Adds $2$ to the variance instead of scaling."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "一组数据的方差为 $9$，将每个数据都乘以 $2$，新数据的方差是",
+        "explanation": "每个数据乘以 $k$ 时，各偏差也乘以 $k$，偏差的平方则乘以 $k^2$。取 $k = 2$，方差变为 $4 \\times 9 = 36$。\n\n相反，若每个数据加上同一常数，方差不变。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$9$"
+          },
+          {
+            "id": "B",
+            "text": "$18$"
+          },
+          {
+            "id": "C",
+            "text": "$36$"
+          },
+          {
+            "id": "D",
+            "text": "$11$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "variance",
+      "linear-transformation"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-i09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Normal distribution 正态分布",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Test scores are normally distributed with mean $60$ and standard deviation $10$. Roughly what proportion of scores fall between $50$ and $70$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "About $99\\%$"
+      },
+      {
+        "id": "B",
+        "text": "About $95\\%$"
+      },
+      {
+        "id": "C",
+        "text": "About $50\\%$"
+      },
+      {
+        "id": "D",
+        "text": "About $68\\%$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The interval $50$ to $70$ is exactly one standard deviation either side of the mean. For a normal distribution that band holds about $68\\%$ of the values.",
+    "distractorRationale": {
+      "A": "The proportion within three standard deviations.",
+      "B": "The proportion within two standard deviations, that is $40$ to $80$.",
+      "C": "The proportion on one side of the mean, not within one standard deviation."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "考试成绩服从均值为 $60$、标准差为 $10$ 的正态分布，成绩落在 $50$ 到 $70$ 之间的比例约为",
+        "explanation": "区间 $50$ 到 $70$ 恰为均值左右各一个标准差。正态分布中该区间约含 $68\\%$ 的数据。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "约 $99\\%$"
+          },
+          {
+            "id": "B",
+            "text": "约 $95\\%$"
+          },
+          {
+            "id": "C",
+            "text": "约 $50\\%$"
+          },
+          {
+            "id": "D",
+            "text": "约 $68\\%$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "normal-distribution",
+      "empirical-rule"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-i10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Classical probability 古典概型",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A fair coin is tossed three times. What is the probability of getting at least one head?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{7}{8}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{8}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{3}{8}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "It is quicker to work with the complement. The only way to get no heads is three tails, with probability $\\left(\\dfrac{1}{2}\\right)^3 = \\dfrac{1}{8}$. So at least one head has probability $1 - \\dfrac{1}{8} = \\dfrac{7}{8}$.",
+    "distractorRationale": {
+      "B": "The probability of a head on a single toss.",
+      "C": "The complement — the probability of no heads at all.",
+      "D": "The probability of exactly one head."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "掷一枚均匀硬币三次，至少出现一次正面的概率是",
+        "explanation": "用对立事件更快：没有正面只有一种情形，即三次都是反面，概率为 $\\left(\\dfrac{1}{2}\\right)^3 = \\dfrac{1}{8}$。故至少一次正面的概率为 $1 - \\dfrac{1}{8} = \\dfrac{7}{8}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{7}{8}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{1}{2}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{1}{8}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{3}{8}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "complement-rule",
+      "coin-toss"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

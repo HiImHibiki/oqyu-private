@@ -1,0 +1,951 @@
+[
+  {
+    "id": "sat-mth-b01",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $\\dfrac{2x - 5}{3} = \\dfrac{x + 4}{2}$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 22
+    },
+    "explanation": "Cross-multiply: $2(2x - 5) = 3(x + 4)$, so $4x - 10 = 3x + 12$. Subtracting $3x$ gives $x - 10 = 12$, so $x = 22$. Checking: $\\dfrac{44 - 5}{3} = 13$ and $\\dfrac{22 + 4}{2} = 13$.",
+    "tags": [
+      "linear-equation",
+      "fractions"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b02",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A linear function $f$ satisfies $f(2) = 11$ and $f(6) = 27$. What is $f(0)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$7$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$3$"
+      },
+      {
+        "id": "D",
+        "text": "$11$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The slope is $\\dfrac{27 - 11}{6 - 2} = \\dfrac{16}{4} = 4$. Using $f(x) = 4x + b$ with $f(2) = 11$: $8 + b = 11$, so $b = 3$. Since $f(0) = b$, the answer is $3$.",
+    "distractorRationale": {
+      "A": "Steps back from $f(2) = 11$ by one unit of slope instead of two: $11 - 4$ rather than $11 - 8$.",
+      "B": "Reports the slope, $4$, instead of the value of the function at $x = 0$.",
+      "D": "Reports the given value $f(2) = 11$ without stepping back to $x = 0$."
+    },
+    "tags": [
+      "linear-function",
+      "intercept"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-b03",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A shop sells notebooks for \\$3 each and folders for \\$5 each. On one day it sold $58$ items for a total of \\$226. How many folders were sold?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 26
+    },
+    "explanation": "Let $n$ be notebooks and $f$ folders. Then $n + f = 58$ and $3n + 5f = 226$. From the first, $n = 58 - f$. Substituting: $3(58 - f) + 5f = 226$, so $174 + 2f = 226$ and $f = 26$. Checking: $32$ notebooks and $26$ folders give $96 + 130 = 226$.",
+    "tags": [
+      "system",
+      "word-problem"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b04",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the least integer value of $x$ that satisfies $7 - 2x < 4x - 11$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4
+    },
+    "explanation": "Add $2x$ to both sides: $7 < 6x - 11$. Add $11$: $18 < 6x$, so $3 < x$. The inequality is strict, so $x = 3$ does not satisfy it and the least integer that does is $4$. Checking $x = 4$: $7 - 8 = -1$ and $16 - 11 = 5$, and $-1 < 5$ holds.",
+    "tags": [
+      "inequality",
+      "strict-boundary"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b05",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in two variables",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A line passes through $(1, -2)$ and $(5, 10)$. At what value of $x$ does this line cross the $x$-axis?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$3$"
+      },
+      {
+        "id": "C",
+        "text": "$5$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{5}{3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The slope is $\\dfrac{10 - (-2)}{5 - 1} = \\dfrac{12}{4} = 3$. Using the point $(1, -2)$: $y + 2 = 3(x - 1)$, so $y = 3x - 5$. The line crosses the $x$-axis where $y = 0$, giving $3x = 5$ and $x = \\dfrac{5}{3}$.",
+    "distractorRationale": {
+      "A": "Comes from solving $3x - 1 = 0$, using the wrong constant term.",
+      "B": "Reports the slope instead of the $x$-intercept.",
+      "C": "Uses the constant $5$ from $y = 3x - 5$ without dividing by the slope."
+    },
+    "tags": [
+      "line-equation",
+      "x-intercept"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-b06",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A tank drains at a constant rate. After $8$ minutes it holds $340$ litres, and after $20$ minutes it holds $196$ litres. How many litres did the tank hold before draining began?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 436
+    },
+    "explanation": "The rate is $\\dfrac{196 - 340}{20 - 8} = \\dfrac{-144}{12} = -12$ litres per minute. Working back from $8$ minutes to $0$ adds $8 \\times 12 = 96$ litres, so the initial volume was $340 + 96 = 436$ litres.",
+    "tags": [
+      "linear-model",
+      "rate"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b07",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "For which value of $c$ does the system $\\begin{cases} 3x - 2y = 7 \\\\ 9x + cy = 4 \\end{cases}$ have no solution?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-6$"
+      },
+      {
+        "id": "B",
+        "text": "$-2$"
+      },
+      {
+        "id": "C",
+        "text": "$2$"
+      },
+      {
+        "id": "D",
+        "text": "$6$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "No solution means the lines are parallel but distinct: the $x$- and $y$-coefficients scale by the same factor while the constants do not. Since $9 = 3 \\cdot 3$, the factor is $3$, so $c = -2 \\cdot 3 = -6$. The constants would need $7 \\cdot 3 = 21$, but the second equation has $4$, so the lines are indeed distinct.",
+    "distractorRationale": {
+      "B": "Copies the $y$-coefficient of the first equation without scaling it.",
+      "C": "Right magnitude for the unscaled coefficient but wrong sign.",
+      "D": "Correct magnitude after scaling, but drops the negative sign of $-2$."
+    },
+    "tags": [
+      "system",
+      "no-solution",
+      "parallel"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-b08",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A student needs an average of at least $85$ across four tests. The first three scores are $78$, $91$, and $84$. What is the minimum score needed on the fourth test?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 87
+    },
+    "explanation": "An average of at least $85$ over four tests requires a total of at least $4 \\times 85 = 340$. The first three scores total $78 + 91 + 84 = 253$. The fourth score must be at least $340 - 253 = 87$.",
+    "tags": [
+      "average",
+      "inequality"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b09",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $(3x - 4)(2x + 5)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6x^2 + 7x + 20$"
+      },
+      {
+        "id": "B",
+        "text": "$6x^2 + 7x - 20$"
+      },
+      {
+        "id": "C",
+        "text": "$6x^2 + 23x - 20$"
+      },
+      {
+        "id": "D",
+        "text": "$6x^2 - 7x - 20$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Multiply term by term: $3x \\cdot 2x = 6x^2$, $3x \\cdot 5 = 15x$, $-4 \\cdot 2x = -8x$, and $-4 \\cdot 5 = -20$. Combining the middle terms gives $15x - 8x = 7x$, so the product is $6x^2 + 7x - 20$.",
+    "distractorRationale": {
+      "A": "Treats $-4 \\cdot 5$ as positive $20$.",
+      "C": "Adds $15x$ and $8x$ instead of subtracting, ignoring the minus sign on $4$.",
+      "D": "Reverses the sign of the middle term, as if $-8x$ outweighed $15x$."
+    },
+    "tags": [
+      "expanding",
+      "binomial-product"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-b10",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the positive solution to $x^2 - 6x = 16$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "Write the equation as $x^2 - 6x - 16 = 0$ and factor: $(x - 8)(x + 2) = 0$. The solutions are $x = 8$ and $x = -2$, so the positive one is $8$. Checking: $64 - 48 = 16$.",
+    "tags": [
+      "quadratic",
+      "factoring"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b11",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $f$ is defined by $f(x) = x^2 + kx + 20$, and $f(4) = 0$. What is the other value of $x$ for which $f(x) = 0$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "For a monic quadratic $x^2 + kx + c$, the product of the roots equals the constant term $c$. Here that product is $20$, and one root is $4$, so the other is $\\dfrac{20}{4} = 5$.\n\nChecking through $k$: $f(4) = 16 + 4k + 20 = 0$ gives $k = -9$, and $x^2 - 9x + 20 = (x - 4)(x - 5)$.",
+    "tags": [
+      "quadratic",
+      "product-of-roots"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b12",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $\\dfrac{x^{-2} y^{3}}{x^{4} y^{-1}}$, where $x \\ne 0$ and $y \\ne 0$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{y^{2}}{x^{6}}$"
+      },
+      {
+        "id": "B",
+        "text": "$x^{6} y^{4}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{y^{4}}{x^{6}}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{y^{4}}{x^{2}}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Subtract exponents for each base. For $x$: $-2 - 4 = -6$, giving $x^{-6}$. For $y$: $3 - (-1) = 4$, giving $y^{4}$. So the expression equals $\\dfrac{y^{4}}{x^{6}}$.",
+    "distractorRationale": {
+      "A": "Computes $3 - 1 = 2$ for $y$, forgetting that subtracting $-1$ adds.",
+      "B": "Leaves $x$ in the numerator, ignoring that the exponent came out negative.",
+      "D": "Computes $-2 - 4$ as $-2$, dropping one of the exponents."
+    },
+    "tags": [
+      "exponents",
+      "simplification"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-b13",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "figure": {
+      "kind": "function_plot",
+      "alt": "Curve of a decreasing exponential function starting at 80 grams and halving every 5 days, approaching zero as the number of days increases.",
+      "caption": "Graph of $y = m(t)$, mass remaining in grams after $t$ days",
+      "window": {
+        "xMin": 0,
+        "xMax": 20,
+        "yMin": 0,
+        "yMax": 90
+      },
+      "series": [
+        {
+          "expr": "80*0.5^(x/5)",
+          "label": "mass remaining (g)"
+        }
+      ]
+    },
+    "stem": "The graph shows the mass $m(t)$, in grams, of a sample remaining after $t$ days. Based on the function $m(t) = 80 \\cdot (0.5)^{t/5}$, how many days does it take for the sample to fall to $20$ grams?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 10
+    },
+    "explanation": "Falling from $80$ to $20$ grams means halving twice, since $80 \\to 40 \\to 20$. Each halving takes $5$ days because the exponent is $\\dfrac{t}{5}$, so two halvings take $10$ days. Checking: $m(10) = 80 \\cdot (0.5)^{2} = 20$.",
+    "tags": [
+      "exponential-decay",
+      "half-life"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b14",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "H",
+    "irtB": 1.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The equation $2x^2 + bx + 8 = 0$ has two distinct real solutions. Which of the following could be the value of $b$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$8$"
+      },
+      {
+        "id": "D",
+        "text": "$9$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Two distinct real solutions require a positive discriminant: $b^2 - 4ac > 0$. With $a = 2$ and $c = 8$, this is $b^2 - 64 > 0$, so $b^2 > 64$ and $|b| > 8$. Among the choices only $9$ satisfies this.",
+    "distractorRationale": {
+      "A": "$36 - 64 < 0$, again no real solutions.",
+      "B": "$16 - 64 < 0$, so the equation has no real solutions.",
+      "C": "$64 - 64 = 0$ gives exactly one repeated solution, not two distinct ones."
+    },
+    "tags": [
+      "discriminant",
+      "distinct-roots"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-b15",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The quadratic function $g$ has zeros at $x = -3$ and $x = 7$. At what value of $x$ does $g$ attain its minimum or maximum?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 2
+    },
+    "explanation": "A parabola is symmetric about the vertical line halfway between its zeros. That axis is at $x = \\dfrac{-3 + 7}{2} = 2$, and the vertex — the minimum or maximum — lies on it.",
+    "tags": [
+      "parabola",
+      "axis-of-symmetry"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b16",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $x + \\dfrac{1}{x} = 5$, what is the value of $x^2 + \\dfrac{1}{x^2}$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 23
+    },
+    "explanation": "Square both sides: $\\left(x + \\dfrac{1}{x}\\right)^2 = x^2 + 2 \\cdot x \\cdot \\dfrac{1}{x} + \\dfrac{1}{x^2} = x^2 + 2 + \\dfrac{1}{x^2}$. So $25 = x^2 + \\dfrac{1}{x^2} + 2$, giving $x^2 + \\dfrac{1}{x^2} = 23$.",
+    "tags": [
+      "algebraic-identity",
+      "squaring"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b17",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Ratios, rates, proportional relationships, units",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A machine fills $450$ bottles in $18$ minutes. At this rate, how many bottles does it fill in $2$ hours?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3000
+    },
+    "explanation": "The rate is $\\dfrac{450}{18} = 25$ bottles per minute. Two hours is $120$ minutes, so the machine fills $25 \\times 120 = 3000$ bottles. Watch the unit change: the answer would be wrong by a factor of $60$ if the two hours were left in hours.",
+    "tags": [
+      "rate",
+      "unit-conversion"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b18",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Probability",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "figure": {
+      "kind": "table",
+      "alt": "Two-way table of students by year group and whether they cycle to school, with 120 students in total.",
+      "caption": "Students by year group and travel method",
+      "headers": [
+        "",
+        "Cycles",
+        "Does not cycle",
+        "Total"
+      ],
+      "rows": [
+        [
+          "Year 10",
+          "22",
+          "38",
+          "60"
+        ],
+        [
+          "Year 11",
+          "14",
+          "46",
+          "60"
+        ],
+        [
+          "Total",
+          "36",
+          "84",
+          "120"
+        ]
+      ]
+    },
+    "stem": "One of the $120$ students is selected at random. Given that the student selected cycles to school, what is the probability that the student is in Year 10?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{22}{36}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{22}{120}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{22}{60}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{36}{120}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The condition \"given that the student cycles\" restricts the sample space to the $36$ cyclists. Of those, $22$ are in Year 10, so the probability is $\\dfrac{22}{36}$.",
+    "distractorRationale": {
+      "B": "Uses all $120$ students as the denominator, ignoring the given condition.",
+      "C": "Conditions on being in Year 10 instead of on cycling — the reverse of what is asked.",
+      "D": "Gives the probability of cycling at all, not the probability of Year 10 among cyclists."
+    },
+    "tags": [
+      "conditional-probability",
+      "two-way-table"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-b19",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Two-variable data",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A line of best fit for a set of data is $y = 2.4x + 18$, where $x$ is the number of weeks of training and $y$ is a fitness score. One participant trained for $10$ weeks and scored $50$. What is the residual for this participant?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-8$"
+      },
+      {
+        "id": "B",
+        "text": "$8$"
+      },
+      {
+        "id": "C",
+        "text": "$42$"
+      },
+      {
+        "id": "D",
+        "text": "$92$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The predicted score is $2.4(10) + 18 = 42$. A residual is the actual value minus the predicted value, so it is $50 - 42 = 8$. The residual is positive because the participant scored above the line.",
+    "distractorRationale": {
+      "A": "Reverses the subtraction, computing predicted minus actual.",
+      "C": "Reports the predicted value rather than the difference from it.",
+      "D": "Adds the actual and predicted values instead of subtracting."
+    },
+    "tags": [
+      "residual",
+      "line-of-best-fit"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-b20",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Area and volume",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A cylindrical tank has radius $3$ metres and height $10$ metres. A second cylindrical tank has the same height but twice the radius. The volume of the second tank is how many times the volume of the first?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4
+    },
+    "explanation": "The volume of a cylinder is $\\pi r^2 h$. Doubling $r$ while holding $h$ fixed multiplies $r^2$ by $2^2 = 4$, so the volume is $4$ times as large. The specific values $3$ and $10$ are not needed.",
+    "tags": [
+      "volume",
+      "scaling"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-mth-b21",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangles and trigonometry",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In right triangle $PQR$, the right angle is at $Q$. If $\\cos P = \\dfrac{5}{13}$, what is the value of $\\sin R$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{12}{13}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{13}{5}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{5}{13}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{5}{12}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Angles $P$ and $R$ are the two acute angles of a right triangle, so they are complementary: $P + R = 90^\\circ$. For complementary angles the sine of one equals the cosine of the other, so $\\sin R = \\cos P = \\dfrac{5}{13}$.",
+    "distractorRationale": {
+      "A": "This is $\\sin P$, found from the Pythagorean identity, but the question asks about angle $R$.",
+      "B": "Inverts the ratio; a sine value cannot exceed $1$.",
+      "D": "This is $\\tan P$, which uses the two legs rather than a leg and the hypotenuse."
+    },
+    "tags": [
+      "complementary-angles",
+      "trigonometry"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-b22",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Circles",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In a circle of radius $9$, a central angle measures $\\dfrac{2\\pi}{3}$ radians. What is the length of the arc it subtends?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$9\\pi$"
+      },
+      {
+        "id": "B",
+        "text": "$3\\pi$"
+      },
+      {
+        "id": "C",
+        "text": "$27\\pi$"
+      },
+      {
+        "id": "D",
+        "text": "$6\\pi$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Arc length is $s = r\\theta$ when the angle is measured in radians. Here $s = 9 \\cdot \\dfrac{2\\pi}{3} = 6\\pi$.",
+    "distractorRationale": {
+      "A": "Multiplies the radius by $\\pi$ alone, ignoring the factor $\\dfrac{2}{3}$.",
+      "B": "Uses $\\dfrac{\\pi}{3}$ instead of $\\dfrac{2\\pi}{3}$, halving the angle.",
+      "C": "Uses $r^2\\theta$-style reasoning, which belongs to sector area rather than arc length."
+    },
+    "tags": [
+      "arc-length",
+      "radians"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

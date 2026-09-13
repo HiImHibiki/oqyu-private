@@ -1,0 +1,1222 @@
+[
+  {
+    "id": "csca-zst-g01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "数学中符号 $\\perp$ 表示两条直线",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "相交但不垂直"
+      },
+      {
+        "id": "B",
+        "text": "平行"
+      },
+      {
+        "id": "C",
+        "text": "重合"
+      },
+      {
+        "id": "D",
+        "text": "垂直"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "符号 $\\perp$ 读作「垂直于」，表示两条直线成直角。平行用 $\\parallel$ 表示，两个符号形状相近，须留意区分。",
+    "distractorRationale": {
+      "A": "一般的相交没有专门符号，也不含直角之意。",
+      "B": "平行的符号是 $\\parallel$。",
+      "C": "重合通常写作「重合」或用 $\\equiv$ 表示。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In Chinese mathematical usage, the symbol $\\perp$ indicates that two lines are",
+        "explanation": "The symbol $\\perp$ is read 垂直于, meaning the two lines meet at a right angle. Parallel is written $\\parallel$; the two symbols look similar and must be distinguished carefully."
+      }
+    },
+    "tags": [
+      "symbol",
+      "perpendicular"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "在数学表述中，「$x$ 的绝对值」写作",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$|x|$"
+      },
+      {
+        "id": "B",
+        "text": "$\\|x\\|$"
+      },
+      {
+        "id": "C",
+        "text": "$\\{x\\}$"
+      },
+      {
+        "id": "D",
+        "text": "$(x)$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "绝对值用一对竖线表示，写作 $|x|$，读作「$x$ 的绝对值」，指数轴上该数到原点的距离。",
+    "distractorRationale": {
+      "B": "双竖线通常表示范数，属于更高阶的概念。",
+      "C": "花括号用于表示集合。",
+      "D": "圆括号用于分组或表示区间。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In Chinese mathematical writing, how is «the absolute value of $x$» written?",
+        "explanation": "Absolute value is written with a pair of vertical bars, $|x|$, read 「$x$ 的绝对值」 — the distance from the number to the origin on the number line."
+      }
+    },
+    "tags": [
+      "symbol",
+      "absolute-value"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "符号 $\\in$ 在中文数学教材中读作",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "等价于"
+      },
+      {
+        "id": "B",
+        "text": "属于"
+      },
+      {
+        "id": "C",
+        "text": "存在"
+      },
+      {
+        "id": "D",
+        "text": "包含于"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "$\\in$ 读作「属于」，描述**元素**与集合的关系，如 $2 \\in \\mathbb{N}$。集合与集合之间的关系则用 $\\subseteq$，读作「包含于」。两者不可混用。",
+    "distractorRationale": {
+      "A": "「等价于」对应 $\\Leftrightarrow$。",
+      "C": "「存在」对应 $\\exists$。",
+      "D": "「包含于」对应 $\\subseteq$，说的是集合之间的关系。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In Chinese mathematics textbooks, how is the symbol $\\in$ read?",
+        "explanation": "$\\in$ is read 属于, describing the relation between an **element** and a set, as in $2 \\in \\mathbb{N}$. The relation between two sets uses $\\subseteq$, read 包含于. The two are not interchangeable."
+      }
+    },
+    "tags": [
+      "symbol",
+      "set-membership"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「若 $A$ 则 $B$」用符号表示为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$A \\Leftrightarrow B$"
+      },
+      {
+        "id": "B",
+        "text": "$A \\cup B$"
+      },
+      {
+        "id": "C",
+        "text": "$A \\Rightarrow B$"
+      },
+      {
+        "id": "D",
+        "text": "$A \\cap B$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "单向箭头 $\\Rightarrow$ 表示「推出」，即由 $A$ 可以推出 $B$，正是「若 $A$ 则 $B$」的含义。双向箭头 $\\Leftrightarrow$ 表示两者互相推出，条件更强。",
+    "distractorRationale": {
+      "A": "双向箭头表示充要条件，比题干所述更强。",
+      "B": "并集符号，同样属于集合运算。",
+      "D": "交集符号，用于集合运算而非逻辑推理。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How is «if $A$ then $B$» written symbolically?",
+        "explanation": "The single arrow $\\Rightarrow$ means 推出 — $A$ implies $B$ — which is exactly «if $A$ then $B$». The double arrow $\\Leftrightarrow$ means each implies the other, a stronger claim."
+      }
+    },
+    "tags": [
+      "symbol",
+      "implication"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "$\\sum_{i=1}^{n} a_i$ 中的符号 $\\sum$ 表示",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "求导"
+      },
+      {
+        "id": "B",
+        "text": "求平均"
+      },
+      {
+        "id": "C",
+        "text": "连乘"
+      },
+      {
+        "id": "D",
+        "text": "求和"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$\\sum$ 是希腊字母 sigma 的大写，表示求和，读作「从 $i$ 等于 $1$ 到 $n$ 求和」。连乘则用 $\\prod$（pi 的大写）表示。",
+    "distractorRationale": {
+      "A": "求导用 $\\frac{d}{dx}$ 或撇号表示。",
+      "B": "求平均需在求和之后再除以项数，没有单独的符号。",
+      "C": "连乘符号是 $\\prod$。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In $\\sum_{i=1}^{n} a_i$, what does the symbol $\\sum$ denote?",
+        "explanation": "$\\sum$ is capital sigma and denotes summation, read 从 $i$ 等于 $1$ 到 $n$ 求和. Repeated multiplication uses $\\prod$, capital pi."
+      }
+    },
+    "tags": [
+      "symbol",
+      "summation"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "中文数学中，「充分必要条件」对应的符号是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\Leftrightarrow$"
+      },
+      {
+        "id": "B",
+        "text": "$\\Rightarrow$"
+      },
+      {
+        "id": "C",
+        "text": "$\\Leftarrow$"
+      },
+      {
+        "id": "D",
+        "text": "$\\neq$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "充分必要条件意味着两个命题互相推出，故用双向箭头 $\\Leftrightarrow$。只写 $\\Rightarrow$ 仅表示充分条件，只写 $\\Leftarrow$ 仅表示必要条件。",
+    "distractorRationale": {
+      "B": "只表示充分条件。",
+      "C": "只表示必要条件。",
+      "D": "不等号，与逻辑条件无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In Chinese mathematics, which symbol corresponds to 充分必要条件 (necessary and sufficient condition)?",
+        "explanation": "A necessary and sufficient condition means the two statements imply each other, so the double arrow $\\Leftrightarrow$ is used. $\\Rightarrow$ alone marks only sufficiency; $\\Leftarrow$ alone marks only necessity."
+      }
+    },
+    "tags": [
+      "symbol",
+      "logic"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "$\\sqrt[3]{8}$ 应读作",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "八的三次方"
+      },
+      {
+        "id": "B",
+        "text": "八开三次方"
+      },
+      {
+        "id": "C",
+        "text": "八分之三"
+      },
+      {
+        "id": "D",
+        "text": "三的八次方"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "根号左上角的数字是根指数，故 $\\sqrt[3]{8}$ 读作「八开三次方」或「八的三次方根」，其值为 $2$。而「八的三次方」指 $8^3 = 512$，意思完全不同。",
+    "distractorRationale": {
+      "A": "「八的三次方」是 $8^3$，与开方相反。",
+      "C": "分数的读法，与根号无关。",
+      "D": "把根指数与被开方数颠倒了。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How is $\\sqrt[3]{8}$ read aloud in Chinese?",
+        "explanation": "The small number above the radical is the index, so $\\sqrt[3]{8}$ is read 八开三次方 or 八的三次方根, and equals $2$. By contrast 八的三次方 means $8^3 = 512$ — an entirely different quantity."
+      }
+    },
+    "tags": [
+      "symbol",
+      "radical"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "物理学中，「功率」的国际单位是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "牛顿"
+      },
+      {
+        "id": "B",
+        "text": "帕斯卡"
+      },
+      {
+        "id": "C",
+        "text": "瓦特"
+      },
+      {
+        "id": "D",
+        "text": "焦耳"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "功率是单位时间内所做的功，国际单位为瓦特（W），$1\\ \\text{W} = 1\\ \\text{J/s}$。焦耳是功和能的单位，牛顿是力的单位。",
+    "distractorRationale": {
+      "A": "牛顿是力的单位。",
+      "B": "帕斯卡是压强的单位。",
+      "D": "焦耳是功与能量的单位。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In physics, what is the SI unit of 功率 (power)?",
+        "explanation": "Power is work done per unit time; its SI unit is the watt (W), where $1\\ \\text{W} = 1\\ \\text{J/s}$. The joule is the unit of work and energy; the newton is the unit of force."
+      }
+    },
+    "tags": [
+      "terminology",
+      "si-units"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "物理术语「惯性」指的是物体",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "在液体中所受的浮力"
+      },
+      {
+        "id": "B",
+        "text": "单位体积的质量"
+      },
+      {
+        "id": "C",
+        "text": "受力后改变运动状态的能力"
+      },
+      {
+        "id": "D",
+        "text": "保持原有运动状态不变的性质"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "惯性是物体保持静止或匀速直线运动状态的性质，其大小只由质量决定，与是否受力无关。",
+    "distractorRationale": {
+      "A": "这是浮力的定义。",
+      "B": "这是密度的定义。",
+      "C": "这恰好与惯性相反；改变运动状态需要外力克服惯性。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The physics term 惯性 (inertia) refers to an object's",
+        "explanation": "Inertia is the property of maintaining rest or uniform straight-line motion. Its magnitude is determined by mass alone and does not depend on whether a force acts."
+      }
+    },
+    "tags": [
+      "terminology",
+      "inertia"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「电势差」在中文物理教材中的另一常用说法是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "电压"
+      },
+      {
+        "id": "B",
+        "text": "电流"
+      },
+      {
+        "id": "C",
+        "text": "电量"
+      },
+      {
+        "id": "D",
+        "text": "电阻"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "电势差即两点间电势之差，日常与教材中通称「电压」，单位是伏特。电流指电荷的定向移动，电阻描述导体对电流的阻碍作用。",
+    "distractorRationale": {
+      "B": "电流的单位是安培，指电荷移动的快慢。",
+      "C": "电量的单位是库仑。",
+      "D": "电阻的单位是欧姆。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In Chinese physics textbooks, what is the other common name for 电势差 (potential difference)?",
+        "explanation": "电势差 is the difference in electric potential between two points, commonly called 电压 (voltage), measured in volts. 电流 refers to the flow of charge; 电阻 describes opposition to that flow."
+      }
+    },
+    "tags": [
+      "terminology",
+      "voltage"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "在中文物理中，「矢量」与「标量」的根本区别在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "矢量可以为负，标量不能"
+      },
+      {
+        "id": "B",
+        "text": "矢量既有大小又有方向，标量只有大小"
+      },
+      {
+        "id": "C",
+        "text": "矢量有单位，标量没有"
+      },
+      {
+        "id": "D",
+        "text": "矢量有大小，标量没有"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "矢量兼有大小和方向，相加时须按平行四边形法则；标量只有大小，可直接相加。速度、力、动量是矢量，质量、时间、能量是标量。",
+    "distractorRationale": {
+      "A": "温度等标量也可以取负值。",
+      "C": "两者都可以带单位。",
+      "D": "两者都有大小，差别在于方向。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In Chinese physics, what is the fundamental difference between 矢量 (vector) and 标量 (scalar)?",
+        "explanation": "A vector has both magnitude and direction and must be added by the parallelogram rule; a scalar has magnitude only and adds directly. Velocity, force and momentum are vectors; mass, time and energy are scalars."
+      }
+    },
+    "tags": [
+      "terminology",
+      "vector-scalar"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「机械能」包括",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "动能和内能"
+      },
+      {
+        "id": "B",
+        "text": "势能和电能"
+      },
+      {
+        "id": "C",
+        "text": "动能和势能"
+      },
+      {
+        "id": "D",
+        "text": "内能和化学能"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "机械能是动能与势能之和，势能又分重力势能与弹性势能。内能属于分子层面的能量，不计入机械能。",
+    "distractorRationale": {
+      "A": "内能是分子无规则运动的能量，不属于机械能。",
+      "B": "电能与机械能是并列的不同形式。",
+      "D": "两者都不属于机械能。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "机械能 (mechanical energy) comprises",
+        "explanation": "Mechanical energy is the sum of kinetic and potential energy, the latter divided into gravitational and elastic potential energy. Internal energy belongs to the molecular scale and is not counted as mechanical energy."
+      }
+    },
+    "tags": [
+      "terminology",
+      "mechanical-energy"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "物理中「重力」与「质量」的关系是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "质量是力，重力是物质的量度"
+      },
+      {
+        "id": "B",
+        "text": "两者是同一个量的不同名称"
+      },
+      {
+        "id": "C",
+        "text": "两者单位相同，可以互换使用"
+      },
+      {
+        "id": "D",
+        "text": "重力是力，质量是物质的量度，重力随所在位置变化而质量不变"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "质量是物体所含物质的多少，单位为千克，在任何地方都不改变。重力是地球对物体的吸引力，单位为牛顿，其大小 $G = mg$ 随各地 $g$ 的不同而改变。日常口语常把两者混为一谈，物理表述中必须区分。",
+    "distractorRationale": {
+      "A": "把两个概念完全颠倒了。",
+      "B": "两者单位不同，物理意义也不同。",
+      "C": "千克与牛顿是不同的单位，不能互换。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the relationship between 重力 (weight) and 质量 (mass) in physics?",
+        "explanation": "Mass measures how much matter an object contains, is measured in kilograms, and does not change with location. Weight is the gravitational force on the object, measured in newtons, with $G = mg$ varying as $g$ varies from place to place. Everyday speech conflates the two; physics must distinguish them."
+      }
+    },
+    "tags": [
+      "terminology",
+      "mass-weight"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "化学中「单质」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "由同种元素组成的纯净物"
+      },
+      {
+        "id": "B",
+        "text": "由不同元素组成的纯净物"
+      },
+      {
+        "id": "C",
+        "text": "任何气体"
+      },
+      {
+        "id": "D",
+        "text": "两种以上物质的混合"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "单质是由同一种元素组成的纯净物，如氧气 $\\text{O}_2$、铁 $\\text{Fe}$。由不同元素组成的纯净物称为化合物。",
+    "distractorRationale": {
+      "B": "这是化合物的定义。",
+      "C": "空气是气体却是混合物，故不成立。",
+      "D": "这是混合物，不属于纯净物。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In chemistry, 单质 refers to",
+        "explanation": "单质 is a pure substance composed of a single element, such as oxygen $\\text{O}_2$ or iron $\\text{Fe}$. A pure substance made of different elements is called 化合物, a compound."
+      }
+    },
+    "tags": [
+      "terminology",
+      "element"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "化学方程式中，「$\\uparrow$」这一符号表示",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "反应可逆"
+      },
+      {
+        "id": "B",
+        "text": "生成气体"
+      },
+      {
+        "id": "C",
+        "text": "生成沉淀"
+      },
+      {
+        "id": "D",
+        "text": "需要加热"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "向上箭头写在生成物右侧，表示该产物以气体形式逸出。沉淀用向下箭头 $\\downarrow$ 表示，加热用「$\\triangle$」标在等号上方。",
+    "distractorRationale": {
+      "A": "可逆反应用双向箭头表示。",
+      "C": "沉淀用 $\\downarrow$ 表示。",
+      "D": "加热条件写在等号上方，常用符号「$\\triangle$」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In a Chinese chemical equation, what does the symbol $\\uparrow$ indicate?",
+        "explanation": "An upward arrow written after a product indicates that it escapes as a gas. A precipitate is marked with a downward arrow $\\downarrow$; heating is marked with 「$\\triangle$」 above the equals sign."
+      }
+    },
+    "tags": [
+      "terminology",
+      "equation-notation"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「摩尔」是国际单位制中哪个物理量的单位？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "浓度"
+      },
+      {
+        "id": "B",
+        "text": "体积"
+      },
+      {
+        "id": "C",
+        "text": "物质的量"
+      },
+      {
+        "id": "D",
+        "text": "质量"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "摩尔（mol）是「物质的量」的单位，用来计量微观粒子的数目。注意「物质的量」是一个完整的物理量名称，不可简称为「物质量」或「质量」。",
+    "distractorRationale": {
+      "A": "浓度的常用单位是 mol/L，摩尔只是其中一部分。",
+      "B": "体积的单位是立方米或升。",
+      "D": "质量的单位是千克或克。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In the SI system, the mole (摩尔) is the unit of which quantity?",
+        "explanation": "The mole (mol) is the unit of 物质的量, amount of substance, used to count microscopic particles. Note that 物质的量 is a single complete term and must not be shortened to 物质量 or confused with 质量, mass."
+      }
+    },
+    "tags": [
+      "terminology",
+      "mole"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "化学术语「催化剂」的准确含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "能提高产物产量的物质"
+      },
+      {
+        "id": "B",
+        "text": "只能加快反应的物质"
+      },
+      {
+        "id": "C",
+        "text": "参与反应并被消耗的物质"
+      },
+      {
+        "id": "D",
+        "text": "改变反应速率而自身质量和化学性质在反应前后不变的物质"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "催化剂改变反应速率，但反应前后其质量和化学性质都不改变。它既可以加快反应，也可以减慢反应（后者称负催化剂）。它不改变平衡位置，因而也不提高最终产量。",
+    "distractorRationale": {
+      "A": "催化剂只影响达到平衡的快慢，不改变平衡产量。",
+      "B": "减慢反应的负催化剂同样属于催化剂。",
+      "C": "被消耗的是反应物，不是催化剂。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the precise meaning of the chemical term 催化剂 (catalyst)?",
+        "explanation": "A catalyst changes the reaction rate while its own mass and chemical properties are unchanged after the reaction. It may speed a reaction up or slow it down (the latter called a negative catalyst). It does not shift the equilibrium position and so does not raise the final yield."
+      }
+    },
+    "tags": [
+      "terminology",
+      "catalyst"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「饱和溶液」的准确定义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "在一定温度下不能再溶解该溶质的溶液"
+      },
+      {
+        "id": "B",
+        "text": "浓度很大的溶液"
+      },
+      {
+        "id": "C",
+        "text": "含有沉淀的溶液"
+      },
+      {
+        "id": "D",
+        "text": "任何加热过的溶液"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "饱和是相对于特定温度和特定溶质而言的：在该温度下溶液已无法再溶解更多的这种溶质。饱和不等于浓——难溶物质的饱和溶液浓度可以很低。",
+    "distractorRationale": {
+      "B": "浓与饱和是两个概念；氢氧化钙的饱和溶液就很稀。",
+      "C": "有无沉淀取决于是否加入了过量溶质，不是定义本身。",
+      "D": "加热通常使溶解度增大，反而变为不饱和。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the precise definition of 饱和溶液 (saturated solution)?",
+        "explanation": "Saturation is defined relative to a specific temperature and a specific solute: at that temperature the solution can dissolve no more of that solute. Saturated does not mean concentrated — a saturated solution of a sparingly soluble substance can be very dilute."
+      }
+    },
+    "tags": [
+      "terminology",
+      "saturation"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "符号 $\\varnothing$ 在集合论中表示",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "零"
+      },
+      {
+        "id": "B",
+        "text": "空集"
+      },
+      {
+        "id": "C",
+        "text": "无穷"
+      },
+      {
+        "id": "D",
+        "text": "全集"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "$\\varnothing$ 表示空集，即不含任何元素的集合。它是任何集合的子集。注意空集不等于 $\\{0\\}$：后者含有一个元素。",
+    "distractorRationale": {
+      "A": "数字零是元素而非集合。",
+      "C": "无穷用 $\\infty$ 表示。",
+      "D": "全集常记作 $U$。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In set theory, what does the symbol $\\varnothing$ denote?",
+        "explanation": "$\\varnothing$ denotes the empty set, the set containing no elements. It is a subset of every set. Note that the empty set is not $\\{0\\}$: the latter contains one element."
+      }
+    },
+    "tags": [
+      "symbol",
+      "empty-set"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「氧化反应」与「氧化还原反应」的关系是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "还原反应只发生在有机化学中"
+      },
+      {
+        "id": "B",
+        "text": "两者完全相同"
+      },
+      {
+        "id": "C",
+        "text": "氧化反应必定伴随还原反应，两者是同一反应的两个方面"
+      },
+      {
+        "id": "D",
+        "text": "氧化反应可以单独发生，与还原无关"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "电子有得必有失：一种物质失去电子被氧化时，必有另一种物质得到这些电子被还原。因此氧化与还原总是同时发生，合称氧化还原反应。",
+    "distractorRationale": {
+      "A": "无机化学中的置换、燃烧等大量反应都是氧化还原反应。",
+      "B": "氧化反应只是氧化还原反应的一个侧面。",
+      "D": "电子不会凭空消失，氧化必然伴随还原。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the relationship between 氧化反应 (oxidation) and 氧化还原反应 (redox reaction)?",
+        "explanation": "Electrons lost by one species must be gained by another: whenever a substance is oxidised by losing electrons, another must be reduced by gaining them. Oxidation and reduction therefore always occur together, and together they are called a redox reaction."
+      }
+    },
+    "tags": [
+      "terminology",
+      "redox"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

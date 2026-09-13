@@ -1,0 +1,1854 @@
+[
+  {
+    "id": "utbk-pu-a01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Silogisme",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Semua pegawai yang lulus sertifikasi mendapat tunjangan. Sebagian pegawai di divisi produksi tidak mendapat tunjangan.\n\nSimpulan yang pasti benar adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sebagian pegawai yang lulus sertifikasi tidak mendapat tunjangan."
+      },
+      {
+        "id": "B",
+        "text": "Semua pegawai yang lulus sertifikasi berada di divisi produksi."
+      },
+      {
+        "id": "C",
+        "text": "Semua pegawai divisi produksi tidak lulus sertifikasi."
+      },
+      {
+        "id": "D",
+        "text": "Sebagian pegawai divisi produksi tidak lulus sertifikasi."
+      },
+      {
+        "id": "E",
+        "text": "Tidak ada pegawai divisi produksi yang mendapat tunjangan."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Premis pertama berarti: kalau lulus sertifikasi, pasti mendapat tunjangan. Kontraposisinya: kalau tidak mendapat tunjangan, pasti tidak lulus sertifikasi. Premis kedua menyebut sebagian pegawai produksi tidak mendapat tunjangan, sehingga sebagian pegawai produksi itu pasti tidak lulus sertifikasi.",
+    "distractorRationale": {
+      "A": "Bertentangan langsung dengan premis pertama.",
+      "B": "Membalik arah premis pertama; tidak ada informasi bahwa pemegang sertifikasi berada di produksi.",
+      "C": "Kata *sebagian* pada premis kedua tidak bisa diperluas menjadi *semua*.",
+      "E": "Premis hanya menyebut *sebagian* tidak mendapat tunjangan, jadi sebagian lainnya bisa saja mendapat."
+    },
+    "tags": [
+      "silogisme",
+      "kontraposisi"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Implikasi & kontraposisi",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Jika hujan turun sebelum pukul enam, maka pertandingan ditunda. Pertandingan tidak ditunda.\n\nSimpulan yang pasti benar adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Hujan tidak turun sama sekali pada hari itu."
+      },
+      {
+        "id": "B",
+        "text": "Jika hujan turun, pertandingan pasti dilanjutkan."
+      },
+      {
+        "id": "C",
+        "text": "Hujan turun setelah pukul enam."
+      },
+      {
+        "id": "D",
+        "text": "Pertandingan dimulai tepat pukul enam."
+      },
+      {
+        "id": "E",
+        "text": "Hujan tidak turun sebelum pukul enam."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Ini adalah *modus tollens*: dari $p \\Rightarrow q$ dan $\\sim q$, disimpulkan $\\sim p$. Karena pertandingan tidak ditunda, maka hujan tidak turun sebelum pukul enam.",
+    "distractorRationale": {
+      "A": "Premis hanya membatasi hujan *sebelum* pukul enam, bukan sepanjang hari.",
+      "B": "Membalik implikasi dan mengubah maknanya sekaligus.",
+      "C": "Menyimpulkan lebih dari yang ada; hujan setelah pukul enam mungkin terjadi, mungkin juga tidak.",
+      "D": "Waktu mulai pertandingan tidak disinggung dalam premis mana pun."
+    },
+    "tags": [
+      "modus-tollens",
+      "implikasi"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Penarikan kesimpulan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Setiap mahasiswa yang mengikuti program pertukaran wajib menguasai satu bahasa asing. Rani menguasai dua bahasa asing.\n\nManakah pernyataan yang PASTI BENAR?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rani memenuhi syarat bahasa untuk program pertukaran."
+      },
+      {
+        "id": "B",
+        "text": "Mahasiswa yang menguasai bahasa asing pasti ikut pertukaran."
+      },
+      {
+        "id": "C",
+        "text": "Semua peserta pertukaran menguasai dua bahasa asing."
+      },
+      {
+        "id": "D",
+        "text": "Rani mengikuti program pertukaran."
+      },
+      {
+        "id": "E",
+        "text": "Rani tidak mengikuti program pertukaran."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Premis menetapkan syarat perlu, bukan syarat cukup: ikut pertukaran $\\Rightarrow$ menguasai satu bahasa asing. Rani menguasai dua, jadi ia memenuhi syarat itu. Namun memenuhi syarat tidak berarti ia ikut program tersebut.",
+    "distractorRationale": {
+      "B": "Kebalikan penuh dari premis, dan tidak ada dasarnya.",
+      "C": "Premis hanya mensyaratkan satu bahasa, bukan dua.",
+      "D": "Membalik implikasi: memenuhi syarat tidak sama dengan mengikuti program.",
+      "E": "Sama-sama tidak berdasar; premis tidak menutup kemungkinan Rani ikut."
+    },
+    "tags": [
+      "syarat-perlu",
+      "logika"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Argumen valid/tidak valid",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "\"Kota-kota yang menerapkan jalur sepeda mengalami penurunan kecelakaan lalu lintas. Kota Melati baru saja menerapkan jalur sepeda. Karena itu, kecelakaan di Kota Melati pasti akan turun.\"\n\nKelemahan utama argumen tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Argumen menggunakan istilah 'kecelakaan lalu lintas' tanpa mendefinisikannya."
+      },
+      {
+        "id": "B",
+        "text": "Argumen memperlakukan pola yang teramati pada sejumlah kota sebagai jaminan bagi satu kota tertentu."
+      },
+      {
+        "id": "C",
+        "text": "Argumen tidak menyebutkan berapa panjang jalur sepeda yang dibangun."
+      },
+      {
+        "id": "D",
+        "text": "Argumen mengabaikan bahwa sepeda juga dapat mengalami kecelakaan."
+      },
+      {
+        "id": "E",
+        "text": "Argumen menyimpulkan sesuatu tentang masa lalu dari premis tentang masa depan."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Premis pertama adalah generalisasi dari pengalaman sejumlah kota, yang sifatnya kecenderungan. Menyimpulkan bahwa satu kota *pasti* mengalaminya adalah lompatan dari kecenderungan ke kepastian — itulah cacat inti argumen ini.",
+    "distractorRationale": {
+      "A": "Definisi istilah bukan sumber masalah di sini; maknanya cukup jelas.",
+      "C": "Detail teknis yang tidak mengubah bentuk penalarannya.",
+      "D": "Justru sudah tercakup dalam data kecelakaan yang dirujuk premis.",
+      "E": "Arah waktunya terbalik: kesimpulannya justru tentang masa depan."
+    },
+    "tags": [
+      "evaluasi-argumen",
+      "generalisasi"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Penarikan kesimpulan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Lima orang — Andi, Beni, Citra, Dina, dan Eka — duduk berjajar menghadap ke depan. Citra duduk tepat di tengah. Andi duduk di sebelah kiri Citra, tetapi tidak bersebelahan dengannya. Dina duduk di ujung kanan.\n\nSiapa yang duduk tepat di sebelah kiri Citra?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Beni"
+      },
+      {
+        "id": "B",
+        "text": "Andi"
+      },
+      {
+        "id": "C",
+        "text": "Dina"
+      },
+      {
+        "id": "D",
+        "text": "Eka"
+      },
+      {
+        "id": "E",
+        "text": "Tidak dapat ditentukan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Posisi 1–5 dari kiri. Citra di posisi 3, Dina di posisi 5. Andi di kiri Citra dan tidak bersebelahan, jadi Andi di posisi 1. Sisa posisi 2 dan 4 untuk Beni dan Eka, dan tidak ada premis yang membedakan keduanya. Posisi 2 — tepat di sebelah kiri Citra — bisa diisi Beni atau Eka, sehingga jawabannya tidak dapat ditentukan.",
+    "distractorRationale": {
+      "A": "Mungkin benar, tetapi Eka sama mungkinnya; tidak ada premis yang memilih salah satu.",
+      "B": "Andi justru dinyatakan TIDAK bersebelahan dengan Citra, jadi ia di posisi 1.",
+      "C": "Dina sudah dikunci di ujung kanan, posisi 5.",
+      "D": "Sama seperti Beni: mungkin, tetapi tidak pasti."
+    },
+    "tags": [
+      "penalaran-posisi",
+      "logika-urutan"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Silogisme",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Tidak ada tanaman obat di kebun itu yang berbunga kuning. Semua tanaman yang ditanam Pak Umar berbunga kuning.\n\nSimpulan yang pasti benar adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Semua tanaman berbunga kuning adalah tanaman Pak Umar."
+      },
+      {
+        "id": "B",
+        "text": "Kebun itu tidak memiliki tanaman berbunga kuning."
+      },
+      {
+        "id": "C",
+        "text": "Tidak satu pun tanaman yang ditanam Pak Umar adalah tanaman obat di kebun itu."
+      },
+      {
+        "id": "D",
+        "text": "Sebagian tanaman obat di kebun itu ditanam Pak Umar."
+      },
+      {
+        "id": "E",
+        "text": "Pak Umar tidak pernah menanam tanaman obat."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Tanaman Pak Umar semuanya berbunga kuning, sedangkan tanaman obat di kebun itu tidak ada yang berbunga kuning. Kedua himpunan itu tidak mungkin beririsan, sehingga tidak ada tanaman Pak Umar yang termasuk tanaman obat di kebun tersebut.",
+    "distractorRationale": {
+      "A": "Membalik premis kedua tanpa dasar.",
+      "B": "Premis tidak melarang adanya tanaman kuning non-obat di kebun itu.",
+      "D": "Justru kebalikan dari kesimpulan yang benar.",
+      "E": "Terlalu jauh: premis hanya berbicara tentang tanaman obat *di kebun itu*."
+    },
+    "tags": [
+      "silogisme",
+      "himpunan"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Argumen valid/tidak valid",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "\"Sejak kantin sekolah menaikkan harga, jumlah siswa yang membawa bekal meningkat tajam. Jelas kenaikan harga itulah yang mendorong siswa membawa bekal.\"\n\nInformasi manakah yang paling melemahkan simpulan tersebut?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sebagian siswa tetap membeli makanan di kantin setiap hari."
+      },
+      {
+        "id": "B",
+        "text": "Kantin sekolah juga menambah dua menu baru."
+      },
+      {
+        "id": "C",
+        "text": "Jumlah siswa di sekolah itu bertambah tahun ini."
+      },
+      {
+        "id": "D",
+        "text": "Pada bulan yang sama, sekolah meluncurkan program wajib membawa bekal bergizi."
+      },
+      {
+        "id": "E",
+        "text": "Kenaikan harga di kantin hanya sebesar lima persen."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Simpulan itu menyatakan hubungan sebab-akibat dari data yang hanya berurutan waktu. Adanya program wajib bekal pada bulan yang sama menghadirkan penyebab lain yang cukup menjelaskan kenaikan tersebut, sehingga kenaikan harga tidak lagi menjadi penjelasan satu-satunya.",
+    "distractorRationale": {
+      "A": "Simpulan berbicara tentang peningkatan, bukan tentang semua siswa berhenti membeli.",
+      "B": "Menu baru justru cenderung menarik siswa kembali ke kantin, bukan menjelaskan kenaikan bekal.",
+      "C": "Pertambahan siswa menaikkan kedua kelompok sekaligus, jadi tidak menjelaskan pergeserannya.",
+      "E": "Besar kecilnya kenaikan tidak menyingkirkan kemungkinan ia berpengaruh."
+    },
+    "tags": [
+      "sebab-akibat",
+      "melemahkan-argumen"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Implikasi & kontraposisi",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Pernyataan \"Jika suatu bilangan habis dibagi 6, maka bilangan itu habis dibagi 3\" setara dengan pernyataan ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Jika suatu bilangan habis dibagi 3, maka bilangan itu habis dibagi 6."
+      },
+      {
+        "id": "B",
+        "text": "Jika suatu bilangan tidak habis dibagi 6, maka bilangan itu tidak habis dibagi 3."
+      },
+      {
+        "id": "C",
+        "text": "Tidak ada bilangan yang habis dibagi 6 dan 3 sekaligus."
+      },
+      {
+        "id": "D",
+        "text": "Suatu bilangan habis dibagi 6 jika dan hanya jika habis dibagi 3."
+      },
+      {
+        "id": "E",
+        "text": "Jika suatu bilangan tidak habis dibagi 3, maka bilangan itu tidak habis dibagi 6."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Pernyataan yang setara dengan $p \\Rightarrow q$ adalah kontraposisinya, $\\sim q \\Rightarrow \\sim p$. Di sini: tidak habis dibagi 3 $\\Rightarrow$ tidak habis dibagi 6. Ini juga benar secara matematis — bilangan seperti 8 tidak habis dibagi 3 maupun 6.",
+    "distractorRationale": {
+      "A": "Konvers, bukan kontraposisi; 9 habis dibagi 3 tetapi tidak habis dibagi 6.",
+      "B": "Invers, bukan kontraposisi; 9 adalah contoh penyangkalnya.",
+      "C": "Bertentangan dengan kenyataan; 12 habis dibagi keduanya.",
+      "D": "Menjadikannya biimplikasi, yang salah karena 9 memenuhi satu arah saja."
+    },
+    "tags": [
+      "kontraposisi",
+      "keterbagian"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Penarikan kesimpulan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Empat tim — Garuda, Rajawali, Elang, dan Merpati — bertanding dalam satu turnamen. Garuda mengalahkan Rajawali. Elang mengalahkan Garuda. Merpati kalah dari Rajawali.\n\nManakah pernyataan yang pasti benar berdasarkan hasil di atas?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Setidaknya ada tiga tim yang pernah mengalami kekalahan."
+      },
+      {
+        "id": "B",
+        "text": "Elang mengalahkan Merpati."
+      },
+      {
+        "id": "C",
+        "text": "Merpati adalah tim terlemah."
+      },
+      {
+        "id": "D",
+        "text": "Garuda adalah tim terkuat kedua."
+      },
+      {
+        "id": "E",
+        "text": "Rajawali mengalahkan Elang."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Dari tiga hasil yang diketahui, yang kalah adalah Rajawali, Garuda, dan Merpati — tepat tiga tim berbeda. Jadi pernyataan bahwa setidaknya tiga tim pernah kalah pasti benar. Hasil pertandingan lain tidak diketahui, sehingga tidak boleh diperingkat.",
+    "distractorRationale": {
+      "B": "Pertandingan Elang melawan Merpati tidak pernah disebutkan.",
+      "C": "Kekuatan tidak bersifat transitif dalam turnamen; Merpati bisa saja mengalahkan Elang.",
+      "D": "Peringkat menyeluruh tidak bisa disusun dari tiga hasil yang tidak lengkap.",
+      "E": "Justru Elang yang diketahui menang atas Garuda; hasil Rajawali–Elang tidak diketahui."
+    },
+    "tags": [
+      "penalaran-turnamen",
+      "transitivitas"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Silogisme",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Semua anggota koperasi menerima laporan tahunan. Bu Sari tidak menerima laporan tahunan.\n\nSimpulan yang pasti benar adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Laporan tahunan tidak dibagikan tahun ini."
+      },
+      {
+        "id": "B",
+        "text": "Bu Sari bukan anggota koperasi."
+      },
+      {
+        "id": "C",
+        "text": "Bu Sari anggota koperasi yang lalai."
+      },
+      {
+        "id": "D",
+        "text": "Bu Sari mengundurkan diri dari koperasi."
+      },
+      {
+        "id": "E",
+        "text": "Sebagian anggota koperasi tidak menerima laporan."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kontraposisi dari \"semua anggota menerima laporan\" adalah \"siapa pun yang tidak menerima laporan bukanlah anggota\". Karena Bu Sari tidak menerima, ia bukan anggota koperasi.",
+    "distractorRationale": {
+      "A": "Premis justru menyatakan anggota menerimanya.",
+      "C": "Bertentangan dengan premis pertama, yang tidak memberi pengecualian.",
+      "D": "Alasan mengapa ia bukan anggota tidak disebutkan sama sekali.",
+      "E": "Langsung menyangkal kata *semua* pada premis pertama."
+    },
+    "tags": [
+      "silogisme",
+      "kontraposisi"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Pola bilangan & gambar",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan berikut: $3, 7, 15, 31, 63, \\ldots$\n\nBilangan berikutnya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$126$"
+      },
+      {
+        "id": "B",
+        "text": "$131$"
+      },
+      {
+        "id": "C",
+        "text": "$127$"
+      },
+      {
+        "id": "D",
+        "text": "$117$"
+      },
+      {
+        "id": "E",
+        "text": "$95$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Setiap suku diperoleh dengan mengalikan suku sebelumnya dengan $2$ lalu menambah $1$: $3 \\to 7 \\to 15 \\to 31 \\to 63$. Maka suku berikutnya adalah $63 \\times 2 + 1 = 127$. Polanya juga bisa dilihat sebagai $2^n - 1$.",
+    "distractorRationale": {
+      "A": "Mengalikan dengan $2$ tetapi lupa menambah $1$.",
+      "B": "Menambah $2$ setelah mengalikan, bukan $1$.",
+      "D": "Tidak mengikuti pola mana pun yang konsisten dengan lima suku pertama.",
+      "E": "Menambahkan selisih terakhir $32$ ke $63$, memperlakukan barisan sebagai aritmetika."
+    },
+    "tags": [
+      "pola-bilangan",
+      "barisan"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Pola bilangan & gambar",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan berikut: $2, 6, 12, 20, 30, \\ldots$\n\nSuku ke-$8$ dari barisan tersebut adalah ...",
+    "type": "mcq_single",
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Selisih antarsuku membentuk barisan $4, 6, 8, 10, \\ldots$ yang naik $2$ setiap kali. Rumus umumnya $U_n = n(n+1)$: $1 \\cdot 2 = 2$, $2 \\cdot 3 = 6$, $3 \\cdot 4 = 12$, dan seterusnya. Maka $U_8 = 8 \\cdot 9 = 72$.",
+    "tags": [
+      "pola-bilangan",
+      "rumus-suku-ke-n"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "$56$"
+      },
+      {
+        "id": "B",
+        "text": "$81$"
+      },
+      {
+        "id": "C",
+        "text": "$64$"
+      },
+      {
+        "id": "D",
+        "text": "$72$"
+      },
+      {
+        "id": "E",
+        "text": "$90$"
+      }
+    ],
+    "distractorRationale": {
+      "A": "Menghitung $7 \\cdot 8$, yaitu rumus $n(n+1)$ dengan $n = 7$.",
+      "B": "Menghitung $9^2$, salah menggeser indeks sekaligus salah pola.",
+      "C": "Menghitung $8^2$, memperlakukan pola sebagai kuadrat sempurna.",
+      "E": "Menghitung $9 \\cdot 10$, yaitu suku ke-$9$."
+    }
+  },
+  {
+    "id": "utbk-pu-a13",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Analogi",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "TERMOMETER : SUHU = ______ : ______",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "JAM : DINDING"
+      },
+      {
+        "id": "B",
+        "text": "DOKTER : PASIEN"
+      },
+      {
+        "id": "C",
+        "text": "PANAS : DINGIN"
+      },
+      {
+        "id": "D",
+        "text": "CELSIUS : DERAJAT"
+      },
+      {
+        "id": "E",
+        "text": "BAROMETER : TEKANAN"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Hubungannya adalah *alat ukur : besaran yang diukur*. Termometer mengukur suhu, sebagaimana barometer mengukur tekanan. Kedua pasangan memiliki arah hubungan yang sama.",
+    "distractorRationale": {
+      "A": "Hubungan benda dan tempatnya diletakkan.",
+      "B": "Hubungan pelaku dan objek layanan, bukan alat dan besaran.",
+      "C": "Hubungan berlawanan makna, bukan alat dan besaran.",
+      "D": "Celsius adalah satuan, bukan alat ukur."
+    },
+    "tags": [
+      "analogi",
+      "verbal"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a14",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Generalisasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah survei daring di laman resmi sebuah klub sepak bola menemukan bahwa 92% responden mendukung pembangunan stadion baru. Peneliti menyimpulkan bahwa mayoritas warga kota mendukung pembangunan tersebut.\n\nKelemahan terbesar dari simpulan itu adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Responden berasal dari kelompok yang sudah berpihak, sehingga tidak mewakili warga kota."
+      },
+      {
+        "id": "B",
+        "text": "Peneliti tidak menyebutkan biaya pembangunan stadion."
+      },
+      {
+        "id": "C",
+        "text": "Persentase 92% terlalu tinggi untuk sebuah survei."
+      },
+      {
+        "id": "D",
+        "text": "Jumlah responden tidak disebutkan dalam laporan."
+      },
+      {
+        "id": "E",
+        "text": "Survei daring selalu memberi hasil yang salah."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Sampel diambil dari pengunjung laman klub, yaitu orang yang sudah menyukai klub tersebut. Populasi yang disimpulkan adalah seluruh warga kota. Ketidaksesuaian antara sampel dan populasi inilah cacat utamanya, dan memperbesar jumlah responden tidak akan memperbaikinya.",
+    "distractorRationale": {
+      "B": "Biaya adalah isu kebijakan, bukan cacat penarikan sampel.",
+      "C": "Angka tinggi bukan kesalahan dengan sendirinya; masalahnya ada pada siapa yang ditanya.",
+      "D": "Jumlah responden memang berguna, tetapi bias pemilihan tetap ada berapa pun jumlahnya.",
+      "E": "Terlalu umum; survei daring bisa sahih bila sampelnya dirancang benar."
+    },
+    "tags": [
+      "bias-sampel",
+      "generalisasi"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a15",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Sebab-akibat",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kajian menemukan bahwa anak yang tidur lebih dari delapan jam memiliki nilai ujian lebih tinggi. Media menyimpulkan bahwa menambah jam tidur akan menaikkan nilai ujian.\n\nAsumsi yang harus benar agar simpulan media itu sahih adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Semua anak dalam kajian bersekolah di tempat yang sama."
+      },
+      {
+        "id": "B",
+        "text": "Tidak ada faktor lain yang sekaligus menyebabkan tidur lebih lama dan nilai lebih tinggi."
+      },
+      {
+        "id": "C",
+        "text": "Anak yang tidur kurang dari enam jam pasti gagal ujian."
+      },
+      {
+        "id": "D",
+        "text": "Nilai ujian merupakan satu-satunya ukuran keberhasilan belajar."
+      },
+      {
+        "id": "E",
+        "text": "Kajian tersebut dilakukan selama lebih dari satu tahun."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kajian itu hanya menemukan hubungan, sedangkan media menyimpulkan sebab-akibat. Lompatan itu baru sah bila tidak ada variabel ketiga — misalnya kondisi ekonomi keluarga atau kesehatan — yang mendorong keduanya sekaligus. Itulah asumsi yang harus dipenuhi.",
+    "distractorRationale": {
+      "A": "Sekolah yang sama tidak diperlukan, dan tidak menutup kemungkinan variabel ketiga.",
+      "C": "Pernyataan ekstrem yang tidak dibutuhkan oleh simpulan mana pun.",
+      "D": "Menyangkut definisi keberhasilan, bukan keabsahan hubungan sebab-akibat.",
+      "E": "Durasi kajian memengaruhi kekuatan bukti, tetapi bukan asumsi yang menjembatani korelasi ke sebab."
+    },
+    "tags": [
+      "korelasi-kausalitas",
+      "asumsi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a16",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Pola bilangan & gambar",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan berikut: $1, 1, 2, 3, 5, 8, 13, \\ldots$\n\nBerapakah selisih antara suku ke-$10$ dan suku ke-$8$?",
+    "type": "mcq_single",
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Barisan Fibonacci: setiap suku adalah jumlah dua suku sebelumnya. Melanjutkan: $U_8 = 21$, $U_9 = 34$, $U_{10} = 55$. Selisihnya $55 - 21 = 34$.\n\nPerhatikan bahwa hasil ini sama dengan $U_9$ — memang berlaku umum, karena $U_{10} = U_9 + U_8$ sehingga $U_{10} - U_8 = U_9$.",
+    "tags": [
+      "fibonacci",
+      "pola-bilangan"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "$13$"
+      },
+      {
+        "id": "B",
+        "text": "$21$"
+      },
+      {
+        "id": "C",
+        "text": "$34$"
+      },
+      {
+        "id": "D",
+        "text": "$55$"
+      },
+      {
+        "id": "E",
+        "text": "$89$"
+      }
+    ],
+    "distractorRationale": {
+      "A": "Suku ke-$7$, bukan selisih yang diminta.",
+      "B": "Suku ke-$8$ itu sendiri, yaitu bilangan yang seharusnya dikurangkan.",
+      "D": "Suku ke-$10$ itu sendiri, tanpa dikurangi suku ke-$8$.",
+      "E": "Suku ke-$11$, satu langkah terlalu jauh."
+    }
+  },
+  {
+    "id": "utbk-pu-a17",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Analogi",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "GEMPA : SEISMOGRAF = ______ : ______",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "ANGIN : LAYANG-LAYANG"
+      },
+      {
+        "id": "B",
+        "text": "SUARA : TELINGA"
+      },
+      {
+        "id": "C",
+        "text": "API : PEMADAM"
+      },
+      {
+        "id": "D",
+        "text": "DENYUT JANTUNG : ELEKTROKARDIOGRAF"
+      },
+      {
+        "id": "E",
+        "text": "HUJAN : PAYUNG"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Seismograf adalah alat yang *merekam* getaran gempa. Elektrokardiograf adalah alat yang merekam denyut jantung. Keduanya adalah pasangan gejala dan alat perekamnya.",
+    "distractorRationale": {
+      "A": "Layang-layang memanfaatkan angin, bukan mengukurnya.",
+      "B": "Telinga adalah organ penerima alami, bukan instrumen yang merekam.",
+      "C": "Pemadam menghentikan api, bukan merekamnya.",
+      "E": "Payung adalah pelindung dari hujan, bukan alat perekam."
+    },
+    "tags": [
+      "analogi",
+      "alat-ukur"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a18",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Sebab-akibat",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Di sebuah kabupaten, penjualan payung dan jumlah kasus demam berdarah sama-sama memuncak pada bulan Januari setiap tahun.\n\nPenjelasan yang paling masuk akal atas keterkaitan itu adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Keterkaitan tersebut pasti merupakan kebetulan tanpa penjelasan."
+      },
+      {
+        "id": "B",
+        "text": "Data penjualan payung kemungkinan besar salah dicatat."
+      },
+      {
+        "id": "C",
+        "text": "Meningkatnya kasus demam berdarah mendorong orang membeli payung."
+      },
+      {
+        "id": "D",
+        "text": "Penggunaan payung meningkatkan risiko tertular demam berdarah."
+      },
+      {
+        "id": "E",
+        "text": "Keduanya dipengaruhi oleh musim hujan yang memuncak pada bulan tersebut."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Musim hujan menaikkan penjualan payung sekaligus memperbanyak genangan tempat nyamuk berkembang biak. Satu penyebab bersama menjelaskan kedua kenaikan tanpa perlu menganggap salah satunya menyebabkan yang lain.",
+    "distractorRationale": {
+      "A": "Terlalu cepat menyerah: penjelasan sebab bersama tersedia dan wajar.",
+      "B": "Menuduh data keliru tanpa alasan, padahal polanya konsisten setiap tahun.",
+      "C": "Membalik arah yang masuk akal; penyakit tidak mendorong pembelian payung.",
+      "D": "Tidak ada mekanisme yang menghubungkan payung dengan penularan virus."
+    },
+    "tags": [
+      "sebab-bersama",
+      "korelasi"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a19",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Generalisasi",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah pabrik menguji 500 unit dari total 40.000 unit produksi bulan ini. Dari 500 unit itu, 3 unit cacat.\n\nSimpulan yang paling tepat adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Diperkirakan sekitar 240 unit dari seluruh produksi bulan ini cacat."
+      },
+      {
+        "id": "B",
+        "text": "Hanya 3 unit dari seluruh produksi bulan ini yang cacat."
+      },
+      {
+        "id": "C",
+        "text": "Tepat 240 unit dari seluruh produksi bulan ini cacat."
+      },
+      {
+        "id": "D",
+        "text": "Seluruh produksi bulan ini memiliki mutu yang buruk."
+      },
+      {
+        "id": "E",
+        "text": "Pengujian harus diulang karena jumlah sampel terlalu kecil."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Proporsi cacat pada sampel adalah $\\dfrac{3}{500} = 0{,}006$. Diterapkan pada 40.000 unit: $0{,}006 \\times 40.000 = 240$ unit. Karena berasal dari sampel, angka ini adalah perkiraan, bukan kepastian.",
+    "distractorRationale": {
+      "B": "Menganggap cacat hanya ada pada sampel yang diuji.",
+      "C": "Hitungannya benar tetapi kata *tepat* menyatakan kepastian yang tidak bisa diberikan sampel.",
+      "D": "Tingkat cacat 0,6% justru menunjukkan mutu yang cukup baik.",
+      "E": "Sampel 500 dari 40.000 sudah memadai untuk perkiraan semacam ini."
+    },
+    "tags": [
+      "proporsi",
+      "estimasi-populasi"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a20",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Pola bilangan & gambar",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan berikut: $100, 96, 88, 76, 60, \\ldots$\n\nBilangan berikutnya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$44$"
+      },
+      {
+        "id": "B",
+        "text": "$40$"
+      },
+      {
+        "id": "C",
+        "text": "$38$"
+      },
+      {
+        "id": "D",
+        "text": "$36$"
+      },
+      {
+        "id": "E",
+        "text": "$32$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Selisih antarsuku adalah $-4, -8, -12, -16$: besarnya bertambah $4$ setiap langkah. Selisih berikutnya adalah $-20$, sehingga suku berikutnya $60 - 20 = 40$.",
+    "distractorRationale": {
+      "A": "Mengulang selisih terakhir $16$ alih-alih menambahnya menjadi $20$.",
+      "C": "Memakai selisih $22$, yang tidak sesuai pola kelipatan empat.",
+      "D": "Memakai selisih $24$, yaitu melompati satu langkah pola.",
+      "E": "Memakai selisih $28$, dua langkah terlalu jauh."
+    },
+    "tags": [
+      "pola-bilangan",
+      "selisih-bertingkat"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a21",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Perbandingan kuantitas",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perbandingan jumlah siswa kelas A dan kelas B adalah $5 : 7$. Jika selisih jumlah siswa kedua kelas adalah $8$ orang, berapa jumlah siswa kelas B?",
+    "type": "mcq_single",
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Selisih perbandingan adalah $7 - 5 = 2$ bagian, dan itu setara dengan $8$ siswa, sehingga satu bagian bernilai $4$ siswa. Kelas B sebesar $7$ bagian, yaitu $7 \\times 4 = 28$ siswa. Kelas A berisi $20$ siswa, dan selisihnya memang $8$.",
+    "tags": [
+      "perbandingan",
+      "selisih"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "$12$"
+      },
+      {
+        "id": "B",
+        "text": "$20$"
+      },
+      {
+        "id": "C",
+        "text": "$28$"
+      },
+      {
+        "id": "D",
+        "text": "$24$"
+      },
+      {
+        "id": "E",
+        "text": "$48$"
+      }
+    ],
+    "distractorRationale": {
+      "A": "Menghitung $3$ bagian, bukan $7$ bagian milik kelas B.",
+      "B": "Jumlah siswa kelas A, bukan kelas B.",
+      "D": "Menghitung $6$ bagian karena salah membaca perbandingan.",
+      "E": "Jumlah siswa kedua kelas, bukan kelas B saja."
+    }
+  },
+  {
+    "id": "utbk-pu-a22",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Baca grafik & tabel",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "figure": {
+      "kind": "bar_chart",
+      "alt": "Diagram batang jumlah pengunjung perpustakaan daerah dari Senin sampai Jumat, tertinggi pada hari Rabu.",
+      "caption": "Jumlah pengunjung perpustakaan daerah (orang)",
+      "categories": [
+        "Senin",
+        "Selasa",
+        "Rabu",
+        "Kamis",
+        "Jumat"
+      ],
+      "series": [
+        {
+          "name": "Pengunjung",
+          "values": [
+            120,
+            145,
+            210,
+            175,
+            150
+          ]
+        }
+      ]
+    },
+    "stem": "Berdasarkan diagram, berapa persen kenaikan jumlah pengunjung dari Selasa ke Rabu?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$31\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$69\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$65\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$45\\%$"
+      },
+      {
+        "id": "E",
+        "text": "$145\\%$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kenaikannya $210 - 145 = 65$ orang. Persentase kenaikan dihitung terhadap nilai awal: $\\dfrac{65}{145} \\approx 0{,}448$, yaitu sekitar $45\\%$.",
+    "distractorRationale": {
+      "A": "Membagi kenaikan dengan nilai akhir $210$, bukan nilai awal.",
+      "B": "Menghitung $\\dfrac{145}{210}$, yaitu rasio yang sama sekali berbeda.",
+      "C": "Melaporkan selisih absolut $65$ sebagai persentase.",
+      "E": "Menyalin angka hari Selasa sebagai jawaban."
+    },
+    "tags": [
+      "persentase",
+      "baca-grafik"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a23",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Estimasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah bus berangkat pukul 07.15 dan tiba pukul 11.45, menempuh jarak $270$ km. Berapa kecepatan rata-rata bus tersebut dalam km/jam?",
+    "type": "mcq_single",
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Waktu tempuh dari 07.15 ke 11.45 adalah $4$ jam $30$ menit, yaitu $4{,}5$ jam. Kecepatan rata-rata adalah $\\dfrac{270}{4{,}5} = 60$ km/jam.",
+    "tags": [
+      "kecepatan",
+      "waktu-tempuh"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "$45$"
+      },
+      {
+        "id": "B",
+        "text": "$54$"
+      },
+      {
+        "id": "C",
+        "text": "$67{,}5$"
+      },
+      {
+        "id": "D",
+        "text": "$90$"
+      },
+      {
+        "id": "E",
+        "text": "$60$"
+      }
+    ],
+    "distractorRationale": {
+      "A": "Membagi $270$ dengan $6$, seolah waktu tempuhnya $6$ jam.",
+      "B": "Membagi $270$ dengan $5$, membulatkan $4{,}5$ jam menjadi $5$.",
+      "C": "Membagi $270$ dengan $4$, membuang $30$ menit.",
+      "D": "Membagi $270$ dengan $3$, salah menghitung selisih jam."
+    }
+  },
+  {
+    "id": "utbk-pu-a24",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Pola aritmetika",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Seorang pedagang menaikkan harga barang sebesar $25\\%$, lalu memberi diskon $20\\%$ dari harga baru. Bagaimana harga akhir dibandingkan harga semula?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sama dengan harga semula"
+      },
+      {
+        "id": "B",
+        "text": "Lebih tinggi $5\\%$"
+      },
+      {
+        "id": "C",
+        "text": "Lebih rendah $5\\%$"
+      },
+      {
+        "id": "D",
+        "text": "Lebih tinggi $10\\%$"
+      },
+      {
+        "id": "E",
+        "text": "Lebih rendah $10\\%$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Misalkan harga awal $100$. Setelah naik $25\\%$ menjadi $125$. Diskon $20\\%$ dari $125$ adalah $25$, sehingga harga akhir $100$ — tepat sama dengan harga semula. Secara umum $1{,}25 \\times 0{,}80 = 1$.",
+    "distractorRationale": {
+      "B": "Mengurangkan persentasenya langsung, $25 - 20 = 5$, padahal keduanya dihitung dari basis berbeda.",
+      "C": "Sama-sama mengurangkan persentase, hanya dengan arah terbalik.",
+      "D": "Tidak sesuai dengan perhitungan mana pun.",
+      "E": "Menghitung diskon $20\\%$ dari harga awal, bukan dari harga baru."
+    },
+    "tags": [
+      "persentase",
+      "basis-berbeda"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a25",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Baca grafik & tabel",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "figure": {
+      "kind": "table",
+      "alt": "Tabel hasil panen padi empat desa dalam ton beserta luas sawah masing-masing dalam hektar.",
+      "caption": "Hasil panen dan luas sawah",
+      "headers": [
+        "Desa",
+        "Hasil panen (ton)",
+        "Luas sawah (ha)"
+      ],
+      "rows": [
+        [
+          "Sukamaju",
+          "480",
+          "80"
+        ],
+        [
+          "Tanjungsari",
+          "540",
+          "108"
+        ],
+        [
+          "Wanareja",
+          "390",
+          "60"
+        ],
+        [
+          "Cikoneng",
+          "620",
+          "124"
+        ]
+      ]
+    },
+    "stem": "Berdasarkan tabel, desa manakah yang memiliki produktivitas (ton per hektar) tertinggi?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sukamaju"
+      },
+      {
+        "id": "B",
+        "text": "Wanareja"
+      },
+      {
+        "id": "C",
+        "text": "Tanjungsari"
+      },
+      {
+        "id": "D",
+        "text": "Cikoneng"
+      },
+      {
+        "id": "E",
+        "text": "Sukamaju dan Cikoneng sama tinggi"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Produktivitas adalah hasil panen dibagi luas sawah. Sukamaju $\\dfrac{480}{80} = 6$; Tanjungsari $\\dfrac{540}{108} = 5$; Wanareja $\\dfrac{390}{60} = 6{,}5$; Cikoneng $\\dfrac{620}{124} = 5$. Yang tertinggi adalah Wanareja.",
+    "distractorRationale": {
+      "A": "Produktivitasnya $6$, lebih rendah daripada Wanareja.",
+      "C": "Produktivitasnya hanya $5$, terendah bersama Cikoneng.",
+      "D": "Memiliki hasil panen terbesar, tetapi juga sawah terluas; produktivitasnya justru $5$.",
+      "E": "Keduanya tidak sama: $6$ berbanding $5$."
+    },
+    "tags": [
+      "produktivitas",
+      "baca-tabel"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a26",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Perbandingan kuantitas",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah pekerjaan dapat diselesaikan oleh $12$ pekerja dalam $15$ hari. Jika pekerjaan itu harus selesai dalam $9$ hari, berapa pekerja tambahan yang diperlukan?",
+    "type": "mcq_single",
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Total beban kerja adalah $12 \\times 15 = 180$ hari-pekerja. Untuk selesai dalam $9$ hari diperlukan $\\dfrac{180}{9} = 20$ pekerja. Karena sudah ada $12$, tambahan yang diperlukan adalah $20 - 12 = 8$ pekerja.\n\nPerhatikan pertanyaannya meminta *tambahan*, bukan jumlah total.",
+    "tags": [
+      "perbandingan-berbalik-nilai",
+      "hari-pekerja"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "$20$"
+      },
+      {
+        "id": "B",
+        "text": "$3$"
+      },
+      {
+        "id": "C",
+        "text": "$8$"
+      },
+      {
+        "id": "D",
+        "text": "$5$"
+      },
+      {
+        "id": "E",
+        "text": "$12$"
+      }
+    ],
+    "distractorRationale": {
+      "A": "Jumlah pekerja yang dibutuhkan seluruhnya, bukan tambahannya.",
+      "B": "Menghitung selisih hari $15 - 9 - 3$, bukan selisih pekerja.",
+      "D": "Menghitung $\\dfrac{180}{36}$, membagi dengan angka yang keliru.",
+      "E": "Menggandakan jumlah pekerja awal tanpa dasar hitungan."
+    }
+  },
+  {
+    "id": "utbk-pu-a27",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Estimasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari $\\dfrac{198 \\times 202}{99}$ paling mendekati ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$202$"
+      },
+      {
+        "id": "B",
+        "text": "$300$"
+      },
+      {
+        "id": "C",
+        "text": "$396$"
+      },
+      {
+        "id": "D",
+        "text": "$404$"
+      },
+      {
+        "id": "E",
+        "text": "$800$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Perhatikan $198 = 2 \\times 99$, sehingga $\\dfrac{198}{99} = 2$. Maka seluruh nilainya adalah $2 \\times 202 = 404$ — hasil eksak, bukan sekadar hampiran.",
+    "distractorRationale": {
+      "A": "Membagi $198$ dengan $99$ tetapi lupa mengalikannya kembali dengan $202$.",
+      "B": "Tebakan kasar tanpa menyederhanakan pecahannya.",
+      "C": "Menghitung $2 \\times 198$, salah memilih faktor yang dikalikan.",
+      "E": "Melipatgandakan dua kali, seolah $\\dfrac{198}{99} = 4$."
+    },
+    "tags": [
+      "estimasi",
+      "penyederhanaan"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a28",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Pola aritmetika",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Rata-rata nilai $10$ siswa adalah $72$. Setelah nilai seorang siswa yang semula tercatat $58$ diperbaiki menjadi $88$, berapa rata-rata yang baru?",
+    "type": "mcq_single",
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Jumlah nilai semula adalah $10 \\times 72 = 720$. Perbaikan menambah $88 - 58 = 30$ poin, sehingga jumlahnya menjadi $750$. Rata-rata baru adalah $\\dfrac{750}{10} = 75$.",
+    "tags": [
+      "rata-rata",
+      "koreksi-data"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "$78$"
+      },
+      {
+        "id": "B",
+        "text": "$88$"
+      },
+      {
+        "id": "C",
+        "text": "$72$"
+      },
+      {
+        "id": "D",
+        "text": "$73$"
+      },
+      {
+        "id": "E",
+        "text": "$75$"
+      }
+    ],
+    "distractorRationale": {
+      "A": "Menambahkan $\\dfrac{58}{10}$ alih-alih selisihnya.",
+      "B": "Menyalin nilai yang diperbaiki sebagai rata-rata baru.",
+      "C": "Rata-rata lama; tidak memasukkan perbaikan nilai sama sekali.",
+      "D": "Menambahkan $\\dfrac{30}{10}$ tetapi salah menghitungnya sebagai $1$."
+    }
+  },
+  {
+    "id": "utbk-pu-a29",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Baca grafik & tabel",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "figure": {
+      "kind": "line_chart",
+      "alt": "Grafik garis suhu udara rata-rata bulanan sebuah kota selama enam bulan, menurun lalu naik kembali.",
+      "caption": "Suhu udara rata-rata bulanan (derajat Celsius)",
+      "categories": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Mei",
+        "Jun"
+      ],
+      "series": [
+        {
+          "name": "Suhu rata-rata",
+          "values": [
+            28,
+            27,
+            26,
+            24,
+            25,
+            27
+          ]
+        }
+      ]
+    },
+    "stem": "Berdasarkan grafik, pada bulan apa terjadi penurunan suhu terbesar dibandingkan bulan sebelumnya?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "April"
+      },
+      {
+        "id": "B",
+        "text": "Maret"
+      },
+      {
+        "id": "C",
+        "text": "Februari"
+      },
+      {
+        "id": "D",
+        "text": "Mei"
+      },
+      {
+        "id": "E",
+        "text": "Juni"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Perubahan tiap bulan: Februari $-1$, Maret $-1$, April $-2$, Mei $+1$, Juni $+2$. Penurunan terbesar terjadi pada April, yaitu $2$ derajat.",
+    "distractorRationale": {
+      "B": "Juga turun $1$ derajat, sama seperti Februari.",
+      "C": "Turun hanya $1$ derajat.",
+      "D": "Suhu justru naik pada bulan ini.",
+      "E": "Kenaikan terbesar, bukan penurunan."
+    },
+    "tags": [
+      "baca-grafik",
+      "perubahan"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-a30",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Perbandingan kuantitas",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Dalam sebuah wadah terdapat campuran air dan sirop dengan perbandingan $7 : 3$. Jika ditambahkan $50$ mL sirop, perbandingannya menjadi $7 : 5$. Berapa mL air dalam wadah tersebut?",
+    "type": "mcq_single",
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Jumlah air tidak berubah. Misalkan air $= 7k$ dan sirop mula-mula $= 3k$. Setelah penambahan, sirop menjadi $3k + 50$, dan perbandingan air : sirop $= 7 : 5$.\n\nKarena bagian air tetap $7k$, satu bagian pada perbandingan baru juga bernilai $k$, sehingga sirop baru $= 5k$. Maka $3k + 50 = 5k$, sehingga $2k = 50$ dan $k = 25$. Air $= 7 \\times 25 = 175$ mL.",
+    "tags": [
+      "perbandingan",
+      "campuran"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    },
+    "choices": [
+      {
+        "id": "A",
+        "text": "$250$"
+      },
+      {
+        "id": "B",
+        "text": "$175$"
+      },
+      {
+        "id": "C",
+        "text": "$75$"
+      },
+      {
+        "id": "D",
+        "text": "$125$"
+      },
+      {
+        "id": "E",
+        "text": "$210$"
+      }
+    ],
+    "distractorRationale": {
+      "A": "Jumlah seluruh campuran setelah sirop ditambahkan.",
+      "C": "Jumlah sirop setelah penambahan, bukan jumlah air.",
+      "D": "Menggunakan $k = 25$ tetapi mengalikannya dengan $5$, bukan $7$.",
+      "E": "Jumlah air ditambah sirop mula-mula, bukan air saja."
+    }
+  }
+]

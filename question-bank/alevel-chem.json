@@ -1,0 +1,2031 @@
+[
+  {
+    "id": "al-chm-a01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "How many electrons, protons and neutrons are present in one ion of $^{56}\\text{Fe}^{3+}$? (Proton number of Fe is 26.)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "23 electrons, 26 protons, 30 neutrons"
+      },
+      {
+        "id": "B",
+        "text": "26 electrons, 26 protons, 30 neutrons"
+      },
+      {
+        "id": "C",
+        "text": "23 electrons, 26 protons, 33 neutrons"
+      },
+      {
+        "id": "D",
+        "text": "29 electrons, 26 protons, 30 neutrons"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The proton number is fixed at 26 for iron. A $3+$ charge means three electrons have been lost, leaving $26 - 3 = 23$. Neutrons are the nucleon number minus the proton number: $56 - 26 = 30$.",
+    "distractorRationale": {
+      "B": "Gives the neutral atom's electron count, ignoring the $3+$ charge.",
+      "C": "Subtracts the charge from the nucleon number when finding neutrons.",
+      "D": "Adds three electrons instead of removing them, which would give a $3-$ ion."
+    },
+    "tags": [
+      "atomic-structure",
+      "ions"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which electronic configuration is that of a $\\text{Cu}^{+}$ ion?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^6\\,3d^{10}\\,4s^1$"
+      },
+      {
+        "id": "B",
+        "text": "$1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^6\\,3d^{10}$"
+      },
+      {
+        "id": "C",
+        "text": "$1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^6\\,3d^{9}\\,4s^1$"
+      },
+      {
+        "id": "D",
+        "text": "$1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^6\\,3d^{9}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Copper's atom is the anomalous $3d^{10}\\,4s^1$ rather than $3d^9\\,4s^2$. Forming $\\text{Cu}^{+}$ removes the $4s$ electron first, leaving the filled $3d^{10}$ subshell.",
+    "distractorRationale": {
+      "A": "This is the neutral copper atom, not the $1+$ ion.",
+      "C": "Removes a $3d$ electron instead of the $4s$ electron.",
+      "D": "Removes two electrons, which would give $\\text{Cu}^{2+}$ with the wrong starting configuration."
+    },
+    "tags": [
+      "electron-configuration",
+      "transition-metals"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What mass of oxygen is required for the complete combustion of $2.0\\ \\text{mol}$ of propane, $\\text{C}_3\\text{H}_8$? ($A_r$: O = 16.0)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$160\\ \\text{g}$"
+      },
+      {
+        "id": "B",
+        "text": "$220\\ \\text{g}$"
+      },
+      {
+        "id": "C",
+        "text": "$320\\ \\text{g}$"
+      },
+      {
+        "id": "D",
+        "text": "$480\\ \\text{g}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The balanced equation is $\\text{C}_3\\text{H}_8 + 5\\text{O}_2 \\rightarrow 3\\text{CO}_2 + 4\\text{H}_2\\text{O}$. So $2.0\\ \\text{mol}$ of propane needs $10.0\\ \\text{mol}$ of $\\text{O}_2$. With $M_r(\\text{O}_2) = 32.0$, the mass is $10.0 \\times 32.0 = 320\\ \\text{g}$.",
+    "distractorRationale": {
+      "A": "Uses $5\\ \\text{mol}$ of $\\text{O}_2$, forgetting to scale for $2.0\\ \\text{mol}$ of propane.",
+      "B": "Uses $A_r(\\text{O}) = 16.0$ as if oxygen were monatomic and mis-scales.",
+      "D": "Balances the equation with $\\text{O}_2 = 7.5$, a common slip when counting oxygen atoms."
+    },
+    "tags": [
+      "stoichiometry",
+      "combustion"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a04",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A $25.0\\ \\text{cm}^3$ sample of $\\text{NaOH}(aq)$ requires $18.0\\ \\text{cm}^3$ of $0.100\\ \\text{mol dm}^{-3}$ $\\text{H}_2\\text{SO}_4$ for complete neutralisation. What is the concentration of the $\\text{NaOH}(aq)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.0720\\ \\text{mol dm}^{-3}$"
+      },
+      {
+        "id": "B",
+        "text": "$0.288\\ \\text{mol dm}^{-3}$"
+      },
+      {
+        "id": "C",
+        "text": "$0.0360\\ \\text{mol dm}^{-3}$"
+      },
+      {
+        "id": "D",
+        "text": "$0.144\\ \\text{mol dm}^{-3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Moles of $\\text{H}_2\\text{SO}_4 = 0.0180 \\times 0.100 = 1.80 \\times 10^{-3}$. The equation $2\\text{NaOH} + \\text{H}_2\\text{SO}_4 \\rightarrow \\text{Na}_2\\text{SO}_4 + 2\\text{H}_2\\text{O}$ gives a $2:1$ ratio, so moles of $\\text{NaOH} = 3.60 \\times 10^{-3}$. Concentration $= \\dfrac{3.60 \\times 10^{-3}}{0.0250} = 0.144\\ \\text{mol dm}^{-3}$.",
+    "distractorRationale": {
+      "A": "Uses a $1:1$ ratio, ignoring that sulfuric acid is diprotic.",
+      "B": "Applies the factor of $2$ twice.",
+      "C": "Divides by $2$ instead of multiplying, reversing the stoichiometric ratio."
+    },
+    "tags": [
+      "titration",
+      "diprotic-acid"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a05",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which statement about the standard enthalpy change of formation is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It is the enthalpy change when one mole of a compound is formed from its elements in their standard states."
+      },
+      {
+        "id": "B",
+        "text": "It is always negative for stable compounds."
+      },
+      {
+        "id": "C",
+        "text": "It is the enthalpy change when one mole of a compound is completely burned in oxygen."
+      },
+      {
+        "id": "D",
+        "text": "It is zero for all compounds at $298\\ \\text{K}$."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The definition specifies one mole of the compound, formed from its constituent elements, with every species in its standard state under standard conditions. Choice **A** states exactly this.",
+    "distractorRationale": {
+      "B": "Endothermic compounds such as nitrogen monoxide have positive values of $\\Delta H_f^{\\ominus}$.",
+      "C": "This defines the enthalpy change of combustion, not of formation.",
+      "D": "It is zero for elements in their standard states, not for compounds."
+    },
+    "tags": [
+      "enthalpy-definitions",
+      "thermochemistry"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a06",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Given $\\Delta H_f^{\\ominus}$ values of $-394\\ \\text{kJ mol}^{-1}$ for $\\text{CO}_2(g)$, $-286\\ \\text{kJ mol}^{-1}$ for $\\text{H}_2\\text{O}(l)$ and $-278\\ \\text{kJ mol}^{-1}$ for $\\text{C}_2\\text{H}_5\\text{OH}(l)$, what is the standard enthalpy change of combustion of ethanol?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-402\\ \\text{kJ mol}^{-1}$"
+      },
+      {
+        "id": "B",
+        "text": "$-1367\\ \\text{kJ mol}^{-1}$"
+      },
+      {
+        "id": "C",
+        "text": "$+1367\\ \\text{kJ mol}^{-1}$"
+      },
+      {
+        "id": "D",
+        "text": "$-1923\\ \\text{kJ mol}^{-1}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Combustion gives $\\text{C}_2\\text{H}_5\\text{OH} + 3\\text{O}_2 \\rightarrow 2\\text{CO}_2 + 3\\text{H}_2\\text{O}$. Using $\\Delta H = \\sum \\Delta H_f(\\text{products}) - \\sum \\Delta H_f(\\text{reactants})$:\n\n$[2(-394) + 3(-286)] - [-278] = [-788 - 858] + 278 = -1646 + 278 = -1368$, that is $-1367\\ \\text{kJ mol}^{-1}$ to the precision of the data.",
+    "distractorRationale": {
+      "A": "Uses one mole each of $\\text{CO}_2$ and $\\text{H}_2\\text{O}$ instead of the balanced amounts.",
+      "C": "Correct magnitude but the wrong sign; combustion is exothermic.",
+      "D": "Adds the ethanol value instead of subtracting it."
+    },
+    "tags": [
+      "hess-cycle",
+      "enthalpy-of-combustion"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a07",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "For the reaction $\\text{N}_2(g) + 3\\text{H}_2(g) \\rightleftharpoons 2\\text{NH}_3(g)$, $\\Delta H$ is negative. Which change increases the equilibrium yield of ammonia?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Increasing the temperature"
+      },
+      {
+        "id": "B",
+        "text": "Adding a catalyst"
+      },
+      {
+        "id": "C",
+        "text": "Increasing the pressure"
+      },
+      {
+        "id": "D",
+        "text": "Removing nitrogen from the mixture"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "There are four moles of gas on the left and two on the right. Raising the pressure shifts the position of equilibrium towards the side with fewer gas moles, which is the ammonia side.",
+    "distractorRationale": {
+      "A": "The forward reaction is exothermic, so higher temperature shifts equilibrium back towards the reactants.",
+      "B": "A catalyst speeds up both directions equally and leaves the equilibrium position unchanged.",
+      "D": "Removing a reactant shifts equilibrium to the left, lowering the yield."
+    },
+    "tags": [
+      "le-chatelier",
+      "haber-process"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a08",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A weak acid $\\text{HA}$ has $K_a = 1.0 \\times 10^{-5}\\ \\text{mol dm}^{-3}$. What is the pH of a $0.10\\ \\text{mol dm}^{-3}$ solution of $\\text{HA}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$1.0$"
+      },
+      {
+        "id": "B",
+        "text": "$5.0$"
+      },
+      {
+        "id": "C",
+        "text": "$6.0$"
+      },
+      {
+        "id": "D",
+        "text": "$3.0$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "For a weak acid, $[\\text{H}^{+}] = \\sqrt{K_a \\times c} = \\sqrt{1.0 \\times 10^{-5} \\times 0.10} = \\sqrt{1.0 \\times 10^{-6}} = 1.0 \\times 10^{-3}\\ \\text{mol dm}^{-3}$. Hence $\\text{pH} = 3.0$.",
+    "distractorRationale": {
+      "A": "Treats $\\text{HA}$ as a strong acid fully dissociated at $0.10\\ \\text{mol dm}^{-3}$.",
+      "B": "Reports $\\text{p}K_a$ rather than the pH of this solution.",
+      "C": "Uses $K_a \\times c$ directly as $[\\text{H}^{+}]$ without taking the square root."
+    },
+    "tags": [
+      "weak-acid",
+      "ph-calculation"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a09",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Kinetics",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which statement correctly describes the effect of a catalyst on a reaction?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It provides an alternative route with a lower activation energy."
+      },
+      {
+        "id": "B",
+        "text": "It lowers the activation energy of the forward reaction only."
+      },
+      {
+        "id": "C",
+        "text": "It increases the average kinetic energy of the particles."
+      },
+      {
+        "id": "D",
+        "text": "It makes the reaction more exothermic."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "A catalyst does not lower the activation energy of the original pathway; it supplies a different mechanism whose activation energy is lower, so a larger proportion of collisions is successful.",
+    "distractorRationale": {
+      "B": "The alternative route serves both directions, so the reverse reaction is accelerated equally.",
+      "C": "Average kinetic energy depends on temperature alone; the catalyst does not change it.",
+      "D": "$\\Delta H$ depends only on the initial and final states and is unaffected by the catalyst."
+    },
+    "tags": [
+      "catalysis",
+      "activation-energy"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a10",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Kinetics",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "figure": {
+      "kind": "table",
+      "alt": "Table of three kinetics experiments giving initial concentrations of two reactants and the corresponding initial rates.",
+      "caption": "Initial rate data for the reaction of X with Y",
+      "headers": [
+        "Experiment",
+        "[X] / mol dm⁻³",
+        "[Y] / mol dm⁻³",
+        "Initial rate / mol dm⁻³ s⁻¹"
+      ],
+      "rows": [
+        [
+          "1",
+          "0.10",
+          "0.10",
+          "2.0 × 10⁻⁴"
+        ],
+        [
+          "2",
+          "0.20",
+          "0.10",
+          "8.0 × 10⁻⁴"
+        ],
+        [
+          "3",
+          "0.10",
+          "0.20",
+          "4.0 × 10⁻⁴"
+        ]
+      ]
+    },
+    "stem": "What is the overall order of the reaction, based on the data in the table?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Second order"
+      },
+      {
+        "id": "B",
+        "text": "Third order"
+      },
+      {
+        "id": "C",
+        "text": "First order"
+      },
+      {
+        "id": "D",
+        "text": "Zero order"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Comparing experiments 1 and 2, $[\\text{X}]$ doubles while $[\\text{Y}]$ is held constant and the rate quadruples, so the reaction is second order in X. Comparing 1 and 3, $[\\text{Y}]$ doubles and the rate doubles, so it is first order in Y. The overall order is $2 + 1 = 3$.",
+    "distractorRationale": {
+      "A": "Uses only the order with respect to X.",
+      "C": "Uses only the order with respect to Y.",
+      "D": "The rate clearly changes with concentration, so no reactant is zero order."
+    },
+    "tags": [
+      "rate-equation",
+      "initial-rates"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a11",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which sequence shows the first ionisation energies of Na, Mg and Al in increasing order?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Na < Mg < Al"
+      },
+      {
+        "id": "B",
+        "text": "Al < Mg < Na"
+      },
+      {
+        "id": "C",
+        "text": "Na < Al < Mg"
+      },
+      {
+        "id": "D",
+        "text": "Mg < Na < Al"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Ionisation energy generally rises across Period 3, but aluminium breaks the trend: its outermost electron is in a $3p$ orbital, which is higher in energy and better shielded than magnesium's $3s$ electron. So Al is lower than Mg, giving Na < Al < Mg.",
+    "distractorRationale": {
+      "A": "Follows the general trend but misses the $3s$-to-$3p$ dip at aluminium.",
+      "B": "Reverses the overall trend across the period.",
+      "D": "Places magnesium lowest, contradicting both the trend and the filled $3s^2$ configuration."
+    },
+    "tags": [
+      "ionisation-energy",
+      "periodicity"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a12",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What volume is occupied by $0.25\\ \\text{mol}$ of carbon dioxide gas at room temperature and pressure? (Molar gas volume at r.t.p. $= 24.0\\ \\text{dm}^3\\ \\text{mol}^{-1}$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$96\\ \\text{dm}^3$"
+      },
+      {
+        "id": "B",
+        "text": "$11.0\\ \\text{dm}^3$"
+      },
+      {
+        "id": "C",
+        "text": "$24.0\\ \\text{dm}^3$"
+      },
+      {
+        "id": "D",
+        "text": "$6.0\\ \\text{dm}^3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Volume $=$ moles $\\times$ molar gas volume $= 0.25 \\times 24.0 = 6.0\\ \\text{dm}^3$. The identity of the gas does not matter at r.t.p., since equal moles of any gas occupy equal volumes.",
+    "distractorRationale": {
+      "A": "Divides by $0.25$ instead of multiplying.",
+      "B": "Uses the molar mass of $\\text{CO}_2$ in place of the molar gas volume.",
+      "C": "Reports the molar gas volume itself, as if one mole were present."
+    },
+    "tags": [
+      "molar-gas-volume",
+      "rtp"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a13",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which mixture will act as a buffer solution?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{CH}_3\\text{COOH}$ and $\\text{CH}_3\\text{COONa}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{HCl}$ and $\\text{NaCl}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{NaOH}$ and $\\text{NaCl}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{HNO}_3$ and $\\text{KNO}_3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "A buffer needs a weak acid together with a salt of that acid, so that both added acid and added base can be absorbed. Ethanoic acid supplies the weak acid and sodium ethanoate supplies its conjugate base.",
+    "distractorRationale": {
+      "B": "Hydrochloric acid is strong and its chloride ion is too weak a base to mop up added acid.",
+      "C": "Contains a strong base and a neutral salt, with no conjugate acid–base pair.",
+      "D": "Nitric acid is strong, so the nitrate ion cannot function as an effective base."
+    },
+    "tags": [
+      "buffers",
+      "conjugate-pairs"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a14",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "When $50.0\\ \\text{cm}^3$ of $1.00\\ \\text{mol dm}^{-3}$ $\\text{HCl}$ is mixed with $50.0\\ \\text{cm}^3$ of $1.00\\ \\text{mol dm}^{-3}$ $\\text{NaOH}$, the temperature rises by $6.8\\ ^\\circ\\text{C}$. Taking the specific heat capacity as $4.18\\ \\text{J g}^{-1}\\ \\text{K}^{-1}$ and the density as $1.00\\ \\text{g cm}^{-3}$, what is the enthalpy change of neutralisation?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-28.4\\ \\text{kJ mol}^{-1}$"
+      },
+      {
+        "id": "B",
+        "text": "$-56.8\\ \\text{kJ mol}^{-1}$"
+      },
+      {
+        "id": "C",
+        "text": "$-2.84\\ \\text{kJ mol}^{-1}$"
+      },
+      {
+        "id": "D",
+        "text": "$+56.8\\ \\text{kJ mol}^{-1}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The total mass is $100\\ \\text{g}$, so $q = mc\\Delta T = 100 \\times 4.18 \\times 6.8 = 2842\\ \\text{J} = 2.84\\ \\text{kJ}$. Moles of water formed $= 0.0500 \\times 1.00 = 0.0500\\ \\text{mol}$. Therefore $\\Delta H = -\\dfrac{2.84}{0.0500} = -56.8\\ \\text{kJ mol}^{-1}$.",
+    "distractorRationale": {
+      "A": "Uses the combined $0.100\\ \\text{mol}$ of acid plus base rather than the moles of water formed.",
+      "C": "Reports the heat released without dividing by the number of moles.",
+      "D": "Correct magnitude but the wrong sign; a temperature rise means the process is exothermic."
+    },
+    "tags": [
+      "calorimetry",
+      "neutralisation"
+    ],
+    "estimatedTimeSec": 145,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-a15",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Kinetics",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A first-order reaction has a half-life of $12\\ \\text{minutes}$. What fraction of the original reactant remains after $36\\ \\text{minutes}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{4}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{8}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{16}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "For a first-order reaction the half-life is constant. In $36$ minutes there are $\\dfrac{36}{12} = 3$ half-lives, so the fraction remaining is $\\left(\\dfrac{1}{2}\\right)^3 = \\dfrac{1}{8}$.",
+    "distractorRationale": {
+      "A": "Divides linearly by the number of half-lives instead of halving repeatedly.",
+      "B": "Counts only two half-lives.",
+      "D": "Counts four half-lives, which would require $48$ minutes."
+    },
+    "tags": [
+      "half-life",
+      "first-order"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-b01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which oxide of a Period 3 element dissolves in water to give a solution with a pH below 3?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{MgO}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{Al}_2\\text{O}_3$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{Na}_2\\text{O}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{SO}_3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Oxides become more acidic across Period 3. Sulfur trioxide is a simple covalent acidic oxide that reacts with water to form sulfuric acid, a strong acid, giving a strongly acidic solution.",
+    "distractorRationale": {
+      "A": "Magnesium oxide is basic and gives a weakly alkaline solution.",
+      "B": "Aluminium oxide is amphoteric and essentially insoluble in water.",
+      "C": "Sodium oxide is strongly basic, giving sodium hydroxide solution."
+    },
+    "tags": [
+      "period-3-oxides",
+      "acid-base-character"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-b02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 2",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Going down Group 2 from magnesium to barium, which pair of trends is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Solubility of the hydroxides increases; solubility of the sulfates decreases."
+      },
+      {
+        "id": "B",
+        "text": "Solubility of the hydroxides decreases; solubility of the sulfates increases."
+      },
+      {
+        "id": "C",
+        "text": "Both hydroxides and sulfates become more soluble."
+      },
+      {
+        "id": "D",
+        "text": "Both hydroxides and sulfates become less soluble."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The two trends run in opposite directions. Group 2 hydroxides become more soluble down the group, which is why barium hydroxide gives a distinctly alkaline solution. Sulfates become less soluble, which is why barium sulfate is the white precipitate used to test for sulfate ions.",
+    "distractorRationale": {
+      "B": "Reverses both trends.",
+      "C": "Correct for the hydroxides but wrong for the sulfates.",
+      "D": "Correct for the sulfates but wrong for the hydroxides."
+    },
+    "tags": [
+      "group-2",
+      "solubility-trends"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-b03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 17",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Chlorine water is added to aqueous potassium bromide. What is observed, and why?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The solution turns orange, because bromine is a stronger oxidising agent than chlorine."
+      },
+      {
+        "id": "B",
+        "text": "The solution turns orange, because chlorine is a stronger oxidising agent than bromine."
+      },
+      {
+        "id": "C",
+        "text": "A white precipitate forms, because silver bromide is insoluble."
+      },
+      {
+        "id": "D",
+        "text": "No change occurs, because both are halogens."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Oxidising power decreases down Group 17, so chlorine displaces bromide: $\\text{Cl}_2 + 2\\text{Br}^{-} \\rightarrow 2\\text{Cl}^{-} + \\text{Br}_2$. The bromine released colours the solution orange.",
+    "distractorRationale": {
+      "A": "The observation is right but the reason inverts the Group 17 trend.",
+      "C": "No silver ions are present, so no silver halide can form.",
+      "D": "Displacement does occur, because the two halogens differ in oxidising strength."
+    },
+    "tags": [
+      "halogen-displacement",
+      "oxidising-power"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-b04",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Nitrogen & sulfur",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Why is ammonia a weaker base than expected from the electronegativity of nitrogen alone, yet still able to accept a proton?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Ammonia has no lone pair, so it accepts protons through its hydrogen atoms."
+      },
+      {
+        "id": "B",
+        "text": "Ammonia is a Lewis acid rather than a Brønsted base."
+      },
+      {
+        "id": "C",
+        "text": "The lone pair on nitrogen is available for donation, but it is held relatively tightly by the small, electronegative nitrogen atom."
+      },
+      {
+        "id": "D",
+        "text": "The nitrogen atom in ammonia carries a full positive charge."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Basicity here means donating a lone pair to a proton. Nitrogen has one available lone pair, so ammonia is basic; but nitrogen is small and electronegative, so it holds that pair closely and donates it less readily than a larger, less electronegative donor would.",
+    "distractorRationale": {
+      "A": "Ammonia does have a lone pair, and protons are accepted at nitrogen rather than at hydrogen.",
+      "B": "Ammonia donates an electron pair, making it a Lewis base and a Brønsted base.",
+      "D": "Nitrogen in ammonia is partially negative, not fully positive."
+    },
+    "tags": [
+      "ammonia",
+      "basicity"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-b05",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which Period 3 element has the highest melting point, and what accounts for it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sodium, because its metallic bonding is strongest."
+      },
+      {
+        "id": "B",
+        "text": "Sulfur, because $\\text{S}_8$ molecules have many electrons."
+      },
+      {
+        "id": "C",
+        "text": "Aluminium, because it has three delocalised electrons per atom."
+      },
+      {
+        "id": "D",
+        "text": "Silicon, because it forms a giant covalent structure."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Silicon has a giant covalent lattice in which every atom is joined to four others by strong covalent bonds. Melting requires breaking those bonds throughout the structure, so its melting point far exceeds that of the metals or the simple molecular elements.",
+    "distractorRationale": {
+      "A": "Sodium has the weakest metallic bonding in Period 3, giving the lowest melting point of the three metals.",
+      "B": "$\\text{S}_8$ is simple molecular; only weak induced dipole forces must be overcome.",
+      "C": "Aluminium has the strongest metallic bonding in the period, but metallic bonds are weaker than a covalent network."
+    },
+    "tags": [
+      "period-3-structure",
+      "melting-points"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-b06",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 2",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which Group 2 carbonate requires the highest temperature to decompose?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{BaCO}_3$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{MgCO}_3$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{CaCO}_3$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{SrCO}_3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Thermal stability increases down Group 2. Larger cations have lower charge density and polarise the carbonate ion less, so the $\\text{C}\\text{–}\\text{O}$ bonds are weakened less. Barium has the largest cation here, so its carbonate is the most stable.",
+    "distractorRationale": {
+      "B": "Magnesium has the smallest cation and the highest charge density, so it decomposes most readily.",
+      "C": "More stable than magnesium carbonate but less than strontium or barium carbonate.",
+      "D": "Stable, but barium's larger cation makes its carbonate more stable still."
+    },
+    "tags": [
+      "thermal-stability",
+      "polarising-power"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-b07",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 17",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Aqueous silver nitrate is added to a halide solution, and the precipitate formed dissolves only in concentrated aqueous ammonia. Which halide was present?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Chloride"
+      },
+      {
+        "id": "B",
+        "text": "Bromide"
+      },
+      {
+        "id": "C",
+        "text": "Fluoride"
+      },
+      {
+        "id": "D",
+        "text": "Iodide"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Silver chloride dissolves in dilute ammonia; silver bromide needs concentrated ammonia; silver iodide is insoluble in ammonia of any concentration. Requiring concentrated ammonia therefore identifies bromide.",
+    "distractorRationale": {
+      "A": "Silver chloride would already have dissolved in dilute ammonia.",
+      "C": "Silver fluoride is soluble in water, so no precipitate would form at all.",
+      "D": "Silver iodide does not dissolve even in concentrated ammonia."
+    },
+    "tags": [
+      "halide-test",
+      "silver-halides"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-b08",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Nitrogen & sulfur",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the oxidation number of sulfur in the thiosulfate ion, $\\text{S}_2\\text{O}_3^{2-}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$+4$"
+      },
+      {
+        "id": "B",
+        "text": "$+6$"
+      },
+      {
+        "id": "C",
+        "text": "$+2$"
+      },
+      {
+        "id": "D",
+        "text": "$-2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Let the average oxidation number of sulfur be $x$. Oxygen contributes $-2$ each, so $2x + 3(-2) = -2$. This gives $2x = 4$ and $x = +2$.",
+    "distractorRationale": {
+      "A": "The value in $\\text{SO}_2$, obtained by treating the ion as containing a single sulfur atom.",
+      "B": "The value in sulfate, where sulfur is in its highest oxidation state.",
+      "D": "The value in sulfide, where sulfur has gained electrons rather than lost them."
+    },
+    "tags": [
+      "oxidation-number",
+      "thiosulfate"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-b09",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which chloride reacts with water to produce fumes of hydrogen chloride and a strongly acidic solution?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{NaCl}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{MgCl}_2$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{KCl}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{SiCl}_4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Silicon tetrachloride is simple covalent and hydrolyses vigorously: $\\text{SiCl}_4 + 2\\text{H}_2\\text{O} \\rightarrow \\text{SiO}_2 + 4\\text{HCl}$. The hydrogen chloride released fumes in moist air and makes the solution strongly acidic.",
+    "distractorRationale": {
+      "A": "Sodium chloride is ionic and simply dissolves to give a neutral solution.",
+      "B": "Magnesium chloride dissolves with only slight hydrolysis, giving a weakly acidic solution.",
+      "C": "Potassium chloride is ionic and dissolves to give a neutral solution."
+    },
+    "tags": [
+      "chloride-hydrolysis",
+      "period-3"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c01",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "How many structural isomers have the molecular formula $\\text{C}_4\\text{H}_{10}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2"
+      },
+      {
+        "id": "B",
+        "text": "5"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Only two skeletons are possible: the straight chain, butane, and the branched chain, 2-methylpropane. Any other arrangement drawn on paper is one of these two redrawn.",
+    "distractorRationale": {
+      "B": "Far more than the four-carbon skeleton permits.",
+      "C": "Corresponds to the number of isomers of $\\text{C}_5\\text{H}_{12}$ plus one, not $\\text{C}_4\\text{H}_{10}$.",
+      "D": "Counts a rotated drawing of one skeleton as a separate isomer."
+    },
+    "tags": [
+      "structural-isomerism",
+      "alkanes"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c02",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which compound exhibits *cis-trans* (geometrical) isomerism?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "But-1-ene"
+      },
+      {
+        "id": "B",
+        "text": "But-2-ene"
+      },
+      {
+        "id": "C",
+        "text": "Butane"
+      },
+      {
+        "id": "D",
+        "text": "2-methylpropene"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Geometrical isomerism requires restricted rotation about a double bond and two different groups on each of the doubly bonded carbons. In but-2-ene each of those carbons carries a methyl group and a hydrogen, so both conditions are met.",
+    "distractorRationale": {
+      "A": "The terminal carbon of the double bond carries two hydrogens, so swapping them changes nothing.",
+      "C": "Butane has no double bond, so rotation is free.",
+      "D": "One doubly bonded carbon carries two identical methyl groups."
+    },
+    "tags": [
+      "geometrical-isomerism",
+      "alkenes"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c03",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the mechanism of the reaction between ethene and bromine?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Electrophilic substitution"
+      },
+      {
+        "id": "B",
+        "text": "Nucleophilic substitution"
+      },
+      {
+        "id": "C",
+        "text": "Electrophilic addition"
+      },
+      {
+        "id": "D",
+        "text": "Free radical substitution"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The $\\pi$ electrons of the double bond polarise the approaching bromine molecule, which is then attacked as an electrophile. The double bond opens and both bromine atoms add across it, so the reaction is electrophilic addition.",
+    "distractorRationale": {
+      "A": "Electrophilic substitution is characteristic of arenes, which retain their aromatic ring.",
+      "B": "This applies to halogenoalkanes, where a halogen is displaced by a nucleophile.",
+      "D": "This is the mechanism for alkanes reacting with halogens in ultraviolet light."
+    },
+    "tags": [
+      "reaction-mechanisms",
+      "alkenes"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c04",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Halogenoalkanes",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which halogenoalkane undergoes hydrolysis most rapidly with aqueous silver nitrate?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1-bromobutane"
+      },
+      {
+        "id": "B",
+        "text": "1-fluorobutane"
+      },
+      {
+        "id": "C",
+        "text": "1-chlorobutane"
+      },
+      {
+        "id": "D",
+        "text": "1-iodobutane"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The rate is governed by the carbon–halogen bond enthalpy, which falls from C–F down to C–I. The weakest bond breaks most readily, so the iodo compound hydrolyses fastest and gives a yellow precipitate of silver iodide soonest.\n\nNote that this order is the opposite of the electronegativity trend, which would predict C–F to react fastest.",
+    "distractorRationale": {
+      "A": "Reacts at a moderate rate; the C–Br bond is stronger than C–I.",
+      "B": "Effectively unreactive under these conditions, as C–F is the strongest carbon–halogen bond.",
+      "C": "Slow, because the C–Cl bond is stronger still."
+    },
+    "tags": [
+      "hydrolysis-rates",
+      "bond-enthalpy"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c05",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Halogenoalkanes",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "1-bromopropane is heated with ethanolic potassium hydroxide. What is the organic product?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Propene"
+      },
+      {
+        "id": "B",
+        "text": "Propanoic acid"
+      },
+      {
+        "id": "C",
+        "text": "Propan-1-ol"
+      },
+      {
+        "id": "D",
+        "text": "Propanenitrile"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The solvent decides the pathway. In ethanolic conditions the hydroxide acts as a base, removing a hydrogen from the carbon next to the C–Br bond and causing elimination of hydrogen bromide to give propene.",
+    "distractorRationale": {
+      "B": "Requires oxidation of a primary alcohol, not reaction of a halogenoalkane with hydroxide.",
+      "C": "This is the substitution product, formed with *aqueous* potassium hydroxide.",
+      "D": "Requires ethanolic potassium cyanide, not hydroxide."
+    },
+    "tags": [
+      "elimination",
+      "reaction-conditions"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c06",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Alcohols",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Propan-2-ol is heated under reflux with acidified potassium dichromate(VI). What is the organic product?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Propene"
+      },
+      {
+        "id": "B",
+        "text": "Propanone"
+      },
+      {
+        "id": "C",
+        "text": "Propanoic acid"
+      },
+      {
+        "id": "D",
+        "text": "Propanal"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Propan-2-ol is a secondary alcohol, so oxidation gives a ketone, propanone. Ketones resist further oxidation because the carbonyl carbon carries no hydrogen atom, so refluxing does not take the reaction further.",
+    "distractorRationale": {
+      "A": "Dehydration to an alkene requires concentrated sulfuric acid, not an oxidising agent.",
+      "C": "A carboxylic acid requires a primary alcohol under reflux.",
+      "D": "An aldehyde would come from a primary alcohol, and would be distilled off rather than refluxed."
+    },
+    "tags": [
+      "oxidation",
+      "secondary-alcohols"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c07",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Alcohols",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Why does ethanol have a much higher boiling point than propane, despite the two having similar relative molecular masses?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Ethanol molecules are larger, giving greater induced dipole forces."
+      },
+      {
+        "id": "B",
+        "text": "Ethanol is ionic whereas propane is covalent."
+      },
+      {
+        "id": "C",
+        "text": "Ethanol molecules form hydrogen bonds with one another."
+      },
+      {
+        "id": "D",
+        "text": "Ethanol has stronger covalent bonds within its molecules."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Boiling breaks intermolecular forces, not covalent bonds. Ethanol's $\\text{O}\\text{–}\\text{H}$ group allows hydrogen bonding between molecules, which is far stronger than the induced dipole forces holding propane together.",
+    "distractorRationale": {
+      "A": "The two have similar sizes and relative molecular masses, so this cannot explain the large difference.",
+      "B": "Ethanol is a covalent molecular compound, not ionic.",
+      "D": "Covalent bonds inside the molecules are not broken when a liquid boils."
+    },
+    "tags": [
+      "hydrogen-bonding",
+      "boiling-points"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c08",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Carbonyls",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which reagent distinguishes propanal from propanone?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2,4-dinitrophenylhydrazine"
+      },
+      {
+        "id": "B",
+        "text": "Bromine water"
+      },
+      {
+        "id": "C",
+        "text": "Aqueous sodium hydroxide"
+      },
+      {
+        "id": "D",
+        "text": "Tollens' reagent"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Tollens' reagent oxidises aldehydes but not ketones, so propanal produces a silver mirror while propanone gives no change. That difference in outcome is what makes it a distinguishing test.",
+    "distractorRationale": {
+      "A": "Gives an orange precipitate with both, since both contain a carbonyl group.",
+      "B": "Neither compound decolourises bromine water under normal conditions.",
+      "C": "Produces no visible difference between the two."
+    },
+    "tags": [
+      "carbonyl-tests",
+      "tollens"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c09",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Carbonyls",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which compound gives a positive result with alkaline aqueous iodine (the tri-iodomethane test)?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Butan-2-ol"
+      },
+      {
+        "id": "B",
+        "text": "Butanal"
+      },
+      {
+        "id": "C",
+        "text": "Butan-1-ol"
+      },
+      {
+        "id": "D",
+        "text": "Butanoic acid"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The test responds to a $\\text{CH}_3\\text{CH(OH)}\\text{–}$ or $\\text{CH}_3\\text{CO}\\text{–}$ group. Butan-2-ol has a methyl group attached to the carbon bearing the hydroxyl group, so it gives the yellow precipitate of tri-iodomethane.",
+    "distractorRationale": {
+      "B": "The carbonyl carbon bears a hydrogen, not a methyl group; ethanal would react but butanal does not.",
+      "C": "The hydroxyl carbon is terminal and carries hydrogens rather than a methyl group.",
+      "D": "A carboxylic acid has no methyl group adjacent to a carbonyl or hydroxyl carbon in the required arrangement."
+    },
+    "tags": [
+      "iodoform-test",
+      "functional-group-tests"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c10",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Analytical techniques",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A compound of molecular formula $\\text{C}_3\\text{H}_6\\text{O}$ shows a strong infrared absorption near $1715\\ \\text{cm}^{-1}$ and no absorption in the range $3200$–$3600\\ \\text{cm}^{-1}$. Which compound is it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Propanoic acid"
+      },
+      {
+        "id": "B",
+        "text": "Propanone"
+      },
+      {
+        "id": "C",
+        "text": "Prop-2-en-1-ol"
+      },
+      {
+        "id": "D",
+        "text": "Propan-1-ol"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Absorption near $1715\\ \\text{cm}^{-1}$ indicates a $\\text{C=O}$ bond, and the absence of a band at $3200$–$3600\\ \\text{cm}^{-1}$ rules out $\\text{O}\\text{–}\\text{H}$. A $\\text{C}_3\\text{H}_6\\text{O}$ compound with a carbonyl but no hydroxyl group is propanone.",
+    "distractorRationale": {
+      "A": "Has the formula $\\text{C}_3\\text{H}_6\\text{O}_2$ and would show a broad acidic $\\text{O}\\text{–}\\text{H}$ band.",
+      "C": "Also contains an $\\text{O}\\text{–}\\text{H}$ group, which the spectrum excludes.",
+      "D": "Would show a broad $\\text{O}\\text{–}\\text{H}$ absorption and no carbonyl band."
+    },
+    "tags": [
+      "infrared-spectroscopy",
+      "structure-determination"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c11",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Analytical techniques",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A mass spectrum shows molecular ion peaks at $m/z = 78$ and $m/z = 80$ in a ratio close to $1:1$. Which element is present?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Chlorine"
+      },
+      {
+        "id": "B",
+        "text": "Iodine"
+      },
+      {
+        "id": "C",
+        "text": "Bromine"
+      },
+      {
+        "id": "D",
+        "text": "Fluorine"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bromine has two isotopes, $^{79}\\text{Br}$ and $^{81}\\text{Br}$, in almost equal abundance. That produces two molecular ion peaks two units apart with roughly equal heights, exactly as observed.",
+    "distractorRationale": {
+      "A": "Chlorine's isotopes give peaks two units apart in a $3:1$ ratio, not $1:1$.",
+      "B": "Iodine is monoisotopic, so it produces a single molecular ion peak.",
+      "D": "Fluorine is also monoisotopic and gives one peak."
+    },
+    "tags": [
+      "mass-spectrometry",
+      "isotope-patterns"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c12",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which product is formed in the greater amount when hydrogen bromide adds to propene?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2-bromopropane, because bromine always adds to the second carbon"
+      },
+      {
+        "id": "B",
+        "text": "1-bromopropane, because the primary carbocation intermediate is more stable"
+      },
+      {
+        "id": "C",
+        "text": "An equal mixture of both, because the double bond is symmetrical"
+      },
+      {
+        "id": "D",
+        "text": "2-bromopropane, because the secondary carbocation intermediate is more stable"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The proton adds first, and the pathway through the more stable carbocation dominates. Adding $\\text{H}^{+}$ to the terminal carbon gives a secondary carbocation, stabilised by the electron-releasing effect of two alkyl groups, so bromide attacks there and 2-bromopropane predominates.",
+    "distractorRationale": {
+      "A": "The conclusion is right but the reason is a rule of thumb rather than the actual cause.",
+      "B": "Primary carbocations are the least stable, so that route is the minor one.",
+      "C": "Propene's double bond is not symmetrical, since the two carbons carry different groups."
+    },
+    "tags": [
+      "markovnikov",
+      "carbocation-stability"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-c13",
+    "status": "approved",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Halogenoalkanes",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "2-bromo-2-methylpropane hydrolyses by an $\\text{S}_\\text{N}1$ mechanism. Which observation is consistent with this?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The rate depends on the concentration of the halogenoalkane but not on that of the hydroxide ion."
+      },
+      {
+        "id": "B",
+        "text": "The rate is independent of the concentration of the halogenoalkane."
+      },
+      {
+        "id": "C",
+        "text": "The rate depends on the concentrations of both the halogenoalkane and the hydroxide ion."
+      },
+      {
+        "id": "D",
+        "text": "The reaction proceeds with complete inversion of configuration."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "In an $\\text{S}_\\text{N}1$ mechanism the slow step is the unimolecular loss of the bromide ion to form a tertiary carbocation. Only the halogenoalkane appears in that step, so the rate equation contains its concentration alone.",
+    "distractorRationale": {
+      "B": "The halogenoalkane is the species that reacts in the rate-determining step, so it must appear in the rate equation.",
+      "C": "This second-order behaviour is the signature of $\\text{S}_\\text{N}2$, typical of primary halogenoalkanes.",
+      "D": "Inversion is characteristic of $\\text{S}_\\text{N}2$; a planar carbocation is attacked from both faces."
+    },
+    "tags": [
+      "sn1-sn2",
+      "rate-determining-step"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]
