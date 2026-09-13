@@ -11,7 +11,7 @@ import os, re, sys, time, json, sqlite3, subprocess, argparse, urllib.parse, url
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gemini_impor
 
-DB    = os.path.expanduser('~/Documents/PROJECT EXACT GROUP/Exact Worksheet/exact.db')
+DB    = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'exact.db')
 KELUAR= os.path.expanduser(os.environ.get('EXACT_KELUAR') or '~/Desktop')
 PORT  = 7790
 CIRI  = re.compile(r'(^|\n)\s*(?:Q|PG|Soal|Question)?\s*\d{1,3}\s*[.):]', re.I)
