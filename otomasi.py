@@ -257,6 +257,8 @@ JS_SETEL = r"""
   set('codeSekolah', o.sekolah);
   set('codeKelas', o.kelas);
   set('codeTanggal', o.tanggal);
+  set('bodyColumns', o.kolom);        // 1 kolom penuh / 2 kolom koran
+  set('pgOptionCols', o.kolom);
   centang('showAnswerKey', !!o.kunci);
   centang('showExplanation', !!o.pembahasan);
   centang('showMarks', true);
@@ -264,8 +266,27 @@ JS_SETEL = r"""
 })(%s)
 """
 
-def worksheet_pdf(naskah, tujuan, tunggu=4.0, kop=None):
-    """Suapkan naskah ke Exact Worksheet Maker, lalu cetak PDF langsung dari tabnya."""
+JS_JAWABAN = r"""
+(function(o){
+  const centang = (id, mau) => {
+    const e = document.getElementById(id);
+    if (e && e.checked !== mau) e.click();
+  };
+  centang('showAnswerKey', !!o.kunci);
+  centang('showExplanation', !!o.pembahasan);
+  const b = document.getElementById('btnRender');
+  if (b) b.click();
+  return 'OK';
+})(%s)
+"""
+
+def worksheet_pdf(naskah, tujuan, tunggu=4.0, kop=None, tujuan_kunci=None):
+    """Suapkan naskah ke Exact Worksheet Maker, lalu cetak PDF dari tabnya.
+
+    Bila `tujuan_kunci` diisi, lembar dirender DUA KALI dari naskah yang sama:
+    tanpa kunci/pembahasan untuk siswa, lalu dengan keduanya untuk guru. Meminta
+    Gemini dua kali akan menghasilkan soal yang BERBEDA — bukan itu yang dimau.
+    """
     wsmaker.pastikan_server()
     s = _sesi(wsmaker.ALAMAT, f'localhost:{wsmaker.PORT_WS}')
     try:
@@ -274,10 +295,23 @@ def worksheet_pdf(naskah, tujuan, tunggu=4.0, kop=None):
             time.sleep(0.6)
         if s.evaluasi(JS_ISI_WS % json.dumps(rapikan_naskah(naskah))) != 'OK':
             raise RuntimeError('Kotak naskah Exact Worksheet Maker tidak ditemukan')
+        # Panel kerja TIDAK perlu disembunyikan manual: aplikasi sudah punya
+        # aturan @media print (.no-print{display:none}), dan Page.printToPDF
+        # merender dengan media cetak. Menyetel display:none lewat JS justru
+        # merusak: tombol #btnRender ada di dalam bilah sisi, jadi perenderan
+        # berikutnya mati total dan PDF keluar kosong.
+        if tujuan_kunci:
+            # 1) lembar siswa: tanpa kunci & pembahasan
+            s.evaluasi(JS_JAWABAN % json.dumps({'kunci': False, 'pembahasan': False}))
+            time.sleep(tunggu)
+            s.pdf(tujuan)
+            # 2) lembar guru: dengan kunci & pembahasan
+            s.evaluasi(JS_JAWABAN % json.dumps(
+                {'kunci': True, 'pembahasan': bool((kop or {}).get('pembahasan', True))}))
+            time.sleep(tunggu)
+            s.pdf(tujuan_kunci)
+            return tujuan, tujuan_kunci
         time.sleep(tunggu)                       # beri waktu render + KaTeX + SVG
-        # sembunyikan panel kerja supaya yang tercetak hanya lembarnya
-        s.evaluasi("""document.querySelectorAll('.sidebar,.no-print')
-                       .forEach(e => e.style.display='none'); 'ok'""")
         return s.pdf(tujuan)
     finally:
         s.tutup()

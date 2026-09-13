@@ -23,3 +23,8 @@ ocr-mac/visionocr
 __pycache__/
 *.pyc
 .DS_Store
+
+# Hasil build menu bar
+menubar/dist/
+menubar/ExactWorksheetBar
+naskah/

@@ -121,6 +121,36 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/cepat':
+            # Dipanggil dari menu bar: ambil gambar papan klip, pakai setelan
+            # tersimpan, langsung jalankan. Tidak perlu membuka halaman.
+            import klip, setelan, buat, threading, uuid
+            d = klip.ambil_png()
+            if not d:
+                b = json.dumps({'galat': 'Papan klip tidak berisi gambar'}).encode()
+                self.send_response(400); self.send_header('Content-Type','application/json')
+                self.send_header('Content-Length',str(len(b))); self.end_headers()
+                self.wfile.write(b); return
+            st = setelan.muat()
+            jid = uuid.uuid4().hex[:12]
+            buat.TUGAS[jid] = {'langkah': ['Mulai dari papan klip…'], 'maju': 3, 'selesai': False}
+            kls = (st.get('kelas') or '').strip()
+            threading.Thread(target=buat.jalankan, kwargs=dict(
+                jid=jid, gambar=[('klip.png', d)], instruksi=st.get('instruksi',''),
+                jumlah=st.get('jumlah',''), mapel=st.get('mapel') or None,
+                kelas=int(kls) if kls.isdigit() else None, judul='',
+                api=os.environ.get('EXACT_API'), topik='', jenjang=st.get('jenjang',''),
+                n_set=st.get('n_set',''), sulit=st.get('sulit',''),
+                bahasa=st.get('bahasa') or 'Indonesia', lembaga=st.get('lembaga',''),
+                sekolah=st.get('sekolah',''), tanggal='',
+                kunci=st.get('kunci', True), pembahasan=st.get('pembahasan', True),
+                kolom=st.get('kolom','2'), dua_berkas=st.get('dua_berkas', False)),
+                daemon=True).start()
+            b = json.dumps({'jid': jid}).encode()
+            self.send_response(200); self.send_header('Content-Type','application/json')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
         if u.path == '/klip':
             import klip
             d = klip.ambil_png()
@@ -395,7 +425,8 @@ class H(BaseHTTPRequestHandler):
             bahasa=medan.get('bahasa', 'Indonesia'),
             lembaga=medan.get('lembaga', ''), sekolah=medan.get('sekolah', ''),
             tanggal=medan.get('tanggal', ''),
-            kunci='kunci' in medan, pembahasan='pembahasan' in medan), daemon=True)
+            kunci='kunci' in medan, pembahasan='pembahasan' in medan,
+            kolom=medan.get('kolom', '2'), dua_berkas='dua_berkas' in medan), daemon=True)
         t.start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')

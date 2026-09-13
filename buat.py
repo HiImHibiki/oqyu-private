@@ -75,7 +75,8 @@ def _db():
 
 def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
              topik='', jenjang='', n_set='', sulit='', bahasa='Indonesia',
-             lembaga='', sekolah='', tanggal='', kunci=True, pembahasan=True):
+             lembaga='', sekolah='', tanggal='', kunci=True, pembahasan=True,
+             kolom='2', dua_berkas=False):
     """Alur penuh: foto -> arsip -> Gemini -> Exact Worksheet Maker -> PDF."""
     import serupa, wsmaker, otomasi
     try:
@@ -158,17 +159,28 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
         kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
                    sekolah=sekolah, kelas=str(kelas or '') or (jenjang or ''),
                    tanggal=tanggal or time.strftime('%d%m'),
-                   kunci=kunci, pembahasan=pembahasan)
+                   kunci=kunci, pembahasan=pembahasan, kolom=str(kolom or '2'))
         os.makedirs(KELUAR, exist_ok=True)
-        nama = nama_berkas(kop, kunci, KELUAR)
+        nama = nama_berkas(kop, kunci and not dua_berkas, KELUAR)
         cap = time.strftime('%Y-%m-%d %H%M')
         os.makedirs(NASKAH, exist_ok=True)
         open(os.path.join(NASKAH, f'{nama} — {cap}.txt'), 'w', encoding='utf-8').write(jawab)
         _catat(jid, 'Merender lembar lalu mencetak PDF…', 88)
         tuju = os.path.join(KELUAR, f'{nama}.pdf')
-        otomasi.worksheet_pdf(jawab, tuju, kop=kop)
-        subprocess.run(['open', tuju], capture_output=True)
-        _catat(jid, 'Selesai — PDF terbuka', 100, selesai=True, pdf=tuju)
+        if dua_berkas:
+            # Dirender dua kali dari naskah yang SAMA: lembar siswa tanpa kunci,
+            # lembar guru dengan kunci. Meminta Gemini dua kali akan menghasilkan
+            # soal yang berbeda — itu bukan yang diinginkan.
+            tuju_kunci = os.path.join(KELUAR, f'{nama} - Soal+Jawaban.pdf')
+            otomasi.worksheet_pdf(jawab, tuju, kop=kop, tujuan_kunci=tuju_kunci)
+            subprocess.run(['open', tuju], capture_output=True)
+            _catat(jid, f'Selesai — 2 berkas: {os.path.basename(tuju)} '
+                        f'dan {os.path.basename(tuju_kunci)}',
+                   100, selesai=True, pdf=tuju)
+        else:
+            otomasi.worksheet_pdf(jawab, tuju, kop=kop)
+            subprocess.run(['open', tuju], capture_output=True)
+            _catat(jid, 'Selesai — PDF terbuka', 100, selesai=True, pdf=tuju)
     except Exception as e:
         _catat(jid, None, galat=f'{type(e).__name__}: {e}')
 
@@ -407,6 +419,11 @@ Mac ini menata, PDF terbuka sendiri.</div>
     <input name=tanggal placeholder="tgl" value="{tgl_ini}" size=7>
   </div>
   <div class=r>
+    <select name=kolom title="tata letak">
+      <option value=2{" selected" if st.get('kolom','2')!='1' else ""}>2 kolom (hemat)</option>
+      <option value=1{" selected" if st.get('kolom')=='1' else ""}>1 kolom penuh</option>
+    </select>
+    <label class=kcl><input type=checkbox name=dua_berkas{c('dua_berkas')}> dua berkas: soal &amp; soal+jawaban</label>
     <label class=kcl><input type=checkbox name=kunci{c('kunci')}> kunci jawaban</label>
     <label class=kcl><input type=checkbox name=pembahasan{c('pembahasan')}> pembahasan</label>
   </div>
