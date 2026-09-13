@@ -1,6 +1,7 @@
 package id.exact.worksheet;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.util.Log;
 import android.widget.*;
 
 import java.io.*;
@@ -114,14 +116,31 @@ public class Utama extends Activity {
             Toast.makeText(this, "Tidak ada berkas", Toast.LENGTH_LONG).show();
             finish(); return;
         }
-        Toast.makeText(this, "Mengirim " + daftar.size() + " berkas ke Mac…",
-                Toast.LENGTH_SHORT).show();
+        Log.i("ExactWS", "kirim " + daftar.size() + " berkas ke " + dasar());
         final ArrayList<Uri> kirim = daftar;
+        // Ditanyakan tiap kali, bukan dari setelan: satu foto bisa jadi bahan
+        // soal baru hari ini dan perlu kunci jawaban besok.
+        new AlertDialog.Builder(this)
+            .setTitle(kirim.size() + " berkas — mau dijadikan apa?")
+            .setPositiveButton("Kunci & pembahasan", (d, w) -> mulai(kirim, "jawab"))
+            .setNegativeButton("Soal baru", (d, w) -> mulai(kirim, "buat"))
+            .setNeutralButton("Batal", (d, w) -> finish())
+            .setOnCancelListener(d -> finish())
+            .show();
+    }
+
+    private void mulai(ArrayList<Uri> kirim, String mode) {
+        p.edit().putString("mode", mode).apply();
+        Toast.makeText(this, "Mengirim " + kirim.size() + " berkas ke Mac…",
+                Toast.LENGTH_SHORT).show();
         new Thread(() -> {
             int ok = 0; String galat = null;
             for (Uri u : kirim) {
                 try { unggah(u); ok++; }
-                catch (Exception e) { galat = e.getMessage(); }
+                catch (Exception e) {
+                    galat = e.getClass().getSimpleName() + ": " + e.getMessage();
+                    Log.e("ExactWS", "gagal unggah " + u, e);
+                }
             }
             final int n = ok; final String g = galat;
             new Handler(Looper.getMainLooper()).post(() -> {
@@ -137,26 +156,34 @@ public class Utama extends Activity {
         String nama = namaBerkas(u);
         String mode = p.getString("mode", "buat");
         String batas = "----exact" + System.currentTimeMillis();
+
+        // Badan disusun di memori dulu supaya Content-Length bisa dipastikan.
+        // Mode chunked membuat server membaca nol byte dan menolak dengan 400,
+        // karena BaseHTTPRequestHandler tidak menguraikan transfer chunked.
+        ByteArrayOutputStream badan = new ByteArrayOutputStream();
+        tulis(badan, "--" + batas + "\r\n");
+        tulis(badan, "Content-Disposition: form-data; name=\"mode\"\r\n\r\n" + mode + "\r\n");
+        tulis(badan, "--" + batas + "\r\n");
+        tulis(badan, "Content-Disposition: form-data; name=\"berkas\"; filename=\"" + nama + "\"\r\n");
+        tulis(badan, "Content-Type: application/octet-stream\r\n\r\n");
+        try (InputStream in = getContentResolver().openInputStream(u)) {
+            if (in == null) throw new IOException("berkas tidak bisa dibuka");
+            byte[] buf = new byte[64 * 1024]; int n;
+            while ((n = in.read(buf)) > 0) badan.write(buf, 0, n);
+        }
+        tulis(badan, "\r\n--" + batas + "--\r\n");
+        byte[] isi = badan.toByteArray();
+
         HttpURLConnection c = (HttpURLConnection) new URL(dasar() + "/terima").openConnection();
         c.setDoOutput(true);
         c.setRequestMethod("POST");
         c.setConnectTimeout(10000);
-        c.setReadTimeout(120000);
-        c.setChunkedStreamingMode(64 * 1024);
+        c.setReadTimeout(180000);
+        c.setFixedLengthStreamingMode(isi.length);
         c.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + batas);
-
-        OutputStream o = new BufferedOutputStream(c.getOutputStream());
-        tulis(o, "--" + batas + "\r\n");
-        tulis(o, "Content-Disposition: form-data; name=\"mode\"\r\n\r\n" + mode + "\r\n");
-        tulis(o, "--" + batas + "\r\n");
-        tulis(o, "Content-Disposition: form-data; name=\"berkas\"; filename=\"" + nama + "\"\r\n");
-        tulis(o, "Content-Type: application/octet-stream\r\n\r\n");
-        try (InputStream in = getContentResolver().openInputStream(u)) {
-            byte[] buf = new byte[64 * 1024]; int n;
-            while (in != null && (n = in.read(buf)) > 0) o.write(buf, 0, n);
+        try (OutputStream o = new BufferedOutputStream(c.getOutputStream())) {
+            o.write(isi);
         }
-        tulis(o, "\r\n--" + batas + "--\r\n");
-        o.flush();
         int kode = c.getResponseCode();
         if (kode != 200) throw new IOException("server menjawab " + kode);
         c.getInputStream().close();

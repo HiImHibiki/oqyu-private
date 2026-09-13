@@ -33,6 +33,9 @@ cat > "$PLIST" <<PL
   <key>WorkingDirectory</key><string>$AKAR</string>
   <key>EnvironmentVariables</key>
   <dict>
+    <!-- launchd memberi PATH minimal tanpa Homebrew. Tanpa baris ini, node,
+         pdftotext, dan pdftoppm tidak ketemu dan alurnya gagal di tengah. -->
+    <key>PATH</key><string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
     <key>EXACT_API</key><string>$API</string>
 $( [[ -n "$LAN" ]] && print -r -- "    <key>EXACT_LAN</key><string>$LAN</string>" )
   </dict>

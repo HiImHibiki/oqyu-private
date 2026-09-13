@@ -590,8 +590,23 @@ class H(BaseHTTPRequestHandler):
             # Dipanggil aplikasi Android: satu berkas masuk, langsung dikerjakan
             # memakai setelan tersimpan. Jawabannya ringkas supaya mudah dibaca
             # di layar ponsel.
+            # Terima juga kiriman tanpa Content-Length (transfer chunked):
+            # BaseHTTPRequestHandler tidak menguraikannya sendiri.
             panjang = int(self.headers.get('Content-Length') or 0)
-            mentah = self.rfile.read(panjang) if panjang else b''
+            if panjang:
+                mentah = self.rfile.read(panjang)
+            elif (self.headers.get('Transfer-Encoding') or '').lower() == 'chunked':
+                potong = []
+                while True:
+                    baris = self.rfile.readline().strip()
+                    try: n = int(baris.split(b';')[0], 16)
+                    except ValueError: break
+                    if n == 0:
+                        self.rfile.readline(); break
+                    potong.append(self.rfile.read(n)); self.rfile.read(2)
+                mentah = b''.join(potong)
+            else:
+                mentah = b''
             jenis = self.headers.get('Content-Type', '')
             nama, isi, medan = 'kiriman', b'', {}
             if jenis.startswith('multipart/form-data'):
