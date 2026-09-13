@@ -5,8 +5,9 @@ Nilai yang terakhir dipakai jadi bawaan berikutnya. Yang dikosongkan tetap
 kosong — tidak ada nilai yang dipaksakan.
 """
 import json, os
+import lokasi
 
-BERKAS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'setelan.json')
+BERKAS = lokasi.data('setelan.json')
 
 # Yang diingat. Sengaja TIDAK termasuk topik, judul, dan tanggal: ketiganya
 # berbeda tiap lembar, jadi mengingatnya justru merepotkan.

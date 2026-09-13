@@ -8,10 +8,11 @@ Dua sumber, tanpa salin-tempel:
 Soal yang terbaca masuk ke bank soal, lalu PDF lembar kerjanya dibuka sendiri.
 """
 import os, re, sys, time, json, sqlite3, subprocess, argparse, urllib.parse, urllib.request
+import lokasi
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gemini_impor
 
-DB    = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'exact.db')
+DB    = lokasi.data('exact.db')
 KELUAR= os.path.expanduser(os.environ.get('EXACT_KELUAR') or '~/Desktop')
 PORT  = 7790
 CIRI  = re.compile(r'(^|\n)\s*(?:Q|PG|Soal|Question)?\s*\d{1,3}\s*[.):]', re.I)

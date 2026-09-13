@@ -6,7 +6,19 @@
 #   ./pasang-autostart.sh --copot      -> mencopot
 set -e
 cd "$(dirname "$0")"
-AKAR="$(pwd)"
+SUMBER="$(pwd)"
+
+# Layanan menunjuk ke APLIKASI di /Applications, bukan ke folder sumber ini.
+# /Applications tidak dilindungi TCC, jadi launchd selalu boleh membacanya —
+# dan folder sumbernya jadi bebas dipindah tanpa mematikan layanan.
+APP="/Applications/Exact Worksheet.app"
+if [[ -d "$APP" ]]; then
+  AKAR="$APP/Contents/Resources"
+else
+  print -r -- "Aplikasi belum dibangun. Jalankan ./bangun-app.sh dulu."
+  print -r -- "(sementara memakai folder sumber)"
+  AKAR="$SUMBER"
+fi
 PLIST="$HOME/Library/LaunchAgents/com.exactcourse.worksheet.plist"
 
 PLIST_JAGA="$HOME/Library/LaunchAgents/com.exactcourse.worksheet.penjaga.plist"

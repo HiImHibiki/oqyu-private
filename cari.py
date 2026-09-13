@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Mesin pencari lokal untuk arsip EXACT COURSE."""
 import os, re, sqlite3, json, html, urllib.parse, mimetypes, subprocess
+import lokasi
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 
-DB   = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'exact.db')
+DB   = lokasi.data('exact.db')
 AKAR = os.path.expanduser('~/Documents/EXACT COURSE')
 PORT = 7790
 

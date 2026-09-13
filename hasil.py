@@ -5,9 +5,10 @@ Dirancang untuk dibuka dari tablet — kartu besar, sasaran sentuh lebar, dan
 gambar halaman dikecilkan lebih dulu supaya ringan di jaringan.
 """
 import os, re, html, json, subprocess, glob, time, urllib.parse
+import lokasi
 
 AKAR = os.path.dirname(os.path.abspath(__file__))
-THUMB = os.path.join(AKAR, 'thumb')
+THUMB = lokasi.data('thumb')
 
 class TakBerizin(PermissionError):
     """macOS menolak server membaca folder keluaran."""

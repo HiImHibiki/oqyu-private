@@ -8,9 +8,10 @@ Chrome dijalankan dengan profil khusus dan port kendali sendiri.
 Konsekuensi: profilnya terpisah, jadi login Google dilakukan sekali di jendela itu.
 """
 import base64, json, os, socket, struct, subprocess, time, urllib.request, uuid
+import lokasi
 
 KROM = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-PROFIL = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'chrome-otomatis')
+PROFIL = lokasi.data('chrome-otomatis')
 PORT = 9222
 
 class GagalCDP(Exception): pass

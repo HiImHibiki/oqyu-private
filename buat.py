@@ -9,14 +9,15 @@ Alurnya:
   lembar      -> PDF A4 siap cetak, masuk bank soal
 """
 import os, re, json, time, html, threading, subprocess, sqlite3, urllib.parse, urllib.request
+import lokasi
 
 AKAR = os.path.dirname(os.path.abspath(__file__))
-DB = os.path.join(AKAR, 'exact.db')
+DB = lokasi.data('exact.db')
 # PDF mendarat langsung di Desktop supaya gampang ditemukan.
 # Naskah mentahnya disimpan terpisah agar Desktop tidak penuh — berguna kalau
 # lembar perlu disunting ulang lewat Exact Worksheet Maker.
 KELUAR = os.path.expanduser(os.environ.get('EXACT_KELUAR') or '~/Desktop')
-NASKAH = os.path.join(AKAR, 'naskah')
+NASKAH = lokasi.data('naskah')
 PORT = 7790
 
 TUGAS = {}

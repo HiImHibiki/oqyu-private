@@ -4,7 +4,8 @@
 Dijalankan SETELAH jalankan_ocr.py selesai. Aman diulang.
 """
 import os, sqlite3, sys
-DB = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'exact.db')
+import lokasi
+DB = lokasi.data('exact.db')
 
 def main(kering=False):
     db = sqlite3.connect(DB, timeout=60)

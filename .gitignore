@@ -1,4 +1,6 @@
-# Basis data arsip — 960 MB, dibangun ulang dari PDF di mesin tujuan
+# Data pemakaian kini TIDAK lagi di folder ini — semuanya pindah ke
+# ~/Library/Application Support/Exact Worksheet (lihat lokasi.py). Pola di
+# bawah dipertahankan supaya salinan lama atau hasil uji tidak ikut terlacak.
 exact.db
 exact.db-shm
 exact.db-wal
@@ -31,3 +33,4 @@ naskah/
 cadangan-soal-*.sql.gz
 android/build/
 android/*.apk
+thumb/
