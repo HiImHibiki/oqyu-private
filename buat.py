@@ -21,6 +21,10 @@ PORT = 7790
 
 TUGAS = {}
 KUNCI = threading.Lock()
+# Hanya SATU lembar boleh dikerjakan pada satu waktu. Dua tugas bersamaan akan
+# berebut tab Gemini yang sama: yang satu mengganti isi kotak perintah milik
+# yang lain, dan keduanya gagal dengan gejala yang membingungkan.
+GILIRAN = threading.Lock()
 
 SINGKATAN = {'matematika': 'MATH', 'mathematics': 'MATH', 'math': 'MATH', 'mtk': 'MATH',
              'fisika': 'PHYS', 'physics': 'PHYS', 'kimia': 'CHEM', 'chemistry': 'CHEM',
@@ -85,6 +89,9 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
              kolom='2', dua_berkas=False, kerapatan='Normal', garis='1.5'):
     """Alur penuh: foto -> arsip -> Gemini -> Exact Worksheet Maker -> PDF."""
     import serupa, wsmaker, otomasi
+    if not GILIRAN.acquire(blocking=False):
+        _catat(jid, 'Menunggu lembar sebelumnya selesai…', 4)
+        GILIRAN.acquire()
     try:
         # 1. baca foto di Mac
         acuan = ''
@@ -220,6 +227,8 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
             _catat(jid, 'Selesai — PDF terbuka', 100, selesai=True, pdf=tuju)
     except Exception as e:
         _catat(jid, None, galat=f'{type(e).__name__}: {e}')
+    finally:
+        GILIRAN.release()
 
 GAYA = """
 :root{--bg:#fbfbfa;--kartu:#fff;--tepi:#e3e3e0;--teks:#1a1a19;--redup:#6b6b66;--aksen:#c4572a}

@@ -166,7 +166,38 @@ color:#fff;font-weight:700;font-size:15px;cursor:pointer}
 .kosong{color:var(--redup);padding:40px 0;text-align:center}
 </style>"""
 
+def bersihkan_cache(maks_berkas=400, maks_hari=30):
+    """Buang thumbnail yang PDF-nya sudah tidak ada, dan yang paling lama.
+
+    Tanpa ini cache tumbuh terus: tiap PDF meninggalkan satu gambar per halaman,
+    dan gambar lama tidak pernah terpakai lagi setelah berkasnya dihapus.
+    """
+    if not os.path.isdir(THUMB):
+        return 0
+    import time as _t
+    ada = {re.sub(r'\W+', '_', os.path.basename(p))[:60] for p in daftar_pdf(9999)}
+    batas = _t.time() - maks_hari * 86400
+    berkas = []
+    for f in os.listdir(THUMB):
+        jalur = os.path.join(THUMB, f)
+        if not os.path.isfile(jalur):
+            continue
+        kunci = f.rsplit('-', 3)[0]
+        if kunci not in ada or os.path.getmtime(jalur) < batas:
+            try: os.unlink(jalur); continue
+            except OSError: pass
+        berkas.append((os.path.getmtime(jalur), jalur))
+    dibuang = 0
+    if len(berkas) > maks_berkas:
+        berkas.sort()
+        for _, jalur in berkas[:len(berkas) - maks_berkas]:
+            try: os.unlink(jalur); dibuang += 1
+            except OSError: pass
+    return dibuang
+
 def halaman_daftar():
+    try: bersihkan_cache()
+    except Exception: pass
     berkas = daftar_pdf()
     kartu = ''
     for p in berkas:
