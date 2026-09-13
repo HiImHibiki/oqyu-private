@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Mesin pencari lokal untuk arsip EXACT COURSE."""
-import os, re, sqlite3, json, html, urllib.parse, mimetypes
+import os, re, sqlite3, json, html, urllib.parse, mimetypes, subprocess
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 
 DB   = os.path.expanduser('~/ExactSearch/exact.db')
@@ -121,6 +121,45 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/susun':
+            # Susun lembar dari soal yang SUDAH ada di bank — tanpa Gemini,
+            # tanpa AI. Inilah gunanya menyimpan soal hasil generate.
+            import naskah as _nsk, buat as _b, otomasi as _o, time as _t
+            ids = [int(x) for x in qs.get('id', []) if x.isdigit()][:120]
+            if not ids: return self.send_error(400, 'tidak ada soal dipilih')
+            judul = (qs.get('judul') or ['Latihan'])[0]
+            c = db(); tanda = ','.join('?' * len(ids))
+            rows = c.execute(f"""SELECT s.batang, s.opsi, s.kunci, s.bobot, s.jenis_soal,
+                                       s.n_opsi, d.mapel, d.kelas
+                                FROM soal s JOIN dokumen d ON d.id=s.dok_id
+                                WHERE s.id IN ({tanda})""", ids).fetchall()
+            c.close()
+            butir = []
+            for r in rows:
+                jenis = r['jenis_soal'] or ('PG' if (r['n_opsi'] or 0) >= 3 else 'E')
+                butir.append({'jenis': jenis, 'batang': r['batang'],
+                              'opsi': json.loads(r['opsi'] or '{}'),
+                              'kunci': r['kunci'] or '', 'bobot': r['bobot'], 'sub': []})
+            teks = _nsk.ke_naskah(butir, judul)
+            mapel = next((r['mapel'] for r in rows if r['mapel']), '') or ''
+            kelas = next((str(r['kelas']) for r in rows if r['kelas']), '') or ''
+            import setelan as _st
+            st = _st.muat()
+            kop = dict(lembaga=st.get('lembaga') or 'Exact Course',
+                       mapel=_b.kode_mapel(mapel), sekolah=st.get('sekolah',''),
+                       kelas=kelas, tanggal=_t.strftime('%d%m'),
+                       kunci=True, pembahasan=False, kolom=st.get('kolom','2'))
+            os.makedirs(_b.KELUAR, exist_ok=True)
+            nama = _b.nama_berkas(kop, True, _b.KELUAR)
+            tuju = os.path.join(_b.KELUAR, f'{nama}.pdf')
+            try:
+                _o.worksheet_pdf(teks, tuju, kop=kop)
+            except Exception as e:
+                return self.balas_teks(f'Gagal menyusun: {e}', 500)
+            subprocess.run(['open', tuju], capture_output=True)
+            return self.balas_teks(
+                f'{len(butir)} soal disusun tanpa AI → {os.path.basename(tuju)} (terbuka)')
+
         if u.path == '/cepat':
             # Dipanggil dari menu bar: ambil gambar papan klip, pakai setelan
             # tersimpan, langsung jalankan. Tidak perlu membuka halaman.
@@ -211,7 +250,7 @@ class H(BaseHTTPRequestHandler):
         if u.path == '/lembar.pdf':
             # Render lewat Chrome tanpa jendela. Alternatifnya dialog cetak peramban,
             # yang tetap tersedia sebagai tombol di halaman lembar.
-            import subprocess, tempfile, shutil
+            import tempfile, shutil
             krom = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
             if not os.path.isfile(krom):
                 return self.send_error(501, 'Chrome tidak ditemukan; pakai tombol Cetak di halaman lembar')
@@ -289,7 +328,7 @@ class H(BaseHTTPRequestHandler):
         badan = ''
         if q and mode == 'soal':
             rows, n = cari_soal(q, filt)
-            badan = ('<form action="/lembar" method=get id=fLembar>'
+            badan = ('<form action="/susun" method=get id=fLembar>'
                      f'<div class=jml>{n:,} soal cocok · menampilkan {len(rows)}</div>')
             if not rows: badan += '<div class=kosong>tidak ada soal cocok</div>'
             for r in rows:
@@ -311,7 +350,7 @@ class H(BaseHTTPRequestHandler):
                       '<input name=judul placeholder="judul lembar kerja" value="LEMBAR KERJA">'
                       '<select name=kolom><option value=2>2 kolom</option><option value=1>1 kolom</option></select>'
                       '<label><input type=checkbox name=kunci checked> sertakan rujukan sumber</label>'
-                      '<button type=submit>Buat Lembar Kerja</button>'
+                      '<button type=submit>Susun Lembar (tanpa AI)</button>'
                       '<span id=nPilih>0 dipilih</span></div></form>'
                       '<script>const f=document.getElementById("fLembar");'
                       'f.addEventListener("change",()=>{document.getElementById("nPilih").textContent='

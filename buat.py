@@ -165,6 +165,36 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
         cap = time.strftime('%Y-%m-%d %H%M')
         os.makedirs(NASKAH, exist_ok=True)
         open(os.path.join(NASKAH, f'{nama} — {cap}.txt'), 'w', encoding='utf-8').write(jawab)
+        # Simpan ke bank soal supaya bisa dicari dan disusun ulang TANPA AI.
+        try:
+            import naskah as _nsk
+            butir, meta = _nsk.urai(jawab)
+            if butir:
+                c = _db()
+                potongan = re.sub(r'\W+', '-', judul)[:40]
+                cur = c.execute("""INSERT INTO dokumen(rel,nama,folder,mapel,kelas,jenis,n_hal,n_hal_teks)
+                                   VALUES(?,?,'DIBUAT',?,?,'Worksheet Maker',1,1)""",
+                                (f'DIBUAT/{int(time.time())}-{potongan}',
+                                 meta.get('judul') or judul, mapel or None, kelas or None))
+                dok = cur.lastrowid; ids = []
+                for i, b in enumerate(butir, 1):
+                    cc = c.execute("""INSERT INTO soal(dok_id,no_hal,no_soal,batang,opsi,n_opsi,
+                                        sidik,mutu,dup,kunci,bobot,jenis_soal,pembahasan)
+                                      VALUES(?,1,?,?,?,?,NULL,?,0,?,?,?,?)""",
+                                   (dok, b['no'], b['batang'],
+                                    json.dumps(b['opsi'], ensure_ascii=False), len(b['opsi']),
+                                    2 if len(b['opsi']) >= 3 else 1,
+                                    b.get('kunci') or None, b.get('bobot'),
+                                    b.get('jenis'), b.get('pembahasan') or None))
+                    ids.append(cc.lastrowid)
+                c.executemany("INSERT INTO soal_fts(batang,opsi,soal_id) SELECT batang,opsi,id FROM soal WHERE id=?",
+                              [(i,) for i in ids])
+                c.commit(); c.close()
+                _catat(jid, f'{len(butir)} soal masuk bank soal '
+                            f'({sum(1 for b in butir if b.get("kunci"))} berkunci)', 86)
+        except Exception as e:
+            _catat(jid, f'Bank soal dilewati ({type(e).__name__})', 86)
+
         _catat(jid, 'Merender lembar lalu mencetak PDF…', 88)
         tuju = os.path.join(KELUAR, f'{nama}.pdf')
         if dua_berkas:
@@ -414,7 +444,7 @@ Mac ini menata, PDF terbuka sendiri.</div>
   <textarea name=instruksi rows=2 style="margin-top:11px"
     placeholder="Catatan tambahan untuk Gemini (opsional)">{n('instruksi')}</textarea>
   <div class=r>
-    <input name=lembaga placeholder="nama lembaga" value="{n('lembaga')}" style="flex:1;min-width:150px">
+    <input name=lembaga placeholder="nama lembaga" value="{n('lembaga') or 'Exact Course'}" style="flex:1;min-width:150px">
     <input name=sekolah placeholder="kode sekolah" value="{n('sekolah')}" size=10>
     <input name=tanggal placeholder="tgl" value="{tgl_ini}" size=7>
   </div>

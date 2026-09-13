@@ -79,6 +79,16 @@ JS_BACA = r"""
 })()
 """
 
+PAGAR = re.compile(r'^\s*```[a-zA-Z]*\s*\n?|\n?\s*```\s*$')
+
+def buang_pagar(teks):
+    """Buang pagar blok kode. Jawaban diminta dibungkus ``` agar LaTeX-nya utuh,
+    tapi pagarnya sendiri jangan ikut masuk naskah."""
+    t = (teks or '').strip()
+    t = re.sub(r'^```[a-zA-Z]*\s*\n', '', t)
+    t = re.sub(r'\n```\s*$', '', t)
+    return t.replace('```text', '').replace('```', '').strip()
+
 def normalkan_rumus(teks):
     """Samakan pembatas rumus ke $...$ seperti yang diharapkan Worksheet Maker.
 
@@ -97,7 +107,7 @@ def _periksa(teks):
         raise RuntimeError('Gemini menolak permintaan: ' + t[:120])
     if len(t) < 200:
         raise RuntimeError(f'Jawaban Gemini terlalu pendek ({len(t)} karakter): ' + t[:120])
-    return normalkan_rumus(t)
+    return normalkan_rumus(buang_pagar(t))
 
 def _kirim(s, perintah):
     """Isi kotak lalu tekan tombol kirim.
