@@ -42,6 +42,7 @@ def cari_soal(q, filt, limit=50):
         if filt.get(k): w.append(f'd.{k}=?'); p.append(filt[k])
     if filt.get('bentuk') == 'Pilihan ganda': w.append('s.mutu=2')
     elif filt.get('bentuk') == 'Uraian': w.append('s.mutu=1')
+    if filt.get('folder'): w.append('d.folder=?'); p.append(filt['folder'])
     klausa = ' AND ' + ' AND '.join(w)
     c = db()
     n = c.execute(f"""SELECT COUNT(*) FROM soal_fts f JOIN soal s ON s.id=f.soal_id
@@ -324,6 +325,8 @@ class H(BaseHTTPRequestHandler):
         filt = {k:(qs.get(k) or [''])[0] for k in ('folder','jenjang','mapel','jenis','kelas','sekolah','bentuk')}
         c = db()
         nd, nh = c.execute("SELECT COUNT(*), SUM(n_hal_teks) FROM dokumen WHERE n_hal_teks>0 AND dup_dari IS NULL").fetchone()
+        n_dibuat = c.execute("""SELECT COUNT(*) FROM soal s JOIN dokumen d ON d.id=s.dok_id
+                                WHERE d.folder='DIBUAT' AND s.dup=0""").fetchone()[0]
         c.close()
         fil = ''
         for k, lbl in (('mapel','semua mapel'),('jenjang','semua jenjang'),('kelas','semua kelas'),
@@ -335,8 +338,8 @@ class H(BaseHTTPRequestHandler):
         sel = lambda v: ' class=aktif' if mode == v else ''
         tab = (f'<div class=tab><a href="?mode=halaman&q={urllib.parse.quote(q)}"{sel("halaman")}>Halaman</a>'
                f'<a href="?mode=soal&q={urllib.parse.quote(q)}"{sel("soal")}>Soal satuan ({ns:,})</a>'
-               f'<a href="/buat" style="margin-left:auto">Worksheet Maker</a>'
-               f'<a href="/serupa">Foto &rarr; Serupa</a>'
+               f'<a href="?mode=soal&folder=DIBUAT&q=a">Buatan sendiri ({n_dibuat:,})</a>'
+               f'<a href="/buat" style="margin-left:auto">&larr; Buat dengan AI</a>'
                f'<a href="/impor">Impor Gemini</a></div>')
         fil = f'<input type=hidden name=mode value="{html.escape(mode)}">' + fil
         if mode == 'soal':

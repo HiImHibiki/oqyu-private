@@ -234,6 +234,10 @@ color:var(--redup);font-size:13px;cursor:pointer}
 .j.aktif{border-color:var(--aksen);color:var(--aksen)}
 .j:focus{outline:2px solid var(--aksen);outline-offset:2px}
 .kcl{font-size:11.5px;opacity:.7;margin-top:4px}
+.nav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.nav a,.nav span{padding:7px 13px;border:1px solid var(--tepi);border-radius:8px;
+font-size:12.5px;text-decoration:none;color:var(--redup);background:var(--kartu)}
+.nav .aktif{background:var(--aksen);color:#fff;border-color:var(--aksen);font-weight:600}
 .gal{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
 .gal figure{position:relative;margin:0;width:92px}
 .gal img,.gal .pdfkartu{width:92px;height:70px;border-radius:7px;
@@ -248,6 +252,10 @@ border-radius:50%;background:#c0392b;color:#fff;font-size:13px;line-height:19px;
 border:2px solid var(--kartu);cursor:pointer}
 .j:focus{outline:2px solid var(--aksen);outline-offset:2px}
 .kcl{font-size:11.5px;opacity:.7;margin-top:4px}
+.nav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.nav a,.nav span{padding:7px 13px;border:1px solid var(--tepi);border-radius:8px;
+font-size:12.5px;text-decoration:none;color:var(--redup);background:var(--kartu)}
+.nav .aktif{background:var(--aksen);color:#fff;border-color:var(--aksen);font-weight:600}
 .gal{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
 .gal figure{position:relative;margin:0;width:92px}
 .gal img,.gal .pdfkartu{width:92px;height:70px;border-radius:7px;
@@ -409,6 +417,12 @@ def halaman(izin_chrome=True, setel=None):
     st = setel or _s.muat()
     n = lambda k: html.escape(st.get(k, '') or '')
     tgl_ini = time.strftime('%d%m')
+    try:
+        import sqlite3 as _sq
+        _c = _sq.connect(DB); n_bank = _c.execute(
+            'SELECT COUNT(*) FROM soal WHERE dup=0').fetchone()[0]; _c.close()
+    except Exception:
+        n_bank = 0
     c = lambda k: ' checked' if st.get(k) else ''
     peringatan = ''
     return f"""<!doctype html><meta charset=utf-8><title>Exact Worksheet Maker</title>
@@ -417,6 +431,11 @@ def halaman(izin_chrome=True, setel=None):
 <h1>Exact Worksheet Maker</h1>
 <div class=s>Tempel tangkapan layar soal dan isi kriteria. Gemini mengarang,
 Mac ini menata, PDF terbuka sendiri.</div>
+<div class=nav>
+  <span class=aktif>Buat dengan AI</span>
+  <a href="/?mode=soal">Bank Soal — susun tanpa AI ({n_bank:,} soal)</a>
+  <a href="/?mode=halaman">Cari di arsip</a>
+</div>
 {peringatan}
 <form id=f>
 <div class=k>
