@@ -594,3 +594,29 @@ def worksheet_pdf(naskah, tujuan, tunggu=4.0, kop=None, tujuan_kunci=None):
         return s.pdf(tujuan)
     finally:
         s.tutup()
+
+
+PERINTAH_BACA_FOTO = """Salin SELURUH isi gambar/berkas terlampir menjadi teks, apa adanya.
+
+Aturan:
+- Jangan menjawab soalnya, jangan mengomentari, jangan meringkas. Salin saja.
+- Rumus ditulis di antara tanda dolar, misalnya $c^2 = a^2 + b^2$
+- Untuk setiap gambar, diagram, grafik, atau bangun yang ada di dalamnya, tulis
+  [GAMBAR: keterangan lengkap — sebutkan bentuknya, semua angka, satuan, dan
+  label yang tertera padanya] di posisi yang sama seperti aslinya
+- Bagian yang tidak terbaca jelas ditulis apa adanya lalu diberi tanda
+  "(tidak terbaca jelas)" — JANGAN mengarang isinya
+- Pertahankan urutan dan penomoran aslinya"""
+
+
+def baca_foto(jalur, mode='flash', batas=240):
+    """Salin isi foto jadi teks memakai mata Gemini.
+
+    Dipakai saat mesin penyusunnya Claude: membaca gambar dengan Claude jauh
+    lebih mahal daripada menyusun teks dengannya, sedangkan Gemini Flash sudah
+    cukup untuk menyalin. Jadi yang mahal dipakai untuk yang memang sulit.
+    """
+    if not jalur:
+        return ''
+    return gemini_tanya(PERINTAH_BACA_FOTO, batas=batas, lampiran=list(jalur),
+                        mode=mode)

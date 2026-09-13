@@ -16,7 +16,7 @@ BERKAS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'setelan.json'
 # Lebih aman kosong: Rico mengisinya sendiri kalau memang perlu.
 MEDAN = ('jumlah', 'n_set', 'sulit', 'bahasa',
          'lembaga', 'sekolah', 'instruksi', 'kolom', 'kerapatan', 'garis',
-         'printer', 'bolak', 'salinan', 'mata', 'mode')
+         'printer', 'bolak', 'salinan', 'mata', 'mode', 'mesin')
 # kunci dan pembahasan TIDAK diingat: keduanya selalu menyala saat halaman
 # dibuka. Sekali dimatikan untuk satu lembar, dulu ia tetap mati diam-diam di
 # lembar-lembar berikutnya — dan hilangnya kunci jawaban baru ketahuan setelah

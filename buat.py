@@ -209,10 +209,84 @@ def _baca_foto(jalur, lapor=None):
 #            teks cetak ikut terjaga sementara gambarnya tetap terlihat.
 MATA = ('vision', 'gemini', 'dua')
 
+# Dua mesin, dua jalur yang sangat berbeda ongkos gagalnya:
+#   gemini — lewat Chrome kendali. Tidak perlu langganan Claude, tapi harus
+#            membuka menu unggah, mengklik tombol di koordinatnya, menunggu
+#            selesai menulis, lalu memungut rumus dari atribut data-math.
+#   claude — lewat CLI langganan Pro. Tidak ada satu pun lapisan di atas.
+MESIN = ('gemini', 'claude')
+
+
+def _baris(**medan):
+    """Susun daftar 'Label: nilai', melewati yang kosong."""
+    return '\n'.join(f'{k.replace("_", " ")}: {v}'
+                     for k, v in medan.items() if str(v or '').strip())
+
+
+def _isian_soal(mapel, jenjang, kelas, topik, jumlah, n_set, sulit, bahasa,
+                instruksi, acuan):
+    t = _baris(Mata_pelajaran=mapel, Topik=topik,
+               Kelas=jenjang or (f'Kelas {kelas}' if kelas else ''),
+               Jumlah_set=n_set, Jumlah_soal_per_set=jumlah,
+               Tingkat_kesulitan=sulit, Bahasa=bahasa)
+    if instruksi.strip(): t += '\nCatatan guru: ' + instruksi.strip()
+    if acuan.strip():
+        t += '\n\nSOAL ACUAN — buat soal SETARA, jangan menyalinnya:\n' + acuan.strip()[:2500]
+    return t
+
+
+def _isian_pembahasan(mapel, kelas, bahasa, instruksi, naskah):
+    t = _baris(Mata_pelajaran=mapel, Kelas=kelas, Bahasa=bahasa)
+    if instruksi.strip(): t += '\nCatatan guru: ' + instruksi.strip()
+    if (naskah or '').strip():
+        t += '\n\nNASKAH SOAL:\n' + naskah.strip()[:9000]
+    return t
+
+
+def _isian_rangkuman(mapel, kelas, bahasa, instruksi, topik, bagian, materi):
+    t = _baris(Mata_pelajaran=mapel, Topik=topik, Kelas=kelas, Bahasa=bahasa,
+               Jumlah_bagian=bagian)
+    if instruksi.strip(): t += '\nCatatan guru: ' + instruksi.strip()
+    if (materi or '').strip():
+        t += '\n\nMATERI:\n' + materi.strip()[:12000]
+    return t
+
+
+def _tanya(mesin, perintah, lampiran=None, mode='flash', batas=300,
+           format=None, isian=None, lapor=None):
+    """Kirim permintaan ke mesin yang dipilih, kembalikan naskah jawabannya.
+
+    perintah : perintah lengkap berisi spesifikasi format — dipakai Gemini.
+    isian    : ringkasan permintaan tanpa spesifikasi — dipakai Claude, yang
+               sudah punya spesifikasinya sebagai berkas di claude-proyek/.
+               Spesifikasi naskah soal saja 16.000 karakter; mengirimnya ulang
+               tiap lembar itu pemborosan.
+    lampiran : jalur foto. TIDAK pernah dikirim ke Claude — membaca gambar
+               dengannya jauh lebih mahal daripada menyusun teks. Fotonya
+               disalin jadi teks oleh Gemini Flash lebih dulu.
+    """
+    import otomasi
+    if mesin == 'claude':
+        import claudecli
+        if not claudecli.tersedia():
+            raise RuntimeError('Claude CLI belum terpasang di Mac ini. '
+                               'Pilih mesin Gemini, atau pasang Claude Code dulu.')
+        inti = isian or perintah
+        if lampiran:
+            if lapor: lapor('Menyalin foto dengan Gemini Flash…')
+            salinan = otomasi.baca_foto(lampiran, mode='flash')
+            inti = inti + '\n\nISI FOTO YANG DISALIN:\n' + salinan.strip()
+        if lapor: lapor('Menyusun dengan Claude…')
+        teks = claudecli.tanya(inti, batas=max(batas, 600), format=format)
+        return otomasi.normalkan_rumus(otomasi.buang_pagar(teks))
+    if lapor: lapor('Mengirim ke Gemini lewat Chrome kendali…')
+    return otomasi.gemini_tanya(perintah, batas=batas, lampiran=lampiran, mode=mode)
+
 
 def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesia',
                    lembaga='', sekolah='', tanggal='', kolom='1',
-                   kerapatan='Normal', garis='0.5', mata='vision', mode='flash'):
+                   kerapatan='Normal', garis='0.5', mata='vision', mode='flash',
+                   mesin='gemini'):
     """Foto soal anak -> kunci jawaban + pembahasan -> PDF.
 
     Soalnya TIDAK dikarang: disalin apa adanya dari foto, lalu diberi kunci dan
@@ -241,9 +315,11 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
             lampiran = jalur if mata in ('gemini', 'dua') else None
             perintah = _jwb.bangun(naskah_foto, bahasa, instruksi, mapel,
                                    str(kelas or ''), ada_lampiran=bool(lampiran))
-            _catat(jid, ('Mengunggah foto ke Gemini…' if lampiran
-                         else 'Meminta kunci jawaban dan pembahasan…'), 40)
-            hasil_teks = otomasi.gemini_tanya(perintah, batas=300, lampiran=lampiran, mode=mode)
+            _catat(jid, 'Meminta kunci jawaban dan pembahasan…', 40)
+            isian = _isian_pembahasan(mapel, kelas, bahasa, instruksi, naskah_foto)
+            hasil_teks = _tanya(mesin, perintah, lampiran, mode,
+                                format='pembahasan', isian=isian,
+                                lapor=lambda m: _catat(jid, m, 45))
         finally:
             for x in jalur:
                 try: os.unlink(x)
@@ -288,7 +364,7 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
 
 def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
                      bahasa='Indonesia', lembaga='', sekolah='', tanggal='',
-                     bagian='5', mata='vision', mode='flash'):
+                     bagian='5', mata='vision', mode='flash', mesin='gemini'):
     """Materi (foto/PDF atau sekadar topik) -> lembar rangkuman -> PDF.
 
     Bahannya boleh kosong: kalau hanya topik yang diisi, rangkumannya disusun
@@ -320,9 +396,12 @@ def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
             perintah = _rk.bangun(naskah_materi, bahasa, instruksi, mapel,
                                   str(kelas or ''), bagian=n_bagian,
                                   topik=topik, ada_lampiran=bool(lampiran))
-            _catat(jid, ('Mengunggah materi ke Gemini…' if lampiran
-                         else 'Menyusun rangkuman…'), 40)
-            hasil_teks = otomasi.gemini_tanya(perintah, batas=300, lampiran=lampiran, mode=mode)
+            _catat(jid, 'Menyusun rangkuman…', 40)
+            isian = _isian_rangkuman(mapel, kelas, bahasa, instruksi, topik,
+                                     n_bagian, naskah_materi)
+            hasil_teks = _tanya(mesin, perintah, lampiran, mode,
+                                format='rangkuman', isian=isian,
+                                lapor=lambda m: _catat(jid, m, 45))
         finally:
             for x in jalur:
                 try: os.unlink(x)
@@ -367,7 +446,7 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
              topik='', jenjang='', n_set='', sulit='', bahasa='Indonesia',
              lembaga='', sekolah='', tanggal='', kunci=True, pembahasan=True,
              kolom='2', dua_berkas=False, kerapatan='Normal', garis='1.5',
-             mata='vision', mode='flash'):
+             mata='vision', mode='flash', mesin='gemini'):
     """Alur penuh: foto atau deskripsi -> Gemini -> Exact Worksheet Maker -> PDF.
 
     Arsip tidak lagi ikut. Dulu enam soal lama dilampirkan sebagai "contoh gaya",
@@ -425,30 +504,36 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
             raise
 
         # 3. Gemini lewat Chrome
-        _catat(jid, ('Mengunggah foto ke Gemini…' if lampiran_foto
-                     else 'Mengirim ke Gemini lewat Chrome kendali…'), 45)
+        _catat(jid, 'Menyusun soal…', 45)
         try:
             try:
-                jawab = otomasi.gemini_tanya(perintah, batas=300,
-                                             lampiran=lampiran_foto, mode=mode)
+                jawab = _tanya(mesin, perintah, lampiran_foto, mode,
+                               format='soal',
+                               isian=_isian_soal(mapel, jenjang, kelas, topik,
+                                                 jumlah, n_set, sulit, bahasa,
+                                                 instruksi, acuan),
+                               lapor=lambda m: _catat(jid, m, 45))
             except RuntimeError as e:
                 # Penolakan biasanya muncul saat naskah acuannya panjang. Coba
                 # sekali lagi dengan perintah polos tanpa naskah acuan.
                 if 'menolak' not in str(e) or not lampiran:
                     raise
-                _catat(jid, 'Gemini menolak — mencoba ulang tanpa naskah acuan…', 50)
+                _catat(jid, 'Ditolak — mencoba ulang tanpa naskah acuan…', 50)
                 ringkas = wsmaker.isi_blok(
                     wsmaker.ringkas(wsmaker.perintah_baku(mapel or 'Matematika'),
                                     konteks=' '.join([topik or '', mapel or ''])),
                     topik=topik or (acuan.strip()[:120] if acuan.strip() else ''),
                     jenjang=jenjang or (f'Kelas {kelas}' if kelas else ''),
                     set=n_set, jumlah=jumlah, sulit=sulit, bahasa=bahasa)
-                jawab = otomasi.gemini_tanya(ringkas, batas=300, mode=mode)
+                jawab = _tanya(mesin, ringkas, None, mode, format='soal',
+                               isian=_isian_soal(mapel, jenjang, kelas, topik,
+                                                 jumlah, n_set, sulit, bahasa,
+                                                 '', ''))
         finally:
             for x in jalur:
                 try: os.unlink(x)
                 except OSError: pass
-        _catat(jid, f'Gemini menjawab ({len(jawab)} karakter)', 68)
+        _catat(jid, f'Naskah diterima ({len(jawab)} karakter)', 68)
 
         # 4. serahkan ke perender asli
         if len(jawab.strip()) < 200 or jawab.count('\n') < 5:
@@ -817,6 +902,15 @@ document.getElementById('f').onsubmit = async e => {
 SULIT_BAWAAN = 'sama dengan naskah acuan'
 
 KET_MATA = """
+// Mode Gemini (Flash/Pro/Extended) tidak berlaku untuk Claude, jadi barisnya
+// disembunyikan supaya tidak terlihat seperti pilihan yang diabaikan.
+(() => {
+  const m = document.getElementById('mesin'), baris = document.getElementById('barisMode');
+  if (!m || !baris) return;
+  const atur = () => { baris.hidden = (m.value !== 'gemini'); };
+  m.onchange = atur; atur();
+})();
+
 // Keterangan singkat tiap pilihan baca foto.
 (() => {
   const KET = {
@@ -881,14 +975,20 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
     <select name=kolom><option value=1>1 kolom</option><option value=2>2 kolom</option></select>
   </div>
   <div class=r>
+    <select name=mesin id=mesin style="flex:1;min-width:220px">
+      <option value=gemini{" selected" if st.get("mesin","gemini")!="claude" else ""}>Gemini Flash &mdash; murah, untuk jumlah banyak</option>
+      <option value=claude{" selected" if st.get("mesin")=="claude" else ""}>Claude &mdash; cepat &amp; jarang gagal, tapi boros kuota</option>
+    </select>
+  </div>
+  <div class=r>
     <select name=mata id=mata style="flex:1;min-width:220px">
       <option value=vision{" selected" if st.get("mata","vision")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, teks cetak</option>
-      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata Gemini &mdash; tulisan tangan &amp; gambar</option>
+      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata AI &mdash; tulisan tangan &amp; gambar</option>
       <option value=dua{" selected" if st.get("mata")=="dua" else ""}>Keduanya &mdash; paling teliti, paling lama</option>
     </select>
   </div>
   <div class=kcl id=ketMata style="margin-top:5px"></div>
-  <div class=r>
+  <div class=r id=barisMode>
     <select name=mode style="flex:1;min-width:220px">
       <option value=flash{" selected" if st.get("mode","flash")!="pro" and st.get("mode")!="panjang" else ""}>Gemini Flash &mdash; hemat, untuk sehari-hari</option>
       <option value=pro{" selected" if st.get("mode")=="pro" else ""}>Gemini Pro &mdash; lebih jarang menolak, lebih boros</option>
@@ -995,14 +1095,20 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
     <label class=kcl><input type=checkbox name=pembahasan checked> pembahasan</label>
   </div>
   <div class=r>
+    <select name=mesin id=mesin style="flex:1;min-width:220px">
+      <option value=gemini{" selected" if st.get("mesin","gemini")!="claude" else ""}>Gemini Flash &mdash; murah, untuk jumlah banyak</option>
+      <option value=claude{" selected" if st.get("mesin")=="claude" else ""}>Claude &mdash; cepat &amp; jarang gagal, tapi boros kuota</option>
+    </select>
+  </div>
+  <div class=r>
     <select name=mata id=mata style="flex:1;min-width:220px">
       <option value=vision{" selected" if st.get("mata","vision")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, teks cetak</option>
-      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata Gemini &mdash; tulisan tangan &amp; gambar</option>
+      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata AI &mdash; tulisan tangan &amp; gambar</option>
       <option value=dua{" selected" if st.get("mata")=="dua" else ""}>Keduanya &mdash; paling teliti, paling lama</option>
     </select>
   </div>
   <div class=kcl id=ketMata style="margin-top:5px"></div>
-  <div class=r>
+  <div class=r id=barisMode>
     <select name=mode style="flex:1;min-width:220px">
       <option value=flash{" selected" if st.get("mode","flash")!="pro" and st.get("mode")!="panjang" else ""}>Gemini Flash &mdash; hemat, untuk sehari-hari</option>
       <option value=pro{" selected" if st.get("mode")=="pro" else ""}>Gemini Pro &mdash; lebih jarang menolak, lebih boros</option>
@@ -1078,14 +1184,20 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
     <select name=bahasa><option{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option><option{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option></select>
   </div>
   <div class=r>
+    <select name=mesin id=mesin style="flex:1;min-width:220px">
+      <option value=gemini{" selected" if st.get("mesin","gemini")!="claude" else ""}>Gemini Flash &mdash; murah, untuk jumlah banyak</option>
+      <option value=claude{" selected" if st.get("mesin")=="claude" else ""}>Claude &mdash; cepat &amp; jarang gagal, tapi boros kuota</option>
+    </select>
+  </div>
+  <div class=r>
     <select name=mata id=mata style="flex:1;min-width:220px">
       <option value=vision{" selected" if st.get("mata","vision")=="vision" else ""}>Apple Vision di Mac &mdash; cepat, teks cetak</option>
-      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata Gemini &mdash; tulisan tangan &amp; gambar</option>
+      <option value=gemini{" selected" if st.get("mata")=="gemini" else ""}>Mata AI &mdash; tulisan tangan &amp; gambar</option>
       <option value=dua{" selected" if st.get("mata")=="dua" else ""}>Keduanya &mdash; paling teliti, paling lama</option>
     </select>
   </div>
   <div class=kcl id=ketMata style="margin-top:5px"></div>
-  <div class=r>
+  <div class=r id=barisMode>
     <select name=mode style="flex:1;min-width:220px">
       <option value=flash{" selected" if st.get("mode","flash")!="pro" and st.get("mode")!="panjang" else ""}>Gemini Flash &mdash; hemat, untuk sehari-hari</option>
       <option value=pro{" selected" if st.get("mode")=="pro" else ""}>Gemini Pro &mdash; lebih jarang menolak, lebih boros</option>
