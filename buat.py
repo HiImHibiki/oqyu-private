@@ -154,6 +154,12 @@ def kode_mapel(nama):
 def _catat(jid, pesan, maju=None, selesai=False, galat=None, pdf=None):
     with KUNCI:
         t = TUGAS.setdefault(jid, {'langkah': [], 'maju': 0, 'selesai': False})
+        # Tiap langkah diberi cap detik sejak tugas dimulai. Tanpa ini,
+        # "lama" tidak bisa ditunjuk bagiannya — dan bagian yang salah
+        # dioptimalkan adalah waktu yang terbuang dua kali.
+        t.setdefault('mulai', time.time())
+        if pesan:
+            pesan = f'[{int(time.time() - t["mulai"]):>3}s] {pesan}'
         if pesan: t['langkah'].append(pesan)
         if maju is not None: t['maju'] = maju
         if galat: t['galat'] = galat; t['selesai'] = True

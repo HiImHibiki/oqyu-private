@@ -295,6 +295,44 @@ class Sesi:
     def ketik(self, teks):
         self.perintah('Input.insertText', text=teks)
 
+    def ketik_alami(self, pemilih, teks, potong=220, jeda=0.05, ekor=12):
+        """Isi kotak seperti orang mengetik, bukan sekali tempel.
+
+        Input.insertText memasukkan ribuan karakter dalam satu peristiwa —
+        pola yang tidak mungkin dihasilkan tangan manusia. Di sini teksnya
+        dipecah jadi potongan pendek berjeda, dan beberapa karakter TERAKHIR
+        dikirim sebagai peristiwa papan tik sungguhan, supaya kejadian terakhir
+        yang dilihat halaman sebelum tombol kirim ditekan adalah ketikan.
+
+        Mengetik SELURUHNYA karakter demi karakter tidak dilakukan: perintah
+        7.000 karakter akan memakan menit, dan itu jauh lebih mahal daripada
+        masalah yang sedang dihindari.
+        """
+        self.evaluasi(f"""(function(){{
+          const e = document.querySelector({pemilih!r});
+          if (!e) return 0;
+          e.focus();
+          const r = document.createRange();
+          r.selectNodeContents(e);
+          const sel = window.getSelection();
+          sel.removeAllRanges(); sel.addRange(r);
+          return 1;
+        }})()""")
+        badan, sisa = (teks[:-ekor], teks[-ekor:]) if len(teks) > ekor else (teks, '')
+        pertama = True
+        for i in range(0, len(badan), potong):
+            self.perintah('Input.insertText', text=badan[i:i + potong])
+            if pertama:
+                pertama = False          # potongan pertama MENGGANTI seleksi
+            time.sleep(jeda)
+        for c in sisa:
+            self.perintah('Input.dispatchKeyEvent', type='keyDown', text=c,
+                          unmodifiedText=c)
+            self.perintah('Input.dispatchKeyEvent', type='keyUp', text=c,
+                          unmodifiedText=c)
+            time.sleep(0.03)
+        return True
+
     def tombol(self, kunci='Enter', kode_vm=13):
         for jenis in ('keyDown', 'keyUp'):
             self.perintah('Input.dispatchKeyEvent', type=jenis, key=kunci,
@@ -325,6 +363,44 @@ class Sesi:
           return 1;
         }})()""")
         self.perintah('Input.insertText', text=teks)
+
+    def ketik_alami(self, pemilih, teks, potong=220, jeda=0.05, ekor=12):
+        """Isi kotak seperti orang mengetik, bukan sekali tempel.
+
+        Input.insertText memasukkan ribuan karakter dalam satu peristiwa —
+        pola yang tidak mungkin dihasilkan tangan manusia. Di sini teksnya
+        dipecah jadi potongan pendek berjeda, dan beberapa karakter TERAKHIR
+        dikirim sebagai peristiwa papan tik sungguhan, supaya kejadian terakhir
+        yang dilihat halaman sebelum tombol kirim ditekan adalah ketikan.
+
+        Mengetik SELURUHNYA karakter demi karakter tidak dilakukan: perintah
+        7.000 karakter akan memakan menit, dan itu jauh lebih mahal daripada
+        masalah yang sedang dihindari.
+        """
+        self.evaluasi(f"""(function(){{
+          const e = document.querySelector({pemilih!r});
+          if (!e) return 0;
+          e.focus();
+          const r = document.createRange();
+          r.selectNodeContents(e);
+          const sel = window.getSelection();
+          sel.removeAllRanges(); sel.addRange(r);
+          return 1;
+        }})()""")
+        badan, sisa = (teks[:-ekor], teks[-ekor:]) if len(teks) > ekor else (teks, '')
+        pertama = True
+        for i in range(0, len(badan), potong):
+            self.perintah('Input.insertText', text=badan[i:i + potong])
+            if pertama:
+                pertama = False          # potongan pertama MENGGANTI seleksi
+            time.sleep(jeda)
+        for c in sisa:
+            self.perintah('Input.dispatchKeyEvent', type='keyDown', text=c,
+                          unmodifiedText=c)
+            self.perintah('Input.dispatchKeyEvent', type='keyUp', text=c,
+                          unmodifiedText=c)
+            time.sleep(0.03)
+        return True
 
     def klik_di(self, x, y):
         for jenis in ('mousePressed', 'mouseReleased'):

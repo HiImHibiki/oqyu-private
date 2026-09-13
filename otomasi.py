@@ -165,7 +165,11 @@ def _kirim(s, perintah):
          bukan .click() — peristiwa buatan JavaScript diabaikan juga.
     """
     _tunggu_selesai_menulis(s)
-    s.ganti_isi_editor('div.ql-editor', perintah)
+    # EXACT_TEMPEL=1 mengembalikan cara lama (sekali tempel) untuk membandingkan.
+    if os.environ.get('EXACT_TEMPEL') in ('1', 'ya', 'true'):
+        s.ganti_isi_editor('div.ql-editor', perintah)
+    else:
+        s.ketik_alami('div.ql-editor', perintah)
     time.sleep(1.4)
     for _ in range(12):
         pos = s.evaluasi("""(function(){
@@ -613,6 +617,57 @@ def cetak_halaman(url, tujuan, tunggu=3.5):
         s.tutup()
 
 
+JS_SIAP_RENDER = r"""
+(function(){
+  const lembar = document.querySelectorAll('.sheet');
+  if (!lembar.length) return 'KOSONG';
+  const teks = document.body.innerText || '';
+  return JSON.stringify({
+    halaman: lembar.length,
+    panjang: teks.length,
+    kunci: teks.includes('Kunci Jawaban'),
+    bahas: teks.includes('Pembahasan'),
+    // KaTeX menyisakan simpul yang belum dirender; selama masih ada, tata
+    // letaknya masih bisa berubah dan jumlah halamannya belum pasti.
+    sisa: document.querySelectorAll('.katex-error, [data-katex-pending]').length
+  });})()
+"""
+
+
+def _tunggu_render(s, butuh_kunci=False, butuh_bahas=False, batas=45, stabil=3):
+    """Tunggu sampai lembarnya benar-benar selesai dirender.
+
+    Dulu di sini cuma time.sleep(4). Itu cukup untuk naskah pendek dan TIDAK
+    cukup untuk naskah berumus banyak — PDF-nya tercetak di tengah perenderan,
+    dan bagian Kunci Jawaban serta Pembahasan yang dirender belakangan hilang
+    tanpa jejak. Gejalanya terasa acak: naskah yang sama kadang lengkap kadang
+    tidak, tergantung seberapa sibuk Mac saat itu.
+    """
+    t0, terakhir, sejak = time.time(), None, None
+    while time.time() - t0 < batas:
+        time.sleep(1)
+        k = s.evaluasi(JS_SIAP_RENDER)
+        if not k or k == 'KOSONG':
+            continue
+        try:
+            d = json.loads(k)
+        except Exception:
+            continue
+        if butuh_kunci and not d.get('kunci'):
+            terakhir = None; continue
+        if butuh_bahas and not d.get('bahas'):
+            terakhir = None; continue
+        tanda = (d['halaman'], d['panjang'])
+        if tanda == terakhir:
+            if sejak is None:
+                sejak = time.time()
+            elif time.time() - sejak >= stabil:
+                return d
+        else:
+            terakhir, sejak = tanda, None
+    return None
+
+
 def worksheet_pdf(naskah, tujuan, tunggu=4.0, kop=None, tujuan_kunci=None):
     """Suapkan naskah ke Exact Worksheet Maker, lalu cetak PDF dari tabnya.
 
@@ -633,18 +688,23 @@ def worksheet_pdf(naskah, tujuan, tunggu=4.0, kop=None, tujuan_kunci=None):
         # merender dengan media cetak. Menyetel display:none lewat JS justru
         # merusak: tombol #btnRender ada di dalam bilah sisi, jadi perenderan
         # berikutnya mati total dan PDF keluar kosong.
+        mau_kunci = bool((kop or {}).get('kunci', True))
+        mau_bahas = bool((kop or {}).get('pembahasan', True))
         if tujuan_kunci:
             # 1) lembar siswa: tanpa kunci & pembahasan
             s.evaluasi(JS_JAWABAN % json.dumps({'kunci': False, 'pembahasan': False}))
-            time.sleep(tunggu)
+            _tunggu_render(s)
             s.pdf(tujuan)
             # 2) lembar guru: dengan kunci & pembahasan
-            s.evaluasi(JS_JAWABAN % json.dumps(
-                {'kunci': True, 'pembahasan': bool((kop or {}).get('pembahasan', True))}))
-            time.sleep(tunggu)
+            s.evaluasi(JS_JAWABAN % json.dumps({'kunci': True, 'pembahasan': mau_bahas}))
+            _tunggu_render(s, butuh_kunci=True, butuh_bahas=mau_bahas)
             s.pdf(tujuan_kunci)
             return tujuan, tujuan_kunci
-        time.sleep(tunggu)                       # beri waktu render + KaTeX + SVG
+        # Kunci dan pembahasan ditegaskan lagi di sini, tidak hanya lewat
+        # JS_SETEL: JS_SETEL berjalan SEBELUM naskahnya dimuat, jadi ia tidak
+        # bisa memastikan hasil akhirnya benar-benar memuat keduanya.
+        s.evaluasi(JS_JAWABAN % json.dumps({'kunci': mau_kunci, 'pembahasan': mau_bahas}))
+        _tunggu_render(s, butuh_kunci=mau_kunci, butuh_bahas=mau_bahas)
         return s.pdf(tujuan)
     finally:
         s.tutup()

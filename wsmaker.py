@@ -220,7 +220,16 @@ def ringkas(perintah, konteks='', banyak_set=False, ada_lampiran=False):
     jarang dibalas penolakan oleh Gemini.
     """
     hasil, _ = ringkas_diagram(perintah, konteks)
-    hasil = hasil.rstrip() + '\n' + ATURAN_KOORDINAT
+    # Disisipkan SEBELUM blok "ISI DULU", bukan di paling bawah. Perintahnya
+    # sendiri menyuruh Gemini membaca blok isian di bagian PALING BAWAH pesan;
+    # menempelkan aturan sesudahnya menimbun isian itu, dan Gemini menjawab
+    # "Topik dan rincian soal belum tercantum" padahal topiknya sudah diisi.
+    tanda = '\nISI DULU SEBELUM MENGIRIM PESAN INI'
+    i = hasil.rfind(tanda)
+    if i > 0:
+        hasil = hasil[:i].rstrip() + '\n' + ATURAN_KOORDINAT + hasil[i:]
+    else:
+        hasil = hasil.rstrip() + '\n' + ATURAN_KOORDINAT
     if not banyak_set:
         hasil = _buang_blok(hasil, _AWAL_SET)
     if not ada_lampiran:
