@@ -471,7 +471,23 @@ def _bingkai(perintah, ke):
 
 def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=2, lampiran=None,
                  mode=None, henti=None):
-    """Kirim ke Gemini, dengan beberapa cara membujuk bila ditolak."""
+    """Kirim ke Gemini, dengan beberapa cara membujuk bila ditolak.
+
+    Chrome kendali DINYALAKAN ULANG dulu, tiap permintaan. Keadaan tab Gemini
+    memburuk selama dipakai — bukan tercemar oleh satu obrolan, sebab tab baru
+    pun ikut rusak: menu unggah tidak mau terbuka, klik kirim diabaikan bahkan
+    untuk teks 76 karakter, dan tidak ada satu pun permintaan unggah yang keluar.
+    Direkam lewat Network: di Chrome yang baru dinyalakan, teks terkirim 1 detik,
+    foto terunggah ke push.clients6.google.com/upload (200) dan terkirim 1 detik.
+    Ongkosnya ±5 detik per lembar; login tersimpan di profil, jadi tidak hilang.
+    EXACT_SEGAR=0 mematikan ini untuk membandingkan.
+    """
+    if os.environ.get('EXACT_SEGAR', '1') not in ('0', 'tidak', 'false'):
+        try:
+            cdp.nyalakan_ulang()
+            time.sleep(2)
+        except Exception as e:
+            _catat_galat(0, RuntimeError(f'gagal menyegarkan Chrome: {e}'))
     galat_akhir = None
     for ke in range(ulang + 1):
         try:

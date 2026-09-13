@@ -55,6 +55,16 @@ cat > "$PLIST" <<PL
     <key>EXACT_API</key><string>$API</string>
 $( [[ -n "$LAN" ]] && print -r -- "    <key>EXACT_LAN</key><string>$LAN</string>" )
   </dict>
+  <!-- WAJIB Interactive. Sebagai tugas latar (bawaan launchd), Chrome kendali
+       yang lahir dari layanan ini menerima pesan TEKS tapi mengabaikan klik
+       kirim untuk pesan BERLAMPIRAN FOTO - tanpa galat apa pun: tombolnya
+       hidup, unggahannya sukses (200), kliknya mendarat tepat, dan tidak
+       terjadi apa-apa. Dibisek lewat agen launchd uji: Interactive sendirian
+       membuatnya terkirim dalam 1 detik; variabel lingkungan tidak berpengaruh.
+       Dugaan mekanismenya: penjadwalan tugas latar (App Nap/QoS) membuat alur
+       kirim berlampiran yang menunggu penyelesaian unggah secara asinkron tak
+       pernah tuntas, sedangkan kirim teks yang sinkron lolos. -->
+  <key>ProcessType</key><string>Interactive</string>
   <key>RunAtLoad</key><true/>
   <key>KeepAlive</key><true/>
   <key>StandardOutPath</key><string>/tmp/exact-worksheet.log</string>
