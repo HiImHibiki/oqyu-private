@@ -352,6 +352,13 @@ background:var(--bg);color:var(--teks);font-size:13px}
 button{padding:11px 22px;border:0;border-radius:9px;background:var(--aksen);color:#fff;
 font-weight:600;font-size:14px;cursor:pointer}
 button:disabled{opacity:.5;cursor:default}
+@media (max-width:620px){
+  /* Menempel-di-bawah TIDAK dipakai: tinggi bingkai mengikuti isinya, jadi yang
+     menggulir adalah halaman luar dan position:sticky di dalam tak berpengaruh.
+     Yang dilakukan hanya memperbesar sasaran sentuh. */
+  .r.kirim button{flex:1;min-width:150px;padding:15px 20px;font-size:16px}
+  input,select,textarea{font-size:16px}   /* cegah peramban ponsel memperbesar */
+}
 button.abu{background:var(--tepi);color:var(--teks);font-weight:600}
 .bar{height:6px;background:var(--tepi);border-radius:3px;overflow:hidden;margin:12px 0 9px}
 .bar i{display:block;height:100%;background:var(--aksen);width:0;transition:width .4s}
@@ -581,8 +588,8 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
   </div>
   <textarea name=instruksi rows=2 style="margin-top:11px"
     placeholder="Catatan (mis. 'jelaskan sampai langkah hitungannya', 'pakai cara kelas 8')"></textarea>
-  <div class=r>
-    <input name=judul placeholder="judul (opsional)" style="flex:1;min-width:180px">
+  <div class="r kirim">
+    <input name=judul placeholder="judul (opsional)" style="flex:1;min-width:150px">
     <button id=go type=submit>Buat Kunci &amp; Pembahasan</button>
   </div>
 </div>
@@ -678,8 +685,8 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
     <label class=kcl><input type=checkbox name=kunci{c('kunci')}> kunci jawaban</label>
     <label class=kcl><input type=checkbox name=pembahasan{c('pembahasan')}> pembahasan</label>
   </div>
-  <div class=r>
-    <input name=judul placeholder="judul berkas (opsional)" style="flex:1;min-width:190px">
+  <div class="r kirim">
+    <input name=judul placeholder="judul berkas (opsional)" style="flex:1;min-width:150px">
     <button id=go type=submit>Buat PDF</button>
   </div>
 </div>

@@ -924,10 +924,11 @@ KERANGKA = """<!doctype html><meta charset=utf-8><title>Exact Worksheet</title>
 :root{--bg:#fbfbfa;--kartu:#fff;--tepi:#e3e3e0;--teks:#1a1a19;--redup:#6b6b66;--aksen:#c4572a}
 @media(prefers-color-scheme:dark){:root{--bg:#1a1a19;--kartu:#232322;--tepi:#37372f;--teks:#f0efea;--redup:#9a9a92}}
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;background:var(--bg);color:var(--teks);
-font:15px/1.5 ui-sans-serif,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+html,body{margin:0;background:var(--bg);color:var(--teks);
+font:15px/1.5 ui-sans-serif,-apple-system,"Segoe UI",sans-serif}
 header{display:flex;align-items:center;gap:8px;padding:9px 14px;
-background:var(--kartu);border-bottom:1px solid var(--tepi)}
+background:var(--kartu);border-bottom:1px solid var(--tepi);
+position:sticky;top:0;z-index:20}
 header .logo{height:30px;width:auto}
 header .merek{display:flex;flex-direction:column;line-height:1.15;margin-right:10px}
 header .merek b{font-size:14px;letter-spacing:.2px}
@@ -937,7 +938,11 @@ nav{display:flex;gap:6px;flex-wrap:wrap}
 nav button{padding:7px 14px;border:1px solid var(--tepi);border-radius:8px;
 background:var(--bg);color:var(--redup);font-size:12.5px;cursor:pointer;font-weight:600}
 nav button.aktif{background:var(--aksen);color:#fff;border-color:var(--aksen)}
-iframe{border:0;width:100%;height:calc(100vh - 47px);display:block;background:var(--bg)}
+/* Tinggi bingkai mengikuti isinya, bukan dipatok setinggi layar: gulir di
+   DALAM iframe tidak andal di peramban ponsel, sehingga tombol di bagian bawah
+   formulir tidak pernah terjangkau. Dengan tinggi mengikuti isi, yang menggulir
+   adalah halaman luar — dan itu selalu bekerja. */
+iframe{border:0;width:100%;min-height:calc(100vh - 47px);display:block;background:var(--bg)}
 </style>
 <header>
   <img src="/statik/logo.png" alt="" class=logo>
@@ -954,10 +959,31 @@ iframe{border:0;width:100%;height:calc(100vh - 47px);display:block;background:va
 <iframe id=bingkai src="/buat"></iframe>
 <script>
 const bingkai = document.getElementById('bingkai');
+
+// Samakan tinggi bingkai dengan tinggi isinya (sama-asal, jadi boleh dibaca).
+function samakanTinggi() {
+  try {
+    const d = bingkai.contentDocument;
+    if (!d || !d.body) return;
+    const t = Math.max(d.body.scrollHeight, d.documentElement.scrollHeight);
+    if (t > 0) bingkai.style.height = (t + 4) + 'px';
+  } catch (e) { /* halaman beda asal: biarkan tinggi bawaan */ }
+}
+bingkai.addEventListener('load', () => {
+  samakanTinggi();
+  try {
+    const d = bingkai.contentDocument;
+    new ResizeObserver(samakanTinggi).observe(d.body);
+  } catch (e) { setInterval(samakanTinggi, 1000); }
+});
+setInterval(samakanTinggi, 1500);
+
 document.querySelectorAll('nav button').forEach(b => b.onclick = () => {
   document.querySelectorAll('nav button').forEach(x => x.classList.remove('aktif'));
   b.classList.add('aktif');
+  bingkai.style.height = '';
   bingkai.src = b.dataset.u;
+  window.scrollTo(0, 0);
 });
 </script>"""
 
