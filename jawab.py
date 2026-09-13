@@ -37,6 +37,9 @@ SOAL 2
 Aturan:
 - Rumus matematika, fisika, atau kimia dibungkus tanda dolar $...$
 - Jangan memakai markdown: tanpa **tebal**, tanpa #, tanpa daftar bertanda -
+- Jawab langsung dengan teks pada susunan di atas. JANGAN menulis kode program
+  (Python atau lainnya), jangan menjalankan kode, dan jangan menampilkan
+  keluaran kode — hitung sendiri lalu tulis hasilnya
 - Kalau ada bagian yang tidak terbaca jelas, tulis apa adanya lalu
   tambahkan "(tidak terbaca jelas)" — JANGAN mengarang isinya
 - Kalau soal punya gambar, tulis [GAMBAR: keterangan singkat] di posisinya

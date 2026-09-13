@@ -34,6 +34,9 @@ Aturan:
 - RUMUS, CONTOH, dan INGAT boleh dilewati kalau bagian itu memang tidak punya.
 - Rumus matematika, fisika, atau kimia dibungkus tanda dolar $...$
 - Jangan memakai markdown: tanpa **tebal**, tanpa #, tanpa tabel
+- Jawab langsung dengan teks pada susunan di atas. JANGAN menulis kode program
+  (Python atau lainnya), jangan menjalankan kode, dan jangan menampilkan
+  keluaran kode — hitung sendiri lalu tulis hasilnya
 - Jangan mengarang isi yang tidak ada di bahannya
 - Bahasa: {bahasa}
 {catatan}{naskah}"""
