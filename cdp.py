@@ -108,6 +108,46 @@ def nyalakan(tampil=None):
         if hidup(): return True
     raise GagalCDP('Chrome kendali tidak mau hidup di port 9222')
 
+def matikan(tunggu=12):
+    """Tutup Chrome kendali sampai benar-benar mati.
+
+    Memuat ulang halaman tidak selalu cukup: kalau Gemini sudah kacau —
+    sesi tersangkut, pekerja layanan basi, tab menggantung — keadaan itu
+    bertahan melewati reload. Menutup Chrome-nya membuang semuanya, dan
+    profilnya tetap di disk sehingga login Google tidak hilang.
+    """
+    if not hidup():
+        return False
+    # Polanya jalur profil saja, TANPA "--user-data-dir=" di depannya: pola
+    # yang diawali tanda hubung dikira pkill sebagai opsi, bukan pola, sehingga
+    # perintahnya gagal diam-diam dan Chrome tetap hidup.
+    try:
+        subprocess.run(['pkill', '-f', PROFIL], capture_output=True, timeout=10)
+    except Exception:
+        pass
+    for _ in range(tunggu * 2):
+        time.sleep(0.5)
+        if not hidup():
+            return True
+    # masih hidup: paksa
+    try:
+        subprocess.run(['pkill', '-9', '-f', PROFIL], capture_output=True, timeout=10)
+    except Exception:
+        pass
+    for _ in range(10):
+        time.sleep(0.5)
+        if not hidup():
+            return True
+    return False
+
+
+def nyalakan_ulang(tampil=None):
+    """Tutup Chrome kendali lalu nyalakan lagi dari keadaan bersih."""
+    matikan()
+    time.sleep(1.5)
+    return nyalakan(tampil)
+
+
 def daftar_tab():
     d = urllib.request.urlopen(f'http://127.0.0.1:{PORT}/json', timeout=10).read()
     return [t for t in json.loads(d) if t.get('type') == 'page']

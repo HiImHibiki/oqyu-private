@@ -377,18 +377,28 @@ def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=2, lampiran=No
             if ke >= ulang:
                 break
             _catat_galat(ke + 1, e)
-            # Penolakan cukup dijawab dengan bingkai lain di utas baru; memuat
-            # ulang halaman hanya berguna untuk kegagalan teknis (sesi kacau,
-            # tab menggantung), dan lambat.
-            if not isinstance(e, Ditolak):
+            # Pemulihan bertingkat, dari yang paling murah:
+            #   penolakan   -> cukup bingkai lain di utas baru
+            #   gagal ke-1  -> muat ulang halaman
+            #   gagal ke-2  -> TUTUP Chrome lalu nyalakan lagi
+            #
+            # Memuat ulang tidak membuang segalanya: sesi yang tersangkut,
+            # pekerja layanan basi, dan tab menggantung bertahan melewatinya.
+            # Menutup Chrome membuang semuanya, dan profilnya tetap di disk
+            # sehingga login Google tidak ikut hilang.
+            if isinstance(e, Ditolak):
+                time.sleep(3)
+            elif ke == 0:
                 s = _sesi(URL_GEMINI, 'gemini.google.com')
                 try:
-                    s.buka(URL_GEMINI)      # muat ulang penuh: keadaan bersih
+                    s.buka(URL_GEMINI)      # muat ulang penuh
                     time.sleep(5)
                 finally:
                     s.tutup()
             else:
-                time.sleep(3)
+                _catat_galat(ke + 1, RuntimeError('menutup Chrome kendali'))
+                cdp.nyalakan_ulang()
+                time.sleep(4)
     raise galat_akhir
 
 

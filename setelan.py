@@ -17,7 +17,12 @@ BERKAS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'setelan.json'
 MEDAN = ('jumlah', 'n_set', 'sulit', 'bahasa',
          'lembaga', 'sekolah', 'instruksi', 'kolom', 'kerapatan', 'garis',
          'printer', 'bolak', 'salinan', 'mata', 'mode')
-CENTANG = ('kunci', 'pembahasan', 'dua_berkas', 'gambar')
+# kunci dan pembahasan TIDAK diingat: keduanya selalu menyala saat halaman
+# dibuka. Sekali dimatikan untuk satu lembar, dulu ia tetap mati diam-diam di
+# lembar-lembar berikutnya — dan hilangnya kunci jawaban baru ketahuan setelah
+# PDF-nya dicetak. Mematikannya untuk satu lembar tetap bisa; yang tidak lagi
+# terjadi adalah mematikannya untuk selamanya tanpa disadari.
+CENTANG = ('dua_berkas', 'gambar')
 
 def muat():
     try:

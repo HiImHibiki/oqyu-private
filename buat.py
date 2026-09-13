@@ -991,8 +991,8 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
       <option value=1{" selected" if st.get('kolom')=='1' else ""}>1 kolom penuh</option>
     </select>
     <label class=kcl><input type=checkbox name=dua_berkas{c('dua_berkas')}> dua berkas: soal &amp; soal+jawaban</label>
-    <label class=kcl><input type=checkbox name=kunci{c('kunci')}> kunci jawaban</label>
-    <label class=kcl><input type=checkbox name=pembahasan{c('pembahasan')}> pembahasan</label>
+    <label class=kcl><input type=checkbox name=kunci checked> kunci jawaban</label>
+    <label class=kcl><input type=checkbox name=pembahasan checked> pembahasan</label>
   </div>
   <div class=r>
     <select name=mata id=mata style="flex:1;min-width:220px">
