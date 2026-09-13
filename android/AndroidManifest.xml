@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="id.exact.worksheet">
+    package="id.exact.worksheet"
+    android:versionCode="1" android:versionName="1.0">
+  <!-- WAJIB: tanpa uses-sdk, targetSdkVersion dianggap 1 dan Android 14+
+       menolak memasang dengan pesan "App not installed". -->
+  <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="34"/>
   <uses-permission android:name="android.permission.INTERNET"/>
   <application android:label="Exact Worksheet" android:icon="@android:drawable/ic_menu_upload"
                android:usesCleartextTraffic="true" android:theme="@android:style/Theme.Material.Light">
