@@ -498,6 +498,10 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
             # Perintah baku ±16.000 karakter; separuhnya menjelaskan kemungkinan
             # yang tidak sedang terjadi. Dipangkas dulu — perintah yang lebih
             # pendek jauh lebih jarang dibalas penolakan oleh Gemini.
+            # Tanpa bahan acuan, "ikuti bahasa soal" tidak punya yang diikuti —
+            # jatuhkan ke Indonesia supaya Gemini tidak menebak sendiri.
+            if str(bahasa).strip().lower() in ('ikut', 'auto', ''):
+                bahasa = 'ikuti bahasa soal acuan' if (acuan.strip() or lampiran_foto) else 'Indonesia'
             banyak = str(n_set or '').strip() not in ('', '0', '1')
             perintah = wsmaker.isi_blok(
                 wsmaker.ringkas(wsmaker.perintah_baku(mapel or 'Matematika'),
@@ -991,7 +995,11 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
   <div class=r>
     <input name=mapel placeholder="mapel" style="flex:1;min-width:140px">
     <input name=kelas placeholder="kelas" size=6>
-    <select name=bahasa><option{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option><option{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option></select>
+    <select name=bahasa title="bahasa jawaban">
+      <option value=ikut{" selected" if st.get("bahasa","ikut") not in ("Indonesia","Inggris") else ""}>ikuti bahasa soal</option>
+      <option value=Indonesia{" selected" if st.get("bahasa")=="Indonesia" else ""}>Indonesia</option>
+      <option value=Inggris{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option>
+    </select>
     <select name=kolom><option value=1>1 kolom</option><option value=2>2 kolom</option></select>
   </div>
   <div class=r>
@@ -1086,7 +1094,11 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
     <input name=jumlah placeholder="atau tulis sendiri" value="{n('jumlah')}" style="flex:1;min-width:150px">
     <input name=n_set placeholder="set" value="{n('n_set') or '2'}" size=4 title="jumlah set">
     <input name=sulit placeholder="kesulitan" value="{n('sulit') or SULIT_BAWAAN}" style="min-width:170px">
-    <select name=bahasa><option{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option><option{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option></select>
+    <select name=bahasa title="bahasa jawaban">
+      <option value=ikut{" selected" if st.get("bahasa","ikut") not in ("Indonesia","Inggris") else ""}>ikuti bahasa soal</option>
+      <option value=Indonesia{" selected" if st.get("bahasa")=="Indonesia" else ""}>Indonesia</option>
+      <option value=Inggris{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option>
+    </select>
   </div>
   <textarea name=instruksi rows=2 style="margin-top:11px"
     placeholder="Catatan tambahan untuk Gemini (opsional)">{n('instruksi')}</textarea>
@@ -1201,7 +1213,11 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
     <input name=mapel placeholder="mapel" style="flex:1;min-width:140px">
     <input name=kelas placeholder="kelas" size=6>
     <input name=bagian placeholder="bagian" value="5" size=6 title="berapa sub-bab">
-    <select name=bahasa><option{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option><option{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option></select>
+    <select name=bahasa title="bahasa jawaban">
+      <option value=ikut{" selected" if st.get("bahasa","ikut") not in ("Indonesia","Inggris") else ""}>ikuti bahasa soal</option>
+      <option value=Indonesia{" selected" if st.get("bahasa")=="Indonesia" else ""}>Indonesia</option>
+      <option value=Inggris{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option>
+    </select>
   </div>
   <div class=r>
     <select name=mesin id=mesin style="flex:1;min-width:220px">

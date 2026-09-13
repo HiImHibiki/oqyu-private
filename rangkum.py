@@ -38,7 +38,7 @@ Aturan:
   (Python atau lainnya), jangan menjalankan kode, dan jangan menampilkan
   keluaran kode — hitung sendiri lalu tulis hasilnya
 - Jangan mengarang isi yang tidak ada di bahannya
-- Bahasa: {bahasa}
+- {bahasa}
 {catatan}{naskah}"""
 
 
@@ -54,6 +54,8 @@ def bangun(naskah, bahasa='Indonesia', catatan='', mapel='', kelas='',
     if catatan.strip(): tambahan.append(catatan.strip())
     ket = ('\n' + ' '.join(tambahan) + '\n') if tambahan else '\n'
     jenjang = f'kelas {kelas}' if kelas else 'seusia itu'
+    import jawab as _jwb
+    bahasa = _jwb.aturan_bahasa(bahasa)
     naskah = (naskah or '').strip()[:12000]
     topik = (topik or '').strip()
     if ada_lampiran and naskah:

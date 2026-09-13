@@ -157,7 +157,7 @@ class H(BaseHTTPRequestHandler):
             try: isi = os.listdir(f)
             except Exception as e: isi = [f'GALAT: {e}']
             try:
-                n_daftar = len(_h.daftar_pdf())
+                n_daftar = _h.daftar_pdf()[1]
                 galat_daftar = None
             except Exception as e:
                 n_daftar, galat_daftar = -1, f'{type(e).__name__}: {e}'
@@ -175,7 +175,9 @@ class H(BaseHTTPRequestHandler):
             import hasil as _h
             f = (qs.get('f') or [''])[0]
             isi = (_h.halaman_berkas(f) if f
-                   else _h.halaman_daftar((qs.get('cari') or [''])[0]))
+                   else _h.halaman_daftar(
+                       (qs.get('cari') or [''])[0],
+                       max(6, min(400, int((qs.get('jumlah') or ['24'])[0] or 24)))))
             if isi is None: return self.send_error(404, 'berkas tidak ada')
             b = isi.encode()
             self.send_response(200)

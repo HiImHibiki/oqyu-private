@@ -7,6 +7,24 @@ mengalir ke bawah, tanpa bagian kunci yang terpisah di belakang.
 """
 import re
 
+
+def aturan_bahasa(pilihan):
+    """Kalimat aturan bahasa untuk disisipkan ke perintah.
+
+    'ikut' berarti mengikuti bahasa bahannya. Itu yang benar untuk lembar yang
+    dibuat DARI soal anak: soal berbahasa Inggris yang dijawab dalam Bahasa
+    Indonesia tidak bisa dipakai di kelas, dan kesalahannya baru terasa setelah
+    lembarnya tercetak.
+    """
+    p = (pilihan or '').strip().lower()
+    if p in ('', 'ikut', 'auto', 'ikuti soal', 'ikuti bahasa soal'):
+        return ('Bahasa: IKUTI bahasa bahannya. Kalau soalnya berbahasa Inggris, '
+                'seluruh jawaban dan pembahasan juga berbahasa Inggris; kalau '
+                'berbahasa Indonesia, jawablah dalam Bahasa Indonesia. Jangan '
+                'menerjemahkan.')
+    return f'Bahasa: {pilihan}'
+
+
 PERINTAH = """Kamu diberi {sumber}. Tugasmu BUKAN membuat soal baru.
 
 Untuk SETIAP soal: tulis ulang soalnya, beri jawabannya, lalu tunjukkan
@@ -43,7 +61,7 @@ Aturan:
 - Kalau ada bagian yang tidak terbaca jelas, tulis apa adanya lalu
   tambahkan "(tidak terbaca jelas)" — JANGAN mengarang isinya
 - Kalau soal punya gambar, tulis [GAMBAR: keterangan singkat] di posisinya
-- Bahasa: {bahasa}
+- {bahasa}
 {catatan}{naskah}"""
 
 TANYA = "<tulis ulang soalnya apa adanya, termasuk pilihan jawabannya bila ada>"
@@ -61,6 +79,7 @@ def bangun(naskah, bahasa='Indonesia', catatan='', mapel='', kelas='',
     if catatan.strip(): tambahan.append(catatan.strip())
     ket = ('\n' + ' '.join(tambahan) + '\n') if tambahan else '\n'
     jenjang = f'kelas {kelas}' if kelas else 'seusia itu'
+    bahasa = aturan_bahasa(bahasa)
     naskah = (naskah or '').strip()[:9000]
     if ada_lampiran and naskah:
         sumber = ('foto naskah soal yang terlampir, beserta hasil pemindaian '

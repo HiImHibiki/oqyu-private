@@ -33,7 +33,7 @@ def folder_keluar():
     import buat
     return buat.KELUAR
 
-def daftar_pdf(batas=400, cari=''):
+def daftar_pdf(batas=24, cari='', lewati=0):
     """PDF di folder keluaran, yang terbaru di atas.
 
     Folder ini Desktop Rico, yang sudah berisi ratusan lembar lama. Batas 60
@@ -56,7 +56,57 @@ def daftar_pdf(batas=400, cari=''):
     if cari:
         kata = cari.split()
         p = [x for x in p if all(k in os.path.basename(x).lower() for k in kata)]
-    return p[:batas]
+    return p[lewati:lewati + batas], len(p)
+
+_SINGGAH_HAL = {}
+_BERKAS_SINGGAH = None
+
+
+def _muat_singgahan():
+    """Jumlah halaman tiap PDF, disimpan agar pdfinfo tak dijalankan berulang.
+
+    Menjalankan pdfinfo untuk 486 berkas tiap kali halaman dibuka memakan 7,5
+    detik — dan hasilnya tidak pernah berubah selama berkasnya tidak diubah.
+    Kuncinya memuat ukuran dan waktu ubah, jadi berkas yang ditimpa terhitung
+    baru dengan sendirinya.
+    """
+    global _BERKAS_SINGGAH
+    if _BERKAS_SINGGAH is None:
+        _BERKAS_SINGGAH = lokasi.data('halaman.json')
+        try:
+            with open(_BERKAS_SINGGAH, encoding='utf-8') as f:
+                _SINGGAH_HAL.update(json.load(f))
+        except Exception:
+            pass
+    return _BERKAS_SINGGAH
+
+
+def _simpan_singgahan():
+    try:
+        with open(_muat_singgahan(), 'w', encoding='utf-8') as f:
+            json.dump(_SINGGAH_HAL, f)
+    except OSError:
+        pass
+
+
+def n_halaman_cepat(path):
+    """Jumlah halaman, dari singgahan kalau ada."""
+    _muat_singgahan()
+    try:
+        st = os.stat(path)
+        kunci = f'{os.path.basename(path)}|{int(st.st_mtime)}|{st.st_size}'
+    except OSError:
+        return 0
+    if kunci in _SINGGAH_HAL:
+        return _SINGGAH_HAL[kunci]
+    n = n_halaman(path)
+    _SINGGAH_HAL[kunci] = n
+    if len(_SINGGAH_HAL) > 3000:
+        for k in list(_SINGGAH_HAL)[:1000]:
+            _SINGGAH_HAL.pop(k, None)
+    _simpan_singgahan()
+    return n
+
 
 def n_halaman(path):
     try:
@@ -228,7 +278,7 @@ def bersihkan_cache(maks_berkas=400, maks_hari=30):
     if not os.path.isdir(THUMB):
         return 0
     import time as _t
-    ada = {re.sub(r'\W+', '_', os.path.basename(p))[:60] for p in daftar_pdf(9999)}
+    ada = {re.sub(r'\W+', '_', os.path.basename(p))[:60] for p in daftar_pdf(9999)[0]}
     batas = _t.time() - maks_hari * 86400
     berkas = []
     for f in os.listdir(THUMB):
@@ -270,11 +320,11 @@ def _halaman_izin(folder):
 </div></div>"""
 
 
-def halaman_daftar(cari=''):
+def halaman_daftar(cari='', jumlah=24):
     try: bersihkan_cache()
     except Exception: pass
     try:
-        berkas = daftar_pdf(cari=cari)
+        berkas, total = daftar_pdf(batas=jumlah, cari=cari)
     except TakBerizin as e:
         return _halaman_izin(e.folder)
     daftar_p, bawaan = printer()
@@ -289,7 +339,7 @@ def halaman_daftar(cari=''):
         nama = os.path.basename(p)
         e = _url(nama)                      # untuk href dan src
         a = html.escape(nama, quote=True)   # untuk atribut data: dikirim apa adanya
-        n = n_halaman(p)
+        n = n_halaman_cepat(p)
         kartu += (f'<div class=kartu>'
                   f'<a href="/hasil?f={e}">'
                   f'<img src="/thumb?f={e}&amp;p=1&amp;w=300" alt="" loading=lazy>'
@@ -310,7 +360,9 @@ def halaman_daftar(cari=''):
 untuk memilih halaman, atau pakai tombol di bawahnya.</div>
 <input id=cari class=cari placeholder="saring nama berkas — mis. MATH 8"
  value="{html.escape(cari, quote=True)}" autocomplete=off>
+<div class=s style="margin:-6px 0 12px">Menampilkan {len(berkas)} dari {total} berkas.</div>
 <div class=grid>{kartu}</div>
+{f'<div class=r style="justify-content:center;margin-top:16px"><button type=button id=lagi class=abu>Muat {min(48, total - len(berkas))} berkas lagi</button></div>' if total > len(berkas) else ''}
 <div id=kabar class=kabar></div></div>
 <script>
 // Menyaring di sisi server: 525 berkas terlalu banyak untuk dikirim semuanya
@@ -325,6 +377,17 @@ untuk memilih halaman, atau pakai tombol di bawahnya.</div>
     }}, 400);
   }};
   c.onkeydown = e => {{ if (e.key === 'Enter') {{ clearTimeout(jeda); c.oninput(); }} }};
+
+  // Memuat lebih banyak berarti memuat ulang halaman dengan batas lebih besar.
+  // Menambah kartu lewat JS akan memaksa tablet mengambil ratusan gambar kecil
+  // sekaligus — persis yang membuatnya berat sebelum ini.
+  const lagi = document.getElementById('lagi');
+  if (lagi) lagi.onclick = () => {{
+    const u = new URL(location.href);
+    u.searchParams.set('jumlah', {jumlah} + 48);
+    if (c.value.trim()) u.searchParams.set('cari', c.value.trim());
+    location.href = u.toString();
+  }};
 
   const kabar = document.getElementById('kabar');
   document.querySelectorAll('[data-cetak]').forEach(b => b.onclick = async () => {{
