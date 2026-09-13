@@ -15,17 +15,22 @@ Tidak memakai API Gemini. Tidak ada kunci API yang perlu disimpan.
 | Google Chrome | dipasang di `/Applications` |
 | poppler | `brew install poppler` (memberi `pdftotext`, `pdftoppm`) |
 | Node.js | `brew install node` |
-| **Exact Worksheet Maker FIXED** | aplikasi perender lembar; lihat catatan di bawah |
+| — | mesin perender lembar sudah ikut di dalam repo (`wsm/`) |
 
 Python 3.9+ bawaan macOS sudah cukup — tidak ada pustaka pihak ketiga.
 
-### Exact Worksheet Maker
+### Mesin Worksheet Maker
 
-Perender lembarnya bukan bagian dari repo ini. Salin foldernya ke mesin tujuan,
-lalu sesuaikan jalurnya di `wsmaker.py` (`APP`) bila letaknya berbeda.
+Perender lembarnya **ikut di dalam repo** (folder `wsm/`, 2,6 MB) dan disajikan
+oleh server aplikasi ini sendiri di `/wsm/`. Tidak ada jalur luar yang dipaku dan
+tidak ada server kedua.
 
-Bawaannya:
-`~/Documents/PROJECT EXACT GROUP/Exact Super App/Exact Worksheet Maker FIXED`
+Bila aplikasi Exact Worksheet Maker aslinya diperbarui, segarkan salinannya:
+
+```sh
+./perbarui-mesin.sh                       # dari lokasi bawaan
+./perbarui-mesin.sh "/jalur/ke/aplikasi"  # dari lokasi lain
+```
 
 ## Pemasangan
 
@@ -44,9 +49,16 @@ basis data kosong bila belum ada.
 ./mulai.sh          # menyalakan server, membuka http://localhost:7790/buat
 ```
 
-Pemakaian pertama akan membuka jendela Chrome terpisah berprofil khusus.
-**Login Google sekali** di jendela itu; sesudah itu tidak perlu diulang.
-Jangan menutup jendela tersebut selagi memakai aplikasinya.
+Chrome kendali berjalan **tanpa jendela**, jadi tidak merebut layar — Anda bisa
+mengerjakan hal lain selagi lembar dibuat.
+
+Sekali saja di awal, jendelanya perlu dimunculkan untuk login Google:
+
+```sh
+EXACT_TAMPIL=1 ./mulai.sh     # jendela muncul; login sekali
+```
+
+Sesudah itu jalankan biasa (`./mulai.sh`) dan jendelanya tidak muncul lagi.
 
 ## Alur kerja
 
@@ -125,3 +137,8 @@ Cadangan hanya dipanggil bila pengurai deterministik tidak menghasilkan apa pun.
 dari DevTools tidak sampai ke tab ber-`visibilityState: hidden` — tab itu tetap
 bisa dibaca dan diisi teksnya, tapi klik tombol kirim diam tanpa galat apa pun.
 Selalu `Page.bringToFront` dan tunggu sampai `visible` sebelum mengklik.
+
+**Tab tersembunyi tidak menerima peristiwa tetikus** — inilah sebab kegagalan
+"Perintah tidak terkirim" yang muncul acak pada mode berjendela. Mode tanpa
+jendela justru bebas dari masalah ini karena halamannya selalu berstatus
+`visible`.

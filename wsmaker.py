@@ -7,10 +7,12 @@ dibangun ulang — cukup diisi naskahnya dan diambil hasil rendernya.
 """
 import os, json, re, subprocess, time, tempfile, urllib.request
 
-APP = os.path.expanduser(
-    '~/Documents/PROJECT EXACT GROUP/Exact Super App/Exact Worksheet Maker FIXED')
-PORT_WS = 8420
-ALAMAT = f'http://localhost:{PORT_WS}/'
+# Mesin Worksheet Maker kini ikut di dalam repo ini (folder wsm/) dan disajikan
+# oleh server aplikasi sendiri — tidak ada lagi jalur luar yang dipaku, tidak ada
+# server kedua di port 8420. Segarkan salinannya dengan ./perbarui-mesin.sh
+APP = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'wsm')
+PORT_WS = 7790
+ALAMAT = f'http://localhost:{PORT_WS}/wsm/index.html'
 
 class GagalWS(Exception): pass
 
@@ -37,21 +39,13 @@ def isi_blok(perintah, **nilai):
     return perintah
 
 def pastikan_server():
+    """Mesin disajikan server aplikasi ini sendiri, jadi tidak ada yang perlu
+    dinyalakan terpisah. Cukup dipastikan bisa diambil."""
     try:
-        urllib.request.urlopen(ALAMAT, timeout=3).read(1)
+        urllib.request.urlopen(ALAMAT, timeout=5).read(1)
         return False
-    except Exception:
-        pass
-    subprocess.Popen(['node', 'server.js'], cwd=APP,
-                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    for _ in range(20):
-        time.sleep(0.5)
-        try:
-            urllib.request.urlopen(ALAMAT, timeout=2).read(1)
-            return True
-        except Exception:
-            continue
-    raise GagalWS('Server Exact Worksheet Maker tidak mau hidup di port 8420')
+    except Exception as e:
+        raise GagalWS(f'Mesin Worksheet Maker tidak bisa diambil dari {ALAMAT}: {e}')
 
 def _js_di_ws(kode):
     skrip = ('set t to missing value\n'

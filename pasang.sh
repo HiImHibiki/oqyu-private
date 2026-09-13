@@ -22,12 +22,10 @@ cek "pdftoppm (poppler)" "command -v pdftoppm" "brew install poppler"
 cek "Node.js" "command -v node" "brew install node"
 cek "Python 3" "command -v python3" "sudah bawaan macOS"
 
-WSM="$HOME/Documents/PROJECT EXACT GROUP/Exact Super App/Exact Worksheet Maker FIXED"
-if [[ -f "$WSM/index.html" ]]; then
-  print -r -- "  ada      Exact Worksheet Maker"
+if [[ -f wsm/index.html ]]; then
+  print -r -- "  ada      Mesin Worksheet Maker (di dalam repo)"
 else
-  print -r -- "  KURANG   Exact Worksheet Maker -> salin foldernya, lalu sesuaikan APP di wsmaker.py"
-  print -r -- "           dicari di: $WSM"
+  print -r -- "  KURANG   Mesin Worksheet Maker -> jalankan ./perbarui-mesin.sh '<folder aplikasi>'"
   kurang=1
 fi
 

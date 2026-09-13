@@ -80,8 +80,19 @@ def hidup():
     except Exception:
         return False
 
-def nyalakan(tampil=True):
-    """Jalankan Chrome berprofil khusus. Kembalikan True kalau baru dinyalakan."""
+def nyalakan(tampil=None):
+    """Jalankan Chrome berprofil khusus. Kembalikan True kalau baru dinyalakan.
+
+    Bawaannya TANPA JENDELA supaya tidak merebut layar saat lembar dibuat —
+    profil dan sesi loginnya tetap sama. Setel EXACT_TAMPIL=1 untuk memunculkan
+    jendelanya, misalnya saat perlu login ulang atau menelusuri masalah.
+
+    Catatan: dalam mode tanpa jendela, halaman tetap berstatus visible, jadi
+    peristiwa tetikus sampai dengan benar — justru menghilangkan masalah tab
+    tersembunyi yang menghantui mode berjendela.
+    """
+    if tampil is None:
+        tampil = os.environ.get('EXACT_TAMPIL') in ('1', 'ya', 'true')
     if hidup(): return False
     os.makedirs(PROFIL, exist_ok=True)
     bendera = [KROM, f'--remote-debugging-port={PORT}', f'--user-data-dir={PROFIL}',

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exact Worksheet</title>
+<link rel="stylesheet" href="vendor/katex/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar no-print">
+    <div class="sidebar-header">
+      <h1>Exact Worksheet Maker</h1>
+      <p>Tempel soal &rarr; jadi lembar kerja A4 siap cetak</p>
+    </div>
+
+    <div id="serverBanner" class="server-banner" hidden>
+      <div id="serverBannerText" class="server-banner-text"></div>
+      <div class="server-banner-actions">
+        <button id="btnCopyServerAddr" type="button" class="btn btn-ghost btn-small" hidden>📋 Salin Alamat</button>
+        <button id="btnStopServer" type="button" class="btn btn-ghost btn-small">⏻ Matikan Server</button>
+      </div>
+    </div>
+
+    <div class="sidebar-scroll">
+
+      <section class="panel">
+        <label for="rawInput">1. Tempel Naskah Soal</label>
+        <textarea id="rawInput" placeholder="Tempel teks soal di sini... (mendukung format F1./PG1./B1./I1./E1./M1. (Mencocokkan)/IB1. (Isian Berpilihan)/Kolom B:/Kotak Kata:/Kunci Jawaban/Pembahasan, atau teks bebas dengan simbol matematika $...$)"></textarea>
+        <div class="btn-row">
+          <button id="btnCopyPrompt" type="button" class="btn btn-ghost">🤖 Buat Prompt AI</button>
+          <button id="btnPasteClipboard" type="button" class="btn btn-ghost">📥 Tempel dari Clipboard</button>
+        </div>
+        <p class="hint">"Buat Prompt AI" membuka menu untuk atur mata pelajaran, topik, jumlah set, dan jumlah tiap jenis soal, lalu menampilkan prompt yang sudah disesuaikan (lebih ringkas, cocok untuk Gemini) siap disalin. Tempelkan (Ctrl/Cmd+V) ke Gemini, salin hasilnya, lalu pakai "Tempel dari Clipboard" di sini. Di HP, kalau tombolnya tidak merespons, tekan-tahan di kotak naskah soal di atas lalu pilih Tempel — cara itu selalu berfungsi.</p>
+        <div class="btn-row" style="margin-top:6px;">
+          <select id="quickPromptSubject" class="quick-select" title="Mata pelajaran untuk Copy Prompt Cepat">
+            <option value="matematika">Matematika</option>
+            <option value="fisika">Fisika</option>
+            <option value="kimia">Kimia</option>
+            <option value="biologi">Biologi</option>
+            <option value="bahasa-indonesia">B. Indonesia</option>
+            <option value="bahasa-inggris">B. Inggris</option>
+          </select>
+          <button id="btnQuickCopyPrompt" type="button" class="btn btn-ghost">⚡ Copy Prompt Cepat</button>
+        </div>
+        <p class="hint">"Copy Prompt Cepat" langsung menyalin prompt siap pakai ke clipboard — tanpa buka form, cukup pilih mata pelajaran lalu klik. Prompt itu diakhiri blok isian kosong "ISI DULU SEBELUM MENGIRIM PESAN INI" (topik, kelas, jumlah set, jumlah soal tiap jenis, tingkat kesulitan, bahasa) — isi yang perlu saja di kolom chat sebelum kirim; baris yang dibiarkan kosong otomatis pakai standar 1 set / 10 soal (5 PG, 2 Benar/Salah, 2 Isian, 1 Esai) tingkat campuran dengan pembahasan. Punya contoh naskah? Lampirkan PDF/fotonya di chat yang sama: prompt sudah berisi instruksi meniru topik, tingkat kesulitan, gaya, dan gambar lampiran itu (dibuat ulang jadi tag diagram) tanpa menyalin soalnya.</p>
+        <div class="btn-row" style="margin-top:10px;">
+          <button id="btnInsertDiagram" type="button" class="btn btn-ghost">📐 Sisipkan Diagram</button>
+          <button id="btnInsertImage" type="button" class="btn btn-ghost">🖼️ Sisipkan Gambar</button>
+        </div>
+        <input type="file" id="imageFileInput" accept="image/*" multiple hidden>
+        <p id="imageStatus" class="hint image-status"></p>
+        <div id="imageList" class="image-list"></div>
+        <p class="hint">Gambar (foto alat, hasil pindai, figur dari sumber lain) bisa diimpor lewat tombol di atas, diseret langsung ke kotak naskah, atau ditempel dengan Ctrl/Cmd+V saat kursor ada di kotak naskah. Tiap gambar diperkecil otomatis ke ukuran cetak lalu disimpan di perangkat ini dengan id pendek, dan naskah hanya memuat tag <code>[[gambar: id=g1; lebar=200]]</code> — supaya naskah tetap terbaca. Gambar ikut tertanam penuh di dalam PDF hasil cetak, tapi tidak ikut kalau naskahnya disalin ke komputer lain.</p>
+        <p class="hint">Diagram disisipkan sebagai tag <code>[[grafik: f1=x^2-4]]</code> langsung di naskah soal (taruh di dalam kalimat soal, sebelum pilihan A/B/C) — tag ini otomatis disertakan kalau naskah soal dibuat lewat "Copy Prompt AI". Tombol "Sisipkan Diagram" membuka form berisi semua jenis diagram lengkap dengan pratinjau langsung, jadi sintaks tag di atas tidak perlu dihafal — tag ditempelkan di posisi kursor pada kotak naskah.</p>
+        <div class="btn-row" style="margin-top:10px;">
+          <button id="btnClearInput" type="button" class="btn btn-ghost">🗑️ Bersihkan Naskah</button>
+          <button id="btnRender" class="btn btn-primary">Render Worksheet</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <label>2. Info Header</label>
+        <div class="field-grid">
+          <input type="text" id="brandName" placeholder="Nama Lembaga (mis. Exact Course)" value="Exact Course">
+          <input type="text" id="worksheetTitle" class="hidden-field" aria-hidden="true" tabindex="-1">
+          <input type="text" id="worksheetSubject" class="hidden-field" aria-hidden="true" tabindex="-1">
+        </div>
+        <label class="sublabel">Kode Judul Otomatis</label>
+        <div class="code-grid">
+          <input type="text" id="codeMapel" placeholder="Mapel (MATH)">
+          <input type="text" id="codeSekolah" placeholder="Sekolah (CSCA)">
+          <input type="text" id="codeKelas" placeholder="Kelas">
+          <input type="text" id="codeTanggal" placeholder="TglBulan (1808)">
+          <input type="text" id="codeNomor" placeholder="Soal ke- (1)">
+        </div>
+        <p class="hint">Isi salah satu/semua kolom di atas untuk otomatis membentuk kode judul yang tampil di kop lembar kerja (mis. MATH/CSCA/XI/1808/1). Nama file saat disimpan ke PDF juga akan memakai kode ini.</p>
+        <label class="check block"><input type="checkbox" id="showLogo" checked> Tampilkan Logo</label>
+        <div class="check-grid">
+          <label class="check"><input type="checkbox" id="showName" checked> Nama</label>
+          <label class="check"><input type="checkbox" id="showClass" checked> Kelas</label>
+          <label class="check"><input type="checkbox" id="showDate" checked> Tanggal</label>
+          <label class="check"><input type="checkbox" id="showScore" checked> Nilai</label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <label>3. Tata Letak &amp; Hemat Kertas</label>
+        <div class="field-row">
+          <span>Kolom soal PG</span>
+          <select id="pgOptionCols">
+            <option value="1">1 kolom</option>
+            <option value="2" selected>2 kolom (hemat)</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <span>Tata letak soal</span>
+          <select id="bodyColumns">
+            <option value="1">1 kolom penuh</option>
+            <option value="2" selected>2 kolom koran (paling hemat)</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <span>Coba kepadatan</span>
+          <div class="btn-row btn-row-tight">
+            <button id="densityLega" type="button" class="btn btn-ghost btn-small">Lega</button>
+            <button id="densityNormal" type="button" class="btn btn-ghost btn-small">Normal</button>
+            <button id="densityPadat" type="button" class="btn btn-ghost btn-small">Padat</button>
+          </div>
+        </div>
+        <p id="fillStat" class="hint fill-stat"></p>
+        <div class="field-row">
+          <span>Ukuran font</span>
+          <input type="range" id="fontSize" min="9" max="13" step="0.5" value="10.5">
+          <span id="fontSizeVal" class="range-val">10.5pt</span>
+        </div>
+        <div class="field-row">
+          <span>Rapat baris</span>
+          <input type="range" id="lineHeight" min="1.1" max="1.6" step="0.05" value="1.3">
+          <span id="lineHeightVal" class="range-val">1.3</span>
+        </div>
+        <div class="field-row">
+          <span>Ukuran diagram</span>
+          <input type="range" id="diagramSize" min="140" max="380" step="10" value="260">
+          <span id="diagramSizeVal" class="range-val">260pt</span>
+        </div>
+        <label class="check block"><input type="checkbox" id="compactFormulas" checked> Kotak rumus 2 kolom</label>
+        <label class="check block"><input type="checkbox" id="showFormulaBox" checked> Tampilkan kotak rumus</label>
+      </section>
+
+      <section class="panel">
+        <label>4. Paket Acak (Anti-Nyontek)</label>
+        <div class="field-row">
+          <span>Jumlah paket</span>
+          <select id="variantCount">
+            <option value="1" selected>Nonaktif (1 paket)</option>
+            <option value="2">2 paket (A, B)</option>
+            <option value="3">3 paket (A, B, C)</option>
+            <option value="4">4 paket (A–D)</option>
+            <option value="5">5 paket (A–E)</option>
+            <option value="6">6 paket (A–F)</option>
+          </select>
+        </div>
+        <label class="check block"><input type="checkbox" id="variantShuffleItems" checked> Acak urutan soal</label>
+        <label class="check block"><input type="checkbox" id="variantShuffleOptions" checked> Acak urutan pilihan A–E (soal PG)</label>
+        <div class="btn-row btn-row-tight" style="margin-top:6px;">
+          <button id="btnReshuffle" type="button" class="btn btn-ghost btn-small">🎲 Acak Ulang</button>
+        </div>
+        <p class="hint">Dari satu naskah, dibuat beberapa paket dengan urutan soal dan urutan pilihan berbeda — semua tercetak berurutan dalam satu PDF, dan tiap paket punya kunci jawabannya sendiri (nomor soal serta huruf pilihan ikut disesuaikan otomatis). Paket A selalu sama persis dengan naskah aslinya, jadi tinggal cetak dan bagikan berselang-seling. Hasil pengacakan tetap sama selama halaman tidak ditutup — klik "Acak Ulang" untuk mendapat susunan baru. Pilihan bergaya "Semua jawaban benar" otomatis tetap di posisi terakhir.</p>
+        <p class="hint">Catatan: teks pembahasan tidak ikut diubah, jadi kalau pembahasan menyebut huruf pilihan secara langsung ("jawaban C benar karena..."), huruf itu hanya cocok untuk Paket A — matikan "Acak urutan pilihan" bila pembahasan ditulis seperti itu. Jumlah paket sengaja selalu kembali ke "Nonaktif" setiap aplikasi dibuka supaya tidak ada cetakan berlipat yang tidak disengaja.</p>
+      </section>
+
+      <section class="panel">
+        <label>5. Alokasi Nilai &amp; Ruang Jawab</label>
+        <label class="check block"><input type="checkbox" id="showMarks" checked> Tampilkan alokasi nilai</label>
+        <label class="check block"><input type="checkbox" id="autoAnswerSpace" checked> Ruang jawab otomatis dari bobot nilai</label>
+        <div class="field-row">
+          <span>Garis per poin</span>
+          <input type="range" id="linesPerMark" min="0.5" max="4" step="0.5" value="2">
+          <span id="linesPerMarkVal" class="range-val">2</span>
+        </div>
+        <p class="hint">Tulis bobot nilai di akhir kalimat soal dengan tanda kurung siku — <code>Hitung hambatan total. [3]</code> — dan sub-soal berjenjang dengan penanda di awal baris: <code>(a)</code>, <code>(b)</code> untuk tingkat pertama, lalu <code>(i)</code>, <code>(ii)</code> untuk tingkat kedua di bawahnya. Nomor soal, total per soal, total per bagian, dan total naskah dihitung otomatis. Kalau naskah tidak memuat bobot nilai sama sekali, tidak ada satu pun angka nilai yang dicetak — jadi naskah lama tetap tampil persis seperti sebelumnya.</p>
+        <p class="hint">"Ruang jawab otomatis" mengganti kotak jawab polos dengan garis bertitik sebanyak bobot nilai &times; angka di atas (maksimal 10 garis per sub-soal). Pada lembar guru, garis itu digantikan kunci jawabannya.</p>
+      </section>
+
+      <section class="panel">
+        <label>6. Kunci &amp; Pembahasan</label>
+        <label class="check block"><input type="checkbox" id="showAnswerKey"> Sertakan Kunci Jawaban</label>
+        <label class="check block"><input type="checkbox" id="showExplanation"> Sertakan Pembahasan</label>
+        <p class="hint">Biarkan tidak dicentang untuk lembar kerja siswa saja. Centang salah satu/keduanya untuk menambahkan lembar versi guru (berjawaban) tepat setelah lembar siswa dalam PDF yang sama.</p>
+      </section>
+
+      <section class="panel">
+        <label>7. Riwayat Lembar Kerja</label>
+        <div class="btn-row">
+          <button id="btnSaveHistory" type="button" class="btn btn-ghost">💾 Simpan Salinan</button>
+          <button id="btnClearHistory" type="button" class="btn btn-ghost">🗑️ Hapus Semua</button>
+        </div>
+        <div class="btn-row">
+          <button id="btnExportProject" type="button" class="btn btn-ghost">⬇️ Ekspor .ews</button>
+          <button id="btnImportProject" type="button" class="btn btn-ghost">⬆️ Impor .ews</button>
+        </div>
+        <input type="file" id="projectFileInput" accept=".ews,application/json" hidden>
+        <p class="hint">Berkas <code>.ews</code> membungkus naskah soal, seluruh pengaturan, DAN gambar yang dipakainya jadi satu berkas — jadi lembar kerja bisa dikirim ke rekan guru atau dipindah ke komputer lain dalam bentuk yang masih bisa diedit, bukan cuma PDF mati. Saat diimpor, gambar yang id-nya bentrok dengan gambar yang sudah ada di sini otomatis diberi id baru dan tag di naskah ikut disesuaikan, sehingga gambar lama tidak pernah tertimpa.</p>
+        <p id="historyStatus" class="hint history-status"></p>
+        <div id="historyList" class="history-list"></div>
+        <p class="hint">Naskah soal yang sedang dikerjakan tersimpan otomatis di browser ini setiap kali worksheet dirender, lengkap dengan pengaturan kop dan tata letaknya — jadi pekerjaan tidak hilang saat tab ditutup. Klik judul untuk membukanya kembali. "Simpan Salinan" membekukan versi saat ini sebagai entri terpisah sebelum naskah diubah lebih lanjut. Riwayat tersimpan hanya di perangkat ini (bukan di server), maksimal 40 entri terbaru.</p>
+      </section>
+
+      <section class="panel">
+        <label>8. Pemeriksaan Naskah</label>
+        <p id="checkSummary" class="hint check-summary"></p>
+        <div id="checkList" class="check-list"></div>
+        <p class="hint">Naskah diperiksa otomatis setiap kali dirender: tag diagram yang salah tulis atau tidak dikenal, gambar yang id-nya sudah terhapus, soal pilihan ganda yang opsinya kurang, kunci jawaban yang hilang/ganda/tidak punya soal, nomor soal yang lompat, dan bobot nilai yang belum lengkap. Tujuannya supaya kesalahan ketahuan di sini, bukan setelah PDF-nya tercetak dan dibagikan.</p>
+      </section>
+
+      <section class="panel">
+        <button id="btnPrint" class="btn btn-primary btn-large">🖨️ Cetak / Simpan PDF</button>
+        <p class="hint">Gunakan tujuan cetak "Simpan sebagai PDF" pada dialog cetak browser untuk mengekspor file PDF.</p>
+      </section>
+
+    </div>
+  </aside>
+
+  <main class="preview-area">
+    <div class="preview-toolbar no-print">
+      <div class="zoom-controls">
+        <button id="btnZoomOut" type="button" class="btn btn-ghost btn-small" aria-label="Perkecil">&minus;</button>
+        <span id="zoomVal" class="zoom-val">100%</span>
+        <button id="btnZoomIn" type="button" class="btn btn-ghost btn-small" aria-label="Perbesar">+</button>
+        <button id="btnZoomReset" type="button" class="btn btn-ghost btn-small">Reset</button>
+      </div>
+      <label class="check"><input type="checkbox" id="spreadView"> 2 halaman berdampingan</label>
+    </div>
+    <div id="page"></div>
+  </main>
+
+</div>
+
+<div id="diagramModalOverlay" class="modal-overlay no-print" hidden>
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Sisipkan Diagram</h2>
+      <button id="btnCloseModal" type="button" class="modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-form">
+        <label class="sublabel" for="diagType">Jenis Diagram</label>
+        <!-- Options are filled in by diagram-builder.js from its own
+             FIELD_SPECS table, so the list here can never drift out of sync
+             with the types the form actually knows how to build. -->
+        <select id="diagType" class="modal-select"></select>
+        <div id="diagFields"></div>
+      </div>
+      <div class="modal-preview">
+        <label class="sublabel">Pratinjau</label>
+        <div id="diagPreview" class="diag-preview-box"></div>
+        <p class="hint">Pratinjau diperbarui setiap kali isian di kiri diubah. Klik "Sisipkan" untuk menempelkan tag diagram ini ke naskah soal di posisi kursor terakhir, lalu worksheet otomatis dirender ulang.</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="btnCancelDiagram" type="button" class="btn btn-ghost">Batal</button>
+      <button id="btnConfirmDiagram" type="button" class="btn btn-primary">📐 Sisipkan</button>
+    </div>
+  </div>
+</div>
+
+<div id="aiPromptModalOverlay" class="modal-overlay no-print" hidden>
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Buat Prompt AI</h2>
+      <button id="btnCloseAiModal" type="button" class="modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-form" id="aiFormPane">
+        <div class="field-item">
+          <label for="aiSubject">Mata Pelajaran</label>
+          <select id="aiSubject">
+            <option value="matematika">Matematika</option>
+            <option value="fisika">Fisika</option>
+            <option value="kimia">Kimia</option>
+            <option value="biologi">Biologi</option>
+            <option value="bahasa-indonesia">Bahasa Indonesia</option>
+            <option value="bahasa-inggris">Bahasa Inggris</option>
+            <option value="lainnya">Lainnya...</option>
+          </select>
+        </div>
+        <div class="field-item" id="aiSubjectCustomWrap" hidden>
+          <label for="aiSubjectCustom">Nama Mata Pelajaran</label>
+          <input type="text" id="aiSubjectCustom" placeholder="mis. Sejarah, Ekonomi, PPKn">
+        </div>
+        <div class="field-item">
+          <label for="aiTopic">Topik (opsional)</label>
+          <input type="text" id="aiTopic" placeholder="mis. Persamaan Kuadrat">
+        </div>
+        <div class="field-item">
+          <label for="aiGrade">Jenjang/Kelas (opsional)</label>
+          <input type="text" id="aiGrade" placeholder="mis. Kelas XI SMA">
+        </div>
+        <div class="field-item">
+          <label for="aiLanguage">Bahasa Soal</label>
+          <select id="aiLanguage">
+            <option value="Indonesia">Indonesia</option>
+            <option value="Inggris">Inggris</option>
+          </select>
+        </div>
+        <div class="field-item">
+          <label for="aiDifficulty">Tingkat Kesulitan</label>
+          <select id="aiDifficulty">
+            <option value="campuran" selected>Campuran (mudah–sulit merata)</option>
+            <option value="mudah">Mudah</option>
+            <option value="sedang">Sedang</option>
+            <option value="sulit">Sulit</option>
+          </select>
+        </div>
+        <label class="check block"><input type="checkbox" id="aiIncludeHots"> Sertakan soal HOTS (penalaran/analisis, bukan hafalan)</label>
+        <div class="field-item">
+          <label for="aiSetCount">Jumlah Set Soal (struktur sama, isi berbeda)</label>
+          <input type="number" id="aiSetCount" min="1" max="20" value="1">
+        </div>
+        <label class="sublabel">Jumlah Soal per Jenis</label>
+        <div class="field-item-grid">
+          <div class="field-item">
+            <label for="aiCountPG">Pilihan Ganda</label>
+            <input type="number" id="aiCountPG" min="0" value="10">
+          </div>
+          <div class="field-item">
+            <label for="aiCountB">Benar/Salah</label>
+            <input type="number" id="aiCountB" min="0" value="0">
+          </div>
+          <div class="field-item">
+            <label for="aiCountI">Isian Singkat</label>
+            <input type="number" id="aiCountI" min="0" value="0">
+          </div>
+          <div class="field-item">
+            <label for="aiCountE">Esai/Uraian</label>
+            <input type="number" id="aiCountE" min="0" value="0">
+          </div>
+        </div>
+        <label class="check block"><input type="checkbox" id="aiIncludeDiagrams" checked> Boleh sisipkan diagram/gambar bila relevan</label>
+        <label class="check block"><input type="checkbox" id="aiIncludeMarks" checked> Sertakan bobot nilai &amp; sub-soal berjenjang (format ujian internasional)</label>
+        <label class="check block"><input type="checkbox" id="aiIncludeExplanation" checked> Sertakan pembahasan</label>
+      </div>
+      <div class="modal-form" id="aiResultPane" hidden>
+        <label class="sublabel">Prompt Siap Pakai</label>
+        <textarea id="aiResultText" readonly style="width:100%; height:280px; font-family:monospace; font-size:12px; padding:8px; border:1px solid var(--line); border-radius:6px; resize:vertical;"></textarea>
+        <p class="hint">Prompt ini sudah dicoba disalin otomatis ke clipboard. Kalau browser menolak/menampilkan izin clipboard, klik langsung di kotak teks di atas (otomatis terpilih semua) lalu Ctrl/Cmd+C — atau pakai tombol "Salin" di bawah. Kalau semua sudah beres, klik "Buka Gemini" lalu tempelkan (Ctrl/Cmd+V) di sana.</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="btnCancelAiPrompt" type="button" class="btn btn-ghost">Batal</button>
+      <button id="btnConfirmAiPrompt" type="button" class="btn btn-primary">🤖 Buat Prompt</button>
+      <button id="btnBackAiPrompt" type="button" class="btn btn-ghost" hidden>&larr; Kembali</button>
+      <button id="btnCopyAiResult" type="button" class="btn btn-ghost" hidden>📋 Salin</button>
+      <button id="btnOpenGemini" type="button" class="btn btn-primary" hidden>🌐 Buka Gemini</button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/katex/katex.min.js"></script>
+<script src="vendor/katex/mhchem.min.js"></script>
+<script src="vendor/katex/auto-render.min.js"></script>
+<script src="vendor/pagedjs/paged.min.js"></script>
+<script src="diagrams.js"></script>
+<script src="prompt-builder.js"></script>
+<script src="app.js"></script>
+<script src="diagram-builder.js"></script>
+</body>
+</html>

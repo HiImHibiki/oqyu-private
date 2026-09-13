@@ -235,6 +235,23 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/wsm' or u.path == '/wsm/':
+            self.send_response(302); self.send_header('Location', '/wsm/index.html')
+            self.end_headers(); return
+
+        if u.path.startswith('/wsm/'):
+            # Mesin Exact Worksheet Maker disajikan dari dalam aplikasi ini,
+            # jadi tidak perlu server terpisah di port 8420 maupun jalur luar.
+            rel = urllib.parse.unquote(u.path[len('/wsm/'):])
+            if '..' in rel: return self.send_error(403)
+            fp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'wsm', rel)
+            if not os.path.isfile(fp): return self.send_error(404)
+            tipe = mimetypes.guess_type(fp)[0] or 'application/octet-stream'
+            d = open(fp, 'rb').read()
+            self.send_response(200); self.send_header('Content-Type', tipe)
+            self.send_header('Content-Length', str(len(d))); self.end_headers()
+            self.wfile.write(d); return
+
         if u.path.startswith('/statik/'):
             rel = u.path[len('/statik/'):]
             if '..' in rel: return self.send_error(403)
@@ -465,7 +482,8 @@ class H(BaseHTTPRequestHandler):
             lembaga=medan.get('lembaga', ''), sekolah=medan.get('sekolah', ''),
             tanggal=medan.get('tanggal', ''),
             kunci='kunci' in medan, pembahasan='pembahasan' in medan,
-            kolom=medan.get('kolom', '2'), dua_berkas='dua_berkas' in medan), daemon=True)
+            kolom=medan.get('kolom', '2'), dua_berkas='dua_berkas' in medan,
+            kerapatan=medan.get('kerapatan', 'Normal'), garis=medan.get('garis', '1.5')), daemon=True)
         t.start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')

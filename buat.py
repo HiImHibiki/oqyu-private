@@ -22,10 +22,13 @@ PORT = 7790
 TUGAS = {}
 KUNCI = threading.Lock()
 
-SINGKATAN = {'matematika': 'MATH', 'fisika': 'PHYS', 'kimia': 'CHEM',
-             'biologi': 'BIO', 'ipa': 'IPA', 'ips': 'IPS',
-             'bahasa inggris': 'ENG', 'bahasa indonesia': 'BIND',
-             'ekonomi': 'EKO', 'sejarah': 'SEJ', 'geografi': 'GEO'}
+SINGKATAN = {'matematika': 'MATH', 'mathematics': 'MATH', 'math': 'MATH', 'mtk': 'MATH',
+             'fisika': 'PHYS', 'physics': 'PHYS', 'kimia': 'CHEM', 'chemistry': 'CHEM',
+             'biologi': 'BIO', 'biology': 'BIO', 'ipa': 'IPA', 'science': 'SCI',
+             'sains': 'SCI', 'ips': 'IPS', 'bahasa inggris': 'ENG', 'english': 'ENG',
+             'bahasa indonesia': 'BIND', 'ekonomi': 'EKO', 'economics': 'EKO',
+             'sejarah': 'SEJ', 'history': 'SEJ', 'geografi': 'GEO', 'geography': 'GEO',
+             'ppkn': 'PPKN', 'sosiologi': 'SOS', 'akuntansi': 'AKT'}
 
 def nama_berkas(kop, kunci, folder):
     """Samakan dengan penamaan Exact Worksheet Maker sendiri.
@@ -59,7 +62,10 @@ def kode_mapel(nama):
     if n in SINGKATAN: return SINGKATAN[n]
     for k, v in SINGKATAN.items():
         if k in n or n in k: return v
-    return ''.join(w[0] for w in n.split()[:4]).upper() or n[:4].upper()
+    kata = n.split()
+    if len(kata) == 1:
+        return kata[0][:4].upper()          # satu kata -> 4 huruf, bukan 1 inisial
+    return ''.join(w[0] for w in kata[:4]).upper() or n[:4].upper()
 
 def _catat(jid, pesan, maju=None, selesai=False, galat=None, pdf=None):
     with KUNCI:
@@ -76,7 +82,7 @@ def _db():
 def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
              topik='', jenjang='', n_set='', sulit='', bahasa='Indonesia',
              lembaga='', sekolah='', tanggal='', kunci=True, pembahasan=True,
-             kolom='2', dua_berkas=False):
+             kolom='2', dua_berkas=False, kerapatan='Normal', garis='1.5'):
     """Alur penuh: foto -> arsip -> Gemini -> Exact Worksheet Maker -> PDF."""
     import serupa, wsmaker, otomasi
     try:
@@ -159,7 +165,8 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
         kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
                    sekolah=sekolah, kelas=str(kelas or '') or (jenjang or ''),
                    tanggal=tanggal or time.strftime('%d%m'),
-                   kunci=kunci, pembahasan=pembahasan, kolom=str(kolom or '2'))
+                   kunci=kunci, pembahasan=pembahasan, kolom=str(kolom or '2'),
+                   kerapatan=kerapatan or 'Normal', garis_per_nilai=garis or '1.5')
         os.makedirs(KELUAR, exist_ok=True)
         nama = nama_berkas(kop, kunci and not dua_berkas, KELUAR)
         cap = time.strftime('%Y-%m-%d %H%M')
@@ -449,6 +456,16 @@ Mac ini menata, PDF terbuka sendiri.</div>
     <input name=tanggal placeholder="tgl" value="{tgl_ini}" size=7>
   </div>
   <div class=r>
+    <select name=kerapatan title="kerapatan tata letak">
+      <option value=Normal{" selected" if st.get('kerapatan','Normal')=='Normal' else ""}>kerapatan normal</option>
+      <option value=Padat{" selected" if st.get('kerapatan')=='Padat' else ""}>padat (hemat kertas)</option>
+      <option value=Lega{" selected" if st.get('kerapatan')=='Lega' else ""}>lega</option>
+    </select>
+    <select name=garis title="ruang jawab per nilai">
+      <option value=1.5{" selected" if st.get('garis','1.5')=='1.5' else ""}>ruang jawab sedang</option>
+      <option value=0.5{" selected" if st.get('garis')=='0.5' else ""}>ruang jawab sempit</option>
+      <option value=2.5{" selected" if st.get('garis')=='2.5' else ""}>ruang jawab luas</option>
+    </select>
     <select name=kolom title="tata letak">
       <option value=2{" selected" if st.get('kolom','2')!='1' else ""}>2 kolom (hemat)</option>
       <option value=1{" selected" if st.get('kolom')=='1' else ""}>1 kolom penuh</option>

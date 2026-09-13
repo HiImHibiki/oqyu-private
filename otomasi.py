@@ -269,6 +269,17 @@ JS_SETEL = r"""
   set('codeTanggal', o.tanggal);
   set('bodyColumns', o.kolom);        // 1 kolom penuh / 2 kolom koran
   set('pgOptionCols', o.kolom);
+  // Kerapatan adalah tombol preset yang menyetel ukuran font & jarak sekaligus
+  if (o.kerapatan) {
+    const b = document.getElementById('density' + o.kerapatan);
+    if (b) b.click();
+  }
+  // Ruang jawab otomatis: 2 garis per nilai itu longgar untuk soal hitungan;
+  // nilainya disetel lewat input range, bukan teks biasa.
+  if (o.garis_per_nilai) {
+    const r = document.getElementById('linesPerMark');
+    if (r) { r.value = o.garis_per_nilai; r.dispatchEvent(new Event('input', {bubbles:true})); }
+  }
   centang('showAnswerKey', !!o.kunci);
   centang('showExplanation', !!o.pembahasan);
   centang('showMarks', true);
@@ -298,7 +309,7 @@ def worksheet_pdf(naskah, tujuan, tunggu=4.0, kop=None, tujuan_kunci=None):
     Gemini dua kali akan menghasilkan soal yang BERBEDA — bukan itu yang dimau.
     """
     wsmaker.pastikan_server()
-    s = _sesi(wsmaker.ALAMAT, f'localhost:{wsmaker.PORT_WS}')
+    s = _sesi(wsmaker.ALAMAT, '/wsm/')
     try:
         if kop:
             s.evaluasi(JS_SETEL % json.dumps(kop))
