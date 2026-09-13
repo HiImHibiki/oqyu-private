@@ -139,6 +139,23 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/diag':
+            # Hanya dari Mac ini: isinya membocorkan daftar berkas Desktop.
+            if self.client_address[0] not in ('127.0.0.1', '::1'):
+                return self.send_error(403)
+            import hasil as _h, glob as _g
+            f = _h.folder_keluar()
+            try: isi = os.listdir(f)
+            except Exception as e: isi = [f'GALAT: {e}']
+            d = {'folder': f, 'ada': os.path.isdir(f),
+                 'HOME': os.environ.get('HOME'),
+                 'jumlah_item': len(isi), 'pdf_glob': len(_g.glob(os.path.join(f, '*.pdf'))),
+                 'contoh': isi[:5]}
+            b = json.dumps(d, ensure_ascii=False).encode()
+            self.send_response(200); self.send_header('Content-Type','application/json')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
         if u.path == '/hasil':
             import hasil as _h
             f = (qs.get('f') or [''])[0]
