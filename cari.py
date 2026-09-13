@@ -147,7 +147,13 @@ class H(BaseHTTPRequestHandler):
             f = _h.folder_keluar()
             try: isi = os.listdir(f)
             except Exception as e: isi = [f'GALAT: {e}']
-            d = {'folder': f, 'ada': os.path.isdir(f),
+            try:
+                n_daftar = len(_h.daftar_pdf())
+                galat_daftar = None
+            except Exception as e:
+                n_daftar, galat_daftar = -1, f'{type(e).__name__}: {e}'
+            d = {'daftar_pdf': n_daftar, 'galat_daftar': galat_daftar,
+                 'folder': f, 'ada': os.path.isdir(f),
                  'HOME': os.environ.get('HOME'),
                  'jumlah_item': len(isi), 'pdf_glob': len(_g.glob(os.path.join(f, '*.pdf'))),
                  'contoh': isi[:5]}
@@ -1012,6 +1018,20 @@ if __name__ == '__main__':
     # Bawaannya hanya melayani Mac ini. Untuk membukanya ke tablet/HP di
     # jaringan yang sama, jalankan dengan EXACT_LAN=1 — atau EXACT_LAN=<alamat>
     # untuk mengikat ke satu antarmuka saja, misalnya alamat Tailscale.
+    # Python menyalakan SO_REUSEADDR, sehingga BEBERAPA proses bisa mengikat
+    # port yang sama tanpa galat — permintaan lalu tersebar acak di antaranya.
+    # Kalau salah satunya memakai kode lama, gejalanya membingungkan: halaman
+    # kadang benar kadang kosong. Jadi: satu saja.
+    try:
+        import urllib.request as _u
+        _u.urlopen(f'http://127.0.0.1:{PORT}/status', timeout=2).read(1)
+        print(f'Sudah ada server di port {PORT}. Berhenti agar tidak bentrok.', flush=True)
+        raise SystemExit(0)
+    except SystemExit:
+        raise
+    except Exception:
+        pass
+
     lan = os.environ.get('EXACT_LAN', '')
     ikat = '0.0.0.0' if lan in ('1', 'ya', 'true') else (lan or '127.0.0.1')
     if ikat != '127.0.0.1':
