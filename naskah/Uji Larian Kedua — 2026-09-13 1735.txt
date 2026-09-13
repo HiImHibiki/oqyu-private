@@ -1,0 +1,168 @@
+Sistem Persamaan Linear Dua Variabel Kelas 8
+
+F1 (Bentuk Umum SPLDV): a
+1
+	​
+
+x+b
+1
+	​
+
+y=c
+1
+	​
+
+ dan a
+2
+	​
+
+x+b
+2
+	​
+
+y=c
+2
+	​
+
+
+Bagian Pilihan Ganda: (PG)
+PG1. Persamaan-persamaan berikut tergolong persamaan linear dua variabel, kecuali .... [1]
+A. 7x+15=4y
+B. 6x−
+3
+2y
+	​
+
+=4
+C. 4x−12=3xy
+D. 
+2
+5x
+	​
+
++
+4
+3y
+	​
+
+=10
+
+PG2. Perhatikan grafik sistem persamaan linear dua variabel berikut: [[grafik: f1=x-4; f2=2*x-2; xmin=-3; xmax=5; ymin=-5; ymax=5; sumbux=x; sumbuy=y]] Himpunan penyelesaian dari sistem persamaan linear dua variabel yang ditunjukkan oleh titik potong kedua garis pada grafik tersebut adalah .... [1]
+A. {(0,4)}
+B. {(4,0)}
+C. {(2,2)}
+D. {(−2,−6)}
+
+PG3. Himpunan penyelesaian dari sistem persamaan linear dua variabel 5x+2y=1 dan x−y=5 adalah .... [2]
+A. {(13,−32)}
+B. {(−13,−32)}
+C. {(32,−13)}
+D. {(3,−2)}
+
+PG4. Diketahui sistem persamaan linear dua variabel 3x−6y=18 dan bx+3y=5 dengan x,y∈R. Jika salah satu nilai penyelesaiannya memiliki nilai x=8, nilai koefisien b adalah .... [2]
+A. 2
+B. 1
+C. −1
+D. −2
+
+Bagian Benar atau Salah: (B)
+B1. Sistem persamaan linear dua variabel {
+x+2y=3
+2x+4y=5
+	​
+
+ tidak memiliki pasangan penyelesaian bilangan real karena kedua garisnya saling sejajar pada bidang koordinat Cartesius. [2]
+
+B2. Pasangan bilangan terurut (x,y)=(2,−1) merupakan penyelesaian yang memenuhi sistem persamaan linear dua variabel {
+2x+y=3
+3x−2y=4
+	​
+
+. [2]
+
+Bagian Isian: (I)
+I1. Diketahui keliling sebuah persegi panjang adalah 36 cm. Jika selisih panjang dan lebarnya adalah 4 cm, luas persegi panjang tersebut adalah ______ cm
+2
+. [3]
+
+Bagian Uraian: (E)
+E1. Diketahui sistem persamaan linear dua variabel berikut: {
+3x+2y=8
+6x+4y=16
+	​
+
+
+(a) Tuliskan hubungan antara koefisien x, koefisien y, dan konstanta dari kedua persamaan tersebut. [1]
+(b) (i) Tentukan kedudukan kedua garis persamaan tersebut jika digambarkan pada sistem koordinat Cartesius. [2]
+(ii) Analisis banyaknya penyelesaian yang dimiliki oleh sistem persamaan linear dua variabel tersebut serta jelaskan alasannya. [2]
+
+Kunci Jawaban
+PG1-C, PG2-D, PG3-D, PG4-C, B1-Benar, B2-Salah, I1-77, E1a-
+a
+2
+	​
+
+a
+1
+	​
+
+	​
+
+=
+b
+2
+	​
+
+b
+1
+	​
+
+	​
+
+=
+c
+2
+	​
+
+c
+1
+	​
+
+	​
+
+=
+2
+1
+	​
+
+, E1b.i-Kedua garis saling berimpit, E1b.ii-Memiliki tak hingga banyaknya penyelesaian
+
+Pembahasan
+PG1-Persamaan 4x−12=3xy memuat suku 3xy yang berderajat dua sehingga bukan merupakan persamaan linear dua variabel.B1-Kedua garis memiliki gradien sama yaitu m=−
+2
+1
+	​
+
+ namun konstanta berbeda sehingga garis saling sejajar dan sistem tidak memiliki penyelesaian.I1-Model matematika adalah 2(p+l)=36⇒p+l=18 dan p−l=4. Melalui metode eliminasi diperoleh p=11 cm dan l=7 cm. Luas persegi panjang adalah L=p×l=11×7=77 cm
+2
+.E1-Pada E1a diperoleh rasio perbandingan 
+6
+3
+	​
+
+=
+4
+2
+	​
+
+=
+16
+8
+	​
+
+=
+2
+1
+	​
+
+. Pada E1b.i karena perbandingannya bernilai sama untuk seluruh suku maka kedua garis berimpit. Pada E1b.ii karena kedua garis berimpit maka seluruh titik pada garis tersebut merupakan penyelesaian sehingga SPLDV memiliki tak terhingga banyaknya penyelesaian.

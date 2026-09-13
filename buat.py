@@ -12,7 +12,11 @@ import os, re, json, time, html, threading, subprocess, sqlite3, urllib.parse, u
 
 AKAR = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(AKAR, 'exact.db')
-KELUAR = os.path.expanduser('~/Documents/Lembar Kerja')
+# PDF mendarat langsung di Desktop supaya gampang ditemukan.
+# Naskah mentahnya disimpan terpisah agar Desktop tidak penuh — berguna kalau
+# lembar perlu disunting ulang lewat Exact Worksheet Maker.
+KELUAR = os.path.expanduser(os.environ.get('EXACT_KELUAR') or '~/Desktop')
+NASKAH = os.path.join(AKAR, 'naskah')
 PORT = 7790
 
 TUGAS = {}
@@ -22,6 +26,32 @@ SINGKATAN = {'matematika': 'MATH', 'fisika': 'PHYS', 'kimia': 'CHEM',
              'biologi': 'BIO', 'ipa': 'IPA', 'ips': 'IPS',
              'bahasa inggris': 'ENG', 'bahasa indonesia': 'BIND',
              'ekonomi': 'EKO', 'sejarah': 'SEJ', 'geografi': 'GEO'}
+
+def nama_berkas(kop, kunci, folder):
+    """Samakan dengan penamaan Exact Worksheet Maker sendiri.
+
+    Berkas lama Rico bernama "SCIENCE ICAS-ST.LAURENSIA-7-1309-1.pdf" — itu kode
+    Mapel/Sekolah/Kelas/TglBulan/Soal-ke milik aplikasinya, dengan "/" diganti
+    "-". Memakai pola yang sama membuat lembar baru berbaur dengan yang lama,
+    bukan jadi kelompok asing di Desktop yang sudah berisi ratusan PDF.
+    """
+    bagian = [str(kop.get(k) or '').strip()
+              for k in ('mapel', 'sekolah', 'kelas', 'tanggal')]
+    bagian = [b for b in bagian if b]
+    dasar = '-'.join(bagian) or 'Lembar'
+    # nomor urut: lanjutkan dari berkas hari ini yang berawalan sama
+    n = 1
+    try:
+        import re as _re
+        pola = _re.compile(_re.escape(dasar) + r'-(\d+)')
+        ada = [int(m.group(1)) for f in os.listdir(folder)
+               for m in [pola.match(f)] if m]
+        if ada: n = max(ada) + 1
+    except OSError:
+        pass
+    nama = f'{dasar}-{n}'
+    if kunci: nama += ' - Soal+Jawaban'
+    return nama
 
 def kode_mapel(nama):
     """Kode pendek untuk kop, mis. MATH. Memotong mentah memberi "MATEMATI"."""
@@ -124,18 +154,19 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
         _catat(jid, 'Memuat ke Exact Worksheet Maker…', 76)
 
         # 6. simpan salinan mentah + ambil PDF
-        os.makedirs(KELUAR, exist_ok=True)
         judul = judul.strip() or (topik.strip() or f'Latihan {time.strftime("%d %b %H:%M")}')
-        nama = re.sub(r'[^\w -]', '', judul).strip()[:60] or 'Lembar'
+        kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
+                   sekolah=sekolah, kelas=str(kelas or '') or (jenjang or ''),
+                   tanggal=tanggal or time.strftime('%d%m'),
+                   kunci=kunci, pembahasan=pembahasan)
+        os.makedirs(KELUAR, exist_ok=True)
+        nama = nama_berkas(kop, kunci, KELUAR)
         cap = time.strftime('%Y-%m-%d %H%M')
-        open(os.path.join(KELUAR, f'{nama} — {cap}.txt'), 'w', encoding='utf-8').write(jawab)
+        os.makedirs(NASKAH, exist_ok=True)
+        open(os.path.join(NASKAH, f'{nama} — {cap}.txt'), 'w', encoding='utf-8').write(jawab)
         _catat(jid, 'Merender lembar lalu mencetak PDF…', 88)
-        tuju = os.path.join(KELUAR, f'{nama} — {cap}.pdf')
-        otomasi.worksheet_pdf(jawab, tuju, kop=dict(
-            lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
-            sekolah=sekolah, kelas=str(kelas or '') or (jenjang or ''),
-            tanggal=tanggal or time.strftime('%d%m'),
-            kunci=kunci, pembahasan=pembahasan))
+        tuju = os.path.join(KELUAR, f'{nama}.pdf')
+        otomasi.worksheet_pdf(jawab, tuju, kop=kop)
         subprocess.run(['open', tuju], capture_output=True)
         _catat(jid, 'Selesai — PDF terbuka', 100, selesai=True, pdf=tuju)
     except Exception as e:

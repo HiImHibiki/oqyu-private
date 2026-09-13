@@ -1,0 +1,99 @@
+Latihan Soal Matematika: Teorema Pythagoras Kelas 8
+
+F1 (Teorema Pythagoras): c
+2
+=a
+2
++b
+2
+
+Bagian Pilihan Ganda: (PG)
+PG1. Sisi-sisi sebuah segitiga siku-siku dinyatakan dengan 5x, 12x, dan sisi terpanjang bernilai 26 cm. Nilai x adalah .... [2]
+A. 1
+B. 2
+C. 3
+D. 4
+PG2. Perhatikan segitiga siku-siku berikut. [[bangun: bentuk=segitiga-siku; alas=12; tinggi=9]] Jika panjang sisi tegak adalah 9 cm dan sisi mendatar adalah 12 cm, maka panjang sisi miring dan keliling segitiga tersebut berturut-turut adalah .... [2]
+A. 15 cm dan 36 cm
+B. 15 cm dan 40 cm
+C. 21 cm dan 42 cm
+D. 25 cm dan 46 cm
+PG3. Diberikan empat batang kayu dengan panjang masing-masing 6 cm, 8 cm, 10 cm, dan 12 cm. Jika dipilih tiga batang untuk membentuk segitiga, jenis segitiga yang dapat dibentuk dari kombinasi sisi 6 cm, 8 cm, dan 12 cm adalah segitiga .... [2]
+A. lancip
+B. siku-siku
+C. tumpul
+D. sama sisi
+
+Bagian Isian: (I)
+I1. Sebuah tangga dengan panjang 10 m disandarkan pada dinding rumah. Jika jarak ujung bawah tangga ke dinding adalah 6 m, maka tinggi ujung atas tangga dari permukaan tanah adalah ______ m. [2]
+
+Kunci Jawaban
+PG1-B, PG2-A, PG3-C, I1-8 m
+
+Pembahasan
+PG1-Berdasarkan Teorema Pythagoras, (5x)
+2
++(12x)
+2
+=26
+2
+⇒25x
+2
++144x
+2
+=676⇒169x
+2
+=676⇒x
+2
+=4⇒x=2.
+PG2-Sisi miring c=
+9
+2
++12
+2
+	​
+
+=
+81+144
+	​
+
+=
+225
+	​
+
+=15 cm. Keliling segitiga =9+12+15=36 cm.
+PG3-Uji kebalikan Teorema Pythagoras untuk sisi a=6, b=8, dan sisi terpanjang c=12: a
+2
++b
+2
+=6
+2
++8
+2
+=36+64=100, sedangkan c
+2
+=12
+2
+=144. Karena c
+2
+>a
+2
++b
+2
+ (144>100), maka terbentuk segitiga tumpul.
+I1-Tinggi ujung atas tangga dihitung dengan Teorema Pythagoras: t=
+10
+2
+−6
+2
+	​
+
+=
+100−36
+	​
+
+=
+64
+	​
+
+=8 m.

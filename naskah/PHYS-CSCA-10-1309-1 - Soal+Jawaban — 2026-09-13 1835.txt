@@ -1,0 +1,96 @@
+Penilaian Dimensi dan Perpindahan Kalor Kelas 10
+
+Bagian Pilihan Ganda: (PG)
+PG1. Laju perpindahan kalor secara konduksi pada batang logam dinyatakan oleh persamaan $\frac{Q}{t} = \frac{k A \Delta T}{d}$, dengan $Q$ adalah kalor ($\text{joule}$), $t$ adalah waktu ($\text{sekon}$), $A$ adalah luas penampang ($\text{m}^2$), $\Delta T$ adalah perbedaan suhu ($\text{kelvin}$), dan $d$ adalah ketebalan batang ($\text{meter}$). Dimensi dari konduktivitas termal $k$ adalah .... [1]
+A. $[M][L][T]^{-2}[\theta]^{-1}$
+B. $[M][L][T]^{-3}[\theta]^{-1}$
+C. $[M][L]^2[T]^{-3}[\theta]^{-1}$
+D. $[M][L]^{-1}[T]^{-2}[\theta]^{-1}$
+E. $[M][L][T]^{-1}[\theta]^{-2}$
+
+PG2. Besarnya torsi ($\tau$) yang bekerja pada suatu sistem berotasi memenuhi perumusan $\tau = C \cdot I^x \omega^y t^z$, dengan $C$ adalah konstanta tak berdimensi, $I$ adalah momen inersia ($\text{kg}\cdot\text{m}^2$), $\omega$ adalah kecepatan sudut ($\text{rad/s}$), dan $t$ adalah waktu ($\text{s}$). Jika nilai $y = 1$, maka nilai $x$ dan $z$ berturut-turut adalah .... [1]
+A. $1$ dan $1$
+B. $1$ dan $-1$
+C. $2$ dan```text
+Penilaian Harian Fisika: Dimensi Besaran dan Perpindahan Kalor Kelas 10
+
+F1 (Laju Konduksi Kalor): $\frac{Q}{t} = \frac{k \cdot A \cdot \Delta T}{L}$
+F2 (Laju Radiasi Kalor): $P = e \cdot \sigma \cdot A \cdot T^4$
+
+Bagian Pilihan Ganda: (PG)
+
+PG1. Laju aliran kalor konduksi pada sebuah dinding dinyatakan oleh persamaan $\frac{Q}{t} = \frac{k \cdot A \cdot \Delta T}{d}$, dengan $Q$ adalah kalor ($\text{joule}$), $t$ adalah waktu ($\text{sekon}$), $A$ adalah luas penampang ($\text{m}^2$), $\Delta T$ adalah perbedaan suhu ($\text{kelvin}$), dan $d$ adalah ketebalan dinding ($\text{meter}$). Dimensi dari konduktivitas termal $k$ adalah .... [2]
+A. $[M][L][T]^{-2}[\theta]^{-1}$
+B. $[M][L][T]^{-3}[\theta]^{-1}$
+C. $[M][L]^{2}[T]^{-3}[\theta]^{-1}$
+D. $[M][L]^{-1}[T]^{-2}[\theta]^{-1}$
+E. $[M][L]^{2}[T]^{-2}[\theta]^{-1}$
+
+PG2. Dua batang logam $X$ dan $Y$ memiliki panjang dan luas penampang yang sama, disambungkan pada salah satu ujungnya. Suhu ujung bebas logam $X$ dipelihara pada $100^\circ\text{C}$ dan suhu ujung bebas logam $Y$ pada $25^\circ\text{C}$. Jika konduktivitas termal logam $X$ bernilai dua kali konduktivitas termal logam $Y$ ($k_X = 2 k_Y$), maka suhu pada bidang batas sambungan kedua logam tersebut adalah .... [3]
+A. $50^\circ\text{C}$
+B. $60^\circ\text{C}$
+C. $70^\circ\text{C}$
+D. $75^\circ\text{C}$
+E. $80^\circ\text{C}$
+
+PG3. Periode getaran sebuah pegas bergantung pada massa beban $m$ dan konstanta pegas $k$ menurut hubungan $T = C \cdot m^x \cdot k^y$, dengan $C$ adalah konstanta tak berdimensi. Jika konstanta pegas $k$ memiliki dimensi $[M][T]^{-2}$ dan periode $T$ berdimensi $[T]$, maka nilai $x$ dan $y$ berturut-turut adalah .... [3]
+A. $\frac{1}{2}$ dan $-\frac{1}{2}$
+B. $-\frac{1}{2}$ dan $\frac{1}{2}$
+C. $1$ dan $-1$
+D. $\frac{1}{2}$ dan $\frac{1}{2}$
+E. $1$ dan $-\frac{1}{2}$
+
+PG4. Suatu besaran $Z$ dirumuskan melalui hubungan $Z = \frac{F \cdot v}{A}$, dengan $F$ adalah gaya ($\text{N}$), $v$ adalah kelajuan ($\text{m/s}$), dan $A$ adalah luas ($\text{m}^2$). Dimensi dari besaran $Z$ adalah .... [2]
+A. $[M][L][T]^{-3}$
+B. $[M][L]^{-1}[T]^{-2}$
+C. $[M][L]^{2}[T]^{-3}$
+D. $[M][T]^{-3}$
+E. $[M][L]^{-1}[T]^{-3}$
+
+PG5. Dua batang logam sejenis $A$ dan $B$ memiliki luas penampang yang sama. Panjang batang $A$ adalah dua kali panjang batang $B$ ($L_A = 2 L_B$). Kedua ujung batang $A$ diberi beda suhu $\Delta T$, sedangkan kedua ujung batang $B$ diberi beda suhu $2\Delta T$. Perbandingan laju hantaran kalor secara konduksi pada batang $A$ terhadap batang $B$ ($\left(\frac{Q}{t}\right)_A : \left(\frac{Q}{t}\right)_B$) adalah .... [2]
+A. $1 : 1$
+B. $1 : 2$
+C. $1 : 4$
+D. $2 : 1$
+E. $4 : 1$
+
+PG6. Gaya angkat gas pada sebuah balon udara dirumuskan dengan $F = k \cdot \rho^a \cdot g^b \cdot V^c$, di mana $k$ adalah konstanta tak berdimensi, $\rho$ adalah massa jenis udara ($[M][L]^{-3}$), $g$ adalah percepatan gravitasi ($[L][T]^{-2}$), dan $V$ adalah volume balon ($[L]^3$). Agar persamaan tersebut konsisten secara dimensional dengan dimensi gaya ($[M][L][T]^{-2}$), nilai pangkat $a$, $b$, dan $c$ berturut-turut haruslah .... [3]
+A. $1, 1, 1$
+B. $1, 1, 2$
+C. $1, 2, 1$
+D. $2, 1, 1$
+E. $1, -1, 1$
+
+PG7. Laju kehilangan energi per satuan luas akibat radiasi termal dari permukaan suatu benda hitam sebanding dengan pangkat empat suhu mutlaknya menurut persamaan $I = \sigma \cdot T^4$, dengan $I$ memiliki satuan $\text{W/m}^2$ dan $T$ bersatuan $\text{kelvin}$ ($\text{K}$). Dimensi dari konstanta Stefan-Boltzmann $\sigma$ adalah .... [2]
+A. $[M][T]^{-3}[\theta]^{-4}$
+B. $[M][L][T]^{-3}[\theta]^{-4}$
+C. $[M][L]^{2}[T]^{-3}[\theta]^{-4}$
+D. $[M][T]^{-2}[\theta]^{-4}$
+E. $[M][L]^{-1}[T]^{-3}[\theta]^{-4}$
+
+PG8. Batang logam tembaga dan aluminium berukuran panjang serta luas penampang identik disambungkan secara seri. Ujung tembaga bersuhu $90^\circ\text{C}$ dan ujung aluminium bersuhu $10^\circ\text{C}$. Diketahui konduktivitas termal tembaga adalah $390\text{ W/(m}\cdot\text{K)}$ dan konduktivitas termal aluminium adalah $210\text{ W/(m}\cdot\text{K)}$. Suhu pada sambungan kedua logam tersebut saat tercapai keadaan setimbang adalah .... [3]
+A. $50^\circ\text{C}$
+B. $58^\circ\text{C}$
+C. $62^\circ\text{C}$
+D. $65^\circ\text{C}$
+E. $72^\circ\text{C}$
+
+PG9. Tekanan hidrostatis $P$ pada kedalaman tertentu di dalam fluida dirumuskan dengan $P = \rho^x \cdot g^y \cdot h^z$, di mana $\rho$ adalah massa jenis fluida ($\text{kg/m}^3$), $g$ adalah percepatan gravitasi ($\text{m/s}^2$), dan $h$ adalah kedalaman zat cair ($\text{m}$). Jika dimensi tekanan adalah $[M][L]^{-1}[T]^{-2}$, maka nilai $x$, $y$, dan $z$ yang memenuhi adalah .... [3]
+A. $x = 1, y = 1, z = 1$
+B. $x = 1, y = 2, z = 1$
+C. $x = 1, y = 1, z = -1$
+D. $x = 2, y = 1, z = 1$
+E. $x = 1, y = -1, z = 1$
+
+PG10. Dua benda hitam identik $A$ dan $B$ meradiasikan energi kalor ke lingkungan. Suhu mutlak benda $A$ adalah $300\text{ K}$ dan suhu mutlak benda $B$ adalah $600\text{ K}$. Perbandingan daya radiasi kalor yang dipancarkan oleh benda $A$ dan benda $B$ ($P_A : P_B$) adalah .... [2]
+A. $1 : 2$
+B. $1 : 4$
+C. $1 : 8$
+D. $1 : 16$
+E. $1 : 32$
+
+Kunci Jawaban
+PG1-B, PG2-D, PG3-A, PG4-D, PG5-C, PG6-A, PG7-A, PG8-C, PG9-A, PG10-D
+
+Pembahasan
+PG1-Dimensi kalor $Q$ adalah $[M][L]^2[T]^{-2}$, waktu $t$ adalah $[T]$, luas $A$ adalah $[L]^2$, perbedaan suhu $\Delta T$ adalah $[\theta]$, dan jarak $d$ adalah $[L]$. Berdasarkan persamaan konduksi $k = \frac{Q \cdot d}{t \cdot A \cdot \Delta T}$, maka $[k] = \frac{([M][L]^2[T]^{-2}) \cdot [L]}{[T] \cdot [L]^2 \cdot [\theta]} = [M][L][T]^{-3}[\theta]^{-1}$.PG2-Pada keadaan tunak berlaku kesetaraan laju konduksi kedua logam $\left(\frac{Q}{t}\right)_X = \left(\frac{Q}{t}\right)_Y$. Karena panjang $L$ dan luas $A$ sama, diperoleh hubungan $k_X (T_X - T_s) = k_Y (T_s - T_Y)$. Substitusi $k_X = 2 k_Y$ menghasilkan $2(100 - T_s) = (T_s - 25)$, yang disederhanakan menjadi $200 - 2T_s = T_s - 25 \rightarrow 3T_s = 225 \rightarrow T_s = 75^\circ\text{C}$.PG3-Analisis dimensi pada persamaan periode getaran $[T] = ([M])^x \cdot ([M][T]^{-2})^y = [M]^{x+y}[T]^{-2y}$. Menyamakan pangkat kedua ruas diperoleh $-2y = 1 \rightarrow y = -\frac{1}{2}$ dan $x + y = 0 \rightarrow x = -y = \frac{1}{2}$.PG4-Gaya memiliki dimensi $[F] = [M][L][T]^{-2}$, kelajuan $[v] = [L][T]^{-1}$, dan luas $[A] = [L]^2$. Maka dimensi besaran $Z$ adalah $[Z] = \frac{[M][L][T]^{-2} \cdot [L][T]^{-1}}{[L]^2} = \frac{[M][L]^2[T]^{-3}}{[L]^2} = [M][T]^{-3}$.PG5-Laju perpindahan kalor memenuhi $\frac{Q}{t} = \frac{k \cdot A \cdot \Delta T}{L}$. Rasio laju kalor adalah $\frac{(Q/t)_A}{(Q/t)_B} = \frac{\Delta T_A / L_A}{\Delta T_B / L_B} = \frac{\Delta T / (2L_B)}{2\Delta T / L_B} = \frac{1/2}{2} = \frac{1}{4}$, sehingga perbandingannya $1 : 4$.PG6-Dimensi gaya adalah $[F] = [M][L][T]^{-2}$. Dari bentuk fisis $[F] = ([M][L]^{-3})^a \cdot ([L][T]^{-2})^b \cdot ([L]^3)^c = [M]^a [L]^{-3a+b+3c} [T]^{-2b}$, diperoleh $a = 1$, $-2b = -2 \rightarrow b = 1$, serta $-3(1) + 1 + 3c = 1 \rightarrow 3c = 3 \rightarrow c = 1$.PG7-Intensitas radiasi $I$ memiliki satuan $\text{W/m}^2 = \text{J}/(\text{s}\cdot\text{m}^2) = \text{kg}\cdot\text{s}^{-3}$, dengan dimensi $[I] = [M][T]^{-3}$. Dari rumus $I = \sigma T^4$, maka $[\sigma] = \frac{[I]}{[T]^4} = \frac{[M][T]^{-3}}{[\theta]^4} = [M][T]^{-3}[\theta]^{-4}$.PG8-Laju konduksi tembaga sama dengan laju konduksi aluminium $\frac{k_{\text{Cu}} \cdot A \cdot (90 - T_s)}{L} = \frac{k_{\text{Al}} \cdot A \cdot (T_s - 10)}{L}$. Dengan membagi nilai konduktivitasnya diperoleh $390(90 - T_s) = 210(T_s - 10) \rightarrow 13(90 - T_s) = 7(T_s - 10)$. Didapat $1170 - 13T_s = 7T_s - 70 \rightarrow 20T_s = 1240 \rightarrow T_s = 62^\circ\text{C}$.PG9-Dimensi tekanan adalah $[P] = [M][L]^{-1}[T]^{-2}$. Substitusi ke ruas kanan $[P] = ([M][L]^{-3})^x \cdot ([L][T]^{-2})^y \cdot ([L])^z = [M]^x [L]^{-3x+y+z} [T]^{-2y}$. Berdasarkan kesetaraan pangkat diperoleh $x = 1$, $-2y = -2 \rightarrow y = 1$, dan $-3(1) + 1 + z = -1 \rightarrow -2 + z = -1 \rightarrow z = 1$.PG10-Daya radiasi kalor benda hitam dirumuskan dengan $P = e \cdot \sigma \cdot A \cdot T^4$. Karena kedua benda identik, nilai $e$, $\sigma$, dan $A$ bernilai sama, sehingga $P \propto T^4$. Rasio daya radiasi menjadi $\frac{P_A}{P_B} = \left(\frac{T_A}{T_B}\right)^4 = \left(\frac{300}{600}\right)^4 = \left(\frac{1}{2}\right)^4 = \frac{1}{16}$.

@@ -1,0 +1,40 @@
+Latihan Matematika: Bilangan dan Operasi Kelas 8
+
+Bagian Pilihan Ganda: (PG)
+PG1. Suhu terendah di puncak gunung pada malam hari tercatat sebesar $-18\text{ }^\circ\text{C}$, sedangkan suhu tertinggi pada siang hari mencapai $26\text{ }^\circ\text{C}$. Tentukan selisih antara kedua suhu tersebut. [2]
+A. $8\text{ }^\circ\text{C}$
+B. $44\text{ }^\circ\text{C}$
+C. $36\text{ }^\circ\text{C}$
+D. $42\text{ }^\circ\text{C}$
+
+PG2. Seorang penyelam berada pada kedalaman $14\text{ meter}$ di bawah permukaan laut. Penyelam tersebut kemudian bergerak naik sejauh $36\text{ meter}$ menuju sebuah terumbu karang di atas tebing laut, tetapi senternya tidak sengaja terlepas dan jatuh meluncur turun sejauh $15\text{ meter}$. Berapakah posisi ketinggian akhir senter tersebut relatif terhadap permukaan laut? [2]
+A. $7\text{ meter di atas permukaan laut}$
+B. $7\text{ meter di bawah permukaan laut}$
+C. $37\text{ meter di atas permukaan laut}$
+D. $37\text{ meter di bawah permukaan laut}$
+
+PG3. Hitunglah nilai dari bentuk operasi hitung berikut: [2]
+$18 - 15 \div (9 - 6) \times 3 = \dots$
+A. $3$
+B. $13$
+C. $1$
+D. $9$
+
+PG4. Hitunglah nilai dari operasi berikut: [2]
+$36 \div 3 \times (7 - 4)^2 = \dots$
+A. $108$
+B. $12$
+C. $4$
+D. $36$
+
+Bagian Esai: (E)
+E1. Seorang pendaki melakukan perjalanan pulang-pergi di jalur gunung yang sama. Jarak antara pos pendakian awal di kaki gunung dan puncak gunung adalah $48\text{ km}$. Pendaki tersebut membutuhkan waktu $4\text{ jam}$ untuk mendaki ke puncak dan $2\text{ jam}$ untuk menuruni gunung kembali ke pos awal.
+ (a) Hitunglah kecepatan rata-rata perjalanan saat naik ke puncak gunung dalam $\text{km/jam}$. [2]
+ (b) Hitunglah kecepatan rata-rata perjalanan saat turun kembali ke pos awal dalam $\text{km/jam}$. [2]
+ (c) Tentukan kecepatan rata-rata seluruh perjalanan pendaki tersebut secara bolak-balik dalam $\text{km/jam}$. [3]
+
+Kunci Jawaban
+PG1-B, PG2-A, PG3-A, PG4-A, E1a-$12\text{ km/jam}$, E1b-$24\text{ km/jam}$, E1c-$16\text{ km/jam}$
+
+Pembahasan
+PG1-Selisih suhu adalah suhu tertinggi dikurangi suhu terendah: $26 - (-18) = 26 + 18 = 44\text{ }^\circ\text{C}$.PG2-Posisi awal penyelam adalah $-14\text{ m}$. Naik sejauh $36\text{ m}$ mencapai $-14 + 36 = 22\text{ m}$. Senter jatuh turun $15\text{ m}$, sehingga posisi akhir adalah $22 - 15 = 7\text{ m}$ (berada $7\text{ meter di atas permukaan laut}$).PG3-Kerjakan dalam kurung terlebih dahulu: $9 - 6 = 3$. Lakukan pembagian dan perkalian berurutan dari kiri ke kanan: $15 \div 3 = 5$, lalu $5 \times 3 = 15$. Terakhir operasi pengurangan: $18 - 15 = 3$.PG4-Kerjakan dalam kurung: $7 - 4 = 3$. Hitung pemangkatan: $3^2 = 9$. Operasikan dari kiri ke kanan: $36 \div 3 = 12$, lalu $12 \times 9 = 108$.E1-Untuk sub-soal (a), kecepatan naik diperoleh dari jarak dibagi waktu naik: $v_{\text{naik}} = \frac{48\text{ km}}{4\text{ jam}} = 12\text{ km/jam}$. Untuk sub-soal (b), kecepatan turun adalah jarak dibagi waktu turun: $v_{\text{turun}} = \frac{48\text{ km}}{2\text{ jam}} = 24\text{ km/jam}$. Untuk sub-soal (c), kecepatan rata-rata total adalah total jarak dibagi total waktu: jarak total $= 48\text{ km} + 48\text{ km} = 96\text{ km}$, waktu total $= 4\text{ jam} + 2\text{ jam} = 6\text{ jam}$, sehingga $v_{\text{rata-rata}} = \frac{96\text{ km}}{6\text{ jam}} = 16\text{ km/jam}$.
