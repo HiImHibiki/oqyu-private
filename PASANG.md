@@ -112,15 +112,34 @@ Harus `MASUK`. Kalau `BELUM`, loginnya belum selesai — ulangi, jangan lanjut.
 ./pasang-autostart.sh --lan          # --lan supaya bisa dibuka dari tablet/HP
 ```
 
-Layanan hidup sendiri tiap login dan hidup lagi kalau mati.
+Ini memasang dua hal: **server** (hidup tiap login, hidup lagi kalau mati) dan
+**penjaga** (memeriksa tiap 2 menit, menyalakan ulang kalau tidak menyahut dua
+kali berturut-turut).
+
+Penjaganya perlu karena `KeepAlive` milik launchd hanya melihat apakah prosesnya
+ADA — ia tidak bisa membedakan proses sehat dari proses tersangkut. Yang kedua
+pernah terjadi: PID tercatat hidup, port 7790 tidak dijawab siapa pun, dan karena
+prosesnya "ada" ia tak pernah dinyalakan ulang.
 
 **Verifikasi:**
 
 ```bash
 ./mulai-ulang.sh
+launchctl list | grep worksheet
 ```
 
-Harus mencetak `Layanan jalan. Lembar terbaca: N`.
+`mulai-ulang.sh` harus mencetak `Layanan jalan. Lembar terbaca: N`, dan
+`launchctl list` harus menampilkan **dua** baris: `com.exactcourse.worksheet` dan
+`com.exactcourse.worksheet.penjaga`.
+
+Uji penjaganya sekalian — bekukan servernya, lalu jalankan penjaga dua kali:
+
+```bash
+PID=$(pgrep -f "[c]ari.py" | head -1); kill -STOP $PID
+python3 penjaga.py          # "tidak menyahut — menunggu pemeriksaan berikutnya"
+python3 penjaga.py          # "tidak menyahut dua kali — dinyalakan ulang" lalu "pulih"
+curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:7790/status   # harus 200
+```
 
 ---
 

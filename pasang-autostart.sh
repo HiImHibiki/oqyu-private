@@ -9,7 +9,11 @@ cd "$(dirname "$0")"
 AKAR="$(pwd)"
 PLIST="$HOME/Library/LaunchAgents/com.exactcourse.worksheet.plist"
 
+PLIST_JAGA="$HOME/Library/LaunchAgents/com.exactcourse.worksheet.penjaga.plist"
+
 if [[ "${1:-}" == "--copot" ]]; then
+  launchctl unload "$PLIST_JAGA" 2>/dev/null || true
+  rm -f "$PLIST_JAGA"
   launchctl unload "$PLIST" 2>/dev/null || true
   rm -f "$PLIST"
   osascript -e 'tell application "System Events" to delete login item "Exact Worksheet Bar"' 2>/dev/null || true
@@ -49,6 +53,35 @@ PL
 launchctl unload "$PLIST" 2>/dev/null || true
 launchctl load "$PLIST"
 print -r -- "Server dipasang: hidup sendiri saat Mac menyala, dan dinyalakan lagi bila mati."
+
+# Penjaga kesehatan. KeepAlive milik launchd hanya melihat apakah prosesnya ADA;
+# ia tidak bisa membedakan proses sehat dari proses tersangkut — dan yang kedua
+# itu pernah terjadi: PID tercatat hidup, port 7790 tidak dijawab siapa pun, dan
+# karena prosesnya "ada" ia tak pernah dinyalakan ulang.
+#
+# Dijalankan /usr/bin/python3, BUKAN zsh: kalau proyeknya diletakkan di
+# ~/Documents atau ~/Desktop, /bin/zsh tidak diizinkan membaca berkas di situ
+# (gejalanya "can't open input file") sedangkan python3 sudah diberi izin.
+cat > "$PLIST_JAGA" <<PJ
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.exactcourse.worksheet.penjaga</string>
+  <key>ProgramArguments</key>
+  <array><string>/usr/bin/python3</string><string>$AKAR/penjaga.py</string></array>
+  <key>WorkingDirectory</key><string>$AKAR</string>
+  <key>EnvironmentVariables</key>
+  <dict><key>PATH</key><string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string></dict>
+  <key>StartInterval</key><integer>120</integer>
+  <key>RunAtLoad</key><true/>
+  <key>StandardOutPath</key><string>/tmp/exact-penjaga.log</string>
+  <key>StandardErrorPath</key><string>/tmp/exact-penjaga.log</string>
+</dict></plist>
+PJ
+
+launchctl unload "$PLIST_JAGA" 2>/dev/null || true
+launchctl load "$PLIST_JAGA"
+print -r -- "Penjaga dipasang: memeriksa tiap 2 menit, menyalakan ulang bila tidak menyahut dua kali."
 [[ -n "$LAN" ]] && print -r -- "  Akses jaringan: $LAN"
 
 APP="$AKAR/menubar/dist/Exact Worksheet Bar.app"
