@@ -142,3 +142,20 @@ Selalu `Page.bringToFront` dan tunggu sampai `visible` sebelum mengklik.
 "Perintah tidak terkirim" yang muncul acak pada mode berjendela. Mode tanpa
 jendela justru bebas dari masalah ini karena halamannya selalu berstatus
 `visible`.
+
+## Membuka dari tablet atau HP
+
+Bawaannya server hanya melayani Mac itu sendiri. Untuk membukanya dari perangkat
+lain di jaringan yang sama:
+
+```sh
+EXACT_LAN=1 ./mulai.sh              # semua antarmuka
+EXACT_LAN=100.83.25.73 ./mulai.sh   # satu antarmuka saja, mis. Tailscale
+```
+
+Alamatnya akan dicetak saat server menyala.
+
+**Pertimbangkan dulu:** dengan `EXACT_LAN=1`, siapa pun di Wi-Fi yang sama bisa
+membuka aplikasinya, melihat lembar yang sudah dibuat, dan **mencetak ke printer
+Anda**. Tidak ada kata sandi. Mengikat ke alamat Tailscale saja lebih aman karena
+hanya perangkat di tailnet Anda yang bisa menjangkaunya.

@@ -131,6 +131,44 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/hasil':
+            import hasil as _h
+            f = (qs.get('f') or [''])[0]
+            isi = _h.halaman_berkas(f) if f else _h.halaman_daftar()
+            if isi is None: return self.send_error(404, 'berkas tidak ada')
+            b = isi.encode()
+            self.send_response(200)
+            self.send_header('Content-Type','text/html; charset=utf-8')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
+        if u.path == '/thumb':
+            import hasil as _h
+            f = (qs.get('f') or [''])[0]
+            if '/' in f or '..' in f: return self.send_error(403)
+            pth = os.path.join(_h.folder_keluar(), f)
+            if not os.path.isfile(pth): return self.send_error(404)
+            hal = int((qs.get('p') or ['1'])[0] or 1)
+            lbr = int((qs.get('w') or ['300'])[0] or 300)
+            g = _h.thumb(pth, hal, max(80, min(900, lbr)))
+            if not g: return self.send_error(500, 'gagal membuat pratinjau')
+            d = open(g, 'rb').read()
+            self.send_response(200); self.send_header('Content-Type','image/png')
+            self.send_header('Cache-Control','max-age=86400')
+            self.send_header('Content-Length',str(len(d))); self.end_headers()
+            self.wfile.write(d); return
+
+        if u.path == '/berkas':
+            import hasil as _h
+            f = (qs.get('f') or [''])[0]
+            if '/' in f or '..' in f: return self.send_error(403)
+            pth = os.path.join(_h.folder_keluar(), f)
+            if not os.path.isfile(pth): return self.send_error(404)
+            d = open(pth, 'rb').read()
+            self.send_response(200); self.send_header('Content-Type','application/pdf')
+            self.send_header('Content-Length',str(len(d))); self.end_headers()
+            self.wfile.write(d); return
+
         if u.path == '/otomatis':
             # Pilihkan soal paling sesuai lalu langsung susun — tanpa mencentang
             # satu per satu, tanpa AI.
@@ -472,6 +510,45 @@ class H(BaseHTTPRequestHandler):
         u = urllib.parse.urlparse(self.path)
         print(f'[POST] {u.path} dari {self.client_address[0]} '
               f'({self.headers.get("Content-Length","?")} byte)', flush=True)
+        if u.path == '/cetak':
+            panjang = int(self.headers.get('Content-Length') or 0)
+            mentah = self.rfile.read(panjang) if panjang else b''
+            jenis = self.headers.get('Content-Type', '')
+            medan = {}
+            halaman = []
+            if jenis.startswith('multipart/form-data'):
+                batas = jenis.split('boundary=')[-1].strip('"').encode()
+                for bagian in mentah.split(b'--' + batas):
+                    if b'\r\n\r\n' not in bagian: continue
+                    kepala, _, nilai = bagian.partition(b'\r\n\r\n')
+                    mn = re.search(rb'name="([^"]+)"', kepala)
+                    if not mn: continue
+                    nama = mn.group(1).decode()
+                    isi = nilai.rstrip(b'\r\n-').decode('utf-8','replace')
+                    if nama == 'h': halaman.append(isi)
+                    else: medan[nama] = isi
+            else:
+                d = urllib.parse.parse_qs(mentah.decode('utf-8','replace'))
+                halaman = d.get('h', [])
+                medan = {k: v[0] for k, v in d.items()}
+            import hasil as _h
+            f = medan.get('f', '')
+            pth = os.path.join(_h.folder_keluar(), f)
+            jawab = {}
+            if '/' in f or '..' in f or not os.path.isfile(pth):
+                jawab = {'galat': 'berkas tidak ditemukan'}
+            else:
+                try:
+                    pesan = _h.cetak(pth, [int(x) for x in halaman if x.isdigit()],
+                                     medan.get('printer',''), medan.get('salinan','1'))
+                    jawab = {'pesan': f'{len(halaman)} halaman dikirim ke printer · {pesan[:70]}'}
+                except Exception as e:
+                    jawab = {'galat': str(e)[:160]}
+            b = json.dumps(jawab).encode()
+            self.send_response(200); self.send_header('Content-Type','application/json')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
         if u.path not in ('/impor', '/serupa', '/buat'): return self.send_error(404)
         panjang = int(self.headers.get('Content-Length') or 0)
         mentah = self.rfile.read(panjang) if panjang else b''
@@ -684,6 +761,7 @@ iframe{border:0;width:100%;height:calc(100vh - 47px);display:block;background:va
     <button data-u="/cari?mode=soal&amp;q=">Bank Soal</button>
     <button data-u="/cari?mode=soal&amp;folder=DIBUAT&amp;q=a">Buatan sendiri</button>
     <button data-u="/cari?mode=halaman&amp;q=">Arsip</button>
+    <button data-u="/hasil">Hasil &amp; Cetak</button>
   </nav>
 </header>
 <iframe id=bingkai src="/buat"></iframe>
@@ -701,4 +779,11 @@ if __name__ == '__main__':
     print(f"Mesin pencari jalan di  http://localhost:{PORT}")
     # WAJIB berutas banyak: rute /lembar.pdf memanggil Chrome yang lalu
     # meminta /lembar ke server ini juga. Server satu utas membeku.
-    ThreadingHTTPServer(('127.0.0.1', PORT), H).serve_forever()
+    # Bawaannya hanya melayani Mac ini. Untuk membukanya ke tablet/HP di
+    # jaringan yang sama, jalankan dengan EXACT_LAN=1 — atau EXACT_LAN=<alamat>
+    # untuk mengikat ke satu antarmuka saja, misalnya alamat Tailscale.
+    lan = os.environ.get('EXACT_LAN', '')
+    ikat = '0.0.0.0' if lan in ('1', 'ya', 'true') else (lan or '127.0.0.1')
+    if ikat != '127.0.0.1':
+        print(f'  PERHATIAN: dapat diakses dari jaringan ({ikat}:{PORT}).', flush=True)
+    ThreadingHTTPServer((ikat, PORT), H).serve_forever()
