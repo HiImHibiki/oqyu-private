@@ -407,6 +407,24 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/layar':
+            # Potret tab kendali. Chrome-nya tanpa jendela, jadi ini satu-satunya
+            # cara melihat apa yang sedang terjadi di sana saat sebuah lembar
+            # dibuat — atau saat ia macet.
+            import otomasi as _o
+            mana = (qs.get('tab') or ['gemini'])[0]
+            try:
+                d = _o.potret('gemini.google.com/app' if mana != 'wsm' else '/wsm/')
+            except Exception as e:
+                pesan = f'Tidak bisa memotret: {type(e).__name__}'.encode()
+                self.send_response(503); self.send_header('Content-Type','text/plain; charset=utf-8')
+                self.send_header('Content-Length',str(len(pesan))); self.end_headers()
+                self.wfile.write(pesan); return
+            self.send_response(200); self.send_header('Content-Type','image/jpeg')
+            self.send_header('Cache-Control','no-store')
+            self.send_header('Content-Length',str(len(d))); self.end_headers()
+            self.wfile.write(d); return
+
         if u.path == '/batal':
             import buat
             jid = (qs.get('jid') or [''])[0]

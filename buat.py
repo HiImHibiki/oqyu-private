@@ -765,6 +765,9 @@ background:var(--aksen);color:#fff;font-weight:700;font-size:14px;text-decoratio
 .tugasIsi{display:flex;gap:10px;align-items:center;justify-content:space-between;
  flex-wrap:wrap;font-size:13px}
 .tugasIsi b{font-weight:600}
+.layar{margin-top:10px;border:1px solid var(--tepi);border-radius:10px;overflow:hidden;
+ background:var(--kartu)}
+.layar img{display:block;width:100%;height:auto}
 button.mini.henti{flex:none;padding:5px 12px;border:1px solid var(--tepi);border-radius:7px;
  background:var(--bg);color:var(--redup);font-size:12px;cursor:pointer}
 button.mini.henti:disabled{opacity:.5}
@@ -994,6 +997,38 @@ document.getElementById('f').onsubmit = async e => {
 
 SULIT_BAWAAN = 'sama dengan naskah acuan'
 
+LAYAR = """
+// Chrome kendali berjalan tanpa jendela, jadi kalau sebuah lembar macet yang
+// terlihat hanya bilah yang diam. Potret berkala ini menunjukkan penyebabnya
+// langsung: Gemini sedang menulis, menolak, meminta login, atau ada dialog yang
+// menghalangi. Hanya disegarkan saat panelnya dibuka — memotret itu menyalin
+// seluruh layar, jadi jangan dijalankan diam-diam.
+(() => {
+  const tb = document.getElementById('btnLayar');
+  const kotak = document.getElementById('layar');
+  const img = document.getElementById('imgLayar');
+  const kabar = document.getElementById('kabarLayar');
+  if (!tb || !kotak || !img) return;
+  let timer = null;
+
+  const segarkan = () => {
+    const u = '/layar?tab=gemini&t=' + Date.now();
+    const baru = new Image();
+    baru.onload = () => { img.src = u; kabar.textContent = ''; };
+    baru.onerror = () => { kabar.textContent = 'layar belum bisa dibaca'; };
+    baru.src = u;
+  };
+
+  tb.onclick = () => {
+    const buka = kotak.hidden;
+    kotak.hidden = !buka;
+    tb.textContent = buka ? 'Sembunyikan layar Gemini' : 'Lihat layar Gemini';
+    if (buka) { segarkan(); timer = setInterval(segarkan, 2500); }
+    else { clearInterval(timer); timer = null; kabar.textContent = ''; }
+  };
+})();
+"""
+
 KET_MATA = """
 // Mode Gemini (Flash/Pro/Extended) tidak berlaku untuk Claude, jadi barisnya
 // disembunyikan supaya tidak terlihat seperti pilihan yang diabaikan.
@@ -1018,7 +1053,7 @@ KET_MATA = """
 })();
 """
 
-SKRIP_JAWAB = SKRIP.replace("fetch('/buat'", "fetch('/jawab'").replace(
+SKRIP_JAWAB = LAYAR + SKRIP.replace("fetch('/buat'", "fetch('/jawab'").replace(
     "!berkas.length && !document.querySelector('[name=topik]').value.trim()",
     "!berkas.length") + """
 // Keterangan singkat tiap pilihan: bedanya nyata, jadi jangan dibiarkan ditebak.
@@ -1103,6 +1138,11 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
 <div class=k id=panel style=display:none>
   <div class=lg id=log></div>
   <div id=antrean></div>
+  <div class=r style="margin-top:10px">
+    <button type=button id=btnLayar class=abu>Lihat layar Gemini</button>
+    <span class=kcl id=kabarLayar style="margin:0"></span>
+  </div>
+  <div id=layar class=layar hidden><img id=imgLayar alt="layar Gemini"></div>
 </div>
 </div>
 <input type=hidden name=titip value="{html.escape(titip, quote=True)}">
@@ -1225,13 +1265,18 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
 <div class=k id=panel style=display:none>
   <div class=lg id=log></div>
   <div id=antrean></div>
+  <div class=r style="margin-top:10px">
+    <button type=button id=btnLayar class=abu>Lihat layar Gemini</button>
+    <span class=kcl id=kabarLayar style="margin:0"></span>
+  </div>
+  <div id=layar class=layar hidden><img id=imgLayar alt="layar Gemini"></div>
 </div>
 </div>
 <input type=hidden name=titip value="{html.escape(titip, quote=True)}">
-<script>const TITIP={json.dumps(titip)};{SKRIP}{KET_MATA}</script>"""
+<script>const TITIP={json.dumps(titip)};{SKRIP}{KET_MATA}{LAYAR}</script>"""
 
 
-SKRIP_RANGKUM = SKRIP.replace("fetch('/buat'", "fetch('/rangkum'").replace(
+SKRIP_RANGKUM = LAYAR + SKRIP.replace("fetch('/buat'", "fetch('/rangkum'").replace(
     "!berkas.length && !document.querySelector('[name=topik]').value.trim()",
     "!berkas.length && !document.querySelector('[name=topik]').value.trim()") + """
 // Keterangan pilihan mata, sama seperti di tab Kunci Jawaban.
@@ -1320,6 +1365,11 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
 <div class=k id=panel style=display:none>
   <div class=lg id=log></div>
   <div id=antrean></div>
+  <div class=r style="margin-top:10px">
+    <button type=button id=btnLayar class=abu>Lihat layar Gemini</button>
+    <span class=kcl id=kabarLayar style="margin:0"></span>
+  </div>
+  <div id=layar class=layar hidden><img id=imgLayar alt="layar Gemini"></div>
 </div>
 </div>
 <input type=hidden name=titip value="{html.escape(titip, quote=True)}">

@@ -288,6 +288,17 @@ def percakapan_baru(s):
     time.sleep(3)
     return True
 
+# Tanda pengenal tombol unggah beserta letaknya. Kalau nilainya berubah antara
+# dua pembacaan berjarak, bilah pengetiknya sedang dirender ulang.
+JS_TOMBOL_UNGGAH = r"""
+(function(){
+  const e = document.querySelector('button[aria-label="Upload & tools"]');
+  if (!e) return '';
+  const r = e.getBoundingClientRect();
+  return [Math.round(r.left), Math.round(r.top), Math.round(r.width)].join(',');
+})()
+"""
+
 JS_UNGGAHAN_SIAP = r"""
 (function(){
   const pra = document.querySelectorAll('uploader-file-preview').length;
@@ -299,7 +310,7 @@ JS_UNGGAHAN_SIAP = r"""
 """
 
 
-def _lampirkan(s, berkas, batas=120):
+def _lampirkan(s, berkas, batas=120, jeda=5):
     """Unggah foto ke Gemini supaya matanya sendiri yang membaca.
 
     Dipakai untuk tulisan tangan dan gambar/diagram, yang tidak bisa diwakili
@@ -332,7 +343,28 @@ def _lampirkan(s, berkas, batas=120):
             if s.evaluasi("!!document.querySelector('button[aria-label=\"Upload & tools\"]')"):
                 break
             time.sleep(0.5)
+        # Tombolnya TOGGLE. Kalau menunya sudah terbuka dari percobaan
+        # sebelumnya, mengkliknya justru MENUTUP — dan gejalanya persis seperti
+        # klik yang tidak sampai: menu kosong, tak ada input berkas, tanpa
+        # galat apa pun. Karena itu keadaannya dibaca dulu, bukan diasumsikan.
         for percobaan in range(5):
+            # Tunggu bilah pengetiknya DIAM dulu. Gemini merender ulang bagian
+            # itu sesekali — tombolnya sempat hilang sama sekali dari halaman —
+            # dan klik yang jatuh tepat saat render membuat menunya terbuka
+            # lalu langsung tertutup lagi. Gejalanya sama persis dengan klik
+            # yang tidak sampai: menu kosong, tanpa galat apa pun.
+            for _ in range(25):
+                a = s.evaluasi(JS_TOMBOL_UNGGAH)
+                time.sleep(0.4)
+                if a and a == s.evaluasi(JS_TOMBOL_UNGGAH):
+                    break
+            terbuka = s.evaluasi(
+                '(document.querySelector(\'button[aria-label="Upload & tools"]\')'
+                ' || {}).getAttribute ? document.querySelector('
+                '\'button[aria-label="Upload & tools"]\').getAttribute("aria-expanded") : null')
+            if terbuka == 'true':
+                s.tombol('Escape', 27)
+                time.sleep(0.8)
             s.klik_elemen('button[aria-label="Upload & tools"]')
             time.sleep(1.5 + percobaan * 0.7)
             try:
@@ -346,15 +378,32 @@ def _lampirkan(s, berkas, batas=120):
             # simpul yang dilaporkannya. Ini tidak bergantung pada menunya
             # terbuka atau tidak — yang selama ini jadi titik gagalnya.
             if not s.unggah_berkas(berkas, 'button[aria-label="Upload & tools"]'):
-                raise RuntimeError('Kotak unggah Gemini tidak ditemukan')
+                raise RuntimeError('Menu unggah Gemini tidak mau terbuka — biasanya '
+                               'halamannya sedang dirender ulang. Coba ulangi '
+                               'sebentar lagi.')
     s.tombol('Escape', 27)                      # tutup menu agar tidak menutupi kotak ketik
+
+    # Pratinjaunya muncul dulu — itu baru tanda berkasnya DITERIMA halaman,
+    # bukan tanda unggahannya selesai.
     t0 = time.time()
     while time.time() - t0 < batas:
-        time.sleep(2)
+        time.sleep(1)
         k = s.evaluasi(JS_UNGGAHAN_SIAP) or ''
         if k.startswith('SIAP:'):
-            return int(k.split(':', 1)[1] or 0)
-    raise RuntimeError('Gemini tidak selesai memproses foto dalam batas waktu')
+            n = int(k.split(':', 1)[1] or 0)
+            break
+    else:
+        raise RuntimeError('Foto tidak terpasang di Gemini — kotak unggahnya tidak '
+                           'menampilkan pratinjau. Coba ulangi; kalau berulang, '
+                           'buka jendela Chrome kendali dan periksa halamannya.')
+
+    # Pratinjau muncul = berkasnya DITERIMA halaman, bukan unggahannya selesai.
+    # Halaman tidak memberi tanda apa pun untuk selesainya — cip pratinjau,
+    # kelasnya, dan tombol kirim semuanya tidak berubah dari awal sampai akhir.
+    # Jadi diberi jeda tetap. Kalau percobaan pertama gagal, pemanggilnya
+    # menaikkan jeda ini (lihat gemini_tanya).
+    time.sleep(jeda)
+    return n
 
 
 def _kelas_henti():
@@ -414,8 +463,12 @@ def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=2, lampiran=No
     galat_akhir = None
     for ke in range(ulang + 1):
         try:
+            # Percobaan pertama menunggu 5 detik setelah foto terpasang;
+            # percobaan berikutnya 10. Kalau yang pertama gagal, tersangka
+            # pertamanya justru unggahan yang belum rampung.
             return _tanya_sekali(_bingkai(perintah, ke), batas, stabil, lapor, lampiran,
-                                 mode or MODE_BAKU[min(ke, len(MODE_BAKU) - 1)], henti)
+                                 mode or MODE_BAKU[min(ke, len(MODE_BAKU) - 1)], henti,
+                                 jeda_unggah=(5 if ke == 0 else 10))
         except BelumMasuk:
             raise
         except _HENTI_KELAS:
@@ -425,6 +478,10 @@ def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=2, lampiran=No
             if ke >= ulang:
                 break
             _catat_galat(ke + 1, e)
+            if lampiran and ke == 0:
+                _catat_galat(ke + 1, RuntimeError(
+                    'ada foto terlampir — percobaan berikutnya menunggu 10 detik '
+                    'setelah unggah, bukan 5'))
             # Pemulihan bertingkat, dari yang paling murah:
             #   penolakan   -> cukup bingkai lain di utas baru
             #   gagal ke-1  -> muat ulang halaman
@@ -498,7 +555,7 @@ def _panen(s, batas, stabil, lapor=None, henti=None):
 
 
 def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None, lampiran=None,
-                  mode=None, henti=None):
+                  mode=None, henti=None, jeda_unggah=5):
     perintah = perintah + BUNGKUS
     s = _sesi(URL_GEMINI, 'gemini.google.com/app')
     try:
@@ -521,7 +578,7 @@ def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None, lampiran=None,
         except Exception:
             pass                          # mode gagal dipilih bukan alasan batal
         if lampiran:
-            _lampirkan(s, lampiran)
+            _lampirkan(s, lampiran, jeda=jeda_unggah)
         _kirim(s, perintah)
 
         # Penolakan dijawab DI UTAS YANG SAMA lebih dulu. Membuang utasnya dan
@@ -784,3 +841,24 @@ def baca_foto(jalur, mode='flash', batas=240):
         return ''
     return gemini_tanya(PERINTAH_BACA_FOTO, batas=batas, lampiran=list(jalur),
                         mode=mode)
+
+
+def potret(potongan='gemini.google.com/app', lebar=760, mutu=55):
+    """Tangkapan layar tab kendali, untuk ditampilkan di aplikasi.
+
+    Chrome kendali berjalan tanpa jendela, jadi selama ini tidak ada cara
+    melihat apa yang sedang terjadi di sana — kalau macet, yang terlihat cuma
+    bilah kemajuan yang diam. Dengan potret ini penyebabnya langsung kelihatan:
+    Gemini sedang menulis, menolak, meminta login, atau dialog yang menghalangi.
+
+    Sesi dibuka dan ditutup sendiri tiap kali. Menahan sesi terbuka hanya untuk
+    memotret akan berebut dengan tugas yang sedang berjalan di tab yang sama.
+    """
+    import base64
+    s = _sesi(URL_GEMINI if 'gemini' in potongan else wsmaker.ALAMAT, potongan)
+    try:
+        d = s.perintah('Page.captureScreenshot', format='jpeg', quality=mutu,
+                       captureBeyondViewport=False)
+        return base64.b64decode(d['data'])
+    finally:
+        s.tutup()
