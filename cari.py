@@ -123,6 +123,14 @@ class H(BaseHTTPRequestHandler):
     def log_message(self, *a): pass
     def do_GET(self):
         u = urllib.parse.urlparse(self.path); qs = urllib.parse.parse_qs(u.query)
+        if u.path == '/jawab':
+            import buat
+            b = buat.halaman_jawab().encode()
+            self.send_response(200)
+            self.send_header('Content-Type','text/html; charset=utf-8')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
         if u.path == '/buat':
             import buat
             b = buat.halaman().encode()
@@ -565,7 +573,7 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
-        if u.path not in ('/impor', '/serupa', '/buat'): return self.send_error(404)
+        if u.path not in ('/impor', '/serupa', '/buat', '/jawab'): return self.send_error(404)
         panjang = int(self.headers.get('Content-Length') or 0)
         mentah = self.rfile.read(panjang) if panjang else b''
         jenis = self.headers.get('Content-Type', '')
@@ -591,6 +599,7 @@ class H(BaseHTTPRequestHandler):
 
         import gemini_impor, tempfile, time
         if u.path == '/buat': return self.mulai_buat(medan, semua_berkas)
+        if u.path == '/jawab': return self.mulai_jawab(medan, semua_berkas)
         if u.path == '/serupa': return self.olah_serupa(medan, berkas)
         if berkas:
             with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as f:
@@ -648,6 +657,26 @@ class H(BaseHTTPRequestHandler):
             kolom=medan.get('kolom', '2'), dua_berkas='dua_berkas' in medan,
             kerapatan=medan.get('kerapatan', 'Normal'), garis=medan.get('garis', '1.5')), daemon=True)
         t.start()
+        b = json.dumps({'jid': jid}).encode()
+        self.send_response(200); self.send_header('Content-Type','application/json')
+        self.send_header('Content-Length',str(len(b))); self.end_headers()
+        self.wfile.write(b)
+
+    def mulai_jawab(self, medan, berkas):
+        import buat, threading, uuid, setelan
+        try: setelan.simpan(medan)
+        except Exception: pass
+        jid = uuid.uuid4().hex[:12]
+        buat.TUGAS[jid] = {'langkah': ['Mulai…'], 'maju': 3, 'selesai': False}
+        kls = (medan.get('kelas') or '').strip()
+        st = setelan.muat()
+        threading.Thread(target=buat.jalankan_jawab, kwargs=dict(
+            jid=jid, gambar=berkas, instruksi=medan.get('instruksi',''),
+            mapel=(medan.get('mapel') or '').strip() or None,
+            kelas=int(kls) if kls.isdigit() else None, judul=medan.get('judul',''),
+            bahasa=medan.get('bahasa','Indonesia'), lembaga=st.get('lembaga',''),
+            sekolah=st.get('sekolah',''), tanggal='',
+            kolom=medan.get('kolom','1')), daemon=True).start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')
         self.send_header('Content-Length',str(len(b))); self.end_headers()
@@ -777,6 +806,7 @@ iframe{border:0;width:100%;height:calc(100vh - 47px);display:block;background:va
     <button data-u="/cari?mode=soal&amp;q=">Bank Soal</button>
     <button data-u="/cari?mode=soal&amp;folder=DIBUAT&amp;q=a">Buatan sendiri</button>
     <button data-u="/cari?mode=halaman&amp;q=">Arsip</button>
+    <button data-u="/jawab">Kunci Jawaban</button>
     <button data-u="/hasil">Hasil &amp; Cetak</button>
   </nav>
 </header>

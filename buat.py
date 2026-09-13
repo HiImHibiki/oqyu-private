@@ -83,6 +83,70 @@ def _catat(jid, pesan, maju=None, selesai=False, galat=None, pdf=None):
 def _db():
     c = sqlite3.connect(DB, timeout=60); c.row_factory = sqlite3.Row; return c
 
+def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesia',
+                   lembaga='', sekolah='', tanggal='', kolom='1',
+                   kerapatan='Normal', garis='0.5'):
+    """Foto soal anak -> kunci jawaban + pembahasan -> PDF.
+
+    Soalnya TIDAK dikarang: disalin apa adanya dari foto, lalu diberi kunci dan
+    pembahasan. Karena itu tidak ada langkah 'acuan gaya dari arsip'.
+    """
+    import serupa, otomasi, jawab as _jwb
+    if not GILIRAN.acquire(blocking=False):
+        _catat(jid, 'Menunggu lembar sebelumnya selesai…', 4)
+        GILIRAN.acquire()
+    try:
+        naskah_foto = ''
+        if gambar:
+            _catat(jid, f'Membaca {len(gambar)} foto di Mac…', 12)
+            alat = os.path.join(AKAR, 'ocr-mac', 'visionocr')
+            import tempfile
+            for nama, isi in gambar:
+                ext = os.path.splitext(nama)[1] or '.png'
+                with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as f:
+                    f.write(isi); pth = f.name
+                try: naskah_foto += serupa.baca_berkas(pth, alat) + '\n\n'
+                finally: os.unlink(pth)
+        if len(naskah_foto.strip()) < 40:
+            return _catat(jid, None, galat='Tidak ada soal yang terbaca dari foto. '
+                                           'Coba foto lebih dekat dan lebih terang.')
+        _catat(jid, f'Terbaca {len(naskah_foto.split())} kata dari foto', 28)
+
+        perintah = _jwb.bangun(naskah_foto, bahasa, instruksi, mapel,
+                               str(kelas or ''))
+        _catat(jid, 'Meminta kunci jawaban dan pembahasan…', 40)
+        hasil_teks = otomasi.gemini_tanya(perintah, batas=300)
+        _catat(jid, f'Jawaban diterima ({len(hasil_teks)} karakter)', 70)
+
+        try:
+            import naskah as _nsk
+            butir, meta = _nsk.urai(hasil_teks)
+            judul = judul.strip() or (meta.get('judul') or 'Kunci Jawaban')
+        except Exception:
+            butir = []
+        _catat(jid, f'{len(butir)} soal terbaca beserta kuncinya', 80)
+
+        kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
+                   sekolah=sekolah, kelas=str(kelas or ''),
+                   tanggal=tanggal or time.strftime('%d%m'),
+                   kunci=True, pembahasan=True, kolom=str(kolom or '1'),
+                   kerapatan=kerapatan or 'Normal', garis_per_nilai=garis or '0.5')
+        os.makedirs(KELUAR, exist_ok=True)
+        nama = nama_berkas(kop, True, KELUAR)
+        os.makedirs(NASKAH, exist_ok=True)
+        open(os.path.join(NASKAH, f'{nama} — {time.strftime("%Y-%m-%d %H%M")}.txt'),
+             'w', encoding='utf-8').write(hasil_teks)
+        _catat(jid, 'Merender lalu mencetak PDF…', 90)
+        tuju = os.path.join(KELUAR, f'{nama}.pdf')
+        otomasi.worksheet_pdf(hasil_teks, tuju, kop=kop)
+        subprocess.run(['open', tuju], capture_output=True)
+        _catat(jid, f'Selesai — {os.path.basename(tuju)}', 100, selesai=True, pdf=tuju)
+    except Exception as e:
+        _catat(jid, None, galat=f'{type(e).__name__}: {e}')
+    finally:
+        GILIRAN.release()
+
+
 def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
              topik='', jenjang='', n_set='', sulit='', bahasa='Indonesia',
              lembaga='', sekolah='', tanggal='', kunci=True, pembahasan=True,
@@ -367,6 +431,15 @@ if (preset) preset.onchange = () => {
 j.onclick = () => fi.click();
 fi.onchange = () => { tambah(fi.files); fi.value = ''; };
 
+// Kamera dipisah dari pemilih berkas: atribut capture membuat Android/iPad
+// membuka kamera langsung, bukan galeri. Boleh beberapa jepretan sekaligus.
+const kam = document.getElementById('kamera');
+const bf = document.getElementById('btnFoto');
+if (bf && kam) {
+  bf.onclick = () => kam.click();
+  kam.onchange = () => { tambah(kam.files); kam.value = ''; };
+}
+
 // Tempel dari papan klip: tangkapan layar Cmd+Shift+4 masuk langsung tanpa perlu
 // disimpan jadi berkas dulu. Sebagian sumber menaruhnya sebagai Blob tanpa nama,
 // jadi namanya dibuatkan di sini supaya unggahannya tetap sah.
@@ -443,6 +516,56 @@ document.getElementById('f').onsubmit = async e => {
 
 SULIT_BAWAAN = 'sama dengan naskah acuan'
 
+SKRIP_JAWAB = SKRIP.replace("fetch('/buat'", "fetch('/jawab'").replace(
+    "!berkas.length && !document.querySelector('[name=topik]').value.trim()",
+    "!berkas.length")
+
+
+def halaman_jawab():
+    """Tab Jawaban: foto soal anak -> kunci + pembahasan."""
+    import setelan as _s
+    st = _s.muat()
+    n = lambda k: html.escape(st.get(k, '') or '')
+    return f"""<!doctype html><meta charset=utf-8><title>Kunci Jawaban</title>
+<meta name=viewport content="width=device-width,initial-scale=1"><style>{GAYA}</style>
+<div class=b>
+<h1>Kunci Jawaban &amp; Pembahasan</h1>
+<div class=s>Foto soal anak, lalu jadi PDF berisi soalnya beserta kunci dan
+pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikarang.</div>
+<form id=f>
+<div class=k>
+  <div class=j id=j tabindex=0>foto soal atau jatuhkan gambar/PDF
+    <div class=kcl>sampai 10 berkas</div>
+    <input type=file name=gambar id=file accept="image/*,.pdf,application/pdf" multiple hidden>
+    <input type=file id=kamera accept="image/*" capture="environment" multiple hidden></div>
+  <div class=r style="margin-top:9px">
+    <button type=button id=btnFoto class=abu>Foto soal</button>
+    <button type=button id=btnKlip class=abu>Ambil dari papan klip</button>
+    <span class=kcl id=kabarKlip style="margin:0"></span>
+  </div>
+  <div class=gal id=gal></div>
+  <div class=r>
+    <input name=mapel placeholder="mapel" value="{n('mapel')}" style="flex:1;min-width:140px">
+    <input name=kelas placeholder="kelas" value="{n('kelas')}" size=6>
+    <select name=bahasa><option{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option><option{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option></select>
+    <select name=kolom><option value=1>1 kolom</option><option value=2>2 kolom</option></select>
+  </div>
+  <textarea name=instruksi rows=2 style="margin-top:11px"
+    placeholder="Catatan (mis. 'jelaskan sampai langkah hitungannya', 'pakai cara kelas 8')"></textarea>
+  <div class=r>
+    <input name=judul placeholder="judul (opsional)" style="flex:1;min-width:180px">
+    <button id=go type=submit>Buat Kunci &amp; Pembahasan</button>
+  </div>
+</div>
+</form>
+<div class=k id=panel style=display:none>
+  <div class=bar><i id=isi></i></div>
+  <div class=lg id=log></div>
+</div>
+</div>
+<script>{SKRIP_JAWAB}</script>"""
+
+
 def halaman(izin_chrome=True, setel=None):
     import setelan as _s
     st = setel or _s.muat()
@@ -469,8 +592,10 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
 <div class=k>
   <div class=j id=j tabindex=0>tempel tangkapan layar (&#8984;V), jatuhkan foto atau PDF, atau klik untuk memilih
     <div class=kcl>sampai 10 berkas</div>
-    <input type=file name=gambar id=file accept="image/*,.pdf,application/pdf" multiple hidden></div>
+    <input type=file name=gambar id=file accept="image/*,.pdf,application/pdf" multiple hidden>
+    <input type=file id=kamera accept="image/*" capture="environment" multiple hidden></div>
   <div class=r style="margin-top:9px">
+    <button type=button id=btnFoto class=abu>Foto soal</button>
     <button type=button id=btnKlip class=abu>Ambil dari papan klip</button>
     <span class=kcl id=kabarKlip style="margin:0"></span>
   </div>
