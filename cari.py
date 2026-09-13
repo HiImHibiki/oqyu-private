@@ -1073,9 +1073,6 @@ iframe{border:0;width:100%;min-height:calc(100vh - 47px);display:block;backgroun
   <div class=merek><b>Exact Course</b><span>Worksheet Maker</span></div>
   <nav>
     <button data-u="/buat" class=aktif>Buat dengan AI</button>
-    <button data-u="/cari?mode=soal&amp;q=">Bank Soal</button>
-    <button data-u="/cari?mode=soal&amp;folder=DIBUAT&amp;q=a">Buatan sendiri</button>
-    <button data-u="/cari?mode=halaman&amp;q=">Arsip</button>
     <button data-u="/jawab">Kunci Jawaban</button>
     <button data-u="/rangkum">Rangkuman</button>
     <button data-u="/hasil">Hasil &amp; Cetak</button>
