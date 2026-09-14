@@ -1,6 +1,6 @@
 "use client";
 import katex from "katex";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState, type Dispatch, type SetStateAction } from "react";
 import { applyHighlights, type Span } from "@/lib/exams/highlight";
 
 /* Renderer teks soal: subset Markdown + LaTeX ($...$ inline, $$...$$ display).
@@ -34,9 +34,23 @@ function renderMath(src: string, display: boolean) {
   }
 }
 
-export function toHtml(src: string): string {
+/** Penggambar tag diagram: isi tag tanpa kurung siku → HTML. */
+export type GambarTag = (inner: string) => string;
+
+const RE_TAG = /\[\[([\s\S]*?)\]\]/g;
+const RE_SISIP_TAG = /\u27E6D(\d+)\u27E7/g;
+const RE_BLOK_TAG = /^(?:\u27E6D\d+\u27E7\s*)+$/;
+
+export function toHtml(src: string, gambarTag?: GambarTag): string {
   if (!src) return "";
-  // 1. amankan blok math dulu supaya tidak tersentuh parser markdown
+  /* 0. tag diagram "[[grafik: …]]" diangkat keluar PALING AWAL. Isinya penuh
+   * karakter yang berarti bagi parser di bawah ini — tanda $, tanda bintang,
+   * garis bawah — jadi kalau dibiarkan, LaTeX dan markdown akan mengacak
+   * parameternya sebelum sempat digambar. */
+  const tag: string[] = [];
+  src = src.replace(RE_TAG, (_m, isi: string) => `\u27E6D${tag.push(String(isi).trim()) - 1}\u27E7`);
+
+  // 1. amankan blok math supaya tidak tersentuh parser markdown
   const math: string[] = [];
   let s = src.replace(/\$\$([\s\S]+?)\$\$/g, (_m, m: string) => `\u27E6M${math.push(renderMath(m, true)) - 1}\u27E7`);
   s = s.replace(/\$([^$\n]+?)\$/g, (_m, m: string) => `\u27E6M${math.push(renderMath(m, false)) - 1}\u27E7`);
@@ -45,6 +59,10 @@ export function toHtml(src: string): string {
   const blocks = s.split(/\n{2,}/).map((raw) => {
     const b = raw.trim();
     if (!b) return "";
+    /* Diagram adalah blok tersendiri — dibungkus <p> ia akan mewarisi
+     * perataan teks dan jarak baris paragraf, dan <div> di dalam <p> ditutup
+     * paksa oleh peramban sehingga sisa paragrafnya terlempar keluar. */
+    if (RE_BLOK_TAG.test(b)) return b;
     if (/^#{1,4}\s/.test(b)) {
       const lvl = b.match(/^#+/)![0].length;
       return `<h${lvl + 2} class="mt-3 mb-1 font-semibold">${inline(b.replace(/^#+\s/, ""))}</h${lvl + 2}>`;
@@ -78,16 +96,53 @@ export function toHtml(src: string): string {
     return `<p>${inline(b).replace(/\n/g, "<br/>")}</p>`;
   });
 
-  // 3. kembalikan math
-  return blocks.join("").replace(/\u27E6M(\d+)\u27E7/g, (_m, i: string) => math[Number(i)]);
+  // 3. kembalikan math, lalu diagram
+  return blocks
+    .join("")
+    .replace(/\u27E6M(\d+)\u27E7/g, (_m, i: string) => math[Number(i)])
+    .replace(RE_SISIP_TAG, (_m, i: string) => {
+      const isi = tag[Number(i)] ?? "";
+      if (!gambarTag) return '<span class="ws-diagram-memuat">memuat diagram…</span>';
+      return gambarTag(isi) || "";
+    });
+}
+
+/* Penggambar diagram itu 240 KB — terlalu berat untuk ikut di setiap halaman
+ * ujian, padahal kebanyakan soal tidak berdiagram. Jadi modulnya baru diambil
+ * saat ada teks yang benar-benar memuat "[[", lalu dipakai ulang untuk semua
+ * soal berikutnya. */
+let modulDiagram: GambarTag | null = null;
+const pelanggan = new Set<Dispatch<SetStateAction<GambarTag | null>>>();
+let sedangMuat = false;
+
+function useGambarDiagram(perlu: boolean): GambarTag | null {
+  /* useState(fn) memperlakukan fungsi sebagai inisialisator malas dan
+   * memanggilnya, jadi penggambar harus dibungkus — begitu pula saat diisi
+   * lewat setGambar di bawah. */
+  const [gambar, setGambar] = useState<GambarTag | null>(() => modulDiagram);
+  useEffect(() => {
+    if (!perlu || modulDiagram) return;
+    pelanggan.add(setGambar);
+    if (!sedangMuat) {
+      sedangMuat = true;
+      void import("@/lib/practice/diagrams.js").then((m) => {
+        modulDiagram = m.renderDiagramTag;
+        pelanggan.forEach((f) => f(() => modulDiagram!));
+        pelanggan.clear();
+      });
+    }
+    return () => { pelanggan.delete(setGambar); };
+  }, [perlu]);
+  return perlu ? gambar : null;
 }
 
 export function RichText(
   { children, className = "", highlights }: { children: string; className?: string; highlights?: Span[] },
 ) {
+  const gambar = useGambarDiagram(children.includes("[["));
   const html = useMemo(
-    () => applyHighlights(toHtml(children), highlights ?? []),
-    [children, highlights],
+    () => applyHighlights(toHtml(children, gambar ?? undefined), highlights ?? []),
+    [children, highlights, gambar],
   );
   return <div className={className} dangerouslySetInnerHTML={{ __html: html }} />;
 }
