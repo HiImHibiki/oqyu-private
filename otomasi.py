@@ -951,7 +951,19 @@ def potret(potongan='gemini.google.com/app', lebar=760, mutu=55):
     memotret akan berebut dengan tugas yang sedang berjalan di tab yang sama.
     """
     import base64
-    s = _sesi(URL_GEMINI if 'gemini' in potongan else wsmaker.ALAMAT, potongan)
+    # HANYA memotret, tanpa efek samping. Dulu lewat _sesi()/_tampilkan(), yang
+    # pada sesi baru memasang ulang setDeviceMetricsOverride + bringToFront —
+    # dan itu MENUTUP menu yang sedang terbuka. Dengan viewer di HP menyegarkan
+    # tiap 2,5 detik, menu unggah tertutup di tengah tugas: lampiran lepas
+    # ("belum terlampir"), lalu "Menu unggah tidak mau terbuka". Sekarang tab
+    # dicari apa adanya; kalau Chrome/tab tidak ada, biarkan gagal (503) —
+    # pemotret tidak boleh menyalakan Chrome atau membuka tab.
+    if not cdp.hidup():
+        raise RuntimeError('Chrome kendali sedang tidak hidup')
+    tab = cdp.cari_tab(potongan)
+    if not tab:
+        raise RuntimeError('tab belum ada')
+    s = cdp.Sesi(tab, timeout=15)
     try:
         d = s.perintah('Page.captureScreenshot', format='jpeg', quality=mutu,
                        captureBeyondViewport=False)
