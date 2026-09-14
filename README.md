@@ -3,7 +3,8 @@
 Latihan & ujian online untuk murid bimbel Exact Course — cabang dari Exact Try Out
 (Next.js 15, React 19, mesin ujian & bank soal yang sama), ditambah:
 
-- **Buat soal otomatis** — guru mengetik topik, Gemini (lewat [Exact Worksheet](https://github.com/Exact-Digital/Exact-Worksheet)) menulis soal, kunci, dan pembahasannya; hasilnya langsung masuk bank soal (`exam: LATIHAN`) dan jadi paket.
+- **Dari Exact Worksheet** — alur utama: guru membuat lembar seperti biasa di [Exact Worksheet](https://github.com/Exact-Digital/Exact-Worksheet) (topik/foto), lalu menekan **Ke Practice** (di baris tugas atau tombol **Practice** di tab Hasil). Worksheet mengirim butir soal ke `POST /api/latihan/terbit` (kunci bersama `EXACT_PRACTICE_KUNCI` = `practice_kunci` di setelan.json Worksheet); jadi paket terbit + masuk bank soal.
+- **Buat soal dari Practice** — `/admin/latihan` juga bisa memerintah Worksheet langsung (topik → Gemini → paket).
 - **Bisa dicetak** — PDF lembar soal / kunci dirender Exact Worksheet Maker (`/api/latihan/cetak?id=…[&kunci=1]`).
 - **Bisa dikerjakan online** — ruang ujian Exact Try Out (jam di server, autosave, hasil & pembahasan), tanpa kuota berbayar.
 - **Bank soal untuk murid** — murid memilih mapel/kelas/topik dan mendapat latihan acak.

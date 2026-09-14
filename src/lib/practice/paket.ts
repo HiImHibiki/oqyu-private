@@ -6,7 +6,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import crypto from "crypto";
 
-export type SumberPaket = "gemini" | "bank" | "acak";
+export type SumberPaket = "gemini" | "bank" | "acak" | "worksheet";
 
 export interface Paket {
   id: string;

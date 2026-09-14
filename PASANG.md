@@ -9,7 +9,10 @@ cd ~/Documents/"PROJECT EXACT GROUP"
 git clone git@github.com:Exact-Digital/Exact-Practice.git "Exact Practice"
 cd "Exact Practice"
 npm install
-cp .env.contoh .env.local          # isi ADMIN_EMAILS, EXACT_KODE_KELAS, EXACT_CANVAS_PIN
+cp .env.contoh .env.local          # isi ADMIN_EMAILS, EXACT_KODE_KELAS, EXACT_CANVAS_PIN, EXACT_PRACTICE_KUNCI
+# EXACT_PRACTICE_KUNCI: sembarang string acak; tulis nilai yang sama ke
+# ~/Library/Application Support/Exact Worksheet/setelan.json → "practice_kunci"
+# (dan "practice_url": "http://127.0.0.1:8770") supaya tombol Ke Practice di Worksheet bekerja.
 ./pasang-app.sh                    # build + salin + LaunchAgent com.exactcourse.practice (port 8770)
 ```
 
