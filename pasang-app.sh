@@ -61,6 +61,22 @@ for i in $(seq 1 20); do
   sleep 0.5
 done
 launchctl bootstrap "gui/$(id -u)" "$PLIST" || launchctl kickstart -k "gui/$(id -u)/$LABEL"
+# Menu bar "EP": dibangun dari menubar/MenuBar.swift, dipasang ke
+# ~/Applications, dan didaftarkan sebagai Login Item supaya ikut menyala
+# saat masuk ke Mac. Kalau swiftc tidak ada (tanpa Command Line Tools),
+# bagian ini dilewati — layanannya sendiri tetap jalan lewat launchd.
+BAR="$HOME/Applications/Exact Practice Bar.app"
+if command -v swiftc >/dev/null 2>&1 && "$SRC/menubar/bangun.sh" >/dev/null 2>&1; then
+  pkill -x ExactPracticeBar 2>/dev/null || true
+  mkdir -p "$HOME/Applications"
+  rm -rf "$BAR" && ditto "$SRC/menubar/dist/Exact Practice Bar.app" "$BAR"
+  osascript -e 'tell application "System Events" to delete login item "Exact Practice Bar"' >/dev/null 2>&1 || true
+  osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"$BAR\", hidden:true}" >/dev/null 2>&1 || true
+  open -a "$BAR" && echo "Menu bar EP dipasang: $BAR (Login Item)"
+else
+  echo "Menu bar dilewati (swiftc tidak ada atau build gagal)"
+fi
+
 for i in $(seq 1 30); do
   sleep 1
   if curl -s -o /dev/null -m 3 "http://127.0.0.1:$PORT/masuk"; then

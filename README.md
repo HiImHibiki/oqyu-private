@@ -44,6 +44,6 @@ Email di `ADMIN_EMAILS` otomatis berperan guru/admin saat mendaftar.
 - `src/lib/practice/paket.ts` — penyimpanan paket (`<data>/paket.json`).
 - `src/lib/practice/latihan.ts` — attempt dari paket/acak, ringkasan kemajuan untuk guru.
 - `src/app/api/latihan/*`, `src/app/api/admin/latihan/*` — rute API.
-- `pasang-app.sh` — build, salin ke `~/Library/Application Support/Exact Practice/app`, pasang LaunchAgent `com.exactcourse.practice`.
+- `pasang-app.sh` — build, salin ke `~/Library/Application Support/Exact Practice/app`, pasang LaunchAgent `com.exactcourse.practice`, dan membangun **menu bar "EP"** (`menubar/MenuBar.swift` → `~/Applications/Exact Practice Bar.app`, Login Item): status layanan, buka halaman guru, nyalakan/matikan/mulai ulang layanan, buka log.
 
 Cara pasang di Mac lain: lihat [PASANG.md](PASANG.md).
