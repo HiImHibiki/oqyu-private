@@ -1,6 +1,6 @@
 #!/bin/zsh
 # Pasang Cloudflare Tunnel untuk Exact Practice di Mac ini.
-#   ./pasang-tunnel.sh practice-velisia.exactprintsolution.com
+#   ./pasang-tunnel.sh practice-velisia.exactprintsolution.com [nama-tunnel]
 # Prasyarat: `brew install cloudflared` dan `cloudflared tunnel login` (sekali,
 # memilih zona domain di akun Cloudflare yang dipakai). Membuat tunnel bernama
 # exact-practice, config ~/.cloudflared/exact-practice.yml, CNAME hostname →
@@ -9,8 +9,12 @@ set -e
 HOST="$1"; [ -n "$HOST" ] || { echo "pakai: $0 <hostname>"; exit 1; }
 command -v cloudflared >/dev/null || { echo "cloudflared belum ada: brew install cloudflared"; exit 1; }
 ls ~/.cloudflared/cert.pem >/dev/null 2>&1 || { echo "belum login: jalankan 'cloudflared tunnel login' dulu"; exit 1; }
-NAMA=exact-practice; YML="$HOME/.cloudflared/$NAMA.yml"; LABEL=com.exactcourse.practice.tunnel
-if ! cloudflared tunnel list 2>/dev/null | grep -q " $NAMA "; then cloudflared tunnel create "$NAMA"; fi
+# Nama tunnel PER MAC: nama tunnel bersifat per akun Cloudflare, dan beberapa Mac
+# memakai akun yang sama. Nama yang sama akan "menemukan" tunnel milik Mac lain
+# yang kredensialnya tidak ada di sini. Boleh dipaksa lewat argumen ke-2.
+NAMA="${2:-exact-practice-$(scutil --get LocalHostName 2>/dev/null | tr 'A-Z' 'a-z' | tr -c 'a-z0-9\n' '-')}"
+YML="$HOME/.cloudflared/$NAMA.yml"; LABEL=com.exactcourse.practice.tunnel
+if ! cloudflared tunnel list 2>/dev/null | grep -qE "[[:space:]]$NAMA[[:space:]]"; then cloudflared tunnel create "$NAMA"; fi
 ID=$(cloudflared tunnel list 2>/dev/null | awk -v n="$NAMA" '$2==n{print $1}' | head -1)
 [ -n "$ID" ] || { echo "tunnel $NAMA tidak ditemukan"; exit 1; }
 cat > "$YML" <<Y
