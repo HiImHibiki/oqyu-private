@@ -35,6 +35,8 @@ Beberapa hal kecil:
 - Ditulis biasa saja, tanpa markdown (tanpa **tebal**, #, atau tabel)
 - Cukup tulis hasilnya, kodenya tidak usah ditampilkan
 - Isinya dari bahannya saja, tidak usah ditambah-tambahi
+- Tidak perlu membuat atau melampirkan gambar/grafik; kalau perlu, cukup tulis
+  [GAMBAR: keterangan singkat] dalam teks
 - {bahasa}
 {catatan}{naskah}"""
 

@@ -51,7 +51,8 @@ Beberapa hal kecil biar rapi:
 - Cukup hitung sendiri lalu tulis hasilnya, kodenya tidak usah ditampilkan
 - Kalau ada bagian yang kurang terbaca, tulis apa adanya lalu beri catatan
   "(kurang terbaca)" daripada menebak isinya
-- Kalau soal ada gambarnya, tulis [GAMBAR: keterangan singkat] di tempatnya
+- Tidak perlu membuat atau melampirkan gambar/grafik; kalau soal ada gambarnya,
+  cukup tulis [GAMBAR: keterangan singkat] di tempatnya
 - {bahasa}
 {catatan}{naskah}"""
 

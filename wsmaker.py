@@ -148,7 +148,8 @@ DIPAKAI = {
     'tabelkosong',    # tabel berheader, baris kosong untuk diisi siswa
     'kertasgrafik',   # kertas grafik kosong berskala untuk diplot siswa
     'garisjawab',     # garis bertitik sebagai ruang menulis jawaban
-    'garisbilangan',  # garis bilangan dengan titik berlabel
+    'garisbilangan',  # garis bilangan dengan titik berlabel,
+    'grafik',       # kurva fungsi jadi — dipakai bila soal menyuruh MEMBACA grafik
 }
 
 # Bukan jenis diagram, melainkan parameter tambahan — selalu ikut.
@@ -203,12 +204,16 @@ def _buang_blok(perintah, awal):
 # karena tidak ada yang bisa salah digambar, dan justru lebih berguna: murid
 # memplot sendiri, yang memang keterampilan yang sedang diuji.
 ATURAN_KOORDINAT = """
-Untuk soal yang memakai koordinat, grafik, garis lurus, atau bidang kartesius:
-sebaiknya sediakan kertas grafik kosong dengan [[kertasgrafik: ...]] lalu minta
-murid memplot sendiri — sebutkan rentang sumbu yang cukup untuk semua titiknya,
-beserta nama dan satuan tiap sumbu — daripada grafiknya digambarkan jadi. Begitu
-juga untuk soal yang meminta membuat tabel pengamatan: pakai [[tabelkosong: ...]],
-bukan tabel yang sudah terisi.
+Soal yang butuh grafik atau gambar: tolong jangan membuat, menggambar, atau
+melampirkan gambar apa pun — cukup tulis TAG-nya dalam teks, nanti aplikasi
+(graph generator) yang menggambarkannya. Dua pilihan:
+- murid yang harus memplot/menggambar sendiri (koordinat, garis lurus, bidang
+  kartesius, tabel pengamatan): [[kertasgrafik: ...]] atau [[tabelkosong: ...]],
+  sebutkan rentang sumbu yang cukup untuk semua titiknya serta nama dan satuan
+  tiap sumbu;
+- soal yang menyuruh MEMBACA grafik yang sudah jadi ("perhatikan grafik
+  berikut"): [[grafik: f1=...; xmin=...; xmax=...; ymin=...; ymax=...]].
+Selain tag itu, semuanya teks biasa.
 """
 
 
