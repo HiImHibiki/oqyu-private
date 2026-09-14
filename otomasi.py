@@ -167,8 +167,23 @@ JEDA_SEBELUM_KIRIM = 2
 # seperti tulisan orang, bukan perintah kaku.
 INSTRUKSI_MANUAL = 'Oiya, tolong jawabannya tanpa tautan sumber atau sitasi ya.'
 
+# Pemanasan: giliran pertama yang SINGKAT dan alami, tanpa lampiran, supaya
+# Gemini sudah masuk "mode menjawab" sebelum PDF + aturan panjang tiba. Menurut
+# Gemini sendiri, PDF + blok aturan panjang yang datang sekaligus di pesan
+# pertama kadang memicu penolakan/guardrail; membuka percakapan dulu
+# TERNYATA malah memperlambat # mengurangi itu. Dimatikan dengan EXACT_PEMANASAN=0. menambah gagal (uji 2026-09-14: kunci 272s vs
+# 81s, Gemini bingung "materi belum terlampir"). Default MATI; nyalakan dengan
+# EXACT_PEMANASAN=1 hanya untuk eksperimen.
+PEMANASAN = ('Halo, saya guru bimbel. Saya mau minta tolong dibuatkan bahan '
+             'belajar untuk murid saya. Sebentar lagi saya kirim detail dan '
+             'bahannya di pesan berikutnya ya, tolong dibantu.')
 
-def _kirim(s, perintah):
+def _pemanasan_nyala():
+    import os
+    return os.environ.get('EXACT_PEMANASAN', '0') in ('1', 'ya', 'true')   # default MATI: uji menunjukkan lebih lambat + lebih sering gagal
+
+
+def _kirim(s, perintah, tambah_instruksi=True):
     """Isi kotak, tunggu sebentar, lalu kirim.
 
     Dua hal yang WAJIB, dan dua-duanya sempat gagal:
@@ -188,7 +203,7 @@ def _kirim(s, perintah):
     # Gemini tidak menyisipkan tautan sumber/sitasi ke dalam naskah, yang
     # merusak pengurai. Berlaku untuk semua jenis (buat soal, kunci, rangkuman)
     # karena _kirim dipakai ketiganya.
-    if INSTRUKSI_MANUAL:
+    if INSTRUKSI_MANUAL and tambah_instruksi:
         try:
             s.ketik_manual('\n' + INSTRUKSI_MANUAL)
             time.sleep(0.6)
@@ -646,6 +661,18 @@ def _tanya_sekali(perintah, batas=300, stabil=5, lapor=None, lampiran=None,
             pilih_mode(s, mode or MODE_BAKU[0])
         except Exception:
             pass                          # mode gagal dipilih bukan alasan batal
+
+        # Giliran 1 (pemanasan): buka percakapan dengan kalimat alami, tanpa
+        # lampiran, lalu tunggu Gemini menjawab singkat ("silakan"). Setelah itu
+        # baru PDF + aturan dikirim di giliran 2. Kalau pemanasannya gagal,
+        # lanjut saja ke pengiriman biasa — bukan alasan membatalkan.
+        if _pemanasan_nyala():
+            try:
+                _kirim(s, PEMANASAN, tambah_instruksi=False)
+                _panen(s, batas=60, stabil=2, lapor=None, henti=henti)
+            except Exception:
+                pass
+
         if lampiran:
             _lampirkan(s, lampiran, jeda=jeda_unggah)
         _kirim(s, perintah)
