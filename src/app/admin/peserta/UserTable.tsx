@@ -95,7 +95,8 @@ export function UserTable({ rows, q, meId, canEditRole }: {
                       <select className="input !w-auto !py-1 text-xs" value={u.role}
                         disabled={busy === u.id}
                         onChange={(e) => setRole(u.id, e.target.value)}>
-                        <option value="student">student</option>
+                        <option value="student">student (murid, gratis)</option>
+                        <option value="umum">umum (berbayar)</option>
                         <option value="reviewer">reviewer</option>
                         <option value="admin">admin</option>
                       </select>

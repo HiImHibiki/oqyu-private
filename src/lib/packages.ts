@@ -23,6 +23,8 @@ export interface TryoutPackage {
    * dan tanpa migrasi — dan tidak ada kemungkinan dua sumber kebenaran yang
    * saling bertentangan. */
   sections?: string[];
+  /** masa berlaku dalam hari (paket berjangka, mis. latihan mingguan); kosong = 1 tahun */
+  days?: number;
   prices: Record<Currency, number>;
   strike?: Record<Currency, number>;
   popular?: boolean;
@@ -32,6 +34,33 @@ export interface TryoutPackage {
 }
 
 export const PACKAGES: TryoutPackage[] = [
+  /* ---- Exact Practice: akses latihan berjangka untuk pengguna umum ----
+   * Murid Exact Course (akun Exact Canvas / kode kelas) tidak memerlukan ini —
+   * latihan gratis untuk mereka. Paket ini untuk teman-teman yang datang lewat
+   * tautan afiliasi murid. Kuota tak terbatas selama masa berlaku. */
+  {
+    id: "latihan-minggu", exam: "LATIHAN", name: "Latihan 1 Minggu", blurb: "Akses semua paket latihan selama 7 hari",
+    attempts: 9999, days: 7,
+    prices: { IDR: 20_000, USD: 2, EUR: 2, CNY: 12 },
+    indonesiaOnly: true,
+    features: ["Semua paket latihan & bank soal", "Ujian online dengan nilai & pembahasan", "Unduh PDF lembar soal"],
+  },
+  {
+    id: "latihan-bulan", exam: "LATIHAN", name: "Latihan 1 Bulan", blurb: "30 hari — lebih hemat",
+    attempts: 9999, days: 30,
+    prices: { IDR: 60_000, USD: 5, EUR: 5, CNY: 30 },
+    strike: { IDR: 80_000, USD: 8, EUR: 8, CNY: 48 },
+    popular: true, indonesiaOnly: true,
+    features: ["Semua paket latihan & bank soal", "Ujian online dengan nilai & pembahasan", "Unduh PDF lembar soal", "Riwayat & grafik perkembangan"],
+  },
+  {
+    id: "latihan-3bulan", exam: "LATIHAN", name: "Latihan 3 Bulan", blurb: "90 hari — paling hemat",
+    attempts: 9999, days: 90,
+    prices: { IDR: 150_000, USD: 12, EUR: 11, CNY: 75 },
+    strike: { IDR: 240_000, USD: 24, EUR: 22, CNY: 144 },
+    indonesiaOnly: true,
+    features: ["Semua paket latihan & bank soal", "Ujian online dengan nilai & pembahasan", "Unduh PDF lembar soal", "Riwayat & grafik perkembangan"],
+  },
   {
     id: "sat-starter", exam: "SAT", name: "SAT Starter", blurb: "2 full-length adaptive tests",
     attempts: 2,

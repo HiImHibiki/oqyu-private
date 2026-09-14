@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { currentUser, setPassword } from "@/lib/auth";
+import { hapusSandiSementara } from "@/lib/practice/sandi";
 
 export async function POST(req: Request) {
   const user = await currentUser();
@@ -18,5 +19,6 @@ export async function POST(req: Request) {
 
   const res = await setPassword(password);
   if (!res.ok) return NextResponse.json({ error: res.error }, { status: 400 });
+  await hapusSandiSementara(user.id).catch(() => undefined);
   return NextResponse.json({ ok: true });
 }

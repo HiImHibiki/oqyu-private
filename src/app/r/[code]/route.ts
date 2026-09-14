@@ -11,7 +11,7 @@ export async function GET(req: Request, ctx: { params: Promise<{ code: string }>
   const url = new URL(req.url);
   const paket = url.searchParams.get("paket");
 
-  const target = new URL(paket ? `/daftar?paket=${paket}` : "/daftar", url.origin);
+  const target = new URL(paket ? `/beli?paket=${paket}` : "/beli", url.origin);
 
   if (clean) {
     const aff = await getDb().affiliateByCode(clean).catch(() => null);

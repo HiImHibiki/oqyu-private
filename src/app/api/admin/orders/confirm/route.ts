@@ -3,6 +3,9 @@ import { adminOrNull } from "@/lib/adminGuard";
 import { getDb } from "@/lib/db";
 import { fulfillOrder } from "@/lib/checkout";
 import { orderRef } from "@/lib/payment";
+import { devAuth } from "@/lib/db/dev";
+import { usingDev } from "@/lib/db";
+import { buatSandi, simpanSandiSementara } from "@/lib/practice/sandi";
 
 /* Menyatakan sebuah transfer bank sudah masuk.
  *
@@ -39,5 +42,19 @@ export async function POST(req: Request) {
     `${res.alreadyPaid ? " — sudah lunas sebelumnya, tidak ada yang berubah" : ""}`,
   );
 
-  return NextResponse.json({ ok: true, alreadyPaid: res.alreadyPaid });
+  /* Pengguna umum Exact Practice lahir dari pesanan tanpa sandi. Begitu lunas,
+   * sandi sementara dibuat dari nama emailnya dan disimpan untuk dikirim admin
+   * lewat WhatsApp (ditampilkan di halaman pesanan). */
+  let akun: { email: string; sandi: string; hp: string } | null = null;
+  if (usingDev() && order.exam === "LATIHAN") {
+    const u = await devAuth.userById(order.userId);
+    if (u && !u.passwordSet) {
+      const sandi = buatSandi(u.email);
+      await devAuth.setPassword(u.id, sandi);
+      akun = { email: u.email, sandi, hp: u.phone || "" };
+      await simpanSandiSementara({ userId: u.id, email: u.email, sandi, hp: u.phone || "", orderId: order.id, dibuatAt: new Date().toISOString() });
+    }
+  }
+
+  return NextResponse.json({ ok: true, alreadyPaid: res.alreadyPaid, akun });
 }

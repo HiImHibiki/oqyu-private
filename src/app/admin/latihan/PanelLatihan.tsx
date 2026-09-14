@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { Loader2, Printer, Sparkles, Trash2, Eye, EyeOff, KeyRound, ListChecks, Square } from "lucide-react";
+import { Loader2, Printer, Sparkles, Trash2, Eye, EyeOff, KeyRound, ListChecks, Square, Copy, Link2, Check } from "lucide-react";
 import type { Paket } from "@/lib/practice/paket";
 
 type SoalRingkas = { id: string; stem: string; type: string; mapel: string; kelas: string; topik: string };
@@ -87,6 +87,12 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
     await muatPaket();
   };
 
+  const [disalin, setDisalin] = useState("");
+  const salin = async (teks: string, tanda: string) => {
+    try { await navigator.clipboard.writeText(teks); } catch { prompt("Salin:", teks); }
+    setDisalin(tanda); setTimeout(() => setDisalin(""), 1500);
+  };
+  const situs = typeof window !== "undefined" ? window.location.origin : "";
   const input = "w-full rounded-lg border px-3 py-2 text-sm bg-transparent";
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
@@ -151,11 +157,20 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
       <div className="card p-5">
         <h3 className="mb-3 font-semibold">Paket latihan ({paket.length})</h3>
         {paket.length === 0 && <p className="text-sm muted">Belum ada paket.</p>}
-        <div className="divide-y" style={{ borderColor: "var(--line)" }}>
+        <div className="grid gap-3">
           {paket.map((p) => (
-            <div key={p.id} className="flex flex-wrap items-center justify-between gap-2 py-3 text-sm">
+            <div key={p.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border p-3 text-sm" style={{ borderColor: "var(--line)", opacity: p.terbit ? 1 : 0.6 }}>
               <div className="min-w-0 flex-1">
                 <div className="font-medium">{p.judul}</div>
+                <div className="my-1 flex flex-wrap items-center gap-1.5">
+                  <span className="rounded-md px-2 py-0.5 font-mono text-base font-semibold tracking-widest" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>{p.kode}</span>
+                  <button className="btn btn-ghost !px-2 !py-1 text-xs" title="Salin kode ujian" onClick={() => salin(p.kode, p.id + ":kode")}>
+                    {disalin === p.id + ":kode" ? <Check size={13} /> : <Copy size={13} />} Salin kode
+                  </button>
+                  <button className="btn btn-ghost !px-2 !py-1 text-xs" title="Salin tautan langsung ke ujian ini" onClick={() => salin(`${situs}/latihan?q=${p.kode}`, p.id + ":tautan")}>
+                    {disalin === p.id + ":tautan" ? <Check size={13} /> : <Link2 size={13} />} Salin tautan
+                  </button>
+                </div>
                 <div className="text-xs muted">
                   {[p.mapel, p.kelas && `Kelas ${p.kelas}`, p.topik].filter(Boolean).join(" · ")} · {p.questionIds.length} soal · {p.durasiMenit} mnt · {p.sumber}
                   {p.dilewati ? ` · ${p.dilewati} esai hanya di PDF` : ""}

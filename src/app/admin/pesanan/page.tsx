@@ -6,12 +6,21 @@ import { PageHead } from "@/components/ui/AppShell";
 import { StatusChip } from "../StatusChip";
 import { ConfirmButton } from "./ConfirmButton";
 import { RefundButton } from "./RefundButton";
+import { semuaSandiSementara } from "@/lib/practice/sandi";
+import { devAuth } from "@/lib/db/dev";
+import { usingDev } from "@/lib/db";
+import { MessageCircle } from "lucide-react";
 
 export const metadata = { title: "Pesanan" };
 
 export default async function PesananPage() {
   await requireAdmin();
   const orders = await getDb().listOrders(200);
+  const sandi = await semuaSandiSementara();
+  const hpDari = new Map<string, string>();
+  if (usingDev()) for (const o of orders) if (!hpDari.has(o.userId)) hpDari.set(o.userId, (await devAuth.userById(o.userId))?.phone ?? "");
+  const situs = process.env.NEXT_PUBLIC_SITE_URL || "";
+  const waKe = (hp: string, teks: string) => hp.replace(/\D/g, "") ? `https://wa.me/${hp.replace(/\D/g, "").replace(/^0/, "62")}?text=${encodeURIComponent(teks)}` : null;
   const paid = orders.filter((o) => o.status === "paid");
   /* Transfer bank yang menunggu dicocokkan. Ditarik ke atas karena inilah satu-
    * satunya baris di halaman ini yang menuntut tindakan, bukan sekadar dibaca. */
@@ -56,6 +65,18 @@ export default async function PesananPage() {
                 <td className="px-4 py-2.5">
                   <div>{o.fullName ?? "—"}</div>
                   <div className="text-xs muted">{o.email}</div>
+                  {hpDari.get(o.userId) && <div className="text-xs muted">WA {hpDari.get(o.userId)}</div>}
+                  {o.status === "paid" && sandi[o.userId] && (
+                    <div className="mt-1 rounded-lg px-2 py-1 text-xs" style={{ background: "var(--bg-sunken)" }}>
+                      Akun: <b>{sandi[o.userId].email}</b> · sandi <b className="font-mono">{sandi[o.userId].sandi}</b>
+                      {waKe(hpDari.get(o.userId) || sandi[o.userId].hp, `Halo ${o.fullName ?? ""}, paket Exact Practice kamu sudah aktif.\n\nMasuk di ${situs}/masuk (pilih "Masuk dengan email")\nEmail: ${sandi[o.userId].email}\nSandi sementara: ${sandi[o.userId].sandi}\n\nGanti sandinya di menu Pengaturan ya. Selamat belajar!`) && (
+                        <a className="ml-2 inline-flex items-center gap-1 underline" target="_blank" rel="noreferrer"
+                          href={waKe(hpDari.get(o.userId) || sandi[o.userId].hp, `Halo ${o.fullName ?? ""}, paket Exact Practice kamu sudah aktif.\n\nMasuk di ${situs}/masuk (pilih "Masuk dengan email")\nEmail: ${sandi[o.userId].email}\nSandi sementara: ${sandi[o.userId].sandi}\n\nGanti sandinya di menu Pengaturan ya. Selamat belajar!`)!}>
+                          <MessageCircle size={12} /> Kirim akun via WA
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </td>
                 <td className="px-4 py-2.5">
                   <span className="chip">{o.exam}</span> <span className="text-xs">{o.packageId}</span>

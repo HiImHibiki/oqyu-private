@@ -23,7 +23,18 @@ Alamat publik: https://practice2.exactprintsolution.com (Cloudflare Tunnel `exac
 | Guru | `/admin/kelas` | pantauan kemajuan & kesalahan |
 | Guru | `/admin/soal` | bank soal (warisan Try Out) |
 
-**Gratis** — tidak ada paket berbayar, kuota, maupun langganan. Murid masuk dengan akun Exact Canvas (No. HP + sandi), atau mendaftar di `/daftar` dengan **kode kelas** (`EXACT_KODE_KELAS`) lalu menunggu **persetujuan guru** di `/admin/peserta` (tombol Setujui).
+## Siapa boleh apa
+
+| Pengguna | Cara masuk | Biaya | Tanya guru (Canvas) |
+|---|---|---|---|
+| Murid Exact Course | akun Exact Canvas (No. HP + sandi) atau daftar dengan kode kelas → disetujui guru di `/admin/peserta` | gratis | ya |
+| Umum (teman murid) | `/beli`: pilih paket, isi nama/email/WA (+ kode afiliasi), transfer, konfirmasi WA → admin **Tandai lunas** di `/admin/pesanan` → akun + **sandi sementara** dibuat otomatis (tampil di halaman pesanan, tombol "Kirim akun via WA") | paket berjangka: 1 minggu Rp20.000, 1 bulan Rp60.000, 3 bulan Rp150.000 (`src/lib/packages.ts`, `exam: LATIHAN`) | tidak |
+
+Tiap paket latihan punya **kode ujian** 6 huruf (kartu di `/admin/latihan`, tombol Salin kode / Salin tautan). Murid & pembeli mencari ujian di `/latihan` dengan nama atau kode.
+
+**Afiliasi**: murid mengaktifkan kode di `/afiliasi`; tautan `/r/KODE` → `/beli?ref=KODE`. Komisi (15%, `src/lib/affiliate.ts`) lahir saat admin menandai lunas; pencairan manual di `/admin/afiliasi`.
+
+Isi `NEXT_PUBLIC_ADMIN_WHATSAPP` (nomor WA admin) dan `NEXT_PUBLIC_BANK_*` (rekening) di `.env.local` agar tombol konfirmasi & instruksi transfer muncul.
 Email di `ADMIN_EMAILS` otomatis berperan guru/admin saat mendaftar.
 
 ## Berkas penting

@@ -63,6 +63,9 @@ export default async function MasukPage({
             {t("auth.noAccount")}{" "}
             <Link href="/daftar" className="underline">{t("auth.registerLink")}</Link>
           </p>
+          <p className="mt-2 text-center text-xs muted">
+            Bukan murid Exact Course? <Link href="/beli" className="underline">Beli paket latihan</Link> — mulai Rp20.000/minggu.
+          </p>
           <p className="mt-2 flex items-center justify-center gap-1.5 text-center text-xs muted">
             <ShieldCheck size={13} />
             <Link href="/admin/masuk" className="underline">{t("auth.adminLink")}</Link>

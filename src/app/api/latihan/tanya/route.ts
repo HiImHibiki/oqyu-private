@@ -4,6 +4,7 @@ import { getDb } from "@/lib/db";
 import { questionsByIds } from "@/lib/exams/bank";
 import { potretHtml } from "@/lib/practice/worksheet";
 import { tanyaGuru } from "@/lib/practice/canvas";
+import { aksesLatihan } from "@/lib/practice/akses";
 import type { Question } from "@/lib/types";
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -33,6 +34,8 @@ export async function POST(req: Request) {
   const user = await currentUser();
   if (!user) return NextResponse.json({ error: "Perlu masuk" }, { status: 401 });
   if (menunggu(user)) return NextResponse.json({ error: "Akunmu belum disetujui guru" }, { status: 403 });
+  // Tanya guru hanya untuk murid bimbel — pengguna umum tidak punya kelas di Exact Canvas.
+  if (!(await aksesLatihan(user)).murid) return NextResponse.json({ error: "Tanya guru hanya untuk murid Exact Course" }, { status: 403 });
   const { attemptId, questionId, number } = (await req.json()) as { attemptId: string; questionId: string; number?: number };
   const a = await getDb().getAttempt(attemptId);
   if (!a || a.userId !== user.id) return NextResponse.json({ error: "Attempt tidak ditemukan" }, { status: 404 });

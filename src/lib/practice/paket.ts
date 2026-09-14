@@ -14,6 +14,8 @@ export interface Paket {
   mapel: string;
   kelas: string;
   topik: string;
+  /** kode ujian pendek yang dibagikan guru, mis. 7K4QX2 — dicari murid/pembeli di halaman Latihan */
+  kode: string;
   questionIds: string[];
   durasiMenit: number;
   sumber: SumberPaket;
@@ -51,21 +53,46 @@ async function tulis(list: Paket[]) {
   await fs.rename(tmp, FILE);
 }
 
-export const listPaket = async () =>
-  (await baca()).sort((a, b) => (a.dibuatAt < b.dibuatAt ? 1 : -1));
-
-export async function getPaket(id: string) {
-  return (await baca()).find((p) => p.id === id) ?? null;
+/* Huruf/angka yang mudah dibaca lewat WhatsApp — tanpa 0/O dan 1/I. */
+const HURUF = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+export function buatKode(dipakai: Set<string>) {
+  for (;;) {
+    const k = Array.from(crypto.randomBytes(6), (b) => HURUF[b % HURUF.length]).join("");
+    if (!dipakai.has(k)) return k;
+  }
 }
 
-export async function savePaket(p: Omit<Paket, "id" | "dibuatAt"> & { id?: string; dibuatAt?: string }) {
+/** Paket lama yang belum berkode diberi kode saat dibaca, lalu disimpan. */
+async function bacaBerkode(): Promise<Paket[]> {
   const list = await baca();
+  const dipakai = new Set(list.map((p) => p.kode).filter(Boolean));
+  let ubah = false;
+  for (const p of list) if (!p.kode) { p.kode = buatKode(dipakai); dipakai.add(p.kode); ubah = true; }
+  if (ubah) await tulis(list);
+  return list;
+}
+
+export const listPaket = async () =>
+  (await bacaBerkode()).sort((a, b) => (a.dibuatAt < b.dibuatAt ? 1 : -1));
+
+export async function paketDariKode(kode: string) {
+  const k = kode.trim().toUpperCase();
+  return k ? (await bacaBerkode()).find((p) => p.kode === k) ?? null : null;
+}
+
+export async function getPaket(id: string) {
+  return (await bacaBerkode()).find((p) => p.id === id) ?? null;
+}
+
+export async function savePaket(p: Omit<Paket, "id" | "dibuatAt" | "kode"> & { id?: string; dibuatAt?: string; kode?: string }) {
+  const list = await bacaBerkode();
+  const i = list.findIndex((x) => x.id === p.id);
   const paket: Paket = {
     ...p,
     id: p.id ?? `pk-${crypto.randomBytes(5).toString("hex")}`,
     dibuatAt: p.dibuatAt ?? new Date().toISOString(),
+    kode: p.kode || (i >= 0 ? list[i].kode : "") || buatKode(new Set(list.map((x) => x.kode))),
   };
-  const i = list.findIndex((x) => x.id === paket.id);
   if (i >= 0) list[i] = paket; else list.push(paket);
   await tulis(list);
   return paket;

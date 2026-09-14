@@ -1,3 +1,4 @@
+import { packageById } from "@/lib/packages";
 import { promises as fs } from "fs";
 import path from "path";
 import crypto from "crypto";
@@ -389,7 +390,8 @@ const devDbRaw: FullDb = {
     d.entitlements.push({
       id: uid(), userId: o.userId, packageId: o.packageId, exam: o.exam,
       attemptsTotal: attemptsGranted, attemptsUsed: 0,
-      expiresAt: new Date(Date.now() + 365 * 864e5).toISOString(),
+      // Paket berjangka (latihan mingguan/bulanan) kedaluwarsa sesuai `days`-nya.
+      expiresAt: new Date(Date.now() + (packageById(o.packageId)?.days ?? 365) * 864e5).toISOString(),
       orderId: o.id,
     });
     await write(d);
