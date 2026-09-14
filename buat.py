@@ -948,7 +948,7 @@ function barisTugas(t) {
     kanan = '<a class=tombolCetak href="/hasil?f=' + encodeURIComponent(nama)
           + '" target=_top>Lihat &amp; Cetak</a>'
           + (t.terbit ? '<a class=tombolCetak href="' + t.terbit + '" target=_blank>Di Practice ✓</a>'
-             : s.bisa_terbit ? '<button type=button class="mini terbit" data-jid="' + t.jid + '">Ke Practice</button>' : '');
+             : s.bisa_terbit ? '<button type=button class="mini terbit" data-jid="' + t.jid + '" data-pdf="' + encodeURIComponent(nama) + '">Ke Practice</button>' : '');
   } else if (q && q.nomor) {
     kanan = '<span class=kcl>antrean ke-' + q.nomor
           + (q.kerja ? ' &middot; ' + q.kerja.nama + ' ' + Math.floor(q.kerja.detik/60) + ' mnt' : '')
@@ -972,7 +972,7 @@ function barisTugas(t) {
     try {
       const r = await fetch('/terbitkan', {method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: new URLSearchParams({jid: t.jid})});
+        body: new URLSearchParams({jid: t.jid, f: decodeURIComponent(bt.dataset.pdf || '')})});
       const j = await r.json();
       if (j.ok) { t.terbit = j.admin || j.url; barisTugas(t); }
       else { bt.textContent = 'gagal'; bt.title = j.galat || ''; alert(j.galat || 'Gagal menerbitkan'); bt.disabled = false; }

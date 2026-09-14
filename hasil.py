@@ -348,7 +348,8 @@ def halaman_daftar(cari='', jumlah=24):
                   f'</div></a>'
                   f'<div class=aksi>'
                   f'<button type=button class=mini data-cetak="{a}">Cetak</button>'
-                  f'<a class=mini href="/berkas?unduh=1&amp;f={e}" download>Kirim</a>'
+                  f'<button type=button class=mini data-wa="{a}" title="Bagikan PDF ke WhatsApp / aplikasi lain">Bagikan</button>'
+                  f'<a class=mini href="/berkas?unduh=1&amp;f={e}" download>Unduh</a>'
                   f'<button type=button class=mini data-terbit="{a}" title="Terbitkan sebagai paket latihan online di Exact Practice">Practice</button>'
                   f'</div></div>')
     if not kartu:
@@ -391,6 +392,31 @@ untuk memilih halaman, atau pakai tombol di bawahnya.</div>
   }};
 
   const kabar = document.getElementById('kabar');
+
+async function bagikanPDF(nama, tombol) {{
+  const semula = tombol ? tombol.textContent : '';
+  if (tombol) {{ tombol.disabled = true; tombol.textContent = 'menyiapkan…'; }}
+  try {{
+    const r = await fetch('/berkas?f=' + encodeURIComponent(nama));
+    if (!r.ok) throw new Error('berkas tidak ditemukan');
+    const blob = await r.blob();
+    const file = new File([blob], nama, {{ type: 'application/pdf' }});
+    if (navigator.canShare && navigator.canShare({{ files: [file] }})) {{
+      await navigator.share({{ files: [file], title: nama }});
+    }} else {{
+      // Peramban tanpa berbagi berkas (mis. desktop): unduh dulu, lalu buka WhatsApp Web.
+      const u = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = u; a.download = nama; a.click();
+      setTimeout(() => URL.revokeObjectURL(u), 4000);
+      window.open('https://web.whatsapp.com/', '_blank');
+    }}
+  }} catch (e) {{
+    if (e && e.name !== 'AbortError') alert('Gagal membagikan: ' + (e.message || e));
+  }} finally {{
+    if (tombol) {{ tombol.disabled = false; tombol.textContent = semula; }}
+  }}
+}}
+
   document.querySelectorAll('[data-cetak]').forEach(b => b.onclick = async () => {{
     const nama = b.dataset.cetak;
     b.disabled = true; b.textContent = 'mengirim…';
@@ -407,6 +433,7 @@ untuk memilih halaman, atau pakai tombol di bawahnya.</div>
     }}
     setTimeout(() => {{ b.disabled = false; b.textContent = 'Cetak'; }}, 2500);
   }});
+  document.querySelectorAll('[data-wa]').forEach(b => b.onclick = () => bagikanPDF(b.dataset.wa, b));
   document.querySelectorAll('[data-terbit]').forEach(b => b.onclick = async () => {{
     const nama = b.dataset.terbit;
     b.disabled = true; b.textContent = 'mengirim…';
@@ -478,6 +505,7 @@ target=_blank>buka PDF</a></div>
   <label style="font-size:12.5px;color:var(--redup);display:flex;gap:6px;align-items:center">
     <input type=checkbox name=gambar{' checked' if gambar_pilih else ''}> lewat gambar</label>
   <button type=submit id=go>Cetak</button>
+  <button type=button id=bagikan class=abu title="Bagikan PDF ke WhatsApp / aplikasi lain">Bagikan</button>
   <button type=button id=sisi2 class=abu style=display:none>Cetak sisi kedua</button>
   <span class=info id=info></span>
 </div>
@@ -514,6 +542,32 @@ async function kirimCetak(sisi) {{
     s2.style.display = 'none';
   }}
 }}
+
+async function bagikanPDF(nama, tombol) {{
+  const semula = tombol ? tombol.textContent : '';
+  if (tombol) {{ tombol.disabled = true; tombol.textContent = 'menyiapkan…'; }}
+  try {{
+    const r = await fetch('/berkas?f=' + encodeURIComponent(nama));
+    if (!r.ok) throw new Error('berkas tidak ditemukan');
+    const blob = await r.blob();
+    const file = new File([blob], nama, {{ type: 'application/pdf' }});
+    if (navigator.canShare && navigator.canShare({{ files: [file] }})) {{
+      await navigator.share({{ files: [file], title: nama }});
+    }} else {{
+      // Peramban tanpa berbagi berkas (mis. desktop): unduh dulu, lalu buka WhatsApp Web.
+      const u = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = u; a.download = nama; a.click();
+      setTimeout(() => URL.revokeObjectURL(u), 4000);
+      window.open('https://web.whatsapp.com/', '_blank');
+    }}
+  }} catch (e) {{
+    if (e && e.name !== 'AbortError') alert('Gagal membagikan: ' + (e.message || e));
+  }} finally {{
+    if (tombol) {{ tombol.disabled = false; tombol.textContent = semula; }}
+  }}
+}}
+
+document.getElementById('bagikan').onclick = () => bagikanPDF(document.querySelector('[name=f]').value, document.getElementById('bagikan'));
 document.getElementById('sisi2').onclick = () => kirimCetak('genap');
 document.getElementById('f').onsubmit = async e => {{
   e.preventDefault();
