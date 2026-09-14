@@ -37,8 +37,25 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: e instanceof Error ? e.message : "Cetak gagal" }, { status: 502 });
     }
   }
-  const r = await ambilPdf(nama);
-  if (!r.ok) return NextResponse.json({ error: "Berkas PDF tidak ditemukan di Desktop Mac" }, { status: 404 });
+  let r = await ambilPdf(nama);
+  if (!r.ok) {
+    /* PDF-nya tidak ada di Desktop Mac ini — paket diterbitkan dari Exact
+     * Worksheet di Mac lain (nama berkasnya ikut, berkasnya tidak). Render
+     * ulang dari bank soal di sini, lalu simpan namanya supaya berikutnya
+     * langsung ketemu. */
+    const peta = await questionsByIds(p.questionIds);
+    const butir = p.questionIds.map((qid) => peta.get(qid)).filter(Boolean).map((q, i) => questionKeButir(q!, i + 1));
+    if (!butir.length) return NextResponse.json({ error: "Paket kosong" }, { status: 400 });
+    try {
+      const h = await renderPdf({ butir, judul: p.judul, kop: { mapel: p.mapel, kelas: p.kelas, lembaga: "Exact Course" }, kunci, pembahasan: kunci, kolom: "1" });
+      nama = h.pdf;
+      await savePaket({ ...p, ...(kunci ? { pdfKunci: nama } : { pdf: nama }) });
+      r = await ambilPdf(nama);
+    } catch (e) {
+      return NextResponse.json({ error: e instanceof Error ? e.message : "Cetak gagal" }, { status: 502 });
+    }
+    if (!r.ok) return NextResponse.json({ error: "Berkas PDF tidak ditemukan di Desktop Mac" }, { status: 404 });
+  }
   return new Response(r.body, {
     headers: {
       "Content-Type": "application/pdf",
