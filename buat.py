@@ -157,6 +157,10 @@ SINGKATAN = {'matematika': 'MATH', 'mathematics': 'MATH', 'math': 'MATH', 'mtk':
              'sejarah': 'SEJ', 'history': 'SEJ', 'geografi': 'GEO', 'geography': 'GEO',
              'ppkn': 'PPKN', 'sosiologi': 'SOS', 'akuntansi': 'AKT'}
 
+# Penomoran nama berkas yang aman dari balapan antar-thread (lihat nama_berkas).
+_KUNCI_NAMA = threading.Lock()
+_NOMOR_DIPESAN = set()
+
 def nama_berkas(kop, kunci, folder):
     """Samakan dengan penamaan Exact Worksheet Maker sendiri.
 
@@ -169,16 +173,36 @@ def nama_berkas(kop, kunci, folder):
               for k in ('mapel', 'sekolah', 'kelas', 'tanggal')]
     bagian = [b for b in bagian if b]
     dasar = '-'.join(bagian) or 'Lembar'
-    # nomor urut: lanjutkan dari berkas hari ini yang berawalan sama
-    n = 1
-    try:
-        import re as _re
-        pola = _re.compile(_re.escape(dasar) + r'-(\d+)')
-        ada = [int(m.group(1)) for f in os.listdir(folder)
-               for m in [pola.match(f)] if m]
-        if ada: n = max(ada) + 1
-    except OSError:
-        pass
+
+    # Nomor urut, AMAN-THREAD. Job dari HP jalan di thread masing-masing (bukan
+    # lewat antrean), jadi dua job bersamaan bisa membaca nomor terakhir yang
+    # sama lalu menulis nama identik — yang kedua menimpa yang pertama. Di bawah
+    # kunci: ambil nomor tertinggi dari disk, lewati yang sudah ada SEBAGAI
+    # BERKAS (varian soal/kunci/rangkuman) maupun yang baru DIPESAN thread lain,
+    # lalu pesan nomor itu. Nomor -n itu sendiri jadi pembeda di belakang nama.
+    with _KUNCI_NAMA:
+        n = 1
+        try:
+            import re as _re
+            pola = _re.compile(_re.escape(dasar) + r'-(\d+)')
+            ada = [int(m.group(1)) for f in os.listdir(folder)
+                   for m in [pola.match(f)] if m]
+            if ada: n = max(ada) + 1
+        except OSError:
+            pass
+
+        def _terpakai(k):
+            if (dasar, k) in _NOMOR_DIPESAN:
+                return True
+            for ekor in ('.pdf', ' - Soal+Jawaban.pdf', ' - Rangkuman.pdf'):
+                if os.path.exists(os.path.join(folder, f'{dasar}-{k}{ekor}')):
+                    return True
+            return False
+
+        while _terpakai(n):
+            n += 1
+        _NOMOR_DIPESAN.add((dasar, n))
+
     nama = f'{dasar}-{n}'
     if kunci: nama += ' - Soal+Jawaban'
     return nama

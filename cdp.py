@@ -349,6 +349,36 @@ class Sesi:
                       code=kunci, windowsVirtualKeyCode=kode_vm,
                       nativeVirtualKeyCode=kode_vm)
 
+    def ketik_manual(self, teks, pemilih='div.ql-editor', jeda=(0.035, 0.11)):
+        """Ketik teks HURUF DEMI HURUF sebagai keystroke asli di ujung kotak.
+
+        Beda dengan ganti_isi_editor yang menempel sekali (satu insertText):
+        ini mengirim satu peristiwa char per huruf dengan jeda acak, sehingga
+        Gemini melihat aliran ketikan manusia, bukan tempelan robot. Dipakai
+        untuk instruksi pendek yang ditambahkan sesudah prompt utama ditempel —
+        karet sudah di ujung teks, jadi hurufnya tidak nyelip ke tengah (masalah
+        yang muncul kalau SELURUH prompt diketik begini).
+        """
+        import random
+        # Pastikan fokus dan karet di paling akhir isi kotak.
+        self.evaluasi("(function(){var e=document.querySelector(%r);"
+                      "if(!e)return;e.focus();var r=document.createRange();"
+                      "r.selectNodeContents(e);r.collapse(false);"
+                      "var sel=window.getSelection();sel.removeAllRanges();"
+                      "sel.addRange(r);})()" % pemilih)
+        for ch in teks:
+            if ch == '\n':
+                # baris baru tanpa mengirim: Shift+Enter
+                for tahap in ('rawKeyDown', 'keyUp'):
+                    self.perintah('Input.dispatchKeyEvent', type=tahap, key='Enter',
+                                  code='Enter', windowsVirtualKeyCode=13,
+                                  nativeVirtualKeyCode=13, modifiers=8)
+            else:
+                self.perintah('Input.dispatchKeyEvent', type='keyDown', text=ch,
+                              key=ch, unmodifiedText=ch)
+                self.perintah('Input.dispatchKeyEvent', type='keyUp', key=ch)
+            time.sleep(random.uniform(*jeda))
+
     def ganti_isi_editor(self, pemilih, teks):
         """Ganti seluruh isi kotak contenteditable dengan teks baru.
 

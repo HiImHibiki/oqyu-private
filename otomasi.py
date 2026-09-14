@@ -163,6 +163,10 @@ def _tunggu_selesai_menulis(s, batas=180):
 # seolah tidak ada bahan yang dikirim.
 JEDA_SEBELUM_KIRIM = 2
 
+# Diketik manual di ujung tiap prompt (lihat _kirim). Kalimatnya sengaja luwes
+# seperti tulisan orang, bukan perintah kaku.
+INSTRUKSI_MANUAL = 'Oiya, tolong jawabannya tanpa tautan sumber atau sitasi ya.'
+
 
 def _kirim(s, perintah):
     """Isi kotak, tunggu sebentar, lalu kirim.
@@ -177,6 +181,19 @@ def _kirim(s, perintah):
     _tunggu_selesai_menulis(s)
     s.ganti_isi_editor('div.ql-editor', perintah)
     time.sleep(JEDA_SEBELUM_KIRIM)
+
+    # Instruksi "hapus tautan sumber" DIKETIK MANUAL (huruf demi huruf), bukan
+    # ikut ditempel: satu aliran ketikan tangan tiap pesan membuat interaksinya
+    # tidak tampak seperti robot menempel blok besar — sekaligus memastikan
+    # Gemini tidak menyisipkan tautan sumber/sitasi ke dalam naskah, yang
+    # merusak pengurai. Berlaku untuk semua jenis (buat soal, kunci, rangkuman)
+    # karena _kirim dipakai ketiganya.
+    if INSTRUKSI_MANUAL:
+        try:
+            s.ketik_manual('\n' + INSTRUKSI_MANUAL)
+            time.sleep(0.6)
+        except Exception:
+            pass          # gagal ketik manual bukan alasan membatalkan kiriman
 
     # Pengirimannya lewat KLIK tombol kirim, bukan Enter.
     #
