@@ -84,7 +84,7 @@ const perluPilih = params.get('tv') !== '1' && params.get('murid') !== '1' && !w
  * Id murid = id akunnya, bukan perangkatnya: ganti HP tetap orang yang sama,
  * kanvas "Tanya · Nama" dan antreannya ikut. Diisi setelah masuk.
  */
-const ALAMAT_PRACTICE = 'https://practice.exactprintsolution.com'
+const ALAMAT_PRACTICE = 'https://practice2.exactprintsolution.com'
 
 let muridId = ''
 let namaSaya = ''
