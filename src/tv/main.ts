@@ -84,7 +84,10 @@ const perluPilih = params.get('tv') !== '1' && params.get('murid') !== '1' && !w
  * Id murid = id akunnya, bukan perangkatnya: ganti HP tetap orang yang sama,
  * kanvas "Tanya · Nama" dan antreannya ikut. Diisi setelah masuk.
  */
-const ALAMAT_PRACTICE = 'https://practice2.exactprintsolution.com'
+// Alamat Exact Practice untuk tombol 📝 Practice. Tiap Mac punya domainnya
+// sendiri, jadi ditetapkan saat build: VITE_PRACTICE_URL=https://... npm run app:build
+// (bawaan: Mac utama Rico).
+const ALAMAT_PRACTICE = (import.meta.env.VITE_PRACTICE_URL as string | undefined) || 'https://practice2.exactprintsolution.com'
 
 let muridId = ''
 let namaSaya = ''
