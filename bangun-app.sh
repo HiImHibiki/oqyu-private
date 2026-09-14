@@ -29,6 +29,7 @@ mkdir -p "$ISI/MacOS" "$ISI/Resources"
 # Hanya yang dipakai saat berjalan. Skrip pembangun, tolok ukur, dan berkas
 # pengembangan sengaja tidak ikut supaya bundelnya tetap ramping.
 for f in *.py; do cp "$f" "$ISI/Resources/"; done
+cp mulai-ulang.sh "$ISI/Resources/" && chmod +x "$ISI/Resources/mulai-ulang.sh"   # dipakai tombol Restart aplikasi
 cp -R wsm statik ocr-mac claude-proyek "$ISI/Resources/" 2>/dev/null || true
 rm -rf "$ISI/Resources/ocr-mac/"*.swift
 print -r -- "  berkas Python : $(ls "$ISI/Resources"/*.py | wc -l | tr -d ' ')"

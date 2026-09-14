@@ -1091,6 +1091,24 @@ LAYAR = """
     if (buka) { segarkan(); timer = setInterval(segarkan, 2500); }
     else { clearInterval(timer); timer = null; kabar.textContent = ''; }
   };
+  const ba = document.getElementById('btnApp');
+  if (ba) ba.onclick = async () => {
+    if (!confirm('Mulai ulang aplikasi? SEMUA tugas yang sedang berjalan dan mengantre akan dihapus.')) return;
+    ba.disabled = true; ba.textContent = 'Memulai ulang…';
+    try { await fetch('/aplikasi/ulang', {method: 'POST'}); } catch (e) {}
+    // Tunggu layanan hidup lagi (kickstart butuh beberapa detik), lalu muat ulang halaman.
+    const mulai = Date.now();
+    await new Promise(r => setTimeout(r, 3000));
+    for (;;) {
+      try {
+        const r = await fetch('/status', {cache: 'no-store'});
+        if (r.ok) break;
+      } catch (e) {}
+      if (Date.now() - mulai > 60000) { ba.textContent = 'Belum hidup — coba muat ulang halaman'; ba.disabled = false; return; }
+      await new Promise(r => setTimeout(r, 1500));
+    }
+    location.reload();
+  };
   const bc = document.getElementById('btnChrome');
   if (bc) bc.onclick = async () => {
     if (!confirm('Nyalakan ulang Chrome kendali? Tugas yang sedang berjalan akan gagal dan perlu diulang.')) return;
@@ -1217,6 +1235,7 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
   <div class=r style="margin-top:10px">
     <button type=button id=btnLayar class=abu>Lihat layar Gemini</button>
     <button type=button id=btnChrome class=abu title="Tutup dan nyalakan lagi Chrome kendali — pakai kalau Gemini macet/menolak terus">Restart Chrome</button>
+    <button type=button id=btnApp class=abu title="Hentikan semua tugas, kosongkan antrean, lalu mulai ulang aplikasi dari awal">Restart aplikasi</button>
     <span class=kcl id=kabarLayar style="margin:0"></span>
   </div>
   <div id=layar class=layar hidden><img id=imgLayar alt="layar Gemini"></div>
@@ -1345,6 +1364,7 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
   <div class=r style="margin-top:10px">
     <button type=button id=btnLayar class=abu>Lihat layar Gemini</button>
     <button type=button id=btnChrome class=abu title="Tutup dan nyalakan lagi Chrome kendali — pakai kalau Gemini macet/menolak terus">Restart Chrome</button>
+    <button type=button id=btnApp class=abu title="Hentikan semua tugas, kosongkan antrean, lalu mulai ulang aplikasi dari awal">Restart aplikasi</button>
     <span class=kcl id=kabarLayar style="margin:0"></span>
   </div>
   <div id=layar class=layar hidden><img id=imgLayar alt="layar Gemini"></div>
@@ -1446,6 +1466,7 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
   <div class=r style="margin-top:10px">
     <button type=button id=btnLayar class=abu>Lihat layar Gemini</button>
     <button type=button id=btnChrome class=abu title="Tutup dan nyalakan lagi Chrome kendali — pakai kalau Gemini macet/menolak terus">Restart Chrome</button>
+    <button type=button id=btnApp class=abu title="Hentikan semua tugas, kosongkan antrean, lalu mulai ulang aplikasi dari awal">Restart aplikasi</button>
     <span class=kcl id=kabarLayar style="margin:0"></span>
   </div>
   <div id=layar class=layar hidden><img id=imgLayar alt="layar Gemini"></div>

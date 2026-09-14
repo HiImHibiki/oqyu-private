@@ -429,6 +429,42 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/aplikasi/ulang':
+            # Tombol darurat tingkat aplikasi: semua tugas dihentikan, antrean
+            # dikosongkan, Chrome kendali ditutup, lalu layanan dimulai ulang
+            # LEWAT launchd (mulai-ulang.sh: kickstart, dan bootout+bootstrap
+            # bila izin Desktop ikut hilang). Jawaban dikirim dulu, baru
+            # dimulai ulang, supaya halaman di HP tahu apa yang terjadi.
+            import buat, cdp as _cdp, subprocess as _sp, sys as _sys
+            with buat.KUNCI:
+                jids = list(buat.TUGAS.keys())
+            for jid in jids:
+                try: buat.minta_henti(jid)
+                except Exception: pass
+            try:
+                for x in list(buat.ANTREAN.lihat().get('tunggu', [])):
+                    buat.ANTREAN.batalkan(x['jid'])
+            except Exception: pass
+            with buat.KUNCI:
+                n = len(buat.TUGAS); buat.TUGAS.clear()
+            try: _cdp.matikan(tunggu=4)
+            except Exception: pass
+            skrip = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mulai-ulang.sh')
+            b = json.dumps({'ok': True, 'pesan': f'{n} tugas dibersihkan. Aplikasi dimulai ulang…'}).encode()
+            self.send_response(200); self.send_header('Content-Type', 'application/json')
+            self.send_header('Content-Length', str(len(b))); self.end_headers(); self.wfile.write(b)
+            try: self.wfile.flush()
+            except Exception: pass
+            # Sesi baru (setsid): launchd membunuh process group layanan saat
+            # kickstart, tapi anak bersesi sendiri selamat dan menyelesaikan
+            # pemulaian ulang.
+            _sp.Popen(['/usr/bin/nohup', '/bin/bash', skrip], start_new_session=True,
+                      stdout=open('/tmp/exact-worksheet-ulang.log', 'ab'),
+                      stderr=_sp.STDOUT, stdin=_sp.DEVNULL,
+                      env={**os.environ, 'PATH': '/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+                           'HOME': os.path.expanduser('~')})
+            return
+
         if u.path == '/chrome/ulang':
             # Tombol darurat: Chrome kendali ditutup lalu dinyalakan lagi dari
             # keadaan bersih (menu macet, dialog nyangkut, Gemini menolak terus).
@@ -691,6 +727,8 @@ class H(BaseHTTPRequestHandler):
         self.send_header('Content-Length',str(len(b))); self.end_headers(); self.wfile.write(b)
 
     def do_POST(self):
+        if urllib.parse.urlparse(self.path).path == '/aplikasi/ulang':
+            return self.do_GET()          # aksi yang sama untuk GET dan POST
         u = urllib.parse.urlparse(self.path)
         print(f'[POST] {u.path} dari {self.client_address[0]} '
               f'({self.headers.get("Content-Length","?")} byte)', flush=True)

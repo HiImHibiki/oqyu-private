@@ -48,6 +48,7 @@ final class Delegate: NSObject, NSApplicationDelegate {
         tambah("Buka aplikasi", #selector(bukaHalaman))
         tambah("Buka folder hasil", #selector(bukaHasil))
         tambah("Restart Chrome kendali", #selector(ulangChrome))
+        tambah("Restart aplikasi (kosongkan antrean)", #selector(ulangAplikasi))
         menu.addItem(.separator())
 
         mServer.title = "Server: memeriksa…"
@@ -165,6 +166,20 @@ final class Delegate: NSObject, NSApplicationDelegate {
         p.arguments = arg
         try? p.run(); p.waitUntilExit()
         return p.terminationStatus
+    }
+
+    /// Semua tugas dihapus, antrean dikosongkan, layanan dimulai ulang lewat launchd.
+    @objc func ulangAplikasi() {
+        let a = NSAlert(); a.messageText = "Mulai ulang Exact Worksheet?"
+        a.informativeText = "Semua tugas yang sedang berjalan dan mengantre akan dihapus."
+        a.addButton(withTitle: "Mulai ulang"); a.addButton(withTitle: "Batal")
+        NSApp.activate(ignoringOtherApps: true)
+        guard a.runModal() == .alertFirstButtonReturn else { return }
+        var r = URLRequest(url: url("/aplikasi/ulang")); r.httpMethod = "POST"; r.timeoutInterval = 15
+        URLSession.shared.dataTask(with: r) { d, _, _ in
+            let j = d.flatMap { try? JSONSerialization.jsonObject(with: $0) } as? [String: Any]
+            DispatchQueue.main.async { self.kabar("Exact Worksheet", (j?["pesan"] as? String) ?? "Dimulai ulang.") }
+        }.resume()
     }
 
     @objc func keluar() { NSApp.terminate(nil) }
