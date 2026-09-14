@@ -146,7 +146,7 @@ export function butirKeQuestion(
   b: Butir,
   ctx: { paketId: string; mapel: string; kelas: string; topik: string },
 ): Question | null {
-  const id = `prc-${ctx.paketId}-${b.kode.toLowerCase()}`;
+  const id = `prc-${ctx.paketId}-${b.kode.toLowerCase()}${(b.set ?? 1) > 1 ? `-s${b.set}` : ""}`;
   const dasar = {
     id,
     exam: "LATIHAN" as const,

@@ -23,6 +23,8 @@ export interface Paket {
   pdf?: string | null;
   /** nama berkas PDF berkunci */
   pdfKunci?: string | null;
+  /** nomor set bila lembar Worksheet-nya memuat beberapa set (SET 1, SET 2) */
+  set?: number | null;
   /** id pekerjaan di Exact Worksheet, untuk penelusuran */
   jid?: string | null;
   terbit: boolean;
