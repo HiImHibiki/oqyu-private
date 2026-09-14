@@ -201,6 +201,49 @@ export async function daftarMurid(input: {
   return ok({ userId: u.id });
 }
 
+/* --------------------------------------------------------- Exact Canvas */
+
+/* Murid bimbel sudah punya akun di Exact Canvas (No. HP + sandi, disetujui
+ * guru). Practice menumpang identitas itu: akun lokal dibuat otomatis dengan
+ * email sintetis canvas-<id>@murid.exact, jadi "Tanya guru" pun jatuh ke
+ * murid yang sama di kanvas. Hanya akun yang sudah disetujui guru yang
+ * diterima. */
+const CANVAS = process.env.EXACT_CANVAS_URL || "http://127.0.0.1:4747";
+export const emailCanvas = (id: string) => `canvas-${id.toLowerCase()}@murid.exact`;
+export const idCanvasDari = (email: string) => email.match(/^canvas-([a-z0-9]+)@murid\.exact$/)?.[1] ?? null;
+
+interface AkunCanvas { id: string; nama: string; hp: string; disetujui?: boolean; token?: string }
+
+async function sesiUntukAkunCanvas(a: AkunCanvas): Promise<Result<{ userId: string }>> {
+  if (!usingDev()) return fail("Masuk lewat Exact Canvas hanya untuk mode berkas.");
+  if (!a.disetujui) return fail("Akun Exact Canvas-mu belum disetujui guru. Minta guru menerimanya di panel Class.");
+  const u = await devAuth.upsertUser({ email: emailCanvas(a.id), fullName: a.nama, phone: a.hp });
+  await setSessionCookie(await devAuth.createSession(u.id));
+  return ok({ userId: u.id });
+}
+
+export async function masukDariCanvas(hp: string, sandi: string): Promise<Result<{ userId: string }>> {
+  let r: Response;
+  try {
+    r = await fetch(`${CANVAS}/api/akun/masuk`, {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ hp, sandi }), cache: "no-store",
+    });
+  } catch { return fail("Exact Canvas tidak bisa dihubungi."); }
+  if (!r.ok) return fail(r.status === 401 ? "No. HP atau sandi Exact Canvas salah." : (await r.text()) || "Exact Canvas menolak.");
+  return sesiUntukAkunCanvas((await r.json()) as AkunCanvas);
+}
+
+export async function masukDariSesiCanvas(token: string): Promise<Result<{ userId: string }>> {
+  if (!token || token.length < 16) return fail("Sesi Exact Canvas tidak valid.");
+  let r: Response;
+  try {
+    r = await fetch(`${CANVAS}/api/akun/saya`, { headers: { "x-exact-sesi": token }, cache: "no-store" });
+  } catch { return fail("Exact Canvas tidak bisa dihubungi."); }
+  if (!r.ok) return fail("Sesi Exact Canvas sudah habis — masuk lagi di Exact Canvas.");
+  return sesiUntukAkunCanvas((await r.json()) as AkunCanvas);
+}
+
 /* ------------------------------------------------------------ kata sandi */
 
 /* Hanya untuk jalur admin. Peserta tidak pernah melihat layar kata sandi. */

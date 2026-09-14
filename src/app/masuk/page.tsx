@@ -6,6 +6,7 @@ import { usingDev } from "@/lib/db";
 import { getT } from "@/lib/i18n";
 import { safePath } from "@/lib/redirects";
 import { FormMasuk } from "@/components/auth/FormMasuk";
+import { FormCanvas } from "@/components/auth/FormCanvas";
 
 export const metadata = { title: "Masuk" };
 
@@ -41,7 +42,14 @@ export default async function MasukPage({
           )}
 
           {dev ? (
-            <FormMasuk next={next} />
+            <>
+              {/* Murid: akun Exact Canvas (No. HP + sandi) — satu akun untuk kanvas dan latihan. */}
+              <FormCanvas next={next} />
+              <details className="mt-5">
+                <summary className="cursor-pointer text-center text-xs muted">Masuk dengan email (guru / akun lokal)</summary>
+                <div className="mt-3"><FormMasuk next={next} /></div>
+              </details>
+            </>
           ) : (
             <>
               <GoogleSignIn label={t("auth.googleContinue")} next={next} />

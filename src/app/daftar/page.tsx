@@ -45,6 +45,11 @@ export default async function DaftarPage({
           <h1 className="display mb-1 text-2xl">{t("auth.createTitle")}</h1>
           <p className="mb-6 text-sm muted">{t("auth.createSub")}</p>
 
+          {usingDev() && (
+            <p className="mb-4 rounded-xl px-3.5 py-2.5 text-sm" style={{ background: "var(--bg-sunken)" }}>
+              Sudah punya akun Exact Canvas? Tidak perlu daftar lagi — <Link href="/masuk" className="underline">masuk</Link> dengan No. HP dan sandi yang sama.
+            </p>
+          )}
           {usingDev() ? <FormDaftar next={next ?? ""} /> : <GoogleSignIn label={t("auth.googleContinue")} refCode={refCode} next={next} />}
 
           <p className="mt-4 text-center text-xs muted">

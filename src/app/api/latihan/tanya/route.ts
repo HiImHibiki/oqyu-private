@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { currentUser } from "@/lib/auth";
+import { currentUser, idCanvasDari } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { questionsByIds } from "@/lib/exams/bank";
 import { potretHtml } from "@/lib/practice/worksheet";
@@ -50,7 +50,8 @@ export async function POST(req: Request) {
     console.warn("tanya: potret gagal, kirim teks saja:", e instanceof Error ? e.message : e);
   }
   const hasil = await tanyaGuru({
-    muridId: `prc-${user.id}`, nama: user.fullName || user.email,
+    // Akun dari Exact Canvas memakai id aslinya, jadi pertanyaannya menumpuk di murid yang sama di kanvas.
+    muridId: idCanvasDari(user.email) ?? `prc-${user.id}`, nama: user.fullName || user.email,
     teks: teksSoal(q, nomor, a.formTitle), fotoDataUrl: foto,
   });
   if (!hasil.ok) return NextResponse.json({ error: hasil.pesan, kode: hasil.kode }, { status: 502 });
