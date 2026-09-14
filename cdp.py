@@ -103,11 +103,32 @@ def nyalakan(tampil=None):
                '--no-first-run', '--no-default-browser-check',
                '--window-size=1400,1000', '--remote-allow-origins=*']
     if not tampil: bendera.append('--headless=new')
-    subprocess.Popen(bendera, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    # Dinyalakan lewat LaunchServices (`open -na`), BUKAN sebagai anak proses
+    # pemanggil. Chrome yang lahir sebagai anak layanan launchd menerima pesan
+    # teks tetapi mengabaikan klik kirim untuk pesan berlampiran — tanpa galat
+    # apa pun. ProcessType=Interactive di agen sempat cukup, lalu tidak lagi
+    # (2026-09-14, Chrome 152). Lewat `open` Chrome menjadi aplikasi GUI biasa
+    # milik sesi pengguna, apa pun yang memanggilnya; diuji: PDF terkirim.
+    app = KROM.split('.app/')[0] + '.app'
+    subprocess.Popen(['/usr/bin/open', '-n', '-a', app, '--args'] + bendera[1:],
+                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     for _ in range(40):
         time.sleep(0.5)
         if hidup(): return True
     raise GagalCDP('Chrome kendali tidak mau hidup di port 9222')
+
+def _tunggu_proses_lenyap(batas=8):
+    """Port sudah tutup belum berarti prosesnya selesai: Chrome masih melepas
+    kunci profil beberapa saat. Kalau `open -na` dipanggil di jeda itu, Chrome
+    baru melihat profil masih terkunci, menyerahkan diri ke proses lama yang
+    sedang mati, lalu ikut keluar — port 9222 tidak pernah hidup lagi
+    ("Connection refused" acak saat nyalakan_ulang)."""
+    for _ in range(batas * 4):
+        r = subprocess.run(['pgrep', '-f', PROFIL], capture_output=True)
+        if r.returncode != 0:
+            return True
+        time.sleep(0.25)
+    return True
 
 def matikan(tunggu=12):
     """Tutup Chrome kendali sampai benar-benar mati.
@@ -129,7 +150,7 @@ def matikan(tunggu=12):
     for _ in range(tunggu * 2):
         time.sleep(0.5)
         if not hidup():
-            return True
+            return _tunggu_proses_lenyap()
     # masih hidup: paksa
     try:
         subprocess.run(['pkill', '-9', '-f', PROFIL], capture_output=True, timeout=10)
@@ -138,9 +159,13 @@ def matikan(tunggu=12):
     for _ in range(10):
         time.sleep(0.5)
         if not hidup():
-            return True
+            return _tunggu_proses_lenyap()
     return False
 
+
+# Chrome baru saja dinyalakan ulang setelah tugas terakhir dan belum dipakai —
+# tugas berikutnya tidak perlu menyalakannya ulang lagi.
+SEGAR = False
 
 def nyalakan_ulang(tampil=None):
     """Tutup Chrome kendali lalu nyalakan lagi dari keadaan bersih."""

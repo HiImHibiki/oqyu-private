@@ -194,6 +194,23 @@ def kode_mapel(nama):
         return kata[0][:4].upper()          # satu kata -> 4 huruf, bukan 1 inisial
     return ''.join(w[0] for w in kata[:4]).upper() or n[:4].upper()
 
+def _segarkan_chrome():
+    """Seusai tugas, Chrome kendali ditutup dan dinyalakan lagi di latar supaya
+    tugas berikutnya langsung dapat Chrome bersih (permintaan Rico: "setiap
+    selesai buat soal restart chrome agar siap dipakai berikutnya"). Kalau
+    masih ada tugas mengantre, dilewati — tugas itu sendiri yang menyalakan."""
+    try:
+        if ANTREAN.lihat()['tunggu']: return
+    except Exception:
+        pass
+    def kerja():
+        try:
+            import cdp
+            cdp.nyalakan_ulang(); cdp.SEGAR = True
+        except Exception:
+            pass
+    threading.Thread(target=kerja, daemon=True).start()
+
 def _catat(jid, pesan, maju=None, selesai=False, galat=None, pdf=None):
     with KUNCI:
         t = TUGAS.setdefault(jid, {'langkah': [], 'maju': 0, 'selesai': False})
@@ -420,6 +437,7 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
     finally:
         HENTI.discard(jid)
         ANTREAN.keluar(jid)
+        _segarkan_chrome()
 
 
 def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
@@ -505,6 +523,7 @@ def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
     finally:
         HENTI.discard(jid)
         ANTREAN.keluar(jid)
+        _segarkan_chrome()
 
 
 def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
@@ -691,6 +710,7 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
     finally:
         HENTI.discard(jid)
         ANTREAN.keluar(jid)
+        _segarkan_chrome()
 
 GAYA = """
 :root{--bg:#fbfbfa;--kartu:#fff;--tepi:#e3e3e0;--teks:#1a1a19;--redup:#6b6b66;--aksen:#c4572a}

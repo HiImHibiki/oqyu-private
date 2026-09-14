@@ -505,7 +505,10 @@ def gemini_tanya(perintah, batas=300, stabil=5, lapor=None, ulang=2, lampiran=No
     """
     if os.environ.get('EXACT_SEGAR', '1') not in ('0', 'tidak', 'false'):
         try:
-            cdp.nyalakan_ulang()
+            if cdp.SEGAR and cdp.hidup():
+                cdp.SEGAR = False          # sudah dinyalakan ulang seusai tugas sebelumnya
+            else:
+                cdp.nyalakan_ulang()
             time.sleep(2)
         except Exception as e:
             _catat_galat(0, RuntimeError(f'gagal menyegarkan Chrome: {e}'))

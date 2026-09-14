@@ -934,7 +934,17 @@ class H(BaseHTTPRequestHandler):
                                    'selesai': False}
                 kls = (st.get('kelas') or '').strip()
                 mode = medan.get('mode') or 'buat'
-                if mode == 'jawab':
+                if mode == 'rangkum':
+                    sasaran, kw = buat.jalankan_rangkum, dict(
+                        jid=jid, gambar=semua, instruksi='',
+                        mapel=st.get('mapel') or None,
+                        kelas=int(kls) if kls.isdigit() else None, judul='',
+                        bahasa=st.get('bahasa') or 'Indonesia',
+                        lembaga=st.get('lembaga',''), sekolah=st.get('sekolah',''),
+                        tanggal='', mata=st.get('mata') or 'gemini',
+                        mode=st.get('mode') or 'flash',
+                        mesin=st.get('mesin') or 'gemini')
+                elif mode == 'jawab':
                     sasaran, kw = buat.jalankan_jawab, dict(
                         jid=jid, gambar=semua, instruksi='',
                         mapel=st.get('mapel') or None,

@@ -120,11 +120,12 @@ public class Utama extends Activity {
         final ArrayList<Uri> kirim = daftar;
         // Ditanyakan tiap kali, bukan dari setelan: satu foto bisa jadi bahan
         // soal baru hari ini dan perlu kunci jawaban besok.
+        final String[] pilihan = {"Soal baru", "Kunci & pembahasan", "Rangkuman"};
+        final String[] modeDari = {"buat", "jawab", "rangkum"};
         new AlertDialog.Builder(this)
             .setTitle(kirim.size() + " berkas — mau dijadikan apa?")
-            .setPositiveButton("Kunci & pembahasan", (d, w) -> mulai(kirim, "jawab"))
-            .setNegativeButton("Soal baru", (d, w) -> mulai(kirim, "buat"))
-            .setNeutralButton("Batal", (d, w) -> finish())
+            .setItems(pilihan, (d, w) -> mulai(kirim, modeDari[w]))
+            .setNegativeButton("Batal", (d, w) -> finish())
             .setOnCancelListener(d -> finish())
             .show();
     }
