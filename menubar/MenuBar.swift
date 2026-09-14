@@ -8,6 +8,14 @@ import AppKit
 import Foundation
 import UserNotifications
 
+/// Mata pelajaran yang punya paket diagram sendiri di prompt-builder.js.
+/// Slug-nya harus sama persis dengan kunci SUBJECT_PRESETS di sana.
+let MAPEL: [(slug: String, nama: String)] = [
+    ("matematika", "Matematika"), ("fisika", "Fisika"), ("kimia", "Kimia"),
+    ("biologi", "Biologi"), ("bahasa-indonesia", "Bahasa Indonesia"),
+    ("bahasa-inggris", "Bahasa Inggris"),
+]
+
 let PORT = 7790
 let AKAR = URL(fileURLWithPath: #filePath)
     .deletingLastPathComponent().deletingLastPathComponent().path
@@ -29,6 +37,7 @@ final class Delegate: NSObject, NSApplicationDelegate {
     let menu = NSMenu()
     var mServer = NSMenuItem()
     var mKerja = NSMenuItem()
+    var mPrompt = NSMenuItem()
     var jidBerjalan: String?
     var server: Process?
 
@@ -44,6 +53,21 @@ final class Delegate: NSObject, NSApplicationDelegate {
         mKerja.keyEquivalent = "n"
         mKerja.target = self
         menu.addItem(mKerja)
+
+        /* Pasangan dari item di atas, untuk naskah yang disusun manual: salin
+         * perintahnya, tempel ke AI mana pun, lalu balasannya dipakai lewat
+         * "Buat dari papan klip". Bersubmenu per mapel karena daftar tag
+         * diagram yang boleh dipakai memang berbeda tiap mapel. */
+        mPrompt.title = "Salin prompt AI (naskah manual)"
+        let sub = NSMenu()
+        for m in MAPEL {
+            let it = NSMenuItem(title: m.nama, action: #selector(salinPrompt(_:)), keyEquivalent: "")
+            it.target = self
+            it.representedObject = m.slug
+            sub.addItem(it)
+        }
+        mPrompt.submenu = sub
+        menu.addItem(mPrompt)
 
         tambah("Buka aplikasi", #selector(bukaHalaman))
         tambah("Buka folder hasil", #selector(bukaHasil))
@@ -86,6 +110,7 @@ final class Delegate: NSObject, NSApplicationDelegate {
             DispatchQueue.main.async {
                 self.mServer.title = hidup ? "Server: nyala — matikan" : "Server: mati — nyalakan"
                 self.mKerja.isEnabled = hidup
+                self.mPrompt.isEnabled = hidup
             }
             guard hidup, let jid = self.jidBerjalan, let d = d else { return }
             _ = d
@@ -123,6 +148,25 @@ final class Delegate: NSObject, NSApplicationDelegate {
                 self.kabar("Tidak bisa mulai",
                            (j?["galat"] as? String) ?? "Papan klip tidak berisi gambar")
             }
+        }
+    }
+
+    /// Perintah AI untuk naskah manual, disalin ke papan klip. Diambil dari
+    /// server (yang membangunnya lewat prompt-builder.js milik aplikasi),
+    /// bukan ditulis ulang di sini, supaya tidak pernah kedaluwarsa terhadap
+    /// format naskah yang sedang berlaku.
+    @objc func salinPrompt(_ pengirim: NSMenuItem) {
+        let slug = (pengirim.representedObject as? String) ?? "matematika"
+        minta("/api/prompt?mapel=\(slug)", timeout: 30) { j in
+            guard let teks = j?["prompt"] as? String, !teks.isEmpty else {
+                self.kabar("Prompt gagal disalin",
+                           (j?["galat"] as? String) ?? "Server tidak menjawab.")
+                return
+            }
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.setString(teks, forType: .string)
+            self.kabar("Prompt \(pengirim.title) disalin",
+                       "Tempel ke AI, isi blok di bagian bawahnya, lalu salin balasannya dan pilih «Buat dari papan klip».")
         }
     }
 

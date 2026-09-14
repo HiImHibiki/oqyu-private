@@ -480,6 +480,22 @@ class H(BaseHTTPRequestHandler):
             self.send_response(200); self.send_header('Content-Type', 'application/json')
             self.send_header('Content-Length', str(len(b))); self.end_headers(); self.wfile.write(b); return
 
+        if u.path == '/api/prompt':
+            # Perintah AI siap salin untuk naskah yang disusun manual: guru
+            # menyalinnya dari menu bar, menempelkannya ke AI mana pun, lalu
+            # naskah balasannya dipakai lewat "Buat dari papan klip" — tanpa
+            # membuka aplikasi dan tanpa lewat Chrome kendali sama sekali.
+            # Sumbernya prompt-builder.js milik aplikasi itu sendiri, jadi
+            # tidak mungkin kedaluwarsa terhadap format naskah yang berlaku.
+            import wsmaker as _ws
+            mapel = (urllib.parse.parse_qs(u.query).get('mapel') or ['Matematika'])[0]
+            try:
+                b = json.dumps({'prompt': _ws.perintah_baku(mapel)}).encode()
+            except Exception as e:
+                b = json.dumps({'galat': f'{type(e).__name__}: {e}'}).encode()
+            self.send_response(200); self.send_header('Content-Type', 'application/json')
+            self.send_header('Content-Length', str(len(b))); self.end_headers(); self.wfile.write(b); return
+
         if u.path == '/layar':
             # Potret tab kendali. Chrome-nya tanpa jendela, jadi ini satu-satunya
             # cara melihat apa yang sedang terjadi di sana saat sebuah lembar
