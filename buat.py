@@ -1064,19 +1064,19 @@ LAYAR = """
     const buka = kotak.hidden;
     kotak.hidden = !buka;
     tb.textContent = buka ? 'Sembunyikan layar Gemini' : 'Lihat layar Gemini';
+    if (buka) { segarkan(); timer = setInterval(segarkan, 2500); }
+    else { clearInterval(timer); timer = null; kabar.textContent = ''; }
   };
   const bc = document.getElementById('btnChrome');
   if (bc) bc.onclick = async () => {
     if (!confirm('Nyalakan ulang Chrome kendali? Tugas yang sedang berjalan akan gagal dan perlu diulang.')) return;
-    bc.disabled = true; bc.textContent = 'Menyalakan ulang…';
+    bc.disabled = true; bc.textContent = 'Menyalakan ulang\u2026';
     try {
       const j = await (await fetch('/chrome/ulang')).json();
       bc.textContent = j.ok ? 'Chrome siap' : 'Gagal';
       if (j.galat) alert(j.galat); else if (j.pesan) console.log(j.pesan);
     } catch (e) { bc.textContent = 'Gagal'; }
     setTimeout(() => { bc.disabled = false; bc.textContent = 'Restart Chrome'; }, 4000);
-    if (buka) { segarkan(); timer = setInterval(segarkan, 2500); }
-    else { clearInterval(timer); timer = null; kabar.textContent = ''; }
   };
 })();
 """
