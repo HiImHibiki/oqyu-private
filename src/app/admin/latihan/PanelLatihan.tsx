@@ -1,13 +1,16 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import { Loader2, Printer, Sparkles, Trash2, Eye, EyeOff, KeyRound, ListChecks, Square, Copy, Link2, Check } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Loader2, Printer, Sparkles, Trash2, Eye, EyeOff, KeyRound, ListChecks, Square, Copy, Link2, Check, ClipboardPaste, ExternalLink } from "lucide-react";
 import type { Paket } from "@/lib/practice/paket";
+import { susunPrompt, type JenisSoal } from "@/lib/practice/promptAI";
+import { uraiNaskah } from "@/lib/practice/naskah";
+import { butirKeQuestion } from "@/lib/practice/worksheet";
 
 type SoalRingkas = { id: string; stem: string; type: string; mapel: string; kelas: string; topik: string };
 
 export function PanelLatihan({ awal }: { awal: Paket[] }) {
   const [paket, setPaket] = useState<Paket[]>(awal);
-  const [tab, setTab] = useState<"gemini" | "bank">("gemini");
+  const [tab, setTab] = useState<"gemini" | "tempel" | "bank">("gemini");
 
   /* ---- buat dengan Gemini ---- */
   const [f, setF] = useState({ judul: "", mapel: "", kelas: "", topik: "", jumlah: 10, durasiMenit: 30, instruksi: "" });
@@ -49,6 +52,61 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
   const hentikan = async () => {
     if (!kerja) return;
     await fetch(`/api/admin/latihan/buat?jid=${kerja.jid}`, { method: "DELETE" });
+  };
+
+  /* ---- tempel naskah dari AI ---- */
+  const [t, setT] = useState({
+    materi: "", mapel: "", kelas: "", jumlah: 10, jumlahSet: 1, kesulitan: "Sedang",
+    bahasa: "Bahasa Indonesia", catatan: "", judul: "", durasiMenit: 30, naskah: "",
+  });
+  const [jenis, setJenis] = useState<JenisSoal[]>(["PG"]);
+  const [pembahasan, setPembahasan] = useState(true);
+  const [latex, setLatex] = useState(true);
+  const [diagram, setDiagram] = useState(false);
+  const [kirim, setKirim] = useState(false);
+  const [galatT, setGalatT] = useState("");
+  const [hasilT, setHasilT] = useState("");
+
+  const teksPrompt = useMemo(
+    () => susunPrompt({
+      materi: t.materi, mapel: t.mapel, kelas: t.kelas, jumlah: t.jumlah,
+      jumlahSet: t.jumlahSet, kesulitan: t.kesulitan, bahasa: t.bahasa,
+      catatan: t.catatan, jenis, pembahasan, latex, diagram,
+    }),
+    [t, jenis, pembahasan, latex, diagram],
+  );
+
+  /* Pratinjau memakai pengurai dan pengubah butir yang sama persis dengan yang
+   * dipakai server saat menyimpan, jadi angka di layar tidak mungkin meleset
+   * dari hasil sebenarnya. */
+  const pratinjau = useMemo(() => {
+    if (!t.naskah.trim()) return null;
+    const { butir, meta } = uraiNaskah(t.naskah);
+    const ctx = { paketId: "pratinjau", mapel: t.mapel, kelas: t.kelas, topik: t.materi };
+    const terpakai = butir.filter((b) => butirKeQuestion(b, ctx) !== null);
+    return {
+      total: butir.length, terpakai: terpakai.length, nSet: meta.nSet,
+      tanpaKunci: butir.filter((b) => !(b.kunci || "").trim()).map((b) => b.kode),
+    };
+  }, [t.naskah, t.mapel, t.kelas, t.materi]);
+
+  const simpanTempel = async () => {
+    setKirim(true); setGalatT(""); setHasilT("");
+    try {
+      const r = await fetch("/api/admin/latihan/tempel", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          naskah: t.naskah, judul: t.judul || t.materi, mapel: t.mapel, kelas: t.kelas,
+          topik: t.materi, durasiMenit: t.durasiMenit,
+        }),
+      });
+      const j = await r.json();
+      if (!r.ok) { setGalatT(j.error || "Gagal menyimpan"); return; }
+      setHasilT(`${j.jumlah} soal masuk${j.paket.length > 1 ? ` dalam ${j.paket.length} paket` : ""}` +
+        (j.dilewati ? ` · ${j.dilewati} dilewati (tidak bisa dinilai otomatis)` : ""));
+      setT((x) => ({ ...x, naskah: "" }));
+      await muatPaket();
+    } finally { setKirim(false); }
   };
 
   /* ---- susun dari bank ---- */
@@ -99,6 +157,7 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
       <div className="card p-5">
         <div className="mb-4 flex gap-2">
           <button className={`btn ${tab === "gemini" ? "btn-primary" : "btn-ghost"}`} onClick={() => setTab("gemini")}><Sparkles size={16} /> Buat dengan Gemini</button>
+          <button className={`btn ${tab === "tempel" ? "btn-primary" : "btn-ghost"}`} onClick={() => setTab("tempel")}><ClipboardPaste size={16} /> Tempel dari AI</button>
           <button className={`btn ${tab === "bank" ? "btn-primary" : "btn-ghost"}`} onClick={() => setTab("bank")}><ListChecks size={16} /> Susun dari bank</button>
         </div>
 
@@ -127,6 +186,89 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
             {log.length > 0 && (
               <pre className="max-h-48 overflow-auto rounded-lg p-3 text-xs" style={{ background: "var(--surface-2, #f5f5f5)" }}>{log.join("\n")}</pre>
             )}
+          </div>
+        )}
+
+        {tab === "tempel" && (
+          <div className="grid gap-3">
+            <div className="rounded-lg px-3 py-2 text-xs" style={{ background: "var(--surface-2, #f5f5f5)" }}>
+              <b>1.</b> Isi rincian di bawah · <b>2.</b> Salin prompt, tempel ke ChatGPT/Gemini/Claude ·
+              <b> 3.</b> Salin balasannya, tempel ke kotak naskah · <b>4.</b> Buat paket.
+            </div>
+
+            <label className="text-sm">Materi / topik soal *
+              <textarea className={input} rows={2} value={t.materi} onChange={(e) => setT({ ...t, materi: e.target.value })}
+                placeholder="mis. Persamaan linear satu variabel, soal cerita" />
+            </label>
+            <div className="grid grid-cols-2 gap-3">
+              <label className="text-sm">Mata pelajaran<input className={input} value={t.mapel} onChange={(e) => setT({ ...t, mapel: e.target.value })} placeholder="Matematika" /></label>
+              <label className="text-sm">Kelas<input className={input} value={t.kelas} onChange={(e) => setT({ ...t, kelas: e.target.value })} placeholder="8" /></label>
+              <label className="text-sm">Jumlah soal<input className={input} type="number" min={1} max={50} value={t.jumlah} onChange={(e) => setT({ ...t, jumlah: Number(e.target.value) })} /></label>
+              <label className="text-sm">Jumlah set<input className={input} type="number" min={1} max={10} value={t.jumlahSet} onChange={(e) => setT({ ...t, jumlahSet: Number(e.target.value) })} title="Lebih dari 1 = beberapa paket sekaligus, kesulitan naik bertahap" /></label>
+              <label className="text-sm">Tingkat kesulitan
+                <select className={input} value={t.kesulitan} onChange={(e) => setT({ ...t, kesulitan: e.target.value })}>
+                  <option>Mudah</option><option>Sedang</option><option>Sulit</option><option>Campuran</option>
+                </select>
+              </label>
+              <label className="text-sm">Durasi online (menit)<input className={input} type="number" min={5} value={t.durasiMenit} onChange={(e) => setT({ ...t, durasiMenit: Number(e.target.value) })} /></label>
+            </div>
+
+            <div className="text-sm">Jenis soal
+              <div className="mt-1 flex flex-wrap gap-3 text-sm">
+                {([["PG", "Pilihan ganda"], ["B", "Benar/Salah"], ["I", "Isian singkat"], ["E", "Uraian (PDF saja)"]] as [JenisSoal, string][]).map(([kode, nama]) => (
+                  <label key={kode} className="flex items-center gap-1.5">
+                    <input type="checkbox" checked={jenis.includes(kode)}
+                      onChange={(e) => setJenis(e.target.checked ? [...jenis, kode] : jenis.filter((x) => x !== kode))} />
+                    {nama}
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-3 text-sm">
+              <label className="flex items-center gap-1.5"><input type="checkbox" checked={pembahasan} onChange={(e) => setPembahasan(e.target.checked)} /> Sertakan pembahasan</label>
+              <label className="flex items-center gap-1.5"><input type="checkbox" checked={latex} onChange={(e) => setLatex(e.target.checked)} /> Rumus ditulis LaTeX</label>
+              <label className="flex items-center gap-1.5" title="Grafik fungsi, tabel, bangun datar/ruang, garis bilangan, Venn, statistik"><input type="checkbox" checked={diagram} onChange={(e) => setDiagram(e.target.checked)} /> Boleh pakai diagram &amp; tabel</label>
+            </div>
+            <label className="text-sm">Permintaan tambahan (opsional)<input className={input} value={t.catatan} onChange={(e) => setT({ ...t, catatan: e.target.value })} placeholder="mis. pakai konteks kehidupan sehari-hari" /></label>
+
+            <label className="text-sm">Prompt siap salin
+              <textarea className={`${input} font-mono text-xs`} rows={6} readOnly value={teksPrompt} onFocus={(e) => e.currentTarget.select()} />
+            </label>
+            <div className="flex flex-wrap gap-2">
+              <button className="btn btn-ghost" onClick={() => salin(teksPrompt, "prompt")}>
+                {disalin === "prompt" ? <Check size={15} /> : <Copy size={15} />} Salin prompt
+              </button>
+              <button className="btn btn-ghost" onClick={async () => { await salin(teksPrompt, "prompt"); window.open("https://chatgpt.com/", "_blank", "noopener"); }}>
+                <ExternalLink size={15} /> Salin &amp; buka ChatGPT
+              </button>
+              <button className="btn btn-ghost" onClick={async () => { await salin(teksPrompt, "prompt"); window.open("https://gemini.google.com/", "_blank", "noopener"); }}>
+                <ExternalLink size={15} /> Salin &amp; buka Gemini
+              </button>
+            </div>
+
+            <label className="text-sm">Naskah dari AI — tempel di sini
+              <textarea className={`${input} font-mono text-xs`} rows={10} value={t.naskah} onChange={(e) => setT({ ...t, naskah: e.target.value })}
+                placeholder={"Bagian Pilihan Ganda: (PG)\nPG1. …\nA. …\n\nKunci Jawaban\nPG1-B, …"} />
+            </label>
+            <label className="text-sm">Judul paket (opsional)<input className={input} value={t.judul} onChange={(e) => setT({ ...t, judul: e.target.value })} placeholder="Kosong = pakai materi di atas" /></label>
+
+            {pratinjau && (
+              <div className="rounded-lg px-3 py-2 text-sm" style={{ background: "var(--surface-2, #f5f5f5)" }}>
+                Terbaca <b>{pratinjau.total}</b> soal
+                {pratinjau.nSet > 1 && <> dalam <b>{pratinjau.nSet}</b> set</>} · <b>{pratinjau.terpakai}</b> bisa dinilai otomatis
+                {pratinjau.total > pratinjau.terpakai && <> · {pratinjau.total - pratinjau.terpakai} dilewati (uraian / kunci tidak cocok)</>}
+                {pratinjau.tanpaKunci.length > 0 && (
+                  <div className="mt-1 text-xs muted">Tanpa kunci: {pratinjau.tanpaKunci.slice(0, 12).join(", ")}{pratinjau.tanpaKunci.length > 12 ? ", …" : ""}</div>
+                )}
+              </div>
+            )}
+            {galatT && <div className="rounded-lg px-3 py-2 text-sm" style={{ background: "var(--danger-soft, #fee)", color: "var(--danger, #b00)" }}>{galatT}</div>}
+            {hasilT && <div className="rounded-lg px-3 py-2 text-sm" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>{hasilT}</div>}
+
+            <button className="btn btn-primary" disabled={kirim || !pratinjau?.terpakai} onClick={simpanTempel}>
+              {kirim ? <Loader2 size={16} className="animate-spin" /> : <ClipboardPaste size={16} />}
+              {kirim ? "Menyimpan…" : `Buat paket${pratinjau?.terpakai ? ` (${pratinjau.terpakai} soal)` : ""}`}
+            </button>
           </div>
         )}
 
