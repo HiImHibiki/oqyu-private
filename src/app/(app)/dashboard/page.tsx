@@ -1,13 +1,10 @@
 import Link from "next/link";
-import { CalendarClock, Clock, Flame, PlayCircle, Target, TrendingUp } from "lucide-react";
+import { Flame, PlayCircle, Target, TrendingUp } from "lucide-react";
 import { currentUser } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { getBlueprint } from "@/lib/exams/blueprints";
 import { getLocale, intlTag, translatorFor } from "@/lib/i18n";
-import { expiringSoon, quotaByExam, totalQuota } from "@/lib/entitlements";
-import { money, packageById } from "@/lib/packages";
-import { PageHead, EmptyState } from "@/components/ui/AppShell";
-import { StartTryout } from "./StartTryout";
+import { PageHead } from "@/components/ui/AppShell";
 import { ScoreTrend } from "@/components/dashboard/ScoreTrend";
 import { DomainBars } from "@/components/dashboard/DomainBars";
 import type { ScoreReport } from "@/lib/exams/scoring";
@@ -19,11 +16,7 @@ export default async function DashboardPage() {
   const locale = await getLocale();
   const tag = intlTag(locale);
   const t = translatorFor(locale);
-  const [ents, attempts, orders] = await Promise.all([
-    getDb().entitlements(user.id),
-    getDb().attemptsOf(user.id),
-    getDb().ordersOf(user.id),
-  ]);
+  const attempts = await getDb().attemptsOf(user.id);
 
   const done = attempts.filter((a) => a.status === "submitted" && a.score);
   const scores = done.map((a) => a.score as ScoreReport);
@@ -31,11 +24,6 @@ export default async function DashboardPage() {
   const avgPct = scores.length
     ? Math.round((scores.reduce((s, r) => s + r.total / (r.totalMax || 1), 0) / scores.length) * 100)
     : 0;
-
-  /* Kuota kedaluwarsa tidak dihitung: angka di sini harus angka yang sama
-   * dengan yang dipakai paywall saat attempt dibuat. */
-  const quota = quotaByExam(ents);
-  const pending = orders.find((o) => o.status === "pending");
 
   // agregat domain dari seluruh percobaan yang sudah dinilai
   const domainAgg = new Map<string, { c: number; t: number }>();
@@ -70,24 +58,7 @@ export default async function DashboardPage() {
         action={<Link href="/journey" className="btn btn-ghost">{t("dash.fullJourney")}</Link>}
       />
 
-      {pending && (
-        <section className="card mb-5 flex flex-wrap items-center gap-4 p-5" style={{ borderColor: "var(--warn)" }}>
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
-            style={{ background: "color-mix(in srgb, var(--warn) 16%, transparent)", color: "var(--warn)" }}>
-            <Clock size={19} />
-          </span>
-          <div className="min-w-0 flex-1">
-            <h2 className="font-semibold">{t("packages.pendingTitle")}</h2>
-            <p className="mt-0.5 text-sm muted">
-              {t("packages.pendingBody", { pkg: packageById(pending.packageId)?.name ?? pending.packageId })}
-              {" · "}{money(pending.amount, pending.currency, tag)}
-            </p>
-          </div>
-          <Link href="/paket" className="btn btn-primary">{t("packages.resume")}</Link>
-        </section>
-      )}
-
-      <div className="mb-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mb-7 grid gap-4 sm:grid-cols-3">
         <Stat icon={<Target size={16} />} label={t("dash.avgAll")} value={`${avgPct}%`}
           sub={scores.length ? t("dash.fromTests", { n: scores.length }) : t("dash.noTests")} />
         <Stat icon={<TrendingUp size={16} />} label={t("dash.bestScore")}
@@ -95,56 +66,20 @@ export default async function DashboardPage() {
           sub={scores.length ? bestExamName(done) : t("dash.noTests")} />
         <Stat icon={<Flame size={16} />} label={t("dash.completed")} value={String(done.length)}
           sub={t("dash.inProgress", { n: attempts.length - done.length })} />
-        <Stat icon={<CalendarClock size={16} />} label={t("dash.quotaLeft")}
-          value={String(totalQuota(quota))} sub={t("dash.quotaUnit")} />
       </div>
 
       <section className="mb-7">
-        <div className="mb-3 flex items-center gap-3">
-          <h2 className="text-sm font-semibold uppercase tracking-wider muted">{t("dash.startTest")}</h2>
-          {quota.length > 0 && (
-            <Link href="/paket" className="ml-auto text-xs underline muted">{t("packages.addPackage")}</Link>
-          )}
-        </div>
-        {quota.length === 0 ? (
-          <EmptyState
-            icon={<PlayCircle size={20} />}
-            title={t("dash.noQuotaTitle")}
-            body={t("dash.noQuotaBody")}
-            action={
-              <div className="mt-2 flex gap-2">
-                <Link href="/paket" className="btn btn-primary">{t("dash.seePackages")}</Link>
-                <Link href="/demo" className="btn btn-ghost">{t("dash.tryDemo")}</Link>
-              </div>
-            }
-          />
-        ) : (
-          <div className="grid gap-3 sm:grid-cols-2">
-            {quota.map((q) => {
-              const bp = getBlueprint(q.exam);
-              return (
-                <article key={q.exam} className="card flex items-center gap-4 p-4">
-                  <div className="min-w-0 flex-1">
-                    <div className="mb-0.5 flex flex-wrap items-center gap-2">
-                      <span className="chip">{q.exam}</span>
-                      <span className="text-xs muted">{t("dash.quotaRemaining", { n: q.left })}</span>
-                      {q.expiresAt && expiringSoon(q) && (
-                        <span className="text-xs" style={{ color: "var(--warn)" }}>
-                          {t("packages.expiresOn", {
-                            date: new Date(q.expiresAt).toLocaleDateString(tag, { day: "2-digit", month: "short", year: "numeric" }),
-                          })}
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="truncate font-semibold">{bp?.name ?? q.exam}</h3>
-                    <p className="truncate text-xs muted">{bp?.tagline}</p>
-                  </div>
-                  <StartTryout exam={q.exam} disabled={q.left <= 0} />
-                </article>
-              );
-            })}
+        <div className="card flex flex-wrap items-center gap-4 p-5">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+            style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
+            <PlayCircle size={19} />
+          </span>
+          <div className="min-w-0 flex-1">
+            <h2 className="font-semibold">Latihan gratis dari guru</h2>
+            <p className="mt-0.5 text-sm muted">Paket latihan, bank soal per topik, dan riwayat nilaimu ada di menu Latihan.</p>
           </div>
-        )}
+          <Link href="/latihan" className="btn btn-primary">Buka Latihan</Link>
+        </div>
       </section>
 
       {trend.length > 0 && (

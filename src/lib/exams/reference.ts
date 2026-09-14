@@ -236,7 +236,7 @@ export const EXAM_REFERENCE: Record<ExamCode, ExamReference> = {
     officialName: "Paket latihan Exact Course",
     localName: "Latihan",
     body: "Exact Course (internal)",
-    website: "https://practice.exactprintsolution.com",
+    website: "https://practice2.exactprintsolution.com",
     delivery: "Online di Exact Practice, atau dicetak lewat Exact Worksheet",
     sittingsPerYear: "Kapan saja",
     scoreScale: "0-100 (proporsi benar)",

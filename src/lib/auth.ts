@@ -197,9 +197,16 @@ export async function daftarMurid(input: {
   if (await devAuth.userByEmail(email)) return fail("Email ini sudah terdaftar — silakan masuk.");
   const u = await devAuth.upsertUser({ email, fullName: input.fullName.trim(), phone: "" });
   await devAuth.setPassword(u.id, input.password);
+  /* Kode kelas hanya membuka pintu depan — guru yang memutuskan siapa masuk,
+   * sama seperti di Exact Canvas. Akun baru menunggu sampai disetujui di
+   * /admin/peserta; email di ADMIN_EMAILS langsung jadi admin. */
+  if (u.role === "student") await (await import("./db")).getDb().setUserRole(u.id, "menunggu");
   await setSessionCookie(await devAuth.createSession(u.id));
   return ok({ userId: u.id });
 }
+
+export const MENUNGGU = "menunggu";
+export const menunggu = (u: CurrentUser | null) => Boolean(u && u.role === MENUNGGU);
 
 /* --------------------------------------------------------- Exact Canvas */
 

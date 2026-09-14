@@ -14,8 +14,6 @@ const NAV = [
   { href: "/admin/esai", label: "Penilaian esai", icon: PenLine },
   { href: "/admin/referensi", label: "Referensi ujian", icon: BookMarked },
   { href: "/admin/peserta", label: "Peserta", icon: Users },
-  { href: "/admin/pesanan", label: "Pesanan", icon: Receipt },
-  { href: "/admin/afiliasi", label: "Afiliasi", icon: Gift },
 ];
 
 export function AdminShell({

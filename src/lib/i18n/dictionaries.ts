@@ -110,7 +110,7 @@ const en = {
 
   /* ------------------------------------------------------------- auth */
   "auth.createTitle": "Create your account",
-  "auth.createSub": "Sign in with Google. Your name and email come from there — there is nothing else to fill in.",
+  "auth.createSub": "Free — fill in your name, email, password and the class code from your teacher. The teacher approves your account before you can start.",
   "auth.tryFirst": "Want to try before you pay?",
   "auth.haveAccount": "Already have an account?",
   "auth.signInHere": "Sign in here",
@@ -123,9 +123,9 @@ const en = {
   "auth.pay": "Pay {amount}",
   "auth.waitingPayment": "Waiting for payment confirmation…",
   "auth.signInTitle": "Sign in",
-  "auth.signInSub": "Use the Google account you signed up with.",
+  "auth.signInSub": "Free for Exact Course students. Sign in with your Exact Canvas account (phone + password).",
   "auth.noAccount": "No account yet?",
-  "auth.registerLink": "Create one with Google",
+  "auth.registerLink": "Register with the class code",
 
   /* ---------------------------------------------------------- paket */
   "packages.title": "Add a package",
@@ -490,7 +490,7 @@ const id: Dict = {
   "landing.disclaimer": "Exact Practice tidak berafiliasi dengan, tidak disponsori oleh, dan tidak didukung oleh College Board, Cambridge Assessment International Education, China Scholarship Council, maupun penyelenggara UTBK-SNBT. SAT dan Bluebook adalah merek dagang College Board; A Level adalah merek dagang Cambridge. Nama-nama itu dipakai semata untuk menerangkan jenis ujian yang disimulasikan. Soal disusun dengan bantuan AI dan ditinjau pengajar sebelum dipakai.",
 
   "auth.createTitle": "Buat akun peserta",
-  "auth.createSub": "Masuk dengan Google. Nama dan email diambil dari sana — tidak ada yang perlu diisi lagi.",
+  "auth.createSub": "Gratis — isi nama, email, sandi, dan kode kelas dari guru. Guru akan menyetujui akunmu sebelum bisa mulai.",
   "auth.tryFirst": "Mau coba dulu sebelum bayar?",
   "auth.haveAccount": "Sudah punya akun?",
   "auth.signInHere": "Masuk di sini",
@@ -503,9 +503,9 @@ const id: Dict = {
   "auth.pay": "Bayar {amount}",
   "auth.waitingPayment": "Menunggu konfirmasi pembayaran…",
   "auth.signInTitle": "Masuk",
-  "auth.signInSub": "Pakai akun Google yang kamu daftarkan.",
+  "auth.signInSub": "Gratis untuk murid Exact Course. Masuk dengan akun Exact Canvas (No. HP + sandi).",
   "auth.noAccount": "Belum punya akun?",
-  "auth.registerLink": "Daftar dengan Google",
+  "auth.registerLink": "Daftar dengan kode kelas",
 
   /* ---------------------------------------------------------- paket */
   "packages.title": "Tambah paket",
@@ -859,7 +859,7 @@ const zh: Dict = {
   "landing.disclaimer": "Exact Practice 与 College Board、剑桥国际考评部、中国国家留学基金管理委员会及 UTBK-SNBT 主办方均无隶属、赞助或背书关系。SAT 与 Bluebook 为 College Board 的商标，A Level 为剑桥的商标。此处使用这些名称仅用于说明所模拟的考试类型。题目由 AI 辅助撰写，并经教师审核后方可使用。",
 
   "auth.createTitle": "创建考生账号",
-  "auth.createSub": "使用 Google 登录。姓名与邮箱都来自 Google——无需再填写任何内容。",
+  "auth.createSub": "免费——填写姓名、邮箱、密码和老师给的班级码。老师批准后即可开始。",
   "auth.tryFirst": "想先试做再决定？",
   "auth.haveAccount": "已有账号？",
   "auth.signInHere": "在此登录",
@@ -872,9 +872,9 @@ const zh: Dict = {
   "auth.pay": "支付 {amount}",
   "auth.waitingPayment": "正在等待付款确认…",
   "auth.signInTitle": "登录",
-  "auth.signInSub": "请使用注册时的 Google 账号。",
+  "auth.signInSub": "Exact Course 学生免费使用。用 Exact Canvas 账号（手机号 + 密码）登录。",
   "auth.noAccount": "还没有账号？",
-  "auth.registerLink": "用 Google 注册",
+  "auth.registerLink": "用班级码注册",
 
   /* ---------------------------------------------------------- paket */
   "packages.title": "购买套餐",

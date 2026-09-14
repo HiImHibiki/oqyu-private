@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { currentUser } from "@/lib/auth";
+import { currentUser, menunggu } from "@/lib/auth";
 import { getPaket } from "@/lib/practice/paket";
 import { mulaiAcak, mulaiDariPaket } from "@/lib/practice/latihan";
 
@@ -7,6 +7,7 @@ import { mulaiAcak, mulaiDariPaket } from "@/lib/practice/latihan";
 export async function POST(req: Request) {
   const user = await currentUser();
   if (!user) return NextResponse.json({ error: "Perlu masuk" }, { status: 401 });
+  if (menunggu(user)) return NextResponse.json({ error: "Akunmu belum disetujui guru" }, { status: 403 });
   const b = (await req.json()) as { paketId?: string; mapel?: string; kelas?: string; topik?: string; jumlah?: number };
   try {
     if (b.paketId) {

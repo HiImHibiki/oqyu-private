@@ -47,13 +47,13 @@ export function UserTable({ rows, q, meId, canEditRole }: {
         <table className="w-full text-sm">
           <thead>
             <tr style={{ background: "var(--bg-sunken)" }}>
-              <Th>Peserta</Th><Th>HP</Th><Th right>Try out</Th><Th right>Kuota</Th>
+              <Th>Peserta</Th><Th>HP</Th><Th right>Latihan</Th>
               <Th>Rujukan</Th><Th>Waktu</Th><Th>Peran</Th>
             </tr>
           </thead>
           <tbody>
             {rows.map((u) => (
-              <tr key={u.id} className="border-t" style={{ borderColor: "var(--border)" }}>
+              <tr key={u.id} className="border-t" style={{ borderColor: "var(--border)", background: u.role === "menunggu" ? "color-mix(in srgb, var(--warn) 8%, transparent)" : undefined }}>
                 <td className="px-4 py-2.5">
                   <div className="font-medium">{u.fullName || "—"}</div>
                   <div className="text-xs muted">{u.email}</div>
@@ -61,7 +61,6 @@ export function UserTable({ rows, q, meId, canEditRole }: {
                 </td>
                 <td className="px-4 py-2.5 text-xs">{u.phone || "—"}</td>
                 <td className="px-4 py-2.5 text-right tabular-nums">{u.attempts}</td>
-                <td className="px-4 py-2.5 text-right tabular-nums">{u.quotaLeft}</td>
                 <td className="px-4 py-2.5">
                   {u.referredBy ? <span className="chip font-mono">{u.referredBy}</span> : <span className="muted">—</span>}
                 </td>
@@ -82,7 +81,16 @@ export function UserTable({ rows, q, meId, canEditRole }: {
                   )}
                 </td>
                 <td className="px-4 py-2.5">
-                  {canEditRole && u.id !== meId ? (
+                  {canEditRole && u.role === "menunggu" ? (
+                    <span className="flex items-center gap-1.5">
+                      <button className="btn btn-primary !px-3 !py-1 text-xs" disabled={busy === u.id}
+                        title="Terima akun ini — murid langsung bisa membuka latihan"
+                        onClick={() => setRole(u.id, "student")}>
+                        {busy === u.id ? <Loader2 size={13} className="animate-spin" /> : null} Setujui
+                      </button>
+                      <span className="chip" style={{ color: "var(--warn)" }}>menunggu</span>
+                    </span>
+                  ) : canEditRole && u.id !== meId ? (
                     <span className="flex items-center gap-1.5">
                       <select className="input !w-auto !py-1 text-xs" value={u.role}
                         disabled={busy === u.id}

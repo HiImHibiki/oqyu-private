@@ -29,7 +29,7 @@ git pull && ./pasang-app.sh
 ## Tunnel (hanya di Mac utama)
 
 Tunnel Cloudflare `exact-practice` (`~/.cloudflared/exact-practice.yml`, LaunchAgent
-`com.exactcourse.practice.tunnel`) mengarahkan `practice.exactprintsolution.com` →
+`com.exactcourse.practice.tunnel`) mengarahkan `practice2.exactprintsolution.com` →
 `localhost:8770`. Jangan jalankan tunnel yang sama di dua Mac sekaligus.
 
 ## Akun guru pertama

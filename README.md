@@ -10,7 +10,7 @@ Latihan & ujian online untuk murid bimbel Exact Course — cabang dari Exact Try
 - **Tanya guru** — dari ruang ujian, soal yang sedang dibuka dikirim (teks + gambar) ke antrean pertanyaan **Exact Canvas**, lalu layar murid Canvas terbuka di tab baru.
 - **Pantau kelas** — guru melihat per murid: paket mana yang dikerjakan, sampai nomor berapa, nomor mana yang salah; dan per paket, nomor yang paling sering salah.
 
-Alamat publik: https://practice.exactprintsolution.com (Cloudflare Tunnel `exact-practice` → port 8770).
+Alamat publik: https://practice2.exactprintsolution.com (Cloudflare Tunnel `exact-practice` → port 8770).
 
 ## Menu
 
@@ -22,7 +22,7 @@ Alamat publik: https://practice.exactprintsolution.com (Cloudflare Tunnel `exact
 | Guru | `/admin/kelas` | pantauan kemajuan & kesalahan |
 | Guru | `/admin/soal` | bank soal (warisan Try Out) |
 
-Murid mendaftar sendiri di `/daftar` dengan **kode kelas** (`EXACT_KODE_KELAS` di `.env.local`).
+**Gratis** — tidak ada paket berbayar, kuota, maupun langganan. Murid masuk dengan akun Exact Canvas (No. HP + sandi), atau mendaftar di `/daftar` dengan **kode kelas** (`EXACT_KODE_KELAS`) lalu menunggu **persetujuan guru** di `/admin/peserta` (tombol Setujui).
 Email di `ADMIN_EMAILS` otomatis berperan guru/admin saat mendaftar.
 
 ## Berkas penting

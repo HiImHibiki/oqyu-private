@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { currentUser, idCanvasDari } from "@/lib/auth";
+import { currentUser, idCanvasDari, menunggu } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { questionsByIds } from "@/lib/exams/bank";
 import { potretHtml } from "@/lib/practice/worksheet";
@@ -32,6 +32,7 @@ function teksSoal(q: Question, nomor: number, judul: string) {
 export async function POST(req: Request) {
   const user = await currentUser();
   if (!user) return NextResponse.json({ error: "Perlu masuk" }, { status: 401 });
+  if (menunggu(user)) return NextResponse.json({ error: "Akunmu belum disetujui guru" }, { status: 403 });
   const { attemptId, questionId, number } = (await req.json()) as { attemptId: string; questionId: string; number?: number };
   const a = await getDb().getAttempt(attemptId);
   if (!a || a.userId !== user.id) return NextResponse.json({ error: "Attempt tidak ditemukan" }, { status: 404 });

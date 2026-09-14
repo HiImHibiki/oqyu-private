@@ -1,10 +1,9 @@
 import { getLocale, intlTag, translatorFor } from "@/lib/i18n";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowLeft, PlayCircle, ShieldCheck, Sparkles, Trophy } from "lucide-react";
+import { ArrowLeft, PlayCircle, ShieldCheck, Trophy } from "lucide-react";
 import { currentUser } from "@/lib/auth";
 import { getDb } from "@/lib/db";
-import { quotaByExam } from "@/lib/entitlements";
 import { loadAttempt, sectionsOf } from "@/lib/exams/attempt";
 import { AppShell } from "@/components/ui/AppShell";
 import { SiteHeader } from "@/components/ui/SiteHeader";
@@ -71,13 +70,6 @@ export default async function HasilPage({ params }: { params: Promise<{ attemptI
     .map(([domain, v]) => ({ domain, pct: v.t ? Math.round((v.c / v.t) * 100) : 0, total: v.t }))
     .sort((a, b) => a.pct - b.pct);
 
-  /* Tawaran paket lanjutan hanya muncul kalau kuota ujian ini memang habis.
-   * Menawarkan paket kepada orang yang masih punya kuota bukan penjualan,
-   * itu gangguan. */
-  const quotaLeft = user && !attempt.isDemo
-    ? quotaByExam(await getDb().entitlements(user.id)).find((q) => q.exam === exam)?.left ?? 0
-    : null;
-
   const body = (
     <div className="mx-auto max-w-4xl px-6 py-8">
       {user ? (
@@ -131,20 +123,6 @@ export default async function HasilPage({ params }: { params: Promise<{ attemptI
             icon={<ShieldCheck size={13} />} />
         </div>
       </div>
-
-      {quotaLeft === 0 && exam !== "LATIHAN" && (
-        <section className="card mb-6 flex flex-wrap items-center gap-4 p-5">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
-            style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
-            <Sparkles size={19} />
-          </span>
-          <div className="min-w-0 flex-1">
-            <h2 className="font-semibold">{t("packages.upsellTitle")}</h2>
-            <p className="mt-0.5 text-sm muted">{t("packages.upsellBody")}</p>
-          </div>
-          <Link href="/paket" className="btn btn-primary">{t("packages.addPackage")}</Link>
-        </section>
-      )}
 
       <section className="mb-6 grid gap-4 lg:grid-cols-[1.2fr_1fr]">
         <div className="card p-5">
