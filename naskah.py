@@ -123,6 +123,7 @@ def ke_naskah(daftar, judul='LEMBAR KERJA'):
     for s in daftar: per_jenis.setdefault(s.get('jenis') or 'PG', []).append(s)
     baris = [judul, '']
     kunci = []
+    bahas = []
     for kode in ('PG', 'B', 'I', 'E', 'M', 'IB'):
         if kode not in per_jenis: continue
         baris.append(f'Bagian {JENIS[kode]}: ({kode})')
@@ -135,7 +136,15 @@ def ke_naskah(daftar, judul='LEMBAR KERJA'):
                 b2 = f" [{sub['bobot']}]" if sub.get('bobot') else ''
                 baris.append(f"({sub['label']}) {sub['teks']}{b2}")
             if s.get('kunci'): kunci.append(f"{kode}{i}-{s['kunci']}")
+            if s.get('pembahasan'): bahas.append(f"{kode}{i}-{s['pembahasan']}")
         baris.append('')
     if kunci:
         baris += ['Kunci Jawaban', ', '.join(kunci)]
+    # Pembahasan dulu hilang di sini: soal membawa pembahasannya, tapi naskah
+    # yang disusun tidak pernah menuliskannya, jadi PDF "kunci & pembahasan"
+    # yang dicetak lewat /api/render keluar tanpa satu pun pembahasan. Satu
+    # entri per baris -- pemecah di Worksheet Maker mencari penanda kode
+    # berikutnya, bukan koma, jadi kalimat pembahasan boleh memuat koma.
+    if bahas:
+        baris += ['', 'Pembahasan'] + bahas
     return '\n'.join(baris)
