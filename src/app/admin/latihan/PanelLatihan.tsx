@@ -156,7 +156,7 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
 
       <div className="card p-5">
         <h3 className="mb-3 font-semibold">Paket latihan ({paket.length})</h3>
-        {paket.length === 0 && <p className="text-sm muted">Belum ada paket.</p>}
+        {paket.length === 0 && <p className="text-sm muted">Belum ada paket. Paket dari tombol «Ke Practice» di Exact Worksheet akan muncul di sini.</p>}
         <div className="grid gap-3">
           {paket.map((p) => (
             <div key={p.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border p-3 text-sm" style={{ borderColor: "var(--line)", opacity: p.terbit ? 1 : 0.6 }}>

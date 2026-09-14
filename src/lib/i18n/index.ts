@@ -5,7 +5,7 @@ export { LOCALES, LOCALE_META };
 export type { Locale, MessageKey };
 
 export const LOCALE_COOKIE = "exact_locale";
-export const DEFAULT_LOCALE: Locale = "en";
+export const DEFAULT_LOCALE: Locale = "id";   // bimbel Indonesia: bahasa Indonesia kecuali peramban minta lain
 
 export const isLocale = (v: unknown): v is Locale => LOCALES.includes(v as Locale);
 
@@ -35,7 +35,6 @@ export async function getLocale(): Promise<Locale> {
     const tag = part.split(";")[0].trim().toLowerCase();
     if (tag.startsWith("id")) return "id";
     if (tag.startsWith("zh")) return "zh";
-    if (tag.startsWith("en")) return "en";
   }
   return DEFAULT_LOCALE;
 }

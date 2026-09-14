@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { I18nProvider } from "@/components/ui/I18nProvider";
-import { CookieConsent } from "@/components/ui/CookieConsent";
 import { themeCss, DEFAULT_THEME } from "@/lib/themes";
 import { getLocale, translate } from "@/lib/i18n";
 
@@ -48,7 +47,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <I18nProvider locale={locale}>
           <ThemeProvider>
             {children}
-            <CookieConsent />
           </ThemeProvider>
         </I18nProvider>
       </body>

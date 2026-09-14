@@ -11,7 +11,7 @@ export default async function AdminLatihanPage() {
   const paket = await listPaket();
   return (
     <>
-      <PageHead title="Buat latihan" subtitle="Soal dibuat Gemini lewat Exact Worksheet, langsung masuk bank dan bisa dicetak atau dikerjakan online." />
+      <PageHead title="Buat latihan" subtitle="Cara termudah: buat lembar di Exact Worksheet lalu tekan «Ke Practice» — paketnya muncul di sini dengan kode ujian. Atau buat langsung dari halaman ini." />
       <PanelLatihan awal={paket} />
     </>
   );
