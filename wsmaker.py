@@ -203,13 +203,41 @@ def _buang_blok(perintah, awal):
 # karena tidak ada yang bisa salah digambar, dan justru lebih berguna: murid
 # memplot sendiri, yang memang keterampilan yang sedang diuji.
 ATURAN_KOORDINAT = """
-PENTING untuk soal yang memakai koordinat, grafik, garis lurus, atau bidang
-kartesius: JANGAN menggambarkan grafik atau kurvanya. Sediakan kertas grafik
-KOSONG dengan [[kertasgrafik: ...]], lalu perintahkan murid memplot sendiri —
-sebutkan rentang sumbu yang cukup untuk semua titik yang akan diplot, beserta
-nama dan satuan tiap sumbunya. Hal yang sama berlaku untuk soal yang meminta
-membuat tabel pengamatan: sediakan [[tabelkosong: ...]], bukan tabel terisi.
+Untuk soal yang memakai koordinat, grafik, garis lurus, atau bidang kartesius:
+sebaiknya sediakan kertas grafik kosong dengan [[kertasgrafik: ...]] lalu minta
+murid memplot sendiri — sebutkan rentang sumbu yang cukup untuk semua titiknya,
+beserta nama dan satuan tiap sumbu — daripada grafiknya digambarkan jadi. Begitu
+juga untuk soal yang meminta membuat tabel pengamatan: pakai [[tabelkosong: ...]],
+bukan tabel yang sudah terisi.
 """
+
+
+def _lunak(perintah):
+    """Lunakkan nada 'sistem override' pada perintah engine tanpa mengubah
+    spesifikasi format. Frasa keras (PERSIS/wajib diikuti persis/"apa pun yang
+    saya tulis... mengalahkan...") oleh filter Gemini kadang dikira upaya
+    membajak sistem, lalu dibalas penolakan. Diperbaiki di sini (bukan di
+    default-prompt.js) supaya tidak hilang saat mesin disinkron ulang.
+    """
+    ganti = [
+        (', PERSIS termasuk tanda baca dan spasinya (',
+         ', termasuk tanda baca dan spasinya (usahakan sama persis) ('),
+        ('apa pun yang saya tulis di situ berlaku dan mengalahkan contoh apa pun di dalam pesan ini.',
+         'yang saya isi di situ itulah yang dipakai, bukan contoh di dalam pesan ini.'),
+        ('Baris yang KOSONG bukan berarti kurang informasi: pakai standarnya langsung, dan JANGAN bertanya balik atau menunda membuat soal.',
+         'Kalau ada yang saya kosongkan, pakai standarnya saja dan langsung dibuat tanpa bertanya balik.'),
+        ('FORMAT (wajib diikuti persis, berlaku untuk setiap SET):',
+         'FORMAT (tolong diikuti supaya bisa dibaca aplikasi; sama untuk setiap SET):'),
+        ('SETIAP gambar, grafik, atau tabel pada lampiran WAJIB dibuat ulang memakai tag [[...]] di bawah',
+         'setiap gambar, grafik, atau tabel pada lampiran sebaiknya dibuat ulang memakai tag [[...]] di bawah'),
+    ]
+    for a, b in ganti:
+        perintah = perintah.replace(a, b)
+    # Kurangi kata-kata yang "berteriak" (huruf kapital) yang bukan penanda format.
+    for kata in (' JANGAN ', ' WAJIB ', ' PERSIS ', ' PENTING', ' HARUS '):
+        perintah = perintah.replace(kata, kata.lower())
+    perintah = perintah.replace('PENTING —', 'Catatan —').replace('PENTING:', 'Catatan:')
+    return perintah
 
 
 def ringkas(perintah, konteks='', banyak_set=False, ada_lampiran=False):
@@ -219,6 +247,7 @@ def ringkas(perintah, konteks='', banyak_set=False, ada_lampiran=False):
     kemungkinan yang tidak sedang terjadi. Perintah yang lebih pendek lebih
     jarang dibalas penolakan oleh Gemini.
     """
+    perintah = _lunak(perintah)
     hasil, _ = ringkas_diagram(perintah, konteks)
     # Disisipkan SEBELUM blok "ISI DULU", bukan di paling bawah. Perintahnya
     # sendiri menyuruh Gemini membaca blok isian di bagian PALING BAWAH pesan;

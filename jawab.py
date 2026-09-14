@@ -25,42 +25,33 @@ def aturan_bahasa(pilihan):
     return f'Bahasa: {pilihan}'
 
 
-PERINTAH = """Kamu diberi {sumber}. Tugasmu BUKAN membuat soal baru.
+PERINTAH = """Tolong bantu buatkan kunci jawaban dan pembahasan singkatnya dari {sumber}
+(bukan membuat soal baru ya). Ini untuk anak {jenjang}, jadi pembahasannya
+cukup rumus dan angka saja, tidak perlu paragraf panjang.
 
-Untuk SETIAP soal: tulis ulang soalnya, beri jawabannya, lalu tunjukkan
-cara menghitungnya secara RINGKAS untuk anak {jenjang} — rumus dan angka,
-bukan paragraf penjelasan.
+Susunannya kira-kira begini, diulang untuk tiap soal:
 
-Tulis PERSIS dengan susunan ini, diulang untuk tiap soal:
-
-JUDUL: <judul singkat seluruh lembar, cukup sekali di paling atas>
+JUDUL: <judul singkat lembar, sekali saja di paling atas>
 
 SOAL 1
 {tanya}
-JAWAB: <jawaban singkat dan tegas>
+JAWAB: <jawaban singkatnya>
 BAHAS:
-<pembahasan SINGKAT. Tulis rumus dan hitungannya, bukan cerita.
-Satu langkah satu baris, urut begini:
 Diketahui: <daftar singkat, dipisah koma>
-<rumus yang dipakai, dalam $...$>
-<baris-baris perhitungan, tiap baris satu langkah, dalam $...$>
-Jadi <simpulan satu kalimat pendek>
+<rumus yang dipakai, di antara $...$>
+<hitungannya, satu langkah per baris, di antara $...$>
+Jadi <simpulan satu kalimat>
 
-Jangan menulis kalimat pengantar seperti "Pertama, mari kita perhatikan".
-Jangan menjelaskan kembali apa itu rumusnya. Langsung angka dan hitungan.>
+SOAL 2, dan seterusnya.
 
-SOAL 2
-...dan seterusnya.
-
-Aturan:
-- Rumus matematika, fisika, atau kimia dibungkus tanda dolar $...$
-- Jangan memakai markdown: tanpa **tebal**, tanpa #, tanpa daftar bertanda -
-- Jawab langsung dengan teks pada susunan di atas. JANGAN menulis kode program
-  (Python atau lainnya), jangan menjalankan kode, dan jangan menampilkan
-  keluaran kode — hitung sendiri lalu tulis hasilnya
-- Kalau ada bagian yang tidak terbaca jelas, tulis apa adanya lalu
-  tambahkan "(tidak terbaca jelas)" — JANGAN mengarang isinya
-- Kalau soal punya gambar, tulis [GAMBAR: keterangan singkat] di posisinya
+Beberapa hal kecil biar rapi:
+- Langsung ke angka dan hitungannya, tidak perlu kalimat pengantar
+- Rumus ditulis di antara tanda dolar $...$
+- Ditulis biasa saja, tanpa markdown (tanpa **tebal** atau #)
+- Cukup hitung sendiri lalu tulis hasilnya, kodenya tidak usah ditampilkan
+- Kalau ada bagian yang kurang terbaca, tulis apa adanya lalu beri catatan
+  "(kurang terbaca)" daripada menebak isinya
+- Kalau soal ada gambarnya, tulis [GAMBAR: keterangan singkat] di tempatnya
 - {bahasa}
 {catatan}{naskah}"""
 

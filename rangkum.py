@@ -8,36 +8,33 @@ supaya bisa ditemukan sekilas, bukan dicari di tengah paragraf.
 """
 import re
 
-PERINTAH = """Kamu diberi {sumber}. Buat RANGKUMAN yang enak dibaca dan enak dipelajari
-ulang oleh anak {jenjang} — bukan menyalin ulang, tapi memadatkan.
+PERINTAH = """Tolong bantu buatkan rangkuman yang enak dibaca dan enak dipelajari ulang
+dari {sumber}, untuk anak {jenjang} — dipadatkan intinya, bukan disalin ulang.
 
-Tulis PERSIS dengan susunan ini:
+Susunannya kira-kira begini:
 
 JUDUL: <judul rangkuman, singkat>
-INTI: <2 sampai 3 kalimat, gambaran besar seluruh materi>
+INTI: <2-3 kalimat gambaran besar seluruh materi>
 
 BAGIAN: <nama sub-bab pertama>
 POIN:
-- <satu gagasan, satu baris, kalimat pendek>
+- <satu gagasan per baris, kalimat pendek>
 - <...>
 RUMUS:
 - $<rumus>$ = <arti lambangnya, singkat>
 CONTOH: <satu contoh singkat beserta hitungannya, langsung angka>
 INGAT: <satu hal yang paling sering keliru atau tertukar>
 
-BAGIAN: <nama sub-bab berikutnya>
-...dan seterusnya.
+BAGIAN: <sub-bab berikutnya>, dan seterusnya.
 
-Aturan:
-- {bagian} bagian saja. Kalau materinya sedikit, lebih sedikit pun tidak apa.
-- Tiap POIN satu baris, maksimal sekitar 15 kata. Jangan menulis paragraf.
-- RUMUS, CONTOH, dan INGAT boleh dilewati kalau bagian itu memang tidak punya.
-- Rumus matematika, fisika, atau kimia dibungkus tanda dolar $...$
-- Jangan memakai markdown: tanpa **tebal**, tanpa #, tanpa tabel
-- Jawab langsung dengan teks pada susunan di atas. JANGAN menulis kode program
-  (Python atau lainnya), jangan menjalankan kode, dan jangan menampilkan
-  keluaran kode — hitung sendiri lalu tulis hasilnya
-- Jangan mengarang isi yang tidak ada di bahannya
+Beberapa hal kecil:
+- Sekitar {bagian} bagian saja; kalau materinya sedikit, lebih sedikit pun tidak apa
+- Tiap POIN satu baris pendek (sekitar 15 kata), bukan paragraf
+- RUMUS, CONTOH, dan INGAT boleh dilewati kalau bagian itu memang tidak punya
+- Rumus di antara tanda dolar $...$
+- Ditulis biasa saja, tanpa markdown (tanpa **tebal**, #, atau tabel)
+- Cukup tulis hasilnya, kodenya tidak usah ditampilkan
+- Isinya dari bahannya saja, tidak usah ditambah-tambahi
 - {bahasa}
 {catatan}{naskah}"""
 
