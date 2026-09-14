@@ -3,7 +3,7 @@ import { BookOpen, Printer, Shuffle } from "lucide-react";
 import { currentUser } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { listPaket } from "@/lib/practice/paket";
-import { kelompokBank } from "@/lib/practice/latihan";
+import { attemptSelesaiPaket, kelompokBank } from "@/lib/practice/latihan";
 import { PageHead, EmptyState } from "@/components/ui/AppShell";
 import { MulaiLatihan } from "./MulaiLatihan";
 import { aksesLatihan } from "@/lib/practice/akses";
@@ -68,6 +68,10 @@ export default async function LatihanPage({ searchParams }: { searchParams: Prom
               const selesai = r.filter((a) => a.status === "submitted");
               const jalan = r.find((a) => a.status === "in_progress");
               const terbaik = selesai.reduce<number | null>((m, a) => Math.max(m ?? 0, a.score?.total ?? 0), null);
+              /* Dicocokkan lewat id soal, bukan judul seperti chip skor di
+               * atas — ini harus sama persis dengan yang dipakai rute cetak,
+               * supaya label tombol tidak menjanjikan isi yang berbeda. */
+              const sudahKerja = attemptSelesaiPaket(riwayat, p) !== null;
               return (
                 <div key={p.id} className="card flex flex-col gap-3 p-5">
                   <div>
@@ -85,8 +89,9 @@ export default async function LatihanPage({ searchParams }: { searchParams: Prom
                   </div>
                   <div className="mt-auto flex items-center gap-2">
                     {boleh && <MulaiLatihan body={{ paketId: p.id }} label={selesai.length ? "Kerjakan lagi" : "Mulai"} />}
-                    <a className="btn btn-ghost !px-3" href={`/api/latihan/cetak?id=${p.id}`} target="_blank" rel="noreferrer" title="Cetak / unduh PDF">
-                      <Printer size={16} /> PDF
+                    <a className="btn btn-ghost !px-3" href={`/api/latihan/cetak?id=${p.id}`} target="_blank" rel="noreferrer"
+                      title={sudahKerja ? "PDF: soal, jawabanmu, kunci & pembahasan" : "PDF lembar soal (kunci muncul setelah kamu mengerjakan)"}>
+                      <Printer size={16} /> {sudahKerja ? "PDF + jawabanku" : "PDF"}
                     </a>
                   </div>
                 </div>

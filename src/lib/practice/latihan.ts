@@ -101,3 +101,40 @@ export async function ringkasAttempt(a: AttemptRecord, bank?: Map<string, BankQu
     total: ids.length, dijawab, benar, salah, kosong, terakhir, skor,
   };
 }
+
+/* ------------------------------------------------------------------ */
+/* Lembar cetak milik satu murid                                        */
+/* ------------------------------------------------------------------ */
+
+/** Attempt SELESAI terakhir milik murid untuk paket ini, kalau ada.
+ *
+ * Dicocokkan lewat daftar id soal, bukan judul: judul paket bisa diganti guru
+ * kapan saja, sedangkan susunan soal dibekukan ke formLayout saat attempt
+ * dibuat — jadi id soal itulah yang benar-benar menyatakan "attempt ini
+ * mengerjakan paket ini".
+ *
+ * Hanya yang berstatus submitted yang dihitung. Attempt yang masih berjalan
+ * sengaja dianggap belum mengerjakan: lembar bersama jawaban memuat kunci,
+ * dan mencetaknya di tengah ujian sama saja membocorkan kunci ke murid yang
+ * jamnya masih jalan. */
+export function attemptSelesaiPaket(attempts: AttemptRecord[], paket: Paket): AttemptRecord | null {
+  const kunciPaket = paket.questionIds.join(",");
+  const cocok = attempts.filter(
+    (a) => a.exam === "LATIHAN" && a.status === "submitted" &&
+      a.formLayout.flatMap((x) => x.questionIds).join(",") === kunciPaket,
+  );
+  if (!cocok.length) return null;
+  return cocok.reduce((a, b) => (a.startedAt >= b.startedAt ? a : b));
+}
+
+/** Jawaban murid apa adanya, dibuat terbaca untuk lembar cetak. */
+export function jawabanMuridTeks(q: BankQuestion, raw: unknown): string {
+  if (raw === undefined || raw === null || raw === "") return "";
+  if (Array.isArray(raw)) return raw.map(String).join(", ");
+  const teks = String(raw);
+  /* Untuk pilihan ganda yang tersimpan cuma id opsinya ("C"), sedangkan yang
+   * dibaca murid di lembar adalah kalimat opsinya — dua-duanya ditulis supaya
+   * tidak perlu bolak-balik mencocokkan huruf. */
+  const opsi = q.choices?.find((c) => c.id === teks);
+  return opsi ? `${opsi.id}. ${opsi.text}` : teks;
+}
