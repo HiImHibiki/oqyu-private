@@ -28,8 +28,32 @@ def _bersih(t):
 
 def urai(teks):
     """Kembalikan (daftar_soal, meta). Tiap soal punya kode, jenis, batang,
-    opsi, bobot, sub-soal, dan kunci bila ada."""
+    opsi, bobot, sub-soal, dan kunci bila ada.
+
+    Naskah bisa memuat beberapa set ("SET 1", "SET 2", …), masing-masing dengan
+    blok Kunci Jawaban dan Pembahasan sendiri. Dulu seluruh naskah dibaca
+    sebagai satu aliran: begitu "Kunci Jawaban" set 1 lewat, semua baris set 2
+    dianggap pembahasan — soal set 2 hilang, dan kuncinya (kode yang sama,
+    PG1…) menimpa kunci set 1. Sekarang tiap set diurai sendiri-sendiri.
+    """
     baris = teks.replace('\r', '').split('\n')
+    potongan, kini_set, kini_baris = [], 1, []
+    for b in baris:
+        m = SET.match(b)
+        if m:
+            potongan.append((kini_set, kini_baris)); kini_set, kini_baris = int(m.group(1)), []
+        else:
+            kini_baris.append(b)
+    potongan.append((kini_set, kini_baris))
+    potongan = [(n, br) for n, br in potongan if any(x.strip() for x in br)] or [(1, baris)]
+    soal, judul, n_kunci = [], '', 0
+    for n, br in potongan:
+        s, j, k = _urai_set(br, n)
+        soal += s; n_kunci += k; judul = judul or j
+    return soal, {'judul': judul, 'n_kunci': n_kunci, 'n_set': max([s['set'] for s in soal] or [1])}
+
+def _urai_set(baris, set_ini=1):
+    """Urai SATU set: soal, lalu blok Kunci Jawaban dan Pembahasan miliknya."""
     judul = next((b.strip() for b in baris[:4] if b.strip()), '')
     bagian_kunci, bagian_bahas = [], []
     isi, mode = [], 'soal'
@@ -41,7 +65,7 @@ def urai(teks):
     kunci = {k.upper(): _bersih(v) for k, v in PASANG.findall('\n'.join(bagian_kunci))}
     bahas = {k.upper(): _bersih(v) for k, v in PASANG.findall('\n'.join(bagian_bahas))}
 
-    soal, kini, huruf, set_ini = [], None, None, 1
+    soal, kini, huruf = [], None, None
     def tutup():
         nonlocal kini
         if kini:
@@ -50,8 +74,6 @@ def urai(teks):
         kini = None
 
     for b in isi:
-        m = SET.match(b)
-        if m: tutup(); set_ini = int(m.group(1)); continue
         if BAGIAN.match(b): tutup(); continue
         m = BUTIR.match(b)
         if m:
@@ -92,7 +114,7 @@ def urai(teks):
         for sub in s['sub']:
             k = s['kode'] + sub['label'].replace('.', '.')
             if k.upper() in kunci: sub['kunci'] = kunci[k.upper()]
-    return soal, {'judul': judul, 'n_kunci': len(kunci), 'n_set': max([s['set'] for s in soal] or [1])}
+    return soal, judul, len(kunci)
 
 def ke_naskah(daftar, judul='LEMBAR KERJA'):
     """Kebalikannya: susun soal terpilih jadi naskah siap ditempel ke
