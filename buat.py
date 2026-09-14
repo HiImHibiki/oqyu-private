@@ -626,6 +626,8 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
 
         # 5. simpan salinan mentah + ambil PDF
         judul = judul.strip() or (topik.strip() or f'Latihan {time.strftime("%d %b %H:%M")}')
+        with KUNCI:
+            TUGAS.setdefault(jid, {})['isian'] = {'mapel': mapel or '', 'kelas': str(kelas or ''), 'topik': (topik or '').strip() or judul}
         kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
                    sekolah=sekolah, kelas=str(kelas or '') or (jenjang or ''),
                    tanggal=tanggal or time.strftime('%d%m'),
@@ -924,7 +926,9 @@ function barisTugas(t) {
   else if (s.pdf) {
     const nama = s.pdf.split('/').pop();
     kanan = '<a class=tombolCetak href="/hasil?f=' + encodeURIComponent(nama)
-          + '" target=_top>Lihat &amp; Cetak</a>';
+          + '" target=_top>Lihat &amp; Cetak</a>'
+          + (t.terbit ? '<a class=tombolCetak href="' + t.terbit + '" target=_blank>Di Practice ✓</a>'
+             : s.bisa_terbit ? '<button type=button class="mini terbit" data-jid="' + t.jid + '">Ke Practice</button>' : '');
   } else if (q && q.nomor) {
     kanan = '<span class=kcl>antrean ke-' + q.nomor
           + (q.kerja ? ' &middot; ' + q.kerja.nama + ' ' + Math.floor(q.kerja.detik/60) + ' mnt' : '')
@@ -941,6 +945,18 @@ function barisTugas(t) {
   if (bh) bh.onclick = async () => {
     bh.disabled = true; bh.textContent = 'menghentikan…';
     try { await fetch('/batal?jid=' + t.jid); } catch (e) {}
+  };
+  const bt = el.querySelector('.terbit');
+  if (bt) bt.onclick = async () => {
+    bt.disabled = true; bt.textContent = 'mengirim…';
+    try {
+      const r = await fetch('/terbitkan', {method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams({jid: t.jid})});
+      const j = await r.json();
+      if (j.ok) { t.terbit = j.admin || j.url; barisTugas(t); }
+      else { bt.textContent = 'gagal'; bt.title = j.galat || ''; alert(j.galat || 'Gagal menerbitkan'); bt.disabled = false; }
+    } catch (e) { bt.textContent = 'gagal'; bt.disabled = false; }
   };
 }
 

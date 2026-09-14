@@ -392,6 +392,9 @@ class H(BaseHTTPRequestHandler):
             with buat.KUNCI:
                 d = dict(buat.TUGAS.get(jid, {'langkah': [], 'maju': 0, 'selesai': True,
                                               'galat': 'tugas tidak dikenal'}))
+            # Naskahnya sendiri tidak ikut (bisa puluhan KB tiap 1,5 detik);
+            # cukup penanda bahwa lembar ini bisa diterbitkan ke Exact Practice.
+            d['bisa_terbit'] = bool(d.pop('naskah', None)); d.pop('isian', None)
             # Ikutkan keadaan antrean supaya "menunggu" bisa menyebut nomor,
             # apa yang sedang dikerjakan, dan sudah berapa lama.
             if not d.get('selesai'):
@@ -753,6 +756,29 @@ class H(BaseHTTPRequestHandler):
             self.send_response(200); self.send_header('Content-Type','image/png')
             self.send_header('Content-Length',str(len(png))); self.end_headers(); self.wfile.write(png); return
 
+        if u.path == '/terbitkan':
+            # Kirim lembar ke Exact Practice sebagai paket latihan online.
+            # Form biasa (urlencoded): jid (tugas baru) ATAU f (nama PDF di
+            # Desktop), plus judul/durasi opsional.
+            import buat, terbit as _tb
+            panjang = int(self.headers.get('Content-Length') or 0)
+            medan = {k: v[0] for k, v in urllib.parse.parse_qs(self.rfile.read(panjang).decode('utf-8', 'replace')).items()}
+            jid = medan.get('jid', ''); nama_pdf = medan.get('f', '')
+            teks = None; isian = {}
+            if jid:
+                t = buat.TUGAS.get(jid) or {}
+                teks = t.get('naskah'); nama_pdf = nama_pdf or os.path.basename(t.get('pdf') or '')
+                isian = t.get('isian') or {}
+            if not teks and nama_pdf:
+                teks = _tb.naskah_untuk(nama_pdf)
+            if not teks:
+                b = json.dumps({'galat': 'Naskah lembar ini tidak ditemukan — hanya lembar yang dibuat lewat Exact Worksheet yang bisa diterbitkan.'}).encode()
+            else:
+                b = json.dumps(_tb.terbitkan(teks, nama_pdf=nama_pdf, judul=medan.get('judul', ''),
+                                             durasi=medan.get('durasi'), mapel=isian.get('mapel', ''),
+                                             kelas=isian.get('kelas', ''), topik=isian.get('topik', ''))).encode()
+            self.send_response(200); self.send_header('Content-Type', 'application/json')
+            self.send_header('Content-Length', str(len(b))); self.end_headers(); self.wfile.write(b); return
         if u.path == '/cetak':
             panjang = int(self.headers.get('Content-Length') or 0)
             mentah = self.rfile.read(panjang) if panjang else b''

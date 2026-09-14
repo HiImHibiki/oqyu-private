@@ -349,6 +349,7 @@ def halaman_daftar(cari='', jumlah=24):
                   f'<div class=aksi>'
                   f'<button type=button class=mini data-cetak="{a}">Cetak</button>'
                   f'<a class=mini href="/berkas?unduh=1&amp;f={e}" download>Kirim</a>'
+                  f'<button type=button class=mini data-terbit="{a}" title="Terbitkan sebagai paket latihan online di Exact Practice">Practice</button>'
                   f'</div></div>')
     if not kartu:
         kartu = ('<div class=kosong>Tidak ada lembar yang cocok.</div>' if cari else
@@ -405,6 +406,27 @@ untuk memilih halaman, atau pakai tombol di bawahnya.</div>
       b.textContent = 'gagal'; kabar.textContent = e.message;
     }}
     setTimeout(() => {{ b.disabled = false; b.textContent = 'Cetak'; }}, 2500);
+  }});
+  document.querySelectorAll('[data-terbit]').forEach(b => b.onclick = async () => {{
+    const nama = b.dataset.terbit;
+    b.disabled = true; b.textContent = 'mengirim…';
+    try {{
+      const r = await fetch('/terbitkan', {{method: 'POST',
+        headers: {{'Content-Type': 'application/x-www-form-urlencoded'}},
+        body: new URLSearchParams({{f: nama}})}});
+      const j = await r.json();
+      if (j.ok) {{
+        b.textContent = 'Terbit ✓';
+        kabar.innerHTML = nama + ' jadi paket "' + j.paket.judul + '" (' + j.jumlah + ' soal'
+          + (j.dilewati ? ', ' + j.dilewati + ' esai hanya di PDF' : '') + ') — '
+          + '<a href="' + (j.admin || j.url) + '" target=_blank>buka di Exact Practice</a>';
+        return;
+      }}
+      b.textContent = 'gagal'; kabar.textContent = j.galat || 'Gagal menerbitkan';
+    }} catch (e) {{
+      b.textContent = 'gagal'; kabar.textContent = e.message;
+    }}
+    setTimeout(() => {{ b.disabled = false; b.textContent = 'Practice'; }}, 3000);
   }});
 }})();
 </script>"""
