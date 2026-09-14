@@ -84,6 +84,8 @@ const perluPilih = params.get('tv') !== '1' && params.get('murid') !== '1' && !w
  * Id murid = id akunnya, bukan perangkatnya: ganti HP tetap orang yang sama,
  * kanvas "Tanya · Nama" dan antreannya ikut. Diisi setelah masuk.
  */
+const ALAMAT_PRACTICE = 'https://practice.exactprintsolution.com'
+
 let muridId = ''
 let namaSaya = ''
 /** Apa yang diikuti grup ini: null = kanvas sendiri/grup (bawaan), 'editor:id' | 'sketsa:id'. */
@@ -1169,6 +1171,13 @@ function pasangBilahMurid() {
 
   pasangGrup()
   el('tombol-ekspor').onclick = () => void eksporPdfSaya()
+  /* Exact Practice menumpang akun Canvas: token sesi ini ditukar jadi sesi
+   * Practice di sana, jadi murid tidak perlu masuk dua kali. */
+  el('tombol-latihan').onclick = () => {
+    const sesi = sesiAktif()
+    const tujuan = sesi ? `${ALAMAT_PRACTICE}/api/auth/canvas?sesi=${encodeURIComponent(sesi)}` : ALAMAT_PRACTICE
+    window.open(tujuan, '_blank', 'noopener')
+  }
 }
 
 /**
