@@ -47,6 +47,7 @@ final class Delegate: NSObject, NSApplicationDelegate {
 
         tambah("Buka aplikasi", #selector(bukaHalaman))
         tambah("Buka folder hasil", #selector(bukaHasil))
+        tambah("Restart Chrome kendali", #selector(ulangChrome))
         menu.addItem(.separator())
 
         mServer.title = "Server: memeriksa…"
@@ -125,6 +126,15 @@ final class Delegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func bukaHalaman() { NSWorkspace.shared.open(url("/")) }
+
+    /// Chrome kendali macet (menu tak terbuka, Gemini menolak terus): tutup dan
+    /// nyalakan lagi lewat server, lalu kabari hasilnya.
+    @objc func ulangChrome() {
+        minta("/chrome/ulang", timeout: 60) { j in
+            if let g = j?["galat"] as? String { self.kabar("Chrome gagal dinyalakan ulang", String(g.prefix(120))) }
+            else { self.kabar("Chrome kendali", (j?["pesan"] as? String) ?? "Dinyalakan ulang.") }
+        }
+    }
 
     @objc func bukaHasil() {
         NSWorkspace.shared.open(URL(fileURLWithPath: NSHomeDirectory() + "/Desktop"))

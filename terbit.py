@@ -9,15 +9,24 @@ diterbitkan dari tab Hasil — tanpa memanggil Gemini lagi.
 import glob, json, os, re, urllib.request, urllib.error
 import lokasi
 
-SETELAN = lokasi.data('setelan.json')
+# Berkas sendiri, BUKAN setelan.json: setelan.simpan() menulis ulang berkas
+# itu hanya dengan medan borang, jadi kunci yang dititipkan di sana hilang
+# begitu pemakai menyimpan pengaturan — itulah yang terjadi 2026-09-14.
+BERKAS = lokasi.data('practice.json')
 
 
 def _setelan():
-    try:
-        with open(SETELAN, encoding='utf-8') as f:
-            return json.load(f)
-    except (OSError, ValueError):
-        return {}
+    """{'url': ..., 'kunci': ...} dari practice.json (fallback: setelan.json lama)."""
+    for jalur, peta in ((BERKAS, {'url': 'url', 'kunci': 'kunci'}),
+                        (lokasi.data('setelan.json'), {'url': 'practice_url', 'kunci': 'practice_kunci'})):
+        try:
+            with open(jalur, encoding='utf-8') as f:
+                d = json.load(f)
+            if d.get(peta['kunci']):
+                return {'practice_url': d.get(peta['url']), 'practice_kunci': d.get(peta['kunci'])}
+        except (OSError, ValueError):
+            continue
+    return {}
 
 
 def _dasar(nama_pdf):
@@ -52,12 +61,11 @@ def _mapel_dari_kode(kode):
 def meta_dari_nama(dasar):
     """Balikan nama_berkas(): MAPEL[-SEKOLAH]-KELAS-TGL-N."""
     bagian = dasar.split('-')
-    mapel = kelas = ''
-    if len(bagian) >= 4 and bagian[-1].isdigit() and bagian[-2].isdigit():
-        mapel = _mapel_dari_kode(bagian[0]); kelas = bagian[-3]
-    elif bagian:
-        mapel = _mapel_dari_kode(bagian[0])
-    return mapel, kelas
+    # Hanya nama berpola kode (MATH-7-1409-2) yang dibaca; judul bebas seperti
+    # "Uji Dua PDF Lagi" bukan mata pelajaran.
+    if len(bagian) >= 4 and bagian[-1].isdigit() and bagian[-2].isdigit() and ' ' not in bagian[0]:
+        return _mapel_dari_kode(bagian[0]), bagian[-3]
+    return '', ''
 
 
 def terbitkan(teks, nama_pdf='', judul='', durasi=None, mapel='', kelas='', topik=''):
@@ -67,7 +75,7 @@ def terbitkan(teks, nama_pdf='', judul='', durasi=None, mapel='', kelas='', topi
     url = (s.get('practice_url') or os.environ.get('EXACT_PRACTICE_URL') or 'http://127.0.0.1:8770').rstrip('/')
     kunci = s.get('practice_kunci') or os.environ.get('EXACT_PRACTICE_KUNCI') or ''
     if not kunci:
-        return {'galat': 'Kunci Exact Practice belum diatur (practice_kunci di setelan.json).'}
+        return {'galat': 'Kunci Exact Practice belum diatur — isi "kunci" di practice.json (folder data Exact Worksheet).'}
     butir, meta = naskah.urai(teks or '')
     if not butir:
         return {'galat': 'Naskah tidak berisi soal yang bisa diurai.'}
@@ -79,7 +87,8 @@ def terbitkan(teks, nama_pdf='', judul='', durasi=None, mapel='', kelas='', topi
     kiriman = {
         'judul': (judul or meta.get('judul') or dasar or 'Lembar latihan').strip(),
         'mapel': mapel or m2, 'kelas': kelas or k2, 'topik': topik or judul or meta.get('judul') or '',
-        'durasiMenit': int(durasi) if str(durasi or '').isdigit() else max(10, 2 * len(butir)),
+        # Kosong = Practice menghitung sendiri per set (2 menit x jumlah soal set itu).
+        'durasiMenit': int(durasi) if str(durasi or '').isdigit() else None,
         'butir': butir, 'pdf': pdf, 'pdfKunci': pdf_kunci,
     }
     req = urllib.request.Request(f'{url}/api/latihan/terbit', data=json.dumps(kiriman).encode(),

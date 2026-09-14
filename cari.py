@@ -429,6 +429,21 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/chrome/ulang':
+            # Tombol darurat: Chrome kendali ditutup lalu dinyalakan lagi dari
+            # keadaan bersih (menu macet, dialog nyangkut, Gemini menolak terus).
+            # Tugas yang sedang berjalan akan gagal dan harus diulang.
+            import cdp as _cdp, buat as _b
+            sedang = any(not t.get('selesai') for t in _b.TUGAS.values())
+            try:
+                _cdp.nyalakan_ulang()
+                pesan = 'Chrome dinyalakan ulang.' + (' Tugas yang tadi berjalan perlu diulang.' if sedang else '')
+                b = json.dumps({'ok': True, 'pesan': pesan}).encode()
+            except Exception as e:
+                b = json.dumps({'galat': f'{type(e).__name__}: {e}'}).encode()
+            self.send_response(200); self.send_header('Content-Type', 'application/json')
+            self.send_header('Content-Length', str(len(b))); self.end_headers(); self.wfile.write(b); return
+
         if u.path == '/layar':
             # Potret tab kendali. Chrome-nya tanpa jendela, jadi ini satu-satunya
             # cara melihat apa yang sedang terjadi di sana saat sebuah lembar

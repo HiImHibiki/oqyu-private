@@ -1044,6 +1044,17 @@ LAYAR = """
     const buka = kotak.hidden;
     kotak.hidden = !buka;
     tb.textContent = buka ? 'Sembunyikan layar Gemini' : 'Lihat layar Gemini';
+  };
+  const bc = document.getElementById('btnChrome');
+  if (bc) bc.onclick = async () => {
+    if (!confirm('Nyalakan ulang Chrome kendali? Tugas yang sedang berjalan akan gagal dan perlu diulang.')) return;
+    bc.disabled = true; bc.textContent = 'Menyalakan ulang…';
+    try {
+      const j = await (await fetch('/chrome/ulang')).json();
+      bc.textContent = j.ok ? 'Chrome siap' : 'Gagal';
+      if (j.galat) alert(j.galat); else if (j.pesan) console.log(j.pesan);
+    } catch (e) { bc.textContent = 'Gagal'; }
+    setTimeout(() => { bc.disabled = false; bc.textContent = 'Restart Chrome'; }, 4000);
     if (buka) { segarkan(); timer = setInterval(segarkan, 2500); }
     else { clearInterval(timer); timer = null; kabar.textContent = ''; }
   };
@@ -1161,6 +1172,7 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
   <div id=antrean></div>
   <div class=r style="margin-top:10px">
     <button type=button id=btnLayar class=abu>Lihat layar Gemini</button>
+    <button type=button id=btnChrome class=abu title="Tutup dan nyalakan lagi Chrome kendali — pakai kalau Gemini macet/menolak terus">Restart Chrome</button>
     <span class=kcl id=kabarLayar style="margin:0"></span>
   </div>
   <div id=layar class=layar hidden><img id=imgLayar alt="layar Gemini"></div>
@@ -1288,6 +1300,7 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
   <div id=antrean></div>
   <div class=r style="margin-top:10px">
     <button type=button id=btnLayar class=abu>Lihat layar Gemini</button>
+    <button type=button id=btnChrome class=abu title="Tutup dan nyalakan lagi Chrome kendali — pakai kalau Gemini macet/menolak terus">Restart Chrome</button>
     <span class=kcl id=kabarLayar style="margin:0"></span>
   </div>
   <div id=layar class=layar hidden><img id=imgLayar alt="layar Gemini"></div>
@@ -1388,6 +1401,7 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
   <div id=antrean></div>
   <div class=r style="margin-top:10px">
     <button type=button id=btnLayar class=abu>Lihat layar Gemini</button>
+    <button type=button id=btnChrome class=abu title="Tutup dan nyalakan lagi Chrome kendali — pakai kalau Gemini macet/menolak terus">Restart Chrome</button>
     <span class=kcl id=kabarLayar style="margin:0"></span>
   </div>
   <div id=layar class=layar hidden><img id=imgLayar alt="layar Gemini"></div>
