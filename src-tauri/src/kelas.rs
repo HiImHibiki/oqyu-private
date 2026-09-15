@@ -194,6 +194,13 @@ pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
             .and_then(|v| v.parse().ok())
             .filter(|z| (50..=100).contains(z))
             .unwrap_or(88);
+        // Ketukan dua jari = undo — bisa dimatikan guru dari panel Goresan
+        // kalau lebih sering salah pencet daripada dipakai betulan.
+        let dua_jari_undo: bool = c
+            .query_row("SELECT value FROM settings WHERE key = 'dua_jari_undo_kanvas'", [], |r| r.get::<_, String>(0))
+            .ok()
+            .map(|v| v != "false")
+            .unwrap_or(true);
         Ok(json!({
             "grup": grup.map(|(id, nama, target)| json!({ "id": id, "nama": nama, "target": target })),
             "tanya": tanya.map(|(id, status, dibuat, teks)| json!({ "id": id, "status": status, "dibuat": dibuat, "teks": teks, "urutan": urutan.map(|u| u + 1) })),
@@ -201,6 +208,7 @@ pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
             "sketsa": sketsa,
             "kanvas": kanvas,
             "zoom": zoom,
+            "duaJariUndo": dua_jari_undo,
         }))
     })
     .await;

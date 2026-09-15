@@ -127,3 +127,20 @@ export async function muatKunciGambar(): Promise<boolean> {
 export async function simpanKunciGambar(on: boolean): Promise<void> {
   await setSettingJSON(KUNCI_GAMBAR_TERKUNCI, on)
 }
+
+/**
+ * Ketukan dua jari untuk undo (konvensi Procreate), di kanvas guru maupun
+ * kanvas murid. Bawaan menyala, tapi tangan yang bertumpu atau dua jari yang
+ * menyentuh sekilas saat mencoret kadang salah terhitung sebagai ketukan dan
+ * membatalkan goresan yang baru dibuat — guru bisa mematikannya kalau ini
+ * lebih sering mengganggu daripada membantu.
+ */
+export const KUNCI_DUA_JARI_UNDO = 'dua_jari_undo_kanvas'
+
+export async function muatDuaJariUndo(): Promise<boolean> {
+  return (await getSettingJSON<boolean>(KUNCI_DUA_JARI_UNDO, true)) !== false
+}
+
+export async function simpanDuaJariUndo(on: boolean): Promise<void> {
+  await setSettingJSON(KUNCI_DUA_JARI_UNDO, on)
+}

@@ -95,11 +95,13 @@ import { ukuranTabel, type DefinisiGrafik, type DefinisiTabel, type MetaGambar }
 import {
   MODE_PENGHAPUS_BAWAAN,
   muatAutoBentuk,
+  muatDuaJariUndo,
   muatKunciGambar,
   muatModePenghapus,
   muatSetelanAlat,
   setelanBawaan,
   simpanAutoBentuk,
+  simpanDuaJariUndo,
   simpanKunciGambar,
   simpanModePenghapus,
   simpanSetelanAlat,
@@ -254,6 +256,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     void muatModePenghapus().then(setModePenghapus)
     void muatAutoBentuk().then(setAutoBentuk)
     void muatKunciGambar().then(setKunciGambar)
+    void muatDuaJariUndo().then(setDuaJariUndo)
   }, [])
 
   /** Antrian pertanyaan murid — untuk lencana di rel dan bunyi saat ada yang baru. */
@@ -560,6 +563,8 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   const [autoBentuk, setAutoBentuk] = useState(false)
   /** Gambar tempelan (PDF, foto) kebal laso; grafik/tabel tetap bisa dipilih. */
   const [kunciGambar, setKunciGambar] = useState(true)
+  /** Ketukan dua jari = undo (lihat setelanAlat.ts). Bisa dimatikan dari panel Goresan. */
+  const [duaJariUndo, setDuaJariUndo] = useState(true)
   /**
    * Yang baru saja ditempel dikecualikan selama masih terpilih. Tanpa ini,
    * pesan "Pasted. Drag to move" berbohong: gambarnya digambar lengkap dengan
@@ -2323,7 +2328,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       if (sentuh.current.size === 0 && gesturKetuk.current) {
         const g = gesturKetuk.current
         gesturKetuk.current = null
-        if (!g.bergeser && g.maksJari === 2 && performance.now() - g.mulai < AMBANG_DURASI_KETUK) {
+        if (duaJariUndo && !g.bergeser && g.maksJari === 2 && performance.now() - g.mulai < AMBANG_DURASI_KETUK) {
           urungkan()
           beriTahu('Undo')
         }
@@ -4219,6 +4224,23 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
             style={{ accentColor: 'var(--accent)' }}
           />
           Auto shapes
+        </label>
+
+        <label
+          className="ex-label flex items-center gap-2"
+          style={{ color: 'var(--ink-soft)' }}
+          title="A quick two-finger tap undoes the last stroke (Procreate-style) — on your canvas and your students'. Turn off if a resting hand or a stray second finger keeps undoing strokes by accident."
+        >
+          <input
+            type="checkbox"
+            checked={duaJariUndo}
+            onChange={(e) => {
+              setDuaJariUndo(e.target.checked)
+              void simpanDuaJariUndo(e.target.checked)
+            }}
+            style={{ accentColor: 'var(--accent)' }}
+          />
+          Two-finger undo
         </label>
             </>
           )}

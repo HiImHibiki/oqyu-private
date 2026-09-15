@@ -939,8 +939,10 @@ async function segarkanSaya() {
       sketsa?: string | null
       kanvas?: string | null
       zoom?: number
+      duaJariUndo?: boolean
     }>(`/api/kelas/saya?murid=${encodeURIComponent(muridId)}`)
     terapkanIzin(r.boleh === true, r.sketsa ?? null)
+    if (typeof r.duaJariUndo === 'boolean') duaJariUndoAktif = r.duaJariUndo
     if (typeof r.zoom === 'number') {
       const baru = Math.max(0.5, Math.min(1, r.zoom / 100))
       if (baru !== zoomMurid) {
@@ -1741,7 +1743,7 @@ function pasangGestur() {
     if (jari.size === 0 && gesturKetuk) {
       const g = gesturKetuk
       gesturKetuk = null
-      if (modeCoret && !g.bergeser && g.maksJari === 2 && performance.now() - g.mulai < AMBANG_KETUK_MS) {
+      if (duaJariUndoAktif && modeCoret && !g.bergeser && g.maksJari === 2 && performance.now() - g.mulai < AMBANG_KETUK_MS) {
         urungkanKu()
       }
     }
@@ -1773,6 +1775,8 @@ function pasangGestur() {
 
 /** Izin dari guru: boleh mencoret, dan kanvas mana. */
 let izinCoret: { boleh: boolean; sketsa: string | null } = { boleh: false, sketsa: null }
+/** Ketukan dua jari = undo — disetel guru, dikirim lewat /api/kelas/saya. */
+let duaJariUndoAktif = true
 let modeCoret = false
 let warnaCoret = 'ink'
 let ukuranCoret = 5
