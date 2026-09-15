@@ -17,9 +17,10 @@ use axum::{
     body::Body,
     extract::{
         ws::{Message, WebSocket, WebSocketUpgrade},
-        Path, Query, State,
+        ConnectInfo, Path, Query, Request, State,
     },
     http::{header, HeaderMap, StatusCode},
+    middleware::Next,
     response::{IntoResponse, Response},
     routing::get,
     Json, Router,
@@ -231,7 +232,10 @@ pub async fn share_start(app: AppHandle, pin: Option<String>) -> Result<InfoBerb
     }
     let listener = listener.ok_or("No free port between 4747 and 4756.")?;
 
-    let (tx, _) = broadcast::channel::<String>(512);
+    // Tiap titik pena adalah satu pesan; beberapa murid menulis bersamaan
+    // sementara satu klien lambat mengunduh pesan berfoto bisa melewati
+    // ratusan pesan dalam sedetik — yang tertinggal ditangani di `layani`.
+    let (tx, _) = broadcast::channel::<String>(4096);
     let hub = Arc::new(Hub {
         // 4–8 digit: di jaringan rumah 4 cukup; begitu dibuka lewat internet,
         // pengguna diarahkan memakai 6–8 digit (lihat pembatas percobaan di bawah).
@@ -257,7 +261,7 @@ pub async fn share_start(app: AppHandle, pin: Option<String>) -> Result<InfoBerb
     });
 
     tauri::async_runtime::spawn(async move {
-        let hasil = axum::serve(listener, router)
+        let hasil = axum::serve(listener, router.into_make_service_with_connect_info::<SocketAddr>())
             .with_graceful_shutdown(async {
                 let _ = terima_matikan.await;
             })
@@ -350,6 +354,7 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/ws", get(ws_masuk))
         .fallback(aset_lain)
         .layer(axum::middleware::from_fn(cors))
+        .layer(axum::middleware::from_fn(tandai_asal))
         // Bawaannya 2 MB — sketsa dengan foto atau halaman PDF jauh lebih besar
         // dari itu, dan tablet menyimpan seluruh sketsa lewat jalur ini.
         .layer(axum::extract::DefaultBodyLimit::max(512 * 1024 * 1024))
@@ -391,14 +396,25 @@ pub struct QueryPin {
 }
 
 /// Percobaan PIN yang gagal per alamat asal. Lewat Cloudflare, alamat asli
-/// klien ada di header `CF-Connecting-IP`; di jaringan lokal dipakai
-/// `X-Forwarded-For` kalau ada, kalau tidak satu ember bersama.
+/// klien ada di header `CF-Connecting-IP`; di jaringan lokal dipakai alamat
+/// IP sambungannya sendiri (`x-exact-asal`, diisi `tandai_asal`).
 static GAGAL_PIN: Mutex<Option<HashMap<String, (u32, std::time::Instant)>>> = Mutex::new(None);
 const BATAS_GAGAL: u32 = 12;
 const JENDELA_GAGAL: Duration = Duration::from_secs(10 * 60);
 
+/// Catat alamat IP lawan sambungan di header, supaya pembatas percobaan PIN
+/// memisahkan tiap perangkat di Wi-Fi lokal. Dulu semua perangkat lokal
+/// berbagi satu ember: satu HP murid dengan PIN basi yang terus mencoba
+/// mengunci semua perangkat lain — termasuk foto pertanyaan di layar guru.
+async fn tandai_asal(ConnectInfo(alamat): ConnectInfo<SocketAddr>, mut req: Request, next: Next) -> Response {
+    if let Ok(v) = alamat.ip().to_string().parse() {
+        req.headers_mut().insert("x-exact-asal", v);
+    }
+    next.run(req).await
+}
+
 fn asal_klien(headers: &HeaderMap) -> String {
-    for nama in ["cf-connecting-ip", "x-forwarded-for", "x-real-ip"] {
+    for nama in ["cf-connecting-ip", "x-forwarded-for", "x-real-ip", "x-exact-asal"] {
         if let Some(v) = headers.get(nama).and_then(|v| v.to_str().ok()) {
             let pertama = v.split(',').next().unwrap_or("").trim();
             if !pertama.is_empty() {
@@ -1109,9 +1125,15 @@ async fn layani(soket: WebSocket, hub: Arc<Hub>, klien: Klien) {
                             break;
                         }
                     }
-                    // Tertinggal: klien lambat kehilangan beberapa pesan langsung;
-                    // pesan berikutnya membawa keadaan terbaru, jadi lanjut saja.
-                    Err(broadcast::error::RecvError::Lagged(_)) => {}
+                    // Tertinggal: klien lambat kehilangan beberapa pesan langsung.
+                    // Goresan yang sudah selesai ('ubah') ikut hilang, bukan
+                    // cuma titik pratinjau — beri tahu supaya ia memuat ulang
+                    // kanvasnya dari simpanan, bukan menunggu perubahan berikutnya.
+                    Err(broadcast::error::RecvError::Lagged(n)) => {
+                        if tulis.send(Message::Text(json!({ "t": "tertinggal", "n": n }).to_string().into())).await.is_err() {
+                            break;
+                        }
+                    }
                     Err(_) => break,
                 }
             }

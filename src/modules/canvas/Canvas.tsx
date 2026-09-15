@@ -1984,6 +1984,12 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   useEffect(
     () =>
       dengarkanLangsung((p) => {
+        // Server memberi tahu sambungan ini sempat tertinggal: goresan murid
+        // yang terlewat sudah ada di simpanan, ambil dari sana.
+        if (p.t === 'tertinggal') {
+          void muatUlangGabung()
+          return
+        }
         if (p.idKanvas !== idKanvas) return
         const peta = goresanJauh.current
         switch (p.t) {
@@ -2055,7 +2061,7 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
         }
         mintaGambarAktif()
       }),
-    [idKanvas, mintaGambarAktif],
+    [idKanvas, mintaGambarAktif, muatUlangGabung],
   )
 
   // Jaring pengaman: tiap lima detik cocokkan stempel waktu di database. Kalau

@@ -38,7 +38,7 @@ static HITUNG_ALAMAT: std::sync::Mutex<Option<std::collections::HashMap<String, 
     std::sync::Mutex::new(None);
 
 pub fn alamat_klien(headers: &HeaderMap) -> String {
-    for nama in ["cf-connecting-ip", "x-forwarded-for", "x-real-ip"] {
+    for nama in ["cf-connecting-ip", "x-forwarded-for", "x-real-ip", "x-exact-asal"] {
         if let Some(v) = headers.get(nama).and_then(|v| v.to_str().ok()) {
             let pertama = v.split(',').next().unwrap_or("").trim();
             if !pertama.is_empty() {

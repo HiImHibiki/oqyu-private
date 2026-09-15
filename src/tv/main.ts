@@ -474,6 +474,11 @@ function terima(p: PesanLangsung) {
     terimaBahas(p.tanya as { murid: string; nama: string; anggota?: string[]; grup?: string | null })
     return
   }
+  if (p.t === 'tertinggal') {
+    // Sambungan ini sempat tertinggal; yang terlewat sudah tersimpan di server.
+    jadwalkanMuatUlang()
+    return
+  }
   if (p.t === 'izin') {
     if (p.murid === muridId) terapkanIzin(p.boleh === true, (p.sketsa as string | null) ?? null)
     return
