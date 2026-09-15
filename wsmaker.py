@@ -16,10 +16,38 @@ ALAMAT = f'http://localhost:{PORT_WS}/wsm/index.html'
 
 class GagalWS(Exception): pass
 
+# prompt-builder.js mengenali mata pelajaran lewat KUNCI SLUG ('fisika',
+# 'bahasa-indonesia'), bukan nama yang diketik guru. Apa pun yang tidak cocok
+# diam-diam jatuh ke 'matematika' — perintahnya lalu berkata "Buatkan naskah
+# soal Matematika" dan membawa daftar diagram matematika, padahal yang diminta
+# Fisika. Nama yang diketik dipetakan dulu ke slugnya di sini.
+SLUG_MAPEL = {
+    'matematika': 'matematika', 'mathematics': 'matematika', 'math': 'matematika',
+    'maths': 'matematika', 'mtk': 'matematika',
+    'fisika': 'fisika', 'physics': 'fisika',
+    'kimia': 'kimia', 'chemistry': 'kimia',
+    'biologi': 'biologi', 'biology': 'biologi',
+    'bahasa indonesia': 'bahasa-indonesia', 'bahasa-indonesia': 'bahasa-indonesia',
+    'b indonesia': 'bahasa-indonesia', 'b. indonesia': 'bahasa-indonesia',
+    'indonesia': 'bahasa-indonesia', 'bindo': 'bahasa-indonesia',
+    'bahasa inggris': 'bahasa-inggris', 'bahasa-inggris': 'bahasa-inggris',
+    'b inggris': 'bahasa-inggris', 'b. inggris': 'bahasa-inggris',
+    'inggris': 'bahasa-inggris', 'english': 'bahasa-inggris',
+}
+
+def slug_mapel(nama):
+    """Nama mapel yang diketik guru -> kunci SUBJECT_PRESETS prompt-builder.js.
+
+    Yang tidak dikenali dikembalikan apa adanya: prompt-builder.js sendiri yang
+    memutuskan (dan jatuh ke matematika), jadi perilaku lama tidak berubah.
+    """
+    k = re.sub(r'\s+', ' ', (nama or '').strip().lower())
+    return SLUG_MAPEL.get(k, nama or 'matematika')
+
 def perintah_baku(mapel='Matematika'):
     """Ambil perintah AI dari prompt-builder.js milik aplikasi itu sendiri,
     supaya tidak pernah kedaluwarsa terhadap versi aplikasinya."""
-    r = subprocess.run(['node', 'default-prompt.js', mapel],
+    r = subprocess.run(['node', 'default-prompt.js', slug_mapel(mapel)],
                        cwd=APP, capture_output=True, timeout=60)
     t = r.stdout.decode('utf-8', 'replace')
     if not t.strip():
