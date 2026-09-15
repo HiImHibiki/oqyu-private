@@ -53,7 +53,7 @@ printf '{"url": "http://127.0.0.1:8770", "kunci": "%s"}\n' "$KUNCI" > ~/Library/
 ```
 2.4 Uji: buat satu topik di `http://localhost:7790/buat` → PDF muncul di Desktop. Menu bar **EW** ada tombol Restart Chrome / Restart aplikasi.
 
-2.5 HP/tablet (aplikasi Android Exact Worksheet): pilih Mac ini — preset **Velisia** `100.70.73.4` ada di aplikasi; Mac lain pilih "Mac lain" + `tailscale ip -4`.
+2.5 HP/tablet (aplikasi Android Exact Worksheet): pilih Mac ini — preset **Rico** `100.83.25.73`, **Rico 2** `100.92.80.116`, dan **Velisia** `100.70.73.4` ada di aplikasi; Mac lain pilih "Mac lain" + `tailscale ip -4`. Menambah preset: `android/res/layout/utama.xml` + `IP_*` di `Utama.java`, lalu `./android/bangun.sh`.
 
 ## 3. Exact Canvas
 ```bash

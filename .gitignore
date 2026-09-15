@@ -33,4 +33,5 @@ naskah/
 cadangan-soal-*.sql.gz
 android/build/
 android/*.apk
+android/*.idsig
 thumb/

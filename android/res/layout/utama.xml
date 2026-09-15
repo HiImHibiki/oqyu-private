@@ -17,6 +17,8 @@
     android:layout_width="match_parent" android:layout_height="wrap_content">
     <RadioButton android:id="@+id/macRico" android:text="Mac mini Rico — 100.83.25.73"
       android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <RadioButton android:id="@+id/macRico2" android:text="Mac mini Rico 2 — 100.92.80.116"
+      android:layout_width="match_parent" android:layout_height="wrap_content"/>
     <RadioButton android:id="@+id/macVelisia" android:text="Mac mini Velisia — 100.70.73.4"
       android:layout_width="match_parent" android:layout_height="wrap_content"/>
     <RadioButton android:id="@+id/macLain" android:text="Alamat lain"

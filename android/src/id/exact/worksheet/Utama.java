@@ -25,6 +25,11 @@ import java.util.ArrayList;
 public class Utama extends Activity {
 
     private static final String PREF = "exact";
+    // Alamat Tailscale tiap Mac. Dipakai sebagai teks tombol DAN sebagai isi
+    // medan alamat, jadi ditulis sekali di sini supaya tak pernah berselisih.
+    private static final String IP_RICO    = "100.83.25.73";
+    private static final String IP_RICO_2  = "100.92.80.116";
+    private static final String IP_VELISIA = "100.70.73.4";
     private SharedPreferences p;
     private EditText alamat;
     private TextView kabar;
@@ -48,17 +53,19 @@ public class Utama extends Activity {
         pilihMac = findViewById(R.id.pilihMac);
         pilihMode = findViewById(R.id.pilihMode);
 
-        String tersimpan = p.getString("alamat", "100.83.25.73");
+        String tersimpan = p.getString("alamat", IP_RICO);
         alamat.setText(tersimpan);
-        if (tersimpan.equals("100.83.25.73")) pilihMac.check(R.id.macRico);
-        else if (tersimpan.equals("100.70.73.4")) pilihMac.check(R.id.macVelisia);
+        if (tersimpan.equals(IP_RICO)) pilihMac.check(R.id.macRico);
+        else if (tersimpan.equals(IP_RICO_2)) pilihMac.check(R.id.macRico2);
+        else if (tersimpan.equals(IP_VELISIA)) pilihMac.check(R.id.macVelisia);
         else pilihMac.check(R.id.macLain);
         pilihMode.check(p.getString("mode", "buat").equals("jawab")
                 ? R.id.modeJawab : R.id.modeBuat);
 
         pilihMac.setOnCheckedChangeListener((g, id) -> {
-            if (id == R.id.macRico) alamat.setText("100.83.25.73");
-            else if (id == R.id.macVelisia) alamat.setText("100.70.73.4");
+            if (id == R.id.macRico) alamat.setText(IP_RICO);
+            else if (id == R.id.macRico2) alamat.setText(IP_RICO_2);
+            else if (id == R.id.macVelisia) alamat.setText(IP_VELISIA);
             simpan();
         });
         pilihMode.setOnCheckedChangeListener((g, id) -> simpan());
@@ -76,7 +83,7 @@ public class Utama extends Activity {
     }
 
     private String dasar() {
-        String a = p.getString("alamat", "100.83.25.73").trim();
+        String a = p.getString("alamat", IP_RICO).trim();
         if (a.startsWith("http")) return a;
         return "http://" + a + ":7790";
     }
