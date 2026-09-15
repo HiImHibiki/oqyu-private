@@ -1,7 +1,7 @@
 // Exact Worksheet — pengendali di menu bar.
 //
-// Menyalakan server, membuat lembar langsung dari papan klip, dan memberi tahu
-// begitu PDF selesai. Satu berkas Swift, dikompilasi dengan swiftc — tidak
+// Menyalakan server, menyalin perintah AI untuk naskah manual, dan membuka
+// aplikasi. Satu berkas Swift, dikompilasi dengan swiftc — tidak
 // perlu Xcode maupun SwiftPM.
 
 import AppKit
@@ -36,9 +36,7 @@ final class Delegate: NSObject, NSApplicationDelegate {
     let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let menu = NSMenu()
     var mServer = NSMenuItem()
-    var mKerja = NSMenuItem()
     var mPrompt = NSMenuItem()
-    var jidBerjalan: String?
     var server: Process?
 
     func applicationDidFinishLaunching(_: Notification) {
@@ -48,16 +46,12 @@ final class Delegate: NSObject, NSApplicationDelegate {
         item.button?.title = "EW"
         item.button?.toolTip = "Exact Worksheet"
 
-        mKerja.title = "Buat dari papan klip"
-        mKerja.action = #selector(dariKlip)
-        mKerja.keyEquivalent = "n"
-        mKerja.target = self
-        menu.addItem(mKerja)
+        tambah("Buka aplikasi", #selector(bukaHalaman))
 
-        /* Pasangan dari item di atas, untuk naskah yang disusun manual: salin
-         * perintahnya, tempel ke AI mana pun, lalu balasannya dipakai lewat
-         * "Buat dari papan klip". Bersubmenu per mapel karena daftar tag
-         * diagram yang boleh dipakai memang berbeda tiap mapel. */
+        /* Untuk naskah yang disusun manual: salin perintahnya, tempel ke AI
+         * mana pun, lalu balasannya ditempel di tab "Naskah Manual" aplikasi.
+         * Bersubmenu per mapel karena daftar tag diagram yang boleh dipakai
+         * memang berbeda tiap mapel. */
         mPrompt.title = "Salin prompt AI (naskah manual)"
         let sub = NSMenu()
         for m in MAPEL {
@@ -69,7 +63,6 @@ final class Delegate: NSObject, NSApplicationDelegate {
         mPrompt.submenu = sub
         menu.addItem(mPrompt)
 
-        tambah("Buka aplikasi", #selector(bukaHalaman))
         tambah("Buka folder hasil", #selector(bukaHasil))
         tambah("Restart Chrome kendali", #selector(ulangChrome))
         tambah("Restart aplikasi (kosongkan antrean)", #selector(ulangAplikasi))
@@ -109,47 +102,13 @@ final class Delegate: NSObject, NSApplicationDelegate {
             let hidup = (resp as? HTTPURLResponse)?.statusCode == 200
             DispatchQueue.main.async {
                 self.mServer.title = hidup ? "Server: nyala — matikan" : "Server: mati — nyalakan"
-                self.mKerja.isEnabled = hidup
                 self.mPrompt.isEnabled = hidup
             }
-            guard hidup, let jid = self.jidBerjalan, let d = d else { return }
             _ = d
-            self.pantau(jid)
         }.resume()
     }
 
-    func pantau(_ jid: String) {
-        minta("/status?jid=\(jid)", timeout: 5) { j in
-            guard let j = j else { return }
-            let maju = (j["maju"] as? Int) ?? 0
-            let selesai = (j["selesai"] as? Bool) ?? false
-            let langkah = (j["langkah"] as? [String])?.last ?? ""
-            self.mKerja.title = selesai ? "Buat dari papan klip" : "Membuat… \(maju)%"
-            if selesai {
-                self.jidBerjalan = nil
-                if let g = j["galat"] as? String {
-                    self.kabar("Gagal membuat lembar", String(g.prefix(120)))
-                } else {
-                    self.kabar("Lembar kerja siap", langkah)
-                }
-            }
-        }
-    }
-
     // MARK: aksi
-
-    @objc func dariKlip() {
-        mKerja.title = "Membuat… 0%"
-        minta("/cepat", timeout: 20) { j in
-            if let jid = j?["jid"] as? String {
-                self.jidBerjalan = jid
-            } else {
-                self.mKerja.title = "Buat dari papan klip"
-                self.kabar("Tidak bisa mulai",
-                           (j?["galat"] as? String) ?? "Papan klip tidak berisi gambar")
-            }
-        }
-    }
 
     /// Perintah AI untuk naskah manual, disalin ke papan klip. Diambil dari
     /// server (yang membangunnya lewat prompt-builder.js milik aplikasi),
@@ -166,7 +125,7 @@ final class Delegate: NSObject, NSApplicationDelegate {
             NSPasteboard.general.clearContents()
             NSPasteboard.general.setString(teks, forType: .string)
             self.kabar("Prompt \(pengirim.title) disalin",
-                       "Tempel ke AI, isi blok di bagian bawahnya, lalu salin balasannya dan pilih «Buat dari papan klip».")
+                       "Tempel ke AI, isi blok di bagian bawahnya, lalu tempel balasannya di tab «Naskah Manual».")
         }
     }
 
