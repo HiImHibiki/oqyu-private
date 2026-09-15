@@ -130,6 +130,55 @@ def normalkan_rumus(teks):
     teks = re.sub(r'\\\((.+?)\\\)', lambda m: '$' + m.group(1).strip() + '$', teks, flags=re.S)
     return teks
 
+_PENANDA_PECAH = re.compile(
+    r'(?<!\n)(?='
+    r'\bJUDUL\s*[:.]'
+    r'|\bINTI\s*:'
+    r'|\bBAGIAN\s*\d{0,2}\s*:'
+    r'|\bBagian\s*\d{1,2}\s*[:.]'
+    r'|\bSOAL\s*\d{1,3}\b'
+    r'|\bJAWAB(?:AN)?\s*[:.]'
+    r'|\b(?:BAHAS|PEMBAHASAN|PENYELESAIAN)\s*[:.]'
+    r')',
+    re.I,
+)
+
+# Sama seperti di atas, tapi tanpa syarat batas kata (\b) di depan — Gemini
+# kadang menempelkan penanda persis di akhir kalimat sebelumnya tanpa spasi
+# ataupun tanda baca sama sekali ("...dan TumbukanSOAL 1"), jadi tidak ada
+# batas kata yang bisa dikenali di titik sambungnya. Aman dipakai selonggar
+# ini karena penandanya SELALU dieja huruf besar semua sesuai format yang
+# diminta ke Gemini, sedangkan kalimat biasa memakai huruf kecil — huruf
+# kecil bersambung PERSIS ke salah satu ejaan kapital ini bukan kebetulan.
+_PENANDA_TEMPEL = re.compile(
+    r'(?<=[a-z])(?:'
+    r'JUDUL[:.]'
+    r'|INTI:'
+    r'|BAGIAN\s*\d{0,2}:'
+    r'|SOAL\s*\d{1,3}\b'
+    r'|JAWAB(?:AN)?[:.]'
+    r'|(?:BAHAS|PEMBAHASAN|PENYELESAIAN)[:.]'
+    r')'
+)
+
+
+def pisahkan_penanda(teks):
+    """Sisipkan baris baru sebelum penanda bagian (JUDUL:, SOAL 2, BAHAS:, dst)
+    yang menempel di akhir kalimat sebelumnya tanpa spasi/baris baru.
+
+    innerText di JS_BACA kadang kehilangan ganti baris pas menyalin jawaban
+    Gemini dari layar — dua paragraf yang di layar terlihat terpisah malah
+    tergabung jadi satu baris panjang. Semua pengurai di bawah (buang_draf,
+    rangkum._blok_terlengkap/urai, jawab._blok_terlengkap/urai/AWAL) mencari
+    penanda ini persis di AWAL baris — begitu baris barunya hilang, bagian
+    berikutnya (atau draf kedua yang seharusnya dibuang) bukan cuma gagal
+    dibersihkan, tapi gagal terbaca SAMA SEKALI, dan seluruh lembar dianggap
+    tidak bisa diurai padahal jawabannya sendiri lengkap dan benar.
+    """
+    t = _PENANDA_PECAH.sub('\n', teks or '')
+    return _PENANDA_TEMPEL.sub(lambda m: '\n' + m.group(0), t)
+
+
 def _periksa(teks):
     """Tolak penolakan dan jawaban kerdil — jangan sampai jadi PDF kosong."""
     t = (teks or '').strip()
@@ -139,7 +188,7 @@ def _periksa(teks):
         raise Ditolak('Gemini menolak permintaan: ' + t[:120])
     if len(t) < 200:
         raise RuntimeError(f'Jawaban Gemini terlalu pendek ({len(t)} karakter): ' + t[:120])
-    return normalkan_rumus(buang_pagar(t))
+    return pisahkan_penanda(normalkan_rumus(buang_pagar(t)))
 
 def _tunggu_selesai_menulis(s, batas=180):
     """Tunggu sampai Gemini berhenti menulis jawaban sebelumnya.
