@@ -499,12 +499,13 @@ function terima(p: PesanLangsung) {
   else if (sumber === null) gantiSumber(p)
   if (p.src !== sumber) return
 
-  if (bebas && !modeCoret && (p.t === 'goresan' || p.t === 'instrumen' || p.t === 'objek') && p.src === sumber) {
+  if (bebas && !modeCoret && !izinCoret.boleh && (p.t === 'goresan' || p.t === 'instrumen' || p.t === 'objek') && p.src === sumber) {
     // Guru sedang menjelaskan: penjelajahan sendiri berakhir, ikut ke area guru.
     kembaliIkuti()
   }
-  // Sedang mencoret sendiri: pandangan guru tidak menggeser layar ini.
-  if (modeCoret && p.t === 'pandangan') return
+  // Berizin menulis (mencoret atau baru diizinkan): pandangan guru tidak
+  // menggeser layar ini — layarnya penuh miliknya sendiri.
+  if ((modeCoret || izinCoret.boleh) && p.t === 'pandangan') return
 
   terapkanPesan(p)
 }
@@ -1862,6 +1863,9 @@ function terapkanIzin(boleh: boolean, sketsaId: string | null) {
   const tombol = el('tombol-coret') as HTMLButtonElement
   tombol.hidden = !boleh
   el('tombol-sisip-foto').hidden = !boleh
+  // Berizin menulis: layar penuh miliknya, tombol "ikuti" (kembali ke guru)
+  // tidak relevan lagi — lihat pengecekan izinCoret.boleh di `terima`.
+  if (boleh) el('ikuti').hidden = true
   if (!boleh && modeCoret) {
     selesaiCoret()
     tampilkanStatus('The teacher turned off drawing.', true)
