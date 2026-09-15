@@ -5,6 +5,7 @@ import { useData } from '@/lib/useData'
 import { useSinkron } from '@/lib/sinkron'
 import { urlDenganPin } from '@/lib/api'
 import { toast, toastGalat } from '@/lib/toast'
+import { TeksRumus } from '@/components/TeksRumus'
 import { daftarKanvas } from './data'
 import {
   anggotaGrup,
@@ -372,7 +373,9 @@ function BarisTanya({
         </span>
       </div>
       {t.text && (
-        <p style={{ fontSize: 'var(--fs-label)', color: 'var(--ink-soft)', whiteSpace: 'pre-wrap' }}>{t.text}</p>
+        <p style={{ fontSize: 'var(--fs-label)', color: 'var(--ink-soft)', whiteSpace: 'pre-wrap' }}>
+          <TeksRumus teks={t.text} />
+        </p>
       )}
       {t.photos.length > 0 && t.photos[0].endsWith('.pdf') ? (
         <span className="ex-label flex items-center gap-1" style={{ color: 'var(--ink-soft)' }}>
