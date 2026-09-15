@@ -46,7 +46,7 @@ basis data kosong bila belum ada.
 ## Menjalankan
 
 ```sh
-./mulai.sh          # menyalakan server, membuka http://localhost:7790/buat
+./mulai.sh          # menyalakan server, membuka http://localhost:7790/
 ```
 
 Chrome kendali berjalan **tanpa jendela**, jadi tidak merebut layar — Anda bisa
@@ -65,6 +65,24 @@ Sesudah itu jalankan biasa (`./mulai.sh`) dan jendelanya tidak muncul lagi.
 1. Salin tangkapan layar soal, tekan **Ambil dari papan klip** (sampai 10 gambar)
 2. Isi topik; medan lain mengingat isian terakhir
 3. **Buat PDF** — hasilnya tersimpan di `~/Documents/Lembar Kerja/`
+
+## Tab "Naskah Manual" — tanpa AI di dalam aplikasi
+
+Untuk soal yang ditulis sendiri, atau yang dikarang AI mana pun di luar aplikasi
+(Gemini, ChatGPT, Claude, AI lokal). Jalurnya sama dengan tab Buat Soal mulai
+dari naskah: berkas naskah, bank soal, PDF, dan Exact Practice tidak dibedakan.
+
+1. **Salin perintah** — perintahnya dibangun dari `prompt-builder.js` milik mesin
+   perender yang sama, jadi tidak pernah beda format dengan jalur otomatis
+2. Jalankan perintah itu di AI mana pun, salin jawabannya
+3. Tempel di langkah 2; **Periksa naskah** menghitung berapa soal yang terbaca
+   sebelum apa pun dirender (perenderan ikut antrean dan memakai Chrome)
+4. **Buat PDF** — centang *sekalian terbitkan ke Exact Practice* bila paket
+   latihan onlinenya mau langsung jadi
+
+Formatnya sama persis dengan yang dipakai Gemini: kode bagian di dalam kurung
+sesudah titik dua (`Bagian Pilihan Ganda: (PG)`), bobot `[2]` di akhir kalimat
+soal, dan kunci ditulis `PG1-A, PG2-B` dengan tanda hubung — bukan titik.
 
 ## Bank soal (opsional)
 

@@ -550,6 +550,102 @@ def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
         _segarkan_chrome()
 
 
+def lembar_dari_naskah(jid, jawab, judul='', topik='', mapel=None, kelas=None,
+                       jenjang='', lembaga='', sekolah='', tanggal='',
+                       kunci=True, pembahasan=True, kolom='2', dua_berkas=False,
+                       kerapatan='Normal', garis='1.5', sumber='dari Gemini'):
+    """Naskah jadi -> berkas naskah + bank soal + PDF.
+
+    Paruh kedua alur /buat, dipisah supaya jalur manual (naskah ditempel
+    sendiri dari AI mana pun) menempuh jalan yang PERSIS sama: nama berkas,
+    salinan naskah, entri bank soal, dan perenderan tidak boleh berbeda —
+    kalau berbeda, tombol "Ke Practice" dan tab Hasil tidak menemukan
+    naskahnya.
+    """
+    import otomasi
+    # Draf ganda dibuang SEBELUM apa pun memakainya: berkas naskah, bank
+    # soal, dan perenderan harus melihat naskah yang sama. Kalau hanya
+    # perenderannya yang dibersihkan, bank soal ikut menyimpan draf yang
+    # cuma berisi satu soal.
+    utuh = otomasi.buang_draf(jawab)
+    if len(utuh) != len(jawab):
+        _catat(jid, 'Naskah tertulis dua kali — draf pendeknya dibuang', 66)
+        jawab = utuh
+    periksa_henti(jid)
+    _catat(jid, f'Naskah diterima ({len(jawab)} karakter)', 68)
+    # Naskahnya ikut disimpan di catatan tugas supaya aplikasi lain (Exact
+    # Practice) bisa mengambil soalnya yang sudah terurai lewat /api/soal,
+    # tanpa harus menebak nama berkas di folder naskah.
+    with KUNCI:
+        TUGAS.setdefault(jid, {})['naskah'] = jawab
+
+    # 4. serahkan ke perender asli
+    if len(jawab.strip()) < 200 or jawab.count('\n') < 5:
+        raise RuntimeError(f'Naskah {sumber} terlalu pendek untuk jadi lembar kerja')
+    _catat(jid, 'Memuat ke Exact Worksheet Maker…', 76)
+
+    # 5. simpan salinan mentah + ambil PDF
+    judul = judul.strip() or (topik.strip() or f'Latihan {time.strftime("%d %b %H:%M")}')
+    with KUNCI:
+        TUGAS.setdefault(jid, {})['isian'] = {'mapel': mapel or '', 'kelas': str(kelas or ''), 'topik': (topik or '').strip() or judul}
+    kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
+               sekolah=sekolah, kelas=str(kelas or '') or (jenjang or ''),
+               tanggal=tanggal or time.strftime('%d%m'),
+               kunci=kunci, pembahasan=pembahasan, kolom=str(kolom or '2'),
+               kerapatan=kerapatan or 'Normal', garis_per_nilai=garis or '1.5')
+    os.makedirs(KELUAR, exist_ok=True)
+    nama = nama_berkas(kop, kunci and not dua_berkas, KELUAR)
+    cap = time.strftime('%Y-%m-%d %H%M')
+    os.makedirs(NASKAH, exist_ok=True)
+    open(os.path.join(NASKAH, f'{nama} — {cap}.txt'), 'w', encoding='utf-8').write(jawab)
+    # Simpan ke bank soal supaya bisa dicari dan disusun ulang TANPA AI.
+    try:
+        import naskah as _nsk
+        butir, meta = _nsk.urai(jawab)
+        if butir:
+            c = _db()
+            potongan = re.sub(r'\W+', '-', judul)[:40]
+            cur = c.execute("""INSERT INTO dokumen(rel,nama,folder,mapel,kelas,jenis,n_hal,n_hal_teks)
+                               VALUES(?,?,'DIBUAT',?,?,'Worksheet Maker',1,1)""",
+                            (f'DIBUAT/{int(time.time())}-{potongan}',
+                             meta.get('judul') or judul, mapel or None, kelas or None))
+            dok = cur.lastrowid; ids = []
+            for i, b in enumerate(butir, 1):
+                cc = c.execute("""INSERT INTO soal(dok_id,no_hal,no_soal,batang,opsi,n_opsi,
+                                    sidik,mutu,dup,kunci,bobot,jenis_soal,pembahasan)
+                                  VALUES(?,1,?,?,?,?,NULL,?,0,?,?,?,?)""",
+                               (dok, b['no'], b['batang'],
+                                json.dumps(b['opsi'], ensure_ascii=False), len(b['opsi']),
+                                2 if len(b['opsi']) >= 3 else 1,
+                                b.get('kunci') or None, b.get('bobot'),
+                                b.get('jenis'), b.get('pembahasan') or None))
+                ids.append(cc.lastrowid)
+            c.executemany("INSERT INTO soal_fts(batang,opsi,soal_id) SELECT batang,opsi,id FROM soal WHERE id=?",
+                          [(i,) for i in ids])
+            c.commit(); c.close()
+            _catat(jid, f'{len(butir)} soal masuk bank soal '
+                        f'({sum(1 for b in butir if b.get("kunci"))} berkunci)', 86)
+    except Exception as e:
+        _catat(jid, f'Bank soal dilewati ({type(e).__name__})', 86)
+
+    _catat(jid, 'Merender lembar lalu mencetak PDF…', 88)
+    tuju = os.path.join(KELUAR, f'{nama}.pdf')
+    if dua_berkas:
+        # Dirender dua kali dari naskah yang SAMA: lembar siswa tanpa kunci,
+        # lembar guru dengan kunci. Meminta Gemini dua kali akan menghasilkan
+        # soal yang berbeda — itu bukan yang diinginkan.
+        tuju_kunci = os.path.join(KELUAR, f'{nama} - Soal+Jawaban.pdf')
+        otomasi.worksheet_pdf(jawab, tuju, kop=kop, tujuan_kunci=tuju_kunci)
+        subprocess.run(['open', tuju], capture_output=True)
+        _catat(jid, f'Selesai — 2 berkas: {os.path.basename(tuju)} '
+                    f'dan {os.path.basename(tuju_kunci)}',
+               100, selesai=True, pdf=tuju)
+    else:
+        otomasi.worksheet_pdf(jawab, tuju, kop=kop)
+        subprocess.run(['open', tuju], capture_output=True)
+        _catat(jid, 'Selesai — PDF terbuka', 100, selesai=True, pdf=tuju)
+
+
 def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
              topik='', jenjang='', n_set='', sulit='', bahasa='Indonesia',
              lembaga='', sekolah='', tanggal='', kunci=True, pembahasan=True,
@@ -646,87 +742,12 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
             for x in jalur:
                 try: os.unlink(x)
                 except OSError: pass
-        # Draf ganda dibuang SEBELUM apa pun memakainya: berkas naskah, bank
-        # soal, dan perenderan harus melihat naskah yang sama. Kalau hanya
-        # perenderannya yang dibersihkan, bank soal ikut menyimpan draf yang
-        # cuma berisi satu soal.
-        utuh = otomasi.buang_draf(jawab)
-        if len(utuh) != len(jawab):
-            _catat(jid, 'Gemini menulis dua kali — draf pendeknya dibuang', 66)
-            jawab = utuh
-        periksa_henti(jid)
-        _catat(jid, f'Naskah diterima ({len(jawab)} karakter)', 68)
-        # Naskahnya ikut disimpan di catatan tugas supaya aplikasi lain (Exact
-        # Practice) bisa mengambil soalnya yang sudah terurai lewat /api/soal,
-        # tanpa harus menebak nama berkas di folder naskah.
-        with KUNCI:
-            TUGAS.setdefault(jid, {})['naskah'] = jawab
-
-        # 4. serahkan ke perender asli
-        if len(jawab.strip()) < 200 or jawab.count('\n') < 5:
-            raise RuntimeError('Naskah dari Gemini terlalu pendek untuk jadi lembar kerja')
-        _catat(jid, 'Memuat ke Exact Worksheet Maker…', 76)
-
-        # 5. simpan salinan mentah + ambil PDF
-        judul = judul.strip() or (topik.strip() or f'Latihan {time.strftime("%d %b %H:%M")}')
-        with KUNCI:
-            TUGAS.setdefault(jid, {})['isian'] = {'mapel': mapel or '', 'kelas': str(kelas or ''), 'topik': (topik or '').strip() or judul}
-        kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
-                   sekolah=sekolah, kelas=str(kelas or '') or (jenjang or ''),
-                   tanggal=tanggal or time.strftime('%d%m'),
-                   kunci=kunci, pembahasan=pembahasan, kolom=str(kolom or '2'),
-                   kerapatan=kerapatan or 'Normal', garis_per_nilai=garis or '1.5')
-        os.makedirs(KELUAR, exist_ok=True)
-        nama = nama_berkas(kop, kunci and not dua_berkas, KELUAR)
-        cap = time.strftime('%Y-%m-%d %H%M')
-        os.makedirs(NASKAH, exist_ok=True)
-        open(os.path.join(NASKAH, f'{nama} — {cap}.txt'), 'w', encoding='utf-8').write(jawab)
-        # Simpan ke bank soal supaya bisa dicari dan disusun ulang TANPA AI.
-        try:
-            import naskah as _nsk
-            butir, meta = _nsk.urai(jawab)
-            if butir:
-                c = _db()
-                potongan = re.sub(r'\W+', '-', judul)[:40]
-                cur = c.execute("""INSERT INTO dokumen(rel,nama,folder,mapel,kelas,jenis,n_hal,n_hal_teks)
-                                   VALUES(?,?,'DIBUAT',?,?,'Worksheet Maker',1,1)""",
-                                (f'DIBUAT/{int(time.time())}-{potongan}',
-                                 meta.get('judul') or judul, mapel or None, kelas or None))
-                dok = cur.lastrowid; ids = []
-                for i, b in enumerate(butir, 1):
-                    cc = c.execute("""INSERT INTO soal(dok_id,no_hal,no_soal,batang,opsi,n_opsi,
-                                        sidik,mutu,dup,kunci,bobot,jenis_soal,pembahasan)
-                                      VALUES(?,1,?,?,?,?,NULL,?,0,?,?,?,?)""",
-                                   (dok, b['no'], b['batang'],
-                                    json.dumps(b['opsi'], ensure_ascii=False), len(b['opsi']),
-                                    2 if len(b['opsi']) >= 3 else 1,
-                                    b.get('kunci') or None, b.get('bobot'),
-                                    b.get('jenis'), b.get('pembahasan') or None))
-                    ids.append(cc.lastrowid)
-                c.executemany("INSERT INTO soal_fts(batang,opsi,soal_id) SELECT batang,opsi,id FROM soal WHERE id=?",
-                              [(i,) for i in ids])
-                c.commit(); c.close()
-                _catat(jid, f'{len(butir)} soal masuk bank soal '
-                            f'({sum(1 for b in butir if b.get("kunci"))} berkunci)', 86)
-        except Exception as e:
-            _catat(jid, f'Bank soal dilewati ({type(e).__name__})', 86)
-
-        _catat(jid, 'Merender lembar lalu mencetak PDF…', 88)
-        tuju = os.path.join(KELUAR, f'{nama}.pdf')
-        if dua_berkas:
-            # Dirender dua kali dari naskah yang SAMA: lembar siswa tanpa kunci,
-            # lembar guru dengan kunci. Meminta Gemini dua kali akan menghasilkan
-            # soal yang berbeda — itu bukan yang diinginkan.
-            tuju_kunci = os.path.join(KELUAR, f'{nama} - Soal+Jawaban.pdf')
-            otomasi.worksheet_pdf(jawab, tuju, kop=kop, tujuan_kunci=tuju_kunci)
-            subprocess.run(['open', tuju], capture_output=True)
-            _catat(jid, f'Selesai — 2 berkas: {os.path.basename(tuju)} '
-                        f'dan {os.path.basename(tuju_kunci)}',
-                   100, selesai=True, pdf=tuju)
-        else:
-            otomasi.worksheet_pdf(jawab, tuju, kop=kop)
-            subprocess.run(['open', tuju], capture_output=True)
-            _catat(jid, 'Selesai — PDF terbuka', 100, selesai=True, pdf=tuju)
+        lembar_dari_naskah(jid, jawab, judul=judul, topik=topik, mapel=mapel,
+                           kelas=kelas, jenjang=jenjang, lembaga=lembaga,
+                           sekolah=sekolah, tanggal=tanggal, kunci=kunci,
+                           pembahasan=pembahasan, kolom=kolom,
+                           dua_berkas=dua_berkas, kerapatan=kerapatan,
+                           garis=garis, sumber='dari Gemini')
     except Dihentikan as e:
         _catat(jid, None, galat=str(e))
     except Exception as e:
@@ -1474,3 +1495,452 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
 </div>
 <input type=hidden name=titip value="{html.escape(titip, quote=True)}">
 <script>const TITIP={json.dumps(titip)};{SKRIP_RANGKUM}</script>"""
+
+
+# ---------------------------------------------------------------- naskah manual
+# Tab "Naskah Manual": perintahnya disalin ke AI mana pun (Gemini, ChatGPT,
+# Claude, atau AI lokal), jawabannya ditempel balik ke sini. Sesudah itu jalannya
+# sama persis dengan lembar buatan otomatis — berkas naskah, bank soal, PDF, dan
+# tombol ke Exact Practice. Jadi satu-satunya yang berbeda adalah dari mana
+# naskahnya datang.
+
+def perintah_manual(mapel='', topik='', jenjang='', jumlah='', n_set='',
+                    sulit='', bahasa='Indonesia', instruksi='', acuan=''):
+    """Perintah siap salin, dibangun dari format Exact Worksheet Maker sendiri.
+
+    Sumbernya prompt-builder.js milik mesin perender (lewat wsmaker), bukan
+    salinan yang diketik ulang — supaya perintah yang disalin ke AI luar tidak
+    pernah beda format dengan yang dipakai jalur otomatis.
+    """
+    import wsmaker
+    banyak = str(n_set or '').strip() not in ('', '0', '1')
+    p = wsmaker.isi_blok(
+        wsmaker.ringkas(wsmaker.perintah_baku(mapel or 'Matematika'),
+                        konteks=' '.join([topik or '', mapel or '',
+                                          instruksi or '', (acuan or '')[:600]]),
+                        banyak_set=banyak),
+        topik=topik, jenjang=jenjang, set=n_set, jumlah=jumlah, sulit=sulit,
+        bahasa=bahasa or 'Indonesia',
+        acuan='lihat lampiran di bawah' if (acuan or '').strip() else '')
+    if (acuan or '').strip():
+        p += '\n\nNASKAH ACUAN:\n' + acuan.strip()[:2500]
+    if (instruksi or '').strip():
+        p += '\n\nCATATAN GURU: ' + instruksi.strip()
+    return p
+
+
+def periksa_naskah(teks):
+    """Hitung apa yang terbaca dari naskah tempelan, tanpa merender apa pun.
+
+    Dipakai tombol "Periksa naskah": salah format baru ketahuan sesudah PDF
+    jadi itu mahal — perenderan memakai Chrome dan ikut antrean.
+    """
+    import naskah as _nsk
+    teks = (teks or '').strip()
+    if not teks:
+        return {'jumlah': 0, 'pesan': 'Naskahnya masih kosong.'}
+    butir, meta = _nsk.urai(teks)
+    if not butir:
+        return {'jumlah': 0, 'judul': meta.get('judul') or '',
+                'pesan': 'Tidak ada soal yang terbaca. Pastikan tiap soal '
+                         'diawali penanda seperti PG1. / B1. / I1. / E1.'}
+    jenis = {}
+    for b in butir:
+        jenis[b.get('jenis') or 'PG'] = jenis.get(b.get('jenis') or 'PG', 0) + 1
+    berkunci = sum(1 for b in butir if b.get('kunci'))
+    berbahas = sum(1 for b in butir if b.get('pembahasan'))
+    return {'jumlah': len(butir), 'judul': meta.get('judul') or '',
+            'jenis': jenis, 'kunci': berkunci, 'pembahasan': berbahas,
+            'pesan': f'{len(butir)} soal terbaca ('
+                     + ', '.join(f'{v} {k}' for k, v in sorted(jenis.items()))
+                     + f') · {berkunci} berkunci · {berbahas} berpembahasan'}
+
+
+def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None,
+                    jenjang='', lembaga='', sekolah='', tanggal='',
+                    kunci=True, pembahasan=True, kolom='2', dua_berkas=False,
+                    kerapatan='Normal', garis='1.5', ke_practice=False):
+    """Naskah tempelan -> PDF (dan, bila diminta, langsung ke Exact Practice).
+
+    Tetap lewat antrean walau tidak memakai AI: perenderannya memakai Chrome
+    kendali yang sama dengan pekerjaan Gemini, dan dua render sekaligus saling
+    menimpa isi tab Worksheet Maker.
+    """
+    if not ANTREAN.masuk(jid, 'Naskah manual', lambda m: _catat(jid, m, 4)):
+        return _catat(jid, None, galat='Dibatalkan sebelum mulai.')
+    try:
+        teks = (naskah_teks or '').strip()
+        if not teks:
+            raise RuntimeError('Naskahnya masih kosong — tempel dulu jawaban AI-nya.')
+        _catat(jid, f'Naskah ditempel ({len(teks)} karakter)', 30)
+        lembar_dari_naskah(jid, teks, judul=judul, topik=topik, mapel=mapel,
+                           kelas=kelas, jenjang=jenjang, lembaga=lembaga,
+                           sekolah=sekolah, tanggal=tanggal, kunci=kunci,
+                           pembahasan=pembahasan, kolom=kolom,
+                           dua_berkas=dua_berkas, kerapatan=kerapatan,
+                           garis=garis, sumber='yang ditempel')
+        if ke_practice:
+            # Diterbitkan di server, bukan lewat tombol di halaman: kalau tab
+            # ditutup sebelum PDF selesai, paket latihannya tetap terbit.
+            _catat(jid, 'Menerbitkan ke Exact Practice…', 96)
+            import terbit as _tb
+            with KUNCI:
+                t = dict(TUGAS.get(jid) or {})
+            j = _tb.terbitkan(t.get('naskah') or teks,
+                              nama_pdf=os.path.basename(t.get('pdf') or ''),
+                              judul=judul, mapel=mapel or '',
+                              kelas=str(kelas or ''), topik=topik or judul)
+            if j.get('ok'):
+                with KUNCI:
+                    TUGAS.setdefault(jid, {})['terbit'] = j.get('admin') or j.get('url')
+                _catat(jid, 'Terbit di Exact Practice', 100, selesai=True)
+            else:
+                _catat(jid, 'PDF jadi, tapi Practice menolak: '
+                            + (j.get('galat') or 'sebab tidak disebutkan'), 100,
+                       selesai=True)
+    except Dihentikan as e:
+        _catat(jid, None, galat=str(e))
+    except Exception as e:
+        _catat(jid, None, galat=f'{type(e).__name__}: {e}')
+    finally:
+        HENTI.discard(jid)
+        ANTREAN.keluar(jid)
+
+
+SKRIP_MANUAL = r"""
+const qs = s => document.querySelector(s);
+const ambilMedan = () => {
+  const f = new FormData(qs('#f')), o = {};
+  ['mapel','topik','jenjang','jumlah','n_set','sulit','bahasa','instruksi','acuan']
+    .forEach(k => o[k] = (f.get(k) || '').toString());
+  return o;
+};
+
+// Komposisi siap pakai, sama seperti di tab Buat Soal.
+const preset = document.getElementById('preset');
+if (preset) preset.onchange = () => {
+  if (!preset.value) return;
+  qs('[name=jumlah]').value = preset.value;
+  preset.selectedIndex = 0;
+};
+
+const kotakPerintah = document.getElementById('perintah');
+const kabarP = document.getElementById('kabarPerintah');
+let perintahTerakhir = '';
+
+async function susunPerintah() {
+  kabarP.textContent = 'menyusun…';
+  const r = await fetch('/api/perintah?' + new URLSearchParams(ambilMedan()));
+  if (!r.ok) { kabarP.textContent = 'gagal menyusun perintah'; return ''; }
+  const j = await r.json();
+  if (j.galat) { kabarP.textContent = j.galat; return ''; }
+  perintahTerakhir = j.perintah || '';
+  kotakPerintah.value = perintahTerakhir;
+  kabarP.textContent = perintahTerakhir.length.toLocaleString('id') + ' karakter';
+  return perintahTerakhir;
+}
+
+document.getElementById('btnLihat').onclick = async () => {
+  const bungkus = document.getElementById('bungkusPerintah');
+  if (bungkus.hidden) {
+    bungkus.hidden = false;
+    document.getElementById('btnLihat').textContent = 'Sembunyikan perintah';
+    if (!kotakPerintah.value.trim()) await susunPerintah();
+  } else {
+    bungkus.hidden = true;
+    document.getElementById('btnLihat').textContent = 'Lihat perintah';
+  }
+};
+
+document.getElementById('btnSusun').onclick = () => susunPerintah();
+
+document.getElementById('btnSalin').onclick = async () => {
+  const b = document.getElementById('btnSalin');
+  // Selalu disusun ulang lebih dulu: kalau medannya baru diubah, yang tersalin
+  // harus yang sekarang — bukan perintah yang tampil dari klik sebelumnya.
+  const teks = (kotakPerintah.value.trim() && kotakPerintah.value === perintahTerakhir)
+             ? kotakPerintah.value : await susunPerintah();
+  if (!teks) return;
+  try {
+    await navigator.clipboard.writeText(teks);
+    b.textContent = 'Tersalin ✓';
+  } catch (e) {
+    // Peramban tanpa izin papan klip (halaman dibuka lewat http dari tablet):
+    // perintahnya ditampilkan supaya bisa disalin tangan.
+    document.getElementById('bungkusPerintah').hidden = false;
+    kotakPerintah.select();
+    b.textContent = 'Salin sendiri ↑';
+  }
+  setTimeout(() => { b.textContent = 'Salin perintah'; }, 2500);
+};
+
+// Periksa naskah sebelum dirender: perenderan ikut antrean dan memakai Chrome,
+// jadi salah format yang baru ketahuan sesudah PDF jadi itu mahal.
+const hasilPeriksa = document.getElementById('hasilPeriksa');
+async function periksa(diam) {
+  const teks = qs('[name=naskah]').value;
+  if (!teks.trim()) { hasilPeriksa.textContent = ''; return null; }
+  if (!diam) hasilPeriksa.textContent = 'memeriksa…';
+  try {
+    const r = await fetch('/api/periksa', {method: 'POST',
+      headers: {'Content-Type': 'text/plain; charset=utf-8'}, body: teks});
+    const j = await r.json();
+    hasilPeriksa.className = j.jumlah ? 'kcl' : 'err';
+    hasilPeriksa.textContent = j.pesan || '';
+    return j;
+  } catch (e) { hasilPeriksa.textContent = ''; return null; }
+}
+document.getElementById('btnPeriksa').onclick = () => periksa(false);
+let jedaPeriksa = null;
+qs('[name=naskah]').addEventListener('input', () => {
+  clearTimeout(jedaPeriksa);
+  jedaPeriksa = setTimeout(() => periksa(true), 900);
+});
+
+document.getElementById('btnTempel').onclick = async () => {
+  const k = qs('[name=naskah]');
+  try {
+    const t = await navigator.clipboard.readText();
+    if (t) { k.value = t; periksa(true); }
+  } catch (e) { k.focus(); hasilPeriksa.textContent = 'Peramban tidak mengizinkan baca papan klip — tempel manual dengan ⌘V.'; }
+};
+
+const TUGAS = [];
+
+function barisTugas(t) {
+  const hal = document.getElementById('antrean');
+  let el = document.getElementById('t-' + t.jid);
+  if (!el) {
+    el = document.createElement('div');
+    el.className = 'tugas'; el.id = 't-' + t.jid;
+    hal.prepend(el);
+  }
+  const s = t.s || {};
+  let kanan = '';
+  if (s.galat) kanan = '<span class=err>' + s.galat + '</span>';
+  else if (s.pdf) {
+    const nama = s.pdf.split('/').pop();
+    kanan = '<a class=tombolCetak href="/hasil?f=' + encodeURIComponent(nama)
+          + '" target=_top>Lihat &amp; Cetak</a>'
+          + ((t.terbit || s.terbit)
+             ? '<a class=tombolCetak href="' + (t.terbit || s.terbit) + '" target=_blank>Di Practice ✓</a>'
+             : s.bisa_terbit
+               ? '<button type=button class="mini terbit" data-jid="' + t.jid + '" data-pdf="' + encodeURIComponent(nama) + '">Ke Practice</button>'
+               : '');
+  } else if (s.antre && s.antre.nomor) {
+    kanan = '<span class=kcl>antrean ke-' + s.antre.nomor
+          + (s.antre.kerja ? ' · ' + s.antre.kerja.nama + ' ' + Math.floor(s.antre.kerja.detik/60) + ' mnt' : '')
+          + '</span>';
+  } else {
+    kanan = '<span class=kcl>' + ((s.langkah || ['Mulai…']).slice(-1)[0]) + '</span>';
+  }
+  const bisaHenti = !s.selesai && !s.galat;
+  el.innerHTML = '<div class=bar><i style="width:' + (s.maju || 0) + '%"></i></div>'
+    + '<div class=tugasIsi><b>' + t.judul + '</b>' + kanan
+    + (bisaHenti ? '<button type=button class="mini henti" data-jid="' + t.jid + '">Hentikan</button>' : '')
+    + '</div>';
+  const bh = el.querySelector('.henti');
+  if (bh) bh.onclick = async () => {
+    bh.disabled = true; bh.textContent = 'menghentikan…';
+    try { await fetch('/batal?jid=' + t.jid); } catch (e) {}
+  };
+  const bt = el.querySelector('.terbit');
+  if (bt) bt.onclick = async () => {
+    bt.disabled = true; bt.textContent = 'mengirim…';
+    try {
+      const r = await fetch('/terbitkan', {method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams({jid: t.jid, f: decodeURIComponent(bt.dataset.pdf || '')})});
+      const j = await r.json();
+      if (j.ok) { t.terbit = j.admin || j.url; barisTugas(t); }
+      else { bt.textContent = 'gagal'; alert(j.galat || 'Gagal menerbitkan'); bt.disabled = false; }
+    } catch (e) { bt.textContent = 'gagal'; bt.disabled = false; }
+  };
+}
+
+function pantau(t) {
+  let gagal = 0;
+  const timer = setInterval(async () => {
+    try { t.s = await (await fetch('/status?jid=' + t.jid)).json(); gagal = 0; }
+    catch (err) {
+      if (++gagal < 8) return;
+      clearInterval(timer);
+      t.s = {galat: 'Sambungan ke server terputus.', selesai: true};
+    }
+    barisTugas(t);
+    if (t.s.selesai) clearInterval(timer);
+  }, 1500);
+}
+
+document.getElementById('f').onsubmit = async e => {
+  e.preventDefault();
+  const panel = document.getElementById('panel'), log = document.getElementById('log');
+  const naskah = qs('[name=naskah]').value.trim();
+  panel.style.display = 'block';
+  if (!naskah) {
+    log.innerHTML = '<div class=err>Belum ada naskah. Salin perintah di langkah 1, '
+      + 'jalankan di AI mana pun, lalu tempel jawabannya di langkah 2.</div>';
+    return;
+  }
+  const cek = await periksa(true);
+  if (cek && !cek.jumlah &&
+      !confirm('Tidak ada soal yang terbaca dari naskah ini. Tetap coba render?')) return;
+  log.innerHTML = '';
+  const go = document.getElementById('go');
+  const fd = new FormData(e.target);
+  const judul = (fd.get('judul') || '').toString().trim()
+             || (fd.get('topik') || '').toString().trim()
+             || (cek && cek.judul) || 'Lembar manual';
+  go.disabled = true;
+  let jid;
+  try {
+    const r = await fetch('/manual', {method: 'POST', body: new URLSearchParams(fd)});
+    jid = (await r.json()).jid;
+  } catch (err) {
+    log.innerHTML = '<div class=err>Tidak bisa menghubungi server.</div>';
+    return;
+  } finally { go.disabled = false; }
+  if (!jid) { log.innerHTML = '<div class=err>Server tidak memulai tugas. Coba lagi.</div>'; return; }
+  const t = {jid: jid, judul: judul, s: {maju: 3, langkah: ['Mulai…']}};
+  TUGAS.push(t); barisTugas(t); pantau(t);
+};
+"""
+
+
+def halaman_manual(setel=None):
+    import setelan as _s
+    st = setel or _s.muat()
+    n = lambda k: html.escape(st.get(k, '') or '')
+    tgl_ini = time.strftime('%d%m')
+    c = lambda k: ' checked' if st.get(k) else ''
+    return f"""<!doctype html><meta charset=utf-8><title>Naskah Manual</title>
+<meta name=viewport content="width=device-width,initial-scale=1"><style>{GAYA}
+h2{{font-size:14px;margin:0 0 10px;display:flex;align-items:center;gap:8px}}
+h2 b{{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--aksen);
+color:#fff;align-items:center;justify-content:center;font-size:12px;flex:none}}
+</style>
+<div class=b>
+<div class=kopApp><img src="/statik/logo.png" alt=""><div>
+  <h1>Naskah Manual</h1>
+  <div class=s style="margin:0">Exact Course &middot; Worksheet Maker</div></div></div>
+<div class=s>Untuk soal yang Anda tulis sendiri, atau yang dikarang AI mana pun
+(Gemini, ChatGPT, Claude, AI lokal). Salin perintahnya, tempel jawabannya di sini,
+lalu lembarnya dicetak dan diterbitkan ke Exact Practice seperti lembar otomatis.</div>
+
+<form id=f>
+<div class=k>
+  <h2><b>1</b> Perintah untuk AI &mdash; opsional, lewati kalau menulis soal sendiri</h2>
+  <div class=r style="margin-top:0">
+    <input name=mapel placeholder="mapel" style="flex:1;min-width:150px">
+    <input name=topik placeholder="topik" style="flex:2;min-width:190px">
+  </div>
+  <div class=r>
+    <input name=jenjang placeholder="kelas/jenjang" size=12>
+    <select id=preset title="komposisi siap pakai" style="min-width:150px">
+      <option value="">komposisi&hellip;</option>
+      <option>10 PG + 5 Esai</option>
+      <option>10 Esai</option>
+      <option>20 PG</option>
+      <option>30 PG</option>
+      <option>5 PG + 2 B + 2 I + 1 E</option>
+      <option>15 PG + 5 Isian</option>
+    </select>
+    <input name=jumlah placeholder="atau tulis sendiri" value="{n('jumlah')}" style="flex:1;min-width:150px">
+    <input name=n_set placeholder="set" value="{n('n_set') or '1'}" size=4 title="jumlah set">
+    <input name=sulit placeholder="kesulitan" value="{n('sulit') or 'sedang'}" style="min-width:170px">
+    <select name=bahasa title="bahasa soal">
+      <option value=Indonesia{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option>
+      <option value=Inggris{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option>
+    </select>
+  </div>
+  <textarea name=instruksi rows=2 style="margin-top:11px"
+    placeholder="Catatan tambahan untuk AI (opsional)">{n('instruksi')}</textarea>
+  <textarea name=acuan rows=3 style="margin-top:9px"
+    placeholder="Soal acuan / materi yang mau ditiru gayanya (opsional)"></textarea>
+  <div class=r>
+    <button type=button id=btnSalin>Salin perintah</button>
+    <button type=button id=btnLihat class=abu>Lihat perintah</button>
+    <button type=button id=btnSusun class=abu title="Susun ulang setelah medan di atas diubah">Susun ulang</button>
+    <span class=kcl id=kabarPerintah style="margin:0"></span>
+  </div>
+  <div class=r style="margin-top:6px">
+    <a class=kcl href="https://gemini.google.com/app" target=_blank rel=noopener>Gemini &#8599;</a>
+    <a class=kcl href="https://chatgpt.com/" target=_blank rel=noopener>ChatGPT &#8599;</a>
+    <a class=kcl href="https://claude.ai/new" target=_blank rel=noopener>Claude &#8599;</a>
+  </div>
+  <div id=bungkusPerintah hidden style="margin-top:9px">
+    <textarea id=perintah rows=12 readonly></textarea>
+  </div>
+</div>
+
+<div class=k>
+  <h2><b>2</b> Naskah soal &mdash; tempel jawaban AI, atau ketik sendiri</h2>
+  <textarea name=naskah rows=16 placeholder="Contoh format &mdash; kode bagian di dalam kurung SESUDAH titik dua, kunci pakai tanda hubung:
+
+Latihan Trigonometri Dasar
+
+Bagian Pilihan Ganda: (PG)
+PG1. Nilai $\\sin 30^\\circ$ adalah ... [2]
+A. $\\frac{{1}}{{2}}$
+B. $\\frac{{1}}{{3}}$
+C. $\\frac{{\\sqrt{{3}}}}{{2}}$
+D. $1$
+
+Bagian Uraian: (E)
+E1. Buktikan $\\sin^2 x + \\cos^2 x = 1$. [5]
+
+Kunci Jawaban
+PG1-A, E1-pakai teorema Pythagoras pada lingkaran satuan
+
+Pembahasan
+PG1-Sudut istimewa: $\\sin 30^\\circ=\\frac{{1}}{{2}}$.E1-Titik pada lingkaran satuan berjarak 1 dari pusat."></textarea>
+  <div class=r>
+    <button type=button id=btnPeriksa class=abu>Periksa naskah</button>
+    <button type=button id=btnTempel class=abu>Tempel dari papan klip</button>
+    <span class=kcl id=hasilPeriksa style="margin:0"></span>
+  </div>
+</div>
+
+<div class=k>
+  <h2><b>3</b> Kop &amp; bentuk lembar</h2>
+  <div class=r style="margin-top:0">
+    <input name=lembaga placeholder="nama lembaga" value="{n('lembaga') or 'Exact Course'}" style="flex:1;min-width:150px">
+    <input name=sekolah placeholder="kode sekolah" value="{n('sekolah')}" size=10>
+    <input name=kelas placeholder="kelas" size=6>
+    <input name=tanggal placeholder="tgl" value="{tgl_ini}" size=7>
+  </div>
+  <div class=r>
+    <select name=kerapatan title="kerapatan tata letak">
+      <option value=Normal{" selected" if st.get('kerapatan','Normal')=='Normal' else ""}>kerapatan normal</option>
+      <option value=Padat{" selected" if st.get('kerapatan')=='Padat' else ""}>padat (hemat kertas)</option>
+      <option value=Lega{" selected" if st.get('kerapatan')=='Lega' else ""}>lega</option>
+    </select>
+    <select name=garis title="ruang jawab per nilai">
+      <option value=1.5{" selected" if st.get('garis','1.5')=='1.5' else ""}>ruang jawab sedang</option>
+      <option value=0.5{" selected" if st.get('garis')=='0.5' else ""}>ruang jawab sempit</option>
+      <option value=2.5{" selected" if st.get('garis')=='2.5' else ""}>ruang jawab luas</option>
+    </select>
+    <select name=kolom title="tata letak">
+      <option value=2{" selected" if st.get('kolom','2')!='1' else ""}>2 kolom (hemat)</option>
+      <option value=1{" selected" if st.get('kolom')=='1' else ""}>1 kolom penuh</option>
+    </select>
+    <label class=kcl><input type=checkbox name=dua_berkas{c('dua_berkas')}> dua berkas: soal &amp; soal+jawaban</label>
+    <label class=kcl><input type=checkbox name=kunci checked> kunci jawaban</label>
+    <label class=kcl><input type=checkbox name=pembahasan checked> pembahasan</label>
+  </div>
+  <div class=r>
+    <label class=kcl><input type=checkbox name=ke_practice> sekalian terbitkan ke Exact Practice</label>
+  </div>
+  <div class="r kirim">
+    <input name=judul placeholder="judul berkas (opsional)" style="flex:1;min-width:150px">
+    <button id=go type=submit>Buat PDF</button>
+  </div>
+</div>
+</form>
+
+<div class=k id=panel style=display:none>
+  <div class=lg id=log></div>
+  <div id=antrean></div>
+</div>
+</div>
+<script>{SKRIP_MANUAL}</script>"""

@@ -148,6 +148,35 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
+        if u.path == '/manual':
+            import buat
+            b = buat.halaman_manual().encode()
+            self.send_response(200)
+            self.send_header('Content-Type','text/html; charset=utf-8')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
+        if u.path == '/api/perintah':
+            # Perintah siap salin untuk AI mana pun. Dibangun dari format Exact
+            # Worksheet Maker yang sama dengan jalur otomatis, jadi naskah yang
+            # kembali pasti bisa dirender mesin yang sama.
+            import buat
+            g = lambda k: (qs.get(k) or [''])[0]
+            try:
+                teks = buat.perintah_manual(
+                    mapel=g('mapel'), topik=g('topik'), jenjang=g('jenjang'),
+                    jumlah=g('jumlah'), n_set=g('n_set'), sulit=g('sulit'),
+                    bahasa=g('bahasa') or 'Indonesia', instruksi=g('instruksi'),
+                    acuan=g('acuan'))
+                d = {'perintah': teks, 'panjang': len(teks)}
+            except Exception as e:
+                d = {'galat': f'{type(e).__name__}: {e}'}
+            b = json.dumps(d, ensure_ascii=False).encode()
+            self.send_response(200)
+            self.send_header('Content-Type','application/json; charset=utf-8')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
         if u.path == '/diag':
             # Hanya dari Mac ini: isinya membocorkan daftar berkas Desktop.
             if self.client_address[0] not in ('127.0.0.1', '::1'):
@@ -825,6 +854,21 @@ class H(BaseHTTPRequestHandler):
             self.send_response(200); self.send_header('Content-Type','image/png')
             self.send_header('Content-Length',str(len(png))); self.end_headers(); self.wfile.write(png); return
 
+        if u.path == '/api/periksa':
+            # Hitung apa yang terbaca dari naskah tempelan sebelum dirender.
+            import buat
+            panjang = int(self.headers.get('Content-Length') or 0)
+            teks = self.rfile.read(panjang).decode('utf-8', 'replace') if panjang else ''
+            try:
+                d = buat.periksa_naskah(teks)
+            except Exception as e:
+                d = {'jumlah': 0, 'pesan': f'{type(e).__name__}: {e}'}
+            b = json.dumps(d, ensure_ascii=False).encode()
+            self.send_response(200)
+            self.send_header('Content-Type','application/json; charset=utf-8')
+            self.send_header('Content-Length',str(len(b))); self.end_headers()
+            self.wfile.write(b); return
+
         if u.path == '/terbitkan':
             # Kirim lembar ke Exact Practice sebagai paket latihan online.
             # Form biasa (urlencoded): jid (tugas baru) ATAU f (nama PDF di
@@ -1029,7 +1073,7 @@ class H(BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(b))); self.end_headers()
             self.wfile.write(b); return
 
-        if u.path not in ('/impor', '/serupa', '/buat', '/jawab', '/rangkum'): return self.send_error(404)
+        if u.path not in ('/impor', '/serupa', '/buat', '/jawab', '/rangkum', '/manual'): return self.send_error(404)
         panjang = int(self.headers.get('Content-Length') or 0)
         mentah = self.rfile.read(panjang) if panjang else b''
         jenis = self.headers.get('Content-Type', '')
@@ -1055,6 +1099,7 @@ class H(BaseHTTPRequestHandler):
 
         import gemini_impor, tempfile, time
         if u.path == '/buat': return self.mulai_buat(medan, semua_berkas)
+        if u.path == '/manual': return self.mulai_manual(medan)
         if u.path == '/jawab': return self.mulai_jawab(medan, semua_berkas)
         if u.path == '/rangkum': return self.mulai_rangkum(medan, semua_berkas)
         if u.path == '/serupa': return self.olah_serupa(medan, berkas)
@@ -1121,6 +1166,32 @@ class H(BaseHTTPRequestHandler):
             mode=medan.get('mode') or 'flash',
             mesin=medan.get('mesin') or 'gemini'), daemon=True)
         t.start()
+        b = json.dumps({'jid': jid}).encode()
+        self.send_response(200); self.send_header('Content-Type','application/json')
+        self.send_header('Content-Length',str(len(b))); self.end_headers()
+        self.wfile.write(b)
+
+    def mulai_manual(self, medan):
+        """Naskah tempelan -> PDF. Tanpa AI, tapi tetap lewat antrean karena
+        perenderannya memakai Chrome kendali yang sama."""
+        import buat, threading, uuid, setelan
+        try: setelan.simpan(medan)
+        except Exception: pass
+        jid = uuid.uuid4().hex[:12]
+        buat.TUGAS[jid] = {'langkah': ['Mulai…'], 'maju': 3, 'selesai': False}
+        kls = (medan.get('kelas') or '').strip()
+        threading.Thread(target=buat.jalankan_manual, kwargs=dict(
+            jid=jid, naskah_teks=medan.get('naskah', ''),
+            judul=medan.get('judul', ''), topik=medan.get('topik', ''),
+            mapel=(medan.get('mapel') or '').strip() or None,
+            kelas=int(kls) if kls.isdigit() else None,
+            jenjang=medan.get('jenjang', ''),
+            lembaga=medan.get('lembaga', ''), sekolah=medan.get('sekolah', ''),
+            tanggal=medan.get('tanggal', ''),
+            kunci='kunci' in medan, pembahasan='pembahasan' in medan,
+            kolom=medan.get('kolom', '2'), dua_berkas='dua_berkas' in medan,
+            kerapatan=medan.get('kerapatan', 'Normal'), garis=medan.get('garis', '1.5'),
+            ke_practice='ke_practice' in medan), daemon=True).start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')
         self.send_header('Content-Length',str(len(b))); self.end_headers()
@@ -1310,13 +1381,14 @@ iframe{border:0;width:100%;min-height:calc(100vh - 47px);display:block;backgroun
   <img src="/statik/logo.png" alt="" class=logo>
   <div class=merek><b>Exact Course</b><span>Worksheet Maker</span></div>
   <nav>
-    <button data-u="/buat" class=aktif>Buat Soal</button>
+    <button data-u="/manual" class=aktif>Naskah Manual</button>
+    <button data-u="/buat">Buat Soal</button>
     <button data-u="/jawab">Kunci Jawaban</button>
     <button data-u="/rangkum">Rangkuman</button>
     <button data-u="/hasil">Hasil &amp; Cetak</button>
   </nav>
 </header>
-<iframe id=bingkai src="/buat"></iframe>
+<iframe id=bingkai src="/manual"></iframe>
 <script>
 const bingkai = document.getElementById('bingkai');
 
