@@ -210,6 +210,7 @@ def nama_berkas(kop, kunci, folder):
 def kode_mapel(nama):
     """Kode pendek untuk kop, mis. MATH. Memotong mentah memberi "MATEMATI"."""
     n = (nama or '').strip().lower()
+    if not n: return 'MATH'                 # mapel kosong: bawaan Rico, dulu kebetulan lewat '' in 'matematika'
     if n in SINGKATAN: return SINGKATAN[n]
     for k, v in SINGKATAN.items():
         if k in n or n in k: return v
@@ -244,7 +245,7 @@ def medan_kode_kop():
           "else{t.hidden=true;t.value=this.value}")
     return (f'<select name=kode_kop_pilih title="Kode depan judul di kop (mis. MATH pada MATH/NRD/7/1609). '
             f'Kosong = ditebak dari nama mapel" onchange="{js}">'
-            f'<option value="">kode kop: otomatis</option>{opsi}'
+            f'<option value="">kode depan: otomatis (MATH)</option>{opsi}'
             f'<option value="__ketik">ketik sendiri&hellip;</option></select>'
             f'<input name=kode_kop placeholder="kode kop" size=8 maxlength=12 '
             f'style="text-transform:uppercase" hidden>')
@@ -1338,7 +1339,6 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
   <div class=gal id=gal></div>
   <div class=r>
     <input name=mapel placeholder="mapel" style="flex:1;min-width:150px">
-    {medan_kode_kop()}
     <input name=topik placeholder="topik (kosongkan jika pakai gambar)" style="flex:2;min-width:190px">
   </div>
   <div class=r>
@@ -1364,6 +1364,7 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
   <textarea name=instruksi rows=2 style="margin-top:11px"
     placeholder="Catatan tambahan untuk Gemini (opsional)">{n('instruksi')}</textarea>
   <div class=r>
+    {medan_kode_kop()}
     <input name=lembaga placeholder="nama lembaga" value="{n('lembaga') or 'Exact Course'}" style="flex:1;min-width:150px">
     <input name=sekolah placeholder="kode sekolah" value="{n('sekolah')}" size=10>
     <input name=tanggal placeholder="tgl" value="{tgl_ini}" size=7>
@@ -1868,7 +1869,6 @@ lalu lembarnya dicetak dan diterbitkan ke Exact Practice seperti lembar otomatis
   <h2><b>1</b> Perintah untuk AI &mdash; opsional, lewati kalau menulis soal sendiri</h2>
   <div class=r style="margin-top:0">
     <input name=mapel placeholder="mapel" style="flex:1;min-width:150px">
-    {medan_kode_kop()}
     <input name=topik placeholder="topik" style="flex:2;min-width:190px">
   </div>
   <div class=r>
@@ -1941,6 +1941,7 @@ PG1-Sudut istimewa: $\\sin 30^\\circ=\\frac{{1}}{{2}}$.E1-Titik pada lingkaran s
 <div class=k>
   <h2><b>3</b> Kop &amp; bentuk lembar</h2>
   <div class=r style="margin-top:0">
+    {medan_kode_kop()}
     <input name=lembaga placeholder="nama lembaga" value="{n('lembaga') or 'Exact Course'}" style="flex:1;min-width:150px">
     <input name=sekolah placeholder="kode sekolah" value="{n('sekolah')}" size=10>
     <input name=kelas placeholder="kelas" size=6>
