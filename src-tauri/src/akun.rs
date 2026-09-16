@@ -267,6 +267,55 @@ pub async fn api_masuk_akun(State(_hub): State<Arc<Hub>>, headers: HeaderMap, Js
     }
 }
 
+#[derive(Deserialize)]
+pub struct SesiUntuk {
+    pub id: String,
+}
+
+/// Sesi murid atas permintaan aplikasi pendamping di Mac yang sama (Exact
+/// Practice): murid yang bertanya dari halaman latihan mendapat layar Canvas
+/// tertanam di halaman itu tanpa masuk lagi. Hanya untuk sambungan loopback
+/// TANPA header proxy — permintaan lewat Cloudflare juga tiba dari 127.0.0.1
+/// tetapi selalu membawa cf-connecting-ip — dan tetap harus membawa PIN.
+/// Akun yang belum disetujui guru tidak diberi sesi.
+pub async fn api_sesi_akun(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(s): Json<SesiUntuk>) -> Response {
+    let lewat_proxy = ["cf-connecting-ip", "x-forwarded-for", "x-real-ip"].iter().any(|h| headers.contains_key(*h));
+    let asal = headers.get("x-exact-asal").and_then(|v| v.to_str().ok()).unwrap_or("");
+    let lokal = asal == "127.0.0.1" || asal == "::1";
+    if lewat_proxy || !lokal || !sah(&hub, &headers, None) {
+        return tolak();
+    }
+    let id = s.id.trim().to_string();
+    if id.is_empty() {
+        return (StatusCode::BAD_REQUEST, "id kosong").into_response();
+    }
+    let perangkat = format!("{} (Exact Practice)", perangkat_dari(&headers));
+    let hasil = tokio::task::spawn_blocking(move || -> Result<Value, (StatusCode, String)> {
+        let c = koneksi().map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
+        let baris: Option<(String, String, i64)> = c
+            .query_row(
+                "SELECT id, name, approved FROM accounts WHERE id = ?1",
+                rusqlite::params![id],
+                |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)),
+            )
+            .ok();
+        let Some((id, nama, disetujui)) = baris else {
+            return Err((StatusCode::NOT_FOUND, "Akun tidak ditemukan.".into()));
+        };
+        if disetujui == 0 {
+            return Err((StatusCode::FORBIDDEN, "Akun belum disetujui guru.".into()));
+        }
+        let token = buat_sesi(&c, &id, &perangkat).map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
+        Ok(json!({ "token": token, "id": id, "nama": nama, "disetujui": true }))
+    })
+    .await;
+    match hasil {
+        Ok(Ok(v)) => Json(v).into_response(),
+        Ok(Err((s, e))) => (s, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
+    }
+}
+
 /// Siapa pemilik sesi ini — juga untuk akun yang masih menunggu persetujuan,
 /// supaya HP-nya bisa menunggu sambil bertanya berkala.
 pub async fn api_saya_akun(State(_hub): State<Arc<Hub>>, headers: HeaderMap) -> Response {

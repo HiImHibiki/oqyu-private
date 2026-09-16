@@ -70,16 +70,51 @@ const pesanEl = document.getElementById('pesan') as HTMLDivElement
 const params = new URLSearchParams(location.search)
 const paramMode = params.get('mode')
 /**
+ * Tertanam di halaman latihan Exact Practice (iframe, `?embed=1`): tombol
+ * 📝 Practice disembunyikan (kita sudah di dalamnya) dan halaman induk diberi
+ * kabar lewat postMessage — siap, dan saat pertanyaannya mulai dibahas —
+ * supaya panelnya bisa membesar sendiri tepat ketika guru mulai mencoret.
+ */
+const tertanam = params.get('embed') === '1'
+if (tertanam) document.documentElement.classList.add('embed')
+/**
+ * `?sesi=<token>`: sesi akun yang diterbitkan Practice atas nama murid (lewat
+ * /api/akun/sesi di Mac yang sama), jadi anak tidak perlu masuk lagi di dalam
+ * iframe — localStorage iframe lintas-domain di HP terpisah dari tab Canvas
+ * biasa. Token langsung dibuang dari alamat supaya tidak ikut tersalin.
+ */
+{
+  const sesiDariTautan = params.get('sesi')
+  if (sesiDariTautan) {
+    simpanSesi(sesiDariTautan)
+    params.delete('sesi')
+    const q = params.toString()
+    try {
+      history.replaceState(null, '', location.pathname + (q ? `?${q}` : ''))
+    } catch {
+      /* abaikan */
+    }
+  }
+}
+function kabariInduk(apa: string, data: Record<string, unknown> = {}): void {
+  if (!tertanam || window.parent === window) return
+  try {
+    window.parent.postMessage({ t: 'exact-canvas', apa, ...data }, '*')
+  } catch {
+    /* abaikan */
+  }
+}
+/**
  * HP murid atau TV? TV: layar lebar tanpa sentuh, atau `?tv=1`. HP murid masuk
  * dengan nama, punya bilah tanya, dan lampunya diawasi guru.
  */
-let sebagaiMurid = params.get('tv') !== '1' && (params.get('murid') === '1' || window.matchMedia('(pointer: coarse)').matches)
+let sebagaiMurid = tertanam || (params.get('tv') !== '1' && (params.get('murid') === '1' || window.matchMedia('(pointer: coarse)').matches))
 /**
  * Laptop atau Mac tanpa petunjuk di tautannya: tanyakan dulu. Perangkat sentuh
  * langsung dianggap murid; tautan dari Settings sudah membawa `tv=1` atau
  * `murid=1` jadi tidak pernah melihat pilihan ini.
  */
-const perluPilih = params.get('tv') !== '1' && params.get('murid') !== '1' && !window.matchMedia('(pointer: coarse)').matches
+const perluPilih = !tertanam && params.get('tv') !== '1' && params.get('murid') !== '1' && !window.matchMedia('(pointer: coarse)').matches
 /**
  * Id murid = id akunnya, bukan perangkatnya: ganti HP tetap orang yang sama,
  * kanvas "Tanya · Nama" dan antreannya ikut. Diisi setelah masuk.
@@ -629,6 +664,7 @@ async function mulai() {
     document.documentElement.classList.add('hp')
     await layarAkun()
     await layarMasuk()
+    kabariInduk('siap', { murid: muridId, nama: namaSaya })
   } else {
     // TV tidak bisa mengetik: tautannya membawa PIN, atau diminta sekali.
     pin = pinTersimpan() ?? ''
@@ -1561,6 +1597,7 @@ function terimaBahas(t: { murid: string; nama: string; anggota?: string[]; grup?
   const punyaku = t.murid === muridId
   const segrup = !punyaku && (t.anggota ?? []).includes(muridId)
   if (!punyaku && !segrup) return
+  kabariInduk('bahas', { punyaku, nama: t.nama })
   // Langsung ikuti perangkat guru yang membahas — tidak menunggu ia bergerak.
   bebas = false
   kanvasSaya = (t as { sketsa?: string | null }).sketsa ?? null
