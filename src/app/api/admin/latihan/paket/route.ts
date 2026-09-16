@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   const sah = ids.filter((id) => ada.has(id));
   const paket = await savePaket({
     judul: b.judul?.trim() || "Paket latihan", mapel: b.mapel?.trim() || "", kelas: b.kelas?.trim() || "",
-    topik: b.topik?.trim() || "", questionIds: sah, durasiMenit: Math.max(5, Number(b.durasiMenit) || sah.length * 2),
+    topik: b.topik?.trim() || "", questionIds: sah, durasiMenit: Math.max(5, Number(b.durasiMenit) || 120),
     sumber: "bank", terbit: true, oleh: guru.id,
   });
   return NextResponse.json({ paket });

@@ -27,7 +27,7 @@ export async function POST(req: Request) {
       id: `pk-${crypto.randomBytes(5).toString("hex")}`,
       judul: b.judul?.trim() || `${b.mapel || "Latihan"} — ${b.topik.trim()}`,
       mapel: b.mapel?.trim() || "", kelas: b.kelas?.trim() || "", topik: b.topik.trim(),
-      questionIds: [], durasiMenit: Math.max(5, Number(b.durasiMenit) || 30), sumber: "gemini",
+      questionIds: [], durasiMenit: Math.max(5, Number(b.durasiMenit) || 120), sumber: "gemini",
       jid, terbit: false, oleh: guru.id,
     });
     return NextResponse.json({ jid, paketId: paket.id });

@@ -13,7 +13,7 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
   const [tab, setTab] = useState<"gemini" | "tempel" | "bank">("gemini");
 
   /* ---- buat dengan Gemini ---- */
-  const [f, setF] = useState({ judul: "", mapel: "", kelas: "", topik: "", jumlah: 10, durasiMenit: 30, instruksi: "" });
+  const [f, setF] = useState({ judul: "", mapel: "", kelas: "", topik: "", jumlah: 10, durasiMenit: 120, instruksi: "" });
   const [kerja, setKerja] = useState<{ paketId: string; jid: string } | null>(null);
   const [log, setLog] = useState<string[]>([]);
   const [galat, setGalat] = useState("");
@@ -57,7 +57,7 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
   /* ---- tempel naskah dari AI ---- */
   const [t, setT] = useState({
     materi: "", mapel: "", kelas: "", jumlah: 10, jumlahSet: 1, kesulitan: "Sedang",
-    bahasa: "Bahasa Indonesia", catatan: "", judul: "", durasiMenit: 30, naskah: "",
+    bahasa: "Bahasa Indonesia", catatan: "", judul: "", durasiMenit: 120, naskah: "",
   });
   const [jenis, setJenis] = useState<JenisSoal[]>(["PG"]);
   const [pembahasan, setPembahasan] = useState(true);
@@ -114,7 +114,7 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
   const [bank, setBank] = useState<SoalRingkas[]>([]);
   const [pilih, setPilih] = useState<Set<string>>(new Set());
   const [judulBank, setJudulBank] = useState("");
-  const [durasiBank, setDurasiBank] = useState(30);
+  const [durasiBank, setDurasiBank] = useState(120);
   useEffect(() => {
     if (tab !== "bank") return;
     const t = setTimeout(async () => {

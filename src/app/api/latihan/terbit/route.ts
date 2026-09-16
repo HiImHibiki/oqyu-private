@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       judul: banyakSet ? `${judulDasar.replace(/ — Set \d+$/, "")} — Set ${set}` : judulDasar,
       mapel: ctx.mapel, kelas: ctx.kelas, topik: ctx.topik, set: banyakSet ? set : null,
       questionIds: dipakai.map((q) => q.id),
-      durasiMenit: Math.max(5, Number(k.durasiMenit) || Math.ceil(dipakai.length * 2)),
+      durasiMenit: Math.max(5, Number(k.durasiMenit) || 120),
       sumber: "worksheet", pdf: k.pdf ?? lama?.pdf ?? null, pdfKunci: k.pdfKunci ?? lama?.pdfKunci ?? null,
       terbit: true, oleh: "exact-worksheet", dilewati: soal.length - dipakai.length,
     });

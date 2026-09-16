@@ -57,7 +57,7 @@ export async function POST(req: Request) {
       judul: banyakSet ? `${judulDasar} — Set ${set}` : judulDasar,
       mapel: ctx.mapel, kelas: ctx.kelas, topik: ctx.topik, set: banyakSet ? set : null,
       questionIds: dipakai.map((q) => q.id),
-      durasiMenit: Math.max(5, Number(b?.durasiMenit) || Math.ceil(dipakai.length * 2)),
+      durasiMenit: Math.max(5, Number(b?.durasiMenit) || 120),
       sumber: "tempel", terbit: b?.terbit !== false, oleh: guru.id,
       dilewati: soal.length - dipakai.length,
     });
