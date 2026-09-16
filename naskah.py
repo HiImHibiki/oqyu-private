@@ -16,9 +16,21 @@ BOBOT = re.compile(r'\s*\[(\d{1,2})\]\s*$')
 KEPALA_KUNCI = re.compile(r'^\s*Kunci\s*Jawaban\s*:?\s*$', re.I)
 KEPALA_BAHAS = re.compile(r'^\s*Pembahasan\s*:?\s*$', re.I)
 SET = re.compile(r'^\s*SET\s+(\d+)\s*$', re.I)
-# "PG1-B, I1-18, E1a-5x+2" — kode, tanda hubung, jawaban sampai koma berikutnya
-PASANG = re.compile(r'\b((?:PG|B|I|E|M|IB)\d{1,3}[a-h]?(?:\.(?:i{1,3}|iv|v|vi{1,3}))?)\s*-\s*'
-                    r'([^,]+?)(?=\s*,\s*(?:PG|B|I|E|M|IB)\d|\s*$)', re.S)
+# "PG1-B, I1-18, E1a-5x+2" — kode, tanda hubung, lalu isinya sampai PENANDA
+# KODE BERIKUTNYA (atau habis). Dulu isinya dibatasi koma: cocok untuk kunci
+# yang pendek, tapi blok Pembahasan dari Gemini datang tanpa pemisah sama
+# sekali ("E1a-$...$E1b-$...$") dan kalimatnya penuh koma — hasilnya
+# pembahasan terpotong di koma pertama, sisanya hilang, dan Exact Practice
+# menerima "0 berpembahasan". Pemecah ini disamakan dengan pbRe/akRe milik
+# Worksheet Maker (wsm/app.js), jadi PDF dan Practice membaca blok yang sama
+# dengan cara yang sama. Koma pemisah di akhir isi dibuang di _pasang().
+_KODE = r'(?:PG|IB|B|I|E|M)\d{1,3}[a-h]?(?:\.(?:i{1,3}|iv|v|vi{1,3}))?'
+PASANG = re.compile(r'(?<![A-Za-z])(' + _KODE + r')\s*-\s*([\s\S]*?)(?=\s*,?\s*(?<![A-Za-z])'
+                    + _KODE + r'\s*-|\s*$)')
+
+def _pasang(teks):
+    """{KODE: isi} dari blok Kunci Jawaban / Pembahasan."""
+    return {k.upper(): _bersih(v).rstrip(',').strip() for k, v in PASANG.findall(teks)}
 
 JENIS = {'PG': 'Pilihan Ganda', 'B': 'Benar/Salah', 'I': 'Isian Singkat',
          'E': 'Uraian', 'M': 'Menjodohkan', 'IB': 'Isian Berpilihan'}
@@ -62,8 +74,8 @@ def _urai_set(baris, set_ini=1):
         if KEPALA_BAHAS.match(b): mode = 'bahas'; continue
         (isi if mode == 'soal' else bagian_kunci if mode == 'kunci' else bagian_bahas).append(b)
 
-    kunci = {k.upper(): _bersih(v) for k, v in PASANG.findall('\n'.join(bagian_kunci))}
-    bahas = {k.upper(): _bersih(v) for k, v in PASANG.findall('\n'.join(bagian_bahas))}
+    kunci = _pasang('\n'.join(bagian_kunci))
+    bahas = _pasang('\n'.join(bagian_bahas))
 
     soal, kini, huruf = [], None, None
     def tutup():
@@ -112,8 +124,16 @@ def _urai_set(baris, set_ini=1):
         s['kunci'] = kunci.get(s['kode'], '')
         s['pembahasan'] = bahas.get(s['kode'], '')
         for sub in s['sub']:
-            k = s['kode'] + sub['label'].replace('.', '.')
-            if k.upper() in kunci: sub['kunci'] = kunci[k.upper()]
+            k = (s['kode'] + sub['label']).upper()
+            if k in kunci: sub['kunci'] = kunci[k]
+            if k in bahas: sub['pembahasan'] = bahas[k]
+        # Soal uraian berbagian: kunci dan pembahasannya per bagian (E1a-, E1b-).
+        # Induknya ikut diisi gabungannya supaya tetap terbaca "berkunci" /
+        # "berpembahasan" dan ikut ke Practice/bank soal sebagai satu teks.
+        if not s['kunci'] and any(sub.get('kunci') for sub in s['sub']):
+            s['kunci'] = '; '.join(f"({sub['label']}) {sub['kunci']}" for sub in s['sub'] if sub.get('kunci'))
+        if not s['pembahasan'] and any(sub.get('pembahasan') for sub in s['sub']):
+            s['pembahasan'] = '\n'.join(f"({sub['label']}) {sub['pembahasan']}" for sub in s['sub'] if sub.get('pembahasan'))
     return soal, judul, len(kunci)
 
 def ke_naskah(daftar, judul='LEMBAR KERJA'):
