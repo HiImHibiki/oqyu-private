@@ -1164,7 +1164,8 @@ class H(BaseHTTPRequestHandler):
             kerapatan=medan.get('kerapatan', 'Normal'), garis=medan.get('garis', '1.5'),
             mata=medan.get('mata') or 'gemini',
             mode=medan.get('mode') or 'flash',
-            mesin=medan.get('mesin') or 'gemini'), daemon=True)
+            mesin=medan.get('mesin') or 'gemini',
+            kode=buat.kode_dari_medan(medan)), daemon=True)
         t.start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')
@@ -1191,7 +1192,8 @@ class H(BaseHTTPRequestHandler):
             kunci='kunci' in medan, pembahasan='pembahasan' in medan,
             kolom=medan.get('kolom', '2'), dua_berkas='dua_berkas' in medan,
             kerapatan=medan.get('kerapatan', 'Normal'), garis=medan.get('garis', '1.5'),
-            ke_practice='ke_practice' in medan), daemon=True).start()
+            ke_practice='ke_practice' in medan,
+            kode=buat.kode_dari_medan(medan)), daemon=True).start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')
         self.send_header('Content-Length',str(len(b))); self.end_headers()
@@ -1218,7 +1220,8 @@ class H(BaseHTTPRequestHandler):
             bagian=medan.get('bagian','5'),
             mata=medan.get('mata') or 'gemini',
             mode=medan.get('mode') or 'flash',
-            mesin=medan.get('mesin') or 'gemini'), daemon=True).start()
+            mesin=medan.get('mesin') or 'gemini',
+            kode=buat.kode_dari_medan(medan)), daemon=True).start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')
         self.send_header('Content-Length',str(len(b))); self.end_headers()
@@ -1245,7 +1248,8 @@ class H(BaseHTTPRequestHandler):
             kolom=medan.get('kolom','1'),
             mata=medan.get('mata') or 'gemini',
             mode=medan.get('mode') or 'flash',
-            mesin=medan.get('mesin') or 'gemini'), daemon=True).start()
+            mesin=medan.get('mesin') or 'gemini',
+            kode=buat.kode_dari_medan(medan)), daemon=True).start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')
         self.send_header('Content-Length',str(len(b))); self.end_headers()

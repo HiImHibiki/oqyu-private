@@ -218,6 +218,37 @@ def kode_mapel(nama):
         return kata[0][:4].upper()          # satu kata -> 4 huruf, bukan 1 inisial
     return ''.join(w[0] for w in kata[:4]).upper() or n[:4].upper()
 
+# Pilihan kode depan kop (bagian "MATH" pada MATH/NRD/7/1609). Diturunkan
+# dari SINGKATAN supaya daftar pilihan dan tebakan otomatis tidak berbeda.
+KODE_PILIHAN = list(dict.fromkeys(SINGKATAN.values()))
+
+def kode_kop(mapel, kode=''):
+    """Kode depan kop: yang dipilih/diketik pemakai menang; kosong = tebak dari mapel."""
+    k = (kode or '').strip().upper()
+    return k or kode_mapel(mapel)
+
+def kode_dari_medan(medan):
+    """Baca kode kop dari isian form: kotak ketik dulu, lalu pilihan select."""
+    k = (medan.get('kode_kop') or '').strip()
+    if k: return k
+    p = (medan.get('kode_kop_pilih') or '').strip()
+    return '' if p == '__ketik' else p
+
+def medan_kode_kop():
+    """Select kode kop + kotak "ketik sendiri". Sengaja TIDAK diingat antar lembar,
+    alasannya sama dengan mapel di setelan.py: kode yang tertinggal dari lembar
+    sebelumnya baru ketahuan salah setelah PDF-nya dicetak."""
+    opsi = ''.join(f'<option value="{k}">{k}</option>' for k in KODE_PILIHAN)
+    js = ("var t=this.form.kode_kop;"
+          "if(this.value=='__ketik'){t.hidden=false;t.value='';t.focus()}"
+          "else{t.hidden=true;t.value=this.value}")
+    return (f'<select name=kode_kop_pilih title="Kode depan judul di kop (mis. MATH pada MATH/NRD/7/1609). '
+            f'Kosong = ditebak dari nama mapel" onchange="{js}">'
+            f'<option value="">kode kop: otomatis</option>{opsi}'
+            f'<option value="__ketik">ketik sendiri&hellip;</option></select>'
+            f'<input name=kode_kop placeholder="kode kop" size=8 maxlength=12 '
+            f'style="text-transform:uppercase" hidden>')
+
 def _segarkan_chrome():
     """Seusai tugas, Chrome kendali ditutup dan dinyalakan lagi di latar supaya
     tugas berikutnya langsung dapat Chrome bersih (permintaan Rico: "setiap
@@ -382,7 +413,7 @@ def _tanya(mesin, perintah, lampiran=None, mode='flash', batas=300,
 def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesia',
                    lembaga='', sekolah='', tanggal='', kolom='1',
                    kerapatan='Normal', garis='0.5', mata='gemini', mode='flash',
-                   mesin='gemini'):
+                   mesin='gemini', kode=''):
     """Foto soal anak -> kunci jawaban + pembahasan -> PDF.
 
     Soalnya TIDAK dikarang: disalin apa adanya dari foto, lalu diberi kunci dan
@@ -435,7 +466,7 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
         kop = dict(lembaga=lembaga or 'Exact Course', mapel=mapel or '',
                    kelas=(f'Kelas {kelas}' if kelas else ''))
         os.makedirs(KELUAR, exist_ok=True)
-        kode_kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
+        kode_kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_kop(mapel, kode),
                         sekolah=sekolah, kelas=str(kelas or ''),
                         tanggal=tanggal or time.strftime('%d%m'))
         nama = nama_berkas(kode_kop, True, KELUAR)
@@ -466,7 +497,8 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
 
 def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
                      bahasa='Indonesia', lembaga='', sekolah='', tanggal='',
-                     bagian='5', mata='gemini', mode='flash', mesin='gemini'):
+                     bagian='5', mata='gemini', mode='flash', mesin='gemini',
+                     kode=''):
     """Materi (foto/PDF atau sekadar topik) -> lembar rangkuman -> PDF.
 
     Bahannya boleh kosong: kalau hanya topik yang diisi, rangkumannya disusun
@@ -523,7 +555,7 @@ def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
         kop = dict(lembaga=lembaga or 'Exact Course', mapel=mapel or '',
                    kelas=(f'Kelas {kelas}' if kelas else ''))
         os.makedirs(KELUAR, exist_ok=True)
-        kode_kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
+        kode_kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_kop(mapel, kode),
                         sekolah=sekolah, kelas=str(kelas or ''),
                         tanggal=tanggal or time.strftime('%d%m'))
         nama = nama_berkas(kode_kop, False, KELUAR) + ' - Rangkuman'
@@ -553,7 +585,8 @@ def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
 def lembar_dari_naskah(jid, jawab, judul='', topik='', mapel=None, kelas=None,
                        jenjang='', lembaga='', sekolah='', tanggal='',
                        kunci=True, pembahasan=True, kolom='2', dua_berkas=False,
-                       kerapatan='Normal', garis='1.5', sumber='dari Gemini'):
+                       kerapatan='Normal', garis='1.5', sumber='dari Gemini',
+                       kode=''):
     """Naskah jadi -> berkas naskah + bank soal + PDF.
 
     Paruh kedua alur /buat, dipisah supaya jalur manual (naskah ditempel
@@ -588,7 +621,7 @@ def lembar_dari_naskah(jid, jawab, judul='', topik='', mapel=None, kelas=None,
     judul = judul.strip() or (topik.strip() or f'Latihan {time.strftime("%d %b %H:%M")}')
     with KUNCI:
         TUGAS.setdefault(jid, {})['isian'] = {'mapel': mapel or '', 'kelas': str(kelas or ''), 'topik': (topik or '').strip() or judul}
-    kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_mapel(mapel),
+    kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_kop(mapel, kode),
                sekolah=sekolah, kelas=str(kelas or '') or (jenjang or ''),
                tanggal=tanggal or time.strftime('%d%m'),
                kunci=kunci, pembahasan=pembahasan, kolom=str(kolom or '2'),
@@ -650,7 +683,7 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
              topik='', jenjang='', n_set='', sulit='', bahasa='Indonesia',
              lembaga='', sekolah='', tanggal='', kunci=True, pembahasan=True,
              kolom='2', dua_berkas=False, kerapatan='Normal', garis='1.5',
-             mata='gemini', mode='flash', mesin='gemini'):
+             mata='gemini', mode='flash', mesin='gemini', kode=''):
     """Alur penuh: foto atau deskripsi -> Gemini -> Exact Worksheet Maker -> PDF.
 
     Arsip tidak lagi ikut. Dulu enam soal lama dilampirkan sebagai "contoh gaya",
@@ -747,7 +780,7 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
                            sekolah=sekolah, tanggal=tanggal, kunci=kunci,
                            pembahasan=pembahasan, kolom=kolom,
                            dua_berkas=dua_berkas, kerapatan=kerapatan,
-                           garis=garis, sumber='dari Gemini')
+                           garis=garis, sumber='dari Gemini', kode=kode)
     except Dihentikan as e:
         _catat(jid, None, galat=str(e))
     except Exception as e:
@@ -1213,6 +1246,7 @@ pembahasan langkah demi langkah. Soalnya disalin apa adanya &mdash; tidak dikara
   <div class=gal id=gal></div>
   <div class=r>
     <input name=mapel placeholder="mapel" style="flex:1;min-width:140px">
+    {medan_kode_kop()}
     <input name=kelas placeholder="kelas" size=6>
     <select name=bahasa title="bahasa jawaban">
       <option value=ikut{" selected" if st.get("bahasa","ikut") not in ("Indonesia","Inggris") else ""}>ikuti bahasa soal</option>
@@ -1304,6 +1338,7 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
   <div class=gal id=gal></div>
   <div class=r>
     <input name=mapel placeholder="mapel" style="flex:1;min-width:150px">
+    {medan_kode_kop()}
     <input name=topik placeholder="topik (kosongkan jika pakai gambar)" style="flex:2;min-width:190px">
   </div>
   <div class=r>
@@ -1444,6 +1479,7 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
   </div>
   <div class=r>
     <input name=mapel placeholder="mapel" style="flex:1;min-width:140px">
+    {medan_kode_kop()}
     <input name=kelas placeholder="kelas" size=6>
     <input name=bagian placeholder="bagian" value="5" size=6 title="berapa sub-bab">
     <select name=bahasa title="bahasa jawaban">
@@ -1559,7 +1595,7 @@ def periksa_naskah(teks):
 def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None,
                     jenjang='', lembaga='', sekolah='', tanggal='',
                     kunci=True, pembahasan=True, kolom='2', dua_berkas=False,
-                    kerapatan='Normal', garis='1.5', ke_practice=False):
+                    kerapatan='Normal', garis='1.5', ke_practice=False, kode=''):
     """Naskah tempelan -> PDF (dan, bila diminta, langsung ke Exact Practice).
 
     Tetap lewat antrean walau tidak memakai AI: perenderannya memakai Chrome
@@ -1578,7 +1614,7 @@ def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None
                            sekolah=sekolah, tanggal=tanggal, kunci=kunci,
                            pembahasan=pembahasan, kolom=kolom,
                            dua_berkas=dua_berkas, kerapatan=kerapatan,
-                           garis=garis, sumber='yang ditempel')
+                           garis=garis, sumber='yang ditempel', kode=kode)
         if ke_practice:
             # Diterbitkan di server, bukan lewat tombol di halaman: kalau tab
             # ditutup sebelum PDF selesai, paket latihannya tetap terbit.
@@ -1832,6 +1868,7 @@ lalu lembarnya dicetak dan diterbitkan ke Exact Practice seperti lembar otomatis
   <h2><b>1</b> Perintah untuk AI &mdash; opsional, lewati kalau menulis soal sendiri</h2>
   <div class=r style="margin-top:0">
     <input name=mapel placeholder="mapel" style="flex:1;min-width:150px">
+    {medan_kode_kop()}
     <input name=topik placeholder="topik" style="flex:2;min-width:190px">
   </div>
   <div class=r>
