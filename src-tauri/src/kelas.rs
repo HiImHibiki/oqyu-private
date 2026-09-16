@@ -153,7 +153,7 @@ pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
         return tolak();
     }
     let murid = q.murid.clone();
-    let hasil = tokio::task::spawn_blocking(move || -> Result<Value, String> {
+    let hasil = tokio::task::spawn_blocking(move || -> Result<(Value, Option<String>), String> {
         let c = koneksi()?;
         let _ = c.execute("UPDATE students SET last_seen = ?1 WHERE id = ?2", rusqlite::params![sekarang(), murid]);
         let grup: Option<(String, String, Option<String>)> = c
@@ -184,7 +184,11 @@ pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
         // tidak) — beda dari `sketsa` di atas yang cuma terisi kalau boleh
         // mencoret. Ini dipakai HP untuk selalu memaku diri ke kanvasnya
         // sendiri, apa pun yang sedang dibuka guru di tempat lain.
-        let kanvas = sketsa_murid(&c, &murid);
+        // Dibuatkan di sini kalau belum ada: begitu masuk, anak langsung
+        // berada di kanvasnya sendiri (atau kanvas grupnya hari ini), bukan
+        // di sketsa terakhir yang kebetulan dibuka guru — dulu kanvas baru
+        // lahir saat guru memberi izin coret atau membuka pertanyaannya.
+        let (kanvas, kanvas_baru) = pastikan_sketsa_murid(&c, &murid).unwrap_or((None, None));
         // Berapa persen layar HP diisi wilayah guru (mode "penuh" di layar
         // sempit) — bawaan 88, guru bisa mengecilkannya dari Settings kalau
         // masih terasa terlalu dekat, terutama di HP tegak (potret).
@@ -201,7 +205,7 @@ pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
             .ok()
             .map(|v| v != "false")
             .unwrap_or(true);
-        Ok(json!({
+        Ok((json!({
             "grup": grup.map(|(id, nama, target)| json!({ "id": id, "nama": nama, "target": target })),
             "tanya": tanya.map(|(id, status, dibuat, teks)| json!({ "id": id, "status": status, "dibuat": dibuat, "teks": teks, "urutan": urutan.map(|u| u + 1) })),
             "boleh": boleh,
@@ -209,11 +213,18 @@ pub async fn api_saya(State(hub): State<Arc<Hub>>, headers: HeaderMap, Query(q):
             "kanvas": kanvas,
             "zoom": zoom,
             "duaJariUndo": dua_jari_undo,
-        }))
+        }), kanvas_baru))
     })
     .await;
     match hasil {
-        Ok(Ok(v)) => Json(v).into_response(),
+        Ok(Ok((v, baru))) => {
+            // Kanvas yang baru lahir dikabarkan ke editor guru supaya muncul
+            // di daftar sketsanya tanpa perlu memuat ulang.
+            if let Some(id) = &baru {
+                let _ = hub.tx.send(json!({ "t": "data", "kanal": "canvas", "payload": { "id": id, "src": "server" } }).to_string());
+            }
+            Json(v).into_response()
+        }
         Ok(Err(e)) => (StatusCode::BAD_REQUEST, e).into_response(),
         Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
     }

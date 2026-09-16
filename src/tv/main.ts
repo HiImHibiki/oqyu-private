@@ -693,7 +693,10 @@ async function mulai() {
     pasangBilahMurid()
     pasangGestur()
     pasangCoret()
-    void segarkanSaya()
+    // Ditunggu, bukan dilepas: kanvas sendiri/grup harus sudah terpasang
+    // sebelum jatuh ke sketsa terakhir kelas di bawah — kalau tidak, muatan
+    // sketsa kelas bisa datang belakangan dan menimpa kanvas anak itu.
+    await segarkanSaya()
     window.setInterval(() => void segarkanSaya(), 20_000)
   }
 
@@ -725,7 +728,10 @@ async function mulai() {
     }
   })
 
-  const awal = await sketsaTerbaru()
+  // Murid yang sudah punya kanvasnya sendiri tidak perlu sketsa terakhir
+  // kelas — itu cuma cadangan supaya layar tidak kosong (TV, atau jaringan
+  // sedang putus saat masuk; siklus segarkanSaya berikutnya membetulkannya).
+  const awal = sebagaiMurid && kanvasSaya ? null : await sketsaTerbaru()
   if (awal) {
     await muatSketsa(awal)
     // Belum ada sumber: muat satu halaman penuh supaya layar tidak kosong.
