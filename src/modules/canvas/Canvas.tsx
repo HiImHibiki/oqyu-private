@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useApp } from '@/lib/appStore'
+import { useApp, type TempelanTertunda } from '@/lib/appStore'
+import { htmlRumus } from '@/components/TeksRumus'
 import { api, urlDenganPin } from '@/lib/api'
 import { inTauri, sentuh as layarSentuh } from '@/lib/runtime'
 import { bukaJendelaBaru } from '@/lib/layar'
@@ -336,14 +337,21 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     // jalan keluar kalau penempelan pertama gagal dan pertanyaannya sudah
     // kadung tercatat "dibahas".
     const sudahDitempel = t.status === 'dibahas' && !paksaTempel
-    const tempelan =
+    // Pertanyaan tanpa foto/PDF (mis. soal dari Exact Practice) membawa
+    // teksnya: ditempel sebagai gambar supaya soalnya ada di papan, bukan
+    // cuma di kartu panel. Teks yang menyertai foto tidak ikut — biasanya
+    // hanya keterangan pendek ("nomor 3"), fotonya yang jadi bahan.
+    const teksSoal = (t.text ?? '').trim()
+    const tempelan: TempelanTertunda =
       lampiran && lampiran.length > 0 && !sudahDitempel
         ? { idKanvas: idTujuan, lampiran, nama: t.name }
-        : { idKanvas: idTujuan, nama: t.name }
+        : teksSoal && !sudahDitempel
+          ? { idKanvas: idTujuan, teks: teksSoal, nama: t.name }
+          : { idKanvas: idTujuan, nama: t.name }
     if (idTujuan === idKanvas) {
       // Kanvas ini sudah terbuka: jumlahHalaman di sini sudah pasti segar,
       // beda dari kanvas yang baru saja termuat lewat cabang di bawah.
-      if (!tempelan.lampiran) keHalaman(jumlahHalaman - 1)
+      if (!tempelan.lampiran && !tempelan.teks) keHalaman(jumlahHalaman - 1)
       await kerjakanTempelan(tempelan)
       return
     }
@@ -361,7 +369,14 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
    * perangkat itu, yang berkali-kali terbukti gagal diam-diam. PDF tetap
    * lewat fetch biasa (butuh byte utuh untuk pdf.js, bukan bagian yang bermasalah).
    */
-  async function kerjakanTempelan(tempelan: { lampiran?: string[]; nama: string } | null) {
+  async function kerjakanTempelan(tempelan: { lampiran?: string[]; teks?: string; nama: string } | null) {
+    if (tempelan?.teks) {
+      try {
+        await tempelTeksSoal(tempelan.teks)
+      } catch (e) {
+        beriTahu(`Could not render the question: ${e instanceof Error ? e.message : String(e)}`)
+      }
+    }
     if (tempelan?.lampiran?.length) {
       let gagal = 0
       const namaPdf = tempelan.lampiran.filter((n) => n.endsWith('.pdf'))
@@ -406,6 +421,41 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     // Umumkan diri sebagai editor aktif supaya layar di ruangan ini berpindah ke sini.
     kirim({ t: 'pandangan', idKanvas, tampilan: tampilanRef.current, layar: ukuranLayarRef.current })
     beriTahu(tempelan ? `${tempelan.nama}'s question is on the canvas — draw away.` : 'Discussing — draw away.')
+  }
+
+  /**
+   * Soal teks (rumus $…$ lewat KaTeX) digambar jadi satu gambar lalu ditempel
+   * ke halaman baru — jalur yang sama dengan foto, jadi murid melihat soalnya
+   * di papan dan guru langsung mencoret di atasnya.
+   *
+   * Dirender di DOM aplikasi sendiri, bukan iframe seperti tempelHtml: teks
+   * biasa dilolos-escape dan rumusnya keluaran KaTeX (throwOnError mati),
+   * persis seperti kartu panel yang sudah menampilkannya. Stylesheet KaTeX
+   * dimuat global, jadi di iframe rumusnya justru tak bergaya.
+   */
+  async function tempelTeksSoal(teks: string) {
+    setSibuk('Rendering question…')
+    const wadah = document.createElement('div')
+    wadah.style.cssText =
+      'position:fixed;left:-10000px;top:0;width:760px;box-sizing:border-box;padding:28px 32px;' +
+      'background:#fff;color:#111;font:20px/1.6 -apple-system,system-ui,sans-serif;white-space:pre-wrap;word-break:break-word'
+    wadah.innerHTML = htmlRumus(teks)
+    document.body.appendChild(wadah)
+    try {
+      // KaTeX memakai web font; tunggu sampai siap supaya rumus tidak
+      // tergambar dengan font pengganti.
+      try {
+        await document.fonts.ready
+      } catch {
+        /* peramban tanpa Font Loading API: lanjut saja */
+      }
+      const html2canvas = (await import('html2canvas')).default
+      const c = await html2canvas(wadah, { backgroundColor: '#ffffff', scale: 2, width: 760, height: wadah.scrollHeight })
+      tempelKeHalamanBaru(c.toDataURL('image/png'), c.width / 2, c.height / 2)
+    } finally {
+      wadah.remove()
+      setSibuk(null)
+    }
   }
 
   /**

@@ -15,6 +15,10 @@ export interface TempelanTertunda {
    *  berarti tidak ada lampiran baru — cuma penanda "kanvas ini baru dibuka
    *  untuk dibahas", supaya layar tetap dibawa ke halaman terakhirnya. */
   lampiran?: string[]
+  /** Teks soal (boleh berisi rumus $…$) yang ditempel sebagai gambar bila
+   *  pertanyaannya tidak membawa lampiran — soal kiriman Exact Practice
+   *  seluruhnya teks, dan tanpa ini "Discuss" tidak menaruh apa-apa. */
+  teks?: string
   nama: string
 }
 

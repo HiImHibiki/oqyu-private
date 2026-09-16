@@ -35,6 +35,25 @@ function pisah(teks: string): Bagian[] {
   return bagian
 }
 
+function lolos(t: string): string {
+  return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
+
+/**
+ * Teks yang sama sebagai string HTML: teks biasa dilolos-escape, rumus lewat
+ * KaTeX. Dipakai saat soal teks (mis. kiriman Exact Practice) harus jadi
+ * gambar di kanvas — html2canvas butuh DOM sungguhan, bukan simpul React.
+ */
+export function htmlRumus(teks: string): string {
+  return pisah(teks)
+    .map((b) =>
+      b.rumus
+        ? katex.renderToString(b.isi, { displayMode: b.blok, throwOnError: false, output: 'html', strict: false })
+        : lolos(b.isi),
+    )
+    .join('')
+}
+
 export function TeksRumus({ teks }: { teks: string }) {
   const bagian = useMemo(() => pisah(teks), [teks])
   return (

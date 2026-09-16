@@ -409,13 +409,19 @@ function BarisTanya({
         {/* Kalau penempelan pertama gagal (mis. galat baca foto di tablet),
             pertanyaan ini sudah kadung "dibahas" dan tombol di atas cuma
             berpindah kanvas — jalan ini menempel ulang secara eksplisit. */}
-        {dibahas && t.photos.length > 0 && (
+        {dibahas && (t.photos.length > 0 || !!t.text) && (
           <button
             className="ex-btn"
             data-variant="ghost"
             style={{ padding: '4px 8px' }}
             onClick={() => onBahas(true)}
-            title={t.photos.length > 1 ? `Insert the ${t.photos.length} photos onto the canvas again` : 'Insert the photo onto the canvas again'}
+            title={
+              t.photos.length > 1
+                ? `Insert the ${t.photos.length} photos onto the canvas again`
+                : t.photos.length === 1
+                  ? 'Insert the photo onto the canvas again'
+                  : 'Insert the question text onto the canvas again'
+            }
           >
             <Icon nama="sisip" ukuran={13} />
           </button>
