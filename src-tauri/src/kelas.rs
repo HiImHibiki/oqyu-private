@@ -253,11 +253,12 @@ fn sketsa_murid(c: &rusqlite::Connection, murid: &str) -> Option<String> {
     if let Some((sketsa, hari)) = grup {
         return sketsa.filter(|s| hari.as_deref() == Some(hari_ini().as_str()) && ada(s));
     }
-    let sendiri: Option<String> = c
-        .query_row("SELECT sketch_id FROM students WHERE id = ?1", rusqlite::params![murid], |r| r.get::<_, Option<String>>(0))
-        .ok()
-        .flatten();
-    sendiri.filter(|s| ada(s))
+    // Kanvas pribadi pun satu per hari: besok anak yang sama mulai di kanvas
+    // baru, coretan kemarin tetap ada di daftar sketsa dengan tanggalnya.
+    let sendiri: Option<(Option<String>, Option<String>)> = c
+        .query_row("SELECT sketch_id, sketch_day FROM students WHERE id = ?1", rusqlite::params![murid], |r| Ok((r.get(0)?, r.get(1)?)))
+        .ok();
+    sendiri.and_then(|(s, hari)| s.filter(|s| hari.as_deref() == Some(hari_ini().as_str()) && ada(s)))
 }
 
 /// Kanvas murid ini, dibuatkan kalau belum ada — kembaliannya
@@ -293,8 +294,9 @@ fn pastikan_sketsa_murid(c: &rusqlite::Connection, murid: &str) -> Result<(Optio
             id
         }
         None => {
-            let id = buat_sketsa_kosong(c, &format!("Tanya · {nama}"))?;
-            c.execute("UPDATE students SET sketch_id = ?1 WHERE id = ?2", rusqlite::params![id, murid]).map_err(|e| e.to_string())?;
+            let id = buat_sketsa_kosong(c, &format!("Tanya · {nama} · {}", tanggal_pendek()))?;
+            c.execute("UPDATE students SET sketch_id = ?1, sketch_day = ?2 WHERE id = ?3", rusqlite::params![id, hari_ini(), murid])
+                .map_err(|e| e.to_string())?;
             id
         }
     };
@@ -355,6 +357,99 @@ fn buat_sketsa_kosong(c: &rusqlite::Connection, judul: &str) -> Result<String, S
     )
     .map_err(|e| e.to_string())?;
     Ok(id)
+}
+
+/* ── Hapus otomatis kanvas lama ────────────────────────────────────── */
+
+/// Berapa hari kanvas dibiarkan tidak tersentuh sebelum disingkirkan
+/// (pengaturan `hapus_kanvas_hari`; 0 = tidak pernah). Bawaan seminggu.
+const HAPUS_KANVAS_HARI_BAWAAN: i64 = 7;
+/// Kanvas yang disingkirkan tidak langsung lenyap: berkasnya dipindah ke
+/// `vault/sampah/` dulu, dan baru dibuang betulan setelah sekian hari.
+const UMUR_SAMPAH_HARI: i64 = 30;
+
+/// Singkirkan kanvas yang sudah lama tidak disentuh — kanvas anak, kanvas
+/// grup, maupun sketsa guru sendiri. Mengembalikan id yang disingkirkan.
+///
+/// Umur dihitung dari yang paling akhir antara `updated_at` di database dan
+/// waktu ubah berkasnya, supaya coretan murid yang hanya lewat server (tanpa
+/// editor guru) tetap terhitung sebagai aktivitas. Berkas di folder canvas
+/// yang barisnya sudah hilang ikut diperiksa, jadi tidak ada yang menumpuk
+/// diam-diam.
+pub fn hapus_kanvas_lama() -> Vec<String> {
+    let Ok(c) = koneksi() else { return Vec::new() };
+    let hari: i64 = c
+        .query_row("SELECT value FROM settings WHERE key = 'hapus_kanvas_hari'", [], |r| r.get::<_, String>(0))
+        .ok()
+        .and_then(|v| v.trim().parse().ok())
+        .unwrap_or(HAPUS_KANVAS_HARI_BAWAAN);
+    if hari <= 0 {
+        return Vec::new();
+    }
+    let kini = sekarang();
+    let batas = kini - hari * 86_400_000;
+    let sampah = vault::root().join("sampah");
+    let mut dihapus = Vec::new();
+    for id in vault::canvas_list() {
+        let Ok(path) = vault::resolve_within(&vault::canvas_dir(), &format!("{id}.json")) else { continue };
+        let mtime = std::fs::metadata(&path)
+            .and_then(|m| m.modified())
+            .ok()
+            .and_then(|t| t.duration_since(UNIX_EPOCH).ok())
+            .map(|d| d.as_millis() as i64)
+            .unwrap_or(i64::MAX);
+        let baris: i64 = c
+            .query_row("SELECT updated_at FROM canvases WHERE id = ?1", rusqlite::params![id], |r| r.get::<_, Option<i64>>(0))
+            .ok()
+            .flatten()
+            .unwrap_or(0);
+        if mtime.max(baris) >= batas {
+            continue;
+        }
+        if std::fs::create_dir_all(&sampah).is_err() {
+            break;
+        }
+        // Nama berkas di sampah membawa waktu disingkirkannya, jadi umur di
+        // sampah dihitung dari saat itu — bukan dari kapan terakhir dicoret.
+        if std::fs::rename(&path, sampah.join(format!("{kini}_{id}.json"))).is_err() {
+            continue;
+        }
+        let _ = std::fs::remove_dir_all(vault::backup_dir().join(&id));
+        let _ = c.execute("DELETE FROM canvases WHERE id = ?1", rusqlite::params![id]);
+        let _ = c.execute("UPDATE students SET sketch_id = NULL, sketch_day = NULL WHERE sketch_id = ?1", rusqlite::params![id]);
+        let _ = c.execute("UPDATE groups SET sketch_id = NULL, sketch_day = NULL WHERE sketch_id = ?1", rusqlite::params![id]);
+        dihapus.push(id);
+    }
+    // Baris lama yang berkasnya sudah tidak ada: di daftar sketsa ia tampak
+    // tapi tidak bisa dibuka — bersihkan sekalian.
+    if let Ok(mut st) = c.prepare("SELECT id FROM canvases WHERE updated_at < ?1") {
+        let ids: Vec<String> = st
+            .query_map(rusqlite::params![batas], |r| r.get::<_, String>(0))
+            .map(|rows| rows.flatten().collect())
+            .unwrap_or_default();
+        for id in ids {
+            let ada = vault::resolve_within(&vault::canvas_dir(), &format!("{id}.json")).map(|p| p.exists()).unwrap_or(false);
+            if !ada {
+                let _ = c.execute("DELETE FROM canvases WHERE id = ?1", rusqlite::params![id]);
+                dihapus.push(id);
+            }
+        }
+    }
+    // Sampah yang sudah cukup lama dibuang betulan.
+    let batas_sampah = kini - UMUR_SAMPAH_HARI * 86_400_000;
+    if let Ok(entries) = std::fs::read_dir(&sampah) {
+        for e in entries.flatten() {
+            let stempel: Option<i64> = e
+                .file_name()
+                .to_str()
+                .and_then(|n| n.split('_').next())
+                .and_then(|n| n.parse().ok());
+            if stempel.map(|t| t < batas_sampah).unwrap_or(false) {
+                let _ = std::fs::remove_file(e.path());
+            }
+        }
+    }
+    dihapus
 }
 
 /// 'YYYY-MM-DD' waktu lokal Mac — sama dengan `kunciTanggal` di sisi depan.

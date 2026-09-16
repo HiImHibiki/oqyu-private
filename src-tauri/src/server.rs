@@ -73,6 +73,15 @@ struct Aktif {
 
 static BERBAGI: Mutex<Option<Aktif>> = Mutex::new(None);
 
+/// Kirim satu pesan ke semua klien yang tersambung — kalau sedang berbagi;
+/// kalau tidak, pesannya cuma dibuang. Untuk pekerjaan latar di luar server
+/// (mis. hapus otomatis kanvas lama) yang perlu mengabari layar lain.
+pub fn siarkan(teks: String) {
+    if let Some(a) = BERBAGI.lock().unwrap_or_else(|e| e.into_inner()).as_ref() {
+        let _ = a.hub.tx.send(teks);
+    }
+}
+
 #[derive(Serialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct InfoBerbagi {

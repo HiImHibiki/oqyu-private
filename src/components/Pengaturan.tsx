@@ -194,6 +194,7 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
   const [pinKustom, setPinKustom] = useState('')
   const [sandiAdmin, setSandiAdmin] = useState('')
   const [zoomMurid, setZoomMurid] = useState(88)
+  const [hapusHari, setHapusHari] = useState(7)
 
   useEffect(() => {
     if (!buka) return
@@ -202,11 +203,21 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
     void getSetting('murid_zoom')
       .then((v) => setZoomMurid(v ? Math.max(50, Math.min(100, Number(v))) : 88))
       .catch(() => {})
+    void getSetting('hapus_kanvas_hari')
+      .then((v) => setHapusHari(v == null || v === '' ? 7 : Math.max(0, Math.min(365, Number(v) || 0))))
+      .catch(() => {})
   }, [buka])
 
   async function simpanZoomMurid(persen: number) {
     setZoomMurid(persen)
     await setSetting('murid_zoom', String(persen))
+  }
+
+  /** Umur kanvas sebelum disingkirkan otomatis (hari); 0 = tidak pernah. Dibaca pekerjaan latar di Rust tiap jam. */
+  async function simpanHapusHari(hari: number) {
+    const bersih = Number.isFinite(hari) ? Math.max(0, Math.min(365, Math.round(hari))) : 7
+    setHapusHari(bersih)
+    await setSetting('hapus_kanvas_hari', String(bersih))
   }
 
   async function simpanSandiAdmin(sandi: string) {
@@ -429,6 +440,26 @@ function BagianBerbagi({ buka }: { buka: boolean }) {
             <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
               How tightly a phone screen (portrait) fills with the teacher's view. Lower if it feels
               too zoomed in. Takes effect on students' next refresh — up to 20 seconds.
+            </p>
+            <label className="ex-label flex items-center gap-2" style={{ color: 'var(--ink-soft)' }}>
+              Auto-delete sketches untouched for
+              <input
+                className="ex-input"
+                type="number"
+                min={0}
+                max={365}
+                value={hapusHari}
+                onChange={(e) => setHapusHari(Number(e.target.value))}
+                onBlur={() => void simpanHapusHari(hapusHari)}
+                onKeyDown={(e) => e.key === 'Enter' && void simpanHapusHari(hapusHari)}
+                style={{ width: 64, padding: '5px 8px', fontSize: 'var(--fs-label)', textAlign: 'right' }}
+              />
+              days
+            </label>
+            <p className="ex-label" style={{ color: 'var(--ink-faint)', fontSize: 11 }}>
+              Applies to every sketch — students', groups' and your own. Checked hourly; removed
+              sketches sit in the vault's "sampah" folder for 30 days before being deleted for good.
+              0 = never.
             </p>
           </div>
         </div>

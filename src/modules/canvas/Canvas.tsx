@@ -282,16 +282,18 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   /**
    * Guru membuka pertanyaan.
    *
-   * Tiap murid punya kanvas khususnya sendiri, "Tanya · Nama", dibuat saat
-   * pertanyaan pertamanya dibahas dan dipakai lagi untuk pertanyaan berikutnya:
-   * foto atau PDF-nya masuk di halaman baru kanvas itu, jadi riwayat satu anak
+   * Tiap murid punya kanvas khususnya sendiri, "Tanya · Nama · 16 Sep" — satu
+   * per hari, seperti kanvas grup — dibuat saat pertanyaan pertamanya hari itu
+   * dibahas dan dipakai lagi untuk pertanyaan berikutnya: foto atau PDF-nya
+   * masuk di halaman baru kanvas itu, jadi riwayat satu anak dalam sehari
    * tinggal berurutan di satu tempat, dan anak lain tidak bercampur.
    */
   async function bahasTanya(t: Tanya, lampiran: string[] | null, paksaTempel = false) {
     // Anggota grup berbagi satu kanvas grup; murid tanpa grup punya kanvasnya
     // sendiri. Keduanya dibuat saat pertama dibutuhkan dan dipakai lagi seterusnya.
     let idTujuan: string | null = null
-    let judulTujuan = `Tanya · ${t.name}`
+    const hari = kunciTanggal()
+    let judulTujuan = `Tanya · ${t.name} · ${tanggalPendek(new Date())}`
     try {
       const grup = await q1<{ id: string; name: string; sketch_id: string | null; sketch_day: string | null }>(
         'SELECT g.id, g.name, g.sketch_id, g.sketch_day FROM groups g JOIN group_members m ON m.group_id = g.id WHERE m.student_id = ? ORDER BY g.sort_order LIMIT 1',
@@ -301,7 +303,6 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
       if (grup) {
         // Satu kanvas per grup per hari: "Grup · Mat 1 · 6 Sep". Besok grup
         // yang sama mulai bersih; materi hari ini tetap ada di daftar sketsa.
-        const hari = kunciTanggal()
         judulTujuan = `Grup · ${grup.name} · ${tanggalPendek(new Date())}`
         idTujuan = grup.sketch_day === hari && (await adaSketsa(grup.sketch_id)) ? grup.sketch_id : null
         if (!idTujuan) {
@@ -309,11 +310,14 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
           await x('UPDATE groups SET sketch_id = ?, sketch_day = ? WHERE id = ?', [idTujuan, hari, grup.id])
         }
       } else {
-        const baris = await q1<{ sketch_id: string | null }>('SELECT sketch_id FROM students WHERE id = ?', [t.student_id])
-        idTujuan = (await adaSketsa(baris?.sketch_id ?? null)) ? baris!.sketch_id : null
+        const baris = await q1<{ sketch_id: string | null; sketch_day: string | null }>(
+          'SELECT sketch_id, sketch_day FROM students WHERE id = ?',
+          [t.student_id],
+        )
+        idTujuan = baris?.sketch_day === hari && (await adaSketsa(baris.sketch_id)) ? baris.sketch_id : null
         if (!idTujuan) {
           idTujuan = await buatKanvas(judulTujuan)
-          await x('UPDATE students SET sketch_id = ? WHERE id = ?', [idTujuan, t.student_id])
+          await x('UPDATE students SET sketch_id = ?, sketch_day = ? WHERE id = ?', [idTujuan, hari, t.student_id])
         }
       }
     } catch (e) {

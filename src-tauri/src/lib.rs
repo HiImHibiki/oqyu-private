@@ -10,7 +10,7 @@ mod server;
 mod vault;
 mod windows;
 
-use tauri::{Manager, RunEvent, WindowEvent};
+use tauri::{Emitter, Manager, RunEvent, WindowEvent};
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -69,6 +69,25 @@ pub fn run() {
             app.on_menu_event(|app, event| menu::tangani(app, event.id().as_ref()));
             menu::buat_tray(&handle)?;
             windows::siapkan(&handle)?;
+            // Kanvas yang sudah lama tidak disentuh disingkirkan — sesaat
+            // setelah aplikasi menyala dan tiap jam sesudahnya. Jalan di sini,
+            // bukan di server berbagi, supaya tetap terjadi walau berbagi mati.
+            let latar = handle.clone();
+            tauri::async_runtime::spawn(async move {
+                tokio::time::sleep(std::time::Duration::from_secs(20)).await;
+                loop {
+                    let dihapus = tokio::task::spawn_blocking(kelas::hapus_kanvas_lama).await.unwrap_or_default();
+                    if !dihapus.is_empty() {
+                        // Daftar sketsa di jendela Mac dan di layar lain
+                        // (tablet, TV) menyegarkan diri; `hapus` membuat editor
+                        // yang sedang membuka salah satunya tidak memuat ulang.
+                        let payload = serde_json::json!({ "src": "server", "hapus": true, "ids": dihapus });
+                        let _ = latar.emit("data:canvas", payload.clone());
+                        server::siarkan(serde_json::json!({ "t": "data", "kanal": "canvas", "payload": payload }).to_string());
+                    }
+                    tokio::time::sleep(std::time::Duration::from_secs(3600)).await;
+                }
+            });
             Ok(())
         })
         .on_window_event(|window, event| {

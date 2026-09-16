@@ -72,6 +72,12 @@ pub fn migrations() -> Vec<Migration> {
             kind: MigrationKind::Up,
             sql: "ALTER TABLE questions ADD COLUMN photos TEXT;",
         },
+        Migration {
+            version: 11,
+            description: "kanvas pribadi murid per hari, seperti kanvas grup",
+            kind: MigrationKind::Up,
+            sql: "ALTER TABLE students ADD COLUMN sketch_day TEXT;",
+        },
     ]
 }
 
