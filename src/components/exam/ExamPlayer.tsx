@@ -1,7 +1,7 @@
 "use client";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  AlertTriangle, BookOpen, Calculator as CalcIcon, ChevronLeft, ChevronRight, Clock, Eye, EyeOff, Flag, Highlighter, LayoutGrid, Loader2, Maximize, ShieldCheck, WifiOff, MessageCircleQuestion,
+  AlertTriangle, BookOpen, Calculator as CalcIcon, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock, Eye, EyeOff, Flag, Highlighter, LayoutGrid, Loader2, Maximize, Maximize2, Minimize2, ShieldCheck, WifiOff, MessageCircleQuestion, X,
 } from "lucide-react";
 import type { ExamCode, Question, ResponseValue } from "@/lib/types";
 import { QuestionView } from "./QuestionView";
@@ -11,6 +11,50 @@ import { Calculator } from "./Calculator";
 import { FormulaSheet } from "./FormulaSheet";
 import { useProctor } from "./useProctor";
 import { useI18n } from "@/components/ui/I18nProvider";
+
+/* Panel papan guru: layar murid Exact Canvas di dalam halaman latihan.
+ * Di ponsel menumpuk di bawah soal (45% tinggi), di layar lebar berdampingan
+ * di kanan. "Lipat" hanya menyembunyikan — iframe-nya tetap hidup supaya
+ * sambungan ke kanvas tidak putus dan bunyi "dibahas" tetap sampai. */
+function PapanGuru({ url, mode, onMode, onTutup, t }: {
+  url: string; mode: "kecil" | "normal" | "penuh";
+  onMode: (m: "kecil" | "normal" | "penuh") => void; onTutup: () => void;
+  t: ReturnType<typeof useI18n>["t"];
+}) {
+  const penuh = mode === "penuh";
+  const kecil = mode === "kecil";
+  const kelas = penuh
+    ? "fixed inset-0 z-[60] flex flex-col"
+    : `flex shrink-0 flex-col border-t lg:border-l lg:border-t-0 ${kecil ? "" : "h-[45%] lg:h-auto lg:w-1/2"}`;
+  return (
+    <section className={kelas} style={{ background: "var(--bg-elev)" }} aria-label={t("exam.boardTitle")}>
+      <div className="flex items-center gap-2 border-b px-3 py-1.5 text-xs">
+        <span className="shrink-0 font-semibold">{t("exam.boardTitle")}</span>
+        {!penuh && <span className="hidden truncate muted sm:inline">{t("exam.boardHint")}</span>}
+        <div className="ml-auto flex shrink-0 items-center gap-1">
+          {!penuh && (
+            <button className="btn btn-ghost !px-2 !py-1" onClick={() => onMode(kecil ? "normal" : "kecil")} title={kecil ? t("exam.boardShow") : t("exam.boardCollapse")}>
+              {kecil ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+            </button>
+          )}
+          <button className="btn btn-ghost !px-2 !py-1" onClick={() => onMode(penuh ? "normal" : "penuh")} title={penuh ? t("exam.boardBack") : t("exam.boardFull")}>
+            {penuh ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
+          </button>
+          <button className="btn btn-ghost !px-2 !py-1" onClick={onTutup} title={t("exam.boardClose")}>
+            <X size={14} />
+          </button>
+        </div>
+      </div>
+      <iframe
+        src={url}
+        title={t("exam.boardTitle")}
+        className="w-full min-h-0 flex-1 border-0"
+        hidden={kecil}
+        allow="fullscreen; screen-wake-lock; autoplay"
+      />
+    </section>
+  );
+}
 
 export interface PlayerSection {
   code: string;
@@ -103,6 +147,13 @@ export function ExamPlayer(props: ExamPlayerProps) {
    * ada bantuan. */
   const [asking, setAsking] = useState<"idle" | "busy" | "done" | "fail">("idle");
   const [askMsg, setAskMsg] = useState("");
+  /* Papan guru: layar murid Exact Canvas ditanam di halaman ini (iframe),
+   * jadi anak tidak bolak-balik dua aplikasi saat soalnya dibahas. Hanya
+   * untuk akun yang berasal dari Canvas (sesinya bisa diterbitkan server);
+   * yang lain tetap dibukakan tab Canvas seperti dulu. */
+  const [bisaPapan, setBisaPapan] = useState(false);
+  const [papan, setPapan] = useState<{ url: string; asal: string } | null>(null);
+  const [papanMode, setPapanMode] = useState<"kecil" | "normal" | "penuh">("normal");
   const [sheetOpen, setSheetOpen] = useState(false);
   const [hlMode, setHlMode] = useState(false);
   const [onBreak, setOnBreak] = useState(false);
@@ -113,6 +164,23 @@ export function ExamPlayer(props: ExamPlayerProps) {
   const [starting, setStarting] = useState(false);
   const [offline, setOffline] = useState(false);
   const [syncedAt, setSyncedAt] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (props.examCode !== "LATIHAN" || isDemo) return;
+    let batal = false;
+    fetch("/api/latihan/tanya").then((r) => r.json()).then((j) => { if (!batal) setBisaPapan(!!j.papan); }).catch(() => {});
+    return () => { batal = true; };
+  }, [props.examCode, isDemo]);
+  useEffect(() => {
+    if (!papan) return;
+    const dengar = (e: MessageEvent) => {
+      if (e.origin !== papan.asal || !e.data || e.data.t !== "exact-canvas") return;
+      /* Guru mulai membahas: panel yang dilipat dibuka lagi supaya coretannya terlihat. */
+      if (e.data.apa === "bahas") setPapanMode((m) => (m === "kecil" ? "normal" : m));
+    };
+    window.addEventListener("message", dengar);
+    return () => window.removeEventListener("message", dengar);
+  }, [papan]);
 
   const section = sections[si];
   const question = section?.questions[qi];
@@ -451,15 +519,22 @@ export function ExamPlayer(props: ExamPlayerProps) {
               onClick={async () => {
                 setAsking("busy"); setAskMsg(t("exam.asking"));
                 /* Tab dibuka SEBELUM await: peramban ponsel memblokir window.open
-                 * yang tidak lagi berada di dalam gestur klik. */
-                const tab = window.open("", "_blank");
+                 * yang tidak lagi berada di dalam gestur klik. Kalau papan guru
+                 * bisa ditanam di sini, tidak ada tab yang perlu dibuka. */
+                const tab = bisaPapan ? null : window.open("", "_blank");
                 try {
                   const r = await fetch("/api/latihan/tanya", {
                     method: "POST", headers: { "content-type": "application/json" },
                     body: JSON.stringify({ attemptId: props.attemptId, questionId: question.id, number: qi + 1 }),
                   });
                   const j = await r.json();
-                  if (j.url) { if (tab) tab.location.href = j.url; else window.open(j.url, "_blank"); setAsking("done"); setAskMsg(t("exam.asked")); }
+                  if (j.papan) {
+                    tab?.close();
+                    /* Iframe yang sudah hidup dibiarkan (sesinya sama); cuma dibuka lagi kalau terlipat. */
+                    setPapan((p) => p ?? { url: j.papan, asal: new URL(j.papan).origin });
+                    setPapanMode((m) => (m === "kecil" ? "normal" : m));
+                    setAsking("done"); setAskMsg(t("exam.askedBoard"));
+                  } else if (j.url) { if (tab) tab.location.href = j.url; else window.open(j.url, "_blank"); setAsking("done"); setAskMsg(t("exam.asked")); }
                   else { tab?.close(); setAsking("fail"); setAskMsg(j.error || "Gagal"); }
                 } catch { tab?.close(); setAsking("fail"); setAskMsg("Gagal menghubungi server"); }
               }}>
@@ -570,7 +645,8 @@ export function ExamPlayer(props: ExamPlayerProps) {
          * ke bawah mengembalikan lebar baca penuh, dan masing-masing bagian
          * tetap punya gulirannya sendiri sehingga bacaan bisa ditelusuri tanpa
          * kehilangan pilihan jawaban dari layar. */}
-        <main className="flex flex-1 flex-col overflow-hidden md:flex-row">
+        <div className="flex min-h-0 flex-1 flex-col overflow-hidden lg:flex-row">
+        <main className="flex min-h-0 flex-1 flex-col overflow-hidden md:flex-row">
           {hasStimulus ? (
             <>
               <section className="h-2/5 w-full shrink-0 overflow-y-auto border-b px-4 py-5 md:h-auto md:w-1/2 md:shrink md:border-b-0 md:border-r md:px-8 md:py-6">
@@ -602,6 +678,10 @@ export function ExamPlayer(props: ExamPlayerProps) {
             </section>
           )}
         </main>
+        {papan && (
+          <PapanGuru url={papan.url} mode={papanMode} onMode={setPapanMode} onTutup={() => setPapan(null)} t={t} />
+        )}
+        </div>
       </div>
 
       {/* ---------------------------------------------------- footer */}

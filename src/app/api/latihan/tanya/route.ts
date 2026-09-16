@@ -3,7 +3,7 @@ import { currentUser, idCanvasDari, menunggu } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { questionsByIds } from "@/lib/exams/bank";
 import { potretHtml } from "@/lib/practice/worksheet";
-import { tanyaGuru } from "@/lib/practice/canvas";
+import { sesiCanvasUntuk, tanyaGuru, urlPapan } from "@/lib/practice/canvas";
 import { aksesLatihan } from "@/lib/practice/akses";
 import type { Question } from "@/lib/types";
 
@@ -29,7 +29,18 @@ function teksSoal(q: Question, nomor: number, judul: string) {
   return `[${judul} — Soal ${nomor}]\n${q.stem}${opsi ? "\n" + opsi : ""}`;
 }
 
-/** body: { attemptId, questionId, number } → { url } layar murid Exact Canvas */
+/** Bisakah papan guru ditanam di halaman latihan untuk pengguna ini?
+ *  Perlu akun yang berasal dari Exact Canvas (sesinya bisa diterbitkan) dan
+ *  PIN Canvas di server. Pengguna lain tetap memakai tab Canvas terpisah. */
+export async function GET() {
+  const user = await currentUser();
+  if (!user) return NextResponse.json({ papan: false });
+  const papan = !!idCanvasDari(user.email) && !!process.env.EXACT_CANVAS_PIN && (await aksesLatihan(user)).murid;
+  return NextResponse.json({ papan });
+}
+
+/** body: { attemptId, questionId, number } → { url, papan? } layar murid Exact Canvas;
+ *  `papan` = alamat layar murid bersesi untuk ditanam di halaman latihan. */
 export async function POST(req: Request) {
   const user = await currentUser();
   if (!user) return NextResponse.json({ error: "Perlu masuk" }, { status: 401 });
@@ -59,5 +70,7 @@ export async function POST(req: Request) {
     teks: teksSoal(q, nomor, a.formTitle), fotoDataUrl: foto,
   });
   if (!hasil.ok) return NextResponse.json({ error: hasil.pesan, kode: hasil.kode }, { status: 502 });
-  return NextResponse.json({ url: hasil.url });
+  const idCanvas = idCanvasDari(user.email);
+  const token = idCanvas ? await sesiCanvasUntuk(idCanvas) : null;
+  return NextResponse.json({ url: hasil.url, papan: token ? urlPapan(token) : null });
 }

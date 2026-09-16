@@ -10,6 +10,29 @@ const kepala = () => ({ "Content-Type": "application/json", ...(PIN ? { "x-exact
 
 export interface HasilTanya { ok: boolean; pesan?: string; url?: string; kode?: string }
 
+/** Asal (origin) layar murid Canvas — untuk memeriksa postMessage dari iframe papan guru. */
+export const ASAL_CANVAS = URL_PUBLIK;
+
+/** Alamat layar murid yang ditanam di halaman latihan: sudah membawa sesi, tanpa masuk lagi. */
+export function urlPapan(token: string): string {
+  return `${URL_PUBLIK}/tv?murid=1&embed=1&sesi=${encodeURIComponent(token)}`;
+}
+
+/** Sesi Canvas atas nama akun murid (hanya akun Canvas yang sudah disetujui).
+ *  Endpoint-nya cuma menerima permintaan loopback ber-PIN, jadi hanya server
+ *  Practice di Mac yang sama yang bisa memintanya. null = tidak bisa/tidak ada. */
+export async function sesiCanvasUntuk(idAkun: string): Promise<string | null> {
+  if (!PIN) return null;
+  try {
+    const r = await fetch(`${URL_LOKAL}/api/akun/sesi`, { method: "POST", headers: kepala(), body: JSON.stringify({ id: idAkun }) });
+    if (!r.ok) return null;
+    const j = (await r.json()) as { token?: string };
+    return j.token ?? null;
+  } catch {
+    return null;
+  }
+}
+
 /** Pesan galat Canvas berkode: TUNGGU:<detik>:<pesan> | ANTRE:<pesan> | MUTED:<pesan> */
 function urai(pesan: string): { kode: string; teks: string } {
   const m = pesan.match(/^(TUNGGU|ANTRE|MUTED):(?:\d+:)?(.*)$/s);
