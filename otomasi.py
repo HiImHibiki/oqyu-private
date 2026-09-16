@@ -54,6 +54,63 @@ def _sesi(url, potongan):
         if t: return _tampilkan(cdp.Sesi(t))
     return _tampilkan(cdp.Sesi(tab))
 
+JS_SIAP_WSM = r"""
+(function(){
+  return document.readyState === 'complete' && typeof PagedModule === 'object'
+      && !!document.getElementById('btnRender') && !!document.getElementById('rawInput');
+})()
+"""
+
+# Paged.js (jalur "1 kolom penuh") menjadwalkan lewat requestAnimationFrame dan
+# requestIdleCallback; di tab yang berstatus hidden keduanya tidak pernah
+# dipanggil, jadi perenderan berhenti dan antrean render halaman itu macet
+# selamanya. Kalau tab tetap hidden walau sudah dibawa ke depan, keduanya
+# dialihkan ke setTimeout supaya perenderan tetap berjalan.
+JS_SHIM_JADWAL = r"""
+(function(){
+  if (window.__exactShim) return 'ada';
+  window.__exactShim = true;
+  window.requestAnimationFrame = cb => setTimeout(() => cb(performance.now()), 0);
+  window.requestIdleCallback = cb => setTimeout(() => cb({didTimeout: true, timeRemaining: () => 50}), 0);
+  return 'OK';
+})()
+"""
+
+def _sesi_wsm():
+    """Tab Worksheet Maker yang SEGAR untuk tiap perenderan.
+
+    Tab lama tidak dipakai ulang: setelah tab lain (mis. potret soal untuk
+    Exact Canvas) dibuka di depannya, tab Worksheet Maker berstatus hidden dan
+    Page.bringToFront tidak mengembalikannya. Di tab hidden Paged.js — yang
+    dipakai tata letak "1 kolom penuh" — tidak pernah selesai, dan karena
+    render-nya antre di belakang yang macet itu, semua perenderan berikutnya di
+    tab yang sama ikut kosong, termasuk yang 2 kolom. Gejalanya: PDF 1 halaman
+    kosong berukuran ~1 KB. Tab baru selalu lahir di depan, dan menutup tab
+    lama sekaligus membuang antrean yang macet.
+    """
+    cdp.nyalakan()
+    for t in cdp.daftar_tab():
+        if '/wsm/' in (t.get('url') or ''):
+            cdp.tutup_tab(t['id'])
+    tab = cdp.buka_tab(wsmaker.ALAMAT, paksa_baru=True)
+    s = None
+    for _ in range(20):
+        time.sleep(0.5)
+        t = cdp.cari_tab('/wsm/')
+        if t:
+            s = cdp.Sesi(t); break
+    if s is None:
+        s = cdp.Sesi(tab)
+    _tampilkan(s)
+    for _ in range(30):
+        if s.evaluasi(JS_SIAP_WSM): break
+        time.sleep(0.4)
+    else:
+        raise RuntimeError('Halaman Exact Worksheet Maker tidak selesai dimuat')
+    if s.evaluasi('document.visibilityState') != 'visible':
+        s.evaluasi(JS_SHIM_JADWAL)
+    return s
+
 JS_SUDAH_MASUK = r"""
 (function(){
   if(document.querySelector('div.ql-editor[contenteditable="true"], [role="textbox"][contenteditable="true"]')) return 'MASUK';
@@ -920,6 +977,15 @@ def _tunggu_render(s, butuh_kunci=False, butuh_bahas=False, batas=45, stabil=3):
     return None
 
 
+def _pastikan_render(hasil):
+    """Render yang tidak pernah selesai dulu tetap dicetak — hasilnya PDF satu
+    halaman kosong yang dilaporkan "Selesai". Lebih jujur gagal terang-terangan."""
+    if hasil is None:
+        raise RuntimeError('Lembar tidak selesai dirender di Exact Worksheet Maker '
+                           '(tata letak tidak kunjung stabil) — coba lagi; kalau terulang, '
+                           'tekan "Restart Chrome" di menu bar EW.')
+    return hasil
+
 def worksheet_pdf(naskah, tujuan, tunggu=4.0, kop=None, tujuan_kunci=None):
     """Suapkan naskah ke Exact Worksheet Maker, lalu cetak PDF dari tabnya.
 
@@ -928,7 +994,7 @@ def worksheet_pdf(naskah, tujuan, tunggu=4.0, kop=None, tujuan_kunci=None):
     Gemini dua kali akan menghasilkan soal yang BERBEDA — bukan itu yang dimau.
     """
     wsmaker.pastikan_server()
-    s = _sesi(wsmaker.ALAMAT, '/wsm/')
+    s = _sesi_wsm()
     try:
         if kop:
             s.evaluasi(JS_SETEL % json.dumps(kop))
@@ -945,18 +1011,18 @@ def worksheet_pdf(naskah, tujuan, tunggu=4.0, kop=None, tujuan_kunci=None):
         if tujuan_kunci:
             # 1) lembar siswa: tanpa kunci & pembahasan
             s.evaluasi(JS_JAWABAN % json.dumps({'kunci': False, 'pembahasan': False}))
-            _tunggu_render(s)
+            _pastikan_render(_tunggu_render(s))
             s.pdf(tujuan)
             # 2) lembar guru: dengan kunci & pembahasan
             s.evaluasi(JS_JAWABAN % json.dumps({'kunci': True, 'pembahasan': mau_bahas}))
-            _tunggu_render(s, butuh_kunci=True, butuh_bahas=mau_bahas)
+            _pastikan_render(_tunggu_render(s, butuh_kunci=True, butuh_bahas=mau_bahas))
             s.pdf(tujuan_kunci)
             return tujuan, tujuan_kunci
         # Kunci dan pembahasan ditegaskan lagi di sini, tidak hanya lewat
         # JS_SETEL: JS_SETEL berjalan SEBELUM naskahnya dimuat, jadi ia tidak
         # bisa memastikan hasil akhirnya benar-benar memuat keduanya.
         s.evaluasi(JS_JAWABAN % json.dumps({'kunci': mau_kunci, 'pembahasan': mau_bahas}))
-        _tunggu_render(s, butuh_kunci=mau_kunci, butuh_bahas=mau_bahas)
+        _pastikan_render(_tunggu_render(s, butuh_kunci=mau_kunci, butuh_bahas=mau_bahas))
         return s.pdf(tujuan)
     finally:
         s.tutup()

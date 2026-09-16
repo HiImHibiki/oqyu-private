@@ -183,6 +183,13 @@ def cari_tab(potongan_url):
         if potongan_url in (t.get('url') or ''): return t
     return None
 
+def tutup_tab(id_tab):
+    """Tutup satu tab lewat endpoint DevTools; tab yang sudah lenyap dibiarkan."""
+    try:
+        urllib.request.urlopen(f'http://127.0.0.1:{PORT}/json/close/{id_tab}', timeout=5).read()
+    except Exception:
+        pass
+
 def buka_tab(url, paksa_baru=False):
     """Buka tab baru. Chrome baru menuntut metode PUT untuk /json/new.
 
