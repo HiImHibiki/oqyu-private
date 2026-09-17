@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useApp, type TempelanTertunda } from '@/lib/appStore'
-import { htmlRumus } from '@/components/TeksRumus'
+import { htmlRumus, muatPenggambar } from '@/components/TeksRumus'
 import { api, urlDenganPin } from '@/lib/api'
 import { inTauri, sentuh as layarSentuh } from '@/lib/runtime'
 import { bukaJendelaBaru } from '@/lib/layar'
@@ -428,9 +428,10 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
   }
 
   /**
-   * Soal teks (rumus $…$ lewat KaTeX) digambar jadi satu gambar lalu ditempel
-   * ke halaman baru — jalur yang sama dengan foto, jadi murid melihat soalnya
-   * di papan dan guru langsung mencoret di atasnya.
+   * Soal teks (rumus $…$ lewat KaTeX, diagram [[…]] lewat penggambar
+   * Worksheet) digambar jadi satu gambar lalu ditempel ke halaman baru —
+   * jalur yang sama dengan foto, jadi murid melihat soalnya di papan dan guru
+   * langsung mencoret di atasnya.
    *
    * Dirender di DOM aplikasi sendiri, bukan iframe seperti tempelHtml: teks
    * biasa dilolos-escape dan rumusnya keluaran KaTeX (throwOnError mati),
@@ -443,7 +444,11 @@ export function Canvas({ idKanvas, judul = 'Sketch' }: Props) {
     wadah.style.cssText =
       'position:fixed;left:-10000px;top:0;width:760px;box-sizing:border-box;padding:28px 32px;' +
       'background:#fff;color:#111;font:20px/1.6 -apple-system,system-ui,sans-serif;white-space:pre-wrap;word-break:break-word'
-    wadah.innerHTML = htmlRumus(teks)
+    // Diagram diberi ruang lebih lebar daripada di kartu panel: di papan ia
+    // justru yang mau dicoret-coret guru.
+    wadah.style.setProperty('--ws-diagram-width', '520px')
+    const gambar = teks.includes('[[') ? await muatPenggambar() : undefined
+    wadah.innerHTML = htmlRumus(teks, gambar)
     document.body.appendChild(wadah)
     try {
       // KaTeX memakai web font; tunggu sampai siap supaya rumus tidak

@@ -349,3 +349,41 @@ html.ex-sentuh .ex-statusbar { display: none; }
   to   { opacity: 1; transform: none; }
 }
 .ex-masuk { animation: ex-masuk 260ms var(--ease-soft) both; }
+
+/* ── Diagram dari tag soal ([[grafik: …]], [[gerak: …]], dst.) ─────────
+ * Kelasnya milik penggambar Exact Worksheet Maker (src/lib/diagrams.js);
+ * gayanya disamakan dengan Exact Practice supaya satu soal terlihat sama di
+ * kedua aplikasi. Alas putih disengaja: SVG-nya memakai warna cetak. */
+.ws-diagram,
+.ws-table-wrap {
+  display: block;
+  margin: 10px auto;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid var(--line, #d8dce1);
+  border-radius: 10px;
+  text-align: center;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: normal;
+}
+.ws-diagram-svg,
+.ws-image {
+  width: 100%;
+  max-width: var(--ws-diagram-width, 340px);
+  height: auto;
+  display: inline-block;
+  vertical-align: top;
+}
+.ws-table { border-collapse: collapse; font-size: .9em; max-width: 100%; margin: 0 auto; color: #1a1a1a; }
+.ws-table th, .ws-table td { border: 1px solid #999; padding: 4px 10px; text-align: center; overflow-wrap: break-word; }
+.ws-table th { background: #eef2f7; font-weight: 700; }
+.ws-table-blank td { min-width: 52px; height: 26px; }
+.ws-table-title { font-weight: 700; font-size: .85em; color: #444; margin-bottom: 4px; }
+.ws-figure { display: block; margin: 10px 0; text-align: center; }
+.ws-figure-panels { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; gap: 8px 12px; }
+.ws-figure-panel { flex: 0 1 auto; min-width: 0; max-width: 100%; }
+.ws-figure-panel .ws-diagram, .ws-figure-panel .ws-table-wrap { margin: 0; }
+.ws-figure-panel-label { font-size: .85em; font-weight: 700; margin-top: 2px; }
+.ws-figure-caption { font-size: .82em; font-style: italic; color: var(--ink-soft, #555); margin-top: 4px; }
+.ws-diagram-memuat { font-size: .85em; opacity: .6; font-style: italic; }

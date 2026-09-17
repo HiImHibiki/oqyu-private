@@ -373,9 +373,11 @@ function BarisTanya({
         </span>
       </div>
       {t.text && (
-        <p style={{ fontSize: 'var(--fs-label)', color: 'var(--ink-soft)', whiteSpace: 'pre-wrap' }}>
+        /* div, bukan p: diagram di dalam teks adalah blok (<div>), dan <p>
+           tidak boleh memuatnya. */
+        <div style={{ fontSize: 'var(--fs-label)', color: 'var(--ink-soft)', whiteSpace: 'pre-wrap' }}>
           <TeksRumus teks={t.text} />
-        </p>
+        </div>
       )}
       {t.photos.length > 0 && t.photos[0].endsWith('.pdf') ? (
         <span className="ex-label flex items-center gap-1" style={{ color: 'var(--ink-soft)' }}>
