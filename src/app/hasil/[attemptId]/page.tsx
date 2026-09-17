@@ -11,6 +11,7 @@ import { gradeAnswer } from "@/lib/exams/grade";
 import { getBlueprint } from "@/lib/exams/blueprints";
 import { DomainBars } from "@/components/dashboard/DomainBars";
 import { ReviewList } from "./ReviewList";
+import { PapanHasil } from "./PapanHasil";
 import type { ScoreReport } from "@/lib/exams/scoring";
 import type { ExamCode, ProctorLog, ResponseValue } from "@/lib/types";
 
@@ -165,6 +166,8 @@ export default async function HasilPage({ params }: { params: Promise<{ attemptI
           </div>
         </section>
       )}
+
+      {exam === "LATIHAN" && !attempt.isDemo && <PapanHasil />}
 
       <section>
         <div className="mb-3 flex items-center gap-2">

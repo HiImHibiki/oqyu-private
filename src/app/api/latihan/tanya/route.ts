@@ -34,9 +34,13 @@ function teksSoal(q: Question, nomor: number, judul: string) {
  *  PIN Canvas di server. Pengguna lain tetap memakai tab Canvas terpisah. */
 export async function GET() {
   const user = await currentUser();
-  if (!user) return NextResponse.json({ papan: false });
-  const papan = !!idCanvasDari(user.email) && !!process.env.EXACT_CANVAS_PIN && (await aksesLatihan(user)).murid;
-  return NextResponse.json({ papan });
+  if (!user) return NextResponse.json({ papan: false, url: null });
+  const idCanvas = idCanvasDari(user.email);
+  const papan = !!idCanvas && !!process.env.EXACT_CANVAS_PIN && (await aksesLatihan(user)).murid;
+  // Alamat papannya ikut dikirim: halaman soal dan halaman hasil menanamnya
+  // sejak dimuat, tanpa menunggu murid bertanya lebih dulu.
+  const token = papan ? await sesiCanvasUntuk(idCanvas!) : null;
+  return NextResponse.json({ papan, url: token ? urlPapan(token) : null });
 }
 
 /** body: { attemptId, questionId, number } → { url, papan? } layar murid Exact Canvas;

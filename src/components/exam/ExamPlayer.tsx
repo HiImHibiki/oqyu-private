@@ -1,7 +1,7 @@
 "use client";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  AlertTriangle, BookOpen, Calculator as CalcIcon, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock, Eye, EyeOff, Flag, Highlighter, LayoutGrid, Loader2, Maximize, Maximize2, Minimize2, ShieldCheck, WifiOff, MessageCircleQuestion, X,
+  AlertTriangle, BookOpen, Calculator as CalcIcon, ChevronLeft, ChevronRight, Clock, Eye, EyeOff, Flag, Highlighter, LayoutGrid, Loader2, Maximize, ShieldCheck, WifiOff, MessageCircleQuestion,
 } from "lucide-react";
 import type { ExamCode, Question, ResponseValue } from "@/lib/types";
 import { QuestionView } from "./QuestionView";
@@ -10,51 +10,8 @@ import { RichText } from "./RichText";
 import { Calculator } from "./Calculator";
 import { FormulaSheet } from "./FormulaSheet";
 import { useProctor } from "./useProctor";
+import { PapanGuru, type ModePapan } from "./PapanGuru";
 import { useI18n } from "@/components/ui/I18nProvider";
-
-/* Panel papan guru: layar murid Exact Canvas di dalam halaman latihan.
- * Di ponsel menumpuk di bawah soal (45% tinggi), di layar lebar berdampingan
- * di kanan. "Lipat" hanya menyembunyikan — iframe-nya tetap hidup supaya
- * sambungan ke kanvas tidak putus dan bunyi "dibahas" tetap sampai. */
-function PapanGuru({ url, mode, onMode, onTutup, t }: {
-  url: string; mode: "kecil" | "normal" | "penuh";
-  onMode: (m: "kecil" | "normal" | "penuh") => void; onTutup: () => void;
-  t: ReturnType<typeof useI18n>["t"];
-}) {
-  const penuh = mode === "penuh";
-  const kecil = mode === "kecil";
-  const kelas = penuh
-    ? "fixed inset-0 z-[60] flex flex-col"
-    : `flex shrink-0 flex-col border-t lg:border-l lg:border-t-0 ${kecil ? "" : "h-[45%] lg:h-auto lg:w-1/2"}`;
-  return (
-    <section className={kelas} style={{ background: "var(--bg-elev)" }} aria-label={t("exam.boardTitle")}>
-      <div className="flex items-center gap-2 border-b px-3 py-1.5 text-xs">
-        <span className="shrink-0 font-semibold">{t("exam.boardTitle")}</span>
-        {!penuh && <span className="hidden truncate muted sm:inline">{t("exam.boardHint")}</span>}
-        <div className="ml-auto flex shrink-0 items-center gap-1">
-          {!penuh && (
-            <button className="btn btn-ghost !px-2 !py-1" onClick={() => onMode(kecil ? "normal" : "kecil")} title={kecil ? t("exam.boardShow") : t("exam.boardCollapse")}>
-              {kecil ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-            </button>
-          )}
-          <button className="btn btn-ghost !px-2 !py-1" onClick={() => onMode(penuh ? "normal" : "penuh")} title={penuh ? t("exam.boardBack") : t("exam.boardFull")}>
-            {penuh ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
-          </button>
-          <button className="btn btn-ghost !px-2 !py-1" onClick={onTutup} title={t("exam.boardClose")}>
-            <X size={14} />
-          </button>
-        </div>
-      </div>
-      <iframe
-        src={url}
-        title={t("exam.boardTitle")}
-        className="w-full min-h-0 flex-1 border-0"
-        hidden={kecil}
-        allow="fullscreen; screen-wake-lock; autoplay"
-      />
-    </section>
-  );
-}
 
 export interface PlayerSection {
   code: string;
@@ -150,10 +107,12 @@ export function ExamPlayer(props: ExamPlayerProps) {
   /* Papan guru: layar murid Exact Canvas ditanam di halaman ini (iframe),
    * jadi anak tidak bolak-balik dua aplikasi saat soalnya dibahas. Hanya
    * untuk akun yang berasal dari Canvas (sesinya bisa diterbitkan server);
-   * yang lain tetap dibukakan tab Canvas seperti dulu. */
+   * yang lain tetap dibukakan tab Canvas seperti dulu. Tampil sejak awal,
+   * bukan baru setelah bertanya: guru sering membahas tanpa ditanya, dan
+   * anak yang sedang mengerjakan tetap bisa melirik papannya. */
   const [bisaPapan, setBisaPapan] = useState(false);
   const [papan, setPapan] = useState<{ url: string; asal: string } | null>(null);
-  const [papanMode, setPapanMode] = useState<"kecil" | "normal" | "penuh">("normal");
+  const [papanMode, setPapanMode] = useState<ModePapan>("normal");
   const [sheetOpen, setSheetOpen] = useState(false);
   const [hlMode, setHlMode] = useState(false);
   const [onBreak, setOnBreak] = useState(false);
@@ -168,7 +127,11 @@ export function ExamPlayer(props: ExamPlayerProps) {
   useEffect(() => {
     if (props.examCode !== "LATIHAN" || isDemo) return;
     let batal = false;
-    fetch("/api/latihan/tanya").then((r) => r.json()).then((j) => { if (!batal) setBisaPapan(!!j.papan); }).catch(() => {});
+    fetch("/api/latihan/tanya").then((r) => r.json()).then((j: { papan?: boolean; url?: string | null }) => {
+      if (batal) return;
+      setBisaPapan(!!j.papan);
+      if (j.url) setPapan((p) => p ?? { url: j.url!, asal: new URL(j.url!).origin });
+    }).catch(() => {});
     return () => { batal = true; };
   }, [props.examCode, isDemo]);
   useEffect(() => {
@@ -679,7 +642,7 @@ export function ExamPlayer(props: ExamPlayerProps) {
           )}
         </main>
         {papan && (
-          <PapanGuru url={papan.url} mode={papanMode} onMode={setPapanMode} onTutup={() => setPapan(null)} t={t} />
+          <PapanGuru url={papan.url} mode={papanMode} onMode={setPapanMode} onTutup={() => setPapan(null)} />
         )}
         </div>
       </div>
