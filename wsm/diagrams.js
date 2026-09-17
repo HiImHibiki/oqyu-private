@@ -2864,9 +2864,34 @@ function renderKinematicsSVG(cfg) {
   svg += `<line x1="${pad}" y1="${height - pad}" x2="${width - pad}" y2="${height - pad}" stroke="#94a3b8" stroke-width="1.2"/>`;
   svg += `<line x1="${pad}" y1="${pad}" x2="${pad}" y2="${height - pad}" stroke="#94a3b8" stroke-width="1.2"/>`;
 
-  const yLabel = tipe.startsWith('jarak') ? 'jarak (m)' : tipe.startsWith('percepat') ? 'percepatan (m/s²)' : 'kecepatan (m/s)';
+  const yLabel = cfg.sumbuy || (tipe.startsWith('jarak') ? 'jarak (m)' : tipe.startsWith('percepat') ? 'percepatan (m/s²)' : 'kecepatan (m/s)');
   svg += `<text x="${pad}" y="16" font-size="10" fill="#475569">${escText(yLabel)}</text>`;
-  svg += `<text x="${width - pad}" y="${height - pad + 30}" font-size="10" text-anchor="end" fill="#475569">waktu (s)</text>`;
+  svg += `<text x="${width - pad}" y="${height - pad + 30}" font-size="10" text-anchor="end" fill="#475569">${escText(cfg.sumbux || 'waktu (s)')}</text>`;
+
+  // Every vertex gets its value on BOTH axes, joined to the axes by dashed
+  // guide lines — a v-t graph is read by taking values off the y-axis
+  // (the gradient alone tells nothing about the actual speed), so a student
+  // must be able to see "10" on the axis, not just "m=5" on the segment.
+  // Labels closer than a text height to one already drawn are skipped so
+  // neighbouring values never print on top of each other.
+  const yDrawn = [];
+  const uniqY = [...new Set(list.map((p) => p.y))].sort((a, b) => b - a);
+  uniqY.forEach((y) => {
+    const [, py] = toPx(0, y);
+    if (yDrawn.some((q) => Math.abs(q - py) < 10)) return;
+    yDrawn.push(py);
+    svg += `<line x1="${pad - 4}" y1="${py.toFixed(1)}" x2="${pad}" y2="${py.toFixed(1)}" stroke="#94a3b8" stroke-width="1.2"/>`;
+    svg += `<text x="${pad - 6}" y="${(py + 3).toFixed(1)}" font-size="9" text-anchor="end" fill="#64748b">${formatTick(y)}</text>`;
+  });
+  if (cfg.bantu !== 'tidak') {
+    const [, y0px] = toPx(0, 0);
+    list.forEach((p) => {
+      if (p.y === 0 && ymin === 0) return;
+      const [px, py] = toPx(p.x, p.y);
+      svg += `<line x1="${pad}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,3"/>`;
+      svg += `<line x1="${px.toFixed(1)}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${y0px.toFixed(1)}" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,3"/>`;
+    });
+  }
 
   if (cfg.arsir !== 'tidak') {
     const [zx0] = toPx(list[0].x, 0);
@@ -2893,7 +2918,16 @@ function renderKinematicsSVG(cfg) {
       if (p1.x === p0.x) continue;
       const grad = (p1.y - p0.y) / (p1.x - p0.x);
       const [px, py] = toPx((p0.x + p1.x) / 2, (p0.y + p1.y) / 2);
-      svg += `<text x="${px.toFixed(1)}" y="${(py - 8).toFixed(1)}" font-size="9.5" text-anchor="middle" fill="#b91c1c">m=${Math.round(grad * 100) / 100}</text>`;
+      // Push the label off the segment along its normal (upward side), so
+      // it sits beside a steep line instead of being crossed out by it.
+      const [ax, ay] = toPx(p0.x, p0.y), [bx, by] = toPx(p1.x, p1.y);
+      const len = Math.hypot(bx - ax, by - ay) || 1;
+      let nx = -(by - ay) / len, ny = (bx - ax) / len;
+      if (ny > 0) { nx = -nx; ny = -ny; }
+      // Anchor the text on the side facing the line, so a wide label on a
+      // steep segment grows away from it rather than back across it.
+      const anchor = nx > 0.3 ? 'start' : nx < -0.3 ? 'end' : 'middle';
+      svg += `<text x="${(px + nx * 8).toFixed(1)}" y="${(py + ny * 8 + 3).toFixed(1)}" font-size="9.5" text-anchor="${anchor}" fill="#b91c1c">m=${Math.round(grad * 100) / 100}</text>`;
     }
   }
 
