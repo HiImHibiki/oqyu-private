@@ -889,7 +889,8 @@ class H(BaseHTTPRequestHandler):
             else:
                 b = json.dumps(_tb.terbitkan(teks, nama_pdf=nama_pdf, judul=medan.get('judul', ''),
                                              durasi=medan.get('durasi'), mapel=isian.get('mapel', ''),
-                                             kelas=isian.get('kelas', ''), topik=isian.get('topik', ''))).encode()
+                                             kelas=isian.get('kelas', ''), topik=isian.get('topik', ''),
+                                             set_ke=medan.get('set', ''))).encode()
             self.send_response(200); self.send_header('Content-Type', 'application/json')
             self.send_header('Content-Length', str(len(b))); self.end_headers(); self.wfile.write(b); return
         if u.path == '/cetak':
@@ -1193,7 +1194,8 @@ class H(BaseHTTPRequestHandler):
             kolom=medan.get('kolom', '2'), dua_berkas='dua_berkas' in medan,
             kerapatan=medan.get('kerapatan', 'Normal'), garis=medan.get('garis', '1.5'),
             ke_practice='ke_practice' in medan,
-            kode=buat.kode_dari_medan(medan)), daemon=True).start()
+            kode=buat.kode_dari_medan(medan),
+            set_ke=(medan.get('set') or '').strip()), daemon=True).start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')
         self.send_header('Content-Length',str(len(b))); self.end_headers()

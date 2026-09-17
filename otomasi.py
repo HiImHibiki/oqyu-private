@@ -880,6 +880,7 @@ JS_SETEL = r"""
   set('codeSekolah', o.sekolah);
   set('codeKelas', o.kelas);
   set('codeTanggal', o.tanggal);
+  set('codeNomor', o.nomor);          // slot Soal-ke: nomor set lembar ini
   set('bodyColumns', o.kolom);        // 1 kolom penuh / 2 kolom koran
   set('pgOptionCols', o.kolom);
   // Kerapatan adalah tombol preset yang menyetel ukuran font & jarak sekaligus

@@ -587,7 +587,7 @@ def lembar_dari_naskah(jid, jawab, judul='', topik='', mapel=None, kelas=None,
                        jenjang='', lembaga='', sekolah='', tanggal='',
                        kunci=True, pembahasan=True, kolom='2', dua_berkas=False,
                        kerapatan='Normal', garis='1.5', sumber='dari Gemini',
-                       kode=''):
+                       kode='', set_ke=''):
     """Naskah jadi -> berkas naskah + bank soal + PDF.
 
     Paruh kedua alur /buat, dipisah supaya jalur manual (naskah ditempel
@@ -622,7 +622,10 @@ def lembar_dari_naskah(jid, jawab, judul='', topik='', mapel=None, kelas=None,
     judul = judul.strip() or (topik.strip() or f'Latihan {time.strftime("%d %b %H:%M")}')
     with KUNCI:
         TUGAS.setdefault(jid, {})['isian'] = {'mapel': mapel or '', 'kelas': str(kelas or ''), 'topik': (topik or '').strip() or judul}
+    # "Set ke-" mengisi slot Soal-ke di kode kop (MATH/NRD/7/1609/3), jadi
+    # yang tercetak di kertas sama dengan judul paketnya di Exact Practice.
     kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_kop(mapel, kode),
+               nomor=str(set_ke or '').strip(),
                sekolah=sekolah, kelas=str(kelas or '') or (jenjang or ''),
                tanggal=tanggal or time.strftime('%d%m'),
                kunci=kunci, pembahasan=pembahasan, kolom=str(kolom or '2'),
@@ -1047,11 +1050,13 @@ function barisTugas(t) {
   };
   const bt = el.querySelector('.terbit');
   if (bt) bt.onclick = async () => {
+    const set = prompt('Lembar ini set ke berapa? (kosongkan kalau bukan seri)', '');
+    if (set === null) return;
     bt.disabled = true; bt.textContent = 'mengirim…';
     try {
       const r = await fetch('/terbitkan', {method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: new URLSearchParams({jid: t.jid, f: decodeURIComponent(bt.dataset.pdf || '')})});
+        body: new URLSearchParams({jid: t.jid, f: decodeURIComponent(bt.dataset.pdf || ''), set: set.trim()})});
       const j = await r.json();
       if (j.ok) { t.terbit = j.admin || j.url; barisTugas(t); }
       else { bt.textContent = 'gagal'; bt.title = j.galat || ''; alert(j.galat || 'Gagal menerbitkan'); bt.disabled = false; }
@@ -1596,7 +1601,8 @@ def periksa_naskah(teks):
 def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None,
                     jenjang='', lembaga='', sekolah='', tanggal='',
                     kunci=True, pembahasan=True, kolom='2', dua_berkas=False,
-                    kerapatan='Normal', garis='1.5', ke_practice=False, kode=''):
+                    kerapatan='Normal', garis='1.5', ke_practice=False, kode='',
+                    set_ke=''):
     """Naskah tempelan -> PDF (dan, bila diminta, langsung ke Exact Practice).
 
     Tetap lewat antrean walau tidak memakai AI: perenderannya memakai Chrome
@@ -1615,7 +1621,8 @@ def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None
                            sekolah=sekolah, tanggal=tanggal, kunci=kunci,
                            pembahasan=pembahasan, kolom=kolom,
                            dua_berkas=dua_berkas, kerapatan=kerapatan,
-                           garis=garis, sumber='yang ditempel', kode=kode)
+                           garis=garis, sumber='yang ditempel', kode=kode,
+                           set_ke=set_ke)
         if ke_practice:
             # Diterbitkan di server, bukan lewat tombol di halaman: kalau tab
             # ditutup sebelum PDF selesai, paket latihannya tetap terbit.
@@ -1626,7 +1633,8 @@ def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None
             j = _tb.terbitkan(t.get('naskah') or teks,
                               nama_pdf=os.path.basename(t.get('pdf') or ''),
                               judul=judul, mapel=mapel or '',
-                              kelas=str(kelas or ''), topik=topik or judul)
+                              kelas=str(kelas or ''), topik=topik or judul,
+                              set_ke=set_ke)
             if j.get('ok'):
                 with KUNCI:
                     TUGAS.setdefault(jid, {})['terbit'] = j.get('admin') or j.get('url')
@@ -1783,11 +1791,13 @@ function barisTugas(t) {
   };
   const bt = el.querySelector('.terbit');
   if (bt) bt.onclick = async () => {
+    const set = prompt('Lembar ini set ke berapa? (kosongkan kalau bukan seri)', '');
+    if (set === null) return;
     bt.disabled = true; bt.textContent = 'mengirim…';
     try {
       const r = await fetch('/terbitkan', {method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: new URLSearchParams({jid: t.jid, f: decodeURIComponent(bt.dataset.pdf || '')})});
+        body: new URLSearchParams({jid: t.jid, f: decodeURIComponent(bt.dataset.pdf || ''), set: set.trim()})});
       const j = await r.json();
       if (j.ok) { t.terbit = j.admin || j.url; barisTugas(t); }
       else { bt.textContent = 'gagal'; alert(j.galat || 'Gagal menerbitkan'); bt.disabled = false; }
@@ -1968,6 +1978,8 @@ PG1-Sudut istimewa: $\\sin 30^\\circ=\\frac{{1}}{{2}}$.E1-Titik pada lingkaran s
   </div>
   <div class=r>
     <label class=kcl><input type=checkbox name=ke_practice> sekalian terbitkan ke Exact Practice</label>
+    <input name=set placeholder="set ke-" size=6 inputmode=numeric pattern="[0-9]*"
+           title="Nomor set lembar ini (mis. 3). Tercetak di kode kop sebagai MATH/NRD/7/1609/3 dan jadi «— Set 3» pada judul paket di Exact Practice. Kosongkan kalau bukan seri.">
   </div>
   <div class="r kirim">
     <input name=judul placeholder="judul berkas (opsional)" style="flex:1;min-width:150px">

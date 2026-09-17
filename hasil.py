@@ -436,11 +436,13 @@ async function bagikanPDF(nama, tombol) {{
   document.querySelectorAll('[data-wa]').forEach(b => b.onclick = () => bagikanPDF(b.dataset.wa, b));
   document.querySelectorAll('[data-terbit]').forEach(b => b.onclick = async () => {{
     const nama = b.dataset.terbit;
+    const set = prompt('Lembar ini set ke berapa? (kosongkan kalau bukan seri)', '');
+    if (set === null) return;
     b.disabled = true; b.textContent = 'mengirim…';
     try {{
       const r = await fetch('/terbitkan', {{method: 'POST',
         headers: {{'Content-Type': 'application/x-www-form-urlencoded'}},
-        body: new URLSearchParams({{f: nama}})}});
+        body: new URLSearchParams({{f: nama, set: set.trim()}})}});
       const j = await r.json();
       if (j.ok) {{
         b.textContent = 'Terbit ✓';

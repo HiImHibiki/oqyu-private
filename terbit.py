@@ -68,8 +68,28 @@ def meta_dari_nama(dasar):
     return '', ''
 
 
-def terbitkan(teks, nama_pdf='', judul='', durasi=None, mapel='', kelas='', topik=''):
-    """Urai naskah lalu kirim ke Exact Practice. Mengembalikan dict jawaban."""
+def kode_kertas(dasar):
+    """'MATH-NRD-7-1609-2' -> 'MATH/NRD/7/1609': kode yang tercetak di kop.
+
+    Nama berkas = kode kop dengan '/' jadi '-' plus nomor urut '-N' dari
+    nama_berkas() yang TIDAK ada di kertas; nomor itu dibuang. Nama bebas
+    (tanpa pola kode) dikembalikan kosong."""
+    d = (dasar or '').strip()
+    bagian = d.split('-')
+    # Mapel boleh berspasi ("SCIENCE ICAS-ST.LAURENSIA-7-1309-1"); yang
+    # menandai pola kode adalah dua bagian terakhir angka (TglBulan dan N).
+    if len(bagian) >= 4 and bagian[-1].isdigit() and bagian[-2].isdigit():
+        return '/'.join(bagian[:-1])
+    return ''
+
+
+def terbitkan(teks, nama_pdf='', judul='', durasi=None, mapel='', kelas='', topik='', set_ke=None):
+    """Urai naskah lalu kirim ke Exact Practice. Mengembalikan dict jawaban.
+
+    Judul paket = kode yang tercetak di kop (MATH/NRD/7/1609), supaya murid
+    mencocokkan kertas dan paket onlinenya dengan sekali lihat; judul naskah
+    ("Sifat Keperiodikan Unsur") tetap ikut sebagai topik. `set_ke` (nomor
+    set yang diketik guru) jadi «— Set N» di judul paket."""
     import buat, naskah
     s = _setelan()
     url = (s.get('practice_url') or os.environ.get('EXACT_PRACTICE_URL') or 'http://127.0.0.1:8770').rstrip('/')
@@ -84,11 +104,14 @@ def terbitkan(teks, nama_pdf='', judul='', durasi=None, mapel='', kelas='', topi
     pdf = f'{dasar}.pdf' if dasar and os.path.exists(os.path.join(buat.KELUAR, f'{dasar}.pdf')) else None
     pdf_kunci = f'{dasar} - Soal+Jawaban.pdf' if dasar and os.path.exists(os.path.join(buat.KELUAR, f'{dasar} - Soal+Jawaban.pdf')) else None
     if pdf is None and pdf_kunci is not None: pdf = pdf_kunci   # satu berkas berkunci saja
+    kode = kode_kertas(dasar)
+    judul_naskah = (judul or meta.get('judul') or '').strip()
     kiriman = {
-        'judul': (judul or meta.get('judul') or dasar or 'Lembar latihan').strip(),
-        'mapel': mapel or m2, 'kelas': kelas or k2, 'topik': topik or judul or meta.get('judul') or '',
-        # Kosong = Practice menghitung sendiri per set (2 menit x jumlah soal set itu).
+        'judul': kode or judul_naskah or dasar or 'Lembar latihan',
+        'mapel': mapel or m2, 'kelas': kelas or k2, 'topik': topik or judul_naskah or '',
+        # Kosong = Practice memakai durasi bawaannya.
         'durasiMenit': int(durasi) if str(durasi or '').isdigit() else None,
+        'set': int(set_ke) if str(set_ke or '').strip().isdigit() and int(set_ke) > 0 else None,
         'butir': butir, 'pdf': pdf, 'pdfKunci': pdf_kunci,
     }
     req = urllib.request.Request(f'{url}/api/latihan/terbit', data=json.dumps(kiriman).encode(),
