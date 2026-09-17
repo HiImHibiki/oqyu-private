@@ -58,9 +58,19 @@ function lolos(t: string): string {
   return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
+/* Kesalahan LaTeX yang kerap ditulis AI dan membuat KaTeX menolak seluruh
+ * rumus: pangkat di dalam \text{} ("29.0\text{ ^\circ C}"). Diangkat keluar
+ * jadi "29.0^\circ\text{C}" — sama dengan sanitizeMath di Worksheet Maker
+ * dan rapikanLatex di Practice. */
+function rapikanLatex(src: string): string {
+  return src
+    .replace(/\\,\s*\^/g, '^')
+    .replace(/\\text\{\s*\^\s*(\{\s*\\circ\s*\}|\\circ)\s*([^{}]*?)\s*\}/g, (_m, _c, rest: string) => '^\\circ' + (rest ? '\\text{' + rest + '}' : ''))
+}
+
 function htmlBagian(b: Bagian, gambar?: GambarTag): string {
   if (b.jenis === 'rumus') {
-    return katex.renderToString(b.isi, { displayMode: b.blok, throwOnError: false, output: 'html', strict: false })
+    return katex.renderToString(rapikanLatex(b.isi), { displayMode: b.blok, throwOnError: false, output: 'html', strict: false })
   }
   if (b.jenis === 'diagram') {
     if (!gambar) return '<span class="ws-diagram-memuat">memuat diagram…</span>'
