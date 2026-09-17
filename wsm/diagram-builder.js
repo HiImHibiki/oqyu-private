@@ -795,13 +795,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const SIZE_FIELD = { key: 'lebar', label: 'Lebar diagram (pt, kosongkan untuk ukuran standar)', type: 'number', def: '' };
+  // Ukuran tampilan dipilih dari preset, bukan diketik dalam pt: guru
+  // tinggal memilih "Penuh" untuk kertas grafik kosong yang akan diisi
+  // siswa. "Penuh" ditulis 600pt — lebih lebar dari kolom mana pun, jadi
+  // CSS (width:100%) yang membatasinya persis selebar kolom badan: ±250pt
+  // di tata letak 2 kolom koran, ±530pt di lembar 1 kolom. Angka lain masih
+  // bisa ditulis tangan di tag (lebar=…).
+  const SIZE_OPTIONS = [
+    ['', 'Standar (ikut slider "Ukuran diagram")'],
+    ['160', 'Kecil — 160pt'],
+    ['220', 'Sedang — 220pt'],
+    ['300', 'Besar — 300pt'],
+    ['380', 'Sangat besar — 380pt'],
+    ['600', 'Penuh — selebar kolom']
+  ];
+  // Bangun datar/ruang memakai "lebar" sebagai ukuran benda (cm), bukan
+  // ukuran tampilan; untuk mereka lebar tampilan bernama "lebargambar"
+  // (lihat LEBAR_ADALAH_UKURAN di diagrams.js). Dulu isian ini tetap
+  // menulis "lebar=" sehingga balok 12×9×8 tercetak 300pt × 9pt.
+  const SIZE_KEY_IS_OBJECT = ['bangun', 'bangunruang', 'ruang'];
+  // Kertas grafik kosong dibuat untuk diplot siswa: bawaannya langsung penuh.
+  const SIZE_DEFAULT_FULL = ['kertasgrafik'];
+  function sizeField(type) {
+    return {
+      key: SIZE_KEY_IS_OBJECT.indexOf(type) === -1 ? 'lebar' : 'lebargambar',
+      label: 'Ukuran diagram di lembar',
+      type: 'select',
+      options: SIZE_OPTIONS,
+      def: SIZE_DEFAULT_FULL.indexOf(type) === -1 ? '' : '600'
+    };
+  }
 
   function buildFieldsUI(type) {
     fieldsHost.innerHTML = '';
     (FIELD_SPECS[type] || []).forEach((spec) => fieldsHost.appendChild(makeFieldRow(spec)));
     if (NO_SIZE_TYPES.indexOf(type) === -1) {
-      const sizeRow = makeFieldRow(SIZE_FIELD);
+      const sizeRow = makeFieldRow(sizeField(type));
       sizeRow.setAttribute('data-size-field', '1');
       fieldsHost.appendChild(sizeRow);
     }
