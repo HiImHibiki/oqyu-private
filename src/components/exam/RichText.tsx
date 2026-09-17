@@ -21,7 +21,17 @@ function inline(s: string) {
   return out;
 }
 
+/* Kesalahan LaTeX yang kerap ditulis AI dan membuat KaTeX menolak seluruh
+ * rumus: pangkat di dalam \text{} ("29.0\text{ ^\circ C}"). Diangkat keluar
+ * jadi "29.0^\circ\text{C}" — sama dengan sanitizeMath di Worksheet Maker. */
+export function rapikanLatex(src: string): string {
+  return src
+    .replace(/\\,\s*\^/g, "^")
+    .replace(/\\text\{\s*\^\s*(\{\s*\\circ\s*\}|\\circ)\s*([^{}]*?)\s*\}/g, (_m, _c, rest: string) => "^\\circ" + (rest ? "\\text{" + rest + "}" : ""));
+}
+
 function renderMath(src: string, display: boolean) {
+  src = rapikanLatex(src);
   try {
     return katex.renderToString(src, {
       displayMode: display,
