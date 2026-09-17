@@ -53,7 +53,7 @@
         <input type="file" id="imageFileInput" accept="image/*" multiple hidden>
         <p id="imageStatus" class="hint image-status"></p>
         <div id="imageList" class="image-list"></div>
-        <p class="hint">Gambar (foto alat, hasil pindai, figur dari sumber lain) bisa diimpor lewat tombol di atas, diseret langsung ke kotak naskah, atau ditempel dengan Ctrl/Cmd+V saat kursor ada di kotak naskah. Tiap gambar diperkecil otomatis ke ukuran cetak lalu disimpan di perangkat ini dengan id pendek, dan naskah hanya memuat tag <code>[[gambar: id=g1; lebar=200]]</code> — supaya naskah tetap terbaca. Gambar ikut tertanam penuh di dalam PDF hasil cetak, tapi tidak ikut kalau naskahnya disalin ke komputer lain.</p>
+        <p class="hint">Gambar (foto alat, hasil pindai, figur dari sumber lain) bisa diimpor lewat tombol di atas, diseret langsung ke kotak naskah, atau ditempel dengan Ctrl/Cmd+V saat kursor ada di kotak naskah. Tiap gambar diperkecil otomatis ke ukuran cetak lalu disimpan di perangkat ini dengan id pendek, dan naskah hanya memuat tag <code>[[gambar: id=g1]]</code> — supaya naskah tetap terbaca. Besarnya mengikuti slider "Ukuran gambar" di bagian Tata Letak; satu gambar tertentu bisa diberi ukuran sendiri dengan <code>lebar=</code>, mis. <code>[[gambar: id=g1; lebar=320]]</code>. Gambar ikut tertanam penuh di dalam PDF hasil cetak, tapi tidak ikut kalau naskahnya disalin ke komputer lain.</p>
         <p class="hint">Diagram disisipkan sebagai tag <code>[[grafik: f1=x^2-4]]</code> langsung di naskah soal (taruh di dalam kalimat soal, sebelum pilihan A/B/C) — tag ini otomatis disertakan kalau naskah soal dibuat lewat "Copy Prompt AI". Tombol "Sisipkan Diagram" membuka form berisi semua jenis diagram lengkap dengan pratinjau langsung, jadi sintaks tag di atas tidak perlu dihafal — tag ditempelkan di posisi kursor pada kotak naskah.</p>
         <div class="btn-row" style="margin-top:10px;">
           <button id="btnClearInput" type="button" class="btn btn-ghost">🗑️ Bersihkan Naskah</button>
@@ -92,7 +92,7 @@
           <span>Kolom soal PG</span>
           <select id="pgOptionCols">
             <option value="1">1 kolom</option>
-            <option value="2" selected>2 kolom (hemat)</option>
+            <option value="2" selected>2 kolom bila muat (hemat)</option>
           </select>
         </div>
         <div class="field-row">
@@ -125,6 +125,11 @@
           <span>Ukuran diagram</span>
           <input type="range" id="diagramSize" min="140" max="380" step="10" value="260">
           <span id="diagramSizeVal" class="range-val">260pt</span>
+        </div>
+        <div class="field-row">
+          <span>Ukuran gambar</span>
+          <input type="range" id="imageSize" min="140" max="520" step="10" value="260">
+          <span id="imageSizeVal" class="range-val">260pt</span>
         </div>
         <label class="check block"><input type="checkbox" id="compactFormulas" checked> Kotak rumus 2 kolom</label>
         <label class="check block"><input type="checkbox" id="showFormulaBox" checked> Tampilkan kotak rumus</label>

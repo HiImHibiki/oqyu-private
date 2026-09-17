@@ -568,10 +568,21 @@ html, body {
   margin: 3pt 0 0 15pt;
 }
 
+/* Pilihan berdampingan disusun sebagai grid (A B / C D), bukan multicol:
+   di halaman cetak multicol dengan column-fill:auto menjejalkan semua
+   pilihan ke kolom kiri selebar setengah, membiarkan kanan kosong dan
+   memaksa kalimat pilihan terlipat jauh sebelum tepi kolomnya. Kelas ini
+   hanya dipasang renderSection() kalau semua pilihannya cukup pendek. */
 .ws-options.cols-2 {
-  column-count: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 8pt;
-  column-fill: auto;
+}
+
+.ws-options.cols-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 6pt;
 }
 
 .ws-option {
@@ -912,7 +923,10 @@ html, body {
 .ws-image {
   display: inline-block;
   width: 100%;
-  max-width: var(--ws-diagram-width, 260pt);
+  /* Foto/tangkapan layar punya slidernya sendiri ("Ukuran gambar"):
+     grafik hasil pindai biasanya perlu lebih besar daripada diagram
+     yang digambar aplikasi. */
+  max-width: var(--ws-image-width, var(--ws-diagram-width, 260pt));
   height: auto;
   /* A photograph has no drawn frame of its own the way the generated SVGs
      do, so it gets one here — otherwise a light-edged picture bleeds into

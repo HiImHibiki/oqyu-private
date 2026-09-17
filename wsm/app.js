@@ -1099,14 +1099,42 @@ function renderPartsTree(item, data, opts) {
   return `<div class="ws-parts">${parts}</div>${total}`;
 }
 
+// Panjang tampak sebuah pilihan: TeX dihitung kasar (perintah \frac dsb.
+// jadi satu huruf, pembatas $ { } ^ _ tidak dihitung) supaya "$Na < Mg$"
+// tidak dianggap lebih panjang daripada kelihatannya.
+function optionTextLength(tex) {
+  return String(tex || '')
+    .replace(/\\[a-zA-Z]+/g, 'x')
+    .replace(/[${}^_]/g, '')
+    .trim().length;
+}
+
+// Berapa pilihan berdampingan untuk satu soal PG — diputuskan per soal,
+// bukan per lembar. "2 kolom (hemat)" hanya berlaku kalau semua pilihannya
+// cukup pendek untuk muat di setengah lebar kolom tanpa terlipat; kalimat
+// panjang ("Bertambah karena jumlah kulit elektron makin banyak") tetap
+// satu kolom penuh, dan pilihan sangat pendek (Na / Al / P / Cl) dijajar
+// berempat. Ambangnya ikut lebar badan: kolom koran kira-kira 250pt, jadi
+// setengahnya memuat ±20 huruf; lembar 1 kolom dua kali lebih lapang.
+function optionColsClass(options, opts) {
+  if (opts.pgOptionCols !== '2') return '';
+  const lens = (options || []).map(o => optionTextLength(o.tex));
+  if (!lens.length) return '';
+  const maxLen = Math.max(...lens);
+  const lapang = opts.bodyColumns === '1' ? 2 : 1;
+  if (lens.length <= 4 && maxLen <= 5 * lapang) return ' cols-4';
+  if (maxLen <= 20 * lapang) return ' cols-2';
+  return '';
+}
+
 function renderSection(sec, data, opts) {
   const noteHtml = sec.note ? `<div class="ws-section-note">${esc(sec.note)}</div>` : '';
   const colsClass = opts.bodyColumns === '2' ? 'ws-section-cols cols-2' : 'ws-section-cols';
   let itemsHtml = '';
 
   if (sec.type === 'pg') {
-    const optCols = opts.pgOptionCols === '2' ? 'ws-options cols-2' : 'ws-options';
     itemsHtml = sec.items.map(item => {
+      const optCols = 'ws-options' + optionColsClass(item.options, opts);
       const correct = opts.showAnswerKey ? data.answerKey[item.id] : null;
       const optionsHtml = item.options.map(o => {
         const isCorrect = correct && o.label === correct;
@@ -1729,7 +1757,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'brandName', 'codeMapel', 'codeSekolah', 'codeKelas', 'codeNomor',
     'showLogo', 'showName', 'showClass', 'showDate', 'showScore',
     'pgOptionCols', 'bodyColumns', 'compactFormulas', 'showFormulaBox',
-    'showAnswerKey', 'showExplanation', 'fontSize', 'lineHeight', 'diagramSize', 'spreadView',
+    'showAnswerKey', 'showExplanation', 'fontSize', 'lineHeight', 'diagramSize', 'imageSize', 'spreadView',
     // How the paket are shuffled is a lasting preference; how MANY paket to
     // print deliberately isn't (variantCount is left out) — a forgotten "4
     // paket" would quadruple the next session's paper on the first print.
@@ -2144,7 +2172,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     if (ids.length) {
-      insertAtCursor(ids.map(id => '[[gambar: id=' + id + '; lebar=200]]').join(' '));
+      // Tanpa "lebar=": besarnya ikut slider "Ukuran gambar", jadi satu
+      // geseran membesarkan semua gambar di lembar; lebar= tetap bisa
+      // ditulis tangan untuk satu gambar yang perlu beda.
+      insertAtCursor(ids.map(id => '[[gambar: id=' + id + ']]').join(' '));
       render();
     }
     renderImageList();
@@ -2193,7 +2224,7 @@ document.addEventListener('DOMContentLoaded', () => {
       thumb.alt = rec.name || id;
       thumb.title = 'Sisipkan [[gambar: id=' + id + ']] ke naskah';
       thumb.addEventListener('click', () => {
-        insertAtCursor('[[gambar: id=' + id + '; lebar=200]]');
+        insertAtCursor('[[gambar: id=' + id + ']]');
         render();
       });
 
@@ -2467,12 +2498,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const fs = el('fontSize').value;
     const lh = el('lineHeight').value;
     const ds = el('diagramSize').value;
+    const is = el('imageSize').value;
     pageEl.style.setProperty('--ws-font-size', fs + 'pt');
     pageEl.style.setProperty('--ws-line-height', lh);
     pageEl.style.setProperty('--ws-diagram-width', ds + 'pt');
+    pageEl.style.setProperty('--ws-image-width', is + 'pt');
     el('fontSizeVal').textContent = fs + 'pt';
     el('lineHeightVal').textContent = lh;
     el('diagramSizeVal').textContent = ds + 'pt';
+    el('imageSizeVal').textContent = is + 'pt';
     el('linesPerMarkVal').textContent = el('linesPerMark').value;
   }
 
@@ -2563,7 +2597,7 @@ document.addEventListener('DOMContentLoaded', () => {
     probe.className = 'no-print';
     probe.style.cssText = `position:fixed; left:-99999px; top:0; visibility:hidden; width:${widthMm}mm;`;
     const cs = getComputedStyle(pageEl);
-    ['--ws-font-size', '--ws-line-height', '--ws-diagram-width'].forEach((v) => {
+    ['--ws-font-size', '--ws-line-height', '--ws-diagram-width', '--ws-image-width'].forEach((v) => {
       const val = cs.getPropertyValue(v);
       if (val) probe.style.setProperty(v, val.trim());
     });
@@ -3113,7 +3147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   ['brandName', 'worksheetSubject', 'worksheetTitle', 'showLogo', 'showName', 'showClass', 'showDate',
    'showScore', 'pgOptionCols', 'bodyColumns', 'compactFormulas', 'showFormulaBox',
-   'showAnswerKey', 'showExplanation', 'fontSize', 'lineHeight', 'diagramSize', 'spreadView',
+   'showAnswerKey', 'showExplanation', 'fontSize', 'lineHeight', 'diagramSize', 'imageSize', 'spreadView',
    'variantCount', 'variantShuffleItems', 'variantShuffleOptions',
    'showMarks', 'autoAnswerSpace', 'linesPerMark'
   ].forEach(id => {

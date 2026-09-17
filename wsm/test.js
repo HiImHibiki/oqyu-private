@@ -56,6 +56,46 @@ PG1-$2+2=4$, jadi jawabannya B`;
   assert.doesNotMatch(html, />Pembahasan</); // no combined end-of-sheet block anymore
 });
 
+test('PG: kolom pilihan diputuskan per soal dari panjang teksnya', () => {
+  const raw = `Bagian A: Pilihan Ganda (PG)
+PG1. Unsur yang paling elektronegatif adalah...
+A. Na
+B. Al
+C. P
+D. Cl
+PG2. Urutan yang benar adalah...
+A. $Na < Mg < Al$
+B. $Si < P < S$
+C. $Cl < S < P$
+D. $K < Ca < Sc$
+PG3. Jari-jari atom dalam satu periode dari kiri ke kanan...
+A. Bertambah karena jumlah kulit elektron makin banyak
+B. Bertambah karena muatan inti efektif makin kecil
+C. Berkurang karena muatan inti efektif makin besar
+D. Berkurang karena jumlah elektron valensi makin sedikit
+PG4. Afinitas elektron halogen bernilai sangat negatif, artinya...
+A. Sangat sukar menerima elektron
+B. Melepaskan energi yang besar
+C. Memerlukan energi yang tinggi
+D. Stabil dan tidak bereaksi
+
+Kunci Jawaban
+PG1-D PG2-A PG3-C PG4-B`;
+  // Kolom koran (bodyColumns 2): sangat pendek → 4 sejajar, pendek → 2,
+  // kalimat (sedang maupun panjang) → 1 kolom penuh.
+  const { html } = render(raw, { bodyColumns: '2' });
+  const kelas = [...html.matchAll(/class="ws-options([^"]*)"/g)].map(m => m[1].trim());
+  assert.deepEqual(kelas, ['cols-4', 'cols-2', '', '']);
+  // Lembar 1 kolom dua kali lebih lapang: kalimat sedang muat berdua,
+  // kalimat panjang tetap satu kolom.
+  const lapang = render(raw, { bodyColumns: '1' }).html;
+  const kelasLapang = [...lapang.matchAll(/class="ws-options([^"]*)"/g)].map(m => m[1].trim());
+  assert.deepEqual(kelasLapang, ['cols-4', 'cols-2', '', 'cols-2']);
+  // "1 kolom" dipilih guru: tidak pernah berdampingan.
+  const satu = render(raw, { pgOptionCols: '1' }).html;
+  assert.doesNotMatch(satu, /cols-[24]/);
+});
+
 // ---------------------------------------------------------------------
 // Benar/Salah (B) — including the True/False -> Benar/Salah alias mapping
 // ---------------------------------------------------------------------
