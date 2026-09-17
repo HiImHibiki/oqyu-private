@@ -1247,6 +1247,24 @@ test('Gerak: sumbux/sumbuy override the axis titles', () => {
 });
 
 // ---------------------------------------------------------------------
+// sanitizeMath: LaTeX mistakes AI keys make that KaTeX refuses outright
+// ---------------------------------------------------------------------
+test('Math: a superscript inside \\text{} (AI-style "\\text{ ^\\circ C}") is lifted out so KaTeX can parse it', () => {
+  const raw = `Bagian A: Pilihan Ganda (PG)
+PG1. Air dipanaskan dari $20.0\\text{ ^\\circ C}$ ke $29.0\\text{^{\\circ}C}$. Berapa $\\Delta T$?
+A. $+9.0\\text{ ^\\circ C}$
+B. $-9.0\\text{ ^\\circ }$
+Kunci Jawaban: 1. A
+Pembahasan: 1. $\\Delta T = 29.0 - 20.0 = +9.0\\text{ ^\\circ C}$`;
+  const { html } = render(raw);
+  assert.doesNotMatch(html, /\\text\{\s*\^/);
+  assert.match(html, /20\.0\^\\circ\\text\{C\}/);
+  assert.match(html, /29\.0\^\\circ\\text\{C\}/);
+  assert.match(html, /-9\.0\^\\circ\$/);
+  assert.match(html, /\+9\.0\^\\circ\\text\{C\}\$/);
+});
+
+// ---------------------------------------------------------------------
 // Runner
 // ---------------------------------------------------------------------
 let failed = 0;

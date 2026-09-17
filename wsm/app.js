@@ -280,7 +280,15 @@ function sanitizeMath(text) {
   // a script — and makes KaTeX fail the whole expression ("Got group of
   // unknown type: 'internal'"). Drop the stray thin-space; the superscript
   // then attaches to the preceding digit as intended.
-  return text.replace(/\\,\s*\^/g, '^');
+  //
+  // "\text{ ^\circ C}" (a superscript INSIDE text mode, which AI-written
+  // chemistry/physics keys produce for every temperature) is just as fatal:
+  // KaTeX stops at the "^" ("Expected 'EOF', got '^'") and prints the whole
+  // expression raw in red. Lift the degree sign out — "^\circ\text{C}" — and
+  // drop the \text{} entirely when nothing but the degree sign was in it.
+  return text
+    .replace(/\\,\s*\^/g, '^')
+    .replace(/\\text\{\s*\^\s*(\{\s*\\circ\s*\}|\\circ)\s*([^{}]*?)\s*\}/g, (m, _c, rest) => '^\\circ' + (rest ? '\\text{' + rest + '}' : ''));
 }
 
 // A line reading just "SET 1", "SET 2", etc. (matching what "Buat Prompt
