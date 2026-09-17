@@ -11,6 +11,8 @@ import { butirKeQuestion, type Butir } from "@/lib/practice/worksheet";
  * localhost, jadi asal alamat tidak bisa dipercaya. */
 interface Kiriman {
   judul: string; mapel?: string; kelas?: string; topik?: string; durasiMenit?: number;
+  /** nomor set yang diketik guru di Worksheet (lembar tanpa penanda SET di naskahnya) */
+  set?: number | null;
   butir: Butir[]; pdf?: string | null; pdfKunci?: string | null;
 }
 
@@ -33,12 +35,16 @@ export async function POST(req: Request) {
   const perSet = new Map<number, Butir[]>();
   for (const b of k.butir) { const n = b.set ?? 1; perSet.set(n, [...(perSet.get(n) ?? []), b]); }
   const banyakSet = perSet.size > 1;
+  /* Nomor set: dari penanda SET di naskah kalau ada beberapa; kalau naskahnya
+   * satu set, dari yang diketik guru ("lembar ini set ke-3"). */
+  const setGuru = Number.isInteger(k.set) && (k.set as number) > 0 ? (k.set as number) : null;
   const semua = await listPaket();
   const hasil: { paket: Awaited<ReturnType<typeof savePaket>>; jumlah: number; dilewati: number }[] = [];
   for (const [set, butir] of [...perSet].sort((x, y) => x[0] - y[0])) {
-    const lama = k.pdf ? semua.find((p) => p.sumber === "worksheet" && p.pdf === k.pdf && (p.set ?? 1) === set) : undefined;
+    const nomorSet = banyakSet ? set : setGuru;
+    const lama = k.pdf ? semua.find((p) => p.sumber === "worksheet" && p.pdf === k.pdf && (p.set ?? null) === nomorSet) : undefined;
     const paketId = lama?.id ?? `pk-${crypto.randomBytes(5).toString("hex")}`;
-    const judulDasar = k.judul?.trim() || lama?.judul || "Paket latihan";
+    const judulDasar = (k.judul?.trim() || lama?.judul || "Paket latihan").replace(/ — Set \d+$/, "");
     const ctx = { paketId, mapel: k.mapel?.trim() || "", kelas: k.kelas?.trim() || "", topik: k.topik?.trim() || judulDasar };
     const soal = butir.map((b) => butirKeQuestion(b, ctx));
     const dipakai = soal.filter((q): q is NonNullable<typeof q> => q !== null);
@@ -46,8 +52,8 @@ export async function POST(req: Request) {
     await importQuestions(dipakai, "approved", { force: true });
     const paket = await savePaket({
       id: paketId, dibuatAt: lama?.dibuatAt,
-      judul: banyakSet ? `${judulDasar.replace(/ — Set \d+$/, "")} — Set ${set}` : judulDasar,
-      mapel: ctx.mapel, kelas: ctx.kelas, topik: ctx.topik, set: banyakSet ? set : null,
+      judul: nomorSet ? `${judulDasar} — Set ${nomorSet}` : judulDasar,
+      mapel: ctx.mapel, kelas: ctx.kelas, topik: ctx.topik, set: nomorSet,
       questionIds: dipakai.map((q) => q.id),
       durasiMenit: Math.max(5, Number(k.durasiMenit) || 120),
       sumber: "worksheet", pdf: k.pdf ?? lama?.pdf ?? null, pdfKunci: k.pdfKunci ?? lama?.pdfKunci ?? null,

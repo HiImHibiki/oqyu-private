@@ -26,11 +26,11 @@ export async function POST(req: Request) {
   return NextResponse.json({ paket });
 }
 
-/** PATCH: ubah judul/durasi/terbit. body: { id, ...perubahan } */
+/** PATCH: ubah judul/durasi/terbit/set. body: { id, ...perubahan } */
 export async function PATCH(req: Request) {
   const guru = await adminOrNull();
   if (!guru) return NextResponse.json({ error: "Hanya guru" }, { status: 403 });
-  const b = (await req.json()) as { id: string; judul?: string; durasiMenit?: number; terbit?: boolean };
+  const b = (await req.json()) as { id: string; judul?: string; durasiMenit?: number; terbit?: boolean; set?: number | null };
   const p = await getPaket(b.id);
   if (!p) return NextResponse.json({ error: "Paket tidak ditemukan" }, { status: 404 });
   const paket = await savePaket({
@@ -38,6 +38,8 @@ export async function PATCH(req: Request) {
     ...(b.judul !== undefined ? { judul: b.judul.trim() || p.judul } : {}),
     ...(b.durasiMenit !== undefined ? { durasiMenit: Math.max(5, Number(b.durasiMenit) || p.durasiMenit) } : {}),
     ...(b.terbit !== undefined ? { terbit: Boolean(b.terbit) } : {}),
+    // null/0 = bukan seri; angka positif = nomor set
+    ...(b.set !== undefined ? { set: Number.isInteger(b.set) && (b.set as number) > 0 ? (b.set as number) : null } : {}),
   });
   return NextResponse.json({ paket });
 }

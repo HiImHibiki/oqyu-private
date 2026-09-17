@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Loader2, Printer, Sparkles, Trash2, Eye, EyeOff, KeyRound, ListChecks, Square, Copy, Link2, Check, ClipboardPaste, ExternalLink } from "lucide-react";
+import { Loader2, Printer, Sparkles, Trash2, Eye, EyeOff, KeyRound, ListChecks, Square, Copy, Link2, Check, ClipboardPaste, ExternalLink, Pencil } from "lucide-react";
 import type { Paket } from "@/lib/practice/paket";
 import { susunPrompt, type JenisSoal } from "@/lib/practice/promptAI";
 import { uraiNaskah } from "@/lib/practice/naskah";
@@ -57,7 +57,7 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
   /* ---- tempel naskah dari AI ---- */
   const [t, setT] = useState({
     materi: "", mapel: "", kelas: "", jumlah: 10, jumlahSet: 1, kesulitan: "Sedang",
-    bahasa: "Bahasa Indonesia", catatan: "", judul: "", durasiMenit: 120, naskah: "",
+    bahasa: "Bahasa Indonesia", catatan: "", judul: "", durasiMenit: 120, naskah: "", set: "",
   });
   const [jenis, setJenis] = useState<JenisSoal[]>(["PG"]);
   const [pembahasan, setPembahasan] = useState(true);
@@ -98,6 +98,7 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
         body: JSON.stringify({
           naskah: t.naskah, judul: t.judul || t.materi, mapel: t.mapel, kelas: t.kelas,
           topik: t.materi, durasiMenit: t.durasiMenit,
+          set: /^\d+$/.test(t.set.trim()) ? Number(t.set) : null,
         }),
       });
       const j = await r.json();
@@ -138,6 +139,17 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
   const ubah = async (id: string, perubahan: Partial<Paket>) => {
     await fetch("/api/admin/latihan/paket", { method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify({ id, ...perubahan }) });
     await muatPaket();
+  };
+  /* Ganti judul dan nomor set lewat dialog kecil — cukup untuk pemakaian sesekali. */
+  const sunting = async (p: Paket) => {
+    const judul = prompt("Judul paket:", p.judul);
+    if (judul === null) return;
+    const setTeks = prompt("Set ke berapa? (kosongkan kalau bukan seri)", p.set ? String(p.set) : "");
+    if (setTeks === null) return;
+    const set = /^\d+$/.test(setTeks.trim()) && Number(setTeks) > 0 ? Number(setTeks) : null;
+    // Judul tidak menumpuk «— Set 2 — Set 3»: bagian set lama dilepas dulu.
+    const dasar = judul.trim().replace(/ — Set \d+$/, "") || p.judul;
+    await ubah(p.id, { judul: set ? `${dasar} — Set ${set}` : dasar, set });
   };
   const hapus = async (p: Paket) => {
     if (!confirm(`Hapus paket "${p.judul}"? Soalnya tetap ada di bank.`)) return;
@@ -250,7 +262,10 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
               <textarea className={`${input} font-mono text-xs`} rows={10} value={t.naskah} onChange={(e) => setT({ ...t, naskah: e.target.value })}
                 placeholder={"Bagian Pilihan Ganda: (PG)\nPG1. …\nA. …\n\nKunci Jawaban\nPG1-B, …"} />
             </label>
-            <label className="text-sm">Judul paket (opsional)<input className={input} value={t.judul} onChange={(e) => setT({ ...t, judul: e.target.value })} placeholder="Kosong = pakai materi di atas" /></label>
+            <div className="grid grid-cols-[1fr_auto] gap-3">
+              <label className="text-sm">Judul paket (opsional)<input className={input} value={t.judul} onChange={(e) => setT({ ...t, judul: e.target.value })} placeholder="Kosong = pakai materi di atas" /></label>
+              <label className="text-sm">Set ke-<input className={input} inputMode="numeric" value={t.set} onChange={(e) => setT({ ...t, set: e.target.value })} placeholder="—" style={{ width: 80 }} title="Nomor set paket ini, jadi «— Set 3» di judul. Kosongkan kalau bukan seri; naskah dengan penanda SET 1/SET 2 dinomori otomatis." /></label>
+            </div>
 
             {pratinjau && (
               <div className="rounded-lg px-3 py-2 text-sm" style={{ background: "var(--surface-2, #f5f5f5)" }}>
@@ -328,6 +343,7 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
                 <button className="btn btn-ghost !px-2" title={p.terbit ? "Sembunyikan dari murid" : "Terbitkan ke murid"} onClick={() => ubah(p.id, { terbit: !p.terbit })}>
                   {p.terbit ? <Eye size={15} /> : <EyeOff size={15} />}
                 </button>
+                <button className="btn btn-ghost !px-2" title="Ubah judul / nomor set" onClick={() => sunting(p)}><Pencil size={15} /></button>
                 <button className="btn btn-ghost !px-2" title="Hapus paket" onClick={() => hapus(p)}><Trash2 size={15} /></button>
               </div>
             </div>

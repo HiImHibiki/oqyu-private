@@ -16,7 +16,7 @@ export async function POST(req: Request) {
   if (!guru) return NextResponse.json({ error: "Hanya guru" }, { status: 403 });
 
   const b = (await req.json().catch(() => null)) as
-    | { naskah?: string; judul?: string; mapel?: string; kelas?: string; topik?: string; durasiMenit?: number; terbit?: boolean }
+    | { naskah?: string; judul?: string; mapel?: string; kelas?: string; topik?: string; durasiMenit?: number; terbit?: boolean; set?: number | null }
     | null;
   const naskah = (b?.naskah || "").trim();
   if (!naskah) return NextResponse.json({ error: "Naskahnya masih kosong" }, { status: 400 });
@@ -35,6 +35,8 @@ export async function POST(req: Request) {
   const perSet = new Map<number, typeof butir>();
   for (const x of butir) { const n = x.set ?? 1; perSet.set(n, [...(perSet.get(n) ?? []), x]); }
   const banyakSet = perSet.size > 1;
+  /* Naskah satu set boleh diberi nomor set oleh guru ("ini set ke-3"). */
+  const setGuru = Number.isInteger(b?.set) && (b!.set as number) > 0 ? (b!.set as number) : null;
 
   const judulDasar = b?.judul?.trim() || meta.judul || b?.topik?.trim() || "Paket latihan";
   const hasil: { paket: Awaited<ReturnType<typeof savePaket>>; jumlah: number; dilewati: number }[] = [];
@@ -54,8 +56,8 @@ export async function POST(req: Request) {
     await importQuestions(dipakai, "approved", { force: true });
     const paket = await savePaket({
       id: paketId,
-      judul: banyakSet ? `${judulDasar} — Set ${set}` : judulDasar,
-      mapel: ctx.mapel, kelas: ctx.kelas, topik: ctx.topik, set: banyakSet ? set : null,
+      judul: (banyakSet ? set : setGuru) ? `${judulDasar} — Set ${banyakSet ? set : setGuru}` : judulDasar,
+      mapel: ctx.mapel, kelas: ctx.kelas, topik: ctx.topik, set: banyakSet ? set : setGuru,
       questionIds: dipakai.map((q) => q.id),
       durasiMenit: Math.max(5, Number(b?.durasiMenit) || 120),
       sumber: "tempel", terbit: b?.terbit !== false, oleh: guru.id,
