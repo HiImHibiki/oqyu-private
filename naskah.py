@@ -19,6 +19,9 @@ KEPALA_KUNCI = re.compile(r'^\s*Kunci\s*Jawaban\s*:?\s*$', re.I)
 # sampai bagian soal pertama. Ejaan yang diterima sama dengan wsm/app.js.
 KEPALA_BACAAN = re.compile(r'^\s*(?:Reading\s*Passage|Reading\s*Text|Passage|Bacaan|'
                            r'Teks\s*Bacaan|Wacana)\s*(?:\d{1,2})?\s*:?\s*$', re.I)
+# Batas akhir bacaan: kepala bagian apa pun (termasuk "Bagian A: (PG)" yang
+# namanya satu huruf — BAGIAN di atas minta 2 huruf) atau butir soal pertama.
+BATAS_BACAAN = re.compile(r'^\s*(?:Bagian|Section)\s+[^\n]{1,80}?:\s*(?:\([A-Za-z]{1,4}\))?\s*$', re.I)
 KEPALA_BAHAS = re.compile(r'^\s*Pembahasan\s*:?\s*$', re.I)
 SET = re.compile(r'^\s*SET\s+(\d+)\s*$', re.I)
 # "PG1-B, I1-18, E1a-5x+2" — kode, tanda hubung, lalu isinya sampai PENANDA
@@ -81,7 +84,7 @@ def _ambil_bacaan(isi):
     """
     awal = next((i for i, b in enumerate(isi) if KEPALA_BACAAN.match(b)), None)
     if awal is None: return isi, None
-    batas = next((i for i, b in enumerate(isi) if BAGIAN.match(b) or BUTIR.match(b)), len(isi))
+    batas = next((i for i, b in enumerate(isi) if BATAS_BACAAN.match(b) or BUTIR.match(b)), len(isi))
     if awal >= batas: return isi, None
     blok = '\n'.join(isi[awal + 1:batas]).strip()
     para = [p.strip() for p in re.split(r'\n[ \t]*\n', blok) if p.strip()]
@@ -104,6 +107,7 @@ def _urai_set(baris, set_ini=1):
     # Judul lembar = baris pertama yang berisi, dibaca SESUDAH bacaan dipisah
     # — kalau tidak, lembar tanpa judul yang langsung "Bacaan" berjudul "Bacaan".
     judul = next((b.strip() for b in isi[:4] if b.strip()), '')
+    if BATAS_BACAAN.match(judul) or BUTIR.match(judul): judul = ''   # naskah tanpa judul
 
     kunci = _pasang('\n'.join(bagian_kunci))
     bahas = _pasang('\n'.join(bagian_bahas))
