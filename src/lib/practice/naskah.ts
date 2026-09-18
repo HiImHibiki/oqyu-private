@@ -25,7 +25,7 @@
  * Beberapa set dipisah baris "SET 2" dan diurai sendiri-sendiri, supaya kunci
  * set 2 (kodenya berulang dari PG1 lagi) tidak menimpa kunci set 1.
  */
-import type { Butir } from "./worksheet";
+import type { Bacaan, Butir } from "./worksheet";
 
 const BAGIAN = /^\s*Bagian\s+([^:]{2,60}):\s*\((PG|B|I|E|M|IB)\)\s*$/i;
 const BUTIR = /^\s*(PG|B|I|E|M|IB)(\d{1,3})\.\s*(.*)$/;
@@ -33,6 +33,14 @@ const OPSI = /^\s*\(?([A-Ea-e])\s*[.)]\s*(.+)$/;
 const SUB = /^\s*\((?:([a-h])|(i{1,3}|iv|v|vi{1,3}))\)\s*(.*)$/;
 const BOBOT = /\s*\[(\d{1,2})\]\s*$/;
 const KEPALA_KUNCI = /^\s*Kunci\s*Jawaban\s*:?\s*$/i;
+/* Teks bacaan (lembar Bahasa Indonesia / Inggris): baris "Bacaan" sendirian
+ * di bawah judul naskah, lalu judul teks (opsional), lalu paragraf-paragrafnya
+ * sampai bagian soal pertama. Ejaan yang diterima sama dengan naskah.py dan
+ * wsm/app.js milik Exact Worksheet. */
+const KEPALA_BACAAN = /^\s*(?:Reading\s*Passage|Reading\s*Text|Passage|Bacaan|Teks\s*Bacaan|Wacana)\s*(?:\d{1,2})?\s*:?\s*$/i;
+/* Batas akhir bacaan: kepala bagian apa pun (termasuk "Bagian A: (PG)" yang
+ * namanya satu huruf — BAGIAN di atas minta 2 huruf) atau butir soal pertama. */
+const BATAS_BACAAN = /^\s*(?:Bagian|Section)\s+[^\n]{1,80}?:\s*(?:\([A-Za-z]{1,4}\))?\s*$/i;
 const KEPALA_BAHAS = /^\s*Pembahasan\s*:?\s*$/i;
 const TANDA_SET = /^\s*SET\s+(\d+)\s*$/i;
 /* "PG1-B, I1-18, E1a-5x+2" — kode, tanda hubung, lalu jawaban sampai koma yang
@@ -42,6 +50,8 @@ const PASANG = /\b((?:PG|B|I|E|M|IB)\d{1,3}[a-h]?(?:\.(?:i{1,3}|iv|v|vi{1,3}))?)
 
 export interface MetaNaskah {
   judul: string;
+  /** teks bacaan set pertama, kalau naskahnya lembar pemahaman bacaan */
+  bacaan?: Bacaan | null;
   /** banyaknya entri di blok Kunci Jawaban (semua set digabung) */
   nKunci: number;
   nSet: number;
@@ -89,17 +99,38 @@ function pasanganLuwes(baris: string[]): Record<string, string> {
   return satuKodePerBaris ? pasanganBaris(baris) : pasanganKoma(baris.join("\n"));
 }
 
-/** Urai SATU set: soalnya, lalu blok Kunci Jawaban dan Pembahasan miliknya. */
-function uraiSet(baris: string[], setIni: number): { soal: Butir[]; judul: string; nKunci: number } {
-  const judul = baris.slice(0, 4).map((b) => b.trim()).find(Boolean) ?? "";
+/* Pisahkan blok teks bacaan dari baris-baris soal. Judul teks = paragraf
+ * pertama kalau pendek, satu baris, dan masih ada paragraf lain sesudahnya —
+ * aturan yang sama dengan naskah.py / wsm/app.js supaya PDF dan Practice
+ * membaca judul yang sama. */
+function ambilBacaan(isi: string[]): { sisa: string[]; bacaan: Bacaan | null } {
+  const awal = isi.findIndex((b) => KEPALA_BACAAN.test(b));
+  if (awal < 0) return { sisa: isi, bacaan: null };
+  let batas = isi.findIndex((b) => BATAS_BACAAN.test(b) || BUTIR.test(b));
+  if (batas < 0) batas = isi.length;
+  if (awal >= batas) return { sisa: isi, bacaan: null };
+  const blok = isi.slice(awal + 1, batas).join("\n").trim();
+  const para = blok.split(/\n[ \t]*\n/).map((p) => p.trim()).filter(Boolean);
+  let judul = "";
+  if (para.length > 1 && para[0].length <= 120 && !/\n/.test(para[0])) judul = para.shift()!;
+  const sisa = [...isi.slice(0, awal), ...isi.slice(batas)];
+  return { sisa, bacaan: para.length ? { judul, isi: para.join("\n\n") } : null };
+}
 
-  const isi: string[] = [], barisKunci: string[] = [], barisBahas: string[] = [];
+/** Urai SATU set: soalnya, lalu blok Kunci Jawaban dan Pembahasan miliknya. */
+function uraiSet(baris: string[], setIni: number): { soal: Butir[]; judul: string; nKunci: number; bacaan: Bacaan | null } {
+  const isiMentah: string[] = [], barisKunci: string[] = [], barisBahas: string[] = [];
   let mode: "soal" | "kunci" | "bahas" = "soal";
   for (const b of baris) {
     if (KEPALA_KUNCI.test(b)) { mode = "kunci"; continue; }
     if (KEPALA_BAHAS.test(b)) { mode = "bahas"; continue; }
-    (mode === "soal" ? isi : mode === "kunci" ? barisKunci : barisBahas).push(b);
+    (mode === "soal" ? isiMentah : mode === "kunci" ? barisKunci : barisBahas).push(b);
   }
+  const { sisa: isi, bacaan } = ambilBacaan(isiMentah);
+  /* Judul dibaca SESUDAH bacaan dipisah — kalau tidak, naskah tanpa judul
+   * yang langsung "Bacaan" berjudul "Bacaan". */
+  const judulMentah = isi.slice(0, 4).map((b) => b.trim()).find(Boolean) ?? "";
+  const judul = BATAS_BACAAN.test(judulMentah) || BUTIR.test(judulMentah) ? "" : judulMentah;
 
   const kunci = pasanganLuwes(barisKunci);
   const bahas = pasanganLuwes(barisBahas);
@@ -171,8 +202,11 @@ function uraiSet(baris: string[], setIni: number): { soal: Butir[]; judul: strin
   for (const s of soal) {
     s.kunci = kunci[s.kode] ?? "";
     s.pembahasan = bahas[s.kode] ?? "";
+    /* Bacaan menempel di tiap soal: soal disimpan satu per satu sebagai
+     * Question, dan tiap Question membawa stimulusnya sendiri. */
+    s.bacaan = bacaan;
   }
-  return { soal, judul, nKunci: Object.keys(kunci).length };
+  return { soal, judul, nKunci: Object.keys(kunci).length, bacaan };
 }
 
 /** Urai naskah lengkap (boleh berisi beberapa SET) jadi butir soal + meta. */
@@ -193,11 +227,13 @@ export function uraiNaskah(teks: string): { butir: Butir[]; meta: MetaNaskah } {
 
   const butir: Butir[] = [];
   let judul = "", nKunci = 0;
+  let bacaan: Bacaan | null = null;
   for (const p of dipakai) {
     const h = uraiSet(p.baris, p.set);
     butir.push(...h.soal);
     nKunci += h.nKunci;
     judul = judul || h.judul;
+    bacaan = bacaan ?? h.bacaan;
   }
-  return { butir, meta: { judul, nKunci, nSet: Math.max(1, ...butir.map((b) => b.set ?? 1)) } };
+  return { butir, meta: { judul, bacaan, nKunci, nSet: Math.max(1, ...butir.map((b) => b.set ?? 1)) } };
 }

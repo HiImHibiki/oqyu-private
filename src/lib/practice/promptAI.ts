@@ -25,6 +25,14 @@ export interface OpsiPrompt {
   latex?: boolean;
   diagram?: boolean;
   catatan?: string;
+  /** minta teks bacaan di bawah judul (soal pemahaman bacaan). Kosong =
+   *  otomatis menyala untuk mapel Bahasa Indonesia / Bahasa Inggris. */
+  bacaan?: boolean;
+}
+
+/* Mapel bahasa → lembar pemahaman bacaan, kecuali guru mematikannya. */
+export function mapelBahasa(mapel?: string): boolean {
+  return /\b(bahasa|inggris|english|indonesia|b\.?\s*(indo|ing))/i.test(mapel || "");
 }
 
 const NAMA_BAGIAN: Record<JenisSoal, string> = {
@@ -84,6 +92,26 @@ export function susunPrompt(o: OpsiPrompt): string {
     L.push("Sebelum set kedua dan seterusnya, tulis baris PERSIS seperti ini sendirian (tanpa tanda baca lain):");
     L.push(`SET 2`);
     L.push(`Jadi urutannya: set pertama lengkap, lalu baris "SET 2", lalu set kedua lengkap, dan seterusnya sampai set ${set}. Set pertama TIDAK didahului baris "SET 1".`);
+    L.push("");
+  }
+
+  const mintaBacaan = o.bacaan ?? mapelBahasa(o.mapel);
+  if (mintaBacaan) {
+    L.push("=== TEKS BACAAN (WAJIB — SOAL PEMAHAMAN BACAAN) ===");
+    L.push('Baris pertama naskah: judul singkat lembar. Tepat di bawahnya tulis baris "Bacaan" SENDIRIAN (tanpa titik dua, tanpa nomor), lalu di baris berikutnya judul teksnya, lalu teks bacaannya utuh dalam 2–5 paragraf yang dipisah satu baris kosong. Panjangnya sesuai jenjang: SD 100–150 kata, SMP 150–250 kata, SMA 250–400 kata. Teksnya karangan asli (bukan kutipan buku/berita), dalam bahasa yang sama dengan soalnya.');
+    L.push("SEMUA soal mengacu ke teks itu: informasi tersurat dan tersirat, makna kata sesuai konteks, ide pokok paragraf, simpulan, tujuan penulis, jenis/struktur teks, dan tata bahasa dari kalimat di dalam teks. Jangan mengulang teksnya di dalam soal — cukup rujuk paragrafnya." + (set > 1 ? " Tiap SET punya teks bacaannya sendiri." : ""));
+    L.push("");
+    L.push("Contoh susunannya:");
+    L.push("Latihan Membaca Pemahaman");
+    L.push("");
+    L.push("Bacaan");
+    L.push("Judul Teks");
+    L.push("");
+    L.push("Paragraf pertama teks bacaan ...");
+    L.push("");
+    L.push("Paragraf kedua ...");
+    L.push("");
+    L.push("(lalu bagian-bagian soal seperti di bawah)");
     L.push("");
   }
 

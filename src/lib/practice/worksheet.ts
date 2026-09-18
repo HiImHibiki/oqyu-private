@@ -5,6 +5,10 @@ import type { Question } from "@/lib/types";
 
 const BASE = process.env.EXACT_WORKSHEET_URL || "http://127.0.0.1:7790";
 
+/** Teks bacaan yang menyertai soal (lembar Bahasa Indonesia / Inggris):
+ *  blok "Bacaan" di bawah judul naskah, dibawa naskah.urai() di tiap butir. */
+export interface Bacaan { judul?: string; isi: string }
+
 /** Satu butir soal sebagaimana dikeluarkan naskah.urai() di Exact Worksheet. */
 export interface Butir {
   kode: string;            // "PG1", "B2", "I1", "E1"
@@ -17,6 +21,7 @@ export interface Butir {
   set?: number;
   kunci?: string | null;
   pembahasan?: string | null;
+  bacaan?: Bacaan | null;
 }
 
 export interface ParamBuat {
@@ -162,6 +167,11 @@ export function butirKeQuestion(
     estimatedTimeSec: 90,
     points: Number(b.bobot) > 0 ? Number(b.bobot) : 1,
     meta: { generator: "gemini-worksheet", version: 1, reviewed: true },
+    /* Teks bacaan jadi stimulus: mesin ujian menampilkannya di panel kiri
+     * (dengan stabilo) di samping soalnya, seperti soal SAT/A-Level. */
+    ...(b.bacaan?.isi?.trim()
+      ? { stimulus: { type: "passage" as const, title: b.bacaan.judul?.trim() || undefined, content: b.bacaan.isi.trim() } }
+      : {}),
   };
   const jenis = (b.jenis || "PG").toUpperCase();
 
@@ -201,13 +211,16 @@ export function questionKeButir(q: Question, no: number): Butir {
     : q.answer.mode === "numeric" ? String(q.answer.value)
     : q.answer.mode === "text" ? q.answer.accepted[0] : "";
   const bs = q.choices?.length === 2 && q.choices.every((c) => ["B", "S"].includes(c.id));
+  /* Stimulus kembali jadi blok Bacaan supaya PDF cetak ulang membawa teksnya. */
+  const bacaan: Bacaan | null = q.stimulus?.content?.trim()
+    ? { judul: q.stimulus.title?.trim() || "", isi: q.stimulus.content.trim() } : null;
   if (q.type === "mcq_single" && !bs) {
     return {
       kode: `PG${no}`, jenis: "PG", no, batang: q.stem,
       opsi: Object.fromEntries((q.choices ?? []).map((c) => [c.id, c.text])),
-      bobot: q.points || 1, sub: [], set: 1, kunci, pembahasan: q.explanation || "",
+      bobot: q.points || 1, sub: [], set: 1, kunci, pembahasan: q.explanation || "", bacaan,
     };
   }
-  if (bs) return { kode: `B${no}`, jenis: "B", no, batang: q.stem, opsi: {}, bobot: q.points || 1, sub: [], set: 1, kunci: kunci === "B" ? "Benar" : "Salah", pembahasan: q.explanation || "" };
-  return { kode: `I${no}`, jenis: "I", no, batang: q.stem, opsi: {}, bobot: q.points || 1, sub: [], set: 1, kunci, pembahasan: q.explanation || "" };
+  if (bs) return { kode: `B${no}`, jenis: "B", no, batang: q.stem, opsi: {}, bobot: q.points || 1, sub: [], set: 1, kunci: kunci === "B" ? "Benar" : "Salah", pembahasan: q.explanation || "", bacaan };
+  return { kode: `I${no}`, jenis: "I", no, batang: q.stem, opsi: {}, bobot: q.points || 1, sub: [], set: 1, kunci, pembahasan: q.explanation || "", bacaan };
 }
