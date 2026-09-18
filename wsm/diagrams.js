@@ -3861,33 +3861,6 @@ function garisBerarahSVG(x1, y1, x2, y2, opts) {
   return s;
 }
 
-// Mata panah kecil terisi, berpusat di (x,y), menghadap sudut `rad`
-// (radian, kerangka SVG: y ke bawah). Dipakai DI TENGAH garis sinar dan
-// garis medan untuk menunjukkan arah tanpa memutus garisnya — konvensi
-// buku ujian, bukan panah di ujung garis.
-function kepalaPanahSVG(x, y, rad, size) {
-  size = size || 7;
-  const ux = Math.cos(rad), uy = Math.sin(rad);
-  const px = -uy, py = ux;
-  const tx = x + ux * size * 0.5, ty = y + uy * size * 0.5;
-  const bx = x - ux * size * 0.5, by = y - uy * size * 0.5;
-  return `<polygon points="${tx.toFixed(1)},${ty.toFixed(1)} ${(bx + px * size * 0.45).toFixed(1)},${(by + py * size * 0.45).toFixed(1)} ${(bx - px * size * 0.45).toFixed(1)},${(by - py * size * 0.45).toFixed(1)}" fill="${GAYA.hitam}"/>`;
-}
-
-// Garis tipis hitam dengan mata panah di tengahnya (posisi 0..1 sepanjang
-// garis, bawaan setengah). dash: pola putus-putus untuk perpanjangan sinar
-// maya; panah=false untuk perpanjangan tanpa arah.
-function garisBerarahSVG(x1, y1, x2, y2, opts) {
-  opts = opts || {};
-  const dash = opts.dash ? ` stroke-dasharray="${opts.dash}"` : '';
-  let s = `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${opts.strokeWidth || 1}"${dash}/>`;
-  if (opts.panah !== false && Math.hypot(x2 - x1, y2 - y1) > 14) {
-    const t = opts.posisi == null ? 0.5 : opts.posisi;
-    s += kepalaPanahSVG(x1 + (x2 - x1) * t, y1 + (y2 - y1) * t, Math.atan2(y2 - y1, x2 - x1), opts.headLen || 7);
-  }
-  return s;
-}
-
 function renderRaySVG(cfg) {
   const alat = String(cfg.alat || 'cembung').toLowerCase();
   const isConverging = alat === 'cembung' || alat === 'converging';
@@ -4165,15 +4138,6 @@ function garisDimensiDuaPanahSVG(x1, y1, x2, y2) {
   return s;
 }
 
-// Garis dimensi berpanah dua arah, tipis hitam (tanda amplitudo A dan
-// panjang gelombang λ pada gambar gelombang).
-function garisDimensiDuaPanahSVG(x1, y1, x2, y2) {
-  const rad = Math.atan2(y2 - y1, x2 - x1);
-  let s = `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garisBantu}"/>`;
-  s += kepalaPanahSVG(x2 - Math.cos(rad) * 3.5, y2 - Math.sin(rad) * 3.5, rad, 7);
-  s += kepalaPanahSVG(x1 + Math.cos(rad) * 3.5, y1 + Math.sin(rad) * 3.5, rad + Math.PI, 7);
-  return s;
-}
 
 function renderWaveSVG(cfg) {
   const jenis = String(cfg.jenis || 'transversal').toLowerCase();
