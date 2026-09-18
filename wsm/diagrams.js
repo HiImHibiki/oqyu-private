@@ -2094,7 +2094,7 @@ function bondLinesSVG(x1, y1, x2, y2, order, clearance) {
   const offsets = order === 3 ? [-5, 0, 5] : order === 2 ? [-3, 3] : [0];
   let s = '';
   offsets.forEach((off) => {
-    s += `<line x1="${(sx1 + nx * off).toFixed(1)}" y1="${(sy1 + ny * off).toFixed(1)}" x2="${(sx2 + nx * off).toFixed(1)}" y2="${(sy2 + ny * off).toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`;
+    s += `<line x1="${(sx1 + nx * off).toFixed(1)}" y1="${(sy1 + ny * off).toFixed(1)}" x2="${(sx2 + nx * off).toFixed(1)}" y2="${(sy2 + ny * off).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.4"/>`;
   });
   return s;
 }
@@ -2103,39 +2103,61 @@ function bondLinesSVG(x1, y1, x2, y2, order, clearance) {
 // 6c. Struktur Lewis (ikatan kimia)
 // ---------------------------------------------------------------------
 
+// Pembungkus <svg> untuk gambar kimia/biologi yang viewBox-nya dipotong pas
+// ke isi. Tanpa batas ini, CSS (width:100%; max-width: slider "ukuran
+// diagram") akan membesarkan gambar kecil seperti CH4 sampai selebar
+// kolom sehingga hurufnya raksasa. min() menjaga slider tetap berlaku
+// untuk gambar yang lebih lebar dari slider; 1 satuan viewBox = 0,9 pt
+// supaya teks 11,5–13 satuan tercetak ≥ 10 pt. Kalau pemakai menulis
+// lebar=/lebargambar=, renderDiagramTag yang memasang style-nya, jadi di
+// sini tidak dipasang agar atribut style tidak ganda.
+function svgPas(width, height, isi, cfg) {
+  const w = Math.round(width), h = Math.round(height);
+  const adaLebar = cfg && (cfg.lebar || cfg.lebargambar);
+  const gaya = adaLebar ? '' : ` style="max-width:min(var(--ws-diagram-width, 260pt), ${Math.round(w * 0.9)}pt)"`;
+  return `<svg class="ws-diagram-svg"${gaya} viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${isi}</svg>`;
+}
+
+// Koordinat x,y di sini hanya ARAH relatif antar-atom (satuan bebas): jarak
+// sebenarnya dihitung ulang di renderLewisSVG dari jari-jari lingkaran
+// kulit supaya kedua lingkaran saling tumpang tindih tepat selebar pasangan
+// ikatan, seperti diagram dot-and-cross Cambridge. "lone" = jumlah pasangan
+// elektron bebas. Senyawa ionik: kation digambar kosong (elektron sudah
+// pindah), anion penuh 4 pasangan; "pindah" = banyaknya elektron yang
+// berasal dari kation dan digambar dengan lambang kation (titik).
 const LEWIS_PRESETS = {
   h2o: {
     atoms: [
       { id: 'O', symbol: 'O', x: 0, y: 0, lone: 2 },
-      { id: 'H1', symbol: 'H', x: -1.3, y: -0.9, lone: 0 },
-      { id: 'H2', symbol: 'H', x: 1.3, y: -0.9, lone: 0 },
+      { id: 'H1', symbol: 'H', x: -1, y: -0.75, lone: 0 },
+      { id: 'H2', symbol: 'H', x: 1, y: -0.75, lone: 0 },
     ],
     bonds: [{ a: 'O', b: 'H1', order: 1 }, { a: 'O', b: 'H2', order: 1 }],
   },
   co2: {
     atoms: [
       { id: 'C', symbol: 'C', x: 0, y: 0, lone: 0 },
-      { id: 'O1', symbol: 'O', x: -1.7, y: 0, lone: 2 },
-      { id: 'O2', symbol: 'O', x: 1.7, y: 0, lone: 2 },
+      { id: 'O1', symbol: 'O', x: -1, y: 0, lone: 2 },
+      { id: 'O2', symbol: 'O', x: 1, y: 0, lone: 2 },
     ],
     bonds: [{ a: 'C', b: 'O1', order: 2 }, { a: 'C', b: 'O2', order: 2 }],
   },
   nh3: {
     atoms: [
-      { id: 'N', symbol: 'N', x: 0, y: 0.3, lone: 1 },
-      { id: 'H1', symbol: 'H', x: -1.3, y: -0.7, lone: 0 },
-      { id: 'H2', symbol: 'H', x: 0, y: -1.4, lone: 0 },
-      { id: 'H3', symbol: 'H', x: 1.3, y: -0.7, lone: 0 },
+      { id: 'N', symbol: 'N', x: 0, y: 0, lone: 1 },
+      { id: 'H1', symbol: 'H', x: -1, y: -0.6, lone: 0 },
+      { id: 'H2', symbol: 'H', x: 0, y: -1, lone: 0 },
+      { id: 'H3', symbol: 'H', x: 1, y: -0.6, lone: 0 },
     ],
     bonds: [{ a: 'N', b: 'H1', order: 1 }, { a: 'N', b: 'H2', order: 1 }, { a: 'N', b: 'H3', order: 1 }],
   },
   ch4: {
     atoms: [
       { id: 'C', symbol: 'C', x: 0, y: 0, lone: 0 },
-      { id: 'H1', symbol: 'H', x: 0, y: 1.5, lone: 0 },
-      { id: 'H2', symbol: 'H', x: 1.4, y: -0.6, lone: 0 },
-      { id: 'H3', symbol: 'H', x: -1.4, y: -0.6, lone: 0 },
-      { id: 'H4', symbol: 'H', x: 0, y: -1.5, lone: 0 },
+      { id: 'H1', symbol: 'H', x: 0, y: 1, lone: 0 },
+      { id: 'H2', symbol: 'H', x: 1, y: 0, lone: 0 },
+      { id: 'H3', symbol: 'H', x: -1, y: 0, lone: 0 },
+      { id: 'H4', symbol: 'H', x: 0, y: -1, lone: 0 },
     ],
     bonds: [
       { a: 'C', b: 'H1', order: 1 }, { a: 'C', b: 'H2', order: 1 },
@@ -2143,28 +2165,28 @@ const LEWIS_PRESETS = {
     ],
   },
   o2: {
-    atoms: [{ id: 'O1', symbol: 'O', x: -0.9, y: 0, lone: 2 }, { id: 'O2', symbol: 'O', x: 0.9, y: 0, lone: 2 }],
+    atoms: [{ id: 'O1', symbol: 'O', x: -1, y: 0, lone: 2 }, { id: 'O2', symbol: 'O', x: 1, y: 0, lone: 2 }],
     bonds: [{ a: 'O1', b: 'O2', order: 2 }],
   },
   n2: {
-    atoms: [{ id: 'N1', symbol: 'N', x: -0.9, y: 0, lone: 1 }, { id: 'N2', symbol: 'N', x: 0.9, y: 0, lone: 1 }],
+    atoms: [{ id: 'N1', symbol: 'N', x: -1, y: 0, lone: 1 }, { id: 'N2', symbol: 'N', x: 1, y: 0, lone: 1 }],
     bonds: [{ a: 'N1', b: 'N2', order: 3 }],
   },
   hcl: {
-    atoms: [{ id: 'H', symbol: 'H', x: -0.9, y: 0, lone: 0 }, { id: 'Cl', symbol: 'Cl', x: 0.9, y: 0, lone: 3 }],
+    atoms: [{ id: 'H', symbol: 'H', x: -1, y: 0, lone: 0 }, { id: 'Cl', symbol: 'Cl', x: 1, y: 0, lone: 3 }],
     bonds: [{ a: 'H', b: 'Cl', order: 1 }],
   },
   co: {
-    atoms: [{ id: 'C', symbol: 'C', x: -0.9, y: 0, lone: 1 }, { id: 'O', symbol: 'O', x: 0.9, y: 0, lone: 1 }],
+    atoms: [{ id: 'C', symbol: 'C', x: -1, y: 0, lone: 1 }, { id: 'O', symbol: 'O', x: 1, y: 0, lone: 1 }],
     bonds: [{ a: 'C', b: 'O', order: 3 }],
   },
   ccl4: {
     atoms: [
       { id: 'C', symbol: 'C', x: 0, y: 0, lone: 0 },
-      { id: 'Cl1', symbol: 'Cl', x: 0, y: 1.6, lone: 3 },
-      { id: 'Cl2', symbol: 'Cl', x: 1.5, y: -0.7, lone: 3 },
-      { id: 'Cl3', symbol: 'Cl', x: -1.5, y: -0.7, lone: 3 },
-      { id: 'Cl4', symbol: 'Cl', x: 0, y: -1.6, lone: 3 },
+      { id: 'Cl1', symbol: 'Cl', x: 0, y: 1, lone: 3 },
+      { id: 'Cl2', symbol: 'Cl', x: 1, y: 0, lone: 3 },
+      { id: 'Cl3', symbol: 'Cl', x: -1, y: 0, lone: 3 },
+      { id: 'Cl4', symbol: 'Cl', x: 0, y: -1, lone: 3 },
     ],
     bonds: [
       { a: 'C', b: 'Cl1', order: 1 }, { a: 'C', b: 'Cl2', order: 1 },
@@ -2173,12 +2195,12 @@ const LEWIS_PRESETS = {
   },
   c2h4: {
     atoms: [
-      { id: 'C1', symbol: 'C', x: -0.8, y: 0, lone: 0 },
-      { id: 'C2', symbol: 'C', x: 0.8, y: 0, lone: 0 },
-      { id: 'H1', symbol: 'H', x: -1.6, y: 0.9, lone: 0 },
-      { id: 'H2', symbol: 'H', x: -1.6, y: -0.9, lone: 0 },
-      { id: 'H3', symbol: 'H', x: 1.6, y: 0.9, lone: 0 },
-      { id: 'H4', symbol: 'H', x: 1.6, y: -0.9, lone: 0 },
+      { id: 'C1', symbol: 'C', x: -1, y: 0, lone: 0 },
+      { id: 'C2', symbol: 'C', x: 1, y: 0, lone: 0 },
+      { id: 'H1', symbol: 'H', x: -1.8, y: 0.8, lone: 0 },
+      { id: 'H2', symbol: 'H', x: -1.8, y: -0.8, lone: 0 },
+      { id: 'H3', symbol: 'H', x: 1.8, y: 0.8, lone: 0 },
+      { id: 'H4', symbol: 'H', x: 1.8, y: -0.8, lone: 0 },
     ],
     bonds: [
       { a: 'C1', b: 'C2', order: 2 }, { a: 'C1', b: 'H1', order: 1 }, { a: 'C1', b: 'H2', order: 1 },
@@ -2188,85 +2210,204 @@ const LEWIS_PRESETS = {
   ch2o: {
     atoms: [
       { id: 'C', symbol: 'C', x: 0, y: 0, lone: 0 },
-      { id: 'O', symbol: 'O', x: 0, y: 1.5, lone: 2 },
-      { id: 'H1', symbol: 'H', x: -1.3, y: -0.7, lone: 0 },
-      { id: 'H2', symbol: 'H', x: 1.3, y: -0.7, lone: 0 },
+      { id: 'O', symbol: 'O', x: 0, y: 1, lone: 2 },
+      { id: 'H1', symbol: 'H', x: -1, y: -0.6, lone: 0 },
+      { id: 'H2', symbol: 'H', x: 1, y: -0.6, lone: 0 },
     ],
     bonds: [{ a: 'C', b: 'O', order: 2 }, { a: 'C', b: 'H1', order: 1 }, { a: 'C', b: 'H2', order: 1 }],
   },
   nacl: {
     ionic: true,
     atoms: [
-      { id: 'Na', symbol: 'Na', x: -1.4, y: 0, lone: 0, charge: '+' },
-      { id: 'Cl', symbol: 'Cl', x: 1.4, y: 0, lone: 4, charge: String.fromCharCode(8722), bracket: true },
+      { id: 'Na', symbol: 'Na', x: -1, y: 0, lone: 0, charge: '+', bracket: true },
+      { id: 'Cl', symbol: 'Cl', x: 1, y: 0, lone: 4, charge: String.fromCharCode(8722), bracket: true, pindah: 1 },
     ],
     bonds: [],
   },
   mgo: {
     ionic: true,
     atoms: [
-      { id: 'Mg', symbol: 'Mg', x: -1.4, y: 0, lone: 0, charge: '2+' },
-      { id: 'O', symbol: 'O', x: 1.4, y: 0, lone: 4, charge: '2' + String.fromCharCode(8722), bracket: true },
+      { id: 'Mg', symbol: 'Mg', x: -1, y: 0, lone: 0, charge: '2+', bracket: true },
+      { id: 'O', symbol: 'O', x: 1, y: 0, lone: 4, charge: '2' + String.fromCharCode(8722), bracket: true, pindah: 2 },
     ],
     bonds: [],
   },
 };
 
+// Satu elektron gaya dot-and-cross: titik untuk atom "pemilik" pertama,
+// silang untuk atom pasangannya. Keduanya hitam — yang membedakan asal
+// elektron adalah bentuknya, bukan warna, supaya tetap terbaca saat difotokopi.
+function elektronSVG(x, y, silang) {
+  if (!silang) return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2" fill="${GAYA.hitam}"/>`;
+  const h = 2.7;
+  return `<path d="M${(x - h).toFixed(1)} ${(y - h).toFixed(1)} L${(x + h).toFixed(1)} ${(y + h).toFixed(1)} M${(x - h).toFixed(1)} ${(y + h).toFixed(1)} L${(x + h).toFixed(1)} ${(y - h).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.3" fill="none"/>`;
+}
+
+// Kurung siku [ ] mengelilingi ion, digambar sebagai garis (bukan huruf)
+// supaya tingginya pas dengan lingkaran kulit dan tidak bergantung font.
+function kurungIonSVG(px, py, r) {
+  const t = r + 7, k = 5;
+  let s = `<path d="M${(px - t + k).toFixed(1)} ${(py - t).toFixed(1)} L${(px - t).toFixed(1)} ${(py - t).toFixed(1)} L${(px - t).toFixed(1)} ${(py + t).toFixed(1)} L${(px - t + k).toFixed(1)} ${(py + t).toFixed(1)}" fill="none" stroke="${GAYA.hitam}" stroke-width="1.3"/>`;
+  s += `<path d="M${(px + t - k).toFixed(1)} ${(py - t).toFixed(1)} L${(px + t).toFixed(1)} ${(py - t).toFixed(1)} L${(px + t).toFixed(1)} ${(py + t).toFixed(1)} L${(px + t - k).toFixed(1)} ${(py + t).toFixed(1)}" fill="none" stroke="${GAYA.hitam}" stroke-width="1.3"/>`;
+  return s;
+}
+
+// Memilih k arah pasangan bebas dari daftar kandidat. Urutan penilaian:
+// (1) jarak sudut terkecil ke ikatan dan ke sesama pasangan sebesar
+// mungkin, (2) resultan arah pasangan sejajar/berlawanan dengan resultan
+// ikatan (simetris), (3) sebanyak mungkin arah sejajar sumbu, (4) menjauhi
+// ikatan. Kombinasi maksimal C(8,4) = 70, jadi murah.
+function pilihArahPasanganBebas(ikatan, k, kandidat, jarakSudut) {
+  if (!k) return [];
+  const bx = ikatan.reduce((s, t) => s + Math.cos(t), 0), by = ikatan.reduce((s, t) => s + Math.sin(t), 0);
+  let terbaik = null;
+  // Perbandingan leksikografis: kriteria pertama yang berbeda yang menentukan.
+  const lebihBaik = (baru, lama) => {
+    for (let i = 0; i < baru.length; i++) if (baru[i] !== lama[i]) return baru[i] > lama[i];
+    return false;
+  };
+  const coba = (mulai, pilihan) => {
+    if (pilihan.length === k) {
+      let minD = Infinity;
+      pilihan.forEach((p, i) => {
+        ikatan.forEach((t) => { minD = Math.min(minD, jarakSudut(p, t)); });
+        pilihan.forEach((q, j) => { if (j > i) minD = Math.min(minD, jarakSudut(p, q)); });
+      });
+      const lx = pilihan.reduce((s, t) => s + Math.cos(t), 0), ly = pilihan.reduce((s, t) => s + Math.sin(t), 0);
+      const silang = Math.abs(lx * by - ly * bx);
+      const searah = lx * bx + ly * by;
+      // Arah sejajar sumbu (4 kandidat pertama) lebih disukai daripada
+      // diagonal supaya CO2 tergambar dengan pasangan bebas atas-bawah.
+      const sejajarSumbu = pilihan.filter((t) => kandidat.indexOf(t) < 4).length;
+      const skor = [Math.round(minD * 1000), -Math.round(silang * 1000), sejajarSumbu, -Math.round(searah * 1000)];
+      if (!terbaik || lebihBaik(skor, terbaik.skor)) terbaik = { skor, pilihan: pilihan.slice() };
+      return;
+    }
+    for (let i = mulai; i < kandidat.length; i++) coba(i + 1, pilihan.concat(kandidat[i]));
+  };
+  coba(0, []);
+  return terbaik ? terbaik.pilihan : [];
+}
+
+// Diagram dot-and-cross ala Cambridge 9701: tiap atom = lingkaran kulit
+// terluar tipis abu-abu dengan simbol di tengah; lingkaran dua atom yang
+// berikatan saling tumpang tindih dan pasangan ikatan (titik + silang)
+// duduk di daerah tumpang tindih itu. Tidak ada garis ikatan — di diagram
+// jenis ini ikatan justru ditunjukkan oleh elektron yang dipakai bersama.
 function renderLewisSVG(cfg) {
   const preset = LEWIS_PRESETS[String(cfg.molekul || 'h2o').toLowerCase()] || LEWIS_PRESETS.h2o;
-  const width = 340, height = 260, scale = 55;
-  const cx = width / 2, cy = height / 2;
-  const toPx = (x, y) => [cx + x * scale, cy - y * scale];
   const atomMap = {};
   preset.atoms.forEach((a) => { atomMap[a.id] = a; });
+  const jari = (a) => (a.symbol === 'H' ? 20 : 27);
+  const TUMPANG = 12; // lebar daerah tumpang tindih dua kulit (px)
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
-
-  (preset.bonds || []).forEach((bond) => {
-    const a = atomMap[bond.a], b = atomMap[bond.b];
-    const [ax, ay] = toPx(a.x, a.y), [bx, by] = toPx(b.x, b.y);
-    svg += bondLinesSVG(ax, ay, bx, by, bond.order || 1);
+  // Tata letak ulang: mulai dari atom pertama, tiap tetangga diletakkan pada
+  // ARAH preset tapi pada jarak (rA + rB - TUMPANG) supaya tumpang tindihnya
+  // seragam untuk semua ikatan, apa pun angka koordinat presetnya.
+  const pos = {};
+  const tanda = {}; // 0 = titik, 1 = silang (pewarnaan dua-warna sepanjang ikatan)
+  const first = preset.atoms[0];
+  pos[first.id] = [0, 0];
+  tanda[first.id] = 0;
+  const antrean = [first.id];
+  while (antrean.length) {
+    const cur = antrean.shift();
+    (preset.bonds || []).forEach((bd) => {
+      if (bd.a !== cur && bd.b !== cur) return;
+      const other = bd.a === cur ? bd.b : bd.a;
+      if (pos[other]) return;
+      const a = atomMap[cur], b = atomMap[other];
+      const dx = b.x - a.x, dy = -(b.y - a.y), len = Math.hypot(dx, dy) || 1;
+      const d = jari(a) + jari(b) - TUMPANG;
+      pos[other] = [pos[cur][0] + (dx / len) * d, pos[cur][1] + (dy / len) * d];
+      tanda[other] = 1 - tanda[cur];
+      antrean.push(other);
+    });
+  }
+  // Atom yang tidak terikat (ion): berjajar mendatar dengan celah untuk kurung.
+  let xIon = 0;
+  preset.atoms.forEach((a) => {
+    if (pos[a.id]) return;
+    const placed = preset.atoms.filter((p) => pos[p.id]);
+    if (placed.length) {
+      const last = placed[placed.length - 1];
+      xIon = pos[last.id][0] + jari(last) + jari(a) + 40;
+    }
+    pos[a.id] = [xIon, 0];
+    tanda[a.id] = 1;
   });
 
-  const bondedAngle = (a) => (preset.bonds || [])
+  let body = '';
+  // Kulit terluar dulu supaya elektron tercetak di atas garis lingkaran.
+  preset.atoms.forEach((a) => {
+    const [px, py] = pos[a.id];
+    body += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${jari(a)}" fill="none" stroke="${GAYA.abu}" stroke-width="${GAYA.garisBantu}"/>`;
+  });
+
+  // Pasangan ikatan di daerah tumpang tindih: titik milik atom a, silang
+  // milik atom b (atau sebaliknya, mengikuti pewarnaan dua-warna).
+  (preset.bonds || []).forEach((bd) => {
+    const a = atomMap[bd.a], b = atomMap[bd.b];
+    const [ax, ay] = pos[a.id], [bx, by] = pos[b.id];
+    const dx = bx - ax, dy = by - ay, len = Math.hypot(dx, dy) || 1;
+    const ux = dx / len, uy = dy / len, nx = -uy, ny = ux;
+    const pusatLensa = (len - jari(b) + jari(a)) / 2;
+    const order = bd.order || 1;
+    const geser = order === 3 ? [-9, 0, 9] : order === 2 ? [-6, 6] : [0];
+    geser.forEach((g) => {
+      const mx = ax + ux * pusatLensa + nx * g, my = ay + uy * pusatLensa + ny * g;
+      body += elektronSVG(mx - ux * 2.9, my - uy * 2.9, tanda[a.id] === 1);
+      body += elektronSVG(mx + ux * 2.9, my + uy * 2.9, tanda[b.id] === 1);
+    });
+  });
+
+  const sudutIkatan = (a) => (preset.bonds || [])
     .filter((bd) => bd.a === a.id || bd.b === a.id)
     .map((bd) => {
-      const other = atomMap[bd.a === a.id ? bd.b : bd.a];
-      return Math.atan2(-(other.y - a.y), other.x - a.x);
+      const o = pos[bd.a === a.id ? bd.b : bd.a], p = pos[a.id];
+      return Math.atan2(o[1] - p[1], o[0] - p[0]);
     });
-  const CANDIDATE_ANGLES = [0, Math.PI / 2, Math.PI, -Math.PI / 2, Math.PI / 4, (3 * Math.PI) / 4, -Math.PI / 4, (-3 * Math.PI) / 4];
-  const angleDist = (a1, a2) => {
+  const KANDIDAT = [0, Math.PI / 2, Math.PI, -Math.PI / 2, Math.PI / 4, (3 * Math.PI) / 4, -Math.PI / 4, (-3 * Math.PI) / 4];
+  const jarakSudut = (a1, a2) => {
     const d = Math.abs(a1 - a2) % (2 * Math.PI);
     return Math.min(d, 2 * Math.PI - d);
   };
 
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   preset.atoms.forEach((a) => {
-    const [px, py] = toPx(a.x, a.y);
-    if (a.bracket) {
-      svg += `<text x="${(px - 20).toFixed(1)}" y="${(py + 7).toFixed(1)}" font-size="22" fill="#000000">[</text>`;
-      svg += `<text x="${(px + 20).toFixed(1)}" y="${(py + 7).toFixed(1)}" font-size="22" fill="#000000">]</text>`;
-    }
-    svg += `<text x="${px.toFixed(1)}" y="${(py + 5).toFixed(1)}" text-anchor="middle" font-size="16" font-weight="700" fill="#000000">${escText(a.symbol)}</text>`;
+    const [px, py] = pos[a.id];
+    const r = jari(a);
+    const ext = a.bracket ? r + 22 : r + 3;
+    minX = Math.min(minX, px - ext); maxX = Math.max(maxX, px + ext);
+    minY = Math.min(minY, py - ext); maxY = Math.max(maxY, py + ext);
+
+    if (a.bracket) body += kurungIonSVG(px, py, r);
+    body += `<text x="${px.toFixed(1)}" y="${(py + (r > 20 ? 5 : 4.5)).toFixed(1)}" text-anchor="middle" font-size="${r > 20 ? 13 : 11.5}" font-weight="700" fill="${GAYA.hitam}">${escText(a.symbol)}</text>`;
     if (a.charge) {
-      svg += `<text x="${(px + 13).toFixed(1)}" y="${(py - 9).toFixed(1)}" font-size="11" fill="#000000">${escText(a.charge)}</text>`;
+      body += `<text x="${(px + r + 9).toFixed(1)}" y="${(py - r - 2).toFixed(1)}" font-size="${GAYA.teks}" fill="${GAYA.hitam}">${escText(a.charge)}</text>`;
     }
-    const occupied = bondedAngle(a);
-    const scored = CANDIDATE_ANGLES.map((ang) => ({
-      ang, score: occupied.length ? Math.min(...occupied.map((o) => angleDist(ang, o))) : 1,
-    }));
-    scored.sort((p, q) => q.score - p.score);
-    scored.slice(0, a.lone || 0).forEach(({ ang }) => {
-      const ldx = Math.cos(ang), ldy = -Math.sin(ang);
-      const lx = px + ldx * 18, ly = py + ldy * 18;
-      const pdx = -ldy, pdy = ldx;
-      svg += `<circle cx="${(lx + pdx * 3).toFixed(1)}" cy="${(ly + pdy * 3).toFixed(1)}" r="1.7" fill="#000000"/>`;
-      svg += `<circle cx="${(lx - pdx * 3).toFixed(1)}" cy="${(ly - pdy * 3).toFixed(1)}" r="1.7" fill="#000000"/>`;
+
+    // Pasangan bebas di lingkaran kulit. Semua kombinasi arah (8 arah,
+    // maksimal 4 pasangan) dinilai: jarak sudut terkecil ke ikatan/pasangan
+    // lain sebesar mungkin, lalu yang simetris terhadap arah ikatan (CO2:
+    // atas-bawah, H2O: keduanya di seberang H) — seperti gambar buku.
+    const terpakai = sudutIkatan(a);
+    const arahLone = pilihArahPasanganBebas(terpakai, a.lone || 0, KANDIDAT, jarakSudut);
+    let sisaTitik = a.pindah || 0; // elektron pindahan (ionik) digambar titik
+    arahLone.forEach((ang) => {
+      const lx = px + Math.cos(ang) * r, ly = py + Math.sin(ang) * r;
+      const tx = -Math.sin(ang), ty = Math.cos(ang);
+      [-3.6, 3.6].forEach((t) => {
+        const silang = sisaTitik > 0 ? false : tanda[a.id] === 1;
+        if (sisaTitik > 0) sisaTitik--;
+        body += elektronSVG(lx + tx * t, ly + ty * t, silang);
+      });
     });
   });
 
-  svg += '</svg>';
-  return svg;
+  const pad = 8;
+  const width = maxX - minX + 2 * pad, height = maxY - minY + 2 * pad;
+  return svgPas(width, height, `<g transform="translate(${(pad - minX).toFixed(1)},${(pad - minY).toFixed(1)})">${body}</g>`, cfg);
 }
 
 // ---------------------------------------------------------------------
@@ -2282,6 +2423,19 @@ function parsePosValCommaList(raw) {
   });
 }
 
+// "CH3" -> "CH₃", "C2H5" -> "C₂H₅": angka sesudah huruf/kurung tutup pada
+// rumus dijadikan subskrip Unicode supaya label cabang tercetak seperti di
+// buku tanpa perlu <tspan> bertingkat.
+const SUBSKRIP = { '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉' };
+function subskripRumus(s) {
+  return String(s || '').replace(/([A-Za-z)])(\d+)/g, (_, huruf, angka) => huruf + angka.split('').map((c) => SUBSKRIP[c] || c).join(''));
+}
+
+// Rumus struktur tampilan (displayed formula) gaya naskah A-Level: semua
+// atom C sejajar mendatar, ikatan rangkap dua/tiga sebagai garis sejajar,
+// H dan cabang di atas/bawah tiap C (dan di ujung rantai untuk C terminal).
+// Bukan zig-zag: soal 9701 tentang isomer/penamaan memakai bentuk ini
+// karena setiap ikatan dan atom harus terlihat.
 function renderHydrocarbonSVG(cfg) {
   const n = Math.max(1, Math.min(12, Math.round(numOrDefault(cfg.rantai, 4))));
   const bondOrder = {};
@@ -2289,82 +2443,74 @@ function renderHydrocarbonSVG(cfg) {
     bondOrder[pos] = Math.max(1, Math.min(3, parseInt(val, 10) || 1));
   });
   const branchesByPos = {};
+  let labelTerpanjang = 0;
   parsePosValCommaList(cfg.cabang).forEach(({ pos, val }) => {
     if (!branchesByPos[pos]) branchesByPos[pos] = [];
-    if (val) branchesByPos[pos].push(val);
+    if (val) {
+      branchesByPos[pos].push(subskripRumus(val));
+      labelTerpanjang = Math.max(labelTerpanjang, val.length);
+    }
   });
 
-  const stepX = 48, zig = 26;
-  const carbon = [];
-  for (let i = 1; i <= n; i++) carbon[i] = { x: (i - 1) * stepX, y: (i - 1) % 2 === 0 ? 0 : -zig };
-
-  const used = new Array(n + 1).fill(0);
+  // Jarak antar-C melebar kalau ada label cabang panjang di C bersebelahan.
+  const step = Math.max(46, labelTerpanjang * 7 + 16);
+  const used = new Array(n + 2).fill(0);
   for (let i = 1; i < n; i++) {
     const order = bondOrder[i] || 1;
     used[i] += order;
     used[i + 1] += order;
   }
   Object.keys(branchesByPos).forEach((posStr) => {
-    used[parseInt(posStr, 10)] += branchesByPos[posStr].length;
+    const p = parseInt(posStr, 10);
+    if (p >= 1 && p <= n) used[p] += branchesByPos[posStr].length;
   });
 
-  const width = Math.max(300, carbon[n].x - carbon[1].x + 160);
-  const height = 220, padX = 60, baseY = 130;
-  const toPx = (i) => [padX + carbon[i].x, baseY + carbon[i].y];
-
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
-
-  for (let i = 1; i < n; i++) {
-    const [x1, y1] = toPx(i), [x2, y2] = toPx(i + 1);
-    svg += bondLinesSVG(x1, y1, x2, y2, bondOrder[i] || 1, 11);
-  }
-
-  const CANDIDATE_ANGLES = [Math.PI / 2, -Math.PI / 2, Math.PI / 4, (3 * Math.PI) / 4, -Math.PI / 4, (-3 * Math.PI) / 4, 0, Math.PI];
-  const angleDist = (a1, a2) => {
-    const d = Math.abs(a1 - a2) % (2 * Math.PI);
-    return Math.min(d, 2 * Math.PI - d);
+  const FONT = 13;
+  let body = '';
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  const catat = (x, y, halfW, halfH) => {
+    minX = Math.min(minX, x - halfW); maxX = Math.max(maxX, x + halfW);
+    minY = Math.min(minY, y - halfH); maxY = Math.max(maxY, y + halfH);
+  };
+  const teks = (x, y, s, anchor, size) => {
+    const ukuran = size || FONT;
+    body += `<text x="${x.toFixed(1)}" y="${(y + ukuran * 0.36).toFixed(1)}" text-anchor="${anchor || 'middle'}" font-size="${ukuran}" fill="${GAYA.hitam}">${escText(s)}</text>`;
+    const w = s.length * ukuran * 0.6;
+    catat(anchor === 'start' ? x + w / 2 : anchor === 'end' ? x - w / 2 : x, y, w / 2, ukuran * 0.55);
   };
 
-  for (let i = 1; i <= n; i++) {
-    const [px, py] = toPx(i);
-    const occupied = [];
-    if (i > 1) { const [ox, oy] = toPx(i - 1); occupied.push(Math.atan2(-(oy - py), ox - px)); }
-    if (i < n) { const [ox, oy] = toPx(i + 1); occupied.push(Math.atan2(-(oy - py), ox - px)); }
-
-    (branchesByPos[i] || []).forEach((label, bi) => {
-      const scored = CANDIDATE_ANGLES.map((ang) => ({
-        ang, score: occupied.length ? Math.min(...occupied.map((o) => angleDist(ang, o))) : 1,
-      }));
-      scored.sort((p, q) => q.score - p.score);
-      const ang = scored[0].ang;
-      occupied.push(ang);
-      const bx = px + Math.cos(ang) * 34, by = py - Math.sin(ang) * 34;
-      svg += bondLinesSVG(px, py, bx, by, 1, 10);
-      const lx = px + Math.cos(ang) * 44, ly = py - Math.sin(ang) * 44;
-      svg += `<text x="${lx.toFixed(1)}" y="${(ly + 4).toFixed(1)}" text-anchor="middle" font-size="11" fill="#000000">${escText(label)}</text>`;
-    });
-
-    const hCount = Math.max(0, 4 - used[i]);
-    for (let h = 0; h < hCount; h++) {
-      const scored = CANDIDATE_ANGLES.map((ang) => ({
-        ang, score: occupied.length ? Math.min(...occupied.map((o) => angleDist(ang, o))) : 1,
-      }));
-      scored.sort((p, q) => q.score - p.score);
-      const ang = scored[0].ang;
-      occupied.push(ang);
-      const bx = px + Math.cos(ang) * 22, by = py - Math.sin(ang) * 22;
-      svg += bondLinesSVG(px, py, bx, by, 1, 10);
-      const lx = px + Math.cos(ang) * 30, ly = py - Math.sin(ang) * 30;
-      svg += `<text x="${lx.toFixed(1)}" y="${(ly + 4).toFixed(1)}" text-anchor="middle" font-size="10.5" fill="#000000">H</text>`;
-    }
-
-    svg += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="9" fill="#ffffff" stroke="none"/>`;
-    svg += `<text x="${px.toFixed(1)}" y="${(py + 4).toFixed(1)}" text-anchor="middle" font-size="11.5" font-weight="700" fill="#000000">C</text>`;
+  for (let i = 1; i < n; i++) {
+    body += bondLinesSVG((i - 1) * step, 0, i * step, 0, bondOrder[i] || 1, 9);
   }
 
-  svg += '</svg>';
-  return svg;
+  // Arah slot: [dx, dy, jarakUjungIkatan, jarakTeks, anchor]. Atas/bawah
+  // dulu, lalu sisi luar (hanya C ujung), diagonal hanya cadangan kalau
+  // valensi yang diminta pemakai melebihi empat.
+  const ATAS = [0, -1, 20, 30, 'middle'], BAWAH = [0, 1, 20, 30, 'middle'];
+  const KIRI = [-1, 0, 20, 24, 'end'], KANAN = [1, 0, 20, 24, 'start'];
+  const DIAG = [[0.71, -0.71, 22, 32, 'start'], [-0.71, -0.71, 22, 32, 'end'], [0.71, 0.71, 22, 32, 'start'], [-0.71, 0.71, 22, 32, 'end']];
+
+  for (let i = 1; i <= n; i++) {
+    const cx = (i - 1) * step, cy = 0;
+    const slots = [ATAS, BAWAH];
+    if (i === 1) slots.push(KIRI);
+    if (i === n) slots.push(KANAN);
+    slots.push(...DIAG);
+    const cabang = branchesByPos[i] || [];
+    const hCount = Math.max(0, 4 - used[i]);
+    const isi = cabang.map((c) => ({ label: c, size: FONT - 1 })).concat(new Array(hCount).fill(0).map(() => ({ label: 'H', size: FONT })));
+    isi.forEach((item, k) => {
+      const s = slots[Math.min(k, slots.length - 1)];
+      const ex = cx + s[0] * s[2], ey = cy + s[1] * s[2];
+      body += `<line x1="${(cx + s[0] * 9).toFixed(1)}" y1="${(cy + s[1] * 9).toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.4"/>`;
+      teks(cx + s[0] * s[3], cy + s[1] * s[3], item.label, s[4], item.size);
+    });
+    teks(cx, cy, 'C');
+  }
+
+  const pad = 6;
+  const width = maxX - minX + 2 * pad, height = maxY - minY + 2 * pad;
+  return svgPas(width, height, `<g transform="translate(${(pad - minX).toFixed(1)},${(pad - minY).toFixed(1)})">${body}</g>`, cfg);
 }
 
 // ---------------------------------------------------------------------
@@ -2798,155 +2944,191 @@ function vseprPolar(cx, cy, angleDeg, r) {
   return [cx + r * Math.cos(rad), cy - r * Math.sin(rad)];
 }
 
+// Baji padat: ikatan ke arah pembaca. Sempit di atom pusat, melebar di ujung.
 function wedgeBondSVG(cx, cy, ex, ey, halfWidth) {
   const dx = ex - cx, dy = ey - cy, len = Math.hypot(dx, dy) || 1;
   const px = -dy / len, py = dx / len;
-  const w = halfWidth == null ? 6 : halfWidth;
+  const w = halfWidth == null ? 5 : halfWidth;
   const p2x = ex + px * w, p2y = ey + py * w;
   const p3x = ex - px * w, p3y = ey - py * w;
-  return `<polygon points="${cx.toFixed(1)},${cy.toFixed(1)} ${p2x.toFixed(1)},${p2y.toFixed(1)} ${p3x.toFixed(1)},${p3y.toFixed(1)}" fill="#000000"/>`;
+  return `<polygon points="${(cx + px * 0.8).toFixed(1)},${(cy + py * 0.8).toFixed(1)} ${p2x.toFixed(1)},${p2y.toFixed(1)} ${p3x.toFixed(1)},${p3y.toFixed(1)} ${(cx - px * 0.8).toFixed(1)},${(cy - py * 0.8).toFixed(1)}" fill="${GAYA.hitam}"/>`;
 }
 
-// Each preset is one AXmEn electron-domain arrangement: "bonds" are the m
-// bonded-atom (X) directions actually drawn (solid = in the page plane,
-// wedge = toward the viewer, dash = away from the viewer — the standard
-// textbook convention for showing a 3D shape in 2D), "lp" are the n lone
-// electron-pair directions (drawn as a small two-dot cloud, same convention
-// Lewis structures already use elsewhere in this file). Angles/lengths were
-// chosen to make each shape visually recognizable, not to be crystallographic
-// projections.
+// Baji arsir (hashed wedge): ikatan menjauhi pembaca, deretan garis pendek
+// melintang yang makin lebar ke ujung — konvensi buku, bukan garis putus.
+function hashedBondSVG(cx, cy, ex, ey, halfWidth) {
+  const dx = ex - cx, dy = ey - cy, len = Math.hypot(dx, dy) || 1;
+  const ux = dx / len, uy = dy / len, px = -uy, py = ux;
+  const w = halfWidth == null ? 5 : halfWidth;
+  const n = Math.max(4, Math.round(len / 6));
+  let s = '';
+  for (let i = 1; i <= n; i++) {
+    const t = i / n;
+    const x = cx + ux * len * t, y = cy + uy * len * t;
+    const h = 1 + (w - 1) * t;
+    s += `<line x1="${(x + px * h).toFixed(1)}" y1="${(y + py * h).toFixed(1)}" x2="${(x - px * h).toFixed(1)}" y2="${(y - py * h).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.4"/>`;
+  }
+  return s;
+}
+
+// Tiap preset = satu susunan domain elektron AXmEn. "bonds" = arah m atom
+// terikat yang digambar (solid = sebidang kertas, wedge = ke arah pembaca,
+// dash = menjauhi pembaca — konvensi buku untuk bentuk 3D di bidang 2D),
+// "lp" = arah n pasangan elektron bebas (lobus berisi dua titik). "busur"
+// = pasangan indeks ikatan sebidang yang diberi busur sudut berlabel;
+// dihilangkan jika sudutnya bukan satu nilai atau tidak ada dua ikatan
+// sebidang yang mewakilinya. Sudut di gambar bukan proyeksi kristalografi
+// — dipilih supaya bentuknya langsung dikenali.
 const VSEPR_PRESETS = {
   ax2: {
     nama: 'Linear', sudut: '180°',
     bonds: [{ ang: 0, style: 'solid' }, { ang: 180, style: 'solid' }], lp: [],
   },
   ax2e1: {
-    nama: 'Bentuk V (Bengkok)', sudut: '≈120°',
+    nama: 'Bentuk V (Bengkok)', sudut: '≈120°', busur: [0, 1],
     bonds: [{ ang: 210, style: 'solid' }, { ang: 330, style: 'solid' }], lp: [{ ang: 90 }],
   },
   ax2e2: {
-    nama: 'Bentuk V (Bengkok)', sudut: '≈104,5°',
+    nama: 'Bentuk V (Bengkok)', sudut: '≈104,5°', busur: [0, 1],
     bonds: [{ ang: 218, style: 'solid' }, { ang: 322, style: 'solid' }], lp: [{ ang: 60 }, { ang: 120 }],
   },
   ax3: {
-    nama: 'Segitiga Datar (Trigonal Planar)', sudut: '120°',
+    nama: 'Segitiga Datar (Trigonal Planar)', sudut: '120°', busur: [1, 2],
     bonds: [{ ang: 90, style: 'solid' }, { ang: 210, style: 'solid' }, { ang: 330, style: 'solid' }], lp: [],
   },
   ax3e1: {
-    nama: 'Piramida Trigonal', sudut: '≈107°',
-    bonds: [{ ang: 210, style: 'solid' }, { ang: 330, style: 'solid' }, { ang: 270, style: 'wedge' }], lp: [{ ang: 90 }],
+    nama: 'Piramida Trigonal', sudut: '≈107°', busur: [0, 1],
+    bonds: [{ ang: 210, style: 'solid' }, { ang: 330, style: 'solid' }, { ang: 270, style: 'wedge', len: 62 }], lp: [{ ang: 90 }],
   },
   ax3e2: {
-    nama: 'Bentuk T', sudut: '≈90°',
-    bonds: [{ ang: 90, style: 'solid' }, { ang: 270, style: 'solid' }, { ang: 0, style: 'wedge' }],
+    nama: 'Bentuk T', sudut: '≈90°', busur: [0, 2],
+    bonds: [{ ang: 90, style: 'solid' }, { ang: 270, style: 'solid' }, { ang: 0, style: 'solid' }],
     lp: [{ ang: 150 }, { ang: 210 }],
   },
   ax4: {
-    nama: 'Tetrahedral', sudut: '109,5°',
+    nama: 'Tetrahedral', sudut: '109,5°', busur: [0, 1],
     bonds: [
-      { ang: 125, style: 'solid' }, { ang: 55, style: 'solid' },
-      { ang: 275, style: 'wedge' }, { ang: 205, style: 'dash' },
+      { ang: 90, style: 'solid' }, { ang: 210, style: 'solid' },
+      { ang: 300, style: 'wedge' }, { ang: 340, style: 'dash' },
     ],
     lp: [],
   },
   ax4e1: {
     nama: 'Jungkat-jungkit (See-saw)', sudut: '≈89° / ≈117°',
     bonds: [
-      { ang: 90, style: 'dash' }, { ang: 270, style: 'wedge' },
-      { ang: 0, style: 'solid' }, { ang: 200, style: 'solid' },
+      { ang: 90, style: 'solid' }, { ang: 270, style: 'solid' },
+      { ang: 340, style: 'wedge', len: 70 }, { ang: 20, style: 'dash', len: 70 },
     ],
-    lp: [{ ang: 140 }],
+    lp: [{ ang: 180 }],
   },
   ax4e2: {
-    nama: 'Segiempat Datar (Square Planar)', sudut: '90°',
+    nama: 'Segiempat Datar (Square Planar)', sudut: '90°', busur: [0, 2],
     bonds: [
-      { ang: 0, style: 'solid' }, { ang: 90, style: 'solid' },
-      { ang: 180, style: 'solid' }, { ang: 270, style: 'solid' },
+      { ang: 0, style: 'solid' }, { ang: 180, style: 'solid' },
+      { ang: 305, style: 'wedge', len: 66 }, { ang: 125, style: 'dash', len: 66 },
     ],
-    lp: [{ ang: 45, r: 24 }, { ang: 225, r: 24 }],
+    lp: [{ ang: 90, r: 30 }, { ang: 270, r: 30 }],
   },
   ax5: {
     nama: 'Bipiramida Trigonal', sudut: '90° / 120°',
     bonds: [
-      { ang: 90, style: 'dash' }, { ang: 270, style: 'wedge' },
-      { ang: 0, style: 'solid' }, { ang: 210, style: 'solid' }, { ang: 330, style: 'solid' },
+      { ang: 90, style: 'solid' }, { ang: 270, style: 'solid' }, { ang: 180, style: 'solid' },
+      { ang: 330, style: 'wedge', len: 68 }, { ang: 30, style: 'dash', len: 68 },
     ],
     lp: [],
   },
   ax5e1: {
     nama: 'Piramida Segiempat', sudut: '≈90°',
     bonds: [
-      { ang: 45, style: 'solid' }, { ang: 135, style: 'solid' },
-      { ang: 225, style: 'solid' }, { ang: 315, style: 'solid' },
-      { ang: 90, style: 'wedge', len: 65 },
+      { ang: 90, style: 'solid' }, { ang: 190, style: 'solid' }, { ang: 350, style: 'solid' },
+      { ang: 235, style: 'wedge', len: 66 }, { ang: 305, style: 'dash', len: 66 },
     ],
-    lp: [{ ang: 270 }],
+    lp: [{ ang: 270, r: 30 }],
   },
   ax6: {
-    nama: 'Oktahedral', sudut: '90°',
+    nama: 'Oktahedral', sudut: '90°', busur: [0, 2],
     bonds: [
-      { ang: 0, style: 'solid' }, { ang: 90, style: 'solid' },
-      { ang: 180, style: 'solid' }, { ang: 270, style: 'solid' },
-      { ang: 45, style: 'wedge', len: 62 }, { ang: 225, style: 'dash', len: 62 },
+      { ang: 90, style: 'solid' }, { ang: 270, style: 'solid' },
+      { ang: 0, style: 'solid' }, { ang: 180, style: 'solid' },
+      { ang: 330, style: 'wedge', len: 64 }, { ang: 150, style: 'dash', len: 64 },
     ],
     lp: [],
   },
 };
 
+// Bentuk molekul gaya naskah 9701: huruf atom polos (tanpa lingkaran),
+// ikatan sebidang garis, ke depan baji padat, ke belakang baji arsir,
+// pasangan bebas dua titik di dalam lobus tipis, busur sudut berlabel, nama
+// bentuk dan sudut ikatan di bawah gambar.
 function renderMoleculeShapeSVG(cfg) {
   const key = String(cfg.tipe || 'ax4').toLowerCase();
   const preset = VSEPR_PRESETS[key] || VSEPR_PRESETS.ax4;
   const pusatLabel = cfg.pusat || 'A';
   const ikatanLabel = cfg.ikatan || 'X';
-  const width = 300;
-  // A preset can have a bond/lone-pair pointing straight up (ang 90) whose
-  // atom circle would otherwise collide with the molecule-name caption —
-  // grow the canvas and push the whole diagram down by the same amount when
-  // that caption is present, which keeps the (already-tuned) gap to the
-  // bottom caption unchanged instead of tuning every preset's geometry.
-  const height = cfg.nama ? 300 : 260;
-  const cx = width / 2, cy = cfg.nama ? 138 : 118;
-  const BOND_LEN = 82;
+  const cx = 0, cy = 0;
+  const BOND_LEN = 78, CLEAR = 11;
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
-
-  if (cfg.nama) {
-    svg += `<text x="${(width / 2).toFixed(1)}" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#000000">${escText(cfg.nama)}</text>`;
-  }
+  let body = '';
+  let minX = -20, maxX = 20, minY = -20, maxY = 20;
+  const catat = (x, y, hw, hh) => {
+    minX = Math.min(minX, x - hw); maxX = Math.max(maxX, x + hw);
+    minY = Math.min(minY, y - hh); maxY = Math.max(maxY, y + hh);
+  };
 
   preset.bonds.forEach((b) => {
     const len = b.len || BOND_LEN;
+    const [sx, sy] = vseprPolar(cx, cy, b.ang, CLEAR);
     const [ex, ey] = vseprPolar(cx, cy, b.ang, len);
-    if (b.style === 'wedge') {
-      svg += wedgeBondSVG(cx, cy, ex, ey, 6);
-    } else if (b.style === 'dash') {
-      svg += `<line x1="${cx.toFixed(1)}" y1="${cy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}" stroke="#000000" stroke-width="1.8" stroke-dasharray="4,3"/>`;
-    } else {
-      svg += `<line x1="${cx.toFixed(1)}" y1="${cy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}" stroke="#000000" stroke-width="1.8"/>`;
-    }
-    const [lx, ly] = vseprPolar(cx, cy, b.ang, len + 14);
-    svg += `<circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="11" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>`;
-    svg += `<text x="${lx.toFixed(1)}" y="${(ly + 4).toFixed(1)}" text-anchor="middle" font-size="12" font-weight="700" fill="#000000">${escText(ikatanLabel)}</text>`;
+    if (b.style === 'wedge') body += wedgeBondSVG(sx, sy, ex, ey, 5);
+    else if (b.style === 'dash') body += hashedBondSVG(sx, sy, ex, ey, 5);
+    else body += `<line x1="${sx.toFixed(1)}" y1="${sy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
+    const [lx, ly] = vseprPolar(cx, cy, b.ang, len + 12);
+    body += `<text x="${lx.toFixed(1)}" y="${(ly + 4.5).toFixed(1)}" text-anchor="middle" font-size="13" font-weight="700" fill="${GAYA.hitam}">${escText(ikatanLabel)}</text>`;
+    catat(lx, ly, 5 + ikatanLabel.length * 4, 8);
   });
 
   (preset.lp || []).forEach((lpItem) => {
-    const [px, py] = vseprPolar(cx, cy, lpItem.ang, lpItem.r || 38);
+    const r = lpItem.r || 32;
+    const [px, py] = vseprPolar(cx, cy, lpItem.ang, r);
     const rad = (lpItem.ang * Math.PI) / 180;
     const perpx = -Math.sin(rad), perpy = -Math.cos(rad);
-    svg += `<circle cx="${(px + perpx * 3.5).toFixed(1)}" cy="${(py + perpy * 3.5).toFixed(1)}" r="1.8" fill="#000000"/>`;
-    svg += `<circle cx="${(px - perpx * 3.5).toFixed(1)}" cy="${(py - perpy * 3.5).toFixed(1)}" r="1.8" fill="#000000"/>`;
+    // Lobus orbital: elips tipis memanjang searah pasangan bebas.
+    body += `<ellipse cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" rx="8" ry="15" transform="rotate(${(90 - lpItem.ang).toFixed(1)} ${px.toFixed(1)} ${py.toFixed(1)})" fill="none" stroke="${GAYA.hitam}" stroke-width="${GAYA.garisBantu}"/>`;
+    body += `<circle cx="${(px + perpx * 3.5).toFixed(1)}" cy="${(py + perpy * 3.5).toFixed(1)}" r="2" fill="${GAYA.hitam}"/>`;
+    body += `<circle cx="${(px - perpx * 3.5).toFixed(1)}" cy="${(py - perpy * 3.5).toFixed(1)}" r="2" fill="${GAYA.hitam}"/>`;
+    catat(px, py, 16, 16);
   });
 
-  svg += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="13" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>`;
-  svg += `<text x="${cx.toFixed(1)}" y="${(cy + 5).toFixed(1)}" text-anchor="middle" font-size="14" font-weight="700" fill="#000000">${escText(pusatLabel)}</text>`;
+  if (preset.busur && /^≈?\d/.test(preset.sudut)) {
+    const a = preset.bonds[preset.busur[0]].ang, b = preset.bonds[preset.busur[1]].ang;
+    let dari = a, ke = b;
+    if (((ke - dari) % 360 + 360) % 360 > 180) { dari = b; ke = a; }
+    const R = 26;
+    const [ax, ay] = vseprPolar(cx, cy, dari, R), [bx, by] = vseprPolar(cx, cy, ke, R);
+    body += `<path d="M${ax.toFixed(1)} ${ay.toFixed(1)} A${R} ${R} 0 0 0 ${bx.toFixed(1)} ${by.toFixed(1)}" fill="none" stroke="${GAYA.hitam}" stroke-width="${GAYA.garisBantu}"/>`;
+    const tengah = dari + (((ke - dari) % 360 + 360) % 360) / 2;
+    const [tx, ty] = vseprPolar(cx, cy, tengah, R + 16);
+    body += `<text x="${tx.toFixed(1)}" y="${(ty + 4).toFixed(1)}" text-anchor="middle" font-size="11.5" fill="${GAYA.hitam}">${escText(preset.sudut)}</text>`;
+  }
 
-  const captionY = height - 34;
-  svg += `<text x="${(width / 2).toFixed(1)}" y="${captionY}" text-anchor="middle" font-size="12" font-weight="700" fill="#000000">${escText(preset.nama)} (${escText(key.toUpperCase())})</text>`;
-  svg += `<text x="${(width / 2).toFixed(1)}" y="${captionY + 16}" text-anchor="middle" font-size="11" fill="#444444">Sudut ikatan: ${escText(preset.sudut)}</text>`;
+  body += `<text x="${cx}" y="${cy + 5}" text-anchor="middle" font-size="14" font-weight="700" fill="${GAYA.hitam}">${escText(pusatLabel)}</text>`;
 
-  svg += '</svg>';
-  return svg;
+  // Judul (rumus molekul) di atas, nama bentuk + sudut di bawah. Angka
+  // pada rumus dijadikan subskrip (XeF4 -> XeF₄).
+  const judul = cfg.nama ? subskripRumus(cfg.nama) : '';
+  const namaBentuk = `${preset.nama} (${key.toUpperCase()})`;
+  const teksSudut = `sudut ikatan ${preset.sudut}`;
+  const lebarTeks = Math.max(namaBentuk.length * 7, teksSudut.length * 6.2, judul.length * 7.5);
+  const yJudul = minY - 14;
+  const yNama = maxY + 22, ySudut = yNama + 16;
+  if (judul) body += `<text x="${cx}" y="${yJudul.toFixed(1)}" text-anchor="middle" font-size="13" font-weight="700" fill="${GAYA.hitam}">${escText(judul)}</text>`;
+  body += `<text x="${cx}" y="${yNama.toFixed(1)}" text-anchor="middle" font-size="12" font-weight="700" fill="${GAYA.hitam}">${escText(namaBentuk)}</text>`;
+  body += `<text x="${cx}" y="${ySudut.toFixed(1)}" text-anchor="middle" font-size="11.5" fill="${GAYA.hitam}">${escText(teksSudut)}</text>`;
+
+  const halfW = Math.max(maxX - cx, cx - minX, lebarTeks / 2) + 8;
+  const top = (judul ? yJudul - 12 : minY) - 6, bottom = ySudut + 6;
+  const width = halfW * 2, height = bottom - top;
+  return svgPas(width, height, `<g transform="translate(${halfW.toFixed(1)},${(-top).toFixed(1)})">${body}</g>`, cfg);
 }
 
 // ---------------------------------------------------------------------
