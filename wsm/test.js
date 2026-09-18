@@ -813,14 +813,15 @@ test('Kertas grafik: ruled grid, labelled axes, and crosses for pre-plotted poin
   const html = D.renderDiagramTag(
     'kertasgrafik: xmin=0; xmax=10; ymin=0; ymax=20; sumbux=Waktu (s); sumbuy=Jarak (m); kotak=2; subkotak=5; titik=2:6,4:12'
   );
-  assert.match(html, /Waktu \(s\)/);
-  assert.match(html, /Jarak \(m\)/);
-  assert.match(html, /rotate\(-90/);            // y-axis caption is turned
+  // Label sumbu gaya A-Level ("besaran / satuan") di ujung panah, tidak diputar.
+  assert.match(html, /Waktu \/ s/);
+  assert.match(html, /Jarak \/ m/);
+  assert.doesNotMatch(html, /rotate\(-90/);
   // Minor ruling is thinner than major ruling — both must actually be drawn.
   assert.ok((html.match(/stroke-width="0.5"/g) || []).length > 20, 'no minor grid drawn');
   assert.ok((html.match(/stroke-width="0.9"/g) || []).length > 4, 'no major grid drawn');
   // Two plotted points, each drawn as a cross (two strokes).
-  assert.equal((html.match(/stroke-width="1.4"/g) || []).length, 5); // 4 cross strokes + axis frame
+  assert.equal((html.match(/stroke-width="1.4"/g) || []).length, 4); // 4 cross strokes
 });
 
 test('Kertas grafik: the y axis picks its own scale when only x squares are auto', () => {
@@ -864,7 +865,7 @@ E1. Plot data berikut lalu tarik garis lurus terbaik. [[kertasgrafik: xmin=0; xm
   html = D.substituteDiagramTokens(html, data.diagramTags);
   assert.match(html, /ws-figure/);
   assert.match(html, /Gambar 1 — Rangkaian/);
-  assert.match(html, /t \(s\)/);
+  assert.match(html, /t \/ s/);   // "t (s)" dicetak gaya A-Level "t / s"
   assert.equal((html.match(/class="ws-answer-line"/g) || []).length, 3);
   assert.doesNotMatch(html, /DG\d/);  // every token was substituted
 });
@@ -1138,8 +1139,8 @@ test('Grafik: axis captions, shading, tangent triangle and asymptotes all draw',
   const html = D.renderDiagramTag(
     'grafik: f1=x^2-4; xmin=-4; xmax=4; ymin=-6; ymax=12; sumbux=Waktu (s); sumbuy=Jarak (m); arsir=f1:0,3; singgung=f1:2; asimtot=y=0'
   );
-  assert.match(html, /Waktu \(s\)/);
-  assert.match(html, /rotate\(-90/);
+  assert.match(html, /Waktu \/ s/);               // label sumbu gaya A-Level di ujung panah
+  assert.match(html, /Jarak \/ m/);
   assert.match(html, /fill-opacity="0.12"/);      // shaded area under the curve
   assert.match(html, /stroke-dasharray="7,3"/);   // tangent line
   assert.match(html, /stroke-dasharray="2,2"/);   // gradient triangle
@@ -1152,7 +1153,7 @@ test('Grafik: a restricted domain draws the curve over a narrower span of the ax
   const spanOf = (html) => {
     // The curve is sampled at a fixed number of points whatever the domain,
     // so it is the x EXTENT of the drawn path that shrinks, not its length.
-    const d = (html.match(/<path d="([^"]*)" fill="none" stroke="#000000" stroke-width="2"/) || ['', ''])[1];
+    const d = (html.match(/<path d="([^"]*)" fill="none" stroke="#000000" stroke-width="[\d.]+"/) || ['', ''])[1];
     const xs = [...d.matchAll(/[ML]([\d.]+) /g)].map(m => parseFloat(m[1]));
     return Math.max.apply(null, xs) - Math.min.apply(null, xs);
   };
@@ -1169,8 +1170,8 @@ test('Pencar: least-squares fit is exact on collinear data, crosses and error ba
   assert.equal(fit.c, 0);
   assert.equal(fit.r, 1);
   const html = D.renderDiagramTag('pencar: x=1,2,3; y=2,4,6; galat=0.5; rerata=ya; sumbuy=Panjang (cm)');
-  assert.equal((html.match(/stroke-width="1.4"/g) || []).length, 8); // 3 crosses x2 + fit line + mean ring
-  assert.match(html, /Panjang \(cm\)/);
+  assert.equal((html.match(/stroke-width="1.4"/g) || []).length, 7); // 3 crosses x2 + mean ring
+  assert.match(html, /Panjang \/ cm/);   // label sumbu gaya A-Level
   assert.match(html, /r="4"/); // mean point ring
 });
 
@@ -1184,7 +1185,7 @@ test('Histogram: unequal class widths become frequency density, not raw height',
   assert.equal(bars.length, 3);
   assert.ok(bars[2].w > bars[0].w, 'third class should be the widest');
   assert.ok(bars[2].h < bars[0].h, 'widest class should be the shortest bar (density, not frequency)');
-  assert.match(html, /Densitas frekuensi/);
+  assert.match(html, /densitas frekuensi/i);
 });
 
 test('Batang-daun: stems fill gaps and the key line explains the notation', () => {
@@ -1315,6 +1316,182 @@ Pembahasan: 1. $\\Delta T = 29.0 - 20.0 = +9.0\\text{ ^\\circ C}$`;
   assert.match(html, /29\.0\^\\circ\\text\{C\}/);
   assert.match(html, /-9\.0\^\\circ\$/);
   assert.match(html, /\+9\.0\^\\circ\\text\{C\}\$/);
+});
+
+// --- A-Level: grafik & statistik ---
+// Konvensi naskah Cambridge/Edexcel: hitam-putih, sumbu berpanah berlabel
+// "besaran / satuan" di ujung panah, teks >= 9.5 pt, kurva di-clip ke daerah
+// plot, seri dibedakan pola garis/arsiran (bukan warna). Tes tidak mengunci
+// hex warna: yang dicek hanya "semua warna abu-abu" (r = g = b).
+const TAG_GRAFIK_STAT = [
+  'grafik: f1=x^2-4; xmin=-5; xmax=5; ymin=-6; ymax=12; sumbux=Waktu (s); arsir=f1:0,3; singgung=f1:2',
+  'grafik: f1=sin(x); f2=cos(x); f3=0.5x; xmin=-4; xmax=4; ymin=-2; ymax=2',
+  'programlinear: pertidaksamaan=2x+y<=10,x+3y<=12,x>=0,y>=0; xmax=8; ymax=8',
+  'statistik: tipe=lingkaran; label=Bola,Basket,Renang,Catur; data=12,8,5,1',
+  'statistik: tipe=batang; label=Sen,Sel,Rab; data=12,8,5',
+  'statistik: tipe=garis; label=2019,2020,2021; data=12,18,5',
+  'ogive: data=12,15,15,18,20,22,25,28,30,35',
+  'boxplot: data=12,15,15,18,20,22,25,28,30,35',
+  'pencar: x=1,2,3,4,5; y=2.1,3.9,6.2,7.8,10.1; sumbux=Massa (g); sumbuy=Panjang (cm); galat=0.3',
+  'histogram: batas=0,10,20,50; frekuensi=5,8,12',
+  'batangdaun: data=12,15,15,21,23,34,38,41; satuan=10',
+  'piktogram: simbol=bintang; skala=5; label=Sen,Sel; data=15,10',
+  'pohonpeluang: level1=Merah:2/5,Biru:3/5; level2=Merah:2/5,Biru:3/5',
+  'kertasgrafik: xmin=0; xmax=10; ymin=0; ymax=20; sumbux=Waktu (s); sumbuy=Jarak (m); subkotak=5',
+  'garisbilangan: min=-10; max=10; step=1; titik=3:A,-5:B',
+];
+
+test('A-Level: semua grafik/statistik hitam-putih, teks >= 9.5 pt, tanpa bingkai, tanpa error', () => {
+  TAG_GRAFIK_STAT.forEach((tag) => {
+    const html = D.renderDiagramTag(tag);
+    assert.doesNotMatch(html, /diagram error/, tag);
+    const sizes = [...html.matchAll(/font-size="([\d.]+)"/g)].map((m) => parseFloat(m[1]));
+    assert.ok(sizes.length && Math.min.apply(null, sizes) >= 9.5, 'teks terlalu kecil di ' + tag);
+    // Hanya abu-abu: r = g = b untuk setiap warna yang tercetak.
+    [...html.matchAll(/#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})\b/gi)].forEach((m) => {
+      assert.ok(m[1].toLowerCase() === m[2].toLowerCase() && m[2].toLowerCase() === m[3].toLowerCase(), 'warna bukan abu-abu di ' + tag + ': #' + m[1] + m[2] + m[3]);
+    });
+    // Bingkai lama = rect latar yang menutup seluruh viewBox.
+    assert.doesNotMatch(html, /<rect x="0.5" y="0.5"/, 'masih ada bingkai di ' + tag);
+  });
+});
+
+test('A-Level grafik: kurva di-clip ke daerah plot, id clip unik antar gambar', () => {
+  const a = D.renderDiagramTag(TAG_GRAFIK_STAT[0]);
+  const b = D.renderDiagramTag(TAG_GRAFIK_STAT[0]);
+  const idA = (a.match(/<clipPath id="([^"]+)"/) || [])[1];
+  const idB = (b.match(/<clipPath id="([^"]+)"/) || [])[1];
+  assert.ok(idA && idB && idA !== idB, 'clipPath harus ada dan unik per gambar');
+  assert.match(a, new RegExp('<g clip-path="url\\(#' + idA + '\\)">'));
+  // Kurva (path pertama setelah arsiran) berada di dalam grup ber-clip.
+  const grup = a.slice(a.indexOf('<g clip-path'), a.indexOf('</g>'));
+  assert.match(grup, /<path d="M[^"]*" fill="none" stroke="#000000"/);
+  // Parabola dengan ymax=12 memang menembus tepi atas: titik path boleh di
+  // luar plot karena clip yang memotong — yang penting clip-nya ada.
+  const vb = a.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/);
+  assert.ok(parseFloat(vb[2]) < 320, 'kanvas tidak boleh membengkak: ' + vb[2]);
+});
+
+test('A-Level grafik: sumbu berpanah, label di ujung sumbu (x/y bawaan, "Waktu / s" dari sumbux), titik asal "O"', () => {
+  const polos = D.renderDiagramTag('grafik: f1=x; xmin=-4; xmax=4; ymin=-4; ymax=4');
+  assert.ok((polos.match(/<polygon points=/g) || []).length >= 2, 'dua kepala panah sumbu');
+  assert.match(polos, />x<\/text>/);
+  assert.match(polos, />y<\/text>/);
+  assert.match(polos, />O<\/text>/);
+  const bersatuan = D.renderDiagramTag(TAG_GRAFIK_STAT[0]);
+  assert.match(bersatuan, />Waktu \/ s<\/text>/);
+  assert.doesNotMatch(bersatuan, /Waktu \(s\)/);
+  // Label sumbu x berada di KANAN ujung panah (di luar daerah plot 328 px).
+  const lx = parseFloat(bersatuan.match(/<text x="([\d.]+)" y="[\d.]+" font-size="[\d.]+" fill="#000000">Waktu \/ s/)[1]);
+  assert.ok(lx > 328, 'label sumbu x harus di luar plot: ' + lx);
+});
+
+test('A-Level grafik: dua kurva atau lebih dibedakan pola garis dan diberi nama f1/f2 di dekat kurva', () => {
+  const html = D.renderDiagramTag(TAG_GRAFIK_STAT[1]);
+  const kurva = [...html.matchAll(/<path d="M[^"]*" fill="none" stroke="#000000" stroke-width="[\d.]+"( stroke-dasharray="[^"]+")?\/>/g)];
+  assert.equal(kurva.length, 3);
+  assert.equal(kurva[0][1], undefined);          // f1 padat
+  assert.match(kurva[1][1], /stroke-dasharray/);  // f2 putus
+  assert.match(kurva[2][1], /stroke-dasharray/);  // f3 titik
+  assert.notEqual(kurva[1][1], kurva[2][1]);
+  ['f1', 'f2', 'f3'].forEach((n) => assert.ok((html.match(new RegExp('>' + n + '<')).length), 'label ' + n));
+  // Satu kurva: tidak ada label f1 maupun legenda.
+  const satu = D.renderDiagramTag('grafik: f1=x^2; xmin=-3; xmax=3');
+  assert.doesNotMatch(satu, />f1</);
+});
+
+test('A-Level statistik lingkaran: label nama+persen di juring, pola arsiran, garis penunjuk untuk juring sempit, id pola unik', () => {
+  const a = D.renderDiagramTag(TAG_GRAFIK_STAT[3]);
+  assert.doesNotMatch(a, /1\. Bola/);           // daftar bernomor lama hilang
+  assert.match(a, />Bola<\/text>/);
+  assert.match(a, />46\.2%<\/text>/);           // 12/26
+  assert.match(a, /<pattern id=/);
+  assert.match(a, /fill="url\(#/);
+  assert.match(a, /<polyline/);                 // Catur (3.8%) diberi garis penunjuk
+  assert.match(a, /Catur 3\.8%/);
+  const b = D.renderDiagramTag(TAG_GRAFIK_STAT[3]);
+  const idA = a.match(/<pattern id="([^"]+)"/)[1], idB = b.match(/<pattern id="([^"]+)"/)[1];
+  assert.notEqual(idA, idB);
+  const lebar = D.renderDiagramTag('statistik: tipe=lingkaran; label=A,B; data=1,1');
+  assert.doesNotMatch(lebar, /<polyline/);     // juring lebar tidak perlu penunjuk
+});
+
+test('A-Level statistik batang/garis: sumbu berpanah berlabel "frekuensi", angka skala, nilai di atas batang', () => {
+  const batang = D.renderDiagramTag(TAG_GRAFIK_STAT[4]);
+  assert.match(batang, />frekuensi<\/text>/);
+  assert.ok((batang.match(/<polygon points=/g) || []).length >= 2);
+  assert.equal((batang.match(/<rect /g) || []).length, 3);
+  assert.match(batang, /<rect [^>]*fill="#[0-9a-f]{6}" stroke="#000000"/); // batang berisi + bertepi
+  [12, 8, 5].forEach((v) => assert.match(batang, new RegExp('>' + v + '<')));
+  assert.match(batang, />Sen<\/text>/);
+  const garis = D.renderDiagramTag(TAG_GRAFIK_STAT[5]);
+  assert.match(garis, />frekuensi<\/text>/);
+  assert.equal((garis.match(/<circle /g) || []).length, 3);
+});
+
+test('A-Level ogive: label "frekuensi kumulatif", angka skala di kedua sumbu, kuartil abu-abu putus-putus', () => {
+  const html = D.renderDiagramTag(TAG_GRAFIK_STAT[6]);
+  assert.match(html, />frekuensi kumulatif<\/text>/);
+  assert.match(html, />12<\/text>/);   // skala x mulai dari data terkecil
+  assert.match(html, />10<\/text>/);   // n = 10 di sumbu y
+  ['Q1', 'Q2', 'Q3'].forEach((q) => assert.match(html, new RegExp('>' + q + '<')));
+  assert.match(html, /Q2 ≈ 20/);
+  assert.equal((html.match(/stroke-dasharray="6 4"/g) || []).length, 6); // 3 kuartil x 2 garis bantu
+});
+
+test('A-Level boxplot: skala bernomor berpanah di bawah kotak, nama lima serangkai tidak bertumpuk', () => {
+  const html = D.renderDiagramTag(TAG_GRAFIK_STAT[7]);
+  assert.ok((html.match(/<polygon points=/g) || []).length >= 1);
+  assert.ok((html.match(/text-anchor="middle">\d+<\/text>/g) || []).length >= 8, 'angka skala kurang');
+  assert.match(html, />Median<\/text>/);
+  // Q1=6 dan Median=7 terlalu rapat: salah satunya naik satu baris.
+  const rapat = D.renderDiagramTag('boxplot: min=5; q1=6; median=7; q3=12; max=20');
+  const ys = [...rapat.matchAll(/<text x="[\d.]+" y="([\d.]+)" font-size="[\d.]+" text-anchor="middle" fill="#000000">(?:Min|Q1|Median|Q3|Max)</g)].map((m) => m[1]);
+  assert.equal(new Set(ys).size, 2);
+});
+
+test('A-Level pencar & histogram: garis regresi putus-putus, tanda silang, label sumbu di ujung panah', () => {
+  const pencar = D.renderDiagramTag(TAG_GRAFIK_STAT[8]);
+  assert.match(pencar, /<line [^>]*stroke-dasharray="6 4"\/>/);       // garis lurus terbaik
+  assert.equal((pencar.match(/stroke-width="1.4"/g) || []).length, 10); // 5 silang x 2
+  assert.match(pencar, />Massa \/ g<\/text>/);
+  assert.match(pencar, />Panjang \/ cm<\/text>/);
+  assert.doesNotMatch(pencar, /rotate\(-90/);
+  const hist = D.renderDiagramTag(TAG_GRAFIK_STAT[9]);
+  assert.match(hist, />densitas frekuensi<\/text>/);
+  assert.equal((hist.match(/<rect /g) || []).length, 3);
+  [0, 10, 20, 50].forEach((b) => assert.match(hist, new RegExp('>' + b + '<')));
+});
+
+test('A-Level kertas grafik & garis bilangan: sumbu hitam berpanah, "O" di titik asal, kanvas dipotong pas', () => {
+  const kertas = D.renderDiagramTag(TAG_GRAFIK_STAT[13]);
+  assert.ok((kertas.match(/<polygon points=/g) || []).length >= 2);
+  assert.match(kertas, />O<\/text>/);
+  assert.doesNotMatch(kertas, /<rect /);         // tidak ada bingkai; sumbu adalah garis berpanah
+  const gb = D.renderDiagramTag(TAG_GRAFIK_STAT[14]);
+  const vb = gb.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/);
+  assert.ok(parseFloat(vb[2]) < 80, 'garis bilangan tidak butuh kanvas tinggi: ' + vb[2]);
+  assert.equal((gb.match(/<polygon points=/g) || []).length, 2);
+  assert.match(gb, />A<\/text>/);
+  // Skala terlalu rapat (101 angka) dijarangkan otomatis, tanda tetap semua.
+  const rapat = D.renderDiagramTag('garisbilangan: min=0; max=100; step=1');
+  assert.ok((rapat.match(/<text /g) || []).length <= 26);
+  assert.equal((rapat.match(/<line /g) || []).length, 101 + 2);
+});
+
+test('A-Level pohon peluang & program linear: nama simpul tidak tertimpa cabang berikutnya, arsiran abu-abu', () => {
+  const pohon = D.renderDiagramTag(TAG_GRAFIK_STAT[12]);
+  assert.match(pohon, /P = 0\.16/);
+  // Cabang tahap 2 mulai di sebelah kanan nama simpul tahap 1 (x lebih besar).
+  const simpul1 = parseFloat(pohon.match(/<circle cx="([\d.]+)"/g)[1].match(/[\d.]+/)[0]);
+  const cabang2 = [...pohon.matchAll(/<line x1="([\d.]+)"/g)].map((m) => parseFloat(m[1])).filter((x) => x > simpul1);
+  assert.ok(cabang2.length >= 4 && Math.min.apply(null, cabang2) > simpul1 + 20, 'cabang tahap 2 harus mulai setelah nama simpul');
+  const lp = D.renderDiagramTag(TAG_GRAFIK_STAT[2]);
+  assert.match(lp, /<pattern id="lpHatch\d+"/);
+  assert.match(lp, /fill="url\(#lpHatch/);
+  assert.match(lp, />x<\/text>/);
+  assert.match(lp, />y<\/text>/);
+  assert.match(lp, /\(3\.6, 2\.8\)/);
 });
 
 // ---------------------------------------------------------------------
