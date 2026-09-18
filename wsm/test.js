@@ -1351,8 +1351,11 @@ test('A-Level: semua grafik/statistik hitam-putih, teks >= 9.5 pt, tanpa bingkai
     [...html.matchAll(/#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})\b/gi)].forEach((m) => {
       assert.ok(m[1].toLowerCase() === m[2].toLowerCase() && m[2].toLowerCase() === m[3].toLowerCase(), 'warna bukan abu-abu di ' + tag + ': #' + m[1] + m[2] + m[3]);
     });
-    // Bingkai lama = rect latar yang menutup seluruh viewBox.
-    assert.doesNotMatch(html, /<rect x="0.5" y="0.5"/, 'masih ada bingkai di ' + tag);
+    // Bingkai lama = rect latar dengan stroke abu-abu yang benar-benar
+    // tercetak (rapikanSVG menetralkan stroke-nya jadi "none", dan sebuah
+    // rect fill="#ffffff" stroke="none" di 0.5,0.5 tidak tampil sebagai
+    // bingkai apa pun — jadi memeriksa posisinya saja salah menandai itu).
+    assert.doesNotMatch(html, /<rect x="0.5" y="0.5"[^>]*stroke="(?!none)[^"]/, 'masih ada bingkai tampak di ' + tag);
   });
 });
 

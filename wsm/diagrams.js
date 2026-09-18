@@ -5222,7 +5222,9 @@ const LAB_APPARATUS = {
     return { W, H, s };
   },
   titrasi: function () {
-    const W = 300, H = 320;
+    // W=360, bukan 300: label terpanjang ("Buret berisi titran" dari x=250)
+    // dulu tercetak sampai x≈356 dan terpotong di tepi kanvas.
+    const W = 360, H = 320;
     let s = '';
     // Burette with a tap and graduations
     s += `<rect x="132" y="24" width="22" height="170" fill="none" stroke="#000000" stroke-width="1.6"/>`;
