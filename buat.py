@@ -1641,7 +1641,7 @@ def periksa_naskah(teks, jenis='soal'):
     dirender.
     """
     import naskah as _nsk, otomasi
-    teks = (teks or '').strip()
+    teks = otomasi.buang_pagar((teks or '').strip())
     if not teks:
         return {'jumlah': 0, 'pesan': 'Naskahnya masih kosong.'}
     if jenis == 'pembahasan':
@@ -1711,10 +1711,12 @@ def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None
         if not teks:
             raise RuntimeError('Naskahnya masih kosong — tempel dulu jawaban AI-nya.')
         _catat(jid, f'Naskah ditempel ({len(teks)} karakter)', 30)
+        # Pagar ``` (sering "```python" / "```text") ikut tertempel dari
+        # ChatGPT/Claude; kalau dibiarkan, baris "```python" jadi judul lembar.
+        teks = otomasi.buang_pagar(teks)
         if jenis in ('pembahasan', 'rangkuman'):
-            # Sama seperti jalur Claude: pagar ``` dan pembatas \( \) yang
-            # sering ikut dari ChatGPT/Claude dirapikan dulu.
-            teks = otomasi.normalkan_rumus(otomasi.buang_pagar(teks))
+            # Sama seperti jalur Claude: pembatas \( \) dirapikan juga.
+            teks = otomasi.normalkan_rumus(teks)
             if jenis == 'pembahasan':
                 lembar_pembahasan_dari_naskah(
                     jid, teks, judul=judul, mapel=mapel, kelas=kelas,

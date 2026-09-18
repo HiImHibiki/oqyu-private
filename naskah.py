@@ -106,7 +106,7 @@ def _urai_set(baris, set_ini=1):
     isi, bacaan = _ambil_bacaan(isi)
     # Judul lembar = baris pertama yang berisi, dibaca SESUDAH bacaan dipisah
     # — kalau tidak, lembar tanpa judul yang langsung "Bacaan" berjudul "Bacaan".
-    judul = next((b.strip() for b in isi[:4] if b.strip()), '')
+    judul = next((b.strip() for b in isi[:4] if b.strip() and not b.strip().startswith('```')), '')
     if BATAS_BACAAN.match(judul) or BUTIR.match(judul): judul = ''   # naskah tanpa judul
 
     kunci = _pasang('\n'.join(bagian_kunci))
