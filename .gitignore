@@ -35,3 +35,4 @@ android/build/
 android/*.apk
 android/*.idsig
 thumb/
+.claude/worktrees/
