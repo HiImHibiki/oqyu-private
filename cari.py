@@ -167,7 +167,8 @@ class H(BaseHTTPRequestHandler):
                     mapel=g('mapel'), topik=g('topik'), jenjang=g('jenjang'),
                     jumlah=g('jumlah'), n_set=g('n_set'), sulit=g('sulit'),
                     bahasa=g('bahasa') or 'Indonesia', instruksi=g('instruksi'),
-                    acuan=g('acuan'))
+                    acuan=g('acuan'), jenis=g('jenis') or 'soal',
+                    kelas=g('kelas'), bagian=g('bagian'))
                 d = {'perintah': teks, 'panjang': len(teks)}
             except Exception as e:
                 d = {'galat': f'{type(e).__name__}: {e}'}
@@ -859,8 +860,9 @@ class H(BaseHTTPRequestHandler):
             import buat
             panjang = int(self.headers.get('Content-Length') or 0)
             teks = self.rfile.read(panjang).decode('utf-8', 'replace') if panjang else ''
+            jenis = (urllib.parse.parse_qs(u.query).get('jenis') or ['soal'])[0]
             try:
-                d = buat.periksa_naskah(teks)
+                d = buat.periksa_naskah(teks, jenis)
             except Exception as e:
                 d = {'jumlah': 0, 'pesan': f'{type(e).__name__}: {e}'}
             b = json.dumps(d, ensure_ascii=False).encode()
@@ -1195,7 +1197,8 @@ class H(BaseHTTPRequestHandler):
             kerapatan=medan.get('kerapatan', 'Normal'), garis=medan.get('garis', '1.5'),
             ke_practice='ke_practice' in medan,
             kode=buat.kode_dari_medan(medan),
-            set_ke=(medan.get('set') or '').strip()), daemon=True).start()
+            set_ke=(medan.get('set') or '').strip(),
+            jenis=(medan.get('jenis') or 'soal').strip()), daemon=True).start()
         b = json.dumps({'jid': jid}).encode()
         self.send_response(200); self.send_header('Content-Type','application/json')
         self.send_header('Content-Length',str(len(b))); self.end_headers()

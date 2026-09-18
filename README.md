@@ -68,21 +68,36 @@ Sesudah itu jalankan biasa (`./mulai.sh`) dan jendelanya tidak muncul lagi.
 
 ## Tab "Naskah Manual" — tanpa AI di dalam aplikasi
 
-Untuk soal yang ditulis sendiri, atau yang dikarang AI mana pun di luar aplikasi
-(Gemini, ChatGPT, Claude, AI lokal). Jalurnya sama dengan tab Buat Soal mulai
-dari naskah: berkas naskah, bank soal, PDF, dan Exact Practice tidak dibedakan.
+Untuk naskah yang ditulis sendiri, atau yang dikarang AI mana pun di luar
+aplikasi (Gemini, ChatGPT, Claude, AI lokal). Ada tiga jenis naskah, dipilih di
+paling atas:
 
-1. **Salin perintah** — perintahnya dibangun dari `prompt-builder.js` milik mesin
-   perender yang sama, jadi tidak pernah beda format dengan jalur otomatis
+| Jenis | Jalurnya sama dengan tab | Hasil |
+|---|---|---|
+| Soal latihan | Buat Soal | lembar kerja, bank soal, PDF, terbit ke Exact Practice |
+| Kunci jawaban & pembahasan | Kunci Jawaban | lembar baca satu kolom: soal + kunci + pembahasan |
+| Rangkuman / catatan materi | Rangkuman | lembar rangkuman: inti, poin, rumus, contoh, ingat |
+
+1. **Salin perintah** — perintahnya dibangun oleh pembangun yang sama dengan
+   jalur Gemini (`prompt-builder.js` untuk soal, `jawab.py` untuk pembahasan,
+   `rangkum.py` untuk rangkuman), jadi tidak pernah beda format. Untuk
+   pembahasan, tempel naskah soalnya di kotak bawah supaya ikut di perintah;
+   untuk rangkuman, tempel materinya atau cukup tulis topiknya
 2. Jalankan perintah itu di AI mana pun, salin jawabannya
-3. Tempel di langkah 2; **Periksa naskah** menghitung berapa soal yang terbaca
-   sebelum apa pun dirender (perenderan ikut antrean dan memakai Chrome)
-4. **Buat PDF** — centang *sekalian terbitkan ke Exact Practice* bila paket
-   latihan onlinenya mau langsung jadi
+3. Tempel di langkah 2; **Periksa naskah** menghitung berapa soal / bagian yang
+   terbaca sebelum apa pun dirender (perenderan ikut antrean dan memakai
+   Chrome). Pengurainya sama dengan jalur Gemini, jadi hitungannya jujur
+4. **Buat PDF** — untuk soal, centang *sekalian terbitkan ke Exact Practice*
+   bila paket latihan onlinenya mau langsung jadi
 
-Formatnya sama persis dengan yang dipakai Gemini: kode bagian di dalam kurung
+Format soal sama persis dengan yang dipakai Gemini: kode bagian di dalam kurung
 sesudah titik dua (`Bagian Pilihan Ganda: (PG)`), bobot `[2]` di akhir kalimat
 soal, dan kunci ditulis `PG1-A, PG2-B` dengan tanda hubung — bukan titik.
+Pembahasan: tiap soal diawali baris `SOAL 1`, lalu `JAWAB:` dan `BAHAS:`.
+Rangkuman: `JUDUL:`, `INTI:`, lalu tiap sub-bab `BAGIAN:` berisi `POIN:`,
+`RUMUS:`, `CONTOH:`, `INGAT:`. Contoh lengkapnya ada di placeholder kotak
+naskah. Pagar ``` dan pembatas `\( \)` yang sering ikut dari ChatGPT/Claude
+dirapikan otomatis.
 
 ## Bank soal (opsional)
 

@@ -453,39 +453,9 @@ def jalankan_jawab(jid, gambar, instruksi, mapel, kelas, judul, bahasa='Indonesi
             for x in jalur:
                 try: os.unlink(x)
                 except OSError: pass
-        periksa_henti(jid)
-        _catat(jid, f'Jawaban diterima ({len(hasil_teks)} karakter)', 70)
-
-        judul_lbr, butir = _jwb.urai(hasil_teks)
-        if not butir:
-            _simpan_naskah('GAGAL-pembahasan', hasil_teks)
-            raise RuntimeError('Jawaban Gemini tidak bisa diurai jadi pembahasan. '
-                               'Naskah mentahnya disimpan di folder naskah/.')
-        judul = judul.strip() or judul_lbr or 'Pembahasan Soal'
-        _catat(jid, f'{len(butir)} soal beserta pembahasannya', 80)
-
-        kop = dict(lembaga=lembaga or 'Exact Course', mapel=mapel or '',
-                   kelas=(f'Kelas {kelas}' if kelas else ''))
-        os.makedirs(KELUAR, exist_ok=True)
-        kode_kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_kop(mapel, kode),
-                        sekolah=sekolah, kelas=str(kelas or ''),
-                        tanggal=tanggal or time.strftime('%d%m'))
-        nama = nama_berkas(kode_kop, True, KELUAR)
-        os.makedirs(NASKAH, exist_ok=True)
-        open(os.path.join(NASKAH, f'{nama} — {time.strftime("%Y-%m-%d %H%M")}.txt'),
-             'w', encoding='utf-8').write(hasil_teks)
-
-        # Lembar pembahasan memakai tata letaknya sendiri — satu kolom, lapang,
-        # soal menyatu dengan pembahasannya. Bukan format naskah ujian.
-        _catat(jid, 'Menyusun lembar lalu mencetak PDF…', 90)
-        kode = uuid.uuid4().hex[:10]
-        HALAMAN_JAWAB[kode] = _lj.buat(judul, butir, kop)
-        if len(HALAMAN_JAWAB) > 40:
-            for k in list(HALAMAN_JAWAB)[:-40]: HALAMAN_JAWAB.pop(k, None)
-        tuju = os.path.join(KELUAR, f'{nama}.pdf')
-        otomasi.cetak_halaman(f'http://127.0.0.1:7790/lembar-jawab?k={kode}', tuju)
-        subprocess.run(['open', tuju], capture_output=True)
-        _catat(jid, f'Selesai — {os.path.basename(tuju)}', 100, selesai=True, pdf=tuju)
+        lembar_pembahasan_dari_naskah(jid, hasil_teks, judul=judul, mapel=mapel,
+                                      kelas=kelas, lembaga=lembaga, sekolah=sekolah,
+                                      tanggal=tanggal, kode=kode, sumber='dari Gemini')
     except Dihentikan as e:
         _catat(jid, None, galat=str(e))
     except Exception as e:
@@ -543,36 +513,10 @@ def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
                 try: os.unlink(x)
                 except OSError: pass
 
-        periksa_henti(jid)
-        _catat(jid, f'Rangkuman diterima ({len(hasil_teks)} karakter)', 70)
-        judul_lbr, inti, bagian_isi = _rk.urai(hasil_teks)
-        if not bagian_isi:
-            _simpan_naskah('GAGAL-rangkuman', hasil_teks)
-            raise RuntimeError('Jawaban Gemini tidak bisa diurai jadi rangkuman. '
-                               'Naskah mentahnya disimpan di folder naskah/.')
-        judul = judul.strip() or judul_lbr or topik.strip() or 'Rangkuman'
-        _catat(jid, f'{len(bagian_isi)} bagian rangkuman', 80)
-
-        kop = dict(lembaga=lembaga or 'Exact Course', mapel=mapel or '',
-                   kelas=(f'Kelas {kelas}' if kelas else ''))
-        os.makedirs(KELUAR, exist_ok=True)
-        kode_kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_kop(mapel, kode),
-                        sekolah=sekolah, kelas=str(kelas or ''),
-                        tanggal=tanggal or time.strftime('%d%m'))
-        nama = nama_berkas(kode_kop, False, KELUAR) + ' - Rangkuman'
-        os.makedirs(NASKAH, exist_ok=True)
-        open(os.path.join(NASKAH, f'{nama} — {time.strftime("%Y-%m-%d %H%M")}.txt'),
-             'w', encoding='utf-8').write(hasil_teks)
-
-        _catat(jid, 'Menyusun lembar lalu mencetak PDF…', 90)
-        kode = uuid.uuid4().hex[:10]
-        HALAMAN_JAWAB[kode] = _lr.buat(judul, inti, bagian_isi, kop)
-        if len(HALAMAN_JAWAB) > 40:
-            for k in list(HALAMAN_JAWAB)[:-40]: HALAMAN_JAWAB.pop(k, None)
-        tuju = os.path.join(KELUAR, f'{nama}.pdf')
-        otomasi.cetak_halaman(f'http://127.0.0.1:{PORT}/lembar-jawab?k={kode}', tuju)
-        subprocess.run(['open', tuju], capture_output=True)
-        _catat(jid, f'Selesai — {os.path.basename(tuju)}', 100, selesai=True, pdf=tuju)
+        lembar_rangkuman_dari_naskah(jid, hasil_teks, judul=judul, topik=topik,
+                                     mapel=mapel, kelas=kelas, lembaga=lembaga,
+                                     sekolah=sekolah, tanggal=tanggal, kode=kode,
+                                     sumber='dari Gemini')
     except Dihentikan as e:
         _catat(jid, None, galat=str(e))
     except Exception as e:
@@ -581,6 +525,89 @@ def jalankan_rangkum(jid, gambar, instruksi, mapel, kelas, judul, topik='',
         HENTI.discard(jid)
         ANTREAN.keluar(jid)
         _segarkan_chrome()
+
+
+def _cetak_lembar_baca(jid, html_lembar, nama):
+    """Simpan halaman lembar-baca (pembahasan/rangkuman) lalu cetak ke PDF."""
+    import otomasi, uuid
+    _catat(jid, 'Menyusun lembar lalu mencetak PDF…', 90)
+    kode = uuid.uuid4().hex[:10]
+    HALAMAN_JAWAB[kode] = html_lembar
+    if len(HALAMAN_JAWAB) > 40:
+        for k in list(HALAMAN_JAWAB)[:-40]: HALAMAN_JAWAB.pop(k, None)
+    tuju = os.path.join(KELUAR, f'{nama}.pdf')
+    otomasi.cetak_halaman(f'http://127.0.0.1:{PORT}/lembar-jawab?k={kode}', tuju)
+    subprocess.run(['open', tuju], capture_output=True)
+    _catat(jid, f'Selesai — {os.path.basename(tuju)}', 100, selesai=True, pdf=tuju)
+    return tuju
+
+
+def _simpan_naskah_jadi(nama, teks):
+    os.makedirs(NASKAH, exist_ok=True)
+    open(os.path.join(NASKAH, f'{nama} — {time.strftime("%Y-%m-%d %H%M")}.txt'),
+         'w', encoding='utf-8').write(teks)
+
+
+def lembar_pembahasan_dari_naskah(jid, hasil_teks, judul='', mapel=None, kelas=None,
+                                  lembaga='', sekolah='', tanggal='', kode='',
+                                  sumber='dari Gemini'):
+    """Naskah pembahasan jadi -> salinan naskah + PDF.
+
+    Paruh kedua alur Kunci Jawaban, dipisah supaya jalur manual (naskah
+    ditempel dari AI mana pun) menempuh jalan yang sama: nama berkas, salinan
+    naskah, tata letak, dan pencetakan tidak boleh berbeda. Lembar pembahasan
+    memakai tata letaknya sendiri — satu kolom, lapang, soal menyatu dengan
+    pembahasannya. Bukan format naskah ujian.
+    """
+    import jawab as _jwb, lembar_jawab as _lj
+    periksa_henti(jid)
+    _catat(jid, f'Naskah pembahasan {sumber} diterima ({len(hasil_teks)} karakter)', 70)
+    judul_lbr, butir = _jwb.urai(hasil_teks)
+    if not butir:
+        _simpan_naskah('GAGAL-pembahasan', hasil_teks)
+        raise RuntimeError(f'Naskah {sumber} tidak bisa diurai jadi pembahasan. '
+                           'Tiap soal harus diawali baris "SOAL 1", lalu "JAWAB:" '
+                           'dan "BAHAS:". Naskah mentahnya disimpan di folder naskah/.')
+    judul = (judul or '').strip() or judul_lbr or 'Pembahasan Soal'
+    _catat(jid, f'{len(butir)} soal beserta pembahasannya', 80)
+
+    kop = dict(lembaga=lembaga or 'Exact Course', mapel=mapel or '',
+               kelas=(f'Kelas {kelas}' if kelas else ''))
+    os.makedirs(KELUAR, exist_ok=True)
+    kop_kode = dict(lembaga=lembaga or 'Exact Course', mapel=kode_kop(mapel, kode),
+                    sekolah=sekolah, kelas=str(kelas or ''),
+                    tanggal=tanggal or time.strftime('%d%m'))
+    nama = nama_berkas(kop_kode, True, KELUAR)
+    _simpan_naskah_jadi(nama, hasil_teks)
+    return _cetak_lembar_baca(jid, _lj.buat(judul, butir, kop), nama)
+
+
+def lembar_rangkuman_dari_naskah(jid, hasil_teks, judul='', topik='', mapel=None,
+                                 kelas=None, lembaga='', sekolah='', tanggal='',
+                                 kode='', sumber='dari Gemini'):
+    """Naskah rangkuman jadi -> salinan naskah + PDF. Pasangan
+    lembar_pembahasan_dari_naskah untuk tab Rangkuman."""
+    import rangkum as _rk, lembar_rangkum as _lr
+    periksa_henti(jid)
+    _catat(jid, f'Naskah rangkuman {sumber} diterima ({len(hasil_teks)} karakter)', 70)
+    judul_lbr, inti, bagian_isi = _rk.urai(hasil_teks)
+    if not bagian_isi:
+        _simpan_naskah('GAGAL-rangkuman', hasil_teks)
+        raise RuntimeError(f'Naskah {sumber} tidak bisa diurai jadi rangkuman. '
+                           'Tiap sub-bab harus diawali baris "BAGIAN: …" lalu '
+                           '"POIN:". Naskah mentahnya disimpan di folder naskah/.')
+    judul = (judul or '').strip() or judul_lbr or (topik or '').strip() or 'Rangkuman'
+    _catat(jid, f'{len(bagian_isi)} bagian rangkuman', 80)
+
+    kop = dict(lembaga=lembaga or 'Exact Course', mapel=mapel or '',
+               kelas=(f'Kelas {kelas}' if kelas else ''))
+    os.makedirs(KELUAR, exist_ok=True)
+    kop_kode = dict(lembaga=lembaga or 'Exact Course', mapel=kode_kop(mapel, kode),
+                    sekolah=sekolah, kelas=str(kelas or ''),
+                    tanggal=tanggal or time.strftime('%d%m'))
+    nama = nama_berkas(kop_kode, False, KELUAR) + ' - Rangkuman'
+    _simpan_naskah_jadi(nama, hasil_teks)
+    return _cetak_lembar_baca(jid, _lr.buat(judul, inti, bagian_isi, kop), nama)
 
 
 def lembar_dari_naskah(jid, jawab, judul='', topik='', mapel=None, kelas=None,
@@ -1546,15 +1573,41 @@ poin per sub-bab, rumus, contoh, dan hal yang mudah keliru. Tanpa bahan pun bisa
 # tombol ke Exact Practice. Jadi satu-satunya yang berbeda adalah dari mana
 # naskahnya datang.
 
+JENIS_MANUAL = ('soal', 'pembahasan', 'rangkuman')
+
+
 def perintah_manual(mapel='', topik='', jenjang='', jumlah='', n_set='',
-                    sulit='', bahasa='Indonesia', instruksi='', acuan=''):
+                    sulit='', bahasa='Indonesia', instruksi='', acuan='',
+                    jenis='soal', kelas='', bagian='5'):
     """Perintah siap salin, dibangun dari format Exact Worksheet Maker sendiri.
 
-    Sumbernya prompt-builder.js milik mesin perender (lewat wsmaker), bukan
-    salinan yang diketik ulang — supaya perintah yang disalin ke AI luar tidak
-    pernah beda format dengan yang dipakai jalur otomatis.
+    jenis 'soal'       : sumbernya prompt-builder.js milik mesin perender (lewat
+                         wsmaker), bukan salinan yang diketik ulang — supaya
+                         perintah yang disalin ke AI luar tidak pernah beda
+                         format dengan yang dipakai jalur otomatis.
+    jenis 'pembahasan' : perintah tab Kunci Jawaban (jawab.py); `acuan` berisi
+                         naskah soal yang mau dibahas.
+    jenis 'rangkuman'  : perintah tab Rangkuman (rangkum.py); `acuan` berisi
+                         materinya, atau kosong kalau cukup topiknya.
+    Ketiganya memakai pembangun perintah yang sama dengan jalur Gemini, jadi
+    pengurainya pun sama.
     """
     import wsmaker
+    kelas = str(kelas or '').strip()
+    if jenis not in JENIS_MANUAL: jenis = 'soal'
+    if jenis == 'soal' and (bahasa or '').strip().lower() in ('', 'ikut'):
+        bahasa = 'Indonesia'
+    if jenis == 'pembahasan':
+        import jawab as _jwb
+        return _jwb.bangun(acuan or '', bahasa or 'ikut', instruksi or '',
+                           mapel or '', kelas, ada_lampiran=False, manual=True)
+    if jenis == 'rangkuman':
+        import rangkum as _rk
+        try: n_bagian = max(2, min(12, int(str(bagian).strip() or 5)))
+        except ValueError: n_bagian = 5
+        return _rk.bangun(acuan or '', bahasa or 'ikut', instruksi or '',
+                          mapel or '', kelas, bagian=n_bagian, topik=topik or '',
+                          ada_lampiran=False)
     banyak = str(n_set or '').strip() not in ('', '0', '1')
     p = wsmaker.isi_blok(
         wsmaker.ringkas(wsmaker.perintah_baku(mapel or 'Matematika'),
@@ -1571,16 +1624,43 @@ def perintah_manual(mapel='', topik='', jenjang='', jumlah='', n_set='',
     return p
 
 
-def periksa_naskah(teks):
+def periksa_naskah(teks, jenis='soal'):
     """Hitung apa yang terbaca dari naskah tempelan, tanpa merender apa pun.
 
     Dipakai tombol "Periksa naskah": salah format baru ketahuan sesudah PDF
-    jadi itu mahal — perenderan memakai Chrome dan ikut antrean.
+    jadi itu mahal — perenderan memakai Chrome dan ikut antrean. Pengurainya
+    yang dipakai jalur Gemini juga, jadi hitungannya sama dengan yang akan
+    dirender.
     """
-    import naskah as _nsk
+    import naskah as _nsk, otomasi
     teks = (teks or '').strip()
     if not teks:
         return {'jumlah': 0, 'pesan': 'Naskahnya masih kosong.'}
+    if jenis == 'pembahasan':
+        import jawab as _jwb
+        judul, butir = _jwb.urai(otomasi.normalkan_rumus(otomasi.buang_pagar(teks)))
+        if not butir:
+            return {'jumlah': 0, 'judul': judul,
+                    'pesan': 'Tidak ada soal yang terbaca. Tiap soal harus diawali '
+                             'baris "SOAL 1", lalu "JAWAB:" dan "BAHAS:".'}
+        berjawab = sum(1 for b in butir if b.get('jawab'))
+        berbahas = sum(1 for b in butir if b.get('bahas'))
+        return {'jumlah': len(butir), 'judul': judul, 'kunci': berjawab,
+                'pembahasan': berbahas,
+                'pesan': f'{len(butir)} soal terbaca · {berjawab} berjawab · '
+                         f'{berbahas} berpembahasan'}
+    if jenis == 'rangkuman':
+        import rangkum as _rk
+        judul, inti, bagian = _rk.urai(otomasi.normalkan_rumus(otomasi.buang_pagar(teks)))
+        if not bagian:
+            return {'jumlah': 0, 'judul': judul,
+                    'pesan': 'Tidak ada bagian yang terbaca. Tiap sub-bab harus '
+                             'diawali baris "BAGIAN: …" lalu "POIN:".'}
+        poin = sum(len(b['poin']) for b in bagian)
+        rumus = sum(len(b['rumus']) for b in bagian)
+        return {'jumlah': len(bagian), 'judul': judul, 'poin': poin, 'rumus': rumus,
+                'pesan': f'{len(bagian)} bagian terbaca · {poin} poin · {rumus} rumus'
+                         + ('' if inti else ' · INTI belum ada')}
     butir, meta = _nsk.urai(teks)
     if not butir:
         return {'jumlah': 0, 'judul': meta.get('judul') or '',
@@ -1602,20 +1682,40 @@ def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None
                     jenjang='', lembaga='', sekolah='', tanggal='',
                     kunci=True, pembahasan=True, kolom='2', dua_berkas=False,
                     kerapatan='Normal', garis='1.5', ke_practice=False, kode='',
-                    set_ke=''):
+                    set_ke='', jenis='soal'):
     """Naskah tempelan -> PDF (dan, bila diminta, langsung ke Exact Practice).
 
-    Tetap lewat antrean walau tidak memakai AI: perenderannya memakai Chrome
-    kendali yang sama dengan pekerjaan Gemini, dan dua render sekaligus saling
-    menimpa isi tab Worksheet Maker.
+    jenis 'soal' menempuh lembar_dari_naskah seperti tab Buat Soal;
+    'pembahasan' dan 'rangkuman' menempuh paruh kedua tab Kunci Jawaban dan
+    Rangkuman. Tetap lewat antrean walau tidak memakai AI: perenderannya
+    memakai Chrome kendali yang sama dengan pekerjaan Gemini, dan dua render
+    sekaligus saling menimpa isi tab Worksheet Maker.
     """
-    if not ANTREAN.masuk(jid, 'Naskah manual', lambda m: _catat(jid, m, 4)):
+    import otomasi
+    nama_antrean = {'pembahasan': 'Pembahasan manual',
+                    'rangkuman': 'Rangkuman manual'}.get(jenis, 'Naskah manual')
+    if not ANTREAN.masuk(jid, nama_antrean, lambda m: _catat(jid, m, 4)):
         return _catat(jid, None, galat='Dibatalkan sebelum mulai.')
     try:
         teks = (naskah_teks or '').strip()
         if not teks:
             raise RuntimeError('Naskahnya masih kosong — tempel dulu jawaban AI-nya.')
         _catat(jid, f'Naskah ditempel ({len(teks)} karakter)', 30)
+        if jenis in ('pembahasan', 'rangkuman'):
+            # Sama seperti jalur Claude: pagar ``` dan pembatas \( \) yang
+            # sering ikut dari ChatGPT/Claude dirapikan dulu.
+            teks = otomasi.normalkan_rumus(otomasi.buang_pagar(teks))
+            if jenis == 'pembahasan':
+                lembar_pembahasan_dari_naskah(
+                    jid, teks, judul=judul, mapel=mapel, kelas=kelas,
+                    lembaga=lembaga, sekolah=sekolah, tanggal=tanggal, kode=kode,
+                    sumber='yang ditempel')
+            else:
+                lembar_rangkuman_dari_naskah(
+                    jid, teks, judul=judul, topik=topik, mapel=mapel, kelas=kelas,
+                    lembaga=lembaga, sekolah=sekolah, tanggal=tanggal, kode=kode,
+                    sumber='yang ditempel')
+            return
         lembar_dari_naskah(jid, teks, judul=judul, topik=topik, mapel=mapel,
                            kelas=kelas, jenjang=jenjang, lembaga=lembaga,
                            sekolah=sekolah, tanggal=tanggal, kunci=kunci,
@@ -1656,10 +1756,94 @@ SKRIP_MANUAL = r"""
 const qs = s => document.querySelector(s);
 const ambilMedan = () => {
   const f = new FormData(qs('#f')), o = {};
-  ['mapel','topik','jenjang','jumlah','n_set','sulit','bahasa','instruksi','acuan']
-    .forEach(k => o[k] = (f.get(k) || '').toString());
+  ['jenis','mapel','topik','jenjang','jumlah','n_set','sulit','bahasa','instruksi',
+   'acuan','kelas','bagian'].forEach(k => o[k] = (f.get(k) || '').toString());
   return o;
 };
+
+// Tiga jenis naskah, tiga format. Contohnya ditaruh di placeholder supaya guru
+// yang mengetik sendiri (tanpa AI) tahu penandanya — pengurainya sama persis
+// dengan yang dipakai jalur Gemini di tab Buat Soal / Kunci Jawaban / Rangkuman.
+const JENIS = {
+  soal: {
+    judul: 'Naskah soal',
+    ket: 'jadi lembar kerja, masuk bank soal, bisa terbit ke Exact Practice',
+    acuan: 'Soal acuan / materi yang mau ditiru gayanya (opsional)',
+    contoh: `Contoh format — kode bagian di dalam kurung SESUDAH titik dua, kunci pakai tanda hubung:
+
+Latihan Trigonometri Dasar
+
+Bagian Pilihan Ganda: (PG)
+PG1. Nilai $\\sin 30^\\circ$ adalah ... [2]
+A. $\\frac{1}{2}$
+B. $\\frac{1}{3}$
+C. $\\frac{\\sqrt{3}}{2}$
+D. $1$
+
+Bagian Uraian: (E)
+E1. Buktikan $\\sin^2 x + \\cos^2 x = 1$. [5]
+
+Kunci Jawaban
+PG1-A, E1-pakai teorema Pythagoras pada lingkaran satuan
+
+Pembahasan
+PG1-Sudut istimewa: $\\sin 30^\\circ=\\frac{1}{2}$.E1-Titik pada lingkaran satuan berjarak 1 dari pusat.`},
+  pembahasan: {
+    judul: 'Naskah kunci & pembahasan',
+    ket: 'jadi lembar baca satu kolom: tiap soal langsung diikuti kunci dan pembahasannya',
+    acuan: 'Naskah soal yang mau dibahas — tempel di sini supaya ikut di perintah',
+    contoh: `Contoh format — tiap soal diawali baris SOAL n, lalu JAWAB: dan BAHAS:
+
+JUDUL: Pembahasan GLB
+
+SOAL 1
+Sebuah mobil menempuh 120 m dalam 6 s. Berapa kecepatannya?
+JAWAB: 20 m/s
+BAHAS:
+Diketahui: $s = 120$ m, $t = 6$ s
+$v = \\frac{s}{t}$
+$v = \\frac{120}{6} = 20$ m/s
+Jadi kecepatan mobil 20 m/s.
+
+SOAL 2
+...`},
+  rangkuman: {
+    judul: 'Naskah rangkuman',
+    ket: 'jadi lembar rangkuman: inti, poin per sub-bab, rumus, contoh, dan hal yang mudah keliru',
+    acuan: 'Materi yang mau dirangkum (opsional — boleh cukup topiknya di atas)',
+    contoh: `Contoh format — tiap sub-bab diawali BAGIAN:, isinya POIN / RUMUS / CONTOH / INGAT
+
+JUDUL: Gerak Lurus Beraturan
+INTI: GLB adalah gerak dengan kecepatan tetap, sehingga jarak sebanding dengan waktu.
+
+BAGIAN: Pengertian
+POIN:
+- Kecepatan tetap, percepatan nol
+- Grafik $v$-$t$ berupa garis mendatar
+RUMUS:
+- $s = v \\cdot t$ = jarak sama dengan kecepatan kali waktu
+CONTOH: $v = 4$ m/s selama $5$ s, maka $s = 4 \\cdot 5 = 20$ m
+INGAT: Satuan harus sama dulu — km/jam diubah ke m/s (bagi 3,6).
+
+BAGIAN: ...`},
+};
+const pilihJenis = document.getElementById('jenis');
+function terapkanJenis() {
+  const j = JENIS[pilihJenis.value] ? pilihJenis.value : 'soal';
+  document.querySelectorAll('[data-jenis]').forEach(el => {
+    el.hidden = !el.dataset.jenis.split(' ').includes(j);
+  });
+  const ikut = qs('#bahasa option[value=ikut]');
+  ikut.disabled = j === 'soal';
+  if (ikut.disabled && qs('#bahasa').value === 'ikut') qs('#bahasa').value = 'Indonesia';
+  document.getElementById('judulNaskah').textContent = JENIS[j].judul;
+  document.getElementById('ketJenis').textContent = JENIS[j].ket;
+  qs('#acuan').placeholder = JENIS[j].acuan;
+  qs('#naskah').placeholder = JENIS[j].contoh;
+  hasilPeriksa.textContent = '';
+  kotakPerintah.value = ''; perintahTerakhir = ''; kabarP.textContent = '';
+  try { localStorage.setItem('naskahManual.jenis', j); } catch (e) {}
+}
 
 // Komposisi siap pakai, sama seperti di tab Buat Soal.
 const preset = document.getElementById('preset');
@@ -1672,6 +1856,13 @@ if (preset) preset.onchange = () => {
 const kotakPerintah = document.getElementById('perintah');
 const kabarP = document.getElementById('kabarPerintah');
 let perintahTerakhir = '';
+const hasilPeriksa = document.getElementById('hasilPeriksa');
+pilihJenis.onchange = terapkanJenis;
+try {
+  const j = localStorage.getItem('naskahManual.jenis');
+  if (j && JENIS[j]) pilihJenis.value = j;
+} catch (e) {}
+terapkanJenis();
 
 async function susunPerintah() {
   kabarP.textContent = 'menyusun…';
@@ -1721,13 +1912,12 @@ document.getElementById('btnSalin').onclick = async () => {
 
 // Periksa naskah sebelum dirender: perenderan ikut antrean dan memakai Chrome,
 // jadi salah format yang baru ketahuan sesudah PDF jadi itu mahal.
-const hasilPeriksa = document.getElementById('hasilPeriksa');
 async function periksa(diam) {
   const teks = qs('[name=naskah]').value;
   if (!teks.trim()) { hasilPeriksa.textContent = ''; return null; }
   if (!diam) hasilPeriksa.textContent = 'memeriksa…';
   try {
-    const r = await fetch('/api/periksa', {method: 'POST',
+    const r = await fetch('/api/periksa?jenis=' + encodeURIComponent(pilihJenis.value), {method: 'POST',
       headers: {'Content-Type': 'text/plain; charset=utf-8'}, body: teks});
     const j = await r.json();
     hasilPeriksa.className = j.jumlah ? 'kcl' : 'err';
@@ -1831,13 +2021,14 @@ document.getElementById('f').onsubmit = async e => {
   }
   const cek = await periksa(true);
   if (cek && !cek.jumlah &&
-      !confirm('Tidak ada soal yang terbaca dari naskah ini. Tetap coba render?')) return;
+      !confirm((pilihJenis.value === 'rangkuman' ? 'Tidak ada bagian' : 'Tidak ada soal')
+               + ' yang terbaca dari naskah ini. Tetap coba render?')) return;
   log.innerHTML = '';
   const go = document.getElementById('go');
   const fd = new FormData(e.target);
   const judul = (fd.get('judul') || '').toString().trim()
              || (fd.get('topik') || '').toString().trim()
-             || (cek && cek.judul) || 'Lembar manual';
+             || (cek && cek.judul) || (JENIS[pilihJenis.value] || JENIS.soal).judul;
   go.disabled = true;
   let jid;
   try {
@@ -1870,18 +2061,31 @@ color:#fff;align-items:center;justify-content:center;font-size:12px;flex:none}}
 <div class=kopApp><img src="/statik/logo.png" alt=""><div>
   <h1>Naskah Manual</h1>
   <div class=s style="margin:0">Exact Course &middot; Worksheet Maker</div></div></div>
-<div class=s>Untuk soal yang Anda tulis sendiri, atau yang dikarang AI mana pun
-(Gemini, ChatGPT, Claude, AI lokal). Salin perintahnya, tempel jawabannya di sini,
-lalu lembarnya dicetak dan diterbitkan ke Exact Practice seperti lembar otomatis.</div>
+<div class=s>Untuk naskah yang Anda tulis sendiri, atau yang dikarang AI mana pun
+(Gemini, ChatGPT, Claude, AI lokal): soal latihan, kunci &amp; pembahasan, atau
+rangkuman materi. Salin perintahnya, tempel jawabannya di sini, lalu lembarnya
+dicetak seperti lembar otomatis.</div>
 
 <form id=f>
 <div class=k>
-  <h2><b>1</b> Perintah untuk AI &mdash; opsional, lewati kalau menulis soal sendiri</h2>
+  <div class=r style="margin-top:0">
+    <select name=jenis id=jenis title="jenis naskah" style="flex:1;min-width:240px">
+      <option value=soal>Soal latihan &mdash; lembar kerja &amp; Exact Practice</option>
+      <option value=pembahasan>Kunci jawaban &amp; pembahasan &mdash; lembar baca</option>
+      <option value=rangkuman>Rangkuman / catatan materi &mdash; lembar baca</option>
+    </select>
+    <span class=kcl id=ketJenis style="margin:0"></span>
+  </div>
+</div>
+
+<div class=k>
+  <h2><b>1</b> Perintah untuk AI &mdash; opsional, lewati kalau menulis naskahnya sendiri</h2>
   <div class=r style="margin-top:0">
     <input name=mapel placeholder="mapel" style="flex:1;min-width:150px">
-    <input name=topik placeholder="topik" style="flex:2;min-width:190px">
+    <input name=topik placeholder="topik" style="flex:2;min-width:190px" data-jenis="soal rangkuman">
+    <input name=bagian placeholder="bagian" value="5" size=6 title="berapa sub-bab" data-jenis="rangkuman">
   </div>
-  <div class=r>
+  <div class=r data-jenis="soal">
     <input name=jenjang placeholder="kelas/jenjang" size=12>
     <select id=preset title="komposisi siap pakai" style="min-width:150px">
       <option value="">komposisi&hellip;</option>
@@ -1895,14 +2099,17 @@ lalu lembarnya dicetak dan diterbitkan ke Exact Practice seperti lembar otomatis
     <input name=jumlah placeholder="atau tulis sendiri" value="{n('jumlah')}" style="flex:1;min-width:150px">
     <input name=n_set placeholder="set" value="{n('n_set') or '1'}" size=4 title="jumlah set">
     <input name=sulit placeholder="kesulitan" value="{n('sulit') or 'sedang'}" style="min-width:170px">
-    <select name=bahasa title="bahasa soal">
+  </div>
+  <div class=r>
+    <select name=bahasa id=bahasa title="bahasa naskah">
       <option value=Indonesia{" selected" if st.get("bahasa")!="Inggris" else ""}>Indonesia</option>
       <option value=Inggris{" selected" if st.get("bahasa")=="Inggris" else ""}>Inggris</option>
+      <option value=ikut>ikuti bahasa soal / materi</option>
     </select>
   </div>
   <textarea name=instruksi rows=2 style="margin-top:11px"
     placeholder="Catatan tambahan untuk AI (opsional)">{n('instruksi')}</textarea>
-  <textarea name=acuan rows=3 style="margin-top:9px"
+  <textarea name=acuan id=acuan rows=3 style="margin-top:9px"
     placeholder="Soal acuan / materi yang mau ditiru gayanya (opsional)"></textarea>
   <div class=r>
     <button type=button id=btnSalin>Salin perintah</button>
@@ -1921,26 +2128,8 @@ lalu lembarnya dicetak dan diterbitkan ke Exact Practice seperti lembar otomatis
 </div>
 
 <div class=k>
-  <h2><b>2</b> Naskah soal &mdash; tempel jawaban AI, atau ketik sendiri</h2>
-  <textarea name=naskah rows=16 placeholder="Contoh format &mdash; kode bagian di dalam kurung SESUDAH titik dua, kunci pakai tanda hubung:
-
-Latihan Trigonometri Dasar
-
-Bagian Pilihan Ganda: (PG)
-PG1. Nilai $\\sin 30^\\circ$ adalah ... [2]
-A. $\\frac{{1}}{{2}}$
-B. $\\frac{{1}}{{3}}$
-C. $\\frac{{\\sqrt{{3}}}}{{2}}$
-D. $1$
-
-Bagian Uraian: (E)
-E1. Buktikan $\\sin^2 x + \\cos^2 x = 1$. [5]
-
-Kunci Jawaban
-PG1-A, E1-pakai teorema Pythagoras pada lingkaran satuan
-
-Pembahasan
-PG1-Sudut istimewa: $\\sin 30^\\circ=\\frac{{1}}{{2}}$.E1-Titik pada lingkaran satuan berjarak 1 dari pusat."></textarea>
+  <h2><b>2</b> <span id=judulNaskah>Naskah soal</span> &mdash; tempel jawaban AI, atau ketik sendiri</h2>
+  <textarea name=naskah id=naskah rows=16></textarea>
   <div class=r>
     <button type=button id=btnPeriksa class=abu>Periksa naskah</button>
     <button type=button id=btnTempel class=abu>Tempel dari papan klip</button>
@@ -1957,7 +2146,7 @@ PG1-Sudut istimewa: $\\sin 30^\\circ=\\frac{{1}}{{2}}$.E1-Titik pada lingkaran s
     <input name=kelas placeholder="kelas" size=6>
     <input name=tanggal placeholder="tgl" value="{tgl_ini}" size=7>
   </div>
-  <div class=r>
+  <div class=r data-jenis="soal">
     <select name=kerapatan title="kerapatan tata letak">
       <option value=Normal{" selected" if st.get('kerapatan','Normal')=='Normal' else ""}>kerapatan normal</option>
       <option value=Padat{" selected" if st.get('kerapatan')=='Padat' else ""}>padat (hemat kertas)</option>
@@ -1976,7 +2165,7 @@ PG1-Sudut istimewa: $\\sin 30^\\circ=\\frac{{1}}{{2}}$.E1-Titik pada lingkaran s
     <label class=kcl><input type=checkbox name=kunci checked> kunci jawaban</label>
     <label class=kcl><input type=checkbox name=pembahasan checked> pembahasan</label>
   </div>
-  <div class=r>
+  <div class=r data-jenis="soal">
     <label class=kcl><input type=checkbox name=ke_practice> sekalian terbitkan ke Exact Practice</label>
     <input name=set placeholder="set ke-" size=6 inputmode=numeric pattern="[0-9]*"
            title="Nomor set lembar ini (mis. 3). Tercetak di kode kop sebagai MATH/NRD/7/1609/3 dan jadi «— Set 3» pada judul paket di Exact Practice. Kosongkan kalau bukan seri.">

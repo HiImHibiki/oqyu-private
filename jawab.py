@@ -59,12 +59,14 @@ Beberapa hal kecil biar rapi:
 TANYA = "<tulis ulang soalnya apa adanya, termasuk pilihan jawabannya bila ada>"
 
 def bangun(naskah, bahasa='Indonesia', catatan='', mapel='', kelas='',
-           ada_lampiran=False):
+           ada_lampiran=False, manual=False):
     """Susun perintah pembahasan.
 
     ada_lampiran menandai bahwa fotonya sendiri ikut diunggah ke Gemini. Itu
     mengubah sumber soal: tanpa lampiran Gemini hanya punya teks hasil OCR,
     dengan lampiran ia melihat gambar, diagram, dan tulisan tangannya langsung.
+    manual: perintahnya untuk disalin guru ke AI mana pun (tab Naskah Manual);
+    naskah soalnya ditempel guru sendiri, jadi tidak disebut "hasil pemindaian".
     """
     tambahan = []
     if mapel: tambahan.append(f'Mata pelajaran: {mapel}.')
@@ -83,6 +85,9 @@ def bangun(naskah, bahasa='Indonesia', catatan='', mapel='', kelas='',
         sumber = 'foto naskah soal yang terlampir'
         blok = ('\nBacalah soalnya langsung dari foto, termasuk gambar, diagram, '
                 'grafik, dan tulisan tangan yang ada di dalamnya.')
+    elif manual:
+        sumber = 'naskah soal di bawah ini'
+        blok = '\nNASKAH SOAL:\n' + (naskah or '<tempel naskah soalnya di sini>')
     else:
         sumber = 'naskah soal hasil pemindaian foto'
         blok = '\nNASKAH HASIL PEMINDAIAN:\n' + naskah
