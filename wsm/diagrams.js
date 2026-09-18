@@ -268,85 +268,118 @@ function parseAsymptotes(raw) {
   }).filter(Boolean);
 }
 
+// --- Helper bersama grafik & statistik (dipakai mulai renderFunctionGraphSVG
+// sampai renderGraphPaperSVG). SVG tidak bisa mengukur teks sebelum
+// digambar, jadi lebar teks dikira-kira dari jumlah hurufnya supaya kanvas
+// bisa dipotong pas tanpa memenggal label sumbu.
+function lebarTeksKira(teks, ukuran) {
+  return String(teks || '').length * (ukuran || GAYA.teks) * 0.56;
+}
+
+// Teks dengan "halo" putih di belakang huruf: angka skala dan label kurva
+// tetap terbaca walau menimpa grid atau kurva. Ukuran boleh diatur (annotText
+// yang lama terkunci 11 px dan hanya untuk anotasi pemakai).
+function teksHaloSVG(x, y, teks, o) {
+  o = o || {};
+  const anchor = o.anchor || 'middle';
+  const size = o.size || GAYA.teksKecil;
+  const extra = (o.italic ? ' font-style="italic"' : '') + (o.bold ? ' font-weight="700"' : '');
+  return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="${size}" fill="${GAYA.hitam}"`
+    + ` stroke="${GAYA.putih}" stroke-width="3" paint-order="stroke" text-anchor="${anchor}"${extra}>${escText(teks)}</text>`;
+}
+
+// Sumbu gaya A-Level: panah hanya di ujung positif, label "besaran / satuan"
+// di SEBELAH KANAN ujung panah x dan DI ATAS ujung panah y. Keduanya di luar
+// daerah plot, jadi tidak mungkin tertimpa kurva, batang, atau titik data —
+// itulah sebabnya label tidak lagi ditaruh di tengah bawah / diputar 90°.
+//   xFrom..xTo : rentang piksel sumbu x (xTo = ujung panah) pada tinggi xAxisY
+//   yFrom..yTo : sumbu y dari bawah (yFrom) ke ujung panah (yTo, lebih kecil)
+function sumbuALevelSVG(o) {
+  let s = '';
+  const w = o.strokeWidth || 1.2;
+  if (o.xTo != null) s += arrowSVG(o.xFrom, o.xAxisY, o.xTo, o.xAxisY, { headLen: 7, strokeWidth: w });
+  if (o.yTo != null) s += arrowSVG(o.yAxisX, o.yFrom, o.yAxisX, o.yTo, { headLen: 7, strokeWidth: w });
+  if (o.labelX) s += `<text x="${(o.xTo + 5).toFixed(1)}" y="${(o.xAxisY + 4).toFixed(1)}" font-size="${GAYA.teks}" fill="${GAYA.hitam}">${escText(o.labelX)}</text>`;
+  if (o.labelY) s += `<text x="${(o.yAxisX - 8).toFixed(1)}" y="${(o.yTo - 6).toFixed(1)}" font-size="${GAYA.teks}" fill="${GAYA.hitam}">${escText(o.labelY)}</text>`;
+  return s;
+}
+
+// Tanda skala pendek + angkanya: di bawah sumbu x, di kiri sumbu y.
+function tickXSVG(px, axisY, teks) {
+  return `<line x1="${px.toFixed(1)}" y1="${axisY.toFixed(1)}" x2="${px.toFixed(1)}" y2="${(axisY + 4).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1"/>`
+    + teksHaloSVG(px, axisY + 15, teks);
+}
+function tickYSVG(axisX, py, teks) {
+  return `<line x1="${(axisX - 4).toFixed(1)}" y1="${py.toFixed(1)}" x2="${axisX.toFixed(1)}" y2="${py.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1"/>`
+    + teksHaloSVG(axisX - 6, py + 3.5, teks, { anchor: 'end' });
+}
+
+// Satu halaman memuat banyak SVG inline yang berbagi ruang id, jadi tiap
+// clipPath daerah plot butuh id sendiri.
+let grafikClipCounter = 0;
+
 function renderFunctionGraphSVG(cfg) {
-  const width = 400, chartH = 300, pad = 36;
+  const plotW = 328, plotH = 228;
   const FN_KEYS = ['f1', 'f2', 'f3', 'f4', 'f5'];
   const activeFns = FN_KEYS.map((key, i) => ({ key, i, expr: cfg[key] })).filter((f) => f.expr);
-  // A legend strip only earns its keep once there's more than one curve —
-  // with just f1, "which dash is which" has nothing to disambiguate.
-  const legendH = activeFns.length > 1 ? 18 * activeFns.length + 14 : 0;
-  const height = chartH + legendH;
+  // Legenda hanya kalau kurvanya lebih dari satu — dengan f1 saja tidak ada
+  // yang perlu dibedakan.
+  const legendH = activeFns.length > 1 ? 16 * activeFns.length + 10 : 0;
   const xmin = numOrDefault(cfg.xmin, -10), xmax = numOrDefault(cfg.xmax, 10);
   const ymin = numOrDefault(cfg.ymin, -10), ymax = numOrDefault(cfg.ymax, 10);
-  const sx = (width - 2 * pad) / (xmax - xmin || 1);
-  const sy = (chartH - 2 * pad) / (ymax - ymin || 1);
-  const toPx = (x, y) => [pad + (x - xmin) * sx, chartH - pad - (y - ymin) * sy];
+  const rangeX = (xmax - xmin) || 1, rangeY = (ymax - ymin) || 1;
+  const xStep = niceStep(rangeX), yStep = niceStep(rangeY);
+  // Tanpa sumbux/sumbuy, naskah A-Level tetap menulis "x" dan "y" di ujung panah.
+  const labelX = cfg.sumbux ? labelSumbuALevel(cfg.sumbux) : 'x';
+  const labelY = cfg.sumbuy ? labelSumbuALevel(cfg.sumbuy) : 'y';
 
-  // Axis captions ("Waktu (s)") are drawn in a margin added OUTSIDE the
-  // existing plot box, and the whole original drawing is shifted right by
-  // the left margin — that way none of the geometry below has to change.
-  const extraLeft = cfg.sumbuy ? 16 : 0;
-  const extraBottom = cfg.sumbux ? 18 : 0;
-  const totalW = width + extraLeft;
-  const totalH = height + extraBottom;
+  // Sumbu di titik asal kalau 0 ada di jangkauan; kalau tidak, di tepi plot.
+  const yAxisInside = xmin < 0 && xmax > 0;
+  const xAxisInside = ymin < 0 && ymax > 0;
+  const yTicks = [], xTicks = [];
+  for (let gy = Math.ceil(ymin / yStep) * yStep; gy <= ymax + 1e-9; gy += yStep) yTicks.push(Math.round(gy * 1e6) / 1e6);
+  for (let gx = Math.ceil(xmin / xStep) * xStep; gx <= xmax + 1e-9; gx += xStep) xTicks.push(Math.round(gx * 1e6) / 1e6);
+  const yTickW = Math.max.apply(null, yTicks.map((v) => lebarTeksKira(formatTick(v), GAYA.teksKecil)).concat([0]));
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${totalW} ${totalH}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${totalW - 1}" height="${totalH - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
-  if (cfg.sumbux) {
-    svg += `<text x="${(totalW / 2).toFixed(1)}" y="${(totalH - 5).toFixed(1)}" text-anchor="middle" font-size="11" fill="#000000">${escText(cfg.sumbux)}</text>`;
-  }
-  if (cfg.sumbuy) {
-    const cy = chartH / 2;
-    svg += `<text x="11" y="${cy.toFixed(1)}" text-anchor="middle" font-size="11" fill="#000000" transform="rotate(-90 11 ${cy.toFixed(1)})">${escText(cfg.sumbuy)}</text>`;
-  }
-  svg += `<g transform="translate(${extraLeft},0)">`;
+  // Margin kanvas dihitung dari isinya supaya viewBox pas: angka skala di
+  // kiri hanya butuh ruang kalau sumbu y menempel tepi kiri, label sumbu x
+  // butuh ruang di kanan ujung panah, label sumbu y di atas ujung panah.
+  const padL = yAxisInside ? 12 : yTickW + 16;
+  const padR = 12 + lebarTeksKira(labelX) + 10;
+  const padT = 28;
+  const padB = xAxisInside ? 12 : 26;
+  const sx = plotW / rangeX, sy = plotH / rangeY;
+  const toPx = (x, y) => [padL + (x - xmin) * sx, padT + plotH - (y - ymin) * sy];
+  const xAxisY = xAxisInside ? toPx(0, 0)[1] : padT + plotH;
+  const yAxisX = yAxisInside ? toPx(0, 0)[0] : padL;
+  const width = Math.max(padL + plotW + padR, yAxisX - 8 + lebarTeksKira(labelY) + 6);
+  const height = padT + plotH + padB + legendH;
 
-  const xAxisY = (ymin <= 0 && ymax >= 0) ? toPx(0, 0)[1] : chartH - pad;
-  const yAxisX = (xmin <= 0 && xmax >= 0) ? toPx(0, 0)[0] : pad;
+  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(0)} ${height.toFixed(0)}" xmlns="http://www.w3.org/2000/svg">`;
 
-  const xStep = niceStep(xmax - xmin), yStep = niceStep(ymax - ymin);
-  for (let gx = Math.ceil(xmin / xStep) * xStep; gx <= xmax; gx += xStep) {
+  // Grid abu-abu muda tipis, seperti kertas grafik di naskah.
+  xTicks.forEach((gx) => {
     const [px] = toPx(gx, 0);
-    svg += `<line x1="${px.toFixed(1)}" y1="${pad}" x2="${px.toFixed(1)}" y2="${chartH - pad}" stroke="#eef0f3" stroke-width="1"/>`;
-    if (Math.abs(gx) > 1e-9) {
-      svg += `<text x="${px.toFixed(1)}" y="${(xAxisY + 13).toFixed(1)}" font-size="9.5" text-anchor="middle" fill="#64748b">${formatTick(gx)}</text>`;
-    }
-  }
-  for (let gy = Math.ceil(ymin / yStep) * yStep; gy <= ymax; gy += yStep) {
+    svg += `<line x1="${px.toFixed(1)}" y1="${padT}" x2="${px.toFixed(1)}" y2="${padT + plotH}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`;
+  });
+  yTicks.forEach((gy) => {
     const [, py] = toPx(0, gy);
-    svg += `<line x1="${pad}" y1="${py.toFixed(1)}" x2="${width - pad}" y2="${py.toFixed(1)}" stroke="#eef0f3" stroke-width="1"/>`;
-    if (Math.abs(gy) > 1e-9) {
-      svg += `<text x="${(yAxisX - 5).toFixed(1)}" y="${(py + 3).toFixed(1)}" font-size="9.5" text-anchor="end" fill="#64748b">${formatTick(gy)}</text>`;
-    }
-  }
-  if (xmin <= 0 && xmax >= 0) {
-    const [px0] = toPx(0, 0);
-    svg += `<line x1="${px0.toFixed(1)}" y1="${pad}" x2="${px0.toFixed(1)}" y2="${chartH - pad}" stroke="#94a3b8" stroke-width="1.4"/>`;
-  }
-  if (ymin <= 0 && ymax >= 0) {
-    const [, py0] = toPx(0, 0);
-    svg += `<line x1="${pad}" y1="${py0.toFixed(1)}" x2="${width - pad}" y2="${py0.toFixed(1)}" stroke="#94a3b8" stroke-width="1.4"/>`;
-  }
-  if (xmin <= 0 && xmax >= 0 && ymin <= 0 && ymax >= 0) {
-    const [ox, oy] = toPx(0, 0);
-    svg += `<text x="${(ox - 5).toFixed(1)}" y="${(oy + 13).toFixed(1)}" font-size="9.5" text-anchor="end" fill="#64748b">0</text>`;
-  }
+    svg += `<line x1="${padL}" y1="${py.toFixed(1)}" x2="${padL + plotW}" y2="${py.toFixed(1)}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`;
+  });
 
-  // All curves are plotted in black (print-friendly, no ink-heavy color
-  // fills) — with multiple functions on one graph, dash patterns take over
-  // the job color used to do for telling them apart. Up to 5 functions
-  // (f1..f5) fit on one Cartesian plane; a legend (below) spells out which
-  // dash pattern is which expression once there's more than one curve,
-  // since dash patterns alone stop being readable past two or three.
-  const dashPatterns = ['none', '6,4', '2,3', '8,3,2,3', '3,3'];
+  // Daerah plot di-clip: kurva yang melampaui ymax (mis. parabola dengan
+  // ymax=12) berhenti di tepi, tidak pernah keluar dari bingkai gambar.
+  const clipId = 'gfclip' + (grafikClipCounter++);
+  svg += `<clipPath id="${clipId}"><rect x="${padL}" y="${padT}" width="${plotW}" height="${plotH}"/></clipPath>`;
+  svg += `<g clip-path="url(#${clipId})">`;
+
   const domains = parseCurveRange(cfg.domain);
   const shades = parseCurveRange(cfg.arsir);
   const tangents = parseCurvePoint(cfg.singgung);
 
-  // Shaded region under a curve ("luas di bawah kurva") is drawn BEFORE the
-  // curves, so the curve outline stays crisp on top of the fill. A flat
-  // translucent grey rather than a hatch pattern: <pattern> needs a
-  // document-unique id, and a page carries many diagrams at once.
+  // Arsiran di bawah kurva digambar SEBELUM kurva supaya garis kurva tetap
+  // tajam di atasnya. Abu-abu rata (bukan pola) supaya angka/label yang
+  // menimpanya masih terbaca.
   Object.keys(shades).forEach((key) => {
     const spec = activeFns.find((f) => f.key === key);
     if (!spec) return;
@@ -364,27 +397,27 @@ function renderFunctionGraphSVG(cfg) {
       d += 'L' + toPx(x, y).map((n) => n.toFixed(1)).join(' ') + ' ';
     }
     d += 'L' + toPx(to, 0).map((n) => n.toFixed(1)).join(' ') + ' Z';
-    svg += `<path d="${d}" fill="#000000" fill-opacity="0.12" stroke="none"/>`;
+    svg += `<path d="${d}" fill="${GAYA.hitam}" fill-opacity="0.12" stroke="none"/>`;
   });
 
-  parseAsymptotes(cfg.asimtot).forEach((a) => {
+  const asymptotes = parseAsymptotes(cfg.asimtot).filter((a) => (a.axis === 'x' ? a.value >= xmin && a.value <= xmax : a.value >= ymin && a.value <= ymax));
+  asymptotes.forEach((a) => {
     if (a.axis === 'x') {
-      if (a.value < xmin || a.value > xmax) return;
       const [px] = toPx(a.value, 0);
-      svg += `<line x1="${px.toFixed(1)}" y1="${pad}" x2="${px.toFixed(1)}" y2="${chartH - pad}" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,4"/>`;
-      svg += `<text x="${(px + 4).toFixed(1)}" y="${(pad + 10).toFixed(1)}" font-size="9.5" fill="#000000">x=${formatTick(a.value)}</text>`;
+      svg += `<line x1="${px.toFixed(1)}" y1="${padT}" x2="${px.toFixed(1)}" y2="${padT + plotH}" stroke="${GAYA.hitam}" stroke-width="1.2" stroke-dasharray="4,4"/>`;
     } else {
-      if (a.value < ymin || a.value > ymax) return;
       const [, py] = toPx(0, a.value);
-      svg += `<line x1="${pad}" y1="${py.toFixed(1)}" x2="${width - pad}" y2="${py.toFixed(1)}" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,4"/>`;
-      svg += `<text x="${(width - pad - 4).toFixed(1)}" y="${(py - 4).toFixed(1)}" font-size="9.5" text-anchor="end" fill="#000000">y=${formatTick(a.value)}</text>`;
+      svg += `<line x1="${padL}" y1="${py.toFixed(1)}" x2="${padL + plotW}" y2="${py.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.2" stroke-dasharray="4,4"/>`;
     }
   });
 
+  // Kurva ke-i dibedakan pola garis (padat, putus, titik, putus-titik):
+  // cara naskah hitam-putih membedakan f1/f2 tanpa warna.
+  const compiled = {};
   activeFns.forEach(({ key, expr, i }) => {
     const fn = compileExpr(expr);
-    // A restricted domain plots the curve only where the question defines
-    // it, instead of running edge to edge of the axes.
+    compiled[key] = fn;
+    // Domain terbatas: kurva hanya digambar di rentang yang soal definisikan.
     const dom = domains[key];
     const plotFrom = dom ? Math.max(xmin, Math.min(dom[0], dom[1])) : xmin;
     const plotTo = dom ? Math.min(xmax, Math.max(dom[0], dom[1])) : xmax;
@@ -393,67 +426,140 @@ function renderFunctionGraphSVG(cfg) {
     for (let s = 0; s <= steps; s++) {
       const x = plotFrom + (plotTo - plotFrom) * s / steps;
       const y = fn(x);
-      if (!isFinite(y) || y < ymin - (ymax - ymin) * 2 || y > ymax + (ymax - ymin) * 2) {
+      // Titik jauh di luar jendela tetap disambung (clipPath yang memotong),
+      // tapi loncatan raksasa (asimtot tegak) diputus supaya tidak jadi
+      // garis vertikal palsu.
+      if (!isFinite(y) || y < ymin - rangeY * 2 || y > ymax + rangeY * 2) {
         have = false;
         continue;
       }
       const [px, py] = toPx(x, y);
-      if (have && prevPy !== null && Math.abs(py - prevPy) > chartH * 0.85) have = false;
+      if (have && prevPy !== null && Math.abs(py - prevPy) > plotH * 0.85) have = false;
       d += (have ? 'L' : 'M') + px.toFixed(1) + ' ' + py.toFixed(1) + ' ';
       have = true;
       prevPy = py;
     }
-    svg += `<path d="${d}" fill="none" stroke="#000000" stroke-width="2" stroke-dasharray="${dashPatterns[i]}"/>`;
+    svg += `<path d="${d}" fill="none" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"${polaSeri(i)}/>`;
   });
 
-  (cfg.titik || []).forEach((p) => {
-    const [px, py] = toPx(p.x, p.y);
-    svg += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="3" fill="#000000"/>`;
-    if (p.label) {
-      svg += `<text x="${(px + 5).toFixed(1)}" y="${(py - 5).toFixed(1)}" font-size="11" fill="#000000">${escText(p.label)}</text>`;
-    }
-  });
-
-  // Tangent line with the gradient triangle a mark scheme expects to see:
-  // a horizontal run and a vertical rise, both labelled, so the student
-  // reads the gradient off the drawing rather than being told it.
+  // Garis singgung (putus-putus) + segitiga gradien yang skema penilaian
+  // harapkan: run mendatar dan rise tegak, keduanya diberi angka.
+  const tangentLabels = [];
   Object.keys(tangents).forEach((key) => {
     const spec = activeFns.find((f) => f.key === key);
     if (!spec) return;
-    const fn = compileExpr(spec.expr);
+    const fn = compiled[key];
     const x0 = tangents[key];
     const y0 = fn(x0);
     if (!isFinite(y0)) return;
-    const h = (xmax - xmin) / 1000;
+    const h = rangeX / 1000;
     const slope = (fn(x0 + h) - fn(x0 - h)) / (2 * h);
     if (!isFinite(slope)) return;
-    const half = (xmax - xmin) * 0.28;
+    const half = rangeX * 0.28;
     const x1 = x0 - half, x2 = x0 + half;
     const p1 = toPx(x1, y0 + slope * (x1 - x0));
     const p2 = toPx(x2, y0 + slope * (x2 - x0));
-    svg += `<line x1="${p1[0].toFixed(1)}" y1="${p1[1].toFixed(1)}" x2="${p2[0].toFixed(1)}" y2="${p2[1].toFixed(1)}" stroke="#000000" stroke-width="1.3" stroke-dasharray="7,3"/>`;
+    svg += `<line x1="${p1[0].toFixed(1)}" y1="${p1[1].toFixed(1)}" x2="${p2[0].toFixed(1)}" y2="${p2[1].toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.3" stroke-dasharray="7,3"/>`;
     const [cx, cy] = toPx(x0, y0);
-    svg += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="3" fill="#000000"/>`;
+    svg += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="3" fill="${GAYA.hitam}"/>`;
 
     const runX = x0 + half * 0.6;
     const runEndY = y0 + slope * (runX - x0);
     const a = toPx(x0, y0), b = toPx(runX, y0), c = toPx(runX, runEndY);
-    svg += `<line x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="#000000" stroke-width="1" stroke-dasharray="2,2"/>`;
-    svg += `<line x1="${b[0].toFixed(1)}" y1="${b[1].toFixed(1)}" x2="${c[0].toFixed(1)}" y2="${c[1].toFixed(1)}" stroke="#000000" stroke-width="1" stroke-dasharray="2,2"/>`;
-    svg += annotText((a[0] + b[0]) / 2, a[1] + 12, formatTick(runX - x0));
-    svg += annotText(b[0] + 16, (b[1] + c[1]) / 2, formatTick(runEndY - y0));
+    svg += `<line x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1" stroke-dasharray="2,2"/>`;
+    svg += `<line x1="${b[0].toFixed(1)}" y1="${b[1].toFixed(1)}" x2="${c[0].toFixed(1)}" y2="${c[1].toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1" stroke-dasharray="2,2"/>`;
+    // Angka run di bawah kaki mendatar, angka rise di samping kaki tegak
+    // (sisi yang menjauhi kurva) — ditulis nanti di luar clip supaya utuh,
+    // tapi dijepit ke dalam daerah plot.
+    // Kaki mendatar yang berimpit dengan sumbu x: angkanya ditaruh di ATAS
+    // kaki, karena di bawah sumbu sudah ada barisan angka skala.
+    const dekatSumbuX = Math.abs(a[1] - xAxisY) < 20;
+    const runLabelY = (slope >= 0) !== dekatSumbuX ? a[1] + 12 : a[1] - 5;
+    tangentLabels.push({ x: (a[0] + b[0]) / 2, y: runLabelY, teks: formatTick(runX - x0), anchor: 'middle' });
+    tangentLabels.push({ x: b[0] + 6, y: (b[1] + c[1]) / 2 + 3.5, teks: formatTick(Math.abs(runEndY - y0)), anchor: 'start' });
+  });
+  svg += '</g>';
+
+  // Sumbu berpanah di atas kurva supaya tidak tertutup arsiran.
+  svg += sumbuALevelSVG({
+    xAxisY, yAxisX, xFrom: padL, xTo: padL + plotW + 10, yFrom: padT + plotH, yTo: padT - 10, labelX, labelY,
+  });
+  // Angka skala: "O" di titik asal kalau kedua sumbu berpotongan di 0.
+  const originShown = (yAxisInside || xmin === 0) && (xAxisInside || ymin === 0);
+  xTicks.forEach((gx) => {
+    if (Math.abs(gx) < 1e-9 && originShown) return;
+    const [px] = toPx(gx, 0);
+    svg += tickXSVG(px, xAxisY, formatTick(gx));
+  });
+  yTicks.forEach((gy) => {
+    if (Math.abs(gy) < 1e-9 && originShown) return;
+    const [, py] = toPx(0, gy);
+    svg += tickYSVG(yAxisX, py, formatTick(gy));
+  });
+  if (originShown) svg += teksHaloSVG(yAxisX - 5, xAxisY + 13, 'O', { anchor: 'end', italic: true });
+
+  const clampX = (v) => Math.max(padL + 4, Math.min(padL + plotW - 4, v));
+  const clampY = (v) => Math.max(padT + 10, Math.min(padT + plotH - 3, v));
+  asymptotes.forEach((a) => {
+    if (a.axis === 'x') {
+      const [px] = toPx(a.value, 0);
+      // Label di sisi garis yang tidak dilewati kurva di dekat tepi atas:
+      // kurva yang meroket ke asimtot tegak biasanya hanya ada di satu sisi.
+      const xUji = a.value + rangeX * 0.04;
+      const kurvaKanan = activeFns.some((f) => { const y = compiled[f.key](xUji); return isFinite(y) && toPx(xUji, y)[1] < padT + 24; });
+      svg += teksHaloSVG(clampX(px + (kurvaKanan ? -4 : 4)), padT + 12, 'x = ' + formatTick(a.value), { anchor: kurvaKanan ? 'end' : 'start' });
+    } else {
+      // Asimtot mendatar yang berimpit dengan sumbu x tidak perlu label —
+      // sumbunya sendiri sudah y = 0.
+      if (Math.abs(a.value) < 1e-9 && (xAxisInside || ymin === 0)) return;
+      const [, py] = toPx(0, a.value);
+      const xUji = xmax - rangeX * 0.06;
+      const kurvaAtas = activeFns.some((f) => { const y = compiled[f.key](xUji); return isFinite(y) && Math.abs(toPx(xUji, y)[1] - (py - 6)) < 12; });
+      svg += teksHaloSVG(padL + plotW - 4, clampY(kurvaAtas ? py + 12 : py - 4), 'y = ' + formatTick(a.value), { anchor: 'end' });
+    }
+  });
+  tangentLabels.forEach((t) => { svg += teksHaloSVG(clampX(t.x), clampY(t.y), t.teks, { anchor: t.anchor }); });
+
+  (cfg.titik || []).forEach((p) => {
+    const [px, py] = toPx(p.x, p.y);
+    svg += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="2.5" fill="${GAYA.hitam}"/>`;
+    if (p.label) svg += teksHaloSVG(px + 5, py - 5, p.label, { anchor: 'start', size: GAYA.teks });
   });
 
-  if (legendH) {
-    svg += `<line x1="0.5" y1="${chartH}" x2="${width - 0.5}" y2="${chartH}" stroke="#eef0f3" stroke-width="1"/>`;
+  // Lebih dari satu kurva: nama f1/f2 ditulis di dekat kurvanya, di titik
+  // yang masih di dalam jendela dan jauh dari kurva lain / label lain.
+  if (activeFns.length > 1) {
+    const dipakai = [];
+    activeFns.forEach(({ key }) => {
+      const fn = compiled[key];
+      const dom = domains[key];
+      const from = dom ? Math.max(xmin, Math.min(dom[0], dom[1])) : xmin;
+      const to = dom ? Math.min(xmax, Math.max(dom[0], dom[1])) : xmax;
+      const lain = activeFns.filter((f) => f.key !== key).map((f) => compiled[f.key]);
+      const kandidat = [0.84, 0.16, 0.72, 0.28, 0.6, 0.4, 0.5, 0.92, 0.08];
+      for (let k = 0; k < kandidat.length; k++) {
+        const x = from + (to - from) * kandidat[k];
+        const y = fn(x);
+        if (!isFinite(y) || y < ymin + rangeY * 0.06 || y > ymax - rangeY * 0.06) continue;
+        const [px, py] = toPx(x, y);
+        // Jangan menempel sumbu: di situ sudah ada angka skala.
+        if (Math.abs(py - xAxisY) < 20 || Math.abs(px - yAxisX) < 24) continue;
+        if (dipakai.some((s) => Math.hypot(s[0] - px, s[1] - py) < 32)) continue;
+        if (lain.some((g) => { const gy = g(x); return isFinite(gy) && Math.abs(toPx(x, gy)[1] - py) < 16; })) continue;
+        dipakai.push([px, py]);
+        svg += teksHaloSVG(px + 6, py - 6, key, { anchor: 'start', size: GAYA.teks, italic: true });
+        break;
+      }
+    });
+    // Legenda: pola garis -> rumus, karena "f1" saja belum menyebut rumusnya.
     activeFns.forEach(({ expr, i }, row) => {
-      const ly = chartH + 18 + row * 18;
-      svg += `<line x1="16" y1="${ly - 4}" x2="46" y2="${ly - 4}" stroke="#000000" stroke-width="2" stroke-dasharray="${dashPatterns[i]}"/>`;
-      svg += `<text x="54" y="${ly}" font-size="11" fill="#000000">${escText('f' + (i + 1))} = ${escText(expr)}</text>`;
+      const ly = padT + plotH + padB + 12 + row * 16;
+      svg += `<line x1="${padL}" y1="${ly - 4}" x2="${padL + 28}" y2="${ly - 4}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"${polaSeri(i)}/>`;
+      svg += `<text x="${padL + 34}" y="${ly}" font-size="${GAYA.teks}" fill="${GAYA.hitam}"><tspan font-style="italic">f${i + 1}</tspan> = ${escText(expr)}</text>`;
     });
   }
 
-  svg += '</g></svg>';
+  svg += '</svg>';
   return svg;
 }
 
@@ -533,38 +639,42 @@ function renderLinearProgramSVG(cfg) {
   if (!ineqs.length) ineqs = [parseLinearIneq('x>=0'), parseLinearIneq('y>=0')];
   const norm = ineqs.map(normalizeIneq);
 
-  const width = 400, chartH = 320, pad = 40;
-  // LP problems live in the first quadrant by convention, so default the
-  // window there instead of the ±10 a generic function graph would use.
+  const plotW = 320, plotH = 240;
+  // Program linear hidup di kuadran I, jadi jendela bawaannya di situ, bukan
+  // ±10 seperti grafik fungsi umum.
   const xmin = numOrDefault(cfg.xmin, 0), xmax = numOrDefault(cfg.xmax, 10);
   const ymin = numOrDefault(cfg.ymin, 0), ymax = numOrDefault(cfg.ymax, 10);
-  const sx = (width - 2 * pad) / (xmax - xmin || 1);
-  const sy = (chartH - 2 * pad) / (ymax - ymin || 1);
-  const toPx = (x, y) => [pad + (x - xmin) * sx, chartH - pad - (y - ymin) * sy];
-  const legendH = 16 * rawList.length + 14;
-  const height = chartH + legendH;
-
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
-
   const xStep = niceStep(xmax - xmin), yStep = niceStep(ymax - ymin);
-  for (let gx = Math.ceil(xmin / xStep) * xStep; gx <= xmax; gx += xStep) {
-    const [px] = toPx(gx, 0);
-    svg += `<line x1="${px.toFixed(1)}" y1="${pad}" x2="${px.toFixed(1)}" y2="${chartH - pad}" stroke="#eef0f3" stroke-width="1"/>`;
-    svg += `<text x="${px.toFixed(1)}" y="${(chartH - pad + 13).toFixed(1)}" font-size="9.5" text-anchor="middle" fill="#64748b">${formatTick(gx)}</text>`;
-  }
-  for (let gy = Math.ceil(ymin / yStep) * yStep; gy <= ymax; gy += yStep) {
-    const [, py] = toPx(0, gy);
-    svg += `<line x1="${pad}" y1="${py.toFixed(1)}" x2="${width - pad}" y2="${py.toFixed(1)}" stroke="#eef0f3" stroke-width="1"/>`;
-    svg += `<text x="${(pad - 5).toFixed(1)}" y="${(py + 3).toFixed(1)}" font-size="9.5" text-anchor="end" fill="#64748b">${formatTick(gy)}</text>`;
-  }
-  svg += `<line x1="${pad}" y1="${(chartH - pad).toFixed(1)}" x2="${width - pad}" y2="${(chartH - pad).toFixed(1)}" stroke="#94a3b8" stroke-width="1.4"/>`;
-  svg += `<line x1="${pad}" y1="${pad}" x2="${pad}" y2="${(chartH - pad).toFixed(1)}" stroke="#94a3b8" stroke-width="1.4"/>`;
+  const yTicks = [], xTicks = [];
+  for (let gy = Math.ceil(ymin / yStep) * yStep; gy <= ymax + 1e-9; gy += yStep) yTicks.push(Math.round(gy * 1e6) / 1e6);
+  for (let gx = Math.ceil(xmin / xStep) * xStep; gx <= xmax + 1e-9; gx += xStep) xTicks.push(Math.round(gx * 1e6) / 1e6);
+  const yTickW = Math.max.apply(null, yTicks.map((v) => lebarTeksKira(formatTick(v), GAYA.teksKecil)).concat([0]));
+  // Margin dari isinya: angka skala di kiri, label "x" di kanan panah, "y"
+  // di atas panah, koordinat titik pojok bisa menjulur sedikit ke kanan.
+  const padL = yTickW + 16, padR = 60, padT = 26, padB = 26;
+  const sx = plotW / (xmax - xmin || 1);
+  const sy = plotH / (ymax - ymin || 1);
+  const toPx = (x, y) => [padL + (x - xmin) * sx, padT + plotH - (y - ymin) * sy];
+  const legendH = 16 * rawList.length + 8;
+  const width = padL + plotW + padR;
+  const height = padT + plotH + padB + legendH;
+  const xAxisY = padT + plotH, yAxisX = padL;
 
-  // Feasible-region vertices: every pair of boundary lines is intersected,
-  // and a candidate is kept only if it satisfies every other constraint —
-  // the standard way to recover a convex polygon's corners from its
-  // defining half-planes without any general polygon-clipping library.
+  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(0)} ${height}" xmlns="http://www.w3.org/2000/svg">`;
+
+  xTicks.forEach((gx) => {
+    const [px] = toPx(gx, 0);
+    svg += `<line x1="${px.toFixed(1)}" y1="${padT}" x2="${px.toFixed(1)}" y2="${xAxisY}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`;
+  });
+  yTicks.forEach((gy) => {
+    const [, py] = toPx(0, gy);
+    svg += `<line x1="${padL}" y1="${py.toFixed(1)}" x2="${padL + plotW}" y2="${py.toFixed(1)}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`;
+  });
+
+  // Titik pojok daerah penyelesaian: tiap pasang garis batas dipotongkan,
+  // calon disimpan hanya bila memenuhi semua kendala lain — cara baku
+  // memulihkan sudut poligon cembung dari setengah-bidangnya tanpa pustaka
+  // pemotong poligon.
   const feasiblePts = [];
   for (let i = 0; i < norm.length; i++) {
     for (let j = i + 1; j < norm.length; j++) {
@@ -584,10 +694,11 @@ function renderLinearProgramSVG(cfg) {
     const cx0 = vertices.reduce((s, p) => s + p.x, 0) / vertices.length;
     const cy0 = vertices.reduce((s, p) => s + p.y, 0) / vertices.length;
     vertices.sort((p, q) => Math.atan2(p.y - cy0, p.x - cx0) - Math.atan2(q.y - cy0, q.x - cx0));
-    const patternId = 'lpHatch' + Math.abs((xmax - xmin) * 977 + (ymax - ymin) * 331 + vertices.length).toString(36);
-    svg += `<defs><pattern id="${patternId}" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#334155" stroke-width="1.4"/></pattern></defs>`;
+    // Arsiran miring abu-abu, seperti daerah penyelesaian di naskah ujian.
+    const patternId = 'lpHatch' + (grafikClipCounter++);
+    svg += `<defs><pattern id="${patternId}" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="${GAYA.abu}" stroke-width="1.2"/></pattern></defs>`;
     const pts = vertices.map((p) => toPx(p.x, p.y).map((v) => v.toFixed(1)).join(',')).join(' ');
-    svg += `<polygon points="${pts}" fill="url(#${patternId})" fill-opacity="0.6" stroke="none"/>`;
+    svg += `<polygon points="${pts}" fill="url(#${patternId})" stroke="none"/>`;
   }
 
   norm.forEach((c, i) => {
@@ -596,22 +707,38 @@ function renderLinearProgramSVG(cfg) {
     const [p1, p2] = seg;
     const [px1, py1] = toPx(p1.x, p1.y);
     const [px2, py2] = toPx(p2.x, p2.y);
-    const dashAttr = c.strict ? ' stroke-dasharray="5,4"' : '';
-    svg += `<line x1="${px1.toFixed(1)}" y1="${py1.toFixed(1)}" x2="${px2.toFixed(1)}" y2="${py2.toFixed(1)}" stroke="#000000" stroke-width="1.6"${dashAttr}/>`;
-    const labelY = Math.min(Math.max(py2, pad + 12), chartH - pad - 4);
-    svg += `<text x="${(px2 - 4).toFixed(1)}" y="${labelY.toFixed(1)}" font-size="10" text-anchor="end" fill="#000000">(${i + 1})</text>`;
+    // Pertidaksamaan tegas (<, >) digambar putus-putus: garis batasnya
+    // tidak termasuk daerah penyelesaian.
+    const dashAttr = c.strict ? ` stroke-dasharray="${GAYA.putus}"` : '';
+    svg += `<line x1="${px1.toFixed(1)}" y1="${py1.toFixed(1)}" x2="${px2.toFixed(1)}" y2="${py2.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"${dashAttr}/>`;
+    // Nomor garis sedikit ke dalam dari ujung ruas dan digeser tegak lurus
+    // garis, ke sisi yang masih di dalam plot — jadi tidak menimpa garisnya
+    // sendiri, sumbu, atau angka skala (garis x=0 / y=0 berimpit sumbu).
+    const len = Math.hypot(px2 - px1, py2 - py1) || 1;
+    const dx = (px2 - px1) / len, dy = (py2 - py1) / len;
+    let lx = px2 - dx * 14 - dy * 10, ly = py2 - dy * 14 + dx * 10;
+    if (lx < padL + 6 || lx > padL + plotW - 6 || ly < padT + 6 || ly > xAxisY - 6) {
+      lx = px2 - dx * 14 + dy * 10; ly = py2 - dy * 14 - dx * 10;
+    }
+    svg += teksHaloSVG(lx, ly + 3.5, `(${i + 1})`);
   });
+
+  svg += sumbuALevelSVG({ xAxisY, yAxisX, xFrom: padL, xTo: padL + plotW + 10, yFrom: xAxisY, yTo: padT - 10, labelX: 'x', labelY: 'y' });
+  const originShown = xmin === 0 && ymin === 0;
+  xTicks.forEach((gx) => { if (!(originShown && Math.abs(gx) < 1e-9)) svg += tickXSVG(toPx(gx, 0)[0], xAxisY, formatTick(gx)); });
+  yTicks.forEach((gy) => { if (!(originShown && Math.abs(gy) < 1e-9)) svg += tickYSVG(yAxisX, toPx(0, gy)[1], formatTick(gy)); });
+  if (originShown) svg += teksHaloSVG(yAxisX - 5, xAxisY + 13, 'O', { anchor: 'end', italic: true });
 
   if (vertices.length && cfg.titikpojok !== 'tidak') {
     vertices.forEach((p) => {
       const [px, py] = toPx(p.x, p.y);
-      svg += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="3" fill="#000000"/>`;
-      svg += `<text x="${(px + 6).toFixed(1)}" y="${(py - 6).toFixed(1)}" font-size="10" fill="#000000">(${formatTick(p.x)}, ${formatTick(p.y)})</text>`;
+      svg += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="2.5" fill="${GAYA.hitam}"/>`;
+      svg += teksHaloSVG(px + 6, py - 6, `(${formatTick(p.x)}, ${formatTick(p.y)})`, { anchor: 'start' });
     });
   }
 
   rawList.forEach((r, i) => {
-    svg += `<text x="14" y="${(chartH + 18 + i * 16).toFixed(1)}" font-size="10.5" fill="#000000">(${i + 1}) ${escText(r)}</text>`;
+    svg += `<text x="${padL}" y="${(xAxisY + padB + 10 + i * 16).toFixed(1)}" font-size="${GAYA.teksKecil}" fill="${GAYA.hitam}">(${i + 1}) ${escText(r)}</text>`;
   });
 
   svg += '</svg>';
@@ -1207,28 +1334,37 @@ function renderAngleSVG(cfg) {
 // ---------------------------------------------------------------------
 
 function renderNumberLineSVG(cfg) {
-  const width = 400, height = 110, pad = 30;
+  const width = 400, pad = 30;
   const min = numOrDefault(cfg.min, -10), max = numOrDefault(cfg.max, 10);
   const step = numOrDefault(cfg.step, 1) || 1;
   const sx = (width - 2 * pad) / (max - min || 1);
   const toPx = (v) => pad + (v - min) * sx;
-  const y = 55;
+  const adaTitik = (cfg.titik || []).length > 0;
+  // Kanvas dipotong pas: ruang di atas garis hanya kalau ada titik berlabel.
+  const y = adaTitik ? 34 : 14;
+  const height = y + 30;
 
   let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<line x1="${pad - 8}" y1="${y}" x2="${width - pad + 8}" y2="${y}" stroke="#1e293b" stroke-width="1.6"/>`;
-  svg += `<polygon points="${width - pad + 8},${y} ${width - pad},${y - 4} ${width - pad},${y + 4}" fill="#1e293b"/>`;
-  svg += `<polygon points="${pad - 8},${y} ${pad},${y - 4} ${pad},${y + 4}" fill="#1e293b"/>`;
+  // Garis bilangan berpanah di kedua ujung (bilangan berlanjut ke dua arah).
+  svg += arrowSVG(width / 2, y, width - pad + 12, y, { headLen: 7, strokeWidth: GAYA.garis });
+  svg += arrowSVG(width / 2, y, pad - 12, y, { headLen: 7, strokeWidth: GAYA.garis });
 
-  for (let v = min; v <= max + 1e-9; v += step) {
+  // Angka skala dijarangkan otomatis kalau langkahnya terlalu rapat untuk
+  // dibaca (mis. min=0, max=100, step=1): tanda tetap digambar semua.
+  const jumlah = Math.floor((max - min) / step + 1e-9) + 1;
+  const tiap = Math.max(1, Math.ceil(jumlah / 21));
+  let k = 0;
+  for (let v = min; v <= max + 1e-9; v += step, k++) {
     const rv = Math.round(v * 1000) / 1000;
     const px = toPx(rv);
-    svg += `<line x1="${px.toFixed(1)}" y1="${y - 6}" x2="${px.toFixed(1)}" y2="${y + 6}" stroke="#1e293b" stroke-width="1.2"/>`;
-    svg += `<text x="${px.toFixed(1)}" y="${y + 22}" font-size="11" text-anchor="middle" fill="#1e293b">${rv}</text>`;
+    const utama = k % tiap === 0;
+    svg += `<line x1="${px.toFixed(1)}" y1="${y - (utama ? 6 : 4)}" x2="${px.toFixed(1)}" y2="${y + (utama ? 6 : 4)}" stroke="${GAYA.hitam}" stroke-width="1.2"/>`;
+    if (utama) svg += `<text x="${px.toFixed(1)}" y="${y + 20}" font-size="${GAYA.teks}" text-anchor="middle" fill="${GAYA.hitam}">${rv}</text>`;
   }
   (cfg.titik || []).forEach((p) => {
     const px = toPx(p.value);
-    svg += `<circle cx="${px.toFixed(1)}" cy="${y}" r="4" fill="#000000"/>`;
-    svg += `<text x="${px.toFixed(1)}" y="${y - 14}" font-size="12" text-anchor="middle" font-weight="700" fill="#000000">${escText(p.label || '')}</text>`;
+    svg += `<circle cx="${px.toFixed(1)}" cy="${y}" r="3.5" fill="${GAYA.hitam}"/>`;
+    svg += teksHaloSVG(px, y - 12, p.label || '', { size: 12, bold: true });
   });
 
   svg += '</svg>';
@@ -1298,70 +1434,140 @@ function renderVennSVG(cfg) {
 // 5. Diagram Statistik
 // ---------------------------------------------------------------------
 
+// Isian juring/batang tanpa warna, dibedakan pola: putih, abu-abu muda,
+// arsir miring, titik-titik, arsir miring balik, abu-abu tua, arsir silang,
+// garis mendatar. Id pola unik per gambar karena satu halaman memuat banyak
+// SVG inline yang berbagi ruang id. isi(i) mengembalikan atribut fill.
+let polaArsirCounter = 0;
+function polaArsirSVG() {
+  const id = 'pola' + (polaArsirCounter++) + '_';
+  const garis = (rot) => `<pattern id="${id}${rot}" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(${rot})"><line x1="0" y1="0" x2="0" y2="6" stroke="${GAYA.hitam}" stroke-width="0.9"/></pattern>`;
+  const defs = '<defs>' + garis(45) + garis(135) + garis(0) + garis(90)
+    + `<pattern id="${id}titik" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.1" fill="${GAYA.hitam}"/></pattern>`
+    + `<pattern id="${id}silang" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 0L6 6M6 0L0 6" stroke="${GAYA.hitam}" stroke-width="0.7"/></pattern>`
+    + '</defs>';
+  const daftar = [
+    `fill="${GAYA.putih}"`, `fill="${GAYA.arsir}"`, `fill="url(#${id}45)"`, `fill="url(#${id}titik)"`,
+    `fill="url(#${id}135)"`, `fill="#b5b5b5"`, `fill="url(#${id}silang)"`, `fill="url(#${id}0)"`, `fill="url(#${id}90)"`,
+  ];
+  return { defs, isi: (i) => daftar[i % daftar.length] };
+}
+
 function renderStatSVG(cfg) {
   const type = cfg.tipe || 'batang';
   const labels = String(cfg.label || '').split(',').map((s) => s.trim()).filter(Boolean);
   const data = String(cfg.data || '').split(',').map((s) => parseFloat(s.trim()) || 0);
-  const width = 400, height = 280, pad = 36;
-
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
 
   if (type === 'lingkaran') {
-    // No fill (print-friendly): each slice is an outlined wedge, numbered
-    // at its midpoint; the legend on the right maps numbers back to labels.
+    // Label langsung di juringnya (nama + persen); juring sempit diberi
+    // garis penunjuk ke label di luar lingkaran. Juring dibedakan pola
+    // arsiran, bukan warna — naskah ujian dicetak hitam-putih.
     const total = data.reduce((a, b) => a + b, 0) || 1;
-    const cx = width / 2 - 40, cy = height / 2, r = 90;
+    const r = 88;
+    const luar = [];
     let angle = -Math.PI / 2;
-    data.forEach((v, i) => {
+    const juring = data.map((v, i) => {
       const frac = v / total;
-      const a2 = angle + frac * Math.PI * 2;
-      const x1 = cx + r * Math.cos(angle), y1 = cy + r * Math.sin(angle);
-      const x2 = cx + r * Math.cos(a2), y2 = cy + r * Math.sin(a2);
-      const large = frac > 0.5 ? 1 : 0;
-      svg += `<path d="M${cx},${cy} L${x1.toFixed(1)},${y1.toFixed(1)} A${r},${r} 0 ${large} 1 ${x2.toFixed(1)},${y2.toFixed(1)} Z" fill="none" stroke="#000000" stroke-width="1.5"/>`;
-      const midAngle = (angle + a2) / 2;
-      const lx = cx + (r * 0.65) * Math.cos(midAngle), ly = cy + (r * 0.65) * Math.sin(midAngle);
-      svg += `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" font-size="11" text-anchor="middle" fill="#000000">${i + 1}</text>`;
+      const a1 = angle, a2 = angle + frac * Math.PI * 2;
       angle = a2;
+      const pct = Math.round(frac * 1000) / 10;
+      return { i, frac, a1, a2, mid: (a1 + a2) / 2, nama: labels[i] || '', pct: pct + '%' };
     });
-    labels.forEach((lb, i) => {
-      const pct = Math.round(((data[i] || 0) / total) * 1000) / 10;
-      svg += `<text x="${width - 90}" y="${29 + i * 18}" font-size="10.5" fill="#000000">${i + 1}. ${escText(lb)} (${pct}%)</text>`;
+    // Juring < 9% terlalu sempit untuk dua baris teks: labelnya keluar.
+    juring.forEach((j) => { if (j.frac < 0.09) luar.push(j); });
+    const lebarLuar = Math.max.apply(null, luar.map((j) => lebarTeksKira(j.nama + ' ' + j.pct)).concat([0]));
+    const padX = 16 + (luar.length ? 34 + lebarLuar : 0);
+    const cx = padX + r, cy = 16 + r;
+    const width = 2 * (padX + r), height = 2 * (16 + r);
+    const pola = polaArsirSVG();
+
+    let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(0)} ${height}" xmlns="http://www.w3.org/2000/svg">` + pola.defs;
+    juring.forEach((j) => {
+      if (j.frac <= 0) return;
+      const x1 = cx + r * Math.cos(j.a1), y1 = cy + r * Math.sin(j.a1);
+      const x2 = cx + r * Math.cos(j.a2), y2 = cy + r * Math.sin(j.a2);
+      const large = j.frac > 0.5 ? 1 : 0;
+      const d = j.frac >= 1 - 1e-9
+        ? `M${cx},${cy - r} A${r},${r} 0 1 1 ${cx},${cy + r} A${r},${r} 0 1 1 ${cx},${cy - r} Z`
+        : `M${cx},${cy} L${x1.toFixed(1)},${y1.toFixed(1)} A${r},${r} 0 ${large} 1 ${x2.toFixed(1)},${y2.toFixed(1)} Z`;
+      svg += `<path d="${d}" ${pola.isi(j.i)} stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
     });
-  } else if (type === 'garis') {
-    const maxV = Math.max(...data, 1);
-    const stepX = (width - 2 * pad) / Math.max(labels.length - 1, 1);
-    const toY = (v) => height - pad - (v / maxV) * (height - 2 * pad);
-    svg += `<line x1="${pad}" y1="${height - pad}" x2="${width - pad}" y2="${height - pad}" stroke="#94a3b8" stroke-width="1.2"/>`;
-    svg += `<line x1="${pad}" y1="${pad}" x2="${pad}" y2="${height - pad}" stroke="#94a3b8" stroke-width="1.2"/>`;
+    juring.forEach((j) => {
+      if (j.frac <= 0 || j.frac < 0.09) return;
+      const rl = j.frac > 0.25 ? 0.58 : 0.68;
+      const lx = cx + r * rl * Math.cos(j.mid), ly = cy + r * rl * Math.sin(j.mid);
+      svg += teksHaloSVG(lx, ly - 2, j.nama, { size: GAYA.teks });
+      svg += teksHaloSVG(lx, ly + 11, j.pct);
+    });
+    // Label luar: garis penunjuk dari tepi juring ke samping, ditumpuk
+    // berjarak minimal 14 px supaya tidak saling menimpa.
+    const kanan = luar.filter((j) => Math.cos(j.mid) >= 0).sort((a, b) => Math.sin(a.mid) - Math.sin(b.mid));
+    const kiri = luar.filter((j) => Math.cos(j.mid) < 0).sort((a, b) => Math.sin(a.mid) - Math.sin(b.mid));
+    [[kanan, 1], [kiri, -1]].forEach(([grup, arah]) => {
+      let prevY = -Infinity;
+      grup.forEach((j) => {
+        const ex = cx + r * Math.cos(j.mid), ey = cy + r * Math.sin(j.mid);
+        let ty = cy + (r + 14) * Math.sin(j.mid);
+        if (ty < prevY + 14) ty = prevY + 14;
+        prevY = ty;
+        const tx = cx + arah * (r + 22);
+        svg += `<polyline points="${ex.toFixed(1)},${ey.toFixed(1)} ${(cx + arah * (r + 12)).toFixed(1)},${ty.toFixed(1)} ${tx.toFixed(1)},${ty.toFixed(1)}" fill="none" stroke="${GAYA.hitam}" stroke-width="${GAYA.garisBantu}"/>`;
+        svg += `<text x="${(tx + arah * 4).toFixed(1)}" y="${(ty + 3.5).toFixed(1)}" font-size="${GAYA.teksKecil}" text-anchor="${arah > 0 ? 'start' : 'end'}" fill="${GAYA.hitam}">${escText(j.nama)} ${escText(j.pct)}</text>`;
+      });
+    });
+    svg += '</svg>';
+    return svg;
+  }
+
+  // Batang dan garis: sumbu berpanah, angka skala di sumbu y, nama kategori
+  // di bawah sumbu x, label "frekuensi" di atas panah y.
+  const maxV = Math.max.apply(null, data.concat([1]));
+  const yStep = niceStep(maxV);
+  const ymax = Math.ceil(maxV / yStep) * yStep;
+  const yTicks = [];
+  for (let gy = 0; gy <= ymax + 1e-9; gy += yStep) yTicks.push(Math.round(gy * 1e6) / 1e6);
+  const yTickW = Math.max.apply(null, yTicks.map((v) => lebarTeksKira(formatTick(v), GAYA.teksKecil)).concat([0]));
+  const n = Math.max(data.length, 1);
+  const plotW = Math.max(220, Math.min(360, n * 60)), plotH = 200;
+  const padL = yTickW + 16, padR = 24, padT = 30, padB = 30;
+  const width = padL + plotW + padR, height = padT + plotH + padB;
+  const xAxisY = padT + plotH, yAxisX = padL;
+  const toY = (v) => xAxisY - (v / (ymax || 1)) * plotH;
+
+  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(0)} ${height}" xmlns="http://www.w3.org/2000/svg">`;
+  yTicks.forEach((gy) => {
+    if (gy === 0) return;
+    svg += `<line x1="${padL}" y1="${toY(gy).toFixed(1)}" x2="${padL + plotW}" y2="${toY(gy).toFixed(1)}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`;
+  });
+
+  if (type === 'garis') {
+    const stepX = plotW / n;
+    const xs = data.map((v, i) => padL + stepX * (i + 0.5));
     let d = '';
+    data.forEach((v, i) => { d += (i === 0 ? 'M' : 'L') + xs[i].toFixed(1) + ' ' + toY(v).toFixed(1) + ' '; });
+    svg += `<path d="${d}" fill="none" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
     data.forEach((v, i) => {
-      const x = pad + i * stepX, y = toY(v);
-      d += (i === 0 ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
-    });
-    svg += `<path d="${d}" fill="none" stroke="#000000" stroke-width="2"/>`;
-    data.forEach((v, i) => {
-      const x = pad + i * stepX, y = toY(v);
-      svg += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>`;
-      svg += `<text x="${x.toFixed(1)}" y="${height - pad + 16}" font-size="10" text-anchor="middle" fill="#000000">${escText(labels[i] || '')}</text>`;
+      svg += `<circle cx="${xs[i].toFixed(1)}" cy="${toY(v).toFixed(1)}" r="3" fill="${GAYA.putih}" stroke="${GAYA.hitam}" stroke-width="1.4"/>`;
+      svg += `<line x1="${xs[i].toFixed(1)}" y1="${xAxisY}" x2="${xs[i].toFixed(1)}" y2="${xAxisY + 4}" stroke="${GAYA.hitam}" stroke-width="1"/>`;
+      svg += `<text x="${xs[i].toFixed(1)}" y="${xAxisY + 15}" font-size="${GAYA.teksKecil}" text-anchor="middle" fill="${GAYA.hitam}">${escText(labels[i] || '')}</text>`;
+      svg += teksHaloSVG(xs[i], toY(v) - 8, formatTick(v));
     });
   } else {
-    const maxV = Math.max(...data, 1);
-    const n = data.length || 1;
-    const gap = (width - 2 * pad) / n;
+    // Batang abu-abu muda bertepi hitam, bercelah (diagram batang, bukan
+    // histogram), nilainya ditulis di atas batang.
+    const gap = plotW / n;
     const bw = gap * 0.6;
-    svg += `<line x1="${pad}" y1="${height - pad}" x2="${width - pad}" y2="${height - pad}" stroke="#94a3b8" stroke-width="1.2"/>`;
     data.forEach((v, i) => {
-      const h = (v / maxV) * (height - 2 * pad);
-      const x = pad + i * gap + (gap - bw) / 2;
-      const y = height - pad - h;
-      svg += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" fill="none" stroke="#000000" stroke-width="1.5"/>`;
-      svg += `<text x="${(x + bw / 2).toFixed(1)}" y="${height - pad + 16}" font-size="10" text-anchor="middle" fill="#000000">${escText(labels[i] || '')}</text>`;
-      svg += `<text x="${(x + bw / 2).toFixed(1)}" y="${(y - 4).toFixed(1)}" font-size="10" text-anchor="middle" fill="#000000">${v}</text>`;
+      const x = padL + i * gap + (gap - bw) / 2;
+      const y = toY(v);
+      svg += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${(xAxisY - y).toFixed(1)}" fill="${GAYA.arsir}" stroke="${GAYA.hitam}" stroke-width="1.2"/>`;
+      svg += `<text x="${(x + bw / 2).toFixed(1)}" y="${xAxisY + 15}" font-size="${GAYA.teksKecil}" text-anchor="middle" fill="${GAYA.hitam}">${escText(labels[i] || '')}</text>`;
+      svg += `<text x="${(x + bw / 2).toFixed(1)}" y="${(y - 4).toFixed(1)}" font-size="${GAYA.teksKecil}" text-anchor="middle" fill="${GAYA.hitam}">${formatTick(v)}</text>`;
     });
   }
 
+  svg += sumbuALevelSVG({ xAxisY, yAxisX, xFrom: padL, xTo: padL + plotW + 10, yFrom: xAxisY, yTo: padT - 10, labelY: 'frekuensi' });
+  yTicks.forEach((gy) => { svg += tickYSVG(yAxisX, toY(gy), formatTick(gy)); });
   svg += '</svg>';
   return svg;
 }
@@ -2674,58 +2880,69 @@ function renderProbTreeSVG(cfg) {
   const L3raw = cfg.level3 ? parseProbBranches(cfg.level3) : null;
   const L1 = L1raw.length ? L1raw : [{ label: 'A', fracTxt: '1/2', p: 0.5 }, { label: 'B', fracTxt: '1/2', p: 0.5 }];
   const L2 = L2raw.length ? L2raw : L1;
+  const levels = L3raw ? [L1, L2, L3raw] : [L1, L2];
 
-  const depth = L3raw ? 3 : 2;
-  const stepX = 130, rootX = 20;
-  const width = rootX + depth * stepX + 100;
-  const rowH = 26;
+  // Tata letak naskah ujian: nama kejadian ditulis di UJUNG cabang, dan
+  // cabang tahap berikutnya baru mulai di sebelah kanan nama itu — jadi
+  // nama simpul tidak pernah tertimpa pecahan cabang berikutnya.
+  const branchLen = 96;
+  const labelW = levels.map((lv) => Math.max.apply(null, lv.map((b) => lebarTeksKira(b.label, GAYA.teks)).concat([12])) + 14);
+  const rootX = 12;
+  const xNode = [];
+  let x = rootX;
+  levels.forEach((lv, k) => { x += branchLen; xNode.push(x); x += labelW[k]; });
+  const rowH = 24;
   const leavesPerL1 = L2.length * (L3raw ? L3raw.length : 1);
-  const height = Math.max(200, L1.length * leavesPerL1 * rowH + 30);
+  const totalLeaves = L1.length * leavesPerL1;
+  const height = totalLeaves * rowH + 20;
+  const width = xNode[xNode.length - 1] + labelW[levels.length - 1] + 52;
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
+  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(0)} ${height}" xmlns="http://www.w3.org/2000/svg">`;
+  const branch = (x1, y1, x2, y2, frac) => {
+    let s = `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
+    // Pecahan di tengah cabang, digeser tegak lurus ke sisi luar (atas untuk
+    // cabang yang naik, bawah untuk yang turun) supaya tidak menempel garis.
+    const naik = y2 <= y1;
+    s += teksHaloSVG((x1 + x2) / 2, (y1 + y2) / 2 + (naik ? -5 : 12), frac, { size: GAYA.teks });
+    return s;
+  };
+  const nodeLabel = (xn, y, teks) => `<text x="${(xn + 5).toFixed(1)}" y="${(y + 4).toFixed(1)}" font-size="${GAYA.teks}" fill="${GAYA.hitam}">${escText(teks)}</text>`;
 
   const rootY = height / 2;
-  svg += `<circle cx="${rootX}" cy="${rootY.toFixed(1)}" r="2.5" fill="#000000"/>`;
-
+  svg += `<circle cx="${rootX}" cy="${rootY.toFixed(1)}" r="2.2" fill="${GAYA.hitam}"/>`;
   let cursor = 10;
   L1.forEach((b1) => {
-    const rows = leavesPerL1;
-    const y1 = cursor + (rows * rowH) / 2;
-    cursor += rows * rowH;
-    const x1 = rootX + stepX;
-    svg += `<line x1="${rootX}" y1="${rootY.toFixed(1)}" x2="${x1}" y2="${y1.toFixed(1)}" stroke="#000000" stroke-width="1.4"/>`;
-    svg += `<text x="${((rootX + x1) / 2).toFixed(1)}" y="${((rootY + y1) / 2 - 6).toFixed(1)}" font-size="10.5" text-anchor="middle" fill="#000000">${escText(b1.fracTxt)}</text>`;
-    svg += `<circle cx="${x1}" cy="${y1.toFixed(1)}" r="2.5" fill="#000000"/>`;
-    svg += `<text x="${(x1 + 6).toFixed(1)}" y="${(y1 - 6).toFixed(1)}" font-size="11" fill="#000000">${escText(b1.label)}</text>`;
+    const y1 = cursor + (leavesPerL1 * rowH) / 2;
+    cursor += leavesPerL1 * rowH;
+    svg += branch(rootX, rootY, xNode[0], y1, b1.fracTxt);
+    svg += `<circle cx="${xNode[0]}" cy="${y1.toFixed(1)}" r="2.2" fill="${GAYA.hitam}"/>`;
+    svg += nodeLabel(xNode[0], y1, b1.label);
+    const start2 = xNode[0] + labelW[0];
 
     let subCursor = y1 - (leavesPerL1 * rowH) / 2;
     L2.forEach((b2) => {
       const rows2 = L3raw ? L3raw.length : 1;
       const y2 = subCursor + (rows2 * rowH) / 2;
       subCursor += rows2 * rowH;
-      const x2 = x1 + stepX;
-      svg += `<line x1="${x1}" y1="${y1.toFixed(1)}" x2="${x2}" y2="${y2.toFixed(1)}" stroke="#000000" stroke-width="1.4"/>`;
-      svg += `<text x="${((x1 + x2) / 2).toFixed(1)}" y="${((y1 + y2) / 2 - 6).toFixed(1)}" font-size="10.5" text-anchor="middle" fill="#000000">${escText(b2.fracTxt)}</text>`;
+      svg += branch(start2, y1, xNode[1], y2, b2.fracTxt);
+      svg += `<circle cx="${xNode[1]}" cy="${y2.toFixed(1)}" r="2.2" fill="${GAYA.hitam}"/>`;
+      svg += nodeLabel(xNode[1], y2, b2.label);
 
       if (L3raw) {
-        svg += `<circle cx="${x2}" cy="${y2.toFixed(1)}" r="2.5" fill="#000000"/>`;
-        svg += `<text x="${(x2 + 6).toFixed(1)}" y="${(y2 - 6).toFixed(1)}" font-size="11" fill="#000000">${escText(b2.label)}</text>`;
+        const start3 = xNode[1] + labelW[1];
         let subCursor3 = y2 - (L3raw.length * rowH) / 2;
         L3raw.forEach((b3) => {
           const y3 = subCursor3 + rowH / 2;
           subCursor3 += rowH;
-          const x3 = x2 + stepX;
-          svg += `<line x1="${x2}" y1="${y2.toFixed(1)}" x2="${x3}" y2="${y3.toFixed(1)}" stroke="#000000" stroke-width="1.4"/>`;
-          svg += `<text x="${((x2 + x3) / 2).toFixed(1)}" y="${((y2 + y3) / 2 - 6).toFixed(1)}" font-size="10.5" text-anchor="middle" fill="#000000">${escText(b3.fracTxt)}</text>`;
-          svg += `<text x="${(x3 + 5).toFixed(1)}" y="${(y3 + 4).toFixed(1)}" font-size="11" fill="#000000">${escText(b3.label)}</text>`;
+          svg += branch(start3, y2, xNode[2], y3, b3.fracTxt);
+          svg += `<circle cx="${xNode[2]}" cy="${y3.toFixed(1)}" r="2.2" fill="${GAYA.hitam}"/>`;
+          svg += nodeLabel(xNode[2], y3, b3.label);
           const totalP = b1.p * b2.p * b3.p;
-          svg += `<text x="${(x3 + 55).toFixed(1)}" y="${(y3 + 4).toFixed(1)}" font-size="10" fill="#475569">P=${Math.round(totalP * 1000) / 1000}</text>`;
+          svg += `<text x="${(xNode[2] + labelW[2]).toFixed(1)}" y="${(y3 + 4).toFixed(1)}" font-size="${GAYA.teksKecil}" fill="${GAYA.hitam}">P = ${Math.round(totalP * 1000) / 1000}</text>`;
         });
       } else {
-        svg += `<text x="${(x2 + 5).toFixed(1)}" y="${(y2 + 4).toFixed(1)}" font-size="11" fill="#000000">${escText(b2.label)}</text>`;
         const totalP = b1.p * b2.p;
-        svg += `<text x="${(x2 + 55).toFixed(1)}" y="${(y2 + 4).toFixed(1)}" font-size="10" fill="#475569">P=${Math.round(totalP * 1000) / 1000}</text>`;
+        svg += `<text x="${(xNode[1] + labelW[1]).toFixed(1)}" y="${(y2 + 4).toFixed(1)}" font-size="${GAYA.teksKecil}" fill="${GAYA.hitam}">P = ${Math.round(totalP * 1000) / 1000}</text>`;
       }
     });
   });
@@ -2865,23 +3082,29 @@ function computeOgivePoints(cfg) {
 
 function renderOgiveSVG(cfg) {
   const { pts, n } = computeOgivePoints(cfg);
-  const width = 380, height = 300, pad = 42;
   const xs = pts.map((p) => p.x), ys = pts.map((p) => p.y);
-  const xmin = Math.min(...xs), xmax = Math.max(...xs);
-  const ymin = 0, ymax = Math.max(...ys, 1);
-  const sx = (width - 2 * pad) / ((xmax - xmin) || 1), sy = (height - 2 * pad) / ((ymax - ymin) || 1);
-  const toPx = (x, y) => [pad + (x - xmin) * sx, height - pad - (y - ymin) * sy];
+  const xmin = Math.min.apply(null, xs), xmax = Math.max.apply(null, xs);
+  const ymax = Math.max.apply(null, ys.concat([1]));
+  const xStep = niceStep((xmax - xmin) || 1), yStep = niceStep(ymax);
+  const yTop = Math.ceil(ymax / yStep) * yStep;
+  const xTicks = [], yTicks = [];
+  for (let gx = Math.ceil(xmin / xStep) * xStep; gx <= xmax + 1e-9; gx += xStep) xTicks.push(Math.round(gx * 1e6) / 1e6);
+  for (let gy = 0; gy <= yTop + 1e-9; gy += yStep) yTicks.push(Math.round(gy * 1e6) / 1e6);
+  const yTickW = Math.max.apply(null, yTicks.map((v) => lebarTeksKira(formatTick(v), GAYA.teksKecil)).concat([0]));
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
-  svg += `<line x1="${pad}" y1="${height - pad}" x2="${width - pad}" y2="${height - pad}" stroke="#94a3b8" stroke-width="1.2"/>`;
-  svg += `<line x1="${pad}" y1="${pad}" x2="${pad}" y2="${height - pad}" stroke="#94a3b8" stroke-width="1.2"/>`;
+  const plotW = 300, plotH = 210;
+  const padL = yTickW + 16, padR = 26, padT = 30, padB = 44;
+  const width = padL + plotW + padR, height = padT + plotH + padB;
+  const xAxisY = padT + plotH, yAxisX = padL;
+  const sx = plotW / ((xmax - xmin) || 1), sy = plotH / (yTop || 1);
+  const toPx = (x, y) => [padL + (x - xmin) * sx, xAxisY - y * sy];
 
-  let d = '';
-  pts.forEach((p, i) => { const [px, py] = toPx(p.x, p.y); d += (i === 0 ? 'M' : 'L') + px.toFixed(1) + ' ' + py.toFixed(1) + ' '; });
-  svg += `<path d="${d}" fill="none" stroke="#000000" stroke-width="2"/>`;
-  pts.forEach((p) => { const [px, py] = toPx(p.x, p.y); svg += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="2.5" fill="#000000"/>`; });
+  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(0)} ${height}" xmlns="http://www.w3.org/2000/svg">`;
+  xTicks.forEach((gx) => { const [px] = toPx(gx, 0); svg += `<line x1="${px.toFixed(1)}" y1="${padT}" x2="${px.toFixed(1)}" y2="${xAxisY}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`; });
+  yTicks.forEach((gy) => { const [, py] = toPx(xmin, gy); svg += `<line x1="${padL}" y1="${py.toFixed(1)}" x2="${padL + plotW}" y2="${py.toFixed(1)}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`; });
 
+  // Kuartil: garis bantu putus-putus abu-abu dari n/4, n/2, 3n/4 di sumbu y
+  // ke kurva lalu turun ke sumbu x — cara membaca kuartil dari ogive.
   function interpX(targetY) {
     for (let i = 1; i < pts.length; i++) {
       if (pts[i].y >= targetY) {
@@ -2893,18 +3116,35 @@ function renderOgiveSVG(cfg) {
     }
     return pts[pts.length - 1].x;
   }
-  ['Q1', 'Q2', 'Q3'].forEach((label, i) => {
+  const kuartil = ['Q1', 'Q2', 'Q3'].map((label, i) => {
     const targetY = (n * (i + 1)) / 4;
-    const qx = interpX(targetY);
-    const [px, py] = toPx(qx, targetY);
-    svg += `<line x1="${px.toFixed(1)}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${height - pad}" stroke="#b91c1c" stroke-width="1" stroke-dasharray="3,3"/>`;
-    svg += `<line x1="${pad}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="#b91c1c" stroke-width="1" stroke-dasharray="3,3"/>`;
-    svg += `<text x="${px.toFixed(1)}" y="${(height - pad + 14).toFixed(1)}" font-size="9.5" text-anchor="middle" fill="#b91c1c">${label}=${formatTick(qx)}</text>`;
+    return { label, y: targetY, x: interpX(targetY) };
+  });
+  kuartil.forEach((q) => {
+    const [px, py] = toPx(q.x, q.y);
+    svg += `<line x1="${px.toFixed(1)}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${xAxisY}" stroke="${GAYA.abu}" stroke-width="${GAYA.garisBantu}" stroke-dasharray="${GAYA.putus}"/>`;
+    svg += `<line x1="${padL}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="${GAYA.abu}" stroke-width="${GAYA.garisBantu}" stroke-dasharray="${GAYA.putus}"/>`;
   });
 
-  svg += `<text x="${(pad - 6).toFixed(1)}" y="${(pad + 4).toFixed(1)}" font-size="9.5" text-anchor="end" fill="#64748b">${n}</text>`;
-  svg += `<text x="${(pad - 6).toFixed(1)}" y="${(height - pad + 4).toFixed(1)}" font-size="9.5" text-anchor="end" fill="#64748b">0</text>`;
+  let d = '';
+  pts.forEach((p, i) => { const [px, py] = toPx(p.x, p.y); d += (i === 0 ? 'M' : 'L') + px.toFixed(1) + ' ' + py.toFixed(1) + ' '; });
+  svg += `<path d="${d}" fill="none" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
+  pts.forEach((p) => { const [px, py] = toPx(p.x, p.y); svg += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="2.2" fill="${GAYA.hitam}"/>`; });
 
+  svg += sumbuALevelSVG({ xAxisY, yAxisX, xFrom: padL, xTo: padL + plotW + 10, yFrom: xAxisY, yTo: padT - 10, labelY: 'frekuensi kumulatif' });
+  xTicks.forEach((gx) => { svg += tickXSVG(toPx(gx, 0)[0], xAxisY, formatTick(gx)); });
+  yTicks.forEach((gy) => { svg += tickYSVG(yAxisX, toPx(xmin, gy)[1], formatTick(gy)); });
+  // Nama kuartil di kaki garis bantunya; nilainya dalam satu baris di bawah
+  // grafik supaya tidak saling tumpang tindih saat kuartil berdekatan.
+  kuartil.forEach((q) => { svg += teksHaloSVG(toPx(q.x, 0)[0] + 3, xAxisY - 4, q.label, { anchor: 'start', italic: true }); });
+  // (Tiga <text> terpisah: spasi beruntun di dalam satu <text> SVG dilebur
+  // jadi satu, sehingga jaraknya tidak bisa diatur lewat spasi.)
+  let rx = padL;
+  kuartil.forEach((q) => {
+    const t = `${q.label} ≈ ${formatTick(Math.round(q.x * 100) / 100)}`;
+    svg += `<text x="${rx.toFixed(1)}" y="${(height - 6).toFixed(1)}" font-size="${GAYA.teksKecil}" fill="${GAYA.hitam}">${escText(t)}</text>`;
+    rx += lebarTeksKira(t, GAYA.teksKecil) + 22;
+  });
   svg += '</svg>';
   return svg;
 }
@@ -2923,26 +3163,41 @@ function computeFiveNumberSummary(cfg) {
 
 function renderBoxplotSVG(cfg) {
   const s = computeFiveNumberSummary(cfg);
-  const width = 380, height = 140, pad = 40;
+  const plotW = 300, padL = 30, padR = 30;
+  const width = plotW + padL + padR, height = 128;
   const vmin = numOrDefault(cfg.xmin, s.min - (s.max - s.min) * 0.1);
   const vmax = numOrDefault(cfg.xmax, s.max + (s.max - s.min) * 0.1);
-  const sx = (width - 2 * pad) / ((vmax - vmin) || 1);
-  const toX = (v) => pad + (v - vmin) * sx;
-  const midY = 70, boxH = 34;
+  const sx = plotW / ((vmax - vmin) || 1);
+  const toX = (v) => padL + (v - vmin) * sx;
+  const midY = 60, boxH = 34;
+  const axisY = height - 30;
 
   let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
-  svg += `<line x1="${pad}" y1="${height - 24}" x2="${width - pad}" y2="${height - 24}" stroke="#94a3b8" stroke-width="1.2"/>`;
-  [s.min, s.max].forEach((v) => { svg += `<text x="${toX(v).toFixed(1)}" y="${height - 8}" font-size="9.5" text-anchor="middle" fill="#64748b">${formatTick(v)}</text>`; });
+  // Skala bernomor di bawah kotak, seperti box-and-whisker di naskah ujian:
+  // siswa membaca kuartil dari skalanya, bukan dari angka yang dicetak.
+  const step = niceStep(vmax - vmin);
+  svg += arrowSVG(padL - 6, axisY, padL + plotW + 10, axisY, { headLen: 7, strokeWidth: 1.2 });
+  for (let v = Math.ceil(vmin / step) * step; v <= vmax + 1e-9; v += step) {
+    const rv = Math.round(v * 1e6) / 1e6;
+    svg += tickXSVG(toX(rv), axisY, formatTick(rv));
+  }
 
-  svg += `<line x1="${toX(s.min).toFixed(1)}" y1="${midY.toFixed(1)}" x2="${toX(s.q1).toFixed(1)}" y2="${midY.toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`;
-  svg += `<line x1="${toX(s.q3).toFixed(1)}" y1="${midY.toFixed(1)}" x2="${toX(s.max).toFixed(1)}" y2="${midY.toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`;
-  [s.min, s.max].forEach((v) => { svg += `<line x1="${toX(v).toFixed(1)}" y1="${(midY - boxH / 4).toFixed(1)}" x2="${toX(v).toFixed(1)}" y2="${(midY + boxH / 4).toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`; });
-  svg += `<rect x="${toX(s.q1).toFixed(1)}" y="${(midY - boxH / 2).toFixed(1)}" width="${(toX(s.q3) - toX(s.q1)).toFixed(1)}" height="${boxH}" fill="#ffffff" stroke="#000000" stroke-width="1.8"/>`;
-  svg += `<line x1="${toX(s.median).toFixed(1)}" y1="${(midY - boxH / 2).toFixed(1)}" x2="${toX(s.median).toFixed(1)}" y2="${(midY + boxH / 2).toFixed(1)}" stroke="#000000" stroke-width="2.2"/>`;
+  svg += `<line x1="${toX(s.min).toFixed(1)}" y1="${midY.toFixed(1)}" x2="${toX(s.q1).toFixed(1)}" y2="${midY.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
+  svg += `<line x1="${toX(s.q3).toFixed(1)}" y1="${midY.toFixed(1)}" x2="${toX(s.max).toFixed(1)}" y2="${midY.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
+  [s.min, s.max].forEach((v) => { svg += `<line x1="${toX(v).toFixed(1)}" y1="${(midY - boxH / 4).toFixed(1)}" x2="${toX(v).toFixed(1)}" y2="${(midY + boxH / 4).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`; });
+  svg += `<rect x="${toX(s.q1).toFixed(1)}" y="${(midY - boxH / 2).toFixed(1)}" width="${(toX(s.q3) - toX(s.q1)).toFixed(1)}" height="${boxH}" fill="${GAYA.putih}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
+  svg += `<line x1="${toX(s.median).toFixed(1)}" y1="${(midY - boxH / 2).toFixed(1)}" x2="${toX(s.median).toFixed(1)}" y2="${(midY + boxH / 2).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
 
+  // Nama lima serangkai di atas kotak; kalau dua nama bertetangga terlalu
+  // rapat (data yang sempit), nama yang belakangan dinaikkan satu baris.
+  let prevRight = -Infinity, prevRow = 0;
   [['Min', s.min], ['Q1', s.q1], ['Median', s.median], ['Q3', s.q3], ['Max', s.max]].forEach(([label, v]) => {
-    svg += `<text x="${toX(v).toFixed(1)}" y="${(midY - boxH / 2 - 8).toFixed(1)}" font-size="9" text-anchor="middle" fill="#000000">${label}</text>`;
+    const x = toX(v), w = lebarTeksKira(label, GAYA.teksKecil);
+    let row = 0;
+    if (x - w / 2 < prevRight + 4) row = prevRow === 0 ? 1 : 0;
+    if (row === 0) prevRight = x + w / 2;
+    prevRow = row;
+    svg += `<text x="${x.toFixed(1)}" y="${(midY - boxH / 2 - 7 - row * 12).toFixed(1)}" font-size="${GAYA.teksKecil}" text-anchor="middle" fill="${GAYA.hitam}">${label}</text>`;
   });
 
   svg += '</svg>';
@@ -4218,66 +4473,54 @@ function renderScatterSVG(cfg) {
   const ys = parseNumberList(cfg.y);
   if (!xs.length || !ys.length) throw new Error('pencar perlu x= dan y= berisi angka');
   const n = Math.min(xs.length, ys.length);
-  // Error bars: one value applies to every point, a list applies per point.
+  // Batang galat: satu angka berlaku untuk semua titik, daftar per titik.
   const errs = parseNumberList(cfg.galat);
 
-  const width = 420, height = 320, padL = 52, padR = 18, padT = 22, padB = 46;
+  const plotW = 320, plotH = 230;
   const dataXmin = Math.min.apply(null, xs), dataXmax = Math.max.apply(null, xs);
   const dataYmin = Math.min.apply(null, ys), dataYmax = Math.max.apply(null, ys);
   const maxErr = errs.length ? Math.max.apply(null, errs) : 0;
-  // Pad the axes out to a round step past the data so no point sits on the
-  // frame, which is where a plotted cross becomes unreadable.
+  // Sumbu dilebarkan ke kelipatan langkah di luar data supaya tidak ada
+  // tanda silang yang duduk tepat di sumbu.
   const xStep = niceStep(dataXmax - dataXmin || 1);
   const yStep = niceStep((dataYmax + maxErr) - (dataYmin - maxErr) || 1);
   const xmin = numOrDefault(cfg.xmin, Math.floor(dataXmin / xStep) * xStep);
   const xmax = numOrDefault(cfg.xmax, Math.ceil(dataXmax / xStep) * xStep);
   const ymin = numOrDefault(cfg.ymin, Math.floor((dataYmin - maxErr) / yStep) * yStep);
   const ymax = numOrDefault(cfg.ymax, Math.ceil((dataYmax + maxErr) / yStep) * yStep);
-  const plotW = width - padL - padR, plotH = height - padT - padB;
-  const toPx = (x, y) => [
-    padL + ((x - xmin) / ((xmax - xmin) || 1)) * plotW,
-    padT + plotH - ((y - ymin) / ((ymax - ymin) || 1)) * plotH
-  ];
+  const xTicks = [], yTicks = [];
+  for (let gx = Math.ceil(xmin / xStep) * xStep; gx <= xmax + 1e-9; gx += xStep) xTicks.push(Math.round(gx * 1e6) / 1e6);
+  for (let gy = Math.ceil(ymin / yStep) * yStep; gy <= ymax + 1e-9; gy += yStep) yTicks.push(Math.round(gy * 1e6) / 1e6);
+  const yTickW = Math.max.apply(null, yTicks.map((v) => lebarTeksKira(formatTick(v), GAYA.teksKecil)).concat([0]));
+  const labelX = cfg.sumbux ? labelSumbuALevel(cfg.sumbux) : 'x';
+  const labelY = cfg.sumbuy ? labelSumbuALevel(cfg.sumbuy) : 'y';
+  const padL = yTickW + 16, padR = 12 + lebarTeksKira(labelX) + 10, padT = (cfg.judul ? 18 : 0) + 28, padB = 26;
+  const width = Math.max(padL + plotW + padR, padL - 8 + lebarTeksKira(labelY) + 6), height = padT + plotH + padB;
+  const xAxisY = padT + plotH, yAxisX = padL;
+  const toPx = (x, y) => [padL + ((x - xmin) / ((xmax - xmin) || 1)) * plotW, xAxisY - ((y - ymin) / ((ymax - ymin) || 1)) * plotH];
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
+  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(0)} ${height}" xmlns="http://www.w3.org/2000/svg">`;
   if (cfg.judul) {
-    svg += `<text x="${(width / 2).toFixed(1)}" y="15" text-anchor="middle" font-size="12" font-weight="700" fill="#000000">${escText(cfg.judul)}</text>`;
+    svg += `<text x="${(padL + plotW / 2).toFixed(1)}" y="14" text-anchor="middle" font-size="${GAYA.teks}" font-weight="700" fill="${GAYA.hitam}">${escText(cfg.judul)}</text>`;
   }
-
-  for (let gx = Math.ceil(xmin / xStep) * xStep; gx <= xmax + 1e-9; gx += xStep) {
-    const [px] = toPx(gx, ymin);
-    svg += `<line x1="${px.toFixed(1)}" y1="${padT}" x2="${px.toFixed(1)}" y2="${padT + plotH}" stroke="#eef0f3" stroke-width="1"/>`;
-    svg += `<text x="${px.toFixed(1)}" y="${(padT + plotH + 14).toFixed(1)}" font-size="9.5" text-anchor="middle" fill="#334155">${formatTick(gx)}</text>`;
-  }
-  for (let gy = Math.ceil(ymin / yStep) * yStep; gy <= ymax + 1e-9; gy += yStep) {
-    const [, py] = toPx(xmin, gy);
-    svg += `<line x1="${padL}" y1="${py.toFixed(1)}" x2="${padL + plotW}" y2="${py.toFixed(1)}" stroke="#eef0f3" stroke-width="1"/>`;
-    svg += `<text x="${(padL - 6).toFixed(1)}" y="${(py + 3.5).toFixed(1)}" font-size="9.5" text-anchor="end" fill="#334155">${formatTick(gy)}</text>`;
-  }
-  svg += `<rect x="${padL}" y="${padT}" width="${plotW}" height="${plotH}" fill="none" stroke="#000000" stroke-width="1.3"/>`;
-
-  if (cfg.sumbux) {
-    svg += `<text x="${(padL + plotW / 2).toFixed(1)}" y="${(height - 8).toFixed(1)}" text-anchor="middle" font-size="11" fill="#000000">${escText(cfg.sumbux)}</text>`;
-  }
-  if (cfg.sumbuy) {
-    const cy = padT + plotH / 2;
-    svg += `<text x="13" y="${cy.toFixed(1)}" text-anchor="middle" font-size="11" fill="#000000" transform="rotate(-90 13 ${cy.toFixed(1)})">${escText(cfg.sumbuy)}</text>`;
-  }
+  xTicks.forEach((gx) => { const [px] = toPx(gx, ymin); svg += `<line x1="${px.toFixed(1)}" y1="${padT}" x2="${px.toFixed(1)}" y2="${xAxisY}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`; });
+  yTicks.forEach((gy) => { const [, py] = toPx(xmin, gy); svg += `<line x1="${padL}" y1="${py.toFixed(1)}" x2="${padL + plotW}" y2="${py.toFixed(1)}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`; });
 
   const fit = leastSquaresFit(xs.slice(0, n), ys.slice(0, n));
-  // Drawn before the points so the crosses stay legible where the line
-  // passes through them.
+  // Garis lurus terbaik putus-putus, digambar SEBELUM titik supaya tanda
+  // silang tetap terbaca di tempat garis melewatinya. Dipotong ke jendela
+  // plot supaya tidak keluar sumbu.
   if (fit && String(cfg.garis || 'ya').toLowerCase() !== 'tidak') {
-    const a = toPx(xmin, fit.m * xmin + fit.c);
-    const b = toPx(xmax, fit.m * xmax + fit.c);
-    svg += `<line x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="#000000" stroke-width="1.4"/>`;
-    // The mean point every "line of best fit must pass through" mark
-    // scheme checks for.
+    const seg = clipLineToRect(-fit.m, 1, fit.c, xmin, xmax, ymin, ymax);
+    if (seg) {
+      const a = toPx(seg[0].x, seg[0].y), b = toPx(seg[1].x, seg[1].y);
+      svg += `<line x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.2" stroke-dasharray="${GAYA.putus}"/>`;
+    }
+    // Titik rata-rata (x̄, ȳ) yang wajib dilewati garis menurut skema penilaian.
     if (String(cfg.rerata || '').toLowerCase() === 'ya') {
       const mp = toPx(fit.meanX, fit.meanY);
-      svg += `<circle cx="${mp[0].toFixed(1)}" cy="${mp[1].toFixed(1)}" r="4" fill="none" stroke="#000000" stroke-width="1.4"/>`;
-      svg += `<circle cx="${mp[0].toFixed(1)}" cy="${mp[1].toFixed(1)}" r="1.5" fill="#000000"/>`;
+      svg += `<circle cx="${mp[0].toFixed(1)}" cy="${mp[1].toFixed(1)}" r="4" fill="none" stroke="${GAYA.hitam}" stroke-width="1.4"/>`;
+      svg += `<circle cx="${mp[0].toFixed(1)}" cy="${mp[1].toFixed(1)}" r="1.5" fill="${GAYA.hitam}"/>`;
     }
   }
 
@@ -4288,15 +4531,19 @@ function renderScatterSVG(cfg) {
       if (e) {
         const top = toPx(xs[i], ys[i] + e)[1];
         const bot = toPx(xs[i], ys[i] - e)[1];
-        svg += `<line x1="${px.toFixed(1)}" y1="${top.toFixed(1)}" x2="${px.toFixed(1)}" y2="${bot.toFixed(1)}" stroke="#000000" stroke-width="1"/>`;
-        svg += `<line x1="${(px - 4).toFixed(1)}" y1="${top.toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${top.toFixed(1)}" stroke="#000000" stroke-width="1"/>`;
-        svg += `<line x1="${(px - 4).toFixed(1)}" y1="${bot.toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${bot.toFixed(1)}" stroke="#000000" stroke-width="1"/>`;
+        svg += `<line x1="${px.toFixed(1)}" y1="${top.toFixed(1)}" x2="${px.toFixed(1)}" y2="${bot.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1"/>`;
+        svg += `<line x1="${(px - 4).toFixed(1)}" y1="${top.toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${top.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1"/>`;
+        svg += `<line x1="${(px - 4).toFixed(1)}" y1="${bot.toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${bot.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1"/>`;
       }
     }
-    svg += `<line x1="${(px - 4).toFixed(1)}" y1="${(py - 4).toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${(py + 4).toFixed(1)}" stroke="#000000" stroke-width="1.4"/>`;
-    svg += `<line x1="${(px - 4).toFixed(1)}" y1="${(py + 4).toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${(py - 4).toFixed(1)}" stroke="#000000" stroke-width="1.4"/>`;
+    // Tanda silang, bukan titik: konvensi plot yang dinilai semua dewan ujian.
+    svg += `<line x1="${(px - 4).toFixed(1)}" y1="${(py - 4).toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${(py + 4).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.4"/>`;
+    svg += `<line x1="${(px - 4).toFixed(1)}" y1="${(py + 4).toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${(py - 4).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.4"/>`;
   }
 
+  svg += sumbuALevelSVG({ xAxisY, yAxisX, xFrom: padL, xTo: padL + plotW + 10, yFrom: xAxisY, yTo: padT - 10, labelX, labelY });
+  xTicks.forEach((gx) => { svg += tickXSVG(toPx(gx, ymin)[0], xAxisY, formatTick(gx)); });
+  yTicks.forEach((gy) => { svg += tickYSVG(yAxisX, toPx(xmin, gy)[1], formatTick(gy)); });
   svg += '</svg>';
   return svg;
 }
@@ -4315,39 +4562,41 @@ function renderHistogramSVG(cfg) {
     return { lo: bounds[i], hi: bounds[i + 1], freq: f, width: w, density: w > 0 ? f / w : 0 };
   });
 
-  const width = 420, height = 320, padL = 52, padR = 18, padT = 22, padB = 46;
-  const plotW = width - padL - padR, plotH = height - padT - padB;
+  const plotW = 320, plotH = 230;
   const xmin = bounds[0], xmax = bounds[bounds.length - 1];
   const maxDensity = Math.max.apply(null, classes.map((c) => c.density)) || 1;
   const yStep = niceStep(maxDensity);
   const ymax = Math.ceil(maxDensity / yStep) * yStep;
+  const yTicks = [];
+  for (let gy = 0; gy <= ymax + 1e-9; gy += yStep) yTicks.push(Math.round(gy * 1e6) / 1e6);
+  const yTickW = Math.max.apply(null, yTicks.map((v) => lebarTeksKira(formatTick(v), GAYA.teksKecil)).concat([0]));
+  const labelX = cfg.sumbux ? labelSumbuALevel(cfg.sumbux) : 'kelas';
+  const labelY = cfg.sumbuy ? labelSumbuALevel(cfg.sumbuy) : 'densitas frekuensi';
+  const padL = yTickW + 16, padR = 12 + lebarTeksKira(labelX) + 10, padT = (cfg.judul ? 18 : 0) + 28, padB = 26;
+  const width = Math.max(padL + plotW + padR, padL - 8 + lebarTeksKira(labelY) + 6), height = padT + plotH + padB;
+  const xAxisY = padT + plotH, yAxisX = padL;
   const toX = (x) => padL + ((x - xmin) / ((xmax - xmin) || 1)) * plotW;
-  const toY = (d) => padT + plotH - (d / (ymax || 1)) * plotH;
+  const toY = (d) => xAxisY - (d / (ymax || 1)) * plotH;
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
+  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(0)} ${height}" xmlns="http://www.w3.org/2000/svg">`;
   if (cfg.judul) {
-    svg += `<text x="${(width / 2).toFixed(1)}" y="15" text-anchor="middle" font-size="12" font-weight="700" fill="#000000">${escText(cfg.judul)}</text>`;
+    svg += `<text x="${(padL + plotW / 2).toFixed(1)}" y="14" text-anchor="middle" font-size="${GAYA.teks}" font-weight="700" fill="${GAYA.hitam}">${escText(cfg.judul)}</text>`;
   }
-  for (let gy = 0; gy <= ymax + 1e-9; gy += yStep) {
-    const py = toY(gy);
-    svg += `<line x1="${padL}" y1="${py.toFixed(1)}" x2="${padL + plotW}" y2="${py.toFixed(1)}" stroke="#eef0f3" stroke-width="1"/>`;
-    svg += `<text x="${(padL - 6).toFixed(1)}" y="${(py + 3.5).toFixed(1)}" font-size="9.5" text-anchor="end" fill="#334155">${formatTick(gy)}</text>`;
-  }
+  yTicks.forEach((gy) => {
+    if (gy === 0) return;
+    svg += `<line x1="${padL}" y1="${toY(gy).toFixed(1)}" x2="${padL + plotW}" y2="${toY(gy).toFixed(1)}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`;
+  });
+  // Batang berdempetan (histogram, bukan diagram batang), abu-abu muda
+  // bertepi hitam; LUAS batang mewakili frekuensi.
   classes.forEach((c) => {
     const x1 = toX(c.lo), x2 = toX(c.hi), y = toY(c.density);
-    svg += `<rect x="${x1.toFixed(1)}" y="${y.toFixed(1)}" width="${(x2 - x1).toFixed(1)}" height="${(padT + plotH - y).toFixed(1)}" fill="#ffffff" stroke="#000000" stroke-width="1.3"/>`;
+    svg += `<rect x="${x1.toFixed(1)}" y="${y.toFixed(1)}" width="${(x2 - x1).toFixed(1)}" height="${(xAxisY - y).toFixed(1)}" fill="${GAYA.arsir}" stroke="${GAYA.hitam}" stroke-width="1.2"/>`;
   });
-  bounds.forEach((b) => {
-    const px = toX(b);
-    svg += `<text x="${px.toFixed(1)}" y="${(padT + plotH + 14).toFixed(1)}" font-size="9.5" text-anchor="middle" fill="#334155">${formatTick(b)}</text>`;
-  });
-  svg += `<line x1="${padL}" y1="${(padT + plotH).toFixed(1)}" x2="${(padL + plotW).toFixed(1)}" y2="${(padT + plotH).toFixed(1)}" stroke="#000000" stroke-width="1.4"/>`;
-  svg += `<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${(padT + plotH).toFixed(1)}" stroke="#000000" stroke-width="1.4"/>`;
 
-  svg += `<text x="${(padL + plotW / 2).toFixed(1)}" y="${(height - 8).toFixed(1)}" text-anchor="middle" font-size="11" fill="#000000">${escText(cfg.sumbux || 'Kelas')}</text>`;
-  const cy = padT + plotH / 2;
-  svg += `<text x="13" y="${cy.toFixed(1)}" text-anchor="middle" font-size="11" fill="#000000" transform="rotate(-90 13 ${cy.toFixed(1)})">${escText(cfg.sumbuy || 'Densitas frekuensi')}</text>`;
+  svg += sumbuALevelSVG({ xAxisY, yAxisX, xFrom: padL, xTo: padL + plotW + 10, yFrom: xAxisY, yTo: padT - 10, labelX, labelY });
+  // Angka skala x tepat di batas kelas — itu yang dibaca siswa.
+  bounds.forEach((b) => { svg += tickXSVG(toX(b), xAxisY, formatTick(b)); });
+  yTicks.forEach((gy) => { svg += tickYSVG(yAxisX, toY(gy), formatTick(gy)); });
   svg += '</svg>';
   return svg;
 }
@@ -4588,79 +4837,79 @@ function parseXYList(raw) {
 }
 
 function renderGraphPaperSVG(cfg) {
-  const width = 420, pad = 46;
   const xmin = numOrDefault(cfg.xmin, 0), xmax = numOrDefault(cfg.xmax, 10);
   const ymin = numOrDefault(cfg.ymin, 0), ymax = numOrDefault(cfg.ymax, 10);
   const spanX = (xmax - xmin) || 1, spanY = (ymax - ymin) || 1;
   const majorX = Math.abs(numOrDefault(cfg.kotak, niceStep(spanX))) || 1;
-  // With no explicit y-square given, the y axis picks its OWN nice step
-  // rather than reusing the x one — a 0..10 by 0..200 grid ruled in steps
-  // of 1 on both axes would be 200 squares tall and unusable. Reusing the
-  // x step is only the right default when the author asked for a specific
-  // square size (cfg.kotak), where they clearly want true squares.
+  // Tanpa kotak y eksplisit, sumbu y memilih langkah rapinya SENDIRI, tidak
+  // meminjam langkah x — grid 0..10 lawan 0..200 dengan langkah 1 di kedua
+  // sumbu akan setinggi 200 kotak dan tak terpakai. Meminjam langkah x hanya
+  // benar kalau penulis memang minta ukuran kotak tertentu (cfg.kotak).
   const majorY = Math.abs(numOrDefault(cfg.kotaky, cfg.kotak != null ? majorX : niceStep(spanY))) || 1;
-  // Minor squares per major square — 5 is the standard 2 mm/1 cm ruling of
-  // real graph paper, and it's what a "read off the graph" question assumes.
+  // Kotak kecil per kotak besar — 5 adalah garis 2 mm/1 cm kertas grafik
+  // sungguhan, dan itu yang diandaikan soal "baca dari grafik".
   const minorDiv = Math.max(1, Math.min(10, Math.round(numOrDefault(cfg.subkotak, 5))));
-  // Keep the drawing area's aspect close to the data's own so a square in
-  // data units still looks square on paper.
-  const plotW = width - 2 * pad;
-  const plotH = Math.max(180, Math.min(420, Math.round(plotW * (spanY / majorY) / (spanX / majorX))));
-  const titleH = cfg.judul ? 20 : 0;
-  const height = plotH + 2 * pad + titleH;
-  const top = pad + titleH;
-  const toPx = (x, y) => [pad + ((x - xmin) / spanX) * plotW, top + plotH - ((y - ymin) / spanY) * plotH];
+  const xTicks = [], yTicks = [];
+  for (let gx = Math.ceil(xmin / majorX) * majorX; gx <= xmax + 1e-9; gx += majorX) xTicks.push(Math.round(gx * 1e6) / 1e6);
+  for (let gy = Math.ceil(ymin / majorY) * majorY; gy <= ymax + 1e-9; gy += majorY) yTicks.push(Math.round(gy * 1e6) / 1e6);
+  const yTickW = Math.max.apply(null, yTicks.map((v) => lebarTeksKira(formatTick(v), GAYA.teksKecil)).concat([0]));
+  const labelX = cfg.sumbux ? labelSumbuALevel(cfg.sumbux) : '';
+  const labelY = cfg.sumbuy ? labelSumbuALevel(cfg.sumbuy) : '';
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
+  // Bidang gambar dijaga sebanding dengan datanya supaya satu kotak dalam
+  // satuan data tetap tampak persegi di kertas.
+  const plotW = 328;
+  const plotH = Math.max(180, Math.min(420, Math.round(plotW * (spanY / majorY) / (spanX / majorX))));
+  const padL = yTickW + 16, padR = 14 + (labelX ? lebarTeksKira(labelX) + 8 : 0);
+  const padT = (cfg.judul ? 20 : 0) + 28, padB = 26;
+  const width = Math.max(padL + plotW + padR, padL - 8 + lebarTeksKira(labelY) + 6);
+  const height = padT + plotH + padB;
+  const top = padT;
+  const xAxisY = top + plotH, yAxisX = padL;
+  const toPx = (x, y) => [padL + ((x - xmin) / spanX) * plotW, top + plotH - ((y - ymin) / spanY) * plotH];
+
+  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(0)} ${height}" xmlns="http://www.w3.org/2000/svg">`;
   if (cfg.judul) {
-    svg += `<text x="${(width / 2).toFixed(1)}" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#000000">${escText(cfg.judul)}</text>`;
+    svg += `<text x="${(padL + plotW / 2).toFixed(1)}" y="16" text-anchor="middle" font-size="${GAYA.teks}" font-weight="700" fill="${GAYA.hitam}">${escText(cfg.judul)}</text>`;
   }
 
-  // Minor ruling first, major ruling over it, so the heavier lines win
-  // wherever the two coincide.
+  // Grid halus dulu, grid utama di atasnya, supaya garis yang lebih tebal
+  // menang di tempat keduanya berimpit. Dua tebal abu-abu, tanpa warna.
   const minorStepX = majorX / minorDiv, minorStepY = majorY / minorDiv;
   const startX = Math.ceil(xmin / minorStepX) * minorStepX;
   for (let gx = startX; gx <= xmax + 1e-9; gx += minorStepX) {
     const [px] = toPx(gx, ymin);
-    svg += `<line x1="${px.toFixed(1)}" y1="${top}" x2="${px.toFixed(1)}" y2="${top + plotH}" stroke="#e5e9ef" stroke-width="0.5"/>`;
+    svg += `<line x1="${px.toFixed(1)}" y1="${top}" x2="${px.toFixed(1)}" y2="${xAxisY}" stroke="${GAYA.abuMuda}" stroke-width="0.5"/>`;
   }
   const startY = Math.ceil(ymin / minorStepY) * minorStepY;
   for (let gy = startY; gy <= ymax + 1e-9; gy += minorStepY) {
     const [, py] = toPx(xmin, gy);
-    svg += `<line x1="${pad}" y1="${py.toFixed(1)}" x2="${(width - pad).toFixed(1)}" y2="${py.toFixed(1)}" stroke="#e5e9ef" stroke-width="0.5"/>`;
+    svg += `<line x1="${padL}" y1="${py.toFixed(1)}" x2="${(padL + plotW).toFixed(1)}" y2="${py.toFixed(1)}" stroke="${GAYA.abuMuda}" stroke-width="0.5"/>`;
   }
-  for (let gx = Math.ceil(xmin / majorX) * majorX; gx <= xmax + 1e-9; gx += majorX) {
+  xTicks.forEach((gx) => {
     const [px] = toPx(gx, ymin);
-    svg += `<line x1="${px.toFixed(1)}" y1="${top}" x2="${px.toFixed(1)}" y2="${top + plotH}" stroke="#b8c0cc" stroke-width="0.9"/>`;
-    svg += `<text x="${px.toFixed(1)}" y="${(top + plotH + 14).toFixed(1)}" font-size="9.5" text-anchor="middle" fill="#334155">${formatTick(gx)}</text>`;
-  }
-  for (let gy = Math.ceil(ymin / majorY) * majorY; gy <= ymax + 1e-9; gy += majorY) {
+    svg += `<line x1="${px.toFixed(1)}" y1="${top}" x2="${px.toFixed(1)}" y2="${xAxisY}" stroke="${GAYA.abu}" stroke-width="0.9"/>`;
+  });
+  yTicks.forEach((gy) => {
     const [, py] = toPx(xmin, gy);
-    svg += `<line x1="${pad}" y1="${py.toFixed(1)}" x2="${(width - pad).toFixed(1)}" y2="${py.toFixed(1)}" stroke="#b8c0cc" stroke-width="0.9"/>`;
-    svg += `<text x="${(pad - 6).toFixed(1)}" y="${(py + 3.5).toFixed(1)}" font-size="9.5" text-anchor="end" fill="#334155">${formatTick(gy)}</text>`;
-  }
+    svg += `<line x1="${padL}" y1="${py.toFixed(1)}" x2="${(padL + plotW).toFixed(1)}" y2="${py.toFixed(1)}" stroke="${GAYA.abu}" stroke-width="0.9"/>`;
+  });
 
-  // Axes drawn last and heaviest — this is the frame a student measures from.
-  svg += `<rect x="${pad}" y="${top}" width="${plotW}" height="${plotH}" fill="none" stroke="#000000" stroke-width="1.4"/>`;
-
-  // "Besaran / satuan" axis captions are worth marks in their own right on
-  // a practical paper, so they get real space rather than being optional
-  // decoration squeezed into the margin.
-  if (cfg.sumbux) {
-    svg += `<text x="${(width / 2).toFixed(1)}" y="${(height - 10).toFixed(1)}" text-anchor="middle" font-size="11" fill="#000000">${escText(cfg.sumbux)}</text>`;
-  }
-  if (cfg.sumbuy) {
-    const cy = top + plotH / 2;
-    svg += `<text x="14" y="${cy.toFixed(1)}" text-anchor="middle" font-size="11" fill="#000000" transform="rotate(-90 14 ${cy.toFixed(1)})">${escText(cfg.sumbuy)}</text>`;
-  }
+  // Sumbu hitam berpanah di tepi kiri dan bawah — inilah acuan siswa
+  // mengukur; label "besaran / satuan" di ujung panah bernilai di naskah
+  // praktikum, jadi diberi ruang sendiri.
+  svg += sumbuALevelSVG({ xAxisY, yAxisX, xFrom: padL, xTo: padL + plotW + 10, yFrom: xAxisY, yTo: top - 10, labelX, labelY });
+  const originShown = xmin === 0 && ymin === 0;
+  xTicks.forEach((gx) => { if (!(originShown && Math.abs(gx) < 1e-9)) svg += tickXSVG(toPx(gx, ymin)[0], xAxisY, formatTick(gx)); });
+  yTicks.forEach((gy) => { if (!(originShown && Math.abs(gy) < 1e-9)) svg += tickYSVG(yAxisX, toPx(xmin, gy)[1], formatTick(gy)); });
+  if (originShown) svg += teksHaloSVG(yAxisX - 5, xAxisY + 13, 'O', { anchor: 'end', italic: true });
 
   parseXYList(cfg.titik).forEach((p) => {
     const [px, py] = toPx(p.x, p.y);
-    // A cross, not a dot: that's the plotting convention every exam board
-    // marks against, and it stays readable on top of the ruling.
-    svg += `<line x1="${(px - 4).toFixed(1)}" y1="${(py - 4).toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${(py + 4).toFixed(1)}" stroke="#000000" stroke-width="1.4"/>`;
-    svg += `<line x1="${(px - 4).toFixed(1)}" y1="${(py + 4).toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${(py - 4).toFixed(1)}" stroke="#000000" stroke-width="1.4"/>`;
+    // Tanda silang, bukan titik: konvensi plot yang dinilai semua dewan
+    // ujian, dan tetap terbaca di atas garis-garis grid.
+    svg += `<line x1="${(px - 4).toFixed(1)}" y1="${(py - 4).toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${(py + 4).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.4"/>`;
+    svg += `<line x1="${(px - 4).toFixed(1)}" y1="${(py + 4).toFixed(1)}" x2="${(px + 4).toFixed(1)}" y2="${(py - 4).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.4"/>`;
     if (p.label) svg += annotText(px + 12, py - 6, p.label);
   });
 
