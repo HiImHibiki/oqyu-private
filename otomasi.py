@@ -894,6 +894,9 @@ JS_SETEL = r"""
     const r = document.getElementById('linesPerMark');
     if (r) { r.value = o.garis_per_nilai; r.dispatchEvent(new Event('input', {bubbles:true})); }
   }
+  // Ukuran diagram/grafik: pilihan di form (kecil/sedang/besar) = nilai slider
+  // "Ukuran diagram" Maker dalam pt; kosong = biarkan bawaan Maker (260).
+  if (o.diagram) set('diagramSize', o.diagram);
   centang('showAnswerKey', !!o.kunci);
   centang('showExplanation', !!o.pembahasan);
   centang('showMarks', true);

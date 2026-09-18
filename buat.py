@@ -613,7 +613,7 @@ def lembar_rangkuman_dari_naskah(jid, hasil_teks, judul='', topik='', mapel=None
 def lembar_dari_naskah(jid, jawab, judul='', topik='', mapel=None, kelas=None,
                        jenjang='', lembaga='', sekolah='', tanggal='',
                        kunci=True, pembahasan=True, kolom='2', dua_berkas=False,
-                       kerapatan='Normal', garis='1.5', sumber='dari Gemini',
+                       kerapatan='Normal', garis='1.5', diagram='', sumber='dari Gemini',
                        kode='', set_ke=''):
     """Naskah jadi -> berkas naskah + bank soal + PDF.
 
@@ -656,7 +656,8 @@ def lembar_dari_naskah(jid, jawab, judul='', topik='', mapel=None, kelas=None,
                sekolah=sekolah, kelas=str(kelas or '') or (jenjang or ''),
                tanggal=tanggal or time.strftime('%d%m'),
                kunci=kunci, pembahasan=pembahasan, kolom=str(kolom or '2'),
-               kerapatan=kerapatan or 'Normal', garis_per_nilai=garis or '1.5')
+               kerapatan=kerapatan or 'Normal', garis_per_nilai=garis or '1.5',
+               diagram=(diagram or '').strip())
     os.makedirs(KELUAR, exist_ok=True)
     nama = nama_berkas(kop, kunci and not dua_berkas, KELUAR)
     cap = time.strftime('%Y-%m-%d %H%M')
@@ -714,7 +715,7 @@ def lembar_dari_naskah(jid, jawab, judul='', topik='', mapel=None, kelas=None,
 def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
              topik='', jenjang='', n_set='', sulit='', bahasa='Indonesia',
              lembaga='', sekolah='', tanggal='', kunci=True, pembahasan=True,
-             kolom='2', dua_berkas=False, kerapatan='Normal', garis='1.5',
+             kolom='2', dua_berkas=False, kerapatan='Normal', garis='1.5', diagram='',
              mata='gemini', mode='flash', mesin='gemini', kode=''):
     """Alur penuh: foto atau deskripsi -> Gemini -> Exact Worksheet Maker -> PDF.
 
@@ -811,7 +812,7 @@ def jalankan(jid, gambar, instruksi, jumlah, mapel, kelas, judul, api,
                            kelas=kelas, jenjang=jenjang, lembaga=lembaga,
                            sekolah=sekolah, tanggal=tanggal, kunci=kunci,
                            pembahasan=pembahasan, kolom=kolom,
-                           dua_berkas=dua_berkas, kerapatan=kerapatan,
+                           dua_berkas=dua_berkas, kerapatan=kerapatan, diagram=diagram,
                            garis=garis, sumber='dari Gemini', kode=kode)
     except Dihentikan as e:
         _catat(jid, None, galat=str(e))
@@ -1413,6 +1414,12 @@ bisa disusun tanpa AI lewat tab <b>Bank Soal</b> di atas.</div>
       <option value=0.5{" selected" if st.get('garis')=='0.5' else ""}>ruang jawab sempit</option>
       <option value=2.5{" selected" if st.get('garis')=='2.5' else ""}>ruang jawab luas</option>
     </select>
+    <select name=diagram title="ukuran diagram / grafik di lembar (slider Ukuran diagram di Maker)">
+      <option value=""{" selected" if st.get('diagram','') not in ('200','340','420') else ""}>diagram sedang</option>
+      <option value=200{" selected" if st.get('diagram')=='200' else ""}>diagram kecil</option>
+      <option value=340{" selected" if st.get('diagram')=='340' else ""}>diagram besar</option>
+      <option value=420{" selected" if st.get('diagram')=='420' else ""}>diagram sangat besar</option>
+    </select>
     <select name=kolom title="tata letak">
       <option value=2{" selected" if st.get('kolom','2')!='1' else ""}>2 kolom (hemat)</option>
       <option value=1{" selected" if st.get('kolom')=='1' else ""}>1 kolom penuh</option>
@@ -1684,7 +1691,7 @@ def periksa_naskah(teks, jenis='soal'):
 def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None,
                     jenjang='', lembaga='', sekolah='', tanggal='',
                     kunci=True, pembahasan=True, kolom='2', dua_berkas=False,
-                    kerapatan='Normal', garis='1.5', ke_practice=False, kode='',
+                    kerapatan='Normal', garis='1.5', diagram='', ke_practice=False, kode='',
                     set_ke='', jenis='soal'):
     """Naskah tempelan -> PDF (dan, bila diminta, langsung ke Exact Practice).
 
@@ -1723,7 +1730,7 @@ def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None
                            kelas=kelas, jenjang=jenjang, lembaga=lembaga,
                            sekolah=sekolah, tanggal=tanggal, kunci=kunci,
                            pembahasan=pembahasan, kolom=kolom,
-                           dua_berkas=dua_berkas, kerapatan=kerapatan,
+                           dua_berkas=dua_berkas, kerapatan=kerapatan, diagram=diagram,
                            garis=garis, sumber='yang ditempel', kode=kode,
                            set_ke=set_ke)
         if ke_practice:
@@ -2158,6 +2165,12 @@ dicetak seperti lembar otomatis.</div>
       <option value=1.5{" selected" if st.get('garis','1.5')=='1.5' else ""}>ruang jawab sedang</option>
       <option value=0.5{" selected" if st.get('garis')=='0.5' else ""}>ruang jawab sempit</option>
       <option value=2.5{" selected" if st.get('garis')=='2.5' else ""}>ruang jawab luas</option>
+    </select>
+    <select name=diagram title="ukuran diagram / grafik di lembar (slider Ukuran diagram di Maker)">
+      <option value=""{" selected" if st.get('diagram','') not in ('200','340','420') else ""}>diagram sedang</option>
+      <option value=200{" selected" if st.get('diagram')=='200' else ""}>diagram kecil</option>
+      <option value=340{" selected" if st.get('diagram')=='340' else ""}>diagram besar</option>
+      <option value=420{" selected" if st.get('diagram')=='420' else ""}>diagram sangat besar</option>
     </select>
     <select name=kolom title="tata letak">
       <option value=2{" selected" if st.get('kolom','2')!='1' else ""}>2 kolom (hemat)</option>

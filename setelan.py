@@ -16,7 +16,7 @@ BERKAS = lokasi.data('setelan.json')
 # berikutnya terisi salah diam-diam, dan salahnya baru ketahuan di kop PDF.
 # Lebih aman kosong: Rico mengisinya sendiri kalau memang perlu.
 MEDAN = ('jumlah', 'n_set', 'sulit', 'bahasa',
-         'lembaga', 'sekolah', 'instruksi', 'kolom', 'kerapatan', 'garis',
+         'lembaga', 'sekolah', 'instruksi', 'kolom', 'kerapatan', 'garis', 'diagram',
          'printer', 'bolak', 'salinan', 'mata', 'mode', 'mesin')
 # kunci dan pembahasan TIDAK diingat: keduanya selalu menyala saat halaman
 # dibuka. Sekali dimatikan untuk satu lembar, dulu ia tetap mati diam-diam di
