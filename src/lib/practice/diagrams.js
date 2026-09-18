@@ -1771,9 +1771,11 @@ function parseForceList(raw) {
 }
 
 function renderForceDiagramSVG(cfg) {
-  const width = 340, height = 300;
-  const cx = width / 2, cy = height / 2;
+  // Drawn in a frame centred on the object, then cropped to what was
+  // actually drawn: the old fixed 340x300 canvas left most of itself empty,
+  // so the printed diagram was small and swimming in white space.
   const boxSize = 64;
+  const cx = 0, cy = 0;
   const objek = cfg.objek || 'Benda';
   const forces = parseForceList(cfg.gaya);
   // sudutBidang: tilts the surface line for an inclined-plane (bidang
@@ -1784,38 +1786,96 @@ function renderForceDiagramSVG(cfg) {
   // changes what the ground line looks like.
   const inclineDeg = numOrDefault(cfg.sudutBidang, 0);
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
+  const parts = [];
+  const bounds = [];
+  const cover = (x1, y1, x2, y2) => bounds.push([Math.min(x1, x2), Math.min(y1, y2), Math.max(x1, x2), Math.max(y1, y2)]);
+  const textW = (t) => String(t).length * 6.6;
 
   if (cfg.permukaan !== 'tanpa') {
     const rad = (inclineDeg * Math.PI) / 180;
-    const halfLen = width / 2 - 20;
-    const gy = cy + boxSize / 2 + 24;
+    const halfLen = 120;
+    // The box stays upright, so a tilted surface would cut through its
+    // downhill corner: drop the line far enough that it clears the corner.
+    const gy = cy + boxSize / 2 + 14 + Math.abs(Math.tan(rad)) * (boxSize / 2);
     const x1 = cx - halfLen, x2 = cx + halfLen;
     const y1 = gy + Math.tan(rad) * halfLen, y2 = gy - Math.tan(rad) * halfLen;
-    svg += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#94a3b8" stroke-width="1.4"/>`;
+    parts.push(`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#94a3b8" stroke-width="1.4"/>`);
+    cover(x1, y1, x2, y2);
     if (inclineDeg) {
-      svg += `<path d="M${(x1 + 30).toFixed(1)},${y1.toFixed(1)} A30,30 0 0 1 ${(x1 + 30 * Math.cos(rad)).toFixed(1)},${(y1 - 30 * Math.sin(rad)).toFixed(1)}" fill="none" stroke="#94a3b8" stroke-width="1"/>`;
-      svg += `<text x="${(x1 + 38).toFixed(1)}" y="${(y1 - 6).toFixed(1)}" font-size="10.5" fill="#000000">${inclineDeg}°</text>`;
+      parts.push(`<path d="M${(x1 + 30).toFixed(1)},${y1.toFixed(1)} A30,30 0 0 1 ${(x1 + 30 * Math.cos(rad)).toFixed(1)},${(y1 - 30 * Math.sin(rad)).toFixed(1)}" fill="none" stroke="#94a3b8" stroke-width="1"/>`);
+      parts.push(`<text x="${(x1 + 38).toFixed(1)}" y="${(y1 - 6).toFixed(1)}" font-size="10.5" fill="#000000">${inclineDeg}°</text>`);
+      cover(x1 + 30, y1 - 18, x1 + 38 + textW(inclineDeg + '°'), y1);
     }
   }
 
-  svg += `<rect x="${(cx - boxSize / 2).toFixed(1)}" y="${(cy - boxSize / 2).toFixed(1)}" width="${boxSize}" height="${boxSize}" fill="none" stroke="#000000" stroke-width="2"/>`;
-  svg += `<text x="${cx.toFixed(1)}" y="${(cy + 5).toFixed(1)}" text-anchor="middle" font-size="12.5" font-weight="700" fill="#000000">${escText(objek)}</text>`;
+  parts.push(`<rect x="${(cx - boxSize / 2).toFixed(1)}" y="${(cy - boxSize / 2).toFixed(1)}" width="${boxSize}" height="${boxSize}" fill="#ffffff" stroke="#000000" stroke-width="2"/>`);
+  parts.push(`<text x="${cx.toFixed(1)}" y="${(cy + 5).toFixed(1)}" text-anchor="middle" font-size="12.5" font-weight="700" fill="#000000">${escText(objek)}</text>`);
+  cover(cx - boxSize / 2, cy - boxSize / 2, cx + boxSize / 2, cy + boxSize / 2);
 
+  // Arrow length follows the magnitude RELATIVE to the largest force on the
+  // diagram (45–110 px), so "F1:40 vs F2:20" is visibly 2:1 instead of two
+  // arrows of nearly the same length.
+  const maxMag = forces.reduce((m, f) => (isFinite(f.magnitude) ? Math.max(m, Math.abs(f.magnitude)) : m), 0);
+  const norm = (a) => ((a % 360) + 360) % 360;
+
+  // Forces pointing the same way ("F1:40:0|F2:20:0" — two pushes to the
+  // right) used to be drawn on top of each other, labels included, which
+  // printed as one unreadable "F2F120". Collinear forces are grouped and
+  // fanned out sideways, each with its own arrow and label.
+  const groups = [];
   forces.forEach((f) => {
-    const rad = (f.angle * Math.PI) / 180;
-    const len = 55 + Math.min(35, Math.abs(f.magnitude) || 15);
-    const startR = boxSize / 2 + 3;
-    const x1 = cx + Math.cos(rad) * startR, y1 = cy - Math.sin(rad) * startR;
-    const x2 = cx + Math.cos(rad) * (startR + len), y2 = cy - Math.sin(rad) * (startR + len);
-    svg += arrowSVG(x1, y1, x2, y2);
-    const lx = cx + Math.cos(rad) * (startR + len + 16), ly = cy - Math.sin(rad) * (startR + len + 16);
-    const anchor = Math.cos(rad) > 0.3 ? 'start' : Math.cos(rad) < -0.3 ? 'end' : 'middle';
-    const magTxt = isFinite(f.magnitude) ? ` = ${f.magnitude} N` : '';
-    svg += `<text x="${lx.toFixed(1)}" y="${(ly + 4).toFixed(1)}" text-anchor="${anchor}" font-size="12" fill="#000000">${escText(f.label)}${magTxt}</text>`;
+    const a = norm(f.angle);
+    let g = groups.find((g) => Math.min(Math.abs(g.angle - a), 360 - Math.abs(g.angle - a)) <= 4);
+    if (!g) { g = { angle: a, items: [] }; groups.push(g); }
+    g.items.push(f);
   });
 
+  groups.forEach((g) => {
+    const n = g.items.length;
+    g.items.forEach((f, i) => {
+      const rad = (f.angle * Math.PI) / 180;
+      const dirx = Math.cos(rad), diry = -Math.sin(rad);
+      const off = (i - (n - 1) / 2) * 18;
+      const ox = -diry * off, oy = dirx * off;
+      const len = maxMag > 0 && isFinite(f.magnitude) ? 45 + 65 * (Math.abs(f.magnitude) / maxMag) : 70;
+      const startR = boxSize / 2 + 3;
+      const x1 = cx + dirx * startR + ox, y1 = cy + diry * startR + oy;
+      const x2 = x1 + dirx * len, y2 = y1 + diry * len;
+      parts.push(arrowSVG(x1, y1, x2, y2));
+      cover(x1, y1, x2, y2);
+
+      const magTxt = isFinite(f.magnitude) ? ` = ${f.magnitude} N` : '';
+      const label = `${f.label}${magTxt}`;
+      const vertical = Math.abs(dirx) < 0.3;
+      let lx, ly, anchor;
+      if (vertical && n > 1) {
+        // Stacked vertical arrows: labels beside the tips, left/right of
+        // their own arrow, so they don't sit on top of each other.
+        anchor = off >= 0 ? 'start' : 'end';
+        lx = x2 + (off >= 0 ? 7 : -7); ly = y2 + diry * 6 + 4;
+      } else if (vertical) {
+        anchor = 'middle'; lx = x2; ly = y2 + diry * 14 + 4;
+      } else {
+        anchor = dirx > 0 ? 'start' : 'end';
+        lx = x2 + dirx * 7; ly = y2 + diry * 7 + 4;
+      }
+      parts.push(`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}" font-size="12" fill="#000000">${escText(label)}</text>`);
+      const w = textW(label);
+      const tx1 = anchor === 'start' ? lx : anchor === 'end' ? lx - w : lx - w / 2;
+      cover(tx1, ly - 11, tx1 + w, ly + 3);
+    });
+  });
+
+  const pad = 12;
+  const minX = Math.min(...bounds.map((b) => b[0])) - pad;
+  const minY = Math.min(...bounds.map((b) => b[1])) - pad;
+  const maxX = Math.max(...bounds.map((b) => b[2])) + pad;
+  const maxY = Math.max(...bounds.map((b) => b[3])) + pad;
+  const width = maxX - minX, height = maxY - minY;
+
+  let svg = `<svg class="ws-diagram-svg" viewBox="${minX.toFixed(1)} ${minY.toFixed(1)} ${width.toFixed(1)} ${height.toFixed(1)}" xmlns="http://www.w3.org/2000/svg">`;
+  svg += `<rect x="${(minX + 0.5).toFixed(1)}" y="${(minY + 0.5).toFixed(1)}" width="${(width - 1).toFixed(1)}" height="${(height - 1).toFixed(1)}" fill="#ffffff" stroke="#d8dce1"/>`;
+  svg += parts.join('');
   svg += '</svg>';
   return svg;
 }
