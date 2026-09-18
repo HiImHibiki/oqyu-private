@@ -648,7 +648,7 @@ def lembar_dari_naskah(jid, jawab, judul='', topik='', mapel=None, kelas=None,
     # 5. simpan salinan mentah + ambil PDF
     judul = judul.strip() or (topik.strip() or f'Latihan {time.strftime("%d %b %H:%M")}')
     with KUNCI:
-        TUGAS.setdefault(jid, {})['isian'] = {'mapel': mapel or '', 'kelas': str(kelas or ''), 'topik': (topik or '').strip() or judul}
+        TUGAS.setdefault(jid, {})['isian'] = {'mapel': mapel or '', 'kelas': str(kelas or ''), 'topik': (topik or '').strip()}
     # "Set ke-" mengisi slot Soal-ke di kode kop (MATH/NRD/7/1609/3), jadi
     # yang tercetak di kertas sama dengan judul paketnya di Exact Practice.
     kop = dict(lembaga=lembaga or 'Exact Course', mapel=kode_kop(mapel, kode),
@@ -1736,7 +1736,7 @@ def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None
             j = _tb.terbitkan(t.get('naskah') or teks,
                               nama_pdf=os.path.basename(t.get('pdf') or ''),
                               judul=judul, mapel=mapel or '',
-                              kelas=str(kelas or ''), topik=topik or judul,
+                              kelas=str(kelas or ''), topik=(topik or '').strip(),
                               set_ke=set_ke)
             if j.get('ok'):
                 with KUNCI:
@@ -2085,7 +2085,6 @@ dicetak seperti lembar otomatis.</div>
   <h2><b>1</b> Perintah untuk AI &mdash; opsional, lewati kalau menulis naskahnya sendiri</h2>
   <div class=r style="margin-top:0">
     <input name=mapel placeholder="mapel" style="flex:1;min-width:150px">
-    <input name=topik placeholder="topik" style="flex:2;min-width:190px" data-jenis="soal rangkuman">
     <input name=bagian placeholder="bagian" value="5" size=6 title="berapa sub-bab" data-jenis="rangkuman">
   </div>
   <div class=r data-jenis="soal">
@@ -2174,6 +2173,8 @@ dicetak seperti lembar otomatis.</div>
            title="Nomor set lembar ini (mis. 3). Tercetak di kode kop sebagai MATH/NRD/7/1609/3 dan jadi «— Set 3» pada judul paket di Exact Practice. Kosongkan kalau bukan seri.">
   </div>
   <div class="r kirim">
+    <input name=topik placeholder="topik (opsional)" style="flex:1;min-width:150px"
+           title="Ikut ke perintah AI, bank soal, dan Exact Practice. Kosong = tidak diisi apa-apa">
     <input name=judul placeholder="judul berkas (opsional)" style="flex:1;min-width:150px">
     <button id=go type=submit>Buat PDF</button>
   </div>
