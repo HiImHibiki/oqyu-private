@@ -14,6 +14,11 @@ OPSI = re.compile(r'^\s*\(?([A-Ea-e])\s*[.)]\s*(.+)$')
 SUB = re.compile(r'^\s*\((?:([a-h])|((?:i{1,3}|iv|v|vi{1,3})))\)\s*(.*)$')
 BOBOT = re.compile(r'\s*\[(\d{1,2})\]\s*$')
 KEPALA_KUNCI = re.compile(r'^\s*Kunci\s*Jawaban\s*:?\s*$', re.I)
+# Teks bacaan (lembar Bahasa Indonesia / Inggris): baris "Bacaan" sendirian
+# sesudah judul lembar, lalu judul teks (opsional), lalu paragraf-paragrafnya,
+# sampai bagian soal pertama. Ejaan yang diterima sama dengan wsm/app.js.
+KEPALA_BACAAN = re.compile(r'^\s*(?:Reading\s*Passage|Reading\s*Text|Passage|Bacaan|'
+                           r'Teks\s*Bacaan|Wacana)\s*(?:\d{1,2})?\s*:?\s*$', re.I)
 KEPALA_BAHAS = re.compile(r'^\s*Pembahasan\s*:?\s*$', re.I)
 SET = re.compile(r'^\s*SET\s+(\d+)\s*$', re.I)
 # "PG1-B, I1-18, E1a-5x+2" — kode, tanda hubung, lalu isinya sampai PENANDA
@@ -62,17 +67,43 @@ def urai(teks):
     for n, br in potongan:
         s, j, k = _urai_set(br, n)
         soal += s; n_kunci += k; judul = judul or j
-    return soal, {'judul': judul, 'n_kunci': n_kunci, 'n_set': max([s['set'] for s in soal] or [1])}
+    bacaan = next((s.get('bacaan') for s in soal if s.get('bacaan')), None)
+    return soal, {'judul': judul, 'n_kunci': n_kunci, 'n_set': max([s['set'] for s in soal] or [1]),
+                  'bacaan': bacaan}
+
+def _ambil_bacaan(isi):
+    """Pisahkan blok teks bacaan dari baris-baris soal.
+
+    Kembalikan (isi_tanpa_bacaan, bacaan|None); bacaan = {'judul', 'isi'}.
+    Judul teks = paragraf pertama kalau pendek, satu baris, dan masih ada
+    paragraf lain sesudahnya — aturan yang sama dengan wsm/app.js supaya PDF
+    dan Practice membaca judul yang sama.
+    """
+    awal = next((i for i, b in enumerate(isi) if KEPALA_BACAAN.match(b)), None)
+    if awal is None: return isi, None
+    batas = next((i for i, b in enumerate(isi) if BAGIAN.match(b) or BUTIR.match(b)), len(isi))
+    if awal >= batas: return isi, None
+    blok = '\n'.join(isi[awal + 1:batas]).strip()
+    para = [p.strip() for p in re.split(r'\n[ \t]*\n', blok) if p.strip()]
+    judul = ''
+    if len(para) > 1 and len(para[0]) <= 120 and '\n' not in para[0]:
+        judul = para.pop(0)
+    if not para: return isi[:awal] + isi[batas:], None
+    return isi[:awal] + isi[batas:], {'judul': judul, 'isi': '\n\n'.join(para)}
+
 
 def _urai_set(baris, set_ini=1):
     """Urai SATU set: soal, lalu blok Kunci Jawaban dan Pembahasan miliknya."""
-    judul = next((b.strip() for b in baris[:4] if b.strip()), '')
     bagian_kunci, bagian_bahas = [], []
     isi, mode = [], 'soal'
     for b in baris:
         if KEPALA_KUNCI.match(b): mode = 'kunci'; continue
         if KEPALA_BAHAS.match(b): mode = 'bahas'; continue
         (isi if mode == 'soal' else bagian_kunci if mode == 'kunci' else bagian_bahas).append(b)
+    isi, bacaan = _ambil_bacaan(isi)
+    # Judul lembar = baris pertama yang berisi, dibaca SESUDAH bacaan dipisah
+    # — kalau tidak, lembar tanpa judul yang langsung "Bacaan" berjudul "Bacaan".
+    judul = next((b.strip() for b in isi[:4] if b.strip()), '')
 
     kunci = _pasang('\n'.join(bagian_kunci))
     bahas = _pasang('\n'.join(bagian_bahas))
@@ -123,6 +154,9 @@ def _urai_set(baris, set_ini=1):
     for s in soal:
         s['kunci'] = kunci.get(s['kode'], '')
         s['pembahasan'] = bahas.get(s['kode'], '')
+        # Bacaan menempel di tiap soal (bukan hanya di meta): Exact Practice
+        # menyimpan soal satu per satu sebagai stimulus, dan bank soal juga.
+        s['bacaan'] = bacaan
         for sub in s['sub']:
             k = (s['kode'] + sub['label']).upper()
             if k in kunci: sub['kunci'] = kunci[k]
@@ -142,6 +176,17 @@ def ke_naskah(daftar, judul='LEMBAR KERJA'):
     per_jenis = {}
     for s in daftar: per_jenis.setdefault(s.get('jenis') or 'PG', []).append(s)
     baris = [judul, '']
+    # Teks bacaan ikut ditulis ulang supaya paket dari Practice / bank soal
+    # yang dicetak ulang tetap membawa bacaannya. Satu bacaan per naskah:
+    # kalau soal-soalnya membawa bacaan berbeda, yang pertama yang dipakai.
+    bacaan = next((s.get('bacaan') for s in daftar
+                   if isinstance(s.get('bacaan'), dict) and (s['bacaan'].get('isi') or '').strip()), None)
+    if bacaan:
+        baris.append('Bacaan')
+        # Judul teks dan paragraf pertama dipisah baris kosong — begitulah
+        # pengurai (dan wsm/app.js) membedakan judul dari isi.
+        if (bacaan.get('judul') or '').strip(): baris += [bacaan['judul'].strip(), '']
+        baris += [bacaan['isi'].strip(), '']
     kunci = []
     bahas = []
     for kode in ('PG', 'B', 'I', 'E', 'M', 'IB'):

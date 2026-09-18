@@ -387,12 +387,24 @@ function parseWorksheet(rawInput) {
   // all of which assume a single short line of title text; left in place, a
   // three-paragraph passage was getting swallowed whole into the worksheet's
   // one-line title.
+  //
+  // The heading may also come AFTER the worksheet's own title line
+  // ("Latihan Membaca\n\nBacaan\nJudul teks\n\n...") — that is the shape
+  // the AI prompt for Bahasa Indonesia / Bahasa Inggris asks for — so it is
+  // looked for anywhere before the first formula/section/item boundary, not
+  // only at the very start. Whatever sits before it (the title) is kept and
+  // re-joined with the rest, so the title heuristics below still see it.
+  // "Bacaan 1" / "Bacaan:" spellings are tolerated; the heading word itself
+  // is never printed, only the passage's own title and body.
   let passageTitle = '';
   let passageBody = '';
-  const passageHeadingMatch = text.match(/^(?:Reading\s*Passage|Passage|Bacaan|Teks\s*Bacaan)\s*\n+/i);
-  if (passageHeadingMatch) {
-    const afterHeading = text.slice(passageHeadingMatch[0].length);
-    const passageEndIdx = afterHeading.search(/F\d+(?:[.:]\s*|\s+(?=\())|Bagian\s*[A-Za-z0-9]+\s*:|Section\s*[A-Za-z0-9]+\s*:|PG\d+\.|IB\d+\.|B\d+\.|I\d+\.|E\d+\.|M\d+\./i);
+  const PASSAGE_BOUNDARY_RE = /F\d+(?:[.:]\s*|\s+(?=\())|Bagian\s*[A-Za-z0-9]+\s*:|Section\s*[A-Za-z0-9]+\s*:|(?:Bagian|Section)\s+[^:\n()]{2,80}?\s*:\s*\([A-Za-z]{1,4}\)|PG\d+\.|IB\d+\.|B\d+\.|I\d+\.|E\d+\.|M\d+\./i;
+  const passageHeadingMatch = text.match(/(^|\n)[ \t]*(?:Reading\s*Passage|Reading\s*Text|Passage|Bacaan|Teks\s*Bacaan|Wacana)[ \t]*(?:\d{1,2})?[ \t]*:?[ \t]*\n+/i);
+  const firstBoundaryIdx = text.search(PASSAGE_BOUNDARY_RE);
+  if (passageHeadingMatch && (firstBoundaryIdx === -1 || passageHeadingMatch.index < firstBoundaryIdx)) {
+    const beforeHeading = text.slice(0, passageHeadingMatch.index).trim();
+    const afterHeading = text.slice(passageHeadingMatch.index + passageHeadingMatch[0].length);
+    const passageEndIdx = afterHeading.search(PASSAGE_BOUNDARY_RE);
     const passageRaw = (passageEndIdx > -1 ? afterHeading.slice(0, passageEndIdx) : afterHeading).trim();
     const passageParas = passageRaw.split(/\n[ \t]*\n/).map((p) => p.trim()).filter(Boolean);
     // A short (single-line, no internal blank line) first paragraph followed
@@ -402,7 +414,8 @@ function parseWorksheet(rawInput) {
       passageTitle = passageParas.shift();
     }
     passageBody = passageParas.join('\n\n');
-    text = (passageEndIdx > -1 ? afterHeading.slice(passageEndIdx) : '').trim();
+    const restText = (passageEndIdx > -1 ? afterHeading.slice(passageEndIdx) : '').trim();
+    text = beforeHeading ? (beforeHeading + '\n\n' + restText).trim() : restText;
   }
 
   // -- "Kolom B" (Mencocokkan answer bank) / "Kotak Kata" (Isian Berpilihan

@@ -93,6 +93,11 @@ paling atas:
 Format soal sama persis dengan yang dipakai Gemini: kode bagian di dalam kurung
 sesudah titik dua (`Bagian Pilihan Ganda: (PG)`), bobot `[2]` di akhir kalimat
 soal, dan kunci ditulis `PG1-A, PG2-B` dengan tanda hubung — bukan titik.
+Teks bacaan (Bahasa Indonesia / Inggris): di bawah judul lembar, baris
+`Bacaan` sendirian, lalu judul teks, baris kosong, lalu paragraf-paragrafnya
+sampai bagian soal pertama. Perintah AI untuk kedua mapel itu otomatis
+memintanya; bacaannya ikut ke PDF, bank soal, dan Exact Practice (tampil di
+panel kiri soal sebagai stimulus).
 Pembahasan: tiap soal diawali baris `SOAL 1`, lalu `JAWAB:` dan `BAHAS:`.
 Rangkuman: `JUDUL:`, `INTI:`, lalu tiap sub-bab `BAGIAN:` berisi `POIN:`,
 `RUMUS:`, `CONTOH:`, `INGAT:`. Contoh lengkapnya ada di placeholder kotak

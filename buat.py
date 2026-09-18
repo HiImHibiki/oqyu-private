@@ -676,13 +676,14 @@ def lembar_dari_naskah(jid, jawab, judul='', topik='', mapel=None, kelas=None,
             dok = cur.lastrowid; ids = []
             for i, b in enumerate(butir, 1):
                 cc = c.execute("""INSERT INTO soal(dok_id,no_hal,no_soal,batang,opsi,n_opsi,
-                                    sidik,mutu,dup,kunci,bobot,jenis_soal,pembahasan)
-                                  VALUES(?,1,?,?,?,?,NULL,?,0,?,?,?,?)""",
+                                    sidik,mutu,dup,kunci,bobot,jenis_soal,pembahasan,bacaan)
+                                  VALUES(?,1,?,?,?,?,NULL,?,0,?,?,?,?,?)""",
                                (dok, b['no'], b['batang'],
                                 json.dumps(b['opsi'], ensure_ascii=False), len(b['opsi']),
                                 2 if len(b['opsi']) >= 3 else 1,
                                 b.get('kunci') or None, b.get('bobot'),
-                                b.get('jenis'), b.get('pembahasan') or None))
+                                b.get('jenis'), b.get('pembahasan') or None,
+                                json.dumps(b['bacaan'], ensure_ascii=False) if b.get('bacaan') else None))
                 ids.append(cc.lastrowid)
             c.executemany("INSERT INTO soal_fts(batang,opsi,soal_id) SELECT batang,opsi,id FROM soal WHERE id=?",
                           [(i,) for i in ids])
@@ -1673,9 +1674,11 @@ def periksa_naskah(teks, jenis='soal'):
     berbahas = sum(1 for b in butir if b.get('pembahasan'))
     return {'jumlah': len(butir), 'judul': meta.get('judul') or '',
             'jenis': jenis, 'kunci': berkunci, 'pembahasan': berbahas,
+            'bacaan': bool(meta.get('bacaan')),
             'pesan': f'{len(butir)} soal terbaca ('
                      + ', '.join(f'{v} {k}' for k, v in sorted(jenis.items()))
-                     + f') · {berkunci} berkunci · {berbahas} berpembahasan'}
+                     + f') · {berkunci} berkunci · {berbahas} berpembahasan'
+                     + (' · ada teks bacaan' if meta.get('bacaan') else '')}
 
 
 def jalankan_manual(jid, naskah_teks, judul='', topik='', mapel=None, kelas=None,

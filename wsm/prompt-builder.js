@@ -81,8 +81,11 @@ const SUBJECT_PRESETS = {
   fisika: { label: 'Fisika', diagrams: ['grafik', 'gaya', 'rangkaian', 'sinar', 'gerak', 'gelombang', 'medan', 'garisbilangan', 'pencar', 'alatlab', 'statistik', 'tabel'].concat(SHARED_LAYOUT_DIAGRAMS) },
   kimia: { label: 'Kimia', diagrams: ['lewis', 'hidrokarbon', 'bentukmolekul', 'tingkatenergi', 'kulitelektron', 'titrasi', 'katalis', 'kisi', 'alatlab', 'pencar', 'tabel', 'statistik'].concat(SHARED_LAYOUT_DIAGRAMS) },
   biologi: { label: 'Biologi', diagrams: ['rantaimakanan', 'sel', 'piramida', 'jaringmakanan', 'punnett', 'kuncideterminasi', 'venn', 'statistik', 'pencar', 'piktogram', 'tabel'].concat(SHARED_LAYOUT_DIAGRAMS) },
-  'bahasa-indonesia': { label: 'Bahasa Indonesia', diagrams: ['tabel', 'venn'].concat(SHARED_LAYOUT_DIAGRAMS) },
-  'bahasa-inggris': { label: 'Bahasa Inggris', diagrams: ['tabel', 'venn'].concat(SHARED_LAYOUT_DIAGRAMS) },
+  // passage: language worksheets are reading-comprehension worksheets by
+  // default — the prompt asks for a "Bacaan" text block right under the
+  // title (parseWorksheet renders it, naskah.py/Practice carry it along).
+  'bahasa-indonesia': { label: 'Bahasa Indonesia', passage: true, diagrams: ['tabel', 'venn'].concat(SHARED_LAYOUT_DIAGRAMS) },
+  'bahasa-inggris': { label: 'Bahasa Inggris', passage: true, diagrams: ['tabel', 'venn'].concat(SHARED_LAYOUT_DIAGRAMS) },
   lainnya: { label: '', diagrams: ['tabel', 'statistik'].concat(SHARED_LAYOUT_DIAGRAMS) }
 };
 
@@ -153,6 +156,15 @@ function buildAIPrompt(opts) {
 
   let n = 1;
   parts.push(`${n++}. Baris pertama: judul singkat naskah soal, tanpa label apa pun.`);
+
+  // Reading passage (Bahasa Indonesia / Bahasa Inggris by default, or
+  // opts.includePassage). The heading word "Bacaan" alone on its line is
+  // what parseWorksheet keys on; the passage's own title goes on the next
+  // line, then the paragraphs. Every question must refer back to the text.
+  const wantsPassage = opts.includePassage != null ? !!opts.includePassage : !!preset.passage;
+  if (wantsPassage) {
+    parts.push(`${n++}. TEKS BACAAN (wajib — ini soal pemahaman bacaan): tepat di bawah judul, tulis baris "Bacaan" SENDIRIAN (tanpa titik dua, tanpa nomor, tanpa markdown), lalu di baris berikutnya judul teksnya, lalu teks bacaannya utuh dalam 2–5 paragraf yang dipisah satu baris kosong. Panjangnya sesuai jenjang: SD sekitar 100–150 kata, SMP 150–250 kata, SMA 250–400 kata. Teksnya karangan asli yang wajar untuk jenjang itu (bukan kutipan buku/berita yang ada), dalam bahasa yang sama dengan soalnya. SEMUA soal mengacu ke teks itu: informasi tersurat dan tersirat, makna kata sesuai konteks, ide pokok paragraf, simpulan, tujuan penulis, struktur/jenis teks, dan tata bahasa dari kalimat di dalam teks. Jangan mengulang teksnya di dalam soal — cukup rujuk paragrafnya.${setCount > 1 ? ' Tiap SET punya teks bacaannya sendiri (judul dan isi berbeda).' : ''}`);
+  }
 
   if (activeTypes.includes('PG') || activeTypes.includes('E')) {
     parts.push(`${n++}. (Opsional, lewati jika tidak relevan) Daftar rumus, masing-masing di baris sendiri: "F1 (Nama Rumus): $rumus dalam LaTeX$"`);

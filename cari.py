@@ -11,6 +11,41 @@ PORT = 7790
 def db():
     c = sqlite3.connect(DB); c.row_factory = sqlite3.Row; return c
 
+KOLOM_SOAL_BARU = (('kunci', 'TEXT'), ('bobot', 'INT'), ('jenis_soal', 'TEXT'),
+                   ('pembahasan', 'TEXT'), ('bacaan', 'TEXT'))
+
+def pastikan_kolom():
+    """Kolom tabel soal yang ditambahkan belakangan (basis lama dibuat panen.py
+    hanya dengan kolom hasil panen PDF).
+
+    Dijalankan sekali saat server mulai. Tanpa ini, INSERT bank soal di
+    lembar_dari_naskah() gagal diam-diam (tertangkap except) dan tab Susun
+    Ulang gagal membaca s.jenis_soal — itulah yang terjadi di Mac yang basis
+    datanya dibuat sebelum kolom-kolom ini ada. bacaan: teks bacaan lembar
+    Bahasa Indonesia/Inggris, JSON {judul, isi}.
+    """
+    try:
+        c = sqlite3.connect(DB)
+        ada = {r[1] for r in c.execute('PRAGMA table_info(soal)')}
+        if not ada:
+            c.close(); return
+        for kol, tipe in KOLOM_SOAL_BARU:
+            if kol not in ada:
+                c.execute(f'ALTER TABLE soal ADD COLUMN {kol} {tipe}')
+                print(f'bank soal: kolom {kol} ditambahkan', flush=True)
+        c.commit(); c.close()
+    except sqlite3.Error as e:
+        print(f'bank soal: kolom tidak bisa dipastikan ({e})', flush=True)
+
+def _bacaan_baris(r):
+    """{judul, isi} dari kolom bacaan (JSON) sebuah baris soal, atau None."""
+    try:
+        if 'bacaan' in r.keys() and r['bacaan']:
+            b = json.loads(r['bacaan'])
+            if isinstance(b, dict) and (b.get('isi') or '').strip(): return b
+    except (ValueError, TypeError): pass
+    return None
+
 def bersih(q):
     q = re.sub(r'[^\w\s"*-]', ' ', q, flags=re.UNICODE).strip()
     if not q: return None
@@ -303,7 +338,8 @@ class H(BaseHTTPRequestHandler):
                                        'Buat dulu lewat tab "Buat Soal".', 404)
             butir = [{'jenis': r['jenis_soal'] or 'PG', 'batang': r['batang'],
                       'opsi': json.loads(r['opsi'] or '{}'), 'kunci': r['kunci'] or '',
-                      'bobot': r['bobot'], 'sub': []} for r in terpilih]
+                      'bobot': r['bobot'], 'sub': [], 'bacaan': _bacaan_baris(r)}
+                     for r in terpilih]
             judul = (qs.get('judul') or [''])[0] or (topik.title() if topik else 'Latihan')
             teks = _nsk.ke_naskah(butir, judul)
             st = _st.muat()
@@ -334,8 +370,7 @@ class H(BaseHTTPRequestHandler):
             if not ids: return self.send_error(400, 'tidak ada soal dipilih')
             judul = (qs.get('judul') or ['Latihan'])[0]
             c = db(); tanda = ','.join('?' * len(ids))
-            rows = c.execute(f"""SELECT s.batang, s.opsi, s.kunci, s.bobot, s.jenis_soal,
-                                       s.n_opsi, d.mapel, d.kelas
+            rows = c.execute(f"""SELECT s.*, d.mapel, d.kelas
                                 FROM soal s JOIN dokumen d ON d.id=s.dok_id
                                 WHERE s.id IN ({tanda})""", ids).fetchall()
             c.close()
@@ -344,7 +379,8 @@ class H(BaseHTTPRequestHandler):
                 jenis = r['jenis_soal'] or ('PG' if (r['n_opsi'] or 0) >= 3 else 'E')
                 butir.append({'jenis': jenis, 'batang': r['batang'],
                               'opsi': json.loads(r['opsi'] or '{}'),
-                              'kunci': r['kunci'] or '', 'bobot': r['bobot'], 'sub': []})
+                              'kunci': r['kunci'] or '', 'bobot': r['bobot'], 'sub': [],
+                              'bacaan': _bacaan_baris(r)})
             teks = _nsk.ke_naskah(butir, judul)
             mapel = next((r['mapel'] for r in rows if r['mapel']), '') or ''
             kelas = next((str(r['kelas']) for r in rows if r['kelas']), '') or ''
@@ -1431,6 +1467,7 @@ document.querySelectorAll('nav button').forEach(b => b.onclick = () => {
 
 if __name__ == '__main__':
     print(f"Mesin pencari jalan di  http://localhost:{PORT}")
+    pastikan_kolom()
     # WAJIB berutas banyak: rute /lembar.pdf memanggil Chrome yang lalu
     # meminta /lembar ke server ini juga. Server satu utas membeku.
     # Bawaannya hanya melayani Mac ini. Untuk membukanya ke tablet/HP di

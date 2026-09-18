@@ -235,6 +235,55 @@ PG1-A`;
   assert.match(html, /ws-passage/);
 });
 
+test('Reading passage: "Bacaan" heading after the worksheet title keeps the title', () => {
+  const raw = `Latihan Membaca Pemahaman
+
+Bacaan
+Hutan Kota
+
+Hutan kota adalah kawasan hijau di tengah permukiman. Fungsinya menyerap air hujan dan menurunkan suhu.
+
+Selain itu, hutan kota menjadi tempat hidup burung dan serangga.
+
+Bagian Pilihan Ganda: (PG)
+PG1. Apa fungsi hutan kota menurut teks?
+A. Menyerap air hujan
+B. Menambah polusi
+C. Menaikkan suhu
+D. Mengurangi burung
+
+Kunci Jawaban
+PG1-A`;
+  const { data, html } = render(raw, { showAnswerKey: true });
+  assert.equal(data.title, 'Latihan Membaca Pemahaman');
+  assert.equal(data.passageTitle, 'Hutan Kota');
+  assert.match(data.passageBody, /menyerap air hujan/);
+  assert.match(data.passageBody, /burung dan serangga/);
+  assert.equal(data.sections.length, 1);
+  assert.equal(data.sections[0].items.length, 1);
+  assert.match(html, /ws-passage/);
+});
+
+test('Reading passage: "Bacaan 1:" spelling and no worksheet title', () => {
+  const raw = `Bacaan 1:
+Reading is a habit that grows with practice.
+
+Bagian A: (PG)
+PG1. What is the text about?
+A. Reading
+B. Cooking
+C. Running
+D. Sleeping
+
+Kunci Jawaban
+PG1-A`;
+  const { data } = render(raw, { showAnswerKey: true });
+  assert.equal(data.title, '');
+  assert.equal(data.passageTitle, '');
+  assert.match(data.passageBody, /habit that grows/);
+  assert.equal(data.sections[0].items.length, 1);
+});
+
 // ---------------------------------------------------------------------
 // Formula reference sheet (F1, F2, ...)
 // ---------------------------------------------------------------------
