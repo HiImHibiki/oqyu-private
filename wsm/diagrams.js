@@ -112,6 +112,118 @@ function compileExpr(exprStr) {
 }
 
 // ---------------------------------------------------------------------
+// 0. Gaya rumah — standar naskah A-Level (Cambridge / Edexcel)
+// ---------------------------------------------------------------------
+// Naskah ujian: hitam-putih (abu-abu hanya untuk garis bantu dan arsiran),
+// sans-serif, tanpa bingkai di sekeliling gambar, sumbu berpanah dengan
+// label "besaran / satuan" di ujungnya, dan "NOT TO SCALE" pada bangun
+// yang ukurannya ditulis. Semua keluaran penggambar dilewatkan rapikanSVG()
+// di renderDiagramTag, jadi warna lama yang masih tersisa di penggambar
+// mana pun tetap tercetak hitam-putih. Sintaks tag TIDAK berubah — semua
+// perbaikan lewat bawaan penggambar, bukan parameter baru, supaya perintah
+// AI tidak bertambah panjang.
+const GAYA = {
+  hitam: '#000000',
+  abu: '#7a7a7a',          // garis bantu, garis konstruksi putus-putus
+  abuMuda: '#c9c9c9',      // grid
+  arsir: '#e3e3e3',        // isian daerah / arsiran
+  putih: '#ffffff',
+  font: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+  garis: 1.6,              // garis utama (kurva, sisi bangun, panah gaya)
+  garisBantu: 0.9,         // grid, garis putus-putus, garis dimensi
+  teks: 11.5,
+  teksKecil: 10,
+  putus: '6 4',
+  putusHalus: '2 3'
+};
+
+// Warna lama (biru/merah/hijau/pastel) -> hitam-putih. Dipakai rapikanSVG.
+const PETA_WARNA = {
+  '#d8dce1': GAYA.abuMuda, '#94a3b8': GAYA.abu, '#64748b': '#5a5a5a',
+  '#475569': '#3a3a3a', '#334155': GAYA.hitam, '#1e293b': GAYA.hitam,
+  '#1d4ed8': GAYA.hitam, '#6366f1': GAYA.hitam, '#16a34a': '#3a3a3a',
+  '#b91c1c': GAYA.hitam, '#dc2626': GAYA.hitam, '#2563eb': GAYA.hitam,
+  '#eef0f3': '#ececec', '#e5e9ef': GAYA.arsir, '#e2e8f0': GAYA.arsir,
+  '#cbd5e1': GAYA.abuMuda, '#b8c0cc': '#b5b5b5', '#dbeafe': GAYA.arsir,
+  '#fee2e2': GAYA.arsir, '#fed7aa': GAYA.arsir, '#e0e7ff': GAYA.arsir,
+  '#fff7ed': '#f2f2f2', '#fef3c7': '#f2f2f2', '#f0fdf4': '#f2f2f2',
+  '#ecfccb': '#f2f2f2', '#bfdbfe': '#d6d6d6', '#86efac': '#c0c0c0'
+};
+
+// Pola garis seri ke-1, ke-2, ... di satu grafik: padat, putus, titik,
+// putus-titik. Cara A-Level membedakan kurva tanpa warna.
+const POLA_SERI = ['', '6 4', '2 3', '8 3 2 3'];
+function polaSeri(i) {
+  const p = POLA_SERI[i % POLA_SERI.length];
+  return p ? ` stroke-dasharray="${p}"` : '';
+}
+
+// "m/s" -> "m s⁻¹", "m/s^2" -> "m s⁻²", "kg m/s" -> "kg m s⁻¹". Satuan
+// pembagi ditulis dengan pangkat negatif, seperti di naskah Cambridge.
+const SUPER = { '-': '⁻', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
+function satuanALevel(u) {
+  u = String(u || '').trim();
+  if (!u) return '';
+  const sup = (n) => String(n).split('').map((c) => SUPER[c] || c).join('');
+  u = u.replace(/\^(-?\d+)/g, (_, n) => sup(n));
+  const bagi = u.split('/');
+  if (bagi.length < 2) return u;
+  const atas = bagi[0].trim();
+  const bawah = bagi.slice(1).join(' ').trim().split(/\s+/).map((t) => {
+    const m = t.match(/^([A-Za-zµΩ°%]+)([⁰¹²³⁴⁵⁶⁷⁸⁹]*)$/);
+    if (!m) return t;
+    const pangkat = m[2] ? '⁻' + m[2] : '⁻¹';
+    return m[1] + pangkat;
+  }).join(' ');
+  return (atas ? atas + ' ' : '') + bawah;
+}
+
+// Label sumbu gaya A-Level: "v / m s⁻¹", "t / s". Tanpa satuan cukup besarannya.
+function labelSatuan(besaran, satuan) {
+  const s = satuanALevel(satuan);
+  return s ? `${besaran} / ${s}` : String(besaran || '');
+}
+
+// "kecepatan (m/s)" atau "v (m/s)" -> "kecepatan / m s⁻¹": label lama yang
+// ditulis pemakai/AI dengan satuan dalam kurung dibawa ke bentuk A-Level.
+function labelSumbuALevel(teks) {
+  const t = String(teks || '').trim();
+  const m = t.match(/^(.*?)\s*\(([^()]+)\)\s*$/);
+  return m ? labelSatuan(m[1].trim(), m[2]) : t;
+}
+
+// Sumbu berpanah dari titik asal (x0,y0) ke kanan sampai xEnd dan ke atas
+// sampai yEnd (koordinat SVG, yEnd < y0). Label di ujung panah.
+function sumbuSVG(o) {
+  let s = '';
+  const w = o.strokeWidth || 1.2;
+  if (o.xEnd != null) s += arrowSVG(o.x0, o.y0, o.xEnd, o.y0, { headLen: 7, strokeWidth: w });
+  if (o.yEnd != null) s += arrowSVG(o.x0, o.y0, o.x0, o.yEnd, { headLen: 7, strokeWidth: w });
+  if (o.labelX) s += `<text x="${(o.xEnd).toFixed(1)}" y="${(o.y0 + 15).toFixed(1)}" text-anchor="end" font-size="${GAYA.teks}" fill="${GAYA.hitam}">${escText(o.labelX)}</text>`;
+  if (o.labelY) s += `<text x="${(o.x0 + 6).toFixed(1)}" y="${(o.yEnd - 5).toFixed(1)}" text-anchor="start" font-size="${GAYA.teks}" fill="${GAYA.hitam}">${escText(o.labelY)}</text>`;
+  return s;
+}
+
+// "NOT TO SCALE" di pojok kanan atas gambar, seperti bangun di naskah Cambridge.
+function tidakBerskalaSVG(xKanan, yAtas) {
+  return `<text x="${xKanan.toFixed(1)}" y="${yAtas.toFixed(1)}" text-anchor="end" font-size="${GAYA.teksKecil}" font-style="italic" fill="${GAYA.hitam}">NOT TO SCALE</text>`;
+}
+
+// Dipakai renderDiagramTag pada SEMUA keluaran SVG:
+//   1. bingkai abu-abu (rect latar pertama) dihilangkan,
+//   2. warna dipetakan ke hitam-putih,
+//   3. font sans-serif dipasang di akar <svg>.
+function rapikanSVG(svg) {
+  if (!svg || svg.indexOf('<svg') < 0) return svg;
+  svg = svg.replace(/(<rect [^>]*?fill="#ffffff"[^>]*?)stroke="#d8dce1"/, '$1stroke="none"');
+  svg = svg.replace(/#[0-9a-fA-F]{6}\b/g, (h) => PETA_WARNA[h.toLowerCase()] || h);
+  if (svg.indexOf('font-family=') < 0 || !/<svg[^>]*font-family=/.test(svg)) {
+    svg = svg.replace(/<svg class="ws-diagram-svg"/, `<svg class="ws-diagram-svg" font-family="${GAYA.font}"`);
+  }
+  return svg;
+}
+
+// ---------------------------------------------------------------------
 // 1. Grafik Fungsi
 // ---------------------------------------------------------------------
 
@@ -4780,6 +4892,7 @@ function renderDiagramTag(rawTagContent, depth) {
     // Labels, arrows and dimension lines the author placed by hand, drawn
     // over whichever diagram was just built (see applyAnnotations).
     if (svg && hasAnnotations(params)) svg = applyAnnotations(svg, params);
+    svg = rapikanSVG(svg);
   } catch (err) {
     return `<span style="color:#b91c1c;font-size:11px;">[diagram error: ${escText(err.message)}]</span>`;
   }
@@ -4812,6 +4925,7 @@ function substituteDiagramTokens(html, tags) {
 // Export for Node-based testing (no-op in browser).
 if (typeof module !== 'undefined') {
   module.exports = {
+    GAYA, rapikanSVG, satuanALevel, labelSatuan, labelSumbuALevel, sumbuSVG, tidakBerskalaSVG, polaSeri,
     compileExpr, renderFunctionGraphSVG, renderGeometrySVG, renderNumberLineSVG,
     renderVennSVG, renderStatSVG, renderFactorTreeSVG, renderTableHTML,
     renderPictogramSVG, renderSolidSVG, renderAngleSVG, renderLewisSVG,

@@ -1271,8 +1271,8 @@ test('Kunci determinasi: numeric results read as "lanjut ke", names stay names',
 test('Gerak: every vertex value is printed on the y-axis, with dashed guides', () => {
   const html = D.renderDiagramTag('gerak: tipe=kecepatan-waktu; titik=0:0,2:10,5:10,8:0');
   // y-axis tick labels are anchored "end" just left of the axis (x = pad-6 = 36).
-  assert.match(html, /<text x="36" y="[\d.]+" font-size="9" text-anchor="end" fill="#64748b">10<\/text>/);
-  assert.match(html, /<text x="36" y="[\d.]+" font-size="9" text-anchor="end" fill="#64748b">0<\/text>/);
+  assert.match(html, /<text x="36" y="[\d.]+" font-size="9" text-anchor="end" fill="#[0-9a-f]{6}">10<\/text>/);
+  assert.match(html, /<text x="36" y="[\d.]+" font-size="9" text-anchor="end" fill="#[0-9a-f]{6}">0<\/text>/);
   assert.match(html, /stroke-dasharray="3,3"/);
   assert.match(html, /m=5/);
 });
@@ -1280,12 +1280,12 @@ test('Gerak: every vertex value is printed on the y-axis, with dashed guides', (
 test('Gerak: bantu=tidak drops the guide lines but keeps the y-axis values', () => {
   const html = D.renderDiagramTag('gerak: titik=0:0,4:20; bantu=tidak');
   assert.doesNotMatch(html, /stroke-dasharray="3,3"/);
-  assert.match(html, /text-anchor="end" fill="#64748b">20<\/text>/);
+  assert.match(html, /text-anchor="end" fill="#[0-9a-f]{6}">20<\/text>/);
 });
 
 test('Gerak: values too close together on the y-axis are not printed twice', () => {
   const html = D.renderDiagramTag('gerak: titik=0:0,2:100,4:101,6:0');
-  const labels = (html.match(/font-size="9" text-anchor="end" fill="#64748b">[\d.]+<\/text>/g) || []);
+  const labels = (html.match(/font-size="9" text-anchor="end" fill="#[0-9a-f]{6}">[\d.]+<\/text>/g) || []);
   assert.equal(labels.length, 2); // 0 and 100 — 101 sits under 10px away
 });
 
