@@ -1882,20 +1882,35 @@ function parseForceList(raw) {
   });
 }
 
+// Arsiran tumpuan: garis-garis pendek miring di sisi bawah garis permukaan
+// (konvensi gambar teknik/fisika untuk lantai atau bidang miring). (ux,uy)
+// arah garis permukaan, (nx,ny) normal yang menjauhi benda.
+function arsirTumpuanSVG(x1, y1, x2, y2, nx, ny) {
+  const len = Math.hypot(x2 - x1, y2 - y1) || 1;
+  const ux = (x2 - x1) / len, uy = (y2 - y1) / len;
+  // arah arsir: 45° dari normal, condong berlawanan arah garis
+  const hx = (nx - ux) / Math.SQRT2, hy = (ny - uy) / Math.SQRT2;
+  let s = '';
+  for (let d = 8; d < len - 2; d += 9) {
+    const px = x1 + ux * d, py = y1 + uy * d;
+    s += `<line x1="${px.toFixed(1)}" y1="${py.toFixed(1)}" x2="${(px + hx * 8).toFixed(1)}" y2="${(py + hy * 8).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="0.8"/>`;
+  }
+  return s;
+}
+
 function renderForceDiagramSVG(cfg) {
-  // Drawn in a frame centred on the object, then cropped to what was
-  // actually drawn: the old fixed 340x300 canvas left most of itself empty,
-  // so the printed diagram was small and swimming in white space.
+  // Digambar dalam kerangka berpusat di benda, lalu dipotong pas ke apa
+  // yang benar-benar tergambar: kanvas tetap 340x300 yang lama sebagian
+  // besar kosong, sehingga gambar tercetak kecil di tengah ruang putih.
   const boxSize = 64;
   const cx = 0, cy = 0;
   const objek = cfg.objek || 'Benda';
   const forces = parseForceList(cfg.gaya);
-  // sudutBidang: tilts the surface line for an inclined-plane (bidang
-  // miring) setup — a very common Newton's-law worksheet shape that a
-  // flat horizontal surface can't represent. The object box itself stays
-  // upright (a free-body diagram isolates the object; force angles are
-  // still given in the same absolute 0-360 frame as always), so this only
-  // changes what the ground line looks like.
+  // sudutBidang: memiringkan garis permukaan untuk bidang miring — bentuk
+  // soal Hukum Newton yang sangat umum dan tidak bisa diwakili lantai datar.
+  // Kotak benda tetap tegak (diagram benda bebas mengisolasi benda; sudut
+  // gaya tetap dalam kerangka 0-360 mutlak), jadi ini hanya mengubah garis
+  // tumpuannya.
   const inclineDeg = numOrDefault(cfg.sudutBidang, 0);
 
   const parts = [];
@@ -1906,34 +1921,39 @@ function renderForceDiagramSVG(cfg) {
   if (cfg.permukaan !== 'tanpa') {
     const rad = (inclineDeg * Math.PI) / 180;
     const halfLen = 120;
-    // The box stays upright, so a tilted surface would cut through its
-    // downhill corner: drop the line far enough that it clears the corner.
+    // Kotak tetap tegak, jadi permukaan miring akan memotong sudut bawah
+    // kotak: garis diturunkan secukupnya sampai lolos dari sudut itu.
     const gy = cy + boxSize / 2 + 14 + Math.abs(Math.tan(rad)) * (boxSize / 2);
     const x1 = cx - halfLen, x2 = cx + halfLen;
     const y1 = gy + Math.tan(rad) * halfLen, y2 = gy - Math.tan(rad) * halfLen;
-    parts.push(`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#94a3b8" stroke-width="1.4"/>`);
+    parts.push(`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.2"/>`);
+    // arsiran tumpuan di sisi yang menjauhi benda
+    const nx = -Math.sin(rad), ny = Math.cos(rad); // normal ke bawah (SVG) untuk garis miring
+    parts.push(arsirTumpuanSVG(x1, y1, x2, y2, nx, ny));
     cover(x1, y1, x2, y2);
+    cover(x1 + nx * 8, y1 + ny * 8, x2 + nx * 8, y2 + ny * 8);
     if (inclineDeg) {
-      parts.push(`<path d="M${(x1 + 30).toFixed(1)},${y1.toFixed(1)} A30,30 0 0 1 ${(x1 + 30 * Math.cos(rad)).toFixed(1)},${(y1 - 30 * Math.sin(rad)).toFixed(1)}" fill="none" stroke="#94a3b8" stroke-width="1"/>`);
-      parts.push(`<text x="${(x1 + 38).toFixed(1)}" y="${(y1 - 6).toFixed(1)}" font-size="10.5" fill="#000000">${inclineDeg}°</text>`);
+      // sudut kemiringan ditandai busur kecil di kaki bidang miring
+      parts.push(`<path d="M${(x1 + 30).toFixed(1)},${y1.toFixed(1)} A30,30 0 0 1 ${(x1 + 30 * Math.cos(rad)).toFixed(1)},${(y1 - 30 * Math.sin(rad)).toFixed(1)}" fill="none" stroke="${GAYA.hitam}" stroke-width="${GAYA.garisBantu}"/>`);
+      parts.push(`<text x="${(x1 + 38).toFixed(1)}" y="${(y1 - 6).toFixed(1)}" font-size="${GAYA.teksKecil}" fill="${GAYA.hitam}">${inclineDeg}°</text>`);
       cover(x1 + 30, y1 - 18, x1 + 38 + textW(inclineDeg + '°'), y1);
     }
   }
 
-  parts.push(`<rect x="${(cx - boxSize / 2).toFixed(1)}" y="${(cy - boxSize / 2).toFixed(1)}" width="${boxSize}" height="${boxSize}" fill="#ffffff" stroke="#000000" stroke-width="2"/>`);
-  parts.push(`<text x="${cx.toFixed(1)}" y="${(cy + 5).toFixed(1)}" text-anchor="middle" font-size="12.5" font-weight="700" fill="#000000">${escText(objek)}</text>`);
+  parts.push(`<rect x="${(cx - boxSize / 2).toFixed(1)}" y="${(cy - boxSize / 2).toFixed(1)}" width="${boxSize}" height="${boxSize}" fill="${GAYA.putih}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`);
+  parts.push(`<text x="${cx.toFixed(1)}" y="${(cy + 4.5).toFixed(1)}" text-anchor="middle" font-size="${GAYA.teks}" font-weight="700" fill="${GAYA.hitam}">${escText(objek)}</text>`);
   cover(cx - boxSize / 2, cy - boxSize / 2, cx + boxSize / 2, cy + boxSize / 2);
 
-  // Arrow length follows the magnitude RELATIVE to the largest force on the
-  // diagram (45–110 px), so "F1:40 vs F2:20" is visibly 2:1 instead of two
-  // arrows of nearly the same length.
+  // Panjang panah mengikuti besar gaya RELATIF terhadap gaya terbesar di
+  // gambar (45–110 px), supaya "F1:40 vs F2:20" terlihat 2:1, bukan dua
+  // panah yang hampir sama panjang.
   const maxMag = forces.reduce((m, f) => (isFinite(f.magnitude) ? Math.max(m, Math.abs(f.magnitude)) : m), 0);
   const norm = (a) => ((a % 360) + 360) % 360;
 
-  // Forces pointing the same way ("F1:40:0|F2:20:0" — two pushes to the
-  // right) used to be drawn on top of each other, labels included, which
-  // printed as one unreadable "F2F120". Collinear forces are grouped and
-  // fanned out sideways, each with its own arrow and label.
+  // Gaya searah ("F1:40:0|F2:20:0" — dua dorongan ke kanan) dulu digambar
+  // bertumpuk, labelnya juga, sehingga tercetak jadi "F2F120" yang tak
+  // terbaca. Gaya segaris dikelompokkan dan dikipas ke samping, masing-
+  // masing dengan panah dan labelnya sendiri.
   const groups = [];
   forces.forEach((f) => {
     const a = norm(f.angle);
@@ -1941,6 +1961,11 @@ function renderForceDiagramSVG(cfg) {
     if (!g) { g = { angle: a, items: [] }; groups.push(g); }
     g.items.push(f);
   });
+
+  // Label yang sudah dipasang, untuk menggeser label berikutnya yang
+  // menabraknya (mis. gaya 90° dan 60° yang labelnya bertemu di atas kotak).
+  const labelBoxes = [];
+  const tabrak = (b) => labelBoxes.some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
 
   groups.forEach((g) => {
     const n = g.items.length;
@@ -1953,7 +1978,7 @@ function renderForceDiagramSVG(cfg) {
       const startR = boxSize / 2 + 3;
       const x1 = cx + dirx * startR + ox, y1 = cy + diry * startR + oy;
       const x2 = x1 + dirx * len, y2 = y1 + diry * len;
-      parts.push(arrowSVG(x1, y1, x2, y2));
+      parts.push(arrowSVG(x1, y1, x2, y2, { strokeWidth: GAYA.garis }));
       cover(x1, y1, x2, y2);
 
       const magTxt = isFinite(f.magnitude) ? ` = ${f.magnitude} N` : '';
@@ -1961,8 +1986,8 @@ function renderForceDiagramSVG(cfg) {
       const vertical = Math.abs(dirx) < 0.3;
       let lx, ly, anchor;
       if (vertical && n > 1) {
-        // Stacked vertical arrows: labels beside the tips, left/right of
-        // their own arrow, so they don't sit on top of each other.
+        // Panah tegak berjajar: label di samping ujung, kiri/kanan panahnya
+        // sendiri, supaya tidak saling menindih.
         anchor = off >= 0 ? 'start' : 'end';
         lx = x2 + (off >= 0 ? 7 : -7); ly = y2 + diry * 6 + 4;
       } else if (vertical) {
@@ -1971,10 +1996,14 @@ function renderForceDiagramSVG(cfg) {
         anchor = dirx > 0 ? 'start' : 'end';
         lx = x2 + dirx * 7; ly = y2 + diry * 7 + 4;
       }
-      parts.push(`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}" font-size="12" fill="#000000">${escText(label)}</text>`);
       const w = textW(label);
-      const tx1 = anchor === 'start' ? lx : anchor === 'end' ? lx - w : lx - w / 2;
-      cover(tx1, ly - 11, tx1 + w, ly + 3);
+      let box = () => { const tx1 = anchor === 'start' ? lx : anchor === 'end' ? lx - w : lx - w / 2; return [tx1, ly - 11, tx1 + w, ly + 3]; };
+      // dorong menjauhi kotak sepanjang arah panah sampai lepas dari label lain
+      for (let k = 0; k < 6 && tabrak(box()); k++) { lx += dirx * 12; ly += diry * 12; }
+      parts.push(`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}" font-size="${GAYA.teks}" fill="${GAYA.hitam}">${escText(label)}</text>`);
+      const b = box();
+      labelBoxes.push(b);
+      cover(b[0], b[1], b[2], b[3]);
     });
   });
 
@@ -2147,7 +2176,8 @@ function componentSVG(x1, y, x2, comp) {
     }
   }
 
-  let svg = S(x1, y, cx - bodyHalf, y) + out + S(cx + bodyHalf, y, x2, y);
+  // kawat penghubung 1.2 px, lebih tipis dari garis simbol supaya simbol menonjol
+  let svg = S(x1, y, cx - bodyHalf, y, 1.2) + out + S(cx + bodyHalf, y, x2, y, 1.2);
   if (label) {
     svg += `<text x="${cx.toFixed(1)}" y="${labelY.toFixed(1)}" font-size="10.5" text-anchor="middle" fill="#000000">${escText(label)}</text>`;
   }
@@ -2157,9 +2187,9 @@ function componentSVG(x1, y, x2, comp) {
 function resistorSVG(x1, y, x2, label) {
   const w = 34, h = 14;
   const bx = (x1 + x2) / 2 - w / 2;
-  let s = `<line x1="${x1.toFixed(1)}" y1="${y.toFixed(1)}" x2="${bx.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`;
+  let s = `<line x1="${x1.toFixed(1)}" y1="${y.toFixed(1)}" x2="${bx.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#000000" stroke-width="1.2"/>`;
   s += `<rect x="${bx.toFixed(1)}" y="${(y - h / 2).toFixed(1)}" width="${w}" height="${h}" fill="#ffffff" stroke="#000000" stroke-width="1.6"/>`;
-  s += `<line x1="${(bx + w).toFixed(1)}" y1="${y.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`;
+  s += `<line x1="${(bx + w).toFixed(1)}" y1="${y.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#000000" stroke-width="1.2"/>`;
   if (label) s += `<text x="${((x1 + x2) / 2).toFixed(1)}" y="${(y - h / 2 - 5).toFixed(1)}" font-size="10.5" text-anchor="middle" fill="#000000">${escText(label)}</text>`;
   return s;
 }
@@ -2173,31 +2203,40 @@ function renderCircuitSVG(cfg) {
   else blocks = comps.map((c) => ({ type: 'series', comp: c }));
   if (!blocks.length) blocks = [{ type: 'series', comp: { name: 'R1', value: 10 } }];
 
-  const branchGap = 30, blockWidth = 90;
+  // Jarak antarcabang paralel 38 px: label komponen cabang bawah (≈ y−17)
+  // harus lepas dari kotak komponen cabang di atasnya (tinggi 14 px).
+  const branchGap = 38, blockWidth = 90;
   const maxBranches = Math.max(1, ...blocks.map((b) => (b.type === 'parallel' ? b.comps.length : 1)));
 
-  const leftX = 55;
+  // Kawat 1.2 px hitam, sudut siku; sel di kawat kiri, komponen di kawat
+  // atas (cabang paralel turun ke bawah), kanvas dipotong pas.
+  const KAWAT = 1.2;
+  const W = (x1, y1, x2, y2) => `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${KAWAT}"/>`;
+  const leftX = 56;
   const rightX = leftX + blocks.length * blockWidth;
-  const width = rightX + 35;
-  const topY = 50;
-  const bottomY = topY + (maxBranches - 1) * branchGap + 55;
-  const height = bottomY + 35;
+  const width = rightX + 22;
+  const topY = 46;
+  const bottomY = topY + (maxBranches - 1) * branchGap + 56;
+  const height = bottomY + 18;
 
   let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
   svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
 
+  // Sel: pelat panjang tipis (+) di atas, pelat pendek tebal (−) di bawah,
+  // tanda + di sisi pelat panjang dan tegangan di samping kiri.
   const bcy = (topY + bottomY) / 2;
-  svg += `<line x1="${leftX}" y1="${topY}" x2="${leftX}" y2="${(bcy - 10).toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`;
-  svg += `<line x1="${(leftX - 9).toFixed(1)}" y1="${(bcy - 10).toFixed(1)}" x2="${(leftX + 9).toFixed(1)}" y2="${(bcy - 10).toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`;
-  svg += `<line x1="${(leftX - 5).toFixed(1)}" y1="${(bcy - 2).toFixed(1)}" x2="${(leftX + 5).toFixed(1)}" y2="${(bcy - 2).toFixed(1)}" stroke="#000000" stroke-width="4"/>`;
-  svg += `<line x1="${leftX}" y1="${(bcy + 2).toFixed(1)}" x2="${leftX}" y2="${bottomY}" stroke="#000000" stroke-width="1.6"/>`;
+  svg += W(leftX, topY, leftX, bcy - 6);
+  svg += `<line x1="${(leftX - 12).toFixed(1)}" y1="${(bcy - 6).toFixed(1)}" x2="${(leftX + 12).toFixed(1)}" y2="${(bcy - 6).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.4"/>`;
+  svg += `<line x1="${(leftX - 6).toFixed(1)}" y1="${(bcy + 2).toFixed(1)}" x2="${(leftX + 6).toFixed(1)}" y2="${(bcy + 2).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="4"/>`;
+  svg += W(leftX, bcy + 4, leftX, bottomY);
+  svg += `<text x="${(leftX + 16).toFixed(1)}" y="${(bcy - 8).toFixed(1)}" font-size="${GAYA.teks}" fill="${GAYA.hitam}">+</text>`;
   const sumber = numOrDefault(cfg.sumber, null);
   if (sumber !== null) {
-    svg += `<text x="${(leftX - 14).toFixed(1)}" y="${(bcy + 4).toFixed(1)}" font-size="11" text-anchor="end" fill="#000000">${sumber} V</text>`;
+    svg += `<text x="${(leftX - 16).toFixed(1)}" y="${(bcy + 2).toFixed(1)}" font-size="${GAYA.teks}" text-anchor="end" fill="${GAYA.hitam}">${sumber} V</text>`;
   }
 
-  svg += `<line x1="${leftX}" y1="${bottomY.toFixed(1)}" x2="${rightX}" y2="${bottomY.toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`;
-  svg += `<line x1="${rightX}" y1="${topY}" x2="${rightX}" y2="${bottomY.toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`;
+  svg += W(leftX, bottomY, rightX, bottomY);
+  svg += W(rightX, topY, rightX, bottomY);
 
   blocks.forEach((block, i) => {
     const bx0 = leftX + i * blockWidth, bx1 = bx0 + blockWidth;
@@ -2207,15 +2246,16 @@ function renderCircuitSVG(cfg) {
       const n = block.comps.length;
       const lastY = topY + (n - 1) * branchGap;
       if (n > 1) {
-        svg += `<line x1="${bx0.toFixed(1)}" y1="${topY}" x2="${bx0.toFixed(1)}" y2="${lastY.toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`;
-        svg += `<line x1="${bx1.toFixed(1)}" y1="${topY}" x2="${bx1.toFixed(1)}" y2="${lastY.toFixed(1)}" stroke="#000000" stroke-width="1.6"/>`;
+        svg += W(bx0, topY, bx0, lastY);
+        svg += W(bx1, topY, bx1, lastY);
+        // titik sambung hanya di percabangan
+        svg += `<circle cx="${bx0.toFixed(1)}" cy="${topY}" r="2.2" fill="${GAYA.hitam}"/>`;
+        svg += `<circle cx="${bx1.toFixed(1)}" cy="${topY}" r="2.2" fill="${GAYA.hitam}"/>`;
       }
       block.comps.forEach((c, j) => {
-        const y = topY + j * branchGap;
-        svg += componentSVG(bx0, y, bx1, c);
+        svg += componentSVG(bx0, topY + j * branchGap, bx1, c);
       });
     }
-    if (i > 0) svg += `<circle cx="${bx0.toFixed(1)}" cy="${topY}" r="1.8" fill="#000000"/>`;
   });
 
   svg += '</svg>';
@@ -2762,27 +2802,50 @@ function renderVectorSVG(cfg) {
   });
   if (showResultant) segs.push({ x1: 0, y1: 0, x2: cx, y2: cy, name: 'R', resultant: true });
 
+  // Skala SAMA di kedua sumbu supaya sudut yang tergambar benar (busur
+  // sudut diberi nilai derajat), kanvas dipotong pas di sekeliling vektor.
   const xs = points.map((p) => p.x), ys = points.map((p) => p.y);
   const xmin = Math.min(0, ...xs) - 1, xmax = Math.max(0, ...xs) + 1;
   const ymin = Math.min(0, ...ys) - 1, ymax = Math.max(0, ...ys) + 1;
-  const width = 340, height = 300, pad = 32;
-  const sx = (width - 2 * pad) / ((xmax - xmin) || 1), sy = (height - 2 * pad) / ((ymax - ymin) || 1);
-  const toPx = (x, y) => [pad + (x - xmin) * sx, height - pad - (y - ymin) * sy];
+  const skala = Math.min(300 / (xmax - xmin), 240 / (ymax - ymin), 60);
+  const pad = 22;
+  const width = (xmax - xmin) * skala + 2 * pad, height = (ymax - ymin) * skala + 2 * pad;
+  const toPx = (x, y) => [pad + (x - xmin) * skala, height - pad - (y - ymin) * skala];
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
-  const xStep = niceStep(xmax - xmin), yStep = niceStep(ymax - ymin);
-  for (let gx = Math.ceil(xmin / xStep) * xStep; gx <= xmax; gx += xStep) { const [px] = toPx(gx, 0); svg += `<line x1="${px.toFixed(1)}" y1="${pad}" x2="${px.toFixed(1)}" y2="${height - pad}" stroke="#eef0f3" stroke-width="1"/>`; }
-  for (let gy = Math.ceil(ymin / yStep) * yStep; gy <= ymax; gy += yStep) { const [, py] = toPx(0, gy); svg += `<line x1="${pad}" y1="${py.toFixed(1)}" x2="${width - pad}" y2="${py.toFixed(1)}" stroke="#eef0f3" stroke-width="1"/>`; }
+  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(1)} ${height.toFixed(1)}" xmlns="http://www.w3.org/2000/svg">`;
+  svg += `<rect x="0.5" y="0.5" width="${(width - 1).toFixed(1)}" height="${(height - 1).toFixed(1)}" fill="#ffffff" stroke="#d8dce1"/>`;
+  // grid halus abu-abu muda (komponen dibaca dari kotak), sumbu abu-abu tipis
+  const step = niceStep(Math.max(xmax - xmin, ymax - ymin));
+  for (let gx = Math.ceil(xmin / step) * step; gx <= xmax; gx += step) { const [px] = toPx(gx, 0); svg += `<line x1="${px.toFixed(1)}" y1="${pad}" x2="${px.toFixed(1)}" y2="${(height - pad).toFixed(1)}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`; }
+  for (let gy = Math.ceil(ymin / step) * step; gy <= ymax; gy += step) { const [, py] = toPx(0, gy); svg += `<line x1="${pad}" y1="${py.toFixed(1)}" x2="${(width - pad).toFixed(1)}" y2="${py.toFixed(1)}" stroke="${GAYA.abuMuda}" stroke-width="0.6"/>`; }
   const [ox, oy] = toPx(0, 0);
-  svg += `<line x1="${pad}" y1="${oy.toFixed(1)}" x2="${width - pad}" y2="${oy.toFixed(1)}" stroke="#94a3b8" stroke-width="1.2"/>`;
-  svg += `<line x1="${ox.toFixed(1)}" y1="${pad}" x2="${ox.toFixed(1)}" y2="${height - pad}" stroke="#94a3b8" stroke-width="1.2"/>`;
+  svg += `<line x1="${pad}" y1="${oy.toFixed(1)}" x2="${(width - pad).toFixed(1)}" y2="${oy.toFixed(1)}" stroke="${GAYA.abu}" stroke-width="${GAYA.garisBantu}"/>`;
+  svg += `<line x1="${ox.toFixed(1)}" y1="${pad}" x2="${ox.toFixed(1)}" y2="${(height - pad).toFixed(1)}" stroke="${GAYA.abu}" stroke-width="${GAYA.garisBantu}"/>`;
 
   segs.forEach((s) => {
     const [px1, py1] = toPx(s.x1, s.y1), [px2, py2] = toPx(s.x2, s.y2);
-    svg += arrowSVG(px1, py1, px2, py2, { color: s.resultant ? '#b91c1c' : '#000000', dash: s.resultant ? '5,4' : null, strokeWidth: 2 });
-    const mx = (px1 + px2) / 2, my = (py1 + py2) / 2;
-    svg += `<text x="${(mx + 6).toFixed(1)}" y="${(my - 6).toFixed(1)}" font-size="11" font-weight="700" fill="${s.resultant ? '#b91c1c' : '#000000'}">${escText(s.name)}</text>`;
+    // Sudut terhadap arah mendatar (+x) di pangkal tiap vektor komponen:
+    // busur kecil + nilai derajat, dengan garis acuan mendatar putus-putus
+    // pendek. Resultan tidak diberi sudut — itu yang dihitung siswa.
+    if (!s.resultant) {
+      const theta = Math.atan2(s.y2 - s.y1, s.x2 - s.x1);
+      const deg = Math.round(Math.abs(theta) * 1800 / Math.PI) / 10;
+      if (deg > 2 && deg < 178) {
+        const r = 16;
+        const P = (phi, rr) => [px1 + rr * Math.cos(phi), py1 - rr * Math.sin(phi)];
+        const [ax, ay] = P(0, r), [bx, by] = P(theta, r);
+        svg += `<line x1="${px1.toFixed(1)}" y1="${py1.toFixed(1)}" x2="${(px1 + r + 8).toFixed(1)}" y2="${py1.toFixed(1)}" stroke="${GAYA.abu}" stroke-width="${GAYA.garisBantu}" stroke-dasharray="${GAYA.putusHalus}"/>`;
+        svg += `<path d="M${ax.toFixed(1)},${ay.toFixed(1)} A${r},${r} 0 0 ${theta > 0 ? 0 : 1} ${bx.toFixed(1)},${by.toFixed(1)}" fill="none" stroke="${GAYA.hitam}" stroke-width="${GAYA.garisBantu}"/>`;
+        const [lx, ly] = P(theta / 2, r + 13);
+        svg += `<text x="${lx.toFixed(1)}" y="${(ly + 3.5).toFixed(1)}" font-size="${GAYA.teksKecil}" text-anchor="middle" fill="${GAYA.hitam}">${deg % 1 === 0 ? deg : deg.toFixed(1)}°</text>`;
+      }
+    }
+    svg += arrowSVG(px1, py1, px2, py2, { dash: s.resultant ? GAYA.putus : null, strokeWidth: GAYA.garis, headLen: 9 });
+    // label tebal di tengah vektor, didorong ke sisi kiri arah vektor
+    const len = Math.hypot(px2 - px1, py2 - py1) || 1;
+    const nx = (py2 - py1) / len, ny = -(px2 - px1) / len;
+    const mx = (px1 + px2) / 2 + nx * 9, my = (py1 + py2) / 2 + ny * 9;
+    svg += `<text x="${mx.toFixed(1)}" y="${(my + 4).toFixed(1)}" font-size="${GAYA.teks}" font-weight="700" text-anchor="middle" fill="${GAYA.hitam}">${escText(s.name)}</text>`;
   });
 
   svg += '</svg>';
@@ -2953,57 +3016,186 @@ function renderBoxplotSVG(cfg) {
 // 13. Diagram Sinar (ray diagram — lensa cembung/cekung)
 // ---------------------------------------------------------------------
 
+// Mata panah kecil terisi, berpusat di (x,y), menghadap sudut `rad`
+// (radian, kerangka SVG: y ke bawah). Dipakai DI TENGAH garis sinar dan
+// garis medan untuk menunjukkan arah tanpa memutus garisnya — konvensi
+// buku ujian, bukan panah di ujung garis.
+function kepalaPanahSVG(x, y, rad, size) {
+  size = size || 7;
+  const ux = Math.cos(rad), uy = Math.sin(rad);
+  const px = -uy, py = ux;
+  const tx = x + ux * size * 0.5, ty = y + uy * size * 0.5;
+  const bx = x - ux * size * 0.5, by = y - uy * size * 0.5;
+  return `<polygon points="${tx.toFixed(1)},${ty.toFixed(1)} ${(bx + px * size * 0.45).toFixed(1)},${(by + py * size * 0.45).toFixed(1)} ${(bx - px * size * 0.45).toFixed(1)},${(by - py * size * 0.45).toFixed(1)}" fill="${GAYA.hitam}"/>`;
+}
+
+// Garis tipis hitam dengan mata panah di tengahnya (posisi 0..1 sepanjang
+// garis, bawaan setengah). dash: pola putus-putus untuk perpanjangan sinar
+// maya; panah=false untuk perpanjangan tanpa arah.
+function garisBerarahSVG(x1, y1, x2, y2, opts) {
+  opts = opts || {};
+  const dash = opts.dash ? ` stroke-dasharray="${opts.dash}"` : '';
+  let s = `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${opts.strokeWidth || 1}"${dash}/>`;
+  if (opts.panah !== false && Math.hypot(x2 - x1, y2 - y1) > 14) {
+    const t = opts.posisi == null ? 0.5 : opts.posisi;
+    s += kepalaPanahSVG(x1 + (x2 - x1) * t, y1 + (y2 - y1) * t, Math.atan2(y2 - y1, x2 - x1), opts.headLen || 7);
+  }
+  return s;
+}
+
+// Mata panah kecil terisi, berpusat di (x,y), menghadap sudut `rad`
+// (radian, kerangka SVG: y ke bawah). Dipakai DI TENGAH garis sinar dan
+// garis medan untuk menunjukkan arah tanpa memutus garisnya — konvensi
+// buku ujian, bukan panah di ujung garis.
+function kepalaPanahSVG(x, y, rad, size) {
+  size = size || 7;
+  const ux = Math.cos(rad), uy = Math.sin(rad);
+  const px = -uy, py = ux;
+  const tx = x + ux * size * 0.5, ty = y + uy * size * 0.5;
+  const bx = x - ux * size * 0.5, by = y - uy * size * 0.5;
+  return `<polygon points="${tx.toFixed(1)},${ty.toFixed(1)} ${(bx + px * size * 0.45).toFixed(1)},${(by + py * size * 0.45).toFixed(1)} ${(bx - px * size * 0.45).toFixed(1)},${(by - py * size * 0.45).toFixed(1)}" fill="${GAYA.hitam}"/>`;
+}
+
+// Garis tipis hitam dengan mata panah di tengahnya (posisi 0..1 sepanjang
+// garis, bawaan setengah). dash: pola putus-putus untuk perpanjangan sinar
+// maya; panah=false untuk perpanjangan tanpa arah.
+function garisBerarahSVG(x1, y1, x2, y2, opts) {
+  opts = opts || {};
+  const dash = opts.dash ? ` stroke-dasharray="${opts.dash}"` : '';
+  let s = `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${opts.strokeWidth || 1}"${dash}/>`;
+  if (opts.panah !== false && Math.hypot(x2 - x1, y2 - y1) > 14) {
+    const t = opts.posisi == null ? 0.5 : opts.posisi;
+    s += kepalaPanahSVG(x1 + (x2 - x1) * t, y1 + (y2 - y1) * t, Math.atan2(y2 - y1, x2 - x1), opts.headLen || 7);
+  }
+  return s;
+}
+
 function renderRaySVG(cfg) {
   const alat = String(cfg.alat || 'cembung').toLowerCase();
   const isConverging = alat === 'cembung' || alat === 'converging';
   const f = Math.max(0.5, numOrDefault(cfg.f, 3));
   const doV = Math.max(0.5, numOrDefault(cfg.objek_jarak, 6));
-  const hoV = numOrDefault(cfg.objek_tinggi, 2);
+  const hoV = Math.max(0.2, Math.abs(numOrDefault(cfg.objek_tinggi, 2)));
   const fSigned = isConverging ? f : -f;
-  const di = 1 / (1 / fSigned - 1 / doV);
-  const m = -di / doV;
-  const hi = m * hoV;
+  // Benda tepat di F: sinar bias sejajar, bayangan di tak hingga — tidak
+  // ada bayangan yang bisa digambar, sinar tetap ditelusuri.
+  const adaBayangan = Math.abs(doV - fSigned) > 1e-9;
+  const di = adaBayangan ? 1 / (1 / fSigned - 1 / doV) : NaN;
+  const hi = isFinite(di) ? -(di / doV) * hoV : NaN;
+  const nyata = isFinite(di) && di > 0;
 
-  const scale = 22;
-  const width = 380, height = 260, axisY = height / 2, lensX = width / 2;
-  const toPx = (x, y) => [lensX + x * scale, axisY - y * scale];
+  // Rentang mendatar dalam satuan soal: cukup untuk benda, 2F kedua sisi,
+  // bayangan (nyata di kanan / maya di kiri), lalu skala dipilih agar
+  // gambar ~420 px lebar. Bayangan yang membesar liar (benda dekat F)
+  // dibatasi 3,5× tinggi benda saat menghitung skala supaya gambar tidak
+  // menjadi kerdil; bagian yang berlebih boleh terpotong.
+  const xKiri = Math.min(-doV, -2 * f, isFinite(di) && di < 0 ? di : 0);
+  const xKanan = Math.max(2 * f, nyata ? di : 0) + 0.8 * f;
+  const hMaks = Math.max(hoV, isFinite(hi) ? Math.min(Math.abs(hi), 3.5 * hoV) : 0);
+  let skala = 400 / (xKanan - xKiri);
+  skala = Math.min(skala, 110 / hMaks);
+  const marKiri = 48, marKanan = 58, marAtas = 22, marBawah = 42;
+  const lensX = marKiri + (-xKiri) * skala;
+  const axisY = marAtas + hMaks * skala + 10;
+  const width = lensX + xKanan * skala + marKanan;
+  const height = axisY + hMaks * skala + marBawah;
+  const X = (x) => lensX + x * skala;
+  const Y = (y) => axisY - y * skala;
+  const yBatas = hMaks * 1.15 + 8 / skala; // sinar dipotong di sini (satuan soal)
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
-  svg += `<line x1="10" y1="${axisY}" x2="${width - 10}" y2="${axisY}" stroke="#94a3b8" stroke-width="1"/>`;
+  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(1)} ${height.toFixed(1)}" xmlns="http://www.w3.org/2000/svg">`;
+  svg += `<rect x="0.5" y="0.5" width="${(width - 1).toFixed(1)}" height="${(height - 1).toFixed(1)}" fill="#ffffff" stroke="#d8dce1"/>`;
+  // sumbu utama: garis tipis hitam sepanjang gambar
+  svg += `<line x1="6" y1="${axisY.toFixed(1)}" x2="${(width - 6).toFixed(1)}" y2="${axisY.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="0.9"/>`;
 
-  const lensH = 80;
-  svg += `<line x1="${lensX}" y1="${(axisY - lensH / 2).toFixed(1)}" x2="${lensX}" y2="${(axisY + lensH / 2).toFixed(1)}" stroke="#000000" stroke-width="2"/>`;
-  if (isConverging) {
-    svg += `<polygon points="${lensX - 6},${(axisY - lensH / 2 + 8).toFixed(1)} ${lensX + 6},${(axisY - lensH / 2 + 8).toFixed(1)} ${lensX},${(axisY - lensH / 2).toFixed(1)}" fill="#000000"/>`;
-    svg += `<polygon points="${lensX - 6},${(axisY + lensH / 2 - 8).toFixed(1)} ${lensX + 6},${(axisY + lensH / 2 - 8).toFixed(1)} ${lensX},${(axisY + lensH / 2).toFixed(1)}" fill="#000000"/>`;
-  } else {
-    svg += `<polygon points="${lensX - 6},${(axisY - lensH / 2).toFixed(1)} ${lensX + 6},${(axisY - lensH / 2).toFixed(1)} ${lensX},${(axisY - lensH / 2 + 8).toFixed(1)}" fill="#000000"/>`;
-    svg += `<polygon points="${lensX - 6},${(axisY + lensH / 2).toFixed(1)} ${lensX + 6},${(axisY + lensH / 2).toFixed(1)} ${lensX},${(axisY + lensH / 2 - 8).toFixed(1)}" fill="#000000"/>`;
-  }
-  [-f, f].forEach((fx) => {
-    const [px, py] = toPx(fx, 0);
-    svg += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="2" fill="#000000"/>`;
-    svg += `<text x="${px.toFixed(1)}" y="${(py + 14).toFixed(1)}" font-size="9.5" text-anchor="middle" fill="#000000">F</text>`;
+  // Lensa: garis tegak tipis dengan mata panah di kedua ujung — ke luar
+  // untuk cembung, ke dalam untuk cekung (simbol lensa tipis di naskah ujian).
+  const lensH2 = hMaks * skala + 16;
+  svg += `<line x1="${lensX.toFixed(1)}" y1="${(axisY - lensH2).toFixed(1)}" x2="${lensX.toFixed(1)}" y2="${(axisY + lensH2).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.2"/>`;
+  const kepala = (yUjung, arahKeluar) => {
+    const s = 10, arah = arahKeluar ? 1 : -1;
+    const tipY = yUjung, baseY = yUjung + arah * (yUjung < axisY ? s : -s);
+    if (arahKeluar) return `<polygon points="${lensX.toFixed(1)},${tipY.toFixed(1)} ${(lensX - 5).toFixed(1)},${baseY.toFixed(1)} ${(lensX + 5).toFixed(1)},${baseY.toFixed(1)}" fill="${GAYA.hitam}"/>`;
+    return `<polygon points="${lensX.toFixed(1)},${baseY.toFixed(1)} ${(lensX - 5).toFixed(1)},${tipY.toFixed(1)} ${(lensX + 5).toFixed(1)},${tipY.toFixed(1)}" fill="${GAYA.hitam}"/>`;
+  };
+  svg += kepala(axisY - lensH2, isConverging) + kepala(axisY + lensH2, isConverging);
+
+  // F dan 2F di kedua sisi: tanda tik pendek + label di bawah sumbu.
+  [[-2 * f, '2F'], [-f, 'F'], [f, 'F'], [2 * f, '2F']].forEach(([x, nama]) => {
+    const px = X(x);
+    svg += `<line x1="${px.toFixed(1)}" y1="${(axisY - 4).toFixed(1)}" x2="${px.toFixed(1)}" y2="${(axisY + 4).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1"/>`;
+    svg += `<text x="${px.toFixed(1)}" y="${(axisY + 15).toFixed(1)}" font-size="${GAYA.teksKecil}" text-anchor="middle" fill="${GAYA.hitam}">${nama}</text>`;
   });
 
-  const [oxBase, oyBase] = toPx(-doV, 0);
-  const [oxTip, oyTip] = toPx(-doV, hoV);
-  svg += arrowSVG(oxBase, oyBase, oxTip, oyTip, { color: '#1d4ed8', strokeWidth: 2 });
+  // Tiga sinar istimewa, dihitung dalam satuan soal (y positif ke atas).
+  // Setiap segmen: [x1,y1,x2,y2,maya]. Segmen maya (perpanjangan ke
+  // belakang) digambar putus-putus tanpa panah.
+  const seg = [];
+  const potong = (x1, y1, x2, y2) => {
+    // potong ujung sinar supaya tidak keluar dari tinggi gambar
+    if (Math.abs(y2) > yBatas) {
+      const t = (Math.sign(y2) * yBatas - y1) / (y2 - y1);
+      return [x1, y1, x1 + (x2 - x1) * t, y1 + (y2 - y1) * t];
+    }
+    return [x1, y1, x2, y2];
+  };
+  // Bayangan nyata: sinar bias berhenti di ujung bayangan (konvensi buku);
+  // bayangan maya / tak ada bayangan: sinar bias diteruskan ke tepi kanan.
+  const xUjung = nyata ? di : xKanan - 0.15 * f;
+  const tx = -doV, ty = hoV;
 
-  if (isFinite(di)) {
-    const [ixBase, iyBase] = toPx(di, 0);
-    const [ixTip, iyTip] = toPx(di, hi);
-    svg += arrowSVG(ixBase, iyBase, ixTip, iyTip, { color: '#b91c1c', strokeWidth: 2, dash: di < 0 ? '5,4' : null });
-    // ray through the lens centre (undeviated) and the ray parallel to the
-    // axis that refracts through the far focal point — the two principal
-    // rays needed to locate the image geometrically.
-    svg += `<line x1="${oxTip.toFixed(1)}" y1="${oyTip.toFixed(1)}" x2="${ixTip.toFixed(1)}" y2="${iyTip.toFixed(1)}" stroke="#16a34a" stroke-width="1" stroke-dasharray="2,2"/>`;
-    svg += `<line x1="${oxTip.toFixed(1)}" y1="${oyTip.toFixed(1)}" x2="${lensX.toFixed(1)}" y2="${oyTip.toFixed(1)}" stroke="#16a34a" stroke-width="1" stroke-dasharray="2,2"/>`;
-    svg += `<line x1="${lensX.toFixed(1)}" y1="${oyTip.toFixed(1)}" x2="${ixTip.toFixed(1)}" y2="${iyTip.toFixed(1)}" stroke="#16a34a" stroke-width="1" stroke-dasharray="2,2"/>`;
+  // Sinar 1: sejajar sumbu, dibiaskan lewat F (cembung) atau seolah dari F
+  // sisi benda (cekung).
+  seg.push([tx, ty, 0, ty, false]);
+  const arah1 = isConverging ? [f, -ty] : [f, ty];
+  const t1 = xUjung / arah1[0];
+  seg.push(potong(0, ty, arah1[0] * t1, ty + arah1[1] * t1).concat(false));
+  if (isFinite(di) && !nyata) {
+    if (isConverging) seg.push([0, ty, di, hi, true]);
+    else seg.push([0, ty, -f, 0, true]);
   }
 
-  svg += `<text x="10" y="${height - 8}" font-size="10" fill="#000000">f=${f}, s_o=${doV}, s_i=${isFinite(di) ? Math.round(di * 100) / 100 : '-'}, M=${isFinite(m) ? Math.round(m * 100) / 100 : '-'}</text>`;
+  // Sinar 2: lewat pusat optik, tidak dibelokkan.
+  seg.push([tx, ty, 0, 0, false]);
+  const t2 = xUjung / doV;
+  seg.push(potong(0, 0, doV * t2, -ty * t2).concat(false));
+  if (isFinite(di) && !nyata && isConverging) seg.push([tx, ty, di, hi, true]);
+
+  // Sinar 3: lewat F sisi benda (cembung) / menuju F sisi jauh (cekung),
+  // keluar sejajar sumbu. Tinggi titik potong di lensa = tinggi bayangan.
+  const yL = isConverging ? (Math.abs(f - doV) > 1e-9 ? ty * f / (f - doV) : NaN) : ty * f / (f + doV);
+  if (isFinite(yL) && Math.abs(yL) <= yBatas) {
+    seg.push([tx, ty, 0, yL, false]);
+    seg.push([0, yL, xUjung, yL, false]);
+    if (isFinite(di) && !nyata) {
+      seg.push([0, yL, di, yL, true]);
+      if (!isConverging) seg.push([0, yL, f, 0, true]);
+    }
+  }
+
+  seg.forEach(([x1, y1, x2, y2, maya]) => {
+    svg += garisBerarahSVG(X(x1), Y(y1), X(x2), Y(y2), maya ? { dash: GAYA.putus, panah: false, strokeWidth: 0.9 } : { headLen: 7 });
+  });
+
+  // Benda: panah tegak hitam padat, label di bawah pangkalnya (baris kedua,
+  // di bawah baris F/2F supaya tidak bertumpuk saat benda tepat di 2F).
+  svg += arrowSVG(X(tx), Y(0), X(tx), Y(ty), { headLen: 8, strokeWidth: 1.8 });
+  svg += `<text x="${X(tx).toFixed(1)}" y="${(axisY + 28).toFixed(1)}" font-size="${GAYA.teksKecil}" text-anchor="middle" fill="${GAYA.hitam}">benda</text>`;
+
+  // Bayangan: padat kalau nyata, putus-putus kalau maya. Bayangan nyata
+  // terbalik (ujung di bawah sumbu) diberi label di bawah ujungnya — paling
+  // tidak di baris kedua supaya tidak menabrak label F/2F di baris pertama;
+  // bayangan maya tegak diberi label di bawah pangkalnya seperti benda.
+  if (isFinite(di)) {
+    const hiGambar = Math.sign(hi) * Math.min(Math.abs(hi), yBatas);
+    svg += arrowSVG(X(di), Y(0), X(di), Y(hiGambar), { headLen: 8, strokeWidth: 1.8, dash: nyata ? null : '4 3' });
+    if (nyata) {
+      const ly = Math.max(Y(hiGambar) + 15, axisY + 28);
+      svg += `<text x="${X(di).toFixed(1)}" y="${ly.toFixed(1)}" font-size="${GAYA.teksKecil}" text-anchor="middle" fill="${GAYA.hitam}">bayangan</text>`;
+    } else {
+      svg += `<text x="${X(di).toFixed(1)}" y="${(axisY + 28).toFixed(1)}" font-size="${GAYA.teksKecil}" text-anchor="middle" fill="${GAYA.hitam}">bayangan</text>`;
+    }
+  }
 
   svg += '</svg>';
   return svg;
@@ -3022,141 +3214,250 @@ function parsePiecewisePoints(raw) {
 
 function renderKinematicsSVG(cfg) {
   const tipe = String(cfg.tipe || 'kecepatan-waktu').toLowerCase();
-  const parsed = parsePiecewisePoints(cfg.titik);
+  const parsed = parsePiecewisePoints(cfg.titik).filter((p) => isFinite(p.x) && isFinite(p.y));
   const list = parsed.length ? parsed : [{ x: 0, y: 0 }, { x: 2, y: 10 }, { x: 5, y: 10 }, { x: 8, y: 0 }];
-  const width = 380, height = 280, pad = 42;
   const xs = list.map((p) => p.x), ys = list.map((p) => p.y);
-  const xmin = 0, xmax = Math.max(...xs);
-  const ymin = Math.min(0, ...ys), ymax = Math.max(...ys);
-  const sx = (width - 2 * pad) / ((xmax - xmin) || 1), sy = (height - 2 * pad) / ((ymax - ymin) || 1);
-  const toPx = (x, y) => [pad + (x - xmin) * sx, height - pad - (y - ymin) * sy];
+  const xmin = 0, xmax = Math.max(...xs, 0) || 1;
+  const ymin = Math.min(0, ...ys);
+  let ymax = Math.max(0, ...ys);
+  if (ymax === ymin) ymax = ymin + 1;
 
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
-  svg += `<line x1="${pad}" y1="${height - pad}" x2="${width - pad}" y2="${height - pad}" stroke="#94a3b8" stroke-width="1.2"/>`;
-  svg += `<line x1="${pad}" y1="${pad}" x2="${pad}" y2="${height - pad}" stroke="#94a3b8" stroke-width="1.2"/>`;
+  // Label sumbu gaya A-Level: huruf besaran / satuan berpangkat negatif.
+  // Label pemakai "v (km/jam)" dibawa ke bentuk yang sama oleh labelSumbuALevel.
+  const bawaan = tipe.startsWith('jarak') ? ['x', 'm', 'm/s']
+    : tipe.startsWith('percepat') ? ['a', 'm/s^2', 'm/s^3']
+      : ['v', 'm/s', 'm/s^2'];
+  const yLabel = cfg.sumbuy ? labelSumbuALevel(cfg.sumbuy) : labelSatuan(bawaan[0], bawaan[1]);
+  const xLabel = cfg.sumbux ? labelSumbuALevel(cfg.sumbux) : labelSatuan('t', 's');
+  const textW = (t) => String(t).length * 6.2;
 
-  const yLabel = cfg.sumbuy || (tipe.startsWith('jarak') ? 'jarak (m)' : tipe.startsWith('percepat') ? 'percepatan (m/s²)' : 'kecepatan (m/s)');
-  svg += `<text x="${pad}" y="16" font-size="10" fill="#475569">${escText(yLabel)}</text>`;
-  svg += `<text x="${width - pad}" y="${height - pad + 30}" font-size="10" text-anchor="end" fill="#475569">${escText(cfg.sumbux || 'waktu (s)')}</text>`;
+  // Bidang gambar tetap ~260×170 px; kanvas dipotong pas di sekeliling
+  // sumbu + label supaya tidak ada ruang kosong.
+  const plotW = 260, plotH = 170;
+  const x0 = 44;                         // sumbu y
+  const yTop = 30;                       // atas bidang gambar
+  const sx = plotW / (xmax - xmin), sy = plotH / (ymax - ymin);
+  const toPx = (x, y) => [x0 + (x - xmin) * sx, yTop + (ymax - y) * sy];
+  const [, y0] = toPx(0, 0);             // sumbu x (di y = 0)
+  const yBawah = toPx(0, ymin)[1];
+  const xEnd = x0 + plotW + 26, yEnd = yTop - 24;
+  const width = xEnd + 8 + textW(xLabel) + 6;
+  const height = yBawah + 30;
 
-  // Every vertex gets its value on BOTH axes, joined to the axes by dashed
-  // guide lines — a v-t graph is read by taking values off the y-axis
-  // (the gradient alone tells nothing about the actual speed), so a student
-  // must be able to see "10" on the axis, not just "m=5" on the segment.
-  // Labels closer than a text height to one already drawn are skipped so
-  // neighbouring values never print on top of each other.
-  const yDrawn = [];
-  const uniqY = [...new Set(list.map((p) => p.y))].sort((a, b) => b - a);
-  uniqY.forEach((y) => {
-    const [, py] = toPx(0, y);
-    if (yDrawn.some((q) => Math.abs(q - py) < 10)) return;
-    yDrawn.push(py);
-    svg += `<line x1="${pad - 4}" y1="${py.toFixed(1)}" x2="${pad}" y2="${py.toFixed(1)}" stroke="#94a3b8" stroke-width="1.2"/>`;
-    svg += `<text x="${pad - 6}" y="${(py + 3).toFixed(1)}" font-size="9" text-anchor="end" fill="#64748b">${formatTick(y)}</text>`;
-  });
-  if (cfg.bantu !== 'tidak') {
-    const [, y0px] = toPx(0, 0);
-    list.forEach((p) => {
-      if (p.y === 0 && ymin === 0) return;
-      const [px, py] = toPx(p.x, p.y);
-      svg += `<line x1="${pad}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,3"/>`;
-      svg += `<line x1="${px.toFixed(1)}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${y0px.toFixed(1)}" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,3"/>`;
-    });
+  let svg = '';
+  let minX = 0; // digeser ke kiri bila label gradien menjulur melewati sumbu y
+
+  // Daerah di bawah grafik: arsiran miring abu-abu tipis (bukan isian
+  // warna) supaya "luas yang diarsir" tetap terlihat di fotokopi hitam-putih.
+  if (cfg.arsir !== 'tidak') {
+    svg += `<defs><pattern id="arsir-gerak" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#a6a6a6" stroke-width="0.8"/></pattern></defs>`;
+    let d = `M${toPx(list[0].x, 0).map((v) => v.toFixed(1)).join(',')} `;
+    list.forEach((p) => { d += `L${toPx(p.x, p.y).map((v) => v.toFixed(1)).join(',')} `; });
+    d += `L${toPx(list[list.length - 1].x, 0).map((v) => v.toFixed(1)).join(',')} Z`;
+    svg += `<path d="${d}" fill="url(#arsir-gerak)" stroke="none"/>`;
   }
 
-  if (cfg.arsir !== 'tidak') {
-    const [zx0] = toPx(list[0].x, 0);
-    let d = `M${zx0.toFixed(1)},${toPx(list[0].x, 0)[1].toFixed(1)} `;
-    list.forEach((p) => { const [px, py] = toPx(p.x, p.y); d += `L${px.toFixed(1)},${py.toFixed(1)} `; });
-    const last = list[list.length - 1];
-    const [lx] = toPx(last.x, 0);
-    d += `L${lx.toFixed(1)},${toPx(last.x, 0)[1].toFixed(1)} Z`;
-    svg += `<path d="${d}" fill="#cbd5e1" fill-opacity="0.5" stroke="none"/>`;
+  // Sumbu berpanah dari titik asal, label di ujung panah.
+  svg += arrowSVG(x0, y0, xEnd, y0, { headLen: 7, strokeWidth: 1.2 });
+  svg += arrowSVG(x0, yBawah, x0, yEnd, { headLen: 7, strokeWidth: 1.2 });
+  svg += `<text x="${(xEnd + 6).toFixed(1)}" y="${(y0 + 4).toFixed(1)}" font-size="${GAYA.teks}" fill="${GAYA.hitam}">${escText(xLabel)}</text>`;
+  svg += `<text x="${(x0 + 8).toFixed(1)}" y="${(yEnd + 4).toFixed(1)}" font-size="${GAYA.teks}" fill="${GAYA.hitam}">${escText(yLabel)}</text>`;
+
+  // Nilai tiap titik sudut dicetak di kedua sumbu (grafik v–t dibaca dari
+  // nilainya di sumbu, bukan dari kemiringan). Label yang berjarak kurang
+  // dari satu tinggi huruf dari yang sudah ada dilewati supaya tidak
+  // bertumpuk. "0" cukup sekali, di pojok titik asal.
+  const tik = (x, y, anchor, teks) => `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="${GAYA.teksKecil}" text-anchor="${anchor}" fill="${GAYA.hitam}">${teks}</text>`;
+  const yDrawn = [];
+  [...new Set(ys)].sort((a, b) => b - a).forEach((y) => {
+    const [, py] = toPx(0, y);
+    if (yDrawn.some((q) => Math.abs(q - py) < 11)) return;
+    yDrawn.push(py);
+    svg += `<line x1="${(x0 - 4).toFixed(1)}" y1="${py.toFixed(1)}" x2="${x0}" y2="${py.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1"/>`;
+    svg += tik(x0 - 6, y === 0 ? py + 12 : py + 3.5, 'end', formatTick(y));
+  });
+  const xDrawn = [];
+  [...new Set(xs)].sort((a, b) => a - b).forEach((x) => {
+    if (x === 0) return;
+    const [px] = toPx(x, 0);
+    if (xDrawn.some((q) => Math.abs(q - px) < 14)) return;
+    xDrawn.push(px);
+    svg += `<line x1="${px.toFixed(1)}" y1="${y0.toFixed(1)}" x2="${px.toFixed(1)}" y2="${(y0 + 4).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1"/>`;
+    svg += tik(px, y0 + 15, 'middle', formatTick(x));
+  });
+
+  // Garis bantu putus-putus abu-abu tipis dari tiap titik sudut ke kedua sumbu.
+  if (cfg.bantu !== 'tidak') {
+    list.forEach((p) => {
+      if (p.y === 0) return;
+      const [px, py] = toPx(p.x, p.y);
+      svg += `<line x1="${x0}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="${GAYA.abu}" stroke-width="${GAYA.garisBantu}" stroke-dasharray="3,3"/>`;
+      svg += `<line x1="${px.toFixed(1)}" y1="${py.toFixed(1)}" x2="${px.toFixed(1)}" y2="${y0.toFixed(1)}" stroke="${GAYA.abu}" stroke-width="${GAYA.garisBantu}" stroke-dasharray="3,3"/>`;
+    });
   }
 
   let d = '';
   list.forEach((p, i) => { const [px, py] = toPx(p.x, p.y); d += (i === 0 ? 'M' : 'L') + px.toFixed(1) + ' ' + py.toFixed(1) + ' '; });
-  svg += `<path d="${d}" fill="none" stroke="#000000" stroke-width="2.2"/>`;
+  svg += `<path d="${d}" fill="none" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}" stroke-linejoin="round"/>`;
   list.forEach((p) => {
     const [px, py] = toPx(p.x, p.y);
-    svg += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="2.6" fill="#000000"/>`;
-    svg += `<text x="${px.toFixed(1)}" y="${(height - pad + 13).toFixed(1)}" font-size="9" text-anchor="middle" fill="#64748b">${formatTick(p.x)}</text>`;
+    svg += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="2.2" fill="${GAYA.hitam}"/>`;
   });
 
-  if (cfg.gradien !== 'tidak') {
+  // Gradien TIDAK dicetak otomatis: di naskah ujian gradien (percepatan /
+  // kecepatan) adalah yang harus dihitung siswa, jadi "m=5" di gambar
+  // membocorkan jawaban. Hanya bila diminta tegas (gradien=ya) ditulis
+  // gaya buku, "gradien = 5 m s⁻²", dengan satuan turunan dari sumbu.
+  if (cfg.gradien === 'ya') {
+    const satuanGrad = cfg.sumbuy || cfg.sumbux ? '' : ' ' + satuanALevel(bawaan[2]);
     for (let i = 1; i < list.length; i++) {
       const p0 = list[i - 1], p1 = list[i];
       if (p1.x === p0.x) continue;
-      const grad = (p1.y - p0.y) / (p1.x - p0.x);
-      const [px, py] = toPx((p0.x + p1.x) / 2, (p0.y + p1.y) / 2);
-      // Push the label off the segment along its normal (upward side), so
-      // it sits beside a steep line instead of being crossed out by it.
+      const grad = Math.round(((p1.y - p0.y) / (p1.x - p0.x)) * 100) / 100;
       const [ax, ay] = toPx(p0.x, p0.y), [bx, by] = toPx(p1.x, p1.y);
+      const px = (ax + bx) / 2, py = (ay + by) / 2;
+      // label didorong ke sisi atas segmen sepanjang normalnya
       const len = Math.hypot(bx - ax, by - ay) || 1;
       let nx = -(by - ay) / len, ny = (bx - ax) / len;
       if (ny > 0) { nx = -nx; ny = -ny; }
-      // Anchor the text on the side facing the line, so a wide label on a
-      // steep segment grows away from it rather than back across it.
       const anchor = nx > 0.3 ? 'start' : nx < -0.3 ? 'end' : 'middle';
-      svg += `<text x="${(px + nx * 8).toFixed(1)}" y="${(py + ny * 8 + 3).toFixed(1)}" font-size="9.5" text-anchor="${anchor}" fill="#b91c1c">m=${Math.round(grad * 100) / 100}</text>`;
+      const teks = `gradien = ${grad}${grad === 0 ? '' : satuanGrad}`;
+      const lx = px + nx * 9;
+      if (anchor === 'end') minX = Math.min(minX, lx - textW(teks) - 4);
+      svg += `<text x="${lx.toFixed(1)}" y="${(py + ny * 9 + 3.5).toFixed(1)}" font-size="${GAYA.teksKecil}" text-anchor="${anchor}" fill="${GAYA.hitam}">${teks}</text>`;
     }
   }
 
-  svg += '</svg>';
-  return svg;
+  const kepala = `<svg class="ws-diagram-svg" viewBox="${minX.toFixed(1)} 0 ${(width - minX).toFixed(1)} ${height.toFixed(1)}" xmlns="http://www.w3.org/2000/svg">`
+    + `<rect x="${(minX + 0.5).toFixed(1)}" y="0.5" width="${(width - minX - 1).toFixed(1)}" height="${(height - 1).toFixed(1)}" fill="#ffffff" stroke="#d8dce1"/>`;
+  return kepala + svg + '</svg>';
 }
 
 // ---------------------------------------------------------------------
 // 15. Diagram Gelombang (transversal / longitudinal)
 // ---------------------------------------------------------------------
 
+// Garis dimensi berpanah dua arah, tipis hitam (tanda amplitudo A dan
+// panjang gelombang λ pada gambar gelombang).
+function garisDimensiDuaPanahSVG(x1, y1, x2, y2) {
+  const rad = Math.atan2(y2 - y1, x2 - x1);
+  let s = `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garisBantu}"/>`;
+  s += kepalaPanahSVG(x2 - Math.cos(rad) * 3.5, y2 - Math.sin(rad) * 3.5, rad, 7);
+  s += kepalaPanahSVG(x1 + Math.cos(rad) * 3.5, y1 + Math.sin(rad) * 3.5, rad + Math.PI, 7);
+  return s;
+}
+
+// Garis dimensi berpanah dua arah, tipis hitam (tanda amplitudo A dan
+// panjang gelombang λ pada gambar gelombang).
+function garisDimensiDuaPanahSVG(x1, y1, x2, y2) {
+  const rad = Math.atan2(y2 - y1, x2 - x1);
+  let s = `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garisBantu}"/>`;
+  s += kepalaPanahSVG(x2 - Math.cos(rad) * 3.5, y2 - Math.sin(rad) * 3.5, rad, 7);
+  s += kepalaPanahSVG(x1 + Math.cos(rad) * 3.5, y1 + Math.sin(rad) * 3.5, rad + Math.PI, 7);
+  return s;
+}
+
 function renderWaveSVG(cfg) {
   const jenis = String(cfg.jenis || 'transversal').toLowerCase();
-  const amp = numOrDefault(cfg.amplitudo, 20);
-  const wavelength = Math.max(10, numOrDefault(cfg.panjanggelombang, 60));
+  const amp = Math.min(90, Math.max(8, Math.abs(numOrDefault(cfg.amplitudo, 20))));
+  const wavelength = Math.max(24, numOrDefault(cfg.panjanggelombang, 60));
   const jumlah = Math.max(1, Math.round(numOrDefault(cfg.jumlah, 2)));
-  const width = Math.max(300, wavelength * jumlah + 80);
-  const height = 160, midY = height / 2, startX = 40;
-
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
-  svg += `<line x1="${startX - 10}" y1="${midY}" x2="${startX + wavelength * jumlah + 10}" y2="${midY}" stroke="#94a3b8" stroke-width="1"/>`;
+  const panjang = wavelength * jumlah;
+  const x0 = 46;
+  const teksKecil = GAYA.teksKecil;
+  const putus = (x1, y1, x2, y2) => `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${GAYA.abu}" stroke-width="${GAYA.garisBantu}" stroke-dasharray="${GAYA.putusHalus}"/>`;
+  let svg = '';
+  let width, height;
 
   if (jenis === 'transversal') {
+    // Sumbu simpangan (tegak, berpanah) dan jarak (mendatar, berpanah)
+    // dari titik asal di awal gelombang; kurva sinus hitam tebal.
+    const midY = 26 + amp + 12;
+    const yEnd = midY - amp - 24, xEnd = x0 + panjang + 26;
+    svg += arrowSVG(x0, midY, xEnd, midY, { headLen: 7, strokeWidth: 1.2 });
+    svg += arrowSVG(x0, midY, x0, yEnd, { headLen: 7, strokeWidth: 1.2 });
+    svg += `<text x="${(xEnd + 6).toFixed(1)}" y="${(midY + 4).toFixed(1)}" font-size="${GAYA.teks}" fill="${GAYA.hitam}">jarak</text>`;
+    svg += `<text x="${(x0 + 8).toFixed(1)}" y="${(yEnd + 4).toFixed(1)}" font-size="${GAYA.teks}" fill="${GAYA.hitam}">simpangan</text>`;
+
     let d = '';
-    const steps = 200 * jumlah;
+    const steps = 60 * jumlah;
     for (let s = 0; s <= steps; s++) {
-      const x = startX + (wavelength * jumlah * s) / steps;
-      const y = midY - amp * Math.sin((2 * Math.PI * (x - startX)) / wavelength);
+      const x = x0 + (panjang * s) / steps;
+      const y = midY - amp * Math.sin((2 * Math.PI * (x - x0)) / wavelength);
       d += (s === 0 ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
     }
-    svg += `<path d="${d}" fill="none" stroke="#000000" stroke-width="2"/>`;
-    const ax = startX + wavelength * 0.25;
-    svg += `<line x1="${ax}" y1="${midY}" x2="${ax}" y2="${(midY - amp).toFixed(1)}" stroke="#b91c1c" stroke-width="1" stroke-dasharray="3,3"/>`;
-    svg += `<text x="${ax + 4}" y="${(midY - amp / 2).toFixed(1)}" font-size="9.5" fill="#b91c1c">A</text>`;
-    const wy = midY + amp + 20;
-    svg += `<line x1="${startX}" y1="${wy}" x2="${startX + wavelength}" y2="${wy}" stroke="#1d4ed8" stroke-width="1"/>`;
-    svg += `<line x1="${startX}" y1="${wy - 4}" x2="${startX}" y2="${wy + 4}" stroke="#1d4ed8" stroke-width="1"/>`;
-    svg += `<line x1="${startX + wavelength}" y1="${wy - 4}" x2="${startX + wavelength}" y2="${wy + 4}" stroke="#1d4ed8" stroke-width="1"/>`;
-    svg += `<text x="${startX + wavelength / 2}" y="${wy + 14}" font-size="9.5" text-anchor="middle" fill="#1d4ed8">λ</text>`;
-  } else {
-    // Longitudinal: evenly spaced marker lines get a sinusoidal x-offset,
-    // which naturally bunches them into compressions and spreads them into
-    // rarefactions — the standard way this is drawn without animation.
-    const n = 40 * jumlah;
-    const spacing = (wavelength * jumlah) / n;
-    for (let i = 0; i <= n; i++) {
-      const baseX = startX + i * spacing;
-      const x = baseX + amp * 0.4 * Math.sin((2 * Math.PI * (baseX - startX)) / wavelength);
-      svg += `<line x1="${x.toFixed(1)}" y1="${midY - 28}" x2="${x.toFixed(1)}" y2="${midY + 28}" stroke="#000000" stroke-width="1.3"/>`;
+    svg += `<path d="${d}" fill="none" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}" stroke-linejoin="round"/>`;
+
+    // Amplitudo: garis putus-putus dari puncak pertama ke sumbu, garis
+    // dimensi dua panah di sampingnya berlabel A.
+    const puncak1 = x0 + wavelength * 0.25;
+    const puncak2 = puncak1 + wavelength;
+    const yDim = midY + amp + 24;
+    svg += putus(puncak1, midY - amp, puncak1, jumlah >= 2 ? yDim : midY);
+    const xA = puncak1 + 11;
+    svg += garisDimensiDuaPanahSVG(xA, midY, xA, midY - amp);
+    svg += `<text x="${(xA + 5).toFixed(1)}" y="${(midY - amp / 2 + 4).toFixed(1)}" font-size="${GAYA.teks}" font-style="italic" fill="${GAYA.hitam}">A</text>`;
+
+    // Panjang gelombang: puncak ke puncak bila ada dua gelombang, kalau
+    // tidak dari titik asal ke satu gelombang penuh; garis dimensi di bawah.
+    let l1 = x0, l2 = x0 + wavelength;
+    if (jumlah >= 2) {
+      l1 = puncak1; l2 = puncak2;
+      svg += putus(puncak2, midY - amp, puncak2, yDim);
+    } else {
+      svg += putus(l2, midY, l2, yDim);
+      svg += putus(l1, midY, l1, yDim);
     }
-    svg += `<text x="${startX}" y="${midY + 48}" font-size="9.5" fill="#64748b">rapatan</text>`;
-    svg += `<text x="${(startX + wavelength / 2).toFixed(1)}" y="${midY + 48}" font-size="9.5" fill="#64748b">renggangan</text>`;
+    svg += garisDimensiDuaPanahSVG(l1, yDim, l2, yDim);
+    svg += `<text x="${((l1 + l2) / 2).toFixed(1)}" y="${(yDim + 15).toFixed(1)}" font-size="${GAYA.teks}" font-style="italic" text-anchor="middle" fill="${GAYA.hitam}">λ</text>`;
+    width = xEnd + 6 + 34;
+    height = yDim + 22;
+  } else {
+    // Longitudinal: garis tegak berjarak sama diberi geseran sinus, sehingga
+    // otomatis mengumpul jadi rapatan (di λ/2, 3λ/2, ...) dan merenggang
+    // jadi renggangan (di 0, λ, 2λ, ...).
+    const tinggi = 30, midY = 22 + tinggi;
+    const n = Math.max(12, Math.round(panjang / 4));
+    const spacing = panjang / n;
+    for (let i = 0; i <= n; i++) {
+      const baseX = x0 + i * spacing;
+      const x = baseX + Math.min(amp, 20) * 0.45 * Math.sin((2 * Math.PI * (baseX - x0)) / wavelength);
+      svg += `<line x1="${x.toFixed(1)}" y1="${(midY - tinggi).toFixed(1)}" x2="${x.toFixed(1)}" y2="${(midY + tinggi).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1.2"/>`;
+    }
+    // arah rambat
+    svg += arrowSVG(x0, midY - tinggi - 12, x0 + 40, midY - tinggi - 12, { headLen: 6, strokeWidth: 1 });
+    svg += `<text x="${(x0 + 46).toFixed(1)}" y="${(midY - tinggi - 8).toFixed(1)}" font-size="${teksKecil}" fill="${GAYA.hitam}">arah rambat</text>`;
+
+    const rapat1 = x0 + wavelength / 2, rapat2 = rapat1 + wavelength;
+    const renggang = jumlah >= 2 ? x0 + wavelength : x0 + wavelength;
+    // Label rapatan dan renggangan hanya berjarak λ/2, jadi ditulis di dua
+    // baris berselang dengan garis penunjuk pendek supaya tidak bertabrakan.
+    const yLabel = midY + tinggi + 14;
+    svg += `<line x1="${rapat1.toFixed(1)}" y1="${(midY + tinggi + 2).toFixed(1)}" x2="${rapat1.toFixed(1)}" y2="${(yLabel - 9).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="0.8"/>`;
+    svg += `<text x="${rapat1.toFixed(1)}" y="${yLabel}" font-size="${teksKecil}" text-anchor="middle" fill="${GAYA.hitam}">rapatan</text>`;
+    svg += `<line x1="${renggang.toFixed(1)}" y1="${(midY + tinggi + 2).toFixed(1)}" x2="${renggang.toFixed(1)}" y2="${(yLabel + 4).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="0.8"/>`;
+    svg += `<text x="${renggang.toFixed(1)}" y="${yLabel + 13}" font-size="${teksKecil}" text-anchor="middle" fill="${GAYA.hitam}">renggangan</text>`;
+    // satu λ: rapatan ke rapatan berikutnya (atau dari sumbu bila cuma satu)
+    const yDim = yLabel + 34;
+    const l1 = rapat1, l2 = jumlah >= 2 ? rapat2 : x0 + wavelength * 1.0;
+    if (jumlah >= 2) {
+      svg += putus(l1, yLabel + 5, l1, yDim);
+      svg += putus(l2, yLabel + 18, l2, yDim);
+      svg += garisDimensiDuaPanahSVG(l1, yDim, l2, yDim);
+      svg += `<text x="${((l1 + l2) / 2).toFixed(1)}" y="${(yDim + 15).toFixed(1)}" font-size="${GAYA.teks}" font-style="italic" text-anchor="middle" fill="${GAYA.hitam}">λ</text>`;
+    } else {
+      svg += putus(x0, midY + tinggi + 4, x0, yDim);
+      svg += putus(l2, yLabel + 18, l2, yDim);
+      svg += garisDimensiDuaPanahSVG(x0, yDim, l2, yDim);
+      svg += `<text x="${((x0 + l2) / 2).toFixed(1)}" y="${(yDim + 15).toFixed(1)}" font-size="${GAYA.teks}" font-style="italic" text-anchor="middle" fill="${GAYA.hitam}">λ</text>`;
+    }
+    width = x0 + panjang + 40;
+    height = yDim + 22;
   }
 
-  svg += '</svg>';
-  return svg;
+  const kepala = `<svg class="ws-diagram-svg" viewBox="0 0 ${width.toFixed(1)} ${height.toFixed(1)}" xmlns="http://www.w3.org/2000/svg">`
+    + `<rect x="0.5" y="0.5" width="${(width - 1).toFixed(1)}" height="${(height - 1).toFixed(1)}" fill="#ffffff" stroke="#d8dce1"/>`;
+  return kepala + svg + '</svg>';
 }
 
 // ---------------------------------------------------------------------
@@ -3165,49 +3466,113 @@ function renderWaveSVG(cfg) {
 
 function renderFieldSVG(cfg) {
   const jenis = String(cfg.jenis || 'positif').toLowerCase();
-  const width = 300, height = 300, cx = width / 2, cy = height / 2;
-  let svg = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
-  svg += `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
+  let width = 260, height = 260;
+  let svg = '';
+  const teks = (x, y, t, size, bold) => `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" font-size="${size || GAYA.teks}"${bold ? ' font-weight="700"' : ''} fill="${GAYA.hitam}">${t}</text>`;
 
   if (jenis === 'positif' || jenis === 'negatif') {
+    // Muatan titik: lingkaran bertanda, garis medan radial tipis dengan
+    // mata panah di tengah tiap garis (ke luar untuk +, ke dalam untuk −).
     const outward = jenis === 'positif';
-    const n = 8, r0 = 18, r1 = 120;
+    const cx = width / 2, cy = height / 2;
+    const n = 8, r0 = 14, r1 = 112;
     for (let i = 0; i < n; i++) {
       const ang = (2 * Math.PI * i) / n;
       const x0 = cx + r0 * Math.cos(ang), y0 = cy + r0 * Math.sin(ang);
       const x1 = cx + r1 * Math.cos(ang), y1 = cy + r1 * Math.sin(ang);
-      svg += outward ? arrowSVG(x0, y0, x1, y1, { strokeWidth: 1.4 }) : arrowSVG(x1, y1, x0, y0, { strokeWidth: 1.4 });
+      svg += outward ? garisBerarahSVG(x0, y0, x1, y1, { headLen: 8 }) : garisBerarahSVG(x1, y1, x0, y0, { headLen: 8 });
     }
-    svg += `<circle cx="${cx}" cy="${cy}" r="${r0}" fill="${outward ? '#fee2e2' : '#dbeafe'}" stroke="#000000" stroke-width="1.6"/>`;
-    svg += `<text x="${cx}" y="${cy + 5}" text-anchor="middle" font-size="16" font-weight="700" fill="#000000">${outward ? '+' : '-'}</text>`;
+    svg += `<circle cx="${cx}" cy="${cy}" r="${r0}" fill="${GAYA.putih}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
+    svg += teks(cx, cy + 5.5, outward ? '+' : '−', 16, true);
   } else if (jenis === 'kawat') {
+    // Kawat berarus tegak lurus bidang gambar: titik = arus ke luar, silang
+    // = arus masuk. Kaidah tangan kanan: arus ke luar → medan berlawanan
+    // arah jarum jam (dilihat pembaca), arus masuk → searah jarum jam.
     const arah = String(cfg.arus || 'keluar').toLowerCase();
-    svg += `<circle cx="${cx}" cy="${cy}" r="8" fill="#ffffff" stroke="#000000" stroke-width="1.8"/>`;
-    if (arah === 'keluar') svg += `<circle cx="${cx}" cy="${cy}" r="2.4" fill="#000000"/>`;
-    else svg += `<line x1="${cx - 5}" y1="${cy - 5}" x2="${cx + 5}" y2="${cy + 5}" stroke="#000000" stroke-width="1.6"/><line x1="${cx - 5}" y1="${cy + 5}" x2="${cx + 5}" y2="${cy - 5}" stroke="#000000" stroke-width="1.6"/>`;
-    [40, 70, 100, 130].forEach((r, i) => {
-      svg += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#000000" stroke-width="1.2"/>`;
-      const ang = -Math.PI / 2 + (i % 2 ? 0.3 : 0);
-      const tangentAng = ang + (arah === 'keluar' ? Math.PI / 2 : -Math.PI / 2);
-      const tx = cx + r * Math.cos(ang), ty = cy + r * Math.sin(ang);
-      const tx2 = tx + 14 * Math.cos(tangentAng), ty2 = ty + 14 * Math.sin(tangentAng);
-      svg += arrowSVG(tx, ty, tx2, ty2, { strokeWidth: 1.3, headLen: 6 });
+    const cx = width / 2, cy = height / 2;
+    const keluar = arah !== 'masuk';
+    [34, 60, 86, 112].forEach((r, i) => {
+      svg += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${GAYA.hitam}" stroke-width="1"/>`;
+      // mata panah berselang-seling di atas dan bawah lingkaran
+      const ang = i % 2 ? Math.PI / 2 : -Math.PI / 2;
+      const tangen = keluar ? ang - Math.PI / 2 : ang + Math.PI / 2;
+      svg += kepalaPanahSVG(cx + r * Math.cos(ang), cy + r * Math.sin(ang), tangen, 8);
     });
+    svg += `<circle cx="${cx}" cy="${cy}" r="9" fill="${GAYA.putih}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
+    if (keluar) svg += `<circle cx="${cx}" cy="${cy}" r="2.6" fill="${GAYA.hitam}"/>`;
+    else svg += `<line x1="${cx - 5.5}" y1="${cy - 5.5}" x2="${cx + 5.5}" y2="${cy + 5.5}" stroke="${GAYA.hitam}" stroke-width="1.6"/><line x1="${cx - 5.5}" y1="${cy + 5.5}" x2="${cx + 5.5}" y2="${cy - 5.5}" stroke="${GAYA.hitam}" stroke-width="1.6"/>`;
+    svg += `<text x="${(cx + 13).toFixed(1)}" y="${(cy - 11).toFixed(1)}" font-size="${GAYA.teks}" font-style="italic" fill="${GAYA.hitam}">I</text>`;
   } else if (jenis === 'solenoida') {
-    const coilW = 180, coilH = 90, turns = 6, x0 = cx - coilW / 2;
-    for (let i = 0; i <= turns; i++) {
-      const x = x0 + i * (coilW / turns);
-      svg += `<ellipse cx="${x.toFixed(1)}" cy="${cy}" rx="8" ry="${coilH / 2}" fill="none" stroke="#000000" stroke-width="1.6"/>`;
-    }
+    // Solenoida: lilitan sebagai elips, garis medan lurus rapat di dalam
+    // (kiri → kanan), melengkung balik di luar dari ujung N ke ujung S.
+    width = 330; height = 250;
+    const cx = width / 2, cy = height / 2;
+    const coilW = 170, coilH = 80, turns = 6, x0 = cx - coilW / 2;
     for (let k = -2; k <= 2; k++) {
       const y = cy + k * 14;
-      svg += arrowSVG(x0 - 4, y, x0 + coilW + 4, y, { strokeWidth: 1.2, headLen: 6 });
+      svg += garisBerarahSVG(x0 - 40, y, x0 + coilW + 40, y, { headLen: 8, strokeWidth: 1 });
     }
-    svg += `<text x="${cx}" y="${cy + coilH / 2 + 24}" text-anchor="middle" font-size="10" fill="#000000">solenoida</text>`;
+    for (let i = 0; i <= turns; i++) {
+      const x = x0 + i * (coilW / turns);
+      svg += `<ellipse cx="${x.toFixed(1)}" cy="${cy}" rx="7" ry="${coilH / 2}" fill="none" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
+    }
+    // lengkung luar: busur elips dari ujung kanan (N) memutar ke ujung kiri (S)
+    [0, 1].forEach((k) => {
+      const dy = 14 + k * 14, ry = coilH / 2 + 20 + k * 22, rx = coilW / 2 + 40;
+      [-1, 1].forEach((sisi) => {
+        const y = cy + sisi * dy;
+        svg += `<path d="M${(x0 + coilW + 40).toFixed(1)},${y.toFixed(1)} A${rx.toFixed(1)},${(ry - dy).toFixed(1)} 0 0 ${sisi < 0 ? 0 : 1} ${(x0 - 40).toFixed(1)},${y.toFixed(1)}" fill="none" stroke="${GAYA.hitam}" stroke-width="1"/>`;
+        svg += kepalaPanahSVG(cx, cy + sisi * ry, Math.PI, 8);
+      });
+    });
+    svg += teks(x0 - 44 - 8, cy + 4, 'S', 12, true);
+    svg += teks(x0 + coilW + 44 + 8, cy + 4, 'N', 12, true);
+  } else if (jenis === 'pelat' || jenis === 'seragam' || jenis === 'kapasitor') {
+    // Medan seragam antara dua pelat sejajar: garis medan sejajar berjarak
+    // sama dari pelat + ke pelat −, panah di tengah tiap garis.
+    width = 300; height = 200;
+    const px1 = 40, px2 = width - 40, yAtas = 46, yBawah = height - 46;
+    svg += `<line x1="${px1}" y1="${yAtas}" x2="${px2}" y2="${yAtas}" stroke="${GAYA.hitam}" stroke-width="2.4"/>`;
+    svg += `<line x1="${px1}" y1="${yBawah}" x2="${px2}" y2="${yBawah}" stroke="${GAYA.hitam}" stroke-width="2.4"/>`;
+    const n = 7;
+    for (let i = 0; i < n; i++) {
+      const x = px1 + 20 + ((px2 - px1 - 40) * i) / (n - 1);
+      svg += garisBerarahSVG(x, yAtas + 1, x, yBawah - 1, { headLen: 8, strokeWidth: 1 });
+      const xt = px1 + 20 + ((px2 - px1 - 40) * (i + 0.5)) / (n - 1);
+      if (i < n - 1) {
+        svg += teks(xt, yAtas - 8, '+', 12, true);
+        svg += teks(xt, yBawah + 17, '−', 12, true);
+      }
+    }
+  } else if (jenis === 'magnet' || jenis === 'batang') {
+    // Magnet batang: kotak N/S, garis medan keluar dari N masuk ke S.
+    width = 330; height = 250;
+    const cx = width / 2, cy = height / 2;
+    const w = 120, h = 34;
+    // Tiap garis medan: kurva Bezier kubik dari muka N (kanan) melengkung
+    // ke muka S (kiri); titik kendali di luar dan di atas/bawah magnet
+    // supaya garis keluar menyamping dari kutub, bukan tegak lurus.
+    // Puncak lengkung (t = 0,5) ada di 0,75·tinggi kendali — di situ mata
+    // panahnya, mendatar ke kiri.
+    for (let k = 0; k < 3; k++) {
+      const dy = 5 + k * 5, ex = 34 + k * 22, hk = 40 + k * 34;
+      [-1, 1].forEach((sisi) => {
+        const y = cy + sisi * dy, yk = y + sisi * hk;
+        svg += `<path d="M${(cx + w / 2).toFixed(1)},${y.toFixed(1)} C${(cx + w / 2 + ex).toFixed(1)},${yk.toFixed(1)} ${(cx - w / 2 - ex).toFixed(1)},${yk.toFixed(1)} ${(cx - w / 2).toFixed(1)},${y.toFixed(1)}" fill="none" stroke="${GAYA.hitam}" stroke-width="1"/>`;
+        svg += kepalaPanahSVG(cx, y + sisi * hk * 0.75, Math.PI, 8);
+      });
+    }
+    svg += garisBerarahSVG(cx + w / 2, cy, cx + w / 2 + 44, cy, { headLen: 8, strokeWidth: 1 });
+    svg += garisBerarahSVG(cx - w / 2 - 44, cy, cx - w / 2, cy, { headLen: 8, strokeWidth: 1 });
+    svg += `<rect x="${(cx - w / 2).toFixed(1)}" y="${(cy - h / 2).toFixed(1)}" width="${w}" height="${h}" fill="${GAYA.putih}" stroke="${GAYA.hitam}" stroke-width="${GAYA.garis}"/>`;
+    svg += `<line x1="${cx}" y1="${(cy - h / 2).toFixed(1)}" x2="${cx}" y2="${(cy + h / 2).toFixed(1)}" stroke="${GAYA.hitam}" stroke-width="1"/>`;
+    svg += teks(cx - w / 4, cy + 5, 'S', 13, true);
+    svg += teks(cx + w / 4, cy + 5, 'N', 13, true);
   }
 
-  svg += '</svg>';
-  return svg;
+  const kepala = `<svg class="ws-diagram-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`
+    + `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" fill="#ffffff" stroke="#d8dce1"/>`;
+  return kepala + svg + '</svg>';
 }
 
 // ---------------------------------------------------------------------
