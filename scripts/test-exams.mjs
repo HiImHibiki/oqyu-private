@@ -25,6 +25,18 @@ for (const f of ["db.json", "question-bank.json"]) {
   const asal = path.join(process.cwd(), ".data", f);
   if (fs.existsSync(asal)) fs.copyFileSync(asal, path.join(tmp, f));
 }
+/* Clone bersih belum punya .data: bank dibangun dari berkas soal di repo,
+ * semuanya berstatus approved, supaya paket SAT/A Level bisa disusun. */
+if (!fs.existsSync(path.join(tmp, "question-bank.json"))) {
+  const byId = new Map();
+  for (const dir of ["question-bank", "sample-tests"]) {
+    for (const f of fs.readdirSync(dir).filter((n) => n.endsWith(".json"))) {
+      const isi = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
+      for (const q of Array.isArray(isi) ? isi : [isi]) byId.set(q.id, { ...q, _status: "approved" });
+    }
+  }
+  fs.writeFileSync(path.join(tmp, "question-bank.json"), JSON.stringify([...byId.values()]));
+}
 process.env.EXACT_DATA_DIR = tmp;
 
 const { getDb } = await import("@/lib/db");
@@ -48,7 +60,9 @@ const ok = (nama, syarat, catatan = "") => {
 };
 const bagian = (t) => console.log(`\n${t}`);
 
-const uid = (await devAuth.read()).users[0].id;
+/* Peserta uji dibuat sendiri: di clone bersih .data belum ada, dan meminjam
+ * users[0] dari salinan data membuat uji bergantung pada isi data dev. */
+const uid = (await devAuth.upsertUser({ email: "uji-peserta@contoh.test", fullName: "Peserta Uji", phone: "" })).id;
 let nKuota = 0;
 async function beriKuota(exam, jumlah = 1) {
   const d = await devAuth.read();
@@ -338,8 +352,12 @@ bagian("Penyorot bacaan");
 bagian("Komisi afiliasi lintas mata uang");
 {
   const { commissionFor } = await import("@/lib/affiliate");
+  // tiga akun sendiri (afiliator + dua pembeli) — jangan bergantung isi data dev
+  const ids = [];
+  for (const n of ["uji-afiliator", "uji-pembeli-1", "uji-pembeli-2"])
+    ids.push((await devAuth.upsertUser({ email: `${n}@contoh.test`, fullName: n, phone: "" })).id);
+  const [aff, p1, p2] = ids;
   const d = await devAuth.read();
-  const aff = d.users[0].id, p1 = d.users[1].id, p2 = d.users[2].id;
   d.affiliates = [{ userId: aff, code: "UJIKOM", rate: 0.15, status: "active", createdAt: new Date().toISOString() }];
   d.commissions = []; d.payouts = [];
   d.referrals = [
