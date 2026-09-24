@@ -1,0 +1,77 @@
+#!/bin/zsh
+# Menyiapkan Exact Worksheet Automation di Mac baru.
+set -e
+cd "$(dirname "$0")"
+AKAR="$(pwd)"
+kurang=0
+
+cek() {
+  if eval "$2" >/dev/null 2>&1; then
+    print -r -- "  ada      $1"
+  else
+    print -r -- "  KURANG   $1  -> $3"
+    kurang=1
+  fi
+}
+
+print -r -- "=== Memeriksa kebutuhan ==="
+cek "Xcode Command Line Tools" "xcrun --find swiftc" "xcode-select --install"
+cek "Google Chrome" "test -x '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'" "pasang dari google.com/chrome"
+cek "pdftotext (poppler)" "command -v pdftotext" "brew install poppler"
+cek "pdftoppm (poppler)" "command -v pdftoppm" "brew install poppler"
+cek "Node.js" "command -v node" "brew install node"
+cek "Python 3" "command -v python3" "sudah bawaan macOS"
+
+if [[ -f wsm/index.html ]]; then
+  print -r -- "  ada      Mesin Worksheet Maker (di dalam repo)"
+else
+  print -r -- "  KURANG   Mesin Worksheet Maker -> jalankan ./perbarui-mesin.sh '<folder aplikasi>'"
+  kurang=1
+fi
+
+(( kurang )) && { print -r -- "
+Lengkapi dulu yang kurang di atas, lalu jalankan ulang."; exit 1; }
+
+print -r -- "
+=== Mengompilasi alat OCR ==="
+swiftc -O ocr-mac/VisionOCR.swift -o ocr-mac/visionocr
+print -r -- "  ocr-mac/visionocr siap ($(du -h ocr-mac/visionocr | cut -f1))"
+
+print -r -- "
+=== Menyiapkan basis data ==="
+# Basis datanya TIDAK di folder ini. lokasi.py menaruhnya di
+# ~/Library/Application Support/Exact Worksheet supaya selamat melewati
+# pemasangan ulang aplikasi, dan supaya folder sumber bebas dipindah.
+python3 - <<'PYDB'
+import os, sqlite3, sys
+sys.path.insert(0, os.getcwd())
+import lokasi
+jalur = lokasi.data('exact.db')
+if os.path.isfile(jalur):
+    print(f'  sudah ada, dibiarkan: {jalur}')
+    raise SystemExit(0)
+db = sqlite3.connect(jalur)
+db.executescript("""
+  PRAGMA journal_mode=WAL;
+  CREATE TABLE IF NOT EXISTS dokumen(id INTEGER PRIMARY KEY, rel TEXT UNIQUE, nama TEXT,
+    folder TEXT, jenjang TEXT, mapel TEXT, jenis TEXT, tahun INT, ukuran INT,
+    n_hal INT, n_hal_teks INT, kelas INT, sekolah TEXT, sidik TEXT, dup_dari INT, asal_label TEXT);
+  CREATE VIRTUAL TABLE IF NOT EXISTS halaman USING fts5(teks, dok_id UNINDEXED,
+    no_hal UNINDEXED, tokenize='unicode61 remove_diacritics 2');
+  CREATE TABLE IF NOT EXISTS soal(id INTEGER PRIMARY KEY, dok_id INT, no_hal INT,
+    no_soal INT, batang TEXT, opsi TEXT, n_opsi INT, sidik TEXT, mutu INT, dup INT DEFAULT 0);
+  CREATE VIRTUAL TABLE IF NOT EXISTS soal_fts USING fts5(batang, opsi, soal_id UNINDEXED,
+    tokenize='unicode61 remove_diacritics 2');
+""")
+db.commit(); db.close()
+print(f'  basis data kosong dibuat: {jalur}')
+print('  (bank soal bisa dibangun kemudian; fitur sehari-hari tidak memerlukannya)')
+PYDB
+
+mkdir -p "$HOME/Documents/Lembar Kerja"
+chmod +x mulai.sh 2>/dev/null || true
+
+print -r -- "
+=== Selesai ==="
+print -r -- "Jalankan:  ./mulai.sh"
+print -r -- "Pemakaian pertama akan membuka Chrome berprofil khusus — login Google sekali di situ."

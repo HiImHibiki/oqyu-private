@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="id.exact.worksheet"
+    android:versionCode="1" android:versionName="1.0">
+  <!-- WAJIB: tanpa uses-sdk, targetSdkVersion dianggap 1 dan Android 14+
+       menolak memasang dengan pesan "App not installed". -->
+  <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="34"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <application android:label="Exact Worksheet" android:icon="@android:drawable/ic_menu_upload"
+               android:usesCleartextTraffic="true" android:theme="@android:style/Theme.Material.Light">
+    <activity android:name=".Utama" android:exported="true" android:label="Exact Worksheet">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+      <!-- Muncul di "Open with" saat PDF atau gambar dibuka -->
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:mimeType="application/pdf"/>
+        <data android:mimeType="image/*"/>
+      </intent-filter>
+      <!-- Muncul di menu "Bagikan" -->
+      <intent-filter>
+        <action android:name="android.intent.action.SEND"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:mimeType="application/pdf"/>
+        <data android:mimeType="image/*"/>
+      </intent-filter>
+      <!-- Berbagi beberapa berkas sekaligus. Catatan: ACTION_VIEW ("Open with")
+           menurut rancangan Android hanya membawa SATU berkas, jadi untuk
+           beberapa foto harus lewat menu Bagikan. -->
+      <intent-filter>
+        <action android:name="android.intent.action.SEND_MULTIPLE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:mimeType="image/*"/>
+        <data android:mimeType="application/pdf"/>
+      </intent-filter>
+    </activity>
+  </application>
+</manifest>

@@ -1,0 +1,38 @@
+# Data pemakaian kini TIDAK lagi di folder ini — semuanya pindah ke
+# ~/Library/Application Support/Exact Worksheet (lihat lokasi.py). Pola di
+# bawah dipertahankan supaya salinan lama atau hasil uji tidak ikut terlacak.
+exact.db
+exact.db-shm
+exact.db-wal
+
+# Profil Chrome kendali — berisi sesi login pribadi, jangan pernah dibagikan
+chrome-otomatis/
+
+# Paket pindahan dan hasil ekspor
+kirim-ke-pc/
+exact-untuk-pc.tar.gz
+*.tar.gz
+
+# Setelan pribadi tiap mesin
+setelan.json
+
+# Binari hasil kompilasi (dibuat oleh pasang.sh)
+ocr-mac/visionocr
+
+# Berkas kerja & keluaran sementara
+*.csv
+/tmp/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Hasil build menu bar
+menubar/dist/
+menubar/ExactWorksheetBar
+naskah/
+cadangan-soal-*.sql.gz
+android/build/
+android/*.apk
+android/*.idsig
+thumb/
+.claude/worktrees/

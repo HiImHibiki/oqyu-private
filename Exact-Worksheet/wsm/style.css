@@ -1,0 +1,1377 @@
+:root {
+  --sidebar-w: 380px;
+  --ink: #1a1a1a;
+  --muted: #6b7280;
+  --line: #d8dce1;
+  --accent: #1d4ed8;
+  --accent-soft: #eef2ff;
+  --bg: #eef0f3;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+  width: var(--sidebar-w);
+  flex: 0 0 var(--sidebar-w);
+  background: #fff;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-header {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.sidebar-header h1 {
+  font-size: 17px;
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+.sidebar-header p {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.server-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  background: #ecfdf5;
+  border-bottom: 1px solid #a7f3d0;
+}
+
+.server-banner[hidden] { display: none; }
+
+.server-banner-text {
+  flex: 1;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: #065f46;
+  word-break: break-word;
+}
+
+.server-banner-text strong {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 1.05em;
+}
+
+.server-banner-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 0 0 auto;
+}
+
+.btn-small {
+  padding: 6px 10px;
+  font-size: 11.5px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.sidebar-scroll {
+  overflow-y: auto;
+  flex: 1;
+  padding: 16px 20px 32px;
+}
+
+.panel {
+  margin-bottom: 22px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel:last-child { border-bottom: none; }
+
+.panel > label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+#rawInput {
+  width: 100%;
+  height: 220px;
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  line-height: 1.5;
+}
+
+.hidden-field {
+  display: none;
+}
+
+.field-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.field-grid input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.sublabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 4px 0 6px;
+}
+
+.code-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+}
+
+.code-grid input[type="text"] {
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 12.5px;
+}
+
+.code-grid input#codeTanggal,
+.code-grid input#codeNomor {
+  grid-column: span 1;
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.check.block { margin-top: 8px; }
+
+.field-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.field-row span:first-child {
+  flex: 0 0 100px;
+  color: var(--muted);
+}
+
+.field-row select {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.field-row input[type="range"] {
+  flex: 1;
+}
+
+.range-val {
+  flex: 0 0 42px;
+  text-align: right;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.hint {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 8px 0 0;
+}
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.quick-select {
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: 13px;
+  background: #fff;
+}
+
+.btn-row-tight {
+  flex: 1;
+  gap: 6px;
+  margin-top: 0;
+}
+
+.fill-stat:empty {
+  display: none;
+}
+
+.btn {
+  border: none;
+  border-radius: 7px;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.1s ease;
+}
+
+.btn:hover { filter: brightness(0.95); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  flex: 1;
+}
+
+.btn-ghost {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.btn-large {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+}
+
+/* ---------- Preview area ---------- */
+
+.preview-area {
+  flex: 1;
+  /* A flex item's default automatic min-width is its content's min-content
+     size, not 0 — so any unconstrained-width descendant anywhere on the page
+     (e.g. a data table with no explicit width) silently forces this WHOLE
+     area wider than the actual page/paper, dragging unrelated content (even
+     content positioned well above it, like the formula box) past the right
+     edge, where print then clips it. min-width:0 makes this area shrink to
+     fit like every other block box instead. */
+  min-width: 0;
+  padding: 32px 24px 80px;
+  overflow-y: auto;
+}
+
+.preview-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: -32px -24px 20px;
+  padding: 10px 24px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid var(--line);
+}
+
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.zoom-val {
+  min-width: 42px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* .sheet is now just a plain content wrapper (one per worksheet version —
+   student / teacher, or per set when several are pasted at once) that
+   Paged.js fragments across as many real A4 pages as the content needs;
+   the "look like a sheet of paper" box (size, margin, shadow) belongs to
+   Paged.js's own generated .pagedjs_page boxes below, not to .sheet
+   itself. Each sheet is paginated in its own separate Previewer run (see
+   renderNow() in app.js) and always starts a fresh page, since Paged.js's
+   break-before handling isn't reliable across 3+ sheets run through one
+   pass — no CSS rule here is what keeps sheets apart. */
+.sheet {
+  font-size: var(--ws-font-size, 10.5pt);
+  line-height: var(--ws-line-height, 1.3);
+  color: #111;
+}
+
+/* Paged.js renders its output into #page as
+   .pagedjs_pages > .pagedjs_page (one real, A4-sized box per physical
+   page) — styled here to keep the same "stack of paper on a gray desk"
+   look the old single-tall-div .sheet used to provide. */
+.pagedjs_pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* "2 halaman berdampingan" preview toggle — a fixed 2-column grid (not
+   flex-wrap) so it always shows exactly a left/right spread regardless of
+   how wide the preview pane happens to be, the way a real book/booklet
+   opens rather than reflowing to however many pages fit the window. */
+.pagedjs_pages.spread-view {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+}
+
+.pagedjs_page {
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+
+/* ---------- Worksheet content ---------- */
+
+.ws-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2.4pt solid #111;
+  padding-bottom: 6pt;
+  margin-bottom: 8pt;
+}
+
+.ws-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 8pt;
+}
+
+.ws-logo {
+  height: 34pt;
+  width: auto;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.ws-brand {
+  font-weight: 800;
+  font-size: 1.25em;
+  letter-spacing: 0.01em;
+}
+
+.ws-subject {
+  font-size: 0.82em;
+  color: #444;
+  margin-top: 1pt;
+}
+
+.ws-titleblock {
+  text-align: right;
+}
+
+.ws-title {
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+.ws-mode-tag {
+  display: inline-block;
+  margin-top: 2pt;
+  font-size: 0.72em;
+  font-weight: 700;
+  padding: 1pt 6pt;
+  border: 1pt solid #111;
+  border-radius: 3pt;
+  letter-spacing: 0.04em;
+}
+
+.ws-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4pt 22pt;
+  font-size: 0.86em;
+  margin-bottom: 9pt;
+}
+
+.ws-fields span {
+  border-bottom: 0.75pt dotted #999;
+  padding-bottom: 1pt;
+  min-width: 90pt;
+  display: inline-block;
+}
+
+.ws-passage {
+  border: 1pt solid #bbb;
+  background: #fafafa;
+  border-radius: 4pt;
+  padding: 8pt 12pt;
+  margin-bottom: 10pt;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.ws-passage-title {
+  font-weight: 700;
+  font-size: 1.05em;
+  text-align: center;
+  margin-bottom: 5pt;
+}
+
+.ws-passage-body p {
+  margin: 0 0 6pt;
+}
+
+.ws-passage-body p:last-child {
+  margin-bottom: 0;
+}
+
+.ws-formulas {
+  border: 1pt solid #bbb;
+  background: #fafafa;
+  border-radius: 4pt;
+  padding: 6pt 9pt;
+  margin-bottom: 10pt;
+  font-size: 0.86em;
+}
+
+.ws-formulas-title {
+  font-weight: 700;
+  font-size: 0.82em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #444;
+  margin-bottom: 4pt;
+}
+
+.ws-formulas-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3pt 14pt;
+}
+
+.ws-formulas-grid.cols-2 {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.ws-formula-item {
+  break-inside: avoid;
+  line-height: 1.5;
+}
+
+.ws-body {
+  column-count: 1;
+}
+
+.ws-section {
+  margin-bottom: 4pt;
+}
+
+/* .ws-section-cols.cols-2's own multicol styling is intentionally left
+   inert: this markup only ever exists transiently inside the off-screen
+   measureHost now, as parsing/measurement input for
+   paginateSheetTwoColumn() in app.js, which reads its .ws-item children
+   and rebuilds them into .ws-page-cols below with page/column breaks
+   decided by measured height instead of CSS. Neither CSS Grid row-pairing
+   nor plain multicol ever reaches the printed page anymore — both were
+   tried and both left real gaps (row-pairing wasted a row's leftover
+   height; multicol still let Paged.js's own page-break estimate strand a
+   column early even once it stopped dropping items outright). See
+   paginateSheetTwoColumn()'s comment in app.js for the full history. */
+
+.ws-page-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 11mm;
+  align-items: start;
+}
+
+.ws-section-title {
+  font-weight: 700;
+  font-size: 1.02em;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-bottom: 1.6pt solid #111;
+  padding-bottom: 2pt;
+  margin: 9pt 0 6pt;
+  break-after: avoid;
+  break-inside: avoid;
+}
+
+.ws-section-note {
+  font-size: 0.84em;
+  font-style: italic;
+  color: #333;
+  margin-bottom: 6pt;
+  break-inside: avoid;
+}
+
+.ws-item {
+  break-inside: avoid;
+  margin-bottom: 7pt;
+  min-width: 0;
+}
+
+.ws-item-stem {
+  display: flex;
+  gap: 5pt;
+}
+
+.ws-item-num {
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+.ws-item-text { flex: 1; min-width: 0; }
+
+.ws-options {
+  margin: 3pt 0 0 15pt;
+}
+
+/* Pilihan berdampingan disusun sebagai grid (A B / C D), bukan multicol:
+   di halaman cetak multicol dengan column-fill:auto menjejalkan semua
+   pilihan ke kolom kiri selebar setengah, membiarkan kanan kosong dan
+   memaksa kalimat pilihan terlipat jauh sebelum tepi kolomnya. Kelas ini
+   hanya dipasang renderSection() kalau semua pilihannya cukup pendek. */
+.ws-options.cols-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 8pt;
+}
+
+.ws-options.cols-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 6pt;
+}
+
+.ws-option {
+  display: flex;
+  gap: 4pt;
+  min-width: 0;
+  break-inside: avoid;
+  margin-bottom: 1pt;
+}
+
+.ws-option-label { font-weight: 700; }
+
+.ws-tf-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8pt;
+}
+
+.ws-tf-choices {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 0.85em;
+  color: #333;
+}
+
+.ws-tf-choices span {
+  display: inline-block;
+  border: 1pt solid #666;
+  border-radius: 8pt;
+  padding: 0 6pt;
+  margin-left: 3pt;
+}
+
+.ws-match-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6pt;
+}
+
+.ws-match-answer {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+.ws-wordbank {
+  border: 1pt solid #bbb;
+  background: #fafafa;
+  border-radius: 4pt;
+  padding: 5pt 9pt;
+  margin: 2pt 0 8pt;
+  break-inside: avoid;
+}
+
+.ws-wordbank-title {
+  font-weight: 700;
+  font-size: 0.78em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #444;
+  margin-bottom: 3pt;
+}
+
+.ws-wordbank-words {
+  font-size: 0.88em;
+}
+
+.ws-kolomb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2pt 14pt;
+  font-size: 0.88em;
+}
+
+.ws-essay-subitems {
+  margin: 4pt 0 0 15pt;
+}
+
+.ws-essay-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8pt;
+  margin-bottom: 3pt;
+}
+
+.ws-sub-textwrap {
+  display: flex;
+  gap: 4pt;
+}
+
+.ws-sub-label {
+  font-weight: 700;
+}
+
+.ws-sub-answer {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+.ws-sub-blank {
+  display: inline-block;
+  width: 32pt;
+  border-bottom: 0.75pt dotted #999;
+}
+
+.ws-essay-workspace {
+  height: 22mm;
+  margin: 3pt 0 0 15pt;
+  border: 0.75pt solid #ccc;
+  border-radius: 3pt;
+  break-inside: avoid;
+}
+
+.ws-essay-answer {
+  margin: 3pt 0 0 15pt;
+  padding: 3pt 6pt;
+  background: #f6f9ff;
+  border-left: 2pt solid #1d4ed8;
+  font-size: 0.92em;
+  break-inside: avoid;
+}
+
+.ws-answerkey {
+  margin-top: 10pt;
+}
+
+/* KaTeX's own CSS renders \text{...} (and everything inside a formula's
+   .base run) as white-space:nowrap, min-content width — correct for a short
+   answer/label, but answer keys and explanations sometimes carry a whole
+   phrase inside \text{...} (e.g. "\text{Padatan: ion terikat kuat;
+   Lelehan/Larutan: ion bergerak bebas}"). Left non-wrapping, that spills
+   past its column/page edge instead of wrapping like the surrounding text.
+   Scoped to just these answer/explanation containers so ordinary short
+   formulas elsewhere keep KaTeX's normal, correct nowrap sizing. */
+.ws-answerkey-grid .katex .base,
+.ws-answerkey-grid .katex-html,
+.ws-essay-answer .katex .base,
+.ws-essay-answer .katex-html,
+.ws-inline-explanation .katex .base,
+.ws-inline-explanation .katex-html {
+  white-space: normal;
+  width: auto;
+}
+
+/* white-space:normal alone still isn't enough for a multi-part answer like
+   "$\text{NH}_3 + \text{H}^+ \rightarrow \text{NH}_4^+\ (...)$" — KaTeX joins
+   each part (NH3 / + / H+ / → / ...) as adjacent .base spans with NO actual
+   whitespace character between them in the markup, so there's no break
+   point for the browser to wrap at even though every individual .base can
+   now wrap internally. overflow-wrap:anywhere is the fallback: it only
+   kicks in when no ordinary break point exists, so it breaks between the
+   fused symbol groups instead of letting them run off the page. */
+.ws-answerkey-grid .katex,
+.ws-essay-answer .katex,
+.ws-inline-explanation .katex {
+  overflow-wrap: anywhere;
+}
+
+.ws-answerkey-title {
+  font-weight: 700;
+  font-size: 0.98em;
+  background: #eef2ff;
+  color: #1d4ed8;
+  padding: 2.5pt 7pt;
+  border-radius: 3pt;
+  margin: 9pt 0 5pt;
+  break-after: avoid;
+}
+
+.ws-answerkey-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2pt 6pt;
+  font-size: 0.85em;
+}
+
+.ws-answerkey-grid div {
+  border-bottom: 0.5pt dotted #bbb;
+  padding: 1pt 0;
+}
+
+.ws-inline-explanation {
+  margin: 3pt 0 0 15pt;
+  padding: 3pt 6pt;
+  background: #f3fbf3;
+  border-left: 2pt solid #16a34a;
+  font-size: 0.88em;
+  break-inside: avoid;
+}
+
+.empty-state {
+  color: var(--muted);
+  text-align: center;
+  padding: 80pt 20pt;
+  font-size: 11pt;
+}
+
+/* KaTeX sizing tweak so display math doesn't blow up line height too much */
+.sheet .katex { font-size: 1.03em; }
+.sheet .katex-display { margin: 3pt 0; }
+
+/* ---------- Diagrams ---------- */
+
+.ws-diagram {
+  display: block;
+  margin: 4pt 0 6pt;
+  break-inside: avoid;
+  text-align: center;
+}
+
+.ws-diagram-svg {
+  width: 100%;
+  max-width: var(--ws-diagram-width, 260pt);
+  height: auto;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ws-table-wrap {
+  display: block;
+  margin: 4pt 0 8pt;
+  break-inside: avoid;
+  /* Without an author-supplied "lebar" width, a table with several columns
+     of text (e.g. Indonesian header labels like "Daya Hantar Lelehan") can
+     be wider than the single column it's placed in — capped here so it
+     wraps its own cell text instead of overflowing past its column. */
+  max-width: 100%;
+}
+
+.ws-table-title {
+  font-weight: 700;
+  font-size: 0.85em;
+  color: #444;
+  margin-bottom: 3pt;
+}
+
+.ws-table {
+  border-collapse: collapse;
+  font-size: 0.85em;
+  max-width: 100%;
+}
+
+.ws-table th,
+.ws-table td {
+  border: 1pt solid #999;
+  padding: 3pt 9pt;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.ws-table th {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---------- Alokasi nilai & sub-soal berjenjang ---------- */
+
+/* Marks sit in their own right-aligned column at the end of the line, the
+   way an exam paper prints them — never inline with the question text,
+   where they read as part of the sentence. */
+.ws-marks {
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding-left: 6pt;
+  font-size: 0.85em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ws-section-marks {
+  font-weight: 400;
+  font-size: 0.85em;
+}
+
+.ws-total-marks {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ws-item-total {
+  text-align: right;
+  font-size: 0.85em;
+  font-weight: 700;
+  margin-top: 1pt;
+}
+
+.ws-parts {
+  margin: 2pt 0 0 15pt;
+}
+
+.ws-part { margin-bottom: 2pt; }
+
+/* Second-level (i)/(ii) parts are indented under the (a)/(b) that owns
+   them, which is the only thing distinguishing the two levels on paper. */
+.ws-subparts { margin-left: 15pt; }
+
+.ws-subpart { margin-bottom: 2pt; }
+
+.ws-part-row {
+  display: flex;
+  gap: 5pt;
+  align-items: baseline;
+}
+
+.ws-part-label {
+  flex: 0 0 auto;
+  font-weight: 700;
+}
+
+.ws-part-text { flex: 1; min-width: 0; }
+
+.ws-part-answer {
+  margin: 1pt 0 2pt 15pt;
+  font-size: 0.9em;
+}
+
+/* Ruled writing space generated from a part's marks reuses the same
+   dotted rule as the [[garisjawab]] tag, so hand-placed and auto-sized
+   answer space look identical on the page. */
+.ws-part .ws-answer-lines,
+.ws-subpart .ws-answer-lines,
+.ws-item > .ws-answer-lines {
+  margin: 1pt 0 3pt 15pt;
+}
+
+.ws-part .ws-answer-line,
+.ws-subpart .ws-answer-line,
+.ws-item > .ws-answer-lines .ws-answer-line {
+  height: 13pt;
+}
+
+/* ---------- Gambar impor ---------- */
+
+.ws-image {
+  display: inline-block;
+  width: 100%;
+  /* Foto/tangkapan layar punya slidernya sendiri ("Ukuran gambar"):
+     grafik hasil pindai biasanya perlu lebih besar daripada diagram
+     yang digambar aplikasi. */
+  max-width: var(--ws-image-width, var(--ws-diagram-width, 260pt));
+  height: auto;
+  /* A photograph has no drawn frame of its own the way the generated SVGs
+     do, so it gets one here — otherwise a light-edged picture bleeds into
+     the page and reads as part of the question text. */
+  border: 0.5pt solid #b8c0cc;
+}
+
+/* ---------- Figur berpanel + keterangan ---------- */
+
+.ws-figure {
+  display: block;
+  margin: 6pt 0 8pt;
+  /* A figure and the caption that numbers it are one unit — splitting them
+     across a page break leaves "Gambar 2.1" stranded under nothing. */
+  break-inside: avoid;
+  text-align: center;
+}
+
+.ws-figure-panels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6pt 10pt;
+}
+
+/* Panels share the row evenly but may shrink: two 260pt diagrams side by
+   side must fit a 2-column worksheet body, not overflow it. */
+.ws-figure-panel {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.ws-figure-panel .ws-diagram,
+.ws-figure-panel .ws-table-wrap {
+  margin: 0;
+}
+
+.ws-figure-panel-label {
+  font-size: 0.85em;
+  font-weight: 700;
+  margin-top: 1pt;
+}
+
+.ws-figure-caption {
+  font-size: 0.82em;
+  font-style: italic;
+  color: #333;
+  margin-top: 3pt;
+}
+
+/* ---------- Ruang jawab ---------- */
+
+/* Blank cells collapse to nothing without a floor on their height — the
+   whole point of this table is the room it leaves to write in. */
+.ws-table-blank td {
+  min-width: 40pt;
+}
+
+.ws-answer-lines {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.ws-answer-lines-title {
+  font-size: 0.85em;
+  font-weight: 600;
+  margin-bottom: 2pt;
+}
+
+.ws-answer-line {
+  border-bottom: 0.5pt dotted #666;
+}
+
+/* ---------- Diagram Builder Modal ---------- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal-overlay[hidden] { display: none; }
+
+.modal {
+  background: #fff;
+  border-radius: 10px;
+  width: min(720px, 92vw);
+  max-height: 88vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.modal-close {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.modal-body {
+  display: flex;
+  gap: 18px;
+  padding: 16px 18px;
+  overflow-y: auto;
+}
+
+.modal-form {
+  flex: 1 1 260px;
+  min-width: 220px;
+}
+
+.modal-preview {
+  flex: 1 1 300px;
+  min-width: 260px;
+}
+
+.modal-select {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.field-item-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+}
+
+.field-item { margin-bottom: 8px; }
+
+.field-item label {
+  display: block;
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+.field-item input,
+.field-item select,
+.field-item textarea {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.field-item textarea {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  resize: vertical;
+}
+
+/* The diagram builder's form pane carries far more fields than the AI
+   prompt modal it shares .modal with, and its preview pane needs real room
+   for a 260pt-wide SVG — so that one modal alone gets a wider shell and a
+   scrolling form column, instead of a body tall enough to run off screen. */
+#diagramModalOverlay .modal { width: min(920px, 94vw); }
+
+#diagramModalOverlay .modal-form {
+  flex: 1 1 330px;
+  max-height: 62vh;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+#diagramModalOverlay .modal-preview {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+}
+
+.diag-preview-box {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #f8fafc;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 18px;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Penyimpanan gambar (sidebar) ---------- */
+
+.image-status {
+  margin: 8px 0 0;
+  font-style: italic;
+}
+
+.image-status:empty { display: none; }
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.image-list:empty { display: none; }
+
+.image-chip {
+  position: relative;
+  width: 62px;
+}
+
+.image-thumb {
+  display: block;
+  width: 62px;
+  height: 48px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.image-thumb:hover { border-color: var(--accent); }
+
+.image-chip-id {
+  display: block;
+  text-align: center;
+  font-size: 10.5px;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.image-chip-del {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.image-chip-del:hover {
+  border-color: #b91c1c;
+  color: #b91c1c;
+}
+
+/* Feedback while a picture is being dragged over the naskah textarea. */
+#rawInput.drop-target {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* ---------- Pemeriksaan naskah ---------- */
+
+.check-summary {
+  margin: 0;
+  font-weight: 600;
+}
+
+.check-summary.is-clean { color: #047857; }
+.check-summary.has-error { color: #b91c1c; }
+.check-summary.has-warn { color: #b45309; }
+
+.check-list {
+  margin-top: 8px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.check-list:empty { display: none; }
+
+.check-entry {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  padding: 5px 7px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.check-entry.level-error {
+  background: #fef2f2;
+  border-left: 3px solid #b91c1c;
+}
+
+.check-entry.level-warn {
+  background: #fffbeb;
+  border-left: 3px solid #b45309;
+}
+
+.check-entry code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  word-break: break-all;
+}
+
+/* ---------- Riwayat (saved worksheets) ---------- */
+
+.history-status {
+  margin: 6px 0 0;
+  font-style: italic;
+}
+
+.history-list {
+  margin-top: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.history-list:empty { display: none; }
+
+.history-entry {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.history-entry:last-child { border-bottom: none; }
+
+/* The entry currently loaded into the editor — the one auto-save keeps
+   overwriting — so it's obvious which row further edits will land in. */
+.history-entry.is-current { background: var(--accent-soft); }
+
+.history-open {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  background: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink);
+}
+
+.history-open:hover .history-title { text-decoration: underline; }
+
+.history-title {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-meta {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+.history-action {
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  padding: 4px 5px;
+}
+
+.history-action:hover { border-color: var(--accent); }
+
+/* ---------- Print ---------- */
+
+@media print {
+  .no-print { display: none !important; }
+
+  /* The on-screen preview zoom (see applyZoom() in app.js) is set as an
+     inline "zoom" style directly on #page, which — unlike transform:scale
+     — actually resizes the box, so it bleeds straight into the print/PDF
+     output too if left alone: a page previewed at 60% would print at 60%
+     of real A4 size instead of full size. !important here is what wins
+     over that inline style specifically for print, so zoom only ever
+     affects the screen preview, never the printed/exported page. */
+  #page { zoom: 1 !important; }
+
+  .preview-area {
+    padding: 0;
+    overflow: visible;
+    display: block;
+  }
+
+  body, .app {
+    background: #fff;
+  }
+
+  .pagedjs_page {
+    box-shadow: none;
+  }
+
+  /* The physical page is the FULL A4 sheet with margin:0 here — Paged.js's
+     own on-screen pagination pass (see the inline page.css fed to it in
+     app.js) already sized each .pagedjs_page box at the full 210x297mm and
+     reserved its 12mm/11mm margin as space *inside* that box. A nonzero
+     margin here would subtract a second, physical margin on top of that
+     already-reserved space, shrinking the printable area twice over. */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+}
