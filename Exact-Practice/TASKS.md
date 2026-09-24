@@ -52,6 +52,8 @@
 - ✅ P-040 Temuan: mode dev membocorkan kunci & pembahasan ke halaman ujian (debug info I/O React dev, saat cache bank habis); build produksi terbukti bersih (2 fetch, cache dingin & habis). Dijadikan invarian #10 di AGENTS.md
 - ✅ P-041 QA alur X-1 di MacBook lokal (dev): terbit dari Worksheet (`terbit.py`) → paket kode SNNZ9M → daftar kode kelas (salah ditolak) → /menunggu → guru setujui → murid lihat paket → mulai → section (tenggat 15 mnt dari server) → save → submit 5/7 benar → hasil + pembahasan → pantau kelas; murid ditolak dari /admin, /terbit tanpa kunci 401
 
+- ✅ P-042 Halaman tampil Mandarin di browser berbahasa "Inggris + Mandarin": deteksi Accept-Language melewati `en` lalu memilih `zh` di urutan mana pun. Deteksi dibuang — bahasa = cookie pilihan pengguna, selain itu Indonesia
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-034 Satukan `.env.contoh` & `.env.example` — B3

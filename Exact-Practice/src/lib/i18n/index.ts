@@ -1,11 +1,11 @@
-import { cookies, headers } from "next/headers";
+import { cookies } from "next/headers";
 import { LOCALES, LOCALE_META, translate, type Locale, type MessageKey } from "./dictionaries";
 
 export { LOCALES, LOCALE_META };
 export type { Locale, MessageKey };
 
 export const LOCALE_COOKIE = "exact_locale";
-export const DEFAULT_LOCALE: Locale = "id";   // bimbel Indonesia: bahasa Indonesia kecuali peramban minta lain
+export const DEFAULT_LOCALE: Locale = "id";   // bimbel Indonesia: selalu Indonesia kecuali pengguna memilih lain
 
 export const isLocale = (v: unknown): v is Locale => LOCALES.includes(v as Locale);
 
@@ -18,24 +18,17 @@ export const translatorFor = (locale: Locale): Translator =>
 
 /* ---------------------------------------------------------- sisi server */
 
-/** Urutan penentuan bahasa:
- *   1. cookie pilihan pengguna
- *   2. header Accept-Language dari browser
- *   3. bahasa Inggris
+/** Bahasa = cookie pilihan pengguna (tombol bahasa), selain itu Indonesia.
  *
- * Bahasa Inggris sengaja menjadi default, bukan Indonesia: pengunjung dari
- * negara mana pun harus bisa memahami halaman pertama yang ia lihat. */
+ * Accept-Language browser sengaja TIDAK dipakai lagi. Warisan Try Out dulu
+ * melewati "en" lalu mengembalikan "zh" bila Mandarin tercantum di urutan
+ * mana pun — browser "Inggris, Mandarin" mendapat halaman Mandarin (24 Sep
+ * 2026). Murid Exact Course berbahasa Indonesia; yang lain bisa memilih
+ * sendiri. */
 export async function getLocale(): Promise<Locale> {
   const jar = await cookies();
   const fromCookie = jar.get(LOCALE_COOKIE)?.value;
   if (isLocale(fromCookie)) return fromCookie;
-
-  const accept = (await headers()).get("accept-language") ?? "";
-  for (const part of accept.split(",")) {
-    const tag = part.split(";")[0].trim().toLowerCase();
-    if (tag.startsWith("id")) return "id";
-    if (tag.startsWith("zh")) return "zh";
-  }
   return DEFAULT_LOCALE;
 }
 
