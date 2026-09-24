@@ -1,0 +1,1726 @@
+[
+  {
+    "id": "csca-phy-p01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Velocity and acceleration 速度与加速度",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A body starts from rest and accelerates uniformly at $2\\ \\text{m}\\,\\text{s}^{-2}$. What is its speed after $5\\ \\text{s}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$10\\ \\text{m}\\,\\text{s}^{-1}$"
+      },
+      {
+        "id": "B",
+        "text": "$2.5\\ \\text{m}\\,\\text{s}^{-1}$"
+      },
+      {
+        "id": "C",
+        "text": "$7\\ \\text{m}\\,\\text{s}^{-1}$"
+      },
+      {
+        "id": "D",
+        "text": "$25\\ \\text{m}\\,\\text{s}^{-1}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "With $u = 0$, $v = at = 2 \\times 5 = 10\\ \\text{m}\\,\\text{s}^{-1}$.",
+    "distractorRationale": {
+      "B": "Divides instead of multiplying.",
+      "C": "Adds acceleration and time, quantities with different units.",
+      "D": "Uses $\\tfrac{1}{2}at^2$, which gives distance, not speed."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "物体由静止开始以 $2\\ \\text{m}\\,\\text{s}^{-2}$ 匀加速运动，$5\\ \\text{s}$ 后的速度是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$10\\ \\text{m}\\,\\text{s}^{-1}$"
+          },
+          {
+            "id": "B",
+            "text": "$2.5\\ \\text{m}\\,\\text{s}^{-1}$"
+          },
+          {
+            "id": "C",
+            "text": "$7\\ \\text{m}\\,\\text{s}^{-1}$"
+          },
+          {
+            "id": "D",
+            "text": "$25\\ \\text{m}\\,\\text{s}^{-1}$"
+          }
+        ],
+        "explanation": "由 $u = 0$，得 $v = at = 2 \\times 5 = 10\\ \\text{m}\\,\\text{s}^{-1}$。"
+      }
+    },
+    "tags": [
+      "kinematics"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Work and energy 功与能",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A force of $20\\ \\text{N}$ moves an object $3\\ \\text{m}$ in the direction of the force. How much work is done?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6.7\\ \\text{J}$"
+      },
+      {
+        "id": "B",
+        "text": "$60\\ \\text{J}$"
+      },
+      {
+        "id": "C",
+        "text": "$180\\ \\text{J}$"
+      },
+      {
+        "id": "D",
+        "text": "$23\\ \\text{J}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Work is force times displacement along the force: $W = Fs = 20 \\times 3 = 60\\ \\text{J}$.",
+    "distractorRationale": {
+      "A": "Divides force by displacement.",
+      "C": "Multiplies by 9 instead of 3.",
+      "D": "Adds the two quantities."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$20\\ \\text{N}$ 的力使物体沿力的方向移动 $3\\ \\text{m}$，所做的功是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$6.7\\ \\text{J}$"
+          },
+          {
+            "id": "B",
+            "text": "$60\\ \\text{J}$"
+          },
+          {
+            "id": "C",
+            "text": "$180\\ \\text{J}$"
+          },
+          {
+            "id": "D",
+            "text": "$23\\ \\text{J}$"
+          }
+        ],
+        "explanation": "功等于力与沿力方向位移的乘积：$W = Fs = 20 \\times 3 = 60\\ \\text{J}$。"
+      }
+    },
+    "tags": [
+      "work"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Newton's laws 牛顿定律",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An object moves at constant velocity in a straight line. What is the net force acting on it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "equal to its momentum"
+      },
+      {
+        "id": "B",
+        "text": "equal to its weight"
+      },
+      {
+        "id": "C",
+        "text": "zero"
+      },
+      {
+        "id": "D",
+        "text": "increasing with time"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "By Newton's first law, a body moving at constant velocity has zero acceleration, and by the second law a zero acceleration means zero net force. Individual forces may act, but they cancel.",
+    "distractorRationale": {
+      "A": "Momentum is not a force and has different units.",
+      "B": "Weight is one force among several; the net force is their vector sum.",
+      "D": "A growing force would produce acceleration, contradicting constant velocity."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "物体沿直线做匀速运动，其所受合力是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "equal to its momentum"
+          },
+          {
+            "id": "B",
+            "text": "equal to its weight"
+          },
+          {
+            "id": "C",
+            "text": "zero"
+          },
+          {
+            "id": "D",
+            "text": "increasing with time"
+          }
+        ],
+        "explanation": "由牛顿第一定律，匀速运动的物体加速度为零；再由第二定律，加速度为零即合力为零。物体可能受到多个力，但它们互相抵消。"
+      }
+    },
+    "tags": [
+      "newtons-laws"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Momentum and impulse 动量与冲量",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A ball of mass $0.5\\ \\text{kg}$ moving at $4\\ \\text{m}\\,\\text{s}^{-1}$ is brought to rest in $0.2\\ \\text{s}$. What is the average force on it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.4\\ \\text{N}$"
+      },
+      {
+        "id": "B",
+        "text": "$1\\ \\text{N}$"
+      },
+      {
+        "id": "C",
+        "text": "$2\\ \\text{N}$"
+      },
+      {
+        "id": "D",
+        "text": "$10\\ \\text{N}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The change in momentum is $\\Delta p = m\\Delta v = 0.5 \\times 4 = 2\\ \\text{kg}\\,\\text{m}\\,\\text{s}^{-1}$. Impulse equals change in momentum, so $F = \\dfrac{\\Delta p}{\\Delta t} = \\dfrac{2}{0.2} = 10\\ \\text{N}$.",
+    "distractorRationale": {
+      "A": "Multiplies mass by time.",
+      "B": "Multiplies momentum by the time instead of dividing.",
+      "C": "Gives the change in momentum, not the force."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "质量 $0.5\\ \\text{kg}$、速度 $4\\ \\text{m}\\,\\text{s}^{-1}$ 的球在 $0.2\\ \\text{s}$ 内停止，所受平均力是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.4\\ \\text{N}$"
+          },
+          {
+            "id": "B",
+            "text": "$1\\ \\text{N}$"
+          },
+          {
+            "id": "C",
+            "text": "$2\\ \\text{N}$"
+          },
+          {
+            "id": "D",
+            "text": "$10\\ \\text{N}$"
+          }
+        ],
+        "explanation": "动量变化为 $\\Delta p = m\\Delta v = 0.5 \\times 4 = 2\\ \\text{kg}\\,\\text{m}\\,\\text{s}^{-1}$。冲量等于动量变化，故 $F = \\dfrac{\\Delta p}{\\Delta t} = \\dfrac{2}{0.2} = 10\\ \\text{N}$。"
+      }
+    },
+    "tags": [
+      "momentum",
+      "impulse"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Circular motion 圆周运动",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A car rounds a bend at constant speed. Which statement is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It accelerates, because the direction of its velocity changes"
+      },
+      {
+        "id": "B",
+        "text": "Its velocity is constant"
+      },
+      {
+        "id": "C",
+        "text": "No force acts on it"
+      },
+      {
+        "id": "D",
+        "text": "Its acceleration is zero"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Velocity is a vector, so changing direction changes the velocity even when the speed is fixed. A changing velocity means acceleration, directed towards the centre of the bend, and that acceleration requires a centripetal force — supplied here by friction.",
+    "distractorRationale": {
+      "B": "Speed is constant, but velocity includes direction.",
+      "C": "Friction supplies the centripetal force.",
+      "D": "A change of direction is itself an acceleration."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "汽车以恒定速率转弯，下列说法正确的是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "It accelerates, because the direction of its velocity changes"
+          },
+          {
+            "id": "B",
+            "text": "Its velocity is constant"
+          },
+          {
+            "id": "C",
+            "text": "No force acts on it"
+          },
+          {
+            "id": "D",
+            "text": "Its acceleration is zero"
+          }
+        ],
+        "explanation": "速度是矢量，方向改变即速度改变，即使速率不变。速度改变意味着有加速度，方向指向弯道圆心；该加速度需要向心力提供，此处由摩擦力提供。"
+      }
+    },
+    "tags": [
+      "circular-motion"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Work and energy 功与能",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An object of mass $2\\ \\text{kg}$ is lifted $3\\ \\text{m}$ at constant speed. Taking $g = 10\\ \\text{m}\\,\\text{s}^{-2}$, how much gravitational potential energy does it gain?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6\\ \\text{J}$"
+      },
+      {
+        "id": "B",
+        "text": "$60\\ \\text{J}$"
+      },
+      {
+        "id": "C",
+        "text": "$600\\ \\text{J}$"
+      },
+      {
+        "id": "D",
+        "text": "$20\\ \\text{J}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The gain is $\\Delta E_p = mgh = 2 \\times 10 \\times 3 = 60\\ \\text{J}$. Because the speed is constant, no kinetic energy is gained and all the work done goes into potential energy.",
+    "distractorRationale": {
+      "A": "Omits $g$ entirely.",
+      "C": "Includes an extra factor of ten.",
+      "D": "Omits the height."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "质量 $2\\ \\text{kg}$ 的物体被匀速提升 $3\\ \\text{m}$，取 $g = 10\\ \\text{m}\\,\\text{s}^{-2}$，其重力势能增加",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$6\\ \\text{J}$"
+          },
+          {
+            "id": "B",
+            "text": "$60\\ \\text{J}$"
+          },
+          {
+            "id": "C",
+            "text": "$600\\ \\text{J}$"
+          },
+          {
+            "id": "D",
+            "text": "$20\\ \\text{J}$"
+          }
+        ],
+        "explanation": "势能增量为 $\\Delta E_p = mgh = 2 \\times 10 \\times 3 = 60\\ \\text{J}$。因匀速上升，动能不变，所做的功全部转化为势能。"
+      }
+    },
+    "tags": [
+      "potential-energy"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Simple harmonic motion 简谐运动",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For a mass oscillating on a spring in simple harmonic motion, where is the speed greatest?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the speed is the same everywhere"
+      },
+      {
+        "id": "B",
+        "text": "midway between equilibrium and an extreme"
+      },
+      {
+        "id": "C",
+        "text": "at the equilibrium position"
+      },
+      {
+        "id": "D",
+        "text": "at the extremes of the motion"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "In simple harmonic motion the restoring force and the acceleration are largest at the extremes, where the speed is momentarily zero. Energy stored in the spring is fully converted to kinetic energy at the equilibrium position, so the speed peaks there.",
+    "distractorRationale": {
+      "A": "Speed varies continuously through the cycle.",
+      "B": "The speed is intermediate there, not maximal.",
+      "D": "The mass is momentarily at rest at the extremes."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "弹簧振子做简谐运动时，速度最大的位置是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "the speed is the same everywhere"
+          },
+          {
+            "id": "B",
+            "text": "midway between equilibrium and an extreme"
+          },
+          {
+            "id": "C",
+            "text": "at the equilibrium position"
+          },
+          {
+            "id": "D",
+            "text": "at the extremes of the motion"
+          }
+        ],
+        "explanation": "简谐运动中，回复力与加速度在两端最大，而该处速度瞬时为零。弹性势能在平衡位置全部转化为动能，故速度在平衡位置最大。"
+      }
+    },
+    "tags": [
+      "shm"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Momentum and impulse 动量与冲量",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two trolleys of equal mass approach each other at the same speed and stick together on collision. What is their combined velocity afterwards?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the original speed"
+      },
+      {
+        "id": "B",
+        "text": "twice the original speed"
+      },
+      {
+        "id": "C",
+        "text": "half the original speed"
+      },
+      {
+        "id": "D",
+        "text": "zero"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Momentum is a vector. The two momenta are equal in magnitude and opposite in direction, so the total before the collision is zero, and it must remain zero afterwards. The combined trolleys are therefore at rest.\\n\\nKinetic energy, unlike momentum, is not conserved here: all of it is converted into deformation and heat.",
+    "distractorRationale": {
+      "A": "Would require a non-zero total momentum before the collision.",
+      "B": "Would violate conservation of momentum.",
+      "C": "Also implies a non-zero total momentum."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "两辆质量相同的小车以相同速率相向运动，碰后粘在一起，其共同速度是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "the original speed"
+          },
+          {
+            "id": "B",
+            "text": "twice the original speed"
+          },
+          {
+            "id": "C",
+            "text": "half the original speed"
+          },
+          {
+            "id": "D",
+            "text": "zero"
+          }
+        ],
+        "explanation": "动量是矢量。两者动量大小相等、方向相反，碰前总动量为零，碰后亦须为零，故合体后静止。\\n\\n与动量不同，此处动能不守恒：全部动能转化为形变与热。"
+      }
+    },
+    "tags": [
+      "momentum",
+      "inelastic"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What current flows through a $10\\ \\Omega$ resistor connected across a $5\\ \\text{V}$ supply?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.5\\ \\text{A}$"
+      },
+      {
+        "id": "B",
+        "text": "$15\\ \\text{A}$"
+      },
+      {
+        "id": "C",
+        "text": "$50\\ \\text{A}$"
+      },
+      {
+        "id": "D",
+        "text": "$2\\ \\text{A}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "By Ohm's law, $I = \\dfrac{V}{R} = \\dfrac{5}{10} = 0.5\\ \\text{A}$.",
+    "distractorRationale": {
+      "B": "Adds them.",
+      "C": "Multiplies the two quantities.",
+      "D": "Divides resistance by voltage."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$10\\ \\Omega$ 的电阻接在 $5\\ \\text{V}$ 电源上，通过它的电流是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.5\\ \\text{A}$"
+          },
+          {
+            "id": "B",
+            "text": "$15\\ \\text{A}$"
+          },
+          {
+            "id": "C",
+            "text": "$50\\ \\text{A}$"
+          },
+          {
+            "id": "D",
+            "text": "$2\\ \\text{A}$"
+          }
+        ],
+        "explanation": "由欧姆定律，$I = \\dfrac{V}{R} = \\dfrac{5}{10} = 0.5\\ \\text{A}$。"
+      }
+    },
+    "tags": [
+      "ohms-law"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Coulomb's law 库仑定律",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "If the distance between two point charges is doubled, the electrostatic force between them becomes",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "twice as large"
+      },
+      {
+        "id": "B",
+        "text": "one quarter as large"
+      },
+      {
+        "id": "C",
+        "text": "four times as large"
+      },
+      {
+        "id": "D",
+        "text": "half as large"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Coulomb's law gives $F \\propto \\dfrac{1}{r^2}$. Doubling $r$ multiplies $r^2$ by four, so the force falls to one quarter.",
+    "distractorRationale": {
+      "A": "Reverses the direction of the relationship.",
+      "C": "Uses a direct square law.",
+      "D": "Uses an inverse first-power law."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "两点电荷之间的距离加倍，它们之间的静电力变为原来的",
+        "choices": [
+          {
+            "id": "A",
+            "text": "twice as large"
+          },
+          {
+            "id": "B",
+            "text": "one quarter as large"
+          },
+          {
+            "id": "C",
+            "text": "four times as large"
+          },
+          {
+            "id": "D",
+            "text": "half as large"
+          }
+        ],
+        "explanation": "由库仑定律 $F \\propto \\dfrac{1}{r^2}$。距离加倍使 $r^2$ 变为四倍，故力减为四分之一。"
+      }
+    },
+    "tags": [
+      "coulombs-law",
+      "inverse-square"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two $6\\ \\Omega$ resistors are connected in series. What is the combined resistance?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$36\\ \\Omega$"
+      },
+      {
+        "id": "B",
+        "text": "$3\\ \\Omega$"
+      },
+      {
+        "id": "C",
+        "text": "$12\\ \\Omega$"
+      },
+      {
+        "id": "D",
+        "text": "$6\\ \\Omega$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Resistances in series add: $6 + 6 = 12\\ \\Omega$. The same current passes through both, and the potential differences add.",
+    "distractorRationale": {
+      "A": "Multiplies rather than adds.",
+      "B": "Is the parallel combination.",
+      "D": "Would be the result if the two were identical and in parallel with a third."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "两个 $6\\ \\Omega$ 的电阻串联，总电阻是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$36\\ \\Omega$"
+          },
+          {
+            "id": "B",
+            "text": "$3\\ \\Omega$"
+          },
+          {
+            "id": "C",
+            "text": "$12\\ \\Omega$"
+          },
+          {
+            "id": "D",
+            "text": "$6\\ \\Omega$"
+          }
+        ],
+        "explanation": "串联电阻相加：$6 + 6 = 12\\ \\Omega$。两电阻通过相同电流，两端电压相加。"
+      }
+    },
+    "tags": [
+      "series-resistance"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Lorentz force 洛伦兹力",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A charged particle moves parallel to a uniform magnetic field. What magnetic force acts on it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "a force along the field"
+      },
+      {
+        "id": "B",
+        "text": "a force opposite to its velocity"
+      },
+      {
+        "id": "C",
+        "text": "a force perpendicular to the field"
+      },
+      {
+        "id": "D",
+        "text": "zero"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The magnetic force is $F = qvB\\sin\\theta$, where $\\theta$ is the angle between velocity and field. When the motion is parallel, $\\theta = 0$ and $\\sin\\theta = 0$, so the force vanishes. The force is greatest when the motion is perpendicular to the field.",
+    "distractorRationale": {
+      "A": "The magnetic force is never along the field direction.",
+      "B": "The magnetic force is always perpendicular to the velocity, never opposite to it.",
+      "C": "Would be the case for perpendicular motion, not parallel."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "带电粒子沿平行于匀强磁场的方向运动，所受磁场力是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "a force along the field"
+          },
+          {
+            "id": "B",
+            "text": "a force opposite to its velocity"
+          },
+          {
+            "id": "C",
+            "text": "a force perpendicular to the field"
+          },
+          {
+            "id": "D",
+            "text": "zero"
+          }
+        ],
+        "explanation": "磁场力为 $F = qvB\\sin\\theta$，$\\theta$ 为速度与磁场的夹角。平行运动时 $\\theta = 0$，$\\sin\\theta = 0$，故力为零。当运动垂直于磁场时力最大。"
+      }
+    },
+    "tags": [
+      "lorentz-force"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Faraday's law 法拉第定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A coil sits in a magnetic field that is held constant. What e.m.f. is induced in the coil?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "zero"
+      },
+      {
+        "id": "B",
+        "text": "one that alternates in direction"
+      },
+      {
+        "id": "C",
+        "text": "one proportional to the number of turns"
+      },
+      {
+        "id": "D",
+        "text": "one proportional to the field strength"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Faraday's law states that the induced e.m.f. depends on the rate of change of magnetic flux, not on the flux itself. A field held constant produces no change in flux, so no e.m.f. is induced however strong the field may be.",
+    "distractorRationale": {
+      "B": "An alternating e.m.f. requires a changing flux.",
+      "C": "The number of turns multiplies an e.m.f. that is zero to begin with.",
+      "D": "Confuses flux with rate of change of flux."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "线圈处于恒定不变的磁场中，其中感应的电动势是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "zero"
+          },
+          {
+            "id": "B",
+            "text": "one that alternates in direction"
+          },
+          {
+            "id": "C",
+            "text": "one proportional to the number of turns"
+          },
+          {
+            "id": "D",
+            "text": "one proportional to the field strength"
+          }
+        ],
+        "explanation": "法拉第定律指出，感应电动势取决于磁通量的变化率，而非磁通量本身。磁场恒定则磁通量不变，无论磁场多强都不会产生电动势。"
+      }
+    },
+    "tags": [
+      "faradays-law"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Lenz's law 楞次定律",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A copper ring is dropped over a vertical bar magnet, north pole upward. As the ring falls towards the magnet, what happens?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It accelerates faster than free fall"
+      },
+      {
+        "id": "B",
+        "text": "It is opposed by an induced current and falls more slowly than free fall"
+      },
+      {
+        "id": "C",
+        "text": "It stops immediately above the magnet"
+      },
+      {
+        "id": "D",
+        "text": "It falls freely, since copper is not magnetic"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The flux through the ring changes as it falls, inducing a current in the closed loop. By Lenz's law that current opposes the change producing it, so the ring experiences an upward retarding force and falls more slowly than in free fall.\\n\\nCopper is not ferromagnetic, but it does conduct — and conduction is all the effect requires.",
+    "distractorRationale": {
+      "A": "Would create energy from nothing.",
+      "C": "The retarding force slows the ring but does not hold it stationary.",
+      "D": "Conduction, not ferromagnetism, is what matters here."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "将铜环套在竖直放置、N 极朝上的条形磁铁上方并释放，铜环下落时",
+        "choices": [
+          {
+            "id": "A",
+            "text": "It accelerates faster than free fall"
+          },
+          {
+            "id": "B",
+            "text": "It is opposed by an induced current and falls more slowly than free fall"
+          },
+          {
+            "id": "C",
+            "text": "It stops immediately above the magnet"
+          },
+          {
+            "id": "D",
+            "text": "It falls freely, since copper is not magnetic"
+          }
+        ],
+        "explanation": "铜环下落时穿过它的磁通量发生变化，闭合回路中产生感应电流。由楞次定律，该电流阻碍引起它的变化，故铜环受到向上的阻力，下落比自由落体慢。\\n\\n铜虽非铁磁性材料，但导电，而该效应只需导电即可发生。"
+      }
+    },
+    "tags": [
+      "lenzs-law",
+      "induction"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Magnetic induction 磁感应",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A straight wire carries a current. How does the magnetic field strength vary with distance $r$ from the wire?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "independent of $r$"
+      },
+      {
+        "id": "B",
+        "text": "proportional to $r$"
+      },
+      {
+        "id": "C",
+        "text": "proportional to $\\dfrac{1}{r}$"
+      },
+      {
+        "id": "D",
+        "text": "proportional to $\\dfrac{1}{r^2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "For a long straight wire, $B = \\dfrac{\\mu_0 I}{2\\pi r}$, so the field falls off as $\\dfrac{1}{r}$ — not as the inverse square. The inverse-square law applies to point sources such as a point charge, while a wire is an extended source.",
+    "distractorRationale": {
+      "A": "The field clearly depends on distance.",
+      "B": "The field weakens with distance, not strengthens.",
+      "D": "Applies to point sources, not to a straight wire."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "通电直导线周围的磁感应强度随距导线的距离 $r$ 如何变化？",
+        "choices": [
+          {
+            "id": "A",
+            "text": "independent of $r$"
+          },
+          {
+            "id": "B",
+            "text": "proportional to $r$"
+          },
+          {
+            "id": "C",
+            "text": "proportional to $\\dfrac{1}{r}$"
+          },
+          {
+            "id": "D",
+            "text": "proportional to $\\dfrac{1}{r^2}$"
+          }
+        ],
+        "explanation": "对无限长直导线，$B = \\dfrac{\\mu_0 I}{2\\pi r}$，故磁场按 $\\dfrac{1}{r}$ 衰减，而非平方反比。平方反比适用于点电荷等点源，而导线是延展的源。"
+      }
+    },
+    "tags": [
+      "magnetic-field",
+      "straight-wire"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Ideal gas equation 理想气体状态方程",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An ideal gas is held at constant temperature. If its volume is halved, what happens to its pressure?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "it quadruples"
+      },
+      {
+        "id": "B",
+        "text": "it halves"
+      },
+      {
+        "id": "C",
+        "text": "it is unchanged"
+      },
+      {
+        "id": "D",
+        "text": "it doubles"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "At constant temperature, $pV$ is constant, which is Boyle's law. Halving $V$ therefore doubles $p$.",
+    "distractorRationale": {
+      "A": "Applies an inverse-square relationship, which does not hold here.",
+      "B": "Reverses the inverse relationship.",
+      "C": "Would require $pV$ to change."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "理想气体在温度不变时体积减半，其压强",
+        "choices": [
+          {
+            "id": "A",
+            "text": "it quadruples"
+          },
+          {
+            "id": "B",
+            "text": "it halves"
+          },
+          {
+            "id": "C",
+            "text": "it is unchanged"
+          },
+          {
+            "id": "D",
+            "text": "it doubles"
+          }
+        ],
+        "explanation": "温度不变时 $pV$ 为常量，即玻意耳定律。体积减半则压强加倍。"
+      }
+    },
+    "tags": [
+      "boyles-law"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Molecular theory 分子动理论",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "According to kinetic theory, what does the absolute temperature of an ideal gas measure?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the average kinetic energy of its molecules"
+      },
+      {
+        "id": "B",
+        "text": "the number of molecules present"
+      },
+      {
+        "id": "C",
+        "text": "the total energy of the gas"
+      },
+      {
+        "id": "D",
+        "text": "the pressure exerted on the walls"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Absolute temperature is proportional to the average translational kinetic energy of the molecules. It does not depend on how many molecules there are — a thimble of gas and a room of gas at the same temperature have the same average molecular energy.",
+    "distractorRationale": {
+      "B": "Temperature is independent of the quantity of gas.",
+      "C": "Total energy also depends on the amount of gas.",
+      "D": "Pressure depends on temperature, volume and amount together."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "根据分子动理论，理想气体的热力学温度反映的是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "the average kinetic energy of its molecules"
+          },
+          {
+            "id": "B",
+            "text": "the number of molecules present"
+          },
+          {
+            "id": "C",
+            "text": "the total energy of the gas"
+          },
+          {
+            "id": "D",
+            "text": "the pressure exerted on the walls"
+          }
+        ],
+        "explanation": "热力学温度与分子平均平动动能成正比，与分子数目无关——同温下，一小瓶气体与一屋子气体的分子平均动能相同。"
+      }
+    },
+    "tags": [
+      "kinetic-theory",
+      "temperature"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "First law of thermodynamics 热力学第一定律",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A gas is compressed adiabatically, meaning no heat enters or leaves. What happens to its internal energy?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "it depends on the gas"
+      },
+      {
+        "id": "B",
+        "text": "it increases"
+      },
+      {
+        "id": "C",
+        "text": "it decreases"
+      },
+      {
+        "id": "D",
+        "text": "it stays the same"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The first law gives $\\Delta U = Q + W$. Adiabatic means $Q = 0$, and compressing the gas means work is done on it, so $W > 0$. Therefore $\\Delta U > 0$: the internal energy rises, and so does the temperature.",
+    "distractorRationale": {
+      "A": "The reasoning holds for any ideal gas.",
+      "C": "Would require the gas to do work on its surroundings or lose heat.",
+      "D": "Would require the work done to be zero."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "气体经绝热压缩（无热量进出），其内能",
+        "choices": [
+          {
+            "id": "A",
+            "text": "it depends on the gas"
+          },
+          {
+            "id": "B",
+            "text": "it increases"
+          },
+          {
+            "id": "C",
+            "text": "it decreases"
+          },
+          {
+            "id": "D",
+            "text": "it stays the same"
+          }
+        ],
+        "explanation": "由热力学第一定律 $\\Delta U = Q + W$。绝热意味着 $Q = 0$，压缩表示外界对气体做功，故 $W > 0$，从而 $\\Delta U > 0$：内能增加，温度升高。"
+      }
+    },
+    "tags": [
+      "first-law",
+      "adiabatic"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Refraction 折射",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A ray of light passes from air into glass. Which quantity does not change?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "speed"
+      },
+      {
+        "id": "B",
+        "text": "wavelength"
+      },
+      {
+        "id": "C",
+        "text": "frequency"
+      },
+      {
+        "id": "D",
+        "text": "direction"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Frequency is set by the source and does not change when light enters a new medium. Speed and wavelength both fall, in the same proportion, so that $v = f\\lambda$ still holds; the direction changes unless the ray meets the surface head-on.",
+    "distractorRationale": {
+      "A": "Light slows down in glass.",
+      "B": "Wavelength shortens in the same proportion as the speed.",
+      "D": "The ray bends unless it enters along the normal."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "光线由空气射入玻璃，下列不发生改变的量是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "speed"
+          },
+          {
+            "id": "B",
+            "text": "wavelength"
+          },
+          {
+            "id": "C",
+            "text": "frequency"
+          },
+          {
+            "id": "D",
+            "text": "direction"
+          }
+        ],
+        "explanation": "频率由光源决定，进入新介质时不改变。速度与波长按相同比例减小，从而 $v = f\\lambda$ 仍成立；除非垂直入射，方向也会改变。"
+      }
+    },
+    "tags": [
+      "refraction"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Interference 干涉",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In a double-slit experiment, what happens to the spacing of the fringes if the slit separation is increased?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the fringes disappear"
+      },
+      {
+        "id": "B",
+        "text": "the spacing is unchanged"
+      },
+      {
+        "id": "C",
+        "text": "the fringes move further apart"
+      },
+      {
+        "id": "D",
+        "text": "the fringes move closer together"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The fringe spacing is $\\Delta y = \\dfrac{\\lambda L}{d}$, where $d$ is the slit separation. Increasing $d$ therefore decreases the spacing — the two quantities are inversely related.",
+    "distractorRationale": {
+      "A": "Interference still occurs; only the spacing changes.",
+      "B": "The spacing depends directly on $d$.",
+      "C": "Reverses the inverse relationship."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "双缝干涉实验中，若增大双缝间距，条纹间距将",
+        "choices": [
+          {
+            "id": "A",
+            "text": "the fringes disappear"
+          },
+          {
+            "id": "B",
+            "text": "the spacing is unchanged"
+          },
+          {
+            "id": "C",
+            "text": "the fringes move further apart"
+          },
+          {
+            "id": "D",
+            "text": "the fringes move closer together"
+          }
+        ],
+        "explanation": "条纹间距为 $\\Delta y = \\dfrac{\\lambda L}{d}$，其中 $d$ 为双缝间距。增大 $d$ 则间距减小，二者成反比。"
+      }
+    },
+    "tags": [
+      "double-slit",
+      "interference"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p21",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Photoelectric effect 光电效应",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In the photoelectric effect, increasing the intensity of light above the threshold frequency increases",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the number of electrons emitted per second"
+      },
+      {
+        "id": "B",
+        "text": "the threshold frequency"
+      },
+      {
+        "id": "C",
+        "text": "the work function of the metal"
+      },
+      {
+        "id": "D",
+        "text": "the maximum kinetic energy of the emitted electrons"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Intensity determines how many photons arrive each second, so it fixes the number of electrons released. The energy of each electron depends on the photon energy — that is, on the frequency — and not on how many photons arrive.",
+    "distractorRationale": {
+      "B": "The threshold frequency is a property of the metal.",
+      "C": "The work function is also a property of the metal.",
+      "D": "Depends on frequency, not on intensity."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "光电效应中，在超过截止频率的前提下增大光强，将增大",
+        "choices": [
+          {
+            "id": "A",
+            "text": "the number of electrons emitted per second"
+          },
+          {
+            "id": "B",
+            "text": "the threshold frequency"
+          },
+          {
+            "id": "C",
+            "text": "the work function of the metal"
+          },
+          {
+            "id": "D",
+            "text": "the maximum kinetic energy of the emitted electrons"
+          }
+        ],
+        "explanation": "光强决定单位时间到达的光子数，因而决定释放的电子数。每个电子的能量取决于光子能量，即频率，而与光子数目无关。"
+      }
+    },
+    "tags": [
+      "photoelectric-effect"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-p22",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Nuclear physics 原子核物理",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A nucleus emits an alpha particle. How do its proton number $Z$ and nucleon number $A$ change?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$Z$ is unchanged, $A$ falls by 4"
+      },
+      {
+        "id": "B",
+        "text": "$Z$ falls by 2, $A$ falls by 4"
+      },
+      {
+        "id": "C",
+        "text": "$Z$ rises by 1, $A$ is unchanged"
+      },
+      {
+        "id": "D",
+        "text": "$Z$ falls by 4, $A$ falls by 2"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "An alpha particle is a helium nucleus, $^4_2\\text{He}$: two protons and two neutrons. Emitting it removes 2 from the proton number and 4 from the nucleon number.\\n\\nThe option describing $Z$ rising by 1 with $A$ unchanged describes beta-minus decay instead.",
+    "distractorRationale": {
+      "A": "Removes the mass but not the charge.",
+      "C": "Describes beta-minus decay.",
+      "D": "Swaps the two numbers."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "原子核发生 $\\alpha$ 衰变后，其质子数 $Z$ 与核子数 $A$ 的变化是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$Z$ is unchanged, $A$ falls by 4"
+          },
+          {
+            "id": "B",
+            "text": "$Z$ falls by 2, $A$ falls by 4"
+          },
+          {
+            "id": "C",
+            "text": "$Z$ rises by 1, $A$ is unchanged"
+          },
+          {
+            "id": "D",
+            "text": "$Z$ falls by 4, $A$ falls by 2"
+          }
+        ],
+        "explanation": "$\\alpha$ 粒子即氦核 $^4_2\\text{He}$，含两个质子和两个中子。放出后质子数减 2，核子数减 4。\\n\\n「$Z$ 增加 1 而 $A$ 不变」描述的是 $\\beta^-$ 衰变。"
+      }
+    },
+    "tags": [
+      "alpha-decay"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  }
+]

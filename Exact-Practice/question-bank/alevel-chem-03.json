@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "al-chm-k01",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which electronic configuration is that of a $\\text{Ca}^{2+}$ ion? (Proton number of Ca is 20.)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^6\\,4s^2$"
+      },
+      {
+        "id": "B",
+        "text": "$1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^6$"
+      },
+      {
+        "id": "C",
+        "text": "$1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^4$"
+      },
+      {
+        "id": "D",
+        "text": "$1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^6\\,4s^1$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "A neutral calcium atom has 20 electrons, ending $4s^2$. Forming $\\text{Ca}^{2+}$ removes the two outermost electrons, which are the $4s$ pair, leaving 18 electrons: $1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^6$. This is the argon configuration, which is why the $2+$ ion is the only common ion of calcium.",
+    "distractorRationale": {
+      "A": "Is the neutral atom, with the two $4s$ electrons still present.",
+      "C": "Removes two $3p$ electrons instead of the $4s$ pair.",
+      "D": "Removes only one electron, which would give $\\text{Ca}^{+}$."
+    },
+    "tags": [
+      "electron-configuration",
+      "ions"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k02",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Chlorine consists of $75.0\\%$ $^{35}\\text{Cl}$ and $25.0\\%$ $^{37}\\text{Cl}$. What is its relative atomic mass?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$35.0$"
+      },
+      {
+        "id": "B",
+        "text": "$36.0$"
+      },
+      {
+        "id": "C",
+        "text": "$35.5$"
+      },
+      {
+        "id": "D",
+        "text": "$36.5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The relative atomic mass is the weighted mean of the isotopic masses: $(0.750 \\times 35) + (0.250 \\times 37) = 26.25 + 9.25 = 35.5$. It lies closer to 35 than to 37 because the lighter isotope is three times as abundant.",
+    "distractorRationale": {
+      "A": "Takes only the mass of the more abundant isotope.",
+      "B": "Uses a simple mean of 35 and 37, ignoring the abundances.",
+      "D": "Weights the abundances the wrong way round, favouring $^{37}\\text{Cl}$."
+    },
+    "tags": [
+      "relative-atomic-mass",
+      "isotopes"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k03",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What amount, in moles, of calcium carbonate is present in $25.0\\ \\text{g}$ of $\\text{CaCO}_3$? ($M_r = 100$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.250$"
+      },
+      {
+        "id": "B",
+        "text": "$2.50$"
+      },
+      {
+        "id": "C",
+        "text": "$0.400$"
+      },
+      {
+        "id": "D",
+        "text": "$4.00$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Amount of substance is mass divided by molar mass: $n = \\dfrac{25.0}{100} = 0.250\\ \\text{mol}$. A quick check on the size of the answer helps: $25\\ \\text{g}$ is a quarter of the $100\\ \\text{g}$ that one mole would weigh, so the answer must be a quarter of a mole.",
+    "distractorRationale": {
+      "B": "Divides by 10 rather than by 100.",
+      "C": "Divides the molar mass by the mass, inverting the relationship.",
+      "D": "Inverts the relationship and then misplaces a factor of ten."
+    },
+    "tags": [
+      "moles",
+      "molar-mass"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k04",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What volume does $0.500\\ \\text{mol}$ of oxygen gas occupy at room temperature and pressure? (Molar gas volume at r.t.p. is $24.0\\ \\text{dm}^3\\,\\text{mol}^{-1}$.)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$48.0\\ \\text{dm}^3$"
+      },
+      {
+        "id": "B",
+        "text": "$24.0\\ \\text{dm}^3$"
+      },
+      {
+        "id": "C",
+        "text": "$16.0\\ \\text{dm}^3$"
+      },
+      {
+        "id": "D",
+        "text": "$12.0\\ \\text{dm}^3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "At r.t.p. one mole of any gas occupies $24.0\\ \\text{dm}^3$, so $0.500\\ \\text{mol}$ occupies $0.500 \\times 24.0 = 12.0\\ \\text{dm}^3$. The identity of the gas does not enter the calculation — that is the point of the molar gas volume.",
+    "distractorRationale": {
+      "A": "Multiplies by two instead of by a half.",
+      "B": "Gives the volume of one mole, ignoring the amount stated.",
+      "C": "Uses $32$, the molar mass of $\\text{O}_2$, somewhere in place of the molar volume."
+    },
+    "tags": [
+      "molar-gas-volume",
+      "rtp"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k05",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Why does atomic radius decrease from sodium to chlorine across Period 3?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The number of occupied electron shells decreases."
+      },
+      {
+        "id": "B",
+        "text": "Nuclear charge increases while the electrons enter the same shell, so they are pulled in more strongly."
+      },
+      {
+        "id": "C",
+        "text": "Shielding increases faster than nuclear charge."
+      },
+      {
+        "id": "D",
+        "text": "The atoms become more metallic, and metallic atoms are smaller."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Across a period the proton number rises by one at each step, but each added electron enters the same outer shell. Shielding therefore stays almost constant while the nuclear charge grows, so the effective nuclear charge felt by the outer electrons increases and they are drawn closer to the nucleus.",
+    "distractorRationale": {
+      "A": "All Period 3 atoms have three occupied shells; the number does not change.",
+      "C": "If shielding grew faster than nuclear charge the radius would increase, not decrease.",
+      "D": "Metallic character decreases across the period, and it is not the cause of the size trend."
+    },
+    "tags": [
+      "periodicity",
+      "atomic-radius"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k06",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 2",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Magnesium reacts only very slowly with cold water, whereas calcium reacts steadily. Which statement explains the difference?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Calcium has a higher first ionisation energy than magnesium."
+      },
+      {
+        "id": "B",
+        "text": "Calcium atoms are smaller, so their electrons are lost more readily."
+      },
+      {
+        "id": "C",
+        "text": "Calcium hydroxide is less soluble than magnesium hydroxide, driving the reaction."
+      },
+      {
+        "id": "D",
+        "text": "Calcium's outer electrons are further from the nucleus and better shielded, so they are lost more readily."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Reactivity increases down Group 2. The outer $s$ electrons of calcium lie in a shell further from the nucleus and are shielded by more inner shells, so less energy is needed to remove them and the metal is oxidised more readily.",
+    "distractorRationale": {
+      "A": "Ionisation energy falls down the group; calcium's is lower, not higher.",
+      "B": "Atomic radius increases down the group, so calcium atoms are larger.",
+      "C": "Calcium hydroxide is in fact more soluble, and solubility is not what sets the rate here."
+    },
+    "tags": [
+      "group-2",
+      "reactivity-trend"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k07",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Alcohols",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which compound is a secondary alcohol?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "butan-1-ol"
+      },
+      {
+        "id": "B",
+        "text": "2-methylpropan-2-ol"
+      },
+      {
+        "id": "C",
+        "text": "butan-2-ol"
+      },
+      {
+        "id": "D",
+        "text": "methanol"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "In a secondary alcohol the carbon bearing the $\\text{OH}$ group is attached to exactly two other carbon atoms. In butan-2-ol that carbon has a $\\text{CH}_3$ on one side and a $\\text{C}_2\\text{H}_5$ on the other, so it is secondary.",
+    "distractorRationale": {
+      "A": "The $\\text{OH}$ carbon is attached to one carbon only, so it is primary.",
+      "B": "The $\\text{OH}$ carbon is attached to three carbons, so it is tertiary.",
+      "D": "The $\\text{OH}$ carbon is attached to no other carbon; methanol is primary."
+    },
+    "tags": [
+      "alcohols",
+      "classification"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k08",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Successive members of a homologous series differ by $\\text{CH}_2$. Which pair of alkanes are successive members?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{C}_3\\text{H}_8$ and $\\text{C}_4\\text{H}_{10}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{C}_2\\text{H}_6$ and $\\text{C}_2\\text{H}_4$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{C}_4\\text{H}_{10}$ and $\\text{C}_6\\text{H}_{14}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{C}_2\\text{H}_4$ and $\\text{C}_3\\text{H}_6$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Alkanes follow the general formula $\\text{C}_n\\text{H}_{2n+2}$. Propane $\\text{C}_3\\text{H}_8$ and butane $\\text{C}_4\\text{H}_{10}$ both fit it and differ by exactly one $\\text{CH}_2$ unit, so they are successive members of the same series.",
+    "distractorRationale": {
+      "B": "$\\text{C}_2\\text{H}_4$ is an alkene, so the two belong to different series.",
+      "C": "Both are alkanes but they differ by two $\\text{CH}_2$ units, so they are not successive.",
+      "D": "Both fit $\\text{C}_n\\text{H}_{2n}$, so they are alkenes, not alkanes."
+    },
+    "tags": [
+      "homologous-series",
+      "alkanes"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k09",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "$6.00\\ \\text{g}$ of hydrogen is mixed with $32.0\\ \\text{g}$ of oxygen and ignited: $2\\text{H}_2 + \\text{O}_2 \\rightarrow 2\\text{H}_2\\text{O}$. What mass of water is formed? ($A_r$: H $= 1.0$, O $= 16.0$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$54.0\\ \\text{g}$"
+      },
+      {
+        "id": "B",
+        "text": "$36.0\\ \\text{g}$"
+      },
+      {
+        "id": "C",
+        "text": "$38.0\\ \\text{g}$"
+      },
+      {
+        "id": "D",
+        "text": "$18.0\\ \\text{g}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Amounts: $n(\\text{H}_2) = \\dfrac{6.00}{2.0} = 3.00\\ \\text{mol}$ and $n(\\text{O}_2) = \\dfrac{32.0}{32.0} = 1.00\\ \\text{mol}$. The equation needs hydrogen and oxygen in a $2:1$ ratio, so $1.00\\ \\text{mol}$ of oxygen can react with only $2.00\\ \\text{mol}$ of hydrogen. Oxygen is limiting, one mole of hydrogen is left over, and $2.00\\ \\text{mol}$ of water forms: $2.00 \\times 18.0 = 36.0\\ \\text{g}$.",
+    "distractorRationale": {
+      "A": "Assumes all $3.00\\ \\text{mol}$ of hydrogen reacts, ignoring that oxygen runs out first.",
+      "C": "Adds the masses of the reactants, which conserves mass only if nothing is left unreacted.",
+      "D": "Gives one mole of water rather than two."
+    },
+    "tags": [
+      "limiting-reagent",
+      "stoichiometry"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k10",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Standard enthalpies of formation are: $\\text{C}_2\\text{H}_5\\text{OH(l)}\\ -278$, $\\text{CO}_2\\text{(g)}\\ -394$, $\\text{H}_2\\text{O(l)}\\ -286$, all in $\\text{kJ}\\,\\text{mol}^{-1}$. What is the standard enthalpy change of combustion of ethanol?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-1368\\ \\text{kJ}\\,\\text{mol}^{-1}$"
+      },
+      {
+        "id": "B",
+        "text": "$-1646\\ \\text{kJ}\\,\\text{mol}^{-1}$"
+      },
+      {
+        "id": "C",
+        "text": "$-958\\ \\text{kJ}\\,\\text{mol}^{-1}$"
+      },
+      {
+        "id": "D",
+        "text": "$+1368\\ \\text{kJ}\\,\\text{mol}^{-1}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "For combustion, $\\text{C}_2\\text{H}_5\\text{OH} + 3\\text{O}_2 \\rightarrow 2\\text{CO}_2 + 3\\text{H}_2\\text{O}$. Using $\\Delta H = \\sum \\Delta H_f(\\text{products}) - \\sum \\Delta H_f(\\text{reactants})$: products give $2(-394) + 3(-286) = -788 - 858 = -1646$; reactants give $-278$, since oxygen as an element is zero. So $\\Delta H = -1646 - (-278) = -1368\\ \\text{kJ}\\,\\text{mol}^{-1}$.",
+    "distractorRationale": {
+      "B": "Stops at the sum for the products and forgets to subtract the reactant term.",
+      "C": "Uses one mole of water and one of carbon dioxide instead of three and two.",
+      "D": "Has the correct magnitude but the wrong sign; combustion releases energy."
+    },
+    "tags": [
+      "hess-law",
+      "enthalpy-of-combustion"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k11",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "For $\\text{N}_2\\text{(g)} + 3\\text{H}_2\\text{(g)} \\rightleftharpoons 2\\text{NH}_3\\text{(g)}$, $\\Delta H$ is negative. What happens to the equilibrium yield of ammonia when the temperature is raised at constant pressure?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It increases, because the molecules collide more often."
+      },
+      {
+        "id": "B",
+        "text": "It decreases, because the equilibrium shifts in the endothermic direction."
+      },
+      {
+        "id": "C",
+        "text": "It is unchanged, because temperature affects only the rate."
+      },
+      {
+        "id": "D",
+        "text": "It decreases, because the value of the equilibrium constant is unaffected by temperature."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Raising the temperature shifts an equilibrium in the direction that absorbs heat. The forward reaction is exothermic, so the endothermic direction is the reverse one: ammonia decomposes and the yield falls. The rate does rise, which is why industrial synthesis settles on a compromise temperature rather than the lowest one.",
+    "distractorRationale": {
+      "A": "Confuses rate with position of equilibrium; more frequent collisions speed both directions equally.",
+      "C": "Temperature is the one variable that does change the equilibrium constant.",
+      "D": "The conclusion is right but the reason contradicts it — $K$ does change with temperature."
+    },
+    "tags": [
+      "le-chatelier",
+      "equilibrium-yield"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k12",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Kinetics",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A catalyst is added to a reaction mixture at constant temperature. Which statement is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The average kinetic energy of the molecules increases."
+      },
+      {
+        "id": "B",
+        "text": "The enthalpy change of the reaction becomes more negative."
+      },
+      {
+        "id": "C",
+        "text": "A greater proportion of collisions has energy at or above the activation energy."
+      },
+      {
+        "id": "D",
+        "text": "The position of equilibrium shifts towards the products."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "A catalyst provides an alternative route with a lower activation energy. The Boltzmann distribution itself is unchanged, since the temperature is unchanged, but the area under it beyond the new, lower $E_a$ is larger — so a greater proportion of collisions is successful.",
+    "distractorRationale": {
+      "A": "Average kinetic energy depends only on temperature, which is held constant.",
+      "B": "The enthalpy change depends on the reactants and products, not on the route between them.",
+      "D": "A catalyst speeds both directions equally, so equilibrium is reached sooner but at the same position."
+    },
+    "tags": [
+      "catalysis",
+      "activation-energy"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k13",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which Period 3 oxide gives the solution of lowest pH when added to water?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{Na}_2\\text{O}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{SO}_3$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{MgO}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{SiO}_2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Across Period 3 the oxides change from basic to acidic. $\\text{SO}_3$ is the oxide of a non-metal at the right of the period; it dissolves and reacts to give sulfuric acid, a strong acid, so the pH is around 1.",
+    "distractorRationale": {
+      "A": "Sodium oxide is basic and gives a strongly alkaline solution, pH about 13.",
+      "C": "Magnesium oxide is basic and only slightly soluble, giving a mildly alkaline solution.",
+      "D": "Silicon dioxide is a giant covalent solid and is essentially insoluble, so the pH stays near 7."
+    },
+    "tags": [
+      "periodicity",
+      "oxides"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k14",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 17",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Aqueous chlorine is added separately to aqueous potassium bromide and to aqueous potassium fluoride. What is observed?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Both solutions darken."
+      },
+      {
+        "id": "B",
+        "text": "Only the fluoride solution changes colour."
+      },
+      {
+        "id": "C",
+        "text": "Only the bromide solution changes colour."
+      },
+      {
+        "id": "D",
+        "text": "Neither solution changes."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "A halogen displaces the halide of any halogen below it in the group, because oxidising power decreases down Group 17. Chlorine is above bromine, so it oxidises $\\text{Br}^-$ to $\\text{Br}_2$ and the solution turns orange. Fluorine is above chlorine, so chlorine cannot displace fluoride and nothing happens.",
+    "distractorRationale": {
+      "A": "Requires chlorine to displace fluorine, which it cannot do.",
+      "B": "Reverses the order of oxidising power within the group.",
+      "D": "Overlooks the displacement of bromide, which does occur."
+    },
+    "tags": [
+      "group-17",
+      "displacement"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k15",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Nitrogen & sulfur",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Sulfur dioxide released from burning fossil fuels contributes to acid rain. Which equation represents the step in which the acid of lower pH is formed?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{S} + \\text{O}_2 \\rightarrow \\text{SO}_2$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{SO}_2 + \\text{H}_2\\text{O} \\rightarrow \\text{H}_2\\text{SO}_3$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{SO}_3 + \\text{H}_2\\text{O} \\rightarrow \\text{H}_2\\text{SO}_4$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{CO}_2 + \\text{H}_2\\text{O} \\rightarrow \\text{H}_2\\text{CO}_3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Sulfur dioxide is oxidised in the atmosphere to sulfur trioxide, which dissolves to give sulfuric acid. Sulfuric acid is a strong acid and is fully dissociated, so it produces a far lower pH than sulfurous or carbonic acid, both of which are weak.",
+    "distractorRationale": {
+      "A": "Forms the oxide but no acid at all.",
+      "B": "Gives sulfurous acid, which is weak and therefore less acidic.",
+      "D": "Carbonic acid is weak and is responsible for the natural acidity of rain, not for acid rain."
+    },
+    "tags": [
+      "nitrogen-sulfur",
+      "acid-rain"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k16",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Halogenoalkanes",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Three halogenoalkanes are warmed separately with aqueous silver nitrate in ethanol. Which produces a precipitate most quickly?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1-chlorobutane"
+      },
+      {
+        "id": "B",
+        "text": "1-iodobutane"
+      },
+      {
+        "id": "C",
+        "text": "1-bromobutane"
+      },
+      {
+        "id": "D",
+        "text": "All three react at the same rate."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Hydrolysis begins with breaking the carbon-halogen bond, so the rate is governed by that bond's strength rather than by the halogen's electronegativity. The $\\text{C}-\\text{I}$ bond is the longest and weakest of the three, so the iodoalkane reacts fastest and gives its yellow precipitate of silver iodide first.",
+    "distractorRationale": {
+      "A": "The $\\text{C}-\\text{Cl}$ bond is the strongest of the three, so this is the slowest.",
+      "C": "Bromobutane is intermediate in rate, not the fastest.",
+      "D": "The bond enthalpies differ substantially, so the rates cannot be equal."
+    },
+    "tags": [
+      "halogenoalkanes",
+      "hydrolysis-rate"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k17",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Carbonyls",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Propan-2-ol is heated under reflux with acidified potassium dichromate(VI). What is the organic product?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "propanal"
+      },
+      {
+        "id": "B",
+        "text": "propanoic acid"
+      },
+      {
+        "id": "C",
+        "text": "propanone"
+      },
+      {
+        "id": "D",
+        "text": "propane"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Propan-2-ol is a secondary alcohol, and secondary alcohols are oxidised to ketones. The product is propanone. Unlike an aldehyde, a ketone has no hydrogen on the carbonyl carbon, so it resists further oxidation — refluxing does not take it any further.",
+    "distractorRationale": {
+      "A": "An aldehyde would come from a primary alcohol such as propan-1-ol.",
+      "B": "A carboxylic acid needs a primary alcohol oxidised twice.",
+      "D": "Reduction, not oxidation, would be needed to reach the alkane."
+    },
+    "tags": [
+      "oxidation",
+      "ketone"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k18",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "$1.00\\ \\text{g}$ of impure calcium carbonate is added to $25.0\\ \\text{cm}^3$ of $1.00\\ \\text{mol}\\,\\text{dm}^{-3}$ hydrochloric acid, an excess. The unreacted acid requires $30.0\\ \\text{cm}^3$ of $0.200\\ \\text{mol}\\,\\text{dm}^{-3}$ sodium hydroxide for neutralisation. What is the percentage purity of the calcium carbonate? ($M_r$ of $\\text{CaCO}_3 = 100$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$47.5\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$95.0\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$60.0\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$76.0\\%$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Acid added: $0.0250 \\times 1.00 = 0.0250\\ \\text{mol}$. Acid left over, from the titration: $0.0300 \\times 0.200 = 0.00600\\ \\text{mol}$, since $\\text{HCl}$ and $\\text{NaOH}$ react $1:1$. Acid that reacted with the carbonate: $0.0250 - 0.00600 = 0.0190\\ \\text{mol}$. The equation $\\text{CaCO}_3 + 2\\text{HCl} \\rightarrow \\text{CaCl}_2 + \\text{H}_2\\text{O} + \\text{CO}_2$ needs two acid per carbonate, so $n(\\text{CaCO}_3) = 0.00950\\ \\text{mol}$, a mass of $0.950\\ \\text{g}$. Purity is $\\dfrac{0.950}{1.00} \\times 100 = 95.0\\%$.",
+    "distractorRationale": {
+      "A": "Forgets the $1:2$ ratio and treats each mole of acid as one mole of carbonate.",
+      "C": "Uses the titre volume as though it were the excess in moles without the concentration.",
+      "D": "Subtracts in the wrong order, taking the reacted acid as the excess."
+    },
+    "tags": [
+      "back-titration",
+      "purity"
+    ],
+    "estimatedTimeSec": 180,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k19",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Halogenoalkanes",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "How many structural isomers have the molecular formula $\\text{C}_4\\text{H}_9\\text{Br}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "5"
+      },
+      {
+        "id": "C",
+        "text": "2"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "There are two carbon skeletons. The straight chain gives 1-bromobutane and 2-bromobutane; the branched skeleton, 2-methylpropane, gives 1-bromo-2-methylpropane and 2-bromo-2-methylpropane. That is four in all. Positions 3 and 4 on the straight chain are not new — they are the same as 2 and 1 counted from the other end.",
+    "distractorRationale": {
+      "A": "Misses one of the two branched isomers.",
+      "B": "Counts 3-bromobutane as distinct from 2-bromobutane; numbering from the other end shows they are the same compound.",
+      "C": "Considers only the straight-chain skeleton."
+    },
+    "tags": [
+      "isomerism",
+      "structural-isomers"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "al-chm-k20",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Analytical techniques",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The mass spectrum of an organic compound shows two molecular ion peaks at $m/e = 108$ and $m/e = 110$ with almost equal heights. What does this indicate?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The compound contains one chlorine atom."
+      },
+      {
+        "id": "B",
+        "text": "The compound contains two chlorine atoms."
+      },
+      {
+        "id": "C",
+        "text": "The compound contains one bromine atom."
+      },
+      {
+        "id": "D",
+        "text": "The sample is a mixture of two compounds."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bromine has two isotopes, $^{79}\\text{Br}$ and $^{81}\\text{Br}$, in almost equal abundance, so a single bromine atom produces two molecular ion peaks two units apart with roughly equal heights. Chlorine would give a $3:1$ ratio instead, because $^{35}\\text{Cl}$ is three times as abundant as $^{37}\\text{Cl}$.",
+    "distractorRationale": {
+      "A": "One chlorine gives peaks in a $3:1$ ratio, not $1:1$.",
+      "B": "Two chlorines give three peaks in a $9:6:1$ ratio.",
+      "D": "A mixture would usually give unrelated peaks rather than two exactly two units apart."
+    },
+    "tags": [
+      "mass-spectrometry",
+      "isotope-pattern"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  }
+]

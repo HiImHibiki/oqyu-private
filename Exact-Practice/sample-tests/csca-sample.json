@@ -1,0 +1,965 @@
+[
+  {
+    "id": "csca-sample-math-01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Quadratic inequalities 一元二次不等式",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Let $A = \\{x \\mid x^{2} - 5x + 6 < 0\\}$ and $B = \\{x \\mid x > 2\\}$. What is $A \\cap B$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$(2, 3)$"
+      },
+      {
+        "id": "B",
+        "text": "$(2, +\\infty)$"
+      },
+      {
+        "id": "C",
+        "text": "$(3, +\\infty)$"
+      },
+      {
+        "id": "D",
+        "text": "$(-\\infty, 3)$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Factor the quadratic: $x^{2} - 5x + 6 = (x-2)(x-3)$. The product is negative between the roots, so $A = (2, 3)$. Since $A$ is already contained in $B = (2, +\\infty)$, the intersection is $A$ itself: $(2, 3)$.",
+    "distractorRationale": {
+      "B": "Melaporkan $B$ saja, tanpa menyelesaikan pertidaksamaan kuadratnya.",
+      "C": "Mengambil daerah $x > 3$, yaitu tempat hasil kali bernilai positif — arah pertidaksamaan terbalik.",
+      "D": "Hanya memakai akar yang lebih besar dan mengabaikan batas bawah."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "已知集合 $A = \\{x \\mid x^{2} - 5x + 6 < 0\\}$，$B = \\{x \\mid x > 2\\}$，则 $A \\cap B =$",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$(2, 3)$"
+          },
+          {
+            "id": "B",
+            "text": "$(2, +\\infty)$"
+          },
+          {
+            "id": "C",
+            "text": "$(3, +\\infty)$"
+          },
+          {
+            "id": "D",
+            "text": "$(-\\infty, 3)$"
+          }
+        ],
+        "explanation": "因式分解得 $x^{2} - 5x + 6 = (x-2)(x-3)$。两根之间乘积为负，故 $A = (2, 3)$。又 $A \\subseteq B$，所以 $A \\cap B = (2, 3)$。"
+      }
+    },
+    "formulaRefs": [
+      "csca_math"
+    ],
+    "tags": [
+      "set-intersection",
+      "quadratic-inequality"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-sample-math-02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Arithmetic sequences 等差数列",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In an arithmetic sequence $\\{a_n\\}$, $a_2 + a_6 = 20$ and $a_3 = 7$. What is $S_8$, the sum of the first eight terms?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$88$"
+      },
+      {
+        "id": "B",
+        "text": "$92$"
+      },
+      {
+        "id": "C",
+        "text": "$96$"
+      },
+      {
+        "id": "D",
+        "text": "$100$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "In an arithmetic sequence, $a_2 + a_6 = 2a_4$, so $a_4 = 10$. With $a_3 = 7$, the common difference is $d = a_4 - a_3 = 3$, and $a_1 = a_3 - 2d = 7 - 6 = 1$. Then $S_8 = \\dfrac{8}{2}\\left[2a_1 + 7d\\right] = 4(2 + 21) = 92$.",
+    "distractorRationale": {
+      "A": "Memakai $a_1 = 1$ dan $d = 3$ tetapi menghitung $S_8 = 8a_1 + 7d \\cdot 8 / 2$ dengan salah satu suku terlewat.",
+      "C": "Menghitung $S_8$ dengan $a_1 = 2$, yaitu salah menurunkan suku pertama dari $a_3$.",
+      "D": "Menganggap $a_2 + a_6 = 20$ berarti $a_4 = 20$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "在等差数列 $\\{a_n\\}$ 中，$a_2 + a_6 = 20$，$a_3 = 7$，则前 8 项和 $S_8 =$",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$88$"
+          },
+          {
+            "id": "B",
+            "text": "$92$"
+          },
+          {
+            "id": "C",
+            "text": "$96$"
+          },
+          {
+            "id": "D",
+            "text": "$100$"
+          }
+        ],
+        "explanation": "由等差数列性质得 $a_2 + a_6 = 2a_4 = 20$，故 $a_4 = 10$。又 $a_3 = 7$，所以公差 $d = 3$，$a_1 = 7 - 2 \\times 3 = 1$。于是 $S_8 = \\dfrac{8}{2}(2 \\times 1 + 7 \\times 3) = 4 \\times 23 = 92$。"
+      }
+    },
+    "formulaRefs": [
+      "csca_math"
+    ],
+    "tags": [
+      "arithmetic-sequence",
+      "sum-formula"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-sample-math-03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Ellipses 椭圆",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For the ellipse $\\dfrac{x^{2}}{25} + \\dfrac{y^{2}}{16} = 1$, what is the eccentricity $e$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{4}{5}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{9}{25}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{3}{5}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{5}{3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "For an ellipse, $a^{2} = 25$ and $b^{2} = 16$, so $c^{2} = a^{2} - b^{2} = 9$ and $c = 3$. The eccentricity is $e = \\dfrac{c}{a} = \\dfrac{3}{5}$.",
+    "distractorRationale": {
+      "A": "Menghitung $\\dfrac{b}{a}$ alih-alih $\\dfrac{c}{a}$.",
+      "B": "Melaporkan $e^{2}$, bukan $e$.",
+      "D": "Membalik rasio menjadi $\\dfrac{a}{c}$; nilai ini mustahil karena eksentrisitas elips selalu kurang dari 1."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "已知椭圆 $\\dfrac{x^{2}}{25} + \\dfrac{y^{2}}{16} = 1$，则其离心率 $e =$",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{4}{5}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{9}{25}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{3}{5}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{5}{3}$"
+          }
+        ],
+        "explanation": "由 $a^{2} = 25$，$b^{2} = 16$ 得 $c^{2} = a^{2} - b^{2} = 9$，即 $c = 3$。故 $e = \\dfrac{c}{a} = \\dfrac{3}{5}$。"
+      }
+    },
+    "formulaRefs": [
+      "csca_math"
+    ],
+    "tags": [
+      "ellipse",
+      "eccentricity"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-sample-math-04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Classical probability 古典概型",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A bag contains 4 red balls and 2 white balls. Two balls are drawn one after another **without replacement**. What is the probability that both balls have the same colour?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{2}{5}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{8}{15}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{7}{15}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$P(\\text{both red}) = \\dfrac{4}{6} \\times \\dfrac{3}{5} = \\dfrac{12}{30}$ and $P(\\text{both white}) = \\dfrac{2}{6} \\times \\dfrac{1}{5} = \\dfrac{2}{30}$. Adding the two mutually exclusive cases gives $\\dfrac{14}{30} = \\dfrac{7}{15}$.",
+    "distractorRationale": {
+      "A": "Menghitung seolah pengambilan dilakukan dengan pengembalian.",
+      "B": "Hanya menghitung peluang dua bola merah dan lupa kasus dua bola putih.",
+      "C": "Menghitung peluang **berbeda** warna, yaitu komplemen dari jawaban benar."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "袋中有 4 个红球和 2 个白球。**不放回地**依次取出 2 个球，取到两球同色的概率是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{1}{3}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{2}{5}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{8}{15}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{7}{15}$"
+          }
+        ],
+        "explanation": "$P(\\text{两红}) = \\dfrac{4}{6} \\times \\dfrac{3}{5} = \\dfrac{12}{30}$，$P(\\text{两白}) = \\dfrac{2}{6} \\times \\dfrac{1}{5} = \\dfrac{2}{30}$。两事件互斥，相加得 $\\dfrac{14}{30} = \\dfrac{7}{15}$。"
+      }
+    },
+    "formulaRefs": [
+      "csca_math"
+    ],
+    "tags": [
+      "without-replacement",
+      "mutually-exclusive"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-sample-phys-01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Momentum and impulse 动量与冲量",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "On a frictionless horizontal surface, a $2\\ \\mathrm{kg}$ block moving at $6\\ \\mathrm{m\\,s^{-1}}$ collides with a stationary $4\\ \\mathrm{kg}$ block. The two blocks stick together after the collision. What is their common velocity?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2.0\\ \\mathrm{m\\,s^{-1}}$"
+      },
+      {
+        "id": "B",
+        "text": "$1.5\\ \\mathrm{m\\,s^{-1}}$"
+      },
+      {
+        "id": "C",
+        "text": "$3.0\\ \\mathrm{m\\,s^{-1}}$"
+      },
+      {
+        "id": "D",
+        "text": "$4.0\\ \\mathrm{m\\,s^{-1}}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Momentum is conserved: $p = m_1u_1 = 2 \\times 6 = 12\\ \\mathrm{kg\\,m\\,s^{-1}}$. After the perfectly inelastic collision the combined mass is $2 + 4 = 6\\ \\mathrm{kg}$, so $v = \\dfrac{12}{6} = 2.0\\ \\mathrm{m\\,s^{-1}}$.",
+    "distractorRationale": {
+      "B": "Membagi momentum dengan 8 kg, yaitu menjumlahkan massa dengan keliru.",
+      "C": "Membagi kecepatan awal dengan 2 seolah kedua benda bermassa sama.",
+      "D": "Memakai massa 3 kg (rata-rata kedua massa) sebagai massa gabungan."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "在光滑水平面上，质量为 $2\\ \\mathrm{kg}$ 的物体以 $6\\ \\mathrm{m\\,s^{-1}}$ 的速度与静止的 $4\\ \\mathrm{kg}$ 物体碰撞，碰后两者粘在一起。它们的共同速度是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$2.0\\ \\mathrm{m\\,s^{-1}}$"
+          },
+          {
+            "id": "B",
+            "text": "$1.5\\ \\mathrm{m\\,s^{-1}}$"
+          },
+          {
+            "id": "C",
+            "text": "$3.0\\ \\mathrm{m\\,s^{-1}}$"
+          },
+          {
+            "id": "D",
+            "text": "$4.0\\ \\mathrm{m\\,s^{-1}}$"
+          }
+        ],
+        "explanation": "由动量守恒：$p = 2 \\times 6 = 12\\ \\mathrm{kg\\,m\\,s^{-1}}$。完全非弹性碰撞后总质量为 $6\\ \\mathrm{kg}$，故 $v = \\dfrac{12}{6} = 2.0\\ \\mathrm{m\\,s^{-1}}$。"
+      }
+    },
+    "formulaRefs": [
+      "csca_physics"
+    ],
+    "tags": [
+      "momentum-conservation",
+      "inelastic-collision"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-sample-phys-02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Velocity and acceleration 速度与加速度",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "figure": {
+      "kind": "line_chart",
+      "alt": "Velocity-time graph of a trolley. Velocity rises linearly from 0 to 20 metres per second between 0 and 4 seconds, stays constant at 20 until 10 seconds, then falls linearly to 0 at 14 seconds.",
+      "caption": "Velocity-time graph for a trolley 小车的速度-时间图像",
+      "categories": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      "series": [
+        {
+          "name": "v / m s⁻¹",
+          "values": [
+            0,
+            10,
+            20,
+            20,
+            20,
+            20,
+            10,
+            0
+          ]
+        }
+      ],
+      "xLabel": "t / s",
+      "yLabel": "v / m s⁻¹"
+    },
+    "stem": "The velocity-time graph of a trolley is shown. What is the total distance travelled by the trolley in the $14\\ \\mathrm{s}$ shown?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$160\\ \\mathrm{m}$"
+      },
+      {
+        "id": "B",
+        "text": "$200\\ \\mathrm{m}$"
+      },
+      {
+        "id": "C",
+        "text": "$180\\ \\mathrm{m}$"
+      },
+      {
+        "id": "D",
+        "text": "$280\\ \\mathrm{m}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Distance is the area under a velocity-time graph. Acceleration phase ($0$ to $4\\ \\mathrm{s}$): $\\tfrac12(4)(20) = 40\\ \\mathrm{m}$. Constant phase ($4$ to $10\\ \\mathrm{s}$): $(6)(20) = 120\\ \\mathrm{m}$. Deceleration phase ($10$ to $14\\ \\mathrm{s}$): $\\tfrac12(4)(20) = 40\\ \\mathrm{m}$. Total $= 40 + 120 + 40 = 200\\ \\mathrm{m}$.",
+    "distractorRationale": {
+      "A": "Melewatkan salah satu segitiga di ujung grafik.",
+      "C": "Memakai fase tetap dari $t=4$ sampai $t=9$ karena salah membaca sumbu waktu.",
+      "D": "Mengalikan kecepatan maksimum dengan seluruh waktu: $20 \\times 14$, seolah kecepatannya tetap sepanjang perjalanan."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "图为一辆小车的速度-时间图像。在图中所示的 $14\\ \\mathrm{s}$ 内，小车通过的总路程是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$160\\ \\mathrm{m}$"
+          },
+          {
+            "id": "B",
+            "text": "$200\\ \\mathrm{m}$"
+          },
+          {
+            "id": "C",
+            "text": "$180\\ \\mathrm{m}$"
+          },
+          {
+            "id": "D",
+            "text": "$280\\ \\mathrm{m}$"
+          }
+        ],
+        "explanation": "路程等于速度-时间图像下的面积。加速阶段（$0$ 至 $4\\ \\mathrm{s}$）：$\\tfrac12 \\times 4 \\times 20 = 40\\ \\mathrm{m}$；匀速阶段（$4$ 至 $10\\ \\mathrm{s}$）：$6 \\times 20 = 120\\ \\mathrm{m}$；减速阶段（$10$ 至 $14\\ \\mathrm{s}$）：$\\tfrac12 \\times 4 \\times 20 = 40\\ \\mathrm{m}$。总路程为 $200\\ \\mathrm{m}$。"
+      }
+    },
+    "formulaRefs": [
+      "csca_physics"
+    ],
+    "tags": [
+      "v-t-graph",
+      "area-under-graph"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-sample-phys-03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Photoelectric effect 光电效应",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "The work function of a metal surface is $2.0\\ \\mathrm{eV}$. The surface is illuminated by photons of energy $3.5\\ \\mathrm{eV}$. What is the maximum kinetic energy of the emitted photoelectrons?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$5.5\\ \\mathrm{eV}$"
+      },
+      {
+        "id": "B",
+        "text": "$1.0\\ \\mathrm{eV}$"
+      },
+      {
+        "id": "C",
+        "text": "$1.5\\ \\mathrm{eV}$"
+      },
+      {
+        "id": "D",
+        "text": "$2.0\\ \\mathrm{eV}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Einstein's photoelectric equation is $h\\nu = W_0 + E_{k,\\max}$, so $E_{k,\\max} = h\\nu - W_0 = 3.5 - 2.0 = 1.5\\ \\mathrm{eV}$.",
+    "distractorRationale": {
+      "A": "Menjumlahkan energi foton dan fungsi kerja, bukan mengurangkannya.",
+      "B": "Membagi selisihnya dengan dua tanpa alasan fisis.",
+      "D": "Melaporkan fungsi kerja sebagai jawaban."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某金属的逸出功为 $2.0\\ \\mathrm{eV}$，用能量为 $3.5\\ \\mathrm{eV}$ 的光子照射该金属表面，逸出光电子的最大初动能是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$5.5\\ \\mathrm{eV}$"
+          },
+          {
+            "id": "B",
+            "text": "$1.0\\ \\mathrm{eV}$"
+          },
+          {
+            "id": "C",
+            "text": "$1.5\\ \\mathrm{eV}$"
+          },
+          {
+            "id": "D",
+            "text": "$2.0\\ \\mathrm{eV}$"
+          }
+        ],
+        "explanation": "由爱因斯坦光电方程 $h\\nu = W_0 + E_{k,\\max}$ 得 $E_{k,\\max} = 3.5 - 2.0 = 1.5\\ \\mathrm{eV}$。"
+      }
+    },
+    "formulaRefs": [
+      "csca_physics"
+    ],
+    "tags": [
+      "photoelectric-equation",
+      "work-function"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-sample-chem-01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "Ideal gas law 理想气体定律",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "At standard temperature and pressure, what amount of substance is contained in $2.24\\ \\mathrm{L}$ of carbon dioxide gas? (Molar volume at STP is $22.4\\ \\mathrm{L\\,mol^{-1}}$.)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.05\\ \\mathrm{mol}$"
+      },
+      {
+        "id": "B",
+        "text": "$0.20\\ \\mathrm{mol}$"
+      },
+      {
+        "id": "C",
+        "text": "$1.00\\ \\mathrm{mol}$"
+      },
+      {
+        "id": "D",
+        "text": "$0.10\\ \\mathrm{mol}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "At STP the amount of gas is $n = \\dfrac{V}{V_m} = \\dfrac{2.24}{22.4} = 0.10\\ \\mathrm{mol}$. Note that the molar mass of the gas is irrelevant here: at STP, equal volumes of any gas contain equal amounts of substance.",
+    "distractorRationale": {
+      "A": "Membagi dengan 44,8 setelah mengalikan volume molar dengan 2.",
+      "B": "Membagi dengan 11,2 karena mengira $\\mathrm{CO_2}$ terdiri atas dua atom gas.",
+      "C": "Mengabaikan pembagian dan membaca $2.24$ sebagai persepuluh dari $22.4$ secara terbalik."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "在标准状况下，$2.24\\ \\mathrm{L}$ 二氧化碳气体的物质的量是多少？（标准状况下气体摩尔体积为 $22.4\\ \\mathrm{L\\,mol^{-1}}$）",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.05\\ \\mathrm{mol}$"
+          },
+          {
+            "id": "B",
+            "text": "$0.20\\ \\mathrm{mol}$"
+          },
+          {
+            "id": "C",
+            "text": "$1.00\\ \\mathrm{mol}$"
+          },
+          {
+            "id": "D",
+            "text": "$0.10\\ \\mathrm{mol}$"
+          }
+        ],
+        "explanation": "标准状况下 $n = \\dfrac{V}{V_m} = \\dfrac{2.24}{22.4} = 0.10\\ \\mathrm{mol}$。注意气体的摩尔质量在此无关：标准状况下相同体积的任何气体所含物质的量相同。"
+      }
+    },
+    "formulaRefs": [
+      "csca_chemistry"
+    ],
+    "tags": [
+      "molar-volume",
+      "stp"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-sample-chem-02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Chemical equilibrium 化学平衡",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For the reaction $\\mathrm{N_2(g) + 3H_2(g) \\rightleftharpoons 2NH_3(g)}$, $\\Delta H < 0$. Consider the following statements.\n\n① Raising the temperature shifts the equilibrium towards the products.\n② Increasing the pressure shifts the equilibrium towards the products.\n③ Adding a catalyst increases the equilibrium yield of $\\mathrm{NH_3}$.\n\nWhich statement or statements are correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "② only"
+      },
+      {
+        "id": "B",
+        "text": "① and ③"
+      },
+      {
+        "id": "C",
+        "text": "② and ③"
+      },
+      {
+        "id": "D",
+        "text": "① only"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The reaction is exothermic ($\\Delta H < 0$), so raising the temperature shifts the equilibrium towards the **reactants** — statement ① is wrong. There are 4 moles of gas on the left and 2 on the right, so increasing the pressure shifts the equilibrium towards the side with fewer gas molecules, the products — statement ② is correct. A catalyst speeds up both the forward and reverse reactions equally; it shortens the time needed to reach equilibrium but never changes the equilibrium position or the yield — statement ③ is wrong. Only ② is correct.",
+    "distractorRationale": {
+      "B": "Menggabungkan dua kesalahan sekaligus.",
+      "C": "Jebakan paling sering: mencampur pengaruh katalis terhadap **laju** dengan pengaruhnya terhadap **posisi kesetimbangan**. Katalis mempercepat tercapainya kesetimbangan, tetapi tidak menggeser letaknya.",
+      "D": "Lupa memeriksa tanda $\\Delta H$; menaikkan suhu menggeser reaksi eksoterm ke arah pereaksi."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "对于反应 $\\mathrm{N_2(g) + 3H_2(g) \\rightleftharpoons 2NH_3(g)}$，已知 $\\Delta H < 0$。有下列说法：\n\n① 升高温度，平衡向正反应方向移动\n② 增大压强，平衡向正反应方向移动\n③ 加入催化剂可提高 $\\mathrm{NH_3}$ 的平衡产率\n\n其中正确的是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "②"
+          },
+          {
+            "id": "B",
+            "text": "①③"
+          },
+          {
+            "id": "C",
+            "text": "②③"
+          },
+          {
+            "id": "D",
+            "text": "①"
+          }
+        ],
+        "explanation": "该反应为放热反应，升高温度平衡向**逆反应**方向移动，故①错误。左侧气体 4 mol，右侧 2 mol，增大压强平衡向气体分子数减少的方向即正反应方向移动，故②正确。催化剂同等程度地加快正逆反应速率，只缩短达到平衡的时间，不改变平衡位置和产率，故③错误。只有②正确。"
+      }
+    },
+    "formulaRefs": [
+      "csca_chemistry"
+    ],
+    "tags": [
+      "le-chatelier",
+      "catalyst-vs-yield",
+      "combination-statement"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-sample-chem-03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Basic Concepts 基本概念",
+    "skill": "Solution pH and concentration 溶液pH与浓度",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the pH of a $0.01\\ \\mathrm{mol\\,L^{-1}}$ solution of hydrochloric acid at $25\\ ^{\\circ}\\mathrm{C}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$1$"
+      },
+      {
+        "id": "B",
+        "text": "$2$"
+      },
+      {
+        "id": "C",
+        "text": "$12$"
+      },
+      {
+        "id": "D",
+        "text": "$13$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Hydrochloric acid is a strong monoprotic acid, so it ionises completely: $[\\mathrm{H^{+}}] = 0.01 = 10^{-2}\\ \\mathrm{mol\\,L^{-1}}$. Therefore $\\mathrm{pH} = -\\log(10^{-2}) = 2$.",
+    "distractorRationale": {
+      "A": "Membaca $0.01$ sebagai $10^{-1}$.",
+      "C": "Menghitung pOH dan melaporkannya sebagai pH.",
+      "D": "Menghitung pOH dari $[\\mathrm{H^{+}}] = 10^{-1}$, dua kesalahan sekaligus."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$25\\ ^{\\circ}\\mathrm{C}$ 时，$0.01\\ \\mathrm{mol\\,L^{-1}}$ 盐酸溶液的 pH 是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$1$"
+          },
+          {
+            "id": "B",
+            "text": "$2$"
+          },
+          {
+            "id": "C",
+            "text": "$12$"
+          },
+          {
+            "id": "D",
+            "text": "$13$"
+          }
+        ],
+        "explanation": "盐酸为一元强酸，完全电离，$[\\mathrm{H^{+}}] = 0.01 = 10^{-2}\\ \\mathrm{mol\\,L^{-1}}$，故 $\\mathrm{pH} = -\\log(10^{-2}) = 2$。"
+      }
+    },
+    "formulaRefs": [
+      "csca_chemistry"
+    ],
+    "tags": [
+      "strong-acid",
+      "ph-calculation"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-sample-zhstem-01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.25,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的词语填入空格：\n\n实验开始时，先用量筒 ______ 20 mL 稀盐酸，再缓缓倒入锥形瓶中。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "称量"
+      },
+      {
+        "id": "B",
+        "text": "测量"
+      },
+      {
+        "id": "C",
+        "text": "量取"
+      },
+      {
+        "id": "D",
+        "text": "观察"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「量取」专指用量筒、移液管等器具取出一定**体积**的液体，与「量筒」「20 mL」搭配最准确。「称量」用于天平称**质量**，对象是固体或称重操作。「测量」泛指测定数值，不含「取出」的动作，与后半句「再倒入」不衔接。「观察」不是取用液体的动作。",
+    "distractorRationale": {
+      "A": "留学生最常见的错误：把「称量」（质量）与「量取」（体积）混用。",
+      "B": "词义太宽泛，且缺少「取出」这一动作，与下文「倒入」不连贯。",
+      "D": "与实验步骤的动作不符。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate word to fill the blank:\n\n实验开始时，先用量筒 ______ 20 mL 稀盐酸，再缓缓倒入锥形瓶中。\n\n(At the start of the experiment, first ______ 20 mL of dilute hydrochloric acid using a measuring cylinder, then pour it slowly into the conical flask.)",
+        "explanation": "量取 specifically means to measure out a **volume** of liquid using apparatus such as a measuring cylinder, which is exactly what the sentence describes. 称量 means to weigh a **mass** on a balance. 测量 is a general word for taking a measurement and does not include the sense of taking the liquid out, so it does not connect with 再倒入. 观察 means to observe, which is not an act of obtaining a liquid.\n\nThis 称量 / 量取 pair is one of the most frequent errors for international students: both translate loosely as 'measure' in English, but Chinese distinguishes mass from volume."
+      }
+    },
+    "tags": [
+      "lab-vocabulary",
+      "mass-vs-volume"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-sample-zhhum-01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的词语填入空格：\n\n这篇文章 ______ 了作者对传统教育制度的深刻反思。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "反应"
+      },
+      {
+        "id": "B",
+        "text": "反响"
+      },
+      {
+        "id": "C",
+        "text": "反射"
+      },
+      {
+        "id": "D",
+        "text": "反映"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「反映」指把客观情况或思想表现出来，常与「文章」「作品」「思想」搭配，是此处唯一恰当的选择。「反应」指事物受刺激后产生的相应变化（化学反应、身体反应），是名词或不及物用法，不能带「思想」作宾语。「反响」指事情引起的回响、评价，是被动接受的结果。「反射」指光、声等的物理返回现象。",
+    "distractorRationale": {
+      "A": "同音干扰项，也是留学生最常见的错误：「反映」与「反应」读音相同，但一个表示「表现出来」，一个表示「受刺激后的变化」。",
+      "B": "语义方向相反：文章引起反响，而不是文章反响思想。",
+      "C": "物理术语，不能用于抽象的思想表达。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate word to fill the blank:\n\n这篇文章 ______ 了作者对传统教育制度的深刻反思。\n\n(This article ______ the author's profound reflection on the traditional education system.)",
+        "explanation": "反映 means to express or bring out an objective situation or a line of thought, and it collocates naturally with 文章 (article), 作品 (work), and 思想 (thought). 反应 means a reaction produced in response to a stimulus — chemical or physiological — and cannot take 思想 as its object. 反响 refers to the repercussions something provokes, so the direction of the relationship is reversed. 反射 is a physical term for the reflection of light or sound.\n\n反映 and 反应 are pronounced identically (fǎnyìng), which makes this one of the highest-frequency errors for international students writing academic Chinese."
+      }
+    },
+    "tags": [
+      "homophone-confusion",
+      "academic-collocation"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

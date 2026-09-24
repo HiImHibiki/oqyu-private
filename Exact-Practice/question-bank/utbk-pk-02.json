@@ -1,0 +1,1206 @@
+[
+  {
+    "id": "utbk-pk-b01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Operasi & sifat bilangan",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari $(-3)^2 - 2 \\times (-4) + 5$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "12"
+      },
+      {
+        "id": "B",
+        "text": "26"
+      },
+      {
+        "id": "C",
+        "text": "6"
+      },
+      {
+        "id": "D",
+        "text": "16"
+      },
+      {
+        "id": "E",
+        "text": "22"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kerjakan pangkat lebih dulu: $(-3)^2 = 9$. Lalu perkalian: $2 \\times (-4) = -8$; karena operasinya pengurangan, sukunya menjadi $-(-8) = +8$.\n\nHasilnya $9 + 8 + 5 = 22$.",
+    "distractorRationale": {
+      "A": "Mengurangi 8 alih-alih menambahkannya.",
+      "B": "Menambahkan 9 dua kali.",
+      "C": "Menghitung $(-3)^2$ sebagai $-9$.",
+      "D": "Melewatkan suku $+5$."
+    },
+    "tags": [
+      "urutan-operasi",
+      "bilangan-negatif"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Persen",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah barang dijual Rp180.000,00 setelah mendapat diskon 25%. Harga sebelum diskon adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp240.000,00"
+      },
+      {
+        "id": "B",
+        "text": "Rp270.000,00"
+      },
+      {
+        "id": "C",
+        "text": "Rp225.000,00"
+      },
+      {
+        "id": "D",
+        "text": "Rp250.000,00"
+      },
+      {
+        "id": "E",
+        "text": "Rp205.000,00"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Diskon 25% berarti yang dibayar adalah 75% dari harga awal. Maka $0{,}75 \\times x = 180.000$, sehingga $x = 180.000 : 0{,}75 = 240.000$.\n\nKekeliruan yang lazim adalah menambahkan 25% pada Rp180.000,00 — itu menghitung persentase dari angka yang salah, karena diskonnya dihitung dari harga awal, bukan dari harga setelah diskon.",
+    "distractorRationale": {
+      "B": "Menambahkan 50% dari Rp180.000,00.",
+      "C": "Menambahkan 25% dari Rp180.000,00, yaitu menghitung dari dasar yang keliru.",
+      "D": "Membulatkan hasil taksiran kasar.",
+      "E": "Menambahkan sekitar 14% tanpa dasar."
+    },
+    "tags": [
+      "persen",
+      "harga-awal"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Perbandingan",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Suatu campuran beton dibuat dengan perbandingan semen : pasir : kerikil $= 1 : 2 : 3$. Jika kerikil yang tersedia 45 kg, banyak semen yang diperlukan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "22,5 kg"
+      },
+      {
+        "id": "B",
+        "text": "15 kg"
+      },
+      {
+        "id": "C",
+        "text": "30 kg"
+      },
+      {
+        "id": "D",
+        "text": "20 kg"
+      },
+      {
+        "id": "E",
+        "text": "10 kg"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kerikil menempati 3 bagian dan bernilai 45 kg, sehingga satu bagian sama dengan 15 kg. Semen menempati 1 bagian, yaitu 15 kg.",
+    "distractorRationale": {
+      "A": "Membagi 45 dengan 2, memakai bagian pasir.",
+      "C": "Nilai untuk pasir, yaitu 2 bagian.",
+      "D": "Menganggap satu bagian bernilai 20 kg.",
+      "E": "Membagi 45 dengan 4,5 tanpa dasar."
+    },
+    "tags": [
+      "perbandingan",
+      "campuran"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Barisan",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Suku ke-4 suatu barisan geometri adalah 24 dan suku ke-6 adalah 96. Jika rasionya positif, suku pertamanya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "8"
+      },
+      {
+        "id": "E",
+        "text": "6"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Dari suku ke-4 ke suku ke-6 ada dua langkah, sehingga $r^2 = 96 : 24 = 4$ dan $r = 2$ karena rasionya positif.\n\nMundur dari suku ke-4: $U_4 = a r^3$, maka $24 = a \\times 8$, sehingga $a = 3$.",
+    "distractorRationale": {
+      "A": "Memakai $r^2$ alih-alih $r^3$ saat mundur.",
+      "B": "Mengambil nilai rasio sebagai suku pertama.",
+      "D": "Memakai $a r^2 = 24$ dengan $r$ yang keliru.",
+      "E": "Membagi 24 dengan 4."
+    },
+    "tags": [
+      "barisan-geometri",
+      "rasio"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Persamaan & pertidaksamaan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Himpunan penyelesaian dari $3x - 7 < 2x + 5$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x > 2$"
+      },
+      {
+        "id": "B",
+        "text": "$x < 2$"
+      },
+      {
+        "id": "C",
+        "text": "$x < -12$"
+      },
+      {
+        "id": "D",
+        "text": "$x < 12$"
+      },
+      {
+        "id": "E",
+        "text": "$x > 12$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kurangkan $2x$ dari kedua ruas: $x - 7 < 5$. Tambahkan 7: $x < 12$.\n\nTanda pertidaksamaan tidak berubah karena tidak ada pembagian dengan bilangan negatif.",
+    "distractorRationale": {
+      "A": "Membalik tanda tanpa alasan.",
+      "B": "Salah memindahkan suku sehingga memperoleh $x < 2$.",
+      "C": "Salah tanda saat memindahkan konstanta.",
+      "E": "Membalik tanda pertidaksamaan padahal tidak ada pembagian negatif."
+    },
+    "tags": [
+      "pertidaksamaan-linear",
+      "himpunan-penyelesaian"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "SPLDV",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Diketahui $2x + y = 11$ dan $x - y = 1$. Nilai $x + y$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9"
+      },
+      {
+        "id": "B",
+        "text": "5"
+      },
+      {
+        "id": "C",
+        "text": "8"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      },
+      {
+        "id": "E",
+        "text": "7"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Jumlahkan kedua persamaan: $3x = 12$, sehingga $x = 4$. Substitusi ke $x - y = 1$ memberi $y = 3$.\n\nMaka $x + y = 7$.",
+    "distractorRationale": {
+      "A": "Menjumlahkan $x$ dengan nilai yang keliru untuk $y$.",
+      "B": "Mengambil selisih $x - y$ ditambah sesuatu yang keliru.",
+      "C": "Salah menghitung $x$ menjadi 5.",
+      "D": "Salah menghitung $y$ menjadi 2."
+    },
+    "tags": [
+      "spldv",
+      "eliminasi"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Fungsi & grafik",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Diketahui $f(x) = 2x - 3$ dan $g(x) = x^2$. Nilai $(g \\circ f)(2)$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "16"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "8"
+      },
+      {
+        "id": "E",
+        "text": "5"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "$(g \\circ f)(2)$ berarti $g$ dikerjakan setelah $f$. Hitung dulu $f(2) = 2(2) - 3 = 1$, lalu $g(1) = 1^2 = 1$.\n\nUrutannya sering tertukar: notasi $g \\circ f$ dibaca dari kanan ke kiri.",
+    "distractorRationale": {
+      "B": "Menghitung $g(f(2))$ dengan $f(2)$ keliru bernilai 4.",
+      "C": "Menghitung $g(2) = 4$ tanpa melewati $f$.",
+      "D": "Salah menghitung $f(2)$ menjadi 8.",
+      "E": "Menghitung $f(g(2)) = f(4) = 5$, membalik urutan komposisi."
+    },
+    "tags": [
+      "komposisi-fungsi",
+      "urutan"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Eksponen & logaritma",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari ${}^2\\log 8 + {}^3\\log 9 - {}^5\\log 1$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6"
+      },
+      {
+        "id": "B",
+        "text": "5"
+      },
+      {
+        "id": "C",
+        "text": "7"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      },
+      {
+        "id": "E",
+        "text": "3"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "${}^2\\log 8 = 3$ karena $2^3 = 8$. ${}^3\\log 9 = 2$ karena $3^2 = 9$. ${}^5\\log 1 = 0$ karena bilangan berapa pun berpangkat nol sama dengan satu.\n\nMaka $3 + 2 - 0 = 5$.",
+    "distractorRationale": {
+      "A": "Menganggap ${}^5\\log 1 = -1$ sehingga hasilnya bertambah.",
+      "C": "Menjumlahkan seluruh angka pada soal tanpa menghitung logaritmanya.",
+      "D": "Menghitung ${}^5\\log 1$ sebagai 1, lalu menguranginya.",
+      "E": "Hanya menghitung suku pertama."
+    },
+    "tags": [
+      "logaritma",
+      "nilai-dasar"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Persamaan & pertidaksamaan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Akar-akar persamaan $x^2 - 7x + 12 = 0$ adalah $p$ dan $q$. Nilai $p^2 + q^2$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "49"
+      },
+      {
+        "id": "B",
+        "text": "37"
+      },
+      {
+        "id": "C",
+        "text": "25"
+      },
+      {
+        "id": "D",
+        "text": "17"
+      },
+      {
+        "id": "E",
+        "text": "23"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Dari rumus jumlah dan hasil kali akar: $p + q = 7$ dan $pq = 12$.\n\nGunakan $p^2 + q^2 = (p+q)^2 - 2pq = 49 - 24 = 25$.\n\nMemfaktorkan langsung juga bisa: akarnya 3 dan 4, sehingga $9 + 16 = 25$.",
+    "distractorRationale": {
+      "A": "Mengambil $(p+q)^2$ tanpa mengurangi $2pq$.",
+      "B": "Mengurangi hanya $pq$, bukan $2pq$.",
+      "D": "Menghitung $(p+q)^2 - 2pq$ dengan $pq$ keliru bernilai 16.",
+      "E": "Mengurangi $2pq$ dua kali sebagian."
+    },
+    "tags": [
+      "akar-persamaan-kuadrat",
+      "jumlah-hasil-kali"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Fungsi & grafik",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Grafik fungsi $f(x) = -x^2 + 6x - 5$ memotong sumbu $x$ pada dua titik. Jarak antara kedua titik tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2 satuan"
+      },
+      {
+        "id": "B",
+        "text": "3 satuan"
+      },
+      {
+        "id": "C",
+        "text": "6 satuan"
+      },
+      {
+        "id": "D",
+        "text": "4 satuan"
+      },
+      {
+        "id": "E",
+        "text": "5 satuan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Titik potong sumbu $x$ diperoleh saat $f(x) = 0$: $-x^2 + 6x - 5 = 0$, atau $x^2 - 6x + 5 = 0$.\n\nFaktornya $(x-1)(x-5) = 0$, sehingga $x = 1$ dan $x = 5$. Jaraknya $5 - 1 = 4$ satuan.",
+    "distractorRationale": {
+      "A": "Mengambil selisih antara salah satu akar dan sumbu simetri.",
+      "B": "Mengambil nilai sumbu simetri, yaitu $x = 3$.",
+      "C": "Mengambil koefisien $x$ pada persamaan asal.",
+      "E": "Mengambil akar terbesar sebagai jaraknya."
+    },
+    "tags": [
+      "fungsi-kuadrat",
+      "titik-potong-sumbu"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah persegi panjang memiliki keliling 48 cm. Jika panjangnya dua kali lebarnya, luas persegi panjang tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$108\\ \\text{cm}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$192\\ \\text{cm}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$144\\ \\text{cm}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$96\\ \\text{cm}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$128\\ \\text{cm}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Misalkan lebarnya $l$, maka panjangnya $2l$. Keliling: $2(2l + l) = 6l = 48$, sehingga $l = 8$ cm dan panjangnya 16 cm.\n\nLuasnya $16 \\times 8 = 128$\\ \\text{cm}^2.",
+    "distractorRationale": {
+      "A": "Memakai ukuran yang tidak memenuhi kelilingnya.",
+      "B": "Memakai lebar 8 cm dan panjang 24 cm, yang kelilingnya bukan 48.",
+      "C": "Menganggap bangunnya persegi dengan sisi 12 cm.",
+      "D": "Memakai lebar 6 cm dan panjang 16 cm."
+    },
+    "tags": [
+      "persegi-panjang",
+      "keliling-luas"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kubus memiliki volume $216\\ \\text{cm}^3$. Luas seluruh permukaannya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$216\\ \\text{cm}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$252\\ \\text{cm}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$180\\ \\text{cm}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$288\\ \\text{cm}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$144\\ \\text{cm}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Volume kubus $s^3 = 216$, sehingga $s = 6$ cm.\n\nLuas permukaannya $6s^2 = 6 \\times 36 = 216$\\ \\text{cm}^2. Kebetulan angkanya sama dengan volumenya — hanya berlaku untuk sisi 6, dan itu memang sering membuat ragu.",
+    "distractorRationale": {
+      "B": "Menghitung $7s^2$.",
+      "C": "Menghitung $5s^2$, melewatkan satu sisi.",
+      "D": "Menghitung $8s^2$.",
+      "E": "Menghitung $4s^2$, hanya empat sisi."
+    },
+    "tags": [
+      "kubus",
+      "luas-permukaan"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b13",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Koordinat",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Titik $A(1, 2)$ dan $B(7, 10)$. Panjang ruas garis $AB$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "14 satuan"
+      },
+      {
+        "id": "B",
+        "text": "10 satuan"
+      },
+      {
+        "id": "C",
+        "text": "8 satuan"
+      },
+      {
+        "id": "D",
+        "text": "16 satuan"
+      },
+      {
+        "id": "E",
+        "text": "12 satuan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Selisih koordinatnya $7 - 1 = 6$ dan $10 - 2 = 8$.\n\nPanjangnya $\\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$ satuan.",
+    "distractorRationale": {
+      "A": "Menjumlahkan kedua selisih tanpa mengakarkan jumlah kuadratnya.",
+      "C": "Mengambil selisih $y$ saja.",
+      "D": "Menjumlahkan selisih lalu menambah 2.",
+      "E": "Menganggap panjangnya dua kali selisih $x$."
+    },
+    "tags": [
+      "jarak-dua-titik",
+      "koordinat"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b14",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Trigonometri dasar",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah segitiga siku-siku memiliki sisi tegak 6 cm dan sisi datar 8 cm. Nilai sinus sudut yang menghadap sisi tegak adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{4}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{3}{4}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{3}{5}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{5}{3}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{4}{5}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Sisi miringnya $\\sqrt{6^2 + 8^2} = 10$ cm.\n\nSinus suatu sudut adalah sisi di hadapannya dibagi sisi miring, yaitu $\\dfrac{6}{10} = \\dfrac{3}{5}$.",
+    "distractorRationale": {
+      "A": "Kebalikan tangen, bukan sinus.",
+      "B": "Ini tangen sudut tersebut, sisi hadapan dibagi sisi apit.",
+      "D": "Kebalikan sinus, yaitu kosekan.",
+      "E": "Ini kosinus sudut tersebut, yaitu sisi apit dibagi sisi miring."
+    },
+    "tags": [
+      "trigonometri",
+      "segitiga-siku-siku"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b15",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Panjang sisi sebuah persegi diperbesar 20%. Luasnya bertambah sebesar ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "24%"
+      },
+      {
+        "id": "B",
+        "text": "20%"
+      },
+      {
+        "id": "C",
+        "text": "40%"
+      },
+      {
+        "id": "D",
+        "text": "44%"
+      },
+      {
+        "id": "E",
+        "text": "144%"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Misalkan sisinya 10, sehingga luasnya 100. Setelah diperbesar 20%, sisinya menjadi 12 dan luasnya $144$.\n\nPertambahannya $144 - 100 = 44$, yaitu 44%.\n\nLuas bergantung pada kuadrat sisi, jadi kenaikan sisi 20% tidak menghasilkan kenaikan luas 20%.",
+    "distractorRationale": {
+      "A": "Menghitung $1{,}2^2 = 1{,}44$ lalu keliru membacanya sebagai 24%.",
+      "B": "Menganggap luas bertambah sebanding dengan sisinya.",
+      "C": "Menggandakan persentase kenaikan sisi.",
+      "E": "Mengambil luas akhirnya sebagai persentase pertambahan, padahal itu perbandingan terhadap luas semula."
+    },
+    "tags": [
+      "persentase-luas",
+      "skala-kuadrat"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b16",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Statistika deskriptif",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Median dari data 7, 3, 9, 5, 11, 4, 8 adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5"
+      },
+      {
+        "id": "B",
+        "text": "9"
+      },
+      {
+        "id": "C",
+        "text": "8"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      },
+      {
+        "id": "E",
+        "text": "7"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Urutkan lebih dulu: 3, 4, 5, 7, 8, 9, 11. Karena datanya tujuh buah, mediannya adalah data ke-4, yaitu 7.\n\nLangkah mengurutkan sering dilewatkan; tanpa itu, orang cenderung mengambil angka tengah dari daftar aslinya.",
+    "distractorRationale": {
+      "A": "Data ke-3 setelah diurutkan.",
+      "B": "Mengambil angka tengah dari daftar yang belum diurutkan.",
+      "C": "Data ke-5 setelah diurutkan.",
+      "D": "Rata-rata dua data tengah bila jumlah datanya genap, padahal di sini ganjil."
+    },
+    "tags": [
+      "median",
+      "statistika"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b17",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Peluang",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Dari sebuah kantong berisi 4 kelereng merah dan 6 kelereng biru diambil satu kelereng secara acak. Peluang terambil kelereng biru adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{3}{5}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{3}{4}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{2}{3}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{2}{5}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Seluruhnya ada 10 kelereng, 6 di antaranya biru. Peluangnya $\\dfrac{6}{10} = \\dfrac{3}{5}$.",
+    "distractorRationale": {
+      "B": "Tidak sesuai dengan komposisi kelereng mana pun.",
+      "C": "Memakai perbandingan biru terhadap merah, $\\dfrac{6}{9}$ yang juga keliru.",
+      "D": "Menganggap kedua warna sama banyak.",
+      "E": "Peluang terambil kelereng merah."
+    },
+    "tags": [
+      "peluang",
+      "satu-pengambilan"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b18",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Statistika deskriptif",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Rata-rata nilai 8 siswa adalah 75. Setelah seorang siswa baru bergabung, rata-ratanya menjadi 76. Nilai siswa baru tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "76"
+      },
+      {
+        "id": "B",
+        "text": "84"
+      },
+      {
+        "id": "C",
+        "text": "88"
+      },
+      {
+        "id": "D",
+        "text": "92"
+      },
+      {
+        "id": "E",
+        "text": "80"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Jumlah nilai semula $8 \\times 75 = 600$. Setelah bertambah satu siswa, jumlahnya menjadi $9 \\times 76 = 684$.\n\nNilai siswa baru adalah $684 - 600 = 84$.\n\nCara cepat: rata-rata naik 1 poin untuk 9 orang, jadi diperlukan 9 poin tambahan di atas rata-rata lama, yaitu $75 + 9 = 84$.",
+    "distractorRationale": {
+      "A": "Mengambil rata-rata baru sebagai nilai siswa itu.",
+      "C": "Menambahkan 13 pada rata-rata lama.",
+      "D": "Menambahkan 17 pada rata-rata lama.",
+      "E": "Menambahkan 5 pada rata-rata lama tanpa dasar."
+    },
+    "tags": [
+      "rata-rata",
+      "jumlah-total"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b19",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Peluang",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Dua dadu setimbang dilempar bersamaan. Peluang muncul jumlah mata dadu lebih dari 9 adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{4}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{7}{36}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{6}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{5}{36}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{1}{9}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Jumlah lebih dari 9 berarti 10, 11, atau 12.\n\nJumlah 10: $(4,6), (5,5), (6,4)$ — 3 cara. Jumlah 11: $(5,6), (6,5)$ — 2 cara. Jumlah 12: $(6,6)$ — 1 cara. Seluruhnya 6 cara dari 36 hasil, yaitu $\\dfrac{6}{36} = \\dfrac{1}{6}$.",
+    "distractorRationale": {
+      "A": "Menghitung 9 cara, melebihi jumlah pasangan yang sebenarnya.",
+      "B": "Ikut menghitung jumlah 9, padahal soal meminta lebih dari 9.",
+      "D": "Menghitung hanya jumlah 10 dan 11 dengan satu pasangan terlewat.",
+      "E": "Menghitung 4 cara saja, melewatkan sebagian pasangan."
+    },
+    "tags": [
+      "peluang-dua-dadu",
+      "pencacahan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-b20",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Penyajian data",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Nilai ulangan 20 siswa disajikan dalam tabel berikut:\n\n| Nilai | Frekuensi |\n|---|---|\n| 60 | 3 |\n| 70 | 5 |\n| 80 | 7 |\n| 90 | 4 |\n| 100 | 1 |"
+    },
+    "stem": "Modus dari data tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "78"
+      },
+      {
+        "id": "B",
+        "text": "7"
+      },
+      {
+        "id": "C",
+        "text": "100"
+      },
+      {
+        "id": "D",
+        "text": "80"
+      },
+      {
+        "id": "E",
+        "text": "70"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Modus adalah nilai yang paling sering muncul. Frekuensi terbesar adalah 7, dan itu dimiliki nilai 80.\n\nYang ditanyakan adalah nilainya, bukan frekuensinya — kekeliruan yang paling sering terjadi pada soal semacam ini.",
+    "distractorRationale": {
+      "A": "Rata-rata data, bukan modus.",
+      "B": "Mengambil frekuensinya, bukan nilai yang dimaksud.",
+      "C": "Nilai tertinggi, tetapi frekuensinya justru paling kecil.",
+      "E": "Nilai dengan frekuensi 5, bukan yang tertinggi."
+    },
+    "tags": [
+      "modus",
+      "tabel-frekuensi"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

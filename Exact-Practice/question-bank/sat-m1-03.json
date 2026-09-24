@@ -1,0 +1,766 @@
+[
+  {
+    "id": "sat-rw-k01",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sea otters eat enormous quantities of sea urchins, which in turn graze on kelp. Where otters were hunted out, urchin populations exploded and the kelp forests were stripped bare. Returning otters to those coastlines has ______ the kelp, which has recovered within a few seasons."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "restored"
+      },
+      {
+        "id": "B",
+        "text": "displaced"
+      },
+      {
+        "id": "C",
+        "text": "identified"
+      },
+      {
+        "id": "D",
+        "text": "tolerated"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The sentence says the kelp \"has recovered within a few seasons,\" so the blank needs a word meaning brought back to a former state. \"Restored\" says exactly that, and it fits the chain the passage describes: otters eat urchins, urchins stop stripping kelp, kelp returns.",
+    "distractorRationale": {
+      "B": "Would mean the otters pushed the kelp out, the opposite of recovery.",
+      "C": "Means recognised or named, which does nothing to explain the recovery.",
+      "D": "Means merely put up with, too weak for a change the passage calls a recovery."
+    },
+    "tags": [
+      "words-in-context",
+      "vocabulary"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-rw-k02",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The Antikythera mechanism was recovered from a shipwreck in 1901. For decades its purpose was ______ imaging finally revealed a gearwork built to predict eclipses."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "obscure, X-ray"
+      },
+      {
+        "id": "B",
+        "text": "obscure X-ray"
+      },
+      {
+        "id": "C",
+        "text": "obscure; X-ray"
+      },
+      {
+        "id": "D",
+        "text": "obscure: X-ray,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Both halves are independent clauses: \"its purpose was obscure\" and \"X-ray imaging finally revealed a gearwork.\" Two independent clauses may be joined by a semicolon, which is what choice C supplies.",
+    "distractorRationale": {
+      "A": "Joins two independent clauses with only a comma, which is a comma splice.",
+      "B": "Runs the two clauses together with no punctuation at all.",
+      "D": "The colon is defensible, but the added comma after \"X-ray\" wrongly separates the subject from its own noun."
+    },
+    "tags": [
+      "boundaries",
+      "semicolon"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-rw-k03",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Most fungi spread by releasing spores into moving air. The truffle, however, fruits entirely underground, where no wind reaches. ______ it produces a powerful scent that draws burrowing animals, which eat the fruiting body and scatter the spores elsewhere."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Instead,"
+      },
+      {
+        "id": "B",
+        "text": "For example,"
+      },
+      {
+        "id": "C",
+        "text": "Similarly,"
+      },
+      {
+        "id": "D",
+        "text": "In other words,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The passage sets up a contrast: other fungi use wind, but the truffle cannot. The last sentence gives the truffle's alternative method, so the transition must signal a substitute. \"Instead\" does that.",
+    "distractorRationale": {
+      "B": "Signals an illustration of the previous point, but the scent is a different method, not an example of wind dispersal.",
+      "C": "Signals likeness, contradicting the contrast the passage has just drawn.",
+      "D": "Signals restatement, but the sentence introduces new information rather than rewording it."
+    },
+    "tags": [
+      "transitions",
+      "contrast"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-rw-k04",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Central Ideas and Details",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "For a century the Sahara was assumed to have been dry throughout human history. Sediment cores drilled from lake beds now buried under sand tell a different story: pollen from grasses and even from trees appears in layers dated between about 11,000 and 5,000 years ago. Rock art from the same period shows cattle herders and swimming figures. The desert as we know it is younger than the settlements that once stood in it."
+    },
+    "stem": "Which choice best states the main idea of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rock art is a more reliable record of climate than sediment cores are."
+      },
+      {
+        "id": "B",
+        "text": "Evidence shows the Sahara was green and inhabited within the span of human history."
+      },
+      {
+        "id": "C",
+        "text": "The Sahara has been drying steadily for eleven thousand years."
+      },
+      {
+        "id": "D",
+        "text": "Pollen analysis is the only method able to date ancient climates."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Every detail in the passage supports one claim: pollen in the sediment, the rock art, and the closing sentence all point to a Sahara that was green and populated within human history. That is the main idea; the individual pieces of evidence are the support for it.",
+    "distractorRationale": {
+      "A": "The passage uses both sources together and never ranks their reliability.",
+      "C": "The passage describes a wet period ending, not a steady eleven-thousand-year decline.",
+      "D": "The passage cites rock art as well, so pollen cannot be the only method."
+    },
+    "tags": [
+      "central-idea",
+      "main-idea"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-rw-k05",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Along the ridge above the village, a row of wind turbines ______ steadily through the winter storms, feeding the local grid even when the coastal plants shut down."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "turn"
+      },
+      {
+        "id": "B",
+        "text": "turning"
+      },
+      {
+        "id": "C",
+        "text": "have turned"
+      },
+      {
+        "id": "D",
+        "text": "turns"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The subject of the verb is \"a row,\" which is singular; \"of wind turbines\" is a prepositional phrase, and a noun inside such a phrase is never the subject. A singular subject takes the singular verb \"turns.\"",
+    "distractorRationale": {
+      "A": "Agrees with \"turbines\" rather than with the actual subject, \"a row.\"",
+      "B": "A participle, not a finite verb, so the sentence would have no main verb.",
+      "C": "Also agrees with the wrong noun, and the perfect tense clashes with the ongoing action described."
+    },
+    "tags": [
+      "subject-verb-agreement",
+      "prepositional-phrase"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-rw-k06",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ediacaran fossils are impressions of soft bodies with no mouths, no guts, and no obvious front or back. Palaeontologists have called them jellyfish, lichens, and a vanished kingdom of their own. Each reading has been argued from the same set of impressions in the same beds of sandstone. What the disagreement measures is not the quality of the fossils but the limits of what an impression can preserve."
+    },
+    "stem": "Which choice best describes the function of the underlined sentence in the text as a whole?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It introduces a new body of evidence that settles the dispute described earlier."
+      },
+      {
+        "id": "B",
+        "text": "It concedes that the earlier classifications were made carelessly."
+      },
+      {
+        "id": "C",
+        "text": "It interprets the disagreement described earlier by attributing it to the evidence's inherent limits."
+      },
+      {
+        "id": "D",
+        "text": "It proposes a method for dating the sandstone beds more precisely."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The final sentence does not add evidence or blame the researchers. It steps back and explains why competing readings persist: an impression of a soft body simply cannot preserve enough to decide between them. That is interpretation of the disagreement, not a resolution of it.",
+    "distractorRationale": {
+      "A": "No new evidence is offered, and the dispute is explained rather than settled.",
+      "B": "The passage says the same fossils support each reading; it does not fault the researchers.",
+      "D": "Dating is never mentioned anywhere in the passage."
+    },
+    "tags": [
+      "text-structure",
+      "function-of-sentence"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-rw-k07",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical Synthesis",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "While researching a topic, a student has taken the following notes:\n\n- Sourdough bread is leavened by wild yeast and lactic acid bacteria, not by commercial yeast.\n- The bacteria produce acids as the dough ferments.\n- Those acids slow the rate at which starch is digested.\n- In one trial, blood glucose rose more slowly after sourdough than after bread made with commercial yeast."
+    },
+    "stem": "The student wants to explain why sourdough affects blood glucose differently. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sourdough bread, unlike bread made with commercial yeast, is leavened by wild yeast and lactic acid bacteria."
+      },
+      {
+        "id": "B",
+        "text": "In one trial, blood glucose rose more slowly after sourdough than after bread made with commercial yeast."
+      },
+      {
+        "id": "C",
+        "text": "Because the bacteria in sourdough produce acids that slow starch digestion, blood glucose rises more slowly after eating it."
+      },
+      {
+        "id": "D",
+        "text": "Sourdough bread ferments for longer than bread made with commercial yeast."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The goal is to explain why, so the answer must link cause to effect. Choice C connects the bacteria, the acids, the slowed starch digestion and the slower rise in glucose into a single chain — the only choice that gives a mechanism.",
+    "distractorRationale": {
+      "A": "States a difference in ingredients without connecting it to blood glucose.",
+      "B": "Reports the result but leaves the cause unexplained.",
+      "D": "Adds a claim about fermentation time that the notes never make."
+    },
+    "tags": [
+      "rhetorical-synthesis",
+      "notes"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-rw-k08",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Quantitative)",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A city measured the surface temperature of four street types on the same August afternoon to test the claim that tree cover, rather than paving material, is what keeps a street cool."
+    },
+    "figure": {
+      "kind": "table",
+      "alt": "Table of afternoon surface temperatures for four streets, by paving material and tree cover.",
+      "caption": "Surface temperature at 3 p.m., degrees Celsius",
+      "headers": [
+        "Street",
+        "Paving",
+        "Tree cover",
+        "Temperature"
+      ],
+      "rows": [
+        [
+          "Alder Way",
+          "asphalt",
+          "heavy",
+          "38.4"
+        ],
+        [
+          "Birch Row",
+          "asphalt",
+          "light",
+          "47.2"
+        ],
+        [
+          "Cedar Lane",
+          "concrete",
+          "heavy",
+          "37.9"
+        ],
+        [
+          "Draper Street",
+          "concrete",
+          "light",
+          "44.1"
+        ]
+      ]
+    },
+    "stem": "Which choice most effectively uses data from the table to support the claim?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The asphalt street with heavy tree cover was cooler than the concrete street with light tree cover."
+      },
+      {
+        "id": "B",
+        "text": "The two concrete streets differed from each other by less than the two asphalt streets did."
+      },
+      {
+        "id": "C",
+        "text": "The hottest street measured was paved with asphalt."
+      },
+      {
+        "id": "D",
+        "text": "The coolest street measured had the lightest tree cover."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The claim is that tree cover matters more than paving material. The table shows heavily shaded asphalt at $38.4$ degrees, cooler than lightly shaded concrete at $44.1$ degrees — so the shadier street wins even though its material is the one that heats up more. That comparison isolates tree cover as the deciding factor.",
+    "distractorRationale": {
+      "B": "Compares spreads within each material, which says nothing about which factor dominates.",
+      "C": "True in the table, but it supports the paving-material explanation rather than the tree-cover claim.",
+      "D": "Contradicts the table: the coolest street is the one with heavy tree cover."
+    },
+    "tags": [
+      "quantitative-evidence",
+      "data-interpretation"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-k01",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $3(x - 2) = 15$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 7
+    },
+    "explanation": "Divide both sides by 3 first: $x - 2 = 5$. Then add 2: $x = 7$.\\n\\nExpanding instead also works — $3x - 6 = 15$, so $3x = 21$ and $x = 7$ — but dividing first keeps the numbers smaller.",
+    "tags": [
+      "linear-equation",
+      "one-variable"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-k02",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Percentages",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A jacket originally priced at $\\$80$ is on sale for $25\\%$ off. What is the sale price, in dollars?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 60
+    },
+    "explanation": "A discount of $25\\%$ leaves $75\\%$ of the price, so the sale price is $0.75 \\times 80 = 60$ dollars.\\n\\nSubtracting works equally well: $25\\%$ of $80$ is $20$, and $80 - 20 = 60$. Working with the fraction that remains avoids the common slip of reporting the discount instead of the price.",
+    "tags": [
+      "percentages",
+      "discount"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-k03",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A line passes through the points $(2, 5)$ and $(6, 17)$. What is the slope of the line?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "Slope is the change in $y$ divided by the change in $x$: $m = \\dfrac{17 - 5}{6 - 2} = \\dfrac{12}{4} = 3$.\\n\\nTaking the points in the other order gives $\\dfrac{5 - 17}{2 - 6} = \\dfrac{-12}{-4} = 3$ as well — the order does not matter as long as both differences are taken the same way round.",
+    "tags": [
+      "slope",
+      "linear-function"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-k04",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Area and volume",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A right circular cylinder has radius $3$ and height $10$. What is its volume, in terms of $\\pi$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$30\\pi$"
+      },
+      {
+        "id": "B",
+        "text": "$90\\pi$"
+      },
+      {
+        "id": "C",
+        "text": "$180\\pi$"
+      },
+      {
+        "id": "D",
+        "text": "$60\\pi$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The volume of a cylinder is $V = \\pi r^2 h = \\pi (3)^2 (10) = 90\\pi$.\\n\\nThe radius is squared but the height is not, which is what separates the correct answer from the most tempting wrong one.",
+    "distractorRationale": {
+      "A": "Multiplies $r$ by $h$ without squaring the radius.",
+      "C": "Uses the surface-area style factor of 2 by mistake.",
+      "D": "Squares the height instead of the radius somewhere in the working."
+    },
+    "tags": [
+      "cylinder",
+      "volume"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-k05",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The system $2x + y = 11$ and $x - y = 1$ has solution $(x, y)$. What is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4
+    },
+    "explanation": "Adding the two equations eliminates $y$: $(2x + y) + (x - y) = 11 + 1$, so $3x = 12$ and $x = 4$.\\n\\nSubstituting back gives $y = 3$, and both original equations check out. Elimination is quicker here because the $y$ terms already have opposite coefficients.",
+    "tags": [
+      "systems",
+      "elimination"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-k06",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $x^2 - 7x + 12 = 0$ and $x > 3$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4
+    },
+    "explanation": "Factorise: $x^2 - 7x + 12 = (x - 3)(x - 4)$, so the roots are $x = 3$ and $x = 4$.\\n\\nThe condition $x > 3$ rules out the root $x = 3$ itself, leaving $x = 4$. The restriction exists precisely because the equation alone has two solutions.",
+    "tags": [
+      "quadratic",
+      "factoring"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-k07",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangles and trigonometry",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In right triangle $ABC$, angle $B$ is the right angle and $\\sin A = \\dfrac{3}{5}$. What is the value of $\\cos C$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{4}{5}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{5}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{3}{4}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{3}{5}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Angles $A$ and $C$ are the two acute angles of a right triangle, so they are complementary: $A + C = 90^\\circ$.\\n\\nFor complementary angles the sine of one equals the cosine of the other, so $\\cos C = \\sin A = \\dfrac{3}{5}$. No side lengths are needed — the relationship holds for every right triangle.",
+    "distractorRationale": {
+      "A": "Gives $\\cos A$, found from the $3$-$4$-$5$ triangle, rather than $\\cos C$.",
+      "B": "Inverts the ratio, giving a value greater than 1, which no sine or cosine can take.",
+      "C": "Gives $\\tan A$ rather than a cosine."
+    },
+    "tags": [
+      "right-triangle",
+      "complementary-angles"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  }
+]

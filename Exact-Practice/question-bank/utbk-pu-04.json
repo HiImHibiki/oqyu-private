@@ -1,0 +1,1649 @@
+[
+  {
+    "id": "utbk-pu-p01",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Pola bilangan & gambar",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan berikut: $2, 6, 12, 20, 30, \\ldots$ Suku berikutnya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "42"
+      },
+      {
+        "id": "B",
+        "text": "44"
+      },
+      {
+        "id": "C",
+        "text": "36"
+      },
+      {
+        "id": "D",
+        "text": "40"
+      },
+      {
+        "id": "E",
+        "text": "48"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Selisih antarsuku membentuk pola sendiri: $4, 6, 8, 10$ — bertambah 2 setiap langkah.\n\nSelisih berikutnya adalah 12, sehingga suku berikutnya $30 + 12 = 42$.\n\nCara lain: suku ke-$n$ adalah $n(n+1)$, sehingga suku keenam $= 6 \\times 7 = 42$.",
+    "distractorRationale": {
+      "B": "Menambah 14, melewati satu langkah pola.",
+      "C": "Menambah 6, mengulang selisih yang sama.",
+      "D": "Menambah 10, memakai selisih sebelumnya.",
+      "E": "Menganggap polanya perkalian dua dari 24."
+    },
+    "tags": [
+      "pola-bilangan",
+      "barisan"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p02",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Analogi",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "TERMOMETER : SUHU = ... : ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "HUJAN : PAYUNG"
+      },
+      {
+        "id": "B",
+        "text": "JAM : WAKTU"
+      },
+      {
+        "id": "C",
+        "text": "DOKTER : PASIEN"
+      },
+      {
+        "id": "D",
+        "text": "BUKU : RAK"
+      },
+      {
+        "id": "E",
+        "text": "AIR : GELAS"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Hubungannya adalah alat dengan besaran yang diukurnya. Termometer mengukur suhu; jam mengukur waktu.\n\nPasangan lain tidak memiliki hubungan alat-ukuran: gelas menampung air, rak menyimpan buku, dan payung dipakai saat hujan — semuanya hubungan wadah atau tanggapan, bukan pengukuran.",
+    "distractorRationale": {
+      "A": "Hubungan keadaan dengan tanggapan terhadapnya.",
+      "C": "Hubungan pelaku dengan orang yang dilayani.",
+      "D": "Hubungan benda dengan tempat penyimpanan.",
+      "E": "Hubungan isi dengan wadah."
+    },
+    "tags": [
+      "analogi",
+      "alat-ukur"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p03",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Generalisasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah survei mencatat kunjungan pada 40 warung makan yang seluruhnya terletak dalam radius 300 meter dari kawasan perkantoran di satu kota. Rata-rata jumlah pembeli tertinggi terjadi antara pukul 06.30 dan 08.00, yaitu jam berangkat kerja. Warung di luar kawasan perkantoran tidak termasuk dalam survei."
+    },
+    "stem": "Simpulan yang paling tepat berdasarkan informasi tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Jam buka warung menentukan besarnya keuntungan"
+      },
+      {
+        "id": "B",
+        "text": "Semua warung yang buka lebih pagi memperoleh omzet lebih besar"
+      },
+      {
+        "id": "C",
+        "text": "Warung di dekat kawasan perkantoran cenderung ramai pada jam berangkat kerja"
+      },
+      {
+        "id": "D",
+        "text": "Warung yang tidak berada di dekat perkantoran akan merugi"
+      },
+      {
+        "id": "E",
+        "text": "Kebiasaan sarapan di luar rumah meningkat di seluruh kota"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Data hanya mencakup warung di dekat kawasan perkantoran, dan yang teramati adalah keramaian pada jam berangkat kerja. Generalisasi yang sah tidak boleh melampaui cakupan datanya.\n\nSimpulan yang menyebut «semua warung», «seluruh kota», atau warung di luar kawasan perkantoran menarik kesimpulan tentang hal yang tidak diamati.",
+    "distractorRationale": {
+      "A": "Menyebut sebab-akibat antara jam buka dan keuntungan, yang tidak diukur.",
+      "B": "Menggeneralisasi ke semua warung, padahal yang diamati hanya satu jenis lokasi.",
+      "D": "Menyimpulkan tentang warung yang justru tidak diamati.",
+      "E": "Melompat ke seluruh kota tanpa data dari luar kawasan itu."
+    },
+    "tags": [
+      "generalisasi",
+      "cakupan-data"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p04",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Sebab-akibat",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "«Data satu kota menunjukkan bahwa pada pekan-pekan ketika penjualan es krim meningkat, jumlah kasus tenggelam di pantai juga meningkat. Karena itu, konsumsi es krim mendorong orang mengambil risiko di air.»"
+    },
+    "stem": "Kelemahan penalaran pada pernyataan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Definisi «kasus tenggelam» tidak dijelaskan"
+      },
+      {
+        "id": "B",
+        "text": "Jumlah sampel penelitiannya terlalu kecil"
+      },
+      {
+        "id": "C",
+        "text": "Data penjualan es krim tidak disebutkan sumbernya"
+      },
+      {
+        "id": "D",
+        "text": "Dua hal yang meningkat bersamaan belum tentu yang satu menyebabkan yang lain"
+      },
+      {
+        "id": "E",
+        "text": "Penjualan es krim seharusnya diukur per bulan, bukan per pekan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Dua besaran yang naik bersamaan bisa saja sama-sama dipengaruhi faktor ketiga. Di sini faktor itu jelas: cuaca panas menaikkan penjualan es krim sekaligus mendorong orang berenang.\n\nKekeliruan seperti ini disebut menyamakan kaitan dengan sebab-akibat, dan itu cacat penalarannya — bukan soal sumber data atau ukuran sampel.",
+    "distractorRationale": {
+      "A": "Definisi istilah bukan letak kekeliruannya.",
+      "B": "Ukuran sampel tidak dipersoalkan dalam pernyataan.",
+      "C": "Sumber data memang tidak disebut, tetapi bukan itu yang membuat simpulannya cacat.",
+      "E": "Satuan waktu pengukuran tidak mengubah cacat penalarannya."
+    },
+    "tags": [
+      "sebab-akibat",
+      "korelasi"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p05",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Pola bilangan & gambar",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan berikut: $2, 5, 11, 23, 47, \\ldots$ Suku berikutnya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "71"
+      },
+      {
+        "id": "B",
+        "text": "83"
+      },
+      {
+        "id": "C",
+        "text": "94"
+      },
+      {
+        "id": "D",
+        "text": "96"
+      },
+      {
+        "id": "E",
+        "text": "95"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Setiap suku diperoleh dari suku sebelumnya dengan aturan «kali dua, tambah satu»: $2 \\times 2 + 1 = 5$, $5 \\times 2 + 1 = 11$, $11 \\times 2 + 1 = 23$, $23 \\times 2 + 1 = 47$.\n\nMaka suku berikutnya $47 \\times 2 + 1 = 95$.\n\nMemeriksa selisihnya juga menolong: $3, 6, 12, 24$ — berlipat dua, sehingga selisih berikutnya 48 dan $47 + 48 = 95$.",
+    "distractorRationale": {
+      "A": "Menambah 24, mengulang selisih sebelumnya.",
+      "B": "Menambah 36 tanpa dasar pola.",
+      "C": "Hanya mengalikan dua tanpa menambah satu.",
+      "D": "Mengalikan dua lalu menambah dua."
+    },
+    "tags": [
+      "pola-bilangan",
+      "barisan"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p06",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Analogi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "GEMPA : SEISMOGRAF = BANJIR : ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "PENAKAR HUJAN"
+      },
+      {
+        "id": "B",
+        "text": "BENDUNGAN"
+      },
+      {
+        "id": "C",
+        "text": "POMPA"
+      },
+      {
+        "id": "D",
+        "text": "TANGGUL"
+      },
+      {
+        "id": "E",
+        "text": "PELUAP"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Hubungan pada pasangan pertama adalah peristiwa dengan alat yang mengukurnya, bukan alat yang mencegahnya. Seismograf tidak menahan gempa; ia merekam kekuatannya.\n\nUntuk banjir, alat yang mengukur besaran penyebabnya adalah penakar hujan. Bendungan, tanggul, dan pompa semuanya alat penanggulangan, bukan pengukuran.",
+    "distractorRationale": {
+      "B": "Alat pengendali air, bukan pengukur.",
+      "C": "Alat pemindah air, bukan alat ukur.",
+      "D": "Bangunan penahan, bukan alat ukur.",
+      "E": "Bagian bangunan air untuk melimpahkan kelebihan, bukan alat ukur."
+    },
+    "tags": [
+      "analogi",
+      "pengukuran"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p07",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Generalisasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Survei terhadap 1.200 warga sebuah kota menemukan bahwa 78 persen responden membaca berita melalui telepon genggam, 12 persen masih membaca media cetak, dan sisanya menyatakan tidak membaca berita sama sekali. Pada kelompok usia di bawah 30 tahun, angka pembaca lewat telepon genggam mencapai 94 persen, sedangkan pada kelompok di atas 50 tahun hanya 41 persen."
+    },
+    "stem": "Simpulan yang tidak dapat dibenarkan berdasarkan bacaan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Telepon genggam menjadi sarana membaca berita bagi sebagian besar responden muda"
+      },
+      {
+        "id": "B",
+        "text": "Media cetak sudah tidak dibaca oleh siapa pun di kota itu"
+      },
+      {
+        "id": "C",
+        "text": "Responden berusia di atas 50 tahun lebih jarang membaca berita daring"
+      },
+      {
+        "id": "D",
+        "text": "Survei tersebut melibatkan responden dari beberapa kelompok usia"
+      },
+      {
+        "id": "E",
+        "text": "Sebagian responden mengaku membaca berita lewat telepon genggam"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bacaan menyebut bahwa 12 persen responden masih membaca media cetak. Angka itu kecil, tetapi bukan nol, sehingga pernyataan «tidak dibaca oleh siapa pun» bertentangan dengan datanya sendiri.\n\nSimpulan yang lain semuanya dapat ditelusuri langsung ke angka yang disebutkan.",
+    "distractorRationale": {
+      "A": "Didukung oleh angka pada kelompok usia muda.",
+      "C": "Didukung oleh perbandingan antarkelompok usia dalam bacaan.",
+      "D": "Bacaan memang membedakan kelompok usia responden.",
+      "E": "Didukung langsung oleh angka 78 persen."
+    },
+    "tags": [
+      "generalisasi",
+      "simpulan-salah"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p08",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Sebab-akibat",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Peneliti membandingkan nilai membaca siswa di 20 sekolah yang menerapkan program membaca 15 menit setiap pagi dengan 20 sekolah yang tidak menerapkannya. Nilai rata-rata sekolah peserta program lebih tinggi 8 poin. Peneliti menyimpulkan bahwa program tersebut meningkatkan kemampuan membaca."
+    },
+    "stem": "Informasi tambahan yang paling melemahkan simpulan peneliti tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Program itu berlangsung selama satu tahun ajaran penuh"
+      },
+      {
+        "id": "B",
+        "text": "Sekolah yang menerapkan program itu memiliki perpustakaan yang lebih besar"
+      },
+      {
+        "id": "C",
+        "text": "Sekolah yang menerapkan program itu adalah sekolah yang mendaftar sukarela, dan sejak awal nilai membacanya sudah lebih tinggi"
+      },
+      {
+        "id": "D",
+        "text": "Program membaca dilaksanakan pada jam pelajaran pertama"
+      },
+      {
+        "id": "E",
+        "text": "Sebagian siswa mengaku menyukai program tersebut"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Simpulan peneliti adalah bahwa program menyebabkan kenaikan nilai. Yang paling melemahkannya adalah keterangan bahwa sekolah pesertanya tidak dipilih acak melainkan mendaftar sendiri, dan sudah unggul sejak sebelum program dimulai.\n\nDengan begitu perbedaan nilai bisa dijelaskan sepenuhnya oleh perbedaan yang sudah ada, bukan oleh programnya — inilah bias seleksi.",
+    "distractorRationale": {
+      "A": "Durasi program justru memperkuat, bukan melemahkan.",
+      "B": "Menambah satu penjelasan alternatif, tetapi lebih lemah daripada perbedaan awal yang terukur.",
+      "D": "Waktu pelaksanaan tidak menjelaskan perbedaan antarsekolah.",
+      "E": "Kesukaan siswa tidak menyentuh kesahihan sebab-akibatnya."
+    },
+    "tags": [
+      "sebab-akibat",
+      "bias-seleksi"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p09",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Induktif",
+    "skill": "Pola bilangan & gambar",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan berikut: $1, 1, 2, 3, 5, 8, 13, \\ldots$ Jumlah dua suku berikutnya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "89"
+      },
+      {
+        "id": "B",
+        "text": "21"
+      },
+      {
+        "id": "C",
+        "text": "47"
+      },
+      {
+        "id": "D",
+        "text": "55"
+      },
+      {
+        "id": "E",
+        "text": "34"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Setiap suku adalah jumlah dua suku sebelumnya. Setelah 13, suku berikutnya $8 + 13 = 21$, lalu $13 + 21 = 34$.\n\nJumlah dua suku itu adalah $21 + 34 = 55$. Perhatikan bahwa 55 juga merupakan suku berikutnya lagi dalam barisan ini — pada barisan Fibonacci, jumlah dua suku berturut-turut selalu menghasilkan suku sesudahnya.",
+    "distractorRationale": {
+      "A": "Menjumlahkan 34 dan 55, yaitu dua suku yang terlalu jauh.",
+      "B": "Memberikan suku berikutnya saja.",
+      "C": "Menjumlahkan 13 dan 34, melewati satu suku.",
+      "E": "Memberikan salah satu suku, bukan jumlah keduanya."
+    },
+    "tags": [
+      "fibonacci",
+      "pola-bilangan"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p10",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Silogisme",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Semua mamalia berdarah panas. Paus adalah mamalia. Simpulan yang sahih adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Paus berdarah panas"
+      },
+      {
+        "id": "B",
+        "text": "Sebagian mamalia bukan paus"
+      },
+      {
+        "id": "C",
+        "text": "Paus bukan ikan"
+      },
+      {
+        "id": "D",
+        "text": "Semua hewan berdarah panas adalah mamalia"
+      },
+      {
+        "id": "E",
+        "text": "Tidak dapat ditarik simpulan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Bentuknya silogisme baku: semua $A$ adalah $B$, dan $x$ adalah $A$, sehingga $x$ adalah $B$.\n\nDi sini $A$ adalah mamalia, $B$ adalah berdarah panas, dan $x$ adalah paus. Simpulan yang sahih persis sejauh itu: paus berdarah panas.",
+    "distractorRationale": {
+      "B": "Mungkin benar dalam kenyataan tetapi tidak mengikuti dari kedua premis.",
+      "C": "Benar secara biologi tetapi tidak diturunkan dari premis yang diberikan.",
+      "D": "Membalik premis pertama, yang tidak sahih.",
+      "E": "Simpulan sahih justru ada."
+    },
+    "tags": [
+      "silogisme",
+      "modus-ponens"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p11",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Implikasi & kontraposisi",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Jika hujan turun, jalan menjadi basah.» Pernyataan yang pasti benar berdasarkan kalimat itu adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Hujan selalu turun ketika jalan basah"
+      },
+      {
+        "id": "B",
+        "text": "Jalan basah hanya karena hujan"
+      },
+      {
+        "id": "C",
+        "text": "Jika jalan basah, berarti hujan turun"
+      },
+      {
+        "id": "D",
+        "text": "Jika hujan tidak turun, jalan tidak basah"
+      },
+      {
+        "id": "E",
+        "text": "Jika jalan tidak basah, berarti hujan tidak turun"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kontraposisi dari «jika $p$ maka $q$» adalah «jika bukan $q$ maka bukan $p$», dan kontraposisi selalu bernilai sama dengan pernyataan aslinya.\n\nDari «jika hujan maka jalan basah», yang pasti benar adalah «jika jalan tidak basah maka hujan tidak turun». Jalan bisa saja basah karena sebab lain, sehingga kebalikannya tidak sahih.",
+    "distractorRationale": {
+      "A": "Bentuk lain dari konvers yang tidak sahih.",
+      "B": "Menambahkan klaim eksklusif yang tidak ada dalam premis.",
+      "C": "Konvers, yang tidak selalu benar.",
+      "D": "Invers, yang juga tidak selalu benar."
+    },
+    "tags": [
+      "kontraposisi",
+      "implikasi"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p12",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Argumen valid/tidak valid",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Argumen berikut yang penalarannya TIDAK sahih adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Jika lulus ujian, ia diterima. Ia tidak diterima. Jadi, ia tidak lulus ujian"
+      },
+      {
+        "id": "B",
+        "text": "Semua dokter pernah kuliah. Rina pernah kuliah. Jadi, Rina dokter"
+      },
+      {
+        "id": "C",
+        "text": "Tidak ada reptil yang berbulu. Ular adalah reptil. Jadi, ular tidak berbulu"
+      },
+      {
+        "id": "D",
+        "text": "Semua logam menghantarkan listrik. Tembaga logam. Jadi, tembaga menghantarkan listrik"
+      },
+      {
+        "id": "E",
+        "text": "Semua dokter pernah kuliah. Rina dokter. Jadi, Rina pernah kuliah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Pilihan yang tidak sahih menegaskan akibat lalu menyimpulkan sebabnya: dari «semua dokter pernah kuliah» tidak dapat disimpulkan bahwa setiap orang yang pernah kuliah adalah dokter. Banyak orang berkuliah tanpa menjadi dokter.\n\nEmpat argumen lainnya berbentuk sahih — tiga di antaranya silogisme baku dan satu modus tollens.",
+    "distractorRationale": {
+      "A": "Modus tollens, bentuk yang sahih.",
+      "C": "Silogisme negatif yang sahih.",
+      "D": "Silogisme baku yang sahih.",
+      "E": "Silogisme baku yang sahih."
+    },
+    "tags": [
+      "validitas",
+      "penegasan-akibat"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p13",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Penarikan kesimpulan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Semua siswa kelas XII mengikuti ujian praktik. Sebagian siswa yang mengikuti ujian praktik memilih bidang musik. Simpulan yang pasti benar adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Tidak ada siswa kelas XII yang memilih bidang musik"
+      },
+      {
+        "id": "B",
+        "text": "Semua siswa kelas XII memilih bidang musik"
+      },
+      {
+        "id": "C",
+        "text": "Sebagian peserta ujian praktik memilih bidang musik"
+      },
+      {
+        "id": "D",
+        "text": "Sebagian siswa kelas XII tidak mengikuti ujian praktik"
+      },
+      {
+        "id": "E",
+        "text": "Semua peserta ujian praktik adalah siswa kelas XII"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Premis kedua sudah menyatakan hal itu secara langsung, dan simpulan yang sahih boleh mengulang premis tanpa menambah apa pun.\n\nYang tidak sahih adalah menyimpulkan bahwa sebagian siswa kelas XII itulah yang memilih musik: peserta ujian praktik bisa mencakup kelas lain, sehingga irisan «kelas XII dan musik» belum tentu ada.",
+    "distractorRationale": {
+      "A": "Bertentangan dengan premis kedua.",
+      "B": "Melompat dari «sebagian» ke «semua».",
+      "D": "Bertentangan dengan premis pertama.",
+      "E": "Membalik premis pertama tanpa dasar."
+    },
+    "tags": [
+      "silogisme",
+      "sebagian-semua"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p14",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Silogisme",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Tidak satu pun buku di rak itu berbahasa asing. Semua kamus di ruangan itu berbahasa asing. Simpulan yang sahih adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rak itu tidak memuat buku apa pun"
+      },
+      {
+        "id": "B",
+        "text": "Semua buku berbahasa asing adalah kamus"
+      },
+      {
+        "id": "C",
+        "text": "Semua kamus di ruangan itu ada di rak tersebut"
+      },
+      {
+        "id": "D",
+        "text": "Tidak satu pun kamus di ruangan itu ada di rak tersebut"
+      },
+      {
+        "id": "E",
+        "text": "Sebagian buku di rak itu adalah kamus"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Buku di rak seluruhnya bukan berbahasa asing, sedangkan kamus di ruangan itu seluruhnya berbahasa asing. Kedua himpunan karena itu tidak mungkin beririsan.\n\nMaka tidak satu pun kamus di ruangan itu berada di rak tersebut.",
+    "distractorRationale": {
+      "A": "Premis tidak menyatakan raknya kosong, hanya bahwa isinya bukan bahasa asing.",
+      "B": "Membalik premis kedua.",
+      "C": "Bertentangan dengan simpulan yang benar.",
+      "E": "Kamus berbahasa asing, sedangkan buku di rak tidak, sehingga irisannya kosong."
+    },
+    "tags": [
+      "silogisme",
+      "himpunan"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p15",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Implikasi & kontraposisi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Setiap peserta yang terlambat lebih dari 15 menit tidak diizinkan masuk.» Andi diizinkan masuk. Simpulan yang pasti benar adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Andi terlambat tepat 15 menit"
+      },
+      {
+        "id": "B",
+        "text": "Andi terlambat kurang dari 15 menit"
+      },
+      {
+        "id": "C",
+        "text": "Andi tidak terlambat sama sekali"
+      },
+      {
+        "id": "D",
+        "text": "Andi datang paling awal"
+      },
+      {
+        "id": "E",
+        "text": "Andi tidak terlambat lebih dari 15 menit"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Pernyataannya berbentuk «jika terlambat lebih dari 15 menit, maka tidak diizinkan masuk». Andi diizinkan masuk, yaitu akibatnya tidak terjadi, sehingga sebabnya juga tidak terjadi — inilah modus tollens.\n\nYang dapat disimpulkan hanyalah bahwa keterlambatannya tidak melebihi 15 menit. Apakah ia terlambat sedikit, tepat waktu, atau datang awal, tidak diketahui.",
+    "distractorRationale": {
+      "A": "Menetapkan satu nilai tertentu tanpa dasar.",
+      "B": "Menutup kemungkinan ia tidak terlambat sama sekali atau terlambat tepat 15 menit.",
+      "C": "Menambah klaim bahwa ia sama sekali tidak terlambat, yang tidak diketahui.",
+      "D": "Sama sekali tidak dapat disimpulkan."
+    },
+    "tags": [
+      "modus-tollens",
+      "implikasi"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p16",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Penarikan kesimpulan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Lima orang duduk berjajar. Beni duduk tepat di sebelah kanan Ani. Citra duduk paling kiri. Dedi tidak duduk bersebelahan dengan Beni. Eka duduk di antara Beni dan Dedi. Urutan dari kiri ke kanan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Citra, Ani, Beni, Eka, Dedi"
+      },
+      {
+        "id": "B",
+        "text": "Citra, Dedi, Eka, Ani, Beni"
+      },
+      {
+        "id": "C",
+        "text": "Citra, Beni, Ani, Eka, Dedi"
+      },
+      {
+        "id": "D",
+        "text": "Citra, Eka, Ani, Beni, Dedi"
+      },
+      {
+        "id": "E",
+        "text": "Citra, Ani, Eka, Beni, Dedi"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Citra menempati posisi 1. Pasangan Ani-Beni harus berurutan dengan Beni di kanan Ani.\n\nEka berada di antara Beni dan Dedi, sehingga urutannya memuat blok Beni-Eka-Dedi. Menggabungkan keduanya: Ani-Beni-Eka-Dedi, yang mengisi posisi 2 sampai 5 setelah Citra.\n\nPeriksa syarat terakhir: Dedi di posisi 5 dan Beni di posisi 3 tidak bersebelahan. Semua syarat terpenuhi.",
+    "distractorRationale": {
+      "B": "Menaruh Beni di ujung sehingga Eka tidak dapat berada di antara Beni dan Dedi.",
+      "C": "Menaruh Beni di kiri Ani, bertentangan dengan syarat pertama.",
+      "D": "Eka tidak berada di antara Beni dan Dedi.",
+      "E": "Memisahkan Ani dan Beni yang seharusnya bersebelahan."
+    },
+    "tags": [
+      "penalaran-posisi",
+      "logika"
+    ],
+    "estimatedTimeSec": 165,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p17",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Argumen valid/tidak valid",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "«Jumlah penonton bioskop di kota ini turun 25 persen dalam dua tahun terakhir. Pada periode yang sama, jumlah pelanggan layanan film daring naik tiga kali lipat. Karena itu, layanan daringlah yang membuat orang berhenti pergi ke bioskop.»"
+    },
+    "stem": "Manakah yang paling melemahkan argumen tersebut?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sebagian film bioskop kemudian tayang di layanan daring"
+      },
+      {
+        "id": "B",
+        "text": "Harga tiket bioskop naik 30 persen pada periode yang sama"
+      },
+      {
+        "id": "C",
+        "text": "Sebagian penonton bioskop juga berlangganan layanan daring"
+      },
+      {
+        "id": "D",
+        "text": "Layanan daring menayangkan film yang berbeda dari film bioskop"
+      },
+      {
+        "id": "E",
+        "text": "Jumlah layar bioskop di kota itu tetap"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Argumen menyimpulkan bahwa layanan daringlah yang menyebabkan penonton bioskop berkurang. Yang paling melemahkannya adalah penjelasan alternatif yang cukup kuat untuk menerangkan penurunan itu sendiri.\n\nKenaikan harga tiket 30 persen pada periode yang sama adalah penjelasan semacam itu: penurunan penonton dapat sepenuhnya diterangkan olehnya tanpa melibatkan layanan daring.",
+    "distractorRationale": {
+      "A": "Menambah kaitan antara keduanya, bukan melemahkannya.",
+      "C": "Justru mendukung adanya kaitan antara keduanya.",
+      "D": "Perbedaan judul film tidak menghapus kemungkinan persaingan.",
+      "E": "Jumlah layar yang tetap tidak menerangkan penurunan penonton."
+    },
+    "tags": [
+      "evaluasi-argumen",
+      "penjelasan-alternatif"
+    ],
+    "estimatedTimeSec": 145,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p18",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Silogisme",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Semua yang bersertifikat boleh mengoperasikan mesin. Sebagian pekerja baru belum bersertifikat. Manakah yang PASTI benar?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sebagian pekerja baru tidak boleh mengoperasikan mesin"
+      },
+      {
+        "id": "B",
+        "text": "Semua pekerja baru boleh mengoperasikan mesin"
+      },
+      {
+        "id": "C",
+        "text": "Sebagian pekerja baru bersertifikat"
+      },
+      {
+        "id": "D",
+        "text": "Tidak ada pekerja baru yang boleh mengoperasikan mesin"
+      },
+      {
+        "id": "E",
+        "text": "Semua yang boleh mengoperasikan mesin adalah pekerja baru"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Premis pertama hanya menyatakan bahwa bersertifikat cukup untuk boleh mengoperasikan mesin; ia tidak menyatakan bahwa sertifikat itu satu-satunya jalan. Karena itu «belum bersertifikat» tidak otomatis berarti «tidak boleh».\n\nYang pasti benar justru datang dari kata «sebagian» pada premis kedua: jika sebagian pekerja baru belum bersertifikat, maka sebagian lainnya bersertifikat. Inilah simpulan yang tidak menuntut tambahan apa pun.",
+    "distractorRationale": {
+      "A": "Memperlakukan sertifikat sebagai satu-satunya syarat, padahal premis tidak menyatakannya.",
+      "B": "Tidak dapat disimpulkan karena sebagian belum bersertifikat.",
+      "D": "Bertentangan dengan kemungkinan adanya pekerja baru yang bersertifikat.",
+      "E": "Membalik premis pertama tanpa dasar."
+    },
+    "tags": [
+      "silogisme",
+      "syarat-cukup"
+    ],
+    "estimatedTimeSec": 160,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p19",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Baca grafik & tabel",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "figure": {
+      "kind": "table",
+      "alt": "Tabel jumlah wisatawan empat provinsi pada tahun 2023 dan 2024 dalam ribu orang.",
+      "caption": "Jumlah wisatawan (ribu orang)",
+      "headers": [
+        "Provinsi",
+        "2023",
+        "2024"
+      ],
+      "rows": [
+        [
+          "A",
+          "450",
+          "570"
+        ],
+        [
+          "B",
+          "1.240",
+          "1.400"
+        ],
+        [
+          "C",
+          "880",
+          "850"
+        ],
+        [
+          "D",
+          "310",
+          "520"
+        ]
+      ]
+    },
+    "stem": "Berdasarkan tabel, provinsi dengan kenaikan jumlah wisatawan terbesar dari 2023 ke 2024 adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Provinsi B dan D sama besar"
+      },
+      {
+        "id": "B",
+        "text": "Provinsi B"
+      },
+      {
+        "id": "C",
+        "text": "Provinsi C"
+      },
+      {
+        "id": "D",
+        "text": "Provinsi D"
+      },
+      {
+        "id": "E",
+        "text": "Provinsi A"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Hitung selisih tiap provinsi: A naik $120$ ribu, B naik $160$ ribu, C turun $30$ ribu, dan D naik $210$ ribu.\n\nKenaikan terbesar ada pada Provinsi D. Perhatikan bahwa D bukan provinsi dengan jumlah wisatawan terbanyak — pertanyaannya tentang kenaikan, bukan jumlah.",
+    "distractorRationale": {
+      "A": "Kenaikan B dan D berbeda jauh.",
+      "B": "Naik 160 ribu, masih di bawah D.",
+      "C": "Justru mengalami penurunan.",
+      "E": "Naik 120 ribu, bukan yang terbesar."
+    },
+    "tags": [
+      "baca-tabel",
+      "selisih"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p20",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Perbandingan kuantitas",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perbandingan uang Ali dan Budi adalah $3 : 5$. Jika selisih uang mereka Rp40.000,00, jumlah uang keduanya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp100.000,00"
+      },
+      {
+        "id": "B",
+        "text": "Rp120.000,00"
+      },
+      {
+        "id": "C",
+        "text": "Rp80.000,00"
+      },
+      {
+        "id": "D",
+        "text": "Rp200.000,00"
+      },
+      {
+        "id": "E",
+        "text": "Rp160.000,00"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Selisih perbandingannya $5 - 3 = 2$ bagian, dan itu senilai Rp40.000, sehingga satu bagian adalah Rp20.000.\n\nJumlah keduanya $3 + 5 = 8$ bagian, yaitu $8 \\times 20.000 = 160.000$ rupiah.",
+    "distractorRationale": {
+      "A": "Memakai 5 bagian saja.",
+      "B": "Memakai 6 bagian.",
+      "C": "Memakai 4 bagian.",
+      "D": "Memakai 10 bagian."
+    },
+    "tags": [
+      "perbandingan",
+      "selisih"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p21",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Estimasi",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah gedung memiliki 18 lantai, dan setiap lantai memuat 24 ruangan. Taksiran terbaik untuk jumlah seluruh ruangan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sekitar 450"
+      },
+      {
+        "id": "B",
+        "text": "sekitar 200"
+      },
+      {
+        "id": "C",
+        "text": "sekitar 700"
+      },
+      {
+        "id": "D",
+        "text": "sekitar 300"
+      },
+      {
+        "id": "E",
+        "text": "sekitar 1.000"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Bulatkan agar mudah dihitung: $18$ mendekati $20$ dan $24$ mendekati $25$, sehingga $20 \\times 25 = 500$.\n\nKarena kedua pembulatan dilakukan ke atas, hasil sebenarnya sedikit di bawah 500. Nilai persisnya $18 \\times 24 = 432$, sehingga taksiran «sekitar 450» yang paling dekat.",
+    "distractorRationale": {
+      "B": "Jauh di bawah hasil sebenarnya.",
+      "C": "Melebihi hasil sebenarnya lebih dari 250.",
+      "D": "Kira-kira setara $12 \\times 25$.",
+      "E": "Lebih dari dua kali hasil sebenarnya."
+    },
+    "tags": [
+      "estimasi",
+      "pembulatan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p22",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Pola aritmetika",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Seorang pelari menempuh 3 km pada pekan pertama dan menambah jaraknya 1,5 km setiap pekan. Pada pekan keberapa ia pertama kali menempuh lebih dari 15 km?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "pekan ke-8"
+      },
+      {
+        "id": "B",
+        "text": "pekan ke-9"
+      },
+      {
+        "id": "C",
+        "text": "pekan ke-11"
+      },
+      {
+        "id": "D",
+        "text": "pekan ke-10"
+      },
+      {
+        "id": "E",
+        "text": "pekan ke-12"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Jarak pada pekan ke-$n$ adalah $3 + (n-1)(1{,}5)$.\n\nSyaratnya $3 + 1{,}5(n-1) > 15$, sehingga $1{,}5(n-1) > 12$ dan $n - 1 > 8$, yaitu $n > 9$. Karena harus lebih dari 15 km, pekan ke-9 memberi tepat $3 + 12 = 15$ km — belum lebih. Jadi yang pertama kali melampaui adalah pekan ke-10.",
+    "distractorRationale": {
+      "A": "Memberi $3 + 10{,}5 = 13{,}5$ km, masih di bawah 15.",
+      "B": "Memberi tepat 15 km — sama dengan 15, belum lebih dari 15.",
+      "C": "Sudah melampaui 15 km, tetapi bukan yang pertama kali.",
+      "E": "Jauh melewati pekan pertama yang melampaui 15 km."
+    },
+    "tags": [
+      "barisan-aritmetika",
+      "pertidaksamaan"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p23",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Baca grafik & tabel",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "figure": {
+      "kind": "table",
+      "alt": "Tabel jumlah siswa, nilai rata-rata, nilai tertinggi, dan nilai terendah pada tiga kelas.",
+      "caption": "Rekap nilai ujian tiga kelas",
+      "headers": [
+        "Kelas",
+        "Jumlah siswa",
+        "Rata-rata",
+        "Tertinggi",
+        "Terendah"
+      ],
+      "rows": [
+        [
+          "A",
+          "28",
+          "78",
+          "92",
+          "61"
+        ],
+        [
+          "B",
+          "32",
+          "74",
+          "95",
+          "48"
+        ],
+        [
+          "C",
+          "30",
+          "76",
+          "88",
+          "55"
+        ]
+      ]
+    },
+    "stem": "Berdasarkan tabel, pernyataan yang benar adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Seluruh kelas memiliki jumlah siswa yang sama"
+      },
+      {
+        "id": "B",
+        "text": "Kelas C memiliki nilai rata-rata tertinggi"
+      },
+      {
+        "id": "C",
+        "text": "Selisih nilai tertinggi dan terendah paling besar terjadi di kelas B"
+      },
+      {
+        "id": "D",
+        "text": "Kelas A memiliki jumlah siswa terbanyak"
+      },
+      {
+        "id": "E",
+        "text": "Rata-rata kelas B lebih tinggi daripada kelas A"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Hitung rentang tiap kelas: A adalah $92 - 61 = 31$, B adalah $95 - 48 = 47$, dan C adalah $88 - 55 = 33$.\n\nRentang terbesar ada pada kelas B. Perlu diperhatikan bahwa rata-rata tertinggi justru di kelas A, sehingga kelas dengan sebaran terlebar bukan kelas dengan rata-rata tertinggi.",
+    "distractorRationale": {
+      "A": "Jumlah siswa ketiga kelas berbeda.",
+      "B": "Rata-rata tertinggi ada di kelas A, bukan C.",
+      "D": "Jumlah siswa terbanyak ada di kelas B.",
+      "E": "Rata-rata kelas B lebih rendah daripada kelas A."
+    },
+    "tags": [
+      "baca-tabel",
+      "rentang"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p24",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Perbandingan kuantitas",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah pekerjaan dapat diselesaikan Ani dalam 6 hari dan oleh Budi dalam 12 hari. Bila keduanya bekerja bersama, pekerjaan itu selesai dalam ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3 hari"
+      },
+      {
+        "id": "B",
+        "text": "18 hari"
+      },
+      {
+        "id": "C",
+        "text": "9 hari"
+      },
+      {
+        "id": "D",
+        "text": "4 hari"
+      },
+      {
+        "id": "E",
+        "text": "2 hari"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Dalam sehari Ani menyelesaikan $\\dfrac{1}{6}$ bagian dan Budi $\\dfrac{1}{12}$ bagian.\n\nBersama-sama: $\\dfrac{1}{6} + \\dfrac{1}{12} = \\dfrac{2}{12} + \\dfrac{1}{12} = \\dfrac{3}{12} = \\dfrac{1}{4}$ bagian per hari, sehingga seluruh pekerjaan selesai dalam 4 hari.\n\nHasilnya harus lebih cepat daripada 6 hari — bekerja berdua tidak mungkin lebih lambat daripada Ani sendirian.",
+    "distractorRationale": {
+      "A": "Membagi 6 dengan 2.",
+      "B": "Menjumlahkan 6 dan 12.",
+      "C": "Merata-ratakan 6 dan 12, cara yang tidak berlaku untuk laju kerja.",
+      "E": "Membagi 12 dengan 6."
+    },
+    "tags": [
+      "laju-kerja",
+      "pecahan"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p25",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Estimasi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kota berpenduduk sekitar 2,4 juta jiwa menghasilkan sampah rata-rata 0,6 kg per orang per hari. Jika satu truk mengangkut 5 ton, taksiran jumlah truk yang diperlukan setiap hari adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sekitar 14.000"
+      },
+      {
+        "id": "B",
+        "text": "sekitar 1.400"
+      },
+      {
+        "id": "C",
+        "text": "sekitar 90"
+      },
+      {
+        "id": "D",
+        "text": "sekitar 2.900"
+      },
+      {
+        "id": "E",
+        "text": "sekitar 290"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Total sampah harian: $2{,}4$ juta $\\times\\ 0{,}6\\ \\text{kg} = 1{,}44$ juta kg, yaitu $1.440$ ton.\n\nJumlah truk: $\\dfrac{1.440}{5} = 288$, sehingga taksirannya sekitar 290 truk.\n\nMengubah kilogram ke ton adalah langkah yang paling sering terlewat; tanpa itu hasilnya meleset seribu kali lipat.",
+    "distractorRationale": {
+      "A": "Tidak mengubah kilogram menjadi ton.",
+      "B": "Lupa membagi dengan kapasitas truk sepenuhnya.",
+      "C": "Membagi dengan 16 ton, bukan 5.",
+      "D": "Salah satu langkah pembagian terlewat sepuluh kali lipat."
+    },
+    "tags": [
+      "estimasi",
+      "konversi-satuan"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pu-p26",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Pola aritmetika",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Jumlah 20 suku pertama dari barisan $5, 9, 13, 17, \\ldots$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "860"
+      },
+      {
+        "id": "B",
+        "text": "820"
+      },
+      {
+        "id": "C",
+        "text": "840"
+      },
+      {
+        "id": "D",
+        "text": "800"
+      },
+      {
+        "id": "E",
+        "text": "1.620"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Barisan aritmetika dengan $a = 5$ dan $b = 4$. Suku ke-20 adalah $5 + 19 \\times 4 = 81$.\n\nJumlahnya $S_{20} = \\dfrac{20}{2}(5 + 81) = 10 \\times 86 = 860$.\n\nPeriksa dengan rumus lain: $S_n = \\dfrac{n}{2}\\left[2a + (n-1)b\\right] = 10\\left[10 + 76\\right] = 860$.",
+    "distractorRationale": {
+      "B": "Memakai suku pertama 4 alih-alih 5.",
+      "C": "Memakai suku ke-20 sebesar 79, yaitu beda 4 tetapi 19 diganti 18.",
+      "D": "Memakai suku ke-20 sebesar 75.",
+      "E": "Menjumlahkan 40 suku, bukan 20."
+    },
+    "tags": [
+      "barisan-aritmetika",
+      "jumlah"
+    ],
+    "estimatedTimeSec": 155,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  }
+]

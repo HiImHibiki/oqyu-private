@@ -1,0 +1,1302 @@
+[
+  {
+    "id": "csca-zhh-g17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "考试的功能常被简化为选拔，其实它同时承担着反馈的职责。一次考试若只给出分数与名次，学生知道自己落后，却不知道落后在哪里，改进便无从谈起。反之，若能指出错误的类型与成因，分数纵然不变，学习也已经发生。近年不少学校尝试在成绩单之外附上错题分析，正是基于这一考虑。"
+    },
+    "stem": "短文说「分数纵然不变，学习也已经发生」，这句话的意思是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "学习与考试无关"
+      },
+      {
+        "id": "B",
+        "text": "应当取消分数"
+      },
+      {
+        "id": "C",
+        "text": "分数不重要"
+      },
+      {
+        "id": "D",
+        "text": "理解错误的成因本身就是一种学习收获，不必以分数变化来衡量"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「纵然」是让步：即便分数这一外在指标没有变化，学生因为弄清了错在哪里、为何而错，认知上已有实质推进。这是把学习的衡量从结果指标转向理解本身。",
+    "distractorRationale": {
+      "A": "短文正是在讨论考试如何促进学习。",
+      "B": "短文主张在成绩单之外附加分析，而非取消分数。",
+      "C": "短文只说分数不足以反映全部，并未否定其作用。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does «even if the mark does not change, learning has taken place» mean?",
+        "explanation": "纵然 concedes a point: even when the external indicator stays the same, a student who has grasped what went wrong and why has genuinely advanced. It shifts the measure of learning from an outcome figure to understanding itself."
+      }
+    },
+    "tags": [
+      "interpretation",
+      "assessment"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "考试的功能常被简化为选拔，其实它同时承担着反馈的职责。一次考试若只给出分数与名次，学生知道自己落后，却不知道落后在哪里，改进便无从谈起。反之，若能指出错误的类型与成因，分数纵然不变，学习也已经发生。近年不少学校尝试在成绩单之外附上错题分析，正是基于这一考虑。"
+    },
+    "stem": "短文提到学校附上错题分析，这一做法是为了强化考试的哪一项功能？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "反馈"
+      },
+      {
+        "id": "B",
+        "text": "排名"
+      },
+      {
+        "id": "C",
+        "text": "计时"
+      },
+      {
+        "id": "D",
+        "text": "选拔"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文开篇即区分选拔与反馈两种功能，随后所论皆围绕反馈展开。错题分析提供的正是「错在哪里、为何而错」的信息，属于反馈。",
+    "distractorRationale": {
+      "B": "排名是选拔功能的一部分。",
+      "C": "短文完全未涉及计时。",
+      "D": "选拔靠分数与名次即可完成，无需错题分析。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The schools' practice of attaching error analyses strengthens which function of examinations?",
+        "explanation": "The passage opens by distinguishing selection from feedback, and everything that follows concerns feedback. An error analysis supplies exactly the «what went wrong and why» information — that is feedback."
+      }
+    },
+    "tags": [
+      "function",
+      "assessment"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "巷口那家书店关了。玻璃上贴着「清仓」两个字，纸角已经卷起。我进去时，只剩几排书还立着，其余的架子空着，露出后面斑驳的墙。老板坐在收银台后翻一本旧杂志，抬头看了我一眼，又低下去。我挑了两本，付钱时他说：「以后不开了。」语气平常得像在说天气。"
+    },
+    "stem": "文中「语气平常得像在说天气」一句，其表达效果是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "说明老板不善言辞"
+      },
+      {
+        "id": "B",
+        "text": "以平淡的语气反衬事情的分量，情绪被克制着"
+      },
+      {
+        "id": "C",
+        "text": "表明当天天气很好"
+      },
+      {
+        "id": "D",
+        "text": "说明老板并不在意书店关门"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「以后不开了」是一件大事，却用最寻常的语气说出，落差本身就是情绪。文学中这种克制往往比直接的抒情更有力量，因为它让读者自己去掂量那句话的重量。",
+    "distractorRationale": {
+      "A": "短文没有提供判断口才的依据。",
+      "C": "天气只是比喻的喻体，不是实指。",
+      "D": "平淡的语气未必意味着不在意，正相反，克制常常源于在意。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the effect of «as plainly as if he were talking about the weather»?",
+        "explanation": "«We won't be opening again» is a large matter said in the most ordinary tone, and the gap between the two is itself the emotion. In literature such restraint often carries more force than open feeling, because it leaves the reader to weigh the sentence."
+      }
+    },
+    "tags": [
+      "tone",
+      "restraint"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "巷口那家书店关了。玻璃上贴着「清仓」两个字，纸角已经卷起。我进去时，只剩几排书还立着，其余的架子空着，露出后面斑驳的墙。老板坐在收银台后翻一本旧杂志，抬头看了我一眼，又低下去。我挑了两本，付钱时他说：「以后不开了。」语气平常得像在说天气。"
+    },
+    "stem": "文中「纸角已经卷起」这一细节，暗示的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "天气潮湿"
+      },
+      {
+        "id": "B",
+        "text": "玻璃需要清洗"
+      },
+      {
+        "id": "C",
+        "text": "告示已贴了相当长的时间，关门是一个缓慢的过程"
+      },
+      {
+        "id": "D",
+        "text": "书店刚刚贴上告示"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "纸角卷起需要时间，这个细节把「关门」从一个瞬间的事件拉长为一段过程。与后文空了大半的书架相呼应，共同写出衰败的渐进。",
+    "distractorRationale": {
+      "A": "潮湿是一种可能的物理原因，但文中并无天气的线索，且这一读法与全文的时间感无关。",
+      "B": "玻璃是否洁净与文意无关。",
+      "D": "刚贴上的纸不会卷角，细节所指恰恰相反。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the detail «the corners of the paper had already curled» imply?",
+        "explanation": "Paper takes time to curl, and this detail stretches «closing down» from a moment into a stretch of time. Together with the half-empty shelves that follow, it renders the decline as gradual."
+      }
+    },
+    "tags": [
+      "detail-analysis",
+      "temporal-cue"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g21",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "巷口那家书店关了。玻璃上贴着「清仓」两个字，纸角已经卷起。我进去时，只剩几排书还立着，其余的架子空着，露出后面斑驳的墙。老板坐在收银台后翻一本旧杂志，抬头看了我一眼，又低下去。我挑了两本，付钱时他说：「以后不开了。」语气平常得像在说天气。"
+    },
+    "stem": "「露出后面斑驳的墙」这一句在文中的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "为下文的对话作铺垫"
+      },
+      {
+        "id": "B",
+        "text": "介绍建筑材料"
+      },
+      {
+        "id": "C",
+        "text": "说明房屋需要装修"
+      },
+      {
+        "id": "D",
+        "text": "以书架空出后露出的旧墙，写出书店往日的年月与此刻的空落"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "墙的斑驳是被书架遮了很久才留下的痕迹，它一旦露出，既显出书店开了多少年，也显出此刻的空。一个静物同时承担了时间与情绪两重功能。",
+    "distractorRationale": {
+      "A": "对话由老板的动作引出，与墙无直接关系。",
+      "B": "文中并未涉及材料。",
+      "C": "装修与否不是文章关心的事。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does «revealing the mottled wall behind» do in this passage?",
+        "explanation": "The mottling is the mark left by shelves that stood there a long time; once exposed it shows both how many years the shop had been open and how empty it is now. A single still object carries both time and feeling."
+      }
+    },
+    "tags": [
+      "imagery",
+      "setting"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g22",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "任何统计指标都可能被当作目标来追求，而一旦如此，它往往就不再是好的指标。例如以论文数量衡量科研产出，本意是省事的替代指标；一旦考核与之挂钩，研究者便有动力把一篇文章拆成三篇，数量上去了，实质贡献却未必增加。这一困境提醒我们：指标是现实的影子，不是现实本身。"
+    },
+    "stem": "根据短文，以论文数量作为考核指标产生的问题是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "研究者可能拆分文章以提高数量，实质贡献未必增加"
+      },
+      {
+        "id": "B",
+        "text": "研究者不愿写论文"
+      },
+      {
+        "id": "C",
+        "text": "论文质量无法计算"
+      },
+      {
+        "id": "D",
+        "text": "论文发表周期过长"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文举的正是这个例子：考核与数量挂钩后，拆分文章成为理性选择，指标上升而实质未变。这说明指标一旦成为目标，被追求的就只是指标本身。",
+    "distractorRationale": {
+      "B": "考核挂钩恰恰让人更愿意多写。",
+      "C": "短文说的是数量指标被扭曲，不是质量无法计算。",
+      "D": "发表周期短文未提。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what problem arises from using paper counts as an evaluation metric?",
+        "explanation": "That is exactly the passage's example: once assessment is tied to the count, splitting one paper into three becomes the rational move, the metric rises and the substance does not. Once a metric becomes the target, the metric itself is all that gets pursued."
+      }
+    },
+    "tags": [
+      "metrics",
+      "goodharts-law"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g23",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "任何统计指标都可能被当作目标来追求，而一旦如此，它往往就不再是好的指标。例如以论文数量衡量科研产出，本意是省事的替代指标；一旦考核与之挂钩，研究者便有动力把一篇文章拆成三篇，数量上去了，实质贡献却未必增加。这一困境提醒我们：指标是现实的影子，不是现实本身。"
+    },
+    "stem": "「指标是现实的影子，不是现实本身」这一比喻，强调的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "现实无法被认识"
+      },
+      {
+        "id": "B",
+        "text": "指标只是对现实的间接反映，追逐影子并不等于改变实物"
+      },
+      {
+        "id": "C",
+        "text": "指标完全没有用处"
+      },
+      {
+        "id": "D",
+        "text": "应当使用更多的指标"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "影子随实物而生，能透露实物的某些信息，却不是实物。同理，指标能反映现实，却可以在现实未变的情况下被单独推高。这个比喻同时保留了指标的用处与它的限度。",
+    "distractorRationale": {
+      "A": "短文并未走向不可知论。",
+      "C": "影子毕竟提供信息，短文也称之为「省事的替代指标」。",
+      "D": "增加指标数量不解决指标被当作目标的问题。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the metaphor «a metric is the shadow of reality, not reality itself» stress?",
+        "explanation": "A shadow is cast by the object and reveals something of it, yet is not the object. Likewise a metric reflects reality but can be pushed up on its own while reality stays put. The metaphor preserves both the metric's usefulness and its limits."
+      }
+    },
+    "tags": [
+      "metaphor",
+      "measurement"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g24",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "任何统计指标都可能被当作目标来追求，而一旦如此，它往往就不再是好的指标。例如以论文数量衡量科研产出，本意是省事的替代指标；一旦考核与之挂钩，研究者便有动力把一篇文章拆成三篇，数量上去了，实质贡献却未必增加。这一困境提醒我们：指标是现实的影子，不是现实本身。"
+    },
+    "stem": "短文说论文数量「本意是省事的替代指标」，这句话承认的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "这一指标从一开始就毫无道理"
+      },
+      {
+        "id": "B",
+        "text": "考核制度应当废除"
+      },
+      {
+        "id": "C",
+        "text": "在被扭曲之前，它确实是一个有其合理性的简便办法"
+      },
+      {
+        "id": "D",
+        "text": "科研产出根本无法衡量"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「本意」与「省事」两词都带有理解与体谅：直接衡量实质贡献极难，用数量作替代是可以理解的权宜。短文批评的不是这个出发点，而是它与考核挂钩之后的变形。",
+    "distractorRationale": {
+      "A": "「本意是省事的替代指标」正是在肯定其初始的合理性。",
+      "B": "短文未主张废除考核。",
+      "D": "短文说的是难以直接衡量，并非完全不能衡量。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In saying paper counts were «meant as a convenient proxy», what does the passage concede?",
+        "explanation": "本意 and 省事 both carry understanding: measuring substantive contribution directly is very hard, so a count is an intelligible expedient. The passage does not attack that starting point but what happens once it is tied to assessment."
+      }
+    },
+    "tags": [
+      "concession",
+      "argument-structure"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g25",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "丝绸之路并非一条固定的道路，而是由许多路线组成的贸易网络，随着政治局势与自然条件不断改变走向。沿线交换的也不只是货物：作物、技术、文字、宗教与疾病都沿着同样的通道流动。有史家指出，正因为传播的内容如此庞杂，用「丝绸」为它命名，反而遮蔽了它更重要的一面。"
+    },
+    "stem": "根据短文，有史家认为「丝绸之路」这一名称的问题在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "这条路并不存在"
+      },
+      {
+        "id": "B",
+        "text": "丝绸并非沿此路运输"
+      },
+      {
+        "id": "C",
+        "text": "名称过长"
+      },
+      {
+        "id": "D",
+        "text": "以单一货物命名，遮蔽了传播内容的庞杂"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文列举了作物、技术、文字、宗教与疾病等多种流动内容，随后指出用一种商品来命名整个网络会遮蔽这一面。问题在于以偏概全，而非丝绸本身不存在。",
+    "distractorRationale": {
+      "A": "短文承认这一贸易网络存在，只是不是单一道路。",
+      "B": "短文并未否认丝绸的贸易。",
+      "C": "名称长短不是短文的关注点。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what do some historians find problematic about the name «Silk Road»?",
+        "explanation": "The passage lists crops, technologies, scripts, religions and diseases among the things that moved, then notes that naming the whole network after one commodity obscures that side of it. The trouble is that the part stands for the whole, not that silk was absent."
+      }
+    },
+    "tags": [
+      "historiography",
+      "naming"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g26",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "丝绸之路并非一条固定的道路，而是由许多路线组成的贸易网络，随着政治局势与自然条件不断改变走向。沿线交换的也不只是货物：作物、技术、文字、宗教与疾病都沿着同样的通道流动。有史家指出，正因为传播的内容如此庞杂，用「丝绸」为它命名，反而遮蔽了它更重要的一面。"
+    },
+    "stem": "短文特意把「疾病」与作物、技术、宗教并列，其用意最可能是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "说明通道传播的内容不加拣择，有益与有害的同样流动"
+      },
+      {
+        "id": "B",
+        "text": "说明疾病是最主要的传播物"
+      },
+      {
+        "id": "C",
+        "text": "说明古代医学不发达"
+      },
+      {
+        "id": "D",
+        "text": "说明贸易网络只带来坏处"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "作物、技术、文字、宗教多被视为文明交流的正面成果，疾病则相反。把它们并列，等于指出通道本身是中性的：凡能沿人流动的，都会流动。",
+    "distractorRationale": {
+      "B": "疾病只是并列中的一项，短文并未赋予它主导地位。",
+      "C": "短文完全未涉及医学水平。",
+      "D": "并列中的其余四项都不是坏处。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why does the passage list «diseases» alongside crops, technologies and religions?",
+        "explanation": "Crops, technologies, scripts and religions are usually counted as positive fruits of exchange; disease is the opposite. Listing them together says the conduit itself is neutral: whatever can travel with people, does."
+      }
+    },
+    "tags": [
+      "inference",
+      "authorial-choice"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g27",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "丝绸之路并非一条固定的道路，而是由许多路线组成的贸易网络，随着政治局势与自然条件不断改变走向。沿线交换的也不只是货物：作物、技术、文字、宗教与疾病都沿着同样的通道流动。有史家指出，正因为传播的内容如此庞杂，用「丝绸」为它命名，反而遮蔽了它更重要的一面。"
+    },
+    "stem": "短文说丝绸之路的走向「不断改变」，其原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "货物种类增加"
+      },
+      {
+        "id": "B",
+        "text": "政治局势与自然条件的变化"
+      },
+      {
+        "id": "C",
+        "text": "商人喜欢尝试新路"
+      },
+      {
+        "id": "D",
+        "text": "地图绘制不准确"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文直接写道「随着政治局势与自然条件不断改变走向」。战乱、政权更替属于前者，河流改道、沙漠扩张属于后者。",
+    "distractorRationale": {
+      "A": "货物种类与路线走向无直接关系。",
+      "C": "短文未把商人的偏好列为原因。",
+      "D": "地图问题短文未提。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why did the routes «keep shifting»?",
+        "explanation": "The passage says so directly: they shifted «with political circumstances and natural conditions». Wars and changes of regime belong to the first; rivers changing course and deserts spreading, to the second."
+      }
+    },
+    "tags": [
+      "detail-retrieval",
+      "causation"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g28",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "阅读能力的培养常被误解为速度的训练。事实上，成熟的读者最显著的特征不是读得快，而是读得有分寸：遇到熟悉的内容一目十行，遇到关键的论证则放慢速度反复推敲。真正需要教的，是判断何时该快、何时该慢的能力，而这只能在大量真实的阅读中习得。"
+    },
+    "stem": "根据短文，成熟读者最显著的特征是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "读得比别人快"
+      },
+      {
+        "id": "B",
+        "text": "记忆力最好"
+      },
+      {
+        "id": "C",
+        "text": "能根据内容调整阅读速度"
+      },
+      {
+        "id": "D",
+        "text": "读过的书最多"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文以「不是……而是……」的句式点明：关键不在快，而在「有分寸」——熟悉处快，关键处慢。速度成了手段，判断才是能力。",
+    "distractorRationale": {
+      "A": "短文明确否定以速度为标志。",
+      "B": "记忆力短文完全未提。",
+      "D": "阅读量短文未作为特征提出。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what most distinguishes a mature reader?",
+        "explanation": "The passage uses the 不是……而是…… construction to make the point: what matters is not speed but proportion — fast over the familiar, slow at the crux. Speed becomes the means; judgement is the ability."
+      }
+    },
+    "tags": [
+      "reading-skill",
+      "main-idea"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g29",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "阅读能力的培养常被误解为速度的训练。事实上，成熟的读者最显著的特征不是读得快，而是读得有分寸：遇到熟悉的内容一目十行，遇到关键的论证则放慢速度反复推敲。真正需要教的，是判断何时该快、何时该慢的能力，而这只能在大量真实的阅读中习得。"
+    },
+    "stem": "短文末句说这种能力「只能在大量真实的阅读中习得」，言外之意是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "任何教学都无济于事"
+      },
+      {
+        "id": "B",
+        "text": "阅读不需要教师指导"
+      },
+      {
+        "id": "C",
+        "text": "读得越多速度越快"
+      },
+      {
+        "id": "D",
+        "text": "脱离真实文本的速读技巧训练难以培养这种判断力"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "首句已把「速度的训练」立为靶子，末句强调「真实的阅读」，两处呼应，指向的正是脱离内容的技巧训练之无效。判断何时该慢，必须以具体内容为对象。",
+    "distractorRationale": {
+      "A": "短文说「真正需要教的」是什么，可见并未否定教学。",
+      "B": "短文谈的是教学内容而非是否需要教师。",
+      "C": "短文关心的是分寸而非速度的提高。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is implied by «can only be acquired through a great deal of real reading»?",
+        "explanation": "The opening sentence already sets up «speed training» as the target, and the closing sentence stresses «real reading»; the two answer each other, pointing at the futility of technique drills divorced from content. Judging when to slow down requires actual content to judge."
+      }
+    },
+    "tags": [
+      "implication",
+      "pedagogy"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g30",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "城市中的公共空间——广场、公园、街边的长椅——常被视为可有可无的装饰。但研究者发现，这些地方承担着难以替代的功能：陌生人在此形成弱联系，邻里在此建立信任，独居者在此获得日常的社会接触。当城市把每一寸土地都用于可计价的用途时，失去的往往正是这类无法计价却真实存在的价值。"
+    },
+    "stem": "根据短文，公共空间的功能之一是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "让陌生人形成弱联系、邻里建立信任"
+      },
+      {
+        "id": "B",
+        "text": "提高土地的经济价值"
+      },
+      {
+        "id": "C",
+        "text": "减少交通流量"
+      },
+      {
+        "id": "D",
+        "text": "增加城市人口"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文列举了三项功能：陌生人形成弱联系、邻里建立信任、独居者获得日常社会接触。三者都属于社会性而非经济性的作用。",
+    "distractorRationale": {
+      "B": "短文恰恰把公共空间与「可计价的用途」相对。",
+      "C": "交通问题短文同样未提。",
+      "D": "人口增长短文未提。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, one function of public space is",
+        "explanation": "The passage names three: strangers forming weak ties, neighbours building trust, and people living alone getting daily social contact. All three are social rather than economic."
+      }
+    },
+    "tags": [
+      "urban",
+      "detail-retrieval"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g31",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "城市中的公共空间——广场、公园、街边的长椅——常被视为可有可无的装饰。但研究者发现，这些地方承担着难以替代的功能：陌生人在此形成弱联系，邻里在此建立信任，独居者在此获得日常的社会接触。当城市把每一寸土地都用于可计价的用途时，失去的往往正是这类无法计价却真实存在的价值。"
+    },
+    "stem": "短文末句所揭示的问题，实质上是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "市民不愿使用公共空间"
+      },
+      {
+        "id": "B",
+        "text": "决策只考虑可计量的价值时，无法计量的价值会被系统性忽略"
+      },
+      {
+        "id": "C",
+        "text": "公共空间维护成本过高"
+      },
+      {
+        "id": "D",
+        "text": "土地面积不足"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「无法计价却真实存在」六个字是关键：价值的真实性与它能否被计量是两回事。当决策只承认账面上看得见的部分，看不见的那部分就会在每一次权衡中默默败下阵来——不是因为它不重要，而是因为它没有出现在算式里。",
+    "distractorRationale": {
+      "A": "短文列举的功能说明市民确在使用。",
+      "C": "维护成本短文完全未提。",
+      "D": "短文谈的是土地用途的取舍，不是面积不够。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What problem does the passage's final sentence essentially reveal?",
+        "explanation": "The key phrase is «real though it cannot be priced»: whether a value is real and whether it can be measured are two different questions. When decisions recognise only what shows on the ledger, the unmeasured part loses every trade-off quietly — not because it matters less, but because it never enters the calculation."
+      }
+    },
+    "tags": [
+      "inference",
+      "measurement-bias"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g32",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "城市中的公共空间——广场、公园、街边的长椅——常被视为可有可无的装饰。但研究者发现，这些地方承担着难以替代的功能：陌生人在此形成弱联系，邻里在此建立信任，独居者在此获得日常的社会接触。当城市把每一寸土地都用于可计价的用途时，失去的往往正是这类无法计价却真实存在的价值。"
+    },
+    "stem": "短文开头说公共空间「常被视为可有可无的装饰」，这一说法在文中的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "总结全文"
+      },
+      {
+        "id": "B",
+        "text": "介绍公共空间的定义"
+      },
+      {
+        "id": "C",
+        "text": "先摆出常见观点，再用「但」引出与之相反的论述"
+      },
+      {
+        "id": "D",
+        "text": "表明作者赞同这一看法"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "先立后破是说理文的常见开头：把流行看法摆出来，随即用转折词推翻。「常被视为」四字已暗示作者与这一看法保持距离。",
+    "distractorRationale": {
+      "A": "总结在末句，不在开头。",
+      "B": "破折号中的举例是说明范围，不是给出定义。",
+      "D": "紧接的「但」字表明作者不赞同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What role does «often regarded as dispensable decoration» play in the passage?",
+        "explanation": "Setting up a common view in order to knock it down is a standard opening in expository writing: state the received opinion, then overturn it with a contrastive conjunction. The phrase 常被视为 already signals the author's distance from it."
+      }
+    },
+    "tags": [
+      "rhetorical-structure",
+      "concession"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g33",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "祖母的记性一年不如一年。她开始把我叫成父亲的名字，把昨天说成很多年前。起初我总要纠正，后来不纠正了。她讲的那些旧事，日期常常是错的，可讲到某个人时眼睛会亮一下——那个瞬间是真的，比日期真得多。"
+    },
+    "stem": "「那个瞬间是真的，比日期真得多」一句，表达的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "祖母的记忆完全可靠"
+      },
+      {
+        "id": "B",
+        "text": "祖母在说谎"
+      },
+      {
+        "id": "C",
+        "text": "日期不重要，所以不必记录"
+      },
+      {
+        "id": "D",
+        "text": "情感的真实比事实的准确更能留存，也更值得珍视"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "叙述者把两种「真」作了区分：事实层面的日期已经错乱，情感层面的反应却依然准确。「后来不纠正了」正是这一认识的结果——纠正日期无助于保存那份真。",
+    "distractorRationale": {
+      "A": "文中明说日期常常是错的。",
+      "B": "记忆错乱不是说谎，文中也无指责之意。",
+      "C": "文中说的是在此情境下日期不再重要，并非一般性主张。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does «that instant was real, far more real than the date» express?",
+        "explanation": "The narrator distinguishes two kinds of truth: the dates have come loose, but the emotional response remains exact. «Later I stopped correcting her» follows from that recognition — correcting a date does nothing to preserve what was true."
+      }
+    },
+    "tags": [
+      "theme",
+      "memory"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g34",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "祖母的记性一年不如一年。她开始把我叫成父亲的名字，把昨天说成很多年前。起初我总要纠正，后来不纠正了。她讲的那些旧事，日期常常是错的，可讲到某个人时眼睛会亮一下——那个瞬间是真的，比日期真得多。"
+    },
+    "stem": "「起初我总要纠正，后来不纠正了」这一变化，反映的是叙述者",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "从执着于事实转向体谅与接纳"
+      },
+      {
+        "id": "B",
+        "text": "记性也变差了"
+      },
+      {
+        "id": "C",
+        "text": "对祖母失去了耐心"
+      },
+      {
+        "id": "D",
+        "text": "不再关心祖母"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「不纠正」表面像是放弃，实则是认识的转变：叙述者明白了纠正对祖母毫无益处，反而破坏她讲述时那点微光。这是从「谁对」转向「什么对她有意义」。\n\n若真是失去耐心或不再关心，就不会注意到眼睛亮起的那一瞬。",
+    "distractorRationale": {
+      "B": "文中没有叙述者记忆衰退的线索。",
+      "C": "失去耐心的人不会有末句那样的细致观察。",
+      "D": "整段的注视本身就是关心的表现。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the shift from «at first I always corrected her» to «later I stopped» reveal about the narrator?",
+        "explanation": "Stopping looks like giving up but is really a change of understanding: the narrator sees that correction does his grandmother no good and only spoils the small light in her telling. The question moves from «who is right» to «what means something to her».\n\nSomeone who had lost patience or stopped caring would not have noticed the eyes brightening."
+      }
+    },
+    "tags": [
+      "character-development",
+      "narrator"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g35",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "祖母的记性一年不如一年。她开始把我叫成父亲的名字，把昨天说成很多年前。起初我总要纠正，后来不纠正了。她讲的那些旧事，日期常常是错的，可讲到某个人时眼睛会亮一下——那个瞬间是真的，比日期真得多。"
+    },
+    "stem": "「把我叫成父亲的名字」这一细节，其作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "交代家庭成员关系"
+      },
+      {
+        "id": "B",
+        "text": "以具体可感的错乱，写出祖母记忆中时间层次的塌陷"
+      },
+      {
+        "id": "C",
+        "text": "说明叙述者与父亲长得像"
+      },
+      {
+        "id": "D",
+        "text": "表明祖母偏爱父亲"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "叫错名字与「把昨天说成很多年前」并列，两者都是时间错位：在祖母的记忆里，几十年被压成了一层。抽象的病症由此变成读者能直接感受到的场景。",
+    "distractorRationale": {
+      "A": "关系交代只是附带效果，不是这一细节的用意。",
+      "C": "相貌相似是可能的联想，但与并列的另一细节无关。",
+      "D": "文中没有比较偏爱的依据。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the detail «she began calling me by my father's name» accomplish?",
+        "explanation": "The mistaken name stands alongside «calling yesterday many years ago»; both are dislocations of time. In her memory decades have been pressed into a single layer. An abstract condition thus becomes a scene the reader can feel directly."
+      }
+    },
+    "tags": [
+      "detail-analysis",
+      "time"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g36",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "阅读能力的培养常被误解为速度的训练。事实上，成熟的读者最显著的特征不是读得快，而是读得有分寸：遇到熟悉的内容一目十行，遇到关键的论证则放慢速度反复推敲。真正需要教的，是判断何时该快、何时该慢的能力，而这只能在大量真实的阅读中习得。"
+    },
+    "stem": "短文用「一目十行」与「反复推敲」作对照，其作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "说明两种读法有高下之分"
+      },
+      {
+        "id": "B",
+        "text": "批评一目十行的读法"
+      },
+      {
+        "id": "C",
+        "text": "以两个极端具体地说明「有分寸」的含义"
+      },
+      {
+        "id": "D",
+        "text": "说明阅读速度无法改变"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「有分寸」本是抽象的说法，两个成语一快一慢，各自对应一种内容，合起来把这个抽象概念划出了范围。对照在这里是解释手段，不是褒贬。",
+    "distractorRationale": {
+      "A": "短文认为两种读法各有其适用场合，无高下之别。",
+      "B": "一目十行用于熟悉内容是恰当的，短文并未批评。",
+      "D": "短文关心的是何时用何种速度，不是速度能否改变。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the contrast between «ten lines at a glance» and «weighing it over and over» accomplish?",
+        "explanation": "«Proportion» is an abstract word; the two idioms — one fast, one slow, each matched to a kind of content — together mark out its range. The contrast here explains rather than praises or blames."
+      }
+    },
+    "tags": [
+      "rhetorical-function",
+      "contrast"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

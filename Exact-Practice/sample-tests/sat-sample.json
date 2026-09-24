@@ -1,0 +1,643 @@
+[
+  {
+    "id": "sat-sample-rw-01",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "M",
+    "irtB": 0,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "When biochemist Ingrid Chen published her protein-folding assay in 1998, the method was cumbersome: it required three days of incubation and a reagent that degraded within hours. Later researchers streamlined nearly every step. Yet Chen's original design remains ______ : almost every modern protocol still opens with the same three operations she specified, in the same order.",
+      "source": "Adapted from a 2024 review of laboratory methods."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "foundational"
+      },
+      {
+        "id": "B",
+        "text": "obsolete"
+      },
+      {
+        "id": "C",
+        "text": "provisional"
+      },
+      {
+        "id": "D",
+        "text": "contentious"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The colon explains the blank: modern protocols *still open with the same three operations*. A word meaning 'serving as the base that later work builds on' is required, so **foundational** fits. *Obsolete* contradicts the sentence, since the design is still in use. *Provisional* means temporary, but the point is that the design lasted. *Contentious* means disputed, and the text reports no dispute.",
+    "distractorRationale": {
+      "B": "Dipilih kalau siswa membaca 'cumbersome' dan 'streamlined' lalu menyimpulkan metode lama sudah ditinggalkan, padahal kalimat setelah titik dua menyatakan sebaliknya.",
+      "C": "Terasa cocok dengan 'original', tetapi justru berlawanan dengan 'remains'.",
+      "D": "Kata akademik yang tidak didukung apa pun di dalam teks."
+    },
+    "tags": [
+      "words-in-context",
+      "colon-clue"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-sample-rw-02",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Quantitative)",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "text",
+      "title": "Student notes",
+      "content": "A team counted bird species at four degraded wetlands before a restoration program and again three years afterward.\n\nThe team claims that the restoration increased species richness at every site surveyed."
+    },
+    "figure": {
+      "kind": "bar_chart",
+      "alt": "Grouped bar chart of bird species counted at four wetlands before and after restoration. Marsh A: 12 before, 21 after. Marsh B: 15 before, 19 after. Marsh C: 9 before, 11 after. Marsh D: 14 before, 26 after.",
+      "caption": "Bird species recorded at four wetlands, before and three years after restoration",
+      "categories": [
+        "Marsh A",
+        "Marsh B",
+        "Marsh C",
+        "Marsh D"
+      ],
+      "series": [
+        {
+          "name": "before",
+          "values": [
+            12,
+            15,
+            9,
+            14
+          ]
+        },
+        {
+          "name": "after",
+          "values": [
+            21,
+            19,
+            11,
+            26
+          ]
+        }
+      ],
+      "yLabel": "species recorded"
+    },
+    "stem": "Which choice most effectively uses data from the graph to support the team's claim?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "At Marsh D, species richness rose from 14 to 26, the largest increase of the four wetlands."
+      },
+      {
+        "id": "B",
+        "text": "Every wetland recorded more species after restoration than before, with increases ranging from 2 species at Marsh C to 12 at Marsh D."
+      },
+      {
+        "id": "C",
+        "text": "After restoration, the four wetlands together recorded 77 species, compared with 50 beforehand."
+      },
+      {
+        "id": "D",
+        "text": "Marsh C recorded the fewest species both before restoration, at 9, and after it, at 11."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The claim is about **every** site, so the evidence must cover all four wetlands and show an increase at each. Only **B** does that. **A** and **D** describe a single wetland, which cannot establish a claim about all of them. **C** gives a correct total (50 → 77) but a total can rise even if one site declines, so it does not establish the claim either.",
+    "distractorRationale": {
+      "A": "Angkanya benar dan paling dramatis, sehingga menarik — tetapi satu situs tidak membuktikan klaim tentang semua situs.",
+      "C": "Jebakan paling halus: aritmetikanya benar, tetapi jumlah keseluruhan bisa naik meski salah satu situs turun.",
+      "D": "Benar menurut grafik, tetapi menjawab pertanyaan yang berbeda."
+    },
+    "tags": [
+      "quantitative-evidence",
+      "every-vs-total"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-sample-rw-03",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "M",
+    "irtB": 0.1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Flowers pollinated after dark are usually pale. White and cream petals reflect what little light remains once the sun has set, which helps night-flying moths locate them. ______ the rare cactus *Selenicereus mirandae* opens a deep magenta bloom that reads as nearly black in moonlight. Its pollinators are bats, which navigate by echolocation and never see the flower at all."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Therefore,"
+      },
+      {
+        "id": "B",
+        "text": "For instance,"
+      },
+      {
+        "id": "C",
+        "text": "However,"
+      },
+      {
+        "id": "D",
+        "text": "Similarly,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The first two sentences establish that night-pollinated flowers are pale. The sentence after the blank describes a night-blooming flower that is dark — the opposite. A contrast transition is required, so **However** fits. *Therefore* signals a consequence, *For instance* signals an example of the pattern just stated, and *Similarly* signals agreement; all three contradict the actual relationship.",
+    "distractorRationale": {
+      "A": "Tidak ada hubungan sebab-akibat antara 'bunga malam berwarna pucat' dan 'ada kaktus berwarna magenta'.",
+      "B": "Jebakan utama: kalimat setelah rumpang memang menyebut satu spesies, sehingga terasa seperti contoh — padahal ia contoh yang MELANGGAR pola, bukan yang mengikutinya.",
+      "D": "Menyatakan kesamaan, padahal isinya pertentangan."
+    },
+    "tags": [
+      "transitions",
+      "contrast"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-sample-rw-04",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The pottery kiln, ______ was excavated in 2019, contained fragments of at least sixty vessels fired at temperatures far above what local clay was thought to withstand."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "and it"
+      },
+      {
+        "id": "B",
+        "text": "that"
+      },
+      {
+        "id": "C",
+        "text": "it"
+      },
+      {
+        "id": "D",
+        "text": "which"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The commas mark a nonrestrictive clause interrupting the sentence, and a nonrestrictive clause takes **which**. *That* cannot introduce a clause set off by commas. *It* creates a comma splice, joining two independent clauses with only commas. *And it* leaves the sentence without a main verb for its subject once the interrupter is removed.",
+    "distractorRationale": {
+      "A": "Membuat kalimat kehilangan predikat untuk subjek utamanya.",
+      "B": "Kesalahan tersering: 'that' dan 'which' dianggap bisa saling menggantikan, padahal 'that' tidak pernah dipakai pada klausa yang diapit koma.",
+      "C": "Menghasilkan comma splice — dua klausa lengkap hanya dipisah koma."
+    },
+    "tags": [
+      "nonrestrictive-clause",
+      "which-vs-that"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-sample-rw-05",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "In a controlled study, students who took notes by hand recalled conceptual material more accurately one week later than students who typed, even though the typists had recorded substantially more of the lecture verbatim. The researchers argue that writing by hand is slow enough that a student cannot transcribe everything and must instead decide, sentence by sentence, what matters. Typing removes that constraint. If the researchers are correct, then the advantage of handwriting depends less on the medium itself than on ______"
+    },
+    "stem": "Which choice most logically completes the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the selective thinking that a slower method forces a student to do."
+      },
+      {
+        "id": "B",
+        "text": "the legibility of the notes a student produces."
+      },
+      {
+        "id": "C",
+        "text": "the amount of time a student spends reviewing the notes afterward."
+      },
+      {
+        "id": "D",
+        "text": "the number of words a student is able to record during a lecture."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The researchers' explanation is that slowness forces students to *decide what matters* — that is, to process selectively. The blank asks what the advantage really depends on, and **A** names exactly that mechanism. **D** points to the quantity of words, but the typists recorded more and still did worse. **B** and **C** raise factors the passage never mentions.",
+    "distractorRationale": {
+      "B": "Masuk akal secara umum tetapi tidak pernah dibahas di teks — kesalahan inference paling sering.",
+      "C": "Faktor yang wajar dalam kehidupan nyata, tetapi tidak ada dalam studi ini.",
+      "D": "Justru berlawanan dengan temuan: pengetik menulis lebih banyak kata tetapi mengingat lebih sedikit konsep."
+    },
+    "tags": [
+      "inference",
+      "mechanism"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-sample-math-01",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $f$ is defined by $f(x) = 3x - 7$. If $f(a) = 20$, what is the value of $f(2a)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$27$"
+      },
+      {
+        "id": "B",
+        "text": "$47$"
+      },
+      {
+        "id": "C",
+        "text": "$40$"
+      },
+      {
+        "id": "D",
+        "text": "$54$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "From $f(a) = 3a - 7 = 20$, we get $3a = 27$ and $a = 9$. Then $f(2a) = f(18) = 3(18) - 7 = 54 - 7 = 47$.",
+    "distractorRationale": {
+      "A": "Berhenti di $3a = 27$ dan melaporkan 27 sebagai jawaban.",
+      "C": "Menganggap $f(2a) = 2f(a) = 40$ — fungsi ini afin, bukan linear sejati, jadi sifat itu tidak berlaku.",
+      "D": "Menghitung $3(18)$ lalu lupa mengurangi 7."
+    },
+    "tags": [
+      "function-evaluation",
+      "linear"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-sample-math-02",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In the equation $x^{2} + bx + 36 = 0$, $b$ is a constant. If the equation has exactly one real solution and $b > 0$, what is the value of $b$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 12,
+      "acceptedForms": [
+        "12"
+      ]
+    },
+    "explanation": "A quadratic has exactly one real solution when its discriminant is zero: $b^{2} - 4ac = 0$. Here $a = 1$ and $c = 36$, so $b^{2} - 144 = 0$ and $b = \\pm 12$. Since $b > 0$, $b = 12$.",
+    "hints": [
+      "Satu akar real berarti diskriminan sama dengan nol.",
+      "$b^2 - 4(1)(36) = 0$."
+    ],
+    "formulaRefs": [
+      "sat_math"
+    ],
+    "tags": [
+      "discriminant",
+      "quadratic"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "sat-sample-math-03",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Percentages",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A jacket's price is reduced by $20\\%$. The reduced price is then reduced by an additional $25\\%$. The final price is what percent of the original price?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$45\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$55\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$60\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$65\\%$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Successive percentage changes multiply rather than add. After the first reduction the price is $0.80$ of the original; after the second it is $0.75$ of that. So the final price is $0.80 \\times 0.75 = 0.60$, or $60\\%$ of the original.",
+    "distractorRationale": {
+      "A": "Mengambil $45\\%$ langsung sebagai jawaban tanpa menguranginya dari 100.",
+      "B": "Menjumlahkan diskon: $20\\% + 25\\% = 45\\%$, lalu $100\\% - 45\\% = 55\\%$. Ini kesalahan paling umum pada soal persentase berturut-turut.",
+      "D": "Perkiraan kasar tanpa perhitungan."
+    },
+    "tags": [
+      "successive-percent-change"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-sample-math-04",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Circles",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In the $xy$-plane, the graph of $x^{2} + y^{2} - 6x + 8y = 0$ is a circle. What is the radius of the circle?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$25$"
+      },
+      {
+        "id": "D",
+        "text": "$5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Complete the square in both variables. $x^{2} - 6x = (x-3)^{2} - 9$ and $y^{2} + 8y = (y+4)^{2} - 16$. Substituting gives $(x-3)^{2} + (y+4)^{2} - 25 = 0$, so $(x-3)^{2} + (y+4)^{2} = 25$. The radius is $\\sqrt{25} = 5$.",
+    "distractorRationale": {
+      "A": "Mengambil koordinat pusat $x = 3$ sebagai jari-jari.",
+      "B": "Mengambil koordinat pusat $y = -4$ sebagai jari-jari.",
+      "C": "Melaporkan $r^{2}$ alih-alih $r$ — jebakan tersering pada soal lingkaran bentuk umum."
+    },
+    "formulaRefs": [
+      "sat_math"
+    ],
+    "tags": [
+      "completing-the-square",
+      "circle-general-form"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-sample-math-05",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Two-variable data",
+    "difficulty": "M",
+    "irtB": 0.1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "figure": {
+      "kind": "scatter",
+      "alt": "Scatterplot of weekly training hours against distance run in a 12-minute test for 10 runners, with a line of best fit rising from about 1900 metres at 0 hours to about 2700 metres at 10 hours.",
+      "caption": "Weekly training hours and 12-minute test distance for 10 runners",
+      "points": [
+        {
+          "x": 1,
+          "y": 1980
+        },
+        {
+          "x": 2,
+          "y": 2050
+        },
+        {
+          "x": 3,
+          "y": 2100
+        },
+        {
+          "x": 4,
+          "y": 2210
+        },
+        {
+          "x": 5,
+          "y": 2260
+        },
+        {
+          "x": 6,
+          "y": 2340
+        },
+        {
+          "x": 7,
+          "y": 2380
+        },
+        {
+          "x": 8,
+          "y": 2470
+        },
+        {
+          "x": 9,
+          "y": 2510
+        },
+        {
+          "x": 10,
+          "y": 2600
+        }
+      ],
+      "window": {
+        "xmin": 0,
+        "xmax": 11,
+        "ymin": 1900,
+        "ymax": 2700
+      },
+      "trendline": {
+        "expr": "70*x + 1910",
+        "label": "line of best fit"
+      },
+      "xLabel": "weekly training hours",
+      "yLabel": "distance in 12 minutes (metres)"
+    },
+    "stem": "The line of best fit for the data shown is $y = 70x + 1910$, where $x$ is weekly training hours and $y$ is distance in metres. Which of the following is the best interpretation of the number $70$ in this context?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The predicted increase in distance, in metres, for each additional hour of weekly training."
+      },
+      {
+        "id": "B",
+        "text": "The predicted distance, in metres, for a runner who does no weekly training."
+      },
+      {
+        "id": "C",
+        "text": "The total number of metres gained by the runner who trained the most."
+      },
+      {
+        "id": "D",
+        "text": "The average weekly training hours of the ten runners."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "In a line of best fit written as $y = mx + b$, the slope $m$ is the predicted change in $y$ for a one-unit increase in $x$. Here the slope is $70$, so each additional training hour is associated with a predicted increase of about $70$ metres.",
+    "distractorRationale": {
+      "B": "Mendeskripsikan intersep $1910$, bukan kemiringan.",
+      "C": "Kemiringan menyatakan laju perubahan, bukan total yang dicapai satu pelari.",
+      "D": "Tidak ada kaitannya dengan persamaan garis; nilai ini tidak bisa dibaca dari kemiringan."
+    },
+    "tags": [
+      "line-of-best-fit",
+      "slope-interpretation"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

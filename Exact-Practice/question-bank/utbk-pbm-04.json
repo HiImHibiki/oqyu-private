@@ -1,0 +1,744 @@
+[
+  {
+    "id": "utbk-pbm-p01",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Penyuntingan kata",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kata bentukan yang tepat untuk melengkapi kalimat «Pemerintah akan ... jumlah kuota impor tahun depan» adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "mengkaji ulang"
+      },
+      {
+        "id": "B",
+        "text": "dikaji ulang"
+      },
+      {
+        "id": "C",
+        "text": "mengkajikan"
+      },
+      {
+        "id": "D",
+        "text": "pengkajian"
+      },
+      {
+        "id": "E",
+        "text": "mengaji ulang"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kata dasar «kaji» berawal huruf $k$, tetapi tidak semua $k$ luluh: pada kata serapan dan kata dengan gugus konsonan tertentu, bentuk bakunya tetap «mengkaji».\n\nKalimatnya memerlukan predikat aktif dengan subjek «pemerintah», sehingga «mengkaji ulang» yang tepat.",
+    "distractorRationale": {
+      "B": "Bentuk pasif, tidak cocok dengan subjek yang melakukan.",
+      "C": "Berimbuhan ganda yang tidak diperlukan.",
+      "D": "Kata benda, bukan predikat.",
+      "E": "«Mengaji» berarti membaca kitab suci, makna yang berbeda."
+    },
+    "tags": [
+      "penyuntingan-kata"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-p02",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Konjungsi & transisi",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Kebun raya itu menyimpan koleksi anggrek terbesar di kawasan ini. ..., hanya sebagian kecil yang dipamerkan kepada pengunjung.» Konjungsi yang tepat adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sebagai contoh"
+      },
+      {
+        "id": "B",
+        "text": "Namun"
+      },
+      {
+        "id": "C",
+        "text": "Selain itu"
+      },
+      {
+        "id": "D",
+        "text": "Sebaliknya"
+      },
+      {
+        "id": "E",
+        "text": "Dengan demikian"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat kedua menyatakan hal yang berlawanan dengan harapan yang timbul dari kalimat pertama: koleksinya terbesar, tetapi yang dipamerkan sedikit. Hubungan itu ditandai konjungsi pertentangan.",
+    "distractorRationale": {
+      "A": "Menandai pemberian contoh.",
+      "C": "Menandai penambahan informasi sejenis.",
+      "D": "Menandai kebalikan penuh, terlalu kuat untuk pertentangan sebagian ini.",
+      "E": "Menandai simpulan atau akibat."
+    },
+    "tags": [
+      "konjungsi"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-p03",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Struktur paragraf",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "[...] Curah hujan pada bulan itu tiga kali lipat rata-rata tahunan, dan jalur setapak berubah menjadi aliran air. Pengelola taman nasional karena itu menutup seluruh jalur pendakian sepanjang Februari untuk memulihkan permukaan tanah sekaligus mengurangi risiko kecelakaan."
+    },
+    "stem": "Kalimat yang paling tepat untuk mengawali paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Gunung ini memiliki ketinggian 2.800 meter."
+      },
+      {
+        "id": "B",
+        "text": "Jalur pendakian gunung ini memiliki tiga pos peristirahatan."
+      },
+      {
+        "id": "C",
+        "text": "Bulan Februari adalah puncak musim hujan di kawasan gunung ini."
+      },
+      {
+        "id": "D",
+        "text": "Pendaki disarankan membawa jas hujan."
+      },
+      {
+        "id": "E",
+        "text": "Karena itu, pengelola menutup jalur pendakian setiap Februari."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat pembuka paragraf harus memperkenalkan pokok yang kemudian dijelaskan kalimat-kalimat berikutnya. Isi paragraf membahas penutupan jalur pada Februari dan alasannya, sehingga pembuka yang tepat memperkenalkan Februari sebagai puncak musim hujan.\n\nKalimat berkonjungsi «karena itu» tidak dapat menjadi pembuka karena merujuk sesuatu yang belum disebutkan.",
+    "distractorRationale": {
+      "A": "Rincian yang tidak dikembangkan paragraf.",
+      "B": "Rincian yang tidak berkaitan dengan isi paragraf.",
+      "D": "Merupakan saran, cocok sebagai penutup.",
+      "E": "Diawali «karena itu», merujuk sebab yang belum ada."
+    },
+    "tags": [
+      "struktur-paragraf"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-p04",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Gagasan utama paragraf",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Akar mangrove yang mencuat dan bercabang rapat memecah arus air yang datang. Pengukuran pada satu pesisir menunjukkan tinggi gelombang berkurang sampai 60 persen setelah melewati jalur mangrove selebar seratus meter, sementara pada pantai gundul di dekatnya gelombang mencapai daratan hampir tanpa kehilangan tenaga. Di banyak tempat jalur seperti itu telah berubah menjadi tambak udang."
+    },
+    "stem": "Gagasan utama paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Tinggi gelombang berkurang setiap tahun"
+      },
+      {
+        "id": "B",
+        "text": "Mangrove tumbuh di daerah pasang surut"
+      },
+      {
+        "id": "C",
+        "text": "Tambak udang merusak lingkungan pesisir"
+      },
+      {
+        "id": "D",
+        "text": "Mangrove meredam energi gelombang sehingga melindungi garis pantai"
+      },
+      {
+        "id": "E",
+        "text": "Akar mangrove berbentuk khas"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Seluruh rincian paragraf — bentuk akar, pengukuran tinggi gelombang, dan perbandingan dengan pantai gundul — menopang satu pernyataan: mangrove meredam gelombang dan karena itu melindungi pantai.\n\nRincian tentang tambak muncul sebagai keterangan, bukan sebagai pokok bahasan.",
+    "distractorRationale": {
+      "A": "Tidak dinyatakan dalam paragraf.",
+      "B": "Keterangan tempat tumbuh, bukan gagasan utamanya.",
+      "C": "Disebut sepintas, bukan pokok paragraf.",
+      "E": "Rincian pendukung."
+    },
+    "tags": [
+      "gagasan-utama"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-p05",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Tujuan penulis",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Akar mangrove yang mencuat dan bercabang rapat memecah arus air yang datang. Pengukuran pada satu pesisir menunjukkan tinggi gelombang berkurang sampai 60 persen setelah melewati jalur mangrove selebar seratus meter, sementara pada pantai gundul di dekatnya gelombang mencapai daratan hampir tanpa kehilangan tenaga. Di banyak tempat jalur seperti itu telah berubah menjadi tambak udang."
+    },
+    "stem": "Tujuan penulis paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Membandingkan jenis-jenis mangrove"
+      },
+      {
+        "id": "B",
+        "text": "Mengajak pembaca menanam mangrove"
+      },
+      {
+        "id": "C",
+        "text": "Mengkritik pemilik tambak udang"
+      },
+      {
+        "id": "D",
+        "text": "Melaporkan hasil sensus tumbuhan pesisir"
+      },
+      {
+        "id": "E",
+        "text": "Menjelaskan cara mangrove melindungi pantai"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Paragraf memaparkan mekanisme: akar memecah arus, gelombang kehilangan tenaga, pantai terlindungi. Tidak ada ajakan, celaan, maupun perbandingan jenis.\n\nKalimat terakhir tentang tambak menyampaikan keadaan, bukan penilaian terhadap pemiliknya.",
+    "distractorRationale": {
+      "A": "Jenis mangrove tidak dibandingkan.",
+      "B": "Tidak ada ajakan dalam paragraf.",
+      "C": "Tambak disebut tanpa penilaian.",
+      "D": "Tidak ada data sensus."
+    },
+    "tags": [
+      "tujuan-penulis"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-p06",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Penyuntingan kalimat",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat yang perlu diperbaiki karena tidak efektif adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Adapun daripada hasil penelitian tersebut menunjukkan adanya penurunan."
+      },
+      {
+        "id": "B",
+        "text": "Peneliti membandingkan tiga metode pengukuran."
+      },
+      {
+        "id": "C",
+        "text": "Data dikumpulkan selama dua musim hujan berturut-turut."
+      },
+      {
+        "id": "D",
+        "text": "Penelitian ini bertujuan mengukur laju erosi di lereng selatan."
+      },
+      {
+        "id": "E",
+        "text": "Simpulan disusun berdasarkan seluruh data lapangan."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat itu menumpuk kata yang tidak diperlukan: «adapun», «daripada», dan «adanya». «Daripada» dipakai untuk perbandingan, bukan untuk menandai subjek, sehingga kalimatnya justru kehilangan subjek yang jelas.\n\nBentuk efektifnya cukup: «Hasil penelitian tersebut menunjukkan penurunan.»",
+    "distractorRationale": {
+      "B": "Sudah efektif.",
+      "C": "Sudah efektif.",
+      "D": "Sudah efektif: subjek dan predikatnya jelas.",
+      "E": "Sudah efektif."
+    },
+    "tags": [
+      "kalimat-efektif",
+      "penyuntingan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-p07",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Konjungsi & transisi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Penelitian itu tidak menemukan perbedaan yang berarti antara kedua kelompok. ..., jumlah pesertanya terlalu sedikit untuk menarik simpulan yang kuat.» Konjungsi yang tepat adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Misalnya"
+      },
+      {
+        "id": "B",
+        "text": "Selain itu"
+      },
+      {
+        "id": "C",
+        "text": "Akibatnya"
+      },
+      {
+        "id": "D",
+        "text": "Padahal"
+      },
+      {
+        "id": "E",
+        "text": "Sebaliknya"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat kedua menambahkan keterbatasan lain di samping temuan yang sudah disebutkan; keduanya sama-sama alasan untuk berhati-hati terhadap penelitian itu.\n\nHubungan penambahan seperti itu ditandai «selain itu».",
+    "distractorRationale": {
+      "A": "Menandai contoh.",
+      "C": "Menandai akibat, padahal jumlah peserta bukan akibat dari tidak adanya perbedaan.",
+      "D": "Menandai pertentangan yang mengejutkan.",
+      "E": "Menandai kebalikan, padahal kedua kalimat searah."
+    },
+    "tags": [
+      "konjungsi"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-p08",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Hubungan antarparagraf",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Produksi garam rakyat di pesisir utara turun hampir sepertiga dibandingkan tahun sebelumnya. Penurunan tercatat merata di hampir seluruh sentra produksi.\n\nMusim hujan tahun ini berlangsung dua bulan lebih panjang daripada biasanya. Petambak garam bergantung pada penguapan air laut di bawah matahari, dan setiap hari hujan berarti satu hari tanpa panen."
+    },
+    "stem": "Hubungan antara paragraf pertama dan paragraf kedua adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Paragraf kedua membantah pernyataan paragraf pertama"
+      },
+      {
+        "id": "B",
+        "text": "Paragraf kedua memberikan contoh bagi pernyataan paragraf pertama"
+      },
+      {
+        "id": "C",
+        "text": "Paragraf kedua menjelaskan sebab keadaan pada paragraf pertama"
+      },
+      {
+        "id": "D",
+        "text": "Paragraf kedua mengulang isi paragraf pertama dengan kata lain"
+      },
+      {
+        "id": "E",
+        "text": "Paragraf kedua menarik simpulan dari paragraf pertama"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Paragraf pertama menyatakan keadaannya: produksi garam rakyat turun. Paragraf kedua menerangkan mengapa hal itu terjadi — musim hujan yang memanjang memperpendek masa penguapan.\n\nHubungan seperti itu adalah hubungan sebab, bukan contoh maupun bantahan.",
+    "distractorRationale": {
+      "A": "Tidak ada pertentangan di antara keduanya.",
+      "B": "Paragraf kedua tidak memberi contoh kasus, melainkan alasan.",
+      "D": "Isinya berbeda, bukan pengulangan.",
+      "E": "Simpulan tidak ditarik di paragraf kedua."
+    },
+    "tags": [
+      "hubungan-antarparagraf"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-p09",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Simpulan bacaan",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Produksi garam rakyat di pesisir utara turun hampir sepertiga dibandingkan tahun sebelumnya. Penurunan tercatat merata di hampir seluruh sentra produksi.\n\nMusim hujan tahun ini berlangsung dua bulan lebih panjang daripada biasanya. Petambak garam bergantung pada penguapan air laut di bawah matahari, dan setiap hari hujan berarti satu hari tanpa panen."
+    },
+    "stem": "Simpulan yang tepat berdasarkan kedua paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Seluruh sentra garam berhenti berproduksi"
+      },
+      {
+        "id": "B",
+        "text": "Petambak garam sebaiknya berganti pekerjaan"
+      },
+      {
+        "id": "C",
+        "text": "Pemerintah perlu mengimpor garam"
+      },
+      {
+        "id": "D",
+        "text": "Produksi garam rakyat sangat bergantung pada cuaca"
+      },
+      {
+        "id": "E",
+        "text": "Harga garam akan naik tahun depan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kedua paragraf bersama-sama menunjukkan bahwa penurunan produksi terjadi merata dan sebabnya adalah panjangnya musim hujan. Simpulan yang sah persis sejauh itu: produksinya bergantung pada cuaca.\n\nSaran kebijakan dan ramalan harga tidak dibahas sama sekali.",
+    "distractorRationale": {
+      "A": "Bacaan menyebut penurunan, bukan penghentian.",
+      "B": "Saran yang tidak disinggung bacaan.",
+      "C": "Kebijakan impor tidak dibahas.",
+      "E": "Ramalan harga tidak dibahas."
+    },
+    "tags": [
+      "simpulan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-p10",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Struktur paragraf",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Jam matahari menunjukkan waktu melalui bayangan sebuah batang yang bergerak sepanjang hari. (2) Batang itu harus dipasang sejajar dengan sumbu bumi agar bayangannya bergerak merata. (3) Karena itu kemiringannya berbeda-beda menurut lintang tempat jam itu dipasang. (4) Jam tangan bermerek terkenal kini dijual dengan harga puluhan juta rupiah. (5) Kelemahannya jelas: pada hari berawan dan pada malam hari, jam matahari sama sekali tidak dapat dibaca."
+    },
+    "stem": "Kalimat yang tidak padu dalam paragraf tersebut adalah kalimat nomor ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(1)"
+      },
+      {
+        "id": "B",
+        "text": "(5)"
+      },
+      {
+        "id": "C",
+        "text": "(2)"
+      },
+      {
+        "id": "D",
+        "text": "(3)"
+      },
+      {
+        "id": "E",
+        "text": "(4)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Paragraf membahas cara kerja jam matahari dan keterbatasannya. Kalimat (4) beralih ke harga jam tangan modern, yang tidak berkaitan dengan pokok itu dan tidak dikembangkan kalimat mana pun.\n\nMenghapusnya tidak memutus alur dari kalimat (3) ke kalimat (5), yang justru menjadi lebih rapat.",
+    "distractorRationale": {
+      "A": "Memperkenalkan pokok paragraf.",
+      "B": "Menutup dengan keterbatasan yang sejalan.",
+      "C": "Menjelaskan cara kerjanya.",
+      "D": "Melanjutkan penjelasan yang sama."
+    },
+    "tags": [
+      "kepaduan-paragraf"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-p11",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Gagasan utama paragraf",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kopi luwak dijual dengan harga berlipat ganda karena dipercaya memiliki cita rasa istimewa akibat proses pencernaan luwak. Uji cita rasa yang pernah dipublikasikan berjumlah sedikit, sebagian besar tidak dilakukan secara buta, dan hasilnya berbeda-beda antarpenguji. Sejauh ini belum ada pengujian berskala besar yang membandingkan kopi luwak dengan kopi biasa dari kebun yang sama."
+    },
+    "stem": "Gagasan utama paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Klaim keistimewaan kopi luwak belum didukung pengujian yang memadai"
+      },
+      {
+        "id": "B",
+        "text": "Luwak liar sulit ditemukan di perkebunan"
+      },
+      {
+        "id": "C",
+        "text": "Proses pencernaan luwak mengubah cita rasa biji kopi"
+      },
+      {
+        "id": "D",
+        "text": "Kopi luwak berharga mahal di pasar internasional"
+      },
+      {
+        "id": "E",
+        "text": "Penikmat kopi lebih menyukai rasa yang pahit"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Paragraf memaparkan klaim tentang kopi luwak, lalu menunjukkan bahwa pengujian yang ada berjumlah sedikit, tidak dilakukan secara buta, dan hasilnya tidak konsisten. Arah seluruh paragraf adalah menimbang kekuatan bukti, bukan menjelaskan prosesnya.\n\nHarga dan proses pencernaan disebut sebagai latar, bukan sebagai gagasan yang menaungi.",
+    "distractorRationale": {
+      "B": "Tidak dibahas dalam paragraf.",
+      "C": "Klaim yang justru sedang dipersoalkan.",
+      "D": "Latar yang menjelaskan mengapa klaimnya penting.",
+      "E": "Tidak dinyatakan dalam paragraf."
+    },
+    "tags": [
+      "gagasan-utama"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-p12",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Penyuntingan kalimat",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "«Dalam rapat itu memutuskan bahwa anggaran kegiatan akan ditambah.»"
+    },
+    "stem": "Perbaikan kalimat tersebut yang paling tepat adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rapat itu diputuskan bahwa anggaran ditambah."
+      },
+      {
+        "id": "B",
+        "text": "Dalam rapat itu diputuskan bahwa anggaran ditambah."
+      },
+      {
+        "id": "C",
+        "text": "Dalam rapat itu keputusannya anggaran ditambah."
+      },
+      {
+        "id": "D",
+        "text": "Rapat itu memutuskan bahwa anggaran ditambah."
+      },
+      {
+        "id": "E",
+        "text": "Dalam rapat itu memutuskan bahwa anggaran ditambah."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat asli tidak bersubjek: «Dalam rapat itu» adalah keterangan, sehingga tidak ada yang melakukan «memutuskan».\n\nAda dua perbaikan yang sah — membuang «dalam» agar «rapat itu» menjadi subjek, atau mempertahankan keterangan itu dan mengubah predikatnya menjadi pasif. Pilihan yang mempertahankan makna aslinya secara utuh adalah bentuk pasif «diputuskan».",
+    "distractorRationale": {
+      "A": "Mencampur subjek aktif dengan predikat pasif.",
+      "C": "Susunannya tidak baku dan predikatnya kabur.",
+      "D": "Gramatikal, tetapi mengubah keterangan menjadi pelaku sehingga maknanya bergeser.",
+      "E": "Masih tanpa subjek, sama seperti kalimat aslinya."
+    },
+    "tags": [
+      "kalimat-efektif",
+      "subjek"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  }
+]

@@ -1,0 +1,1282 @@
+[
+  {
+    "id": "csca-zhh-d01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "唐代长安城采用里坊制，全城被纵横街道划分为一百多个封闭的坊，坊门朝夕启闭，夜间实行宵禁。商业活动集中在东西两市，也有固定的开闭时间。到了宋代，坊墙被拆除，商铺可以临街开设，夜市随之兴起。这一变化并非出自某项政令，而是人口增长与商业扩张长期冲击旧制度的结果。"
+    },
+    "stem": "根据短文，唐宋城市格局变化的主要原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "唐代的里坊制建造成本过高"
+      },
+      {
+        "id": "B",
+        "text": "宋代皇帝颁布了拆除坊墙的法令"
+      },
+      {
+        "id": "C",
+        "text": "人口与商业的长期增长冲破了旧有制度"
+      },
+      {
+        "id": "D",
+        "text": "宋代的城市面积远大于唐代"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文最后一句明确否定了政令说：「并非出自某项政令，而是人口增长与商业扩张长期冲击旧制度的结果」。这是一种自下而上的制度变迁。",
+    "distractorRationale": {
+      "A": "建造成本未被提及。",
+      "B": "短文正是要排除这种解释。",
+      "D": "城市面积的比较不在短文范围内。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what mainly caused the change in urban layout between the Tang and Song?",
+        "explanation": "The final sentence rules out the obvious explanation explicitly: the change 并非出自某项政令 — it came not from any decree but from population growth and commercial expansion wearing away the old system over time.\n\nThis is institutional change from below rather than by fiat."
+      }
+    },
+    "tags": [
+      "history-reading",
+      "causation"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "科举制度自隋唐确立，为寒门子弟提供了上升通道，打破了门阀世族对官位的垄断。但考试内容长期偏重经义与文辞，且备考所需的时间与书籍并非人人负担得起，因此实际受益者多为中小地主家庭。评价科举，既不能忽视它对社会流动的推动，也不宜夸大其平等程度。"
+    },
+    "stem": "根据短文，作者对科举制度的评价是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "认为它没有产生任何积极作用"
+      },
+      {
+        "id": "B",
+        "text": "完全肯定其公平性"
+      },
+      {
+        "id": "C",
+        "text": "认为它只对门阀世族有利"
+      },
+      {
+        "id": "D",
+        "text": "既肯定其推动社会流动，也指出其平等程度有限"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文最后一句是全段的定调：「既不能忽视……也不宜夸大……」。这种双向限定正是持平之论的典型句式。",
+    "distractorRationale": {
+      "A": "短文肯定它「打破了门阀世族对官位的垄断」。",
+      "B": "短文明确指出备考成本使受益者集中于中小地主家庭。",
+      "C": "科举正是削弱了门阀世族的垄断。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, how does the author assess the imperial examination system?",
+        "explanation": "The closing sentence sets the tone for the whole passage: 既不能忽视…也不宜夸大… — neither overlook what it achieved nor overstate how equal it was.\n\nThis two-sided qualification is the standard construction for a balanced historical judgement, and recognising it is what the question tests."
+      }
+    },
+    "tags": [
+      "history-reading",
+      "author-stance"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "丝绸之路并非一条固定的道路，而是由许多条时通时断的商道构成的网络。沿途的绿洲城邦既是中转站，也是货物加价的环节。因此一匹丝绸从长安运到地中海沿岸时，价格往往已上涨数十倍，而完成全程运输的商人几乎不存在——货物是在一段段接力中向西移动的。"
+    },
+    "stem": "根据短文，丝绸价格大幅上涨的主要原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "货物经过多个中转站接力转手，每一环都加价"
+      },
+      {
+        "id": "B",
+        "text": "丝绸在运输途中大量损耗"
+      },
+      {
+        "id": "C",
+        "text": "运输的商人收取了高额佣金"
+      },
+      {
+        "id": "D",
+        "text": "地中海地区的丝绸需求远超供给"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文把绿洲城邦称为「货物加价的环节」，并说明货物是「一段段接力」西运的。层层转手、层层加价，正是价格上涨数十倍的机制。",
+    "distractorRationale": {
+      "B": "损耗未被提及。",
+      "C": "短文说完成全程的商人几乎不存在，不存在单一商人的高额佣金。",
+      "D": "供求关系不是短文给出的解释。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why did the price of silk rise so steeply?",
+        "explanation": "The passage calls the oasis city-states 货物加价的环节 — the links at which goods were marked up — and describes the cargo moving west in relays, 一段段接力.\n\nSuccessive resale with a margin added at each stage is the mechanism behind the several-dozen-fold increase. No single merchant covered the whole route."
+      }
+    },
+    "tags": [
+      "history-reading",
+      "mechanism"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "研究古代人口，学者主要依据历代户籍记载。但户籍的编制目的是征税与征役，因此隐匿人口是常见现象：多报家产要多纳税，少报人丁可少服役。战乱之后，户籍数字常出现断崖式下降，其中既有真实的人口损失，也有大量脱籍流亡而未被登记者。"
+    },
+    "stem": "根据短文，战后户籍数字骤降不能直接等同于人口损失，原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "古代没有能力统计人口"
+      },
+      {
+        "id": "B",
+        "text": "其中包含大量脱离户籍而未被登记的流亡者"
+      },
+      {
+        "id": "C",
+        "text": "战乱期间户籍完全停止编制"
+      },
+      {
+        "id": "D",
+        "text": "户籍数字通常被夸大"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文最后一句把骤降拆成两部分：真实损失，以及「大量脱籍流亡而未被登记者」。后者是活着的人，只是不在册上，故不能把降幅整体读作死亡人数。",
+    "distractorRationale": {
+      "A": "短文说学者正是依据户籍研究人口，说明统计是存在的。",
+      "C": "短文只说数字骤降，未说编制中断。",
+      "D": "短文指出的是隐匿人口，即少报而非夸大。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why can a sharp post-war fall in registered population not be read directly as population loss?",
+        "explanation": "The final sentence splits the drop into two parts: genuine deaths, and 大量脱籍流亡而未被登记者 — large numbers of displaced people who left the registers without being recorded elsewhere.\n\nThose people were alive but off the books, so the full decline cannot be counted as mortality."
+      }
+    },
+    "tags": [
+      "history-reading",
+      "source-criticism"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "造纸术在汉代改进后，书写材料的成本大幅下降。竹简一部书往往需要数辆车装载，纸本则可置于案头。材料的轻便使得典籍的抄写、流通与私人藏书成为可能，读书人不必再依附于官府藏书处。技术的改变就这样悄悄改写了知识传播的格局。"
+    },
+    "stem": "根据短文，造纸术对知识传播的关键影响是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "提高了书写的速度"
+      },
+      {
+        "id": "B",
+        "text": "使文字的形体发生了变化"
+      },
+      {
+        "id": "C",
+        "text": "降低了书籍的成本与体积，使私人藏书和自由流通成为可能"
+      },
+      {
+        "id": "D",
+        "text": "让官府藏书处的规模不断扩大"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文的因果链是：材料成本与体积下降 → 抄写流通与私人藏书成为可能 → 读书人不必依附官府藏书处。关键在于知识获取渠道的去中心化。",
+    "distractorRationale": {
+      "A": "书写速度取决于书写工具与方式，短文未提及。",
+      "B": "字形演变与纸张的普及并非短文所论。",
+      "D": "短文说的恰恰是读书人不再依附官府藏书处。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what was papermaking's key effect on the spread of knowledge?",
+        "explanation": "The causal chain runs: cheaper and less bulky material → copying, circulation and private libraries become feasible → scholars no longer depend on government book repositories.\n\nThe decisive change is the decentralisation of access, not any improvement in writing itself."
+      }
+    },
+    "tags": [
+      "history-reading",
+      "technology-and-society"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "地方志是研究区域史的重要材料，通常由地方官主持、士绅参与编纂。它详细记载建置沿革、赋税、水利、人物与风俗，保存了正史所不载的细节。但编纂者多为本地精英，所选人物以科举成功者与节妇孝子为主，普通农户很少入志。因此地方志既是一扇窗，也是一副框。"
+    },
+    "stem": "短文末句「既是一扇窗，也是一副框」的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "地方志的装帧十分精美"
+      },
+      {
+        "id": "B",
+        "text": "地方志既记载建筑也记载人物"
+      },
+      {
+        "id": "C",
+        "text": "地方志的内容大多不可信"
+      },
+      {
+        "id": "D",
+        "text": "地方志让我们看见地方社会，同时也限定了我们能看见的范围"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「窗」对应短文前半的价值：保存了正史不载的细节；「框」对应后半的局限：编纂者的身份决定了谁被写入。二者共同构成对史料的辩证评价。",
+    "distractorRationale": {
+      "A": "把比喻当作实指，忽略了整段的论述。",
+      "B": "内容分类不是这个比喻的所指。",
+      "C": "短文强调的是视角的局限，而非记载不可信。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the closing metaphor 既是一扇窗，也是一副框 mean?",
+        "explanation": "The window (窗) answers to the first half of the passage — local gazetteers preserve detail that the dynastic histories omit. The frame (框) answers to the second half — the compilers' own social position decided who got written in.\n\nTogether they give a balanced verdict on the source: it shows us local society, and it bounds what we are able to see."
+      }
+    },
+    "tags": [
+      "history-reading",
+      "metaphor"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "书院是中国古代重要的教育机构，与官学并行。书院多设于山林清静之地，师生同住，讲学之外亦重问答与自学。山长（书院负责人）常由学问声望而非官职决定，学生也可自由选择追随哪位老师。这种相对松散的组织形式，使学术争鸣得以在制度之外保有一片空间。"
+    },
+    "stem": "根据短文，书院能够容纳学术争鸣的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "组织松散，师从与讲学不完全依附于官方体制"
+      },
+      {
+        "id": "B",
+        "text": "书院的经费全部由朝廷拨付"
+      },
+      {
+        "id": "C",
+        "text": "书院不需要考试"
+      },
+      {
+        "id": "D",
+        "text": "书院学生人数众多"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文列举了三点：山长由学问声望决定、学生可自由择师、组织相对松散。三者共同指向同一件事——书院在官方体制之外保有自主空间，争鸣因此可能。",
+    "distractorRationale": {
+      "B": "短文未提经费来源，若全由朝廷拨付反而会削弱独立性。",
+      "C": "考试与否短文未涉及。",
+      "D": "人数多少与争鸣空间无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why could academies accommodate scholarly debate?",
+        "explanation": "The passage gives three details: the head of an academy was chosen for learning and reputation rather than official rank; students chose which teacher to follow; and the organisation was comparatively loose.\n\nAll three point the same way — the academies held space outside the official system, and that autonomy is what made argument possible."
+      }
+    },
+    "tags": [
+      "education-reading",
+      "institutions"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "一项跨国研究比较了两种课堂：一种由教师系统讲授后布置练习，另一种让学生先尝试解决未学过的问题再由教师讲解。短期测验中，前者成绩更好；但在数月后的迁移测验中，后者明显占优。研究者认为，先行尝试所带来的困惑，反而使随后的讲解更容易被吸收和保留。"
+    },
+    "stem": "根据短文，第二种课堂在迁移测验中占优的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "第二种课堂的教师水平更高"
+      },
+      {
+        "id": "B",
+        "text": "先行尝试制造的困惑使后续讲解更易被理解和保留"
+      },
+      {
+        "id": "C",
+        "text": "第二种课堂的学生学习时间更长"
+      },
+      {
+        "id": "D",
+        "text": "迁移测验的题目更简单"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文最后一句给出研究者的解释：先行尝试带来的困惑「反而使随后的讲解更容易被吸收和保留」。这也解释了为何短期测验与长期迁移测验结论相反。",
+    "distractorRationale": {
+      "A": "教师水平未被作为变量提及。",
+      "C": "学习时长未被提及，且两种课堂都包含讲解环节。",
+      "D": "两组接受的是同一套迁移测验。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why did the second classroom perform better on the transfer test?",
+        "explanation": "The final sentence gives the researchers' account: the confusion produced by attempting the problem first made the subsequent explanation easier to absorb and retain.\n\nThat mechanism also explains the split result — the first classroom looked better on the immediate test and worse months later."
+      }
+    },
+    "tags": [
+      "education-reading",
+      "learning-science"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "有人主张取消一切家庭作业，理由是它加重学生负担且效果有限。反对者则指出，问题不在作业本身，而在作业的设计：机械重复的抄写确实无益，但要求学生解释思路或应用于新情境的任务，能显著加深理解。争论的焦点因此从「要不要作业」转向了「什么样的作业」。"
+    },
+    "stem": "根据短文，争论焦点转移的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "双方都认为应当取消家庭作业"
+      },
+      {
+        "id": "B",
+        "text": "研究证明作业完全没有效果"
+      },
+      {
+        "id": "C",
+        "text": "反对者指出效果差异来自作业的设计而非作业本身"
+      },
+      {
+        "id": "D",
+        "text": "学生的负担已经不再是问题"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "反对者的论证方式是重新界定问题：把「作业有没有用」拆成「哪种作业有用」。一旦机械抄写与解释思路被区分开来，原来的二选一问题就失去了意义。",
+    "distractorRationale": {
+      "A": "反对者并不主张取消。",
+      "B": "短文说某些类型的作业「能显著加深理解」。",
+      "D": "负担问题依然存在，只是不再是争论的核心。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why did the focus of the debate shift?",
+        "explanation": "The critics reframed the question: instead of asking whether homework works, they asked which kind works. Once mechanical copying is distinguished from tasks requiring explanation or transfer, the original either/or question loses its force.\n\nThis is a recognisable move in argument — dissolving a debate by redrawing its terms."
+      }
+    },
+    "tags": [
+      "education-reading",
+      "argument-structure"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "「减负」政策实施后，某地学校的课内作业量明显下降，但课外培训机构的报名人数却同步上升。调查发现，减负减少的是学校可见的负担，家长的焦虑却并未随之减轻，反而因为缺少统一标准而加剧。负担于是从校内转移到校外，总量未必下降。"
+    },
+    "stem": "根据短文，减负政策未能实现预期效果的关键在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "学校没有认真执行政策"
+      },
+      {
+        "id": "B",
+        "text": "培训机构的收费过高"
+      },
+      {
+        "id": "C",
+        "text": "学生自己不愿意减少学习时间"
+      },
+      {
+        "id": "D",
+        "text": "政策只减少了校内可见的负担，未触及家长焦虑这一根源"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文的分析层层递进：校内作业确实减少了（政策被执行），但焦虑未减且因缺少统一标准而加剧，负担因此转移而非消失。问题出在政策作用的位置，而非执行力度。",
+    "distractorRationale": {
+      "A": "短文说课内作业量「明显下降」，说明政策被执行了。",
+      "B": "收费高低不是短文给出的解释。",
+      "C": "报名的是家长，短文并未讨论学生意愿。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why did the burden-reduction policy fall short?",
+        "explanation": "The passage builds its analysis in steps: in-school homework did fall, so the policy was implemented; but parental anxiety did not fall and in fact rose, because a common yardstick had disappeared. The burden therefore moved rather than shrank.\n\nThe failure lies in where the policy acted, not in how firmly it was enforced."
+      }
+    },
+    "tags": [
+      "education-reading",
+      "policy-analysis"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共政策的评估通常关注两类指标：效率与公平。前者衡量投入产出之比，后者衡量收益在不同群体间的分配。二者时常冲突：一项政策可能以最低成本取得最大总收益，却让最需要帮助的群体几乎无所得。因此评估政策不能只报告总量，还须说明收益落在了谁身上。"
+    },
+    "stem": "根据短文，只报告政策的总收益可能带来的问题是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "掩盖了收益在不同群体间分配不均的事实"
+      },
+      {
+        "id": "B",
+        "text": "使政策成本被高估"
+      },
+      {
+        "id": "C",
+        "text": "无法计算投入产出之比"
+      },
+      {
+        "id": "D",
+        "text": "导致政策无法执行"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文给出的例子正是关键：总收益最大的政策，可能让最需要帮助的群体几乎无所得。总量掩盖了分配，故须补充「收益落在了谁身上」这一维度。",
+    "distractorRationale": {
+      "B": "成本估算与分配问题无关。",
+      "C": "总收益恰恰是计算效率所需的数据。",
+      "D": "短文讨论的是评估的完整性，不是执行的可行性。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what problem arises from reporting only a policy's aggregate benefit?",
+        "explanation": "The passage's example carries the point: a policy can deliver the greatest total benefit at the lowest cost while leaving those who most need help with almost nothing.\n\nThe aggregate masks the distribution, which is why the assessment must also say *who* received the benefit."
+      }
+    },
+    "tags": [
+      "politics-reading",
+      "policy-evaluation"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "某市在旧城改造中引入了「先议后拆」的程序：拆迁方案须先经居民议事会讨论，达成多数同意后方可实施。这一程序延长了决策时间，前期成本明显上升。但项目实施阶段的纠纷与停工大幅减少，总工期反而缩短。管理者由此认识到，程序上的「慢」有时是执行上的「快」。"
+    },
+    "stem": "根据短文，「程序上的慢有时是执行上的快」这一判断的依据是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "居民议事会的效率很高"
+      },
+      {
+        "id": "B",
+        "text": "前期协商虽费时，却减少了实施阶段的纠纷与停工"
+      },
+      {
+        "id": "C",
+        "text": "拆迁方案本身得到了简化"
+      },
+      {
+        "id": "D",
+        "text": "前期成本的上升被政府补贴抵消"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文给出了完整的对照：前期决策时间延长、成本上升，但实施阶段纠纷与停工大幅减少，总工期缩短。判断的依据正是这一「前慢后快、总账更优」的结构。",
+    "distractorRationale": {
+      "A": "短文说议事程序「延长了决策时间」，并未称其高效。",
+      "C": "方案是否简化未被提及。",
+      "D": "补贴未被提及，短文比较的是工期而非补贴。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what supports the judgement that procedural slowness can be operational speed?",
+        "explanation": "The passage supplies the full comparison: consultation lengthened the decision phase and raised up-front costs, but disputes and work stoppages during implementation fell sharply and the total schedule shortened.\n\nThe judgement rests on that structure — slower at the front, faster overall."
+      }
+    },
+    "tags": [
+      "politics-reading",
+      "governance"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "「一刀切」是指不考虑具体差异而对所有对象采取同一措施。它的优点是执行简便、标准清晰、不易产生寻租空间；缺点是忽略特殊情况，可能造成不必要的损失。因此判断某项措施是否应当「一刀切」，关键在于差异的成本与甄别的成本孰高孰低。"
+    },
+    "stem": "根据短文，判断是否应采取「一刀切」措施的标准是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "看措施是否受到群众欢迎"
+      },
+      {
+        "id": "B",
+        "text": "看执行部门的人手是否充足"
+      },
+      {
+        "id": "C",
+        "text": "比较忽略差异的代价与逐一甄别的代价"
+      },
+      {
+        "id": "D",
+        "text": "一刀切在任何情况下都应避免"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文最后一句给出了明确的判断标准：「差异的成本与甄别的成本孰高孰低」。这是一个权衡而非一概否定——当甄别成本极高时，一刀切反而是理性的。",
+    "distractorRationale": {
+      "A": "受欢迎程度不是短文给出的标准。",
+      "B": "人手多寡是甄别成本的一部分，但不是完整标准。",
+      "D": "短文列举了一刀切的优点，并未一概否定。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what determines whether a blanket measure is appropriate?",
+        "explanation": "The final sentence states the criterion: weigh the cost of ignoring differences against the cost of identifying them case by case.\n\nThis is a trade-off, not a blanket condemnation. Where screening is very expensive, a uniform rule can be the rational choice — which is why the passage also lists the approach's advantages."
+      }
+    },
+    "tags": [
+      "politics-reading",
+      "policy-criteria"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "考核指标一旦成为目标，就容易失去衡量的功能。某地曾以「结案率」考核基层调解组织，结果调解员倾向于挑选容易达成的简单纠纷，而把复杂案件推向法院。结案率漂亮地上升了，真正需要调解的矛盾却未被触及。"
+    },
+    "stem": "短文所描述的现象最贴切的概括是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "基层调解组织的人员素质有待提高"
+      },
+      {
+        "id": "B",
+        "text": "结案率是衡量调解工作的最佳指标"
+      },
+      {
+        "id": "C",
+        "text": "法院的案件数量应当受到限制"
+      },
+      {
+        "id": "D",
+        "text": "衡量指标被当作目标追求时，会扭曲被衡量的行为本身"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "调解员并未违规，只是理性地迎合了考核规则：挑简单案件能提高结案率。指标本身诱导了这种选择，因而不再反映它原本想衡量的东西。这正是首句所点明的道理。",
+    "distractorRationale": {
+      "A": "把制度问题归结为人员素质，忽略了激励结构。",
+      "B": "全文正是在说明该指标失效的过程。",
+      "C": "案件流向法院是结果而非应处理的对象。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which statement best captures the phenomenon described?",
+        "explanation": "The mediators broke no rules; they responded rationally to the rule they were judged by, since easy cases raise the closure rate. The indicator itself induced the selection, so it stopped reflecting what it was meant to measure.\n\nThat is exactly the principle the opening sentence states."
+      }
+    },
+    "tags": [
+      "politics-reading",
+      "perverse-incentives"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "母亲把那件旧棉袄改了三回。第一回改小，给我；第二回改得更小，给弟弟；第三回她把它拆开，取出里面的棉花重新弹过，缝进了我上大学那年带走的被子里。棉花是三十年前外婆种的，母亲说，这样它就还没走完。"
+    },
+    "stem": "文中「这样它就还没走完」一句所表达的情感是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "以物件的延续维系家族记忆的不舍"
+      },
+      {
+        "id": "B",
+        "text": "对节俭生活的无奈"
+      },
+      {
+        "id": "C",
+        "text": "对棉花质量的赞叹"
+      },
+      {
+        "id": "D",
+        "text": "对弟弟的偏爱"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "棉花出自外婆之手，经母亲三次改制，最终随「我」远行。「还没走完」把棉花的旅程与家族记忆的延续叠合在一起——物件不散，记忆便不断。",
+    "distractorRationale": {
+      "B": "文中虽有节俭之实，但落笔处在情感的传递而非生活的无奈。",
+      "C": "母亲说的是「它还没走完」，指向时间与传承，不是质量。",
+      "D": "两个孩子先后穿用，文中没有偏爱的痕迹。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What feeling does the line 这样它就还没走完 express?",
+        "explanation": "The cotton was grown by the grandmother, remade three times by the mother, and finally travels away with the narrator. 还没走完 — \"it hasn't finished its journey yet\" — folds the cotton's passage together with the continuity of family memory.\n\nSo long as the object persists, the memory has not ended."
+      }
+    },
+    "tags": [
+      "literature-reading",
+      "emotion"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "母亲把那件旧棉袄改了三回。第一回改小，给我；第二回改得更小，给弟弟；第三回她把它拆开，取出里面的棉花重新弹过，缝进了我上大学那年带走的被子里。棉花是三十年前外婆种的，母亲说，这样它就还没走完。"
+    },
+    "stem": "文中反复出现的「改」这一动作，在结构上的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "交代弟弟比我年幼"
+      },
+      {
+        "id": "B",
+        "text": "以三次改制串起三代人，使时间在一件物品上显形"
+      },
+      {
+        "id": "C",
+        "text": "表现家境的贫困程度"
+      },
+      {
+        "id": "D",
+        "text": "说明母亲擅长针线活"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "三次「改」构成全文的骨架：外婆种棉、母亲改制、「我」带走，三代人的时间被压缩进同一件物品的变形之中。结构上，重复的动作成了时间流逝的刻度。",
+    "distractorRationale": {
+      "A": "年龄差只是第二次改制的顺带信息。",
+      "C": "贫困是背景，但文章重心不在此。",
+      "D": "针线技艺是细节，不是结构功能。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What structural function does the repeated act of 改 serve?",
+        "explanation": "The three alterations form the spine of the piece: the grandmother grew the cotton, the mother remade it, the narrator carried it away. Three generations are compressed into the successive transformations of a single object.\n\nStructurally, the repeated action becomes a measure of passing time."
+      }
+    },
+    "tags": [
+      "literature-reading",
+      "structure"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "**渡口**\n\n船不等人，人却总在等船。\n对岸的灯亮了又灭，\n像有人在数我们还剩多少耐心。\n最后一班过去了，\n留下的人各自转身，\n发现回去的路比来时还短。"
+    },
+    "stem": "末句「回去的路比来时还短」的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "回家的路程实际上更近"
+      },
+      {
+        "id": "B",
+        "text": "夜色使人看不清距离"
+      },
+      {
+        "id": "C",
+        "text": "放下等待之后，来时的漫长便不复存在"
+      },
+      {
+        "id": "D",
+        "text": "众人加快了脚步"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "来时怀着期待，路便显得长；等待落空后转身，心中没有了牵挂，同一段路便显得短。诗句写的是心理时间，而非实际距离。",
+    "distractorRationale": {
+      "A": "同一条路的物理长度不会改变。",
+      "B": "夜色影响视觉，不影响对路程长短的感受。",
+      "D": "诗中没有写脚步快慢。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the closing line 回去的路比来时还短 mean?",
+        "explanation": "Coming, the walkers carried expectation, and the road felt long. Once the wait has failed and they turn back with nothing to hold on to, the same road feels short.\n\nThe line measures psychological time, not physical distance — the road itself has not changed."
+      }
+    },
+    "tags": [
+      "poetry-reading",
+      "psychological-time"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "**渡口**\n\n船不等人，人却总在等船。\n对岸的灯亮了又灭，\n像有人在数我们还剩多少耐心。\n最后一班过去了，\n留下的人各自转身，\n发现回去的路比来时还短。"
+    },
+    "stem": "第三行「像有人在数我们还剩多少耐心」运用的手法及其效果是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "夸张，说明灯光非常明亮"
+      },
+      {
+        "id": "B",
+        "text": "对比，比较此岸与彼岸的差别"
+      },
+      {
+        "id": "C",
+        "text": "反问，表达对渡船的不满"
+      },
+      {
+        "id": "D",
+        "text": "拟人，把无意识的灯光写成有意的注视，强化了等待的煎熬"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "灯的明灭本是无意的，诗人却让它像在计数、在旁观。被注视的感觉使等待从单纯的时间流逝变成了一种被消耗的过程，煎熬感因此加深。",
+    "distractorRationale": {
+      "A": "诗句强调的是明灭的节奏，而非亮度。",
+      "B": "两岸虽都出现，但诗句并未展开比较。",
+      "C": "该句是陈述加比喻，不是反问。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What device does the third line use, and to what effect?",
+        "explanation": "The lamp's flickering is mechanical and indifferent, yet the poet has it counting, watching. Being watched turns the wait from mere passing time into something actively drained away.\n\nThat is personification (拟人) doing real work: the discomfort deepens because the indifferent world seems to be keeping score."
+      }
+    },
+    "tags": [
+      "poetry-reading",
+      "personification"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "老张在菜市场卖了二十年豆腐。每天收摊前，他会把剩下的豆腐分成小块，放在摊子边的空盒里。谁需要谁拿，他从不抬头看。有人说他心善，他摆手说：「卖不掉的东西，放着也是坏。」这话他说了二十年，那个盒子也放了二十年。"
+    },
+    "stem": "文末「这话他说了二十年，那个盒子也放了二十年」一句的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "以时间的长度反衬老张说辞的托词性质，显出其善意的持久"
+      },
+      {
+        "id": "B",
+        "text": "强调豆腐容易变质"
+      },
+      {
+        "id": "C",
+        "text": "说明老张的生意一直不好"
+      },
+      {
+        "id": "D",
+        "text": "表现菜市场的环境二十年未变"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「卖不掉也是坏」听上去只是不浪费，但二十年如一日地准备那个盒子，显然是有意为之。末句把说辞与行动并置，正是要让读者看出前者不过是掩饰。",
+    "distractorRationale": {
+      "B": "豆腐易坏是老张的说辞，不是全句的用意。",
+      "C": "生意好坏文中未提，剩余豆腐是常态而非亏损。",
+      "D": "二十年指的是老张的行为，不是环境。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the closing sentence achieve?",
+        "explanation": "\"What can't be sold will spoil anyway\" sounds like nothing more than thrift. But setting out that box every day for twenty years is plainly deliberate.\n\nBy placing the explanation and the action side by side, the final sentence lets the reader see that the first was only ever cover for the second."
+      }
+    },
+    "tags": [
+      "literature-reading",
+      "characterisation"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-d20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "老张在菜市场卖了二十年豆腐。每天收摊前，他会把剩下的豆腐分成小块，放在摊子边的空盒里。谁需要谁拿，他从不抬头看。有人说他心善，他摆手说：「卖不掉的东西，放着也是坏。」"
+    },
+    "stem": "「他从不抬头看」这一细节表现了老张",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "对周围的人漠不关心"
+      },
+      {
+        "id": "B",
+        "text": "顾及取用者的体面，不让对方感到被施舍"
+      },
+      {
+        "id": "C",
+        "text": "视力不好看不清楚"
+      },
+      {
+        "id": "D",
+        "text": "忙于收拾摊子无暇他顾"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "不抬头，取用的人便不必与他对视，也就不必道谢或解释处境。这个动作把「给」隐去，只留下「有」。老张的体贴恰恰在于他什么都不做。",
+    "distractorRationale": {
+      "A": "准备盒子的行为本身就是关心，与漠然相反。",
+      "C": "文中没有任何关于视力的暗示。",
+      "D": "他已经把豆腐分好放好，说明并非无暇。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the detail 他从不抬头看 reveal about Lao Zhang?",
+        "explanation": "By not looking up, he spares whoever takes the tofu from meeting his eyes — from having to thank him or explain their situation. The gesture removes the act of giving and leaves only the availability.\n\nHis consideration lies precisely in what he refrains from doing."
+      }
+    },
+    "tags": [
+      "literature-reading",
+      "detail-analysis"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

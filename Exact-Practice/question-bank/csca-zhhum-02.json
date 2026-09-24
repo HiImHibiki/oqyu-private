@@ -1,0 +1,1222 @@
+[
+  {
+    "id": "csca-zhh-b01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「铺垫」与「伏笔」的区别在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "铺垫用于诗歌，伏笔用于小说"
+      },
+      {
+        "id": "B",
+        "text": "铺垫出现在结尾，伏笔出现在开头"
+      },
+      {
+        "id": "C",
+        "text": "铺垫是明写，为高潮蓄势；伏笔是暗写，等待后文照应"
+      },
+      {
+        "id": "D",
+        "text": "两者完全相同"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "铺垫在前文大量渲染，读者一望即知是在为后事作准备；伏笔则轻描淡写，不引人注意，直到后文照应时才显出作用。一显一隐，是两者最根本的分别。",
+    "distractorRationale": {
+      "A": "两种手法在各种文体中都可使用。",
+      "B": "铺垫必在所铺之事之前，位置说反了。",
+      "D": "显隐之别正是二者的分水岭。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What distinguishes 铺垫 from 伏笔?",
+        "explanation": "铺垫 (build-up) is written openly and at length; the reader can see it preparing the ground for what comes. 伏笔 (foreshadowing) is written lightly and inconspicuously, revealing its purpose only when the later text answers it.\n\nOne is visible, the other hidden — that is the essential division between them."
+      }
+    },
+    "tags": [
+      "narrative-technique",
+      "terminology"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-b02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「民本」思想的核心主张是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "百姓可以直接选举统治者"
+      },
+      {
+        "id": "B",
+        "text": "君主的权力来自天命而与百姓无关"
+      },
+      {
+        "id": "C",
+        "text": "百姓应当无条件服从君主"
+      },
+      {
+        "id": "D",
+        "text": "统治的根基在于百姓，为政须以民生为重"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "《尚书》有「民惟邦本，本固邦宁」之说，孟子进而提出「民为贵，社稷次之，君为轻」。民本强调统治的正当性系于百姓的安顿，但它属于传统政治伦理，与近代民主的选举制度并不相同。",
+    "distractorRationale": {
+      "A": "选举属于近代民主制度，民本思想中并无此项。",
+      "B": "民本恰恰是对纯粹天命观的补充与制约。",
+      "C": "无条件服从与「民为贵」相违。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the core claim of 民本 thought?",
+        "explanation": "The *Book of Documents* says 民惟邦本，本固邦宁 — the people are the foundation of the state, and when the foundation is firm the state is at peace. Mencius went further: 民为贵，社稷次之，君为轻.\n\n民本 (people-as-foundation) ties the legitimacy of rule to the welfare of the people. It is a traditional political ethic, however, and should not be equated with modern electoral democracy."
+      }
+    },
+    "tags": [
+      "political-philosophy",
+      "confucianism"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-b03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「正当防卫」成立的前提是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "存在正在进行的不法侵害"
+      },
+      {
+        "id": "B",
+        "text": "对方曾经侵害过自己"
+      },
+      {
+        "id": "C",
+        "text": "预料到对方将来会侵害自己"
+      },
+      {
+        "id": "D",
+        "text": "对方的行为让自己感到不快"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "正当防卫要求侵害具有「不法性」与「正在进行」两个特征。侵害尚未开始属于事前防卫，已经结束属于事后报复，都不构成正当防卫。此外防卫还须针对侵害人本人，且不能明显超过必要限度。",
+    "distractorRationale": {
+      "B": "侵害已经结束，此时还击属于报复。",
+      "C": "侵害尚未发生，不符合「正在进行」的要求。",
+      "D": "主观感受不等于不法侵害。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the precondition for 正当防卫?",
+        "explanation": "正当防卫 (justifiable defence) requires an unlawful attack that is *currently under way*. An attack not yet begun makes the response premature defence; one already finished makes it retaliation. Neither qualifies.\n\nTwo further conditions apply: the defence must be directed at the attacker, and it must not clearly exceed what was necessary."
+      }
+    },
+    "tags": [
+      "legal-terms",
+      "criminal-law"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-b04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "小说中的「叙述视角」若为「第一人称限知视角」，其特点是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "必须由作者本人充当叙述者"
+      },
+      {
+        "id": "B",
+        "text": "只能讲述「我」所见所知，其他人物的内心须靠推测"
+      },
+      {
+        "id": "C",
+        "text": "完全不带主观色彩"
+      },
+      {
+        "id": "D",
+        "text": "可以自由进入任何人物的内心"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "第一人称限知视角把叙述范围限制在「我」的感知之内。这一限制既是约束，也是资源：读者与「我」同样蒙在鼓里，悬念与误解便由此而生。",
+    "distractorRationale": {
+      "A": "「我」是虚构的叙述者，不等于作者本人。",
+      "C": "第一人称必然带有叙述者的主观判断。",
+      "D": "自由进入任何人物内心的是「全知视角」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What characterises a first-person limited narrative perspective?",
+        "explanation": "第一人称限知视角 confines the telling to what \"I\" perceives and knows; other characters' inner lives can only be inferred.\n\nThe restriction is also a resource: the reader is kept as much in the dark as the narrator, which is where suspense and misunderstanding come from. Note that the narrating \"I\" is a construct, not the author."
+      }
+    },
+    "tags": [
+      "narrative-perspective",
+      "fiction"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的词语填入空格：\n\n这部作品对当时社会风气的批评十分 ______ ，读来令人警醒。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "锋利"
+      },
+      {
+        "id": "B",
+        "text": "尖利"
+      },
+      {
+        "id": "C",
+        "text": "犀利"
+      },
+      {
+        "id": "D",
+        "text": "顺利"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「犀利」多形容言论、目光、笔锋等抽象事物锐利透彻，能一针见血地切中要害，与「批评」搭配最为自然。后文「令人警醒」也印证了这种穿透力。",
+    "distractorRationale": {
+      "A": "「锋利」形容刀刃等具体器物。",
+      "B": "「尖利」多形容声音刺耳或物体尖锐。",
+      "D": "「顺利」指过程没有阻碍，与批评的力度无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate word:\n\n这部作品对当时社会风气的批评十分 ______ ，读来令人警醒。\n\n(The work's criticism of the social climate of its time is deeply ______ , and reading it is sobering.)",
+        "explanation": "犀利 describes something abstract as sharp and penetrating — remarks, a gaze, a writer's pen — and collocates naturally with 批评 (criticism).\n\n锋利 applies to physical blades, 尖利 to piercing sounds or points, and 顺利 means \"without obstacle\", which has nothing to do with force of criticism."
+      }
+    },
+    "tags": [
+      "word-choice",
+      "collocation"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的词语填入空格：\n\n史料的解读离不开语境，脱离时代背景的引用往往会 ______ 原意。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "误会"
+      },
+      {
+        "id": "B",
+        "text": "谅解"
+      },
+      {
+        "id": "C",
+        "text": "理解"
+      },
+      {
+        "id": "D",
+        "text": "曲解"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「曲解」指错误地解释他人的原意，可直接带宾语「原意」，与「引用」「解读」的语境相合。",
+    "distractorRationale": {
+      "A": "「误会」的对象通常是人或事，不说「误会原意」。",
+      "B": "「谅解」指原谅，用于人际关系。",
+      "C": "「理解」是中性偏正面的，与「脱离背景」的负面语境不符。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate word:\n\n史料的解读离不开语境，脱离时代背景的引用往往会 ______ 原意。\n\n(Reading historical sources depends on context; quotation detached from its period tends to ______ the original meaning.)",
+        "explanation": "曲解 means to twist or misinterpret what someone meant, and it takes 原意 (original meaning) directly as its object — exactly what this sentence needs.\n\n误会 takes people or situations as its object, 理解 is neutral to positive, and 谅解 means to forgive."
+      }
+    },
+    "tags": [
+      "word-choice",
+      "historiography"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列句子中没有错别字的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "这部史书记载翔实，历来为学者所推崇。"
+      },
+      {
+        "id": "B",
+        "text": "这部史书纪载翔实，历来为学者所推崇。"
+      },
+      {
+        "id": "C",
+        "text": "这部史书记栽翔实，历来为学者所推祟。"
+      },
+      {
+        "id": "D",
+        "text": "这部史书记载祥实，历来为学者所推崇。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "三处易错：「翔实」意为详尽确实，不写作「祥实」；「记载」的「记」不写作「纪」或「栽」；「推崇」的「崇」不写作「祟」——后者读 suì，意为鬼怪作乱。",
+    "distractorRationale": {
+      "B": "「纪载」应为「记载」。",
+      "C": "「记栽」应为「记载」，「推祟」应为「推崇」。",
+      "D": "「祥实」应为「翔实」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence contains no miswritten characters?",
+        "explanation": "Three traps: 翔实 (detailed and reliable) not 祥实; 记载 (to record) not 纪载 or 记栽; 推崇 (to hold in esteem) not 推祟 — 祟 is read suì and means a malign spirit.\n\nEach wrong form is itself a valid character, so these errors survive casual proofreading."
+      }
+    },
+    "tags": [
+      "character-errors",
+      "academic-writing"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "方言承载着地方的历史与生活方式，许多说法在普通话中找不到对应的表达。______ 因此，方言的消失带走的不仅是几种口音，还有一整套观察世界的方式。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "普通话的推广始于二十世纪五十年代。"
+      },
+      {
+        "id": "B",
+        "text": "这些词语往往凝结着当地人对自然与人情的独特分辨。"
+      },
+      {
+        "id": "C",
+        "text": "方言的语音系统通常比普通话复杂。"
+      },
+      {
+        "id": "D",
+        "text": "年轻人使用方言的频率正在下降。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "横线前说方言中有普通话无法对应的说法，横线后得出「带走一整套观察世界的方式」的结论。中间需要一句把「找不到对应」与「观察方式」连起来，说明这些词语承载着独特的分辨方式。",
+    "distractorRationale": {
+      "A": "转入语言政策史，中断了推理链条。",
+      "C": "语音复杂度与「观察世界的方式」无关。",
+      "D": "陈述现状，但没有解释为何消失意味着认知方式的流失。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "Before the blank: dialects contain expressions with no equivalent in standard Mandarin. After it: losing a dialect costs an entire way of seeing the world.\n\nThe missing sentence must bridge the two — explaining that these words encode distinctions their speakers draw about nature and human relations. The other options change subject to policy history, phonology, or usage statistics."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "cohesion"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的一组词语填入空格：\n\n这一观点虽有 ______ 之处，但论证过程仍显 ______ ，尚需更多材料支撑。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "可怕／单薄"
+      },
+      {
+        "id": "B",
+        "text": "可取／脆弱"
+      },
+      {
+        "id": "C",
+        "text": "可取／薄弱"
+      },
+      {
+        "id": "D",
+        "text": "可惜／薄弱"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「虽……但……」要求前后构成让步转折，故第一空须为肯定评价。「可取」正指有值得采纳之处。第二空评价论证，「薄弱」是学术写作的固定搭配。",
+    "distractorRationale": {
+      "A": "「可怕」与语境完全不合。",
+      "B": "「脆弱」多形容心理或物体易碎，不用于论证。",
+      "D": "「可惜」是否定评价，破坏了转折结构。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate pair:\n\n这一观点虽有 ______ 之处，但论证过程仍显 ______ ，尚需更多材料支撑。\n\n(Although this view has ______ , its argumentation still appears ______ and needs more supporting material.)",
+        "explanation": "The 虽……但…… frame requires a concession followed by a reversal, so the first blank must be positive: 可取 means \"worth adopting\".\n\nThe second blank evaluates argumentation, where 论证薄弱 (weak argumentation) is the standard academic collocation. 脆弱 applies to fragile objects or emotions, not to reasoning."
+      }
+    },
+    "tags": [
+      "collocation",
+      "academic-register"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列词语中加点字的读音全都正确的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "肃穆（mò）　解剖（pōu）　脉络（mò）"
+      },
+      {
+        "id": "B",
+        "text": "肃穆（mù）　解剖（pāo）　脉络（mài）"
+      },
+      {
+        "id": "C",
+        "text": "肃穆（mù）　解剖（pōu）　脉络（mò）"
+      },
+      {
+        "id": "D",
+        "text": "肃穆（mù）　解剖（pōu）　脉络（mài）"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「穆」读 mù，「剖」读 pōu，「脉」在「脉络」中读 mài。\n\n注意「脉」另有 mò 音，仅用于「脉脉含情」一词；「剖」在任何词中都读 pōu，不读 pāo。",
+    "distractorRationale": {
+      "A": "「穆」不读 mò，「脉络」的「脉」也不读 mò。",
+      "B": "「剖」不读 pāo。",
+      "C": "「脉络」的「脉」应读 mài。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which group gives the correct reading for every marked character?",
+        "explanation": "穆 is read mù, 剖 is read pōu, and 脉 in 脉络 is read mài.\n\nTwo points worth noting: 脉 has a second reading mò, but only in the fixed expression 脉脉含情; and 剖 is always pōu, never pāo, in any compound."
+      }
+    },
+    "tags": [
+      "pronunciation",
+      "multiple-readings"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "史书中的沉默同样值得注意。某个群体在记载中长期缺席，未必说明他们不存在，而可能说明书写者未曾把他们视作值得记录的对象。______"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此，读史不仅要读写下了什么，也要读没有写下什么。"
+      },
+      {
+        "id": "B",
+        "text": "因此，古代史书的作者大多出身士人阶层。"
+      },
+      {
+        "id": "C",
+        "text": "因此，史料的数量决定了研究的质量。"
+      },
+      {
+        "id": "D",
+        "text": "因此，考古发现比文献记载更可靠。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "前文把「缺席」重新解释为书写者的选择，横线处应顺势得出方法上的结论：阅读史料必须同时关注被写下的与被略去的。A 正是这一层意思的凝练表达。",
+    "distractorRationale": {
+      "B": "陈述了一个相关事实，但不是从前文推出的结论。",
+      "C": "数量与质量的关系并非前文所论。",
+      "D": "考古与文献的比较超出了本段范围。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the passage?",
+        "explanation": "The passage reinterprets absence in the historical record as a choice made by those who wrote it. What follows must draw the methodological conclusion: reading history means attending to what was left unwritten as well as what was written.\n\nOption B states a related fact but does not follow from the argument; the others change the subject entirely."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "historiography"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的词语填入空格：\n\n这项政策的效果需要长期观察，目前下结论未免过于 ______ 。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "轻松"
+      },
+      {
+        "id": "B",
+        "text": "草率"
+      },
+      {
+        "id": "C",
+        "text": "简单"
+      },
+      {
+        "id": "D",
+        "text": "随便"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「草率」指做事不认真、不慎重，正与「需要长期观察却急于下结论」的语境相合，且是评价结论过程的常用词。",
+    "distractorRationale": {
+      "A": "「轻松」形容心情或难度，不评价态度是否慎重。",
+      "C": "「简单」指不复杂，未涉及态度问题。",
+      "D": "「随便」口语色彩较重，用于正式评述略显不当。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate word:\n\n这项政策的效果需要长期观察，目前下结论未免过于 ______ 。\n\n(The effects of this policy need long-term observation; drawing conclusions now would be too ______ .)",
+        "explanation": "草率 means careless or hasty in the sense of insufficient deliberation, which matches a context where long observation is required but a conclusion is being rushed.\n\n轻松 describes ease or mood, 简单 describes complexity, and 随便 is too colloquial for formal commentary."
+      }
+    },
+    "tags": [
+      "word-choice",
+      "evaluative-language"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列成语中书写完全正确的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "融汇贯通　一如既往　按部就班"
+      },
+      {
+        "id": "B",
+        "text": "融会贯通　一如既往　按步就搬"
+      },
+      {
+        "id": "C",
+        "text": "融会贯通　一如既往　按部就班"
+      },
+      {
+        "id": "D",
+        "text": "融会贯通　一如继往　按步就班"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "三处易错：「融会贯通」的「会」指领会，不写作「汇」；「一如既往」的「既」指已经，不写作「继」；「按部就班」的「部」指门类次序，不写作「步」。",
+    "distractorRationale": {
+      "A": "「融汇贯通」应为「融会贯通」。",
+      "B": "「按步就搬」错了两个字。",
+      "D": "「一如继往」与「按步就班」均误。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which group writes all three idioms correctly?",
+        "explanation": "Three classic traps. 融会贯通 uses 会 (to comprehend), not 汇 (to converge). 一如既往 uses 既 (already), not 继 (to continue). 按部就班 uses 部 (category, sequence), not 步 (step) — despite the tempting sense of \"step by step\"."
+      }
+    },
+    "tags": [
+      "idioms",
+      "character-errors"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "博物馆把文物从原来的场所搬进展柜，让更多人得以看见。______ 一件祭器离开祭祀的场合，便只剩下形状与花纹，其原本的意义须靠说明牌来补足。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "参观人数近年来持续增长。"
+      },
+      {
+        "id": "B",
+        "text": "展柜的玻璃可以防止紫外线照射。"
+      },
+      {
+        "id": "C",
+        "text": "博物馆的门票收入用于文物保护。"
+      },
+      {
+        "id": "D",
+        "text": "但这种可见是以脱离原有语境为代价的。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "横线前是收益（更多人看见），横线后是代价的具体例证（祭器失去意义）。中间需要一句转折，点明代价是「脱离原有语境」，后面的例子才能落到实处。",
+    "distractorRationale": {
+      "A": "陈述数据，未构成转折。",
+      "B": "转入保护技术，同样偏离主线。",
+      "C": "转入经费问题，与语境论述无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "Before the blank is the gain: more people can see the object. After it is a concrete illustration of the cost: a ritual vessel outside its ritual keeps only shape and pattern.\n\nThe missing sentence must supply the turn — that this visibility is bought at the price of removal from context — so the example that follows has something to attach to."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "museum-studies"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的一组词语填入空格：\n\n作者并未 ______ 前人的结论，而是在细读文本的基础上提出了新的 ______ 。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因袭／阐释"
+      },
+      {
+        "id": "B",
+        "text": "因为／解释"
+      },
+      {
+        "id": "C",
+        "text": "继续／说明"
+      },
+      {
+        "id": "D",
+        "text": "抄写／描述"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「因袭」指沿用旧有做法而不加改变，带轻微贬义，正与「而是提出新的」形成对照。「阐释」指深入解说文本的意义，是人文研究的标准用词。",
+    "distractorRationale": {
+      "B": "「因为」是连词，不能带宾语。",
+      "C": "「继续」是中性的，无法体现「未加改变地沿用」这层意思。",
+      "D": "「抄写」过于具体，「描述」也不指向意义的解说。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate pair:\n\n作者并未 ______ 前人的结论，而是在细读文本的基础上提出了新的 ______ 。\n\n(The author does not ______ earlier conclusions, but offers a new ______ based on close reading.)",
+        "explanation": "因袭 means to carry over an existing practice unchanged, with a faint negative colouring — exactly what the contrast 而是提出新的 requires. 阐释 (interpretation, exegesis) is the standard term in humanities scholarship for expounding a text's meaning.\n\n继续 is neutral and misses the sense of uncritical inheritance."
+      }
+    },
+    "tags": [
+      "academic-register",
+      "collocation"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列句子中用字正确的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "他在论文中详细阐述了这一观点的来龙去络。"
+      },
+      {
+        "id": "B",
+        "text": "他在论文中详细阐述了这一观点的来龙去脉。"
+      },
+      {
+        "id": "C",
+        "text": "他在论文中详细阐述了这一观点的来笼去脉。"
+      },
+      {
+        "id": "D",
+        "text": "他在论文中祥细阐述了这一观点的来龙去脉。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「来龙去脉」源自堪舆术语，以山势比喻事情的首尾，「龙」指山脉走向，「脉」指脉络，均不可替换。「详细」的「详」从言，不写作「祥」。",
+    "distractorRationale": {
+      "A": "「去络」应为「去脉」。",
+      "C": "「来笼」应为「来龙」。",
+      "D": "「祥细」应为「详细」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence uses every character correctly?",
+        "explanation": "来龙去脉 comes from geomancy, where 龙 is the run of a mountain ridge and 脉 its vein; together they figure the beginning and end of a matter. Neither character may be substituted.\n\n详细 (detailed) uses 详, with the speech radical, not the homophone 祥 (auspicious)."
+      }
+    },
+    "tags": [
+      "character-errors",
+      "idioms"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "______ 一部小说若只在结尾处交代人物的转变，读者会觉得突兀；若在此前的言行中已有细微征兆，同样的结局便显得必然。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "现代小说大多篇幅较长。"
+      },
+      {
+        "id": "B",
+        "text": "小说的结尾往往是最难写的部分。"
+      },
+      {
+        "id": "C",
+        "text": "人物性格的变化需要在叙述过程中逐步铺展。"
+      },
+      {
+        "id": "D",
+        "text": "读者的阅读速度因人而异。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "横线后用「若……则……」的两种情况作对照，说明征兆的有无决定结局是否可信。横线处应先立起总论点——性格变化须逐步铺展——后面的对照才是对它的展开。",
+    "distractorRationale": {
+      "A": "篇幅长短不能解释「突兀」与「必然」之别。",
+      "B": "把重点放在写作难度上，与后文的对照无关。",
+      "D": "阅读速度与人物塑造无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best opens the passage?",
+        "explanation": "What follows the blank is a paired contrast: a change revealed only at the end feels abrupt, whereas the same ending feels inevitable if small signs appeared earlier.\n\nThe opening sentence must state the general principle those two cases illustrate — that a character's change has to be laid in gradually across the narrative."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "narrative-craft"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的词语填入空格：\n\n两种制度虽然名称相似，但在权力来源上有着 ______ 的差别。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "基本"
+      },
+      {
+        "id": "B",
+        "text": "根本上"
+      },
+      {
+        "id": "C",
+        "text": "本能"
+      },
+      {
+        "id": "D",
+        "text": "本质"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「本质的差别」是固定搭配，指最深层、决定性的不同，与前文「名称相似」形成表里对照。",
+    "distractorRationale": {
+      "A": "「基本」多表示大致、大体，语气反而减弱了差别。",
+      "B": "「根本上」是状语，不能直接修饰名词「差别」。",
+      "C": "「本能」指与生俱来的能力，用于制度不通。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate word:\n\n两种制度虽然名称相似，但在权力来源上有着 ______ 的差别。\n\n(The two systems have similar names but a ______ difference in the source of their authority.)",
+        "explanation": "本质的差别 is the fixed collocation for a difference at the deepest, defining level — which sets up the contrast with the merely similar names.\n\n根本上 is adverbial and cannot modify the noun 差别 directly, while 基本 tends to mean \"broadly\" and would weaken the claim rather than strengthen it."
+      }
+    },
+    "tags": [
+      "collocation",
+      "academic-register"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列各组词语中，字形完全正确的一组是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "斟酌　缜密　辨析　迁徙"
+      },
+      {
+        "id": "B",
+        "text": "斟酌　慎密　辩析　迁徙"
+      },
+      {
+        "id": "C",
+        "text": "甄酌　缜密　辨析　迁徒"
+      },
+      {
+        "id": "D",
+        "text": "斟酌　缜密　辩析　迁徒"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "四处易错：「斟酌」的「斟」指倒酒，引申为反复考虑；「缜密」的「缜」指细致，不写作「慎」；「辨析」的「辨」指分辨，与「辩」（争论）不同；「迁徙」的「徙」指迁移，与「徒」（步行、徒然）形近而义异。",
+    "distractorRationale": {
+      "B": "「慎密」应为「缜密」，「辩析」应为「辨析」。",
+      "C": "「甄酌」应为「斟酌」，「迁徒」应为「迁徙」。",
+      "D": "「辩析」与「迁徒」均误。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which group is written entirely correctly?",
+        "explanation": "Four traps here. 斟酌 (to weigh carefully) uses 斟, from pouring wine. 缜密 (meticulous) uses 缜, not the homophone 慎. 辨析 (to distinguish and analyse) uses 辨 (to differentiate), not 辩 (to argue). 迁徙 (to migrate) uses 徙, which differs from the near-identical 徒 (on foot, in vain).\n\nThe 辨/辩 and 徙/徒 pairs are among the most frequent errors in written Chinese."
+      }
+    },
+    "tags": [
+      "character-errors",
+      "similar-forms"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-c16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "口述史让那些不曾留下文字的人得以发声。但记忆并非录像，它会随时间重组，也会受讲述当下的处境影响。______"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此文字记载一定比口述可靠。"
+      },
+      {
+        "id": "B",
+        "text": "因此口述材料需要与其他史料相互印证，而非单独采信。"
+      },
+      {
+        "id": "C",
+        "text": "因此口述史没有任何研究价值。"
+      },
+      {
+        "id": "D",
+        "text": "因此应当尽量采访年纪较轻的受访者。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "前文既肯定口述史的价值，又指出记忆的不稳定。合乎逻辑的结论是方法上的调整——相互印证，而非全盘否定或简单排序。",
+    "distractorRationale": {
+      "A": "文字记载同样受书写者立场影响，前文并未支持这一比较。",
+      "C": "否定过度，与前一句的肯定相矛盾。",
+      "D": "年纪并非记忆可靠性的决定因素，且偏离了论证方向。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the passage?",
+        "explanation": "The passage grants oral history its value and then notes that memory is unstable — reorganised over time and shaped by the moment of telling.\n\nThe logical conclusion is methodological: corroborate oral testimony against other sources rather than relying on it alone. Option C overcorrects into wholesale rejection, contradicting the passage's own opening claim."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "oral-history"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

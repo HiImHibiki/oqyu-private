@@ -1,0 +1,198 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+/* Token default (fallback sebelum tema ter-set) === Porcelain */
+:root {
+  --bg: #fbfaf8; --bg-elev: #ffffff; --bg-sunken: #f2efe9;
+  --fg: #1a1c1a; --fg-muted: #6b6f6b; --border: #e4e0d8; --border-strong: #cdc7bb;
+  --accent: #1f6f5c; --accent-fg: #ffffff; --accent-soft: #e2efea;
+  --ok: #1f8a5f; --warn: #b8860b; --danger: #c0392b; --ring: #1f6f5c;
+  --sans: "Inter", "Noto Sans SC", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --shadow: 0 14px 40px -24px rgba(26,28,26,.35);
+  --radius: 14px;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elev: var(--bg-elev);
+  --color-sunken: var(--bg-sunken);
+  --color-fg: var(--fg);
+  --color-muted: var(--fg-muted);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --font-sans: var(--sans);
+  --font-serif: var(--serif);
+  --radius-card: var(--radius);
+}
+
+* { border-color: var(--border); }
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent-soft); color: var(--fg); }
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------------------------------------------------------------- utility */
+.card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.hairline { border: 1px solid var(--border); }
+.display { font-family: var(--serif); letter-spacing: -0.02em; }
+.muted { color: var(--fg-muted); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  border-radius: 10px; font-weight: 550; font-size: .9rem;
+  padding: .625rem 1rem; transition: transform .12s ease, background .15s ease, opacity .15s;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn-primary { background: var(--accent); color: var(--accent-fg); }
+.btn-primary:hover:not(:disabled) { filter: brightness(1.07); }
+.btn-ghost { background: transparent; color: var(--fg); border-color: var(--border-strong); }
+.btn-ghost:hover:not(:disabled) { background: var(--bg-sunken); }
+.btn-soft { background: var(--accent-soft); color: var(--fg); }
+.btn-danger { background: var(--danger); color: #fff; }
+
+.input {
+  width: 100%; background: var(--bg-elev); border: 1px solid var(--border-strong);
+  border-radius: 10px; padding: .625rem .8rem; font-size: .925rem; color: var(--fg);
+}
+.input::placeholder { color: var(--fg-muted); }
+.input:focus { outline: 2px solid var(--ring); outline-offset: 0; border-color: transparent; }
+
+.chip {
+  display: inline-flex; align-items: center; gap: .35rem; font-size: .75rem;
+  padding: .18rem .55rem; border-radius: 999px; border: 1px solid var(--border-strong);
+  color: var(--fg-muted);
+}
+
+/* ------------------------------------------------------- exam typography */
+.passage {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+.passage p + p { margin-top: 1em; }
+.stem { font-size: 1rem; line-height: 1.65; }
+
+.katex { font-size: 1.02em; }
+.katex-display { margin: .8em 0; overflow-x: auto; overflow-y: hidden; }
+
+/* highlight/anotasi siswa di dalam bacaan */
+mark.hl-yellow { background: #ffe98a; color: #241f00; padding: 0 .1em; border-radius: 3px; }
+mark.hl-blue   { background: #b9dcff; color: #061a2e; padding: 0 .1em; border-radius: 3px; }
+mark.hl-pink   { background: #ffc4dd; color: #2b0716; padding: 0 .1em; border-radius: 3px; }
+
+.crossed { text-decoration: line-through; opacity: .45; }
+
+/* scrollbar halus */
+* { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; border: 3px solid transparent; background-clip: content-box; }
+
+@media print { .no-print { display: none !important; } }
+
+/* animasi masuk halus */
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise .35s cubic-bezier(.2,.7,.3,1) both; }
+
+/* Terbaca pembaca layar, tak terlihat mata. Dipakai jam ujian: angkanya
+ * sudah terlihat, tetapi tanpa nama ia hanya «34:12» tanpa keterangan. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Diagram & tabel dari Exact Worksheet Maker ----------
+ *
+ * SVG yang dihasilkan diagrams.js dibuat untuk kertas: 224 stroke-nya hitam
+ * pekat dan tak satu pun memakai currentColor. Di tema gelap ia akan lenyap.
+ * Daripada menambal 240 KB berkas salinan itu (yang harus tetap mudah
+ * disinkron ulang dari wsm/), diagramnya diberi alas putih — persis seperti
+ * gambar di lembar cetak, dan benar di kedua tema.
+ */
+.ws-diagram,
+.ws-table-wrap {
+  display: block;
+  margin: 12px auto;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-align: center;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.ws-diagram-svg,
+.ws-image {
+  width: 100%;
+  max-width: var(--ws-diagram-width, 340px);
+  height: auto;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ws-table {
+  border-collapse: collapse;
+  font-size: .9em;
+  max-width: 100%;
+  margin: 0 auto;
+  color: #1a1a1a;
+}
+
+.ws-table th,
+.ws-table td {
+  border: 1px solid #999;
+  padding: 4px 10px;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.ws-table th { background: #eef2f7; font-weight: 700; }
+.ws-table-blank td { min-width: 52px; height: 26px; }
+
+.ws-table-title {
+  font-weight: 700;
+  font-size: .85em;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+/* Figur berpanel: beberapa diagram berdampingan dengan keterangan. */
+.ws-figure { display: block; margin: 12px 0; text-align: center; }
+.ws-figure-panels { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; gap: 8px 12px; }
+.ws-figure-panel { flex: 0 1 auto; min-width: 0; max-width: 100%; }
+.ws-figure-panel .ws-diagram, .ws-figure-panel .ws-table-wrap { margin: 0; }
+.ws-figure-panel-label { font-size: .85em; font-weight: 700; margin-top: 2px; }
+.ws-figure-caption { font-size: .82em; font-style: italic; color: var(--text-muted, #555); margin-top: 4px; }
+
+/* Terlihat sekejap saja: penggambar diagram diambil terpisah saat dibutuhkan. */
+.ws-diagram-memuat { font-size: .85em; opacity: .6; font-style: italic; }

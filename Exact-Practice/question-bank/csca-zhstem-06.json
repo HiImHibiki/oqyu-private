@@ -1,0 +1,1302 @@
+[
+  {
+    "id": "csca-zst-h01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "使用酒精灯时，应先检查灯芯是否平整、酒精是否超过容积的三分之二。点燃时必须用火柴，严禁用一盏酒精灯去引燃另一盏，以免灯内酒精洒出引发火灾。加热试管中的液体时，试管口不可对着自己或他人，液体不得超过试管容积的三分之一。熄灭酒精灯时应用灯帽盖灭，不可用嘴吹。"
+    },
+    "stem": "根据短文，点燃酒精灯的正确做法是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "用另一盏点燃的酒精灯引燃"
+      },
+      {
+        "id": "B",
+        "text": "先取下灯帽再用打火机伸入灯内点燃"
+      },
+      {
+        "id": "C",
+        "text": "把灯芯拉长后点燃"
+      },
+      {
+        "id": "D",
+        "text": "用火柴点燃"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文明确指出「点燃时必须用火柴，严禁用一盏酒精灯去引燃另一盏」，理由是酒精可能洒出引发火灾。",
+    "distractorRationale": {
+      "A": "这正是短文明令禁止的做法。",
+      "B": "短文未提及此法，且把火源伸入灯内十分危险。",
+      "C": "短文要求检查灯芯平整，并未提到拉长灯芯。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what is the correct way to light an alcohol burner?",
+        "explanation": "The passage states plainly that a match must be used and that lighting one burner from another is strictly forbidden, because spilled alcohol can start a fire."
+      }
+    },
+    "tags": [
+      "lab-safety",
+      "reading"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "使用酒精灯时，应先检查灯芯是否平整、酒精是否超过容积的三分之二。点燃时必须用火柴，严禁用一盏酒精灯去引燃另一盏，以免灯内酒精洒出引发火灾。加热试管中的液体时，试管口不可对着自己或他人，液体不得超过试管容积的三分之一。熄灭酒精灯时应用灯帽盖灭，不可用嘴吹。"
+    },
+    "stem": "根据短文，加热试管中的液体时，液体的量应",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "不超过试管容积的三分之一"
+      },
+      {
+        "id": "B",
+        "text": "不超过试管容积的一半"
+      },
+      {
+        "id": "C",
+        "text": "恰好装满试管"
+      },
+      {
+        "id": "D",
+        "text": "不超过试管容积的三分之二"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文规定「液体不得超过试管容积的三分之一」。三分之二是对酒精灯内酒精量的限制，两个数字容易混淆，须对应到各自的对象。",
+    "distractorRationale": {
+      "B": "短文未给出这一比例。",
+      "C": "液体过多受热会喷出，短文正是要避免这种情况。",
+      "D": "三分之二是对灯内酒精的限制，不是试管液体。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, how much liquid may a test tube hold when being heated?",
+        "explanation": "The passage sets the limit at one third of the tube's capacity. Two thirds is the limit on alcohol inside the burner — the two figures are easy to confuse and must be matched to the right object."
+      }
+    },
+    "tags": [
+      "lab-operation",
+      "detail-retrieval"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "使用酒精灯时，应先检查灯芯是否平整、酒精是否超过容积的三分之二。点燃时必须用火柴，严禁用一盏酒精灯去引燃另一盏，以免灯内酒精洒出引发火灾。加热试管中的液体时，试管口不可对着自己或他人，液体不得超过试管容积的三分之一。熄灭酒精灯时应用灯帽盖灭，不可用嘴吹。"
+    },
+    "stem": "短文中「试管口不可对着自己或他人」这一要求，主要是为了防止",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "药品被空气污染"
+      },
+      {
+        "id": "B",
+        "text": "液体受热喷出而烫伤人"
+      },
+      {
+        "id": "C",
+        "text": "试管受热不均而破裂"
+      },
+      {
+        "id": "D",
+        "text": "酒精灯的火焰被吹灭"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "这一条与「不可对着人」直接相关，针对的是喷溅伤人的风险。短文虽未逐字写出原因，但从「不可对着自己或他人」的措辞可以判断，所防范的是对人的伤害而非对器材的损坏。",
+    "distractorRationale": {
+      "A": "污染问题与试管口朝向无关。",
+      "C": "受热不均确会破裂，但那要靠预热和移动试管来防止，与朝向无关。",
+      "D": "火焰是否熄灭与试管朝向没有因果关系。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The requirement that the mouth of the test tube must not point at oneself or others is chiefly meant to prevent",
+        "explanation": "This rule is tied directly to «not pointing at people», so the risk it addresses is scalding from ejected liquid. The passage does not spell out the reason, but the wording makes clear that the concern is harm to people, not damage to equipment."
+      }
+    },
+    "tags": [
+      "inference",
+      "lab-safety"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "某研究小组测量了同一种金属丝在不同温度下的电阻，数据如下：\n\n| 温度（℃） | 电阻（Ω） |\n|---|---|\n| 20 | 5.0 |\n| 40 | 5.4 |\n| 60 | 5.8 |\n| 80 | 6.2 |\n| 100 | 6.6 |"
+    },
+    "stem": "根据表中数据，温度每升高 $20\\ ℃$，该金属丝的电阻",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "增加 $0.2\\ \\Omega$"
+      },
+      {
+        "id": "B",
+        "text": "减少 $0.4\\ \\Omega$"
+      },
+      {
+        "id": "C",
+        "text": "增加 $0.4\\ \\Omega$"
+      },
+      {
+        "id": "D",
+        "text": "保持不变"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "相邻两行之差都是 $0.4\\ \\Omega$：$5.4 - 5.0 = 0.4$，$5.8 - 5.4 = 0.4$，依此类推。四组差值完全一致，说明在此区间内电阻随温度线性增加。",
+    "distractorRationale": {
+      "A": "把差值算成了一半。",
+      "B": "方向相反；表中电阻随温度上升。",
+      "D": "各行数值明显不同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "From the table, for every $20\\ ℃$ rise in temperature the resistance of the wire",
+        "explanation": "Each consecutive pair differs by $0.4\\ \\Omega$: $5.4 - 5.0 = 0.4$, $5.8 - 5.4 = 0.4$, and so on. All four differences match, showing that resistance rises linearly with temperature over this range."
+      }
+    },
+    "tags": [
+      "table-reading",
+      "linear-trend"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "某研究小组测量了同一种金属丝在不同温度下的电阻，数据如下：\n\n| 温度（℃） | 电阻（Ω） |\n|---|---|\n| 20 | 5.0 |\n| 40 | 5.4 |\n| 60 | 5.8 |\n| 80 | 6.2 |\n| 100 | 6.6 |"
+    },
+    "stem": "若线性关系在此区间外仍然成立，$120\\ ℃$ 时的电阻约为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$7.4\\ \\Omega$"
+      },
+      {
+        "id": "B",
+        "text": "$6.8\\ \\Omega$"
+      },
+      {
+        "id": "C",
+        "text": "$6.6\\ \\Omega$"
+      },
+      {
+        "id": "D",
+        "text": "$7.0\\ \\Omega$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "在 $100\\ ℃$ 的 $6.6\\ \\Omega$ 基础上再加一个 $0.4\\ \\Omega$，得 $7.0\\ \\Omega$。\n\n题干特意加了「若线性关系仍然成立」，因为把规律外推到测量范围之外本身需要这一前提，不能想当然。",
+    "distractorRationale": {
+      "A": "加了两个步长，相当于外推到 $140\\ ℃$。",
+      "B": "只加了半个步长。",
+      "C": "这是 $100\\ ℃$ 的值，未作外推。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "If the linear relationship still holds beyond this range, the resistance at $120\\ ℃$ is about",
+        "explanation": "Add one more step of $0.4\\ \\Omega$ to the $6.6\\ \\Omega$ measured at $100\\ ℃$, giving $7.0\\ \\Omega$.\n\nThe stem deliberately says «if the linear relationship still holds», because extrapolating beyond the measured range requires exactly that assumption and cannot be taken for granted."
+      }
+    },
+    "tags": [
+      "extrapolation",
+      "table-reading"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "超导现象指某些材料在温度降到一定值以下时电阻突然变为零。这一温度称为临界温度。电阻为零意味着电流可以在闭合回路中长期流动而几乎不损耗能量，因此超导材料在输电和强磁体制造上极具价值。然而目前已知的超导材料大多需要在极低温下才能工作，维持这样的低温本身消耗大量能量，这限制了超导技术的大规模应用。"
+    },
+    "stem": "根据短文，超导材料难以大规模应用的主要原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "维持所需的低温本身消耗大量能量"
+      },
+      {
+        "id": "B",
+        "text": "超导现象只在实验室中出现过一次"
+      },
+      {
+        "id": "C",
+        "text": "超导材料无法制成导线"
+      },
+      {
+        "id": "D",
+        "text": "超导材料的电阻仍然较大"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文末句直接给出了原因：多数超导材料需在极低温下工作，而维持低温消耗大量能量，抵消了零电阻带来的好处。",
+    "distractorRationale": {
+      "B": "短文说的是「已知的超导材料大多」，可见并非只出现过一次。",
+      "C": "短文提到超导材料用于输电和强磁体，说明可以制成导线。",
+      "D": "短文开头就说超导状态下电阻为零。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what chiefly prevents superconductors from being used on a large scale?",
+        "explanation": "The final sentence gives the reason directly: most superconductors work only at extremely low temperatures, and maintaining those temperatures consumes a great deal of energy, offsetting the benefit of zero resistance."
+      }
+    },
+    "tags": [
+      "main-idea",
+      "superconductivity"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "超导现象指某些材料在温度降到一定值以下时电阻突然变为零。这一温度称为临界温度。电阻为零意味着电流可以在闭合回路中长期流动而几乎不损耗能量，因此超导材料在输电和强磁体制造上极具价值。然而目前已知的超导材料大多需要在极低温下才能工作，维持这样的低温本身消耗大量能量，这限制了超导技术的大规模应用。"
+    },
+    "stem": "短文中「临界温度」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "材料熔化时的温度"
+      },
+      {
+        "id": "B",
+        "text": "电阻突然变为零时的温度"
+      },
+      {
+        "id": "C",
+        "text": "材料能承受的最高温度"
+      },
+      {
+        "id": "D",
+        "text": "室温"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文第二句给出了定义：温度降到一定值以下时电阻突然变为零，「这一温度称为临界温度」。",
+    "distractorRationale": {
+      "A": "熔点是另一个概念，短文并未提及。",
+      "C": "短文谈的是降温而非耐高温。",
+      "D": "短文强调需要「极低温」，与室温相反。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In the passage, 临界温度 (critical temperature) refers to",
+        "explanation": "The second sentence defines it: the temperature below which resistance suddenly drops to zero is called the critical temperature."
+      }
+    },
+    "tags": [
+      "definition-in-context",
+      "superconductivity"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "超导现象指某些材料在温度降到一定值以下时电阻突然变为零。这一温度称为临界温度。电阻为零意味着电流可以在闭合回路中长期流动而几乎不损耗能量，因此超导材料在输电和强磁体制造上极具价值。然而目前已知的超导材料大多需要在极低温下才能工作，维持这样的低温本身消耗大量能量，这限制了超导技术的大规模应用。"
+    },
+    "stem": "根据短文可以推知，若能研制出室温超导材料，最直接的意义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "电阻将进一步降到零以下"
+      },
+      {
+        "id": "B",
+        "text": "输电线路将不再需要导线"
+      },
+      {
+        "id": "C",
+        "text": "无需再消耗能量维持低温，从而扫除应用障碍"
+      },
+      {
+        "id": "D",
+        "text": "临界温度这一概念将不再存在"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文把制冷耗能确认为唯一的障碍。若材料在室温下即可超导，这一障碍自然消失，正是室温超导的意义所在。",
+    "distractorRationale": {
+      "A": "电阻不可能小于零，零已是下限。",
+      "B": "超导只是消除电阻，仍然需要导线来输送电流。",
+      "D": "室温超导材料仍有其临界温度，只是这个温度接近室温。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "From the passage, what would be the most direct significance of developing a room-temperature superconductor?",
+        "explanation": "The passage identifies cooling costs as the sole obstacle. If a material superconducts at room temperature that obstacle simply disappears — which is exactly why room-temperature superconductivity matters."
+      }
+    },
+    "tags": [
+      "inference",
+      "superconductivity"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "配制一定浓度的溶液时，先根据所需浓度和体积计算出溶质的质量，用天平称取。将称好的固体倒入烧杯，加入适量蒸馏水搅拌至完全溶解，待溶液冷却至室温后，沿玻璃棒转移入容量瓶。用少量蒸馏水洗涤烧杯和玻璃棒两至三次，洗涤液一并注入容量瓶。最后加水至刻度线，盖塞摇匀。"
+    },
+    "stem": "根据短文，为什么要洗涤烧杯和玻璃棒并把洗涤液注入容量瓶？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "为了降低溶液温度"
+      },
+      {
+        "id": "B",
+        "text": "为了清洁仪器，便于下次使用"
+      },
+      {
+        "id": "C",
+        "text": "为了增大溶液体积"
+      },
+      {
+        "id": "D",
+        "text": "为了把残留的溶质全部转入容量瓶，保证浓度准确"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "转移时总有少量溶质附着在烧杯壁和玻璃棒上。若不洗涤，这部分溶质就损失了，实际浓度会偏低。洗涤液一并注入，才能保证称取的溶质全部进入容量瓶。",
+    "distractorRationale": {
+      "A": "短文要求在转移之前就已冷却至室温。",
+      "B": "清洁是实验后的事，与配制过程中的浓度准确无关。",
+      "C": "体积最后由刻度线决定，与洗涤无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why must the beaker and stirring rod be rinsed and the rinsings added to the volumetric flask?",
+        "explanation": "A little solute always clings to the beaker wall and the rod during transfer. Without rinsing that portion is lost and the actual concentration comes out low. Adding the rinsings ensures all the weighed solute reaches the flask."
+      }
+    },
+    "tags": [
+      "procedure-rationale",
+      "solution-preparation"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "配制一定浓度的溶液时，先根据所需浓度和体积计算出溶质的质量，用天平称取。将称好的固体倒入烧杯，加入适量蒸馏水搅拌至完全溶解，待溶液冷却至室温后，沿玻璃棒转移入容量瓶。用少量蒸馏水洗涤烧杯和玻璃棒两至三次，洗涤液一并注入容量瓶。最后加水至刻度线，盖塞摇匀。"
+    },
+    "stem": "短文要求「待溶液冷却至室温后」再转移，若省略这一步，最可能的后果是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "液体受热膨胀，冷却后液面低于刻度线，浓度偏高"
+      },
+      {
+        "id": "B",
+        "text": "溶液颜色发生改变"
+      },
+      {
+        "id": "C",
+        "text": "溶质无法完全溶解"
+      },
+      {
+        "id": "D",
+        "text": "容量瓶会立即破裂"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "容量瓶的刻度是在室温下标定的。若在温热时定容，液体体积偏大，冷却收缩后液面降到刻度线以下，实际体积小于标称体积，浓度因而偏高。",
+    "distractorRationale": {
+      "B": "温度并不改变溶液的颜色。",
+      "C": "短文说的是搅拌至完全溶解之后才冷却，溶解已经完成。",
+      "D": "温热的溶液一般不会使容量瓶立即破裂，短文也未提及。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The passage requires cooling to room temperature before transfer. If this step were skipped, the most likely consequence would be",
+        "explanation": "A volumetric flask is calibrated at room temperature. Filling to the mark while warm means the liquid is expanded; on cooling it contracts below the mark, so the true volume is less than stated and the concentration comes out high."
+      }
+    },
+    "tags": [
+      "procedure-rationale",
+      "volumetric-flask"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表记录了某地连续五天的日最高气温与当日用电量：\n\n| 日期 | 最高气温（℃） | 用电量（万千瓦时） |\n|---|---|---|\n| 一 | 28 | 120 |\n| 二 | 31 | 138 |\n| 三 | 33 | 150 |\n| 四 | 30 | 132 |\n| 五 | 35 | 168 |"
+    },
+    "stem": "根据表中数据，用电量最高的一天，其最高气温也是五天中",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "最低的"
+      },
+      {
+        "id": "B",
+        "text": "最高的"
+      },
+      {
+        "id": "C",
+        "text": "居中的"
+      },
+      {
+        "id": "D",
+        "text": "无法从表中判断"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "用电量最高的是第五天的 $168$ 万千瓦时，当天最高气温 $35\\ ℃$ 也是五天中最高的。",
+    "distractorRationale": {
+      "A": "最低气温是第一天的 $28\\ ℃$，当天用电量也最低。",
+      "C": "$35\\ ℃$ 高于其余四天，不是居中值。",
+      "D": "表中两列数据齐全，完全可以直接判断。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "From the table, on the day with the highest electricity use, the maximum temperature was, among the five days,",
+        "explanation": "The highest usage was 168 on day five, and that day's maximum of $35\\ ℃$ was also the highest of the five."
+      }
+    },
+    "tags": [
+      "table-reading",
+      "correspondence"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表记录了某地连续五天的日最高气温与当日用电量：\n\n| 日期 | 最高气温（℃） | 用电量（万千瓦时） |\n|---|---|---|\n| 一 | 28 | 120 |\n| 二 | 31 | 138 |\n| 三 | 33 | 150 |\n| 四 | 30 | 132 |\n| 五 | 35 | 168 |"
+    },
+    "stem": "根据这五天的数据，下列结论中最为稳妥的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "气温与用电量无关"
+      },
+      {
+        "id": "B",
+        "text": "高温直接导致用电量上升"
+      },
+      {
+        "id": "C",
+        "text": "这五天中气温较高的日子用电量也较高"
+      },
+      {
+        "id": "D",
+        "text": "用电量上升导致气温升高"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "五天数据显示两者同升同降，这是相关性。仅凭五天的观测数据不足以断定因果，也无法排除其他因素。因此只陈述观察到的对应关系最为稳妥。\n\n虽然「天热开空调」在生活经验上说得通，但那是外部知识，不是这张表本身能证明的。",
+    "distractorRationale": {
+      "A": "表中两列明显同向变动，说无关与数据不符。",
+      "B": "「直接导致」是因果断言，五天的对应关系不足以支持。",
+      "D": "因果方向颠倒，且同样缺乏证据。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Based on these five days of data, which conclusion is the most defensible?",
+        "explanation": "The five rows rise and fall together, which is a correlation. Five observations cannot establish causation, nor rule out other factors. Stating only the observed correspondence is therefore the safest conclusion.\n\nThe everyday reasoning «hot weather means air conditioning» may well be true, but it is outside knowledge, not something this table demonstrates."
+      }
+    },
+    "tags": [
+      "correlation-causation",
+      "table-reading"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "植物通过光合作用把二氧化碳和水转化为有机物并释放氧气，所需能量来自阳光。这一过程主要在叶片的叶绿体中进行，叶绿素是吸收光能的关键色素。光照强度、二氧化碳浓度和温度都会影响光合作用的速率；在一定范围内提高其中任一因素都能加快光合作用，但超过一定限度后，速率将由其余因素中最不足的那一个决定。"
+    },
+    "stem": "根据短文，光合作用所需的能量来自",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "根部吸收的水"
+      },
+      {
+        "id": "B",
+        "text": "土壤中的养分"
+      },
+      {
+        "id": "C",
+        "text": "二氧化碳的分解"
+      },
+      {
+        "id": "D",
+        "text": "阳光"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文首句即指明「所需能量来自阳光」，并说明叶绿素是吸收光能的关键色素。",
+    "distractorRationale": {
+      "A": "水同样是原料而非能源。",
+      "B": "短文未提及土壤养分为光合作用供能。",
+      "C": "二氧化碳是原料，不是能量来源。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, the energy for photosynthesis comes from",
+        "explanation": "The opening sentence states that the required energy comes from sunlight, and adds that chlorophyll is the key pigment absorbing that light energy."
+      }
+    },
+    "tags": [
+      "detail-retrieval",
+      "photosynthesis"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "植物通过光合作用把二氧化碳和水转化为有机物并释放氧气，所需能量来自阳光。这一过程主要在叶片的叶绿体中进行，叶绿素是吸收光能的关键色素。光照强度、二氧化碳浓度和温度都会影响光合作用的速率；在一定范围内提高其中任一因素都能加快光合作用，但超过一定限度后，速率将由其余因素中最不足的那一个决定。"
+    },
+    "stem": "根据短文最后一句，在光照已经十分充足的温室中，进一步增强光照",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "作用有限，此时速率取决于二氧化碳浓度或温度中较不足的那个"
+      },
+      {
+        "id": "B",
+        "text": "一定能继续大幅提高光合作用速率"
+      },
+      {
+        "id": "C",
+        "text": "会使叶绿素分解"
+      },
+      {
+        "id": "D",
+        "text": "会使光合作用完全停止"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文指出，超过一定限度后速率由「其余因素中最不足的那一个」决定。光照已充足时，它不再是瓶颈，继续增强收效甚微，真正的限制转移到二氧化碳浓度或温度上。",
+    "distractorRationale": {
+      "B": "这正是短文所否定的；超过限度后再增强收效有限。",
+      "C": "叶绿素分解是短文之外的内容，不能据此作答。",
+      "D": "短文并未提到光合作用会因光照过强而停止。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Based on the passage's final sentence, in a greenhouse where light is already ample, increasing the light further",
+        "explanation": "The passage says that past a certain point the rate is set by whichever remaining factor is most lacking. Where light is already ample it is no longer the bottleneck, so adding more yields little; the real limit shifts to carbon dioxide concentration or temperature."
+      }
+    },
+    "tags": [
+      "limiting-factor",
+      "inference"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "植物通过光合作用把二氧化碳和水转化为有机物并释放氧气，所需能量来自阳光。这一过程主要在叶片的叶绿体中进行，叶绿素是吸收光能的关键色素。光照强度、二氧化碳浓度和温度都会影响光合作用的速率；在一定范围内提高其中任一因素都能加快光合作用，但超过一定限度后，速率将由其余因素中最不足的那一个决定。"
+    },
+    "stem": "短文提到影响光合作用速率的因素共有几个？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "五个"
+      },
+      {
+        "id": "B",
+        "text": "三个"
+      },
+      {
+        "id": "C",
+        "text": "四个"
+      },
+      {
+        "id": "D",
+        "text": "两个"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文列举了光照强度、二氧化碳浓度和温度，共三个因素。叶绿素是参与过程的色素，不属于所列的影响因素。",
+    "distractorRationale": {
+      "A": "短文中没有五个因素。",
+      "C": "把叶绿素也算了进去，但短文并未把它列为影响速率的因素。",
+      "D": "漏掉了其中一个。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How many factors affecting the rate of photosynthesis does the passage mention?",
+        "explanation": "The passage lists light intensity, carbon dioxide concentration and temperature — three factors. Chlorophyll is a pigment involved in the process, not one of the listed rate factors."
+      }
+    },
+    "tags": [
+      "detail-counting",
+      "careful-reading"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "用显微镜观察装片时，应先转动粗准焦螺旋使镜筒缓缓下降，眼睛须从侧面注视物镜，避免物镜压碎玻片。随后从目镜中观察，反向转动粗准焦螺旋使镜筒缓缓上升，直到看清物像。若物像不够清晰，再用细准焦螺旋微调。观察时应两眼同时睁开，以便一边观察一边绘图。"
+    },
+    "stem": "根据短文，转动粗准焦螺旋使镜筒下降时，眼睛应",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "从目镜中注视"
+      },
+      {
+        "id": "B",
+        "text": "闭上以免受伤"
+      },
+      {
+        "id": "C",
+        "text": "从侧面注视物镜"
+      },
+      {
+        "id": "D",
+        "text": "注视反光镜"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文明确要求下降镜筒时「眼睛须从侧面注视物镜」，目的是随时看清物镜与玻片的距离，避免压碎玻片。从目镜中观察是镜筒上升阶段的做法。",
+    "distractorRationale": {
+      "A": "这是镜筒上升时的做法，两个阶段不可颠倒。",
+      "B": "短文要求两眼同时睁开，且闭眼无法监控距离。",
+      "D": "短文未提及此时注视反光镜。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, while lowering the tube with the coarse focus knob, the eyes should",
+        "explanation": "The passage requires watching the objective lens from the side while lowering the tube, so that the gap between lens and slide stays visible and the slide is not crushed. Looking through the eyepiece belongs to the raising stage."
+      }
+    },
+    "tags": [
+      "microscope",
+      "procedure-order"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "用显微镜观察装片时，应先转动粗准焦螺旋使镜筒缓缓下降，眼睛须从侧面注视物镜，避免物镜压碎玻片。随后从目镜中观察，反向转动粗准焦螺旋使镜筒缓缓上升，直到看清物像。若物像不够清晰，再用细准焦螺旋微调。观察时应两眼同时睁开，以便一边观察一边绘图。"
+    },
+    "stem": "短文安排「先下降、再上升」这一顺序，其用意是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "让物像先放大再缩小"
+      },
+      {
+        "id": "B",
+        "text": "节省观察时间"
+      },
+      {
+        "id": "C",
+        "text": "使光线更充足"
+      },
+      {
+        "id": "D",
+        "text": "使寻找物像的过程始终远离玻片，避免压碎"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "下降时侧面看着物镜，可以把镜筒降到接近玻片而不接触；随后从目镜中观察并让镜筒上升，整个寻找物像的过程镜筒都在远离玻片，因而不可能压碎玻片。若在目镜中观察的同时让镜筒下降，就看不到间隙，风险最大。",
+    "distractorRationale": {
+      "A": "放大倍数由物镜和目镜决定，与升降顺序无关。",
+      "B": "短文强调「缓缓」，并非以省时为目的。",
+      "C": "光线由反光镜和光圈调节，短文未涉及。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why does the passage prescribe lowering the tube first and raising it afterwards?",
+        "explanation": "Watching from the side while lowering lets the tube come close to the slide without touching it. Then, while looking through the eyepiece, the tube only moves away from the slide, so the search for the image can never crush it. Lowering the tube while looking through the eyepiece — with the gap invisible — is the riskiest order."
+      }
+    },
+    "tags": [
+      "procedure-rationale",
+      "microscope"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "某物质在不同温度下每 $100\\ \\text{g}$ 水中的溶解度如下：\n\n| 温度（℃） | 溶解度（g） |\n|---|---|\n| 0 | 13 |\n| 20 | 32 |\n| 40 | 64 |\n| 60 | 110 |\n| 80 | 169 |"
+    },
+    "stem": "根据表中数据，该物质的溶解度随温度升高而",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "增大，且增幅越来越大"
+      },
+      {
+        "id": "B",
+        "text": "均匀增大"
+      },
+      {
+        "id": "C",
+        "text": "减小"
+      },
+      {
+        "id": "D",
+        "text": "先增大后减小"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "相邻两行的增量依次是 $19、32、46、59$，逐次变大。因此溶解度不仅增大，增大的速度也在加快，曲线是上凹的而非直线。",
+    "distractorRationale": {
+      "B": "均匀增大要求各段增量相等，但增量从 $19$ 一路升到 $59$。",
+      "C": "各行数值一路上升。",
+      "D": "表中没有任何一段出现下降。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "From the table, as temperature rises the solubility of this substance",
+        "explanation": "The successive increments are $19, 32, 46, 59$ — each larger than the last. So solubility not only rises but rises ever faster; the curve bends upward rather than running straight."
+      }
+    },
+    "tags": [
+      "solubility-curve",
+      "trend-shape"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "某物质在不同温度下每 $100\\ \\text{g}$ 水中的溶解度如下：\n\n| 温度（℃） | 溶解度（g） |\n|---|---|\n| 0 | 13 |\n| 20 | 32 |\n| 40 | 64 |\n| 60 | 110 |\n| 80 | 169 |"
+    },
+    "stem": "把 $80\\ ℃$ 时该物质的饱和溶液冷却到 $20\\ ℃$，每 $100\\ \\text{g}$ 水中最多能析出晶体",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$105\\ \\text{g}$"
+      },
+      {
+        "id": "B",
+        "text": "$137\\ \\text{g}$"
+      },
+      {
+        "id": "C",
+        "text": "$32\\ \\text{g}$"
+      },
+      {
+        "id": "D",
+        "text": "$169\\ \\text{g}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "$80\\ ℃$ 时每 $100\\ \\text{g}$ 水最多溶 $169\\ \\text{g}$，降到 $20\\ ℃$ 后只能溶 $32\\ \\text{g}$，多出来的 $169 - 32 = 137\\ \\text{g}$ 以晶体析出。",
+    "distractorRationale": {
+      "A": "用了 $60\\ ℃$ 与 $0\\ ℃$ 之类的错误配对。",
+      "C": "这是 $20\\ ℃$ 时仍留在溶液中的量。",
+      "D": "这是原先溶解的总量，未减去仍溶解的部分。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Cooling a saturated solution of this substance from $80\\ ℃$ to $20\\ ℃$, the maximum mass of crystals obtainable per $100\\ \\text{g}$ of water is",
+        "explanation": "At $80\\ ℃$ each $100\\ \\text{g}$ of water holds at most $169\\ \\text{g}$; at $20\\ ℃$ only $32\\ \\text{g}$. The excess, $169 - 32 = 137\\ \\text{g}$, crystallises out."
+      }
+    },
+    "tags": [
+      "crystallisation",
+      "table-calculation"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "地震波分为纵波和横波两种。纵波振动方向与传播方向一致，传播速度较快，能在固体、液体和气体中传播；横波振动方向与传播方向垂直，速度较慢，只能在固体中传播。地震发生时，纵波先到达地面，使人感到上下颠簸；横波随后到达，造成左右摇晃，破坏力更大。正是利用两种波速度的差异，可以推算震源的距离。"
+    },
+    "stem": "根据短文，横波与纵波的一个重要区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "横波速度更快"
+      },
+      {
+        "id": "B",
+        "text": "横波的破坏力较小"
+      },
+      {
+        "id": "C",
+        "text": "横波只能在固体中传播"
+      },
+      {
+        "id": "D",
+        "text": "横波先到达地面"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文指出横波「只能在固体中传播」，而纵波在固、液、气三态中都能传播。这是两者最根本的差别之一。",
+    "distractorRationale": {
+      "A": "短文说横波「速度较慢」。",
+      "B": "短文说横波「破坏力更大」。",
+      "D": "短文说纵波先到达。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, one important difference between S waves and P waves is that S waves",
+        "explanation": "The passage states that transverse waves travel only through solids, whereas longitudinal waves pass through solids, liquids and gases alike. This is one of the most fundamental differences between them."
+      }
+    },
+    "tags": [
+      "seismic-waves",
+      "comparison"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

@@ -1,0 +1,1212 @@
+[
+  {
+    "id": "sat-mth-f01",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $5x - 8 = 3x + 10$, what is the value of $x$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9"
+      },
+      {
+        "id": "B",
+        "text": "18"
+      },
+      {
+        "id": "C",
+        "text": "6"
+      },
+      {
+        "id": "D",
+        "text": "1"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Subtract $3x$ from both sides: $2x - 8 = 10$. Add 8: $2x = 18$, so $x = 9$.",
+    "distractorRationale": {
+      "B": "This is $2x$, not $x$.",
+      "C": "Comes from dividing 18 by 3 instead of 2.",
+      "D": "Comes from subtracting 8 rather than adding it."
+    },
+    "tags": [
+      "linear-equation",
+      "one-variable"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f02",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A linear function $f$ satisfies $f(2) = 7$ and $f(6) = 19$. What is $f(0)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5"
+      },
+      {
+        "id": "B",
+        "text": "1"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The slope is $\\dfrac{19 - 7}{6 - 2} = \\dfrac{12}{4} = 3$.\n\nWorking back from $f(2) = 7$ by two steps of 3 gives $f(0) = 7 - 6 = 1$.",
+    "distractorRationale": {
+      "A": "Comes from using a slope of 1.",
+      "C": "This is the slope, not the value at zero.",
+      "D": "Comes from subtracting only one step of 3."
+    },
+    "tags": [
+      "linear-function",
+      "slope"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f03",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $3x + 2y = 16$ and $x - 2y = 4$, what is the value of $x$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "2"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Adding the two equations eliminates $y$: $4x = 20$, so $x = 5$.\n\nThe $+2y$ and $-2y$ terms are already set up to cancel, so no scaling is needed first.",
+    "distractorRationale": {
+      "A": "Comes from an arithmetic slip when dividing 20.",
+      "B": "This is the constant on the right of the second equation.",
+      "D": "Comes from subtracting the equations instead of adding them."
+    },
+    "tags": [
+      "system-of-equations",
+      "elimination"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f04",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which of the following is equivalent to $-4x + 7 \\ge 19$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x \\ge -3$"
+      },
+      {
+        "id": "B",
+        "text": "$x \\le 3$"
+      },
+      {
+        "id": "C",
+        "text": "$x \\ge 3$"
+      },
+      {
+        "id": "D",
+        "text": "$x \\le -3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Subtract 7: $-4x \\ge 12$. Dividing by $-4$ reverses the inequality, giving $x \\le -3$.\n\nThe reversal applies whenever both sides are divided or multiplied by a negative number.",
+    "distractorRationale": {
+      "A": "Correct value but the inequality sign was not reversed.",
+      "B": "Direction reversed correctly but the sign of 3 is wrong.",
+      "C": "Both the sign of the value and the direction are wrong."
+    },
+    "tags": [
+      "linear-inequality",
+      "sign-reversal"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f05",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear equations in two variables",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The line $y = mx + 4$ passes through the point $(3, -2)$. What is the value of $m$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-2$"
+      },
+      {
+        "id": "B",
+        "text": "$-\\dfrac{2}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$2$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{2}{3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Substitute the point: $-2 = 3m + 4$. Subtract 4: $3m = -6$, so $m = -2$.",
+    "distractorRationale": {
+      "B": "Comes from solving $3m = -2$, forgetting to subtract the intercept.",
+      "C": "Correct magnitude but the sign is wrong.",
+      "D": "Same slip with a sign error as well."
+    },
+    "tags": [
+      "slope-intercept",
+      "substitution"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f06",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The system $\\begin{cases} 2x + 3y = 12 \\\\ 4x + ky = 20 \\end{cases}$ has no solution. What is the value of $k$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "6"
+      },
+      {
+        "id": "C",
+        "text": "8"
+      },
+      {
+        "id": "D",
+        "text": "12"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "A system has no solution when the lines are parallel: the coefficients are proportional but the constants are not.\n\nSince $4 = 2 \\times 2$, we need $k = 3 \\times 2 = 6$. Checking the constants: $2 \\times 12 = 24 \\ne 20$, so the lines are indeed parallel and distinct — no solution, as required.",
+    "distractorRationale": {
+      "A": "Copies the coefficient from the first equation without scaling.",
+      "C": "Comes from doubling 4 rather than 3.",
+      "D": "Uses the constant term instead of the $y$-coefficient."
+    },
+    "tags": [
+      "parallel-lines",
+      "no-solution"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f07",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A printing service charges a setup fee plus a fixed amount per page. Printing 40 pages costs 34 dollars, and printing 90 pages costs 59 dollars. What is the setup fee, in dollars?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9"
+      },
+      {
+        "id": "B",
+        "text": "20"
+      },
+      {
+        "id": "C",
+        "text": "14"
+      },
+      {
+        "id": "D",
+        "text": "25"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The extra 50 pages cost $59 - 34 = 25$ dollars, so each page costs $\\dfrac{25}{50} = 0.50$ dollars.\n\nForty pages therefore cost 20 dollars, and the setup fee is $34 - 20 = 14$ dollars.",
+    "distractorRationale": {
+      "A": "Comes from using a per-page rate of 0.625 dollars.",
+      "B": "This is the cost of the 40 pages, not the setup fee.",
+      "D": "This is the difference between the two totals."
+    },
+    "tags": [
+      "linear-model",
+      "fixed-plus-variable"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f08",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $\\dfrac{2x + 5}{3} = 7$, what is the value of $x$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "13"
+      },
+      {
+        "id": "B",
+        "text": "5"
+      },
+      {
+        "id": "C",
+        "text": "11"
+      },
+      {
+        "id": "D",
+        "text": "8"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Multiply both sides by 3: $2x + 5 = 21$. Subtract 5: $2x = 16$, so $x = 8$.",
+    "distractorRationale": {
+      "A": "Comes from adding 5 rather than subtracting it.",
+      "B": "Comes from dividing 21 by 4 after a slip.",
+      "C": "Comes from forgetting to subtract the 5."
+    },
+    "tags": [
+      "linear-equation",
+      "clearing-fractions"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f09",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $(2x + 3)(x - 5)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2x^2 - 7x - 15$"
+      },
+      {
+        "id": "B",
+        "text": "$2x^2 - 13x - 15$"
+      },
+      {
+        "id": "C",
+        "text": "$2x^2 + 7x - 15$"
+      },
+      {
+        "id": "D",
+        "text": "$2x^2 - 7x + 15$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Expanding gives $2x^2 - 10x + 3x - 15$. Combining the middle terms: $2x^2 - 7x - 15$.",
+    "distractorRationale": {
+      "B": "Comes from adding $-10x$ and $-3x$ instead of $+3x$.",
+      "C": "Sign error on the $-10x$ term.",
+      "D": "Sign error on the constant: $3 \\times (-5)$ is negative."
+    },
+    "tags": [
+      "expanding",
+      "quadratic"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f10",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the sum of the solutions to $x^2 - 9x + 20 = 0$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-9$"
+      },
+      {
+        "id": "B",
+        "text": "9"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "20"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "For $x^2 + bx + c = 0$, the sum of the roots is $-b$. Here $b = -9$, so the sum is 9.\n\nFactoring confirms it: $(x-4)(x-5) = 0$ gives roots 4 and 5, which sum to 9.",
+    "distractorRationale": {
+      "A": "Takes $b$ directly without the sign change.",
+      "C": "One of the two roots rather than their sum.",
+      "D": "This is the product of the roots."
+    },
+    "tags": [
+      "quadratic-roots",
+      "sum-of-roots"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f11",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $g$ is defined by $g(x) = 2x^2 - 12x + 5$. What is the minimum value of $g$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-7$"
+      },
+      {
+        "id": "B",
+        "text": "3"
+      },
+      {
+        "id": "C",
+        "text": "$-13$"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The vertex lies at $x = \\dfrac{-b}{2a} = \\dfrac{12}{4} = 3$.\n\nEvaluating: $g(3) = 2(9) - 12(3) + 5 = 18 - 36 + 5 = -13$.",
+    "distractorRationale": {
+      "A": "Comes from an arithmetic slip in evaluating at the vertex.",
+      "B": "This is the $x$-coordinate of the vertex, not the minimum value.",
+      "D": "This is $g(0)$, the value at the intercept."
+    },
+    "tags": [
+      "quadratic-vertex",
+      "minimum"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f12",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $\\dfrac{x^2 - 16}{x^2 + 8x + 16}$ for $x \\ne -4$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-1$"
+      },
+      {
+        "id": "B",
+        "text": "$x - 4$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{x + 4}{x - 4}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{x - 4}{x + 4}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Factor both parts: the numerator is a difference of squares, $(x-4)(x+4)$; the denominator is a perfect square, $(x+4)^2$.\n\nCancelling one factor of $(x+4)$ leaves $\\dfrac{x-4}{x+4}$.",
+    "distractorRationale": {
+      "A": "Would require the numerator and denominator to be negatives of each other.",
+      "B": "Cancels both factors of $(x+4)$, but the denominator has two and the numerator only one.",
+      "C": "Inverts the result."
+    },
+    "tags": [
+      "rational-expression",
+      "factoring"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f13",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A population doubles every 5 years. If it is 800 now, which expression gives the population $t$ years from now?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$800 \\cdot 2^{t/5}$"
+      },
+      {
+        "id": "B",
+        "text": "$800 \\cdot 2^{5t}$"
+      },
+      {
+        "id": "C",
+        "text": "$800 + 2t$"
+      },
+      {
+        "id": "D",
+        "text": "$800 \\cdot 5^{t/2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The base 2 represents doubling. The exponent must count how many doubling periods have passed, and each period is 5 years, so it is $\\dfrac{t}{5}$.\n\nChecking at $t = 5$: $800 \\cdot 2^1 = 1600$, which is one doubling, as required.",
+    "distractorRationale": {
+      "B": "At $t = 5$ this gives $800 \\cdot 2^{25}$, far too large.",
+      "C": "Models linear growth rather than doubling.",
+      "D": "Swaps the roles of the base and the period."
+    },
+    "tags": [
+      "exponential-growth",
+      "doubling-period"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f14",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $\\sqrt{2x + 7} = x - 4$, what is the value of $x$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "9"
+      },
+      {
+        "id": "C",
+        "text": "both 1 and 9"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Squaring gives $2x + 7 = x^2 - 8x + 16$, or $x^2 - 10x + 9 = 0$, which factors as $(x-1)(x-9) = 0$.\n\nBoth candidates must be checked in the original equation. For $x = 1$: the right side is $-3$, but a square root cannot be negative, so it is extraneous. For $x = 9$: $\\sqrt{25} = 5$ and $9 - 4 = 5$. Only 9 works.",
+    "distractorRationale": {
+      "A": "An extraneous root introduced by squaring; it makes the right side negative.",
+      "C": "Fails to reject the extraneous root.",
+      "D": "Not a root of the quadratic at all."
+    },
+    "tags": [
+      "radical-equation",
+      "extraneous-roots"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f15",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $3(2x - 4) + 5x$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$8x - 12$"
+      },
+      {
+        "id": "B",
+        "text": "$6x - 12$"
+      },
+      {
+        "id": "C",
+        "text": "$11x - 12$"
+      },
+      {
+        "id": "D",
+        "text": "$11x - 4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Distribute: $6x - 12 + 5x$. Combining like terms gives $11x - 12$.",
+    "distractorRationale": {
+      "A": "Adds 5 to 3 before distributing rather than after.",
+      "B": "Omits the $+5x$ term entirely.",
+      "D": "Fails to multiply the $-4$ by 3."
+    },
+    "tags": [
+      "distributive-property",
+      "combining-terms"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f16",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Percentages",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A jacket is on sale for 68 dollars, which is 15% off its original price. What was the original price, in dollars?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "78.20"
+      },
+      {
+        "id": "B",
+        "text": "82.00"
+      },
+      {
+        "id": "C",
+        "text": "85.00"
+      },
+      {
+        "id": "D",
+        "text": "80.00"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The sale price is 85% of the original, so $0.85p = 68$ and $p = \\dfrac{68}{0.85} = 80$.\n\nAdding 15% to 68 gives 78.20, which is a different quantity — the discount is taken from the original price, not from the sale price.",
+    "distractorRationale": {
+      "A": "Adds 15% to the sale price, using the wrong base.",
+      "B": "Adds a flat 14 dollars without basing it on any percentage.",
+      "C": "Adds 25% to the sale price."
+    },
+    "tags": [
+      "percentage",
+      "reverse-discount"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f17",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Ratios, rates, proportional relationships, units",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A machine fills bottles at a constant rate of 240 bottles per hour. How many bottles does it fill in 25 minutes?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "100"
+      },
+      {
+        "id": "B",
+        "text": "120"
+      },
+      {
+        "id": "C",
+        "text": "60"
+      },
+      {
+        "id": "D",
+        "text": "80"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "At 240 bottles per hour the rate is $\\dfrac{240}{60} = 4$ bottles per minute.\n\nIn 25 minutes: $4 \\times 25 = 100$ bottles.",
+    "distractorRationale": {
+      "B": "Uses half an hour.",
+      "C": "Uses a rate of 2.4 bottles per minute.",
+      "D": "Uses one third of an hour rather than 25 minutes."
+    },
+    "tags": [
+      "rate",
+      "unit-conversion"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f18",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "One-variable data",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The mean of five numbers is 18. When a sixth number is included, the mean becomes 20. What is the sixth number?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "38"
+      },
+      {
+        "id": "B",
+        "text": "30"
+      },
+      {
+        "id": "C",
+        "text": "22"
+      },
+      {
+        "id": "D",
+        "text": "26"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The original total is $5 \\times 18 = 90$; the new total is $6 \\times 20 = 120$. The sixth number is $120 - 90 = 30$.\n\nQuick check: the mean rose by 2 across six values, so 12 extra points were needed above the old mean, giving $18 + 12 = 30$.",
+    "distractorRationale": {
+      "A": "Adds 20 to the old mean.",
+      "C": "Adds 4 to the new mean without using totals.",
+      "D": "Adds 8 to the old mean."
+    },
+    "tags": [
+      "mean",
+      "totals-method"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f19",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Area and volume",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A cylinder has radius 3 and height 10. What is its volume?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$30\\pi$"
+      },
+      {
+        "id": "B",
+        "text": "$180\\pi$"
+      },
+      {
+        "id": "C",
+        "text": "$90\\pi$"
+      },
+      {
+        "id": "D",
+        "text": "$60\\pi$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Volume is $\\pi r^2 h = \\pi (9)(10) = 90\\pi$.",
+    "distractorRationale": {
+      "A": "Uses $r$ rather than $r^2$.",
+      "B": "Doubles the correct answer, as though computing a surface area.",
+      "D": "Uses $2r$ in place of $r^2$."
+    },
+    "tags": [
+      "cylinder",
+      "volume"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f20",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangles and trigonometry",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In a right triangle, $\\sin \\theta = \\dfrac{5}{13}$. What is $\\cos \\theta$, given that $\\theta$ is acute?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{8}{13}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{13}{12}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{5}{12}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{12}{13}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "With opposite 5 and hypotenuse 13, the adjacent side is $\\sqrt{169 - 25} = \\sqrt{144} = 12$.\n\nSo $\\cos\\theta = \\dfrac{12}{13}$.",
+    "distractorRationale": {
+      "A": "Comes from subtracting 5 from 13 instead of using the Pythagorean relation.",
+      "B": "Inverts the cosine, giving the secant.",
+      "C": "This is $\\tan\\theta$."
+    },
+    "tags": [
+      "trigonometry",
+      "pythagorean-triple"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f21",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Circles",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A circle in the $xy$-plane has equation $(x-2)^2 + (y+5)^2 = 49$. What is the length of its diameter?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "14"
+      },
+      {
+        "id": "B",
+        "text": "98"
+      },
+      {
+        "id": "C",
+        "text": "49"
+      },
+      {
+        "id": "D",
+        "text": "7"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "In the standard form, the right-hand side is $r^2$, so $r = \\sqrt{49} = 7$ and the diameter is $2r = 14$.",
+    "distractorRationale": {
+      "B": "Doubles $r^2$ instead of $r$.",
+      "C": "This is $r^2$, taken directly from the equation.",
+      "D": "This is the radius, not the diameter."
+    },
+    "tags": [
+      "circle-equation",
+      "radius-diameter"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-mth-f22",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_math_m1",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Probability",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A box contains 7 blue marbles and 13 red marbles. One marble is drawn at random. What is the probability that it is blue?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{7}{20}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{13}{20}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{7}{13}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "There are 20 marbles in total and 7 are blue, so the probability is $\\dfrac{7}{20}$.",
+    "distractorRationale": {
+      "A": "Assumes the two colours are equally represented.",
+      "C": "This is the probability of drawing red.",
+      "D": "Uses the count of red marbles as the denominator instead of the total."
+    },
+    "tags": [
+      "probability",
+      "single-draw"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

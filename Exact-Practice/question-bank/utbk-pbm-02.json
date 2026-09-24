@@ -1,0 +1,1254 @@
+[
+  {
+    "id": "utbk-pbm-b01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Gagasan utama paragraf",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Kopi robusta dan arabika tumbuh pada ketinggian yang berbeda. (2) Arabika menghendaki dataran di atas seribu meter dengan suhu sejuk dan curah hujan merata. (3) Robusta lebih lentur: ia bertahan di dataran rendah yang panas dan lebih tahan terhadap penyakit karat daun. (4) Perbedaan itu tidak hanya menentukan tempat penanaman, tetapi juga cita rasa yang dihasilkan. (5) Arabika cenderung asam dan beraroma buah, sedangkan robusta lebih pahit dengan kadar kafeina hampir dua kali lipat."
+    },
+    "stem": "Gagasan utama paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kopi Indonesia terdiri atas dua jenis utama"
+      },
+      {
+        "id": "B",
+        "text": "kadar kafeina robusta hampir dua kali lipat arabika"
+      },
+      {
+        "id": "C",
+        "text": "robusta lebih tahan terhadap penyakit karat daun"
+      },
+      {
+        "id": "D",
+        "text": "arabika memerlukan dataran tinggi untuk tumbuh"
+      },
+      {
+        "id": "E",
+        "text": "perbedaan syarat tumbuh kedua jenis kopi berdampak pada cita rasanya"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat (4) menjadi poros paragraf: perbedaan syarat tumbuh berlanjut menjadi perbedaan rasa. Kalimat (1)–(3) memaparkan syarat tumbuhnya, kalimat (5) memaparkan rasanya.\n\nPilihan lain semuanya benar sebagai isi, tetapi masing-masing hanya satu sisi dari hubungan yang dibangun paragraf ini.",
+    "distractorRationale": {
+      "A": "Tidak dinyatakan bacaan; paragraf ini tidak membahas kopi Indonesia.",
+      "B": "Detail dari kalimat (5).",
+      "C": "Detail dari kalimat (3).",
+      "D": "Detail dari kalimat (2)."
+    },
+    "tags": [
+      "gagasan-utama",
+      "kalimat-poros"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Simpulan bacaan",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Kopi robusta dan arabika tumbuh pada ketinggian yang berbeda. (2) Arabika menghendaki dataran di atas seribu meter dengan suhu sejuk dan curah hujan merata. (3) Robusta lebih lentur: ia bertahan di dataran rendah yang panas dan lebih tahan terhadap penyakit karat daun. (4) Perbedaan itu tidak hanya menentukan tempat penanaman, tetapi juga cita rasa yang dihasilkan. (5) Arabika cenderung asam dan beraroma buah, sedangkan robusta lebih pahit dengan kadar kafeina hampir dua kali lipat."
+    },
+    "stem": "Berdasarkan bacaan, di daerah pesisir yang panas kemungkinan besar ditanam ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "robusta, karena tahan terhadap suhu panas di dataran rendah"
+      },
+      {
+        "id": "B",
+        "text": "tidak dapat ditentukan dari bacaan"
+      },
+      {
+        "id": "C",
+        "text": "arabika, karena lebih tahan penyakit"
+      },
+      {
+        "id": "D",
+        "text": "arabika, karena rasanya lebih disukai pasar"
+      },
+      {
+        "id": "E",
+        "text": "keduanya, karena syarat tumbuhnya sama"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat (3) menyebut robusta bertahan di dataran rendah yang panas, sedangkan kalimat (2) menyebut arabika menghendaki dataran di atas seribu meter dengan suhu sejuk. Daerah pesisir yang panas jelas lebih cocok untuk robusta.",
+    "distractorRationale": {
+      "B": "Bacaan memuat cukup keterangan untuk menyimpulkannya.",
+      "C": "Yang tahan penyakit karat daun adalah robusta, bukan arabika.",
+      "D": "Bacaan tidak membahas selera pasar, dan arabika justru tidak cocok di sana.",
+      "E": "Bacaan justru menegaskan syarat tumbuh keduanya berbeda."
+    },
+    "tags": [
+      "simpulan",
+      "penerapan-informasi"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Tujuan penulis",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Kopi robusta dan arabika tumbuh pada ketinggian yang berbeda. (2) Arabika menghendaki dataran di atas seribu meter dengan suhu sejuk dan curah hujan merata. (3) Robusta lebih lentur: ia bertahan di dataran rendah yang panas dan lebih tahan terhadap penyakit karat daun. (4) Perbedaan itu tidak hanya menentukan tempat penanaman, tetapi juga cita rasa yang dihasilkan. (5) Arabika cenderung asam dan beraroma buah, sedangkan robusta lebih pahit dengan kadar kafeina hampir dua kali lipat."
+    },
+    "stem": "Tujuan penulis menyusun paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menjelaskan cara mengolah biji kopi"
+      },
+      {
+        "id": "B",
+        "text": "membandingkan dua jenis kopi dari segi syarat tumbuh dan rasa"
+      },
+      {
+        "id": "C",
+        "text": "membuktikan bahwa arabika lebih unggul"
+      },
+      {
+        "id": "D",
+        "text": "mengajak pembaca menanam kopi arabika"
+      },
+      {
+        "id": "E",
+        "text": "mengkritik petani yang menanam robusta"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Sepanjang paragraf penulis menyandingkan kedua jenis kopi tanpa memihak: masing-masing diberi keterangan syarat tumbuh dan ciri rasanya. Nada tulisannya memaparkan, bukan mengajak atau menilai.\n\nKata *lebih lentur* pada kalimat (3) memang terdengar positif, tetapi diimbangi keterangan rasa pahit pada kalimat (5) — tidak ada pihak yang dimenangkan.",
+    "distractorRationale": {
+      "A": "Pengolahan biji kopi tidak disinggung sama sekali.",
+      "C": "Penulis tidak menyatakan salah satu lebih unggul.",
+      "D": "Tidak ada ajakan menanam apa pun dalam paragraf ini.",
+      "E": "Tidak ada nada kritik terhadap petani."
+    },
+    "tags": [
+      "tujuan-penulis",
+      "teks-perbandingan"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Hubungan antarparagraf",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Paragraf 1: Selama puluhan tahun, kantong plastik dianggap penemuan yang praktis. Ia ringan, murah, dan tahan air, sehingga cepat menggantikan keranjang dan kertas pembungkus di hampir seluruh dunia.\n\nParagraf 2: Sifat yang membuatnya praktis itulah yang kini menjadi masalah. Ketahanannya terhadap air dan pembusukan berarti ia bertahan ratusan tahun di alam, terpecah menjadi serpihan kecil yang masuk ke rantai makanan tanpa pernah benar-benar hilang."
+    },
+    "stem": "Hubungan antara paragraf 1 dan paragraf 2 adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "paragraf 2 memberikan contoh dari paragraf 1"
+      },
+      {
+        "id": "B",
+        "text": "paragraf 2 mengulang gagasan paragraf 1 dengan kata lain"
+      },
+      {
+        "id": "C",
+        "text": "paragraf 2 menunjukkan sisi lain dari sifat yang dipuji pada paragraf 1"
+      },
+      {
+        "id": "D",
+        "text": "paragraf 2 menyangkal fakta yang disebut paragraf 1"
+      },
+      {
+        "id": "E",
+        "text": "paragraf 2 memuat kesimpulan dari paragraf 1"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat pembuka paragraf 2 — «Sifat yang membuatnya praktis itulah yang kini menjadi masalah» — menghubungkan keduanya secara langsung. Sifat yang sama, yaitu tahan air dan tahan lama, dinilai dari sudut yang berlawanan.\n\nParagraf 2 tidak menyangkal bahwa plastik praktis; ia menerima fakta itu lalu menunjukkan akibat lain darinya.",
+    "distractorRationale": {
+      "A": "Paragraf 2 bukan contoh, melainkan penilaian ulang atas sifat yang sama.",
+      "B": "Gagasannya berbeda, bahkan berlawanan arah penilaiannya.",
+      "D": "Fakta pada paragraf 1 justru diterima dan dipakai sebagai pijakan.",
+      "E": "Paragraf 2 memuat akibat, bukan simpulan dari paragraf sebelumnya."
+    },
+    "tags": [
+      "hubungan-antarparagraf",
+      "kontras"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Simpulan bacaan",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Paragraf 1: Selama puluhan tahun, kantong plastik dianggap penemuan yang praktis. Ia ringan, murah, dan tahan air, sehingga cepat menggantikan keranjang dan kertas pembungkus di hampir seluruh dunia.\n\nParagraf 2: Sifat yang membuatnya praktis itulah yang kini menjadi masalah. Ketahanannya terhadap air dan pembusukan berarti ia bertahan ratusan tahun di alam, terpecah menjadi serpihan kecil yang masuk ke rantai makanan tanpa pernah benar-benar hilang."
+    },
+    "stem": "Simpulan yang tepat dari kedua paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kantong plastik seharusnya tidak pernah ditemukan"
+      },
+      {
+        "id": "B",
+        "text": "keranjang dan kertas pembungkus lebih baik daripada plastik"
+      },
+      {
+        "id": "C",
+        "text": "plastik akan hilang dengan sendirinya setelah ratusan tahun"
+      },
+      {
+        "id": "D",
+        "text": "keunggulan sebuah bahan dapat sekaligus menjadi kelemahannya"
+      },
+      {
+        "id": "E",
+        "text": "serpihan plastik tidak berbahaya bagi manusia"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kedua paragraf menilai sifat yang sama — ringan, tahan air, tahan lama — dari dua sudut yang berlawanan. Simpulan yang mencakup keduanya adalah bahwa keunggulan dan kelemahan di sini bersumber pada sifat yang sama.",
+    "distractorRationale": {
+      "A": "Penilaian moral yang tidak dinyatakan bacaan.",
+      "B": "Bacaan tidak membandingkan mutu keranjang dan kertas dengan plastik.",
+      "C": "Bacaan menyebut ia terpecah «tanpa pernah benar-benar hilang».",
+      "E": "Bacaan justru menyebut serpihan itu masuk ke rantai makanan."
+    },
+    "tags": [
+      "simpulan",
+      "dua-paragraf"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Gagasan utama paragraf",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Tidur bukan sekadar berhenti beraktivitas. Saat tidur dalam, otak memindahkan ingatan dari penyimpanan sementara ke penyimpanan jangka panjang, dan cairan di sekitarnya bekerja membersihkan sisa metabolisme yang menumpuk sepanjang hari. Karena itu, kurang tidur tidak hanya membuat mengantuk, tetapi juga menurunkan kemampuan mengingat dan memusatkan perhatian pada hari berikutnya."
+    },
+    "stem": "Gagasan utama paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "ingatan disimpan di dua tempat yang berbeda"
+      },
+      {
+        "id": "B",
+        "text": "orang dewasa memerlukan tidur delapan jam setiap malam"
+      },
+      {
+        "id": "C",
+        "text": "kurang tidur membuat orang mengantuk pada siang hari"
+      },
+      {
+        "id": "D",
+        "text": "cairan otak membersihkan sisa metabolisme"
+      },
+      {
+        "id": "E",
+        "text": "tidur adalah proses aktif yang diperlukan otak, bukan sekadar berhenti beraktivitas"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat pertama menyatakan tesisnya secara langsung, dan sisa paragraf memberi bukti: pemindahan ingatan dan pembersihan sisa metabolisme adalah kerja, bukan keadaan pasif.",
+    "distractorRationale": {
+      "A": "Detail dari penjelasan tentang ingatan.",
+      "B": "Angka lama tidur tidak disebut bacaan sama sekali.",
+      "C": "Akibat yang disebut di kalimat terakhir, dan justru bagian yang penulis anggap sudah umum diketahui.",
+      "D": "Salah satu bukti penunjang, bukan gagasan utamanya."
+    },
+    "tags": [
+      "gagasan-utama",
+      "kalimat-utama-awal"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Tujuan penulis",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Tidur bukan sekadar berhenti beraktivitas. Saat tidur dalam, otak memindahkan ingatan dari penyimpanan sementara ke penyimpanan jangka panjang, dan cairan di sekitarnya bekerja membersihkan sisa metabolisme yang menumpuk sepanjang hari. Karena itu, kurang tidur tidak hanya membuat mengantuk, tetapi juga menurunkan kemampuan mengingat dan memusatkan perhatian pada hari berikutnya."
+    },
+    "stem": "Kalimat «Tidur bukan sekadar berhenti beraktivitas» berfungsi untuk ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menolak anggapan umum sebelum menjelaskan yang sebenarnya terjadi"
+      },
+      {
+        "id": "B",
+        "text": "menunjukkan keraguan penulis terhadap penelitian"
+      },
+      {
+        "id": "C",
+        "text": "memperkenalkan tokoh yang akan dibahas"
+      },
+      {
+        "id": "D",
+        "text": "memberi contoh kegiatan sehari-hari"
+      },
+      {
+        "id": "E",
+        "text": "menyimpulkan seluruh isi paragraf"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Konstruksi «bukan sekadar ...» menandai bantahan terhadap pandangan yang dianggap umum. Setelah menolaknya, penulis memaparkan apa yang sebenarnya berlangsung selama tidur.\n\nPembukaan semacam ini lazim dipakai untuk membuat pembaca siap menerima keterangan yang berbeda dari dugaannya.",
+    "distractorRationale": {
+      "B": "Tidak ada nada ragu; penulis justru memaparkan dengan yakin.",
+      "C": "Tidak ada tokoh dalam paragraf ini.",
+      "D": "Kalimat itu tidak memuat contoh.",
+      "E": "Letaknya di awal dan berfungsi membuka, bukan menyimpulkan."
+    },
+    "tags": [
+      "fungsi-kalimat",
+      "pembuka-bantahan"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Hubungan antarparagraf",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Paragraf 1: Banyak sekolah melarang siswa membawa telepon genggam ke kelas. Alasannya jelas: perangkat itu memecah perhatian dan mengganggu jalannya pelajaran.\n\nParagraf 2: Namun sebagian guru menemukan cara memanfaatkannya. Telepon genggam dipakai untuk mengakses kamus, mengumpulkan data lapangan, dan mengerjakan kuis yang hasilnya langsung terlihat. Bagi mereka, persoalannya bukan pada perangkatnya, melainkan pada aturan pemakaiannya."
+    },
+    "stem": "Paragraf 2 terhadap paragraf 1 berfungsi ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "memberi contoh sekolah yang melarang"
+      },
+      {
+        "id": "B",
+        "text": "mengajukan sudut pandang yang berbeda terhadap masalah yang sama"
+      },
+      {
+        "id": "C",
+        "text": "mengulang isi paragraf 1"
+      },
+      {
+        "id": "D",
+        "text": "menguatkan alasan pelarangan"
+      },
+      {
+        "id": "E",
+        "text": "menyimpulkan bahwa telepon genggam berbahaya"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kata *namun* di awal paragraf 2 menandai pergeseran sudut pandang. Paragraf 1 memaparkan alasan melarang, paragraf 2 memaparkan pengalaman guru yang memanfaatkannya dan memindahkan letak persoalan dari perangkat ke aturan pemakaian.",
+    "distractorRationale": {
+      "A": "Contoh yang diberikan adalah pemanfaatan, bukan pelarangan.",
+      "C": "Isinya berbeda dan arah penilaiannya berlawanan.",
+      "D": "Justru sebaliknya; paragraf 2 melemahkan alasan pelarangan menyeluruh.",
+      "E": "Simpulan itu justru yang ditolak paragraf 2."
+    },
+    "tags": [
+      "hubungan-antarparagraf",
+      "sudut-pandang"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Simpulan bacaan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Paragraf 1: Banyak sekolah melarang siswa membawa telepon genggam ke kelas. Alasannya jelas: perangkat itu memecah perhatian dan mengganggu jalannya pelajaran.\n\nParagraf 2: Namun sebagian guru menemukan cara memanfaatkannya. Telepon genggam dipakai untuk mengakses kamus, mengumpulkan data lapangan, dan mengerjakan kuis yang hasilnya langsung terlihat. Bagi mereka, persoalannya bukan pada perangkatnya, melainkan pada aturan pemakaiannya."
+    },
+    "stem": "Pandangan guru pada paragraf 2 paling tepat diringkas sebagai ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "setiap siswa wajib membawa telepon genggam"
+      },
+      {
+        "id": "B",
+        "text": "telepon genggam tidak pernah mengganggu pelajaran"
+      },
+      {
+        "id": "C",
+        "text": "pelarangan menyeluruh tidak diperlukan bila pemakaiannya diatur"
+      },
+      {
+        "id": "D",
+        "text": "guru lebih memahami teknologi daripada kepala sekolah"
+      },
+      {
+        "id": "E",
+        "text": "kamus cetak sebaiknya diganti kamus daring"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat terakhir paragraf 2 memindahkan letak persoalan: bukan pada perangkatnya, melainkan pada aturan pemakaiannya. Artinya larangan menyeluruh dianggap tidak perlu selama ada aturan yang jelas.\n\nPerhatikan bahwa guru-guru itu tidak menyangkal potensi gangguan yang disebut paragraf 1 — mereka menawarkan cara lain menanganinya.",
+    "distractorRationale": {
+      "A": "Tidak ada kewajiban membawa yang dinyatakan bacaan.",
+      "B": "Terlalu jauh; mereka tidak menyangkal potensi gangguan.",
+      "D": "Perbandingan pemahaman teknologi tidak disinggung.",
+      "E": "Penggantian kamus cetak bukan pokok pandangan mereka."
+    },
+    "tags": [
+      "simpulan",
+      "posisi-penulis"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Gagasan utama paragraf",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sungai yang diluruskan mengalir lebih cepat. Air yang dulu berkelok dan tertahan kini meluncur langsung ke hilir, sehingga daerah di dekat hulu memang lebih jarang tergenang. Namun air yang sama tiba di hilir dalam waktu lebih singkat dan dalam jumlah yang lebih besar sekaligus. Kota-kota di muara, yang tidak pernah diajak berunding ketika sungai diluruskan, justru menerima banjir yang lebih sering."
+    },
+    "stem": "Gagasan utama paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sungai yang diluruskan mengalir lebih cepat"
+      },
+      {
+        "id": "B",
+        "text": "kota di muara sering mengalami banjir"
+      },
+      {
+        "id": "C",
+        "text": "daerah hulu jarang tergenang setelah sungai diluruskan"
+      },
+      {
+        "id": "D",
+        "text": "pelurusan sungai memindahkan masalah banjir dari hulu ke hilir"
+      },
+      {
+        "id": "E",
+        "text": "warga seharusnya dilibatkan dalam setiap proyek"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Paragraf ini bergerak dari manfaat di hulu menuju akibat di hilir, dihubungkan oleh kata *namun*. Intinya bukan pada salah satu ujung, melainkan pada perpindahan masalah dari satu tempat ke tempat lain.",
+    "distractorRationale": {
+      "A": "Kalimat pembuka yang berfungsi sebagai pijakan, bukan gagasan utamanya.",
+      "B": "Akibat di hilir saja, tanpa hubungan dengan pelurusan sungai.",
+      "C": "Manfaat di hulu saja, hanya separuh gambaran.",
+      "E": "Saran yang tersirat dari satu anak kalimat, bukan gagasan utama paragraf."
+    },
+    "tags": [
+      "gagasan-utama",
+      "sebab-akibat"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Penyuntingan kata",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Peneliti itu berhasil *mengidentifikasikan* tiga jenis bakteri baru.»\n\nPerbaikan kata bercetak miring yang tepat adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "diidentifikasikan"
+      },
+      {
+        "id": "B",
+        "text": "identifikasi"
+      },
+      {
+        "id": "C",
+        "text": "teridentifikasi"
+      },
+      {
+        "id": "D",
+        "text": "pengidentifikasian"
+      },
+      {
+        "id": "E",
+        "text": "mengidentifikasi"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kata dasarnya *identifikasi* sudah bermakna tindakan, sehingga akhiran *-kan* menjadi berlebihan. Bentuk yang tepat adalah *mengidentifikasi*.\n\nKekeliruan serupa lazim terjadi pada *mengaktifkan* versus *mengaktivasikan* dan *memfungsikan* versus *memfungsikankan*.",
+    "distractorRationale": {
+      "A": "Bentuk pasif tidak sesuai karena kalimatnya berpola aktif dengan subjek pelaku.",
+      "B": "Bentuk dasar tanpa awalan tidak dapat menjadi predikat dalam kalimat ini.",
+      "C": "Mengubah makna menjadi tidak sengaja, padahal kalimat menyebut «berhasil».",
+      "D": "Bentuk nomina, sedangkan yang diperlukan adalah predikat verba."
+    },
+    "tags": [
+      "penyuntingan-kata",
+      "afiks-berlebih"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Konjungsi & transisi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Curah hujan tahun ini jauh di bawah rata-rata. ____, hasil panen padi justru meningkat berkat sistem irigasi baru.»\n\nKonjungsi yang tepat untuk mengisi bagian rumpang adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Meskipun demikian"
+      },
+      {
+        "id": "B",
+        "text": "Dengan demikian"
+      },
+      {
+        "id": "C",
+        "text": "Selain itu"
+      },
+      {
+        "id": "D",
+        "text": "Sebagai contoh"
+      },
+      {
+        "id": "E",
+        "text": "Oleh karena itu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat kedua memuat keadaan yang berlawanan dengan dugaan dari kalimat pertama: hujan sedikit biasanya menurunkan panen, tetapi panen justru naik. Diperlukan konjungsi pertentangan.\n\nKata *justru* di kalimat kedua sudah menjadi petunjuk kuat bahwa hubungannya berlawanan, bukan sebab-akibat.",
+    "distractorRationale": {
+      "B": "Menandai simpulan atau akibat, tidak sesuai arah hubungannya.",
+      "C": "Menandai penambahan, padahal hubungannya berlawanan.",
+      "D": "Menandai contoh, sedangkan kalimat kedua bukan contoh dari kalimat pertama.",
+      "E": "Menandai akibat, padahal panen naik bukan akibat dari hujan yang sedikit."
+    },
+    "tags": [
+      "konjungsi",
+      "hubungan-pertentangan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b13",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Penyuntingan kalimat",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Dalam rapat tersebut membahas rencana pembangunan perpustakaan sekolah.»\n\nKalimat tersebut tidak baku karena ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menggunakan kata *tersebut* yang tidak perlu"
+      },
+      {
+        "id": "B",
+        "text": "tidak memiliki subjek"
+      },
+      {
+        "id": "C",
+        "text": "predikatnya berbentuk pasif"
+      },
+      {
+        "id": "D",
+        "text": "keterangannya terlalu panjang"
+      },
+      {
+        "id": "E",
+        "text": "tidak memiliki objek"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kata depan *dalam* mengubah «rapat tersebut» menjadi keterangan, sehingga kalimat ini hanya berisi keterangan, predikat, dan objek — tanpa subjek.\n\nPerbaikannya bisa dengan menghapus *dalam* sehingga menjadi «Rapat tersebut membahas ...», atau mengubah predikatnya menjadi pasif: «Dalam rapat tersebut dibahas ...»",
+    "distractorRationale": {
+      "A": "Kata *tersebut* wajar dipakai untuk merujuk hal yang sudah disebut.",
+      "C": "Predikatnya *membahas* justru berbentuk aktif.",
+      "D": "Panjang keterangan tidak membuat kalimat menjadi tidak baku.",
+      "E": "Objeknya justru ada, yaitu «rencana pembangunan perpustakaan sekolah»."
+    },
+    "tags": [
+      "penyuntingan-kalimat",
+      "subjek-hilang"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b14",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Struktur paragraf",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Mangrove tumbuh di perbatasan darat dan laut. (2) Akar tunjangnya menahan sedimen sehingga garis pantai tidak mudah terkikis. (3) Ikan dan udang muda berlindung di antara akar-akar itu sebelum cukup besar untuk ke laut lepas. (4) Harga udang di pasar dunia mengalami kenaikan sepanjang tahun lalu. (5) Karena itu, hilangnya mangrove berdampak pada perlindungan pantai sekaligus pada perikanan."
+    },
+    "stem": "Kalimat yang tidak padu dalam paragraf tersebut adalah kalimat ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(1)"
+      },
+      {
+        "id": "B",
+        "text": "(3)"
+      },
+      {
+        "id": "C",
+        "text": "(4)"
+      },
+      {
+        "id": "D",
+        "text": "(5)"
+      },
+      {
+        "id": "E",
+        "text": "(2)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Paragraf ini membahas peran ekologis mangrove: menahan sedimen dan menjadi tempat berlindung biota muda. Kalimat (4) berbicara tentang harga udang di pasar dunia — persoalan ekonomi yang tidak berhubungan dengan peran mangrove, dan tidak dirujuk kalimat penutup.",
+    "distractorRationale": {
+      "A": "Memperkenalkan tempat tumbuh mangrove sebagai latar.",
+      "B": "Memaparkan peran sebagai tempat berlindung, juga dirujuk kalimat (5).",
+      "D": "Menyimpulkan kedua peran yang sudah dipaparkan sebelumnya.",
+      "E": "Memaparkan peran menahan sedimen, dirujuk oleh kalimat (5)."
+    },
+    "tags": [
+      "kepaduan-paragraf",
+      "kalimat-sumbang"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b15",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Penyuntingan kata",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Kegiatan itu diikuti oleh *para* peserta *yang* berjumlah *seratus orang peserta*.»\n\nPerbaikan yang paling tepat adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Kegiatan itu diikuti oleh para peserta seratus orang."
+      },
+      {
+        "id": "B",
+        "text": "Kegiatan itu diikuti oleh seratus orang para peserta."
+      },
+      {
+        "id": "C",
+        "text": "Kegiatan itu diikuti para peserta yang jumlahnya seratus peserta."
+      },
+      {
+        "id": "D",
+        "text": "Kegiatan itu diikuti seratus peserta."
+      },
+      {
+        "id": "E",
+        "text": "Kegiatan itu diikuti oleh peserta yang berjumlah para seratus orang."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat asal mengulang kata *peserta* dua kali dan memakai *para* yang berlebihan karena jumlahnya sudah disebut. Bentuk paling hemat tanpa kehilangan makna adalah «Kegiatan itu diikuti seratus peserta».",
+    "distractorRationale": {
+      "A": "Masih memakai *para* yang berlebihan dan susunannya janggal.",
+      "B": "*Seratus orang para peserta* mengandung dua penanda jumlah sekaligus.",
+      "C": "Masih mengulang kata *peserta* dua kali.",
+      "E": "Penempatan *para* setelah *berjumlah* tidak berterima."
+    },
+    "tags": [
+      "kehematan",
+      "penyuntingan-kata"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b16",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Konjungsi & transisi",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Ia belajar dengan tekun setiap malam ____ nilainya belum juga membaik.»\n\nKonjungsi yang tepat untuk mengisi bagian rumpang adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "karena"
+      },
+      {
+        "id": "B",
+        "text": "agar"
+      },
+      {
+        "id": "C",
+        "text": "sehingga"
+      },
+      {
+        "id": "D",
+        "text": "sejak"
+      },
+      {
+        "id": "E",
+        "text": "tetapi"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Belajar tekun biasanya diikuti nilai yang membaik. Karena yang terjadi justru sebaliknya, diperlukan konjungsi pertentangan.\n\nKata *belum juga* pada klausa kedua menandakan harapan yang tidak terpenuhi — petunjuk bahwa hubungannya berlawanan.",
+    "distractorRationale": {
+      "A": "Membalik hubungan menjadi sebab, yang tidak masuk akal di sini.",
+      "B": "Menandai tujuan, sedangkan klausa kedua menyatakan kenyataan.",
+      "C": "Menandai akibat yang sejalan, padahal hasilnya justru berlawanan.",
+      "D": "Menandai waktu, tidak sesuai dengan hubungan kedua klausa."
+    },
+    "tags": [
+      "konjungsi",
+      "pertentangan"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b17",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Struktur paragraf",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Akhirnya, kebiasaan itu menular ke kelas-kelas lain.\n(2) Seorang guru memulai kebiasaan membaca lima belas menit sebelum pelajaran.\n(3) Beberapa minggu kemudian, siswa mulai membawa buku sendiri tanpa diminta.\n(4) Mula-mula siswa membaca seadanya, sekadar memenuhi kewajiban."
+    },
+    "stem": "Urutan kalimat yang tepat agar menjadi paragraf padu adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(2) – (4) – (3) – (1)"
+      },
+      {
+        "id": "B",
+        "text": "(3) – (4) – (2) – (1)"
+      },
+      {
+        "id": "C",
+        "text": "(2) – (3) – (4) – (1)"
+      },
+      {
+        "id": "D",
+        "text": "(1) – (2) – (4) – (3)"
+      },
+      {
+        "id": "E",
+        "text": "(4) – (2) – (3) – (1)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat (2) memperkenalkan peristiwa awalnya. Penanda waktu memberi urutannya: *mula-mula* pada (4), lalu *beberapa minggu kemudian* pada (3), dan *akhirnya* pada (1).\n\nMenelusuri kata penanda waktu adalah cara tercepat menyusun paragraf naratif semacam ini.",
+    "distractorRationale": {
+      "B": "Urutan waktunya kacau dari awal.",
+      "C": "Menempatkan *beberapa minggu kemudian* sebelum *mula-mula*.",
+      "D": "Mengawali dengan *akhirnya*, yang seharusnya menutup.",
+      "E": "Mengawali dengan *mula-mula* padahal peristiwanya belum diperkenalkan."
+    },
+    "tags": [
+      "urutan-kalimat",
+      "penanda-waktu"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b18",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Penyuntingan kalimat",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat yang penulisannya sudah tepat adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Karena hujan deras, sehingga pertandingan ditunda."
+      },
+      {
+        "id": "B",
+        "text": "Karena hujan deras, pertandingan ditunda."
+      },
+      {
+        "id": "C",
+        "text": "Meskipun hujan deras, tetapi pertandingan ditunda."
+      },
+      {
+        "id": "D",
+        "text": "Hujan deras, sehingga karena pertandingan ditunda."
+      },
+      {
+        "id": "E",
+        "text": "Walaupun hujan deras, namun pertandingan tetap ditunda."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Dua konjungsi yang menyatakan hubungan sama tidak boleh dipakai sekaligus dalam satu kalimat. *Karena* dan *sehingga* keduanya menandai sebab-akibat, demikian pula *meskipun* dengan *tetapi*.\n\nPilih salah satu: «Karena hujan deras, pertandingan ditunda» atau «Hujan deras sehingga pertandingan ditunda».",
+    "distractorRationale": {
+      "A": "Memakai *karena* dan *sehingga* bersamaan.",
+      "C": "Memakai *meskipun* dan *tetapi* bersamaan.",
+      "D": "Susunannya kacau dan tetap memakai dua konjungsi.",
+      "E": "Memakai *walaupun* dan *namun* bersamaan."
+    },
+    "tags": [
+      "konjungsi-ganda",
+      "penyuntingan-kalimat"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b19",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Penyuntingan kata",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Penelitian ini bertujuan untuk *merubah* cara pandang masyarakat terhadap sampah.»\n\nBentuk baku dari kata bercetak miring adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "berubah"
+      },
+      {
+        "id": "B",
+        "text": "mengrubah"
+      },
+      {
+        "id": "C",
+        "text": "mengubah"
+      },
+      {
+        "id": "D",
+        "text": "merobah"
+      },
+      {
+        "id": "E",
+        "text": "merubahkan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kata dasarnya adalah *ubah*, bukan *rubah*. Dengan awalan *me-*, huruf vokal di awal kata dasar menuntut bentuk *meng-*, sehingga menjadi *mengubah*.\n\n*Rubah* adalah nama binatang; bentuk *merubah* muncul dari salah menduga kata dasarnya.",
+    "distractorRationale": {
+      "A": "Bentuk taktransitif, sedangkan kalimat memerlukan predikat berobjek.",
+      "B": "Gabungan awalan yang tidak ada dalam kaidah pembentukan kata.",
+      "D": "Bertolak dari kata dasar yang keliru dan ejaannya juga tidak baku.",
+      "E": "Akhiran *-kan* berlebihan dan kata dasarnya tetap keliru."
+    },
+    "tags": [
+      "kata-baku",
+      "pembentukan-kata"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pbm-b20",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Struktur paragraf",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Program bank sampah di kelurahan itu berjalan tiga tahun. Warga menabung sampah terpilah dan menerima catatan nilainya setiap bulan. Jumlah sampah yang diangkut ke tempat pembuangan akhir turun hampir sepertiga. ____"
+    },
+    "stem": "Kalimat yang paling tepat untuk menutup paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Bank sampah pertama kali diperkenalkan di Yogyakarta."
+      },
+      {
+        "id": "B",
+        "text": "Sampah plastik sulit terurai di alam."
+      },
+      {
+        "id": "C",
+        "text": "Warga sebaiknya mengurangi pemakaian kemasan sekali pakai."
+      },
+      {
+        "id": "D",
+        "text": "Karena itu, kelurahan lain mulai mempelajari cara kerjanya."
+      },
+      {
+        "id": "E",
+        "text": "Harga barang daur ulang berubah setiap bulan."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Paragraf ini berjalan dari penerapan program menuju hasilnya. Penutup yang padu melanjutkan alur itu — hasil yang terbukti menarik perhatian pihak lain — dan kata *karena itu* menegaskan hubungannya dengan kalimat sebelumnya.",
+    "distractorRationale": {
+      "A": "Beralih ke sejarah bank sampah, memutus alur paragraf.",
+      "B": "Keterangan umum tentang plastik yang tidak berhubungan dengan hasil program.",
+      "C": "Saran yang tidak melanjutkan pemaparan hasil.",
+      "E": "Detail baru yang tidak dirujuk kalimat mana pun sebelumnya."
+    },
+    "tags": [
+      "kalimat-penutup",
+      "kepaduan"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

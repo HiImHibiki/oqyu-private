@@ -1,0 +1,1818 @@
+[
+  {
+    "id": "csca-phy-a01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Velocity and acceleration 速度与加速度",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A car starts from rest and accelerates uniformly at $2\\ \\text{m/s}^2$ for $6\\ \\text{s}$. How far does it travel?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$12\\ \\text{m}$"
+      },
+      {
+        "id": "B",
+        "text": "$36\\ \\text{m}$"
+      },
+      {
+        "id": "C",
+        "text": "$72\\ \\text{m}$"
+      },
+      {
+        "id": "D",
+        "text": "$18\\ \\text{m}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Starting from rest, $s = \\dfrac{1}{2}at^2 = \\dfrac{1}{2}(2)(36) = 36\\ \\text{m}$.",
+    "distractorRationale": {
+      "A": "Computes the final velocity $v = at = 12\\ \\text{m/s}$ and reports it as a distance.",
+      "C": "Uses $s = at^2$ without the factor of $\\dfrac{1}{2}$.",
+      "D": "Uses $s = \\dfrac{1}{2}at$ with $t$ rather than $t^2$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "汽车由静止开始以 $2\\ \\text{m/s}^2$ 的加速度匀加速运动 $6\\ \\text{s}$，通过的位移是",
+        "explanation": "由静止出发，$s = \\dfrac{1}{2}at^2 = \\dfrac{1}{2} \\times 2 \\times 36 = 36\\ \\text{m}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$12\\ \\text{m}$"
+          },
+          {
+            "id": "B",
+            "text": "$36\\ \\text{m}$"
+          },
+          {
+            "id": "C",
+            "text": "$72\\ \\text{m}$"
+          },
+          {
+            "id": "D",
+            "text": "$18\\ \\text{m}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "uniform-acceleration",
+      "kinematics"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Newton's laws 牛顿定律",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A block of mass $4\\ \\text{kg}$ is pushed along a horizontal surface by a force of $20\\ \\text{N}$. Friction opposing the motion is $8\\ \\text{N}$. What is the acceleration?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2\\ \\text{m/s}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$5\\ \\text{m/s}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$3\\ \\text{m/s}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$7\\ \\text{m/s}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The net force is $20 - 8 = 12\\ \\text{N}$. By Newton's second law, $a = \\dfrac{F_{\\text{net}}}{m} = \\dfrac{12}{4} = 3\\ \\text{m/s}^2$.",
+    "distractorRationale": {
+      "A": "Uses the frictional force alone.",
+      "B": "Uses the applied force alone, ignoring friction.",
+      "D": "Adds the two forces instead of subtracting."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "质量为 $4\\ \\text{kg}$ 的物块在水平面上受 $20\\ \\text{N}$ 的推力，摩擦力为 $8\\ \\text{N}$，则加速度为",
+        "explanation": "合力为 $20 - 8 = 12\\ \\text{N}$。由牛顿第二定律 $a = \\dfrac{F_{合}}{m} = \\dfrac{12}{4} = 3\\ \\text{m/s}^2$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$2\\ \\text{m/s}^2$"
+          },
+          {
+            "id": "B",
+            "text": "$5\\ \\text{m/s}^2$"
+          },
+          {
+            "id": "C",
+            "text": "$3\\ \\text{m/s}^2$"
+          },
+          {
+            "id": "D",
+            "text": "$7\\ \\text{m/s}^2$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "newtons-second-law",
+      "friction"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Momentum and impulse 动量与冲量",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A ball of mass $0.2\\ \\text{kg}$ moving at $5\\ \\text{m/s}$ rebounds from a wall at $3\\ \\text{m/s}$ in the opposite direction. What is the magnitude of the impulse on the ball?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.4\\ \\text{N·s}$"
+      },
+      {
+        "id": "B",
+        "text": "$1.0\\ \\text{N·s}$"
+      },
+      {
+        "id": "C",
+        "text": "$0.6\\ \\text{N·s}$"
+      },
+      {
+        "id": "D",
+        "text": "$1.6\\ \\text{N·s}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Impulse equals the change in momentum. Taking the initial direction as positive, the momentum changes from $0.2 \\times 5 = 1.0$ to $0.2 \\times (-3) = -0.6$. The change is $-0.6 - 1.0 = -1.6$, so the magnitude is $1.6\\ \\text{N·s}$.\n\nThe sign reversal is essential; treating both velocities as positive halves the answer.",
+    "distractorRationale": {
+      "A": "Uses $0.2 \\times (5 - 3)$, treating the rebound as if it were in the same direction.",
+      "B": "Uses only the initial momentum.",
+      "C": "Uses only the final momentum."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "质量为 $0.2\\ \\text{kg}$ 的小球以 $5\\ \\text{m/s}$ 撞墙后以 $3\\ \\text{m/s}$ 反向弹回，则小球所受冲量的大小为",
+        "explanation": "冲量等于动量的变化。取初速度方向为正，动量由 $0.2 \\times 5 = 1.0$ 变为 $0.2 \\times (-3) = -0.6$，变化量为 $-0.6 - 1.0 = -1.6$，大小为 $1.6\\ \\text{N·s}$。\n\n方向反号是关键；若把两个速度都当作正值，结果会小一半。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.4\\ \\text{N·s}$"
+          },
+          {
+            "id": "B",
+            "text": "$1.0\\ \\text{N·s}$"
+          },
+          {
+            "id": "C",
+            "text": "$0.6\\ \\text{N·s}$"
+          },
+          {
+            "id": "D",
+            "text": "$1.6\\ \\text{N·s}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "impulse",
+      "momentum-change"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Work and energy 功与能",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An object of mass $2\\ \\text{kg}$ falls freely from a height of $5\\ \\text{m}$. Taking $g = 10\\ \\text{m/s}^2$ and ignoring air resistance, what is its kinetic energy just before landing?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$100\\ \\text{J}$"
+      },
+      {
+        "id": "B",
+        "text": "$50\\ \\text{J}$"
+      },
+      {
+        "id": "C",
+        "text": "$10\\ \\text{J}$"
+      },
+      {
+        "id": "D",
+        "text": "$200\\ \\text{J}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "All the gravitational potential energy converts to kinetic energy: $E_k = mgh = 2 \\times 10 \\times 5 = 100\\ \\text{J}$.",
+    "distractorRationale": {
+      "B": "Applies a factor of $\\dfrac{1}{2}$, which belongs to $\\dfrac{1}{2}mv^2$ rather than to $mgh$.",
+      "C": "Multiplies only $m$ and $h$, omitting $g$.",
+      "D": "Doubles the correct value, perhaps by using $h = 10\\ \\text{m}$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "质量为 $2\\ \\text{kg}$ 的物体从 $5\\ \\text{m}$ 高处自由下落，取 $g = 10\\ \\text{m/s}^2$ 且不计空气阻力，落地前的动能为",
+        "explanation": "重力势能全部转化为动能：$E_k = mgh = 2 \\times 10 \\times 5 = 100\\ \\text{J}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$100\\ \\text{J}$"
+          },
+          {
+            "id": "B",
+            "text": "$50\\ \\text{J}$"
+          },
+          {
+            "id": "C",
+            "text": "$10\\ \\text{J}$"
+          },
+          {
+            "id": "D",
+            "text": "$200\\ \\text{J}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "energy-conservation",
+      "free-fall"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Circular motion 圆周运动",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A stone of mass $0.5\\ \\text{kg}$ moves in a horizontal circle of radius $2\\ \\text{m}$ at a constant speed of $4\\ \\text{m/s}$. What is the centripetal force?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$8\\ \\text{N}$"
+      },
+      {
+        "id": "B",
+        "text": "$4\\ \\text{N}$"
+      },
+      {
+        "id": "C",
+        "text": "$1\\ \\text{N}$"
+      },
+      {
+        "id": "D",
+        "text": "$2\\ \\text{N}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Centripetal force is $F = \\dfrac{mv^2}{r} = \\dfrac{0.5 \\times 16}{2} = 4\\ \\text{N}$, directed toward the centre.",
+    "distractorRationale": {
+      "A": "Omits the division by the radius.",
+      "C": "Uses $v$ instead of $v^2$.",
+      "D": "Uses $\\dfrac{mv}{r} \\times$ an incorrect factor, dropping one power of $v$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "质量为 $0.5\\ \\text{kg}$ 的石块以 $4\\ \\text{m/s}$ 的速率在半径为 $2\\ \\text{m}$ 的水平圆周上匀速运动，所受向心力为",
+        "explanation": "向心力 $F = \\dfrac{mv^2}{r} = \\dfrac{0.5 \\times 16}{2} = 4\\ \\text{N}$，方向指向圆心。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$8\\ \\text{N}$"
+          },
+          {
+            "id": "B",
+            "text": "$4\\ \\text{N}$"
+          },
+          {
+            "id": "C",
+            "text": "$1\\ \\text{N}$"
+          },
+          {
+            "id": "D",
+            "text": "$2\\ \\text{N}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "centripetal-force",
+      "circular-motion"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Simple harmonic motion 简谐运动",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For an object in simple harmonic motion, at which position is the magnitude of the acceleration greatest?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Midway between them"
+      },
+      {
+        "id": "B",
+        "text": "At the equilibrium position"
+      },
+      {
+        "id": "C",
+        "text": "At maximum displacement"
+      },
+      {
+        "id": "D",
+        "text": "The acceleration is constant throughout"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "In simple harmonic motion the restoring force is proportional to displacement, so $a = -\\omega^2 x$. The magnitude of $a$ is therefore greatest where $|x|$ is greatest, that is at maximum displacement — where the speed is momentarily zero.",
+    "distractorRationale": {
+      "A": "The acceleration takes an intermediate value, not the maximum.",
+      "B": "Here $x = 0$, so the acceleration is zero while the speed is greatest.",
+      "D": "Acceleration varies continuously, since it is proportional to displacement."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "做简谐运动的物体在哪个位置加速度大小最大？",
+        "explanation": "简谐运动中回复力与位移成正比，故 $a = -\\omega^2 x$。$|a|$ 在 $|x|$ 最大处最大，即在最大位移处，此时速度恰为零。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "二者的中点"
+          },
+          {
+            "id": "B",
+            "text": "平衡位置"
+          },
+          {
+            "id": "C",
+            "text": "最大位移处"
+          },
+          {
+            "id": "D",
+            "text": "加速度始终不变"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "simple-harmonic-motion",
+      "acceleration"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Newton's laws 牛顿定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A book rests on a table. Which pair of forces constitutes an action–reaction pair according to Newton's third law?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The table pushing up on the book, and the floor pushing up on the table"
+      },
+      {
+        "id": "B",
+        "text": "The weight of the book, and the weight of the table"
+      },
+      {
+        "id": "C",
+        "text": "The weight of the book, and the table pushing up on the book"
+      },
+      {
+        "id": "D",
+        "text": "The table pushing up on the book, and the book pushing down on the table"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "An action–reaction pair acts between the *same two bodies*, in opposite directions, and on *different* objects. The table pushes the book and the book pushes the table with equal magnitude — that is the pair.",
+    "distractorRationale": {
+      "A": "These involve three different bodies and are not a single interaction pair.",
+      "B": "These involve the Earth and two different objects, and are not paired with each other.",
+      "C": "Both forces act on the book, so this is a balanced pair, not an action–reaction pair."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "一本书静止放在桌面上。根据牛顿第三定律，下列哪一对力是作用力与反作用力？",
+        "explanation": "作用力与反作用力发生在同样的两个物体之间，方向相反，且分别作用在不同物体上。桌面对书的支持力与书对桌面的压力正是这样一对。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "桌面对书的支持力与地面对桌子的支持力"
+          },
+          {
+            "id": "B",
+            "text": "书的重力与桌子的重力"
+          },
+          {
+            "id": "C",
+            "text": "书的重力与桌面对书的支持力"
+          },
+          {
+            "id": "D",
+            "text": "桌面对书的支持力与书对桌面的压力"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "newtons-third-law",
+      "action-reaction"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Work and energy 功与能",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A force of $10\\ \\text{N}$ acts on an object at $60^\\circ$ to its direction of motion, moving it $4\\ \\text{m}$. How much work is done by this force?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$20\\ \\text{J}$"
+      },
+      {
+        "id": "B",
+        "text": "$40\\ \\text{J}$"
+      },
+      {
+        "id": "C",
+        "text": "$34.6\\ \\text{J}$"
+      },
+      {
+        "id": "D",
+        "text": "$0\\ \\text{J}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Only the component of force along the displacement does work: $W = Fd\\cos\\theta = 10 \\times 4 \\times \\cos 60^\\circ = 40 \\times 0.5 = 20\\ \\text{J}$.",
+    "distractorRationale": {
+      "B": "Omits the $\\cos\\theta$ factor, as if the force were parallel to the motion.",
+      "C": "Uses $\\sin 60^\\circ$ instead of $\\cos 60^\\circ$.",
+      "D": "Would apply only if the force were perpendicular, at $90^\\circ$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$10\\ \\text{N}$ 的力与运动方向成 $60^\\circ$ 角，物体沿运动方向移动 $4\\ \\text{m}$，该力做的功为",
+        "explanation": "只有沿位移方向的分力做功：$W = Fd\\cos\\theta = 10 \\times 4 \\times \\cos 60^\\circ = 40 \\times 0.5 = 20\\ \\text{J}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$20\\ \\text{J}$"
+          },
+          {
+            "id": "B",
+            "text": "$40\\ \\text{J}$"
+          },
+          {
+            "id": "C",
+            "text": "$34.6\\ \\text{J}$"
+          },
+          {
+            "id": "D",
+            "text": "$0\\ \\text{J}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "work",
+      "force-component"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Momentum and impulse 动量与冲量",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A trolley of mass $3\\ \\text{kg}$ moving at $4\\ \\text{m/s}$ collides with a stationary trolley of mass $1\\ \\text{kg}$ and they move off together. What is their common velocity?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$4\\ \\text{m/s}$"
+      },
+      {
+        "id": "B",
+        "text": "$3\\ \\text{m/s}$"
+      },
+      {
+        "id": "C",
+        "text": "$1\\ \\text{m/s}$"
+      },
+      {
+        "id": "D",
+        "text": "$12\\ \\text{m/s}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Momentum is conserved: $3 \\times 4 + 1 \\times 0 = (3 + 1)v$, so $12 = 4v$ and $v = 3\\ \\text{m/s}$.",
+    "distractorRationale": {
+      "A": "Assumes the velocity is unchanged, which would require the second trolley to have no mass.",
+      "C": "Divides the total momentum by the wrong mass.",
+      "D": "Reports the total momentum rather than the velocity."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "质量为 $3\\ \\text{kg}$ 的小车以 $4\\ \\text{m/s}$ 的速度与静止的 $1\\ \\text{kg}$ 小车碰撞后一起运动，共同速度为",
+        "explanation": "动量守恒：$3 \\times 4 + 1 \\times 0 = (3 + 1)v$，故 $12 = 4v$，$v = 3\\ \\text{m/s}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$4\\ \\text{m/s}$"
+          },
+          {
+            "id": "B",
+            "text": "$3\\ \\text{m/s}$"
+          },
+          {
+            "id": "C",
+            "text": "$1\\ \\text{m/s}$"
+          },
+          {
+            "id": "D",
+            "text": "$12\\ \\text{m/s}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "momentum-conservation",
+      "perfectly-inelastic"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Velocity and acceleration 速度与加速度",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "figure": {
+      "kind": "line_chart",
+      "alt": "Velocity-time graph showing velocity rising from 0 to 20 m/s over 4 s, staying constant until 10 s, then falling to zero at 14 s.",
+      "caption": "Velocity–time graph of a vehicle",
+      "categories": [
+        "0 s",
+        "4 s",
+        "10 s",
+        "14 s"
+      ],
+      "series": [
+        {
+          "name": "Velocity (m/s)",
+          "values": [
+            0,
+            20,
+            20,
+            0
+          ]
+        }
+      ]
+    },
+    "stem": "The graph shows the motion of a vehicle. What is the total distance travelled?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$120\\ \\text{m}$"
+      },
+      {
+        "id": "B",
+        "text": "$280\\ \\text{m}$"
+      },
+      {
+        "id": "C",
+        "text": "$200\\ \\text{m}$"
+      },
+      {
+        "id": "D",
+        "text": "$220\\ \\text{m}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Distance is the area under a velocity–time graph, here a trapezium split into three parts:\n\nAcceleration phase: $\\dfrac{1}{2} \\times 4 \\times 20 = 40\\ \\text{m}$.\nConstant phase: $6 \\times 20 = 120\\ \\text{m}$.\nDeceleration phase: $\\dfrac{1}{2} \\times 4 \\times 20 = 40\\ \\text{m}$.\n\nTotal $= 40 + 120 + 40 = 200\\ \\text{m}$.",
+    "distractorRationale": {
+      "A": "Counts only the constant-velocity phase.",
+      "B": "Treats the whole $14\\ \\text{s}$ as travelled at $20\\ \\text{m/s}$.",
+      "D": "Adds an extra segment that the graph does not contain."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "图为某车辆的速度—时间图象，该车通过的总位移是",
+        "explanation": "位移等于速度—时间图象下的面积，可分为三段：\n\n加速段：$\\dfrac{1}{2} \\times 4 \\times 20 = 40\\ \\text{m}$；\n匀速段：$6 \\times 20 = 120\\ \\text{m}$；\n减速段：$\\dfrac{1}{2} \\times 4 \\times 20 = 40\\ \\text{m}$。\n\n总计 $40 + 120 + 40 = 200\\ \\text{m}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$120\\ \\text{m}$"
+          },
+          {
+            "id": "B",
+            "text": "$280\\ \\text{m}$"
+          },
+          {
+            "id": "C",
+            "text": "$200\\ \\text{m}$"
+          },
+          {
+            "id": "D",
+            "text": "$220\\ \\text{m}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "velocity-time-graph",
+      "area-under-graph"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Circular motion 圆周运动",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An object moves in a circle at constant speed. Which quantity remains constant?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Velocity"
+      },
+      {
+        "id": "B",
+        "text": "Acceleration"
+      },
+      {
+        "id": "C",
+        "text": "Momentum"
+      },
+      {
+        "id": "D",
+        "text": "Kinetic energy"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kinetic energy depends on speed alone, which is constant, so it does not change. Velocity, momentum and acceleration are all vectors whose directions change continuously as the object turns.",
+    "distractorRationale": {
+      "A": "Velocity is a vector; its direction changes even though its magnitude does not.",
+      "B": "Centripetal acceleration always points to the centre, so its direction changes constantly.",
+      "C": "Momentum is $m\\vec{v}$, so it changes direction with the velocity."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "物体做匀速圆周运动时，下列哪个量保持不变？",
+        "explanation": "动能只与速率有关，而速率不变，故动能不变。速度、动量与加速度都是矢量，其方向随物体转动而不断改变。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "速度"
+          },
+          {
+            "id": "B",
+            "text": "加速度"
+          },
+          {
+            "id": "C",
+            "text": "动量"
+          },
+          {
+            "id": "D",
+            "text": "动能"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "circular-motion",
+      "vector-quantities"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Work and energy 功与能",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A motor lifts a $50\\ \\text{kg}$ load through $12\\ \\text{m}$ in $20\\ \\text{s}$. Taking $g = 10\\ \\text{m/s}^2$, what is the useful power output?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$300\\ \\text{W}$"
+      },
+      {
+        "id": "B",
+        "text": "$6000\\ \\text{W}$"
+      },
+      {
+        "id": "C",
+        "text": "$600\\ \\text{W}$"
+      },
+      {
+        "id": "D",
+        "text": "$30\\ \\text{W}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Work done $= mgh = 50 \\times 10 \\times 12 = 6000\\ \\text{J}$. Power $= \\dfrac{W}{t} = \\dfrac{6000}{20} = 300\\ \\text{W}$.",
+    "distractorRationale": {
+      "B": "Reports the work done rather than the power.",
+      "C": "Divides by $10$ instead of $20$.",
+      "D": "Divides by $200$ instead of $20$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "电动机在 $20\\ \\text{s}$ 内将 $50\\ \\text{kg}$ 的重物提升 $12\\ \\text{m}$，取 $g = 10\\ \\text{m/s}^2$，其有用功率为",
+        "explanation": "所做的功 $W = mgh = 50 \\times 10 \\times 12 = 6000\\ \\text{J}$。功率 $P = \\dfrac{W}{t} = \\dfrac{6000}{20} = 300\\ \\text{W}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$300\\ \\text{W}$"
+          },
+          {
+            "id": "B",
+            "text": "$6000\\ \\text{W}$"
+          },
+          {
+            "id": "C",
+            "text": "$600\\ \\text{W}$"
+          },
+          {
+            "id": "D",
+            "text": "$30\\ \\text{W}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "power",
+      "work"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Simple harmonic motion 简谐运动",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A simple pendulum has period $T$. If its length is increased to four times the original, what is the new period?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$4T$"
+      },
+      {
+        "id": "B",
+        "text": "$2T$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{T}{2}$"
+      },
+      {
+        "id": "D",
+        "text": "$16T$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "For a simple pendulum $T = 2\\pi\\sqrt{\\dfrac{L}{g}}$, so the period varies with the square root of the length. Multiplying $L$ by $4$ multiplies $T$ by $\\sqrt{4} = 2$.",
+    "distractorRationale": {
+      "A": "Assumes the period is proportional to length rather than to its square root.",
+      "C": "Reverses the relationship; a longer pendulum swings more slowly.",
+      "D": "Squares the factor instead of taking its square root."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "单摆的周期为 $T$。若摆长增大为原来的 $4$ 倍，新的周期为",
+        "explanation": "单摆周期 $T = 2\\pi\\sqrt{\\dfrac{L}{g}}$，与摆长的平方根成正比。摆长变为 $4$ 倍，周期变为 $\\sqrt{4} = 2$ 倍。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$4T$"
+          },
+          {
+            "id": "B",
+            "text": "$2T$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{T}{2}$"
+          },
+          {
+            "id": "D",
+            "text": "$16T$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "pendulum",
+      "period"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Newton's laws 牛顿定律",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A lift accelerates upward at $2\\ \\text{m/s}^2$. A person of mass $60\\ \\text{kg}$ stands inside. Taking $g = 10\\ \\text{m/s}^2$, what is the normal force from the floor?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$600\\ \\text{N}$"
+      },
+      {
+        "id": "B",
+        "text": "$120\\ \\text{N}$"
+      },
+      {
+        "id": "C",
+        "text": "$720\\ \\text{N}$"
+      },
+      {
+        "id": "D",
+        "text": "$480\\ \\text{N}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Applying Newton's second law upward: $N - mg = ma$, so $N = m(g + a) = 60 \\times 12 = 720\\ \\text{N}$. The person feels heavier because the floor must both support the weight and supply the upward acceleration.",
+    "distractorRationale": {
+      "A": "Gives the weight $mg$, which would apply only if the lift moved at constant velocity.",
+      "B": "Gives only $ma$, the net force, rather than the normal force.",
+      "D": "Uses $m(g - a)$, correct for downward acceleration instead."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "电梯以 $2\\ \\text{m/s}^2$ 的加速度向上加速，其中站着一位质量为 $60\\ \\text{kg}$ 的人。取 $g = 10\\ \\text{m/s}^2$，地板对人的支持力为",
+        "explanation": "以向上为正方向应用牛顿第二定律：$N - mg = ma$，故 $N = m(g + a) = 60 \\times 12 = 720\\ \\text{N}$。人感觉变重，是因为地板既要支撑重力，又要提供向上的加速度。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$600\\ \\text{N}$"
+          },
+          {
+            "id": "B",
+            "text": "$120\\ \\text{N}$"
+          },
+          {
+            "id": "C",
+            "text": "$720\\ \\text{N}$"
+          },
+          {
+            "id": "D",
+            "text": "$480\\ \\text{N}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "apparent-weight",
+      "lift-problem"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Velocity and acceleration 速度与加速度",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A ball is thrown vertically upward at $20\\ \\text{m/s}$. Taking $g = 10\\ \\text{m/s}^2$, how long does it take to return to the thrower's hand?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$20\\ \\text{s}$"
+      },
+      {
+        "id": "B",
+        "text": "$1\\ \\text{s}$"
+      },
+      {
+        "id": "C",
+        "text": "$2\\ \\text{s}$"
+      },
+      {
+        "id": "D",
+        "text": "$4\\ \\text{s}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Time to reach the highest point is $t = \\dfrac{v}{g} = \\dfrac{20}{10} = 2\\ \\text{s}$. The descent takes an equal time, so the total flight time is $4\\ \\text{s}$.",
+    "distractorRationale": {
+      "A": "Uses the initial speed as if it were a time.",
+      "B": "Halves the ascent time without reason.",
+      "C": "Gives the time to the highest point only, not the whole flight."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "以 $20\\ \\text{m/s}$ 的速度竖直上抛一小球，取 $g = 10\\ \\text{m/s}^2$，小球回到手中所需时间为",
+        "explanation": "上升到最高点所需时间 $t = \\dfrac{v}{g} = \\dfrac{20}{10} = 2\\ \\text{s}$。下落所需时间相同，故全程为 $4\\ \\text{s}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$20\\ \\text{s}$"
+          },
+          {
+            "id": "B",
+            "text": "$1\\ \\text{s}$"
+          },
+          {
+            "id": "C",
+            "text": "$2\\ \\text{s}$"
+          },
+          {
+            "id": "D",
+            "text": "$4\\ \\text{s}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "vertical-projection",
+      "symmetry"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-a16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Work and energy 功与能",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A spring with stiffness $200\\ \\text{N/m}$ is compressed by $0.1\\ \\text{m}$. What elastic potential energy does it store?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$1\\ \\text{J}$"
+      },
+      {
+        "id": "B",
+        "text": "$20\\ \\text{J}$"
+      },
+      {
+        "id": "C",
+        "text": "$2\\ \\text{J}$"
+      },
+      {
+        "id": "D",
+        "text": "$10\\ \\text{J}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Elastic potential energy is $E_p = \\dfrac{1}{2}kx^2 = \\dfrac{1}{2} \\times 200 \\times 0.01 = 1\\ \\text{J}$.",
+    "distractorRationale": {
+      "B": "Uses $x$ instead of $x^2$, giving $\\dfrac{1}{2} \\times 200 \\times 0.1 \\times 2$.",
+      "C": "Omits the factor of $\\dfrac{1}{2}$.",
+      "D": "Uses $kx$ rather than $\\dfrac{1}{2}kx^2$, which gives a force, not an energy."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "劲度系数为 $200\\ \\text{N/m}$ 的弹簧被压缩 $0.1\\ \\text{m}$，储存的弹性势能为",
+        "explanation": "弹性势能 $E_p = \\dfrac{1}{2}kx^2 = \\dfrac{1}{2} \\times 200 \\times 0.01 = 1\\ \\text{J}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$1\\ \\text{J}$"
+          },
+          {
+            "id": "B",
+            "text": "$20\\ \\text{J}$"
+          },
+          {
+            "id": "C",
+            "text": "$2\\ \\text{J}$"
+          },
+          {
+            "id": "D",
+            "text": "$10\\ \\text{J}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "elastic-potential-energy",
+      "spring"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A resistor of $12\\ \\Omega$ carries a current of $0.5\\ \\text{A}$. What is the potential difference across it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$24\\ \\text{V}$"
+      },
+      {
+        "id": "B",
+        "text": "$6\\ \\text{V}$"
+      },
+      {
+        "id": "C",
+        "text": "$0.04\\ \\text{V}$"
+      },
+      {
+        "id": "D",
+        "text": "$12.5\\ \\text{V}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Ohm's law gives $U = IR = 0.5 \\times 12 = 6\\ \\text{V}$.",
+    "distractorRationale": {
+      "A": "Divides resistance by current instead of multiplying.",
+      "C": "Divides current by resistance.",
+      "D": "Adds the two values rather than multiplying them."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$12\\ \\Omega$ 的电阻中通过 $0.5\\ \\text{A}$ 的电流，其两端电压为",
+        "explanation": "由欧姆定律 $U = IR = 0.5 \\times 12 = 6\\ \\text{V}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$24\\ \\text{V}$"
+          },
+          {
+            "id": "B",
+            "text": "$6\\ \\text{V}$"
+          },
+          {
+            "id": "C",
+            "text": "$0.04\\ \\text{V}$"
+          },
+          {
+            "id": "D",
+            "text": "$12.5\\ \\text{V}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "ohms-law",
+      "circuits"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two resistors of $6\\ \\Omega$ and $3\\ \\Omega$ are connected in parallel. What is the equivalent resistance?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$9\\ \\Omega$"
+      },
+      {
+        "id": "B",
+        "text": "$4.5\\ \\Omega$"
+      },
+      {
+        "id": "C",
+        "text": "$2\\ \\Omega$"
+      },
+      {
+        "id": "D",
+        "text": "$18\\ \\Omega$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "For two resistors in parallel, $R = \\dfrac{R_1R_2}{R_1 + R_2} = \\dfrac{18}{9} = 2\\ \\Omega$. Note that the result is always smaller than either individual resistance.",
+    "distractorRationale": {
+      "A": "Adds the resistances, which applies to a series connection.",
+      "B": "Takes the arithmetic mean of the two values.",
+      "D": "Reports the product without dividing by the sum."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$6\\ \\Omega$ 与 $3\\ \\Omega$ 的电阻并联，等效电阻为",
+        "explanation": "两电阻并联时 $R = \\dfrac{R_1R_2}{R_1 + R_2} = \\dfrac{18}{9} = 2\\ \\Omega$。注意并联总电阻总小于其中任一电阻。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$9\\ \\Omega$"
+          },
+          {
+            "id": "B",
+            "text": "$4.5\\ \\Omega$"
+          },
+          {
+            "id": "C",
+            "text": "$2\\ \\Omega$"
+          },
+          {
+            "id": "D",
+            "text": "$18\\ \\Omega$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "parallel-resistors",
+      "circuits"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Coulomb's law 库仑定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two point charges attract each other with force $F$. If the distance between them is halved, what is the new force?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{F}{2}$"
+      },
+      {
+        "id": "B",
+        "text": "$2F$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{F}{4}$"
+      },
+      {
+        "id": "D",
+        "text": "$4F$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Coulomb's law gives $F \\propto \\dfrac{1}{r^2}$. Halving $r$ divides $r^2$ by $4$, so the force becomes four times larger.",
+    "distractorRationale": {
+      "A": "Reverses the direction of the change.",
+      "B": "Treats the force as inversely proportional to $r$ rather than $r^2$.",
+      "C": "Applies the inverse-square law in the wrong direction, as if $r$ had doubled."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "两点电荷之间的吸引力为 $F$。若二者距离减半，则相互作用力变为",
+        "explanation": "由库仑定律 $F \\propto \\dfrac{1}{r^2}$。距离减半使 $r^2$ 变为原来的 $\\dfrac{1}{4}$，故作用力变为原来的 $4$ 倍。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{F}{2}$"
+          },
+          {
+            "id": "B",
+            "text": "$2F$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{F}{4}$"
+          },
+          {
+            "id": "D",
+            "text": "$4F$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "coulombs-law",
+      "inverse-square"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Lorentz force 洛伦兹力",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A charged particle enters a uniform magnetic field with its velocity parallel to the field lines. What happens to it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It continues in a straight line at constant speed."
+      },
+      {
+        "id": "B",
+        "text": "It accelerates along the field direction."
+      },
+      {
+        "id": "C",
+        "text": "It moves in a circular path."
+      },
+      {
+        "id": "D",
+        "text": "It comes to rest."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The magnetic force is $F = qvB\\sin\\theta$. When the velocity is parallel to the field, $\\theta = 0$ and $\\sin\\theta = 0$, so no force acts and the particle continues unchanged.",
+    "distractorRationale": {
+      "B": "A magnetic force never acts along the field direction, and here there is no force at all.",
+      "C": "Circular motion occurs when the velocity is perpendicular to the field.",
+      "D": "A magnetic force does no work and cannot change a particle's speed."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "带电粒子沿平行于磁感线的方向进入匀强磁场，其运动情况是",
+        "explanation": "磁场力为 $F = qvB\\sin\\theta$。速度与磁场平行时 $\\theta = 0$，$\\sin\\theta = 0$，故不受磁场力，粒子保持原有运动状态。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "沿直线做匀速运动"
+          },
+          {
+            "id": "B",
+            "text": "沿磁场方向加速"
+          },
+          {
+            "id": "C",
+            "text": "做圆周运动"
+          },
+          {
+            "id": "D",
+            "text": "逐渐静止"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "lorentz-force",
+      "magnetic-field"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Lenz's law 楞次定律",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A bar magnet is pushed north-pole-first into a coil. What does Lenz's law predict about the induced current?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It flows in whichever direction the coil was last wound."
+      },
+      {
+        "id": "B",
+        "text": "It flows so as to make the near face of the coil a north pole, opposing the magnet's approach."
+      },
+      {
+        "id": "C",
+        "text": "It flows so as to make the near face a south pole, attracting the magnet."
+      },
+      {
+        "id": "D",
+        "text": "No current flows, because the magnet is not touching the coil."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Lenz's law states that the induced effect opposes the change producing it. As the north pole approaches, the coil's near face becomes a north pole, repelling the magnet. This is a consequence of energy conservation: work must be done to push the magnet in.",
+    "distractorRationale": {
+      "A": "The winding fixes the geometry but not the direction of induced current, which depends on the change.",
+      "C": "Attraction would accelerate the magnet and create energy from nothing.",
+      "D": "Induction requires only a changing flux, not physical contact."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "将条形磁铁的 N 极插入线圈。根据楞次定律，感应电流的方向是",
+        "explanation": "楞次定律指出感应效果总是阻碍引起它的变化。N 极靠近时，线圈近端形成 N 极以排斥磁铁。这是能量守恒的结果：推入磁铁必须做功。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "取决于线圈的绕向"
+          },
+          {
+            "id": "B",
+            "text": "使线圈近端成为 N 极，阻碍磁铁靠近"
+          },
+          {
+            "id": "C",
+            "text": "使线圈近端成为 S 极，吸引磁铁"
+          },
+          {
+            "id": "D",
+            "text": "不产生电流，因为磁铁未接触线圈"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "lenzs-law",
+      "electromagnetic-induction"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Faraday's law 法拉第定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "The magnetic flux through a single loop changes from $0.6\\ \\text{Wb}$ to $0.2\\ \\text{Wb}$ in $0.2\\ \\text{s}$. What is the magnitude of the induced e.m.f.?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.08\\ \\text{V}$"
+      },
+      {
+        "id": "B",
+        "text": "$0.4\\ \\text{V}$"
+      },
+      {
+        "id": "C",
+        "text": "$2\\ \\text{V}$"
+      },
+      {
+        "id": "D",
+        "text": "$4\\ \\text{V}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Faraday's law gives $\\varepsilon = \\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right| = \\dfrac{0.4}{0.2} = 2\\ \\text{V}$.",
+    "distractorRationale": {
+      "A": "Multiplies the flux change by the time instead of dividing.",
+      "B": "Reports the flux change itself, not the rate of change.",
+      "D": "Uses $\\Delta t = 0.1\\ \\text{s}$ instead of $0.2\\ \\text{s}$, doubling the result."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "穿过单匝线圈的磁通量在 $0.2\\ \\text{s}$ 内由 $0.6\\ \\text{Wb}$ 变为 $0.2\\ \\text{Wb}$，感应电动势的大小为",
+        "explanation": "由法拉第电磁感应定律 $\\varepsilon = \\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right| = \\dfrac{0.4}{0.2} = 2\\ \\text{V}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.08\\ \\text{V}$"
+          },
+          {
+            "id": "B",
+            "text": "$0.4\\ \\text{V}$"
+          },
+          {
+            "id": "C",
+            "text": "$2\\ \\text{V}$"
+          },
+          {
+            "id": "D",
+            "text": "$4\\ \\text{V}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "faradays-law",
+      "induced-emf"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-b07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Magnetic induction 磁感应",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A straight wire of length $0.5\\ \\text{m}$ carrying a current of $4\\ \\text{A}$ lies perpendicular to a magnetic field of $0.2\\ \\text{T}$. What force acts on the wire?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.1\\ \\text{N}$"
+      },
+      {
+        "id": "B",
+        "text": "$4.7\\ \\text{N}$"
+      },
+      {
+        "id": "C",
+        "text": "$40\\ \\text{N}$"
+      },
+      {
+        "id": "D",
+        "text": "$0.4\\ \\text{N}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "For a wire perpendicular to the field, $F = BIL = 0.2 \\times 4 \\times 0.5 = 0.4\\ \\text{N}$.",
+    "distractorRationale": {
+      "A": "Omits the current from the product.",
+      "B": "Adds the three quantities instead of multiplying them.",
+      "C": "Misplaces the decimal point by a factor of $100$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "长 $0.5\\ \\text{m}$ 的直导线中通有 $4\\ \\text{A}$ 的电流，垂直放置于 $0.2\\ \\text{T}$ 的磁场中，所受安培力为",
+        "explanation": "导线与磁场垂直时 $F = BIL = 0.2 \\times 4 \\times 0.5 = 0.4\\ \\text{N}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.1\\ \\text{N}$"
+          },
+          {
+            "id": "B",
+            "text": "$4.7\\ \\text{N}$"
+          },
+          {
+            "id": "C",
+            "text": "$40\\ \\text{N}$"
+          },
+          {
+            "id": "D",
+            "text": "$0.4\\ \\text{N}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "ampere-force",
+      "magnetic-field"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

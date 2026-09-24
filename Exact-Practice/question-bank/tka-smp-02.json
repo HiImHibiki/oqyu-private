@@ -1,0 +1,3230 @@
+[
+  {
+    "id": "tka-smp-p01",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Berdasarkan bacaan, pola tarian yang dilakukan lebah penemu makanan berbentuk",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "angka delapan"
+      },
+      {
+        "id": "B",
+        "text": "segitiga"
+      },
+      {
+        "id": "C",
+        "text": "garis lurus"
+      },
+      {
+        "id": "D",
+        "text": "lingkaran penuh"
+      },
+      {
+        "id": "E",
+        "text": "zigzag"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat (2) menyebutkannya langsung: lebah menarikan pola berbentuk angka delapan di atas sisiran.\n\nBentuk lain pada pilihan tidak muncul dalam bacaan.",
+    "distractorRationale": {
+      "B": "Tidak disebut bacaan.",
+      "C": "Yang disebut lurus adalah garis tengah tariannya, bukan pola keseluruhan.",
+      "D": "Tidak disebut bacaan.",
+      "E": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p02",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Berdasarkan bacaan, lamanya tarian lebah menunjukkan",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "arah sumber makanan"
+      },
+      {
+        "id": "B",
+        "text": "jarak sumber makanan"
+      },
+      {
+        "id": "C",
+        "text": "jumlah lebah yang diperlukan"
+      },
+      {
+        "id": "D",
+        "text": "jenis bunga"
+      },
+      {
+        "id": "E",
+        "text": "waktu terbaik untuk terbang"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat (3) membagi dua keterangan itu: arah garis tengah menunjukkan sudut terhadap matahari, sedangkan lamanya menunjukkan jarak.\n\nArah dan jarak dibawa oleh dua unsur tarian yang berbeda.",
+    "distractorRationale": {
+      "A": "Arah ditunjukkan oleh garis tengahnya, bukan lamanya.",
+      "C": "Tidak disebut bacaan.",
+      "D": "Tidak disebut bacaan.",
+      "E": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p03",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Gagasan utama paragraf kedua bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Lebah penari bergerak sangat cepat."
+      },
+      {
+        "id": "B",
+        "text": "Sarang lebah sangat gelap."
+      },
+      {
+        "id": "C",
+        "text": "Lebah lain menangkap pesan tarian lewat getaran dan sentuhan, bukan dengan melihat."
+      },
+      {
+        "id": "D",
+        "text": "Lebah memiliki antena yang peka."
+      },
+      {
+        "id": "E",
+        "text": "Lebah tidak dapat melihat sama sekali."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat (4) menyangkal anggapan bahwa lebah lain sekadar menonton, kalimat (5) menjelaskan mengapa menonton mustahil, dan kalimat (6) menegaskan apa yang sebenarnya ditangkap.\n\nKegelapan sarang dan kepekaan antena adalah alasan pendukung, bukan gagasannya.",
+    "distractorRationale": {
+      "A": "Tidak dinyatakan bacaan.",
+      "B": "Rincian pendukung.",
+      "D": "Rincian pendukung.",
+      "E": "Bacaan hanya menyebut tarian tidak terlihat di sarang yang gelap."
+    },
+    "tags": [
+      "ide-pokok"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p04",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Maksud kalimat (4) «Lebah lain tidak sekadar menonton» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "mereka langsung terbang mencari makanan"
+      },
+      {
+        "id": "B",
+        "text": "mereka menghitung jumlah putaran"
+      },
+      {
+        "id": "C",
+        "text": "mereka tidak memperhatikan penari"
+      },
+      {
+        "id": "D",
+        "text": "mereka menerima pesan secara aktif melalui kontak langsung"
+      },
+      {
+        "id": "E",
+        "text": "mereka ikut menari bersama"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat berikutnya menjelaskan maksudnya: lebah lain mengikuti penari dengan antena menempel pada tubuhnya.\n\nJadi «tidak sekadar menonton» berarti mereka menyentuh dan merasakan, bukan berarti mereka mengabaikan.",
+    "distractorRationale": {
+      "A": "Bacaan tidak menyebut hal itu.",
+      "B": "Yang disebut adalah lamanya tarian, bukan jumlah putaran.",
+      "C": "Justru mereka mengikuti dengan saksama.",
+      "E": "Bacaan tidak menyebut mereka ikut menari."
+    },
+    "tags": [
+      "makna-kalimat"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p05",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Berdasarkan bacaan, alasan lebah tidak mungkin melihat tarian di dalam sarang adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "penarinya bergerak terlalu cepat"
+      },
+      {
+        "id": "B",
+        "text": "sarangnya terlalu penuh"
+      },
+      {
+        "id": "C",
+        "text": "mata lebah terlalu kecil"
+      },
+      {
+        "id": "D",
+        "text": "tarian dilakukan di luar sarang"
+      },
+      {
+        "id": "E",
+        "text": "sarangnya gelap gulita"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat (5) menyatakannya: di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat.\n\nAlasan lain pada pilihan tidak muncul dalam bacaan.",
+    "distractorRationale": {
+      "A": "Tidak disebut sebagai alasan.",
+      "B": "Tidak disebut bacaan.",
+      "C": "Tidak disebut bacaan.",
+      "D": "Tarian justru dilakukan di dalam sarang."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p06",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Mengevaluasi argumen",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Pernyataan yang paling melemahkan gagasan pada paragraf ketiga adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Lebah yang mengikuti tarian terbang ke arah yang sama sekali acak, tanpa kaitan dengan arah garis tengah tarian."
+      },
+      {
+        "id": "B",
+        "text": "Tidak semua lebah pekerja mencari makanan."
+      },
+      {
+        "id": "C",
+        "text": "Tarian lebah pertama kali diteliti pada abad ke-20."
+      },
+      {
+        "id": "D",
+        "text": "Lebah juga menggunakan bau bunga sebagai penanda."
+      },
+      {
+        "id": "E",
+        "text": "Sarang lebah dihuni ribuan ekor lebah."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Paragraf ketiga menyebut tarian itu bahasa karena ada aturan tetap, pengirim, penerima, dan pesan. Bila lebah penerima terbang ke arah acak, berarti pesannya tidak sampai — dan tanpa pesan yang diterima, sebutan bahasa runtuh.\n\nBau bunga hanya menambah saluran informasi lain; itu tidak membatalkan bahwa tarian membawa pesan.",
+    "distractorRationale": {
+      "B": "Pembagian tugas tidak membatalkan adanya pesan.",
+      "C": "Sejarah penelitian tidak membantah apa pun.",
+      "D": "Menambah saluran lain, tidak menggugurkan tarian.",
+      "E": "Jumlah penghuni tidak menyangkut isi pesan."
+    },
+    "tags": [
+      "evaluasi-argumen"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p07",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Simpulan yang tepat untuk keseluruhan bacaan adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Lebah hanya dapat berkomunikasi di tempat terang."
+      },
+      {
+        "id": "B",
+        "text": "Tarian lebah memenuhi ciri-ciri bahasa karena membawa pesan berpola yang diterima lebah lain lewat sentuhan."
+      },
+      {
+        "id": "C",
+        "text": "Lebah lebih cerdas daripada serangga lain."
+      },
+      {
+        "id": "D",
+        "text": "Semua serangga memiliki bahasa sendiri."
+      },
+      {
+        "id": "E",
+        "text": "Tarian lebah hanya menunjukkan jarak."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Tiga paragraf bacaan bergerak dari isi pesan, ke cara pesan itu diterima, lalu ke alasan mengapa ia layak disebut bahasa.\n\nBacaan tidak membandingkan lebah dengan serangga lain dan tidak menggeneralisasi ke semua serangga.",
+    "distractorRationale": {
+      "A": "Justru komunikasinya berlangsung di sarang yang gelap.",
+      "C": "Tidak ada perbandingan dengan serangga lain.",
+      "D": "Bacaan hanya membahas lebah madu.",
+      "E": "Tarian juga menunjukkan arah."
+    },
+    "tags": [
+      "simpulan"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p08",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Fungsi kalimat (8) dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "mengulang isi paragraf kedua"
+      },
+      {
+        "id": "B",
+        "text": "memperkenalkan hewan lain sebagai pembanding"
+      },
+      {
+        "id": "C",
+        "text": "memberikan alasan mengapa sebutan «bahasa» pada kalimat (7) dapat dibenarkan"
+      },
+      {
+        "id": "D",
+        "text": "membantah kalimat (7)"
+      },
+      {
+        "id": "E",
+        "text": "menjelaskan cara lebah membuat madu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat (7) menyebut tarian itu kerap disebut bahasa; kalimat (8) menyebut tiga ciri yang membuat sebutan itu tidak berlebihan — aturan tetap, pengirim dan penerima, serta pesan yang bisa keliru dipahami.\n\nHubungannya sebutan lalu pembenarannya, bukan pembantahan.",
+    "distractorRationale": {
+      "A": "Isinya berbeda.",
+      "B": "Tidak ada hewan pembanding.",
+      "D": "Justru menguatkan.",
+      "E": "Pembuatan madu tidak dibahas."
+    },
+    "tags": [
+      "hubungan-antarkalimat"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p09",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Berdasarkan bacaan, arah garis tengah tarian menunjukkan sudut sumber makanan terhadap",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sarang lebah lain"
+      },
+      {
+        "id": "B",
+        "text": "pintu sarang"
+      },
+      {
+        "id": "C",
+        "text": "bulan"
+      },
+      {
+        "id": "D",
+        "text": "matahari"
+      },
+      {
+        "id": "E",
+        "text": "arah angin"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat (3) menyebutkannya: arah garis tengah tarian menunjukkan sudut sumber makanan terhadap matahari.\n\nAcuan lain pada pilihan tidak muncul dalam bacaan.",
+    "distractorRationale": {
+      "A": "Tidak disebut bacaan.",
+      "B": "Tidak disebut bacaan.",
+      "C": "Tidak disebut bacaan.",
+      "E": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p10",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Mengevaluasi argumen",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Berdasarkan bacaan, ciri bahasa yang ditunjukkan oleh kemungkinan pesan «keliru dipahami» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "lebah sering berbohong kepada sesamanya"
+      },
+      {
+        "id": "B",
+        "text": "tarian lebah tidak dapat dipercaya"
+      },
+      {
+        "id": "C",
+        "text": "lebah tidak memiliki aturan yang tetap"
+      },
+      {
+        "id": "D",
+        "text": "penari selalu berhenti terlalu cepat"
+      },
+      {
+        "id": "E",
+        "text": "pesan itu dapat gagal sampai dengan tepat, seperti pada bahasa manusia"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Justru karena pesan bisa salah tangkap, tarian itu terbukti membawa isi yang dapat benar atau salah — bukan sekadar gerakan tanpa makna.\n\nKemungkinan keliru itu tanda adanya makna, bukan tanda ketidakandalan; dan bacaan menyebutnya sebagai salah satu ciri yang membenarkan sebutan bahasa.",
+    "distractorRationale": {
+      "A": "Bacaan tidak menyebut kebohongan.",
+      "B": "Kemungkinan keliru justru menandakan adanya makna.",
+      "C": "Bacaan menyebut ada aturan yang tetap.",
+      "D": "Bacaan menyebut «bila», bukan «selalu»."
+    },
+    "tags": [
+      "evaluasi-argumen"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p11",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Anggapan yang mendasari kalimat (6) «Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "informasi dapat berpindah melalui indra selain penglihatan"
+      },
+      {
+        "id": "B",
+        "text": "sarang lebah tidak pernah terang"
+      },
+      {
+        "id": "C",
+        "text": "getaran selalu lebih jelas daripada gambar"
+      },
+      {
+        "id": "D",
+        "text": "lebah tidak memiliki mata"
+      },
+      {
+        "id": "E",
+        "text": "tarian lebah tidak membawa informasi apa pun"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat itu menyimpulkan bahwa pesan tetap sampai meski tidak ada yang terlihat. Simpulan tersebut baru berlaku bila informasi memang bisa berpindah lewat indra selain penglihatan.\n\nBacaan tidak menyatakan lebah tidak bermata, dan tidak membandingkan kejelasan getaran dengan gambar.",
+    "distractorRationale": {
+      "B": "Bacaan hanya menyebut keadaan di dalam sarang.",
+      "C": "Tidak ada perbandingan kejelasan.",
+      "D": "Bacaan tidak menyatakan hal itu.",
+      "E": "Bertentangan dengan seluruh bacaan."
+    },
+    "tags": [
+      "asumsi"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p12",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Lebah madu tidak menemukan bunga secara kebetulan. (2) Seekor lebah yang menemukan sumber makanan kembali ke sarang dan menarikan pola berbentuk angka delapan di atas sisiran. (3) Arah garis tengah tarian itu menunjukkan sudut sumber makanan terhadap matahari, sedangkan lamanya menunjukkan jaraknya.\n\n(4) Lebah lain tidak sekadar menonton. (5) Mereka mengikuti penari dengan antena menempel pada tubuhnya, sebab di dalam sarang yang gelap gulita tarian itu tidak mungkin dilihat. (6) Yang mereka tangkap adalah getaran dan sentuhan, bukan gambar.\n\n(7) Karena itu tarian lebah kerap disebut bahasa. (8) Sebutan itu tidak berlebihan: ada aturan yang tetap, ada pengirim dan penerima, dan ada pesan yang bisa keliru dipahami bila penarinya berhenti terlalu cepat."
+    },
+    "stem": "Bila seekor lebah menari dengan durasi lebih lama daripada biasanya, hal itu paling mungkin berarti",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sumber makanannya lebih dekat"
+      },
+      {
+        "id": "B",
+        "text": "sumber makanannya lebih jauh"
+      },
+      {
+        "id": "C",
+        "text": "arah sumber makanan berubah"
+      },
+      {
+        "id": "D",
+        "text": "makanannya lebih banyak"
+      },
+      {
+        "id": "E",
+        "text": "lebah itu kelelahan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat (3) menyatakan lamanya tarian menunjukkan jarak, sehingga tarian yang lebih lama berarti jarak yang lebih jauh.\n\nArah dibawa oleh garis tengah tarian, bukan oleh durasinya; jumlah makanan dan kondisi lebah tidak disinggung sama sekali.",
+    "distractorRationale": {
+      "A": "Berlawanan dengan hubungan yang disebut bacaan.",
+      "C": "Arah ditunjukkan garis tengah, bukan durasi.",
+      "D": "Jumlah makanan tidak disinggung.",
+      "E": "Kondisi lebah tidak disinggung."
+    },
+    "tags": [
+      "penerapan"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p13",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Sarno menjaga palang pintu kereta di ujung kampung selama dua puluh delapan tahun. Palangnya bukan yang otomatis; ia menurunkannya dengan tangan, memutar tuas besi yang berdecit setiap kali.\n\nAnak-anak sekolah tahu jam kerjanya lebih baik daripada jadwal mereka sendiri. Kalau Pak Sarno sudah berdiri di tepi rel sambil menggulung lengan baju, itu tandanya kereta pukul enam lewat sepuluh akan segera datang, dan mereka masih punya waktu berlari.\n\nTahun lalu palang itu diganti yang otomatis. Pak Sarno tetap datang setiap pagi, berdiri di tempat yang sama, tidak memegang apa pun. Anak-anak masih melihat ke arahnya sebelum menyeberang."
+    },
+    "stem": "Latar tempat yang tergambar pada bacaan tentang Pak Sarno adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "stasiun besar"
+      },
+      {
+        "id": "B",
+        "text": "sekolah"
+      },
+      {
+        "id": "C",
+        "text": "palang pintu kereta di ujung kampung"
+      },
+      {
+        "id": "D",
+        "text": "dalam gerbong kereta"
+      },
+      {
+        "id": "E",
+        "text": "pasar kampung"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bacaan menyebutkan Pak Sarno menjaga palang pintu kereta di ujung kampung, dan seluruh peristiwa berlangsung di sekitar tempat itu.\n\nSekolah hanya disebut lewat anak-anak yang lewat, bukan sebagai tempat peristiwa.",
+    "distractorRationale": {
+      "A": "Tidak disebut bacaan.",
+      "B": "Disebut lewat anak-anaknya, bukan sebagai tempat peristiwa.",
+      "D": "Tidak disebut bacaan.",
+      "E": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "latar"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p14",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Sarno menjaga palang pintu kereta di ujung kampung selama dua puluh delapan tahun. Palangnya bukan yang otomatis; ia menurunkannya dengan tangan, memutar tuas besi yang berdecit setiap kali.\n\nAnak-anak sekolah tahu jam kerjanya lebih baik daripada jadwal mereka sendiri. Kalau Pak Sarno sudah berdiri di tepi rel sambil menggulung lengan baju, itu tandanya kereta pukul enam lewat sepuluh akan segera datang, dan mereka masih punya waktu berlari.\n\nTahun lalu palang itu diganti yang otomatis. Pak Sarno tetap datang setiap pagi, berdiri di tempat yang sama, tidak memegang apa pun. Anak-anak masih melihat ke arahnya sebelum menyeberang."
+    },
+    "stem": "Watak Pak Sarno yang paling menonjol dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "pemarah dan tidak sabar"
+      },
+      {
+        "id": "B",
+        "text": "acuh terhadap keselamatan orang lain"
+      },
+      {
+        "id": "C",
+        "text": "gemar berbincang dengan anak-anak"
+      },
+      {
+        "id": "D",
+        "text": "setia dan disiplin pada tugasnya"
+      },
+      {
+        "id": "E",
+        "text": "suka menunda pekerjaan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Dua puluh delapan tahun memutar tuas dengan tangan, dan tetap datang setiap pagi meski palangnya sudah otomatis, menunjukkan kesetiaan sekaligus kedisiplinan.\n\nWataknya dibangun lewat kebiasaan yang berulang, bukan lewat penjelasan langsung pengarang.",
+    "distractorRationale": {
+      "A": "Tidak ada kemarahan dalam cerita.",
+      "B": "Pekerjaannya justru menjaga keselamatan.",
+      "C": "Cerita tidak menggambarkan percakapan.",
+      "E": "Ia justru selalu tepat waktu."
+    },
+    "tags": [
+      "penokohan"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p15",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Makna tersirat",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Sarno menjaga palang pintu kereta di ujung kampung selama dua puluh delapan tahun. Palangnya bukan yang otomatis; ia menurunkannya dengan tangan, memutar tuas besi yang berdecit setiap kali.\n\nAnak-anak sekolah tahu jam kerjanya lebih baik daripada jadwal mereka sendiri. Kalau Pak Sarno sudah berdiri di tepi rel sambil menggulung lengan baju, itu tandanya kereta pukul enam lewat sepuluh akan segera datang, dan mereka masih punya waktu berlari.\n\nTahun lalu palang itu diganti yang otomatis. Pak Sarno tetap datang setiap pagi, berdiri di tempat yang sama, tidak memegang apa pun. Anak-anak masih melihat ke arahnya sebelum menyeberang."
+    },
+    "stem": "Maksud kalimat «Anak-anak sekolah tahu jam kerjanya lebih baik daripada jadwal mereka sendiri» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Pak Sarno sering mengingatkan mereka soal waktu"
+      },
+      {
+        "id": "B",
+        "text": "anak-anak tidak pernah membawa jadwal pelajaran"
+      },
+      {
+        "id": "C",
+        "text": "anak-anak sering terlambat ke sekolah"
+      },
+      {
+        "id": "D",
+        "text": "jadwal kereta selalu berubah-ubah"
+      },
+      {
+        "id": "E",
+        "text": "kehadiran Pak Sarno sudah menjadi penanda waktu yang mereka andalkan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat berikutnya menjelaskan maksudnya: melihat Pak Sarno menggulung lengan baju sudah cukup bagi mereka untuk tahu kereta pukul enam lewat sepuluh akan datang.\n\nJadi sosoknya berfungsi seperti jam — bukan berarti mereka lalai terhadap jadwalnya sendiri.",
+    "distractorRationale": {
+      "A": "Ia menandai waktu lewat kebiasaannya, bukan dengan mengingatkan.",
+      "B": "Bacaan tidak menyatakan hal itu.",
+      "C": "Keterlambatan tidak disinggung.",
+      "D": "Bacaan justru menyebut jam kereta yang tetap."
+    },
+    "tags": [
+      "makna-tersirat"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p16",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Amanat & nilai",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Sarno menjaga palang pintu kereta di ujung kampung selama dua puluh delapan tahun. Palangnya bukan yang otomatis; ia menurunkannya dengan tangan, memutar tuas besi yang berdecit setiap kali.\n\nAnak-anak sekolah tahu jam kerjanya lebih baik daripada jadwal mereka sendiri. Kalau Pak Sarno sudah berdiri di tepi rel sambil menggulung lengan baju, itu tandanya kereta pukul enam lewat sepuluh akan segera datang, dan mereka masih punya waktu berlari.\n\nTahun lalu palang itu diganti yang otomatis. Pak Sarno tetap datang setiap pagi, berdiri di tempat yang sama, tidak memegang apa pun. Anak-anak masih melihat ke arahnya sebelum menyeberang."
+    },
+    "stem": "Amanat yang paling sesuai dengan bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Pekerjaan yang dilakukan bertahun-tahun dengan sungguh-sungguh meninggalkan makna melebihi tugasnya sendiri."
+      },
+      {
+        "id": "B",
+        "text": "Orang tua sebaiknya berhenti bekerja pada waktunya."
+      },
+      {
+        "id": "C",
+        "text": "Anak-anak harus lebih memperhatikan jadwal sekolahnya."
+      },
+      {
+        "id": "D",
+        "text": "Peralatan otomatis sebaiknya tidak dipakai."
+      },
+      {
+        "id": "E",
+        "text": "Pekerjaan menjaga palang kereta sangat berbahaya."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Palangnya sudah diganti mesin, tetapi anak-anak masih melihat ke arah Pak Sarno sebelum menyeberang. Yang tersisa bukan lagi tugasnya, melainkan kepercayaan yang ia bangun selama dua puluh delapan tahun.\n\nCerita tidak menentang peralatan otomatis — palang barunya diterima begitu saja tanpa dikomentari.",
+    "distractorRationale": {
+      "B": "Cerita tidak menganjurkan hal itu.",
+      "C": "Bukan pokok cerita.",
+      "D": "Cerita tidak menentang palang otomatis.",
+      "E": "Bahaya pekerjaan tidak dibahas."
+    },
+    "tags": [
+      "amanat"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p17",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Makna tersirat",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Sarno menjaga palang pintu kereta di ujung kampung selama dua puluh delapan tahun. Palangnya bukan yang otomatis; ia menurunkannya dengan tangan, memutar tuas besi yang berdecit setiap kali.\n\nAnak-anak sekolah tahu jam kerjanya lebih baik daripada jadwal mereka sendiri. Kalau Pak Sarno sudah berdiri di tepi rel sambil menggulung lengan baju, itu tandanya kereta pukul enam lewat sepuluh akan segera datang, dan mereka masih punya waktu berlari.\n\nTahun lalu palang itu diganti yang otomatis. Pak Sarno tetap datang setiap pagi, berdiri di tempat yang sama, tidak memegang apa pun. Anak-anak masih melihat ke arahnya sebelum menyeberang."
+    },
+    "stem": "Makna kalimat penutup «Anak-anak masih melihat ke arahnya sebelum menyeberang» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Pak Sarno memberi aba-aba dengan tangannya"
+      },
+      {
+        "id": "B",
+        "text": "kepercayaan pada Pak Sarno bertahan meski tugasnya sudah digantikan mesin"
+      },
+      {
+        "id": "C",
+        "text": "anak-anak menunggu izin Pak Sarno untuk menyeberang"
+      },
+      {
+        "id": "D",
+        "text": "Pak Sarno masih bertugas seperti biasa"
+      },
+      {
+        "id": "E",
+        "text": "anak-anak tidak mempercayai palang otomatis karena sering rusak"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat sebelumnya menegaskan Pak Sarno «tidak memegang apa pun» — ia sudah tidak punya wewenang apa-apa atas palang itu.\n\nJustru karena itu tatapan anak-anak bermakna: yang mereka percayai bukan jabatannya, melainkan orangnya. Bacaan tidak menyebut palang otomatis pernah rusak.",
+    "distractorRationale": {
+      "A": "Bacaan menyebut ia tidak memegang apa pun.",
+      "C": "Tidak ada izin yang diberikan.",
+      "D": "Ia sudah tidak memegang apa pun.",
+      "E": "Bacaan tidak menyebut palang otomatis bermasalah."
+    },
+    "tags": [
+      "makna-tersirat"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p18",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Gaya bahasa",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Sarno menjaga palang pintu kereta di ujung kampung selama dua puluh delapan tahun. Palangnya bukan yang otomatis; ia menurunkannya dengan tangan, memutar tuas besi yang berdecit setiap kali.\n\nAnak-anak sekolah tahu jam kerjanya lebih baik daripada jadwal mereka sendiri. Kalau Pak Sarno sudah berdiri di tepi rel sambil menggulung lengan baju, itu tandanya kereta pukul enam lewat sepuluh akan segera datang, dan mereka masih punya waktu berlari.\n\nTahun lalu palang itu diganti yang otomatis. Pak Sarno tetap datang setiap pagi, berdiri di tempat yang sama, tidak memegang apa pun. Anak-anak masih melihat ke arahnya sebelum menyeberang."
+    },
+    "stem": "Detail «memutar tuas besi yang berdecit setiap kali» terutama berfungsi untuk",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menunjukkan Pak Sarno kurang terampil"
+      },
+      {
+        "id": "B",
+        "text": "menunjukkan tuasnya perlu diminyaki"
+      },
+      {
+        "id": "C",
+        "text": "menghadirkan pekerjaan itu sebagai kerja fisik yang berulang selama bertahun-tahun"
+      },
+      {
+        "id": "D",
+        "text": "menjelaskan cara kerja palang kereta"
+      },
+      {
+        "id": "E",
+        "text": "menandakan palang itu sering rusak"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bunyi decit yang muncul «setiap kali» menandai pengulangan, dan kata «memutar tuas besi» menandai bahwa itu kerja tangan, bukan menekan tombol.\n\nDua puluh delapan tahun berisi ribuan kali decitan yang sama — itulah yang dibuat terasa oleh detail ini.",
+    "distractorRationale": {
+      "A": "Justru menunjukkan ia sangat terbiasa.",
+      "B": "Perawatan tuas bukan pokok ceritanya.",
+      "D": "Cara kerja palang bukan tujuan penggambarannya.",
+      "E": "Kerusakan tidak disinggung."
+    },
+    "tags": [
+      "detail-sastra"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p19",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Sarno menjaga palang pintu kereta di ujung kampung selama dua puluh delapan tahun. Palangnya bukan yang otomatis; ia menurunkannya dengan tangan, memutar tuas besi yang berdecit setiap kali.\n\nAnak-anak sekolah tahu jam kerjanya lebih baik daripada jadwal mereka sendiri. Kalau Pak Sarno sudah berdiri di tepi rel sambil menggulung lengan baju, itu tandanya kereta pukul enam lewat sepuluh akan segera datang, dan mereka masih punya waktu berlari.\n\nTahun lalu palang itu diganti yang otomatis. Pak Sarno tetap datang setiap pagi, berdiri di tempat yang sama, tidak memegang apa pun. Anak-anak masih melihat ke arahnya sebelum menyeberang."
+    },
+    "stem": "Sudut pandang yang digunakan dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "orang pertama pelaku sampingan"
+      },
+      {
+        "id": "B",
+        "text": "orang pertama pelaku utama"
+      },
+      {
+        "id": "C",
+        "text": "campuran"
+      },
+      {
+        "id": "D",
+        "text": "orang ketiga serba tahu"
+      },
+      {
+        "id": "E",
+        "text": "orang kedua"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Cerita dituturkan dengan menyebut «Pak Sarno» dan «anak-anak», tanpa kehadiran tokoh «aku» sama sekali.\n\nPenutur juga mengetahui apa yang diketahui anak-anak, sehingga sudut pandangnya orang ketiga serba tahu.",
+    "distractorRationale": {
+      "A": "Tidak ada tokoh «aku».",
+      "B": "Tidak ada tokoh «aku».",
+      "C": "Sudut pandangnya konsisten.",
+      "E": "Tidak memakai «kamu»."
+    },
+    "tags": [
+      "sudut-pandang"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p20",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Amanat & nilai",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Sarno menjaga palang pintu kereta di ujung kampung selama dua puluh delapan tahun. Palangnya bukan yang otomatis; ia menurunkannya dengan tangan, memutar tuas besi yang berdecit setiap kali.\n\nAnak-anak sekolah tahu jam kerjanya lebih baik daripada jadwal mereka sendiri. Kalau Pak Sarno sudah berdiri di tepi rel sambil menggulung lengan baju, itu tandanya kereta pukul enam lewat sepuluh akan segera datang, dan mereka masih punya waktu berlari.\n\nTahun lalu palang itu diganti yang otomatis. Pak Sarno tetap datang setiap pagi, berdiri di tempat yang sama, tidak memegang apa pun. Anak-anak masih melihat ke arahnya sebelum menyeberang."
+    },
+    "stem": "Alasan pengarang menyebut bahwa Pak Sarno berdiri «tidak memegang apa pun» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "untuk menjelaskan palang otomatis tidak perlu dijaga"
+      },
+      {
+        "id": "B",
+        "text": "untuk menunjukkan tangannya sedang sakit"
+      },
+      {
+        "id": "C",
+        "text": "untuk menandakan ia lupa membawa peralatan"
+      },
+      {
+        "id": "D",
+        "text": "untuk menunjukkan ia sedang beristirahat"
+      },
+      {
+        "id": "E",
+        "text": "untuk menegaskan bahwa ia hadir tanpa lagi memiliki tugas, sehingga kehadirannya sendiri yang bermakna"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Sepanjang cerita tangan Pak Sarno selalu memegang sesuatu — tuas besi, lengan baju yang digulung. Frasa «tidak memegang apa pun» memutus kebiasaan itu dan membuat jelas bahwa yang tersisa hanyalah kehadirannya.\n\nDan justru kehadiran itulah yang masih dicari anak-anak pada kalimat penutup.",
+    "distractorRationale": {
+      "A": "Bukan itu yang ditekankan kalimatnya.",
+      "B": "Tidak ada keterangan sakit.",
+      "C": "Tidak ada peralatan yang tertinggal.",
+      "D": "Ia berdiri di tempat kerjanya, bukan beristirahat."
+    },
+    "tags": [
+      "tujuan-pengarang"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p21",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Gaya bahasa",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Sarno menjaga palang pintu kereta di ujung kampung selama dua puluh delapan tahun. Palangnya bukan yang otomatis; ia menurunkannya dengan tangan, memutar tuas besi yang berdecit setiap kali.\n\nAnak-anak sekolah tahu jam kerjanya lebih baik daripada jadwal mereka sendiri. Kalau Pak Sarno sudah berdiri di tepi rel sambil menggulung lengan baju, itu tandanya kereta pukul enam lewat sepuluh akan segera datang, dan mereka masih punya waktu berlari.\n\nTahun lalu palang itu diganti yang otomatis. Pak Sarno tetap datang setiap pagi, berdiri di tempat yang sama, tidak memegang apa pun. Anak-anak masih melihat ke arahnya sebelum menyeberang."
+    },
+    "stem": "Suasana yang paling menonjol dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tenang dan mengandung rasa kehilangan"
+      },
+      {
+        "id": "B",
+        "text": "riang dan penuh canda"
+      },
+      {
+        "id": "C",
+        "text": "asing dan membingungkan"
+      },
+      {
+        "id": "D",
+        "text": "marah dan penuh keluhan"
+      },
+      {
+        "id": "E",
+        "text": "tegang dan menakutkan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Cerita bergerak dari kebiasaan bertahun-tahun ke keadaan sesudah tugas itu diambil alih mesin, dan ditutup dengan sosok yang berdiri tanpa memegang apa pun.\n\nTidak ada keluhan maupun pertengkaran — kehilangannya justru disampaikan dengan tenang, dan itulah yang membuatnya terasa.",
+    "distractorRationale": {
+      "B": "Nadanya bukan canda.",
+      "C": "Latarnya justru akrab dan sehari-hari.",
+      "D": "Tidak ada keluhan yang diucapkan.",
+      "E": "Tidak ada ketegangan."
+    },
+    "tags": [
+      "suasana"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p22",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kata baku & makna kata",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan kata baku yang tepat terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "jadual, resiko, kwalitas"
+      },
+      {
+        "id": "B",
+        "text": "jadwal, risiko, kualitas"
+      },
+      {
+        "id": "C",
+        "text": "jadwal, resiko, kualitas"
+      },
+      {
+        "id": "D",
+        "text": "jadwal, risiko, kwalitas"
+      },
+      {
+        "id": "E",
+        "text": "jadual, risiko, kwalitas"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bentuk baku ketiganya adalah «jadwal», «risiko», dan «kualitas».\n\n«Jadual», «resiko», dan «kwalitas» adalah bentuk tidak baku yang masih sering dijumpai dalam tulisan sehari-hari.",
+    "distractorRationale": {
+      "A": "Ketiganya tidak baku.",
+      "C": "«resiko» tidak baku.",
+      "D": "«kwalitas» tidak baku.",
+      "E": "«jadual» dan «kwalitas» tidak baku."
+    },
+    "tags": [
+      "kata-baku"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p23",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Ejaan & tanda baca",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penggunaan tanda titik dua yang tepat terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Kami membutuhkan tiga hal, yaitu: kertas, lem, dan gunting."
+      },
+      {
+        "id": "B",
+        "text": "Kami membutuhkan tiga hal: yaitu kertas, lem, dan gunting."
+      },
+      {
+        "id": "C",
+        "text": "Kami membutuhkan tiga hal: kertas, lem, dan gunting."
+      },
+      {
+        "id": "D",
+        "text": "Kami membutuhkan: kertas, lem, dan gunting."
+      },
+      {
+        "id": "E",
+        "text": "Kami membutuhkan tiga hal; kertas, lem, dan gunting."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Titik dua dipakai setelah pernyataan yang sudah lengkap dan diikuti perincian. «Kami membutuhkan tiga hal» sudah lengkap, sehingga titik dua tepat.\n\nBila kalimatnya belum lengkap — seperti «Kami membutuhkan:» — titik dua tidak dipakai. «Yaitu» dan titik dua juga tidak dipakai bersamaan karena fungsinya sama.",
+    "distractorRationale": {
+      "A": "«yaitu» dan titik dua tidak dipakai bersamaan.",
+      "B": "«yaitu» menjadi mubazir setelah titik dua.",
+      "D": "Kalimat sebelum titik dua belum lengkap.",
+      "E": "Titik koma tidak dipakai untuk memperkenalkan perincian."
+    },
+    "tags": [
+      "puebi",
+      "tanda-baca"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p24",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kalimat efektif",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat berikut yang paling efektif adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Para peserta diminta agar supaya mengumpulkan tugas sebelum pukul dua."
+      },
+      {
+        "id": "B",
+        "text": "Kepada para peserta diminta mengumpulkan tugas sebelum pukul dua."
+      },
+      {
+        "id": "C",
+        "text": "Para peserta-peserta diminta untuk mengumpulkan tugas sebelum pukul dua."
+      },
+      {
+        "id": "D",
+        "text": "Para peserta diminta mengumpulkan tugas sebelum pukul dua."
+      },
+      {
+        "id": "E",
+        "text": "Untuk para peserta diminta mengumpulkan tugas sebelum pukul dua."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kata «para» sudah menyatakan jamak sehingga «peserta-peserta» berlebihan, dan «agar supaya» menumpuk dua kata yang bermakna sama.\n\nAwalan «kepada» atau «untuk» membuat bagian depan menjadi keterangan, sehingga kalimatnya kehilangan subjek.",
+    "distractorRationale": {
+      "A": "«agar supaya» menumpuk dua kata bermakna sama.",
+      "B": "Kehilangan subjek karena diawali «kepada».",
+      "C": "«para peserta-peserta» dan «untuk» berlebihan.",
+      "E": "Kehilangan subjek karena diawali «untuk»."
+    },
+    "tags": [
+      "kalimat-efektif"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p25",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kata baku & makna kata",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Makna kata «tekun» dalam kalimat «Ia tekun mengerjakan latihan setiap hari» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "pandai dalam pelajaran"
+      },
+      {
+        "id": "B",
+        "text": "sabar menghadapi kesulitan"
+      },
+      {
+        "id": "C",
+        "text": "cepat menyelesaikan pekerjaan"
+      },
+      {
+        "id": "D",
+        "text": "teliti memeriksa hasil"
+      },
+      {
+        "id": "E",
+        "text": "rajin dan bersungguh-sungguh secara terus-menerus"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "«Tekun» berarti rajin, keras hati, dan bersungguh-sungguh dalam melakukan sesuatu secara berkelanjutan — sejalan dengan keterangan «setiap hari».\n\nKecepatan, kepandaian, ketelitian, dan kesabaran adalah sifat lain yang bisa menyertainya, tetapi bukan artinya.",
+    "distractorRationale": {
+      "A": "Kepandaian bukan arti kata ini.",
+      "B": "Ini makna «sabar».",
+      "C": "Kecepatan bukan arti kata ini.",
+      "D": "Ini makna «teliti»."
+    },
+    "tags": [
+      "makna-kata"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p26",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kepaduan paragraf",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan kalimat berikut.\n\n(1) Karena itu, air sumur di sekitarnya ikut tercemar.\n(2) Pabrik itu membuang limbah cair langsung ke sungai tanpa diolah.\n(3) Warga akhirnya melapor kepada pemerintah desa.\n(4) Sungai tersebut mengalir tepat di belakang permukiman warga.\n\nUrutan yang tepat agar membentuk paragraf padu adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(2), (4), (1), (3)"
+      },
+      {
+        "id": "B",
+        "text": "(3), (2), (4), (1)"
+      },
+      {
+        "id": "C",
+        "text": "(2), (1), (4), (3)"
+      },
+      {
+        "id": "D",
+        "text": "(4), (1), (2), (3)"
+      },
+      {
+        "id": "E",
+        "text": "(1), (2), (4), (3)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat (2) menyatakan sebab awal, (4) menjelaskan mengapa sebab itu berdampak pada warga, (1) menyebut akibatnya dengan penanda «karena itu», dan (3) menutup dengan tindakan warga.\n\nKalimat (1) harus berada setelah letak sungai dijelaskan, sebab pencemaran sumur baru masuk akal bila diketahui sungainya berada di belakang permukiman.",
+    "distractorRationale": {
+      "B": "Dimulai dari tindakan penutup.",
+      "C": "Akibat disebut sebelum letak sungai dijelaskan.",
+      "D": "Dimulai dari keterangan tempat tanpa sebab.",
+      "E": "Kalimat berpenanda «karena itu» tidak dapat membuka paragraf."
+    },
+    "tags": [
+      "struktur-paragraf"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p27",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Ejaan & tanda baca",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan gabungan kata yang tepat terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tanggung-jawab, kerja-sama, terima-kasih"
+      },
+      {
+        "id": "B",
+        "text": "tanggung jawab, kerja sama, terima kasih"
+      },
+      {
+        "id": "C",
+        "text": "tanggungjawab, kerja sama, terimakasih"
+      },
+      {
+        "id": "D",
+        "text": "tanggungjawab, kerjasama, terimakasih"
+      },
+      {
+        "id": "E",
+        "text": "tanggung jawab, kerjasama, terima kasih"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Ketiganya adalah gabungan kata yang unsurnya masih berdiri sendiri, sehingga ditulis terpisah: «tanggung jawab», «kerja sama», «terima kasih».\n\nYang ditulis serangkai hanyalah gabungan yang sudah dianggap satu kata, seperti «matahari», «kacamata», dan «bumiputra».",
+    "distractorRationale": {
+      "A": "Tanda hubung tidak dipakai pada gabungan kata ini.",
+      "C": "«tanggungjawab» dan «terimakasih» seharusnya terpisah.",
+      "D": "Ketiganya seharusnya ditulis terpisah.",
+      "E": "«kerjasama» seharusnya terpisah."
+    },
+    "tags": [
+      "puebi",
+      "gabungan-kata"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p28",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kalimat efektif",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat berikut yang mengandung kesalahan struktur adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Kita dapat menyelamatkan lingkungan dengan mengurangi penggunaan plastik."
+      },
+      {
+        "id": "B",
+        "text": "Mengurangi penggunaan plastik dapat menyelamatkan lingkungan."
+      },
+      {
+        "id": "C",
+        "text": "Dengan mengurangi penggunaan plastik dapat menyelamatkan lingkungan."
+      },
+      {
+        "id": "D",
+        "text": "Pengurangan penggunaan plastik dapat menyelamatkan lingkungan."
+      },
+      {
+        "id": "E",
+        "text": "Dengan mengurangi penggunaan plastik, kita dapat menyelamatkan lingkungan."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kata «dengan» menjadikan bagian depan kalimat sebagai keterangan cara, sehingga kalimat pertama tidak memiliki subjek: tidak jelas siapa atau apa yang dapat menyelamatkan lingkungan.\n\nAda dua jalan memperbaikinya, dan keduanya muncul pada pilihan lain: menghapus «dengan» sehingga frasa itu naik menjadi subjek, atau menambahkan subjek setelah tanda koma.",
+    "distractorRationale": {
+      "A": "Berstruktur lengkap.",
+      "B": "Berstruktur lengkap.",
+      "D": "Berstruktur lengkap.",
+      "E": "Berstruktur lengkap."
+    },
+    "tags": [
+      "kalimat-efektif",
+      "subjek"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p29",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kepaduan paragraf",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan paragraf berikut.\n\n«(1) Lapangan sekolah kami tidak memiliki peneduh sama sekali. (2) Upacara pada pukul tujuh pagi pun sudah terasa panas. (3) Sekolah kami memiliki dua lapangan basket. (4) Beberapa siswa bahkan pernah pingsan saat barisan berlangsung.»\n\nKalimat yang tidak padu adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "semua kalimat sudah padu"
+      },
+      {
+        "id": "B",
+        "text": "kalimat (4)"
+      },
+      {
+        "id": "C",
+        "text": "kalimat (2)"
+      },
+      {
+        "id": "D",
+        "text": "kalimat (3)"
+      },
+      {
+        "id": "E",
+        "text": "kalimat (1)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Paragraf itu membangun satu rantai: tidak ada peneduh, sehingga upacara terasa panas, sehingga ada siswa yang pingsan. Kalimat (3) menyebut jumlah lapangan basket — hal yang tidak berkaitan dengan peneduh maupun akibat panasnya.\n\nJumlah lapangan bahkan bisa membelokkan perhatian pembaca ke topik lain sama sekali.",
+    "distractorRationale": {
+      "A": "Kalimat (3) keluar dari rantai sebab.",
+      "B": "Menyebut akibat terberat.",
+      "C": "Menyebut akibat pertama.",
+      "E": "Menyebut sebab utama."
+    },
+    "tags": [
+      "kepaduan-paragraf"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-p30",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kata baku & makna kata",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Ia ______ hasil pengamatannya dalam sebuah laporan singkat.»\n\nKata yang paling tepat mengisi bagian rumpang adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menyiramkan"
+      },
+      {
+        "id": "B",
+        "text": "menumpahkan"
+      },
+      {
+        "id": "C",
+        "text": "meneteskan"
+      },
+      {
+        "id": "D",
+        "text": "mencurahkan"
+      },
+      {
+        "id": "E",
+        "text": "menuangkan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "«Menuangkan» dipakai secara kiasan untuk memindahkan gagasan atau hasil pengamatan ke dalam bentuk tulisan — «menuangkan ide dalam tulisan» adalah gabungan kata yang lazim.\n\nEmpat kata lainnya berasal dari medan makna yang sama tentang zat cair, tetapi tidak lazim dipakai untuk tulisan: «menumpahkan» menyiratkan ketidaksengajaan, dan «mencurahkan» lazimnya berpasangan dengan perasaan atau tenaga, bukan hasil pengamatan.",
+    "distractorRationale": {
+      "A": "Untuk menyiram, bukan untuk tulisan.",
+      "B": "Menyiratkan tumpah karena tidak sengaja.",
+      "C": "Untuk zat cair dalam jumlah kecil.",
+      "D": "Lazim untuk perasaan atau tenaga, bukan hasil pengamatan."
+    },
+    "tags": [
+      "diksi"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q01",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Operasi bilangan bulat & pecahan",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $18 - (-7) \\times 3$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "39"
+      },
+      {
+        "id": "B",
+        "text": "75"
+      },
+      {
+        "id": "C",
+        "text": "-3"
+      },
+      {
+        "id": "D",
+        "text": "-39"
+      },
+      {
+        "id": "E",
+        "text": "33"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Perkalian dikerjakan lebih dahulu: $(-7) \\times 3 = -21$.\n\nKemudian $18 - (-21) = 18 + 21 = 39$. Mengurangi bilangan negatif sama dengan menambah.",
+    "distractorRationale": {
+      "B": "Mengerjakan pengurangan lebih dahulu.",
+      "C": "Menghitung $18 - 21$.",
+      "D": "Salah tanda pada hasil akhir.",
+      "E": "Kesalahan penjumlahan pada langkah terakhir."
+    },
+    "tags": [
+      "operasi-hitung"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q02",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Operasi bilangan bulat & pecahan",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $\\dfrac{3}{4} \\times \\dfrac{8}{9}$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{27}{32}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{2}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{3}{2}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{11}{13}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{24}{36}$ tanpa disederhanakan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalikan pembilang dengan pembilang dan penyebut dengan penyebut: $\\dfrac{3 \\times 8}{4 \\times 9} = \\dfrac{24}{36}$.\n\nDisederhanakan dengan membagi keduanya dengan 12, hasilnya $\\dfrac{2}{3}$.",
+    "distractorRationale": {
+      "A": "Membalik salah satu pecahan.",
+      "C": "Membagi, bukan mengalikan.",
+      "D": "Menjumlahkan pembilang dan penyebut.",
+      "E": "Belum disederhanakan."
+    },
+    "tags": [
+      "pecahan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q03",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Perbandingan & skala",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perbandingan uang Nina dan Rani adalah $5 : 7$. Jika selisih uang mereka Rp24.000, jumlah uang keduanya adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp168.000"
+      },
+      {
+        "id": "B",
+        "text": "Rp72.000"
+      },
+      {
+        "id": "C",
+        "text": "Rp144.000"
+      },
+      {
+        "id": "D",
+        "text": "Rp120.000"
+      },
+      {
+        "id": "E",
+        "text": "Rp96.000"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Selisihnya $7x - 5x = 2x = 24.000$, sehingga $x = 12.000$.\n\nJumlah keduanya $12x = 12 \\times 12.000 = 144.000$ rupiah.",
+    "distractorRationale": {
+      "A": "Memakai $x = 14.000$.",
+      "B": "Memakai $x = 6.000$.",
+      "D": "Memakai $x = 10.000$.",
+      "E": "Memakai $x = 8.000$."
+    },
+    "tags": [
+      "perbandingan"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q04",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Persen",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah sepeda dibeli seharga Rp1.500.000 dan dijual kembali seharga Rp1.740.000.\n\nPersentase keuntungannya adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "24%"
+      },
+      {
+        "id": "B",
+        "text": "14%"
+      },
+      {
+        "id": "C",
+        "text": "13,8%"
+      },
+      {
+        "id": "D",
+        "text": "16%"
+      },
+      {
+        "id": "E",
+        "text": "20%"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Keuntungannya $1.740.000 - 1.500.000 = 240.000$ rupiah.\n\nPersentase keuntungan dihitung terhadap harga beli: $\\dfrac{240.000}{1.500.000} = 0{,}16$, yaitu 16%.",
+    "distractorRationale": {
+      "A": "Kesalahan pembagian.",
+      "B": "Kesalahan pembulatan.",
+      "C": "Membagi dengan harga jual, bukan harga beli.",
+      "E": "Memakai keuntungan Rp300.000."
+    },
+    "tags": [
+      "persen"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q05",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Pola bilangan",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan bilangan: 100, 93, 86, 79, ...\n\nSuku ke-10 barisan tersebut adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 37
+    },
+    "explanation": "Barisan ini aritmetika dengan suku pertama 100 dan beda $-7$.\n\nSuku ke-10 adalah $100 + 9 \\times (-7) = 100 - 63 = 37$.",
+    "tags": [
+      "pola-bilangan"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "tka-smp-q06",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Operasi bilangan bulat & pecahan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $\\left(\\dfrac{2}{3} + \\dfrac{1}{6}\\right) \\div \\dfrac{5}{6}$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{3}{4}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{5}{6}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{25}{36}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{6}{5}$"
+      },
+      {
+        "id": "E",
+        "text": "1"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kerjakan tanda kurung lebih dahulu: $\\dfrac{2}{3} + \\dfrac{1}{6} = \\dfrac{4}{6} + \\dfrac{1}{6} = \\dfrac{5}{6}$.\n\nKemudian $\\dfrac{5}{6} \\div \\dfrac{5}{6} = 1$, sebab membagi suatu bilangan dengan dirinya sendiri menghasilkan 1.",
+    "distractorRationale": {
+      "A": "Kesalahan menyamakan penyebut.",
+      "B": "Berhenti pada hasil dalam tanda kurung.",
+      "C": "Mengalikan, bukan membagi.",
+      "D": "Membalik hasil pembagian."
+    },
+    "tags": [
+      "pecahan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q07",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Bentuk aljabar",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $3(2x - 5) + 4$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6x - 11$"
+      },
+      {
+        "id": "B",
+        "text": "$6x + 11$"
+      },
+      {
+        "id": "C",
+        "text": "$6x - 15$"
+      },
+      {
+        "id": "D",
+        "text": "$6x - 1$"
+      },
+      {
+        "id": "E",
+        "text": "$5x - 11$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Distribusikan lebih dahulu: $3(2x - 5) = 6x - 15$.\n\nKemudian tambahkan 4: $6x - 15 + 4 = 6x - 11$.",
+    "distractorRationale": {
+      "B": "Salah tanda pada konstanta.",
+      "C": "Lupa menambahkan 4.",
+      "D": "Menambahkan 14, bukan 4.",
+      "E": "Salah mengalikan koefisien $x$."
+    },
+    "tags": [
+      "bentuk-aljabar"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q08",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penyelesaian dari $5x + 7 = 3x + 19$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "6"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "13"
+      },
+      {
+        "id": "E",
+        "text": "12"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kurangkan $3x$ dari kedua ruas: $2x + 7 = 19$.\n\nKurangkan 7: $2x = 12$, sehingga $x = 6$. Periksa: $5(6)+7 = 37$ dan $3(6)+19 = 37$ ✓.",
+    "distractorRationale": {
+      "A": "Membagi 12 dengan 4.",
+      "C": "Memakai $2x = 8$.",
+      "D": "Menjumlahkan 7 dan 6.",
+      "E": "Berhenti pada $2x = 12$."
+    },
+    "tags": [
+      "persamaan-linear"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q09",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai $x$ yang memenuhi $-2x + 9 > 1$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x < 5$"
+      },
+      {
+        "id": "B",
+        "text": "$x > -4$"
+      },
+      {
+        "id": "C",
+        "text": "$x < 4$"
+      },
+      {
+        "id": "D",
+        "text": "$x < -4$"
+      },
+      {
+        "id": "E",
+        "text": "$x > 4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kurangkan 9: $-2x > -8$.\n\nMembagi dengan $-2$ membalik arah pertidaksamaan, sehingga $x < 4$. Pembalikan arah inilah inti soal ini.",
+    "distractorRationale": {
+      "A": "Kesalahan pengurangan.",
+      "B": "Salah tanda dan tidak membalik arah.",
+      "D": "Salah tanda pada hasil pembagian.",
+      "E": "Tidak membalik arah setelah dibagi bilangan negatif."
+    },
+    "tags": [
+      "pertidaksamaan"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q10",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Relasi & fungsi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Fungsi $f$ dirumuskan $f(x) = 2x + 5$. Jika $f(a) = 17$, nilai $a$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11"
+      },
+      {
+        "id": "B",
+        "text": "12"
+      },
+      {
+        "id": "C",
+        "text": "39"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      },
+      {
+        "id": "E",
+        "text": "8,5"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Substitusikan: $2a + 5 = 17$, sehingga $2a = 12$ dan $a = 6$.",
+    "distractorRationale": {
+      "A": "Berhenti pada $2a = 12$ lalu keliru.",
+      "B": "Berhenti pada $2a = 12$.",
+      "C": "Menghitung $f(17)$.",
+      "E": "Membagi 17 dengan 2."
+    },
+    "tags": [
+      "fungsi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q11",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "SPLDV",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Diketahui $3x + 2y = 16$ dan $x + 2y = 8$.\n\nNilai $x - y$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "6"
+      },
+      {
+        "id": "C",
+        "text": "1"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      },
+      {
+        "id": "E",
+        "text": "2"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kurangkan persamaan kedua dari yang pertama untuk menghilangkan $y$: $2x = 8$, sehingga $x = 4$.\n\nSubstitusikan ke $x + 2y = 8$: $4 + 2y = 8$, sehingga $y = 2$. Periksa pada persamaan pertama: $3(4) + 2(2) = 16$ ✓. Maka $x - y = 4 - 2 = 2$.",
+    "distractorRationale": {
+      "A": "Memakai $y = 1$.",
+      "B": "Menghitung $x + y$.",
+      "C": "Kesalahan pengurangan pada langkah akhir.",
+      "D": "Ini nilai $x$, bukan $x - y$."
+    },
+    "tags": [
+      "spldv"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q12",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Bentuk aljabar",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari $3p - q^2$ untuk $p = 7$ dan $q = 4$ adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "$3p = 21$ dan $q^2 = 16$.\n\nSelisihnya $21 - 16 = 5$. Perhatikan bahwa yang dikuadratkan hanya $q$, bukan hasil kali apa pun.",
+    "tags": [
+      "substitusi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "tka-smp-q13",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "SPLDV",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Harga 2 kg apel dan 3 kg jeruk Rp96.000, sedangkan harga 3 kg apel dan 2 kg jeruk Rp99.000.\n\nHarga 1 kg apel adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp21.000"
+      },
+      {
+        "id": "B",
+        "text": "Rp24.000"
+      },
+      {
+        "id": "C",
+        "text": "Rp18.000"
+      },
+      {
+        "id": "D",
+        "text": "Rp19.500"
+      },
+      {
+        "id": "E",
+        "text": "Rp15.000"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Misalkan harga apel $a$ dan jeruk $j$. Kurangkan persamaan pertama dari yang kedua: $a - j = 3.000$.\n\nJumlahkan keduanya: $5a + 5j = 195.000$, sehingga $a + j = 39.000$. Dari $a - j = 3.000$ dan $a + j = 39.000$ diperoleh $a = 21.000$. Periksa: $2(21.000) + 3(18.000) = 96.000$ ✓.",
+    "distractorRationale": {
+      "B": "Memakai $a - j = 9.000$.",
+      "C": "Ini harga jeruk.",
+      "D": "Membagi rata $a + j$ tanpa memperhitungkan selisihnya.",
+      "E": "Memakai $a + j = 33.000$."
+    },
+    "tags": [
+      "spldv"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q14",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Umur ayah tiga kali umur anaknya. Enam tahun lagi, umur ayah menjadi dua setengah kali umur anaknya.\n\nUmur anak sekarang adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "12 tahun"
+      },
+      {
+        "id": "B",
+        "text": "18 tahun"
+      },
+      {
+        "id": "C",
+        "text": "15 tahun"
+      },
+      {
+        "id": "D",
+        "text": "24 tahun"
+      },
+      {
+        "id": "E",
+        "text": "10 tahun"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Misalkan umur anak sekarang $x$, maka umur ayah $3x$. Enam tahun lagi umur mereka $x + 6$ dan $3x + 6$, dan hubungannya $3x + 6 = 2{,}5(x + 6)$.\n\nMaka $3x + 6 = 2{,}5x + 15$, sehingga $0{,}5x = 9$ dan $x = 18$. Periksa: anak 18 dan ayah 54; enam tahun lagi menjadi 24 dan 60, dan $60 \\div 24 = 2{,}5$ ✓.",
+    "distractorRationale": {
+      "A": "Memakai $0{,}5x = 6$.",
+      "C": "Memakai perbandingan 2 kali, bukan 2,5 kali.",
+      "D": "Ini umur anak enam tahun lagi, bukan sekarang.",
+      "E": "Memakai $0{,}5x = 5$."
+    },
+    "tags": [
+      "pemodelan"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q15",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah trapesium memiliki sisi sejajar 12 cm dan 18 cm serta tinggi 8 cm.\n\nLuas trapesium tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$96\\ \\text{cm}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$144\\ \\text{cm}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$120\\ \\text{cm}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$60\\ \\text{cm}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$240\\ \\text{cm}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Luas trapesium $= \\dfrac{(a+b)}{2} \\times t = \\dfrac{12 + 18}{2} \\times 8$.\n\nMaka luasnya $15 \\times 8 = 120\\ \\text{cm}^2$.",
+    "distractorRationale": {
+      "A": "Memakai satu sisi sejajar saja.",
+      "B": "Memakai sisi 18 cm saja.",
+      "D": "Membagi hasil yang benar dengan 2.",
+      "E": "Lupa membagi jumlah sisi sejajar dengan 2."
+    },
+    "tags": [
+      "bangun-datar"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q16",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Teorema Pythagoras",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah tangga sepanjang 17 m disandarkan pada dinding, dengan kaki tangga berjarak 8 m dari dinding.\n\nTinggi ujung tangga dari tanah adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "13 m"
+      },
+      {
+        "id": "B",
+        "text": "12 m"
+      },
+      {
+        "id": "C",
+        "text": "9 m"
+      },
+      {
+        "id": "D",
+        "text": "15 m"
+      },
+      {
+        "id": "E",
+        "text": "25 m"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Tangga menjadi sisi miring, sehingga tingginya $\\sqrt{17^2 - 8^2} = \\sqrt{289 - 64} = \\sqrt{225} = 15$ m.\n\nIni tripel Pythagoras $8$–$15$–$17$.",
+    "distractorRationale": {
+      "A": "Memakai tripel 5–12–13.",
+      "B": "Kesalahan penarikan akar.",
+      "C": "Mengurangkan panjang secara langsung.",
+      "E": "Menjumlahkan kuadrat, bukan mengurangkan."
+    },
+    "tags": [
+      "pythagoras"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q17",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah tabung berjari-jari 7 cm dan tinggi 20 cm. Dengan $\\pi = \\dfrac{22}{7}$, volume tabung tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$880\\ \\text{cm}^3$"
+      },
+      {
+        "id": "B",
+        "text": "$4.400\\ \\text{cm}^3$"
+      },
+      {
+        "id": "C",
+        "text": "$2.200\\ \\text{cm}^3$"
+      },
+      {
+        "id": "D",
+        "text": "$1.540\\ \\text{cm}^3$"
+      },
+      {
+        "id": "E",
+        "text": "$3.080\\ \\text{cm}^3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Volume tabung $= \\pi r^2 t = \\dfrac{22}{7} \\times 49 \\times 20$.\n\nKarena $\\dfrac{22}{7} \\times 49 = 154$, volumenya $154 \\times 20 = 3.080\\ \\text{cm}^3$.",
+    "distractorRationale": {
+      "A": "Menghitung keliling alas dikali tinggi.",
+      "B": "Kesalahan perkalian.",
+      "C": "Memakai jari-jari yang keliru.",
+      "D": "Memakai tinggi 10 cm."
+    },
+    "tags": [
+      "bangun-ruang"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q18",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Kesebangunan & kekongruenan",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah foto berukuran $4\\ \\text{cm} \\times 6\\ \\text{cm}$ diperbesar sehingga lebarnya menjadi 10 cm.\n\nPanjang foto setelah diperbesar adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "15 cm"
+      },
+      {
+        "id": "B",
+        "text": "16 cm"
+      },
+      {
+        "id": "C",
+        "text": "14 cm"
+      },
+      {
+        "id": "D",
+        "text": "20 cm"
+      },
+      {
+        "id": "E",
+        "text": "12 cm"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Faktor pembesarannya $\\dfrac{10}{4} = 2{,}5$.\n\nMaka panjangnya menjadi $6 \\times 2{,}5 = 15$ cm. Pada bangun sebangun, kedua sisi harus dikalikan faktor yang sama.",
+    "distractorRationale": {
+      "B": "Kesalahan perkalian.",
+      "C": "Menambahkan selisih lebar begitu saja.",
+      "D": "Memakai faktor 3,33.",
+      "E": "Menambahkan 6 pada panjang semula."
+    },
+    "tags": [
+      "kesebangunan"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q19",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah lingkaran berdiameter 28 cm. Dengan $\\pi = \\dfrac{22}{7}$, luas lingkaran tersebut dalam $\\text{cm}^2$ adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 616
+    },
+    "explanation": "Jari-jarinya $\\dfrac{28}{2} = 14$ cm.\n\nLuasnya $\\pi r^2 = \\dfrac{22}{7} \\times 196 = 22 \\times 28 = 616\\ \\text{cm}^2$.",
+    "tags": [
+      "lingkaran"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "tka-smp-q20",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah prisma tegak beralas segitiga siku-siku dengan sisi tegak 6 cm dan 8 cm. Jika tinggi prisma 15 cm, volumenya adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$450\\ \\text{cm}^3$"
+      },
+      {
+        "id": "B",
+        "text": "$360\\ \\text{cm}^3$"
+      },
+      {
+        "id": "C",
+        "text": "$180\\ \\text{cm}^3$"
+      },
+      {
+        "id": "D",
+        "text": "$600\\ \\text{cm}^3$"
+      },
+      {
+        "id": "E",
+        "text": "$720\\ \\text{cm}^3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Luas alasnya $\\dfrac{1}{2} \\times 6 \\times 8 = 24\\ \\text{cm}^2$.\n\nVolume prisma $= \\text{luas alas} \\times \\text{tinggi} = 24 \\times 15 = 360\\ \\text{cm}^3$.",
+    "distractorRationale": {
+      "A": "Memakai luas alas 30 cm².",
+      "C": "Memakai tinggi prisma 7,5 cm.",
+      "D": "Kesalahan perkalian.",
+      "E": "Lupa mengalikan luas alas dengan $\\dfrac{1}{2}$."
+    },
+    "tags": [
+      "prisma"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q21",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Banyak buku yang dipinjam siswa dalam sebulan.\n\n| Jumlah buku | Frekuensi |\n|---|---|\n| 1 | 4 |\n| 2 | 9 |\n| 3 | 12 |\n| 4 | 7 |\n| 5 | 8 |"
+    },
+    "stem": "Berdasarkan tabel, banyak siswa yang meminjam buku pada bulan itu seluruhnya adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "44 siswa"
+      },
+      {
+        "id": "B",
+        "text": "15 siswa"
+      },
+      {
+        "id": "C",
+        "text": "40 siswa"
+      },
+      {
+        "id": "D",
+        "text": "30 siswa"
+      },
+      {
+        "id": "E",
+        "text": "36 siswa"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Jumlahkan seluruh frekuensinya: $4 + 9 + 12 + 7 + 8 = 40$ siswa.\n\nYang ditanyakan banyak siswa, bukan banyak buku.",
+    "distractorRationale": {
+      "A": "Kesalahan penjumlahan.",
+      "B": "Menjumlahkan kolom jumlah buku.",
+      "D": "Melewatkan salah satu baris.",
+      "E": "Kesalahan penjumlahan."
+    },
+    "tags": [
+      "tabel-frekuensi"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q22",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Banyak buku yang dipinjam siswa dalam sebulan.\n\n| Jumlah buku | Frekuensi |\n|---|---|\n| 1 | 4 |\n| 2 | 9 |\n| 3 | 12 |\n| 4 | 7 |\n| 5 | 8 |"
+    },
+    "stem": "Berdasarkan tabel, rata-rata banyak buku yang dipinjam tiap siswa adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3.15
+    },
+    "explanation": "Jumlah seluruh buku: $1(4) + 2(9) + 3(12) + 4(7) + 5(8) = 4 + 18 + 36 + 28 + 40 = 126$.\n\nRata-ratanya $\\dfrac{126}{40} = 3{,}15$ buku per siswa.",
+    "tags": [
+      "rata-rata"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2
+    }
+  },
+  {
+    "id": "tka-smp-q23",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Penyajian data",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Banyak buku yang dipinjam siswa dalam sebulan.\n\n| Jumlah buku | Frekuensi |\n|---|---|\n| 1 | 4 |\n| 2 | 9 |\n| 3 | 12 |\n| 4 | 7 |\n| 5 | 8 |"
+    },
+    "stem": "Berdasarkan tabel, median banyak buku yang dipinjam adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2,5"
+      },
+      {
+        "id": "B",
+        "text": "3,5"
+      },
+      {
+        "id": "C",
+        "text": "4"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      },
+      {
+        "id": "E",
+        "text": "2"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Ada 40 data, sehingga median adalah rata-rata data ke-20 dan ke-21.\n\nFrekuensi kumulatifnya: 1 buku sampai data ke-4, 2 buku sampai ke-13, 3 buku sampai ke-25. Data ke-20 dan ke-21 keduanya bernilai 3, jadi mediannya 3.",
+    "distractorRationale": {
+      "A": "Kedua data tengahnya bernilai 3.",
+      "B": "Kedua data tengahnya sama, jadi tidak menghasilkan pecahan.",
+      "C": "Terlalu jauh; data ke-25 masih bernilai 3.",
+      "E": "Data ke-20 sudah melewati kelompok ini."
+    },
+    "tags": [
+      "median"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q24",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Peluang sederhana",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kantong berisi 6 kelereng merah, 4 kelereng hijau, dan 10 kelereng biru. Satu kelereng diambil acak.\n\nPeluang terambil kelereng bukan biru adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{7}{10}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{5}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{3}{10}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{2}{5}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{1}{2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Seluruhnya ada $6 + 4 + 10 = 20$ kelereng, dan yang bukan biru ada $6 + 4 = 10$.\n\nPeluangnya $\\dfrac{10}{20} = \\dfrac{1}{2}$.",
+    "distractorRationale": {
+      "A": "Kesalahan pembagian.",
+      "B": "Menghitung hijau saja.",
+      "C": "Menghitung merah saja.",
+      "D": "Kesalahan penjumlahan bukan biru."
+    },
+    "tags": [
+      "peluang"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-q25",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Rata-rata nilai 10 siswa adalah 72. Jika nilai seorang siswa yang semula 45 dikeluarkan dari perhitungan, rata-rata sembilan siswa sisanya adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "75"
+      },
+      {
+        "id": "B",
+        "text": "72"
+      },
+      {
+        "id": "C",
+        "text": "76"
+      },
+      {
+        "id": "D",
+        "text": "73"
+      },
+      {
+        "id": "E",
+        "text": "74"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Jumlah nilai 10 siswa adalah $10 \\times 72 = 720$.\n\nSetelah nilai 45 dikeluarkan, jumlahnya menjadi $720 - 45 = 675$, dan rata-rata sembilan siswa $\\dfrac{675}{9} = 75$.",
+    "distractorRationale": {
+      "B": "Mengira rata-rata tidak berubah.",
+      "C": "Memakai jumlah 684.",
+      "D": "Kesalahan pembagian.",
+      "E": "Kesalahan pembagian."
+    },
+    "tags": [
+      "rata-rata"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

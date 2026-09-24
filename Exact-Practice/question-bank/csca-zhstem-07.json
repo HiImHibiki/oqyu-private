@@ -1,0 +1,1286 @@
+[
+  {
+    "id": "csca-zst-g21",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "记号 $f'(x)$ 在中文教材中读作",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$f$ 的平方"
+      },
+      {
+        "id": "B",
+        "text": "$f$ 的倒数"
+      },
+      {
+        "id": "C",
+        "text": "$f$ 在 $x$ 处的值"
+      },
+      {
+        "id": "D",
+        "text": "$f$ 对 $x$ 的导数"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "撇号表示求导，$f'(x)$ 读作「$f$ 撇 $x$」或「$f$ 对 $x$ 的导数」，几何意义是曲线在该点切线的斜率。",
+    "distractorRationale": {
+      "A": "平方写作 $[f(x)]^2$。",
+      "B": "倒数写作 $\\dfrac{1}{f(x)}$；「倒数」与「导数」读音相近而含义完全不同。",
+      "C": "函数值写作 $f(x)$，不带撇号。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In Chinese textbooks, how is the notation $f'(x)$ read?",
+        "explanation": "The prime denotes differentiation; $f'(x)$ is read 「$f$ 撇 $x$」 or 「$f$ 对 $x$ 的导数」, and geometrically it is the slope of the tangent to the curve at that point."
+      }
+    },
+    "tags": [
+      "symbol",
+      "derivative-notation"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g22",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "物理中「位移」与「路程」的区别在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "位移是矢量，路程是标量"
+      },
+      {
+        "id": "B",
+        "text": "位移是标量，路程是矢量"
+      },
+      {
+        "id": "C",
+        "text": "位移只能为正，路程可以为负"
+      },
+      {
+        "id": "D",
+        "text": "两者完全相同"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "位移是从起点指向终点的有向线段，有大小也有方向；路程是实际经过的轨迹长度，只有大小。绕圈跑回原点时位移为零，路程却等于跑过的全程。",
+    "distractorRationale": {
+      "B": "把两者的性质颠倒了。",
+      "C": "路程恒为非负，位移的分量则可正可负。",
+      "D": "只有沿直线单向运动时两者大小才相等。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In physics, the difference between 位移 (displacement) and 路程 (distance travelled) is that",
+        "explanation": "Displacement is the directed segment from start to finish, with both magnitude and direction; distance travelled is the length of the actual path, with magnitude only. Running a loop back to the start gives zero displacement but a distance equal to the whole route."
+      }
+    },
+    "tags": [
+      "terminology",
+      "displacement-distance"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g23",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "化学中「置换反应」的特征是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两种或多种物质生成一种物质"
+      },
+      {
+        "id": "B",
+        "text": "一种单质与一种化合物反应，生成另一种单质和另一种化合物"
+      },
+      {
+        "id": "C",
+        "text": "两种化合物互相交换成分"
+      },
+      {
+        "id": "D",
+        "text": "一种物质分解为两种或多种物质"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "置换反应的通式是「单质 + 化合物 → 新单质 + 新化合物」，如 $\\text{Zn} + \\text{H}_2\\text{SO}_4 \\rightarrow \\text{ZnSO}_4 + \\text{H}_2$。两侧各有一种单质是它最醒目的标志。",
+    "distractorRationale": {
+      "A": "这是化合反应。",
+      "C": "这是复分解反应的特征。",
+      "D": "这是分解反应。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What characterises a 置换反应 (displacement reaction) in chemistry?",
+        "explanation": "The general form is «element + compound → new element + new compound», as in $\\text{Zn} + \\text{H}_2\\text{SO}_4 \\rightarrow \\text{ZnSO}_4 + \\text{H}_2$. Having one free element on each side is its most visible signature."
+      }
+    },
+    "tags": [
+      "terminology",
+      "reaction-types"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-g24",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「比热容」这一物理量描述的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "物体的温度"
+      },
+      {
+        "id": "B",
+        "text": "物体所含热量的多少"
+      },
+      {
+        "id": "C",
+        "text": "单位质量的物质温度升高 $1\\ ℃$ 所需吸收的热量"
+      },
+      {
+        "id": "D",
+        "text": "热量传递的快慢"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "比热容是物质的固有属性，单位为 $\\text{J}/(\\text{kg}\\cdot ℃)$。水的比热容很大，故升温慢、降温也慢，常用作冷却剂。\n\n须注意：「热量」是过程量，物体并不「含有」热量，故 A 的说法在物理上就不成立。",
+    "distractorRationale": {
+      "A": "温度是另一个物理量，与比热容无关。",
+      "B": "热量是传递过程中的能量，不是物体贮存的量。",
+      "D": "传热快慢由热导率描述。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The physical quantity 比热容 (specific heat capacity) describes",
+        "explanation": "Specific heat capacity is an intrinsic property of a substance, measured in $\\text{J}/(\\text{kg}\\cdot ℃)$. Water's is large, so it warms slowly and cools slowly, which is why it serves as a coolant.\n\nNote that 热量 is a quantity of transfer: an object does not «contain» heat, so the option describing «the amount of heat an object contains» is not even physically well-formed."
+      }
+    },
+    "tags": [
+      "terminology",
+      "specific-heat"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h21",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "疫苗的原理是让免疫系统在不患病的前提下「认识」病原体。灭活疫苗使用已杀死的病原体，安全性高但激发的免疫反应较弱，往往需要多次接种；减毒活疫苗使用毒性减弱的活病原体，免疫反应强而持久，但对免疫力低下的人群风险较高。近年出现的信使核糖核酸疫苗则只把病原体某种蛋白质的合成指令送入人体细胞，由细胞自行合成该蛋白供免疫系统识别，因而无需培养病原体本身。"
+    },
+    "stem": "根据短文，灭活疫苗往往需要多次接种，是因为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "它无法被免疫系统识别"
+      },
+      {
+        "id": "B",
+        "text": "它的安全性较低"
+      },
+      {
+        "id": "C",
+        "text": "它含有活的病原体"
+      },
+      {
+        "id": "D",
+        "text": "它激发的免疫反应较弱"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文说灭活疫苗「安全性高但激发的免疫反应较弱，往往需要多次接种」，前后正是因果关系。",
+    "distractorRationale": {
+      "A": "若无法识别就不成其为疫苗；短文说的是反应较弱而非无反应。",
+      "B": "短文说灭活疫苗安全性高。",
+      "C": "含活病原体的是减毒活疫苗。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, inactivated vaccines often require several doses because",
+        "explanation": "The passage says inactivated vaccines are safe but provoke a weaker immune response, and therefore often need repeated doses — the causal link is stated directly."
+      }
+    },
+    "tags": [
+      "cause-effect",
+      "vaccines"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h22",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "疫苗的原理是让免疫系统在不患病的前提下「认识」病原体。灭活疫苗使用已杀死的病原体，安全性高但激发的免疫反应较弱，往往需要多次接种；减毒活疫苗使用毒性减弱的活病原体，免疫反应强而持久，但对免疫力低下的人群风险较高。近年出现的信使核糖核酸疫苗则只把病原体某种蛋白质的合成指令送入人体细胞，由细胞自行合成该蛋白供免疫系统识别，因而无需培养病原体本身。"
+    },
+    "stem": "根据短文，信使核糖核酸疫苗相比前两类的一个特点是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "无需培养病原体本身"
+      },
+      {
+        "id": "B",
+        "text": "只能用于免疫力低下的人群"
+      },
+      {
+        "id": "C",
+        "text": "使用毒性更强的病原体"
+      },
+      {
+        "id": "D",
+        "text": "完全不引起免疫反应"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文末句点明：这类疫苗只送入合成指令，由人体细胞自行合成蛋白质，「因而无需培养病原体本身」。前两类都要用到病原体实体。",
+    "distractorRationale": {
+      "B": "短文并未限定适用人群。",
+      "C": "短文说这类疫苗根本不使用病原体。",
+      "D": "合成出的蛋白质正是供免疫系统识别用的。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, one feature distinguishing mRNA vaccines from the other two types is that they",
+        "explanation": "The final sentence makes it explicit: this type delivers only the synthesis instructions, the body's own cells make the protein, and therefore no pathogen need be cultured. The other two types both require the physical pathogen."
+      }
+    },
+    "tags": [
+      "comparison",
+      "vaccines"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h23",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "疫苗的原理是让免疫系统在不患病的前提下「认识」病原体。灭活疫苗使用已杀死的病原体，安全性高但激发的免疫反应较弱，往往需要多次接种；减毒活疫苗使用毒性减弱的活病原体，免疫反应强而持久，但对免疫力低下的人群风险较高。近年出现的信使核糖核酸疫苗则只把病原体某种蛋白质的合成指令送入人体细胞，由细胞自行合成该蛋白供免疫系统识别，因而无需培养病原体本身。"
+    },
+    "stem": "根据短文，为免疫力低下者选择疫苗时应特别谨慎对待哪一类？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "灭活疫苗"
+      },
+      {
+        "id": "B",
+        "text": "减毒活疫苗"
+      },
+      {
+        "id": "C",
+        "text": "信使核糖核酸疫苗"
+      },
+      {
+        "id": "D",
+        "text": "三类都不必谨慎"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文明确指出减毒活疫苗「对免疫力低下的人群风险较高」，因为其中的病原体仍是活的，免疫系统薄弱时可能无法有效控制。",
+    "distractorRationale": {
+      "A": "灭活疫苗的病原体已被杀死，短文称其安全性高。",
+      "C": "这类疫苗不含病原体，短文未提及此项风险。",
+      "D": "短文明确点出了其中一类的风险。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, which type calls for particular caution in people with weakened immunity?",
+        "explanation": "The passage states plainly that attenuated live vaccines carry higher risk for the immunocompromised, because the pathogen in them is still alive and a weakened immune system may not control it."
+      }
+    },
+    "tags": [
+      "detail-retrieval",
+      "vaccines"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h24",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "某电池在不同放电电流下的可用容量如下：\n\n| 放电电流（A） | 可用容量（mAh） |\n|---|---|\n| 0.2 | 2000 |\n| 0.5 | 1900 |\n| 1.0 | 1750 |\n| 2.0 | 1500 |\n| 3.0 | 1250 |"
+    },
+    "stem": "根据表中数据，放电电流增大时电池的可用容量",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "增大"
+      },
+      {
+        "id": "B",
+        "text": "不变"
+      },
+      {
+        "id": "C",
+        "text": "减小"
+      },
+      {
+        "id": "D",
+        "text": "先减小后增大"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "从 $0.2\\ \\text{A}$ 到 $3.0\\ \\text{A}$，容量由 $2000$ 一路降到 $1250\\ \\text{mAh}$，五行数据单调下降。",
+    "distractorRationale": {
+      "A": "与表中趋势相反。",
+      "B": "各行数值明显不同。",
+      "D": "表中没有回升的一段。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "From the table, as the discharge current rises the battery's usable capacity",
+        "explanation": "From $0.2\\ \\text{A}$ to $3.0\\ \\text{A}$ the capacity falls steadily from $2000$ to $1250\\ \\text{mAh}$; all five rows decrease monotonically."
+      }
+    },
+    "tags": [
+      "table-reading",
+      "monotonic-trend"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h25",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "某电池在不同放电电流下的可用容量如下：\n\n| 放电电流（A） | 可用容量（mAh） |\n|---|---|\n| 0.2 | 2000 |\n| 0.5 | 1900 |\n| 1.0 | 1750 |\n| 2.0 | 1500 |\n| 3.0 | 1250 |"
+    },
+    "stem": "以 $1.0\\ \\text{A}$ 放电时，该电池大约能持续供电",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2.0$ 小时"
+      },
+      {
+        "id": "B",
+        "text": "$1750$ 小时"
+      },
+      {
+        "id": "C",
+        "text": "$1.25$ 小时"
+      },
+      {
+        "id": "D",
+        "text": "$1.75$ 小时"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$1.0\\ \\text{A} = 1000\\ \\text{mA}$，对应容量为 $1750\\ \\text{mAh}$。时间 $= \\dfrac{1750\\ \\text{mAh}}{1000\\ \\text{mA}} = 1.75$ 小时。\n\n关键是把电流的单位统一为毫安，否则数量级会差一千倍。",
+    "distractorRationale": {
+      "A": "用了 $0.2\\ \\text{A}$ 那一行的容量数字。",
+      "B": "直接把毫安时当作小时，漏掉了除以电流这一步。",
+      "C": "用了 $3.0\\ \\text{A}$ 那一行的容量数字。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Discharging at $1.0\\ \\text{A}$, roughly how long can this battery supply power?",
+        "explanation": "$1.0\\ \\text{A} = 1000\\ \\text{mA}$, and the matching capacity is $1750\\ \\text{mAh}$. Time $= \\dfrac{1750\\ \\text{mAh}}{1000\\ \\text{mA}} = 1.75$ hours.\n\nThe key step is converting the current to milliamps; otherwise the answer is off by a factor of a thousand."
+      }
+    },
+    "tags": [
+      "unit-conversion",
+      "table-calculation"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h26",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "过滤操作要点可概括为「一贴二低三靠」。一贴指滤纸紧贴漏斗内壁，中间不留气泡；二低指滤纸边缘低于漏斗口，液面低于滤纸边缘；三靠指烧杯口紧靠玻璃棒，玻璃棒下端轻靠三层滤纸处，漏斗下端管口紧靠烧杯内壁。若液面高于滤纸边缘，滤液会从缝隙流下而未经过滤。"
+    },
+    "stem": "根据短文，「二低」中的第二项要求是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "液面低于滤纸边缘"
+      },
+      {
+        "id": "B",
+        "text": "漏斗低于烧杯"
+      },
+      {
+        "id": "C",
+        "text": "滤纸边缘低于漏斗口"
+      },
+      {
+        "id": "D",
+        "text": "玻璃棒低于液面"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文写明「二低指滤纸边缘低于漏斗口，液面低于滤纸边缘」。第一项是滤纸对漏斗，第二项是液面对滤纸。",
+    "distractorRationale": {
+      "B": "短文中没有这一要求。",
+      "C": "这是「二低」的第一项。",
+      "D": "玻璃棒的位置属于「三靠」，且要求靠三层滤纸处。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what is the second of the two «low» requirements?",
+        "explanation": "The passage states them in order: the filter paper's edge must sit below the funnel's rim, and the liquid surface must sit below the filter paper's edge. The first concerns paper against funnel; the second, liquid against paper."
+      }
+    },
+    "tags": [
+      "filtration",
+      "procedure-detail"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h27",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "过滤操作要点可概括为「一贴二低三靠」。一贴指滤纸紧贴漏斗内壁，中间不留气泡；二低指滤纸边缘低于漏斗口，液面低于滤纸边缘；三靠指烧杯口紧靠玻璃棒，玻璃棒下端轻靠三层滤纸处，漏斗下端管口紧靠烧杯内壁。若液面高于滤纸边缘，滤液会从缝隙流下而未经过滤。"
+    },
+    "stem": "短文要求玻璃棒下端「轻靠三层滤纸处」，其中「轻」字的用意是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "防止玻璃棒断裂"
+      },
+      {
+        "id": "B",
+        "text": "避免用力过大戳破滤纸"
+      },
+      {
+        "id": "C",
+        "text": "加快过滤速度"
+      },
+      {
+        "id": "D",
+        "text": "使滤纸更贴合漏斗"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "滤纸一旦被戳破，待滤的固体就会随液体直接漏下，整个过滤失效。选择三层处是因为那里最厚最耐压，而「轻」进一步降低戳破的风险——两项措施针对的是同一个危险。",
+    "distractorRationale": {
+      "A": "玻璃棒不会因轻靠滤纸而断裂。",
+      "C": "过滤速度主要取决于滤纸孔径与液面高度。",
+      "D": "贴合是「一贴」的要求，靠排除气泡实现。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The passage says the rod must rest «lightly» against the three-layer part of the filter paper. What is the point of «lightly»?",
+        "explanation": "If the paper tears, the solid being filtered passes straight through with the liquid and the whole filtration fails. The three-layer spot is chosen because it is thickest and most resistant; «lightly» further reduces the risk of piercing — both measures address the same danger."
+      }
+    },
+    "tags": [
+      "procedure-rationale",
+      "filtration"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h28",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "过滤操作要点可概括为「一贴二低三靠」。一贴指滤纸紧贴漏斗内壁，中间不留气泡；二低指滤纸边缘低于漏斗口，液面低于滤纸边缘；三靠指烧杯口紧靠玻璃棒，玻璃棒下端轻靠三层滤纸处，漏斗下端管口紧靠烧杯内壁。若液面高于滤纸边缘，滤液会从缝隙流下而未经过滤。"
+    },
+    "stem": "短文末句说明的是哪一条要求被违反后的后果？",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "烧杯口紧靠玻璃棒"
+      },
+      {
+        "id": "B",
+        "text": "一贴"
+      },
+      {
+        "id": "C",
+        "text": "液面低于滤纸边缘"
+      },
+      {
+        "id": "D",
+        "text": "漏斗下端紧靠烧杯内壁"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "末句说「若液面高于滤纸边缘，滤液会从缝隙流下而未经过滤」，正对应「二低」中液面低于滤纸边缘那一条。",
+    "distractorRationale": {
+      "A": "这一条保证液体沿棒流下，末句同样未提。",
+      "B": "「一贴」讲的是气泡问题，末句未涉及。",
+      "D": "这一条防的是液体飞溅，末句未提。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The passage's final sentence explains the consequence of violating which requirement?",
+        "explanation": "The final sentence says that if the liquid rises above the paper's edge, filtrate runs down through the gap unfiltered — which corresponds exactly to the «liquid below the paper's edge» rule."
+      }
+    },
+    "tags": [
+      "text-structure",
+      "filtration"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h29",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "人造卫星要进入环绕地球的轨道，必须达到第一宇宙速度，约为每秒七点九公里。速度低于此值时，卫星将在重力作用下落回地面；速度介于第一与第二宇宙速度之间时，卫星沿椭圆轨道绕地球运行；达到第二宇宙速度约每秒十一点二公里时，则可以摆脱地球引力飞向太阳系深处。"
+    },
+    "stem": "根据短文，卫星速度低于第一宇宙速度时会",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "沿椭圆轨道绕地球运行"
+      },
+      {
+        "id": "B",
+        "text": "停在原地不动"
+      },
+      {
+        "id": "C",
+        "text": "摆脱地球引力"
+      },
+      {
+        "id": "D",
+        "text": "在重力作用下落回地面"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文第二句直接给出：「速度低于此值时，卫星将在重力作用下落回地面」。",
+    "distractorRationale": {
+      "A": "这是速度介于第一与第二宇宙速度之间的情形。",
+      "B": "短文没有这种情形，物体也不会悬停不动。",
+      "C": "这需要达到第二宇宙速度。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, a satellite travelling below the first cosmic velocity will",
+        "explanation": "The second sentence states it directly: below that speed, the satellite falls back to the ground under gravity."
+      }
+    },
+    "tags": [
+      "detail-retrieval",
+      "orbital-velocity"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h30",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "人造卫星要进入环绕地球的轨道，必须达到第一宇宙速度，约为每秒七点九公里。速度低于此值时，卫星将在重力作用下落回地面；速度介于第一与第二宇宙速度之间时，卫星沿椭圆轨道绕地球运行；达到第二宇宙速度约每秒十一点二公里时，则可以摆脱地球引力飞向太阳系深处。"
+    },
+    "stem": "一枚探测器要飞往火星，其发射速度至少应达到",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "每秒十一点二公里"
+      },
+      {
+        "id": "B",
+        "text": "每秒七点九公里"
+      },
+      {
+        "id": "C",
+        "text": "每秒五公里"
+      },
+      {
+        "id": "D",
+        "text": "每秒一公里"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "飞往火星意味着离开地球引力的束缚，短文指出这需要达到第二宇宙速度，即约每秒十一点二公里。第一宇宙速度只够绕地球运行。",
+    "distractorRationale": {
+      "B": "这是绕地球运行所需的速度，不足以脱离地球。",
+      "C": "低于第一宇宙速度，会落回地面。",
+      "D": "远低于所需值。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "A probe bound for Mars must be launched at a speed of at least",
+        "explanation": "Reaching Mars means escaping Earth's gravity, which the passage says requires the second cosmic velocity, about $11.2$ km per second. The first cosmic velocity is only enough to orbit Earth."
+      }
+    },
+    "tags": [
+      "application",
+      "escape-velocity"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h31",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "抗生素通过干扰细菌的生命活动来治病，对病毒无效，因为病毒没有细胞结构，其繁殖依赖宿主细胞的机制。滥用抗生素会带来两个后果：一是杀灭体内有益菌群，二是使少数具有抗药性的细菌存活下来并大量繁殖，久而久之产生难以对付的耐药菌株。因此感冒等由病毒引起的疾病不应使用抗生素。"
+    },
+    "stem": "根据短文，抗生素对病毒无效的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "抗生素浓度不够"
+      },
+      {
+        "id": "B",
+        "text": "病毒没有细胞结构，繁殖依赖宿主细胞"
+      },
+      {
+        "id": "C",
+        "text": "病毒的抗药性太强"
+      },
+      {
+        "id": "D",
+        "text": "病毒体积太小"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "抗生素的作用机制是干扰细菌的生命活动，而这些活动依托于细胞结构。病毒没有细胞，靠宿主细胞繁殖，抗生素便无从下手。",
+    "distractorRationale": {
+      "A": "问题在于作用靶点不存在，提高浓度也无济于事。",
+      "C": "抗药性说的是细菌，短文所述的耐药菌株正是细菌。",
+      "D": "短文未提体积，机制上大小也不是关键。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, antibiotics do not work against viruses because",
+        "explanation": "Antibiotics act by interfering with bacterial life processes, which depend on cellular structures. A virus has no cell and reproduces using the host cell's machinery, so antibiotics have nothing to act on."
+      }
+    },
+    "tags": [
+      "mechanism",
+      "antibiotics"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h32",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "抗生素通过干扰细菌的生命活动来治病，对病毒无效，因为病毒没有细胞结构，其繁殖依赖宿主细胞的机制。滥用抗生素会带来两个后果：一是杀灭体内有益菌群，二是使少数具有抗药性的细菌存活下来并大量繁殖，久而久之产生难以对付的耐药菌株。因此感冒等由病毒引起的疾病不应使用抗生素。"
+    },
+    "stem": "短文所述耐药菌株的形成过程，实质上体现的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "抗生素使细菌发生了变异"
+      },
+      {
+        "id": "B",
+        "text": "有益菌转变成了耐药菌"
+      },
+      {
+        "id": "C",
+        "text": "抗生素筛选出了原本就具有抗药性的少数细菌"
+      },
+      {
+        "id": "D",
+        "text": "细菌主动学会了抵抗药物"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文说的是「少数具有抗药性的细菌存活下来并大量繁殖」——抗药性在用药之前就已存在于少数个体身上，抗生素的作用是杀死其余细菌，把生存空间让给它们。这是选择而非诱导。",
+    "distractorRationale": {
+      "A": "短文说抗药性是原本就有的，不是抗生素造成的变异。",
+      "B": "短文说有益菌是被杀灭的，并未提到转变。",
+      "D": "细菌没有「学会」的能力，短文也未这样表述。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The formation of resistant strains as described in the passage is essentially a matter of",
+        "explanation": "The passage says a few already-resistant bacteria survive and then multiply — the resistance existed in those individuals before the drug was given, and the antibiotic's role was to kill the rest and leave them the field. This is selection, not induction."
+      }
+    },
+    "tags": [
+      "inference",
+      "selection"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h33",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "某地区四种能源在总发电量中所占比例如下：\n\n| 能源 | 占比 |\n|---|---|\n| 煤电 | 46% |\n| 水电 | 22% |\n| 风电 | 18% |\n| 太阳能 | 14% |"
+    },
+    "stem": "根据表中数据，风电与太阳能合计所占比例是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$54\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$40\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$18\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$32\\%$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "风电占 $18\\%$，太阳能占 $14\\%$，两项相加得 $18\\% + 14\\% = 32\\%$。\n\n这里各行都是同一总量（总发电量）的百分比，因此可以直接相加；若各行的分母不同，就不能这样处理。",
+    "distractorRationale": {
+      "A": "这是除煤电外三项之和。",
+      "B": "加进了水电的一部分。",
+      "C": "只取了风电一项。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "From the table, wind and solar together account for what share?",
+        "explanation": "Wind is $18\\%$ and solar $14\\%$, so together they are $18\\% + 14\\% = 32\\%$.\n\nThe rows are percentages of the same total (all generation), which is why they may simply be added; had the rows had different denominators, this would not be valid."
+      }
+    },
+    "tags": [
+      "table-reading",
+      "percentage-sum"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h34",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "某地区四种能源在总发电量中所占比例如下：\n\n| 能源 | 占比 |\n|---|---|\n| 煤电 | 46% |\n| 水电 | 22% |\n| 风电 | 18% |\n| 太阳能 | 14% |"
+    },
+    "stem": "仅根据此表，下列说法能够成立的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "该地区非煤电能源合计占比超过一半"
+      },
+      {
+        "id": "B",
+        "text": "该地区太阳能发电成本最低"
+      },
+      {
+        "id": "C",
+        "text": "该地区正在逐年减少煤电比例"
+      },
+      {
+        "id": "D",
+        "text": "该地区风电的装机容量高于水电"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "$22\\% + 18\\% + 14\\% = 54\\%$，确实超过一半。其余三项都需要表中没有的信息：装机容量、历年数据或成本数据。\n\n发电量占比与装机容量并非一回事，因为不同能源的利用小时数差别很大。",
+    "distractorRationale": {
+      "B": "表中完全没有成本信息。",
+      "C": "表只有一个时点的数据，看不出逐年变化。",
+      "D": "表中给的是发电量占比，不是装机容量，且水电占比更高。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "On the basis of this table alone, which statement holds?",
+        "explanation": "$22\\% + 18\\% + 14\\% = 54\\%$, which is indeed more than half. Each of the other options needs information the table does not contain: installed capacity, year-on-year figures, or costs.\n\nShare of generation is not the same as installed capacity, since different sources run for very different numbers of hours."
+      }
+    },
+    "tags": [
+      "evidence-limits",
+      "table-reading"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h35",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "全球定位系统由分布在多条轨道上的卫星组成。接收机通过测量信号从卫星传到自身所用的时间，算出与各颗卫星的距离。理论上测得与三颗卫星的距离即可确定位置，但由于接收机内部时钟的精度远不及卫星上的原子钟，实际至少需要四颗卫星：第四颗用于修正接收机的时钟误差。"
+    },
+    "stem": "根据短文，实际定位至少需要四颗卫星，第四颗的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "提供备用信号"
+      },
+      {
+        "id": "B",
+        "text": "修正接收机的时钟误差"
+      },
+      {
+        "id": "C",
+        "text": "增大信号强度"
+      },
+      {
+        "id": "D",
+        "text": "测量海拔高度"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文末句明确指出，第四颗卫星用于修正接收机时钟误差。因为距离由时间乘光速得出，微小的时钟误差就会造成很大的距离偏差。",
+    "distractorRationale": {
+      "A": "备用不是短文给出的理由。",
+      "C": "短文未把信号强度作为需要第四颗卫星的理由。",
+      "D": "三颗卫星在理论上已能给出三维位置，海拔不需要额外一颗。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what is the role of the fourth satellite in an actual position fix?",
+        "explanation": "The final sentence says plainly that the fourth satellite corrects the receiver's clock error. Since distance is time multiplied by the speed of light, even a tiny clock error produces a large error in distance."
+      }
+    },
+    "tags": [
+      "gps",
+      "detail-retrieval"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-h36",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "全球定位系统由分布在多条轨道上的卫星组成。接收机通过测量信号从卫星传到自身所用的时间，算出与各颗卫星的距离。理论上测得与三颗卫星的距离即可确定位置，但由于接收机内部时钟的精度远不及卫星上的原子钟，实际至少需要四颗卫星：第四颗用于修正接收机的时钟误差。"
+    },
+    "stem": "根据短文可以推知，若接收机也装上与卫星同级的原子钟，则",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "需要的卫星数将增加到五颗"
+      },
+      {
+        "id": "B",
+        "text": "定位将变得不可能"
+      },
+      {
+        "id": "C",
+        "text": "理论上三颗卫星即可完成定位"
+      },
+      {
+        "id": "D",
+        "text": "将完全不需要卫星"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文说需要第四颗卫星的唯一原因是接收机时钟不够精确。若这一缺陷被消除，就回到短文所说的理论情形：三颗卫星即可确定位置。",
+    "distractorRationale": {
+      "A": "消除误差应减少而非增加所需卫星数。",
+      "B": "时钟更精确只会使定位更容易。",
+      "D": "距离仍须由卫星信号测得。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "From the passage, if a receiver carried an atomic clock as good as the satellites', then",
+        "explanation": "The passage gives the receiver's imprecise clock as the sole reason a fourth satellite is needed. Remove that defect and the situation reverts to the theoretical case the passage describes: three satellites suffice."
+      }
+    },
+    "tags": [
+      "inference",
+      "gps"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

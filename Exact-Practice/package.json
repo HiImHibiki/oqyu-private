@@ -1,0 +1,50 @@
+{
+  "name": "exact-practice",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 8770",
+    "build": "next build",
+    "start": "next start -p 8770",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "validate": "node --experimental-strip-types scripts/validate-questions.mjs",
+    "check-scripts": "node scripts/check-scripts.mjs",
+    "coverage": "node --experimental-strip-types --import ./scripts/alias-register.mjs scripts/bank-coverage.mjs",
+    "close-stale-orders": "node --experimental-strip-types --import ./scripts/alias-register.mjs scripts/close-stale-orders.mjs",
+    "import": "node --env-file-if-exists=.env.local --experimental-strip-types --import ./scripts/alias-register.mjs scripts/import-questions.mjs",
+    "seed": "node --env-file-if-exists=.env.local --experimental-strip-types --import ./scripts/alias-register.mjs scripts/seed-bank.mjs",
+    "make-admin": "node --env-file-if-exists=.env.local scripts/make-admin.mjs",
+    "approve": "node --env-file-if-exists=.env.local scripts/approve-questions.mjs",
+    "balance-keys": "node scripts/balance-keys.mjs",
+    "test:webhooks": "node --experimental-strip-types --import ./scripts/alias-register.mjs scripts/test-webhooks.mjs",
+    "test:exams": "node --experimental-strip-types --import ./scripts/alias-register.mjs scripts/test-exams.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.122.0",
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.47.10",
+    "katex": "^0.16.11",
+    "lucide-react": "^0.468.0",
+    "next": "15.5.26",
+    "react": "19.0.8",
+    "react-dom": "19.0.8",
+    "recharts": "^2.15.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/katex": "^0.16.7",
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.3"
+  },
+  "overrides": {
+    "next": {
+      "postcss": "$postcss"
+    }
+  }
+}

@@ -1,0 +1,1282 @@
+[
+  {
+    "id": "utbk-lbe-c01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Night trains are returning to Europe. For two decades they were cut back as budget airlines took over long-distance travel, and by 2015 most cross-border sleeper routes had closed. Rising concern about aviation emissions changed the calculation. A traveller who boards in Vienna at nine in the evening and steps off in Amsterdam after breakfast has spent no daytime hours in transit and released a fraction of the carbon a flight would have cost. Several operators have since ordered new sleeper carriages, the first such orders in a generation."
+    },
+    "stem": "According to the passage, why were night trains cut back before 2015?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Passengers preferred to travel during the day."
+      },
+      {
+        "id": "B",
+        "text": "The carriages had become unsafe to operate."
+      },
+      {
+        "id": "C",
+        "text": "Governments withdrew rail funding entirely."
+      },
+      {
+        "id": "D",
+        "text": "Budget airlines took over long-distance travel."
+      },
+      {
+        "id": "E",
+        "text": "Cross-border agreements expired."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The second sentence states it directly: services were cut back «as budget airlines took over long-distance travel».\n\nThe other options name plausible-sounding reasons that the passage never mentions.",
+    "distractorRationale": {
+      "A": "The passage argues the opposite — overnight travel saves daytime hours.",
+      "B": "Safety is never raised in the passage.",
+      "C": "No mention is made of funding being withdrawn.",
+      "E": "Cross-border agreements are not discussed."
+    },
+    "tags": [
+      "locating-information",
+      "cause"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Night trains are returning to Europe. For two decades they were cut back as budget airlines took over long-distance travel, and by 2015 most cross-border sleeper routes had closed. Rising concern about aviation emissions changed the calculation. A traveller who boards in Vienna at nine in the evening and steps off in Amsterdam after breakfast has spent no daytime hours in transit and released a fraction of the carbon a flight would have cost. Several operators have since ordered new sleeper carriages, the first such orders in a generation."
+    },
+    "stem": "The Vienna–Amsterdam example is included mainly to ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "show concretely what the two advantages of night trains look like"
+      },
+      {
+        "id": "B",
+        "text": "criticise travellers who still fly"
+      },
+      {
+        "id": "C",
+        "text": "explain how sleeper carriages are built"
+      },
+      {
+        "id": "D",
+        "text": "compare ticket prices between rail and air"
+      },
+      {
+        "id": "E",
+        "text": "recommend a particular holiday destination"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The example carries exactly two claims: no daytime hours lost, and a fraction of the carbon. Both are the advantages the passage has been building toward, made tangible by a specific route and specific times.\n\nAn abstract claim about emissions becomes easier to weigh once it is attached to a journey a reader can picture.",
+    "distractorRationale": {
+      "B": "The tone is explanatory, with no criticism of travellers.",
+      "C": "Construction is not discussed, only that carriages were ordered.",
+      "D": "No prices appear anywhere in the passage.",
+      "E": "Neither city is recommended as a destination; they simply mark the route."
+    },
+    "tags": [
+      "purpose-of-example",
+      "interpreting"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Night trains are returning to Europe. For two decades they were cut back as budget airlines took over long-distance travel, and by 2015 most cross-border sleeper routes had closed. Rising concern about aviation emissions changed the calculation. A traveller who boards in Vienna at nine in the evening and steps off in Amsterdam after breakfast has spent no daytime hours in transit and released a fraction of the carbon a flight would have cost. Several operators have since ordered new sleeper carriages, the first such orders in a generation."
+    },
+    "stem": "The phrase «the first such orders in a generation» suggests that ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sleeper carriages are cheaper than they used to be"
+      },
+      {
+        "id": "B",
+        "text": "the shift represents a genuine reversal after a very long decline"
+      },
+      {
+        "id": "C",
+        "text": "the orders were placed by inexperienced operators"
+      },
+      {
+        "id": "D",
+        "text": "the new carriages will last for thirty years"
+      },
+      {
+        "id": "E",
+        "text": "only young travellers use night trains"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The phrase measures the gap since anything comparable last happened. Placed at the end of a passage that began with two decades of cuts, it marks the ordering as a turning point rather than a routine purchase.\n\nA generation is not a precise figure; its work here is to convey how unusual the moment is.",
+    "distractorRationale": {
+      "A": "The passage says nothing about the cost of carriages.",
+      "C": "Nothing suggests the operators lack experience.",
+      "D": "The phrase describes when orders were last placed, not how long carriages will last.",
+      "E": "«Generation» here measures time, not the age of passengers."
+    },
+    "tags": [
+      "evaluating",
+      "phrase-function"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Night trains are returning to Europe. For two decades they were cut back as budget airlines took over long-distance travel, and by 2015 most cross-border sleeper routes had closed. Rising concern about aviation emissions changed the calculation. A traveller who boards in Vienna at nine in the evening and steps off in Amsterdam after breakfast has spent no daytime hours in transit and released a fraction of the carbon a flight would have cost. Several operators have since ordered new sleeper carriages, the first such orders in a generation."
+    },
+    "stem": "The word «calculation» in the third sentence refers to ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the cost of building new track"
+      },
+      {
+        "id": "B",
+        "text": "an arithmetic problem set by railway engineers"
+      },
+      {
+        "id": "C",
+        "text": "the weighing-up that determines whether night trains are worth running"
+      },
+      {
+        "id": "D",
+        "text": "the number of passengers per carriage"
+      },
+      {
+        "id": "E",
+        "text": "the timetable of departures and arrivals"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "«Calculation» is used figuratively for the balance of considerations. Emissions entered that balance, shifting a judgement that had previously favoured flying.\n\nThe literal sense — a sum to be worked out — does not fit something that «rising concern» can change.",
+    "distractorRationale": {
+      "A": "Track construction does not appear in the passage.",
+      "B": "The literal reading does not fit; no arithmetic is described.",
+      "D": "Passenger numbers are never mentioned.",
+      "E": "Timetables are illustrated later but are not what changed."
+    },
+    "tags": [
+      "word-in-context",
+      "figurative-use"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Coral reefs cover a tiny share of the ocean floor yet shelter about a quarter of all marine fish species. Their branching structures create hiding places for young fish and surfaces on which countless smaller organisms live. Reefs also absorb wave energy before it reaches the shore, which reduces coastal erosion during storms. Where reefs have died, communities have had to build sea walls that cost far more to maintain than the reef cost to protect."
+    },
+    "stem": "According to the passage, reefs reduce coastal erosion by ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "growing on top of sea walls"
+      },
+      {
+        "id": "B",
+        "text": "supporting smaller organisms"
+      },
+      {
+        "id": "C",
+        "text": "covering a large share of the ocean floor"
+      },
+      {
+        "id": "D",
+        "text": "absorbing wave energy before it reaches the shore"
+      },
+      {
+        "id": "E",
+        "text": "sheltering young fish"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The third sentence gives the mechanism directly: reefs «absorb wave energy before it reaches the shore, which reduces coastal erosion during storms».",
+    "distractorRationale": {
+      "A": "The passage says sea walls replace lost reefs, not that reefs grow on them.",
+      "B": "Another real function, again unrelated to erosion.",
+      "C": "The passage says reefs cover only a tiny share.",
+      "E": "A real function of reefs, but unrelated to erosion."
+    },
+    "tags": [
+      "locating-information",
+      "mechanism"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Coral reefs cover a tiny share of the ocean floor yet shelter about a quarter of all marine fish species. Their branching structures create hiding places for young fish and surfaces on which countless smaller organisms live. Reefs also absorb wave energy before it reaches the shore, which reduces coastal erosion during storms. Where reefs have died, communities have had to build sea walls that cost far more to maintain than the reef cost to protect."
+    },
+    "stem": "The final sentence is included in order to ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "argue that sea walls should never be built"
+      },
+      {
+        "id": "B",
+        "text": "name the communities affected"
+      },
+      {
+        "id": "C",
+        "text": "explain how sea walls are constructed"
+      },
+      {
+        "id": "D",
+        "text": "describe the appearance of a dead reef"
+      },
+      {
+        "id": "E",
+        "text": "give the reef's protective role a cost that can be compared"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Up to that point the reef's value is described in ecological terms. The last sentence converts it into money — what replacing the service costs — which makes the loss comparable to other spending decisions.\n\nThat is a common move in environmental writing: an argument becomes harder to dismiss once its cost is stated.",
+    "distractorRationale": {
+      "A": "The sentence reports what communities have had to do, without arguing against it.",
+      "B": "No communities are named.",
+      "C": "No construction detail is given.",
+      "D": "No description of a dead reef appears."
+    },
+    "tags": [
+      "evaluating",
+      "rhetorical-purpose"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Coral reefs cover a tiny share of the ocean floor yet shelter about a quarter of all marine fish species. Their branching structures create hiding places for young fish and surfaces on which countless smaller organisms live. Reefs also absorb wave energy before it reaches the shore, which reduces coastal erosion during storms. Where reefs have died, communities have had to build sea walls that cost far more to maintain than the reef cost to protect."
+    },
+    "stem": "The word «yet» in the first sentence signals ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "a contrast between small size and large importance"
+      },
+      {
+        "id": "B",
+        "text": "a sequence of events in time"
+      },
+      {
+        "id": "C",
+        "text": "an example that follows"
+      },
+      {
+        "id": "D",
+        "text": "an additional fact of the same kind"
+      },
+      {
+        "id": "E",
+        "text": "a conclusion drawn from evidence"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The sentence sets a tiny share of the ocean floor against a quarter of all fish species. «Yet» marks that the second figure is surprising given the first.\n\nThe whole passage rests on this contrast: something small in extent turns out to matter greatly.",
+    "distractorRationale": {
+      "B": "No time sequence is involved.",
+      "C": "The second clause is a statistic, not an example.",
+      "D": "The second fact contrasts with the first rather than adding to it.",
+      "E": "Nothing is being concluded; two facts are being set against each other."
+    },
+    "tags": [
+      "connectives",
+      "contrast"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Handwriting is disappearing from many classrooms, replaced by typing from the earliest years. Studies comparing the two find that students who write notes by hand recall more of what they heard, even though typists capture more words. The likely reason is that handwriting is slower: unable to record everything, the writer must decide what matters and phrase it in their own words. Typing fast enough to transcribe verbatim removes that decision, and with it the thinking the decision required."
+    },
+    "stem": "According to the passage, students who type capture ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "nothing that is worth reviewing later"
+      },
+      {
+        "id": "B",
+        "text": "more words but remember less"
+      },
+      {
+        "id": "C",
+        "text": "the same number of words as handwriters"
+      },
+      {
+        "id": "D",
+        "text": "only the main ideas of a lecture"
+      },
+      {
+        "id": "E",
+        "text": "fewer words but remember more"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The second sentence states both halves: handwriters «recall more of what they heard, even though typists capture more words».\n\nThe two measures point in opposite directions, and that is precisely the passage's point.",
+    "distractorRationale": {
+      "A": "The passage never dismisses typed notes as worthless.",
+      "C": "The passage says typists capture more.",
+      "D": "Capturing main ideas describes the handwriters' approach.",
+      "E": "This reverses the finding; handwriters record fewer words."
+    },
+    "tags": [
+      "locating-information",
+      "comparison"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Handwriting is disappearing from many classrooms, replaced by typing from the earliest years. Studies comparing the two find that students who write notes by hand recall more of what they heard, even though typists capture more words. The likely reason is that handwriting is slower: unable to record everything, the writer must decide what matters and phrase it in their own words. Typing fast enough to transcribe verbatim removes that decision, and with it the thinking the decision required."
+    },
+    "stem": "According to the passage, the advantage of handwriting comes from ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the greater number of words recorded"
+      },
+      {
+        "id": "B",
+        "text": "the neatness of handwritten pages"
+      },
+      {
+        "id": "C",
+        "text": "its slowness, which forces the writer to select and rephrase"
+      },
+      {
+        "id": "D",
+        "text": "the physical movement of the hand"
+      },
+      {
+        "id": "E",
+        "text": "students enjoying it more than typing"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The third sentence names the mechanism: because handwriting cannot keep up, the writer must choose what matters and put it in their own words. That selecting and rephrasing is the thinking that aids recall.\n\nNote the passage credits the constraint, not the medium itself — a distinction that matters if one asks how to get the same benefit while typing.",
+    "distractorRationale": {
+      "A": "Handwriters record fewer words, not more.",
+      "B": "Neatness is never mentioned.",
+      "D": "Physical movement is not offered as the explanation.",
+      "E": "Enjoyment is never mentioned."
+    },
+    "tags": [
+      "mechanism",
+      "interpreting"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Handwriting is disappearing from many classrooms, replaced by typing from the earliest years. Studies comparing the two find that students who write notes by hand recall more of what they heard, even though typists capture more words. The likely reason is that handwriting is slower: unable to record everything, the writer must decide what matters and phrase it in their own words. Typing fast enough to transcribe verbatim removes that decision, and with it the thinking the decision required."
+    },
+    "stem": "Which recommendation follows most directly from the passage's reasoning?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Note-taking should be abandoned altogether."
+      },
+      {
+        "id": "B",
+        "text": "Lectures should be delivered more slowly."
+      },
+      {
+        "id": "C",
+        "text": "Students should be graded on handwriting neatness."
+      },
+      {
+        "id": "D",
+        "text": "Students who type should be asked to summarise rather than transcribe."
+      },
+      {
+        "id": "E",
+        "text": "Laptops should be banned from all classrooms."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The passage locates the benefit in selecting and rephrasing, not in the pen itself. If that is right, the benefit can be recovered on a keyboard by requiring summary instead of verbatim capture.\n\nBanning laptops would also work, but it treats the tool as the cause when the passage points to the habit — and it discards the advantages typing has.",
+    "distractorRationale": {
+      "A": "The passage treats note-taking as valuable throughout.",
+      "B": "Slowing lectures does not restore the act of choosing what to record.",
+      "C": "Neatness has no bearing on the mechanism described.",
+      "E": "Addresses the tool rather than the habit the passage identifies as decisive."
+    },
+    "tags": [
+      "applying-reasoning",
+      "evaluating"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The first public libraries were not built to lend books. They were built to keep them. Volumes were rare and costly, so early collections chained each book to its shelf and readers stood to read. Lending began only when printing made replacement affordable — that is, when losing a book stopped being a catastrophe. The chains came off not because librarians grew trusting, but because the arithmetic changed."
+    },
+    "stem": "According to the passage, early library books were chained because ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "readers were known to be dishonest"
+      },
+      {
+        "id": "B",
+        "text": "the shelves were unstable"
+      },
+      {
+        "id": "C",
+        "text": "printing had not yet been invented anywhere"
+      },
+      {
+        "id": "D",
+        "text": "librarians wanted readers to stand"
+      },
+      {
+        "id": "E",
+        "text": "books were rare and costly to replace"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "The third sentence gives the reason: «Volumes were rare and costly, so early collections chained each book to its shelf.»\n\nThe final sentence reinforces it by ruling out the alternative explanation — the chains were about cost, not about trust.",
+    "distractorRationale": {
+      "A": "The passage explicitly denies that trust was the issue.",
+      "B": "Shelf stability is never mentioned.",
+      "C": "The passage says lending began when printing made replacement affordable, not that printing was unknown.",
+      "D": "Standing was a consequence of chaining, not its purpose."
+    },
+    "tags": [
+      "locating-information",
+      "cause"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The first public libraries were not built to lend books. They were built to keep them. Volumes were rare and costly, so early collections chained each book to its shelf and readers stood to read. Lending began only when printing made replacement affordable — that is, when losing a book stopped being a catastrophe. The chains came off not because librarians grew trusting, but because the arithmetic changed."
+    },
+    "stem": "The final sentence corrects a possible misreading by ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "ruling out a change in attitude as the explanation"
+      },
+      {
+        "id": "B",
+        "text": "estimating how many books were lost"
+      },
+      {
+        "id": "C",
+        "text": "naming the inventor of printing"
+      },
+      {
+        "id": "D",
+        "text": "describing how the chains were removed"
+      },
+      {
+        "id": "E",
+        "text": "praising early librarians for their caution"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "A reader might conclude that lending began because attitudes softened. The final sentence closes that reading off — «not because librarians grew trusting» — and points instead to cost.\n\nThe construction «not because ..., but because ...» exists to head off the wrong explanation before it takes hold.",
+    "distractorRationale": {
+      "B": "No figures for losses appear.",
+      "C": "No inventor is named.",
+      "D": "The removal itself is not described.",
+      "E": "The sentence explains rather than praises."
+    },
+    "tags": [
+      "rhetorical-purpose",
+      "evaluating"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c13",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The first public libraries were not built to lend books. They were built to keep them. Volumes were rare and costly, so early collections chained each book to its shelf and readers stood to read. Lending began only when printing made replacement affordable — that is, when losing a book stopped being a catastrophe. The chains came off not because librarians grew trusting, but because the arithmetic changed."
+    },
+    "stem": "The word «arithmetic» in the last sentence stands for ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the price charged for borrowing"
+      },
+      {
+        "id": "B",
+        "text": "the balance between the value of a book and the cost of losing it"
+      },
+      {
+        "id": "C",
+        "text": "the number of readers visiting a library"
+      },
+      {
+        "id": "D",
+        "text": "the counting of volumes on each shelf"
+      },
+      {
+        "id": "E",
+        "text": "the mathematics taught in early schools"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "«Arithmetic» is used figuratively for the underlying calculation of worth against risk. What changed was not anyone's sums but the relation between a book's value and the consequence of losing it.\n\nThe passage has already given this in plain words — «when losing a book stopped being a catastrophe» — and the last sentence compresses it into a single image.",
+    "distractorRationale": {
+      "A": "Borrowing charges are never mentioned.",
+      "C": "Reader numbers are never discussed.",
+      "D": "No counting of stock is described.",
+      "E": "School mathematics is not the subject here."
+    },
+    "tags": [
+      "word-in-context",
+      "figurative-use"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c14",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Locating information",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "My grandmother measured flour with a chipped enamel cup that had lost its handle years before I was born. There were proper scales in the cupboard, still boxed. When I once suggested she use them, she looked at the cup, then at me, and said only that the scales did not know her bread. She was ninety-one and had not written a recipe down in her life."
+    },
+    "stem": "What did the grandmother use to measure flour?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "her cupped hands"
+      },
+      {
+        "id": "B",
+        "text": "a set of kitchen scales"
+      },
+      {
+        "id": "C",
+        "text": "a chipped enamel cup without a handle"
+      },
+      {
+        "id": "D",
+        "text": "a glass jar"
+      },
+      {
+        "id": "E",
+        "text": "a wooden spoon"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The opening sentence states it directly. The scales appear in the passage only as the thing she declined to use.",
+    "distractorRationale": {
+      "A": "Her hands are not described as a measure.",
+      "B": "The scales stayed boxed in the cupboard.",
+      "D": "No jar is mentioned.",
+      "E": "No spoon is mentioned."
+    },
+    "tags": [
+      "locating-information",
+      "literary-text"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c15",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "My grandmother measured flour with a chipped enamel cup that had lost its handle years before I was born. There were proper scales in the cupboard, still boxed. When I once suggested she use them, she looked at the cup, then at me, and said only that the scales did not know her bread. She was ninety-one and had not written a recipe down in her life."
+    },
+    "stem": "The remark that «the scales did not know her bread» most nearly means that ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the bread was baked according to a written recipe"
+      },
+      {
+        "id": "B",
+        "text": "the scales were broken and gave wrong readings"
+      },
+      {
+        "id": "C",
+        "text": "she intended to start using the scales later"
+      },
+      {
+        "id": "D",
+        "text": "her skill rested on long familiarity that no instrument could supply"
+      },
+      {
+        "id": "E",
+        "text": "she did not understand how to operate the scales"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Giving the scales the capacity to «know» is the key. She is contrasting measurement with acquaintance: the cup has made this bread thousands of times, and the accuracy she trusts lives in that history rather than in grams.\n\nThe closing detail — ninety-one years, no recipe ever written — supports the reading.",
+    "distractorRationale": {
+      "A": "The passage says she never wrote a recipe down.",
+      "B": "The scales are new and still boxed, not broken.",
+      "C": "The boxed scales and her reply suggest no such intention.",
+      "E": "Nothing suggests she was unable to use them."
+    },
+    "tags": [
+      "figurative-language",
+      "interpreting"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c16",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "My grandmother measured flour with a chipped enamel cup that had lost its handle years before I was born. There were proper scales in the cupboard, still boxed. When I once suggested she use them, she looked at the cup, then at me, and said only that the scales did not know her bread. She was ninety-one and had not written a recipe down in her life."
+    },
+    "stem": "The detail that the scales were «still boxed» contributes to the passage by ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "suggesting that the scales were a recent purchase"
+      },
+      {
+        "id": "B",
+        "text": "showing that the family could not afford to use them"
+      },
+      {
+        "id": "C",
+        "text": "proving that the grandmother disliked gifts"
+      },
+      {
+        "id": "D",
+        "text": "explaining why the cup was chipped"
+      },
+      {
+        "id": "E",
+        "text": "indicating that her refusal was long-standing, not a single moment of stubbornness"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Scales that were never unpacked have been declined for as long as they have been in the house. The word «still» carries that duration.\n\nWithout the detail, her reply might read as a single moment of obstinacy; with it, we see a settled preference held over years.",
+    "distractorRationale": {
+      "A": "«Still boxed» implies they had been there a long time.",
+      "B": "The scales were already owned, so affordability is not at issue.",
+      "C": "The passage never says the scales were a gift.",
+      "D": "The chip is attributed to age, not to the scales."
+    },
+    "tags": [
+      "significance-of-detail",
+      "evaluating"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c17",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Locating information",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The lighthouse had been automated for eleven years, but Mr Alder still climbed the stairs each evening at dusk. He carried nothing and adjusted nothing. At the top he stood at the glass, watched the beam sweep out over water he had known since boyhood, and after some minutes went back down. The shipping lanes had moved north long ago. Almost no vessel passed close enough now to need the light at all."
+    },
+    "stem": "How long had the lighthouse been automated?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "for eleven years"
+      },
+      {
+        "id": "B",
+        "text": "for several months"
+      },
+      {
+        "id": "C",
+        "text": "since the shipping lanes moved"
+      },
+      {
+        "id": "D",
+        "text": "since Mr Alder's boyhood"
+      },
+      {
+        "id": "E",
+        "text": "it had never been automated"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The opening sentence states the figure directly. The other time references in the passage — boyhood, «long ago» — attach to different things.",
+    "distractorRationale": {
+      "B": "The passage says eleven years, not months.",
+      "C": "The lanes moved «long ago», which is not tied to the automation date.",
+      "D": "Boyhood refers to how long he has known the water.",
+      "E": "The first sentence says it had been automated."
+    },
+    "tags": [
+      "locating-information",
+      "detail"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c18",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The lighthouse had been automated for eleven years, but Mr Alder still climbed the stairs each evening at dusk. He carried nothing and adjusted nothing. At the top he stood at the glass, watched the beam sweep out over water he had known since boyhood, and after some minutes went back down. The shipping lanes had moved north long ago. Almost no vessel passed close enough now to need the light at all."
+    },
+    "stem": "The sentence «He carried nothing and adjusted nothing» emphasises that ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "he was too old to carry anything"
+      },
+      {
+        "id": "B",
+        "text": "the climb served no practical purpose"
+      },
+      {
+        "id": "C",
+        "text": "he had forgotten his tools"
+      },
+      {
+        "id": "D",
+        "text": "the lighthouse was in poor repair"
+      },
+      {
+        "id": "E",
+        "text": "someone else maintained the light"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Both halves are negative, and together they strip the climb of any task. What remains is the habit itself.\n\nThe passage then removes the last possible justification: the lanes have moved and almost no vessel needs the light. The climb persists with nothing left to do — that is the point of the whole piece.",
+    "distractorRationale": {
+      "A": "No infirmity is mentioned.",
+      "C": "Forgetting implies he meant to bring something; the sentence suggests routine.",
+      "D": "No disrepair is described.",
+      "E": "Automation, not another person, has taken over the work."
+    },
+    "tags": [
+      "interpreting",
+      "negation-emphasis"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c19",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The lighthouse had been automated for eleven years, but Mr Alder still climbed the stairs each evening at dusk. He carried nothing and adjusted nothing. At the top he stood at the glass, watched the beam sweep out over water he had known since boyhood, and after some minutes went back down. The shipping lanes had moved north long ago. Almost no vessel passed close enough now to need the light at all."
+    },
+    "stem": "The passage as a whole is best described as a portrait of ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "a dangerous stretch of coastline"
+      },
+      {
+        "id": "B",
+        "text": "the history of lighthouse engineering"
+      },
+      {
+        "id": "C",
+        "text": "a routine that outlives the work that gave it meaning"
+      },
+      {
+        "id": "D",
+        "text": "a man resisting new technology"
+      },
+      {
+        "id": "E",
+        "text": "a community that has forgotten its past"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Every element points the same way: the automation, the empty hands, the departed shipping lanes. The climb continues after each of its reasons has gone.\n\nHe is not fighting the machine — he neither adjusts nor interferes with it. What he keeps is the shape of a working life, and the passage observes that without judging it.",
+    "distractorRationale": {
+      "A": "No danger to shipping is described.",
+      "B": "No engineering history appears.",
+      "D": "He does not resist the automation; he leaves it entirely alone.",
+      "E": "No community is portrayed; the passage stays with one man."
+    },
+    "tags": [
+      "theme",
+      "evaluating"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-c20",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The lighthouse had been automated for eleven years, but Mr Alder still climbed the stairs each evening at dusk. He carried nothing and adjusted nothing. At the top he stood at the glass, watched the beam sweep out over water he had known since boyhood, and after some minutes went back down. The shipping lanes had moved north long ago. Almost no vessel passed close enough now to need the light at all."
+    },
+    "stem": "The word «still» in the first sentence works to ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "suggest that the evening was silent"
+      },
+      {
+        "id": "B",
+        "text": "show that the beam had stopped turning"
+      },
+      {
+        "id": "C",
+        "text": "indicate that Mr Alder stood without moving"
+      },
+      {
+        "id": "D",
+        "text": "mark the climb as continuing after its reason has ended"
+      },
+      {
+        "id": "E",
+        "text": "describe the calmness of the sea"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Here «still» means «even now», setting the continuing climb against the automation named in the same sentence. That single word carries the tension the rest of the passage unfolds.\n\nIts other senses — motionless, calm — do not fit a sentence whose subject is climbing stairs.",
+    "distractorRationale": {
+      "A": "Silence is not mentioned in the passage.",
+      "B": "The beam is described later as sweeping out, so it has not stopped.",
+      "C": "He is climbing, not standing motionless.",
+      "E": "The sea's condition is not described in that sentence."
+    },
+    "tags": [
+      "word-in-context",
+      "multiple-senses"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

@@ -1,0 +1,3771 @@
+[
+  {
+    "id": "csca-mth-r01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Set operations 集合运算",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Let $A=\\{1,3,5\\}$ and $B=\\{3,5,7\\}$. What is $A \\cup B$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\{1,3,5,7\\}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\varnothing$"
+      },
+      {
+        "id": "C",
+        "text": "$\\{1,7\\}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\{3,5\\}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The union collects every element appearing in either set, listing each once: $\\{1,3,5,7\\}$.",
+    "distractorRationale": {
+      "B": "The sets are not disjoint.",
+      "C": "Gives the symmetric difference.",
+      "D": "Gives the intersection."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "设 $A=\\{1,3,5\\}$，$B=\\{3,5,7\\}$，则 $A \\cup B$ 等于",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\{1,3,5,7\\}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\varnothing$"
+          },
+          {
+            "id": "C",
+            "text": "$\\{1,7\\}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\{3,5\\}$"
+          }
+        ],
+        "explanation": "并集收集出现在任一集合中的所有元素，重复的只写一次：$\\{1,3,5,7\\}$。"
+      }
+    },
+    "tags": [
+      "sets",
+      "union"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Set operations 集合运算",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "How many subsets does a set with $4$ elements have?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$24$"
+      },
+      {
+        "id": "B",
+        "text": "$16$"
+      },
+      {
+        "id": "C",
+        "text": "$8$"
+      },
+      {
+        "id": "D",
+        "text": "$4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Each element is either in a subset or not, giving $2$ choices per element and $2^4 = 16$ subsets in total. The empty set and the set itself are both included in that count.",
+    "distractorRationale": {
+      "A": "Computes $4!$.",
+      "C": "Uses $2^3$, one element short.",
+      "D": "Counts the elements, not the subsets."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "含 $4$ 个元素的集合共有多少个子集？",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$24$"
+          },
+          {
+            "id": "B",
+            "text": "$16$"
+          },
+          {
+            "id": "C",
+            "text": "$8$"
+          },
+          {
+            "id": "D",
+            "text": "$4$"
+          }
+        ],
+        "explanation": "每个元素要么属于子集要么不属于，各有 $2$ 种选择，故共 $2^4 = 16$ 个子集。空集与集合本身都计算在内。"
+      }
+    },
+    "tags": [
+      "sets",
+      "subsets"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Quadratic inequalities 一元二次不等式",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Solve $|x| < 3$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x < 3$"
+      },
+      {
+        "id": "B",
+        "text": "$x > -3$"
+      },
+      {
+        "id": "C",
+        "text": "$-3 < x < 3$"
+      },
+      {
+        "id": "D",
+        "text": "$x < -3$ or $x > 3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "An absolute value less than $3$ means the distance from the origin is under $3$, so $x$ lies strictly between $-3$ and $3$.",
+    "distractorRationale": {
+      "A": "Omits the lower bound.",
+      "B": "Omits the upper bound.",
+      "D": "Solves $|x| > 3$ instead."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "解不等式 $|x| < 3$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$x < 3$"
+          },
+          {
+            "id": "B",
+            "text": "$x > -3$"
+          },
+          {
+            "id": "C",
+            "text": "$-3 < x < 3$"
+          },
+          {
+            "id": "D",
+            "text": "$x < -3$ or $x > 3$"
+          }
+        ],
+        "explanation": "绝对值小于 $3$ 表示到原点的距离小于 $3$，故 $x$ 严格介于 $-3$ 与 $3$ 之间。"
+      }
+    },
+    "tags": [
+      "absolute-value"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Quadratic inequalities 一元二次不等式",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Solve $-x^2 + 4x - 3 > 0$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x > 3$"
+      },
+      {
+        "id": "B",
+        "text": "all real $x$"
+      },
+      {
+        "id": "C",
+        "text": "$x < 1$ or $x > 3$"
+      },
+      {
+        "id": "D",
+        "text": "$1 < x < 3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Multiply through by $-1$ and reverse the inequality: $x^2 - 4x + 3 < 0$, that is $(x-1)(x-3) < 0$.\\n\\nAn upward parabola is negative between its roots, so $1 < x < 3$. Forgetting to reverse the sign when multiplying by a negative is the standard error here.",
+    "distractorRationale": {
+      "A": "Keeps only half of that wrong region.",
+      "B": "The expression is negative outside $(1,3)$.",
+      "C": "Forgets to reverse the inequality sign."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "解不等式 $-x^2 + 4x - 3 > 0$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$x > 3$"
+          },
+          {
+            "id": "B",
+            "text": "all real $x$"
+          },
+          {
+            "id": "C",
+            "text": "$x < 1$ or $x > 3$"
+          },
+          {
+            "id": "D",
+            "text": "$1 < x < 3$"
+          }
+        ],
+        "explanation": "两边乘以 $-1$ 并改变不等号方向：$x^2 - 4x + 3 < 0$，即 $(x-1)(x-3) < 0$。\\n\\n开口向上的抛物线在两根之间取负值，故 $1 < x < 3$。乘以负数时忘记变号是此题最常见的错误。"
+      }
+    },
+    "tags": [
+      "quadratic-inequality",
+      "sign-reversal"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Rational inequalities 分式不等式",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Solve $\\dfrac{x-1}{x+2} \\ge 0$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x < -2$ or $x \\ge 1$"
+      },
+      {
+        "id": "B",
+        "text": "$x \\le -2$ or $x \\ge 1$"
+      },
+      {
+        "id": "C",
+        "text": "$-2 < x \\le 1$"
+      },
+      {
+        "id": "D",
+        "text": "$x \\ge 1$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The quotient is non-negative when numerator and denominator share a sign, or when the numerator is zero.\\n\\nThat gives $x < -2$ or $x \\ge 1$. The endpoint $x = 1$ is included because the expression equals zero there, but $x = -2$ must be excluded because the expression is undefined.",
+    "distractorRationale": {
+      "B": "Includes $x = -2$, where the expression is undefined.",
+      "C": "Gives where the quotient is negative.",
+      "D": "Misses the branch below $-2$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "解不等式 $\\dfrac{x-1}{x+2} \\ge 0$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$x < -2$ or $x \\ge 1$"
+          },
+          {
+            "id": "B",
+            "text": "$x \\le -2$ or $x \\ge 1$"
+          },
+          {
+            "id": "C",
+            "text": "$-2 < x \\le 1$"
+          },
+          {
+            "id": "D",
+            "text": "$x \\ge 1$"
+          }
+        ],
+        "explanation": "分式非负当且仅当分子分母同号，或分子为零。\\n\\n故解为 $x < -2$ 或 $x \\ge 1$。$x = 1$ 处分式为零，应包含；$x = -2$ 处分式无定义，必须排除。"
+      }
+    },
+    "tags": [
+      "rational-inequality",
+      "endpoints"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Set operations 集合运算",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Let $U$ be the universal set. Which expression equals $\\complement_U(A \\cup B)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$A \\cap B$"
+      },
+      {
+        "id": "B",
+        "text": "$\\complement_U A \\cap \\complement_U B$"
+      },
+      {
+        "id": "C",
+        "text": "$\\complement_U A$"
+      },
+      {
+        "id": "D",
+        "text": "$\\complement_U A \\cup \\complement_U B$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "By De Morgan's law, the complement of a union is the intersection of the complements: an element outside $A \\cup B$ must be outside $A$ **and** outside $B$.\\n\\nThe common error is to keep the union symbol when negating, which would only require the element to be outside one of them.",
+    "distractorRationale": {
+      "A": "Unrelated to the complement.",
+      "C": "Ignores $B$ entirely.",
+      "D": "Keeps the union, requiring exclusion from only one set."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "设 $U$ 为全集，下列与 $\\complement_U(A \\cup B)$ 相等的是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$A \\cap B$"
+          },
+          {
+            "id": "B",
+            "text": "$\\complement_U A \\cap \\complement_U B$"
+          },
+          {
+            "id": "C",
+            "text": "$\\complement_U A$"
+          },
+          {
+            "id": "D",
+            "text": "$\\complement_U A \\cup \\complement_U B$"
+          }
+        ],
+        "explanation": "由德摩根定律，并集的补集等于补集的交集：不属于 $A \\cup B$ 的元素必须既不属于 $A$，**又**不属于 $B$。\\n\\n常见错误是取补时保留并号，那只要求元素不属于其中之一。"
+      }
+    },
+    "tags": [
+      "de-morgan"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Sets & Inequalities 集合与不等式",
+    "skill": "Quadratic inequalities 一元二次不等式",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For which values of $m$ does $mx^2 + 2x + 1 = 0$ have no real root?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$m > 1$ or $m = 0$"
+      },
+      {
+        "id": "B",
+        "text": "$0 < m < 1$"
+      },
+      {
+        "id": "C",
+        "text": "$m > 1$"
+      },
+      {
+        "id": "D",
+        "text": "$m < 1$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "If $m = 0$ the equation becomes linear, $2x + 1 = 0$, which does have a root — so $m = 0$ must be excluded before touching the discriminant.\\n\\nFor $m \\neq 0$, no real root requires $4 - 4m < 0$, that is $m > 1$.",
+    "distractorRationale": {
+      "A": "Wrongly includes $m = 0$, which yields a root.",
+      "B": "Also a region with real roots.",
+      "D": "Gives where two distinct roots exist."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "当 $m$ 取何值时，方程 $mx^2 + 2x + 1 = 0$ 没有实根？",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$m > 1$ or $m = 0$"
+          },
+          {
+            "id": "B",
+            "text": "$0 < m < 1$"
+          },
+          {
+            "id": "C",
+            "text": "$m > 1$"
+          },
+          {
+            "id": "D",
+            "text": "$m < 1$"
+          }
+        ],
+        "explanation": "若 $m = 0$，方程退化为一次方程 $2x + 1 = 0$，仍有实根，故须先排除 $m = 0$ 再讨论判别式。\\n\\n当 $m \\neq 0$ 时，无实根要求 $4 - 4m < 0$，即 $m > 1$。"
+      }
+    },
+    "tags": [
+      "discriminant",
+      "degenerate-case"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Exponential functions 指数函数",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Solve $2^x = 8$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$4$"
+      },
+      {
+        "id": "D",
+        "text": "$3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Since $8 = 2^3$, matching the exponents gives $x = 3$.",
+    "distractorRationale": {
+      "A": "Gives the base.",
+      "B": "Inverts the exponent.",
+      "C": "Would give $16$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "解方程 $2^x = 8$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$2$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{1}{3}$"
+          },
+          {
+            "id": "C",
+            "text": "$4$"
+          },
+          {
+            "id": "D",
+            "text": "$3$"
+          }
+        ],
+        "explanation": "因 $8 = 2^3$，比较指数得 $x = 3$。"
+      }
+    },
+    "tags": [
+      "exponential-equation"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Domain and range 定义域与值域",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the domain of $f(x) = \\log_2(x - 1)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x > 1$"
+      },
+      {
+        "id": "B",
+        "text": "$x > 0$"
+      },
+      {
+        "id": "C",
+        "text": "$x \\ge 1$"
+      },
+      {
+        "id": "D",
+        "text": "all real $x$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "A logarithm requires a strictly positive argument, so $x - 1 > 0$, that is $x > 1$. Equality is not allowed because $\\log_2 0$ is undefined.",
+    "distractorRationale": {
+      "B": "Ignores the shift by 1.",
+      "C": "Includes $x = 1$, where the argument is zero.",
+      "D": "Ignores the restriction entirely."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "函数 $f(x) = \\log_2(x - 1)$ 的定义域是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$x > 1$"
+          },
+          {
+            "id": "B",
+            "text": "$x > 0$"
+          },
+          {
+            "id": "C",
+            "text": "$x \\ge 1$"
+          },
+          {
+            "id": "D",
+            "text": "all real $x$"
+          }
+        ],
+        "explanation": "对数的真数必须严格为正，故 $x - 1 > 0$，即 $x > 1$。不能取等号，因为 $\\log_2 0$ 无定义。"
+      }
+    },
+    "tags": [
+      "logarithm",
+      "domain"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Parity 奇偶性",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which function is even?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$f(x) = x^3 + x$"
+      },
+      {
+        "id": "B",
+        "text": "$f(x) = x^4 + 1$"
+      },
+      {
+        "id": "C",
+        "text": "$f(x) = x$"
+      },
+      {
+        "id": "D",
+        "text": "$f(x) = \\sin x$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "An even function satisfies $f(-x) = f(x)$. For $x^4 + 1$, replacing $x$ by $-x$ leaves it unchanged, since the exponent is even and the constant is unaffected.",
+    "distractorRationale": {
+      "A": "Odd: both terms change sign.",
+      "C": "Odd.",
+      "D": "Odd."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列函数中为偶函数的是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$f(x) = x^3 + x$"
+          },
+          {
+            "id": "B",
+            "text": "$f(x) = x^4 + 1$"
+          },
+          {
+            "id": "C",
+            "text": "$f(x) = x$"
+          },
+          {
+            "id": "D",
+            "text": "$f(x) = \\sin x$"
+          }
+        ],
+        "explanation": "偶函数满足 $f(-x) = f(x)$。对 $x^4 + 1$，以 $-x$ 代 $x$ 后表达式不变，因为指数为偶数，常数项也不受影响。"
+      }
+    },
+    "tags": [
+      "parity",
+      "even-function"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Trigonometric functions 三角函数",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the value of $\\sin\\dfrac{\\pi}{6}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{\\sqrt{3}}{2}$"
+      },
+      {
+        "id": "B",
+        "text": "$1$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{\\sqrt{2}}{2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "$\\dfrac{\\pi}{6}$ is $30^\\circ$, and $\\sin 30^\\circ = \\dfrac{1}{2}$. It is worth holding the whole set in memory: $\\sin 30^\\circ = \\tfrac{1}{2}$, $\\sin 45^\\circ = \\tfrac{\\sqrt{2}}{2}$, $\\sin 60^\\circ = \\tfrac{\\sqrt{3}}{2}$.",
+    "distractorRationale": {
+      "A": "Is $\\sin 60^\\circ$.",
+      "B": "Is $\\sin 90^\\circ$.",
+      "D": "Is $\\sin 45^\\circ$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$\\sin\\dfrac{\\pi}{6}$ 的值是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{\\sqrt{3}}{2}$"
+          },
+          {
+            "id": "B",
+            "text": "$1$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{1}{2}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{\\sqrt{2}}{2}$"
+          }
+        ],
+        "explanation": "$\\dfrac{\\pi}{6}$ 即 $30^\\circ$，而 $\\sin 30^\\circ = \\dfrac{1}{2}$。特殊角的值宜整组记忆：$\\sin 30^\\circ = \\tfrac{1}{2}$，$\\sin 45^\\circ = \\tfrac{\\sqrt{2}}{2}$，$\\sin 60^\\circ = \\tfrac{\\sqrt{3}}{2}$。"
+      }
+    },
+    "tags": [
+      "special-angles"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Arithmetic sequences 等差数列",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An arithmetic sequence has $a_1 = 2$ and $d = 3$. What is the sum of the first $10$ terms?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$29$"
+      },
+      {
+        "id": "B",
+        "text": "$135$"
+      },
+      {
+        "id": "C",
+        "text": "$170$"
+      },
+      {
+        "id": "D",
+        "text": "$155$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Use $S_n = \\dfrac{n}{2}\\left[2a_1 + (n-1)d\\right] = 5\\left[4 + 27\\right] = 5 \\times 31 = 155$.",
+    "distractorRationale": {
+      "A": "Gives the tenth term alone.",
+      "B": "Uses $(n)d$ instead of $(n-1)d$.",
+      "C": "Uses $2a_1 + nd$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "等差数列中 $a_1 = 2$，公差 $d = 3$，前 $10$ 项之和为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$29$"
+          },
+          {
+            "id": "B",
+            "text": "$135$"
+          },
+          {
+            "id": "C",
+            "text": "$170$"
+          },
+          {
+            "id": "D",
+            "text": "$155$"
+          }
+        ],
+        "explanation": "由 $S_n = \\dfrac{n}{2}\\left[2a_1 + (n-1)d\\right] = 5\\left[4 + 27\\right] = 5 \\times 31 = 155$。"
+      }
+    },
+    "tags": [
+      "arithmetic-sum"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Geometric sequences 等比数列",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A geometric sequence has $a_1 = 3$ and $q = 2$. What is the sum of the first $5$ terms?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$93$"
+      },
+      {
+        "id": "B",
+        "text": "$48$"
+      },
+      {
+        "id": "C",
+        "text": "$96$"
+      },
+      {
+        "id": "D",
+        "text": "$45$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Use $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{3(32 - 1)}{1} = 93$.\\n\\nA check by listing: $3 + 6 + 12 + 24 + 48 = 93$.",
+    "distractorRationale": {
+      "B": "Gives the fifth term alone.",
+      "C": "Sums six terms minus three.",
+      "D": "Sums the first four terms."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "等比数列中 $a_1 = 3$，公比 $q = 2$，前 $5$ 项之和为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$93$"
+          },
+          {
+            "id": "B",
+            "text": "$48$"
+          },
+          {
+            "id": "C",
+            "text": "$96$"
+          },
+          {
+            "id": "D",
+            "text": "$45$"
+          }
+        ],
+        "explanation": "由 $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{3(32 - 1)}{1} = 93$。\\n\\n逐项验算：$3 + 6 + 12 + 24 + 48 = 93$。"
+      }
+    },
+    "tags": [
+      "geometric-sum"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Domain and range 定义域与值域",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the range of $f(x) = 2^x + 1$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$y \\ge 1$"
+      },
+      {
+        "id": "B",
+        "text": "$y > 1$"
+      },
+      {
+        "id": "C",
+        "text": "all real $y$"
+      },
+      {
+        "id": "D",
+        "text": "$y > 0$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The exponential $2^x$ is always strictly positive and approaches zero without reaching it, so $2^x + 1 > 1$.\\n\\nThe line $y = 1$ is a horizontal asymptote, never attained — which is why the inequality is strict.",
+    "distractorRationale": {
+      "A": "Includes $y = 1$, which is approached but never reached.",
+      "C": "An exponential is bounded below.",
+      "D": "Ignores the vertical shift."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "函数 $f(x) = 2^x + 1$ 的值域是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$y \\ge 1$"
+          },
+          {
+            "id": "B",
+            "text": "$y > 1$"
+          },
+          {
+            "id": "C",
+            "text": "all real $y$"
+          },
+          {
+            "id": "D",
+            "text": "$y > 0$"
+          }
+        ],
+        "explanation": "指数函数 $2^x$ 恒为正且无限趋近于零但取不到零，故 $2^x + 1 > 1$。\\n\\n直线 $y = 1$ 是水平渐近线，永远取不到，因此不等号是严格的。"
+      }
+    },
+    "tags": [
+      "exponential",
+      "range"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Monotonicity 单调性",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "On which interval is $f(x) = x^3 - 3x$ decreasing?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$(-\\infty, +\\infty)$"
+      },
+      {
+        "id": "B",
+        "text": "$(-\\infty, -1)$"
+      },
+      {
+        "id": "C",
+        "text": "$(-1, 1)$"
+      },
+      {
+        "id": "D",
+        "text": "$(1, +\\infty)$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Differentiate: $f'(x) = 3x^2 - 3 = 3(x-1)(x+1)$, which is negative exactly when $-1 < x < 1$.\\n\\nA function decreases where its derivative is negative, so the interval is $(-1, 1)$.",
+    "distractorRationale": {
+      "A": "The function increases outside $(-1,1)$.",
+      "B": "The derivative is positive there.",
+      "D": "The derivative is positive there."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "函数 $f(x) = x^3 - 3x$ 在哪个区间上单调递减？",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$(-\\infty, +\\infty)$"
+          },
+          {
+            "id": "B",
+            "text": "$(-\\infty, -1)$"
+          },
+          {
+            "id": "C",
+            "text": "$(-1, 1)$"
+          },
+          {
+            "id": "D",
+            "text": "$(1, +\\infty)$"
+          }
+        ],
+        "explanation": "求导得 $f'(x) = 3x^2 - 3 = 3(x-1)(x+1)$，当且仅当 $-1 < x < 1$ 时为负。\\n\\n导数为负处函数递减，故区间为 $(-1, 1)$。"
+      }
+    },
+    "tags": [
+      "monotonicity",
+      "derivative"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Exponential functions 指数函数",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Given $f(x) = 2x + 1$ and $g(x) = 2^x$, what is $f(g(3))$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$128$"
+      },
+      {
+        "id": "B",
+        "text": "$65$"
+      },
+      {
+        "id": "C",
+        "text": "$9$"
+      },
+      {
+        "id": "D",
+        "text": "$17$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Work from the inside out: $g(3) = 2^3 = 8$, then $f(8) = 16 + 1 = 17$.\n\nReversing the order gives $g(f(3)) = g(7) = 128$, a very different answer — composition is not commutative.",
+    "distractorRationale": {
+      "A": "Applies the functions in the reverse order.",
+      "B": "Uses $2^6 + 1$, doubling the exponent.",
+      "C": "Computes $2 \\times 3 + 1$, applying $f$ without $g$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "已知 $f(x) = 2x + 1$，$g(x) = 2^x$，则 $f(g(3))$ 等于",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$49$"
+          },
+          {
+            "id": "B",
+            "text": "$19$"
+          },
+          {
+            "id": "C",
+            "text": "$37$"
+          },
+          {
+            "id": "D",
+            "text": "$13$"
+          }
+        ],
+        "explanation": "由内向外计算：$g(3) = 2^3 = 8$，再求 $f(8) = 16 + 1 = 17$。\n\n若顺序相反则 $g(f(3)) = g(7) = 128$，相差悬殊——复合运算不满足交换律。"
+      }
+    },
+    "tags": [
+      "composite-function",
+      "exponential"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Logarithmic functions 对数函数",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "If $\\log_a 4 = 2$, what is $a$? (Assume $a > 0$ and $a \\neq 1$.)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$8$"
+      },
+      {
+        "id": "D",
+        "text": "$16$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The statement means $a^2 = 4$, so $a = 2$ or $a = -2$. A logarithm base must be positive, which leaves $a = 2$.",
+    "distractorRationale": {
+      "B": "Confuses the base with the argument.",
+      "C": "Would give $\\log_8 4 = \\tfrac{2}{3}$.",
+      "D": "Would give $\\log_{16} 4 = \\tfrac{1}{2}$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "若 $\\log_a 4 = 2$，则 $a$ 等于（设 $a > 0$ 且 $a \\neq 1$）",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$2$"
+          },
+          {
+            "id": "B",
+            "text": "$4$"
+          },
+          {
+            "id": "C",
+            "text": "$8$"
+          },
+          {
+            "id": "D",
+            "text": "$16$"
+          }
+        ],
+        "explanation": "该式表示 $a^2 = 4$，故 $a = 2$ 或 $a = -2$。对数的底必须为正，故取 $a = 2$。"
+      }
+    },
+    "tags": [
+      "logarithm",
+      "base"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Trigonometric functions 三角函数",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the amplitude of $y = 3\\sin(2x) - 1$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6$"
+      },
+      {
+        "id": "B",
+        "text": "$3$"
+      },
+      {
+        "id": "C",
+        "text": "$1$"
+      },
+      {
+        "id": "D",
+        "text": "$2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Amplitude is the coefficient multiplying the sine, here $3$: the curve rises $3$ above and falls $3$ below its centre line.\\n\\nThe $2$ affects the period and the $-1$ shifts the centre line to $y = -1$; neither changes the amplitude.",
+    "distractorRationale": {
+      "A": "Gives the peak-to-trough distance, not the amplitude.",
+      "C": "Is the vertical shift.",
+      "D": "Is the coefficient inside, which sets the period."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "函数 $y = 3\\sin(2x) - 1$ 的振幅是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$6$"
+          },
+          {
+            "id": "B",
+            "text": "$3$"
+          },
+          {
+            "id": "C",
+            "text": "$1$"
+          },
+          {
+            "id": "D",
+            "text": "$2$"
+          }
+        ],
+        "explanation": "振幅是正弦前的系数，此处为 $3$：曲线在中心线上下各波动 $3$。\\n\\n其中 $2$ 影响周期，$-1$ 使中心线移至 $y = -1$，二者都不改变振幅。"
+      }
+    },
+    "tags": [
+      "trigonometry",
+      "amplitude"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Basics of derivatives 导数基础",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "If $f(x) = x^4 - 2x^2$, what is $f'(x)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$4x^3 - 2x$"
+      },
+      {
+        "id": "B",
+        "text": "$x^3 - 4x$"
+      },
+      {
+        "id": "C",
+        "text": "$4x^3 - 4x$"
+      },
+      {
+        "id": "D",
+        "text": "$4x^3 - 4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Differentiate term by term, bringing each exponent down and reducing it by one: $4x^3$ and $-4x$.",
+    "distractorRationale": {
+      "A": "Fails to multiply the second term's coefficient by its exponent.",
+      "B": "Forgets the coefficient on the first term.",
+      "D": "Reduces the second term's power twice."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "若 $f(x) = x^4 - 2x^2$，则 $f'(x)$ 等于",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$4x^3 - 2x$"
+          },
+          {
+            "id": "B",
+            "text": "$x^3 - 4x$"
+          },
+          {
+            "id": "C",
+            "text": "$4x^3 - 4x$"
+          },
+          {
+            "id": "D",
+            "text": "$4x^3 - 4$"
+          }
+        ],
+        "explanation": "逐项求导，指数下降作系数并减一：得 $4x^3$ 与 $-4x$。"
+      }
+    },
+    "tags": [
+      "derivative",
+      "polynomial"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Basics of calculus 微积分基础",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Evaluate $\\displaystyle\\int_0^1 (3x^2 + 2x)\\,dx$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$5$"
+      },
+      {
+        "id": "B",
+        "text": "$1$"
+      },
+      {
+        "id": "C",
+        "text": "$3$"
+      },
+      {
+        "id": "D",
+        "text": "$2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "An antiderivative is $x^3 + x^2$. Evaluating between the limits: $(1 + 1) - 0 = 2$.",
+    "distractorRationale": {
+      "A": "Differentiates instead of integrating.",
+      "B": "Integrates only the first term.",
+      "C": "Adds an extra unit from the constant of integration."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "计算 $\\displaystyle\\int_0^1 (3x^2 + 2x)\\,dx$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$5$"
+          },
+          {
+            "id": "B",
+            "text": "$1$"
+          },
+          {
+            "id": "C",
+            "text": "$3$"
+          },
+          {
+            "id": "D",
+            "text": "$2$"
+          }
+        ],
+        "explanation": "原函数为 $x^3 + x^2$。代入上下限得 $(1 + 1) - 0 = 2$。"
+      }
+    },
+    "tags": [
+      "definite-integral"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r21",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Basics of derivatives 导数基础",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "The tangent to $y = x^2 + 1$ at the point $(2, 5)$ has what equation?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$y = 4x - 3$"
+      },
+      {
+        "id": "B",
+        "text": "$y = 2x + 1$"
+      },
+      {
+        "id": "C",
+        "text": "$y = 4x + 5$"
+      },
+      {
+        "id": "D",
+        "text": "$y = 5x - 5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The derivative is $2x$, so the gradient at $x = 2$ is $4$.\\n\\nUsing the point: $y - 5 = 4(x - 2)$, which rearranges to $y = 4x - 3$. Substituting $x = 2$ gives $y = 5$, confirming the line passes through the point.",
+    "distractorRationale": {
+      "B": "Uses the function's own coefficient as the gradient.",
+      "C": "Uses the correct gradient but the wrong intercept.",
+      "D": "Uses the $y$-coordinate as the gradient."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "曲线 $y = x^2 + 1$ 在点 $(2, 5)$ 处的切线方程是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$y = 4x - 3$"
+          },
+          {
+            "id": "B",
+            "text": "$y = 2x + 1$"
+          },
+          {
+            "id": "C",
+            "text": "$y = 4x + 5$"
+          },
+          {
+            "id": "D",
+            "text": "$y = 5x - 5$"
+          }
+        ],
+        "explanation": "导数为 $2x$，故 $x = 2$ 处斜率为 $4$。\\n\\n由点斜式：$y - 5 = 4(x - 2)$，化简得 $y = 4x - 3$。代入 $x = 2$ 得 $y = 5$，验证切线过该点。"
+      }
+    },
+    "tags": [
+      "tangent-line"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r22",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Exponential functions 指数函数",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Simplify $\\dfrac{2^{n+2}}{2^n}$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$2^2 \\cdot n$"
+      },
+      {
+        "id": "D",
+        "text": "$2^{n}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Dividing powers of the same base subtracts the exponents: $2^{(n+2)-n} = 2^2 = 4$.\\n\\nThe result does not depend on $n$ at all, which is the point of the question.",
+    "distractorRationale": {
+      "A": "Subtracts only one from the exponent.",
+      "C": "Treats the exponent as a multiplier.",
+      "D": "Cancels the wrong part."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "化简 $\\dfrac{2^{n+2}}{2^n}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$2$"
+          },
+          {
+            "id": "B",
+            "text": "$4$"
+          },
+          {
+            "id": "C",
+            "text": "$2^2 \\cdot n$"
+          },
+          {
+            "id": "D",
+            "text": "$2^{n}$"
+          }
+        ],
+        "explanation": "同底幂相除时指数相减：$2^{(n+2)-n} = 2^2 = 4$。\\n\\n结果与 $n$ 完全无关，这正是本题的用意。"
+      }
+    },
+    "tags": [
+      "exponent-rules"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r23",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Monotonicity 单调性",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For which values of $a$ is $f(x) = ax^3 + x$ increasing on all of $\\mathbb{R}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$a = 0$ only"
+      },
+      {
+        "id": "B",
+        "text": "$a < 0$"
+      },
+      {
+        "id": "C",
+        "text": "$a \\ge 0$"
+      },
+      {
+        "id": "D",
+        "text": "$a > 0$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The derivative is $f'(x) = 3ax^2 + 1$. Since $x^2 \\ge 0$, this stays positive for every $x$ whenever $a \\ge 0$.\\n\\nThe case $a = 0$ must be included: the function becomes $f(x) = x$, which is increasing. If $a < 0$ the derivative turns negative for large $|x|$, so the function eventually decreases.",
+    "distractorRationale": {
+      "A": "Positive values of $a$ also work.",
+      "B": "The derivative becomes negative for large $|x|$.",
+      "D": "Excludes $a = 0$, where the function is still increasing."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "当 $a$ 取何值时，$f(x) = ax^3 + x$ 在 $\\mathbb{R}$ 上单调递增？",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$a = 0$ only"
+          },
+          {
+            "id": "B",
+            "text": "$a < 0$"
+          },
+          {
+            "id": "C",
+            "text": "$a \\ge 0$"
+          },
+          {
+            "id": "D",
+            "text": "$a > 0$"
+          }
+        ],
+        "explanation": "导数为 $f'(x) = 3ax^2 + 1$。因 $x^2 \\ge 0$，当 $a \\ge 0$ 时导数对一切 $x$ 恒为正。\\n\\n$a = 0$ 必须包含在内：此时 $f(x) = x$，仍为增函数。若 $a < 0$，当 $|x|$ 足够大时导数变负，函数最终递减。"
+      }
+    },
+    "tags": [
+      "monotonicity",
+      "parameter"
+    ],
+    "estimatedTimeSec": 145,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r24",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Functions 函数",
+    "skill": "Domain and range 定义域与值域",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the domain of $f(x) = \\dfrac{1}{\\sqrt{4 - x}}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x \\le 4$"
+      },
+      {
+        "id": "B",
+        "text": "$x > 4$"
+      },
+      {
+        "id": "C",
+        "text": "$x \\ne 4$"
+      },
+      {
+        "id": "D",
+        "text": "$x < 4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Two conditions act at once. The radicand must be non-negative, and the denominator must not be zero — so $4 - x > 0$ strictly, giving $x < 4$.\\n\\nAt $x = 4$ the root is zero and the fraction is undefined, which is why the endpoint is excluded.",
+    "distractorRationale": {
+      "A": "Includes $x = 4$, where the denominator vanishes.",
+      "B": "Makes the radicand negative.",
+      "C": "Allows values above 4."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "函数 $f(x) = \\dfrac{1}{\\sqrt{4 - x}}$ 的定义域是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$x \\le 4$"
+          },
+          {
+            "id": "B",
+            "text": "$x > 4$"
+          },
+          {
+            "id": "C",
+            "text": "$x \\ne 4$"
+          },
+          {
+            "id": "D",
+            "text": "$x < 4$"
+          }
+        ],
+        "explanation": "两个条件同时起作用：被开方数非负，且分母不能为零，故须 $4 - x > 0$，即 $x < 4$。\\n\\n当 $x = 4$ 时根号为零，分式无定义，因此端点排除。"
+      }
+    },
+    "tags": [
+      "domain",
+      "combined-conditions"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r25",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Lines 直线",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the midpoint of the segment joining $(2, 4)$ and $(6, 10)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$(4, 7)$"
+      },
+      {
+        "id": "B",
+        "text": "$(4, 6)$"
+      },
+      {
+        "id": "C",
+        "text": "$(2, 3)$"
+      },
+      {
+        "id": "D",
+        "text": "$(8, 14)$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Average each coordinate: $\\left(\\dfrac{2+6}{2}, \\dfrac{4+10}{2}\\right) = (4, 7)$.",
+    "distractorRationale": {
+      "B": "Averages the first coordinate but not the second.",
+      "C": "Takes the differences instead.",
+      "D": "Adds without dividing."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "连接 $(2, 4)$ 与 $(6, 10)$ 的线段中点是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$(4, 7)$"
+          },
+          {
+            "id": "B",
+            "text": "$(4, 6)$"
+          },
+          {
+            "id": "C",
+            "text": "$(2, 3)$"
+          },
+          {
+            "id": "D",
+            "text": "$(8, 14)$"
+          }
+        ],
+        "explanation": "分别取两坐标的平均：$\\left(\\dfrac{2+6}{2}, \\dfrac{4+10}{2}\\right) = (4, 7)$。"
+      }
+    },
+    "tags": [
+      "midpoint"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r26",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Circles 圆",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the equation of the circle with centre $(0, 0)$ and radius $5$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$(x-5)^2 + y^2 = 0$"
+      },
+      {
+        "id": "B",
+        "text": "$x^2 + y^2 = 25$"
+      },
+      {
+        "id": "C",
+        "text": "$x + y = 5$"
+      },
+      {
+        "id": "D",
+        "text": "$x^2 + y^2 = 5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The standard form is $x^2 + y^2 = r^2$, and $r^2 = 25$. Writing $5$ on the right is the standard slip: the constant is the square of the radius, not the radius.",
+    "distractorRationale": {
+      "A": "Describes a single point.",
+      "C": "Is a straight line.",
+      "D": "Gives a radius of $\\sqrt{5}$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "圆心为 $(0, 0)$、半径为 $5$ 的圆的方程是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$(x-5)^2 + y^2 = 0$"
+          },
+          {
+            "id": "B",
+            "text": "$x^2 + y^2 = 25$"
+          },
+          {
+            "id": "C",
+            "text": "$x + y = 5$"
+          },
+          {
+            "id": "D",
+            "text": "$x^2 + y^2 = 5$"
+          }
+        ],
+        "explanation": "标准方程为 $x^2 + y^2 = r^2$，其中 $r^2 = 25$。右边写成 $5$ 是常见错误：常数项是半径的平方，而非半径本身。"
+      }
+    },
+    "tags": [
+      "circle-equation"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r27",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Vectors 向量",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the magnitude of $\\vec{a} = (3, 4)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$25$"
+      },
+      {
+        "id": "B",
+        "text": "$7$"
+      },
+      {
+        "id": "C",
+        "text": "$5$"
+      },
+      {
+        "id": "D",
+        "text": "$12$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "$|\\vec{a}| = \\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$.",
+    "distractorRationale": {
+      "A": "Omits the square root.",
+      "B": "Adds the components.",
+      "D": "Multiplies them."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "向量 $\\vec{a} = (3, 4)$ 的模是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$25$"
+          },
+          {
+            "id": "B",
+            "text": "$7$"
+          },
+          {
+            "id": "C",
+            "text": "$5$"
+          },
+          {
+            "id": "D",
+            "text": "$12$"
+          }
+        ],
+        "explanation": "$|\\vec{a}| = \\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$。"
+      }
+    },
+    "tags": [
+      "vector-magnitude"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r28",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Complex numbers 复数",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the conjugate of $z = 2 - 5i$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-2 - 5i$"
+      },
+      {
+        "id": "B",
+        "text": "$-2 + 5i$"
+      },
+      {
+        "id": "C",
+        "text": "$5 - 2i$"
+      },
+      {
+        "id": "D",
+        "text": "$2 + 5i$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The conjugate reverses the sign of the imaginary part only, leaving the real part alone: $2 + 5i$.",
+    "distractorRationale": {
+      "A": "Changes only the real part.",
+      "B": "Changes both parts.",
+      "C": "Swaps the parts."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "复数 $z = 2 - 5i$ 的共轭复数是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$-2 - 5i$"
+          },
+          {
+            "id": "B",
+            "text": "$-2 + 5i$"
+          },
+          {
+            "id": "C",
+            "text": "$5 - 2i$"
+          },
+          {
+            "id": "D",
+            "text": "$2 + 5i$"
+          }
+        ],
+        "explanation": "共轭复数只改变虚部的符号，实部保持不变：$2 + 5i$。"
+      }
+    },
+    "tags": [
+      "complex-conjugate"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r29",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Lines 直线",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A line passes through $(1, 2)$ and $(5, 14)$. What is its gradient?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$12$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Gradient is the change in $y$ over the change in $x$: $\\dfrac{14 - 2}{5 - 1} = \\dfrac{12}{4} = 3$.",
+    "distractorRationale": {
+      "B": "Divides by 3 instead of 4.",
+      "C": "Gives the rise without dividing.",
+      "D": "Inverts the ratio."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "经过 $(1, 2)$ 与 $(5, 14)$ 两点的直线，其斜率为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$3$"
+          },
+          {
+            "id": "B",
+            "text": "$4$"
+          },
+          {
+            "id": "C",
+            "text": "$12$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{1}{3}$"
+          }
+        ],
+        "explanation": "斜率等于纵坐标之差除以横坐标之差：$\\dfrac{14 - 2}{5 - 1} = \\dfrac{12}{4} = 3$。"
+      }
+    },
+    "tags": [
+      "gradient"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r30",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Circles 圆",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "The line $y = x + c$ is tangent to the circle $x^2 + y^2 = 8$. What is a possible value of $c$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$8$"
+      },
+      {
+        "id": "D",
+        "text": "$2\\sqrt{2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Tangency means the distance from the centre to the line equals the radius.\\n\\nWriting the line as $x - y + c = 0$, that distance is $\\dfrac{|c|}{\\sqrt{2}}$, and the radius is $\\sqrt{8} = 2\\sqrt{2}$. Setting them equal gives $|c| = 2\\sqrt{2} \\times \\sqrt{2} = 4$.",
+    "distractorRationale": {
+      "A": "Would place the line inside the circle, cutting it twice.",
+      "C": "Would miss the circle entirely.",
+      "D": "Gives the radius, forgetting the factor from the distance formula."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "直线 $y = x + c$ 与圆 $x^2 + y^2 = 8$ 相切，则 $c$ 的一个可能取值是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$2$"
+          },
+          {
+            "id": "B",
+            "text": "$4$"
+          },
+          {
+            "id": "C",
+            "text": "$8$"
+          },
+          {
+            "id": "D",
+            "text": "$2\\sqrt{2}$"
+          }
+        ],
+        "explanation": "相切意味着圆心到直线的距离等于半径。\\n\\n将直线写为 $x - y + c = 0$，该距离为 $\\dfrac{|c|}{\\sqrt{2}}$，半径为 $\\sqrt{8} = 2\\sqrt{2}$。令两者相等得 $|c| = 2\\sqrt{2} \\times \\sqrt{2} = 4$。"
+      }
+    },
+    "tags": [
+      "tangent",
+      "circle"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r31",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Ellipses 椭圆",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For the ellipse $\\dfrac{x^2}{25} + \\dfrac{y^2}{16} = 1$, what is the distance from the centre to a focus?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$5$"
+      },
+      {
+        "id": "B",
+        "text": "$9$"
+      },
+      {
+        "id": "C",
+        "text": "$3$"
+      },
+      {
+        "id": "D",
+        "text": "$4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "For an ellipse, $c^2 = a^2 - b^2 = 25 - 16 = 9$, so $c = 3$.\\n\\nNote the minus sign: for a hyperbola the same quantities are added instead, and confusing the two is the usual error.",
+    "distractorRationale": {
+      "A": "Gives $a$.",
+      "B": "Gives $c^2$ without taking the root.",
+      "D": "Gives $b$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "椭圆 $\\dfrac{x^2}{25} + \\dfrac{y^2}{16} = 1$ 的中心到焦点的距离是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$5$"
+          },
+          {
+            "id": "B",
+            "text": "$9$"
+          },
+          {
+            "id": "C",
+            "text": "$3$"
+          },
+          {
+            "id": "D",
+            "text": "$4$"
+          }
+        ],
+        "explanation": "对椭圆有 $c^2 = a^2 - b^2 = 25 - 16 = 9$，故 $c = 3$。\\n\\n注意是相减：双曲线中这两个量是相加的，混淆二者是常见错误。"
+      }
+    },
+    "tags": [
+      "ellipse",
+      "focus"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r32",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Parabolas 抛物线",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the equation of the directrix of the parabola $y^2 = 12x$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x = 3$"
+      },
+      {
+        "id": "B",
+        "text": "$y = -3$"
+      },
+      {
+        "id": "C",
+        "text": "$x = -12$"
+      },
+      {
+        "id": "D",
+        "text": "$x = -3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Comparing with $y^2 = 4px$ gives $4p = 12$, so $p = 3$. The focus sits at $(3, 0)$ and the directrix is the vertical line on the opposite side, $x = -3$.",
+    "distractorRationale": {
+      "A": "Gives the focus, not the directrix.",
+      "B": "Uses the wrong axis; this parabola opens sideways.",
+      "C": "Takes the coefficient itself as the distance."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "抛物线 $y^2 = 12x$ 的准线方程是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$x = 3$"
+          },
+          {
+            "id": "B",
+            "text": "$y = -3$"
+          },
+          {
+            "id": "C",
+            "text": "$x = -12$"
+          },
+          {
+            "id": "D",
+            "text": "$x = -3$"
+          }
+        ],
+        "explanation": "与 $y^2 = 4px$ 比较得 $4p = 12$，故 $p = 3$。焦点为 $(3, 0)$，准线是位于另一侧的竖直线 $x = -3$。"
+      }
+    },
+    "tags": [
+      "parabola",
+      "directrix"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r33",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Vectors 向量",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For what value of $k$ are $\\vec{a} = (2, 3)$ and $\\vec{b} = (4, k)$ parallel?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6$"
+      },
+      {
+        "id": "B",
+        "text": "$8$"
+      },
+      {
+        "id": "C",
+        "text": "$5$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{3}{2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Parallel vectors are scalar multiples of each other. Since $4 = 2 \\times 2$, the same factor must apply to the second component: $k = 2 \\times 3 = 6$.\\n\\nEquivalently, the cross-product condition $2k - 12 = 0$ gives $k = 6$.",
+    "distractorRationale": {
+      "B": "Doubles the wrong component.",
+      "C": "Adds the difference instead of scaling.",
+      "D": "Gives the ratio, not the component."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "当 $k$ 取何值时，$\\vec{a} = (2, 3)$ 与 $\\vec{b} = (4, k)$ 平行？",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$6$"
+          },
+          {
+            "id": "B",
+            "text": "$8$"
+          },
+          {
+            "id": "C",
+            "text": "$5$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{3}{2}$"
+          }
+        ],
+        "explanation": "平行向量互为数乘。因 $4 = 2 \\times 2$，第二个分量也须乘以同一倍数：$k = 2 \\times 3 = 6$。\\n\\n或由平行条件 $2k - 12 = 0$ 得 $k = 6$。"
+      }
+    },
+    "tags": [
+      "vectors",
+      "parallel"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r34",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Complex numbers 复数",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Simplify $\\dfrac{1}{i}$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-1$"
+      },
+      {
+        "id": "B",
+        "text": "$-i$"
+      },
+      {
+        "id": "C",
+        "text": "$i$"
+      },
+      {
+        "id": "D",
+        "text": "$1$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Multiply numerator and denominator by $i$: $\\dfrac{1}{i} \\times \\dfrac{i}{i} = \\dfrac{i}{i^2} = \\dfrac{i}{-1} = -i$.",
+    "distractorRationale": {
+      "A": "Gives $i^2$ rather than the quotient.",
+      "C": "Drops the sign from $i^2 = -1$.",
+      "D": "Treats $i$ as though it were 1."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "化简 $\\dfrac{1}{i}$。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$-1$"
+          },
+          {
+            "id": "B",
+            "text": "$-i$"
+          },
+          {
+            "id": "C",
+            "text": "$i$"
+          },
+          {
+            "id": "D",
+            "text": "$1$"
+          }
+        ],
+        "explanation": "分子分母同乘 $i$：$\\dfrac{1}{i} \\times \\dfrac{i}{i} = \\dfrac{i}{i^2} = \\dfrac{i}{-1} = -i$。"
+      }
+    },
+    "tags": [
+      "complex-division"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r35",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Solid geometry with space coordinates 立体几何与空间坐标",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the volume of a sphere of radius $3$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$12\\pi$"
+      },
+      {
+        "id": "B",
+        "text": "$9\\pi$"
+      },
+      {
+        "id": "C",
+        "text": "$36\\pi$"
+      },
+      {
+        "id": "D",
+        "text": "$27\\pi$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "$V = \\dfrac{4}{3}\\pi r^3 = \\dfrac{4}{3}\\pi (27) = 36\\pi$.",
+    "distractorRationale": {
+      "A": "Uses $4\\pi r$, the wrong formula.",
+      "B": "Gives the area of a great circle.",
+      "D": "Gives $r^3$ times $\\pi$, omitting the factor $\\tfrac{4}{3}$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "半径为 $3$ 的球的体积是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$12\\pi$"
+          },
+          {
+            "id": "B",
+            "text": "$9\\pi$"
+          },
+          {
+            "id": "C",
+            "text": "$36\\pi$"
+          },
+          {
+            "id": "D",
+            "text": "$27\\pi$"
+          }
+        ],
+        "explanation": "$V = \\dfrac{4}{3}\\pi r^3 = \\dfrac{4}{3}\\pi (27) = 36\\pi$。"
+      }
+    },
+    "tags": [
+      "sphere",
+      "volume"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r36",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Hyperbolas 双曲线",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For the hyperbola $\\dfrac{x^2}{16} - \\dfrac{y^2}{9} = 1$, what is the distance from the centre to a focus?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$4$"
+      },
+      {
+        "id": "B",
+        "text": "$\\sqrt{7}$"
+      },
+      {
+        "id": "C",
+        "text": "$3$"
+      },
+      {
+        "id": "D",
+        "text": "$5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "For a hyperbola the relation is $c^2 = a^2 + b^2 = 16 + 9 = 25$, so $c = 5$.\\n\\nThe sign is what separates it from the ellipse, where the same quantities are subtracted — and $\\sqrt{7}$ is exactly what subtracting would have given here.",
+    "distractorRationale": {
+      "A": "Gives $a$.",
+      "B": "Uses the ellipse relation, subtracting instead of adding.",
+      "C": "Gives $b$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "双曲线 $\\dfrac{x^2}{16} - \\dfrac{y^2}{9} = 1$ 的中心到焦点的距离是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$4$"
+          },
+          {
+            "id": "B",
+            "text": "$\\sqrt{7}$"
+          },
+          {
+            "id": "C",
+            "text": "$3$"
+          },
+          {
+            "id": "D",
+            "text": "$5$"
+          }
+        ],
+        "explanation": "对双曲线有 $c^2 = a^2 + b^2 = 16 + 9 = 25$，故 $c = 5$。\\n\\n符号正是它与椭圆的分界：椭圆中这两个量相减，而相减在此恰好给出 $\\sqrt{7}$。"
+      }
+    },
+    "tags": [
+      "hyperbola",
+      "focus"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r37",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Vectors 向量",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the cosine of the angle between $\\vec{a} = (1, 0)$ and $\\vec{b} = (1, 1)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{\\sqrt{2}}{2}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "C",
+        "text": "$1$"
+      },
+      {
+        "id": "D",
+        "text": "$0$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Use $\\cos\\theta = \\dfrac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}||\\vec{b}|} = \\dfrac{1}{1 \\times \\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}$.\\n\\nThat corresponds to $45^\\circ$, which matches the geometry: one vector lies along the axis and the other along the diagonal.",
+    "distractorRationale": {
+      "B": "Corresponds to $60^\\circ$.",
+      "C": "Would mean the vectors are parallel.",
+      "D": "Would mean they are perpendicular."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "向量 $\\vec{a} = (1, 0)$ 与 $\\vec{b} = (1, 1)$ 夹角的余弦值是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{\\sqrt{2}}{2}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{1}{2}$"
+          },
+          {
+            "id": "C",
+            "text": "$1$"
+          },
+          {
+            "id": "D",
+            "text": "$0$"
+          }
+        ],
+        "explanation": "由 $\\cos\\theta = \\dfrac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}||\\vec{b}|} = \\dfrac{1}{1 \\times \\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}$。\\n\\n对应 $45^\\circ$，与图形一致：一个向量沿坐标轴，另一个沿对角线。"
+      }
+    },
+    "tags": [
+      "dot-product",
+      "angle"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r38",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Geometry & Algebra 几何与代数",
+    "skill": "Solid geometry with space coordinates 立体几何与空间坐标",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A cube has edge length $2$. What is the length of its space diagonal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2\\sqrt{2}$"
+      },
+      {
+        "id": "B",
+        "text": "$2\\sqrt{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$4$"
+      },
+      {
+        "id": "D",
+        "text": "$6$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The space diagonal of a cube of edge $a$ is $a\\sqrt{3}$, so here it is $2\\sqrt{3}$.\\n\\nThe face diagonal is $a\\sqrt{2} = 2\\sqrt{2}$; the two are easily confused, and the space diagonal is always the longer.",
+    "distractorRationale": {
+      "A": "Gives the face diagonal.",
+      "C": "Doubles the edge.",
+      "D": "Sums three edges."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "棱长为 $2$ 的正方体，其体对角线长为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$2\\sqrt{2}$"
+          },
+          {
+            "id": "B",
+            "text": "$2\\sqrt{3}$"
+          },
+          {
+            "id": "C",
+            "text": "$4$"
+          },
+          {
+            "id": "D",
+            "text": "$6$"
+          }
+        ],
+        "explanation": "棱长为 $a$ 的正方体，体对角线为 $a\\sqrt{3}$，故此处为 $2\\sqrt{3}$。\\n\\n面对角线为 $a\\sqrt{2} = 2\\sqrt{2}$；二者易混，而体对角线总是更长。"
+      }
+    },
+    "tags": [
+      "cube",
+      "space-diagonal"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r39",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Mean 平均数",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the median of $3$, $7$, $2$, $9$, $5$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$7$"
+      },
+      {
+        "id": "B",
+        "text": "$2$"
+      },
+      {
+        "id": "C",
+        "text": "$5$"
+      },
+      {
+        "id": "D",
+        "text": "$5.2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Order them first: $2, 3, 5, 7, 9$. With five values the median is the third, which is $5$.\\n\\nTaking the middle of the unordered list would give $2$ — the commonest error on this question.",
+    "distractorRationale": {
+      "A": "Is the fourth value after ordering.",
+      "B": "Is the middle of the unordered list.",
+      "D": "Is the mean, not the median."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "数据 $3$、$7$、$2$、$9$、$5$ 的中位数是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$7$"
+          },
+          {
+            "id": "B",
+            "text": "$2$"
+          },
+          {
+            "id": "C",
+            "text": "$5$"
+          },
+          {
+            "id": "D",
+            "text": "$5.2$"
+          }
+        ],
+        "explanation": "先排序：$2, 3, 5, 7, 9$。五个数据的中位数是第三个，即 $5$。\\n\\n若直接取原始数据中间的数会得到 $2$，这是本题最常见的错误。"
+      }
+    },
+    "tags": [
+      "median"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r40",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Classical probability 古典概型",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "The probability of an event is $0.3$. What is the probability that it does not occur?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.5$"
+      },
+      {
+        "id": "B",
+        "text": "$1.3$"
+      },
+      {
+        "id": "C",
+        "text": "$0.3$"
+      },
+      {
+        "id": "D",
+        "text": "$0.7$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Complementary probabilities sum to $1$, so the answer is $1 - 0.3 = 0.7$.",
+    "distractorRationale": {
+      "A": "Assumes the two outcomes are equally likely.",
+      "B": "Adds instead of subtracting; probability cannot exceed 1.",
+      "C": "Repeats the original probability."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某事件发生的概率为 $0.3$，则它不发生的概率是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.5$"
+          },
+          {
+            "id": "B",
+            "text": "$1.3$"
+          },
+          {
+            "id": "C",
+            "text": "$0.3$"
+          },
+          {
+            "id": "D",
+            "text": "$0.7$"
+          }
+        ],
+        "explanation": "对立事件的概率之和为 $1$，故为 $1 - 0.3 = 0.7$。"
+      }
+    },
+    "tags": [
+      "complement"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r41",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Classical probability 古典概型",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two mutually exclusive events have probabilities $0.2$ and $0.5$. What is the probability that at least one occurs?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.7$"
+      },
+      {
+        "id": "B",
+        "text": "$0.3$"
+      },
+      {
+        "id": "C",
+        "text": "$0.6$"
+      },
+      {
+        "id": "D",
+        "text": "$0.1$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Mutually exclusive events cannot happen together, so their probabilities simply add: $0.2 + 0.5 = 0.7$.\\n\\nIf the events were independent rather than exclusive, the overlap would have to be subtracted and the answer would be $0.6$.",
+    "distractorRationale": {
+      "B": "Takes the difference.",
+      "C": "Subtracts an overlap that mutually exclusive events do not have.",
+      "D": "Multiplies the probabilities, which suits independence, not exclusivity."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "两个互斥事件的概率分别为 $0.2$ 与 $0.5$，则至少有一个发生的概率是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.7$"
+          },
+          {
+            "id": "B",
+            "text": "$0.3$"
+          },
+          {
+            "id": "C",
+            "text": "$0.6$"
+          },
+          {
+            "id": "D",
+            "text": "$0.1$"
+          }
+        ],
+        "explanation": "互斥事件不能同时发生，故概率直接相加：$0.2 + 0.5 = 0.7$。\\n\\n若两事件是相互独立而非互斥，则需减去重叠部分，答案为 $0.6$。"
+      }
+    },
+    "tags": [
+      "mutually-exclusive"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r42",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Classical probability 古典概型",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two independent events have probabilities $0.4$ and $0.5$. What is the probability that both occur?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.45$"
+      },
+      {
+        "id": "B",
+        "text": "$0.2$"
+      },
+      {
+        "id": "C",
+        "text": "$0.1$"
+      },
+      {
+        "id": "D",
+        "text": "$0.9$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "For independent events the probabilities multiply: $0.4 \\times 0.5 = 0.2$.",
+    "distractorRationale": {
+      "A": "Averages them.",
+      "C": "Takes the difference.",
+      "D": "Adds them, which applies to mutually exclusive events."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "两个相互独立事件的概率分别为 $0.4$ 与 $0.5$，则两者同时发生的概率是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.45$"
+          },
+          {
+            "id": "B",
+            "text": "$0.2$"
+          },
+          {
+            "id": "C",
+            "text": "$0.1$"
+          },
+          {
+            "id": "D",
+            "text": "$0.9$"
+          }
+        ],
+        "explanation": "相互独立事件的概率相乘：$0.4 \\times 0.5 = 0.2$。"
+      }
+    },
+    "tags": [
+      "independence"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r43",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Mean 平均数",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In how many ways can $3$ people be chosen from $5$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$60$"
+      },
+      {
+        "id": "B",
+        "text": "$120$"
+      },
+      {
+        "id": "C",
+        "text": "$10$"
+      },
+      {
+        "id": "D",
+        "text": "$15$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Order does not matter, so this is a combination: $\\binom{5}{3} = \\dfrac{5 \\times 4 \\times 3}{3 \\times 2 \\times 1} = 10$.\\n\\nIf the three were being placed in distinct roles, order would matter and the answer would be $60$.",
+    "distractorRationale": {
+      "A": "Counts arrangements, where order matters.",
+      "B": "Gives $5!$.",
+      "D": "Miscounts the denominator."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "从 $5$ 人中选出 $3$ 人，共有多少种选法？",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$60$"
+          },
+          {
+            "id": "B",
+            "text": "$120$"
+          },
+          {
+            "id": "C",
+            "text": "$10$"
+          },
+          {
+            "id": "D",
+            "text": "$15$"
+          }
+        ],
+        "explanation": "选法与顺序无关，属组合：$\\binom{5}{3} = \\dfrac{5 \\times 4 \\times 3}{3 \\times 2 \\times 1} = 10$。\\n\\n若三人担任不同职务，则顺序有别，答案为 $60$。"
+      }
+    },
+    "tags": [
+      "combinations"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r44",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Variance 方差",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two data sets have the same mean, but set $A$ has a larger standard deviation than set $B$. What does this tell us?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Set $A$ has larger values"
+      },
+      {
+        "id": "B",
+        "text": "Set $A$ has more values"
+      },
+      {
+        "id": "C",
+        "text": "Set $A$ has a larger median"
+      },
+      {
+        "id": "D",
+        "text": "Set $A$ is more spread out about the mean"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Standard deviation measures dispersion about the mean, nothing else. With equal means, the larger standard deviation simply means the values of $A$ sit further from that shared centre.\\n\\nIt says nothing about how many values there are, or about the median.",
+    "distractorRationale": {
+      "A": "Larger values would raise the mean, which is equal here.",
+      "B": "Sample size is not measured by the standard deviation.",
+      "C": "The median is unrelated to dispersion."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "两组数据平均数相同，但 $A$ 组的标准差大于 $B$ 组，这说明",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Set $A$ has larger values"
+          },
+          {
+            "id": "B",
+            "text": "Set $A$ has more values"
+          },
+          {
+            "id": "C",
+            "text": "Set $A$ has a larger median"
+          },
+          {
+            "id": "D",
+            "text": "Set $A$ is more spread out about the mean"
+          }
+        ],
+        "explanation": "标准差衡量数据相对均值的离散程度，仅此而已。均值相同时，标准差较大只表示 $A$ 组的数据离这个共同中心更远。\\n\\n它不说明数据个数，也不说明中位数。"
+      }
+    },
+    "tags": [
+      "standard-deviation"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r45",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Mean 平均数",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A die is rolled once. What is the expected value of the number shown?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3.5$"
+      },
+      {
+        "id": "B",
+        "text": "$4$"
+      },
+      {
+        "id": "C",
+        "text": "$6$"
+      },
+      {
+        "id": "D",
+        "text": "$3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Each face has probability $\\dfrac{1}{6}$, so the expected value is $\\dfrac{1+2+3+4+5+6}{6} = \\dfrac{21}{6} = 3.5$.\\n\\nThe expectation need not be a value the die can actually show — that is normal for an average.",
+    "distractorRationale": {
+      "B": "Rounds up.",
+      "C": "Gives the maximum.",
+      "D": "Rounds down; the expectation lies between 3 and 4."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "投掷一枚骰子一次，所得点数的期望值是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$3.5$"
+          },
+          {
+            "id": "B",
+            "text": "$4$"
+          },
+          {
+            "id": "C",
+            "text": "$6$"
+          },
+          {
+            "id": "D",
+            "text": "$3$"
+          }
+        ],
+        "explanation": "每个点数的概率均为 $\\dfrac{1}{6}$，故期望为 $\\dfrac{1+2+3+4+5+6}{6} = \\dfrac{21}{6} = 3.5$。\\n\\n期望值不必是骰子能真正掷出的点数——对平均值而言这很正常。"
+      }
+    },
+    "tags": [
+      "expected-value"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r46",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Normal distribution 正态分布",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For a normal distribution, roughly what proportion of values lie within one standard deviation of the mean?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$50\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$68\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$99.7\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$95\\%$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The empirical rule gives about $68\\%$ within one standard deviation, $95\\%$ within two and $99.7\\%$ within three.",
+    "distractorRationale": {
+      "A": "Is the proportion below the mean.",
+      "C": "Is within three.",
+      "D": "Is within two standard deviations."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "正态分布中，落在均值一个标准差范围内的数据约占",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$50\\%$"
+          },
+          {
+            "id": "B",
+            "text": "$68\\%$"
+          },
+          {
+            "id": "C",
+            "text": "$99.7\\%$"
+          },
+          {
+            "id": "D",
+            "text": "$95\\%$"
+          }
+        ],
+        "explanation": "经验法则：约 $68\\%$ 落在一个标准差内，$95\\%$ 落在两个标准差内，$99.7\\%$ 落在三个标准差内。"
+      }
+    },
+    "tags": [
+      "normal-distribution"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r47",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Classical probability 古典概型",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Three coins are tossed. What is the probability of getting exactly two heads?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{8}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{2}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{3}{8}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "There are $2^3 = 8$ equally likely outcomes. Exactly two heads occurs in three of them — HHT, HTH, THH — so the probability is $\\dfrac{3}{8}$.\\n\\nCounting only one arrangement gives $\\dfrac{1}{8}$, which is the probability of one specific sequence rather than of the event.",
+    "distractorRationale": {
+      "A": "Counts one specific arrangement only.",
+      "B": "Not a possible value for this experiment.",
+      "D": "Assumes only two outcomes are possible."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "抛掷三枚硬币，恰好出现两次正面的概率是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{1}{8}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{2}{3}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{3}{8}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{1}{2}$"
+          }
+        ],
+        "explanation": "共有 $2^3 = 8$ 种等可能结果。恰好两次正面的有三种——正正反、正反正、反正正——故概率为 $\\dfrac{3}{8}$。\\n\\n若只数一种排列会得到 $\\dfrac{1}{8}$，那是某一特定序列的概率，而非该事件的概率。"
+      }
+    },
+    "tags": [
+      "binomial",
+      "counting"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-mth-r48",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_math",
+    "domain": "Probability & Statistics 概率统计",
+    "skill": "Variance 方差",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "If every value in a data set is multiplied by $3$, what happens to the standard deviation?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "multiplied by $9$"
+      },
+      {
+        "id": "B",
+        "text": "unchanged"
+      },
+      {
+        "id": "C",
+        "text": "divided by $3$"
+      },
+      {
+        "id": "D",
+        "text": "multiplied by $3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Scaling every value by $3$ scales every deviation from the mean by $3$ as well, so the standard deviation is multiplied by $3$.\\n\\nThe variance, being the square, is multiplied by $9$ — and confusing the two is the usual error. Adding a constant, by contrast, changes neither.",
+    "distractorRationale": {
+      "A": "Applies to the variance.",
+      "B": "Applies to adding a constant, not multiplying.",
+      "C": "Reverses the direction."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "若数据中每个值都乘以 $3$，则标准差",
+        "choices": [
+          {
+            "id": "A",
+            "text": "multiplied by $9$"
+          },
+          {
+            "id": "B",
+            "text": "unchanged"
+          },
+          {
+            "id": "C",
+            "text": "divided by $3$"
+          },
+          {
+            "id": "D",
+            "text": "multiplied by $3$"
+          }
+        ],
+        "explanation": "每个数据乘以 $3$，各数据与均值的偏差也乘以 $3$，故标准差乘以 $3$。\\n\\n方差是其平方，故乘以 $9$——混淆二者是常见错误。而加上常数则两者都不改变。"
+      }
+    },
+    "tags": [
+      "standard-deviation",
+      "scaling"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  }
+]

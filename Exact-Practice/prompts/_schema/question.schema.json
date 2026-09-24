@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://exacttryout.com/schema/question.json",
+  "title": "Exact Try Out — Question",
+  "description": "Kontrak keluaran AI penghasil soal. Objek yang lolos skema ini langsung bisa dirender oleh aplikasi tanpa penyesuaian.",
+  "type": "object",
+  "required": [
+    "id", "exam", "section", "domain", "skill", "difficulty",
+    "calculatorAllowed", "locale", "stem", "type", "answer",
+    "explanation", "tags", "estimatedTimeSec", "points"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]{6,60}$", "description": "slug unik, mis. sat-math-alg-0142" },
+    "exam": { "enum": ["SAT", "CSCA", "UTBK", "ALEVEL"] },
+    "section": { "type": "string", "description": "kode section persis dari blueprint, mis. sat_math_m1" },
+    "domain": { "type": "string" },
+    "skill": { "type": "string" },
+    "difficulty": { "enum": ["E", "M", "H"] },
+    "irtB": { "type": "number", "minimum": -3, "maximum": 3 },
+    "calculatorAllowed": { "type": "boolean" },
+    "locale": { "enum": ["en", "id", "zh"] },
+    "i18n": {
+      "type": "object",
+      "description": "Terjemahan penuh. WAJIB untuk CSCA (kunci en dan zh).",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "stem": { "type": "string" },
+          "explanation": { "type": "string" },
+          "stimulus": { "$ref": "#/$defs/stimulus" },
+          "choices": { "type": "array", "items": { "$ref": "#/$defs/choice" } }
+        }
+      }
+    },
+    "stimulus": { "$ref": "#/$defs/stimulus" },
+    "figure": { "$ref": "#/$defs/figure" },
+    "stem": { "type": "string", "minLength": 5 },
+    "type": {
+      "enum": [
+        "mcq_single", "mcq_multi", "spr_numeric", "numeric_multi", "short_text",
+        "true_false_multi", "table_grid", "matching", "ordering",
+        "dropdown_inline", "graph_plot", "essay_rubric"
+      ]
+    },
+    "choices": { "type": "array", "items": { "$ref": "#/$defs/choice" }, "minItems": 2, "maxItems": 6 },
+    "gridRows": { "type": "array", "items": { "$ref": "#/$defs/idText" } },
+    "gridCols": { "type": "array", "items": { "$ref": "#/$defs/idText" } },
+    "left": { "type": "array", "items": { "$ref": "#/$defs/idText" } },
+    "right": { "type": "array", "items": { "$ref": "#/$defs/idText" } },
+    "blanks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "options"],
+        "properties": {
+          "id": { "type": "string" },
+          "options": { "type": "array", "items": { "$ref": "#/$defs/choice" }, "minItems": 2 }
+        }
+      }
+    },
+    "numericBlanks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id"],
+        "properties": { "id": { "type": "string" }, "label": { "type": "string" }, "unit": { "type": "string" } }
+      }
+    },
+    "statements": { "type": "array", "items": { "$ref": "#/$defs/idText" }, "minItems": 2, "maxItems": 6 },
+    "plotConfig": {
+      "type": "object",
+      "required": ["window", "mode"],
+      "properties": {
+        "window": { "$ref": "#/$defs/window" },
+        "mode": { "enum": ["points", "line", "both"] },
+        "snap": { "type": "number" }
+      }
+    },
+    "answer": { "$ref": "#/$defs/answer" },
+    "explanation": { "type": "string", "minLength": 40 },
+    "hints": { "type": "array", "items": { "type": "string" }, "maxItems": 3 },
+    "distractorRationale": { "type": "object", "additionalProperties": { "type": "string" } },
+    "formulaRefs": { "type": "array", "items": { "type": "string" } },
+    "tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "estimatedTimeSec": { "type": "integer", "minimum": 20, "maximum": 900 },
+    "points": { "type": "number", "minimum": 0.5, "maximum": 20 },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "generator": { "type": "string" },
+        "model": { "type": "string" },
+        "reviewed": { "type": "boolean" },
+        "reviewer": { "type": "string" },
+        "version": { "type": "integer" }
+      }
+    }
+  },
+
+  "$defs": {
+    "idText": {
+      "type": "object",
+      "required": ["id", "text"],
+      "properties": { "id": { "type": "string" }, "text": { "type": "string" } }
+    },
+    "choice": {
+      "type": "object",
+      "required": ["id", "text"],
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "figure": { "$ref": "#/$defs/figure" }
+      }
+    },
+    "stimulus": {
+      "type": "object",
+      "required": ["type", "content"],
+      "properties": {
+        "type": { "enum": ["passage", "dual_passage", "text", "quote", "notes", "audio"] },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "source": { "type": "string" },
+        "wordCount": { "type": "integer" },
+        "lineNumbering": { "type": "integer" }
+      }
+    },
+    "window": {
+      "type": "object",
+      "required": ["xmin", "xmax", "ymin", "ymax"],
+      "properties": {
+        "xmin": { "type": "number" }, "xmax": { "type": "number" },
+        "ymin": { "type": "number" }, "ymax": { "type": "number" }
+      }
+    },
+    "answer": {
+      "type": "object",
+      "required": ["mode"],
+      "oneOf": [
+        { "properties": { "mode": { "const": "choice" }, "value": { "type": "string" } }, "required": ["value"] },
+        { "properties": { "mode": { "const": "choice_set" }, "value": { "type": "array", "items": { "type": "string" } }, "selectCount": { "type": "integer" } }, "required": ["value", "selectCount"] },
+        { "properties": { "mode": { "const": "numeric" }, "value": { "type": "number" }, "tolerance": { "type": "number" }, "acceptedForms": { "type": "array", "items": { "type": "string" } }, "unit": { "type": "string" } }, "required": ["value"] },
+        { "properties": { "mode": { "const": "numeric_range" }, "min": { "type": "number" }, "max": { "type": "number" }, "unit": { "type": "string" } }, "required": ["min", "max"] },
+        { "properties": { "mode": { "const": "numeric_list" }, "values": { "type": "array", "items": { "type": "object", "required": ["key", "value"], "properties": { "key": { "type": "string" }, "value": { "type": "number" }, "tolerance": { "type": "number" } } } } }, "required": ["values"] },
+        { "properties": { "mode": { "const": "text" }, "accepted": { "type": "array", "items": { "type": "string" }, "minItems": 1 }, "caseSensitive": { "type": "boolean" }, "ignoreDiacritics": { "type": "boolean" } }, "required": ["accepted"] },
+        { "properties": { "mode": { "const": "boolean_list" }, "values": { "type": "array", "items": { "type": "boolean" } } }, "required": ["values"] },
+        { "properties": { "mode": { "const": "grid" }, "values": { "type": "object", "additionalProperties": { "type": "string" } } }, "required": ["values"] },
+        { "properties": { "mode": { "const": "pairs" }, "values": { "type": "object", "additionalProperties": { "type": "string" } } }, "required": ["values"] },
+        { "properties": { "mode": { "const": "sequence" }, "values": { "type": "array", "items": { "type": "string" } } }, "required": ["values"] },
+        { "properties": { "mode": { "const": "dropdowns" }, "values": { "type": "object", "additionalProperties": { "type": "string" } } }, "required": ["values"] },
+        { "properties": { "mode": { "const": "plot" }, "expect": { "type": "object" }, "tolerance": { "type": "number" } }, "required": ["expect"] },
+        { "properties": { "mode": { "const": "rubric" }, "rubric": { "type": "array", "items": { "type": "object", "required": ["criterion", "points", "descriptor"], "properties": { "criterion": { "type": "string" }, "points": { "type": "number" }, "descriptor": { "type": "string" } } } }, "exemplar": { "type": "string" } }, "required": ["rubric", "exemplar"] }
+      ]
+    },
+    "figure": {
+      "type": "object",
+      "required": ["kind", "alt"],
+      "properties": {
+        "kind": {
+          "enum": ["function_plot", "scatter", "bar_chart", "line_chart", "histogram",
+                   "pie_chart", "box_plot", "number_line", "geometry", "table", "circuit", "image"]
+        },
+        "alt": { "type": "string", "minLength": 15, "description": "Deskripsi lengkap untuk pembaca layar. Wajib." },
+        "caption": { "type": "string" },
+        "width": { "type": "number" },
+        "height": { "type": "number" }
+      },
+      "additionalProperties": true
+    }
+  }
+}

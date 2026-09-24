@@ -1,0 +1,1595 @@
+[
+  {
+    "id": "sat-rw-f01",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Marine biologist Asha Rahman spent four seasons cataloguing sponge species along a single reef wall. Her published list runs to more than two hundred entries, but she describes the work as ______: each dive added a handful of names to a register she expects future researchers to extend for decades."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "preliminary"
+      },
+      {
+        "id": "B",
+        "text": "conclusive"
+      },
+      {
+        "id": "C",
+        "text": "repetitive"
+      },
+      {
+        "id": "D",
+        "text": "controversial"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The colon introduces the evidence for the missing word: each dive added only a handful of names, and Rahman expects the register to be extended for decades. That describes a beginning, not an ending.\n\n«Preliminary» captures work that opens a line of inquiry rather than closing it.",
+    "distractorRationale": {
+      "B": "The opposite: work expected to be extended for decades has settled nothing.",
+      "C": "Adding new names each dive is not repetition, and nothing suggests monotony.",
+      "D": "No disagreement is mentioned anywhere in the text."
+    },
+    "tags": [
+      "words-in-context",
+      "colon-evidence"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f02",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Early critics dismissed the composer's late quartets as impenetrable, and for thirty years they were rarely programmed. That judgement now looks ______: the same works appear on concert schedules worldwide, and conservatories treat them as required study."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "unavoidable"
+      },
+      {
+        "id": "B",
+        "text": "premature"
+      },
+      {
+        "id": "C",
+        "text": "prescient"
+      },
+      {
+        "id": "D",
+        "text": "generous"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The colon supplies the contrast: works once called impenetrable are now performed worldwide and studied as a matter of course. A judgement made before the evidence was in is «premature».\n\nNote that the blank describes the early critics' verdict, not the works themselves.",
+    "distractorRationale": {
+      "A": "Nothing suggests the verdict was forced on them.",
+      "C": "«Prescient» means the critics saw the future correctly, which the evidence contradicts.",
+      "D": "The critics were dismissive, so their judgement was anything but generous."
+    },
+    "tags": [
+      "words-in-context",
+      "contrast"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f03",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The archive's cataloguing system was designed in 1912 and has been amended piecemeal ever since. Staff describe it as ______: no single principle governs it, yet every irregularity was once a reasonable answer to a problem that has since disappeared."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "arbitrary"
+      },
+      {
+        "id": "B",
+        "text": "elegant"
+      },
+      {
+        "id": "C",
+        "text": "accretive"
+      },
+      {
+        "id": "D",
+        "text": "obsolete"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The sentence after the colon holds two ideas together: no single governing principle, yet each oddity had a reason at the time. A system built up by successive additions is «accretive».\n\n«Arbitrary» is the trap, because it fits the first half — but it contradicts the second, which insists every irregularity was once reasonable.",
+    "distractorRationale": {
+      "A": "Fits «no single principle» but contradicts «every irregularity was once a reasonable answer».",
+      "B": "A system with no governing principle is not being praised as elegant.",
+      "D": "The system is still in use; the vanished problems are what is obsolete."
+    },
+    "tags": [
+      "words-in-context",
+      "both-halves"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f04",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Bamboo is often promoted as a sustainable building material because it reaches harvestable size in four years rather than the decades a hardwood requires. That advantage is real, but it holds only where the bamboo is grown near where it is used. Shipping lightweight canes across oceans consumes enough fuel to erase the difference, and treating them against insects adds a chemical cost that timber framing does not incur."
+    },
+    "stem": "Which choice best states the main purpose of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "To describe the process by which bamboo is harvested"
+      },
+      {
+        "id": "B",
+        "text": "To compare the appearance of bamboo and hardwood buildings"
+      },
+      {
+        "id": "C",
+        "text": "To argue that bamboo should replace hardwood in construction"
+      },
+      {
+        "id": "D",
+        "text": "To qualify a claim about bamboo by identifying the conditions under which it holds"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The text grants the growth-rate advantage, then narrows it with «but it holds only where». Transport and treatment are given as the conditions that can cancel it.\n\nThe author neither endorses nor rejects bamboo; the work of the passage is to bound a claim that is usually stated without limits.",
+    "distractorRationale": {
+      "A": "Harvesting is mentioned only through the four-year figure.",
+      "B": "Appearance is never discussed.",
+      "C": "The text complicates the case for bamboo rather than advocating it."
+    },
+    "tags": [
+      "purpose",
+      "qualification"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f05",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "In her 1954 monograph, historian Vera Lindqvist devoted eleven pages to a single ledger from a Baltic trading house. Reviewers at the time considered the attention excessive. The ledger, however, recorded transactions in four currencies and three languages, and Lindqvist used its columns to reconstruct a network of credit that no narrative source had described. Later historians came to regard those eleven pages as the book's foundation rather than its indulgence."
+    },
+    "stem": "Which choice best describes the function of the underlined portion — «Reviewers at the time considered the attention excessive» — in the text as a whole?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It states a view that the rest of the text goes on to overturn."
+      },
+      {
+        "id": "B",
+        "text": "It identifies a flaw that later historians confirmed."
+      },
+      {
+        "id": "C",
+        "text": "It provides evidence supporting Lindqvist's method."
+      },
+      {
+        "id": "D",
+        "text": "It explains why the monograph was not published sooner."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The sentence reports the contemporary verdict; «however» in the next sentence begins the case against it, and the final sentence records the reversal — «foundation rather than its indulgence».\n\nSetting up a view in order to dismantle it is a common structural move, and the giveaway is that the text spends its remaining space arguing the other way.",
+    "distractorRationale": {
+      "B": "Later historians reversed the judgement rather than confirming it.",
+      "C": "It states the objection to her method, not evidence for it.",
+      "D": "Publication timing is never discussed."
+    },
+    "tags": [
+      "function-of-sentence",
+      "reversal"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f06",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Cross-Text Connections",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Text 1: Urban rewilding — letting mown parkland grow into meadow — has spread quickly through European cities. Ecologists point to measurable gains: insect counts rise within two seasons, and bird species that had vanished from city centres reappear.\n\nText 2: Ecologist Priya Menon does not dispute those counts, but she notes that most rewilded plots are small and separated by roads and buildings. Species that arrive may not be able to move between patches, and a population confined to one meadow remains vulnerable to a single bad year."
+    },
+    "stem": "Based on the texts, how would Menon (Text 2) most likely respond to the gains described in Text 1?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "By recommending that mown parkland be restored"
+      },
+      {
+        "id": "B",
+        "text": "By accepting the counts while questioning whether the gains will last"
+      },
+      {
+        "id": "C",
+        "text": "By arguing that the insect and bird counts are inaccurate"
+      },
+      {
+        "id": "D",
+        "text": "By claiming that rewilding harms the species it attracts"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Text 2 opens by granting the data — «does not dispute those counts» — and shifts the question to durability: isolated patches leave populations exposed to a single bad year.\n\nThe distinction matters. Menon is not contesting what has been measured but asking whether the measurement, taken after two seasons, predicts anything about the tenth.",
+    "distractorRationale": {
+      "A": "She never advocates returning to mown parkland.",
+      "C": "She explicitly does not dispute the counts.",
+      "D": "She raises a limitation, not a claim of harm."
+    },
+    "tags": [
+      "cross-text",
+      "granting-and-qualifying"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f07",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Cross-Text Connections",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Text 1: Urban rewilding — letting mown parkland grow into meadow — has spread quickly through European cities. Ecologists point to measurable gains: insect counts rise within two seasons, and bird species that had vanished from city centres reappear.\n\nText 2: Ecologist Priya Menon does not dispute those counts, but she notes that most rewilded plots are small and separated by roads and buildings. Species that arrive may not be able to move between patches, and a population confined to one meadow remains vulnerable to a single bad year."
+    },
+    "stem": "Both texts agree that rewilding ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "should be halted until further study"
+      },
+      {
+        "id": "B",
+        "text": "works best in cities without major roads"
+      },
+      {
+        "id": "C",
+        "text": "has produced observable increases in urban wildlife"
+      },
+      {
+        "id": "D",
+        "text": "is more expensive than maintaining mown parkland"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Text 1 reports rising insect counts and returning birds; Text 2 begins by not disputing them. That shared ground is what allows the disagreement in Text 2 to be about durability rather than about the data.",
+    "distractorRationale": {
+      "A": "Neither text calls for a halt.",
+      "B": "Text 2 mentions roads as barriers but does not make this recommendation.",
+      "D": "Cost is not raised in either text."
+    },
+    "tags": [
+      "cross-text",
+      "shared-ground"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f08",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Central Ideas and Details",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The Antikythera mechanism, recovered from a shipwreck in 1901, is a geared bronze device built in the second century BCE. For decades it was assumed to be a navigational instrument. Imaging in the 2000s revealed more than thirty interlocking gears arranged to model the movements of the sun and moon, including the irregular speed of the moon's orbit — a subtlety that would not appear in European clockwork for another fourteen centuries."
+    },
+    "stem": "Which choice best states the main idea of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mechanism was lost in a shipwreck in 1901."
+      },
+      {
+        "id": "B",
+        "text": "Navigational instruments were common in the second century BCE."
+      },
+      {
+        "id": "C",
+        "text": "European clockmakers copied the mechanism's design."
+      },
+      {
+        "id": "D",
+        "text": "Imaging revealed the device to be an astronomical model of unexpected sophistication."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The text moves from a mistaken assumption to what imaging showed: a gear train modelling solar and lunar motion, with a refinement absent from European clockwork for fourteen more centuries. That gap is what makes the finding notable.",
+    "distractorRationale": {
+      "A": "1901 is the recovery date; the wreck itself is ancient.",
+      "B": "The navigational reading is precisely what the imaging overturned.",
+      "C": "The text notes the delay in European clockwork, not that anyone copied the device."
+    },
+    "tags": [
+      "central-idea",
+      "revision-of-assumption"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f09",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Central Ideas and Details",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sourdough bread is leavened by a culture of wild yeasts and bacteria rather than commercial yeast. Bakers have long claimed that a culture takes on the character of the place it is kept, and a 2021 study of cultures from fourteen countries found that no two shared the same microbial profile. The differences, however, tracked the flour used far more closely than the location, suggesting that what bakers feed a culture matters more than where they keep it."
+    },
+    "stem": "According to the text, the 2021 study found that differences between cultures corresponded most closely to ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the flour used to feed the culture"
+      },
+      {
+        "id": "B",
+        "text": "the country in which the culture was kept"
+      },
+      {
+        "id": "C",
+        "text": "the age of the culture"
+      },
+      {
+        "id": "D",
+        "text": "the temperature of the bakery"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The final sentence states it directly: differences tracked the flour «far more closely» than location, which is why the study qualifies the bakers' traditional claim rather than confirming it.",
+    "distractorRationale": {
+      "B": "This is the belief the study weakened.",
+      "C": "Age is never mentioned.",
+      "D": "Temperature is never mentioned."
+    },
+    "tags": [
+      "detail",
+      "study-finding"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f10",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Textual)",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A researcher studying urban foxes hypothesises that animals living in cities have become less wary of humans than their rural counterparts, and that this change is learned within a single generation rather than inherited."
+    },
+    "stem": "Which finding, if true, would most directly support the researcher's hypothesis?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Urban foxes are larger on average than rural foxes."
+      },
+      {
+        "id": "B",
+        "text": "Rural-born cubs raised in the city approach humans as readily as city-born cubs."
+      },
+      {
+        "id": "C",
+        "text": "Urban foxes approach humans more readily than rural foxes do."
+      },
+      {
+        "id": "D",
+        "text": "The urban fox population has grown over the past decade."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The hypothesis has two parts: city foxes are less wary, and the change is learned rather than inherited. Only B tests the second part — rural-born cubs carry rural ancestry, so if they behave like city-born cubs, the behaviour came from the environment.\n\nA supports only the first half and is consistent with inheritance, which is exactly what the hypothesis rules out.",
+    "distractorRationale": {
+      "A": "Body size is unrelated to wariness.",
+      "C": "Establishes the difference but says nothing about whether it is learned or inherited.",
+      "D": "Population growth does not address either part of the hypothesis."
+    },
+    "tags": [
+      "evidence",
+      "testing-a-hypothesis"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f11",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Quantitative)",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A city compared four bus routes after installing dedicated bus lanes on two of them.\n\n| Route | Lane added | Average journey time, before | after |\n|---|---|---|---|\n| 12 | yes | 34 min | 26 min |\n| 19 | yes | 41 min | 31 min |\n| 23 | no | 29 min | 28 min |\n| 31 | no | 37 min | 39 min |\n\nA transport planner claims the data show that dedicated lanes shorten journey times."
+    },
+    "stem": "Which choice best describes data from the table that support the planner's claim?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Route 31 took longer after the study period than before."
+      },
+      {
+        "id": "B",
+        "text": "Route 19 had the longest journey time both before and after."
+      },
+      {
+        "id": "C",
+        "text": "Both routes with new lanes fell by at least eight minutes, while neither route without a lane fell by more than one."
+      },
+      {
+        "id": "D",
+        "text": "All four routes took less than forty-five minutes throughout."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Support requires comparing the two groups. Routes 12 and 19 fell by 8 and 10 minutes; routes 23 and 31 changed by −1 and +2. The contrast between the groups is the evidence.\n\nA single route in either group proves nothing on its own — that is what the untreated routes are there for.",
+    "distractorRationale": {
+      "A": "One route without a lane, offered alone; it neither supports nor undercuts the claim by itself.",
+      "B": "True but irrelevant; absolute length says nothing about the effect of lanes.",
+      "D": "True of every route and unrelated to the comparison."
+    },
+    "tags": [
+      "quantitative-evidence",
+      "control-comparison"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f12",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Manuscripts copied in the scriptorium at Corbie between 780 and 820 show a script so uniform that individual hands are difficult to distinguish. Scribes elsewhere in the same period left work that varies noticeably from page to page. Corbie's output was not larger than other houses', and its scribes were not trained longer. What set it apart was a written exemplar sheet, kept at the head of the workroom, that every copyist consulted before beginning. This suggests that ______"
+    },
+    "stem": "Which choice most logically completes the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "scribes elsewhere deliberately varied their handwriting."
+      },
+      {
+        "id": "B",
+        "text": "the scribes at Corbie were more skilled than those elsewhere."
+      },
+      {
+        "id": "C",
+        "text": "manuscripts produced at Corbie were more numerous than those produced elsewhere."
+      },
+      {
+        "id": "D",
+        "text": "uniformity of script depended less on individual training than on a shared model to work from."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The text rules out the obvious explanations one by one: output was not larger, training was not longer. What remains is the exemplar sheet, and the inference must rest on it.\n\nThose eliminations are doing deliberate work — they clear away skill and volume so that the shared model is left standing alone.",
+    "distractorRationale": {
+      "A": "Nothing indicates the variation elsewhere was intentional.",
+      "B": "Longer training is explicitly ruled out, and superior skill is never suggested.",
+      "C": "Output is explicitly said not to be larger."
+    },
+    "tags": [
+      "inference",
+      "elimination-structure"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f13",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Seeds of the Australian shrub Banksia remain sealed inside woody cones for years. The cones open only when exposed to the heat of a bushfire, releasing seeds onto ground that has just been cleared of competing vegetation and enriched by ash. In areas where fire has been suppressed for several decades, Banksia seedlings are almost entirely absent, even where mature shrubs remain healthy. This suggests that ______"
+    },
+    "stem": "Which choice most logically completes the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Banksia depends on fire to reproduce, not merely to survive."
+      },
+      {
+        "id": "B",
+        "text": "Banksia seeds germinate more readily in shaded conditions."
+      },
+      {
+        "id": "C",
+        "text": "mature Banksia shrubs cannot survive without regular fire."
+      },
+      {
+        "id": "D",
+        "text": "fire suppression protects Banksia populations from decline."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The final observation is precise: seedlings are absent while mature shrubs remain healthy. Adults are fine without fire; it is the next generation that fails.\n\nThat separation between surviving and reproducing is the whole point of the passage, and it is what distinguishes C from A.",
+    "distractorRationale": {
+      "B": "Seeds are released onto ground cleared of vegetation, which is the opposite of shaded.",
+      "C": "The text says mature shrubs remain healthy without fire.",
+      "D": "Suppression is associated with absent seedlings, so it threatens rather than protects."
+    },
+    "tags": [
+      "inference",
+      "survival-vs-reproduction"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f14",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Solar panels generate the most electricity on clear summer days, when demand for cooling is also highest. ______ the match between supply and demand is imperfect: output peaks around midday, while household demand peaks in the early evening, after people return home."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Similarly,"
+      },
+      {
+        "id": "B",
+        "text": "Still,"
+      },
+      {
+        "id": "C",
+        "text": "As a result,"
+      },
+      {
+        "id": "D",
+        "text": "For example,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The first sentence describes a convenient alignment; the second says the match is imperfect. A contrastive transition is needed.\n\nThe two sentences are about the same phenomenon at different resolutions — season versus hour — and the transition has to signal that the closer look complicates the first picture.",
+    "distractorRationale": {
+      "A": "Signals likeness, but the second sentence undercuts the first.",
+      "C": "An imperfect match is not a consequence of the seasonal alignment.",
+      "D": "The second sentence is a qualification, not an instance."
+    },
+    "tags": [
+      "transitions",
+      "contrast"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f15",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Restoring an oyster reef requires a hard surface for larvae to settle on, and cleaned oyster shell works best. Restaurants discard exactly this material daily. ______ several coastal cities now run collection programmes that return shell from kitchens to the water."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "In contrast,"
+      },
+      {
+        "id": "B",
+        "text": "Nevertheless,"
+      },
+      {
+        "id": "C",
+        "text": "Accordingly,"
+      },
+      {
+        "id": "D",
+        "text": "Meanwhile,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The first two sentences establish a need and a matching supply. The third describes programmes that connect them — a consequence of the fit, so a resultative transition is required.",
+    "distractorRationale": {
+      "A": "The third sentence follows from the first two rather than contrasting with them.",
+      "B": "Signals contrast, but nothing is being opposed.",
+      "D": "Suggests simultaneous unrelated events, losing the causal link."
+    },
+    "tags": [
+      "transitions",
+      "consequence"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f16",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Machine translation has improved sharply for language pairs with large bilingual corpora, such as English and Spanish. Languages with few digitised texts have benefited far less. ______ the gap in translation quality between well-documented and poorly documented languages has widened even as the technology has advanced."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Likewise,"
+      },
+      {
+        "id": "B",
+        "text": "However,"
+      },
+      {
+        "id": "C",
+        "text": "Admittedly,"
+      },
+      {
+        "id": "D",
+        "text": "Consequently,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The first two sentences describe uneven improvement; the third states the outcome — a widening gap. That is a consequence of the unevenness, so a resultative transition fits.\n\n«However» tempts because the passage feels like a contrast, but the contrast has already been made *between* the first two sentences. The third does not oppose them; it draws out what they jointly imply.",
+    "distractorRationale": {
+      "A": "Signals likeness, but the third sentence is a conclusion.",
+      "B": "The contrast lies between the first two sentences; the third follows from both.",
+      "C": "Concedes a point, and nothing here is being conceded."
+    },
+    "tags": [
+      "transitions",
+      "consequence-vs-contrast"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f17",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical Synthesis",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "While researching a presentation, a student has taken these notes:\n\n• The Sami people of northern Scandinavia have herded reindeer for centuries.\n• Herding routes follow seasonal grazing, moving between coast and inland.\n• Wind farms and mines built since 2000 have cut across several traditional routes.\n• Herders report that reindeer avoid areas within several kilometres of turbines.\n• The land lost to avoidance is far larger than the land the structures physically occupy."
+    },
+    "stem": "The student wants to emphasise the scale of the disruption to herding. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Because reindeer avoid areas several kilometres around turbines, the grazing land lost to wind farms far exceeds the ground the structures themselves cover."
+      },
+      {
+        "id": "B",
+        "text": "Wind farms and mines have been built in northern Scandinavia since 2000."
+      },
+      {
+        "id": "C",
+        "text": "The Sami people of northern Scandinavia have herded reindeer for centuries, following seasonal grazing between coast and inland."
+      },
+      {
+        "id": "D",
+        "text": "Herders in northern Scandinavia have reported changes in reindeer behaviour near turbines."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The goal is to emphasise scale. Only B pairs the avoidance behaviour with the comparison that quantifies its reach — land lost far exceeding land occupied.\n\nThe other options are accurate but describe the situation without conveying how large the effect is.",
+    "distractorRationale": {
+      "B": "States that construction happened, with no indication of scale.",
+      "C": "Gives background on herding without touching the disruption.",
+      "D": "Reports the behaviour but omits the comparison that shows its extent."
+    },
+    "tags": [
+      "rhetorical-synthesis",
+      "emphasising-scale"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f18",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical Synthesis",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "While researching a topic, a student has taken these notes:\n\n• Lichens are composite organisms formed by a fungus and an alga living together.\n• The fungus provides structure and retains water; the alga produces sugars by photosynthesis.\n• Lichens absorb minerals directly from air and rain, having no roots.\n• Because of this, they accumulate airborne pollutants in their tissues.\n• Surveys of lichen diversity have been used to map air quality across cities."
+    },
+    "stem": "The student wants to explain why lichens are useful for monitoring air quality. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Lichens are composite organisms in which a fungus and an alga live together, each supplying what the other lacks."
+      },
+      {
+        "id": "B",
+        "text": "Lichens have no roots and take minerals straight from air and rain, so pollutants accumulate in their tissues — which is why surveys of lichen diversity can map a city's air quality."
+      },
+      {
+        "id": "C",
+        "text": "Surveys of lichen diversity have been carried out across a number of cities."
+      },
+      {
+        "id": "D",
+        "text": "The fungal partner provides structure and retains water, while the alga produces sugars by photosynthesis."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Explaining *why* requires the causal chain: no roots → absorption from air → pollutants accumulate → diversity reflects air quality. Only B assembles it.\n\nD states the application without the reason, and A and C describe the partnership, which is true but not what makes lichens useful as monitors.",
+    "distractorRationale": {
+      "A": "Describes what a lichen is, not why it indicates air quality.",
+      "C": "Reports the practice but omits the explanation the goal asks for.",
+      "D": "Describes the internal division of labour, which is unrelated to the goal."
+    },
+    "tags": [
+      "rhetorical-synthesis",
+      "causal-chain"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f19",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The observatory sits at four thousand metres, above most of the atmosphere's water vapour ______ this dryness is what makes the site suitable for infrared astronomy."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": ","
+      },
+      {
+        "id": "B",
+        "text": " and,"
+      },
+      {
+        "id": "C",
+        "text": ";"
+      },
+      {
+        "id": "D",
+        "text": ":"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Both halves are independent clauses. A semicolon joins them correctly; a comma alone would create a comma splice.\n\nA colon would also be defensible if the second clause explained the first, but «this dryness» adds a consequence rather than delivering an explanation the first clause promised.",
+    "distractorRationale": {
+      "A": "Creates a comma splice between two independent clauses.",
+      "B": "«and,» misplaces the comma; it would need to precede the conjunction.",
+      "D": "The first clause does not set up an explanation, which is what a colon announces."
+    },
+    "tags": [
+      "boundaries",
+      "semicolon"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f20",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The recordings, made on wax cylinders between 1890 and 1910 and stored in a basement for most of the following century, ______ now been digitised."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "is"
+      },
+      {
+        "id": "B",
+        "text": "has"
+      },
+      {
+        "id": "C",
+        "text": "having"
+      },
+      {
+        "id": "D",
+        "text": "have"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The subject is «The recordings», which is plural, so the verb must be «have». Everything between the commas is a modifier and does not affect agreement.\n\nStripping the modifier makes it obvious: «The recordings have now been digitised.»",
+    "distractorRationale": {
+      "A": "Singular and the wrong auxiliary for «been digitised».",
+      "B": "Singular, agreeing with nothing in the sentence.",
+      "C": "A participle cannot serve as the main verb here."
+    },
+    "tags": [
+      "subject-verb-agreement",
+      "interrupting-modifier"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f21",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Botanist Ye-jin Park has spent a decade studying a single alpine valley ______ she has recorded flowering dates for more than three hundred species there."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "valley, and"
+      },
+      {
+        "id": "B",
+        "text": "valley"
+      },
+      {
+        "id": "C",
+        "text": "valley,"
+      },
+      {
+        "id": "D",
+        "text": "valley and"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Two independent clauses joined by a coordinating conjunction take a comma before the conjunction.\n\nOption C alone would be a comma splice, and D would run the two clauses together with no boundary at all.",
+    "distractorRationale": {
+      "B": "Leaves the two clauses fused without punctuation.",
+      "C": "A comma alone between independent clauses is a splice.",
+      "D": "Omits the comma required before «and» joining two independent clauses."
+    },
+    "tags": [
+      "boundaries",
+      "coordinating-conjunction"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f22",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "______ the geologist identified three separate lava flows in the cliff face."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The exposed rock being examined closely,"
+      },
+      {
+        "id": "B",
+        "text": "Examining the exposed rock closely,"
+      },
+      {
+        "id": "C",
+        "text": "Having been examined closely,"
+      },
+      {
+        "id": "D",
+        "text": "By examining the exposed rock closely it was found that"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "An introductory participial phrase must describe the subject that follows. The geologist is the one examining the rock, so «Examining the exposed rock closely, the geologist ...» attaches correctly.\n\nD produces a dangling modifier: it would mean the geologist had been examined.",
+    "distractorRationale": {
+      "A": "Creates an absolute phrase that leaves the sentence ungrammatical as completed.",
+      "C": "Dangling modifier — it describes the geologist as the thing examined.",
+      "D": "Produces a sentence with two competing subjects and no clean boundary."
+    },
+    "tags": [
+      "modifier-placement",
+      "dangling-modifier"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f23",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "By the time the survey team reached the summit ridge, the cloud ______ so far that the valley below was no longer visible."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "descending"
+      },
+      {
+        "id": "B",
+        "text": "will descend"
+      },
+      {
+        "id": "C",
+        "text": "had descended"
+      },
+      {
+        "id": "D",
+        "text": "descends"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "«By the time» sets one past event against another that preceded it. The cloud came down before the team arrived, so the past perfect is required.\n\nThat construction is the standard signal for this ordering: the earlier of two past events takes «had».",
+    "distractorRationale": {
+      "A": "A participle cannot serve as the main verb of the clause.",
+      "B": "Future tense is impossible alongside «reached».",
+      "D": "Present tense clashes with the past-tense main clause."
+    },
+    "tags": [
+      "verb-tense",
+      "past-perfect"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f24",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The kit contained everything the expedition would need for six weeks ______ dried food, fuel tablets, a repair sleeve for the tent poles, and two spare compasses."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": " and"
+      },
+      {
+        "id": "B",
+        "text": ","
+      },
+      {
+        "id": "C",
+        "text": ";"
+      },
+      {
+        "id": "D",
+        "text": ":"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The first clause is complete and promises a specification — «everything the expedition would need». A colon introduces the list that delivers it.\n\nA semicolon would be wrong because what follows is a list, not an independent clause.",
+    "distractorRationale": {
+      "A": "«And» would join the list to the clause as though it were one more item.",
+      "B": "A comma is too weak to introduce a specifying list after a complete clause.",
+      "C": "A semicolon requires an independent clause after it."
+    },
+    "tags": [
+      "boundaries",
+      "colon-before-list"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f25",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The restoration involved cleaning the varnish, stabilising the panel, and ______ the losses along the lower edge."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "retouching"
+      },
+      {
+        "id": "B",
+        "text": "retouched"
+      },
+      {
+        "id": "C",
+        "text": "having retouched"
+      },
+      {
+        "id": "D",
+        "text": "to retouch"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The list already contains «cleaning» and «stabilising», so the third item must take the same form. Parallel structure requires «retouching».",
+    "distractorRationale": {
+      "B": "A past participle does not match the gerunds.",
+      "C": "A perfect participle both breaks parallelism and alters the time relation.",
+      "D": "An infinitive breaks the pattern set by the first two items."
+    },
+    "tags": [
+      "parallel-structure",
+      "gerund-list"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f26",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Textual)",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "In her study of nineteenth-century letter-writing manuals, historian Adaeze Okoro argues that the manuals were bought less as guides to correspondence than as markers of aspiration: purchasers wanted to be the kind of household that owned one."
+    },
+    "stem": "Which finding, if true, would most strongly support Okoro's argument?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The manuals were printed in large numbers throughout the century."
+      },
+      {
+        "id": "B",
+        "text": "Surviving copies of the manuals show little sign of wear and few annotations."
+      },
+      {
+        "id": "C",
+        "text": "The manuals were sold at prices most households could afford."
+      },
+      {
+        "id": "D",
+        "text": "Letters from the period often follow the forms the manuals recommend."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Okoro claims the manuals were bought to be owned rather than used. Copies that were kept but barely opened are exactly what that claim predicts, and they are hard to explain if the books were working references.\n\nC would cut against her: widespread conformity to the recommended forms suggests the manuals were consulted after all.",
+    "distractorRationale": {
+      "A": "Print runs show popularity but say nothing about whether buyers used them.",
+      "C": "Affordability explains who could buy them, not why.",
+      "D": "Evidence that the advice was followed, which weakens her argument."
+    },
+    "tags": [
+      "evidence",
+      "supporting-a-claim"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-f27",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m1",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A tidal turbine spins in water eight hundred times denser than air. A blade far shorter than a wind turbine's therefore yields comparable power, and because tides run to a timetable set by the moon, output can be predicted years ahead. The obstacles are practical rather than theoretical: saltwater corrodes bearings, marine growth unbalances blades, and every repair requires a vessel and a slack tide."
+    },
+    "stem": "Which choice best describes the overall structure of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It traces the historical development of tidal power."
+      },
+      {
+        "id": "B",
+        "text": "It argues that tidal power should replace wind power."
+      },
+      {
+        "id": "C",
+        "text": "It presents a technology's advantages, then identifies the difficulties that limit its use."
+      },
+      {
+        "id": "D",
+        "text": "It compares two competing designs of tidal turbine."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The first two sentences give the advantages — density and predictability. The third turns to obstacles, and names them as practical rather than theoretical.\n\nThat last distinction is doing careful work: the physics is settled, and what stands in the way is maintenance at sea.",
+    "distractorRationale": {
+      "A": "No historical development is described.",
+      "B": "Wind turbines appear only as a size comparison, not as a rival to be displaced.",
+      "D": "Only one kind of turbine is discussed."
+    },
+    "tags": [
+      "text-structure",
+      "advantages-then-obstacles"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

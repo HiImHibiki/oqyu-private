@@ -1,0 +1,1645 @@
+[
+  {
+    "id": "sat-rw-e01",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "E",
+    "irtB": -1.1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The city's night bus service had been cut back for years. When the council restored it in 2023, ridership was expected to recover slowly. Instead the buses filled almost immediately, which suggests the demand had never disappeared — it had simply been ______ ."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "created"
+      },
+      {
+        "id": "B",
+        "text": "exaggerated"
+      },
+      {
+        "id": "C",
+        "text": "unmet"
+      },
+      {
+        "id": "D",
+        "text": "measured"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The sentence says the demand \"had never disappeared\" but the buses were gone. Demand that exists without a service to satisfy it is **unmet**.",
+    "distractorRationale": {
+      "A": "The passage states the demand already existed, so it was not created by the new service.",
+      "B": "Full buses show the demand was real, not overstated.",
+      "D": "Nothing suggests the demand was being measured during the years of cuts."
+    },
+    "tags": [
+      "words-in-context",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e02",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "E",
+    "irtB": -1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Rice terraces in the Philippine highlands are often described as ancient, but the wooden sluice gates that control the water are ______ : each generation replaces them, using the same design and the same species of timber."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "imported"
+      },
+      {
+        "id": "B",
+        "text": "fragile"
+      },
+      {
+        "id": "C",
+        "text": "decorative"
+      },
+      {
+        "id": "D",
+        "text": "new"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The colon explains the blank: each generation replaces the gates. Something replaced in every generation is **new**, even though the design behind it is old.",
+    "distractorRationale": {
+      "A": "The timber is a local species chosen deliberately, with no mention of importing.",
+      "B": "Replacement on a generational cycle suggests durability, not fragility.",
+      "C": "The gates control the water, so they serve a function rather than an ornamental purpose."
+    },
+    "tags": [
+      "words-in-context",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e03",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Photographer Nadia Rahim works only in the hour before sunrise. Colleagues call the constraint ______ , but Rahim says it removes every decision except the one that matters: where to stand."
+    },
+    "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "limiting"
+      },
+      {
+        "id": "B",
+        "text": "accidental"
+      },
+      {
+        "id": "C",
+        "text": "profitable"
+      },
+      {
+        "id": "D",
+        "text": "traditional"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The word *but* sets the colleagues' view against Rahim's. She sees the constraint as helpful, so they must see it as a drawback — **limiting** is the natural opposite here.",
+    "distractorRationale": {
+      "B": "Working only at one hour is clearly a deliberate rule, not an accident.",
+      "C": "Money is never mentioned in the passage.",
+      "D": "Nothing indicates the practice follows a tradition."
+    },
+    "tags": [
+      "words-in-context",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e04",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "difficulty": "E",
+    "irtB": -0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The following text is adapted from a 2024 article about honeybees.\n\nA honeybee returning from a good patch of flowers performs a looping dance on the surface of the comb. The angle of the loop relative to vertical tells other bees the direction of the flowers relative to the sun. The length of the straight portion tells them how far to fly."
+    },
+    "stem": "What is the main purpose of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "To argue that bees are more intelligent than other insects"
+      },
+      {
+        "id": "B",
+        "text": "To explain how one bee behaviour conveys specific information"
+      },
+      {
+        "id": "C",
+        "text": "To describe the appearance of a honeycomb"
+      },
+      {
+        "id": "D",
+        "text": "To compare several methods bees use to find flowers"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The text names one behaviour — the dance — and then states what two of its features communicate: direction and distance. That is an explanation of how the behaviour carries information.",
+    "distractorRationale": {
+      "A": "No other insects are mentioned, so no comparison of intelligence is made.",
+      "C": "The comb is only the surface the dance happens on; it is never described.",
+      "D": "Only one method is discussed, not several."
+    },
+    "tags": [
+      "purpose",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e05",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "difficulty": "M",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Most people assume a desert is defined by heat. In fact the defining feature is rainfall: any region receiving less than 250 millimetres a year qualifies. By that measure, much of Antarctica is desert."
+    },
+    "stem": "What is the main purpose of the final sentence?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "To question whether the rainfall figure is accurate"
+      },
+      {
+        "id": "B",
+        "text": "To explain why Antarctica receives little rain"
+      },
+      {
+        "id": "C",
+        "text": "To give an example that makes the corrected definition vivid"
+      },
+      {
+        "id": "D",
+        "text": "To suggest that deserts are expanding"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The second sentence replaces heat with rainfall as the defining test. Antarctica — the coldest place on Earth — is the sharpest possible illustration that the new definition really does not involve heat.",
+    "distractorRationale": {
+      "A": "The figure is presented as settled, and the last sentence applies it rather than doubting it.",
+      "B": "The passage states that Antarctica is dry but never explains the cause.",
+      "D": "Change over time is not discussed anywhere in the text."
+    },
+    "tags": [
+      "purpose",
+      "sentence-function",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e06",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Cross-Text Connections",
+    "difficulty": "M",
+    "irtB": -0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "**Text 1**\n\nSchool uniforms reduce distraction. When everyone dresses alike, students spend less attention on clothing and more on lessons.\n\n**Text 2**\n\nIn our survey of eleven schools, students in uniform reported thinking about appearance just as often as students without one. What changed was the subject: instead of brands, they compared how the uniform fitted."
+    },
+    "stem": "Based on the texts, how would the author of Text 2 respond to the claim in Text 1?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "By agreeing that uniforms remove distraction entirely"
+      },
+      {
+        "id": "B",
+        "text": "By arguing that uniforms are too expensive for most families"
+      },
+      {
+        "id": "C",
+        "text": "By recommending that schools abolish uniforms"
+      },
+      {
+        "id": "D",
+        "text": "By suggesting the distraction changed form rather than disappearing"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Text 2 reports the same frequency of appearance-related thinking, with only the topic changing from brands to fit. That is distraction persisting in a different form.",
+    "distractorRationale": {
+      "A": "The survey found the thinking continued, so Text 2 does not agree it was removed.",
+      "B": "Cost is never mentioned in either text.",
+      "C": "Text 2 reports a finding and stops short of any recommendation."
+    },
+    "tags": [
+      "cross-text",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e07",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Craft and Structure",
+    "skill": "Cross-Text Connections",
+    "difficulty": "M",
+    "irtB": -0.1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "**Text 1**\n\nThe tomato reached Europe in the sixteenth century but was grown only as an ornamental plant for two hundred years, because it was believed poisonous.\n\n**Text 2**\n\nThe belief had a physical cause. Wealthy households ate from pewter plates, which contained lead; the acid in tomatoes drew the lead out. Poorer families, eating from wood, had been eating tomatoes safely all along."
+    },
+    "stem": "Text 2 adds to Text 1 primarily by",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "explaining what produced the belief Text 1 describes"
+      },
+      {
+        "id": "B",
+        "text": "disputing the date given in Text 1"
+      },
+      {
+        "id": "C",
+        "text": "listing other plants once thought poisonous"
+      },
+      {
+        "id": "D",
+        "text": "arguing that tomatoes are in fact mildly toxic"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Text 1 reports the belief; Text 2 opens with \"The belief had a physical cause\" and then supplies it — lead leaching from pewter. That is explanation, not disagreement.",
+    "distractorRationale": {
+      "B": "Text 2 never mentions dates.",
+      "C": "No other plants appear in either text.",
+      "D": "Text 2 says poorer families ate tomatoes safely, so the fruit itself was not the problem."
+    },
+    "tags": [
+      "cross-text",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e08",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Central Ideas and Details",
+    "difficulty": "E",
+    "irtB": -1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sea otters eat sea urchins, and sea urchins eat kelp. Where otters were hunted out, urchin numbers rose and the kelp forests were stripped bare. Where otters have returned, the kelp has grown back within a decade."
+    },
+    "stem": "Which choice best states the main idea of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sea urchins are the most destructive animals in coastal waters."
+      },
+      {
+        "id": "B",
+        "text": "The presence of sea otters strongly affects whether kelp forests survive."
+      },
+      {
+        "id": "C",
+        "text": "Kelp forests grow faster in colder water."
+      },
+      {
+        "id": "D",
+        "text": "Sea otters were hunted for their fur."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The text traces the same chain twice — otters gone, kelp stripped; otters back, kelp recovered. The organising point is the otters' effect on the kelp.",
+    "distractorRationale": {
+      "A": "Urchins are one link in the chain, and no comparison with other animals is made.",
+      "C": "Water temperature is never mentioned.",
+      "D": "The reason for the hunting is not given in the text."
+    },
+    "tags": [
+      "central-idea",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e09",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Central Ideas and Details",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The following text is adapted from a 2023 essay on maps.\n\nEvery flat map of the round Earth distorts something. A projection that keeps the shapes of countries right will get their sizes wrong; one that keeps sizes right will bend the shapes. There is no projection that preserves both, and cartographers choose according to what a particular map is for."
+    },
+    "stem": "Which choice best states the main idea of the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Cartographers prefer projections that preserve shape."
+      },
+      {
+        "id": "B",
+        "text": "Globes have replaced flat maps in most classrooms."
+      },
+      {
+        "id": "C",
+        "text": "Flat maps must sacrifice accuracy in one respect to gain it in another."
+      },
+      {
+        "id": "D",
+        "text": "Most published maps contain avoidable errors."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The text states the trade-off directly — shape or size, never both — and adds that mapmakers choose based on purpose. That trade-off is the main idea.",
+    "distractorRationale": {
+      "A": "The passage says the choice depends on purpose, with no stated preference.",
+      "B": "Globes and classrooms are not mentioned.",
+      "D": "The distortion is described as unavoidable, not as an error someone could fix."
+    },
+    "tags": [
+      "central-idea",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e10",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Textual)",
+    "difficulty": "M",
+    "irtB": -0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A team proposed that a species of desert ant navigates by counting its steps rather than by using landmarks."
+    },
+    "stem": "Which finding, if true, would most directly support the proposal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The ants were observed foraging both in the morning and in the evening."
+      },
+      {
+        "id": "B",
+        "text": "The desert where the ants live contains very few landmarks."
+      },
+      {
+        "id": "C",
+        "text": "Ants of a different species were found to follow scent trails."
+      },
+      {
+        "id": "D",
+        "text": "Ants given longer artificial legs consistently overshot their nests by a predictable distance."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "If distance is judged by counting steps, longer legs make each step cover more ground, so the same count carries the ant too far. A predictable overshoot is exactly what the proposal predicts.",
+    "distractorRationale": {
+      "A": "The time of foraging says nothing about how distance is judged.",
+      "B": "Few landmarks would make landmark navigation harder, but it does not show that steps are being counted.",
+      "C": "A different species using a different method is not evidence about this one."
+    },
+    "tags": [
+      "command-of-evidence",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e11",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Textual)",
+    "difficulty": "M",
+    "irtB": -0.1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A historian argued that a manuscript signed only with initials was written by a woman, at a time when women rarely signed their work."
+    },
+    "stem": "Which finding, if true, would most directly support the historian's argument?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Household accounts from the same town record payments to a woman for copying work in the same years."
+      },
+      {
+        "id": "B",
+        "text": "The manuscript describes household routines in detail found in no other text of the period."
+      },
+      {
+        "id": "C",
+        "text": "The paper used was manufactured locally."
+      },
+      {
+        "id": "D",
+        "text": "The initials appear in several other manuscripts of the century."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Independent records placing a woman in the same town, doing exactly this kind of work, in exactly these years, connect a real person to the manuscript. That is external evidence rather than inference from the content alone.",
+    "distractorRationale": {
+      "B": "Detailed household knowledge is suggestive but does not establish who held the pen.",
+      "C": "Where the paper was made tells us nothing about the author.",
+      "D": "Shared initials could point to any number of writers of either sex."
+    },
+    "tags": [
+      "command-of-evidence",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e12",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Quantitative)",
+    "difficulty": "M",
+    "irtB": -0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A library recorded how many books were borrowed in each of four months after it began opening on Sundays."
+    },
+    "figure": {
+      "kind": "table",
+      "alt": "Table of books borrowed each month, rising from 3,100 in March to 4,600 in June.",
+      "caption": "Books borrowed per month",
+      "headers": [
+        "Month",
+        "Books borrowed"
+      ],
+      "rows": [
+        [
+          "March",
+          "3,100"
+        ],
+        [
+          "April",
+          "3,700"
+        ],
+        [
+          "May",
+          "4,200"
+        ],
+        [
+          "June",
+          "4,600"
+        ]
+      ]
+    },
+    "stem": "Which choice most effectively uses data from the table to complete the statement?\n\nBorrowing rose in every month recorded, since ______",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "June's figure of 4,600 was the highest of the four months."
+      },
+      {
+        "id": "B",
+        "text": "the number increased from 3,100 in March to 4,600 in June, with a rise at each step."
+      },
+      {
+        "id": "C",
+        "text": "March's figure of 3,100 was the lowest of the four months."
+      },
+      {
+        "id": "D",
+        "text": "the library began opening on Sundays before March."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The claim is that borrowing rose *in every month*, so the supporting evidence must cover every step, not just the endpoints. Only **B** states both the overall change and that each step was an increase.",
+    "distractorRationale": {
+      "A": "Naming the highest month leaves open whether the months in between rose or fell.",
+      "C": "Naming the lowest month has the same gap.",
+      "D": "Repeats background information from the passage instead of citing data."
+    },
+    "tags": [
+      "quantitative-evidence",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e13",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence (Quantitative)",
+    "difficulty": "M",
+    "irtB": 0,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Researchers measured how long seeds of four plants stayed viable when stored dry at room temperature."
+    },
+    "figure": {
+      "kind": "bar_chart",
+      "alt": "Bar chart of seed viability in years for four species, ranging from two to twenty-six years.",
+      "caption": "Years seeds remain viable",
+      "categories": [
+        "Onion",
+        "Lettuce",
+        "Tomato",
+        "Bean"
+      ],
+      "series": [
+        {
+          "name": "Years",
+          "values": [
+            2,
+            6,
+            10,
+            26
+          ]
+        }
+      ]
+    },
+    "stem": "Which statement is supported by the chart?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Onion seeds remain viable longer than tomato seeds."
+      },
+      {
+        "id": "B",
+        "text": "All four species remain viable for at least five years."
+      },
+      {
+        "id": "C",
+        "text": "Bean seeds remain viable more than four times as long as lettuce seeds."
+      },
+      {
+        "id": "D",
+        "text": "Lettuce and tomato seeds remain viable for the same length of time."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bean seeds last 26 years and lettuce seeds 6. Since $4 \\times 6 = 24$, and $26 > 24$, beans do last more than four times as long.",
+    "distractorRationale": {
+      "A": "Onion lasts 2 years and tomato 10, so the comparison is reversed.",
+      "B": "Onion lasts only 2 years, below the stated five.",
+      "D": "Lettuce lasts 6 years and tomato 10 — not the same."
+    },
+    "tags": [
+      "quantitative-evidence",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e14",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "M",
+    "irtB": -0.1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Instrument makers once judged a violin's quality partly by its weight, since denser wood was thought to give a fuller tone. Modern testing has found no relationship between the two, but the belief persists among some buyers. A maker who wants such a buyer's business therefore has reason to ______"
+    },
+    "stem": "Which choice most logically completes the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "publish the results of the modern testing."
+      },
+      {
+        "id": "B",
+        "text": "use lighter wood than the buyer prefers."
+      },
+      {
+        "id": "C",
+        "text": "stop making violins for private buyers."
+      },
+      {
+        "id": "D",
+        "text": "build to a weight the buyer expects, whether or not it affects the sound."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The maker wants the sale, and the buyer judges by weight. Meeting that expectation wins the business even though the science says weight does not matter.",
+    "distractorRationale": {
+      "A": "Correcting the buyer might be honest, but it does not follow from wanting their business.",
+      "B": "Going against the buyer's preference works against the stated goal.",
+      "C": "Nothing in the passage suggests abandoning that market."
+    },
+    "tags": [
+      "inference",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e15",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Bamboo is classed as a grass, not a tree. Like other grasses it grows from the base rather than the tip, which is why a cut stem regrows quickly while a cut tree trunk does not. For construction, this means a bamboo grove can be harvested ______"
+    },
+    "stem": "Which choice most logically completes the text?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "repeatedly, without replanting after each cut."
+      },
+      {
+        "id": "B",
+        "text": "only once, after which it must be replanted."
+      },
+      {
+        "id": "C",
+        "text": "only in the first year after planting."
+      },
+      {
+        "id": "D",
+        "text": "at any height without affecting the plant."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Growing from the base means the plant survives being cut and regrows on its own. A grove can therefore be cut again and again without replanting.",
+    "distractorRationale": {
+      "B": "This describes a tree, which the passage contrasts bamboo with.",
+      "C": "The passage gives no time limit on harvesting.",
+      "D": "Cutting height is not discussed, and the point concerns regrowth, not height."
+    },
+    "tags": [
+      "inference",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e16",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "E",
+    "irtB": -1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Glass can be recycled endlessly without losing quality. ______ most glass containers in the country are still sent to landfill, because collection is patchy outside large cities."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "For example,"
+      },
+      {
+        "id": "B",
+        "text": "Even so,"
+      },
+      {
+        "id": "C",
+        "text": "Likewise,"
+      },
+      {
+        "id": "D",
+        "text": "Therefore,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The first sentence gives a reason glass *should* be recycled; the second reports that it usually is not. **Even so** marks that contrast.",
+    "distractorRationale": {
+      "A": "Landfill is not an example of endless recyclability.",
+      "C": "Signals similarity, but the two sentences point in opposite directions.",
+      "D": "Would make landfill the consequence of being recyclable, which reverses the logic."
+    },
+    "tags": [
+      "transitions",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e17",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Salt lowers the temperature at which water freezes. ______ scattering salt on an icy road can turn the ice back into liquid water even when the air stays below zero."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Nevertheless,"
+      },
+      {
+        "id": "B",
+        "text": "In contrast,"
+      },
+      {
+        "id": "C",
+        "text": "For this reason,"
+      },
+      {
+        "id": "D",
+        "text": "Meanwhile,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The second sentence is a direct consequence of the property stated in the first. **For this reason** marks cause and effect.",
+    "distractorRationale": {
+      "A": "Signals contrast, but the sentences agree.",
+      "B": "Nothing is being contrasted; both concern the same effect.",
+      "D": "Marks simultaneous events rather than a consequence."
+    },
+    "tags": [
+      "transitions",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e18",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "M",
+    "irtB": -0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The first commercial lightbulbs lasted only a few dozen hours. Engineers spent decades extending that life, and by the 1920s a bulb could burn for well over a thousand. ______ manufacturers then agreed to cap the rated life at one thousand hours, since bulbs that lasted longer were bought less often."
+    },
+    "stem": "Which choice completes the text with the most logical transition?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "As a result,"
+      },
+      {
+        "id": "B",
+        "text": "In addition,"
+      },
+      {
+        "id": "C",
+        "text": "That is,"
+      },
+      {
+        "id": "D",
+        "text": "Remarkably,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Decades of work went into making bulbs last longer, and then the makers deliberately shortened them. **Remarkably** flags that the turn is unexpected.",
+    "distractorRationale": {
+      "A": "The cap did not follow from longer life as a natural consequence; it worked against it.",
+      "B": "Marks a similar addition, missing the reversal.",
+      "C": "Signals restatement, but the sentence adds a new and opposite development."
+    },
+    "tags": [
+      "transitions",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e19",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical Synthesis",
+    "difficulty": "M",
+    "irtB": -0.1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "While researching a topic, a student has taken the following notes:\n\n- The kora is a 21-string instrument from West Africa.\n- Its strings run in two parallel rows, one for each hand.\n- Players hold it upright and pluck with thumbs and forefingers only.\n- Musician Sona Jobarteh learned the kora from her family, who have played it for generations.\n- She was the first woman from those families to perform it professionally."
+    },
+    "stem": "The student wants to introduce the kora to an audience unfamiliar with it. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The kora is a 21-string West African instrument whose strings run in two rows, one played by each hand."
+      },
+      {
+        "id": "B",
+        "text": "Sona Jobarteh learned the kora from her family, who have played it for generations."
+      },
+      {
+        "id": "C",
+        "text": "Sona Jobarteh was the first woman from her family to perform the kora professionally."
+      },
+      {
+        "id": "D",
+        "text": "Kora players use only their thumbs and forefingers."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "An audience that has never heard of the kora needs to know what it is. Only **A** names the instrument, its origin, and its defining physical feature.",
+    "distractorRationale": {
+      "B": "Introduces a person rather than the instrument.",
+      "C": "Assumes the reader already knows what a kora is.",
+      "D": "Gives a playing detail without saying what the instrument is."
+    },
+    "tags": [
+      "rhetorical-synthesis",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e20",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical Synthesis",
+    "difficulty": "M",
+    "irtB": 0,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "While researching a topic, a student has taken the following notes:\n\n- Vertical farms grow crops on stacked shelves indoors under artificial light.\n- They use about 95% less water than open-field farming.\n- They require electricity for lighting and climate control.\n- A 2022 study compared energy use per kilogram of lettuce.\n- Vertical farms used roughly eight times the energy of field farms for the same yield."
+    },
+    "stem": "The student wants to present a trade-off in vertical farming. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Vertical farms require electricity for both lighting and climate control."
+      },
+      {
+        "id": "B",
+        "text": "Vertical farms use about 95% less water than field farms, but roughly eight times the energy for the same yield of lettuce."
+      },
+      {
+        "id": "C",
+        "text": "Vertical farms grow crops on stacked shelves indoors under artificial light."
+      },
+      {
+        "id": "D",
+        "text": "A 2022 study compared the energy used per kilogram of lettuce on different kinds of farm."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "A trade-off needs a gain set against a cost. Only **B** pairs the large water saving with the large energy penalty, joined by *but*.",
+    "distractorRationale": {
+      "A": "States a cost alone, with no benefit to weigh it against.",
+      "C": "Describes the method with no advantage or disadvantage.",
+      "D": "Reports that a comparison was made without giving its result."
+    },
+    "tags": [
+      "rhetorical-synthesis",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e21",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "E",
+    "irtB": -1.1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The museum's oldest exhibit is a wooden canoe ______ it was recovered from a peat bog in 1968."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": ", it"
+      },
+      {
+        "id": "B",
+        "text": " it"
+      },
+      {
+        "id": "C",
+        "text": ". It"
+      },
+      {
+        "id": "D",
+        "text": ", and it, however,"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Both halves are complete sentences. A full stop separates them correctly.",
+    "distractorRationale": {
+      "A": "A comma alone between two independent clauses is a comma splice.",
+      "B": "With no punctuation the two clauses run together.",
+      "D": "Adds a conjunction and an adverb that clash, and the commas around *however* cut the sentence apart."
+    },
+    "tags": [
+      "boundaries",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e22",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "E",
+    "irtB": -0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Because the ferry runs only twice a day ______ visitors usually stay overnight on the island."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": ":"
+      },
+      {
+        "id": "B",
+        "text": ", so"
+      },
+      {
+        "id": "C",
+        "text": ";"
+      },
+      {
+        "id": "D",
+        "text": ","
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "*Because the ferry runs only twice a day* is a dependent clause opening the sentence, so a comma separates it from the main clause.",
+    "distractorRationale": {
+      "A": "A colon must follow a complete independent clause.",
+      "B": "*Because* already signals cause, so *so* states the same relationship twice.",
+      "C": "A semicolon joins two independent clauses; the first clause here is dependent."
+    },
+    "tags": [
+      "boundaries",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e23",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "difficulty": "M",
+    "irtB": -0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The expedition carried three instruments ______ a barometer, a sextant, and a chronometer."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": ":"
+      },
+      {
+        "id": "B",
+        "text": ";"
+      },
+      {
+        "id": "C",
+        "text": ""
+      },
+      {
+        "id": "D",
+        "text": ", and"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The clause ends at *three instruments*, and what follows is a list naming them. A colon introduces such a list after a complete clause.",
+    "distractorRationale": {
+      "B": "A semicolon would set the list apart as a separate clause, but it is a fragment.",
+      "C": "Without punctuation the list runs into the clause ungrammatically.",
+      "D": "*And* would make the list a fourth item rather than an explanation of the three."
+    },
+    "tags": [
+      "boundaries",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e24",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "E",
+    "irtB": -1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The collection of letters, photographs, and ticket stubs ______ kept in a shoebox under the stairs."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "were"
+      },
+      {
+        "id": "B",
+        "text": "was"
+      },
+      {
+        "id": "C",
+        "text": "have been"
+      },
+      {
+        "id": "D",
+        "text": "are"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The subject is *the collection*, which is singular. The plural nouns after *of* belong to a prepositional phrase and do not control the verb.",
+    "distractorRationale": {
+      "A": "Plural, agreeing with the nouns inside the prepositional phrase rather than the subject.",
+      "C": "Also plural, and shifts to the present perfect without reason.",
+      "D": "Plural and present tense."
+    },
+    "tags": [
+      "subject-verb-agreement",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e25",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "By the time the rescue team arrived, the climbers ______ their own way down to the valley floor."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "find"
+      },
+      {
+        "id": "B",
+        "text": "will find"
+      },
+      {
+        "id": "C",
+        "text": "had found"
+      },
+      {
+        "id": "D",
+        "text": "are finding"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "*By the time…arrived* sets a point in the past, and the climbing down happened before it. An action completed before another past action takes the past perfect.",
+    "distractorRationale": {
+      "A": "Present tense clashes with the past-tense frame set by *arrived*.",
+      "B": "Future tense contradicts an event that had already happened.",
+      "D": "Present progressive describes something happening now."
+    },
+    "tags": [
+      "verb-tense",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e26",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "M",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The apprentice was expected to sharpen the tools, sweep the workshop, and ______ before the master arrived each morning."
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the fire needed lighting"
+      },
+      {
+        "id": "B",
+        "text": "lighting the fire"
+      },
+      {
+        "id": "C",
+        "text": "a lit fire"
+      },
+      {
+        "id": "D",
+        "text": "light the fire"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The series runs *sharpen…, sweep…, and ______*. Parallel structure requires a third bare infinitive to match the first two.",
+    "distractorRationale": {
+      "A": "A full clause breaks the series of verb phrases.",
+      "B": "A gerund does not match the bare infinitives *sharpen* and *sweep*.",
+      "C": "A noun phrase cannot fill a slot the first two items fill with verbs."
+    },
+    "tags": [
+      "parallel-structure",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "sat-rw-e27",
+    "status": "approved",
+    "exam": "SAT",
+    "section": "sat_rw_m2",
+    "domain": "Standard English Conventions",
+    "skill": "Form, Structure, and Sense",
+    "difficulty": "M",
+    "irtB": -0.1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Having studied the tide tables for a week, ______"
+    },
+    "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the guide scheduled the crossing for dawn."
+      },
+      {
+        "id": "B",
+        "text": "the crossing was scheduled for dawn."
+      },
+      {
+        "id": "C",
+        "text": "dawn seemed the safest time to cross."
+      },
+      {
+        "id": "D",
+        "text": "it was decided that dawn was safest."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The opening participial phrase must modify whoever did the studying. Only **A** makes *the guide* the subject of the main clause.",
+    "distractorRationale": {
+      "B": "Makes *the crossing* the subject, implying the crossing studied the tables.",
+      "C": "Makes *dawn* the subject, which is an even clearer dangling modifier.",
+      "D": "The subject is the empty *it*, which cannot have studied anything."
+    },
+    "tags": [
+      "modifiers",
+      "easier-module"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "variant": "easier",
+      "keyBalanced": 1
+    }
+  }
+]

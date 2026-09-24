@@ -1,0 +1,605 @@
+[
+  {
+    "id": "utbk-pm-p01",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Operasi kontekstual",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Harga sebuah barang Rp200.000,00 sebelum pajak. Bila dikenai pajak 11%, harga yang harus dibayar adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp222.000,00"
+      },
+      {
+        "id": "B",
+        "text": "Rp211.000,00"
+      },
+      {
+        "id": "C",
+        "text": "Rp231.000,00"
+      },
+      {
+        "id": "D",
+        "text": "Rp220.000,00"
+      },
+      {
+        "id": "E",
+        "text": "Rp202.200,00"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Pajaknya $11\\%$ dari Rp200.000, yaitu $\\dfrac{11}{100} \\times 200.000 = 22.000$ rupiah.\n\nHarga bayar $200.000 + 22.000 = 222.000$ rupiah. Cara cepat: bayar $111\\%$ dari harga awal, yaitu $1{,}11 \\times 200.000$.",
+    "distractorRationale": {
+      "B": "Menambahkan Rp11.000, memperlakukan persen sebagai nominal.",
+      "C": "Menghitung pajak $15{,}5\\%$.",
+      "D": "Menghitung pajak $10\\%$.",
+      "E": "Menghitung pajak $1{,}1\\%$."
+    },
+    "tags": [
+      "persen",
+      "pajak"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-p02",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Rasio & proporsi",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Lima pekerja memasang 200 batu bata per jam. Bila delapan pekerja bekerja dengan kecepatan sama, jumlah batu bata yang terpasang per jam adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "300"
+      },
+      {
+        "id": "B",
+        "text": "320"
+      },
+      {
+        "id": "C",
+        "text": "250"
+      },
+      {
+        "id": "D",
+        "text": "280"
+      },
+      {
+        "id": "E",
+        "text": "400"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Satu pekerja memasang $200 : 5 = 40$ batu bata per jam.\n\nDelapan pekerja memasang $8 \\times 40 = 320$ batu bata per jam. Perbandingannya senilai — lebih banyak pekerja berarti lebih banyak batu bata.",
+    "distractorRationale": {
+      "A": "Menambahkan 100 tanpa dasar perhitungan.",
+      "C": "Memakai 31,25 batu bata per pekerja.",
+      "D": "Memakai 35 batu bata per pekerja.",
+      "E": "Menggandakan 200, seolah pekerjanya sepuluh."
+    },
+    "tags": [
+      "proporsi",
+      "laju-kerja"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-p03",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Analisis data nyata",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai ulangan enam siswa: 70, 75, 80, 65, 90, dan 80. Selisih antara nilai tertinggi dan rata-ratanya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "15"
+      },
+      {
+        "id": "B",
+        "text": "12"
+      },
+      {
+        "id": "C",
+        "text": "13"
+      },
+      {
+        "id": "D",
+        "text": "10"
+      },
+      {
+        "id": "E",
+        "text": "20"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Jumlah seluruh nilai: $70 + 75 + 80 + 65 + 90 + 80 = 460$, sehingga rata-ratanya $\\dfrac{460}{6} \\approx 76{,}67$.\n\nNilai tertinggi 90, sehingga selisihnya $90 - 76{,}67 = 13{,}33$, yang paling dekat dengan 13.",
+    "distractorRationale": {
+      "A": "Memakai rata-rata 75.",
+      "B": "Memakai rata-rata 78.",
+      "D": "Memakai rata-rata 80.",
+      "E": "Menghitung selisih tertinggi dan terendah."
+    },
+    "tags": [
+      "rata-rata",
+      "selisih"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-p04",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Pemodelan persamaan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Tarif sebuah layanan adalah Rp10.000,00 sebagai biaya awal ditambah Rp500,00 per menit. Bila seseorang membayar Rp25.000,00, lama pemakaiannya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "15 menit"
+      },
+      {
+        "id": "B",
+        "text": "35 menit"
+      },
+      {
+        "id": "C",
+        "text": "20 menit"
+      },
+      {
+        "id": "D",
+        "text": "30 menit"
+      },
+      {
+        "id": "E",
+        "text": "50 menit"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Misalkan lama pemakaian $t$ menit. Biayanya $10.000 + 500t = 25.000$.\n\nMaka $500t = 15.000$ dan $t = 30$ menit.\n\nBiaya awal harus dikurangkan lebih dahulu; membagi 25.000 dengan 500 langsung akan menghitung biaya awal sebagai waktu pemakaian.",
+    "distractorRationale": {
+      "A": "Memakai biaya awal Rp17.500.",
+      "B": "Memakai tarif Rp430 per menit.",
+      "C": "Membagi 10.000 dengan 500.",
+      "E": "Membagi 25.000 dengan 500 tanpa mengurangi biaya awal."
+    },
+    "tags": [
+      "pemodelan",
+      "tarif"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-p05",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun & volume kontekstual",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kolam berbentuk balok berukuran panjang 4 m, lebar 3 m, dan kedalaman 1,5 m. Bila diisi penuh, volume airnya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1.800 liter"
+      },
+      {
+        "id": "B",
+        "text": "180.000 liter"
+      },
+      {
+        "id": "C",
+        "text": "18 liter"
+      },
+      {
+        "id": "D",
+        "text": "180 liter"
+      },
+      {
+        "id": "E",
+        "text": "18.000 liter"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Volume $= 4 \\times 3 \\times 1{,}5 = 18\\ \\text{m}^3$.\n\nKarena $1\\ \\text{m}^3 = 1.000$ liter, volumenya $18.000$ liter.\n\nKonversi inilah langkah yang paling sering terlewat, dan meleset seribu kali lipat bila diabaikan.",
+    "distractorRationale": {
+      "A": "Mengalikan dengan 100, bukan 1.000.",
+      "B": "Mengalikan dengan 10.000.",
+      "C": "Berhenti pada meter kubik tetapi menuliskannya sebagai liter.",
+      "D": "Mengalikan dengan 10."
+    },
+    "tags": [
+      "volume",
+      "konversi-satuan"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-p06",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Skala & denah",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Pada peta berskala $1 : 200.000$, jarak dua kota tergambar 4,5 cm. Jarak sebenarnya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9 km"
+      },
+      {
+        "id": "B",
+        "text": "45 km"
+      },
+      {
+        "id": "C",
+        "text": "4,5 km"
+      },
+      {
+        "id": "D",
+        "text": "900 km"
+      },
+      {
+        "id": "E",
+        "text": "90 km"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Skala $1 : 200.000$ berarti 1 cm pada peta mewakili 200.000 cm sesungguhnya.\n\nJarak sebenarnya $= 4{,}5 \\times 200.000 = 900.000\\ \\text{cm}$. Karena $1\\ \\text{km} = 100.000\\ \\text{cm}$, jaraknya $9$ km.",
+    "distractorRationale": {
+      "B": "Membagi dengan 20.000.",
+      "C": "Tidak mengalikan dengan skalanya.",
+      "D": "Berhenti pada 900.000 lalu salah satuan.",
+      "E": "Membagi dengan 10.000, bukan 100.000."
+    },
+    "tags": [
+      "skala",
+      "konversi-satuan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-p07",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Peluang kontekstual",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kelas berisi 20 siswa, 12 di antaranya perempuan. Bila dipilih satu siswa secara acak, peluang terpilih siswa laki-laki adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{8}{12}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{2}{5}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{3}{5}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{5}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{1}{2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Jumlah siswa laki-laki $= 20 - 12 = 8$.\n\nPeluangnya $\\dfrac{8}{20} = \\dfrac{2}{5}$.\n\nMenghitung selisihnya lebih dahulu adalah langkah yang menentukan; angka 12 pada soal adalah jumlah perempuan, bukan laki-laki.",
+    "distractorRationale": {
+      "A": "Membandingkan laki-laki dengan perempuan, bukan dengan seluruh siswa.",
+      "C": "Memberikan peluang terpilih siswa perempuan.",
+      "D": "Memakai 4 siswa laki-laki.",
+      "E": "Menganggap jumlah keduanya sama."
+    },
+    "tags": [
+      "peluang"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-p08",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Fungsi kontekstual",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Biaya produksi $x$ unit barang dinyatakan $B(x) = 15.000x + 400.000$ rupiah. Bila anggaran yang tersedia Rp1.300.000,00, jumlah unit terbanyak yang dapat diproduksi adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "70 unit"
+      },
+      {
+        "id": "B",
+        "text": "55 unit"
+      },
+      {
+        "id": "C",
+        "text": "60 unit"
+      },
+      {
+        "id": "D",
+        "text": "86 unit"
+      },
+      {
+        "id": "E",
+        "text": "90 unit"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Syaratnya $15.000x + 400.000 \\le 1.300.000$, sehingga $15.000x \\le 900.000$ dan $x \\le 60$.\n\nJumlah terbanyak adalah 60 unit. Biaya tetap Rp400.000 harus dikurangkan lebih dahulu — membagi 1.300.000 dengan 15.000 langsung akan mengabaikannya.",
+    "distractorRationale": {
+      "A": "Memakai biaya tetap Rp250.000.",
+      "B": "Memakai biaya tetap Rp475.000.",
+      "D": "Membagi 1.300.000 dengan 15.000 tanpa mengurangi biaya tetap.",
+      "E": "Memakai biaya per unit Rp10.000."
+    },
+    "tags": [
+      "fungsi-kontekstual",
+      "pertidaksamaan"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-p09",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Sistem persamaan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Harga 3 pensil dan 2 buku Rp26.000,00, sedangkan harga 2 pensil dan 3 buku Rp29.000,00. Harga sebuah buku adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp8.000,00"
+      },
+      {
+        "id": "B",
+        "text": "Rp5.000,00"
+      },
+      {
+        "id": "C",
+        "text": "Rp4.000,00"
+      },
+      {
+        "id": "D",
+        "text": "Rp7.000,00"
+      },
+      {
+        "id": "E",
+        "text": "Rp6.000,00"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Misalkan $p$ harga pensil dan $b$ harga buku.\n\n$3p + 2b = 26.000$ dan $2p + 3b = 29.000$.\n\nKalikan persamaan pertama dengan 3 dan kedua dengan 2: $9p + 6b = 78.000$ dan $4p + 6b = 58.000$. Kurangkan: $5p = 20.000$, sehingga $p = 4.000$.\n\nSubstitusikan ke persamaan pertama: $12.000 + 2b = 26.000$, sehingga $b = 7.000$.",
+    "distractorRationale": {
+      "A": "Membagi 29.000 dengan tiga lalu membulatkan.",
+      "B": "Menaksir tanpa menyelesaikan sistemnya.",
+      "C": "Memberikan harga pensil, bukan buku.",
+      "E": "Salah tanda saat mengurangkan kedua persamaan."
+    },
+    "tags": [
+      "spldv",
+      "eliminasi"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-p10",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Inferensi sederhana",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Survei terhadap 900 warga yang dipilih acak menemukan 30% responden mendukung usulan penataan trotoar, dengan margin kesalahan 4 poin persen pada tingkat kepercayaan 95%."
+    },
+    "stem": "Simpulan yang paling tepat berdasarkan data tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Survei berikutnya pasti menghasilkan angka antara 26% dan 34%"
+      },
+      {
+        "id": "B",
+        "text": "Mayoritas warga kota menolak usulan itu"
+      },
+      {
+        "id": "C",
+        "text": "Antara 26% dan 34% responden dalam survei mendukung usulan itu"
+      },
+      {
+        "id": "D",
+        "text": "Tepat 30% seluruh warga kota mendukung usulan itu"
+      },
+      {
+        "id": "E",
+        "text": "Dukungan warga kota diperkirakan berada antara 26% dan 34%"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Margin kesalahan menggambarkan rentang yang masuk akal bagi nilai seluruh populasi, bukan bagi sampelnya dan bukan jaminan bagi survei berikutnya.\n\nDari $30\\%$ dengan margin 4 poin, rentangnya $26\\%$ sampai $34\\%$, dan itu berlaku sebagai perkiraan bagi dukungan warga kota secara keseluruhan.",
+    "distractorRationale": {
+      "A": "Margin kesalahan tidak menjamin hasil survei tertentu berikutnya.",
+      "B": "Menolak bukan berarti mayoritas; sisanya bisa saja belum menentukan sikap.",
+      "C": "Angka pada sampel sudah diketahui persis $30\\%$; rentang itu untuk populasi.",
+      "D": "Memperlakukan taksiran sampel sebagai nilai pasti populasi, yang justru dibantah oleh adanya margin kesalahan."
+    },
+    "tags": [
+      "inferensi",
+      "margin-kesalahan"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  }
+]

@@ -1,0 +1,3761 @@
+[
+  {
+    "id": "csca-phy-r01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Velocity and acceleration 速度与加速度",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A runner completes one lap of a $400\\ \\text{m}$ circular track, finishing where she started. What are the distance and displacement?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$400\\ \\text{m}$ and $0$"
+      },
+      {
+        "id": "B",
+        "text": "$0$ and $400\\ \\text{m}$"
+      },
+      {
+        "id": "C",
+        "text": "$0$ and $0$"
+      },
+      {
+        "id": "D",
+        "text": "$400\\ \\text{m}$ and $400\\ \\text{m}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Distance is the length of the path travelled, so it is $400\\ \\text{m}$. Displacement is the straight-line change in position; returning to the starting point makes it zero.\\n\\nThis is the clearest case of the scalar-vector distinction: the same motion gives two very different numbers.",
+    "distractorRationale": {
+      "B": "Reverses the two quantities.",
+      "C": "Distance cannot be zero when the runner has moved.",
+      "D": "Treats displacement as if it were distance."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "运动员沿 $400\\ \\text{m}$ 环形跑道跑完一圈回到起点，其路程与位移分别是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$400\\ \\text{m}$ and $0$"
+          },
+          {
+            "id": "B",
+            "text": "$0$ and $400\\ \\text{m}$"
+          },
+          {
+            "id": "C",
+            "text": "$0$ and $0$"
+          },
+          {
+            "id": "D",
+            "text": "$400\\ \\text{m}$ and $400\\ \\text{m}$"
+          }
+        ],
+        "explanation": "路程是所经路径的长度，为 $400\\ \\text{m}$。位移是位置变化的直线量，回到起点故为零。\\n\\n这是标量与矢量区别最鲜明的例子：同一段运动给出两个截然不同的数值。"
+      }
+    },
+    "tags": [
+      "distance-displacement"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Newton's laws 牛顿定律",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An object of mass $5.0\\ \\text{kg}$ rests on the ground. Taking $g = 10\\ \\text{m}\\,\\text{s}^{-2}$, what is its weight?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.5\\ \\text{N}$"
+      },
+      {
+        "id": "B",
+        "text": "$50\\ \\text{N}$"
+      },
+      {
+        "id": "C",
+        "text": "$10\\ \\text{N}$"
+      },
+      {
+        "id": "D",
+        "text": "$5.0\\ \\text{N}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Weight is the gravitational force on the mass: $W = mg = 5.0 \\times 10 = 50\\ \\text{N}$.\\n\\nMass is measured in kilograms and does not change with location; weight is a force in newtons and does.",
+    "distractorRationale": {
+      "A": "Divides instead of multiplying.",
+      "C": "Gives $g$ alone.",
+      "D": "Quotes the mass with a force unit."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "质量为 $5.0\\ \\text{kg}$ 的物体静置于地面，取 $g = 10\\ \\text{m}\\,\\text{s}^{-2}$，其重力为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.5\\ \\text{N}$"
+          },
+          {
+            "id": "B",
+            "text": "$50\\ \\text{N}$"
+          },
+          {
+            "id": "C",
+            "text": "$10\\ \\text{N}$"
+          },
+          {
+            "id": "D",
+            "text": "$5.0\\ \\text{N}$"
+          }
+        ],
+        "explanation": "重力是作用在质量上的引力：$W = mg = 5.0 \\times 10 = 50\\ \\text{N}$。\\n\\n质量以千克计量且不随位置改变；重力是以牛顿计量的力，会随位置改变。"
+      }
+    },
+    "tags": [
+      "weight",
+      "mass"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Newton's laws 牛顿定律",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A book rests on a table. Which force is the Newton's third law pair to the weight of the book?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the table pushing up on the book"
+      },
+      {
+        "id": "B",
+        "text": "the weight of the table"
+      },
+      {
+        "id": "C",
+        "text": "the book pulling up on the Earth"
+      },
+      {
+        "id": "D",
+        "text": "the book pushing down on the table"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "A third-law pair acts on two different bodies, is of the same type, and is equal and opposite. The weight is the Earth pulling the book down, so its pair is the book pulling the Earth up — gravitational, and acting on the Earth.\\n\\nThe table's upward push acts on the same body as the weight and is a contact force, so it is a balancing force, not a third-law pair.",
+    "distractorRationale": {
+      "A": "Acts on the same body and is a contact force — a balancing force instead.",
+      "B": "Unrelated to the book's weight.",
+      "D": "Its pair is the table pushing up on the book."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "书本静置于桌面。与书本所受重力互为牛顿第三定律作用力与反作用力的是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "the table pushing up on the book"
+          },
+          {
+            "id": "B",
+            "text": "the weight of the table"
+          },
+          {
+            "id": "C",
+            "text": "the book pulling up on the Earth"
+          },
+          {
+            "id": "D",
+            "text": "the book pushing down on the table"
+          }
+        ],
+        "explanation": "作用力与反作用力分别作用在两个不同物体上，性质相同，大小相等方向相反。重力是地球对书的吸引，其反作用力是书对地球的吸引——同为引力，且作用在地球上。\\n\\n桌面的支持力与重力作用在同一物体上且属接触力，只是平衡力，并非作用力与反作用力。"
+      }
+    },
+    "tags": [
+      "newtons-third-law"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Velocity and acceleration 速度与加速度",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An object is dropped from rest. Taking $g = 10\\ \\text{m}\\,\\text{s}^{-2}$ and ignoring air resistance, what is its speed after $3.0\\ \\text{s}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$10\\ \\text{m}\\,\\text{s}^{-1}$"
+      },
+      {
+        "id": "B",
+        "text": "$3.3\\ \\text{m}\\,\\text{s}^{-1}$"
+      },
+      {
+        "id": "C",
+        "text": "$45\\ \\text{m}\\,\\text{s}^{-1}$"
+      },
+      {
+        "id": "D",
+        "text": "$30\\ \\text{m}\\,\\text{s}^{-1}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "With $u = 0$, $v = gt = 10 \\times 3.0 = 30\\ \\text{m}\\,\\text{s}^{-1}$.\\n\\nThe value $45\\ \\text{m}$ is the distance fallen, $\\tfrac{1}{2}gt^2$ — a different quantity that the question does not ask for.",
+    "distractorRationale": {
+      "A": "Gives $g$ alone.",
+      "B": "Divides instead of multiplying.",
+      "C": "Gives the distance fallen, not the speed."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "物体由静止自由下落，取 $g = 10\\ \\text{m}\\,\\text{s}^{-2}$ 且不计空气阻力，$3.0\\ \\text{s}$ 后的速度为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$10\\ \\text{m}\\,\\text{s}^{-1}$"
+          },
+          {
+            "id": "B",
+            "text": "$3.3\\ \\text{m}\\,\\text{s}^{-1}$"
+          },
+          {
+            "id": "C",
+            "text": "$45\\ \\text{m}\\,\\text{s}^{-1}$"
+          },
+          {
+            "id": "D",
+            "text": "$30\\ \\text{m}\\,\\text{s}^{-1}$"
+          }
+        ],
+        "explanation": "由 $u = 0$ 得 $v = gt = 10 \\times 3.0 = 30\\ \\text{m}\\,\\text{s}^{-1}$。\\n\\n$45\\ \\text{m}$ 是下落的距离 $\\tfrac{1}{2}gt^2$，与所问的量不同。"
+      }
+    },
+    "tags": [
+      "free-fall"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Velocity and acceleration 速度与加速度",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A ball is thrown horizontally from a cliff. Ignoring air resistance, which statement about its motion is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "horizontal velocity stays constant while vertical velocity increases"
+      },
+      {
+        "id": "B",
+        "text": "both horizontal and vertical velocity stay constant"
+      },
+      {
+        "id": "C",
+        "text": "horizontal velocity decreases while vertical velocity stays constant"
+      },
+      {
+        "id": "D",
+        "text": "both increase"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Gravity acts vertically only, so it changes the vertical velocity and leaves the horizontal one untouched.\\n\\nThat independence is why a ball thrown horizontally and one dropped from the same height reach the ground at the same moment.",
+    "distractorRationale": {
+      "B": "Vertical velocity grows under gravity.",
+      "C": "Nothing acts horizontally to slow it.",
+      "D": "Horizontal velocity is unchanged."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "小球从崖顶水平抛出，不计空气阻力，关于其运动正确的是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "horizontal velocity stays constant while vertical velocity increases"
+          },
+          {
+            "id": "B",
+            "text": "both horizontal and vertical velocity stay constant"
+          },
+          {
+            "id": "C",
+            "text": "horizontal velocity decreases while vertical velocity stays constant"
+          },
+          {
+            "id": "D",
+            "text": "both increase"
+          }
+        ],
+        "explanation": "重力只沿竖直方向作用，因此只改变竖直速度，水平速度不变。\\n\\n正因这种独立性，水平抛出的球与同高度自由下落的球会同时落地。"
+      }
+    },
+    "tags": [
+      "projectile"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Newton's laws 牛顿定律",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A block of weight $40\\ \\text{N}$ slides on a level floor where the coefficient of friction is $0.25$. What is the frictional force?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$160\\ \\text{N}$"
+      },
+      {
+        "id": "B",
+        "text": "$10\\ \\text{N}$"
+      },
+      {
+        "id": "C",
+        "text": "$0.25\\ \\text{N}$"
+      },
+      {
+        "id": "D",
+        "text": "$40\\ \\text{N}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "On a level surface the normal force equals the weight, so $f = \\mu N = 0.25 \\times 40 = 10\\ \\text{N}$.\\n\\nOn a slope the normal force would be smaller than the weight, and this shortcut would no longer hold.",
+    "distractorRationale": {
+      "A": "Divides by the coefficient.",
+      "C": "Quotes the coefficient as a force.",
+      "D": "Ignores the coefficient."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "重 $40\\ \\text{N}$ 的物块在水平地面上滑动，摩擦因数为 $0.25$，所受摩擦力为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$160\\ \\text{N}$"
+          },
+          {
+            "id": "B",
+            "text": "$10\\ \\text{N}$"
+          },
+          {
+            "id": "C",
+            "text": "$0.25\\ \\text{N}$"
+          },
+          {
+            "id": "D",
+            "text": "$40\\ \\text{N}$"
+          }
+        ],
+        "explanation": "水平面上支持力等于重力，故 $f = \\mu N = 0.25 \\times 40 = 10\\ \\text{N}$。\\n\\n若在斜面上，支持力小于重力，这一简化便不再成立。"
+      }
+    },
+    "tags": [
+      "friction"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Work and energy 功与能",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A machine does $600\\ \\text{J}$ of work in $4.0\\ \\text{s}$. What is its power output?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.0067\\ \\text{W}$"
+      },
+      {
+        "id": "B",
+        "text": "$604\\ \\text{W}$"
+      },
+      {
+        "id": "C",
+        "text": "$150\\ \\text{W}$"
+      },
+      {
+        "id": "D",
+        "text": "$2400\\ \\text{W}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Power is work divided by time: $P = \\dfrac{600}{4.0} = 150\\ \\text{W}$.",
+    "distractorRationale": {
+      "A": "Inverts the fraction.",
+      "B": "Adds the two quantities.",
+      "D": "Multiplies instead of dividing."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某机器在 $4.0\\ \\text{s}$ 内做功 $600\\ \\text{J}$，其输出功率为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.0067\\ \\text{W}$"
+          },
+          {
+            "id": "B",
+            "text": "$604\\ \\text{W}$"
+          },
+          {
+            "id": "C",
+            "text": "$150\\ \\text{W}$"
+          },
+          {
+            "id": "D",
+            "text": "$2400\\ \\text{W}$"
+          }
+        ],
+        "explanation": "功率等于功除以时间：$P = \\dfrac{600}{4.0} = 150\\ \\text{W}$。"
+      }
+    },
+    "tags": [
+      "power"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Work and energy 功与能",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A pendulum bob is released from rest at a height $h$ above its lowest point. Ignoring resistance, what is its speed at the lowest point?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2gh$"
+      },
+      {
+        "id": "B",
+        "text": "$gh$"
+      },
+      {
+        "id": "C",
+        "text": "$\\sqrt{gh}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\sqrt{2gh}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "All the gravitational potential energy converts to kinetic energy: $mgh = \\tfrac{1}{2}mv^2$.\\n\\nThe mass cancels, giving $v = \\sqrt{2gh}$ — the speed does not depend on how heavy the bob is.",
+    "distractorRationale": {
+      "A": "Forgets to take the square root.",
+      "B": "Gives an energy per unit mass, not a speed.",
+      "C": "Omits the factor of 2 from the energy equation."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "摆球从最低点上方高 $h$ 处由静止释放，不计阻力，其到达最低点时的速率为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$2gh$"
+          },
+          {
+            "id": "B",
+            "text": "$gh$"
+          },
+          {
+            "id": "C",
+            "text": "$\\sqrt{gh}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\sqrt{2gh}$"
+          }
+        ],
+        "explanation": "重力势能全部转化为动能：$mgh = \\tfrac{1}{2}mv^2$。\\n\\n质量约去，得 $v = \\sqrt{2gh}$——速率与摆球轻重无关。"
+      }
+    },
+    "tags": [
+      "energy-conservation"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Newton's laws 牛顿定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A skydiver reaches terminal velocity. What is true at that moment?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "air resistance equals the weight, so the net force is zero"
+      },
+      {
+        "id": "B",
+        "text": "the weight is zero"
+      },
+      {
+        "id": "C",
+        "text": "the velocity is zero"
+      },
+      {
+        "id": "D",
+        "text": "the acceleration equals $g$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Terminal velocity is reached when the upward drag has grown to match the downward weight. The net force is then zero, so by Newton's second law the acceleration is zero and the speed stops changing.\\n\\nZero acceleration does not mean zero velocity — the skydiver keeps falling, just no faster.",
+    "distractorRationale": {
+      "B": "Weight is unchanged throughout the fall.",
+      "C": "The skydiver is falling at constant, non-zero speed.",
+      "D": "Acceleration is zero, not $g$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "跳伞者达到收尾速度时，正确的说法是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "air resistance equals the weight, so the net force is zero"
+          },
+          {
+            "id": "B",
+            "text": "the weight is zero"
+          },
+          {
+            "id": "C",
+            "text": "the velocity is zero"
+          },
+          {
+            "id": "D",
+            "text": "the acceleration equals $g$"
+          }
+        ],
+        "explanation": "当向上的空气阻力增大到与向下的重力相等时即达到收尾速度。此时合力为零，由牛顿第二定律加速度为零，速度不再改变。\\n\\n加速度为零不等于速度为零——跳伞者仍在下落，只是不再加快。"
+      }
+    },
+    "tags": [
+      "terminal-velocity"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Circular motion 圆周运动",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An object of mass $m$ moves in a circle of radius $r$ at speed $v$. What is the centripetal force?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{mr}{v^2}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{mv^2}{r}$"
+      },
+      {
+        "id": "C",
+        "text": "$mv^2 r$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{mv}{r}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The centripetal acceleration is $\\dfrac{v^2}{r}$, so the force is $\\dfrac{mv^2}{r}$, directed towards the centre.\\n\\nThis is not a new kind of force: it is supplied by tension, friction, gravity or whatever else acts along the radius.",
+    "distractorRationale": {
+      "A": "Inverts the whole expression.",
+      "C": "Multiplies by the radius instead of dividing.",
+      "D": "Omits the square on the speed."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "质量为 $m$ 的物体以速率 $v$ 沿半径为 $r$ 的圆周运动，其向心力为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\dfrac{mr}{v^2}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{mv^2}{r}$"
+          },
+          {
+            "id": "C",
+            "text": "$mv^2 r$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{mv}{r}$"
+          }
+        ],
+        "explanation": "向心加速度为 $\\dfrac{v^2}{r}$，故向心力为 $\\dfrac{mv^2}{r}$，方向指向圆心。\\n\\n它并非一种新的力：由绳张力、摩擦力、引力等沿半径方向的力提供。"
+      }
+    },
+    "tags": [
+      "centripetal-force"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Work and energy 功与能",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A uniform beam of length $4.0\\ \\text{m}$ is pivoted at its centre. A $30\\ \\text{N}$ weight hangs $1.0\\ \\text{m}$ from the pivot on one side. How far from the pivot must a $10\\ \\text{N}$ weight hang on the other side to balance it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$1.0\\ \\text{m}$"
+      },
+      {
+        "id": "B",
+        "text": "$2.0\\ \\text{m}$"
+      },
+      {
+        "id": "C",
+        "text": "$3.0\\ \\text{m}$"
+      },
+      {
+        "id": "D",
+        "text": "$0.33\\ \\text{m}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Balancing moments about the pivot: $30 \\times 1.0 = 10 \\times d$, so $d = 3.0\\ \\text{m}$.\\n\\nThe beam is uniform and pivoted at its centre, so its own weight produces no moment and can be ignored. The answer fits within the $2.0\\ \\text{m}$ half-length only just — at $3.0\\ \\text{m}$ it would in fact overhang, which is worth noticing about idealised problems.",
+    "distractorRationale": {
+      "A": "Would require equal weights.",
+      "B": "Uses the half-length rather than the moment balance.",
+      "D": "Inverts the ratio."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "长 $4.0\\ \\text{m}$ 的均匀横梁支于中点，一侧距支点 $1.0\\ \\text{m}$ 处挂 $30\\ \\text{N}$ 重物。欲使其平衡，另一侧的 $10\\ \\text{N}$ 重物应挂在距支点多远处？",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$1.0\\ \\text{m}$"
+          },
+          {
+            "id": "B",
+            "text": "$2.0\\ \\text{m}$"
+          },
+          {
+            "id": "C",
+            "text": "$3.0\\ \\text{m}$"
+          },
+          {
+            "id": "D",
+            "text": "$0.33\\ \\text{m}$"
+          }
+        ],
+        "explanation": "对支点取矩：$30 \\times 1.0 = 10 \\times d$，故 $d = 3.0\\ \\text{m}$。\\n\\n横梁均匀且支于中点，自重不产生力矩，可以忽略。值得注意的是，$3.0\\ \\text{m}$ 已超出半梁长 $2.0\\ \\text{m}$——理想化题目常有此类情形。"
+      }
+    },
+    "tags": [
+      "moments"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Momentum and impulse 动量与冲量",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A force acts on a body and the area under its force-time graph is $12\\ \\text{N}\\,\\text{s}$. What does this area represent?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the power delivered"
+      },
+      {
+        "id": "B",
+        "text": "the work done"
+      },
+      {
+        "id": "C",
+        "text": "the kinetic energy gained"
+      },
+      {
+        "id": "D",
+        "text": "the impulse, equal to the change in momentum"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The area under a force-time graph is force multiplied by time, which is impulse, and impulse equals the change in momentum.\\n\\nWork would be the area under a force-**distance** graph — a different graph with different units.",
+    "distractorRationale": {
+      "A": "Power is work per unit time.",
+      "B": "Work is the area under a force-distance graph.",
+      "C": "Energy has units of joules, not newton-seconds."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某力作用于物体，其力-时间图线下的面积为 $12\\ \\text{N}\\,\\text{s}$，该面积表示",
+        "choices": [
+          {
+            "id": "A",
+            "text": "the power delivered"
+          },
+          {
+            "id": "B",
+            "text": "the work done"
+          },
+          {
+            "id": "C",
+            "text": "the kinetic energy gained"
+          },
+          {
+            "id": "D",
+            "text": "the impulse, equal to the change in momentum"
+          }
+        ],
+        "explanation": "力-时间图线下的面积即力与时间之积，也就是冲量，而冲量等于动量的变化。\\n\\n功是力-**位移**图线下的面积——图线不同，单位也不同。"
+      }
+    },
+    "tags": [
+      "impulse",
+      "graphs"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Simple harmonic motion 简谐运动",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "The length of a simple pendulum is increased four times. What happens to its period?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "it doubles"
+      },
+      {
+        "id": "B",
+        "text": "it halves"
+      },
+      {
+        "id": "C",
+        "text": "it quadruples"
+      },
+      {
+        "id": "D",
+        "text": "it is unchanged"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The period is $T = 2\\pi\\sqrt{\\dfrac{L}{g}}$, so it varies with the square root of the length. Multiplying $L$ by four multiplies $T$ by $\\sqrt{4} = 2$.\\n\\nThe mass of the bob does not appear at all — a result that surprises most people the first time.",
+    "distractorRationale": {
+      "B": "Reverses the direction.",
+      "C": "Treats the relationship as directly proportional.",
+      "D": "Length clearly affects the period."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "单摆的摆长变为原来的四倍，其周期",
+        "choices": [
+          {
+            "id": "A",
+            "text": "it doubles"
+          },
+          {
+            "id": "B",
+            "text": "it halves"
+          },
+          {
+            "id": "C",
+            "text": "it quadruples"
+          },
+          {
+            "id": "D",
+            "text": "it is unchanged"
+          }
+        ],
+        "explanation": "周期为 $T = 2\\pi\\sqrt{\\dfrac{L}{g}}$，与摆长的平方根成正比。摆长变为四倍，周期变为 $\\sqrt{4} = 2$ 倍。\\n\\n摆球质量根本不出现在式中——初次接触时多数人都会感到意外。"
+      }
+    },
+    "tags": [
+      "pendulum",
+      "period"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Momentum and impulse 动量与冲量",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In a perfectly elastic collision, which quantities are conserved?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "neither"
+      },
+      {
+        "id": "B",
+        "text": "both momentum and kinetic energy"
+      },
+      {
+        "id": "C",
+        "text": "kinetic energy only"
+      },
+      {
+        "id": "D",
+        "text": "momentum only"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Momentum is conserved in every collision. What distinguishes an elastic collision is that kinetic energy is conserved as well — nothing is converted into heat or deformation.\\n\\nIn an inelastic collision momentum still holds, but kinetic energy does not.",
+    "distractorRationale": {
+      "A": "Momentum is always conserved.",
+      "C": "Momentum is conserved in all collisions.",
+      "D": "Describes an inelastic collision."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "完全弹性碰撞中，守恒的量是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "neither"
+          },
+          {
+            "id": "B",
+            "text": "both momentum and kinetic energy"
+          },
+          {
+            "id": "C",
+            "text": "kinetic energy only"
+          },
+          {
+            "id": "D",
+            "text": "momentum only"
+          }
+        ],
+        "explanation": "任何碰撞中动量都守恒。弹性碰撞的特点在于动能也守恒——没有能量转化为热或形变。\\n\\n非弹性碰撞中动量仍守恒，动能则不守恒。"
+      }
+    },
+    "tags": [
+      "elastic-collision"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Circular motion 圆周运动",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A car travels over a humpback bridge. At the top of the hump, how does the normal force from the road compare with the car's weight?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "greater than the weight"
+      },
+      {
+        "id": "B",
+        "text": "equal to the weight"
+      },
+      {
+        "id": "C",
+        "text": "less than the weight"
+      },
+      {
+        "id": "D",
+        "text": "zero"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "At the top of the hump the car moves in a circle whose centre is below it, so the net force must point downward.\\n\\nWeight acts down and the normal force up, so $mg - N = \\dfrac{mv^2}{r}$, giving $N = mg - \\dfrac{mv^2}{r}$, which is less than the weight. At a high enough speed $N$ reaches zero and the car leaves the road.",
+    "distractorRationale": {
+      "A": "Describes the bottom of a dip, where the centre is above.",
+      "B": "Would mean no net force, contradicting circular motion.",
+      "D": "Only at the critical speed, not in general."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "汽车驶过拱形桥顶端时，路面对车的支持力与车重相比",
+        "choices": [
+          {
+            "id": "A",
+            "text": "greater than the weight"
+          },
+          {
+            "id": "B",
+            "text": "equal to the weight"
+          },
+          {
+            "id": "C",
+            "text": "less than the weight"
+          },
+          {
+            "id": "D",
+            "text": "zero"
+          }
+        ],
+        "explanation": "在桥顶，汽车沿圆心位于下方的圆周运动，故合力必须指向下方。\\n\\n重力向下、支持力向上，有 $mg - N = \\dfrac{mv^2}{r}$，即 $N = mg - \\dfrac{mv^2}{r}$，小于车重。速度足够大时 $N$ 减至零，汽车将脱离路面。"
+      }
+    },
+    "tags": [
+      "circular-motion",
+      "normal-force"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Work and energy 功与能",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which of the following is a vector quantity?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "time"
+      },
+      {
+        "id": "B",
+        "text": "mass"
+      },
+      {
+        "id": "C",
+        "text": "energy"
+      },
+      {
+        "id": "D",
+        "text": "velocity"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "A vector has both magnitude and direction. Velocity does; mass, energy and time have magnitude only and are scalars.\\n\\nSpeed is the scalar counterpart of velocity — the same magnitude without the direction.",
+    "distractorRationale": {
+      "A": "Scalar.",
+      "B": "Scalar.",
+      "C": "Scalar."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列物理量中属于矢量的是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "time"
+          },
+          {
+            "id": "B",
+            "text": "mass"
+          },
+          {
+            "id": "C",
+            "text": "energy"
+          },
+          {
+            "id": "D",
+            "text": "velocity"
+          }
+        ],
+        "explanation": "矢量既有大小又有方向。速度是矢量；质量、能量、时间只有大小，均为标量。\\n\\n速率是速度对应的标量——只有大小而无方向。"
+      }
+    },
+    "tags": [
+      "vectors-scalars"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Mechanics 力学",
+    "skill": "Velocity and acceleration 速度与加速度",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "On a velocity-time graph, what does the area under the line represent?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the displacement"
+      },
+      {
+        "id": "B",
+        "text": "the force"
+      },
+      {
+        "id": "C",
+        "text": "the acceleration"
+      },
+      {
+        "id": "D",
+        "text": "the average speed"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Velocity multiplied by time gives displacement, so the area under the line is the displacement.\\n\\nThe gradient of the same graph gives the acceleration — area and gradient answer different questions about the same line.",
+    "distractorRationale": {
+      "B": "Force does not appear on this graph.",
+      "C": "That is the gradient.",
+      "D": "Average speed is displacement divided by time."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "在速度-时间图像中，图线下的面积表示",
+        "choices": [
+          {
+            "id": "A",
+            "text": "the displacement"
+          },
+          {
+            "id": "B",
+            "text": "the force"
+          },
+          {
+            "id": "C",
+            "text": "the acceleration"
+          },
+          {
+            "id": "D",
+            "text": "the average speed"
+          }
+        ],
+        "explanation": "速度乘以时间得位移，故图线下的面积表示位移。\\n\\n同一图像的斜率表示加速度——面积与斜率回答的是同一条线上的不同问题。"
+      }
+    },
+    "tags": [
+      "graphs",
+      "displacement"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two resistors of $4\\ \\Omega$ and $12\\ \\Omega$ are connected in parallel. What is the combined resistance?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$16\\ \\Omega$"
+      },
+      {
+        "id": "B",
+        "text": "$3\\ \\Omega$"
+      },
+      {
+        "id": "C",
+        "text": "$48\\ \\Omega$"
+      },
+      {
+        "id": "D",
+        "text": "$8\\ \\Omega$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "$\\dfrac{1}{R} = \\dfrac{1}{4} + \\dfrac{1}{12} = \\dfrac{3+1}{12} = \\dfrac{4}{12}$, so $R = 3\\ \\Omega$.\\n\\nThe combined resistance of a parallel pair is always smaller than the smaller of the two — a quick check that catches most arithmetic slips.",
+    "distractorRationale": {
+      "A": "Adds them, which applies to series.",
+      "C": "Multiplies them.",
+      "D": "Averages them."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$4\\ \\Omega$ 与 $12\\ \\Omega$ 的电阻并联，总电阻为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$16\\ \\Omega$"
+          },
+          {
+            "id": "B",
+            "text": "$3\\ \\Omega$"
+          },
+          {
+            "id": "C",
+            "text": "$48\\ \\Omega$"
+          },
+          {
+            "id": "D",
+            "text": "$8\\ \\Omega$"
+          }
+        ],
+        "explanation": "$\\dfrac{1}{R} = \\dfrac{1}{4} + \\dfrac{1}{12} = \\dfrac{3+1}{12} = \\dfrac{4}{12}$，故 $R = 3\\ \\Omega$。\\n\\n并联总电阻总小于其中较小的那个——这一速查可以发现大多数计算失误。"
+      }
+    },
+    "tags": [
+      "parallel-resistance"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A lamp draws $0.50\\ \\text{A}$ from a $12\\ \\text{V}$ supply. What is its power?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.042\\ \\text{W}$"
+      },
+      {
+        "id": "B",
+        "text": "$12.5\\ \\text{W}$"
+      },
+      {
+        "id": "C",
+        "text": "$6.0\\ \\text{W}$"
+      },
+      {
+        "id": "D",
+        "text": "$24\\ \\text{W}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Power is $P = VI = 12 \\times 0.50 = 6.0\\ \\text{W}$.",
+    "distractorRationale": {
+      "A": "Divides current by voltage.",
+      "B": "Adds the two quantities.",
+      "D": "Divides voltage by current."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某灯泡接在 $12\\ \\text{V}$ 电源上，电流为 $0.50\\ \\text{A}$，其功率为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.042\\ \\text{W}$"
+          },
+          {
+            "id": "B",
+            "text": "$12.5\\ \\text{W}$"
+          },
+          {
+            "id": "C",
+            "text": "$6.0\\ \\text{W}$"
+          },
+          {
+            "id": "D",
+            "text": "$24\\ \\text{W}$"
+          }
+        ],
+        "explanation": "功率 $P = VI = 12 \\times 0.50 = 6.0\\ \\text{W}$。"
+      }
+    },
+    "tags": [
+      "electrical-power"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Magnetic induction 磁感应",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A straight wire of length $0.20\\ \\text{m}$ carries a current of $3.0\\ \\text{A}$ perpendicular to a magnetic field of $0.50\\ \\text{T}$. What is the force on it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.033\\ \\text{N}$"
+      },
+      {
+        "id": "B",
+        "text": "$30\\ \\text{N}$"
+      },
+      {
+        "id": "C",
+        "text": "$3.7\\ \\text{N}$"
+      },
+      {
+        "id": "D",
+        "text": "$0.30\\ \\text{N}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$F = BIL = 0.50 \\times 3.0 \\times 0.20 = 0.30\\ \\text{N}$.\\n\\nThe formula holds in this simple form only because the wire is perpendicular to the field; at an angle it becomes $BIL\\sin\\theta$.",
+    "distractorRationale": {
+      "A": "Divides rather than multiplies by the length.",
+      "B": "Is out by a factor of a hundred.",
+      "C": "Adds the three quantities."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "长 $0.20\\ \\text{m}$ 的直导线通有 $3.0\\ \\text{A}$ 电流，垂直置于 $0.50\\ \\text{T}$ 的磁场中，所受安培力为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.033\\ \\text{N}$"
+          },
+          {
+            "id": "B",
+            "text": "$30\\ \\text{N}$"
+          },
+          {
+            "id": "C",
+            "text": "$3.7\\ \\text{N}$"
+          },
+          {
+            "id": "D",
+            "text": "$0.30\\ \\text{N}$"
+          }
+        ],
+        "explanation": "$F = BIL = 0.50 \\times 3.0 \\times 0.20 = 0.30\\ \\text{N}$。\\n\\n该式之所以如此简单，是因为导线与磁场垂直；若成夹角则为 $BIL\\sin\\theta$。"
+      }
+    },
+    "tags": [
+      "magnetic-force",
+      "BIL"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r21",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Three wires meet at a junction. Currents of $2.0\\ \\text{A}$ and $3.0\\ \\text{A}$ flow in. What current flows out along the third wire?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$5.0\\ \\text{A}$"
+      },
+      {
+        "id": "B",
+        "text": "$1.0\\ \\text{A}$"
+      },
+      {
+        "id": "C",
+        "text": "$6.0\\ \\text{A}$"
+      },
+      {
+        "id": "D",
+        "text": "$2.5\\ \\text{A}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Charge cannot accumulate at a junction, so the current in equals the current out: $2.0 + 3.0 = 5.0\\ \\text{A}$.\\n\\nThis is Kirchhoff's first law, and it is simply conservation of charge stated for a circuit.",
+    "distractorRationale": {
+      "B": "Takes the difference.",
+      "C": "Adds an extra ampere.",
+      "D": "Averages the two."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "三条导线在一节点相交，流入的电流分别为 $2.0\\ \\text{A}$ 与 $3.0\\ \\text{A}$，则第三条导线流出的电流为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$5.0\\ \\text{A}$"
+          },
+          {
+            "id": "B",
+            "text": "$1.0\\ \\text{A}$"
+          },
+          {
+            "id": "C",
+            "text": "$6.0\\ \\text{A}$"
+          },
+          {
+            "id": "D",
+            "text": "$2.5\\ \\text{A}$"
+          }
+        ],
+        "explanation": "电荷不能在节点处堆积，故流入电流等于流出电流：$2.0 + 3.0 = 5.0\\ \\text{A}$。\\n\\n这是基尔霍夫第一定律，实质上就是电路中的电荷守恒。"
+      }
+    },
+    "tags": [
+      "kirchhoff",
+      "current"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r22",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A wire is replaced by another of the same material and length but twice the cross-sectional area. What happens to its resistance?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "it is unchanged"
+      },
+      {
+        "id": "B",
+        "text": "it halves"
+      },
+      {
+        "id": "C",
+        "text": "it quadruples"
+      },
+      {
+        "id": "D",
+        "text": "it doubles"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Resistance is $R = \\dfrac{\\rho L}{A}$, so it is inversely proportional to the cross-sectional area. Doubling $A$ halves $R$.\\n\\nA thicker wire offers the charge carriers more room to move, which is why thick cables are used for large currents.",
+    "distractorRationale": {
+      "A": "Area clearly affects resistance.",
+      "C": "Would require an inverse-square relationship.",
+      "D": "Reverses the relationship."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "用同种材料、等长但横截面积加倍的导线替换原导线，其电阻",
+        "choices": [
+          {
+            "id": "A",
+            "text": "it is unchanged"
+          },
+          {
+            "id": "B",
+            "text": "it halves"
+          },
+          {
+            "id": "C",
+            "text": "it quadruples"
+          },
+          {
+            "id": "D",
+            "text": "it doubles"
+          }
+        ],
+        "explanation": "电阻 $R = \\dfrac{\\rho L}{A}$，与横截面积成反比。面积加倍则电阻减半。\\n\\n导线越粗，载流子可通行的空间越大，这正是大电流须用粗电缆的原因。"
+      }
+    },
+    "tags": [
+      "resistivity"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r23",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Faraday's law 法拉第定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A transformer has $200$ turns on the primary and $50$ on the secondary. If the primary voltage is $240\\ \\text{V}$, what is the secondary voltage?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$120\\ \\text{V}$"
+      },
+      {
+        "id": "B",
+        "text": "$960\\ \\text{V}$"
+      },
+      {
+        "id": "C",
+        "text": "$60\\ \\text{V}$"
+      },
+      {
+        "id": "D",
+        "text": "$240\\ \\text{V}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Voltages are in the same ratio as the turns: $\\dfrac{V_s}{240} = \\dfrac{50}{200}$, so $V_s = 60\\ \\text{V}$.\\n\\nFewer turns on the secondary makes this a step-down transformer.",
+    "distractorRationale": {
+      "A": "Halves the primary voltage instead.",
+      "B": "Inverts the turns ratio.",
+      "D": "Assumes no change."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "变压器原线圈 $200$ 匝、副线圈 $50$ 匝，原线圈电压为 $240\\ \\text{V}$，则副线圈电压为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$120\\ \\text{V}$"
+          },
+          {
+            "id": "B",
+            "text": "$960\\ \\text{V}$"
+          },
+          {
+            "id": "C",
+            "text": "$60\\ \\text{V}$"
+          },
+          {
+            "id": "D",
+            "text": "$240\\ \\text{V}$"
+          }
+        ],
+        "explanation": "电压之比等于匝数之比：$\\dfrac{V_s}{240} = \\dfrac{50}{200}$，故 $V_s = 60\\ \\text{V}$。\\n\\n副线圈匝数较少，因此这是降压变压器。"
+      }
+    },
+    "tags": [
+      "transformer"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r24",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Coulomb's law 库仑定律",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A uniform electric field exists between two parallel plates $0.02\\ \\text{m}$ apart with a potential difference of $200\\ \\text{V}$. What is the field strength?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$100\\ \\text{V}\\,\\text{m}^{-1}$"
+      },
+      {
+        "id": "B",
+        "text": "$0.0001\\ \\text{V}\\,\\text{m}^{-1}$"
+      },
+      {
+        "id": "C",
+        "text": "$4\\ \\text{V}\\,\\text{m}^{-1}$"
+      },
+      {
+        "id": "D",
+        "text": "$10\\,000\\ \\text{V}\\,\\text{m}^{-1}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "For a uniform field, $E = \\dfrac{V}{d} = \\dfrac{200}{0.02} = 10\\,000\\ \\text{V}\\,\\text{m}^{-1}$.\\n\\nDividing by a small distance gives a large field, which is why closely spaced plates produce strong fields at modest voltages.",
+    "distractorRationale": {
+      "A": "Divides by $2$ rather than $0.02$.",
+      "B": "Inverts the fraction.",
+      "C": "Multiplies instead of dividing."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "两平行板相距 $0.02\\ \\text{m}$，电压为 $200\\ \\text{V}$，其间匀强电场的场强为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$100\\ \\text{V}\\,\\text{m}^{-1}$"
+          },
+          {
+            "id": "B",
+            "text": "$0.0001\\ \\text{V}\\,\\text{m}^{-1}$"
+          },
+          {
+            "id": "C",
+            "text": "$4\\ \\text{V}\\,\\text{m}^{-1}$"
+          },
+          {
+            "id": "D",
+            "text": "$10\\,000\\ \\text{V}\\,\\text{m}^{-1}$"
+          }
+        ],
+        "explanation": "匀强电场中 $E = \\dfrac{V}{d} = \\dfrac{200}{0.02} = 10\\,000\\ \\text{V}\\,\\text{m}^{-1}$。\\n\\n除以很小的距离得到很大的场强，这正是间距很近的平行板在不高的电压下即可产生强电场的原因。"
+      }
+    },
+    "tags": [
+      "electric-field"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r25",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Coulomb's law 库仑定律",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which material is the best electrical conductor?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "copper"
+      },
+      {
+        "id": "B",
+        "text": "dry wood"
+      },
+      {
+        "id": "C",
+        "text": "glass"
+      },
+      {
+        "id": "D",
+        "text": "rubber"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Metals conduct because they contain delocalised electrons free to move through the lattice. Copper is a metal; glass, rubber and dry wood are insulators with no such free charges.",
+    "distractorRationale": {
+      "B": "An insulator.",
+      "C": "An insulator.",
+      "D": "An insulator."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列材料中导电性最好的是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "copper"
+          },
+          {
+            "id": "B",
+            "text": "dry wood"
+          },
+          {
+            "id": "C",
+            "text": "glass"
+          },
+          {
+            "id": "D",
+            "text": "rubber"
+          }
+        ],
+        "explanation": "金属含有可在晶格中自由移动的离域电子，因而导电。铜是金属；玻璃、橡胶与干木都是绝缘体，没有这样的自由电荷。"
+      }
+    },
+    "tags": [
+      "conductors"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r26",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Lorentz force 洛伦兹力",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A conducting rod of length $L$ moves at speed $v$ perpendicular to a magnetic field $B$. What is the induced e.m.f.?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$B + Lv$"
+      },
+      {
+        "id": "B",
+        "text": "$BLv$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{BL}{v}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{Bv}{L}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The rod sweeps out area at a rate $Lv$, so the flux changes at a rate $BLv$, and by Faraday's law that is the induced e.m.f.\\n\\nThe same result follows from the magnetic force on the charge carriers within the rod, which is why motional e.m.f. and Faraday's law agree.",
+    "distractorRationale": {
+      "A": "Adds quantities with different units.",
+      "C": "Divides by the speed, so a stationary rod would give infinite e.m.f.",
+      "D": "Divides by the length."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "长为 $L$ 的导体棒以速率 $v$ 垂直于磁感应强度 $B$ 的方向运动，其感应电动势为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$B + Lv$"
+          },
+          {
+            "id": "B",
+            "text": "$BLv$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{BL}{v}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{Bv}{L}$"
+          }
+        ],
+        "explanation": "导体棒扫过面积的速率为 $Lv$，故磁通量变化率为 $BLv$，由法拉第定律即为感应电动势。\\n\\n从棒内载流子所受洛伦兹力出发也能得到同一结果，这正是动生电动势与法拉第定律相符的原因。"
+      }
+    },
+    "tags": [
+      "motional-emf"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r27",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Lenz's law 楞次定律",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A current flows anticlockwise around a circular loop viewed from above. In which direction is the magnetic field at the centre of the loop?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "downward, into the page"
+      },
+      {
+        "id": "B",
+        "text": "in the plane of the loop"
+      },
+      {
+        "id": "C",
+        "text": "upward, out of the page towards the viewer"
+      },
+      {
+        "id": "D",
+        "text": "zero at the centre"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Curl the right hand's fingers along the current; the thumb gives the field direction through the loop. For an anticlockwise current viewed from above, the field at the centre points up, out of the page.\\n\\nThe field there is far from zero — contributions from every part of the loop reinforce one another at the centre.",
+    "distractorRationale": {
+      "A": "Would correspond to a clockwise current.",
+      "B": "The field at the centre is perpendicular to the loop's plane.",
+      "D": "Contributions add rather than cancel at the centre."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "从上方观察，圆环中电流沿逆时针方向流动，则环心处磁场方向为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "downward, into the page"
+          },
+          {
+            "id": "B",
+            "text": "in the plane of the loop"
+          },
+          {
+            "id": "C",
+            "text": "upward, out of the page towards the viewer"
+          },
+          {
+            "id": "D",
+            "text": "zero at the centre"
+          }
+        ],
+        "explanation": "用右手四指沿电流方向环绕，拇指所指即为环内磁场方向。从上方看电流逆时针时，环心处磁场向上、指向观察者。\\n\\n环心处磁场绝非为零——环上各部分的贡献在中心相互叠加增强。"
+      }
+    },
+    "tags": [
+      "right-hand-rule",
+      "magnetic-field"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r28",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Ohm's law 欧姆定律",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An appliance rated $2.0\\ \\text{kW}$ runs for $3.0$ hours. How much energy does it use, in kilowatt-hours?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.67$"
+      },
+      {
+        "id": "B",
+        "text": "$60$"
+      },
+      {
+        "id": "C",
+        "text": "$5.0$"
+      },
+      {
+        "id": "D",
+        "text": "$6.0$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Energy is power multiplied by time: $2.0 \\times 3.0 = 6.0\\ \\text{kWh}$.\\n\\nThe kilowatt-hour is a unit of energy, not of power — a distinction electricity bills depend on.",
+    "distractorRationale": {
+      "A": "Divides instead of multiplying.",
+      "B": "Is out by a factor of ten.",
+      "C": "Adds the two numbers."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "额定功率 $2.0\\ \\text{kW}$ 的电器运行 $3.0$ 小时，消耗的电能为多少千瓦时？",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.67$"
+          },
+          {
+            "id": "B",
+            "text": "$60$"
+          },
+          {
+            "id": "C",
+            "text": "$5.0$"
+          },
+          {
+            "id": "D",
+            "text": "$6.0$"
+          }
+        ],
+        "explanation": "电能等于功率乘以时间：$2.0 \\times 3.0 = 6.0\\ \\text{kWh}$。\\n\\n千瓦时是能量单位而非功率单位——电费计算正建立在这一区别上。"
+      }
+    },
+    "tags": [
+      "energy",
+      "kwh"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r29",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Coulomb's law 库仑定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two point charges, one positive and one negative, are placed near each other. What is the direction of the electric field midway between them?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "from the positive charge towards the negative charge"
+      },
+      {
+        "id": "B",
+        "text": "perpendicular to the line joining them"
+      },
+      {
+        "id": "C",
+        "text": "zero"
+      },
+      {
+        "id": "D",
+        "text": "from the negative charge towards the positive charge"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Field lines run out of positive charges and into negative ones. At the midpoint both charges push the field the same way — away from the positive and towards the negative — so the two contributions add rather than cancel.",
+    "distractorRationale": {
+      "B": "The field lies along the line joining them.",
+      "C": "The contributions reinforce, so the field is strong there.",
+      "D": "Reverses the convention for field direction."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "一正一负两点电荷靠近放置，两者连线中点处电场的方向是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "from the positive charge towards the negative charge"
+          },
+          {
+            "id": "B",
+            "text": "perpendicular to the line joining them"
+          },
+          {
+            "id": "C",
+            "text": "zero"
+          },
+          {
+            "id": "D",
+            "text": "from the negative charge towards the positive charge"
+          }
+        ],
+        "explanation": "电场线从正电荷发出、终止于负电荷。在中点处，两个电荷产生的场方向一致——背离正电荷、指向负电荷——故两者叠加而非抵消。"
+      }
+    },
+    "tags": [
+      "electric-field",
+      "direction"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r30",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Magnetic induction 磁感应",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the unit of magnetic flux density?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "henry"
+      },
+      {
+        "id": "B",
+        "text": "tesla"
+      },
+      {
+        "id": "C",
+        "text": "newton"
+      },
+      {
+        "id": "D",
+        "text": "weber"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Magnetic flux density is measured in tesla. The weber measures magnetic flux itself, and one tesla is one weber per square metre.",
+    "distractorRationale": {
+      "A": "Measures inductance.",
+      "C": "Measures force.",
+      "D": "Measures magnetic flux, not flux density."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "磁感应强度的单位是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "henry"
+          },
+          {
+            "id": "B",
+            "text": "tesla"
+          },
+          {
+            "id": "C",
+            "text": "newton"
+          },
+          {
+            "id": "D",
+            "text": "weber"
+          }
+        ],
+        "explanation": "磁感应强度的单位是特斯拉。韦伯是磁通量的单位，$1$ 特斯拉即每平方米 $1$ 韦伯。"
+      }
+    },
+    "tags": [
+      "units",
+      "magnetism"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r31",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Electromagnetism 电磁学",
+    "skill": "Faraday's law 法拉第定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A magnet is moved towards a coil twice as fast as before. What happens to the induced e.m.f.?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "it quadruples"
+      },
+      {
+        "id": "B",
+        "text": "it is unchanged"
+      },
+      {
+        "id": "C",
+        "text": "it doubles"
+      },
+      {
+        "id": "D",
+        "text": "it halves"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Faraday's law makes the e.m.f. proportional to the **rate** of change of flux. Moving twice as fast doubles that rate and therefore doubles the e.m.f.\\n\\nThe total flux change is the same; it is the speed of the change that matters.",
+    "distractorRationale": {
+      "A": "The relationship is linear, not squared.",
+      "B": "Rate of change is precisely what the law depends on.",
+      "D": "Reverses the relationship."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "磁铁以原来两倍的速度接近线圈，感应电动势将",
+        "choices": [
+          {
+            "id": "A",
+            "text": "it quadruples"
+          },
+          {
+            "id": "B",
+            "text": "it is unchanged"
+          },
+          {
+            "id": "C",
+            "text": "it doubles"
+          },
+          {
+            "id": "D",
+            "text": "it halves"
+          }
+        ],
+        "explanation": "由法拉第定律，电动势与磁通量的**变化率**成正比。速度加倍则变化率加倍，电动势也随之加倍。\\n\\n磁通量的总变化量并未改变，起作用的是变化的快慢。"
+      }
+    },
+    "tags": [
+      "faradays-law",
+      "rate"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r32",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Molecular theory 分子动理论",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "How much heat is needed to raise the temperature of $2.0\\ \\text{kg}$ of water by $10\\ ^\\circ\\text{C}$? ($c = 4200\\ \\text{J}\\,\\text{kg}^{-1}\\,\\text{K}^{-1}$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2.1 \\times 10^4\\ \\text{J}$"
+      },
+      {
+        "id": "B",
+        "text": "$4200\\ \\text{J}$"
+      },
+      {
+        "id": "C",
+        "text": "$840\\ \\text{J}$"
+      },
+      {
+        "id": "D",
+        "text": "$8.4 \\times 10^4\\ \\text{J}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$Q = mc\\Delta T = 2.0 \\times 4200 \\times 10 = 8.4 \\times 10^4\\ \\text{J}$.",
+    "distractorRationale": {
+      "A": "Omits the mass.",
+      "B": "Uses the specific heat capacity alone.",
+      "C": "Is out by a factor of a hundred."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "使 $2.0\\ \\text{kg}$ 水升温 $10\\ ^\\circ\\text{C}$ 需要多少热量？（$c = 4200\\ \\text{J}\\,\\text{kg}^{-1}\\,\\text{K}^{-1}$）",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$2.1 \\times 10^4\\ \\text{J}$"
+          },
+          {
+            "id": "B",
+            "text": "$4200\\ \\text{J}$"
+          },
+          {
+            "id": "C",
+            "text": "$840\\ \\text{J}$"
+          },
+          {
+            "id": "D",
+            "text": "$8.4 \\times 10^4\\ \\text{J}$"
+          }
+        ],
+        "explanation": "$Q = mc\\Delta T = 2.0 \\times 4200 \\times 10 = 8.4 \\times 10^4\\ \\text{J}$。"
+      }
+    },
+    "tags": [
+      "specific-heat"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r33",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Molecular theory 分子动理论",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Ice at $0\\ ^\\circ\\text{C}$ is heated until it becomes water at $0\\ ^\\circ\\text{C}$. What happens to the temperature during the melting?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "it stays constant"
+      },
+      {
+        "id": "B",
+        "text": "it rises steadily"
+      },
+      {
+        "id": "C",
+        "text": "it rises then falls"
+      },
+      {
+        "id": "D",
+        "text": "it falls"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "During a change of state the energy supplied goes into separating the molecules against the forces holding them, not into raising their average kinetic energy.\\n\\nTemperature measures that average kinetic energy, so it stays fixed until the melting is complete.",
+    "distractorRationale": {
+      "B": "Would require the energy to raise kinetic energy instead.",
+      "C": "No such variation occurs.",
+      "D": "Heat is being supplied, not removed."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "$0\\ ^\\circ\\text{C}$ 的冰受热变为 $0\\ ^\\circ\\text{C}$ 的水，熔化过程中温度",
+        "choices": [
+          {
+            "id": "A",
+            "text": "it stays constant"
+          },
+          {
+            "id": "B",
+            "text": "it rises steadily"
+          },
+          {
+            "id": "C",
+            "text": "it rises then falls"
+          },
+          {
+            "id": "D",
+            "text": "it falls"
+          }
+        ],
+        "explanation": "相变过程中，所吸收的能量用于克服分子间作用力使分子分离，而非提高分子的平均动能。\\n\\n温度反映平均动能，故在熔化完成前保持不变。"
+      }
+    },
+    "tags": [
+      "latent-heat"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r34",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Ideal gas equation 理想气体状态方程",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "An ideal gas at constant pressure has its absolute temperature doubled. What happens to its volume?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "it halves"
+      },
+      {
+        "id": "B",
+        "text": "it doubles"
+      },
+      {
+        "id": "C",
+        "text": "it quadruples"
+      },
+      {
+        "id": "D",
+        "text": "it is unchanged"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "At constant pressure, $\\dfrac{V}{T}$ is constant — Charles's law. Doubling the absolute temperature therefore doubles the volume.\\n\\nThe temperature must be in kelvin: doubling a Celsius reading is not the same thing at all.",
+    "distractorRationale": {
+      "A": "Reverses the relationship.",
+      "C": "The relationship is linear.",
+      "D": "Would require constant volume."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "理想气体在压强不变时热力学温度加倍，其体积",
+        "choices": [
+          {
+            "id": "A",
+            "text": "it halves"
+          },
+          {
+            "id": "B",
+            "text": "it doubles"
+          },
+          {
+            "id": "C",
+            "text": "it quadruples"
+          },
+          {
+            "id": "D",
+            "text": "it is unchanged"
+          }
+        ],
+        "explanation": "压强不变时 $\\dfrac{V}{T}$ 为常量，即盖-吕萨克（查理）定律。热力学温度加倍则体积加倍。\\n\\n温度必须用开尔文：把摄氏读数加倍完全不是一回事。"
+      }
+    },
+    "tags": [
+      "charles-law"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r35",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Molecular theory 分子动理论",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "The internal energy of an ideal gas depends on which quantity alone?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "pressure"
+      },
+      {
+        "id": "B",
+        "text": "the type of gas"
+      },
+      {
+        "id": "C",
+        "text": "absolute temperature"
+      },
+      {
+        "id": "D",
+        "text": "volume"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "An ideal gas has no intermolecular forces, so it has no potential energy — only the kinetic energy of its molecules, which depends on absolute temperature alone.\\n\\nThat is why an ideal gas expanding into a vacuum, doing no work and exchanging no heat, does not change temperature.",
+    "distractorRationale": {
+      "A": "Pressure enters only through its relation to temperature and volume.",
+      "B": "The amount matters, but not the identity of an ideal gas.",
+      "D": "Volume alone does not fix the internal energy."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "理想气体的内能只取决于",
+        "choices": [
+          {
+            "id": "A",
+            "text": "pressure"
+          },
+          {
+            "id": "B",
+            "text": "the type of gas"
+          },
+          {
+            "id": "C",
+            "text": "absolute temperature"
+          },
+          {
+            "id": "D",
+            "text": "volume"
+          }
+        ],
+        "explanation": "理想气体分子间无相互作用力，故无势能，只有分子动能，而分子动能只取决于热力学温度。\\n\\n这正是理想气体向真空自由膨胀时不做功、不吸放热，温度也不变的原因。"
+      }
+    },
+    "tags": [
+      "internal-energy"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r36",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "First law of thermodynamics 热力学第一定律",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Heat is transferred through a metal rod from a hot end to a cold end. Which process is responsible?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "radiation"
+      },
+      {
+        "id": "B",
+        "text": "convection"
+      },
+      {
+        "id": "C",
+        "text": "evaporation"
+      },
+      {
+        "id": "D",
+        "text": "conduction"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "In a solid the particles cannot move freely, so energy passes along by vibration and, in metals, by free electrons — that is conduction.\\n\\nConvection requires a fluid that can flow, and radiation needs no medium at all.",
+    "distractorRationale": {
+      "A": "Requires no medium and is not the main path along a rod.",
+      "B": "Requires a moving fluid.",
+      "C": "Involves a change of state at a surface."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "热量沿金属棒从高温端传向低温端，所依靠的过程是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "radiation"
+          },
+          {
+            "id": "B",
+            "text": "convection"
+          },
+          {
+            "id": "C",
+            "text": "evaporation"
+          },
+          {
+            "id": "D",
+            "text": "conduction"
+          }
+        ],
+        "explanation": "固体中粒子不能自由移动，能量通过振动传递，金属中还借助自由电子——这就是热传导。\\n\\n对流需要能流动的流体，辐射则完全不需要介质。"
+      }
+    },
+    "tags": [
+      "heat-transfer"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r37",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "First law of thermodynamics 热力学第一定律",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A gas expands isothermally, absorbing $500\\ \\text{J}$ of heat. How much work does it do on its surroundings?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$500\\ \\text{J}$"
+      },
+      {
+        "id": "B",
+        "text": "$250\\ \\text{J}$"
+      },
+      {
+        "id": "C",
+        "text": "$1000\\ \\text{J}$"
+      },
+      {
+        "id": "D",
+        "text": "$0\\ \\text{J}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Isothermal means constant temperature, and for an ideal gas the internal energy depends on temperature alone, so $\\Delta U = 0$.\\n\\nThe first law then gives $Q = W$: all $500\\ \\text{J}$ absorbed leaves again as work done on the surroundings.",
+    "distractorRationale": {
+      "B": "Assumes half the heat is stored, but the internal energy is unchanged.",
+      "C": "Would violate energy conservation.",
+      "D": "Would require the gas not to expand."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "气体等温膨胀并吸收 $500\\ \\text{J}$ 热量，它对外界做的功为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$500\\ \\text{J}$"
+          },
+          {
+            "id": "B",
+            "text": "$250\\ \\text{J}$"
+          },
+          {
+            "id": "C",
+            "text": "$1000\\ \\text{J}$"
+          },
+          {
+            "id": "D",
+            "text": "$0\\ \\text{J}$"
+          }
+        ],
+        "explanation": "等温意味着温度不变，而理想气体的内能只取决于温度，故 $\\Delta U = 0$。\\n\\n由热力学第一定律得 $Q = W$：吸收的 $500\\ \\text{J}$ 全部转化为对外界所做的功。"
+      }
+    },
+    "tags": [
+      "isothermal",
+      "first-law"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r38",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Thermodynamics 热学",
+    "skill": "Ideal gas equation 理想气体状态方程",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is absolute zero on the Celsius scale?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-100\\ ^\\circ\\text{C}$"
+      },
+      {
+        "id": "B",
+        "text": "$-273\\ ^\\circ\\text{C}$"
+      },
+      {
+        "id": "C",
+        "text": "$0\\ ^\\circ\\text{C}$"
+      },
+      {
+        "id": "D",
+        "text": "$273\\ ^\\circ\\text{C}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Absolute zero is $0\\ \\text{K}$, which is about $-273\\ ^\\circ\\text{C}$ — the temperature at which the volume of an ideal gas would extrapolate to zero.",
+    "distractorRationale": {
+      "A": "No special significance.",
+      "C": "Is the melting point of ice, $273\\ \\text{K}$.",
+      "D": "Reverses the sign."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "绝对零度对应的摄氏温度是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$-100\\ ^\\circ\\text{C}$"
+          },
+          {
+            "id": "B",
+            "text": "$-273\\ ^\\circ\\text{C}$"
+          },
+          {
+            "id": "C",
+            "text": "$0\\ ^\\circ\\text{C}$"
+          },
+          {
+            "id": "D",
+            "text": "$273\\ ^\\circ\\text{C}$"
+          }
+        ],
+        "explanation": "绝对零度为 $0\\ \\text{K}$，约合 $-273\\ ^\\circ\\text{C}$——理想气体体积外推至零时所对应的温度。"
+      }
+    },
+    "tags": [
+      "absolute-zero"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r39",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Reflection 反射",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A ray strikes a plane mirror at $30^\\circ$ to the normal. What is the angle of reflection?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$90^\\circ$"
+      },
+      {
+        "id": "B",
+        "text": "$60^\\circ$"
+      },
+      {
+        "id": "C",
+        "text": "$30^\\circ$"
+      },
+      {
+        "id": "D",
+        "text": "$15^\\circ$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The law of reflection states that the angle of reflection equals the angle of incidence, both measured from the normal.\\n\\nMeasuring from the mirror surface instead would give $60^\\circ$ — the commonest error, and the reason angles are always defined from the normal.",
+    "distractorRationale": {
+      "A": "Would mean the ray travels along the surface.",
+      "B": "Measures from the mirror surface instead of the normal.",
+      "D": "Halves the angle."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "光线以与法线成 $30^\\circ$ 的方向射到平面镜上，反射角为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$90^\\circ$"
+          },
+          {
+            "id": "B",
+            "text": "$60^\\circ$"
+          },
+          {
+            "id": "C",
+            "text": "$30^\\circ$"
+          },
+          {
+            "id": "D",
+            "text": "$15^\\circ$"
+          }
+        ],
+        "explanation": "反射定律指出反射角等于入射角，两者都从法线量起。\\n\\n若从镜面量起会得到 $60^\\circ$——这是最常见的错误，也正是角度一律从法线量起的原因。"
+      }
+    },
+    "tags": [
+      "reflection"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r40",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Refraction 折射",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Light travels at $2.0 \\times 10^8\\ \\text{m}\\,\\text{s}^{-1}$ in a medium. What is the refractive index of that medium? ($c = 3.0 \\times 10^8\\ \\text{m}\\,\\text{s}^{-1}$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.67$"
+      },
+      {
+        "id": "B",
+        "text": "$1.0$"
+      },
+      {
+        "id": "C",
+        "text": "$6.0$"
+      },
+      {
+        "id": "D",
+        "text": "$1.5$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$n = \\dfrac{c}{v} = \\dfrac{3.0 \\times 10^8}{2.0 \\times 10^8} = 1.5$.\\n\\nA refractive index is always greater than one for a material medium, since light travels fastest in a vacuum.",
+    "distractorRationale": {
+      "A": "Inverts the fraction, giving a value below 1.",
+      "B": "Would mean the medium is a vacuum.",
+      "C": "Multiplies the powers of ten incorrectly."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "光在某介质中的传播速度为 $2.0 \\times 10^8\\ \\text{m}\\,\\text{s}^{-1}$，该介质的折射率为（$c = 3.0 \\times 10^8\\ \\text{m}\\,\\text{s}^{-1}$）",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0.67$"
+          },
+          {
+            "id": "B",
+            "text": "$1.0$"
+          },
+          {
+            "id": "C",
+            "text": "$6.0$"
+          },
+          {
+            "id": "D",
+            "text": "$1.5$"
+          }
+        ],
+        "explanation": "$n = \\dfrac{c}{v} = \\dfrac{3.0 \\times 10^8}{2.0 \\times 10^8} = 1.5$。\\n\\n介质的折射率总大于 $1$，因为光在真空中传播最快。"
+      }
+    },
+    "tags": [
+      "refractive-index"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r41",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Refraction 折射",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Total internal reflection can occur when light travels",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "from glass into air beyond the critical angle"
+      },
+      {
+        "id": "B",
+        "text": "from air into glass at any angle"
+      },
+      {
+        "id": "C",
+        "text": "from air into glass beyond the critical angle"
+      },
+      {
+        "id": "D",
+        "text": "along the normal in either direction"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Total internal reflection requires light to pass from a denser medium to a less dense one — glass to air — at an angle of incidence beyond the critical angle.\\n\\nGoing the other way the ray bends towards the normal and always emerges, so no critical angle exists in that direction. This is the principle behind optical fibres.",
+    "distractorRationale": {
+      "B": "Light entering a denser medium always refracts through.",
+      "C": "No critical angle exists in that direction.",
+      "D": "A ray along the normal passes straight through."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "发生全反射的条件是光",
+        "choices": [
+          {
+            "id": "A",
+            "text": "from glass into air beyond the critical angle"
+          },
+          {
+            "id": "B",
+            "text": "from air into glass at any angle"
+          },
+          {
+            "id": "C",
+            "text": "from air into glass beyond the critical angle"
+          },
+          {
+            "id": "D",
+            "text": "along the normal in either direction"
+          }
+        ],
+        "explanation": "全反射要求光从光密介质射向光疏介质——玻璃射向空气——且入射角大于临界角。\\n\\n反方向传播时光线向法线偏折且必然射出，那个方向根本不存在临界角。这正是光纤的原理。"
+      }
+    },
+    "tags": [
+      "total-internal-reflection"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r42",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Diffraction 衍射",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "White light passes through a prism and separates into colours. What causes this?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the colours reflect at different angles"
+      },
+      {
+        "id": "B",
+        "text": "different colours have different speeds in glass, so they refract by different amounts"
+      },
+      {
+        "id": "C",
+        "text": "the prism adds colour to the light"
+      },
+      {
+        "id": "D",
+        "text": "the glass absorbs some colours"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The refractive index of glass varies slightly with wavelength, so each colour travels at a slightly different speed and bends by a different amount. Violet slows most and bends most; red least.\\n\\nThe prism does not add or remove anything — the colours were present in the white light all along.",
+    "distractorRationale": {
+      "A": "The separation happens on refraction, not reflection.",
+      "C": "The colours are already present in white light.",
+      "D": "Absorption would dim the light, not spread it."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "白光通过棱镜分解为各色光，其原因是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "the colours reflect at different angles"
+          },
+          {
+            "id": "B",
+            "text": "different colours have different speeds in glass, so they refract by different amounts"
+          },
+          {
+            "id": "C",
+            "text": "the prism adds colour to the light"
+          },
+          {
+            "id": "D",
+            "text": "the glass absorbs some colours"
+          }
+        ],
+        "explanation": "玻璃的折射率随波长略有不同，故各色光在其中速度略异、偏折程度不同。紫光减速最多、偏折最大，红光最小。\\n\\n棱镜并未添加或去除任何东西——这些颜色本就存在于白光之中。"
+      }
+    },
+    "tags": [
+      "dispersion"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r43",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Optics 光学",
+    "skill": "Interference 干涉",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Two coherent light sources produce an interference pattern. What condition at a point produces a dark fringe?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the sources are in phase"
+      },
+      {
+        "id": "B",
+        "text": "the path difference is a whole number of wavelengths"
+      },
+      {
+        "id": "C",
+        "text": "the path difference is an odd number of half-wavelengths"
+      },
+      {
+        "id": "D",
+        "text": "the point lies on the central axis"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "A dark fringe requires destructive interference, which happens when the two waves arrive exactly out of phase — a path difference of $\\tfrac{\\lambda}{2}$, $\\tfrac{3\\lambda}{2}$, and so on.\\n\\nA whole number of wavelengths produces the opposite: constructive interference and a bright fringe.",
+    "distractorRationale": {
+      "A": "Describes the sources, not the point.",
+      "B": "Gives a bright fringe.",
+      "D": "The central point is the brightest fringe."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "两个相干光源产生干涉图样，某点出现暗条纹的条件是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "the sources are in phase"
+          },
+          {
+            "id": "B",
+            "text": "the path difference is a whole number of wavelengths"
+          },
+          {
+            "id": "C",
+            "text": "the path difference is an odd number of half-wavelengths"
+          },
+          {
+            "id": "D",
+            "text": "the point lies on the central axis"
+          }
+        ],
+        "explanation": "暗条纹源于相消干涉，即两列波到达时恰好反相——光程差为 $\\tfrac{\\lambda}{2}$、$\\tfrac{3\\lambda}{2}$ 等。\\n\\n光程差为波长的整数倍则相反：相长干涉，形成亮条纹。"
+      }
+    },
+    "tags": [
+      "interference",
+      "path-difference"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r44",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Photoelectric effect 光电效应",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "What is the energy of a photon of frequency $f$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$h + f$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{h}{f}$"
+      },
+      {
+        "id": "C",
+        "text": "$hf^2$"
+      },
+      {
+        "id": "D",
+        "text": "$hf$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Planck's relation gives $E = hf$: photon energy is proportional to frequency, so blue light carries more energy per photon than red.",
+    "distractorRationale": {
+      "A": "Adds quantities with different units.",
+      "B": "Would make low-frequency photons the most energetic.",
+      "C": "The relationship is linear in frequency."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "频率为 $f$ 的光子，其能量为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$h + f$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{h}{f}$"
+          },
+          {
+            "id": "C",
+            "text": "$hf^2$"
+          },
+          {
+            "id": "D",
+            "text": "$hf$"
+          }
+        ],
+        "explanation": "由普朗克关系 $E = hf$：光子能量与频率成正比，故蓝光每个光子的能量大于红光。"
+      }
+    },
+    "tags": [
+      "photon-energy"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r45",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Photoelectric effect 光电效应",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Light below the threshold frequency shines on a metal, however intense. What happens?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "no electrons are emitted at all"
+      },
+      {
+        "id": "B",
+        "text": "electrons are emitted with low energy"
+      },
+      {
+        "id": "C",
+        "text": "electrons are emitted after a delay"
+      },
+      {
+        "id": "D",
+        "text": "electrons are emitted slowly"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Each electron absorbs one photon, and a photon below the threshold simply lacks the energy to free it. Adding more such photons adds more failed attempts, not a successful one.\\n\\nThis is precisely the observation that the wave model could not explain and that Einstein's photon model did.",
+    "distractorRationale": {
+      "B": "No electrons leave at all.",
+      "C": "There is no delay effect; emission is immediate or absent.",
+      "D": "Emission is not a matter of speed but of possibility."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "无论光强多大，频率低于截止频率的光照射金属时",
+        "choices": [
+          {
+            "id": "A",
+            "text": "no electrons are emitted at all"
+          },
+          {
+            "id": "B",
+            "text": "electrons are emitted with low energy"
+          },
+          {
+            "id": "C",
+            "text": "electrons are emitted after a delay"
+          },
+          {
+            "id": "D",
+            "text": "electrons are emitted slowly"
+          }
+        ],
+        "explanation": "每个电子吸收一个光子，而低于截止频率的光子根本不具备使电子逸出的能量。增加这类光子只是增加失败的尝试，不会促成成功。\\n\\n这正是波动模型无法解释、而爱因斯坦光子模型得以解释的观测事实。"
+      }
+    },
+    "tags": [
+      "photoelectric-threshold"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r46",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Nuclear physics 原子核物理",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A nucleus emits a beta-minus particle. How does its proton number $Z$ change?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "decreases by 1"
+      },
+      {
+        "id": "B",
+        "text": "increases by 1"
+      },
+      {
+        "id": "C",
+        "text": "decreases by 2"
+      },
+      {
+        "id": "D",
+        "text": "unchanged"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "In beta-minus decay a neutron becomes a proton, emitting an electron and an antineutrino. The proton number therefore rises by one while the nucleon number stays the same.",
+    "distractorRationale": {
+      "A": "Describes beta-plus decay.",
+      "C": "Describes alpha decay.",
+      "D": "The nucleon number is unchanged, not the proton number."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "原子核发生 $\\beta^-$ 衰变后，其质子数 $Z$ 如何变化？",
+        "choices": [
+          {
+            "id": "A",
+            "text": "decreases by 1"
+          },
+          {
+            "id": "B",
+            "text": "increases by 1"
+          },
+          {
+            "id": "C",
+            "text": "decreases by 2"
+          },
+          {
+            "id": "D",
+            "text": "unchanged"
+          }
+        ],
+        "explanation": "$\\beta^-$ 衰变中，一个中子转变为质子，同时放出一个电子和一个反中微子。故质子数增加 $1$，而核子数不变。"
+      }
+    },
+    "tags": [
+      "beta-decay"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r47",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Nuclear physics 原子核物理",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A radioactive sample has a half-life of $8$ days. What fraction remains after $24$ days?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{8}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{6}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Twenty-four days is three half-lives, and each halves the quantity remaining: $\\dfrac{1}{2} \\times \\dfrac{1}{2} \\times \\dfrac{1}{2} = \\dfrac{1}{8}$.\\n\\nDecay is exponential, not linear — three half-lives leave an eighth, not a third.",
+    "distractorRationale": {
+      "A": "Decay never reaches exactly zero.",
+      "B": "Treats decay as linear in the number of half-lives.",
+      "D": "Divides by six for no clear reason."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某放射性样品的半衰期为 $8$ 天，经过 $24$ 天后剩余的比例为",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$0$"
+          },
+          {
+            "id": "B",
+            "text": "$\\dfrac{1}{3}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\dfrac{1}{8}$"
+          },
+          {
+            "id": "D",
+            "text": "$\\dfrac{1}{6}$"
+          }
+        ],
+        "explanation": "$24$ 天为三个半衰期，每经过一个半衰期剩余量减半：$\\dfrac{1}{2} \\times \\dfrac{1}{2} \\times \\dfrac{1}{2} = \\dfrac{1}{8}$。\\n\\n衰变是指数式而非线性的——三个半衰期后剩八分之一，而不是三分之一。"
+      }
+    },
+    "tags": [
+      "half-life"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-phy-r48",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_physics",
+    "domain": "Modern Physics 近代物理",
+    "skill": "Atomic structure 原子结构",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which particle carries no electric charge?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "proton"
+      },
+      {
+        "id": "B",
+        "text": "alpha particle"
+      },
+      {
+        "id": "C",
+        "text": "electron"
+      },
+      {
+        "id": "D",
+        "text": "neutron"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The neutron is electrically neutral, as its name indicates. The proton carries $+1$, the electron $-1$, and an alpha particle $+2$.",
+    "distractorRationale": {
+      "A": "Carries $+1$.",
+      "B": "Carries $+2$.",
+      "C": "Carries $-1$."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列粒子中不带电的是",
+        "choices": [
+          {
+            "id": "A",
+            "text": "proton"
+          },
+          {
+            "id": "B",
+            "text": "alpha particle"
+          },
+          {
+            "id": "C",
+            "text": "electron"
+          },
+          {
+            "id": "D",
+            "text": "neutron"
+          }
+        ],
+        "explanation": "中子不带电，其名称即由此而来。质子带 $+1$，电子带 $-1$，$\\alpha$ 粒子带 $+2$。"
+      }
+    },
+    "tags": [
+      "particles",
+      "charge"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  }
+]

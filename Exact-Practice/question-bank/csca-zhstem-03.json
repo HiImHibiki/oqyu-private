@@ -1,0 +1,1214 @@
+[
+  {
+    "id": "csca-zst-d01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「设 $x$ 为任意实数」中，「任意」的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "表明结论对该范围内的每一个数都成立"
+      },
+      {
+        "id": "B",
+        "text": "表明 $x$ 的值无关紧要"
+      },
+      {
+        "id": "C",
+        "text": "表明可以随便选一个数试试"
+      },
+      {
+        "id": "D",
+        "text": "表明 $x$ 只能取整数"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "数学中的「任意」对应全称量词，意为「对于所有」，要求结论在整个范围内无一例外地成立。它与日常汉语「随意、马虎」的语感完全不同。",
+    "distractorRationale": {
+      "B": "恰恰相反：正因为每个值都必须满足，$x$ 的取值才至关重要。",
+      "C": "举一个例子只能验证，不能证明全称命题。",
+      "D": "取值范围由「实数」限定，与「任意」无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In 设 $x$ 为任意实数, what does 任意 do?",
+        "explanation": "In mathematics 任意 is the universal quantifier — \"for all\". It requires the conclusion to hold for every value in the range without exception.\n\nThis is quite unlike everyday Chinese, where 任意 carries a sense of \"casually\" or \"as you please\". Reading it that way turns a proof obligation into a suggestion to try an example."
+      }
+    },
+    "tags": [
+      "quantifiers",
+      "math-language"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-d02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「求证」与「求解」在数学题中的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两者含义相同"
+      },
+      {
+        "id": "B",
+        "text": "求证比求解容易"
+      },
+      {
+        "id": "C",
+        "text": "求证要给出完整推理，求解要算出具体数值"
+      },
+      {
+        "id": "D",
+        "text": "求证只用于几何题"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「求证」要求由已知条件出发，用逻辑推理导出给定结论，过程本身就是答案；「求解」要求算出未知量的具体值。二者的评分重点完全不同。",
+    "distractorRationale": {
+      "A": "结论是否已给出，正是两者的根本区别。",
+      "B": "难易取决于题目本身，与题型无关。",
+      "D": "代数与数论题中也常出现「求证」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What distinguishes 求证 from 求解 in a mathematics question?",
+        "explanation": "求证 (prove) gives you the conclusion and asks you to derive it logically from the given conditions — the reasoning *is* the answer. 求解 (solve) asks for the numerical value of an unknown.\n\nThe two are marked on entirely different criteria, so misreading the instruction usually costs most of the marks."
+      }
+    },
+    "tags": [
+      "instruction-words",
+      "math-language"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-d03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「功率」与「功」的关系是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "功率与功是同一个物理量的两种说法"
+      },
+      {
+        "id": "B",
+        "text": "功率是功与力的乘积"
+      },
+      {
+        "id": "C",
+        "text": "功是功率与力的比值"
+      },
+      {
+        "id": "D",
+        "text": "功率是单位时间内完成的功"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "功衡量能量转移的总量，单位是焦耳；功率衡量转移的快慢，即 $P = \\dfrac{W}{t}$，单位是瓦特。做同样多的功，用时越短功率越大。",
+    "distractorRationale": {
+      "A": "两者单位不同，是两个不同的物理量。",
+      "B": "功率等于力与速度的乘积，而非功与力。",
+      "C": "功等于功率与时间的乘积。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the relationship between 功率 and 功?",
+        "explanation": "功 (work) measures the total energy transferred, in joules. 功率 (power) measures how fast it is transferred: $P = \\dfrac{W}{t}$, in watts.\n\nThe same amount of work done in less time means greater power. Note that 功率 also equals force times velocity, which is a separate but equivalent formulation."
+      }
+    },
+    "tags": [
+      "physics-terminology",
+      "work-power"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-d04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「质量」与「重力」的区别在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "质量是物体本身的属性，重力随所处位置的引力场而变"
+      },
+      {
+        "id": "B",
+        "text": "两者都随位置改变"
+      },
+      {
+        "id": "C",
+        "text": "两者都是物体的固有属性"
+      },
+      {
+        "id": "D",
+        "text": "质量是矢量，重力是标量"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "质量是物体所含物质的多少，无论在地球、月球还是失重环境中都不变，单位是千克。重力是地球对物体的吸引力，$G = mg$，随当地的 $g$ 而变，单位是牛顿。宇航员在太空中质量不变，而重力近乎为零。",
+    "distractorRationale": {
+      "B": "质量不随位置改变。",
+      "C": "重力依赖引力场，不是固有属性。",
+      "D": "属性说反了：质量是标量，重力是矢量。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What distinguishes 质量 from 重力?",
+        "explanation": "质量 (mass) is how much matter a body contains — the same on Earth, on the Moon, or in free fall, measured in kilograms. 重力 (weight, gravitational force) is the pull of the Earth on the body, $G = mg$, which varies with the local $g$ and is measured in newtons.\n\nAn astronaut's mass is unchanged in orbit; the weight is very nearly zero. Note also that mass is a scalar while weight is a vector."
+      }
+    },
+    "tags": [
+      "physics-terminology",
+      "mass-weight"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-d05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「化合物」与「混合物」的根本区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "化合物只含一种元素，混合物含多种"
+      },
+      {
+        "id": "B",
+        "text": "化合物有固定的组成，混合物没有"
+      },
+      {
+        "id": "C",
+        "text": "化合物是液体，混合物是固体"
+      },
+      {
+        "id": "D",
+        "text": "化合物不能分解，混合物可以"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "化合物由不同元素按固定质量比化合而成，是纯净物；混合物只是几种物质的物理掺杂，各成分比例可以任意变化，且各自保持原有性质。",
+    "distractorRationale": {
+      "A": "只含一种元素的是单质，不是化合物。",
+      "C": "两者都可能是任何状态。",
+      "D": "化合物可以通过化学方法分解，混合物则用物理方法分离。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the fundamental difference between 化合物 and 混合物?",
+        "explanation": "化合物 (compound) consists of different elements combined in a fixed mass ratio, making it a pure substance. 混合物 (mixture) is a physical blend whose proportions can vary freely, with each component keeping its own properties.\n\nNote the related term 单质 (element as a substance), which contains only one element — that is what the option claiming a compound contains only one element actually describes."
+      }
+    },
+    "tags": [
+      "chemistry-terminology",
+      "classification"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-d06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「稀释」与「溶解」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "稀释会改变溶质的总量，溶解不会"
+      },
+      {
+        "id": "B",
+        "text": "稀释只针对固体，溶解只针对液体"
+      },
+      {
+        "id": "C",
+        "text": "稀释是加溶剂降低浓度，溶解是使溶质分散到溶剂中"
+      },
+      {
+        "id": "D",
+        "text": "两者含义完全相同"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "溶解描述溶质进入溶剂形成溶液的过程；稀释则是在已有溶液中加入溶剂，使浓度下降。稀释过程中溶质的总量保持不变，改变的只是浓度。",
+    "distractorRationale": {
+      "A": "恰好说反：稀释不改变溶质总量。",
+      "B": "两者对固、液、气态溶质都适用。",
+      "D": "两者的操作对象和结果都不同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the difference between 稀释 and 溶解?",
+        "explanation": "溶解 (dissolving) describes solute entering a solvent to form a solution. 稀释 (dilution) means adding more solvent to an existing solution so the concentration falls.\n\nThe key point often tested: dilution leaves the total amount of solute unchanged. Only the concentration changes, which is why $c_1V_1 = c_2V_2$ works."
+      }
+    },
+    "tags": [
+      "chemistry-terminology",
+      "dilution"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-d07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "符号 $\\sum_{i=1}^{n} a_i$ 表示",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$a_1$ 与 $a_n$ 的平均值"
+      },
+      {
+        "id": "B",
+        "text": "$a_i$ 的第 $n$ 次方"
+      },
+      {
+        "id": "C",
+        "text": "从 $a_1$ 到 $a_n$ 所有项的积"
+      },
+      {
+        "id": "D",
+        "text": "从 $a_1$ 到 $a_n$ 所有项的和"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$\\sum$ 是求和号，下标 $i = 1$ 是起点，上标 $n$ 是终点，表示把 $i$ 从 $1$ 取到 $n$ 所得的各项相加。中文读作「西格玛」或「求和」。",
+    "distractorRationale": {
+      "A": "平均值还需再除以项数 $n$。",
+      "B": "乘方用上标表示，与求和号无关。",
+      "C": "求积用连乘号 $\\prod$。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the symbol $\\sum_{i=1}^{n} a_i$ denote?",
+        "explanation": "$\\sum$ is the summation sign (求和号). The subscript $i = 1$ gives the starting index and the superscript $n$ the ending index, so the expression adds every term from $a_1$ through $a_n$.\n\nThe product counterpart is $\\prod$ (连乘号), which multiplies rather than adds."
+      }
+    },
+    "tags": [
+      "math-symbols",
+      "summation"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-d08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「热量」与「温度」的关系是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "热量是传递的能量，温度反映分子平均动能"
+      },
+      {
+        "id": "B",
+        "text": "热量高的物体温度一定高"
+      },
+      {
+        "id": "C",
+        "text": "两者是同一个概念的不同名称"
+      },
+      {
+        "id": "D",
+        "text": "温度是能量，热量是状态"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "热量是因温度差而在物体间传递的能量，是过程量，单位是焦耳；温度是状态量，反映分子平均动能。一杯温水所含的内能可能多于一根烧红的针，但针的温度远高。",
+    "distractorRationale": {
+      "B": "内能多少还取决于物质的量，与温度不成简单对应。",
+      "C": "一个是过程量，一个是状态量，性质不同。",
+      "D": "两者的定位说反了。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the relationship between 热量 and 温度?",
+        "explanation": "热量 (heat) is energy transferred between bodies because of a temperature difference — a process quantity, measured in joules. 温度 (temperature) is a state quantity reflecting the average kinetic energy of the molecules.\n\nA cup of warm water can hold more internal energy than a red-hot needle, even though the needle is far hotter. Quantity of substance matters, not temperature alone."
+      }
+    },
+    "tags": [
+      "physics-terminology",
+      "heat-temperature"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-d09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「可逆反应」的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "改变条件后可以倒过来进行的反应"
+      },
+      {
+        "id": "B",
+        "text": "在同一条件下能同时向正、逆两个方向进行的反应"
+      },
+      {
+        "id": "C",
+        "text": "只能进行一次的反应"
+      },
+      {
+        "id": "D",
+        "text": "能够完全进行到底的反应"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "可逆反应的关键在「同一条件下同时进行」，因此反应物无法完全转化，最终建立化学平衡，方程式用双向箭头 $\\rightleftharpoons$ 表示。",
+    "distractorRationale": {
+      "A": "改变条件才能倒转的属于两个不同反应，不是可逆反应。",
+      "C": "与可逆性无关。",
+      "D": "可逆反应恰恰不能进行到底。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 可逆反应 mean?",
+        "explanation": "The defining feature of 可逆反应 (reversible reaction) is that the forward and reverse reactions run *simultaneously under the same conditions*. Because of that, the reactants can never be fully converted, and the system settles into chemical equilibrium.\n\nSuch reactions are written with the double arrow $\\rightleftharpoons$. A reaction that only runs backwards after you change the conditions is two separate reactions, not a reversible one."
+      }
+    },
+    "tags": [
+      "chemistry-terminology",
+      "reversibility"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-d10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「当且仅当」这一表述的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "前者是后者的充分条件"
+      },
+      {
+        "id": "B",
+        "text": "前者是后者的必要条件"
+      },
+      {
+        "id": "C",
+        "text": "两个命题互为充要条件"
+      },
+      {
+        "id": "D",
+        "text": "两个命题互相矛盾"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「当且仅当」把两个方向合并在一句话里：「当」给出充分性（$q \\Rightarrow p$），「仅当」给出必要性（$p \\Rightarrow q$）。合起来即 $p \\Leftrightarrow q$，两命题等价。",
+    "distractorRationale": {
+      "A": "只取了「当」的一半。",
+      "B": "只取了「仅当」的一半。",
+      "D": "等价与矛盾恰恰相反。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the phrase 当且仅当 mean?",
+        "explanation": "当且仅当 is the Chinese rendering of \"if and only if\". It packs both directions into one phrase: 当 (\"if\") supplies sufficiency and 仅当 (\"only if\") supplies necessity.\n\nTogether they give $p \\Leftrightarrow q$ — the two statements are equivalent, each being a 充要条件 (necessary and sufficient condition) for the other."
+      }
+    },
+    "tags": [
+      "logic-terminology",
+      "biconditional"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-d11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「参考系」在描述运动时的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "只能选择地面作为参考系"
+      },
+      {
+        "id": "B",
+        "text": "决定物体的质量"
+      },
+      {
+        "id": "C",
+        "text": "规定物体运动的方向"
+      },
+      {
+        "id": "D",
+        "text": "提供判断物体是否运动的标准，选择不同则结论可能不同"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "运动是相对的，必须先选定参考系才能判断物体是否在动。坐在行驶的火车上，以车厢为参考系乘客静止，以地面为参考系则乘客在高速运动。",
+    "distractorRationale": {
+      "A": "参考系可以任意选择，只是通常选地面最方便。",
+      "B": "质量是物体的固有属性，与参考系无关。",
+      "C": "方向由具体运动决定，参考系只提供比较的基准。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the role of a 参考系 in describing motion?",
+        "explanation": "Motion is relative: you must first choose a 参考系 (frame of reference) before you can say whether something is moving.\n\nA passenger on a moving train is at rest relative to the carriage but travelling fast relative to the ground. Both descriptions are correct — they simply use different frames. Any frame may be chosen, though the ground is usually the most convenient."
+      }
+    },
+    "tags": [
+      "physics-terminology",
+      "relativity-of-motion"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-d12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「同位素」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "质子数相同而中子数不同的同一元素的不同原子"
+      },
+      {
+        "id": "B",
+        "text": "中子数相同而质子数不同的原子"
+      },
+      {
+        "id": "C",
+        "text": "在周期表中位置相邻的元素"
+      },
+      {
+        "id": "D",
+        "text": "分子式相同而结构不同的化合物"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「同位」二字指在元素周期表中占据同一位置，即质子数相同，因而属于同一元素；中子数不同导致质量数不同。如 $^{12}\\text{C}$ 与 $^{14}\\text{C}$。",
+    "distractorRationale": {
+      "B": "质子数不同就属于不同元素了。",
+      "C": "位置相邻是不同元素，不是同位素。",
+      "D": "这是同分异构体，属于有机化学概念。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What are 同位素?",
+        "explanation": "The characters 同位 mean \"same position\" — occupying the same slot in the periodic table, that is, having the same proton number and therefore belonging to the same element. Different neutron numbers give different mass numbers, as with $^{12}\\text{C}$ and $^{14}\\text{C}$.\n\nDo not confuse this with 同分异构体 (structural isomers), which is an organic chemistry concept about identical molecular formulae."
+      }
+    },
+    "tags": [
+      "chemistry-terminology",
+      "isotopes"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-e01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的词语填入空格：\n\n本研究的结论 ______ 于所选取的样本范围，推广时须谨慎。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "受限"
+      },
+      {
+        "id": "B",
+        "text": "局限"
+      },
+      {
+        "id": "C",
+        "text": "限制"
+      },
+      {
+        "id": "D",
+        "text": "约束"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「局限于」是固定搭配，意为「被限定在某一范围之内」，后面直接接范围，正与「所选取的样本范围」相合。",
+    "distractorRationale": {
+      "A": "「受限」后面一般接「于」时须说「受限于条件」，语义偏向外部约束，且不如「局限于」自然。",
+      "C": "「限制」作动词时须有施动者，如「条件限制了结论」，不能说「结论限制于」。",
+      "D": "「约束」多用于行为规范，不用于结论的适用范围。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate word:\n\n本研究的结论 ______ 于所选取的样本范围，推广时须谨慎。\n\n(The conclusions of this study are ______ to the range of samples selected; caution is needed in generalising them.)",
+        "explanation": "局限于 is a fixed collocation meaning \"confined within\", and it takes the scope directly as its object — exactly what 所选取的样本范围 supplies.\n\n限制 needs an agent doing the limiting, 约束 applies to behaviour rather than scope, and 受限 reads less naturally in this academic frame."
+      }
+    },
+    "tags": [
+      "collocation",
+      "academic-register"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-e02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "有效数字的位数反映测量的精确程度。用最小刻度为毫米的尺子测量，读数应估读到毫米的下一位。______ 若写成「$12\\ \\text{cm}$」，则丢失了原本已经获得的精度信息。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此测量时应尽量使用更长的尺子。"
+      },
+      {
+        "id": "B",
+        "text": "因此毫米是国际单位制的基本单位。"
+      },
+      {
+        "id": "C",
+        "text": "因此测得的长度应记作「$12.0\\ \\text{cm}$」而非「$12\\ \\text{cm}$」。"
+      },
+      {
+        "id": "D",
+        "text": "因此测量结果都应四舍五入到整数。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "横线前说明应估读到毫米的下一位，横线后以「$12\\ \\text{cm}$」为反例说明精度信息的丢失。中间需要一句给出正确写法，才能让后面的对比成立。",
+    "distractorRationale": {
+      "A": "尺子长短与有效数字无关。",
+      "B": "长度的基本单位是米，且与论述无关。",
+      "D": "与前后文的要求正好相反。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "The sentence before the blank says the reading should be estimated one digit beyond the millimetre mark. The sentence after uses $12\\ \\text{cm}$ as a counter-example of lost precision.\n\nWhat belongs between them is the correct form — $12.0\\ \\text{cm}$ — which is what makes the following contrast meaningful."
+      }
+    },
+    "tags": [
+      "significant-figures",
+      "paragraph-completion"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-e03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列句子中用字正确的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "该装置能有效地降低能耗，值得推光。"
+      },
+      {
+        "id": "B",
+        "text": "该装置能有效地降低能好，值得推广。"
+      },
+      {
+        "id": "C",
+        "text": "该装置能有笑地降低能耗，值得推广。"
+      },
+      {
+        "id": "D",
+        "text": "该装置能有效地降低能耗，值得推广。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "三处易错：「能耗」指能量消耗，不可写作「能好」；「推广」指扩大应用范围，不可写作「推光」；「有效」不可写作「有笑」。三者的错误形式都与正确形式同音或近音。",
+    "distractorRationale": {
+      "A": "「推光」应为「推广」。",
+      "B": "「能好」应为「能耗」。",
+      "C": "「有笑」应为「有效」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence uses every character correctly?",
+        "explanation": "Three traps appear here, each involving a homophone or near-homophone: 能耗 (energy consumption) not 能好; 推广 (to promote for wider use) not 推光; 有效 (effective) not 有笑.\n\nErrors of this kind survive spell-checking because every wrong character is itself a real character."
+      }
+    },
+    "tags": [
+      "character-errors",
+      "homophones"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-e04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的一组词语填入空格：\n\n该方案在理论上 ______ ，但在实际操作中面临诸多 ______ 。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "可行／制约"
+      },
+      {
+        "id": "B",
+        "text": "可以／制约"
+      },
+      {
+        "id": "C",
+        "text": "可行／制止"
+      },
+      {
+        "id": "D",
+        "text": "能够／限止"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「可行」是形容词，可直接作谓语，意为「行得通」，与「在理论上」搭配自然。「制约」作名词时指限制条件，可受「诸多」修饰。",
+    "distractorRationale": {
+      "B": "「可以」是能愿动词，须带动词宾语，不能单独作谓语。",
+      "C": "「制止」是动词，意为阻止某行为，不能被「诸多」修饰。",
+      "D": "「能够」同样须带宾语，「限止」也不是规范词形。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate pair:\n\n该方案在理论上 ______ ，但在实际操作中面临诸多 ______ 。\n\n(The plan is ______ in theory, but faces numerous ______ in practice.)",
+        "explanation": "可行 is an adjective meaning \"workable\" and can stand alone as a predicate, which suits 在理论上. 制约 functions as a noun meaning \"constraints\" and can be quantified by 诸多 (numerous).\n\n可以 and 能够 are modal verbs that require a verb object, and 制止 (to stop an act) cannot be counted."
+      }
+    },
+    "tags": [
+      "word-class",
+      "collocation"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-e05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "把一根铁丝反复弯折，弯折处会明显发热。这一现象说明做功也可以改变物体的内能。______ 两种方式在效果上是等价的，都能使物体的温度升高。"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "铁丝的熔点约为一千五百摄氏度。"
+      },
+      {
+        "id": "B",
+        "text": "改变内能的另一种方式是热传递。"
+      },
+      {
+        "id": "C",
+        "text": "弯折次数越多，铁丝越容易断裂。"
+      },
+      {
+        "id": "D",
+        "text": "内能的单位与功的单位相同。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "横线后出现「两种方式」，说明横线处必须引出第二种方式。前文已给出做功，故此处应补出热传递，「两种」才有着落。",
+    "distractorRationale": {
+      "A": "熔点数据与内能改变方式无关。",
+      "C": "转向材料疲劳，偏离论述主线。",
+      "D": "单位相同虽是事实，但没有引出第二种方式。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best fills the blank?",
+        "explanation": "The sentence after the blank refers to 两种方式 (two methods), so the blank must introduce the second one. The passage has already given 做功 (doing work), which means 热传递 (heat transfer) is what must appear.\n\nWithout it, the phrase \"two methods\" has no antecedent — the clearest possible cohesion signal."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "cohesion"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-e06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列各组词语中，读音完全相同的一组是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "试验　实验"
+      },
+      {
+        "id": "B",
+        "text": "计量　计算"
+      },
+      {
+        "id": "C",
+        "text": "溶解　融解"
+      },
+      {
+        "id": "D",
+        "text": "标本　标准"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「溶解」与「融解」都读 róngjiě，但意义不同：溶解指物质分散在溶剂中，融解指固体受热变成液体。这一对同音词在科技写作中极易混用。",
+    "distractorRationale": {
+      "A": "「试」读 shì，「实」读 shí，声调不同。",
+      "B": "「量」读 liàng，「算」读 suàn，后字读音不同。",
+      "D": "「本」读 běn，「准」读 zhǔn，后字读音不同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which pair of words is pronounced identically?",
+        "explanation": "溶解 and 融解 are both read róngjiě, yet they mean different things: 溶解 is dissolving (a substance dispersing in a solvent) and 融解 is melting (a solid becoming liquid on heating).\n\nThis homophone pair causes frequent confusion in Chinese science writing, since the two processes are physically distinct."
+      }
+    },
+    "tags": [
+      "pronunciation",
+      "homophones"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-e07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "选出最恰当的词语填入空格：\n\n为了减小误差，本实验对每个样品都进行了三次 ______ 测量。",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "反复"
+      },
+      {
+        "id": "B",
+        "text": "复习"
+      },
+      {
+        "id": "C",
+        "text": "往复"
+      },
+      {
+        "id": "D",
+        "text": "重复"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「重复测量」是实验科学的固定术语，指在相同条件下把同一测量做若干次，以便取平均减小偶然误差。",
+    "distractorRationale": {
+      "A": "「反复」强调次数多而无定数，与「三次」这一明确数量不搭配。",
+      "B": "「复习」用于学习，与实验无关。",
+      "C": "「往复」指来回运动，用于机械而非测量。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Choose the most appropriate word:\n\n为了减小误差，本实验对每个样品都进行了三次 ______ 测量。\n\n(To reduce error, this experiment took three ______ measurements of each sample.)",
+        "explanation": "重复测量 (repeated measurement) is the fixed term in experimental science: taking the same measurement several times under identical conditions so that averaging reduces random error.\n\n反复 implies many times without a fixed count, which clashes with the stated 三次; 往复 describes back-and-forth mechanical motion."
+      }
+    },
+    "tags": [
+      "experimental-vocabulary",
+      "collocation"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-e08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "同一种物质的密度是确定的，与物体的体积和质量都无关。一块铁和一根铁钉的密度完全相同。______"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此密度可以用来鉴别物质的种类。"
+      },
+      {
+        "id": "B",
+        "text": "因此体积越大的物体密度越大。"
+      },
+      {
+        "id": "C",
+        "text": "因此铁的质量总是大于木头。"
+      },
+      {
+        "id": "D",
+        "text": "因此密度会随温度大幅改变。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "前文强调密度只取决于物质种类而与形状大小无关，这正是把密度用作鉴别依据的前提。横线处顺势得出这一结论最为自然。",
+    "distractorRationale": {
+      "B": "直接违背前文「与体积无关」的表述。",
+      "C": "比较的是质量而非密度，且未指明体积，无法成立。",
+      "D": "与前文强调的「确定性」相矛盾。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the passage?",
+        "explanation": "The passage stresses that density depends only on the kind of substance, not on size or shape. That is precisely the property which makes density usable for identifying materials, so the concluding sentence follows directly.\n\nOption B contradicts the stated independence from volume outright."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "density"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

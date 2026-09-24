@@ -1,0 +1,1226 @@
+[
+  {
+    "id": "utbk-ppu-b01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Sinonim & antonim",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sinonim kata MUFAKAT adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "keputusan"
+      },
+      {
+        "id": "B",
+        "text": "usulan"
+      },
+      {
+        "id": "C",
+        "text": "perdebatan"
+      },
+      {
+        "id": "D",
+        "text": "bantahan"
+      },
+      {
+        "id": "E",
+        "text": "sepakat"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Mufakat berarti seia sekata atau setuju; padanannya adalah sepakat. Kata ini lazim dipakai bersama musyawarah, yaitu proses yang menghasilkannya.",
+    "distractorRationale": {
+      "A": "Keputusan bisa diambil tanpa mufakat, misalnya lewat pemungutan suara.",
+      "B": "Usulan adalah yang diajukan sebelum kesepakatan tercapai.",
+      "C": "Perdebatan adalah proses yang bisa berakhir mufakat atau tidak.",
+      "D": "Bantahan adalah lawan dari mufakat."
+    },
+    "tags": [
+      "sinonim",
+      "kosakata"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Sinonim & antonim",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Antonim kata GERSANG adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "subur"
+      },
+      {
+        "id": "B",
+        "text": "tandus"
+      },
+      {
+        "id": "C",
+        "text": "keras"
+      },
+      {
+        "id": "D",
+        "text": "luas"
+      },
+      {
+        "id": "E",
+        "text": "kering"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Gersang berarti kering dan tidak dapat ditumbuhi tanaman. Lawannya adalah subur, yaitu tanah yang mendukung pertumbuhan tanaman.",
+    "distractorRationale": {
+      "B": "Tandus adalah sinonim gersang, bukan antonimnya.",
+      "C": "Keras menyangkut tekstur tanah, bukan kemampuannya menumbuhkan tanaman.",
+      "D": "Luas menyangkut ukuran, bukan kesuburan.",
+      "E": "Kering juga bermakna dekat dengan gersang."
+    },
+    "tags": [
+      "antonim",
+      "kosakata"
+    ],
+    "estimatedTimeSec": 50,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Makna kata dalam konteks",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Kebijakan itu masih *mentah* sehingga belum dapat dilaksanakan.»\n\nMakna kata *mentah* dalam kalimat tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "terlalu rumit"
+      },
+      {
+        "id": "B",
+        "text": "belum matang pertimbangannya"
+      },
+      {
+        "id": "C",
+        "text": "baru saja dibuat"
+      },
+      {
+        "id": "D",
+        "text": "tidak berguna"
+      },
+      {
+        "id": "E",
+        "text": "belum dimasak"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Dalam konteks kebijakan, *mentah* dipakai secara kiasan: belum dipertimbangkan secara masak sehingga belum siap dijalankan. Makna harfiahnya yang berkaitan dengan masakan tidak berlaku di sini.",
+    "distractorRationale": {
+      "A": "Kerumitan adalah hal lain; yang mentah bisa saja sederhana.",
+      "C": "Waktu pembuatannya tidak menentukan matang tidaknya pertimbangan.",
+      "D": "Belum matang tidak sama dengan tidak berguna; kebijakan itu masih bisa disempurnakan.",
+      "E": "Makna harfiah yang tidak sesuai dengan objek berupa kebijakan."
+    },
+    "tags": [
+      "makna-kontekstual",
+      "kiasan"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Analogi kata",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "PADI : LUMBUNG = ... : ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "AIR : HUJAN"
+      },
+      {
+        "id": "B",
+        "text": "MOBIL : JALAN"
+      },
+      {
+        "id": "C",
+        "text": "UANG : BRANKAS"
+      },
+      {
+        "id": "D",
+        "text": "BUKU : PENULIS"
+      },
+      {
+        "id": "E",
+        "text": "BAJU : KAIN"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Hubungannya adalah barang berharga dengan tempat penyimpanannya. Padi disimpan di lumbung, sebagaimana uang disimpan di brankas.\n\nJalan bukan tempat penyimpanan mobil melainkan tempat pemakaiannya — perbedaan itu yang memisahkan jawaban benar dari pengecoh yang paling menarik.",
+    "distractorRationale": {
+      "A": "Hubungan zat dengan peristiwa alam yang membawanya.",
+      "B": "Jalan adalah tempat mobil dipakai, bukan disimpan.",
+      "D": "Hubungan hasil karya dengan pembuatnya.",
+      "E": "Hubungan barang jadi dengan bahan bakunya."
+    },
+    "tags": [
+      "analogi",
+      "barang-penyimpanan"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Idiom",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Makna ungkapan *besar kepala* adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "keras kepala"
+      },
+      {
+        "id": "B",
+        "text": "berpikiran luas"
+      },
+      {
+        "id": "C",
+        "text": "banyak pertimbangan"
+      },
+      {
+        "id": "D",
+        "text": "sombong"
+      },
+      {
+        "id": "E",
+        "text": "sedang bingung"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "*Besar kepala* berarti sombong atau angkuh. Ungkapan idiomatis tidak dapat ditafsirkan dari makna kata-kata pembentuknya secara terpisah.\n\nPerhatikan bedanya dengan *keras kepala*, yang berarti tidak mau menuruti nasihat — kemiripan bentuk membuat keduanya mudah tertukar.",
+    "distractorRationale": {
+      "A": "Keras kepala adalah idiom lain yang bermakna tidak mau menurut.",
+      "B": "Berpikiran luas justru sifat yang baik, berlawanan dengan makna ungkapan ini.",
+      "C": "Banyak pertimbangan tidak berkaitan dengan kesombongan.",
+      "E": "Kebingungan tidak diungkapkan dengan idiom ini."
+    },
+    "tags": [
+      "idiom",
+      "ungkapan"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Sinonim & antonim",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sinonim kata NISBI adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "mutlak"
+      },
+      {
+        "id": "B",
+        "text": "sementara"
+      },
+      {
+        "id": "C",
+        "text": "tersembunyi"
+      },
+      {
+        "id": "D",
+        "text": "pasti"
+      },
+      {
+        "id": "E",
+        "text": "relatif"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Nisbi berarti bergantung pada hal lain, tidak berdiri sendiri; padanannya dalam kata serapan adalah relatif.",
+    "distractorRationale": {
+      "A": "Mutlak adalah antonim nisbi.",
+      "B": "Sementara berkaitan dengan waktu, bukan dengan ketergantungan pada hal lain.",
+      "C": "Tersembunyi tidak berhubungan dengan makna nisbi.",
+      "D": "Pasti juga berlawanan dengan sifat nisbi."
+    },
+    "tags": [
+      "sinonim",
+      "kata-serapan"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Analogi kata",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "HAUS : MINUM = ... : ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "LELAH : ISTIRAHAT"
+      },
+      {
+        "id": "B",
+        "text": "DINGIN : SALJU"
+      },
+      {
+        "id": "C",
+        "text": "SAKIT : DOKTER"
+      },
+      {
+        "id": "D",
+        "text": "LAPAR : NASI"
+      },
+      {
+        "id": "E",
+        "text": "GELAP : MALAM"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Hubungannya adalah keadaan tubuh dengan tindakan yang mengatasinya. Haus diatasi dengan minum, lelah diatasi dengan istirahat.\n\nPilihan D menarik tetapi tidak sejajar: nasi adalah benda, sedangkan minum adalah tindakan. Sejajar tidaknya kelas kata sering menjadi penentu dalam soal analogi.",
+    "distractorRationale": {
+      "B": "Salju adalah penyebab dingin, bukan tindakan yang mengatasinya.",
+      "C": "Dokter adalah orang, bukan tindakan yang dilakukan penderita.",
+      "D": "Nasi adalah benda, bukan tindakan; pasangannya seharusnya «makan».",
+      "E": "Malam adalah waktu terjadinya gelap, bukan tindakan."
+    },
+    "tags": [
+      "analogi",
+      "keadaan-tindakan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Makna kata dalam konteks",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Perusahaan itu *menggulirkan* program beasiswa bagi anak karyawan.»\n\nMakna kata *menggulirkan* dalam kalimat tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menghentikan"
+      },
+      {
+        "id": "B",
+        "text": "meluncurkan"
+      },
+      {
+        "id": "C",
+        "text": "memutar"
+      },
+      {
+        "id": "D",
+        "text": "menunda"
+      },
+      {
+        "id": "E",
+        "text": "membatalkan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "*Menggulirkan* secara harfiah berarti membuat sesuatu berputar maju. Dalam konteks program atau kebijakan, kata ini bermakna mulai menjalankan atau meluncurkan.",
+    "distractorRationale": {
+      "A": "Berlawanan dengan makna memulai.",
+      "C": "Makna harfiah yang tidak berlaku untuk objek berupa program.",
+      "D": "Menunda berarti pelaksanaannya digeser, bukan dimulai.",
+      "E": "Membatalkan berarti program itu tidak jadi dijalankan."
+    },
+    "tags": [
+      "makna-kontekstual",
+      "verba"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Ide pokok",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Terumbu karang menempati kurang dari satu persen dasar laut, tetapi menjadi rumah bagi hampir seperempat seluruh jenis ikan laut. Struktur berongga yang dibentuknya menyediakan tempat berlindung sekaligus tempat berkembang biak. Ketika suhu air naik, karang melepaskan alga yang hidup bersamanya dan berubah menjadi putih. Bila keadaan itu berlangsung lama, karang mati dan seluruh jaring makanan yang bergantung padanya ikut terganggu."
+    },
+    "stem": "Ide pokok paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "terumbu karang menempati kurang dari satu persen dasar laut"
+      },
+      {
+        "id": "B",
+        "text": "kenaikan suhu air laut menyebabkan karang berubah warna"
+      },
+      {
+        "id": "C",
+        "text": "terumbu karang menopang keanekaragaman laut dan terancam oleh kenaikan suhu"
+      },
+      {
+        "id": "D",
+        "text": "seperempat jenis ikan laut hidup di terumbu karang"
+      },
+      {
+        "id": "E",
+        "text": "alga hidup bersama karang dalam hubungan saling menguntungkan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Paragraf ini bergerak dari peran terumbu karang sebagai penopang kehidupan laut menuju ancaman yang dihadapinya. Ide pokok harus mencakup kedua sisi itu.\n\nPilihan lain benar sebagai isi, tetapi masing-masing hanya satu keping dari keseluruhan.",
+    "distractorRationale": {
+      "A": "Detail pembuka yang berfungsi memperkuat, bukan gagasan utamanya.",
+      "B": "Hanya bagian ancaman, tanpa peran ekologisnya.",
+      "D": "Detail penunjang untuk menunjukkan pentingnya terumbu karang.",
+      "E": "Hubungan alga dan karang disebut sepintas, bukan pokok bahasan."
+    },
+    "tags": [
+      "ide-pokok",
+      "teks-informasi"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Informasi tersurat/tersirat",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Terumbu karang menempati kurang dari satu persen dasar laut, tetapi menjadi rumah bagi hampir seperempat seluruh jenis ikan laut. Struktur berongga yang dibentuknya menyediakan tempat berlindung sekaligus tempat berkembang biak. Ketika suhu air naik, karang melepaskan alga yang hidup bersamanya dan berubah menjadi putih. Bila keadaan itu berlangsung lama, karang mati dan seluruh jaring makanan yang bergantung padanya ikut terganggu."
+    },
+    "stem": "Berdasarkan bacaan, karang yang memutih ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tidak lagi dihuni ikan apa pun"
+      },
+      {
+        "id": "B",
+        "text": "berubah warna karena bertambah usia"
+      },
+      {
+        "id": "C",
+        "text": "akan pulih dengan sendirinya dalam waktu singkat"
+      },
+      {
+        "id": "D",
+        "text": "belum tentu mati, tetapi akan mati bila keadaannya berlanjut"
+      },
+      {
+        "id": "E",
+        "text": "pasti sudah mati"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Bacaan menyebut karang mati «bila keadaan itu berlangsung lama». Kata *bila* menandakan syarat, sehingga memutih dan mati adalah dua tahap yang berbeda.\n\nMembaca dengan teliti kata penghubung semacam ini sering menjadi pembeda antara jawaban yang tepat dan yang berlebihan.",
+    "distractorRationale": {
+      "A": "Bacaan menyebut jaring makanan terganggu, bukan bahwa ikan hilang seluruhnya.",
+      "B": "Penyebab yang disebut bacaan adalah kenaikan suhu, bukan usia.",
+      "C": "Bacaan tidak menyebut pemulihan sama sekali.",
+      "E": "Melompati syarat «berlangsung lama» yang disebut bacaan."
+    },
+    "tags": [
+      "informasi-tersirat",
+      "kata-penghubung-syarat"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Simpulan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sejak jalur sepeda dibangun, jumlah pesepeda di kota itu naik dua kali lipat dalam setahun. Namun pada periode yang sama, harga bahan bakar juga naik tajam dan pemerintah kota memberlakukan pembatasan kendaraan bermotor pada jam tertentu. Survei kepada pesepeda baru menunjukkan alasan yang beragam."
+    },
+    "stem": "Simpulan yang paling dapat dipertanggungjawabkan dari bacaan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "jalur sepeda adalah penyebab utama naiknya jumlah pesepeda"
+      },
+      {
+        "id": "B",
+        "text": "pembatasan kendaraan bermotor gagal mengurangi penggunaan mobil"
+      },
+      {
+        "id": "C",
+        "text": "kenaikan harga bahan bakar tidak berpengaruh terhadap pilihan warga"
+      },
+      {
+        "id": "D",
+        "text": "jalur sepeda sebaiknya diperluas ke seluruh kota"
+      },
+      {
+        "id": "E",
+        "text": "kenaikan jumlah pesepeda tidak dapat dikaitkan pada satu sebab tunggal"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Tiga hal berubah bersamaan — jalur sepeda, harga bahan bakar, dan pembatasan kendaraan — dan survei sendiri menyebut alasan yang beragam. Menunjuk satu penyebab berarti mengabaikan dua lainnya beserta hasil survei itu.",
+    "distractorRationale": {
+      "A": "Menunjuk satu sebab padahal dua perubahan lain terjadi bersamaan.",
+      "B": "Bacaan tidak memuat data tentang penggunaan mobil.",
+      "C": "Bacaan tidak menyatakan harga bahan bakar tidak berpengaruh.",
+      "D": "Ini saran kebijakan, bukan simpulan dari informasi yang tersedia."
+    },
+    "tags": [
+      "simpulan",
+      "sebab-berganda"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Ide pokok",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Bahasa daerah di Indonesia berjumlah lebih dari tujuh ratus. Sebagian besar penuturnya kini berusia lanjut, sementara generasi muda lebih banyak memakai bahasa Indonesia dalam pergaulan sehari-hari. Ketika penutur terakhir sebuah bahasa meninggal, yang hilang bukan hanya kosakata, melainkan juga cara memandang dunia yang terekam di dalamnya: nama-nama tumbuhan obat, penanda musim, dan aturan adat yang tidak pernah dituliskan."
+    },
+    "stem": "Ide pokok paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kepunahan bahasa daerah berarti hilangnya pengetahuan yang terekam di dalamnya"
+      },
+      {
+        "id": "B",
+        "text": "penutur bahasa daerah sebagian besar berusia lanjut"
+      },
+      {
+        "id": "C",
+        "text": "Indonesia memiliki lebih dari tujuh ratus bahasa daerah"
+      },
+      {
+        "id": "D",
+        "text": "generasi muda lebih suka memakai bahasa Indonesia"
+      },
+      {
+        "id": "E",
+        "text": "aturan adat sebaiknya segera dituliskan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat terakhir memuat gagasan intinya: yang hilang bersama bahasa bukan sekadar kata, melainkan pengetahuan yang tidak tercatat di tempat lain. Kalimat-kalimat sebelumnya menyiapkan jalan menuju gagasan itu.",
+    "distractorRationale": {
+      "B": "Detail penunjang lain, bukan gagasan utamanya.",
+      "C": "Data pembuka yang berfungsi sebagai latar.",
+      "D": "Detail penunjang yang menjelaskan sebab pergeseran.",
+      "E": "Saran yang tidak dinyatakan bacaan."
+    },
+    "tags": [
+      "ide-pokok",
+      "kalimat-utama-akhir"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b13",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Informasi tersurat/tersirat",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Bahasa daerah di Indonesia berjumlah lebih dari tujuh ratus. Sebagian besar penuturnya kini berusia lanjut, sementara generasi muda lebih banyak memakai bahasa Indonesia dalam pergaulan sehari-hari. Ketika penutur terakhir sebuah bahasa meninggal, yang hilang bukan hanya kosakata, melainkan juga cara memandang dunia yang terekam di dalamnya: nama-nama tumbuhan obat, penanda musim, dan aturan adat yang tidak pernah dituliskan."
+    },
+    "stem": "Penyebutan «yang tidak pernah dituliskan» pada akhir bacaan menyiratkan bahwa ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "bahasa Indonesia lebih mudah dituliskan"
+      },
+      {
+        "id": "B",
+        "text": "pengetahuan itu tidak dapat dipulihkan setelah penuturnya tiada"
+      },
+      {
+        "id": "C",
+        "text": "aturan adat memang sengaja dirahasiakan"
+      },
+      {
+        "id": "D",
+        "text": "pemerintah lalai mencatat kekayaan budaya"
+      },
+      {
+        "id": "E",
+        "text": "masyarakat penuturnya tidak mengenal tulisan sama sekali"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Frasa itu menjelaskan mengapa kehilangannya bersifat tetap: karena tidak ada catatan, tidak ada tempat lain untuk memulihkannya. Di situlah letak kegentingan yang ingin disampaikan penulis.",
+    "distractorRationale": {
+      "A": "Perbandingan kemudahan menulis tidak disinggung bacaan.",
+      "C": "Tidak tertulis tidak sama dengan sengaja dirahasiakan.",
+      "D": "Penilaian terhadap pemerintah tidak ada dalam bacaan.",
+      "E": "Bacaan tidak menyatakan masyarakatnya buta aksara."
+    },
+    "tags": [
+      "informasi-tersirat",
+      "fungsi-frasa"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b14",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Simpulan",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah puskesmas mencatat bahwa pasien yang datang pada pagi hari rata-rata menunggu 25 menit, sedangkan yang datang pada sore hari menunggu 55 menit. Jumlah petugas pada kedua waktu itu sama, tetapi jumlah pasien sore hari hampir dua kali lipat pasien pagi hari."
+    },
+    "stem": "Simpulan yang tepat dari data tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "pasien pagi hari mendapat pelayanan yang lebih baik"
+      },
+      {
+        "id": "B",
+        "text": "petugas sore hari bekerja lebih lambat daripada petugas pagi hari"
+      },
+      {
+        "id": "C",
+        "text": "lamanya menunggu sore hari berkaitan dengan jumlah pasien yang lebih banyak"
+      },
+      {
+        "id": "D",
+        "text": "puskesmas sebaiknya ditutup pada sore hari"
+      },
+      {
+        "id": "E",
+        "text": "jumlah petugas tidak berpengaruh terhadap lama menunggu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Jumlah petugas sama pada kedua waktu, sedangkan jumlah pasien sore hari hampir dua kali lipat. Beban per petugas yang berlipat menjelaskan waktu tunggu yang lebih panjang — dan itulah satu-satunya perbedaan yang disebut bacaan.",
+    "distractorRationale": {
+      "A": "Lama menunggu tidak sama dengan mutu pelayanan.",
+      "B": "Bacaan tidak memuat data tentang kecepatan kerja petugas.",
+      "D": "Ini saran, bukan simpulan dari data.",
+      "E": "Justru sebaliknya: jumlah petugas yang tetap di hadapan pasien yang berlipat itulah penjelasannya."
+    },
+    "tags": [
+      "simpulan",
+      "penalaran-data"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b15",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Kalimat efektif",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat berikut yang efektif adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Bagi hadirin sekalian dimohon supaya berdiri."
+      },
+      {
+        "id": "B",
+        "text": "Kepada para hadirin sekalian dimohon untuk berdiri."
+      },
+      {
+        "id": "C",
+        "text": "Para hadirin sekalian dimohon untuk berdiri."
+      },
+      {
+        "id": "D",
+        "text": "Hadirin dimohon berdiri."
+      },
+      {
+        "id": "E",
+        "text": "Untuk para hadirin semuanya dimohon berdiri."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kata *hadirin* sudah bermakna jamak, sehingga *para* dan *sekalian* menjadi berlebihan. Kata depan *kepada*, *untuk*, dan *bagi* di awal juga membuat kalimat kehilangan subjek.\n\nKalimat efektif menuntut kehematan dan kejelasan fungsi: «Hadirin dimohon berdiri» sudah lengkap dan tidak mengulang makna.",
+    "distractorRationale": {
+      "A": "*Bagi* di awal menghilangkan subjek, dan *sekalian* berlebihan.",
+      "B": "Selain berlebihan, *kepada* di awal menghilangkan subjek kalimat.",
+      "C": "*Para* dan *sekalian* mengulang makna jamak yang sudah ada pada *hadirin*.",
+      "E": "*Untuk* di awal menghilangkan subjek, dan *semuanya* berlebihan."
+    },
+    "tags": [
+      "kalimat-efektif",
+      "kehematan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b16",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Ejaan & PUEBI",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan yang sesuai dengan kaidah ejaan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Ia berangkat ke Jakarta pada hari Senin 5 Agustus 2024."
+      },
+      {
+        "id": "B",
+        "text": "Ia berangkat ke jakarta pada hari senin, 5 agustus 2024."
+      },
+      {
+        "id": "C",
+        "text": "Ia berangkat kejakarta pada hari Senin, 5 Agustus 2024."
+      },
+      {
+        "id": "D",
+        "text": "Ia berangkat ke Jakarta pada Hari Senin, 5 Agustus 2024."
+      },
+      {
+        "id": "E",
+        "text": "Ia berangkat ke Jakarta pada hari Senin, 5 Agustus 2024."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Nama tempat, nama hari, dan nama bulan ditulis dengan huruf kapital. Kata depan *ke* ditulis terpisah dari kata yang mengikutinya. Tanda koma diperlukan antara nama hari dan tanggal.\n\nKata *hari* sendiri bukan bagian dari nama sehingga tetap huruf kecil.",
+    "distractorRationale": {
+      "A": "Kurang tanda koma antara nama hari dan tanggal.",
+      "B": "Nama tempat, hari, dan bulan seharusnya berhuruf kapital.",
+      "C": "Kata depan *ke* harus ditulis terpisah.",
+      "D": "Kata *hari* bukan bagian nama sehingga tidak dikapitalkan."
+    },
+    "tags": [
+      "ejaan",
+      "huruf-kapital"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b17",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Kata baku",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Deretan kata yang seluruhnya baku adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "apotek, analisis, hakikat"
+      },
+      {
+        "id": "B",
+        "text": "apotik, analisa, hakekat"
+      },
+      {
+        "id": "C",
+        "text": "apotik, analisis, hakikat"
+      },
+      {
+        "id": "D",
+        "text": "apotek, analisis, hakekat"
+      },
+      {
+        "id": "E",
+        "text": "apotek, analisa, hakekat"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Bentuk bakunya adalah *apotek*, *analisis*, dan *hakikat*. Ketiganya sering keliru ditulis sebagai *apotik*, *analisa*, dan *hakekat*.",
+    "distractorRationale": {
+      "B": "Ketiganya bentuk tidak baku.",
+      "C": "*Apotik* tidak baku.",
+      "D": "*Hakekat* tidak baku.",
+      "E": "*Analisa* dan *hakekat* tidak baku."
+    },
+    "tags": [
+      "kata-baku",
+      "kosakata"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b18",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Kalimat efektif",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Berdasarkan hasil penelitian tersebut menunjukkan bahwa pupuk organik meningkatkan hasil panen.»\n\nPerbaikan yang tepat untuk kalimat tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menghapus kata *bahwa*"
+      },
+      {
+        "id": "B",
+        "text": "menghapus kata *berdasarkan*"
+      },
+      {
+        "id": "C",
+        "text": "mengganti *tersebut* menjadi *ini*"
+      },
+      {
+        "id": "D",
+        "text": "mengganti *meningkatkan* menjadi *ditingkatkan*"
+      },
+      {
+        "id": "E",
+        "text": "menambahkan kata *maka* sebelum *menunjukkan*"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kata *berdasarkan* mengubah bagian awal menjadi keterangan, sehingga kalimat itu kehilangan subjek dan hanya berisi keterangan lalu predikat.\n\nDengan menghapusnya, «Hasil penelitian tersebut menunjukkan bahwa ...» memiliki subjek yang jelas. Menambahkan *maka* justru memperparah karena keterangannya tetap tanpa subjek.",
+    "distractorRationale": {
+      "A": "*Bahwa* justru diperlukan untuk memperkenalkan anak kalimat.",
+      "C": "Pilihan kata penunjuk tidak berkaitan dengan cacat struktur kalimat ini.",
+      "D": "Bentuk pasif tidak menyelesaikan masalah ketiadaan subjek.",
+      "E": "Menambah *maka* tetap menyisakan kalimat tanpa subjek."
+    },
+    "tags": [
+      "kalimat-efektif",
+      "subjek-hilang"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b19",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Ejaan & PUEBI",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan gabungan kata yang benar adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "bertanggung-jawab, kerja-sama, tanda-tangan"
+      },
+      {
+        "id": "B",
+        "text": "bertanggungjawab, kerja sama, tandatangan"
+      },
+      {
+        "id": "C",
+        "text": "bertanggung jawab, kerja sama, tanda tangan"
+      },
+      {
+        "id": "D",
+        "text": "bertanggung jawab, kerjasama, tanda tangan"
+      },
+      {
+        "id": "E",
+        "text": "bertanggungjawab, kerjasama, tandatangan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Gabungan kata yang belum berpadu ditulis terpisah: *kerja sama*, *tanda tangan*, dan *tanggung jawab*. Pemberian awalan saja tidak menyatukannya, sehingga tetap *bertanggung jawab*.\n\nPenyatuan baru terjadi bila mendapat awalan sekaligus akhiran, seperti *pertanggungjawaban*.",
+    "distractorRationale": {
+      "A": "Tanda hubung tidak dipakai untuk gabungan kata semacam ini.",
+      "B": "*Bertanggungjawab* dan *tandatangan* seharusnya terpisah.",
+      "D": "*Kerjasama* seharusnya ditulis terpisah.",
+      "E": "Ketiganya ditulis serangkai padahal seharusnya terpisah."
+    },
+    "tags": [
+      "gabungan-kata",
+      "ejaan"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-b20",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Kata baku",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kata tidak baku dalam kalimat «Manajer itu memberi nasehat kepada bawahannya secara obyektif» adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "seluruh kata serapan dalam kalimat itu sudah baku"
+      },
+      {
+        "id": "B",
+        "text": "obyektif saja"
+      },
+      {
+        "id": "C",
+        "text": "manajer dan nasehat"
+      },
+      {
+        "id": "D",
+        "text": "nasehat dan obyektif"
+      },
+      {
+        "id": "E",
+        "text": "manajer saja"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Bentuk bakunya adalah *nasihat* dan *objektif*. Kata *manajer* sendiri sudah baku.\n\nSerapan yang berasal dari bunyi /y/ dalam bahasa asing umumnya diserap menjadi *j* atau *ob-*, sehingga *obyektif* dan *subyek* bukan bentuk baku.",
+    "distractorRationale": {
+      "A": "Dua kata dalam kalimat itu memang tidak baku.",
+      "B": "*Nasehat* juga tidak baku, jadi tidak hanya satu kata.",
+      "C": "*Manajer* baku, sehingga pasangan ini keliru.",
+      "E": "*Manajer* justru bentuk yang baku."
+    },
+    "tags": [
+      "kata-baku",
+      "kata-serapan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

@@ -1,0 +1,1718 @@
+[
+  {
+    "id": "csca-chm-b13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Hydrocarbons 烃",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which compound is an isomer of butane?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2-methylpropane"
+      },
+      {
+        "id": "B",
+        "text": "Pentane"
+      },
+      {
+        "id": "C",
+        "text": "Butene"
+      },
+      {
+        "id": "D",
+        "text": "Propane"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Isomers share a molecular formula but differ in structure. Butane is $\\text{C}_4\\text{H}_{10}$, and 2-methylpropane is the branched arrangement of the same formula.",
+    "distractorRationale": {
+      "B": "Pentane is $\\text{C}_5\\text{H}_{12}$, with an extra carbon.",
+      "C": "Butene is $\\text{C}_4\\text{H}_8$, with two fewer hydrogen atoms.",
+      "D": "Propane is $\\text{C}_3\\text{H}_8$, a different formula."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列物质中与丁烷互为同分异构体的是",
+        "explanation": "同分异构体分子式相同而结构不同。丁烷为 $\\text{C}_4\\text{H}_{10}$，2-甲基丙烷是同一分子式的支链结构。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "2-甲基丙烷"
+          },
+          {
+            "id": "B",
+            "text": "戊烷"
+          },
+          {
+            "id": "C",
+            "text": "丁烯"
+          },
+          {
+            "id": "D",
+            "text": "丙烷"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "isomerism",
+      "alkanes"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-b14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Properties & Reactions 性质与反应",
+    "skill": "Redox reactions 氧化还原反应",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In a redox reaction, the oxidising agent",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "loses electrons and is itself reduced"
+      },
+      {
+        "id": "B",
+        "text": "gains electrons and is itself reduced"
+      },
+      {
+        "id": "C",
+        "text": "gains electrons and is itself oxidised"
+      },
+      {
+        "id": "D",
+        "text": "neither gains nor loses electrons"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "An oxidising agent causes another species to be oxidised by taking its electrons. In accepting those electrons, the agent is itself reduced. The two processes always occur together.",
+    "distractorRationale": {
+      "A": "Losing electrons is oxidation, so this combination is self-contradictory.",
+      "C": "Gaining electrons is reduction, not oxidation.",
+      "D": "Every redox reaction involves electron transfer by definition."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "在氧化还原反应中，氧化剂",
+        "explanation": "氧化剂通过夺取电子使其他物质被氧化，自身则因得到电子而被还原。氧化与还原总是同时发生。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "失去电子，自身被还原"
+          },
+          {
+            "id": "B",
+            "text": "得到电子，自身被还原"
+          },
+          {
+            "id": "C",
+            "text": "得到电子，自身被氧化"
+          },
+          {
+            "id": "D",
+            "text": "既不得到也不失去电子"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "oxidising-agent",
+      "electron-transfer"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Periodic trends 元素周期律",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which trend is observed going from left to right across a period?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Atomic radius increases and electronegativity decreases."
+      },
+      {
+        "id": "B",
+        "text": "Both atomic radius and electronegativity increase."
+      },
+      {
+        "id": "C",
+        "text": "Atomic radius decreases and electronegativity increases."
+      },
+      {
+        "id": "D",
+        "text": "Both atomic radius and electronegativity decrease."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Across a period the nuclear charge rises while electrons enter the same shell, so shielding barely changes. The stronger pull draws electrons closer, shrinking the atom and raising electronegativity.",
+    "distractorRationale": {
+      "A": "Describes the trend going down a group instead.",
+      "B": "Radius decreases across a period, not increases.",
+      "D": "Electronegativity increases across a period."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "同一周期从左到右，下列变化规律正确的是",
+        "explanation": "同周期从左到右核电荷数增大，而电子填入同一电子层，屏蔽作用变化不大。核对电子的吸引增强，故原子半径减小、电负性增大。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "原子半径增大，电负性减小"
+          },
+          {
+            "id": "B",
+            "text": "原子半径与电负性都增大"
+          },
+          {
+            "id": "C",
+            "text": "原子半径减小，电负性增大"
+          },
+          {
+            "id": "D",
+            "text": "原子半径与电负性都减小"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "periodic-trends",
+      "atomic-radius"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Chemical bonds 化学键",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which compound contains only ionic bonds?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{NaOH}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{HCl}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{CO}_2$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{NaCl}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Sodium chloride consists of $\\text{Na}^{+}$ and $\\text{Cl}^{-}$ held by electrostatic attraction, with no covalent bonding anywhere in the lattice.",
+    "distractorRationale": {
+      "A": "Ionic between $\\text{Na}^{+}$ and $\\text{OH}^{-}$, but the $\\text{O}\\text{–}\\text{H}$ bond within the hydroxide ion is covalent.",
+      "B": "Hydrogen chloride is a polar covalent molecule.",
+      "C": "Carbon dioxide is covalent, with two double bonds."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列化合物中只含离子键的是",
+        "explanation": "氯化钠由 $\\text{Na}^{+}$ 与 $\\text{Cl}^{-}$ 通过静电作用结合而成，晶体中不含任何共价键。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\text{NaOH}$"
+          },
+          {
+            "id": "B",
+            "text": "$\\text{HCl}$"
+          },
+          {
+            "id": "C",
+            "text": "$\\text{CO}_2$"
+          },
+          {
+            "id": "D",
+            "text": "$\\text{NaCl}$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "ionic-bonding",
+      "bond-types"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Intermolecular forces 分子间作用力",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Why does water have an unusually high boiling point for a molecule of its size?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Hydrogen bonding between molecules must be overcome."
+      },
+      {
+        "id": "B",
+        "text": "The $\\text{O}\\text{–}\\text{H}$ covalent bonds must be broken."
+      },
+      {
+        "id": "C",
+        "text": "Water is an ionic compound."
+      },
+      {
+        "id": "D",
+        "text": "Water molecules are unusually heavy."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Each water molecule can form hydrogen bonds through two hydrogen atoms and two lone pairs on oxygen. This extensive network requires far more energy to break than the weak forces between comparable small molecules.",
+    "distractorRationale": {
+      "B": "Boiling separates molecules; it does not break covalent bonds within them.",
+      "C": "Water is a polar covalent molecule, not an ionic compound.",
+      "D": "Water has a low relative molecular mass of $18$, which is why the boiling point is surprising."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "水分子体积不大，为什么沸点却异常高？",
+        "explanation": "每个水分子可通过两个氢原子和氧上的两对孤对电子形成氢键。这一广泛的氢键网络需要远高于同类小分子间作用力的能量才能破坏。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "需要克服分子间的氢键"
+          },
+          {
+            "id": "B",
+            "text": "需要断裂 $\\text{O}\\text{–}\\text{H}$ 共价键"
+          },
+          {
+            "id": "C",
+            "text": "水是离子化合物"
+          },
+          {
+            "id": "D",
+            "text": "水分子特别重"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "hydrogen-bonding",
+      "boiling-point"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Reaction rates 反应速率",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which change will NOT increase the rate of reaction between marble chips and dilute hydrochloric acid?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Grinding the marble into powder"
+      },
+      {
+        "id": "B",
+        "text": "Using the same mass of marble in larger lumps"
+      },
+      {
+        "id": "C",
+        "text": "Using acid of higher concentration"
+      },
+      {
+        "id": "D",
+        "text": "Raising the temperature of the acid"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Larger lumps have less surface area for the same mass, so fewer acid particles can reach the solid at any moment and the reaction slows.",
+    "distractorRationale": {
+      "A": "Powder has a far greater surface area, which speeds the reaction considerably.",
+      "C": "Higher concentration means more acid particles per unit volume and more frequent collisions.",
+      "D": "Higher temperature increases both collision frequency and the fraction of collisions with sufficient energy."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列做法中不能加快大理石与稀盐酸反应速率的是",
+        "explanation": "质量相同时，块状越大表面积越小，同一时刻能与固体接触的酸分子越少，反应反而变慢。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "将大理石研磨成粉末"
+          },
+          {
+            "id": "B",
+            "text": "用质量相同但块状更大的大理石"
+          },
+          {
+            "id": "C",
+            "text": "使用浓度更大的盐酸"
+          },
+          {
+            "id": "D",
+            "text": "升高盐酸的温度"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "reaction-rate",
+      "surface-area"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Chemical equilibrium 化学平衡",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "For $2\\text{SO}_2(g) + \\text{O}_2(g) \\rightleftharpoons 2\\text{SO}_3(g)$ with negative $\\Delta H$, which change shifts the equilibrium toward $\\text{SO}_3$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Increasing the temperature"
+      },
+      {
+        "id": "B",
+        "text": "Removing oxygen"
+      },
+      {
+        "id": "C",
+        "text": "Increasing the pressure"
+      },
+      {
+        "id": "D",
+        "text": "Adding a catalyst"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "There are three moles of gas on the left and two on the right. Raising the pressure shifts the equilibrium toward the side with fewer gas moles, which is the $\\text{SO}_3$ side.",
+    "distractorRationale": {
+      "A": "The forward reaction is exothermic, so heating shifts equilibrium backward.",
+      "B": "Removing a reactant shifts equilibrium to the left.",
+      "D": "A catalyst speeds attainment of equilibrium without moving its position."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "对于放热反应 $2\\text{SO}_2(g) + \\text{O}_2(g) \\rightleftharpoons 2\\text{SO}_3(g)$，下列措施中能使平衡向生成 $\\text{SO}_3$ 方向移动的是",
+        "explanation": "左侧气体为 $3$ 摩尔，右侧为 $2$ 摩尔。增大压强使平衡向气体分子数较少的一侧移动，即向生成 $\\text{SO}_3$ 的方向。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "升高温度"
+          },
+          {
+            "id": "B",
+            "text": "移走氧气"
+          },
+          {
+            "id": "C",
+            "text": "增大压强"
+          },
+          {
+            "id": "D",
+            "text": "加入催化剂"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "le-chatelier",
+      "equilibrium-shift"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Electrochemistry 电化学",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "In a galvanic cell made from zinc and copper electrodes, what occurs at the zinc electrode?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Reduction; it acts as the negative electrode."
+      },
+      {
+        "id": "B",
+        "text": "Oxidation; it acts as the positive electrode."
+      },
+      {
+        "id": "C",
+        "text": "No reaction; it only conducts electrons."
+      },
+      {
+        "id": "D",
+        "text": "Oxidation; it acts as the negative electrode."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Zinc is the more reactive metal, so it loses electrons: $\\text{Zn} \\rightarrow \\text{Zn}^{2+} + 2e^{-}$. Because it releases electrons into the external circuit, it is the negative electrode of the cell.",
+    "distractorRationale": {
+      "A": "Reduction happens at the copper electrode, where $\\text{Cu}^{2+}$ gains electrons.",
+      "B": "The electrode where oxidation occurs is negative in a galvanic cell.",
+      "C": "The zinc is consumed as it dissolves; it does not merely conduct."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "在锌铜原电池中，锌电极上发生的是",
+        "explanation": "锌较活泼，失去电子：$\\text{Zn} \\rightarrow \\text{Zn}^{2+} + 2e^{-}$。由于它向外电路释放电子，故为原电池的负极。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "还原反应，作负极"
+          },
+          {
+            "id": "B",
+            "text": "氧化反应，作正极"
+          },
+          {
+            "id": "C",
+            "text": "不发生反应，只起导电作用"
+          },
+          {
+            "id": "D",
+            "text": "氧化反应，作负极"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "galvanic-cell",
+      "electrodes"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Periodic trends 元素周期律",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which element has the largest atomic radius?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "K"
+      },
+      {
+        "id": "B",
+        "text": "Mg"
+      },
+      {
+        "id": "C",
+        "text": "Na"
+      },
+      {
+        "id": "D",
+        "text": "Cl"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Radius increases down a group and decreases across a period. Potassium is one period below sodium, so it has an additional electron shell and the largest radius of the four.",
+    "distractorRationale": {
+      "B": "Magnesium is to the right of sodium, so it is smaller still.",
+      "C": "Sodium has one fewer shell than potassium.",
+      "D": "Chlorine is far to the right of Period 3 and has the smallest radius here."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列元素中原子半径最大的是",
+        "explanation": "原子半径同主族从上到下增大，同周期从左到右减小。钾比钠多一个电子层，故在四者中半径最大。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "K"
+          },
+          {
+            "id": "B",
+            "text": "Mg"
+          },
+          {
+            "id": "C",
+            "text": "Na"
+          },
+          {
+            "id": "D",
+            "text": "Cl"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "atomic-radius",
+      "periodicity"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Chemical bonds 化学键",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Why does diamond have a very high melting point?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It contains delocalised electrons that bind the lattice."
+      },
+      {
+        "id": "B",
+        "text": "Every carbon atom is joined to four others by strong covalent bonds throughout a giant lattice."
+      },
+      {
+        "id": "C",
+        "text": "Its molecules are held together by strong intermolecular forces."
+      },
+      {
+        "id": "D",
+        "text": "It consists of oppositely charged ions in a regular array."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Diamond is a giant covalent structure. Melting requires breaking covalent bonds across the whole lattice, which needs far more energy than separating molecules or ions.",
+    "distractorRationale": {
+      "A": "Delocalised electrons occur in graphite and in metals, not in diamond.",
+      "C": "Diamond has no discrete molecules and therefore no intermolecular forces.",
+      "D": "Diamond contains only carbon atoms, with no ions."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "金刚石的熔点为什么非常高？",
+        "explanation": "金刚石属于原子晶体，每个碳原子与另外四个碳原子以共价键相连，构成巨型网状结构。熔化必须破坏整个晶体中的共价键，所需能量远大于破坏分子间作用力或离子键。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "含有自由移动的电子把晶格连接起来"
+          },
+          {
+            "id": "B",
+            "text": "每个碳原子以强共价键与四个碳原子相连，构成巨型晶格"
+          },
+          {
+            "id": "C",
+            "text": "分子之间存在很强的分子间作用力"
+          },
+          {
+            "id": "D",
+            "text": "由带相反电荷的离子规则排列而成"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "giant-covalent",
+      "melting-point"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Reaction rates 反应速率",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "How does a catalyst increase the rate of a reaction?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "By increasing the average kinetic energy of the particles"
+      },
+      {
+        "id": "B",
+        "text": "By increasing the concentration of the reactants"
+      },
+      {
+        "id": "C",
+        "text": "By providing an alternative pathway with lower activation energy"
+      },
+      {
+        "id": "D",
+        "text": "By shifting the equilibrium toward the products"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "A catalyst opens a different mechanism whose activation energy is lower, so a larger fraction of collisions has enough energy to react. The catalyst itself is regenerated and is not consumed.",
+    "distractorRationale": {
+      "A": "Average kinetic energy depends only on temperature.",
+      "B": "A catalyst does not change how much reactant is present.",
+      "D": "It speeds both directions equally, leaving the equilibrium position unchanged."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "催化剂加快反应速率的原因是",
+        "explanation": "催化剂开辟了活化能更低的反应途径，使能量足够发生反应的碰撞比例增大。催化剂本身在反应后被再生，不被消耗。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "提高粒子的平均动能"
+          },
+          {
+            "id": "B",
+            "text": "提高反应物的浓度"
+          },
+          {
+            "id": "C",
+            "text": "提供活化能更低的反应途径"
+          },
+          {
+            "id": "D",
+            "text": "使平衡向生成物方向移动"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "catalysis",
+      "activation-energy"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Chemical equilibrium 化学平衡",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which statement about a system at chemical equilibrium is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "All reactants have been converted to products."
+      },
+      {
+        "id": "B",
+        "text": "The concentrations of reactants and products are equal."
+      },
+      {
+        "id": "C",
+        "text": "Both reactions have stopped."
+      },
+      {
+        "id": "D",
+        "text": "The forward and reverse reactions continue at equal rates."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Chemical equilibrium is dynamic: both reactions proceed, but at the same rate, so concentrations no longer change. Those concentrations are constant, not necessarily equal.",
+    "distractorRationale": {
+      "A": "Reactants remain present; complete conversion would end the equilibrium.",
+      "B": "Constant concentrations need not be equal ones.",
+      "C": "Equilibrium is dynamic, not static; reactions continue in both directions."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "关于处于化学平衡状态的体系，下列说法正确的是",
+        "explanation": "化学平衡是动态平衡：正逆反应仍在进行，只是速率相等，故各物质浓度不再改变。浓度恒定并不意味着相等。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "反应物已全部转化为生成物"
+          },
+          {
+            "id": "B",
+            "text": "反应物与生成物的浓度相等"
+          },
+          {
+            "id": "C",
+            "text": "两个方向的反应都已停止"
+          },
+          {
+            "id": "D",
+            "text": "正反应与逆反应仍在进行，且速率相等"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "dynamic-equilibrium",
+      "concepts"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Electrochemistry 电化学",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "During the electrolysis of molten sodium chloride, what forms at the cathode?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sodium metal"
+      },
+      {
+        "id": "B",
+        "text": "Hydrogen gas"
+      },
+      {
+        "id": "C",
+        "text": "Chlorine gas"
+      },
+      {
+        "id": "D",
+        "text": "Oxygen gas"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The cathode is negative and attracts cations. Sodium ions gain electrons there: $\\text{Na}^{+} + e^{-} \\rightarrow \\text{Na}$. In the molten salt no water is present, so no hydrogen can form.",
+    "distractorRationale": {
+      "B": "Hydrogen requires water, which molten sodium chloride does not contain.",
+      "C": "Chlorine forms at the anode, where chloride ions lose electrons.",
+      "D": "Oxygen also requires water or an oxygen-containing ion."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "电解熔融氯化钠时，阴极上生成的是",
+        "explanation": "阴极带负电，吸引阳离子。钠离子在此得到电子：$\\text{Na}^{+} + e^{-} \\rightarrow \\text{Na}$。熔融盐中不含水，故不可能产生氢气。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "金属钠"
+          },
+          {
+            "id": "B",
+            "text": "氢气"
+          },
+          {
+            "id": "C",
+            "text": "氯气"
+          },
+          {
+            "id": "D",
+            "text": "氧气"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "electrolysis",
+      "cathode"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Intermolecular forces 分子间作用力",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which sequence lists the halogens in order of increasing boiling point?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{I}_2 < \\text{Br}_2 < \\text{Cl}_2 < \\text{F}_2$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{F}_2 < \\text{Cl}_2 < \\text{Br}_2 < \\text{I}_2$"
+      },
+      {
+        "id": "C",
+        "text": "All four have the same boiling point."
+      },
+      {
+        "id": "D",
+        "text": "$\\text{Cl}_2 < \\text{F}_2 < \\text{I}_2 < \\text{Br}_2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "All are simple molecular substances held together by induced dipole forces. These strengthen as the number of electrons rises, so boiling point increases down the group — from gaseous fluorine to solid iodine.",
+    "distractorRationale": {
+      "A": "Reverses the trend; heavier halogens have stronger intermolecular forces.",
+      "C": "The halogens differ markedly, spanning gas, liquid and solid at room temperature.",
+      "D": "Does not follow the electron-count order at all."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列卤素单质按沸点由低到高排列正确的是",
+        "explanation": "四者均为分子晶体，靠分子间作用力结合。电子数越多，色散力越强，故沸点自上而下递增——氟为气体，碘为固体。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "$\\text{I}_2 < \\text{Br}_2 < \\text{Cl}_2 < \\text{F}_2$"
+          },
+          {
+            "id": "B",
+            "text": "$\\text{F}_2 < \\text{Cl}_2 < \\text{Br}_2 < \\text{I}_2$"
+          },
+          {
+            "id": "C",
+            "text": "四者沸点相同"
+          },
+          {
+            "id": "D",
+            "text": "$\\text{Cl}_2 < \\text{F}_2 < \\text{I}_2 < \\text{Br}_2$"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "dispersion-forces",
+      "halogens"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Chemical bonds 化学键",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Why can molten sodium chloride conduct electricity while the solid cannot?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Melting converts the ions into free electrons."
+      },
+      {
+        "id": "B",
+        "text": "Molten sodium chloride is a metal."
+      },
+      {
+        "id": "C",
+        "text": "In the melt the ions are free to move; in the solid they are locked in the lattice."
+      },
+      {
+        "id": "D",
+        "text": "The solid contains no ions until it is heated."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Conduction requires mobile charge carriers. Ions exist in both states, but only in the melt can they move through the liquid and carry current.",
+    "distractorRationale": {
+      "A": "The charge carriers are ions, not electrons; melting does not create electrons.",
+      "B": "Sodium chloride remains an ionic compound whether solid or molten.",
+      "D": "Ions are present in the solid lattice too; they simply cannot move."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "熔融氯化钠能导电而固体氯化钠不能导电，原因是",
+        "explanation": "导电需要可自由移动的带电粒子。两种状态下都存在离子，但只有在熔融状态下离子才能自由移动、传导电流。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "熔化使离子变成自由电子"
+          },
+          {
+            "id": "B",
+            "text": "熔融氯化钠是金属"
+          },
+          {
+            "id": "C",
+            "text": "熔融时离子可以自由移动，固体中离子被固定在晶格上"
+          },
+          {
+            "id": "D",
+            "text": "固体中原本没有离子，加热后才生成"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "ionic-conduction",
+      "mobile-ions"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-c14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Theory 理论",
+    "skill": "Reaction rates 反应速率",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "According to collision theory, a collision leads to reaction only if the particles",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "are of the same size"
+      },
+      {
+        "id": "B",
+        "text": "collide at any speed, provided they touch"
+      },
+      {
+        "id": "C",
+        "text": "carry opposite electrical charges"
+      },
+      {
+        "id": "D",
+        "text": "collide with sufficient energy and in a suitable orientation"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Two conditions must be met together: the collision energy must reach the activation energy, and the particles must be aligned so the correct bonds can break and form. Most collisions satisfy neither.",
+    "distractorRationale": {
+      "A": "Particle size has no bearing on whether a collision is effective.",
+      "B": "Low-energy collisions simply bounce apart without reacting.",
+      "C": "Many reactions occur between neutral molecules."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "根据碰撞理论，碰撞能引发反应的条件是粒子",
+        "explanation": "必须同时满足两个条件：碰撞能量达到活化能，且取向合适，使旧键能断裂、新键能形成。绝大多数碰撞两者都不满足。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "大小相同"
+          },
+          {
+            "id": "B",
+            "text": "只要相互接触，速度不限"
+          },
+          {
+            "id": "C",
+            "text": "带有相反的电荷"
+          },
+          {
+            "id": "D",
+            "text": "具有足够的能量且取向合适"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "collision-theory",
+      "effective-collisions"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-d01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Experiments 实验",
+    "skill": "Lab safety 实验安全",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "When diluting concentrated sulfuric acid, the correct procedure is to",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "add the acid slowly to water while stirring"
+      },
+      {
+        "id": "B",
+        "text": "mix equal volumes quickly in a sealed container"
+      },
+      {
+        "id": "C",
+        "text": "add water slowly to the acid while stirring"
+      },
+      {
+        "id": "D",
+        "text": "heat the acid before adding water"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Dilution releases a large amount of heat. Adding acid to water spreads that heat through the larger volume of water. Pouring water onto concentrated acid heats the small surface layer violently and can spatter acid out of the vessel.",
+    "distractorRationale": {
+      "B": "A sealed container traps the heat and pressure produced.",
+      "C": "This is the dangerous reversal that causes spattering.",
+      "D": "Pre-heating adds to an already strongly exothermic process."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "稀释浓硫酸的正确操作是",
+        "explanation": "稀释过程放出大量热。将酸缓缓加入水中，热量可以分散到较多的水里。若把水倒入浓硫酸，表层局部剧烈升温，可能使酸液飞溅。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "将浓硫酸沿器壁缓缓加入水中并不断搅拌"
+          },
+          {
+            "id": "B",
+            "text": "在密闭容器中快速等体积混合"
+          },
+          {
+            "id": "C",
+            "text": "将水缓缓加入浓硫酸中并不断搅拌"
+          },
+          {
+            "id": "D",
+            "text": "先将浓硫酸加热再加水"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "lab-safety",
+      "dilution"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-d02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Experiments 实验",
+    "skill": "Gas identification 气体检验",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A gas turns damp red litmus paper blue. Which gas is it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Carbon dioxide"
+      },
+      {
+        "id": "B",
+        "text": "Ammonia"
+      },
+      {
+        "id": "C",
+        "text": "Hydrogen"
+      },
+      {
+        "id": "D",
+        "text": "Chlorine"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Ammonia dissolves in the moisture on the paper to give an alkaline solution, turning red litmus blue. It is the only common alkaline gas.",
+    "distractorRationale": {
+      "A": "Carbon dioxide is acidic and turns blue litmus red.",
+      "C": "Hydrogen is neutral and leaves litmus unchanged.",
+      "D": "Chlorine bleaches litmus rather than turning it blue."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "某气体能使湿润的红色石蕊试纸变蓝，该气体是",
+        "explanation": "氨气溶于试纸上的水显碱性，故使红色石蕊试纸变蓝。它是常见气体中唯一显碱性的。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "二氧化碳"
+          },
+          {
+            "id": "B",
+            "text": "氨气"
+          },
+          {
+            "id": "C",
+            "text": "氢气"
+          },
+          {
+            "id": "D",
+            "text": "氯气"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "gas-test",
+      "litmus"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-d03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Experiments 实验",
+    "skill": "Purification methods 提纯方法",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which method best separates ethanol from a mixture of ethanol and water?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Filtration"
+      },
+      {
+        "id": "B",
+        "text": "Crystallisation"
+      },
+      {
+        "id": "C",
+        "text": "Fractional distillation"
+      },
+      {
+        "id": "D",
+        "text": "Decanting"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Ethanol and water are fully miscible but have different boiling points, $78\\ ^\\circ\\text{C}$ and $100\\ ^\\circ\\text{C}$. A fractionating column exploits that difference to separate them.",
+    "distractorRationale": {
+      "A": "Filtration separates an insoluble solid from a liquid, not two miscible liquids.",
+      "B": "Crystallisation recovers a dissolved solid, not a liquid.",
+      "D": "Decanting works only for immiscible liquids that form separate layers."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "分离乙醇与水的混合物，最合适的方法是",
+        "explanation": "乙醇与水互溶，但沸点不同（分别为 $78\\ ^\\circ\\text{C}$ 与 $100\\ ^\\circ\\text{C}$）。蒸馏柱正是利用这一差异实现分离。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "过滤"
+          },
+          {
+            "id": "B",
+            "text": "结晶"
+          },
+          {
+            "id": "C",
+            "text": "分馏（蒸馏）"
+          },
+          {
+            "id": "D",
+            "text": "倾析"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "distillation",
+      "separation"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-d04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Experiments 实验",
+    "skill": "Gas identification 气体检验",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Which observation confirms that a gas is carbon dioxide?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It has a pungent choking smell."
+      },
+      {
+        "id": "B",
+        "text": "It burns with a squeaky pop."
+      },
+      {
+        "id": "C",
+        "text": "It relights a glowing splint."
+      },
+      {
+        "id": "D",
+        "text": "It turns limewater milky."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Carbon dioxide reacts with limewater to form insoluble calcium carbonate, which clouds the solution. This is the standard confirmatory test.",
+    "distractorRationale": {
+      "A": "A pungent choking smell suggests chlorine or sulfur dioxide; carbon dioxide is odourless.",
+      "B": "The squeaky pop identifies hydrogen.",
+      "C": "Relighting a glowing splint is the test for oxygen."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "下列哪一现象可以确认某气体为二氧化碳？",
+        "explanation": "二氧化碳与澄清石灰水反应生成难溶的碳酸钙，使溶液变浑浊。这是检验二氧化碳的标准方法。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "有刺激性气味"
+          },
+          {
+            "id": "B",
+            "text": "点燃时发出爆鸣声"
+          },
+          {
+            "id": "C",
+            "text": "使带火星的木条复燃"
+          },
+          {
+            "id": "D",
+            "text": "使澄清石灰水变浑浊"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "gas-test",
+      "limewater"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-d05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Experiments 实验",
+    "skill": "Purification methods 提纯方法",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A sample of potassium nitrate is contaminated with a small amount of sodium chloride. Both are soluble, but potassium nitrate's solubility falls much more steeply on cooling. Which method purifies it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Dissolve in hot water, then cool so that potassium nitrate crystallises out"
+      },
+      {
+        "id": "B",
+        "text": "Filter the mixture through paper"
+      },
+      {
+        "id": "C",
+        "text": "Distil off the potassium nitrate"
+      },
+      {
+        "id": "D",
+        "text": "Add hydrochloric acid to remove the impurity"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "This is recrystallisation. On cooling, the saturated solution can no longer hold the potassium nitrate, which crystallises out, while the small amount of sodium chloride stays dissolved and is removed with the liquid.",
+    "distractorRationale": {
+      "B": "Both salts dissolve, so filtration separates nothing.",
+      "C": "Salts are non-volatile solids and cannot be distilled.",
+      "D": "Adding acid introduces new substances instead of removing the impurity."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "硝酸钾中混有少量氯化钠。两者都可溶，但硝酸钾的溶解度随温度降低而显著下降。提纯硝酸钾应采用",
+        "explanation": "这是重结晶法。溶液冷却后无法继续容纳硝酸钾，硝酸钾结晶析出，而少量氯化钠仍留在溶液中随母液除去。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "热水溶解后冷却，使硝酸钾结晶析出"
+          },
+          {
+            "id": "B",
+            "text": "用滤纸过滤混合物"
+          },
+          {
+            "id": "C",
+            "text": "蒸馏出硝酸钾"
+          },
+          {
+            "id": "D",
+            "text": "加入盐酸除去杂质"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "recrystallisation",
+      "solubility-curve"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-chm-d06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chemistry",
+    "domain": "Experiments 实验",
+    "skill": "Lab safety 实验安全",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "Concentrated acid is spilled onto skin. What should be done first?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Apply concentrated sodium hydroxide to neutralise it"
+      },
+      {
+        "id": "B",
+        "text": "Rinse the area with plenty of running water immediately"
+      },
+      {
+        "id": "C",
+        "text": "Rub the area vigorously with a towel"
+      },
+      {
+        "id": "D",
+        "text": "Cover the area with a dry cloth and wait"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Copious running water dilutes and removes the acid while carrying away the heat of dilution. Only after thorough rinsing should a mild base such as sodium bicarbonate solution be considered.",
+    "distractorRationale": {
+      "A": "A concentrated base is itself corrosive, and neutralisation on skin releases heat.",
+      "C": "Rubbing spreads the acid and damages the skin further.",
+      "D": "Leaving the acid in contact allows the burn to deepen."
+    },
+    "i18n": {
+      "zh": {
+        "stem": "浓酸溅到皮肤上，首先应当",
+        "explanation": "大量流动清水既能稀释并冲走酸液，又能带走稀释放出的热量。彻底冲洗之后，才可考虑涂抹碳酸氢钠溶液等弱碱。",
+        "choices": [
+          {
+            "id": "A",
+            "text": "涂抹浓氢氧化钠溶液中和"
+          },
+          {
+            "id": "B",
+            "text": "立即用大量流动清水冲洗"
+          },
+          {
+            "id": "C",
+            "text": "用毛巾用力擦拭"
+          },
+          {
+            "id": "D",
+            "text": "用干布覆盖后等待"
+          }
+        ]
+      }
+    },
+    "tags": [
+      "lab-safety",
+      "first-aid"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

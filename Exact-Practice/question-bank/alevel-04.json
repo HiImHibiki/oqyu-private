@@ -1,0 +1,1236 @@
+[
+  {
+    "id": "al-chm-p01",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A compound contains $40.0\\%$ carbon, $6.7\\%$ hydrogen and $53.3\\%$ oxygen by mass. What is its empirical formula? ($A_r$: H $=1.0$, C $=12.0$, O $=16.0$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{CH}_2\\text{O}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{C}_2\\text{H}_4\\text{O}_2$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{CHO}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{C}_2\\text{H}_3\\text{O}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Assume $100\\ \\text{g}$, so the masses equal the percentages. Divide each by its $A_r$: carbon $\\dfrac{40.0}{12.0} = 3.33$, hydrogen $\\dfrac{6.7}{1.0} = 6.7$, oxygen $\\dfrac{53.3}{16.0} = 3.33$.\\n\\nDivide through by the smallest, $3.33$: the ratio is $1 : 2 : 1$, giving $\\text{CH}_2\\text{O}$.",
+    "distractorRationale": {
+      "B": "Is a molecular formula consistent with this ratio, but the empirical formula is the simplest whole-number ratio.",
+      "C": "Halves the hydrogen, treating $6.7$ as roughly equal to $3.33$.",
+      "D": "Rounds the ratios to $2 : 3 : 1$ instead of dividing by the smallest."
+    },
+    "tags": [
+      "empirical-formula",
+      "percentage-composition"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p02",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What amount, in moles, of solute is present in $25.0\\ \\text{cm}^3$ of a $0.200\\ \\text{mol}\\,\\text{dm}^{-3}$ solution?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$5.00 \\times 10^{-3}$"
+      },
+      {
+        "id": "B",
+        "text": "$0.500$"
+      },
+      {
+        "id": "C",
+        "text": "$5.00$"
+      },
+      {
+        "id": "D",
+        "text": "$8.00 \\times 10^{-3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Convert the volume to cubic decimetres first: $25.0\\ \\text{cm}^3 = 0.0250\\ \\text{dm}^3$.\\n\\nThen $n = cV = 0.200 \\times 0.0250 = 5.00 \\times 10^{-3}\\ \\text{mol}$. Forgetting the conversion inflates the answer by a factor of a thousand, which is the usual error here.",
+    "distractorRationale": {
+      "B": "Multiplies concentration by the volume in cubic centimetres divided by ten.",
+      "C": "Uses the volume in cubic centimetres without converting at all.",
+      "D": "Divides concentration by volume rather than multiplying."
+    },
+    "tags": [
+      "concentration",
+      "moles"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p03",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Why does the first ionisation energy decrease from beryllium to barium down Group 2?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The nuclear charge decreases down the group."
+      },
+      {
+        "id": "B",
+        "text": "The outer electron is further from the nucleus and more shielded, so less energy is needed to remove it."
+      },
+      {
+        "id": "C",
+        "text": "The atoms become less metallic down the group."
+      },
+      {
+        "id": "D",
+        "text": "The number of outer electrons increases down the group."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Down a group each element has one more occupied shell. The outer electrons therefore lie further from the nucleus and are shielded by more inner shells, so the attraction they feel is weaker and less energy is required to remove one.",
+    "distractorRationale": {
+      "A": "Nuclear charge increases down the group; it is the distance and shielding that dominate.",
+      "C": "Metallic character increases down the group, and in any case that is a consequence rather than a cause.",
+      "D": "Every Group 2 element has exactly two outer electrons."
+    },
+    "tags": [
+      "ionisation-energy",
+      "group-2"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p04",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What volume is occupied by $0.250\\ \\text{mol}$ of an ideal gas at $300\\ \\text{K}$ and $1.00 \\times 10^5\\ \\text{Pa}$? ($R = 8.31\\ \\text{J}\\,\\text{K}^{-1}\\,\\text{mol}^{-1}$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6.23 \\times 10^{-4}\\ \\text{m}^3$"
+      },
+      {
+        "id": "B",
+        "text": "$6.23 \\times 10^{-3}\\ \\text{m}^3$"
+      },
+      {
+        "id": "C",
+        "text": "$2.49 \\times 10^{-2}\\ \\text{m}^3$"
+      },
+      {
+        "id": "D",
+        "text": "$0.623\\ \\text{m}^3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Rearranging $pV = nRT$ gives $V = \\dfrac{nRT}{p} = \\dfrac{0.250 \\times 8.31 \\times 300}{1.00 \\times 10^5}$.\\n\\nThe numerator is $623$, so $V = 6.23 \\times 10^{-3}\\ \\text{m}^3$, which is $6.23\\ \\text{dm}^3$. That is close to a quarter of the molar volume at room conditions, as it should be.",
+    "distractorRationale": {
+      "A": "Is out by a factor of ten in the arithmetic.",
+      "C": "Uses one mole rather than a quarter of a mole.",
+      "D": "Is out by a factor of a hundred, typically from mishandling the power of ten in the pressure."
+    },
+    "tags": [
+      "ideal-gas",
+      "pV=nRT"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p05",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Use these bond energies, in $\\text{kJ}\\,\\text{mol}^{-1}$, to find $\\Delta H$ for $\\text{H}_2 + \\text{Cl}_2 \\rightarrow 2\\text{HCl}$: $\\text{H}-\\text{H}$ $436$, $\\text{Cl}-\\text{Cl}$ $242$, $\\text{H}-\\text{Cl}$ $431$.",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-184$"
+      },
+      {
+        "id": "B",
+        "text": "$+184$"
+      },
+      {
+        "id": "C",
+        "text": "$-247$"
+      },
+      {
+        "id": "D",
+        "text": "$+247$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Bonds broken absorb energy; bonds formed release it. Broken: $436 + 242 = 678$. Formed: $2 \\times 431 = 862$.\\n\\n$\\Delta H = 678 - 862 = -184\\ \\text{kJ}\\,\\text{mol}^{-1}$. The negative sign is expected: more energy is released forming two strong $\\text{H}-\\text{Cl}$ bonds than is needed to break the two reactant bonds.",
+    "distractorRationale": {
+      "B": "Reverses the subtraction, giving formed minus broken.",
+      "C": "Uses only one mole of $\\text{H}-\\text{Cl}$ instead of two.",
+      "D": "Uses one mole of product and reverses the sign as well."
+    },
+    "tags": [
+      "bond-energy",
+      "enthalpy"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p06",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "For $2\\text{SO}_2\\text{(g)} + \\text{O}_2\\text{(g)} \\rightleftharpoons 2\\text{SO}_3\\text{(g)}$, what happens to the equilibrium yield of $\\text{SO}_3$ when the total pressure is increased at constant temperature?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It falls, because the reverse reaction is favoured."
+      },
+      {
+        "id": "B",
+        "text": "It is unchanged, because pressure does not appear in $K_c$."
+      },
+      {
+        "id": "C",
+        "text": "It rises, because the equilibrium shifts towards the side with fewer gas molecules."
+      },
+      {
+        "id": "D",
+        "text": "It rises, because the value of $K_c$ increases with pressure."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "There are three moles of gas on the left and two on the right. Increasing the pressure shifts the equilibrium towards the side that occupies less volume, which is the product side, so the yield of $\\text{SO}_3$ rises.\\n\\nThe equilibrium constant itself is unchanged — only temperature alters it. The position moves, not the constant.",
+    "distractorRationale": {
+      "A": "Points the shift the wrong way; the reverse direction has more gas molecules.",
+      "B": "The position of equilibrium does move even though $K_c$ is fixed.",
+      "D": "Reaches the right conclusion by a wrong reason: $K_c$ depends on temperature only."
+    },
+    "tags": [
+      "le-chatelier",
+      "pressure"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p07",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Kinetics",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In three experiments on $\\text{A} + \\text{B} \\rightarrow \\text{products}$, doubling $[\\text{A}]$ at constant $[\\text{B}]$ doubles the rate, and doubling $[\\text{B}]$ at constant $[\\text{A}]$ quadruples the rate. What is the overall order of reaction?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Rate proportional to $[\\text{A}]^1$ means first order in $\\text{A}$. Rate multiplied by four when $[\\text{B}]$ doubles means $2^n = 4$, so $n = 2$ and the reaction is second order in $\\text{B}$.\\n\\nThe overall order is the sum of the individual orders: $1 + 2 = 3$.",
+    "distractorRationale": {
+      "A": "Gives the order with respect to $\\text{A}$ alone.",
+      "B": "Gives the order with respect to $\\text{B}$ alone.",
+      "D": "Multiplies the two orders instead of adding them."
+    },
+    "tags": [
+      "rate-order",
+      "kinetics"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p08",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "At equilibrium a $1.00\\ \\text{dm}^3$ vessel contains $0.20\\ \\text{mol}$ $\\text{H}_2$, $0.20\\ \\text{mol}$ $\\text{I}_2$ and $1.60\\ \\text{mol}$ $\\text{HI}$ for $\\text{H}_2 + \\text{I}_2 \\rightleftharpoons 2\\text{HI}$. What is $K_c$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$8.0$"
+      },
+      {
+        "id": "B",
+        "text": "$40$"
+      },
+      {
+        "id": "C",
+        "text": "$64$"
+      },
+      {
+        "id": "D",
+        "text": "$0.016$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "With a volume of exactly $1.00\\ \\text{dm}^3$ the amounts in moles are also the concentrations.\\n\\n$K_c = \\dfrac{[\\text{HI}]^2}{[\\text{H}_2][\\text{I}_2]} = \\dfrac{1.60^2}{0.20 \\times 0.20} = \\dfrac{2.56}{0.040} = 64$.\\n\\nThe square on the product concentration comes from the coefficient 2 in the equation; omitting it is the most common error. $K_c$ here has no units, because the powers cancel.",
+    "distractorRationale": {
+      "A": "Omits the square on $[\\text{HI}]$.",
+      "B": "Divides by the sum of the reactant concentrations rather than their product.",
+      "D": "Inverts the expression, giving $K_c$ for the reverse reaction."
+    },
+    "tags": [
+      "equilibrium-constant",
+      "calculation"
+    ],
+    "estimatedTimeSec": 165,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p09",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 2",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which statement about the hydroxides of Group 2 is correct as the group is descended from magnesium to barium?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Solubility decreases and the solutions become less alkaline."
+      },
+      {
+        "id": "B",
+        "text": "Solubility increases and the solutions become more alkaline."
+      },
+      {
+        "id": "C",
+        "text": "Solubility is unchanged but the solutions become more alkaline."
+      },
+      {
+        "id": "D",
+        "text": "Solubility increases but the solutions become less alkaline."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Group 2 hydroxides become more soluble down the group. More hydroxide ion therefore enters solution, so the pH rises. Magnesium hydroxide is only sparingly soluble — which is why it is safe as an antacid — while barium hydroxide dissolves well enough to be used as a standard alkali.",
+    "distractorRationale": {
+      "A": "Reverses the solubility trend; that is the trend for the sulfates instead.",
+      "C": "More alkaline solutions are precisely a consequence of greater solubility here.",
+      "D": "Greater solubility of a hydroxide cannot make the solution less alkaline."
+    },
+    "tags": [
+      "group-2",
+      "solubility"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p10",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 2",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Group 2 carbonates decompose on heating to the oxide and carbon dioxide. Why does barium carbonate require a higher temperature than magnesium carbonate?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The barium ion is larger, so it polarises the carbonate ion less."
+      },
+      {
+        "id": "B",
+        "text": "The barium ion carries a greater charge than the magnesium ion."
+      },
+      {
+        "id": "C",
+        "text": "Barium carbonate has a lower lattice energy than magnesium carbonate."
+      },
+      {
+        "id": "D",
+        "text": "Barium carbonate is more soluble in water."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Thermal decomposition depends on how strongly the cation distorts the carbonate ion. A small, highly charged cation polarises the electron cloud of the carbonate strongly and weakens a $\\text{C}-\\text{O}$ bond, so decomposition happens at a lower temperature.\\n\\nThe barium ion is much larger than the magnesium ion, with the same $2+$ charge, so its charge density is far lower, its polarising power weaker, and the carbonate more stable to heat.",
+    "distractorRationale": {
+      "B": "Both ions carry a $2+$ charge; the difference is size, not charge.",
+      "C": "Lattice energy alone does not decide the decomposition temperature here, and the reasoning would point the other way.",
+      "D": "Solubility in water is unrelated to thermal stability of the solid."
+    },
+    "tags": [
+      "thermal-stability",
+      "polarising-power"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p11",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 17",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Solid sodium bromide and solid sodium iodide are each warmed with concentrated sulfuric acid. Which observation distinguishes them?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Only the bromide produces a gas."
+      },
+      {
+        "id": "B",
+        "text": "Only the iodide produces steamy fumes of the hydrogen halide."
+      },
+      {
+        "id": "C",
+        "text": "The iodide produces a purple vapour and a bad-egg smell, whereas the bromide does not."
+      },
+      {
+        "id": "D",
+        "text": "Both produce identical products, so they cannot be distinguished."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Concentrated sulfuric acid is an oxidising agent, and the halides differ in how easily they are oxidised. Bromide reduces it as far as sulfur dioxide, giving brown bromine vapour. Iodide is the stronger reducing agent and takes the sulfur further, to hydrogen sulfide — the bad-egg smell — alongside purple iodine vapour.",
+    "distractorRationale": {
+      "A": "Both produce gases; the difference lies in which ones.",
+      "B": "Both give some hydrogen halide initially; the distinguishing products come afterwards.",
+      "D": "The products differ clearly, which is the basis of this standard test."
+    },
+    "tags": [
+      "group-17",
+      "reducing-power"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p12",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Nitrogen & sulfur",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "An unknown white solid is warmed with aqueous sodium hydroxide and a gas is released that turns damp red litmus paper blue. What does the solid contain?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "a carbonate"
+      },
+      {
+        "id": "B",
+        "text": "a sulfate"
+      },
+      {
+        "id": "C",
+        "text": "a halide"
+      },
+      {
+        "id": "D",
+        "text": "an ammonium salt"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Only ammonia among the common gases is alkaline, and it is the gas that turns damp red litmus blue. Warming an ammonium salt with a strong base displaces ammonia: $\\text{NH}_4^+ + \\text{OH}^- \\rightarrow \\text{NH}_3 + \\text{H}_2\\text{O}$.",
+    "distractorRationale": {
+      "A": "A carbonate releases carbon dioxide with acid, not with alkali, and that gas is acidic.",
+      "B": "Sulfates give no gas with sodium hydroxide.",
+      "C": "Halides give no gas with sodium hydroxide either."
+    },
+    "tags": [
+      "ammonium-test",
+      "nitrogen"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p13",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which sequence lists the Period 3 elements sodium, silicon and sulfur in order of increasing melting point?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{S}_8 < \\text{Na} < \\text{Si}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{Na} < \\text{S}_8 < \\text{Si}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{Si} < \\text{Na} < \\text{S}_8$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{Na} < \\text{Si} < \\text{S}_8$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Melting point follows structure, not position alone. Sulfur exists as $\\text{S}_8$ molecules held by weak van der Waals forces, so it melts lowest of the three. Sodium is a metallic lattice with one delocalised electron per atom, so it melts higher. Silicon is a giant covalent lattice in which melting means breaking strong covalent bonds throughout, so it melts far higher than either.",
+    "distractorRationale": {
+      "B": "Places sodium below sulfur; metallic bonding is stronger than the van der Waals forces between $\\text{S}_8$ molecules.",
+      "C": "Places the giant covalent lattice lowest, which reverses the strongest structure with the weakest.",
+      "D": "Puts a simple molecular solid above a giant covalent one."
+    },
+    "tags": [
+      "periodicity",
+      "structure-and-bonding"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p14",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which product forms when propene reacts with hydrogen bromide as the major product?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1-bromopropane"
+      },
+      {
+        "id": "B",
+        "text": "2-bromopropane"
+      },
+      {
+        "id": "C",
+        "text": "1,2-dibromopropane"
+      },
+      {
+        "id": "D",
+        "text": "propan-2-ol"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Electrophilic addition to an unsymmetrical alkene follows Markovnikov's rule: the hydrogen adds to the carbon already carrying more hydrogens, because that route passes through the more stable secondary carbocation.\\n\\nBromine therefore ends up on the middle carbon, giving 2-bromopropane as the major product.",
+    "distractorRationale": {
+      "A": "Is the minor product, formed through the less stable primary carbocation.",
+      "C": "Would require addition of bromine, $\\text{Br}_2$, not hydrogen bromide.",
+      "D": "Would require addition of water, not hydrogen bromide."
+    },
+    "tags": [
+      "electrophilic-addition",
+      "markovnikov"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p15",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Carbonyls",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "An orange precipitate forms when an unknown liquid is treated with 2,4-dinitrophenylhydrazine. What does this indicate?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The liquid contains a carbon-carbon double bond."
+      },
+      {
+        "id": "B",
+        "text": "The liquid is a carboxylic acid."
+      },
+      {
+        "id": "C",
+        "text": "The liquid contains a carbonyl group of an aldehyde or ketone."
+      },
+      {
+        "id": "D",
+        "text": "The liquid is a primary alcohol."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "2,4-dinitrophenylhydrazine reacts with the carbonyl group of aldehydes and ketones to give an orange or red crystalline derivative. It does not react with the carbonyl of a carboxylic acid or ester, so the test identifies aldehydes and ketones specifically.\\n\\nTo tell aldehyde from ketone, a second test such as Tollens' reagent is needed.",
+    "distractorRationale": {
+      "A": "Alkenes decolourise bromine water; they give no precipitate with this reagent.",
+      "B": "The carbonyl in a carboxylic acid does not react with this reagent.",
+      "D": "An alcohol has no carbonyl group at all."
+    },
+    "tags": [
+      "carbonyl-test",
+      "2-4-dnph"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p16",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Methane and chlorine react in ultraviolet light. Which equation represents a propagation step?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{Cl}_2 \\rightarrow 2\\text{Cl}\\bullet$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{CH}_3\\bullet + \\text{Cl}\\bullet \\rightarrow \\text{CH}_3\\text{Cl}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{CH}_4 + \\text{Cl}\\bullet \\rightarrow \\text{CH}_3\\bullet + \\text{HCl}$"
+      },
+      {
+        "id": "D",
+        "text": "$2\\text{CH}_3\\bullet \\rightarrow \\text{C}_2\\text{H}_6$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "A propagation step consumes one radical and produces another, so the chain continues. Here a chlorine radical takes a hydrogen from methane, producing a methyl radical — one radical in, one radical out.",
+    "distractorRationale": {
+      "A": "Is initiation: it creates radicals from a molecule.",
+      "B": "Is termination: two radicals combine and the chain stops.",
+      "D": "Is also termination, producing ethane as a minor by-product."
+    },
+    "tags": [
+      "free-radical-substitution",
+      "propagation"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p17",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Halogenoalkanes",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "1-bromopropane is heated under reflux with ethanolic potassium cyanide. What is the organic product?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "propan-1-ol"
+      },
+      {
+        "id": "B",
+        "text": "propene"
+      },
+      {
+        "id": "C",
+        "text": "butanenitrile"
+      },
+      {
+        "id": "D",
+        "text": "propanenitrile"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The cyanide ion acts as a nucleophile and displaces bromide, forming a new carbon-carbon bond. The product is $\\text{CH}_3\\text{CH}_2\\text{CH}_2\\text{CN}$.\\n\\nNaming it requires counting the nitrile carbon as part of the chain: three carbons from the propyl group plus the nitrile carbon make four, so it is butanenitrile. This lengthening of the chain by one carbon is exactly why the reaction is useful in synthesis.",
+    "distractorRationale": {
+      "A": "Would come from aqueous sodium hydroxide, a different nucleophile.",
+      "B": "Would come from ethanolic potassium hydroxide, where the base causes elimination.",
+      "D": "Forgets that the nitrile carbon counts in the chain, so the name is one carbon short."
+    },
+    "tags": [
+      "nucleophilic-substitution",
+      "nitrile"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p18",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Analytical techniques",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "An infrared spectrum shows a strong sharp absorption near $1715\\ \\text{cm}^{-1}$ and a very broad absorption between $2500$ and $3300\\ \\text{cm}^{-1}$. Which compound is consistent with this?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "propan-1-ol"
+      },
+      {
+        "id": "B",
+        "text": "propanal"
+      },
+      {
+        "id": "C",
+        "text": "propanone"
+      },
+      {
+        "id": "D",
+        "text": "propanoic acid"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The sharp band near $1715\\ \\text{cm}^{-1}$ is a $\\text{C}=\\text{O}$ stretch, and the very broad band from $2500$ to $3300\\ \\text{cm}^{-1}$ is the $\\text{O}-\\text{H}$ of a carboxylic acid, broadened by strong hydrogen bonding.\\n\\nOnly a carboxylic acid has both features together.",
+    "distractorRationale": {
+      "A": "Has an $\\text{O}-\\text{H}$ band, but a narrower one around $3200$ to $3600\\ \\text{cm}^{-1}$, and no $\\text{C}=\\text{O}$.",
+      "B": "Has the carbonyl band but no $\\text{O}-\\text{H}$ absorption.",
+      "C": "Also has a carbonyl band but no $\\text{O}-\\text{H}$ absorption."
+    },
+    "tags": [
+      "infrared",
+      "functional-groups"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p19",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Halogenoalkanes",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which compound exists as a pair of optical isomers?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1-bromobutane"
+      },
+      {
+        "id": "B",
+        "text": "2-bromobutane"
+      },
+      {
+        "id": "C",
+        "text": "2-bromo-2-methylpropane"
+      },
+      {
+        "id": "D",
+        "text": "1-bromo-2-methylpropane"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Optical isomerism requires a carbon bonded to four different groups. In 2-bromobutane the second carbon carries $\\text{H}$, $\\text{Br}$, $\\text{CH}_3$ and $\\text{C}_2\\text{H}_5$ — four different groups — so the molecule is chiral and exists as two non-superimposable mirror images.",
+    "distractorRationale": {
+      "A": "The first carbon carries two hydrogens, so no carbon has four different groups.",
+      "C": "The carbon bearing bromine carries three identical methyl groups.",
+      "D": "The carbon bearing bromine has two hydrogens attached."
+    },
+    "tags": [
+      "chirality",
+      "optical-isomerism"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-chm-p20",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Alcohols",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Ethanol is heated under reflux with excess acidified potassium dichromate(VI), and the product is then warmed with more ethanol and a little concentrated sulfuric acid. What is the final organic product?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "ethyl ethanoate"
+      },
+      {
+        "id": "B",
+        "text": "ethanal"
+      },
+      {
+        "id": "C",
+        "text": "ethanoic acid"
+      },
+      {
+        "id": "D",
+        "text": "ethoxyethane"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Refluxing with excess oxidising agent takes a primary alcohol all the way to the carboxylic acid, so the first product is ethanoic acid. Refluxing implies the aldehyde is not distilled off and is oxidised further.\\n\\nWarming a carboxylic acid with an alcohol and an acid catalyst is esterification, so ethanoic acid and ethanol give ethyl ethanoate and water.",
+    "distractorRationale": {
+      "B": "Would be the product only if distilled off immediately, and it is not the final product here.",
+      "C": "Is the intermediate after the first step, before esterification.",
+      "D": "Would come from dehydration of ethanol alone, without the oxidation step."
+    },
+    "tags": [
+      "oxidation",
+      "esterification"
+    ],
+    "estimatedTimeSec": 160,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-mth-p01",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Series",
+    "skill": "AP",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "An arithmetic progression has first term $7$ and common difference $4$. Find the sum of its first $20$ terms.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 900
+    },
+    "explanation": "Use $S_n = \\dfrac{n}{2}\\left[2a + (n-1)d\\right] = \\dfrac{20}{2}\\left[14 + 19 \\times 4\\right] = 10 \\times 90 = 900$.\\n\\nAs a check, the twentieth term is $7 + 19 \\times 4 = 83$, and the average of first and last terms is $\\dfrac{7 + 83}{2} = 45$, so the sum is $20 \\times 45 = 900$.",
+    "tags": [
+      "arithmetic-progression",
+      "sum"
+    ],
+    "estimatedTimeSec": 200,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-mth-p02",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Functions",
+    "skill": "Composite & inverse",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The functions are $f(x) = 3x - 1$ and $g(x) = x^2 + 2$. Find the value of $fg(2)$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 17
+    },
+    "explanation": "The notation $fg(2)$ means apply $g$ first, then $f$.\\n\\n$g(2) = 4 + 2 = 6$, then $f(6) = 18 - 1 = 17$.\\n\\nApplying them in the other order would give $gf(2) = g(5) = 27$, a different answer — composition is not commutative, and the order is the point of the question.",
+    "tags": [
+      "composite-function",
+      "order"
+    ],
+    "estimatedTimeSec": 200,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-mth-p03",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Differentiation",
+    "skill": "Chain rule",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Given $y = (2x - 5)^4$, find the value of $\\dfrac{dy}{dx}$ when $x = 3$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "By the chain rule, $\\dfrac{dy}{dx} = 4(2x - 5)^3 \\times 2 = 8(2x - 5)^3$.\\n\\nAt $x = 3$: $2x - 5 = 1$, so $\\dfrac{dy}{dx} = 8 \\times 1 = 8$.\\n\\nThe factor of 2 from differentiating the inner bracket is what the chain rule contributes; omitting it is the standard error and would give 4 here.",
+    "tags": [
+      "chain-rule",
+      "differentiation"
+    ],
+    "estimatedTimeSec": 230,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-phy-p01",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Forces & Energy",
+    "skill": "Density & pressure",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A block of metal has a mass of $2.7\\ \\text{kg}$ and a volume of $1.0 \\times 10^{-3}\\ \\text{m}^3$. Calculate its density, in $\\text{kg}\\,\\text{m}^{-3}$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 2700
+    },
+    "explanation": "Density is mass divided by volume: $\\rho = \\dfrac{2.7}{1.0 \\times 10^{-3}} = 2700\\ \\text{kg}\\,\\text{m}^{-3}$.\\n\\nThat value identifies the metal as aluminium, and it is worth remembering as a check: dividing by a millicubic metre multiplies by a thousand.",
+    "tags": [
+      "density"
+    ],
+    "estimatedTimeSec": 160,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  },
+  {
+    "id": "al-phy-p02",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Kinematics & Dynamics",
+    "skill": "Momentum",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A trolley of mass $2.0\\ \\text{kg}$ moving at $3.0\\ \\text{m}\\,\\text{s}^{-1}$ collides with a stationary trolley of mass $4.0\\ \\text{kg}$ and the two move off together. Calculate their common speed, in $\\text{m}\\,\\text{s}^{-1}$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 1
+    },
+    "explanation": "Momentum is conserved in the collision: total momentum before equals total momentum after.\\n\\nBefore: $2.0 \\times 3.0 + 4.0 \\times 0 = 6.0\\ \\text{kg}\\,\\text{m}\\,\\text{s}^{-1}$. After, the combined mass is $6.0\\ \\text{kg}$ moving at $v$, so $6.0v = 6.0$ and $v = 1.0\\ \\text{m}\\,\\text{s}^{-1}$.\\n\\nKinetic energy is not conserved here — it falls from $9.0\\ \\text{J}$ to $3.0\\ \\text{J}$ — which is what makes the collision inelastic. Momentum is conserved regardless.",
+    "tags": [
+      "momentum",
+      "inelastic-collision"
+    ],
+    "estimatedTimeSec": 280,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4
+    }
+  }
+]

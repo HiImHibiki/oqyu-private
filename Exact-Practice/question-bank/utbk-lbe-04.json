@@ -1,0 +1,1210 @@
+[
+  {
+    "id": "utbk-lbe-p01",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Vertical farms grow crops in stacked trays under controlled light. Because the growing area is multiplied by the number of layers, a warehouse can produce what several hectares of field would yield, using about five per cent of the water. The cost sits in the electricity: lighting and climate control account for roughly half of operating expenses. Where power is cheap and land is scarce, the arithmetic works. Where the opposite holds, it does not."
+    },
+    "stem": "According to the passage, roughly how much of a vertical farm's operating expenses go to lighting and climate control?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "half"
+      },
+      {
+        "id": "B",
+        "text": "a quarter"
+      },
+      {
+        "id": "C",
+        "text": "one hectare's worth"
+      },
+      {
+        "id": "D",
+        "text": "five per cent"
+      },
+      {
+        "id": "E",
+        "text": "all of them"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The third sentence states it directly: lighting and climate control account for roughly half of operating expenses.\n\nThe figure of five per cent in the passage refers to water use, not to electricity.",
+    "distractorRationale": {
+      "B": "No such figure appears in the passage.",
+      "C": "Confuses a unit of area with a share of cost.",
+      "D": "Refers to water use, not to the cost of power.",
+      "E": "The passage says roughly half, not all."
+    },
+    "tags": [
+      "locating-information"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p02",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Vertical farms grow crops in stacked trays under controlled light. Because the growing area is multiplied by the number of layers, a warehouse can produce what several hectares of field would yield, using about five per cent of the water. The cost sits in the electricity: lighting and climate control account for roughly half of operating expenses. Where power is cheap and land is scarce, the arithmetic works. Where the opposite holds, it does not."
+    },
+    "stem": "According to the passage, how does a vertical farm multiply its growing area?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "by lowering the cost of electricity"
+      },
+      {
+        "id": "B",
+        "text": "by stacking trays in layers"
+      },
+      {
+        "id": "C",
+        "text": "by using less water"
+      },
+      {
+        "id": "D",
+        "text": "by extending the growing season"
+      },
+      {
+        "id": "E",
+        "text": "by planting in fields around the warehouse"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The first two sentences explain it: crops grow in stacked trays, and the growing area is multiplied by the number of layers.\n\nWater saving is a separate benefit, not the mechanism that multiplies area.",
+    "distractorRationale": {
+      "A": "The passage says electricity is the main cost, not a way to gain area.",
+      "C": "A benefit of the method, not the way area is multiplied.",
+      "D": "Season length is never mentioned.",
+      "E": "The point of the method is that no field is used."
+    },
+    "tags": [
+      "locating-information"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p03",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Vertical farms grow crops in stacked trays under controlled light. Because the growing area is multiplied by the number of layers, a warehouse can produce what several hectares of field would yield, using about five per cent of the water. The cost sits in the electricity: lighting and climate control account for roughly half of operating expenses. Where power is cheap and land is scarce, the arithmetic works. Where the opposite holds, it does not."
+    },
+    "stem": "What is the main point of the last two sentences of the passage?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Vertical farming is always cheaper than field farming"
+      },
+      {
+        "id": "B",
+        "text": "Electricity prices are falling worldwide"
+      },
+      {
+        "id": "C",
+        "text": "Whether vertical farming makes economic sense depends on local conditions"
+      },
+      {
+        "id": "D",
+        "text": "Vertical farming should replace field farming everywhere"
+      },
+      {
+        "id": "E",
+        "text": "Land scarcity is the only factor that matters"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The two sentences set the same calculation against opposite conditions: cheap power with scarce land makes it work, and the reverse makes it fail.\n\nThe point is therefore conditional — the method is neither universally viable nor universally unviable.",
+    "distractorRationale": {
+      "A": "The passage says the opposite in the final sentence.",
+      "B": "No trend in electricity prices is given.",
+      "D": "No recommendation of that kind is made.",
+      "E": "Power cost is named alongside land scarcity."
+    },
+    "tags": [
+      "interpreting"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p04",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Vertical farms grow crops in stacked trays under controlled light. Because the growing area is multiplied by the number of layers, a warehouse can produce what several hectares of field would yield, using about five per cent of the water. The cost sits in the electricity: lighting and climate control account for roughly half of operating expenses. Where power is cheap and land is scarce, the arithmetic works. Where the opposite holds, it does not."
+    },
+    "stem": "Which additional information would be most useful in judging whether a vertical farm should be built in a particular city?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the number of vegetables sold in that city last year"
+      },
+      {
+        "id": "B",
+        "text": "the colour of the lights used in the trays"
+      },
+      {
+        "id": "C",
+        "text": "the average height of warehouses in that city"
+      },
+      {
+        "id": "D",
+        "text": "the local price of electricity and of land"
+      },
+      {
+        "id": "E",
+        "text": "the water content of the crops grown"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The passage identifies exactly two conditions that decide the arithmetic: the cost of power and the scarcity of land. Knowing both for a particular city applies the passage's own test.",
+    "distractorRationale": {
+      "A": "Sales volume speaks to demand, not to the cost condition the passage sets out.",
+      "B": "A technical detail the passage never links to viability.",
+      "C": "Building height affects layout but not the decisive costs named.",
+      "E": "Water use is already stated as low in every case."
+    },
+    "tags": [
+      "evaluating"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p05",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The Great Pacific Garbage Patch is often pictured as a floating island of bottles and bags. Sampling tells a different story. Most of the material is smaller than a grain of rice, spread thinly through the upper water column across an area larger than many countries. That is why clean-up is difficult: a net fine enough to catch the fragments also catches the plankton that feed the ocean."
+    },
+    "stem": "According to the passage, most of the material in the Great Pacific Garbage Patch is ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "made of glass"
+      },
+      {
+        "id": "B",
+        "text": "bottles and bags"
+      },
+      {
+        "id": "C",
+        "text": "found on the sea floor"
+      },
+      {
+        "id": "D",
+        "text": "larger than a plankton net"
+      },
+      {
+        "id": "E",
+        "text": "smaller than a grain of rice"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "The third sentence states it: most of the material is smaller than a grain of rice, spread thinly through the upper water column.\n\nBottles and bags belong to the common picture that the passage sets out to correct.",
+    "distractorRationale": {
+      "A": "Material type beyond that is not specified.",
+      "B": "Named as the popular image, which sampling contradicts.",
+      "C": "The passage places the material in the upper water column.",
+      "D": "The passage says fragments are small enough that fine nets are needed."
+    },
+    "tags": [
+      "locating-information"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p06",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The Great Pacific Garbage Patch is often pictured as a floating island of bottles and bags. Sampling tells a different story. Most of the material is smaller than a grain of rice, spread thinly through the upper water column across an area larger than many countries. That is why clean-up is difficult: a net fine enough to catch the fragments also catches the plankton that feed the ocean."
+    },
+    "stem": "Why does the passage say clean-up is difficult?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "A net fine enough to catch the fragments would also catch plankton"
+      },
+      {
+        "id": "B",
+        "text": "The patch lies too far from any coastline"
+      },
+      {
+        "id": "C",
+        "text": "The material sinks faster than it can be collected"
+      },
+      {
+        "id": "D",
+        "text": "The fragments dissolve when touched"
+      },
+      {
+        "id": "E",
+        "text": "No country has claimed responsibility for the area"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The final sentence gives the reason directly: because the pieces are so small, any net fine enough to catch them also catches the plankton that feed the ocean.\n\nThe difficulty is therefore not distance or ownership but the size of the fragments.",
+    "distractorRationale": {
+      "B": "Distance is never mentioned.",
+      "C": "The passage places the material in the upper water column, not sinking.",
+      "D": "No such property is described.",
+      "E": "Responsibility is not discussed."
+    },
+    "tags": [
+      "interpreting"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p07",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The Great Pacific Garbage Patch is often pictured as a floating island of bottles and bags. Sampling tells a different story. Most of the material is smaller than a grain of rice, spread thinly through the upper water column across an area larger than many countries. That is why clean-up is difficult: a net fine enough to catch the fragments also catches the plankton that feed the ocean."
+    },
+    "stem": "What is the writer's main purpose in the second sentence, «Sampling tells a different story»?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "to praise the researchers who took the samples"
+      },
+      {
+        "id": "B",
+        "text": "to introduce evidence that corrects a common picture"
+      },
+      {
+        "id": "C",
+        "text": "to argue that sampling methods are unreliable"
+      },
+      {
+        "id": "D",
+        "text": "to explain how samples are collected"
+      },
+      {
+        "id": "E",
+        "text": "to compare two different patches of debris"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The sentence stands between the popular image in the first sentence and the findings in the sentences that follow. Its function is to signal that evidence is about to overturn that image.",
+    "distractorRationale": {
+      "A": "No researchers are praised or even named.",
+      "C": "The passage relies on sampling rather than doubting it.",
+      "D": "The method of sampling is never described.",
+      "E": "Only one patch is discussed."
+    },
+    "tags": [
+      "evaluating",
+      "purpose"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p08",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The Great Pacific Garbage Patch is often pictured as a floating island of bottles and bags. Sampling tells a different story. Most of the material is smaller than a grain of rice, spread thinly through the upper water column across an area larger than many countries. That is why clean-up is difficult: a net fine enough to catch the fragments also catches the plankton that feed the ocean."
+    },
+    "stem": "Which statement is best supported by the passage?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Clean-up efforts have already succeeded"
+      },
+      {
+        "id": "B",
+        "text": "Plastic bottles make up most of the debris by weight"
+      },
+      {
+        "id": "C",
+        "text": "Removing the debris would carry an ecological cost of its own"
+      },
+      {
+        "id": "D",
+        "text": "The patch has stopped growing"
+      },
+      {
+        "id": "E",
+        "text": "The patch is smaller than commonly believed"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The last sentence points to a trade-off: catching the fragments means catching plankton as well. That is an ecological cost attached to the clean-up itself.\n\nThe passage says nothing about the patch's size relative to belief, its growth, or the success of any effort.",
+    "distractorRationale": {
+      "A": "The passage describes clean-up as difficult, not accomplished.",
+      "B": "Bottles are named as part of the mistaken picture.",
+      "D": "Growth is never discussed.",
+      "E": "The passage says it spreads across an area larger than many countries."
+    },
+    "tags": [
+      "interpreting",
+      "inference"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p09",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Vertical farms grow crops in stacked trays under controlled light. Because the growing area is multiplied by the number of layers, a warehouse can produce what several hectares of field would yield, using about five per cent of the water. The cost sits in the electricity: lighting and climate control account for roughly half of operating expenses. Where power is cheap and land is scarce, the arithmetic works. Where the opposite holds, it does not."
+    },
+    "stem": "How much water does a vertical farm use, according to the passage?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the passage does not say"
+      },
+      {
+        "id": "B",
+        "text": "the same as a field of equal area"
+      },
+      {
+        "id": "C",
+        "text": "about half as much as a field"
+      },
+      {
+        "id": "D",
+        "text": "about five per cent of what a field would use"
+      },
+      {
+        "id": "E",
+        "text": "five times as much as a field"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The second sentence gives the figure directly: a warehouse can produce what several hectares would yield while using about five per cent of the water.",
+    "distractorRationale": {
+      "A": "The figure is stated explicitly.",
+      "B": "The passage stresses a large saving.",
+      "C": "Half is the share of operating cost taken by power, not the water figure.",
+      "E": "Reverses the comparison."
+    },
+    "tags": [
+      "locating-information"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p10",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Vertical farms grow crops in stacked trays under controlled light. Because the growing area is multiplied by the number of layers, a warehouse can produce what several hectares of field would yield, using about five per cent of the water. The cost sits in the electricity: lighting and climate control account for roughly half of operating expenses. Where power is cheap and land is scarce, the arithmetic works. Where the opposite holds, it does not."
+    },
+    "stem": "Which situation would most weaken the case for vertical farming as the passage presents it?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "a country facing a shortage of fresh water"
+      },
+      {
+        "id": "B",
+        "text": "a city with expensive land and cheap hydroelectric power"
+      },
+      {
+        "id": "C",
+        "text": "a city where warehouses stand empty"
+      },
+      {
+        "id": "D",
+        "text": "a place where vegetables must be imported by air"
+      },
+      {
+        "id": "E",
+        "text": "a region with abundant farmland and high electricity prices"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "The passage makes the case depend on two conditions: cheap power and scarce land. A region with plenty of farmland and expensive electricity fails both at once, which is precisely the case the final sentence describes.",
+    "distractorRationale": {
+      "A": "Water scarcity favours the method, given the five per cent figure.",
+      "B": "Satisfies both conditions and therefore strengthens the case.",
+      "C": "Empty warehouses lower the cost of space.",
+      "D": "Costly imports strengthen the argument for local production."
+    },
+    "tags": [
+      "interpreting",
+      "application"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p11",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The Great Pacific Garbage Patch is often pictured as a floating island of bottles and bags. Sampling tells a different story. Most of the material is smaller than a grain of rice, spread thinly through the upper water column across an area larger than many countries. That is why clean-up is difficult: a net fine enough to catch the fragments also catches the plankton that feed the ocean."
+    },
+    "stem": "Which sentence best summarises the passage about the garbage patch?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The patch consists mainly of tiny fragments spread thinly, which makes removing it hard without harming marine life."
+      },
+      {
+        "id": "B",
+        "text": "Sampling has shown that the patch is far smaller than researchers once believed."
+      },
+      {
+        "id": "C",
+        "text": "Plankton are the main victims of plastic pollution in the Pacific."
+      },
+      {
+        "id": "D",
+        "text": "Fine nets are the most promising technology for cleaning the ocean."
+      },
+      {
+        "id": "E",
+        "text": "The patch is a floating island of bottles and bags covering an enormous area."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "A summary must carry both halves of the passage: what the material actually is, and why that makes clean-up difficult. Only one option contains both.",
+    "distractorRationale": {
+      "B": "The passage never compares the patch's size with earlier belief.",
+      "C": "Plankton appear as a risk of clean-up, not as the passage's subject.",
+      "D": "The passage presents fine nets as part of the problem, not a solution.",
+      "E": "Repeats the image the passage sets out to correct."
+    },
+    "tags": [
+      "evaluating",
+      "summary"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p12",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The Great Pacific Garbage Patch is often pictured as a floating island of bottles and bags. Sampling tells a different story. Most of the material is smaller than a grain of rice, spread thinly through the upper water column across an area larger than many countries. That is why clean-up is difficult: a net fine enough to catch the fragments also catches the plankton that feed the ocean."
+    },
+    "stem": "According to the passage, the fragments are spread across an area that is ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "smaller than a single country"
+      },
+      {
+        "id": "B",
+        "text": "larger than many countries"
+      },
+      {
+        "id": "C",
+        "text": "limited to one shipping lane"
+      },
+      {
+        "id": "D",
+        "text": "confined to the sea floor"
+      },
+      {
+        "id": "E",
+        "text": "about the size of a warehouse"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The third sentence states it: the material is spread thinly across an area larger than many countries.",
+    "distractorRationale": {
+      "A": "Reverses the comparison the passage makes.",
+      "C": "Shipping lanes are not mentioned.",
+      "D": "The passage places the material in the upper water column.",
+      "E": "Warehouses belong to the other passage entirely."
+    },
+    "tags": [
+      "locating-information"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p13",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Locating information",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "When Amara returned to the house after eleven years, the mango tree in the yard had outgrown the roof. She had planted it the week before she left, a stick no taller than her knee, and had not thought of it once. Now it dropped fruit onto the tin with a sound like knocking. She stood at the gate a long while, unwilling to admit that something had been getting on with its life in her absence."
+    },
+    "stem": "How long had Amara been away from the house?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "since childhood"
+      },
+      {
+        "id": "B",
+        "text": "a single season"
+      },
+      {
+        "id": "C",
+        "text": "eleven years"
+      },
+      {
+        "id": "D",
+        "text": "the passage does not say"
+      },
+      {
+        "id": "E",
+        "text": "one week"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The opening sentence states it directly: she returned after eleven years.\n\nThe week mentioned later is when she planted the tree, just before leaving.",
+    "distractorRationale": {
+      "A": "Her age when leaving is not stated.",
+      "B": "No seasonal span is given.",
+      "D": "The figure is given in the first sentence.",
+      "E": "Refers to when the tree was planted, not to her absence."
+    },
+    "tags": [
+      "locating-information",
+      "literary"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p14",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "When Amara returned to the house after eleven years, the mango tree in the yard had outgrown the roof. She had planted it the week before she left, a stick no taller than her knee, and had not thought of it once. Now it dropped fruit onto the tin with a sound like knocking. She stood at the gate a long while, unwilling to admit that something had been getting on with its life in her absence."
+    },
+    "stem": "What does the detail that Amara «had not thought of it once» most suggest?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "She disliked the tree when she planted it"
+      },
+      {
+        "id": "B",
+        "text": "She expected the tree to die"
+      },
+      {
+        "id": "C",
+        "text": "She planted the tree for someone else"
+      },
+      {
+        "id": "D",
+        "text": "She had left the place entirely behind her"
+      },
+      {
+        "id": "E",
+        "text": "She had returned to the house many times"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The detail is placed between planting the tree and finding it grown. Not thinking of it once in eleven years shows how completely she had put the place out of mind — which is why its growth surprises her.",
+    "distractorRationale": {
+      "A": "No dislike is suggested anywhere.",
+      "B": "Expectation of death is never indicated.",
+      "C": "The passage says she planted it herself, with no mention of another person.",
+      "E": "The passage describes a single return after eleven years."
+    },
+    "tags": [
+      "interpreting",
+      "literary"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p15",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "When Amara returned to the house after eleven years, the mango tree in the yard had outgrown the roof. She had planted it the week before she left, a stick no taller than her knee, and had not thought of it once. Now it dropped fruit onto the tin with a sound like knocking. She stood at the gate a long while, unwilling to admit that something had been getting on with its life in her absence."
+    },
+    "stem": "What does the comparison «a sound like knocking» contribute to the passage?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It explains why the tree grew so tall"
+      },
+      {
+        "id": "B",
+        "text": "It shows that the fruit is unripe"
+      },
+      {
+        "id": "C",
+        "text": "It indicates that someone is at the gate"
+      },
+      {
+        "id": "D",
+        "text": "It suggests the roof is about to collapse"
+      },
+      {
+        "id": "E",
+        "text": "It suggests the house is calling her back, as a visitor knocks at a door"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Knocking is what a visitor does at a door, and Amara is standing at the gate, unwilling to come in. The comparison turns the falling fruit into a summons, which is why the image is placed just before her hesitation.",
+    "distractorRationale": {
+      "A": "The sound has no bearing on the tree's growth.",
+      "B": "Ripeness is not at issue; the fruit is falling.",
+      "C": "The only person present is Amara herself.",
+      "D": "Nothing suggests structural damage."
+    },
+    "tags": [
+      "interpreting",
+      "figurative-language"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p16",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "When Amara returned to the house after eleven years, the mango tree in the yard had outgrown the roof. She had planted it the week before she left, a stick no taller than her knee, and had not thought of it once. Now it dropped fruit onto the tin with a sound like knocking. She stood at the gate a long while, unwilling to admit that something had been getting on with its life in her absence."
+    },
+    "stem": "Which word best describes Amara's feeling in the final sentence?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "reluctant"
+      },
+      {
+        "id": "B",
+        "text": "frightened"
+      },
+      {
+        "id": "C",
+        "text": "amused"
+      },
+      {
+        "id": "D",
+        "text": "triumphant"
+      },
+      {
+        "id": "E",
+        "text": "indifferent"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "She stands at the gate «a long while, unwilling to admit» what the tree shows her. Standing still and being unwilling both point to reluctance rather than fear or indifference.",
+    "distractorRationale": {
+      "B": "The passage describes unwillingness, which is milder and more specific than fear.",
+      "C": "There is no humour in the moment.",
+      "D": "Nothing in the scene suggests victory.",
+      "E": "Indifference would not keep her standing at the gate."
+    },
+    "tags": [
+      "evaluating",
+      "tone"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p17",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "When Amara returned to the house after eleven years, the mango tree in the yard had outgrown the roof. She had planted it the week before she left, a stick no taller than her knee, and had not thought of it once. Now it dropped fruit onto the tin with a sound like knocking. She stood at the gate a long while, unwilling to admit that something had been getting on with its life in her absence."
+    },
+    "stem": "What is the main contrast the passage draws?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "between Amara and another character"
+      },
+      {
+        "id": "B",
+        "text": "between the tree as she left it and the tree as she finds it"
+      },
+      {
+        "id": "C",
+        "text": "between the house and the yard"
+      },
+      {
+        "id": "D",
+        "text": "between city life and village life"
+      },
+      {
+        "id": "E",
+        "text": "between morning and evening"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The passage sets two images of the same tree side by side: a stick no taller than her knee, and a tree that has outgrown the roof. Everything else in the scene follows from that gap.",
+    "distractorRationale": {
+      "A": "No other character appears.",
+      "C": "Both are described, but not set against each other.",
+      "D": "Neither setting is described.",
+      "E": "No time of day is given."
+    },
+    "tags": [
+      "interpreting",
+      "structure"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p18",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "When Amara returned to the house after eleven years, the mango tree in the yard had outgrown the roof. She had planted it the week before she left, a stick no taller than her knee, and had not thought of it once. Now it dropped fruit onto the tin with a sound like knocking. She stood at the gate a long while, unwilling to admit that something had been getting on with its life in her absence."
+    },
+    "stem": "What theme does the passage most clearly develop?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "that hard work is always rewarded"
+      },
+      {
+        "id": "B",
+        "text": "that memory is more reliable than observation"
+      },
+      {
+        "id": "C",
+        "text": "that life continues in the places we leave behind"
+      },
+      {
+        "id": "D",
+        "text": "that trees should be planted before travelling"
+      },
+      {
+        "id": "E",
+        "text": "that families should not be separated"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The final sentence names it almost outright: she is unwilling to admit that something had been getting on with its life in her absence. The tree's growth stands for everything that continued without her.",
+    "distractorRationale": {
+      "A": "The tree grew without any work from her at all.",
+      "B": "The passage shows observation correcting memory, not the reverse.",
+      "D": "Reads the tree literally as advice.",
+      "E": "No family relationships are described."
+    },
+    "tags": [
+      "evaluating",
+      "theme"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-p19",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Locating information",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "When Amara returned to the house after eleven years, the mango tree in the yard had outgrown the roof. She had planted it the week before she left, a stick no taller than her knee, and had not thought of it once. Now it dropped fruit onto the tin with a sound like knocking. She stood at the gate a long while, unwilling to admit that something had been getting on with its life in her absence."
+    },
+    "stem": "When did Amara plant the mango tree?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "on the day she returned"
+      },
+      {
+        "id": "B",
+        "text": "eleven years after leaving"
+      },
+      {
+        "id": "C",
+        "text": "the passage does not say"
+      },
+      {
+        "id": "D",
+        "text": "the week before she left"
+      },
+      {
+        "id": "E",
+        "text": "when the roof was built"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The second sentence states it: she had planted it the week before she left.",
+    "distractorRationale": {
+      "A": "She finds it already grown on her return.",
+      "B": "Reverses the sequence of events.",
+      "C": "The timing is given explicitly.",
+      "E": "The roof is mentioned only as a measure of the tree's height."
+    },
+    "tags": [
+      "locating-information",
+      "literary"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  }
+]

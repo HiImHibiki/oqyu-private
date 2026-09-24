@@ -1,0 +1,1922 @@
+[
+  {
+    "id": "utbk-lbi-c01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Gambut adalah tanah yang terbentuk dari sisa tumbuhan yang tidak lapuk sempurna karena terendam air. Lapisannya dapat mencapai kedalaman belasan meter dan menyimpan karbon jauh lebih banyak daripada hutan mineral seluas sama. Selama tetap basah, karbon itu terkunci. Namun bila lahan gambut dikeringkan untuk perkebunan, bahan organiknya bersentuhan dengan udara, mulai terurai, dan melepaskan karbon ke atmosfer. Gambut kering juga mudah terbakar, dan apinya menjalar di bawah permukaan sehingga sulit dipadamkan."
+    },
+    "stem": "Menurut bacaan, karbon dalam gambut tetap terkunci selama ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "lapisannya lebih dari belasan meter"
+      },
+      {
+        "id": "B",
+        "text": "tumbuhannya sudah lapuk sempurna"
+      },
+      {
+        "id": "C",
+        "text": "suhunya tetap rendah"
+      },
+      {
+        "id": "D",
+        "text": "lahannya ditanami perkebunan"
+      },
+      {
+        "id": "E",
+        "text": "lahannya tetap basah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Bacaan menyatakan langsung: «Selama tetap basah, karbon itu terkunci.» Kalimat berikutnya menjelaskan apa yang terjadi ketika kondisi itu tidak lagi terpenuhi.",
+    "distractorRationale": {
+      "A": "Kedalaman menentukan banyaknya karbon, bukan terkunci tidaknya.",
+      "B": "Justru sisa tumbuhan yang TIDAK lapuk sempurna yang membentuk gambut.",
+      "C": "Suhu tidak disebut sebagai syarat dalam bacaan.",
+      "D": "Perkebunan justru menuntut pengeringan, yang melepaskan karbon."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "teks-informasi"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Gambut adalah tanah yang terbentuk dari sisa tumbuhan yang tidak lapuk sempurna karena terendam air. Lapisannya dapat mencapai kedalaman belasan meter dan menyimpan karbon jauh lebih banyak daripada hutan mineral seluas sama. Selama tetap basah, karbon itu terkunci. Namun bila lahan gambut dikeringkan untuk perkebunan, bahan organiknya bersentuhan dengan udara, mulai terurai, dan melepaskan karbon ke atmosfer. Gambut kering juga mudah terbakar, dan apinya menjalar di bawah permukaan sehingga sulit dipadamkan."
+    },
+    "stem": "Mengapa kebakaran di lahan gambut sulit dipadamkan?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "karena apinya menjalar di bawah permukaan"
+      },
+      {
+        "id": "B",
+        "text": "karena lapisannya mencapai belasan meter"
+      },
+      {
+        "id": "C",
+        "text": "karena karbon yang dilepaskan terlalu banyak"
+      },
+      {
+        "id": "D",
+        "text": "karena tumbuhannya tidak lapuk sempurna"
+      },
+      {
+        "id": "E",
+        "text": "karena lahannya terlalu luas"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat terakhir menyebutkan sebabnya secara langsung: api menjalar di bawah permukaan. Api yang tidak terlihat dari atas tidak dapat dijangkau dengan penyiraman biasa.",
+    "distractorRationale": {
+      "B": "Kedalaman lapisan disebut untuk menjelaskan besarnya simpanan karbon.",
+      "C": "Banyaknya karbon berkaitan dengan dampak iklim, bukan dengan pemadaman.",
+      "D": "Sifat itu menjelaskan proses terbentuknya gambut.",
+      "E": "Luas lahan tidak disebut sebagai penyebab sulitnya pemadaman."
+    },
+    "tags": [
+      "hubungan-sebab-akibat",
+      "teks-informasi"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Gambut adalah tanah yang terbentuk dari sisa tumbuhan yang tidak lapuk sempurna karena terendam air. Lapisannya dapat mencapai kedalaman belasan meter dan menyimpan karbon jauh lebih banyak daripada hutan mineral seluas sama. Selama tetap basah, karbon itu terkunci. Namun bila lahan gambut dikeringkan untuk perkebunan, bahan organiknya bersentuhan dengan udara, mulai terurai, dan melepaskan karbon ke atmosfer. Gambut kering juga mudah terbakar, dan apinya menjalar di bawah permukaan sehingga sulit dipadamkan."
+    },
+    "stem": "Berdasarkan bacaan, tindakan yang paling masuk akal untuk mencegah pelepasan karbon dari lahan gambut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "membakar lapisan atas agar tidak menjalar"
+      },
+      {
+        "id": "B",
+        "text": "menjaga muka air agar lahannya tetap basah"
+      },
+      {
+        "id": "C",
+        "text": "menambah kedalaman lapisan gambut"
+      },
+      {
+        "id": "D",
+        "text": "menggali gambut untuk dipindahkan ke tempat lain"
+      },
+      {
+        "id": "E",
+        "text": "menanam tumbuhan baru di atasnya"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bacaan menyebut kebasahan sebagai syarat karbon tetap terkunci, dan pengeringan sebagai pemicu pelepasannya. Menjaga muka air langsung menyasar sebab itu.\n\nPilihan lain tidak menyentuh mekanisme yang dijelaskan bacaan, bahkan sebagian justru memperburuknya.",
+    "distractorRationale": {
+      "A": "Pembakaran justru melepaskan karbon dalam jumlah besar sekaligus.",
+      "C": "Kedalaman lapisan terbentuk selama ribuan tahun, bukan hal yang dapat ditambah.",
+      "D": "Menggali justru membuka bahan organik ke udara.",
+      "E": "Penanaman tidak mengubah keadaan basah atau kering lahannya."
+    },
+    "tags": [
+      "mengevaluasi",
+      "penerapan-informasi"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Gambut adalah tanah yang terbentuk dari sisa tumbuhan yang tidak lapuk sempurna karena terendam air. Lapisannya dapat mencapai kedalaman belasan meter dan menyimpan karbon jauh lebih banyak daripada hutan mineral seluas sama. Selama tetap basah, karbon itu terkunci. Namun bila lahan gambut dikeringkan untuk perkebunan, bahan organiknya bersentuhan dengan udara, mulai terurai, dan melepaskan karbon ke atmosfer. Gambut kering juga mudah terbakar, dan apinya menjalar di bawah permukaan sehingga sulit dipadamkan."
+    },
+    "stem": "Kata *namun* pada kalimat keempat berfungsi menandai ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "contoh dari pernyataan sebelumnya"
+      },
+      {
+        "id": "B",
+        "text": "simpulan dari kalimat sebelumnya"
+      },
+      {
+        "id": "C",
+        "text": "peralihan dari keadaan aman ke keadaan yang menimbulkan masalah"
+      },
+      {
+        "id": "D",
+        "text": "penambahan keterangan"
+      },
+      {
+        "id": "E",
+        "text": "urutan waktu terjadinya peristiwa"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat sebelumnya menyatakan karbon terkunci selama gambut basah — keadaan yang aman. Kata *namun* memperkenalkan keadaan sebaliknya: gambut yang dikeringkan melepaskan karbon.\n\nKonjungsi pertentangan semacam ini menjadi engsel yang memutar arah paragraf.",
+    "distractorRationale": {
+      "A": "Contoh ditandai kata seperti *misalnya*.",
+      "B": "Simpulan ditandai kata seperti *jadi* atau *dengan demikian*.",
+      "D": "Penambahan ditandai kata seperti *selain itu*.",
+      "E": "Urutan waktu ditandai kata seperti *kemudian* atau *setelah itu*."
+    },
+    "tags": [
+      "konjungsi",
+      "struktur-teks"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sensus penduduk tidak sekadar menghitung jumlah orang. Data yang dikumpulkan menentukan berapa banyak sekolah yang perlu dibangun di suatu kecamatan, berapa tenaga kesehatan yang harus ditempatkan, dan berapa besar dana yang dialirkan ke daerah. Karena itu, wilayah yang penduduknya tercatat kurang dari keadaan sebenarnya akan menerima lebih sedikit daripada yang dibutuhkannya — dan kekurangan itu berlangsung sampai sensus berikutnya, sepuluh tahun kemudian."
+    },
+    "stem": "Menurut bacaan, data sensus dipakai untuk menentukan hal-hal berikut, KECUALI ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "besar dana yang dialirkan ke daerah"
+      },
+      {
+        "id": "B",
+        "text": "jumlah tenaga kesehatan yang ditempatkan"
+      },
+      {
+        "id": "C",
+        "text": "jumlah sekolah yang perlu dibangun"
+      },
+      {
+        "id": "D",
+        "text": "jarak antarwilayah kecamatan"
+      },
+      {
+        "id": "E",
+        "text": "jumlah penduduk suatu wilayah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Bacaan menyebut tiga hal yang ditentukan data sensus: sekolah, tenaga kesehatan, dan dana daerah. Jarak antarwilayah tidak disinggung sama sekali.\n\nSoal berpola «kecuali» menuntut pemeriksaan satu per satu; menjawab dari kesan umum mudah keliru di sini.",
+    "distractorRationale": {
+      "A": "Disebut langsung dalam bacaan.",
+      "B": "Disebut langsung dalam bacaan.",
+      "C": "Disebut langsung dalam bacaan.",
+      "E": "Disebut pada kalimat pertama sebagai fungsi dasar sensus."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "soal-kecuali"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sensus penduduk tidak sekadar menghitung jumlah orang. Data yang dikumpulkan menentukan berapa banyak sekolah yang perlu dibangun di suatu kecamatan, berapa tenaga kesehatan yang harus ditempatkan, dan berapa besar dana yang dialirkan ke daerah. Karena itu, wilayah yang penduduknya tercatat kurang dari keadaan sebenarnya akan menerima lebih sedikit daripada yang dibutuhkannya — dan kekurangan itu berlangsung sampai sensus berikutnya, sepuluh tahun kemudian."
+    },
+    "stem": "Penyebutan «sepuluh tahun kemudian» pada akhir bacaan berfungsi untuk ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "membandingkan sensus dengan survei tahunan"
+      },
+      {
+        "id": "B",
+        "text": "menjelaskan berapa lama sensus dikerjakan"
+      },
+      {
+        "id": "C",
+        "text": "memperkirakan pertumbuhan penduduk"
+      },
+      {
+        "id": "D",
+        "text": "menunjukkan bahwa sensus terlalu sering dilakukan"
+      },
+      {
+        "id": "E",
+        "text": "menegaskan bahwa akibat kesalahan pencatatan berlangsung sangat lama"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Frasa itu ditempatkan setelah tanda pisah, tepat sesudah akibat kekurangan dana disebut. Fungsinya menambahkan bobot: kesalahan pencatatan tidak dapat diperbaiki sampai satu dasawarsa berlalu.\n\nDi situlah letak kegentingan yang ingin ditekankan penulis.",
+    "distractorRationale": {
+      "A": "Survei tahunan tidak disinggung bacaan.",
+      "B": "Yang dimaksud adalah jarak antarsensus, bukan lama pengerjaannya.",
+      "C": "Bacaan tidak membahas perkiraan pertumbuhan penduduk.",
+      "D": "Sepuluh tahun justru menunjukkan jaraknya yang panjang."
+    },
+    "tags": [
+      "fungsi-frasa",
+      "mengevaluasi"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sensus penduduk tidak sekadar menghitung jumlah orang. Data yang dikumpulkan menentukan berapa banyak sekolah yang perlu dibangun di suatu kecamatan, berapa tenaga kesehatan yang harus ditempatkan, dan berapa besar dana yang dialirkan ke daerah. Karena itu, wilayah yang penduduknya tercatat kurang dari keadaan sebenarnya akan menerima lebih sedikit daripada yang dibutuhkannya — dan kekurangan itu berlangsung sampai sensus berikutnya, sepuluh tahun kemudian."
+    },
+    "stem": "Simpulan yang tepat dari bacaan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "ketelitian pencatatan sensus berdampak langsung pada layanan yang diterima warga"
+      },
+      {
+        "id": "B",
+        "text": "petugas sensus sering melakukan kesalahan"
+      },
+      {
+        "id": "C",
+        "text": "sensus sebaiknya dilakukan setiap tahun"
+      },
+      {
+        "id": "D",
+        "text": "jumlah sekolah di setiap kecamatan harus sama"
+      },
+      {
+        "id": "E",
+        "text": "dana daerah selalu tidak mencukupi"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Bacaan menghubungkan angka sensus dengan sekolah, tenaga kesehatan, dan dana — semuanya layanan yang langsung dirasakan warga. Kalimat terakhir menutup dengan akibat dari pencatatan yang kurang.\n\nItulah benang yang menyatukan seluruh bacaan.",
+    "distractorRationale": {
+      "B": "Bacaan tidak menilai kinerja petugas.",
+      "C": "Saran yang mungkin masuk akal tetapi tidak dinyatakan bacaan.",
+      "D": "Bacaan justru menyiratkan jumlahnya menyesuaikan penduduk masing-masing.",
+      "E": "Bacaan berbicara tentang wilayah yang tercatat kurang, bukan seluruh daerah."
+    },
+    "tags": [
+      "simpulan",
+      "teks-informasi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Vaksinasi bekerja pada dua tingkat sekaligus. Pada tingkat perorangan, ia melatih tubuh mengenali penyebab penyakit sebelum bertemu bentuk yang sebenarnya. Pada tingkat masyarakat, ia memutus rantai penularan: ketika cukup banyak orang kebal, penyakit sulit menemukan penerima berikutnya, sehingga mereka yang tidak dapat divaksinasi — bayi yang terlalu muda dan orang dengan gangguan kekebalan — ikut terlindungi. Perlindungan lapis kedua ini hanya bekerja bila cakupannya melampaui ambang tertentu, dan ambang itu berbeda-beda menurut seberapa mudah penyakitnya menular."
+    },
+    "stem": "Menurut bacaan, kelompok yang terlindungi tanpa divaksinasi adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "seluruh anggota masyarakat"
+      },
+      {
+        "id": "B",
+        "text": "bayi yang terlalu muda dan orang dengan gangguan kekebalan"
+      },
+      {
+        "id": "C",
+        "text": "orang yang menolak vaksinasi"
+      },
+      {
+        "id": "D",
+        "text": "petugas kesehatan"
+      },
+      {
+        "id": "E",
+        "text": "orang dewasa yang sehat"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bacaan menyebut kelompoknya secara langsung di antara tanda pisah: «bayi yang terlalu muda dan orang dengan gangguan kekebalan». Keduanya disebut sebagai orang yang *tidak dapat* divaksinasi, bukan yang memilih tidak.",
+    "distractorRationale": {
+      "A": "Perlindungan lapis kedua justru bekerja karena sebagian besar orang divaksinasi.",
+      "C": "Bacaan menyebut «tidak dapat», bukan «menolak» — keduanya berbeda.",
+      "D": "Petugas kesehatan tidak disebut sebagai kelompok yang tidak dapat divaksinasi.",
+      "E": "Orang dewasa sehat justru termasuk yang dapat divaksinasi."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "ketelitian-baca"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Vaksinasi bekerja pada dua tingkat sekaligus. Pada tingkat perorangan, ia melatih tubuh mengenali penyebab penyakit sebelum bertemu bentuk yang sebenarnya. Pada tingkat masyarakat, ia memutus rantai penularan: ketika cukup banyak orang kebal, penyakit sulit menemukan penerima berikutnya, sehingga mereka yang tidak dapat divaksinasi — bayi yang terlalu muda dan orang dengan gangguan kekebalan — ikut terlindungi. Perlindungan lapis kedua ini hanya bekerja bila cakupannya melampaui ambang tertentu, dan ambang itu berbeda-beda menurut seberapa mudah penyakitnya menular."
+    },
+    "stem": "Berdasarkan kalimat terakhir, penyakit yang sangat mudah menular memerlukan ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "cakupan vaksinasi yang lebih rendah"
+      },
+      {
+        "id": "B",
+        "text": "jenis vaksin yang berbeda setiap tahun"
+      },
+      {
+        "id": "C",
+        "text": "cakupan vaksinasi yang lebih tinggi"
+      },
+      {
+        "id": "D",
+        "text": "waktu vaksinasi yang lebih singkat"
+      },
+      {
+        "id": "E",
+        "text": "jumlah dosis yang lebih sedikit"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bacaan menyatakan ambang cakupan berbeda menurut kemudahan penularan. Penyakit yang mudah menular lebih gampang menemukan penerima berikutnya, sehingga diperlukan lebih banyak orang kebal untuk memutus rantainya.\n\nHubungan ini tidak dinyatakan dengan angka, tetapi arahnya dapat disimpulkan dari mekanisme yang dijelaskan bacaan.",
+    "distractorRationale": {
+      "A": "Arahnya terbalik; penularan yang mudah menuntut kekebalan yang lebih luas.",
+      "B": "Bacaan tidak membahas pembaruan jenis vaksin.",
+      "D": "Waktu pelaksanaan tidak disinggung bacaan.",
+      "E": "Jumlah dosis tidak disinggung bacaan."
+    },
+    "tags": [
+      "menyimpulkan-hubungan",
+      "ambang-cakupan"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Vaksinasi bekerja pada dua tingkat sekaligus. Pada tingkat perorangan, ia melatih tubuh mengenali penyebab penyakit sebelum bertemu bentuk yang sebenarnya. Pada tingkat masyarakat, ia memutus rantai penularan: ketika cukup banyak orang kebal, penyakit sulit menemukan penerima berikutnya, sehingga mereka yang tidak dapat divaksinasi — bayi yang terlalu muda dan orang dengan gangguan kekebalan — ikut terlindungi. Perlindungan lapis kedua ini hanya bekerja bila cakupannya melampaui ambang tertentu, dan ambang itu berbeda-beda menurut seberapa mudah penyakitnya menular."
+    },
+    "stem": "Pernyataan yang paling didukung bacaan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "ambang cakupan sama untuk semua penyakit"
+      },
+      {
+        "id": "B",
+        "text": "bayi sebaiknya divaksinasi sedini mungkin"
+      },
+      {
+        "id": "C",
+        "text": "vaksinasi tidak diperlukan bila seseorang sehat"
+      },
+      {
+        "id": "D",
+        "text": "keputusan perorangan ikut menentukan perlindungan bagi orang yang tidak dapat divaksinasi"
+      },
+      {
+        "id": "E",
+        "text": "keputusan seseorang untuk divaksinasi hanya berdampak pada dirinya sendiri"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Bacaan menjelaskan lapis kedua perlindungan bekerja hanya bila cukup banyak orang kebal. Karena cakupan itu terbentuk dari keputusan banyak orang, pilihan seseorang ikut menentukan terlindungi tidaknya mereka yang tidak dapat divaksinasi.\n\nInilah gagasan yang membedakan kedua tingkat kerja vaksinasi yang disebut kalimat pertama.",
+    "distractorRationale": {
+      "A": "Bacaan justru menyebut ambangnya berbeda-beda.",
+      "B": "Bacaan menyebut ada bayi yang terlalu muda untuk divaksinasi.",
+      "C": "Bacaan tidak menyatakan orang sehat boleh melewatkan vaksinasi.",
+      "E": "Bertentangan langsung dengan penjelasan tingkat kedua."
+    },
+    "tags": [
+      "merefleksi",
+      "implikasi-sosial"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Angkot dan ojek daring melayani perjalanan yang berbeda meski sama-sama disebut transportasi umum. Angkot menempuh rute tetap dengan tarif seragam, sehingga biayanya dapat diperkirakan tetapi jalurnya tidak selalu melewati tujuan penumpang. Ojek daring menjemput dari titik mana pun, tetapi tarifnya berubah menurut jarak dan tingkat permintaan. Bagi pekerja berpenghasilan tetap yang menempuh rute sama setiap hari, kepastian tarif sering lebih berharga daripada kecepatan."
+    },
+    "stem": "Menurut bacaan, kelebihan angkot dibandingkan ojek daring adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "waktu tempuh yang lebih singkat"
+      },
+      {
+        "id": "B",
+        "text": "kenyamanan yang lebih baik"
+      },
+      {
+        "id": "C",
+        "text": "jumlah armada yang lebih banyak"
+      },
+      {
+        "id": "D",
+        "text": "penjemputan dari titik mana pun"
+      },
+      {
+        "id": "E",
+        "text": "tarif yang dapat diperkirakan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Bacaan menyebut angkot bertarif seragam «sehingga biayanya dapat diperkirakan», dan tarif ojek daring justru berubah menurut jarak dan permintaan.",
+    "distractorRationale": {
+      "A": "Bacaan tidak membandingkan waktu tempuh keduanya.",
+      "B": "Kenyamanan tidak disinggung bacaan.",
+      "C": "Jumlah armada tidak disinggung bacaan.",
+      "D": "Justru itu kelebihan ojek daring."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "perbandingan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Angkot dan ojek daring melayani perjalanan yang berbeda meski sama-sama disebut transportasi umum. Angkot menempuh rute tetap dengan tarif seragam, sehingga biayanya dapat diperkirakan tetapi jalurnya tidak selalu melewati tujuan penumpang. Ojek daring menjemput dari titik mana pun, tetapi tarifnya berubah menurut jarak dan tingkat permintaan. Bagi pekerja berpenghasilan tetap yang menempuh rute sama setiap hari, kepastian tarif sering lebih berharga daripada kecepatan."
+    },
+    "stem": "Kalimat terakhir bacaan menunjukkan bahwa penulis berpandangan ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "pilihan moda yang terbaik bergantung pada keadaan penggunanya"
+      },
+      {
+        "id": "B",
+        "text": "pekerja berpenghasilan tetap tidak mampu membayar ojek daring"
+      },
+      {
+        "id": "C",
+        "text": "angkot selalu lebih murah daripada ojek daring"
+      },
+      {
+        "id": "D",
+        "text": "kecepatan tidak pernah menjadi pertimbangan"
+      },
+      {
+        "id": "E",
+        "text": "ojek daring seharusnya dilarang beroperasi"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat terakhir menyebut satu kelompok tertentu — pekerja berpenghasilan tetap dengan rute harian yang sama — dan menyatakan apa yang lebih berharga *bagi mereka*. Pembatasan itu menandakan penulis tidak menganggap satu moda unggul untuk semua orang.\n\nKata *sering*, bukan *selalu*, juga menjaga pernyataan itu tetap berhati-hati.",
+    "distractorRationale": {
+      "B": "Soal kemampuan membayar tidak disinggung bacaan.",
+      "C": "Bacaan tidak menyatakan perbandingan harga yang berlaku umum.",
+      "D": "Bacaan menyebut kepastian tarif «sering» lebih berharga, bukan bahwa kecepatan tidak berarti.",
+      "E": "Tidak ada nada melarang dalam bacaan."
+    },
+    "tags": [
+      "pandangan-penulis",
+      "kehati-hatian-kata"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c13",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Angkot dan ojek daring melayani perjalanan yang berbeda meski sama-sama disebut transportasi umum. Angkot menempuh rute tetap dengan tarif seragam, sehingga biayanya dapat diperkirakan tetapi jalurnya tidak selalu melewati tujuan penumpang. Ojek daring menjemput dari titik mana pun, tetapi tarifnya berubah menurut jarak dan tingkat permintaan. Bagi pekerja berpenghasilan tetap yang menempuh rute sama setiap hari, kepastian tarif sering lebih berharga daripada kecepatan."
+    },
+    "stem": "Kelemahan angkot yang disebut bacaan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tidak dapat dipesan lebih dahulu"
+      },
+      {
+        "id": "B",
+        "text": "jalurnya tidak selalu melewati tujuan penumpang"
+      },
+      {
+        "id": "C",
+        "text": "hanya beroperasi pada jam tertentu"
+      },
+      {
+        "id": "D",
+        "text": "tarifnya berubah-ubah"
+      },
+      {
+        "id": "E",
+        "text": "waktu tunggunya sangat lama"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bacaan menyebutkannya setelah kata *tetapi*: rute tetap membuat tarifnya pasti, namun jalurnya tidak selalu sampai ke tujuan penumpang.\n\nSatu sifat yang sama — rute tetap — menghasilkan kelebihan sekaligus kelemahan.",
+    "distractorRationale": {
+      "A": "Pemesanan lebih dahulu tidak disinggung bacaan.",
+      "C": "Jam operasi tidak disebut bacaan.",
+      "D": "Itu sifat tarif ojek daring.",
+      "E": "Waktu tunggu tidak disebut bacaan."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "kelebihan-kelemahan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c14",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Membaca cepat berguna untuk menyaring, bukan untuk memahami. Ketika seseorang perlu menemukan satu nama dalam daftar panjang atau memastikan sebuah dokumen membahas topik yang dicari, membaca cepat menghemat banyak waktu. Namun untuk teks yang argumennya berlapis, mata yang bergerak terlalu cepat akan melewatkan kata-kata kecil yang justru menentukan: *hanya*, *sebagian*, *kecuali*, *belum*. Kata-kata itu tidak menarik perhatian, tetapi mengubah makna seluruh kalimat."
+    },
+    "stem": "Menurut bacaan, membaca cepat paling berguna untuk ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menghafal isi bacaan"
+      },
+      {
+        "id": "B",
+        "text": "membaca karya sastra"
+      },
+      {
+        "id": "C",
+        "text": "menemukan informasi tertentu dalam teks panjang"
+      },
+      {
+        "id": "D",
+        "text": "menilai mutu tulisan"
+      },
+      {
+        "id": "E",
+        "text": "memahami argumen yang berlapis"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bacaan menyebut dua keperluan yang cocok: menemukan satu nama dalam daftar panjang dan memastikan topik sebuah dokumen. Keduanya adalah penyaringan, bukan pemahaman.",
+    "distractorRationale": {
+      "A": "Menghafal tidak disinggung bacaan.",
+      "B": "Karya sastra tidak disinggung bacaan.",
+      "D": "Menilai mutu tulisan menuntut pembacaan yang cermat.",
+      "E": "Justru untuk hal inilah bacaan menyebut membaca cepat tidak memadai."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "keterampilan-baca"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c15",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Membaca cepat berguna untuk menyaring, bukan untuk memahami. Ketika seseorang perlu menemukan satu nama dalam daftar panjang atau memastikan sebuah dokumen membahas topik yang dicari, membaca cepat menghemat banyak waktu. Namun untuk teks yang argumennya berlapis, mata yang bergerak terlalu cepat akan melewatkan kata-kata kecil yang justru menentukan: *hanya*, *sebagian*, *kecuali*, *belum*. Kata-kata itu tidak menarik perhatian, tetapi mengubah makna seluruh kalimat."
+    },
+    "stem": "Penulis menyebut kata *hanya*, *sebagian*, *kecuali*, dan *belum* sebagai contoh untuk menunjukkan bahwa ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "penulis yang baik menghindari kata-kata tersebut"
+      },
+      {
+        "id": "B",
+        "text": "kata-kata itu selalu menandakan pertentangan"
+      },
+      {
+        "id": "C",
+        "text": "kata pendek lebih sulit dibaca daripada kata panjang"
+      },
+      {
+        "id": "D",
+        "text": "kata yang tampak sepele dapat menentukan makna keseluruhan kalimat"
+      },
+      {
+        "id": "E",
+        "text": "keempat kata itu jarang dipakai dalam tulisan ilmiah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat terakhir menjelaskan maksud contoh itu: kata-kata tersebut «tidak menarik perhatian, tetapi mengubah makna seluruh kalimat».\n\nKeempatnya memang pembatas — masing-masing mempersempit atau menunda kebenaran suatu pernyataan, dan melewatkannya berarti membaca klaim yang lebih kuat daripada yang sebenarnya ditulis.",
+    "distractorRationale": {
+      "A": "Bacaan justru menganggap kata-kata itu penting, bukan sesuatu yang dihindari.",
+      "B": "*Sebagian* dan *hanya* membatasi cakupan, bukan menandai pertentangan.",
+      "C": "Kesulitan membaca tidak berkaitan dengan panjang kata di sini.",
+      "E": "Bacaan tidak membahas frekuensi pemakaiannya."
+    },
+    "tags": [
+      "fungsi-contoh",
+      "kata-pembatas"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c16",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Setiap Sabtu pagi Ibu menjemur kasur di halaman. Aku dulu menganggapnya pekerjaan yang sia-sia — kasur itu akan lembap lagi dalam seminggu. Baru setelah pindah ke kota dan tidur di kamar tanpa jendela, aku mengerti apa yang sebenarnya ia jemur: bukan kasurnya, melainkan bau rumah yang harus diperbarui setiap pekan agar tidak berubah menjadi bau pengap."
+    },
+    "stem": "Kegiatan yang dilakukan Ibu setiap Sabtu pagi adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "membersihkan halaman rumah"
+      },
+      {
+        "id": "B",
+        "text": "membuka jendela kamar"
+      },
+      {
+        "id": "C",
+        "text": "pergi ke pasar pagi"
+      },
+      {
+        "id": "D",
+        "text": "mencuci seluruh pakaian"
+      },
+      {
+        "id": "E",
+        "text": "menjemur kasur di halaman"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat pertama menyebutkannya secara langsung. Soal semacam ini menguji ketelitian membaca sebelum masuk ke lapisan makna yang lebih dalam.",
+    "distractorRationale": {
+      "A": "Halaman disebut sebagai tempat menjemur, bukan yang dibersihkan.",
+      "B": "Kamar tanpa jendela justru disebut sebagai keadaan si tokoh setelah pindah ke kota.",
+      "C": "Pasar tidak disebut dalam teks.",
+      "D": "Mencuci pakaian tidak disebut dalam teks."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "teks-sastra"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c17",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Setiap Sabtu pagi Ibu menjemur kasur di halaman. Aku dulu menganggapnya pekerjaan yang sia-sia — kasur itu akan lembap lagi dalam seminggu. Baru setelah pindah ke kota dan tidur di kamar tanpa jendela, aku mengerti apa yang sebenarnya ia jemur: bukan kasurnya, melainkan bau rumah yang harus diperbarui setiap pekan agar tidak berubah menjadi bau pengap."
+    },
+    "stem": "Perubahan pandangan tokoh «aku» terhadap kebiasaan Ibu terjadi karena ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "ia mengalami sendiri tinggal di ruang yang tidak pernah terkena udara luar"
+      },
+      {
+        "id": "B",
+        "text": "Ibu menjelaskan alasannya"
+      },
+      {
+        "id": "C",
+        "text": "ia membaca tentang manfaat menjemur kasur"
+      },
+      {
+        "id": "D",
+        "text": "ia kembali tinggal bersama Ibu"
+      },
+      {
+        "id": "E",
+        "text": "kasur di rumahnya rusak"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Teks menyebut pengertian itu datang «setelah pindah ke kota dan tidur di kamar tanpa jendela». Pemahamannya lahir dari mengalami kebalikannya, bukan dari penjelasan siapa pun.\n\nItulah bentuk pemahaman yang khas dalam prosa semacam ini: sesuatu baru terlihat setelah kehilangannya.",
+    "distractorRationale": {
+      "B": "Tidak ada penjelasan dari Ibu dalam teks.",
+      "C": "Tidak ada penyebutan bacaan atau sumber pengetahuan lain.",
+      "D": "Teks justru menyebut kepindahannya ke kota, bukan kembali.",
+      "E": "Kerusakan kasur tidak disebut teks."
+    },
+    "tags": [
+      "menginterpretasi",
+      "perubahan-tokoh"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c18",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Setiap Sabtu pagi Ibu menjemur kasur di halaman. Aku dulu menganggapnya pekerjaan yang sia-sia — kasur itu akan lembap lagi dalam seminggu. Baru setelah pindah ke kota dan tidur di kamar tanpa jendela, aku mengerti apa yang sebenarnya ia jemur: bukan kasurnya, melainkan bau rumah yang harus diperbarui setiap pekan agar tidak berubah menjadi bau pengap."
+    },
+    "stem": "Kalimat «bukan kasurnya, melainkan bau rumah» menyiratkan bahwa ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tokoh «aku» menyesali kepindahannya"
+      },
+      {
+        "id": "B",
+        "text": "pekerjaan rumah yang tampak remeh menyimpan makna yang lebih besar"
+      },
+      {
+        "id": "C",
+        "text": "bau lebih penting daripada kebersihan"
+      },
+      {
+        "id": "D",
+        "text": "Ibu sebenarnya keliru dalam merawat kasur"
+      },
+      {
+        "id": "E",
+        "text": "rumah di desa selalu lebih baik daripada rumah di kota"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Konstruksi «bukan ..., melainkan ...» memindahkan makna dari benda yang terlihat ke sesuatu yang tidak kasat mata. Menjemur kasur ternyata bukan sekadar mengurus perabot, melainkan menjaga keadaan rumah yang lebih sulit dinamai.\n\nDi situlah letak perubahan pemahaman tokoh: pekerjaan yang dulu ia sebut sia-sia ternyata memiliki alasan yang tidak pernah diucapkan.",
+    "distractorRationale": {
+      "A": "Tidak ada nada penyesalan atas kepindahan; yang ada adalah pemahaman baru.",
+      "C": "Teks tidak membandingkan bau dengan kebersihan.",
+      "D": "Teks justru menunjukkan tindakan Ibu memiliki alasan yang tepat.",
+      "E": "Teks tidak membandingkan mutu rumah desa dan kota secara umum."
+    },
+    "tags": [
+      "merefleksi",
+      "makna-tersirat"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c19",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Setiap Sabtu pagi Ibu menjemur kasur di halaman. Aku dulu menganggapnya pekerjaan yang sia-sia — kasur itu akan lembap lagi dalam seminggu. Baru setelah pindah ke kota dan tidur di kamar tanpa jendela, aku mengerti apa yang sebenarnya ia jemur: bukan kasurnya, melainkan bau rumah yang harus diperbarui setiap pekan agar tidak berubah menjadi bau pengap."
+    },
+    "stem": "Kata *dulu* pada kalimat kedua menunjukkan bahwa ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tokoh «aku» masih kanak-kanak saat bercerita"
+      },
+      {
+        "id": "B",
+        "text": "Ibu sudah berhenti menjemur kasur"
+      },
+      {
+        "id": "C",
+        "text": "pandangan tokoh «aku» sekarang sudah berbeda"
+      },
+      {
+        "id": "D",
+        "text": "cerita ini berlatar masa lampau seluruhnya"
+      },
+      {
+        "id": "E",
+        "text": "peristiwa itu terjadi ratusan tahun lalu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kata *dulu* menandai bahwa penilaian «sia-sia» itu milik masa lalu. Kalimat ketiga membenarkannya dengan kata *baru setelah* dan *aku mengerti* — pandangannya sudah berubah saat cerita ini dituturkan.",
+    "distractorRationale": {
+      "A": "Justru sebaliknya; ia bercerita setelah dewasa dan pindah ke kota.",
+      "B": "Teks tidak menyebut Ibu berhenti melakukannya.",
+      "D": "Sebagian cerita berada pada masa kini, yaitu saat ia mengerti.",
+      "E": "*Dulu* di sini menandai masa lalu si tokoh, bukan rentang sejarah."
+    },
+    "tags": [
+      "penanda-waktu",
+      "sudut-pandang"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c20",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Har menyimpan sepeda tuanya di bawah tangga. Rantainya sudah berkarat, sadelnya retak, dan ban belakangnya kempis sejak lama. Tetangga berkali-kali menawarkan untuk membelinya sebagai besi tua. «Nanti,» jawabnya selalu, tanpa pernah menyebut kapan. Sepeda itu yang mengantarnya melamar pekerjaan pertama, dan mengantar istrinya ke rumah sakit pada malam anak sulung mereka lahir."
+    },
+    "stem": "Keadaan sepeda Pak Har digambarkan sebagai berikut, KECUALI ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "disimpan di bawah tangga"
+      },
+      {
+        "id": "B",
+        "text": "sadelnya retak"
+      },
+      {
+        "id": "C",
+        "text": "rantainya berkarat"
+      },
+      {
+        "id": "D",
+        "text": "catnya mengelupas"
+      },
+      {
+        "id": "E",
+        "text": "ban belakangnya kempis"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Teks menyebut rantai berkarat, sadel retak, ban belakang kempis, dan tempat penyimpanannya di bawah tangga. Keadaan cat tidak disinggung sama sekali.",
+    "distractorRationale": {
+      "A": "Disebut pada kalimat pertama.",
+      "B": "Disebut langsung dalam teks.",
+      "C": "Disebut langsung dalam teks.",
+      "E": "Disebut langsung dalam teks."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "soal-kecuali"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c21",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Har menyimpan sepeda tuanya di bawah tangga. Rantainya sudah berkarat, sadelnya retak, dan ban belakangnya kempis sejak lama. Tetangga berkali-kali menawarkan untuk membelinya sebagai besi tua. «Nanti,» jawabnya selalu, tanpa pernah menyebut kapan. Sepeda itu yang mengantarnya melamar pekerjaan pertama, dan mengantar istrinya ke rumah sakit pada malam anak sulung mereka lahir."
+    },
+    "stem": "Alasan Pak Har menolak menjual sepedanya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sepeda itu masih dapat diperbaiki"
+      },
+      {
+        "id": "B",
+        "text": "ia berencana memakainya kembali"
+      },
+      {
+        "id": "C",
+        "text": "harga yang ditawarkan terlalu rendah"
+      },
+      {
+        "id": "D",
+        "text": "tetangganya tidak dapat dipercaya"
+      },
+      {
+        "id": "E",
+        "text": "sepeda itu terikat pada peristiwa penting dalam hidupnya"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat terakhir menjelaskan apa yang tidak pernah diucapkan Pak Har: sepeda itu hadir pada dua peristiwa penting dalam hidupnya. Penempatan kalimat itu tepat setelah jawaban «Nanti» membuatnya menjadi keterangan atas penolakan tersebut.\n\nNilai sepeda itu bukan pada kegunaannya, melainkan pada apa yang diwakilinya.",
+    "distractorRationale": {
+      "A": "Justru keadaannya digambarkan sudah rusak.",
+      "B": "Tidak ada tanda ia berniat memakainya lagi.",
+      "C": "Harga tidak disebut dalam teks.",
+      "D": "Teks tidak menilai tetangganya."
+    },
+    "tags": [
+      "menginterpretasi",
+      "motivasi-tokoh"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c22",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Har menyimpan sepeda tuanya di bawah tangga. Rantainya sudah berkarat, sadelnya retak, dan ban belakangnya kempis sejak lama. Tetangga berkali-kali menawarkan untuk membelinya sebagai besi tua. «Nanti,» jawabnya selalu, tanpa pernah menyebut kapan. Sepeda itu yang mengantarnya melamar pekerjaan pertama, dan mengantar istrinya ke rumah sakit pada malam anak sulung mereka lahir."
+    },
+    "stem": "Jawaban «Nanti» yang selalu diberikan Pak Har menunjukkan bahwa ia ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menolak tanpa harus menjelaskan alasannya"
+      },
+      {
+        "id": "B",
+        "text": "berencana menjualnya bulan depan"
+      },
+      {
+        "id": "C",
+        "text": "sedang menunggu harga yang lebih tinggi"
+      },
+      {
+        "id": "D",
+        "text": "tidak mendengar tawaran tetangganya"
+      },
+      {
+        "id": "E",
+        "text": "sudah lupa pada sepeda itu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Frasa «tanpa pernah menyebut kapan» adalah kuncinya. «Nanti» yang tidak pernah tiba bukan penundaan, melainkan cara menolak yang menghindari perdebatan — dan menghindari pula keharusan mengucapkan alasan yang sulit dijelaskan kepada orang lain.",
+    "distractorRationale": {
+      "B": "«Tanpa pernah menyebut kapan» menutup kemungkinan adanya rencana.",
+      "C": "Harga tidak menjadi pertimbangan dalam teks.",
+      "D": "Ia menjawab, berarti ia mendengar.",
+      "E": "Teks justru menunjukkan ia mengingat betul peristiwa yang terkait sepeda itu."
+    },
+    "tags": [
+      "merefleksi",
+      "watak-tokoh"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c23",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Di dapur itu ada dua kursi, tetapi hanya satu yang pernah diduduki. Kursi satunya menyimpan tumpukan surat kabar yang tidak pernah dibaca, ditumpuk rapi menurut tanggal. Nenek mengelapnya setiap pagi, seolah tamu yang ditunggu akan datang siang nanti."
+    },
+    "stem": "Kursi kedua dalam kutipan tersebut paling tepat dimaknai sebagai ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "bukti bahwa dapur itu terlalu sempit"
+      },
+      {
+        "id": "B",
+        "text": "tanda penantian terhadap seseorang yang tidak kunjung datang"
+      },
+      {
+        "id": "C",
+        "text": "perabot yang akan segera dibuang"
+      },
+      {
+        "id": "D",
+        "text": "hadiah dari tamu yang pernah berkunjung"
+      },
+      {
+        "id": "E",
+        "text": "tempat menyimpan barang bekas"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kursi itu tidak pernah diduduki, tetapi dielap setiap pagi «seolah tamu yang ditunggu akan datang siang nanti». Perawatan atas benda yang tidak dipakai justru menandakan pengharapan, bukan kelalaian.\n\nSurat kabar yang ditumpuk rapi menurut tanggal memperkuatnya: waktu terus dihitung, dan penantiannya berlangsung lama.",
+    "distractorRationale": {
+      "A": "Ukuran dapur tidak disinggung kutipan.",
+      "C": "Kursi yang dielap setiap pagi bukan barang yang hendak dibuang.",
+      "D": "Kutipan tidak menyebut asal-usul kursi itu.",
+      "E": "Surat kabar itu ditumpuk rapi, bukan ditelantarkan sebagai barang bekas."
+    },
+    "tags": [
+      "simbol",
+      "makna-tersirat"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c24",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Di dapur itu ada dua kursi, tetapi hanya satu yang pernah diduduki. Kursi satunya menyimpan tumpukan surat kabar yang tidak pernah dibaca, ditumpuk rapi menurut tanggal. Nenek mengelapnya setiap pagi, seolah tamu yang ditunggu akan datang siang nanti."
+    },
+    "stem": "Suasana yang paling menonjol dalam kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "marah dan penuh kekecewaan"
+      },
+      {
+        "id": "B",
+        "text": "kacau dan tidak teratur"
+      },
+      {
+        "id": "C",
+        "text": "sepi tetapi disertai kesetiaan"
+      },
+      {
+        "id": "D",
+        "text": "riang dan penuh harapan"
+      },
+      {
+        "id": "E",
+        "text": "tegang dan mencekam"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kesepian tampak dari kursi yang tidak pernah diduduki dan surat kabar yang tidak pernah dibaca. Kesetiaan tampak dari kebiasaan mengelap setiap pagi dan menumpuk surat kabar menurut tanggal.\n\nKeduanya hadir bersamaan, dan justru gabungan itulah yang membuat kutipan ini terasa — bukan salah satunya sendirian.",
+    "distractorRationale": {
+      "A": "Tidak ada nada kemarahan; yang ada adalah kesabaran.",
+      "B": "Justru segalanya digambarkan rapi dan teratur.",
+      "D": "Ada pengharapan, tetapi nadanya tidak riang.",
+      "E": "Tidak ada unsur ketegangan atau ancaman dalam kutipan."
+    },
+    "tags": [
+      "suasana",
+      "merefleksi"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c25",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Hujan turun sejak subuh dan belum juga reda ketika bel pulang berbunyi. Anak-anak berlarian menembus halaman, tertawa, sepatu mereka menciprat genangan. Rina berdiri di bawah atap teras, memandangi payung merah yang tergantung di pagar — payung yang bukan miliknya, yang sudah tiga hari menunggu pemiliknya kembali."
+    },
+    "stem": "Latar waktu dalam kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "pagi sebelum sekolah dimulai"
+      },
+      {
+        "id": "B",
+        "text": "menjelang subuh"
+      },
+      {
+        "id": "C",
+        "text": "hari libur"
+      },
+      {
+        "id": "D",
+        "text": "saat bel pulang sekolah berbunyi"
+      },
+      {
+        "id": "E",
+        "text": "tengah malam"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat pertama menyebut hujan «belum juga reda ketika bel pulang berbunyi». Subuh disebut sebagai awal hujan, bukan sebagai latar peristiwanya.",
+    "distractorRationale": {
+      "A": "Bel yang berbunyi adalah bel pulang, bukan bel masuk.",
+      "B": "Subuh adalah waktu hujan mulai turun, bukan waktu peristiwanya.",
+      "C": "Adanya bel sekolah menunjukkan hari itu hari sekolah.",
+      "E": "Anak-anak berhamburan pulang, jelas bukan tengah malam."
+    },
+    "tags": [
+      "latar",
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c26",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Hujan turun sejak subuh dan belum juga reda ketika bel pulang berbunyi. Anak-anak berlarian menembus halaman, tertawa, sepatu mereka menciprat genangan. Rina berdiri di bawah atap teras, memandangi payung merah yang tergantung di pagar — payung yang bukan miliknya, yang sudah tiga hari menunggu pemiliknya kembali."
+    },
+    "stem": "Penyebutan payung yang «sudah tiga hari menunggu pemiliknya kembali» berfungsi untuk ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menunjukkan Rina berniat mengambil payung itu"
+      },
+      {
+        "id": "B",
+        "text": "menerangkan bahwa hujan sudah turun tiga hari"
+      },
+      {
+        "id": "C",
+        "text": "menjelaskan bahwa sekolah itu sering kehilangan barang"
+      },
+      {
+        "id": "D",
+        "text": "menggambarkan keadaan pagar sekolah"
+      },
+      {
+        "id": "E",
+        "text": "menandakan ada seseorang yang tidak hadir selama beberapa hari"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Payung yang tidak diambil selama tiga hari menyiratkan pemiliknya belum datang selama itu. Penulis tidak mengatakannya langsung; ia menempatkan benda yang menunggu sebagai penanda orang yang absen.\n\nPerhatikan bahwa hujan disebut turun «sejak subuh» — hanya hari itu, bukan tiga hari.",
+    "distractorRationale": {
+      "A": "Justru sebaliknya; Rina hanya memandanginya.",
+      "B": "Hujan disebut turun sejak subuh hari itu, bukan tiga hari.",
+      "C": "Kutipan tidak berbicara tentang kebiasaan kehilangan barang.",
+      "D": "Pagar hanya tempat payung tergantung, bukan pokok perhatian."
+    },
+    "tags": [
+      "makna-tersirat",
+      "detail-bermakna"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c27",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Hujan turun sejak subuh dan belum juga reda ketika bel pulang berbunyi. Anak-anak berlarian menembus halaman, tertawa, sepatu mereka menciprat genangan. Rina berdiri di bawah atap teras, memandangi payung merah yang tergantung di pagar — payung yang bukan miliknya, yang sudah tiga hari menunggu pemiliknya kembali."
+    },
+    "stem": "Pertentangan yang dibangun penulis dalam kutipan tersebut adalah antara ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "keramaian anak-anak dan kediaman Rina"
+      },
+      {
+        "id": "B",
+        "text": "hujan dan panas"
+      },
+      {
+        "id": "C",
+        "text": "payung merah dan payung lain"
+      },
+      {
+        "id": "D",
+        "text": "pagi dan sore"
+      },
+      {
+        "id": "E",
+        "text": "sekolah dan rumah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat kedua penuh gerak dan bunyi: berlarian, tertawa, menciprat. Kalimat ketiga sepenuhnya diam: berdiri, memandangi.\n\nPenulis menempatkan keduanya berdampingan tanpa berkomentar, dan justru dari perbedaan itulah pembaca merasakan keadaan Rina.",
+    "distractorRationale": {
+      "B": "Tidak ada unsur panas dalam kutipan.",
+      "C": "Hanya satu payung yang disebut.",
+      "D": "Seluruh peristiwa terjadi pada satu waktu, yaitu saat pulang sekolah.",
+      "E": "Rumah tidak muncul dalam kutipan."
+    },
+    "tags": [
+      "kontras",
+      "teknik-bercerita"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c28",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek tidak pernah membuang kunci. Di laci paling bawah ada sekaleng penuh: kunci lemari yang sudah lapuk, kunci rumah lama yang sudah dijual, kunci gembok yang gemboknya entah ke mana. «Suatu hari ada yang mencarinya,» katanya. Tidak pernah ada yang mencari."
+    },
+    "stem": "Kalimat terakhir «Tidak pernah ada yang mencari» berfungsi untuk ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menunjukkan bahwa laci itu penuh"
+      },
+      {
+        "id": "B",
+        "text": "menyatakan kenyataan yang tidak sesuai dengan harapan Kakek"
+      },
+      {
+        "id": "C",
+        "text": "menjelaskan cara kerja gembok"
+      },
+      {
+        "id": "D",
+        "text": "menegaskan bahwa Kakek benar dalam menyimpan kunci"
+      },
+      {
+        "id": "E",
+        "text": "memperkenalkan tokoh baru dalam cerita"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat itu berdiri sendiri, pendek, langsung setelah kutipan harapan Kakek. Penempatannya membuat harapan dan kenyataan bersinggungan tanpa penjelasan apa pun.\n\nPenulis tidak menyimpulkan; ia hanya meletakkan dua kalimat berdampingan dan membiarkan jaraknya terasa.",
+    "distractorRationale": {
+      "A": "Isi laci sudah dijelaskan sebelumnya.",
+      "C": "Cara kerja gembok tidak dibahas.",
+      "D": "Justru menunjukkan harapannya tidak terpenuhi.",
+      "E": "Tidak ada tokoh baru yang diperkenalkan."
+    },
+    "tags": [
+      "fungsi-kalimat",
+      "ironi"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c29",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek tidak pernah membuang kunci. Di laci paling bawah ada sekaleng penuh: kunci lemari yang sudah lapuk, kunci rumah lama yang sudah dijual, kunci gembok yang gemboknya entah ke mana. «Suatu hari ada yang mencarinya,» katanya. Tidak pernah ada yang mencari."
+    },
+    "stem": "Kebiasaan Kakek menyimpan kunci paling tepat dimaknai sebagai ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kebiasaan mengumpulkan benda antik"
+      },
+      {
+        "id": "B",
+        "text": "usaha membantu tetangga yang kehilangan kunci"
+      },
+      {
+        "id": "C",
+        "text": "keengganan melepaskan hal-hal yang sudah kehilangan gunanya"
+      },
+      {
+        "id": "D",
+        "text": "sifat kikir yang berlebihan"
+      },
+      {
+        "id": "E",
+        "text": "cara menabung untuk masa depan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Setiap kunci yang disebut sudah tidak berpasangan: lemarinya lapuk, rumahnya dijual, gemboknya hilang. Yang disimpan bukan alat, melainkan kaitan dengan sesuatu yang sudah tidak ada.\n\nAlasan yang diucapkan Kakek — «suatu hari ada yang mencarinya» — terdengar praktis, tetapi kalimat penutup menunjukkan itu bukan alasan yang sebenarnya.",
+    "distractorRationale": {
+      "A": "Kunci-kunci itu bukan benda antik, melainkan sisa keperluan sehari-hari.",
+      "B": "Tetangga tidak disebut dalam kutipan.",
+      "D": "Kunci-kunci itu tidak bernilai uang, sehingga kekikiran bukan penjelasannya.",
+      "E": "Tidak ada unsur menabung dalam kutipan."
+    },
+    "tags": [
+      "merefleksi",
+      "watak-tokoh"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-c30",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kakek tidak pernah membuang kunci. Di laci paling bawah ada sekaleng penuh: kunci lemari yang sudah lapuk, kunci rumah lama yang sudah dijual, kunci gembok yang gemboknya entah ke mana. «Suatu hari ada yang mencarinya,» katanya. Tidak pernah ada yang mencari."
+    },
+    "stem": "Kunci-kunci itu disimpan Kakek di ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "gantungan di dekat pintu"
+      },
+      {
+        "id": "B",
+        "text": "kotak di bawah tempat tidur"
+      },
+      {
+        "id": "C",
+        "text": "kantong bajunya"
+      },
+      {
+        "id": "D",
+        "text": "sekaleng di laci paling bawah"
+      },
+      {
+        "id": "E",
+        "text": "atas lemari"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat kedua menyebutkannya langsung: «Di laci paling bawah ada sekaleng penuh».",
+    "distractorRationale": {
+      "A": "Gantungan di dekat pintu tidak disebut kutipan.",
+      "B": "Tempat tidur tidak disebut kutipan.",
+      "C": "Kantong baju tidak disebut kutipan.",
+      "E": "Lemari disebut sebagai asal salah satu kunci, bukan tempat penyimpanan."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "detail-tersurat"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

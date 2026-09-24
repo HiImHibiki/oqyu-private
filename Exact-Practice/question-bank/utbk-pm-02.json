@@ -1,0 +1,1210 @@
+[
+  {
+    "id": "utbk-pm-b01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Rasio & proporsi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah resep kue untuk 12 potong memerlukan 300 gram tepung. Untuk membuat 20 potong dengan resep yang sama, tepung yang diperlukan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "450 gram"
+      },
+      {
+        "id": "B",
+        "text": "600 gram"
+      },
+      {
+        "id": "C",
+        "text": "400 gram"
+      },
+      {
+        "id": "D",
+        "text": "550 gram"
+      },
+      {
+        "id": "E",
+        "text": "500 gram"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Tepung per potong: $300 : 12 = 25$ gram. Untuk 20 potong: $25 \\times 20 = 500$ gram.\n\nAlternatifnya dengan proporsi langsung: $300 \\times \\dfrac{20}{12} = 500$.",
+    "distractorRationale": {
+      "A": "Memakai 22,5 gram per potong.",
+      "B": "Menggandakan 300 gram, seolah untuk 24 potong.",
+      "C": "Menambahkan 100 gram tanpa dasar perhitungan.",
+      "D": "Memakai 27,5 gram per potong."
+    },
+    "tags": [
+      "proporsi",
+      "resep"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Operasi kontekstual",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Seorang pedagang membeli 25 kg beras seharga Rp12.000,00 per kg. Ia menjualnya Rp14.400,00 per kg. Persentase keuntungannya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "20%"
+      },
+      {
+        "id": "B",
+        "text": "18%"
+      },
+      {
+        "id": "C",
+        "text": "15%"
+      },
+      {
+        "id": "D",
+        "text": "25%"
+      },
+      {
+        "id": "E",
+        "text": "24%"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Keuntungan per kg: $14.400 - 12.000 = 2.400$ rupiah.\n\nPersentase keuntungan dihitung terhadap harga beli: $\\dfrac{2.400}{12.000} \\times 100\\% = 20\\%$.\n\nJumlah 25 kg tidak memengaruhi persentasenya — keuntungan per kg dan keuntungan total menghasilkan persentase yang sama.",
+    "distractorRationale": {
+      "B": "Hasil pembulatan dari perhitungan yang salah.",
+      "C": "Membagi dengan angka yang keliru.",
+      "D": "Menaksir kasar tanpa menghitung.",
+      "E": "Menghitung terhadap harga jual, bukan harga beli."
+    },
+    "tags": [
+      "untung-rugi",
+      "persentase"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Representasi bilangan",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Jarak dua kota pada peta 6 cm. Skala peta $1 : 2.500.000$. Jarak sebenarnya kedua kota adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1.500 km"
+      },
+      {
+        "id": "B",
+        "text": "150 km"
+      },
+      {
+        "id": "C",
+        "text": "15 km"
+      },
+      {
+        "id": "D",
+        "text": "600 km"
+      },
+      {
+        "id": "E",
+        "text": "60 km"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Jarak sebenarnya $= 6 \\times 2.500.000 = 15.000.000$ cm.\n\nUbah ke kilometer: $15.000.000$ cm $= 150.000$ m $= 150$ km.\n\nPembagian bertahap membantu: 100 cm sama dengan 1 m, dan 1.000 m sama dengan 1 km — seluruhnya pembagian dengan 100.000.",
+    "distractorRationale": {
+      "A": "Membagi dengan 10.000.",
+      "C": "Membagi dengan 1.000.000 alih-alih 100.000.",
+      "D": "Membagi dengan 25.000 saja.",
+      "E": "Salah menempatkan koma pada tahap akhir."
+    },
+    "tags": [
+      "skala",
+      "konversi-satuan"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Rasio & proporsi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah tangki terisi $\\dfrac{3}{5}$ bagian. Setelah ditambah 240 liter air, tangki terisi $\\dfrac{9}{10}$ bagian. Kapasitas tangki tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "600 liter"
+      },
+      {
+        "id": "B",
+        "text": "700 liter"
+      },
+      {
+        "id": "C",
+        "text": "800 liter"
+      },
+      {
+        "id": "D",
+        "text": "900 liter"
+      },
+      {
+        "id": "E",
+        "text": "1.000 liter"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Selisih bagian yang terisi: $\\dfrac{9}{10} - \\dfrac{3}{5} = \\dfrac{9}{10} - \\dfrac{6}{10} = \\dfrac{3}{10}$.\n\nBagian sebesar $\\dfrac{3}{10}$ itu setara 240 liter, sehingga kapasitas penuhnya $240 \\times \\dfrac{10}{3} = 800$ liter.",
+    "distractorRationale": {
+      "A": "Menganggap selisih bagiannya $\\dfrac{2}{5}$.",
+      "B": "Hasil taksiran tanpa menyamakan penyebut.",
+      "D": "Menganggap 240 liter setara $\\dfrac{4}{15}$ bagian.",
+      "E": "Membulatkan ke angka yang mudah tanpa perhitungan."
+    },
+    "tags": [
+      "pecahan",
+      "selisih-bagian"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Pemodelan persamaan",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah bengkel mengenakan biaya tetap Rp50.000,00 ditambah Rp75.000,00 untuk setiap jam pengerjaan. Jika total biaya yang dibayar Rp350.000,00, lama pengerjaan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3 jam"
+      },
+      {
+        "id": "B",
+        "text": "6 jam"
+      },
+      {
+        "id": "C",
+        "text": "7 jam"
+      },
+      {
+        "id": "D",
+        "text": "4 jam"
+      },
+      {
+        "id": "E",
+        "text": "5 jam"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Modelkan: $50.000 + 75.000t = 350.000$.\n\nKurangkan biaya tetap: $75.000t = 300.000$, sehingga $t = 4$ jam.\n\nMelupakan biaya tetap dan langsung membagi $350.000 : 75.000$ adalah kekeliruan yang paling sering terjadi pada soal berpola begini.",
+    "distractorRationale": {
+      "A": "Membagi 300.000 dengan 100.000.",
+      "B": "Membagi 450.000 dengan 75.000.",
+      "C": "Menjumlahkan kedua tarif lalu membaginya.",
+      "E": "Membagi 350.000 dengan 75.000 lalu membulatkan, tanpa mengurangi biaya tetap."
+    },
+    "tags": [
+      "pemodelan-linear",
+      "biaya-tetap"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Sistem persamaan",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Harga 3 buku dan 2 pena Rp37.000,00. Harga 2 buku dan 3 pena Rp33.000,00. Harga sebuah buku adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp8.000,00"
+      },
+      {
+        "id": "B",
+        "text": "Rp10.000,00"
+      },
+      {
+        "id": "C",
+        "text": "Rp7.000,00"
+      },
+      {
+        "id": "D",
+        "text": "Rp11.000,00"
+      },
+      {
+        "id": "E",
+        "text": "Rp9.000,00"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Misalkan buku $b$ dan pena $p$. Jumlahkan kedua persamaan: $5b + 5p = 70.000$, sehingga $b + p = 14.000$.\n\nKurangkan keduanya: $b - p = 4.000$.\n\nDari $b + p = 14.000$ dan $b - p = 4.000$ diperoleh $2b = 18.000$, jadi $b = 9.000$.",
+    "distractorRationale": {
+      "A": "Membagi 16.000 dengan 2.",
+      "B": "Membulatkan hasil taksiran.",
+      "C": "Menghitung harga pena, bukan buku.",
+      "D": "Salah tanda saat mengurangkan kedua persamaan."
+    },
+    "tags": [
+      "spldv",
+      "soal-cerita"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Fungsi kontekstual",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah bola dilempar ke atas dan tingginya setelah $t$ detik dinyatakan oleh $h(t) = -5t^2 + 20t$ meter. Tinggi maksimum yang dicapai bola adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "20 meter"
+      },
+      {
+        "id": "B",
+        "text": "25 meter"
+      },
+      {
+        "id": "C",
+        "text": "10 meter"
+      },
+      {
+        "id": "D",
+        "text": "15 meter"
+      },
+      {
+        "id": "E",
+        "text": "40 meter"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Grafiknya parabola terbuka ke bawah, sehingga puncaknya adalah tinggi maksimum. Waktu puncak: $t = \\dfrac{-b}{2a} = \\dfrac{-20}{2(-5)} = 2$ detik.\n\nSubstitusi: $h(2) = -5(4) + 20(2) = -20 + 40 = 20$ meter.",
+    "distractorRationale": {
+      "B": "Menghitung dengan waktu puncak yang keliru.",
+      "C": "Menghitung $h(1) = 15$ lalu membulatkan keliru, atau memakai separuh tinggi puncak.",
+      "D": "Nilai $h(1)$, bukan tinggi maksimum.",
+      "E": "Mengambil suku $20t$ pada $t = 2$ tanpa mengurangkan $-5t^2$."
+    },
+    "tags": [
+      "fungsi-kuadrat",
+      "titik-puncak"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Pemodelan persamaan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Umur ayah tiga kali umur anaknya. Lima tahun lagi, umur ayah menjadi dua setengah kali umur anaknya. Umur anak sekarang adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "12 tahun"
+      },
+      {
+        "id": "B",
+        "text": "15 tahun"
+      },
+      {
+        "id": "C",
+        "text": "10 tahun"
+      },
+      {
+        "id": "D",
+        "text": "8 tahun"
+      },
+      {
+        "id": "E",
+        "text": "18 tahun"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Misalkan umur anak $a$, maka umur ayah $3a$.\n\nLima tahun lagi: $3a + 5 = 2{,}5(a + 5)$.\n\nUraikan ruas kanan: $3a + 5 = 2{,}5a + 12{,}5$. Kurangkan $2{,}5a$ dan 5 dari kedua ruas: $0{,}5a = 7{,}5$, sehingga $a = 15$.\n\nPeriksa kembali: umur anak 15 dan ayah 45. Lima tahun lagi menjadi 20 dan 50, dan $50 : 20 = 2{,}5$. Cocok.",
+    "distractorRationale": {
+      "A": "Lima tahun lagi memberi 41 berbanding 17, yaitu sekitar 2,41 kali.",
+      "C": "Lima tahun lagi memberi 35 berbanding 15, yaitu sekitar 2,33 kali.",
+      "D": "Lima tahun lagi memberi 29 berbanding 13, bukan 2,5 kali.",
+      "E": "Lima tahun lagi memberi 59 berbanding 23, yaitu sekitar 2,57 kali."
+    },
+    "tags": [
+      "soal-umur",
+      "pemodelan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Fungsi kontekstual",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah perusahaan menetapkan gaji bulanan $G = 3.000.000 + 50.000n$ rupiah, dengan $n$ menyatakan lama bekerja dalam bulan. Setelah berapa bulan gaji karyawan mencapai Rp4.500.000,00?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "35 bulan"
+      },
+      {
+        "id": "B",
+        "text": "20 bulan"
+      },
+      {
+        "id": "C",
+        "text": "30 bulan"
+      },
+      {
+        "id": "D",
+        "text": "25 bulan"
+      },
+      {
+        "id": "E",
+        "text": "40 bulan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Selesaikan $3.000.000 + 50.000n = 4.500.000$.\n\nKurangkan gaji awal: $50.000n = 1.500.000$, sehingga $n = 30$ bulan.",
+    "distractorRationale": {
+      "A": "Membagi 1.750.000 dengan 50.000.",
+      "B": "Membagi 1.000.000 dengan 50.000.",
+      "D": "Membagi 1.250.000 dengan 50.000.",
+      "E": "Membagi 2.000.000 dengan 50.000."
+    },
+    "tags": [
+      "fungsi-linear",
+      "penerapan"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Sistem persamaan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah parkiran memuat 60 kendaraan berupa mobil dan motor. Jumlah seluruh rodanya 180. Banyak mobil di parkiran itu adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "35"
+      },
+      {
+        "id": "B",
+        "text": "25"
+      },
+      {
+        "id": "C",
+        "text": "40"
+      },
+      {
+        "id": "D",
+        "text": "30"
+      },
+      {
+        "id": "E",
+        "text": "20"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Misalkan mobil $m$ dan motor $s$: $m + s = 60$ dan $4m + 2s = 180$.\n\nDari persamaan pertama $s = 60 - m$. Substitusi: $4m + 2(60 - m) = 180$, yaitu $2m + 120 = 180$, sehingga $m = 30$.\n\nCara cepat: bila semuanya motor, rodanya $120$. Kelebihan $60$ roda dibagi selisih roda per kendaraan, yaitu 2, memberi 30 mobil.",
+    "distractorRationale": {
+      "A": "Salah menghitung kelebihan roda.",
+      "B": "Hasil taksiran tanpa perhitungan.",
+      "C": "Membagi 160 dengan 4.",
+      "E": "Membagi kelebihan roda dengan 3."
+    },
+    "tags": [
+      "spldv",
+      "soal-cerita"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun & volume kontekstual",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah bak air berbentuk balok berukuran panjang 120 cm, lebar 80 cm, dan tinggi 50 cm. Volume air yang dapat ditampung bak tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "240 liter"
+      },
+      {
+        "id": "B",
+        "text": "360 liter"
+      },
+      {
+        "id": "C",
+        "text": "720 liter"
+      },
+      {
+        "id": "D",
+        "text": "600 liter"
+      },
+      {
+        "id": "E",
+        "text": "480 liter"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Volume $= 120 \\times 80 \\times 50 = 480.000$ cm kubik.\n\nSatu liter sama dengan 1.000 cm kubik, sehingga volumenya $480.000 : 1.000 = 480$ liter.",
+    "distractorRationale": {
+      "A": "Membagi dengan 2.000.",
+      "B": "Salah menghitung hasil perkalian tiga bilangan.",
+      "C": "Memakai tinggi 75 cm.",
+      "D": "Memakai tinggi 62,5 cm."
+    },
+    "tags": [
+      "volume-balok",
+      "konversi-liter"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Skala & denah",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Denah sebuah ruangan digambar dengan skala $1 : 50$. Pada denah, ruangan itu berukuran 8 cm kali 6 cm. Luas ruangan sebenarnya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$12\\ \\text{m}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$48\\ \\text{m}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$6\\ \\text{m}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$96\\ \\text{m}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$24\\ \\text{m}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Ukuran sebenarnya: $8 \\times 50 = 400$ cm dan $6 \\times 50 = 300$ cm, yaitu 4 m kali 3 m.\n\nLuasnya $4 \\times 3 = 12$ meter persegi.\n\nMengalikan luas pada denah dengan 50 adalah kekeliruan yang lazim: skala berlaku untuk panjang, sedangkan luas berubah menurut kuadratnya.",
+    "distractorRationale": {
+      "B": "Memakai skala pada salah satu sisi saja.",
+      "C": "Membagi hasil yang benar dengan 2.",
+      "D": "Mengalikan luas denah dengan 2 lalu dengan 2 lagi.",
+      "E": "Mengalikan luas denah dengan 50 lalu membagi dengan 100."
+    },
+    "tags": [
+      "skala",
+      "luas"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b13",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Trigonometri terapan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah tangga bersandar pada tembok. Panjang tangga 10 m dan kakinya berjarak 6 m dari tembok. Tinggi ujung tangga dari tanah adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4 m"
+      },
+      {
+        "id": "B",
+        "text": "8 m"
+      },
+      {
+        "id": "C",
+        "text": "6 m"
+      },
+      {
+        "id": "D",
+        "text": "12 m"
+      },
+      {
+        "id": "E",
+        "text": "16 m"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Tangga, tembok, dan tanah membentuk segitiga siku-siku dengan tangga sebagai sisi miring.\n\nTingginya $\\sqrt{10^2 - 6^2} = \\sqrt{100 - 36} = \\sqrt{64} = 8$ m.",
+    "distractorRationale": {
+      "A": "Mengurangkan 10 dengan 6 secara langsung.",
+      "C": "Mengambil jarak kaki tangga sebagai tingginya.",
+      "D": "Menjumlahkan kuadrat lalu keliru mengakarkan.",
+      "E": "Menjumlahkan 10 dan 6."
+    },
+    "tags": [
+      "pythagoras",
+      "penerapan"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b14",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun & volume kontekstual",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kolam berbentuk balok berukuran 5 m kali 4 m dengan kedalaman 2 m. Kolam diisi air hingga penuh dengan debit 200 liter per menit. Waktu yang diperlukan untuk mengisinya adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "250 menit"
+      },
+      {
+        "id": "B",
+        "text": "400 menit"
+      },
+      {
+        "id": "C",
+        "text": "200 menit"
+      },
+      {
+        "id": "D",
+        "text": "100 menit"
+      },
+      {
+        "id": "E",
+        "text": "150 menit"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Volume kolam $= 5 \\times 4 \\times 2 = 40$ meter kubik.\n\nSatu meter kubik sama dengan 1.000 liter, sehingga volumenya 40.000 liter.\n\nWaktunya $40.000 : 200 = 200$ menit.",
+    "distractorRationale": {
+      "A": "Memakai volume 50 meter kubik.",
+      "B": "Memakai debit 100 liter per menit.",
+      "D": "Memakai debit 400 liter per menit.",
+      "E": "Salah menghitung volume kolam."
+    },
+    "tags": [
+      "debit",
+      "volume"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b15",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Skala & denah",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah taman berbentuk persegi panjang berukuran 30 m kali 20 m akan dikelilingi pagar. Jika biaya pagar Rp150.000,00 per meter, total biaya pemagaran adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp90.000.000,00"
+      },
+      {
+        "id": "B",
+        "text": "Rp7.500.000,00"
+      },
+      {
+        "id": "C",
+        "text": "Rp9.000.000,00"
+      },
+      {
+        "id": "D",
+        "text": "Rp15.000.000,00"
+      },
+      {
+        "id": "E",
+        "text": "Rp12.000.000,00"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Keliling taman $= 2(30 + 20) = 100$ m.\n\nBiayanya $100 \\times 150.000 = 15.000.000$ rupiah.\n\nMemakai luas alih-alih keliling adalah kekeliruan yang paling sering terjadi — pagar mengelilingi tepi, bukan menutup permukaan.",
+    "distractorRationale": {
+      "A": "Memakai luas 600 meter persegi sebagai panjang pagar.",
+      "B": "Memakai setengah keliling, yaitu 50 m.",
+      "C": "Memakai 60 m, hanya dua sisi panjang.",
+      "E": "Memakai 80 m."
+    },
+    "tags": [
+      "keliling",
+      "biaya"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b16",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Analisis data nyata",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Hasil panen padi sebuah desa selama lima tahun (dalam ton):\n\n| Tahun | Hasil |\n|---|---|\n| 2019 | 420 |\n| 2020 | 385 |\n| 2021 | 460 |\n| 2022 | 510 |\n| 2023 | 475 |"
+    },
+    "stem": "Rata-rata hasil panen per tahun selama periode tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "440 ton"
+      },
+      {
+        "id": "B",
+        "text": "480 ton"
+      },
+      {
+        "id": "C",
+        "text": "470 ton"
+      },
+      {
+        "id": "D",
+        "text": "460 ton"
+      },
+      {
+        "id": "E",
+        "text": "450 ton"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Jumlah seluruhnya: $420 + 385 + 460 + 510 + 475 = 2.250$ ton.\n\nRata-ratanya $2.250 : 5 = 450$ ton.",
+    "distractorRationale": {
+      "A": "Salah menjumlahkan pada satu suku.",
+      "B": "Menaksir kasar dari dua tahun tertinggi.",
+      "C": "Mengambil nilai tengah dari data yang diurutkan.",
+      "D": "Mengambil hasil tahun 2021."
+    },
+    "tags": [
+      "rata-rata",
+      "data-nyata"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b17",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Analisis data nyata",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Hasil panen padi sebuah desa selama lima tahun (dalam ton):\n\n| Tahun | Hasil |\n|---|---|\n| 2019 | 420 |\n| 2020 | 385 |\n| 2021 | 460 |\n| 2022 | 510 |\n| 2023 | 475 |"
+    },
+    "stem": "Persentase kenaikan hasil panen dari tahun 2020 ke tahun 2022 adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sekitar 32,5%"
+      },
+      {
+        "id": "B",
+        "text": "sekitar 24,5%"
+      },
+      {
+        "id": "C",
+        "text": "sekitar 28,5%"
+      },
+      {
+        "id": "D",
+        "text": "sekitar 40,5%"
+      },
+      {
+        "id": "E",
+        "text": "sekitar 36,5%"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kenaikannya $510 - 385 = 125$ ton.\n\nPersentase dihitung terhadap tahun awal: $\\dfrac{125}{385} \\times 100\\% \\approx 32{,}5\\%$.\n\nMembagi dengan 510 akan menghasilkan sekitar 24,5% — itu menghitung penurunan dari 2022 ke 2020, pertanyaan yang berbeda.",
+    "distractorRationale": {
+      "B": "Membagi dengan 510, yaitu tahun akhir, bukan tahun awal.",
+      "C": "Membagi dengan rata-rata kedua tahun.",
+      "D": "Memakai selisih terhadap tahun 2019.",
+      "E": "Salah menghitung selisihnya."
+    },
+    "tags": [
+      "persentase-kenaikan",
+      "dasar-hitung"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b18",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Peluang kontekstual",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kelas terdiri atas 18 siswa perempuan dan 12 siswa laki-laki. Seorang siswa dipilih acak sebagai perwakilan. Peluang terpilih siswa laki-laki adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{2}{5}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{2}{3}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{3}{5}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Jumlah seluruh siswa $18 + 12 = 30$. Peluang terpilih laki-laki $= \\dfrac{12}{30} = \\dfrac{2}{5}$.",
+    "distractorRationale": {
+      "A": "Memakai perbandingan laki-laki terhadap perempuan, $\\dfrac{12}{36}$ yang juga keliru.",
+      "C": "Memakai $\\dfrac{18}{27}$ yang tidak sesuai data.",
+      "D": "Menganggap jumlah keduanya sama.",
+      "E": "Peluang terpilih siswa perempuan."
+    },
+    "tags": [
+      "peluang",
+      "konteks-kelas"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b19",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Inferensi sederhana",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah pabrik memeriksa 500 lampu dan menemukan 15 di antaranya cacat. Dari satu pengiriman berisi 8.000 lampu, taksiran jumlah lampu cacat adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "480"
+      },
+      {
+        "id": "B",
+        "text": "300"
+      },
+      {
+        "id": "C",
+        "text": "240"
+      },
+      {
+        "id": "D",
+        "text": "180"
+      },
+      {
+        "id": "E",
+        "text": "120"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Proporsi cacat pada sampel: $\\dfrac{15}{500} = 0{,}03$ atau 3%.\n\nTaksiran untuk 8.000 lampu: $0{,}03 \\times 8.000 = 240$ lampu.\n\nAngka ini taksiran, bukan kepastian — sampel yang berbeda dapat memberi proporsi yang sedikit berbeda pula.",
+    "distractorRationale": {
+      "A": "Memakai proporsi 6%, yaitu dua kali lipat.",
+      "B": "Memakai proporsi 3,75%.",
+      "D": "Memakai proporsi 2,25%.",
+      "E": "Memakai proporsi 1,5%."
+    },
+    "tags": [
+      "proporsi-sampel",
+      "inferensi"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-b20",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Inferensi sederhana",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah survei kepuasan pelanggan dilakukan dengan membagikan kuesioner hanya kepada pelanggan yang datang kembali ke toko. Hasilnya, 92% menyatakan puas.\n\nKelemahan utama survei tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kuesioner seharusnya diisi secara daring"
+      },
+      {
+        "id": "B",
+        "text": "angka 92% terlalu tinggi untuk sebuah survei"
+      },
+      {
+        "id": "C",
+        "text": "survei sebaiknya dilakukan lebih dari sekali"
+      },
+      {
+        "id": "D",
+        "text": "pelanggan yang tidak puas cenderung tidak datang kembali sehingga tidak terjaring"
+      },
+      {
+        "id": "E",
+        "text": "jumlah respondennya tidak disebutkan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Cara pengambilan sampelnya sudah menyaring: orang yang kecewa umumnya tidak kembali, sehingga suaranya tidak pernah masuk hitungan. Angka 92% karena itu menggambarkan pelanggan yang kembali, bukan seluruh pelanggan.\n\nUntuk memperoleh gambaran yang utuh, survei harus menjangkau juga mereka yang berhenti datang.",
+    "distractorRationale": {
+      "A": "Media pengisian tidak mengubah masalah keterwakilan.",
+      "B": "Tinggi rendahnya angka bukan ukuran sahih tidaknya survei.",
+      "C": "Mengulang survei dengan cara yang sama akan menghasilkan bias yang sama.",
+      "E": "Jumlah responden memang berguna diketahui, tetapi cacat pokoknya terletak pada cara memilihnya."
+    },
+    "tags": [
+      "bias-seleksi",
+      "keterwakilan"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

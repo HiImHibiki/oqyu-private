@@ -1,0 +1,599 @@
+[
+  {
+    "id": "utbk-pk-p01",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Operasi & sifat bilangan",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari $(-2)^3 + 3^2$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$1$"
+      },
+      {
+        "id": "B",
+        "text": "$-17$"
+      },
+      {
+        "id": "C",
+        "text": "$17$"
+      },
+      {
+        "id": "D",
+        "text": "$15$"
+      },
+      {
+        "id": "E",
+        "text": "$-1$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Pangkat ganjil dari bilangan negatif tetap negatif: $(-2)^3 = -8$. Sedangkan $3^2 = 9$.\n\nJumlahnya $-8 + 9 = 1$.",
+    "distractorRationale": {
+      "B": "Menjumlahkan $-8$ dan $-9$.",
+      "C": "Menganggap $(-2)^3 = 8$, seolah pangkatnya genap.",
+      "D": "Menghitung $(-2)^3$ sebagai $-6$.",
+      "E": "Membalik tanda pada hasil akhir."
+    },
+    "tags": [
+      "operasi-bilangan",
+      "pangkat"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-p02",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Perbandingan",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Dua bilangan berbanding $2 : 3$ dan jumlahnya 45. Bilangan yang lebih kecil adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "20"
+      },
+      {
+        "id": "B",
+        "text": "18"
+      },
+      {
+        "id": "C",
+        "text": "15"
+      },
+      {
+        "id": "D",
+        "text": "30"
+      },
+      {
+        "id": "E",
+        "text": "27"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Jumlah perbandingannya $2 + 3 = 5$ bagian, dan itu senilai 45, sehingga satu bagian bernilai 9.\n\nBilangan yang lebih kecil adalah $2 \\times 9 = 18$, dan yang lebih besar $3 \\times 9 = 27$. Periksa: $18 + 27 = 45$.",
+    "distractorRationale": {
+      "A": "Menaksir tanpa membagi menurut perbandingannya.",
+      "C": "Membagi 45 menjadi tiga bagian sama besar.",
+      "D": "Memakai perbandingan $2 : 1$.",
+      "E": "Memberikan bilangan yang lebih besar."
+    },
+    "tags": [
+      "perbandingan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-p03",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Luas segitiga dengan alas 12 cm dan tinggi 8 cm adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$24\\ \\text{cm}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$40\\ \\text{cm}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$48\\ \\text{cm}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$20\\ \\text{cm}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$96\\ \\text{cm}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Luas segitiga adalah setengah alas kali tinggi: $\\dfrac{1}{2} \\times 12 \\times 8 = 48\\ \\text{cm}^2$.\n\nMelupakan faktor setengah menghasilkan 96, yaitu luas persegi panjang dengan ukuran yang sama.",
+    "distractorRationale": {
+      "A": "Membagi hasil dengan empat, bukan dua.",
+      "B": "Memakai tinggi 20 tanpa dasar.",
+      "D": "Menjumlahkan alas dan tinggi.",
+      "E": "Melupakan faktor setengah."
+    },
+    "tags": [
+      "segitiga",
+      "luas"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-p04",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Persamaan & pertidaksamaan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Bilangan bulat terbesar yang memenuhi $3(x - 2) < x + 4$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6"
+      },
+      {
+        "id": "B",
+        "text": "3"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      },
+      {
+        "id": "E",
+        "text": "2"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Uraikan: $3x - 6 < x + 4$, sehingga $2x < 10$ dan $x < 5$.\n\nKarena tandanya «kurang dari» dan bukan «kurang dari atau sama dengan», nilai 5 tidak memenuhi. Bilangan bulat terbesar yang memenuhi adalah 4.",
+    "distractorRationale": {
+      "A": "Melebihi batas.",
+      "B": "Kurang dari batas, tetapi bukan yang terbesar.",
+      "C": "Tidak memenuhi karena pertidaksamaannya tegas.",
+      "E": "Jauh di bawah batas."
+    },
+    "tags": [
+      "pertidaksamaan"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-p05",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Eksponen & logaritma",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari $\\dfrac{2^5 \\times 2^3}{2^6}$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$8$"
+      },
+      {
+        "id": "B",
+        "text": "$32$"
+      },
+      {
+        "id": "C",
+        "text": "$16$"
+      },
+      {
+        "id": "D",
+        "text": "$2$"
+      },
+      {
+        "id": "E",
+        "text": "$4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Perkalian pangkat berbasis sama menjumlahkan eksponennya: $2^5 \\times 2^3 = 2^8$.\n\nPembagian mengurangkan eksponen: $\\dfrac{2^8}{2^6} = 2^2 = 4$.",
+    "distractorRationale": {
+      "A": "Memberikan $2^3$.",
+      "B": "Mengalikan eksponen alih-alih menjumlahkannya.",
+      "C": "Memberikan $2^4$.",
+      "D": "Mengurangkan eksponen dua kali."
+    },
+    "tags": [
+      "eksponen"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-p06",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Statistika deskriptif",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Data 7, 5, 8, 5, 9, 6, 5 memiliki modus dan median berturut-turut ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5 dan 6"
+      },
+      {
+        "id": "B",
+        "text": "6 dan 5"
+      },
+      {
+        "id": "C",
+        "text": "5 dan 7"
+      },
+      {
+        "id": "D",
+        "text": "5 dan 5"
+      },
+      {
+        "id": "E",
+        "text": "7 dan 6"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Modus adalah nilai yang paling sering muncul, yaitu 5 karena muncul tiga kali.\n\nUntuk median, urutkan lebih dahulu: 5, 5, 5, 6, 7, 8, 9. Banyak data ganjil, sehingga median adalah datum ke-4, yaitu 6.",
+    "distractorRationale": {
+      "B": "Menukar modus dengan median.",
+      "C": "Mengambil datum ke-5 sebagai median.",
+      "D": "Mengambil median dari data yang belum diurutkan seluruhnya.",
+      "E": "Salah menentukan modus."
+    },
+    "tags": [
+      "modus",
+      "median"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-p07",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Koordinat",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Jarak antara titik $A(1, 2)$ dan $B(4, 6)$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$25$"
+      },
+      {
+        "id": "B",
+        "text": "$5$"
+      },
+      {
+        "id": "C",
+        "text": "$7$"
+      },
+      {
+        "id": "D",
+        "text": "$\\sqrt{7}$"
+      },
+      {
+        "id": "E",
+        "text": "$3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Gunakan rumus jarak: $\\sqrt{(4-1)^2 + (6-2)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.\n\nSegitiga siku-siku dengan sisi 3 dan 4 memang berhipotenusa 5 — pola yang berguna dihafal.",
+    "distractorRationale": {
+      "A": "Lupa menarik akar dari 25.",
+      "C": "Menjumlahkan kedua selisih tanpa mengkuadratkan.",
+      "D": "Menjumlahkan selisih lalu menarik akarnya.",
+      "E": "Hanya menghitung selisih absis."
+    },
+    "tags": [
+      "koordinat",
+      "jarak"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-p08",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Peluang",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah dadu setimbang dilempar satu kali. Peluang muncul mata dadu bilangan prima adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{1}{6}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{5}{6}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{2}{3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Mata dadu yang merupakan bilangan prima adalah 2, 3, dan 5 — tiga dari enam kemungkinan.\n\nPeluangnya $\\dfrac{3}{6} = \\dfrac{1}{2}$. Perhatikan bahwa 1 bukan bilangan prima, dan itulah jebakan yang paling sering menjerat.",
+    "distractorRationale": {
+      "A": "Menghitung hanya dua bilangan prima.",
+      "B": "Menghitung satu mata dadu saja.",
+      "D": "Menghitung lima mata dadu.",
+      "E": "Menghitung empat mata dadu, memasukkan 1 sebagai prima."
+    },
+    "tags": [
+      "peluang",
+      "bilangan-prima"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-p09",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah tabung berjari-jari 7 cm dan tinggi 10 cm. Volumenya adalah ... (gunakan $\\pi = \\dfrac{22}{7}$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$154\\ \\text{cm}^3$"
+      },
+      {
+        "id": "B",
+        "text": "$220\\ \\text{cm}^3$"
+      },
+      {
+        "id": "C",
+        "text": "$3.080\\ \\text{cm}^3$"
+      },
+      {
+        "id": "D",
+        "text": "$1.540\\ \\text{cm}^3$"
+      },
+      {
+        "id": "E",
+        "text": "$440\\ \\text{cm}^3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Volume tabung adalah $\\pi r^2 t = \\dfrac{22}{7} \\times 49 \\times 10$.\n\nKarena $\\dfrac{22}{7} \\times 49 = 22 \\times 7 = 154$, volumenya $154 \\times 10 = 1.540\\ \\text{cm}^3$.\n\nJari-jari 7 sengaja dipilih agar habis dibagi penyebut 7 — tanda bahwa perhitungannya dirancang tanpa kalkulator.",
+    "distractorRationale": {
+      "A": "Berhenti pada luas alas, belum dikalikan tinggi.",
+      "B": "Mengalikan keliling alas dengan lima.",
+      "C": "Mengalikan dengan diameter, bukan kuadrat jari-jari.",
+      "E": "Menghitung keliling alas dikalikan tinggi."
+    },
+    "tags": [
+      "tabung",
+      "volume"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-p10",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Fungsi & grafik",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Grafik $f(x) = x^2 - 4x + 3$ memotong sumbu $X$ di dua titik. Jumlah absis kedua titik itu adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$-4$"
+      },
+      {
+        "id": "B",
+        "text": "$3$"
+      },
+      {
+        "id": "C",
+        "text": "$-3$"
+      },
+      {
+        "id": "D",
+        "text": "$1$"
+      },
+      {
+        "id": "E",
+        "text": "$4$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Titik potong sumbu $X$ diperoleh saat $f(x) = 0$: $x^2 - 4x + 3 = (x - 1)(x - 3) = 0$, sehingga $x = 1$ dan $x = 3$.\n\nJumlahnya $1 + 3 = 4$.\n\nCara cepat: jumlah akar persamaan kuadrat adalah $-\\dfrac{b}{a} = -\\dfrac{-4}{1} = 4$, tanpa perlu memfaktorkan.",
+    "distractorRationale": {
+      "A": "Memakai $\\dfrac{b}{a}$ tanpa tanda negatif.",
+      "B": "Memberikan hasil kali akar, bukan jumlahnya.",
+      "C": "Membalik tanda jumlah akar.",
+      "D": "Memberikan salah satu akar saja."
+    },
+    "tags": [
+      "fungsi-kuadrat",
+      "akar"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  }
+]

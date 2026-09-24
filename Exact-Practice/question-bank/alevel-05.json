@@ -1,0 +1,2896 @@
+[
+  {
+    "id": "al-chm-r01",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "How many molecules are present in $0.20\\ \\text{mol}$ of carbon dioxide? ($L = 6.02 \\times 10^{23}\\ \\text{mol}^{-1}$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$1.2 \\times 10^{23}$"
+      },
+      {
+        "id": "B",
+        "text": "$1.2 \\times 10^{22}$"
+      },
+      {
+        "id": "C",
+        "text": "$3.0 \\times 10^{24}$"
+      },
+      {
+        "id": "D",
+        "text": "$6.02 \\times 10^{23}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Number of particles is amount multiplied by the Avogadro constant: $0.20 \\times 6.02 \\times 10^{23} = 1.2 \\times 10^{23}$.",
+    "distractorRationale": {
+      "B": "Is out by a factor of ten.",
+      "C": "Divides by 0.20 instead of multiplying.",
+      "D": "Gives the number in one mole, ignoring the amount."
+    },
+    "tags": [
+      "avogadro",
+      "moles"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r02",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In a reaction, $8.0\\ \\text{g}$ of product is obtained where the theoretical maximum is $10.0\\ \\text{g}$. What is the percentage yield?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$8\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$80\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$125\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$20\\%$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Percentage yield is actual divided by theoretical: $\\dfrac{8.0}{10.0} \\times 100 = 80\\%$. A yield above $100\\%$ would mean impure or wet product, never a genuinely better reaction.",
+    "distractorRationale": {
+      "A": "Omits the theoretical mass entirely.",
+      "C": "Inverts the fraction.",
+      "D": "Gives the shortfall rather than the yield."
+    },
+    "tags": [
+      "percentage-yield"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r03",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "For $\\text{CH}_4 + \\text{Cl}_2 \\rightarrow \\text{CH}_3\\text{Cl} + \\text{HCl}$, what is the atom economy for $\\text{CH}_3\\text{Cl}$? ($M_r$: $\\text{CH}_4\\ 16$, $\\text{Cl}_2\\ 71$, $\\text{CH}_3\\text{Cl}\\ 50.5$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$36\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$71\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$58\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$50.5\\%$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Atom economy compares the mass of the wanted product with the total mass of reactants: $\\dfrac{50.5}{16 + 71} \\times 100 = \\dfrac{50.5}{87} \\times 100 = 58\\%$.\\n\\nUnlike percentage yield, atom economy is fixed by the equation alone — improving technique cannot change it, only a different route can.",
+    "distractorRationale": {
+      "A": "Divides by the product of the reactant masses.",
+      "B": "Uses the chlorine mass as the denominator alone.",
+      "D": "Quotes the molar mass as a percentage."
+    },
+    "tags": [
+      "atom-economy",
+      "green-chemistry"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r04",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "$25.0\\ \\text{cm}^3$ of sodium hydroxide is exactly neutralised by $20.0\\ \\text{cm}^3$ of $0.100\\ \\text{mol}\\,\\text{dm}^{-3}$ hydrochloric acid. What is the concentration of the alkali?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$0.125\\ \\text{mol}\\,\\text{dm}^{-3}$"
+      },
+      {
+        "id": "B",
+        "text": "$0.050\\ \\text{mol}\\,\\text{dm}^{-3}$"
+      },
+      {
+        "id": "C",
+        "text": "$0.200\\ \\text{mol}\\,\\text{dm}^{-3}$"
+      },
+      {
+        "id": "D",
+        "text": "$0.080\\ \\text{mol}\\,\\text{dm}^{-3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Moles of acid: $0.0200 \\times 0.100 = 2.00 \\times 10^{-3}$. The reaction is $1:1$, so the alkali contains the same amount in $0.0250\\ \\text{dm}^3$.\\n\\nConcentration $= \\dfrac{2.00 \\times 10^{-3}}{0.0250} = 0.080\\ \\text{mol}\\,\\text{dm}^{-3}$.",
+    "distractorRationale": {
+      "A": "Inverts the volume ratio.",
+      "B": "Halves the correct answer.",
+      "C": "Uses a $1:2$ ratio that the equation does not have."
+    },
+    "tags": [
+      "titration",
+      "concentration"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r05",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the electronic configuration of the $\\text{Fe}^{3+}$ ion? (Proton number of Fe is 26.)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$[\\text{Ar}]\\,3d^5$"
+      },
+      {
+        "id": "B",
+        "text": "$[\\text{Ar}]\\,3d^3\\,4s^2$"
+      },
+      {
+        "id": "C",
+        "text": "$[\\text{Ar}]\\,3d^4\\,4s^1$"
+      },
+      {
+        "id": "D",
+        "text": "$[\\text{Ar}]\\,3d^6$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Neutral iron is $[\\text{Ar}]\\,3d^6\\,4s^2$. Transition metals lose the $4s$ electrons first, then a $3d$ electron, giving $[\\text{Ar}]\\,3d^5$.\\n\\nThe half-filled $3d^5$ arrangement is part of why iron(III) is so stable.",
+    "distractorRationale": {
+      "B": "Removes $3d$ electrons while keeping $4s$, reversing the order of loss.",
+      "C": "Keeps a $4s$ electron, which is lost first.",
+      "D": "Removes only the two $4s$ electrons, giving $\\text{Fe}^{2+}$."
+    },
+    "tags": [
+      "electron-configuration",
+      "transition-metals"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r06",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The successive ionisation energies of an element, in $\\text{kJ}\\,\\text{mol}^{-1}$, are $738$, $1451$, $7733$, $10540$. In which group does the element lie?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Group 1"
+      },
+      {
+        "id": "B",
+        "text": "Group 2"
+      },
+      {
+        "id": "C",
+        "text": "Group 13"
+      },
+      {
+        "id": "D",
+        "text": "Group 14"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The large jump comes between the second and third values, rising more than fivefold. That means two electrons are removed comparatively easily and the third comes from a shell much closer to the nucleus.\\n\\nTwo outer electrons places the element in Group 2.",
+    "distractorRationale": {
+      "A": "A Group 1 element would show the jump after the first electron.",
+      "C": "Group 13 would show it after the third.",
+      "D": "Group 14 would show it after the fourth."
+    },
+    "tags": [
+      "ionisation-energy",
+      "group-identification"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r07",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In an experiment, $50.0\\ \\text{cm}^3$ of acid neutralises $50.0\\ \\text{cm}^3$ of alkali and the temperature rises by $6.8\\ ^\\circ\\text{C}$. Taking $c = 4.18\\ \\text{J}\\,\\text{g}^{-1}\\,\\text{K}^{-1}$ and density $1.00\\ \\text{g}\\,\\text{cm}^{-3}$, what is the heat released?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$28.4\\ \\text{kJ}$"
+      },
+      {
+        "id": "B",
+        "text": "$1.42\\ \\text{kJ}$"
+      },
+      {
+        "id": "C",
+        "text": "$2.84\\ \\text{kJ}$"
+      },
+      {
+        "id": "D",
+        "text": "$0.28\\ \\text{kJ}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Use $q = mc\\Delta T$ with the TOTAL mass of the mixture: $50.0 + 50.0 = 100\\ \\text{g}$.\\n\\n$q = 100 \\times 4.18 \\times 6.8 = 2842\\ \\text{J} = 2.84\\ \\text{kJ}$. Using only one of the two volumes is the standard error and halves the answer.",
+    "distractorRationale": {
+      "A": "Is out by a factor of ten the other way.",
+      "B": "Uses the mass of one solution only.",
+      "D": "Is out by a factor of ten."
+    },
+    "tags": [
+      "calorimetry",
+      "neutralisation"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r08",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Why does an enthalpy change calculated from mean bond energies usually differ from the value found by experiment?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Bond energies are always measured at absolute zero"
+      },
+      {
+        "id": "B",
+        "text": "Experiments always lose heat, so they read too high"
+      },
+      {
+        "id": "C",
+        "text": "Bond breaking is exothermic in practice"
+      },
+      {
+        "id": "D",
+        "text": "Mean bond energies are averages over many compounds, and they apply to gases only"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "A tabulated bond energy is a mean taken across many different molecules, so it does not match the particular bond in the compound at hand. It also refers to gaseous species, whereas reactions are often run with liquids or solutions, where enthalpies of vaporisation are involved.\\n\\nHeat loss does occur in calorimetry, but it makes the measured release read too low, not too high.",
+    "distractorRationale": {
+      "A": "Standard values are quoted at $298\\ \\text{K}$, not absolute zero.",
+      "B": "Heat loss makes an exothermic value read too small in magnitude.",
+      "C": "Bond breaking always absorbs energy."
+    },
+    "tags": [
+      "bond-energy",
+      "limitations"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r09",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Kinetics",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which change increases the proportion of molecules with energy above the activation energy?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "increasing the temperature"
+      },
+      {
+        "id": "B",
+        "text": "increasing the concentration"
+      },
+      {
+        "id": "C",
+        "text": "increasing the pressure of a liquid"
+      },
+      {
+        "id": "D",
+        "text": "increasing the surface area"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Only temperature changes the shape of the Boltzmann distribution, shifting the peak to the right and lengthening the tail beyond $E_a$.\\n\\nConcentration and surface area increase how often collisions happen; they do not change the fraction that is energetic enough.",
+    "distractorRationale": {
+      "B": "Raises collision frequency only.",
+      "C": "Pressure has little effect on liquids and does not alter the energy distribution.",
+      "D": "Raises collision frequency only."
+    },
+    "tags": [
+      "boltzmann",
+      "activation-energy"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r10",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Kinetics",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "For a first-order reaction the concentration falls from $0.80$ to $0.20\\ \\text{mol}\\,\\text{dm}^{-3}$ in $40\\ \\text{s}$. What is the half-life?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$10\\ \\text{s}$"
+      },
+      {
+        "id": "B",
+        "text": "$20\\ \\text{s}$"
+      },
+      {
+        "id": "C",
+        "text": "$80\\ \\text{s}$"
+      },
+      {
+        "id": "D",
+        "text": "$40\\ \\text{s}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Falling from $0.80$ to $0.20$ is two successive halvings: $0.80 \\rightarrow 0.40 \\rightarrow 0.20$.\\n\\nTwo half-lives occupy $40\\ \\text{s}$, so one half-life is $20\\ \\text{s}$. For a first-order reaction the half-life is constant, which is what makes this reasoning valid.",
+    "distractorRationale": {
+      "A": "Counts four halvings.",
+      "C": "Doubles instead of halving the interval.",
+      "D": "Counts one halving."
+    },
+    "tags": [
+      "first-order",
+      "half-life"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r11",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "For $2\\text{NO}_2\\text{(g)} \\rightleftharpoons \\text{N}_2\\text{O}_4\\text{(g)}$, what is the expression for $K_p$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$p(\\text{N}_2\\text{O}_4) \\times p(\\text{NO}_2)^2$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{p(\\text{NO}_2)^2}{p(\\text{N}_2\\text{O}_4)}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{p(\\text{N}_2\\text{O}_4)}{p(\\text{NO}_2)^2}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{p(\\text{N}_2\\text{O}_4)}{2p(\\text{NO}_2)}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Products go on top, reactants below, each raised to the power of its coefficient in the equation. With $2\\text{NO}_2$ on the left, its partial pressure is squared in the denominator.",
+    "distractorRationale": {
+      "A": "Multiplies the terms rather than dividing.",
+      "B": "Inverts the expression, giving $K_p$ for the reverse reaction.",
+      "D": "Multiplies by the coefficient instead of using it as a power."
+    },
+    "tags": [
+      "kp",
+      "equilibrium-expression"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r12",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A catalyst is added to a system already at equilibrium at constant temperature. What happens to the value of $K_c$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "it increases"
+      },
+      {
+        "id": "B",
+        "text": "it decreases"
+      },
+      {
+        "id": "C",
+        "text": "it becomes zero"
+      },
+      {
+        "id": "D",
+        "text": "it is unchanged"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "A catalyst lowers the activation energy of forward and reverse reactions equally, so both rates rise by the same factor and their ratio is untouched. Only temperature changes $K_c$.\\n\\nA system already at equilibrium therefore shows no visible change at all when a catalyst is added.",
+    "distractorRationale": {
+      "A": "Would require a change of temperature.",
+      "B": "Same reason.",
+      "C": "A zero constant would mean no products at all."
+    },
+    "tags": [
+      "equilibrium-constant",
+      "catalyst"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r13",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Equilibria",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A solution of a strong monobasic acid at pH 2 is diluted ten times with water. What is the new pH?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3$"
+      },
+      {
+        "id": "B",
+        "text": "$20$"
+      },
+      {
+        "id": "C",
+        "text": "$1$"
+      },
+      {
+        "id": "D",
+        "text": "$0.2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "pH 2 means $[\\text{H}^+] = 10^{-2}$. Diluting tenfold gives $10^{-3}$, so the pH rises by exactly one unit to 3.\\n\\nDilution can never take a strong acid past pH 7, because water itself supplies hydrogen ions once the acid becomes very dilute.",
+    "distractorRationale": {
+      "B": "Multiplies the pH by ten.",
+      "C": "Lowers the pH; dilution makes an acid weaker, not stronger.",
+      "D": "Divides the pH by ten, but pH is already logarithmic."
+    },
+    "tags": [
+      "ph",
+      "dilution"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r14",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Atomic structure",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which species has the same number of electrons as an argon atom?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{Na}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{Cl}^-$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{Mg}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{F}^-$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Argon has 18 electrons. Chlorine has 17 protons, so $\\text{Cl}^-$ has 18 electrons and is isoelectronic with argon.",
+    "distractorRationale": {
+      "A": "Sodium has 11 electrons.",
+      "C": "Magnesium has 12 electrons.",
+      "D": "$\\text{F}^-$ has 10, matching neon."
+    },
+    "tags": [
+      "isoelectronic"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r15",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Moles & stoichiometry",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "What is the mass of $0.50\\ \\text{mol}$ of sodium carbonate, $\\text{Na}_2\\text{CO}_3$? ($A_r$: Na $=23$, C $=12$, O $=16$)",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$212\\ \\text{g}$"
+      },
+      {
+        "id": "B",
+        "text": "$106\\ \\text{g}$"
+      },
+      {
+        "id": "C",
+        "text": "$53\\ \\text{g}$"
+      },
+      {
+        "id": "D",
+        "text": "$51\\ \\text{g}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "First the molar mass: $2(23) + 12 + 3(16) = 46 + 12 + 48 = 106\\ \\text{g}\\,\\text{mol}^{-1}$.\\n\\nThen $m = nM = 0.50 \\times 106 = 53\\ \\text{g}$.",
+    "distractorRationale": {
+      "A": "Gives the mass of two moles.",
+      "B": "Gives the mass of one mole.",
+      "D": "Uses a molar mass of 102, dropping an oxygen."
+    },
+    "tags": [
+      "molar-mass"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r16",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Physical Chemistry",
+    "skill": "Energetics",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which statement about an exothermic reaction is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\Delta H$ is negative and the surroundings cool"
+      },
+      {
+        "id": "B",
+        "text": "$\\Delta H$ is positive and the surroundings warm"
+      },
+      {
+        "id": "C",
+        "text": "$\\Delta H$ is positive and the surroundings cool"
+      },
+      {
+        "id": "D",
+        "text": "$\\Delta H$ is negative and the surroundings warm"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "An exothermic reaction releases energy to its surroundings, so the surroundings warm while the system loses enthalpy — hence $\\Delta H$ is negative. The sign always refers to the system, never to the surroundings.",
+    "distractorRationale": {
+      "A": "Mixes the sign of the system with the wrong effect outside it.",
+      "B": "Same mixture in reverse.",
+      "C": "Describes an endothermic reaction."
+    },
+    "tags": [
+      "enthalpy",
+      "sign-convention"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r17",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 2",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "How does the solubility of the Group 2 sulfates change from magnesium to barium?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "it decreases"
+      },
+      {
+        "id": "B",
+        "text": "it increases then decreases"
+      },
+      {
+        "id": "C",
+        "text": "it is unchanged"
+      },
+      {
+        "id": "D",
+        "text": "it increases"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Sulfate solubility falls down Group 2: magnesium sulfate is freely soluble while barium sulfate is essentially insoluble.\\n\\nThat is exactly why barium sulfate serves both as the test for sulfate ions and as a medical barium meal — being insoluble, the toxic barium ion is never released.",
+    "distractorRationale": {
+      "B": "The trend is uniform, with no reversal.",
+      "C": "The change is dramatic across the group.",
+      "D": "That is the trend for the hydroxides, which runs the other way."
+    },
+    "tags": [
+      "group-2",
+      "solubility"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r18",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 17",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Chlorine dissolves in water: $\\text{Cl}_2 + \\text{H}_2\\text{O} \\rightarrow \\text{HCl} + \\text{HClO}$. What type of reaction is this?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "precipitation"
+      },
+      {
+        "id": "B",
+        "text": "disproportionation"
+      },
+      {
+        "id": "C",
+        "text": "addition"
+      },
+      {
+        "id": "D",
+        "text": "neutralisation"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Chlorine begins at oxidation number 0. In $\\text{HCl}$ it is $-1$ and in $\\text{HClO}$ it is $+1$: the same element is both oxidised and reduced in one reaction, which is disproportionation.",
+    "distractorRationale": {
+      "A": "No insoluble solid forms.",
+      "C": "Nothing adds across a double bond.",
+      "D": "No acid and base react together here."
+    },
+    "tags": [
+      "disproportionation",
+      "group-17"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r19",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 17",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Aqueous silver nitrate is added to a halide solution, giving a cream precipitate that dissolves in concentrated but not dilute ammonia. Which halide is present?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "iodide"
+      },
+      {
+        "id": "B",
+        "text": "chloride"
+      },
+      {
+        "id": "C",
+        "text": "bromide"
+      },
+      {
+        "id": "D",
+        "text": "fluoride"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Silver chloride is white and dissolves in dilute ammonia; silver bromide is cream and needs concentrated ammonia; silver iodide is yellow and dissolves in neither.\\n\\nThe cream colour together with the concentrated-ammonia behaviour identifies bromide.",
+    "distractorRationale": {
+      "A": "Would be yellow and insoluble even in concentrated ammonia.",
+      "B": "Would dissolve in dilute ammonia and be white.",
+      "D": "Silver fluoride is soluble, so no precipitate forms at all."
+    },
+    "tags": [
+      "halide-test",
+      "silver-nitrate"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r20",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Nitrogen & sulfur",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which conditions are used in the Haber process for ammonia?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$25\\ ^\\circ\\text{C}$, $1\\ \\text{atm}$, platinum"
+      },
+      {
+        "id": "B",
+        "text": "$1000\\ ^\\circ\\text{C}$, $200\\ \\text{atm}$, nickel"
+      },
+      {
+        "id": "C",
+        "text": "$450\\ ^\\circ\\text{C}$, $2\\ \\text{atm}$, vanadium(V) oxide"
+      },
+      {
+        "id": "D",
+        "text": "$450\\ ^\\circ\\text{C}$, $200\\ \\text{atm}$, iron catalyst"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The Haber process runs at roughly $450\\ ^\\circ\\text{C}$ and $200\\ \\text{atm}$ over an iron catalyst.\\n\\nThe temperature is a compromise: the forward reaction is exothermic, so a lower temperature would give a better yield but too slowly to be useful.",
+    "distractorRationale": {
+      "A": "Far too slow to be viable.",
+      "B": "Would decompose the ammonia as fast as it formed.",
+      "C": "Those are Contact process conditions for sulfur trioxide."
+    },
+    "tags": [
+      "haber-process"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r21",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Nitrogen & sulfur",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which catalyst is used in the Contact process?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "vanadium(V) oxide"
+      },
+      {
+        "id": "B",
+        "text": "platinum-rhodium"
+      },
+      {
+        "id": "C",
+        "text": "iron"
+      },
+      {
+        "id": "D",
+        "text": "nickel"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The Contact process oxidises sulfur dioxide to sulfur trioxide over vanadium(V) oxide, $\\text{V}_2\\text{O}_5$.\\n\\nIron belongs to the Haber process, nickel to the hydrogenation of alkenes, and platinum-rhodium to the oxidation of ammonia in nitric acid manufacture.",
+    "distractorRationale": {
+      "B": "Used in the Ostwald process.",
+      "C": "Used in the Haber process.",
+      "D": "Used for hydrogenating unsaturated oils."
+    },
+    "tags": [
+      "contact-process",
+      "catalyst"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r22",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Silicon tetrachloride and sodium chloride are each added to water. Which statement is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{NaCl}$ hydrolyses to give an alkaline solution"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{SiCl}_4$ hydrolyses to give an acidic solution while $\\text{NaCl}$ dissolves to give a neutral one"
+      },
+      {
+        "id": "C",
+        "text": "Neither reacts with water"
+      },
+      {
+        "id": "D",
+        "text": "Both give neutral solutions"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Sodium chloride is ionic; it simply dissolves and neither ion affects the pH. Silicon tetrachloride is covalent and hydrolyses vigorously: $\\text{SiCl}_4 + 2\\text{H}_2\\text{O} \\rightarrow \\text{SiO}_2 + 4\\text{HCl}$, releasing hydrochloric acid.\\n\\nThe contrast across Period 3 chlorides — ionic and neutral on the left, covalent and hydrolysing on the right — is the point being tested.",
+    "distractorRationale": {
+      "A": "Both its ions come from a strong acid and a strong base.",
+      "C": "Both dissolve; one of them also reacts.",
+      "D": "Silicon tetrachloride fumes strongly in moist air."
+    },
+    "tags": [
+      "periodicity",
+      "chlorides"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r23",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Periodicity",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which Period 3 element has the highest first ionisation energy?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sodium"
+      },
+      {
+        "id": "B",
+        "text": "aluminium"
+      },
+      {
+        "id": "C",
+        "text": "argon"
+      },
+      {
+        "id": "D",
+        "text": "sulfur"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "First ionisation energy rises across a period as nuclear charge grows with almost unchanged shielding. Argon, at the right-hand end with a full outer shell, holds its electrons most tightly.",
+    "distractorRationale": {
+      "A": "Lowest in the period.",
+      "B": "Shows a small dip relative to magnesium but stays well below argon.",
+      "D": "Also shows a dip, and lies below chlorine and argon."
+    },
+    "tags": [
+      "ionisation-energy",
+      "periodicity"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r24",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 2",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Calcium carbonate is added to farmland to treat acidic soil. Which property makes this work?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "it decomposes at room temperature"
+      },
+      {
+        "id": "B",
+        "text": "it is soluble in water"
+      },
+      {
+        "id": "C",
+        "text": "it is a reducing agent"
+      },
+      {
+        "id": "D",
+        "text": "it is a base and neutralises acid"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Carbonates react with acids to give a salt, water and carbon dioxide, so calcium carbonate raises the pH of acidic soil.\\n\\nIts low solubility is an advantage rather than a drawback: it dissolves only as acid becomes available, so the treatment lasts and cannot easily overshoot.",
+    "distractorRationale": {
+      "A": "Decomposition needs strong heating.",
+      "B": "It is only sparingly soluble, which is what makes it act slowly.",
+      "C": "No change in oxidation number occurs."
+    },
+    "tags": [
+      "group-2",
+      "neutralisation"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r25",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Nitrogen & sulfur",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Why is ammonia able to act as a base?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the nitrogen atom has a lone pair that accepts a proton"
+      },
+      {
+        "id": "B",
+        "text": "it contains hydrogen"
+      },
+      {
+        "id": "C",
+        "text": "it dissolves in water"
+      },
+      {
+        "id": "D",
+        "text": "it has a low boiling point"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "A Brønsted-Lowry base accepts a proton, and ammonia does so through the lone pair on nitrogen: $\\text{NH}_3 + \\text{H}^+ \\rightarrow \\text{NH}_4^+$.\\n\\nThe same lone pair explains why ammonia acts as a ligand and as a nucleophile — one structural feature, three roles.",
+    "distractorRationale": {
+      "B": "Methane contains hydrogen and is not a base.",
+      "C": "Solubility is not what makes something basic.",
+      "D": "Boiling point is unrelated to acid-base behaviour."
+    },
+    "tags": [
+      "ammonia",
+      "bronsted-lowry"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r26",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Inorganic Chemistry",
+    "skill": "Group 17",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which halogen is the strongest oxidising agent?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "bromine"
+      },
+      {
+        "id": "B",
+        "text": "fluorine"
+      },
+      {
+        "id": "C",
+        "text": "iodine"
+      },
+      {
+        "id": "D",
+        "text": "chlorine"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Oxidising power decreases down Group 17 as the atoms become larger and less able to attract an electron. Fluorine, at the top, is the strongest oxidising agent of all the halogens.",
+    "distractorRationale": {
+      "A": "Weaker still.",
+      "C": "The weakest oxidising agent of the four.",
+      "D": "Weaker than fluorine; it displaces bromide and iodide but not fluoride."
+    },
+    "tags": [
+      "group-17",
+      "oxidising-power"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r27",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "How many structural isomers have the molecular formula $\\text{C}_5\\text{H}_{12}$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "There are three: pentane (straight chain), 2-methylbutane (one branch), and 2,2-dimethylpropane (two branches on the same carbon).\\n\\nDrawing a four-carbon chain with a methyl group on the end simply reproduces pentane, which is why the count stops at three.",
+    "distractorRationale": {
+      "A": "Counts a repeat of one skeleton drawn differently.",
+      "B": "Misses the doubly branched isomer.",
+      "D": "Counts two such repeats."
+    },
+    "tags": [
+      "isomerism",
+      "alkanes"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r28",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which compound shows $E$/$Z$ isomerism?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "but-1-ene"
+      },
+      {
+        "id": "B",
+        "text": "butane"
+      },
+      {
+        "id": "C",
+        "text": "2-methylpropene"
+      },
+      {
+        "id": "D",
+        "text": "but-2-ene"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$E$/$Z$ isomerism needs a carbon-carbon double bond with two different groups on each of its carbons. In but-2-ene each double-bond carbon carries a methyl group and a hydrogen, so the two arrangements are distinct.",
+    "distractorRationale": {
+      "A": "One double-bond carbon carries two hydrogens.",
+      "B": "Has no double bond at all.",
+      "C": "One carbon carries two identical methyl groups."
+    },
+    "tags": [
+      "stereoisomerism",
+      "alkenes"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r29",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Ethene is polymerised. What type of polymerisation is this and what is the by-product?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "addition; no by-product"
+      },
+      {
+        "id": "B",
+        "text": "addition; hydrogen"
+      },
+      {
+        "id": "C",
+        "text": "condensation; hydrogen chloride"
+      },
+      {
+        "id": "D",
+        "text": "condensation; water"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Alkenes polymerise by addition: the double bonds open and the monomers join with every atom retained in the chain. Nothing is eliminated, so the atom economy is $100\\%$.\\n\\nCondensation polymerisation, by contrast, expels a small molecule such as water at each link.",
+    "distractorRationale": {
+      "B": "No hydrogen is released.",
+      "C": "Also a condensation description.",
+      "D": "Applies to polyesters and polyamides, not to alkenes."
+    },
+    "tags": [
+      "polymerisation",
+      "alkenes"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r30",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Halogenoalkanes",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "2-bromopropane is warmed with ethanolic potassium hydroxide rather than aqueous. What is the main product?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "propanenitrile"
+      },
+      {
+        "id": "B",
+        "text": "propene"
+      },
+      {
+        "id": "C",
+        "text": "propanone"
+      },
+      {
+        "id": "D",
+        "text": "propan-2-ol"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The solvent decides the mechanism. In ethanol the hydroxide acts as a base, removing a hydrogen from the carbon next to the one bearing bromine, so elimination gives an alkene.\\n\\nIn aqueous solution the same reagent acts as a nucleophile and substitution gives the alcohol instead.",
+    "distractorRationale": {
+      "A": "Would require cyanide, not hydroxide.",
+      "C": "Would require oxidation of the alcohol.",
+      "D": "Would come from aqueous, not ethanolic, conditions."
+    },
+    "tags": [
+      "elimination",
+      "halogenoalkanes"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r31",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Alcohols",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Ethanol is heated with concentrated sulfuric acid at $170\\ ^\\circ\\text{C}$. What is the organic product?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "ethanoic acid"
+      },
+      {
+        "id": "B",
+        "text": "ethanal"
+      },
+      {
+        "id": "C",
+        "text": "ethene"
+      },
+      {
+        "id": "D",
+        "text": "ethoxyethane"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "At $170\\ ^\\circ\\text{C}$ concentrated sulfuric acid dehydrates ethanol to ethene.\\n\\nTemperature selects the product: at around $140\\ ^\\circ\\text{C}$ the same reagents give ethoxyethane instead, so quoting the temperature is part of answering.",
+    "distractorRationale": {
+      "A": "Would require oxidation twice over.",
+      "B": "Would require an oxidising agent.",
+      "D": "Forms at the lower temperature, around $140\\ ^\\circ\\text{C}$."
+    },
+    "tags": [
+      "dehydration",
+      "alcohols"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r32",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Carbonyls",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Tollens' reagent is warmed with two unknown liquids. One gives a silver mirror and the other does not. What does this show?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the first is an alcohol"
+      },
+      {
+        "id": "B",
+        "text": "both are aldehydes"
+      },
+      {
+        "id": "C",
+        "text": "the first is a ketone, the second an aldehyde"
+      },
+      {
+        "id": "D",
+        "text": "the first is an aldehyde, the second a ketone"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Tollens' reagent is a mild oxidising agent. An aldehyde is oxidised to a carboxylic acid and reduces the silver ions to metallic silver, coating the tube. A ketone has no hydrogen on the carbonyl carbon and cannot be oxidised in this way.",
+    "distractorRationale": {
+      "A": "Alcohols do not react with Tollens' reagent.",
+      "B": "Then both would give a mirror.",
+      "C": "Reverses the roles."
+    },
+    "tags": [
+      "tollens",
+      "aldehyde-ketone"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r33",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Carbonyls",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Propanone reacts with hydrogen cyanide. What type of reaction is this and what is the product?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "nucleophilic addition; 2-hydroxy-2-methylpropanenitrile"
+      },
+      {
+        "id": "B",
+        "text": "nucleophilic substitution; 2-chloropropane"
+      },
+      {
+        "id": "C",
+        "text": "electrophilic addition; propanenitrile"
+      },
+      {
+        "id": "D",
+        "text": "condensation; propanone oxime"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The carbonyl carbon carries a partial positive charge, so the cyanide ion attacks it as a nucleophile and the pi bond opens — nucleophilic addition.\\n\\nThe product has a hydroxyl group and a nitrile group on the same carbon. Counting the nitrile carbon into the chain gives 2-hydroxy-2-methylpropanenitrile.",
+    "distractorRationale": {
+      "B": "Nothing is displaced from propanone.",
+      "C": "The carbonyl carbon is attacked by a nucleophile, not an electrophile.",
+      "D": "Oximes come from hydroxylamine, not from hydrogen cyanide."
+    },
+    "tags": [
+      "nucleophilic-addition",
+      "carbonyls"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r34",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Alcohols",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which reagent distinguishes ethanoic acid from ethanol?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "acidified potassium dichromate(VI)"
+      },
+      {
+        "id": "B",
+        "text": "aqueous sodium carbonate"
+      },
+      {
+        "id": "C",
+        "text": "bromine water"
+      },
+      {
+        "id": "D",
+        "text": "sodium metal"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Both compounds react with sodium, so that fails to distinguish them. Only the carboxylic acid is acidic enough to react with a carbonate, giving effervescence of carbon dioxide.",
+    "distractorRationale": {
+      "A": "Oxidises the alcohol but leaves the acid, though the colour change is less decisive than effervescence.",
+      "C": "Neither decolourises bromine water; both are saturated.",
+      "D": "Both give hydrogen with sodium."
+    },
+    "tags": [
+      "functional-group-tests"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r35",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Alcohols",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Ethyl ethanoate is heated under reflux with aqueous sodium hydroxide. What are the products?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "ethanal and ethanol"
+      },
+      {
+        "id": "B",
+        "text": "ethanoic acid and ethanol"
+      },
+      {
+        "id": "C",
+        "text": "sodium ethanoate and ethanol"
+      },
+      {
+        "id": "D",
+        "text": "ethanoic acid and sodium ethoxide"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Alkaline hydrolysis of an ester gives the salt of the acid, not the acid itself: any acid formed would immediately be neutralised by the excess alkali.\\n\\nThe products are therefore sodium ethanoate and ethanol. Acidic hydrolysis, by contrast, gives the free carboxylic acid and is reversible.",
+    "distractorRationale": {
+      "A": "No oxidation occurs in hydrolysis.",
+      "B": "Describes acidic hydrolysis.",
+      "D": "The alkoxide would be protonated by water at once."
+    },
+    "tags": [
+      "ester-hydrolysis",
+      "saponification"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r36",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Analytical techniques",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In a mass spectrum, a fragment peak appears at $m/e = 29$. Which fragment is most likely responsible?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{CH}_3^+$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{C}_2\\text{H}_5^+$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{CHO}^+$"
+      },
+      {
+        "id": "D",
+        "text": "either $\\text{C}_2\\text{H}_5^+$ or $\\text{CHO}^+$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Both fragments have a mass of 29: $\\text{C}_2\\text{H}_5^+$ is $2(12) + 5(1)$ and $\\text{CHO}^+$ is $12 + 1 + 16$.\\n\\nA single low-resolution peak cannot separate them; deciding between the two needs other evidence, such as an infrared spectrum showing whether a carbonyl group is present. Recognising that a peak may be ambiguous is part of reading a spectrum honestly.",
+    "distractorRationale": {
+      "A": "Has a mass of 15.",
+      "B": "Correct in itself, but not the only fragment of mass 29.",
+      "C": "Also correct in itself, and equally possible."
+    },
+    "tags": [
+      "mass-spectrometry",
+      "fragmentation"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r37",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Halogenoalkanes",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which reagent converts an alkene into a halogenoalkane in one step?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "hydrogen bromide"
+      },
+      {
+        "id": "B",
+        "text": "acidified dichromate"
+      },
+      {
+        "id": "C",
+        "text": "hydrogen and a nickel catalyst"
+      },
+      {
+        "id": "D",
+        "text": "aqueous sodium hydroxide"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Hydrogen bromide adds across the double bond in an electrophilic addition, giving a bromoalkane directly.",
+    "distractorRationale": {
+      "B": "Oxidises alcohols; it does not add halogen.",
+      "C": "Adds hydrogen, giving an alkane.",
+      "D": "Converts halogenoalkanes into alcohols, the reverse direction."
+    },
+    "tags": [
+      "electrophilic-addition"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r38",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Analytical techniques",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "An infrared spectrum shows a broad absorption between $3200$ and $3600\\ \\text{cm}^{-1}$ and no absorption near $1700\\ \\text{cm}^{-1}$. Which compound fits?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "propanone"
+      },
+      {
+        "id": "B",
+        "text": "propan-1-ol"
+      },
+      {
+        "id": "C",
+        "text": "propanoic acid"
+      },
+      {
+        "id": "D",
+        "text": "propanal"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The band between $3200$ and $3600\\ \\text{cm}^{-1}$ belongs to an $\\text{O}-\\text{H}$ group, and the absence of anything near $1700\\ \\text{cm}^{-1}$ rules out a carbonyl.\\n\\nAn alcohol has the first and not the second; a carboxylic acid would show both.",
+    "distractorRationale": {
+      "A": "Would show a carbonyl band and no $\\text{O}-\\text{H}$.",
+      "C": "Would show both bands, with a much broader $\\text{O}-\\text{H}$.",
+      "D": "Would show a strong carbonyl band."
+    },
+    "tags": [
+      "infrared"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-chm-r39",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_chem_p1",
+    "domain": "Organic Chemistry",
+    "skill": "Hydrocarbons",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which statement about the complete combustion of propane is correct?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{C}_3\\text{H}_8 + 4\\text{O}_2 \\rightarrow 3\\text{CO}_2 + 4\\text{H}_2\\text{O}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{C}_3\\text{H}_8 + 3\\text{O}_2 \\rightarrow 3\\text{CO}_2 + 4\\text{H}_2\\text{O}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{C}_3\\text{H}_8 + 5\\text{O}_2 \\rightarrow 3\\text{CO}_2 + 4\\text{H}_2\\text{O}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{C}_3\\text{H}_8 + 5\\text{O}_2 \\rightarrow 3\\text{CO}_2 + 3\\text{H}_2\\text{O}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Balance carbon first: three carbons give $3\\text{CO}_2$. Then hydrogen: eight hydrogens give $4\\text{H}_2\\text{O}$.\\n\\nOxygen last: the right side now holds $6 + 4 = 10$ oxygen atoms, which needs $5\\text{O}_2$.",
+    "distractorRationale": {
+      "A": "Supplies 8 oxygen atoms.",
+      "B": "Supplies only 6 oxygen atoms where 10 are needed.",
+      "D": "Leaves two hydrogen atoms unaccounted for."
+    },
+    "tags": [
+      "combustion",
+      "balancing"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-mth-r01",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Functions",
+    "skill": "Composite & inverse",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $f$ is defined by $f(x) = 3x + 5$. Find $f^{-1}(20)$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "The inverse undoes the function, so $f^{-1}(20)$ asks which input gives an output of 20.\\n\\nSolve $3x + 5 = 20$: $3x = 15$, so $x = 5$. Finding the inverse formula first also works, but solving directly is quicker for a single value.",
+    "tags": [
+      "inverse-function"
+    ],
+    "estimatedTimeSec": 170,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-mth-r02",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Series",
+    "skill": "AP",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The first term of an arithmetic progression is $12$ and the tenth term is $39$. Find the common difference.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "The tenth term is $a + 9d$, so $12 + 9d = 39$ and $9d = 27$, giving $d = 3$.\\n\\nNote the multiplier is 9, not 10: the first term has not yet added the common difference.",
+    "tags": [
+      "arithmetic-progression"
+    ],
+    "estimatedTimeSec": 180,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-mth-r03",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Circular measure",
+    "skill": "Arc length & sector area",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A sector has radius $10\\ \\text{cm}$ and arc length $4\\ \\text{cm}$. Find the angle at the centre, in radians.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 0.4
+    },
+    "explanation": "From $s = r\\theta$, $\\theta = \\dfrac{s}{r} = \\dfrac{4}{10} = 0.4$ radians.\\n\\nThe answer has no unit symbol because a radian is a ratio of two lengths — which is exactly why the formula is this simple.",
+    "tags": [
+      "radians"
+    ],
+    "estimatedTimeSec": 170,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-mth-r04",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Coordinate geometry",
+    "skill": "Straight lines",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Points $A(1, 3)$ and $B(7, 11)$ are given. Find the length of $AB$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 10
+    },
+    "explanation": "Use the distance formula: $\\sqrt{(7-1)^2 + (11-3)^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$.\\n\\nThe $6$-$8$-$10$ triangle is a scaled $3$-$4$-$5$, worth recognising to save time.",
+    "tags": [
+      "distance",
+      "coordinate-geometry"
+    ],
+    "estimatedTimeSec": 190,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-mth-r05",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Trigonometry",
+    "skill": "Identities",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Given that $\\sin\\theta = \\dfrac{5}{13}$ and $\\theta$ is acute, find $\\tan\\theta$ as a fraction. Enter the numerator as {{n1}} and the denominator as {{n2}}.",
+    "type": "numeric_multi",
+    "numericBlanks": [
+      {
+        "id": "n1",
+        "label": "numerator"
+      },
+      {
+        "id": "n2",
+        "label": "denominator"
+      }
+    ],
+    "answer": {
+      "mode": "numeric_list",
+      "values": [
+        {
+          "key": "n1",
+          "value": 5
+        },
+        {
+          "key": "n2",
+          "value": 12
+        }
+      ]
+    },
+    "explanation": "Using $\\sin^2\\theta + \\cos^2\\theta = 1$: $\\cos^2\\theta = 1 - \\dfrac{25}{169} = \\dfrac{144}{169}$, so $\\cos\\theta = \\dfrac{12}{13}$, positive because $\\theta$ is acute.\\n\\nThen $\\tan\\theta = \\dfrac{\\sin\\theta}{\\cos\\theta} = \\dfrac{5}{13} \\times \\dfrac{13}{12} = \\dfrac{5}{12}$.",
+    "tags": [
+      "trigonometric-identities"
+    ],
+    "estimatedTimeSec": 220,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-mth-r06",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Differentiation",
+    "skill": "Rates of change",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A curve has equation $y = x^2 - 4x + 7$. Find the gradient of the tangent at the point where $x = 5$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 6
+    },
+    "explanation": "Differentiate: $\\dfrac{dy}{dx} = 2x - 4$. At $x = 5$ this gives $10 - 4 = 6$.\\n\\nThe gradient of the tangent at a point is simply the derivative evaluated there.",
+    "tags": [
+      "differentiation",
+      "tangent"
+    ],
+    "estimatedTimeSec": 190,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-mth-r07",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Quadratics",
+    "skill": "Discriminant",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The equation $2x^2 + kx + 8 = 0$ has two distinct real roots. Find the smallest integer value of $k$ greater than $8$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 9
+    },
+    "explanation": "Two distinct real roots require a positive discriminant: $k^2 - 4(2)(8) > 0$, so $k^2 > 64$ and $|k| > 8$.\\n\\nValues of $k$ greater than 8 all satisfy this, and the smallest integer among them is 9. At $k = 8$ exactly, the discriminant is zero and the roots coincide.",
+    "tags": [
+      "discriminant",
+      "inequality"
+    ],
+    "estimatedTimeSec": 220,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-mth-r08",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Integration",
+    "skill": "Definite integrals",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Evaluate $\\displaystyle\\int_1^3 (2x + 1)\\,dx$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 10
+    },
+    "explanation": "An antiderivative is $x^2 + x$. Evaluating between the limits: $(9 + 3) - (1 + 1) = 12 - 2 = 10$.\\n\\nA check by area: the graph is a straight line from $(1,3)$ to $(3,7)$, and the trapezium beneath it has area $\\dfrac{3+7}{2} \\times 2 = 10$.",
+    "tags": [
+      "definite-integral"
+    ],
+    "estimatedTimeSec": 200,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-mth-r09",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Trigonometry",
+    "skill": "Equations",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Solve $2\\cos^2 x + \\cos x - 1 = 0$ for $0^\\circ \\le x \\le 180^\\circ$. Give the smaller solution in degrees.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 60
+    },
+    "explanation": "Treat it as a quadratic in $\\cos x$: $(2\\cos x - 1)(\\cos x + 1) = 0$, so $\\cos x = \\dfrac{1}{2}$ or $\\cos x = -1$.\\n\\nWithin the interval, $\\cos x = \\dfrac{1}{2}$ gives $x = 60^\\circ$ and $\\cos x = -1$ gives $x = 180^\\circ$. The smaller is $60^\\circ$.\\n\\nDiscarding the second factor as impossible is a common slip: $\\cos x = -1$ is perfectly attainable.",
+    "tags": [
+      "trigonometric-equation",
+      "quadratic-form"
+    ],
+    "estimatedTimeSec": 300,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-mth-r10",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_math_p1",
+    "domain": "Differentiation",
+    "skill": "Stationary points",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A closed cylinder has volume $54\\pi\\ \\text{cm}^3$. Its surface area is $A = 2\\pi r^2 + \\dfrac{108\\pi}{r}$. Find the value of $r$, in cm, that minimises $A$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "Differentiate with respect to $r$: $\\dfrac{dA}{dr} = 4\\pi r - \\dfrac{108\\pi}{r^2}$.\\n\\nSet it to zero: $4\\pi r = \\dfrac{108\\pi}{r^2}$, so $4r^3 = 108$ and $r^3 = 27$, giving $r = 3$.\\n\\nThe second derivative $4\\pi + \\dfrac{216\\pi}{r^3}$ is positive, confirming a minimum rather than a maximum.",
+    "tags": [
+      "optimisation",
+      "stationary-points"
+    ],
+    "estimatedTimeSec": 330,
+    "points": 6,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-phy-r01",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Measurement",
+    "skill": "SI units",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A length is measured as $2.5\\ \\text{mm}$. Express this in metres, giving the answer in the form $a \\times 10^{-3}$ and entering $a$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 2.5
+    },
+    "explanation": "One millimetre is $10^{-3}$ metres, so $2.5\\ \\text{mm} = 2.5 \\times 10^{-3}\\ \\text{m}$.\\n\\nPrefix conversions are worth doing carefully: an error here propagates through every later step of a calculation without ever looking wrong.",
+    "tags": [
+      "units",
+      "prefixes"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-phy-r02",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Kinematics & Dynamics",
+    "skill": "Motion graphs",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A car accelerates uniformly from $8\\ \\text{m}\\,\\text{s}^{-1}$ to $20\\ \\text{m}\\,\\text{s}^{-1}$ in $4.0\\ \\text{s}$. Calculate its acceleration, in $\\text{m}\\,\\text{s}^{-2}$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "Acceleration is the change in velocity divided by the time: $a = \\dfrac{20 - 8}{4.0} = \\dfrac{12}{4.0} = 3.0\\ \\text{m}\\,\\text{s}^{-2}$.\\n\\nOn a velocity-time graph this is the gradient of the line.",
+    "tags": [
+      "acceleration"
+    ],
+    "estimatedTimeSec": 160,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-phy-r03",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Forces & Energy",
+    "skill": "Density & pressure",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A force of $600\\ \\text{N}$ acts over an area of $0.15\\ \\text{m}^2$. Calculate the pressure, in pascals.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4000
+    },
+    "explanation": "Pressure is force per unit area: $p = \\dfrac{F}{A} = \\dfrac{600}{0.15} = 4000\\ \\text{Pa}$.\\n\\nDividing by a number smaller than one increases the result, which is why a small area produces a large pressure — the principle behind a drawing pin.",
+    "tags": [
+      "pressure"
+    ],
+    "estimatedTimeSec": 190,
+    "points": 4,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-phy-r04",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Electricity",
+    "skill": "D.C. circuits",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A battery of e.m.f. $9.0\\ \\text{V}$ and internal resistance $1.0\\ \\Omega$ is connected to an external resistor of $8.0\\ \\Omega$. Calculate the terminal potential difference, in volts.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "The current is $I = \\dfrac{E}{R + r} = \\dfrac{9.0}{9.0} = 1.0\\ \\text{A}$.\\n\\nThe terminal p.d. is the e.m.f. minus the drop across the internal resistance: $9.0 - (1.0)(1.0) = 8.0\\ \\text{V}$. Equivalently it is the p.d. across the external resistor, $1.0 \\times 8.0$.",
+    "tags": [
+      "emf",
+      "internal-resistance"
+    ],
+    "estimatedTimeSec": 260,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-phy-r05",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Waves",
+    "skill": "Progressive waves",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A wave has period $0.025\\ \\text{s}$. Calculate its frequency, in hertz.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 40
+    },
+    "explanation": "Frequency is the reciprocal of the period: $f = \\dfrac{1}{T} = \\dfrac{1}{0.025} = 40\\ \\text{Hz}$.",
+    "tags": [
+      "frequency",
+      "period"
+    ],
+    "estimatedTimeSec": 170,
+    "points": 3,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-phy-r06",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Kinematics & Dynamics",
+    "skill": "Momentum",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A ball of mass $0.15\\ \\text{kg}$ strikes a wall at $12\\ \\text{m}\\,\\text{s}^{-1}$ and rebounds at $8.0\\ \\text{m}\\,\\text{s}^{-1}$ along the same line. Calculate the magnitude of the change in momentum, in $\\text{kg}\\,\\text{m}\\,\\text{s}^{-1}$.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "Momentum is a vector, so the rebound velocity carries the opposite sign.\\n\\nChange $= m(v - u) = 0.15\\left[(-8.0) - (12)\\right] = 0.15 \\times (-20) = -3.0$, of magnitude $3.0\\ \\text{kg}\\,\\text{m}\\,\\text{s}^{-1}$.\\n\\nTreating the speeds as both positive gives $0.6$ — the commonest error in rebound problems, and it understates the force on the wall by more than a factor of four.",
+    "tags": [
+      "momentum",
+      "rebound"
+    ],
+    "estimatedTimeSec": 280,
+    "points": 5,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-phy-r07",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_phys_p2",
+    "domain": "Waves",
+    "skill": "Superposition",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In a double-slit experiment the slit separation is $0.50\\ \\text{mm}$, the screen is $2.0\\ \\text{m}$ away, and the fringe spacing is $2.4\\ \\text{mm}$. Calculate the wavelength, in nanometres.",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 600
+    },
+    "explanation": "Rearranging $\\Delta y = \\dfrac{\\lambda D}{d}$ gives $\\lambda = \\dfrac{\\Delta y \\cdot d}{D}$.\\n\\nIn metres: $\\lambda = \\dfrac{(2.4 \\times 10^{-3})(0.50 \\times 10^{-3})}{2.0} = 6.0 \\times 10^{-7}\\ \\text{m}$, which is $600\\ \\text{nm}$.\\n\\nConverting every length to metres before substituting is what keeps the powers of ten under control.",
+    "tags": [
+      "double-slit",
+      "wavelength"
+    ],
+    "estimatedTimeSec": 330,
+    "points": 6,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  },
+  {
+    "id": "al-eco-r01",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Microeconomics",
+    "skill": "Price mechanism",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A student chooses to spend an afternoon revising rather than working a shift that pays $\\$40$ or meeting friends. What is the opportunity cost of revising?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the time spent revising"
+      },
+      {
+        "id": "B",
+        "text": "the $\\$40$ plus the value of meeting friends"
+      },
+      {
+        "id": "C",
+        "text": "nothing, since revising has future benefits"
+      },
+      {
+        "id": "D",
+        "text": "whichever of the two alternatives the student values more"
+      }
+    ],
+    "distractorRationale": {
+      "A": "The time is the resource used, not the value of what was forgone.",
+      "B": "Double-counts: only one alternative could have been taken.",
+      "C": "Future benefit is the gain from the choice, not its cost."
+    },
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Opportunity cost is the value of the **next best** alternative forgone, not the sum of everything given up.\\n\\nThe alternatives are the paid shift and meeting friends; whichever the student values more highly is the opportunity cost. Adding them together double-counts, since only one could have been chosen.",
+    "tags": [
+      "opportunity-cost"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 2,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-eco-r02",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Microeconomics",
+    "skill": "Price mechanism",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A government sets a maximum price below the equilibrium price for rented housing. What is the most likely consequence?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "a shortage, with rationing by means other than price"
+      },
+      {
+        "id": "B",
+        "text": "no effect, since the price was already below equilibrium"
+      },
+      {
+        "id": "C",
+        "text": "an increase in the supply of rental housing"
+      },
+      {
+        "id": "D",
+        "text": "a surplus of rental housing"
+      }
+    ],
+    "distractorRationale": {
+      "B": "A ceiling below equilibrium is binding by definition.",
+      "C": "A lower price reduces the quantity supplied.",
+      "D": "A surplus follows a minimum price set above equilibrium."
+    },
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "A binding maximum price sits below equilibrium, so quantity demanded exceeds quantity supplied: a shortage.\\n\\nBecause price can no longer ration the scarce supply, other mechanisms take over — waiting lists, informal payments, or landlords selecting tenants. That reallocation, not the shortage alone, is what makes price ceilings controversial.",
+    "tags": [
+      "price-ceiling",
+      "market-intervention"
+    ],
+    "estimatedTimeSec": 160,
+    "points": 2,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-eco-r03",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Macroeconomics",
+    "skill": "Policy",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stem": "A country's consumer price index rises from $120$ to $126$ over a year. What is the rate of inflation?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$6\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$5\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$26\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$4.8\\%$"
+      }
+    ],
+    "distractorRationale": {
+      "A": "Gives the change in index points, not the percentage.",
+      "C": "Treats the index as though its base were 100 this year.",
+      "D": "Divides by the new value instead of the original."
+    },
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Inflation is the percentage change in the index: $\\dfrac{126 - 120}{120} \\times 100 = 5\\%$.\\n\\nNote that a falling rate of inflation still means prices are rising, only more slowly — that is disinflation, not deflation.",
+    "tags": [
+      "inflation",
+      "cpi"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 2,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "al-eco-r04",
+    "status": "in_review",
+    "exam": "ALEVEL",
+    "section": "al_econ_p2",
+    "domain": "Macroeconomics",
+    "skill": "Growth & development",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "In one year a country's real GDP per head rose by $4.1$ per cent. Over the same period the Gini coefficient rose from $0.38$ to $0.44$, and average hours worked per employed person rose by $6$ per cent. Population growth was negligible."
+    },
+    "stem": "With reference to the data, assess whether the rise in GDP per head is a reliable indicator that living standards in this country have improved. [8 marks]",
+    "type": "essay_rubric",
+    "answer": {
+      "mode": "rubric",
+      "rubric": [
+        {
+          "criterion": "Explains what GDP per head does measure",
+          "points": 2,
+          "descriptor": "States that GDP per head is total output divided by population, so the $4.1\\%$ rise means more output per person on average — a genuine increase in the resources available."
+        },
+        {
+          "criterion": "Identifies limitations using the data",
+          "points": 3,
+          "descriptor": "Uses the data to qualify the figure: the Gini coefficient rose from $0.38$ to $0.44$, so the average may conceal that gains went disproportionately to higher earners; and hours worked rose $6\\%$, so output per hour may have fallen even as output per head rose."
+        },
+        {
+          "criterion": "Reaches a supported judgement",
+          "points": 3,
+          "descriptor": "Concludes that the figure is necessary but not sufficient evidence, and names what else would be needed — median income rather than mean, leisure time, health and education indicators, or environmental costs."
+        }
+      ],
+      "exemplar": "GDP per head is total output divided by population, so a rise of $4.1\\%$ means the average person's share of output grew. That is a real gain: more goods and services are available per person than a year earlier, and over time such growth is what has lifted living standards historically.\\n\\nThe data complicate the conclusion in two ways. The Gini coefficient rose from $0.38$ to $0.44$, a substantial widening of inequality. An average can rise while the median falls, and if the gains accrued mainly to higher earners, the typical household may be no better off. Second, hours worked rose by $6\\%$, which exceeds the growth in output per head. Output per hour therefore appears to have fallen: people are producing more in total largely by working longer, and the leisure they gave up does not appear anywhere in the GDP figure.\\n\\nGDP per head also omits what it was never designed to capture — unpaid work, environmental depletion, health, and the distribution of what is produced. It is a measure of output, not of welfare.\\n\\nOn balance the rise is evidence of improvement but not proof of it. To judge living standards I would want the median income alongside the mean, some measure of hours and leisure, and indicators of health and education. Where the mean rises, the median stagnates, and hours lengthen, the honest conclusion is that the economy grew while the typical person's position did not clearly improve."
+    },
+    "explanation": "A strong answer separates what the statistic measures from what it is being asked to prove, and uses both figures in the data rather than reciting general limitations of GDP.",
+    "tags": [
+      "gdp-per-head",
+      "living-standards",
+      "inequality"
+    ],
+    "estimatedTimeSec": 900,
+    "points": 8,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5
+    }
+  }
+]

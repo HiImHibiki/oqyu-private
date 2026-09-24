@@ -1,0 +1,3140 @@
+[
+  {
+    "id": "utbk-lbi-a01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Garam gunung dari Krayan, Kalimantan Utara, dibuat dari air sumur asin yang muncul di daerah pegunungan, jauh dari laut. Air itu direbus di atas tungku kayu selama dua sampai tiga hari sampai tersisa kristal putih. Karena tidak melewati proses pemutihan, garam Krayan mengandung yodium alami dan kadar natrium yang lebih rendah daripada garam laut olahan. Satu keluarga biasanya menghasilkan tidak lebih dari lima kilogram sekali proses."
+    },
+    "stem": "Berdasarkan bacaan, berapa lama air sumur asin direbus dalam pembuatan garam Krayan?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Dua sampai tiga hari"
+      },
+      {
+        "id": "B",
+        "text": "Dua sampai tiga jam"
+      },
+      {
+        "id": "C",
+        "text": "Lima hari"
+      },
+      {
+        "id": "D",
+        "text": "Satu minggu"
+      },
+      {
+        "id": "E",
+        "text": "Tidak disebutkan dalam bacaan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat kedua menyebutkan secara langsung bahwa air direbus \"selama dua sampai tiga hari sampai tersisa kristal putih\".",
+    "distractorRationale": {
+      "B": "Mengubah satuan waktu dari hari menjadi jam.",
+      "C": "Angka lima diambil dari jumlah kilogram, bukan lama perebusan.",
+      "D": "Tidak ada angka satu minggu dalam bacaan.",
+      "E": "Informasinya justru dinyatakan secara tersurat."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "teks-informasi"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Garam gunung dari Krayan, Kalimantan Utara, dibuat dari air sumur asin yang muncul di daerah pegunungan, jauh dari laut. Air itu direbus di atas tungku kayu selama dua sampai tiga hari. Karena tidak melewati proses pemutihan, garam Krayan mengandung yodium alami. Satu keluarga biasanya menghasilkan tidak lebih dari lima kilogram sekali proses. Pemerintah daerah telah memberikan sertifikat indikasi geografis, tetapi produksinya tetap sulit menembus pasar luar pulau."
+    },
+    "stem": "Alasan yang paling mungkin membuat garam Krayan sulit menembus pasar luar pulau berdasarkan bacaan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Kandungan yodiumnya tidak memenuhi standar kesehatan nasional."
+      },
+      {
+        "id": "B",
+        "text": "Jumlah produksinya sangat terbatas karena prosesnya lama dan manual."
+      },
+      {
+        "id": "C",
+        "text": "Biaya kayu bakar untuk merebus air terus meningkat."
+      },
+      {
+        "id": "D",
+        "text": "Masyarakat luar pulau lebih menyukai garam yang telah diputihkan."
+      },
+      {
+        "id": "E",
+        "text": "Garam Krayan belum memiliki sertifikat resmi dari pemerintah."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bacaan menyebut dua hal yang membatasi pasokan: perebusan dua sampai tiga hari dan hasil maksimal lima kilogram per keluarga sekali proses. Keduanya menjelaskan mengapa jumlahnya sulit memenuhi pasar yang luas.",
+    "distractorRationale": {
+      "A": "Bacaan justru menyebut garam ini mengandung yodium alami.",
+      "C": "Kenaikan biaya kayu tidak disebutkan dalam bacaan.",
+      "D": "Selera konsumen luar pulau tidak disinggung sama sekali.",
+      "E": "Sertifikat indikasi geografis sudah diberikan menurut kalimat terakhir."
+    },
+    "tags": [
+      "interpretasi",
+      "teks-informasi"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sejumlah kota mulai mengganti lampu jalan dengan lampu LED dan melaporkan penghematan listrik hingga enam puluh persen. Namun sebuah kajian mencatat bahwa banyak kota sekaligus menambah jumlah titik lampu, karena LED lebih murah dioperasikan. Di beberapa kota, total konsumsi listrik penerangan jalan justru naik setelah penggantian. Penghematan per lampu tetap nyata; yang tidak terjadi adalah penghematan pada tagihan kota."
+    },
+    "stem": "Simpulan yang paling didukung oleh bacaan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Penerangan jalan sebaiknya dikurangi untuk menghemat listrik."
+      },
+      {
+        "id": "B",
+        "text": "Kota-kota tersebut salah menghitung penghematan listriknya."
+      },
+      {
+        "id": "C",
+        "text": "Efisiensi per unit tidak otomatis menurunkan pemakaian total bila jumlah unitnya bertambah."
+      },
+      {
+        "id": "D",
+        "text": "Penambahan titik lampu tidak memberikan manfaat apa pun."
+      },
+      {
+        "id": "E",
+        "text": "Lampu LED sebenarnya tidak lebih hemat daripada lampu lama."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bacaan menegaskan dua hal sekaligus: penghematan per lampu nyata, tetapi tagihan kota tidak turun karena jumlah lampu bertambah. Inti persoalannya adalah jarak antara efisiensi per unit dan pemakaian total.",
+    "distractorRationale": {
+      "A": "Bacaan menjelaskan sebuah pola, bukan mengusulkan pengurangan penerangan.",
+      "B": "Angka penghematannya tidak dipersoalkan; yang berbeda adalah cakupan pengukurannya.",
+      "D": "Manfaat penambahan lampu tidak dibahas, dan bacaan tidak menilainya.",
+      "E": "Bertentangan dengan kalimat terakhir yang menyebut penghematan per lampu tetap nyata."
+    },
+    "tags": [
+      "evaluasi",
+      "efek-rebound"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Tarsius adalah primata terkecil di dunia yang hidup di Sulawesi dan sejumlah pulau di sekitarnya. Matanya berdiameter lebih besar daripada otaknya, dan tidak dapat digerakkan di dalam rongganya. Sebagai gantinya, tarsius dapat memutar kepalanya hingga hampir seratus delapan puluh derajat ke kiri dan ke kanan. Hewan ini aktif pada malam hari dan hanya memakan mangsa hidup, terutama serangga."
+    },
+    "stem": "Pernyataan yang **sesuai** dengan bacaan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Otak tarsius lebih besar daripada matanya."
+      },
+      {
+        "id": "B",
+        "text": "Tarsius hanya ditemukan di Pulau Sulawesi."
+      },
+      {
+        "id": "C",
+        "text": "Tarsius memakan buah-buahan dan serangga."
+      },
+      {
+        "id": "D",
+        "text": "Mata tarsius tidak dapat digerakkan di dalam rongganya."
+      },
+      {
+        "id": "E",
+        "text": "Tarsius aktif mencari makan pada siang hari."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat kedua menyatakan langsung bahwa mata tarsius \"tidak dapat digerakkan di dalam rongganya\", yang menjadi alasan kemampuannya memutar kepala.",
+    "distractorRationale": {
+      "A": "Justru sebaliknya: matanya lebih besar daripada otaknya.",
+      "B": "Bacaan menyebut Sulawesi *dan sejumlah pulau di sekitarnya*.",
+      "C": "Bacaan menyebut tarsius hanya memakan mangsa hidup, terutama serangga.",
+      "E": "Bacaan menyatakan tarsius aktif pada malam hari."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "kesesuaian"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kompos yang dibuat dari sisa dapur rumah tangga memiliki kandungan nitrogen tinggi tetapi mudah menjadi becek dan berbau. Menambahkan bahan kering seperti daun gugur, serbuk gergaji, atau potongan kardus memperbaiki keadaan itu: bahan kering menyerap kelebihan air dan menyediakan karbon yang diperlukan mikroba pengurai. Perbandingan yang umum disarankan adalah satu bagian sisa dapur berbanding dua sampai tiga bagian bahan kering."
+    },
+    "stem": "Berdasarkan bacaan, fungsi bahan kering dalam pengomposan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menambah kandungan nitrogen agar kompos lebih subur"
+      },
+      {
+        "id": "B",
+        "text": "mempercepat pembusukan dengan menaikkan suhu tumpukan"
+      },
+      {
+        "id": "C",
+        "text": "mencegah serangga mendekati tumpukan kompos"
+      },
+      {
+        "id": "D",
+        "text": "menggantikan sisa dapur yang tidak tersedia"
+      },
+      {
+        "id": "E",
+        "text": "menyerap kelebihan air sekaligus menyediakan karbon bagi mikroba"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat kedua menyebut dua fungsi bahan kering secara berdampingan: menyerap kelebihan air dan menyediakan karbon yang diperlukan mikroba pengurai.",
+    "distractorRationale": {
+      "A": "Nitrogen justru berasal dari sisa dapur; bahan kering menyumbang karbon.",
+      "B": "Kenaikan suhu tidak disebutkan dalam bacaan.",
+      "C": "Serangga tidak disinggung sama sekali.",
+      "D": "Bahan kering dicampurkan bersama sisa dapur, bukan menggantikannya."
+    },
+    "tags": [
+      "interpretasi",
+      "teks-prosedur"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Penulis berargumen bahwa perpustakaan sekolah sebaiknya membuka koleksinya untuk dipinjam tanpa batas jumlah. Ia menyebut bahwa di sekolah yang menerapkannya, jumlah buku hilang memang bertambah, tetapi jumlah halaman yang dibaca siswa naik jauh lebih besar. \"Buku yang tersimpan rapi di rak dan tidak pernah dibaca,\" tulisnya, \"sudah hilang dengan cara lain.\""
+    },
+    "stem": "Kalimat kutipan pada akhir bacaan berfungsi untuk ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "mengubah cara pembaca menilai kerugian akibat buku hilang"
+      },
+      {
+        "id": "B",
+        "text": "membuktikan bahwa buku di perpustakaan jarang dicuri"
+      },
+      {
+        "id": "C",
+        "text": "menyarankan agar rak perpustakaan ditata ulang"
+      },
+      {
+        "id": "D",
+        "text": "menyangkal data kenaikan jumlah buku hilang"
+      },
+      {
+        "id": "E",
+        "text": "menjelaskan cara menghitung jumlah halaman yang dibaca"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Penulis mengakui buku memang lebih banyak hilang, lalu memperluas makna 'hilang' hingga mencakup buku yang tidak pernah dibaca. Kutipan itu bekerja dengan mengubah tolok ukur kerugian, bukan dengan membantah datanya.",
+    "distractorRationale": {
+      "B": "Bacaan justru mengakui jumlah buku hilang bertambah.",
+      "C": "Penataan rak tidak menjadi pokok bahasan.",
+      "D": "Datanya diterima; yang digeser adalah cara menafsirkannya.",
+      "E": "Cara penghitungan halaman tidak dibahas."
+    },
+    "tags": [
+      "evaluasi",
+      "fungsi-kutipan"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah kabupaten mencatat bahwa tingkat kelulusan ujian sekolah naik dari 86 persen menjadi 97 persen dalam tiga tahun. Pada periode yang sama, jumlah siswa yang terdaftar mengikuti ujian turun sekitar seperempat, sebagian besar karena siswa dengan nilai rapor rendah dialihkan ke jalur ujian kesetaraan yang diselenggarakan terpisah."
+    },
+    "stem": "Manakah pernyataan berikut yang benar berdasarkan bacaan?",
+    "type": "true_false_multi",
+    "statements": [
+      {
+        "id": "s1",
+        "text": "Kenaikan tingkat kelulusan sebagian dapat dijelaskan oleh perubahan komposisi peserta ujian."
+      },
+      {
+        "id": "s2",
+        "text": "Jumlah siswa yang lulus ujian sekolah pasti bertambah dibandingkan tiga tahun lalu."
+      },
+      {
+        "id": "s3",
+        "text": "Siswa yang dialihkan ke jalur kesetaraan tidak dihitung dalam tingkat kelulusan ujian sekolah."
+      },
+      {
+        "id": "s4",
+        "text": "Bacaan menunjukkan mutu pengajaran di kabupaten itu meningkat."
+      }
+    ],
+    "answer": {
+      "mode": "boolean_list",
+      "values": [
+        true,
+        false,
+        true,
+        false
+      ]
+    },
+    "explanation": "**s1 benar.** Siswa bernilai rendah keluar dari kelompok peserta, sehingga persentase kelulusan naik tanpa memerlukan perbaikan pada siswa yang tersisa.\n\n**s2 salah.** Persentase naik tetapi jumlah peserta turun seperempat. Dari 100 peserta, 86 lulus; dari 75 peserta, 97 persennya sekitar 73 — bisa jadi justru lebih sedikit.\n\n**s3 benar.** Ujian kesetaraan diselenggarakan terpisah, sehingga pesertanya berada di luar hitungan ujian sekolah.\n\n**s4 salah.** Mutu pengajaran tidak diukur, dan perubahan komposisi peserta sudah cukup menjelaskan kenaikan angkanya.",
+    "tags": [
+      "evaluasi-statistik",
+      "perubahan-komposisi"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Kapal pinisi dibangun tanpa gambar rancangan tertulis. Panrita lopi, sebutan bagi ahli pembuat kapal di Bulukumba, menentukan ukuran dan lengkung lambung berdasarkan ingatan dan perbandingan tubuh: sedepa, sehasta, sejengkal. Lunas dipasang lebih dahulu, baru papan lambung disusun dari bawah ke atas, dan rangka bagian dalam ditambahkan paling akhir — kebalikan dari urutan pembuatan kapal modern."
+    },
+    "stem": "Berdasarkan bacaan, bagian yang dipasang paling akhir dalam pembuatan kapal pinisi adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kemudi"
+      },
+      {
+        "id": "B",
+        "text": "rangka bagian dalam"
+      },
+      {
+        "id": "C",
+        "text": "lunas"
+      },
+      {
+        "id": "D",
+        "text": "papan lambung"
+      },
+      {
+        "id": "E",
+        "text": "layar"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat terakhir menyebut urutannya secara berurutan: lunas dahulu, lalu papan lambung dari bawah ke atas, dan \"rangka bagian dalam ditambahkan paling akhir\".",
+    "distractorRationale": {
+      "A": "Kemudi tidak disebutkan dalam bacaan.",
+      "C": "Lunas justru dipasang paling awal.",
+      "D": "Papan lambung disusun pada tahap kedua.",
+      "E": "Layar tidak disebutkan dalam bacaan."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "urutan"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah aplikasi belajar mengklaim bahwa penggunanya mengalami kenaikan nilai rata-rata sebesar dua belas poin. Klaim itu didasarkan pada perbandingan nilai sebelum dan sesudah bagi pengguna yang menyelesaikan seluruh modul. Aplikasi tersebut tidak melaporkan berapa banyak pengguna yang berhenti di tengah jalan."
+    },
+    "stem": "Kelemahan utama dari klaim aplikasi tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Aplikasi tidak menyebutkan harga langganannya."
+      },
+      {
+        "id": "B",
+        "text": "Nilai sebelum dan sesudah tidak boleh dibandingkan secara langsung."
+      },
+      {
+        "id": "C",
+        "text": "Angka itu hanya mencakup pengguna yang bertahan, yang mungkin memang paling tekun sejak awal."
+      },
+      {
+        "id": "D",
+        "text": "Modul aplikasi terlalu banyak untuk diselesaikan."
+      },
+      {
+        "id": "E",
+        "text": "Kenaikan dua belas poin terlalu kecil untuk dianggap berarti."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kelompok yang diukur ditentukan setelah hasilnya terjadi: hanya yang menyelesaikan seluruh modul. Pengguna yang berhenti — yang mungkin justru tidak memperoleh manfaat — tidak ikut dihitung, sehingga angka kenaikan itu berlebih.",
+    "distractorRationale": {
+      "A": "Harga langganan tidak berkaitan dengan keabsahan klaim hasil belajar.",
+      "B": "Perbandingan sebelum-sesudah sah dilakukan bila kelompoknya tidak disaring.",
+      "D": "Banyaknya modul tidak menjadi soal; yang menjadi soal adalah siapa yang dihitung.",
+      "E": "Besar kecilnya kenaikan bukan persoalannya; cara memilih sampellah yang cacat."
+    },
+    "tags": [
+      "evaluasi",
+      "bias-seleksi"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sungai bawah tanah di kawasan karst terbentuk ketika air hujan yang sedikit asam melarutkan batu gamping selama ribuan tahun. Rongga yang terbentuk menjadi jalur air, dan permukaan di atasnya tetap kering meskipun curah hujan tinggi. Karena itu kawasan karst kerap kekurangan air permukaan padahal menyimpan cadangan air besar di bawahnya."
+    },
+    "stem": "Hubungan yang dijelaskan bacaan antara curah hujan tinggi dan kekeringan di permukaan karst adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Penguapan di kawasan karst jauh lebih cepat daripada di daerah lain."
+      },
+      {
+        "id": "B",
+        "text": "Batu gamping memantulkan air hujan sehingga tidak sempat meresap."
+      },
+      {
+        "id": "C",
+        "text": "Curah hujan di kawasan karst sebenarnya lebih rendah daripada daerah lain."
+      },
+      {
+        "id": "D",
+        "text": "Air hujan cepat meresap ke rongga bawah tanah sehingga tidak tertahan di permukaan."
+      },
+      {
+        "id": "E",
+        "text": "Sungai bawah tanah mengalirkan air kembali ke permukaan pada musim kemarau."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Bacaan menerangkan bahwa rongga hasil pelarutan menjadi jalur air, sehingga permukaan tetap kering meski hujan deras. Airnya tidak hilang, melainkan berpindah ke bawah tanah.",
+    "distractorRationale": {
+      "A": "Penguapan tidak disebutkan sebagai penyebab.",
+      "B": "Batu gamping dilarutkan air, bukan memantulkannya.",
+      "C": "Bacaan justru menyebut curah hujannya tinggi.",
+      "E": "Bacaan tidak menyatakan air kembali naik ke permukaan."
+    },
+    "tags": [
+      "interpretasi",
+      "sebab-akibat"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Bank sampah adalah tempat warga menyetorkan sampah yang telah dipilah dan menerima catatan tabungan sesuai berat dan jenisnya. Sampah plastik keras dihargai paling tinggi, disusul kertas dan logam. Tabungan dapat dicairkan setiap tiga bulan atau ditukar dengan bahan kebutuhan pokok. Model ini pertama kali berkembang di Yogyakarta dan kini tersebar di ratusan kota."
+    },
+    "stem": "Berdasarkan bacaan, jenis sampah yang dihargai paling tinggi di bank sampah adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kertas"
+      },
+      {
+        "id": "B",
+        "text": "logam"
+      },
+      {
+        "id": "C",
+        "text": "kaca"
+      },
+      {
+        "id": "D",
+        "text": "sisa makanan"
+      },
+      {
+        "id": "E",
+        "text": "plastik keras"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat kedua menyebutkan urutannya secara eksplisit: \"Sampah plastik keras dihargai paling tinggi, disusul kertas dan logam.\"",
+    "distractorRationale": {
+      "A": "Kertas berada pada urutan kedua.",
+      "B": "Logam berada pada urutan ketiga.",
+      "C": "Kaca tidak disebutkan dalam bacaan.",
+      "D": "Sisa makanan tidak disebutkan dalam bacaan."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "urutan"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Penulis menyatakan bahwa penggunaan istilah asing dalam tulisan ilmiah Indonesia sering dipakai bukan karena tidak ada padanannya, melainkan karena istilah asing terdengar lebih berwibawa. Ia menunjukkan bahwa kata *sustainable* memiliki padanan mapan *berkelanjutan*, yang justru lebih tua usianya dalam korpus bahasa Indonesia daripada pemakaian kata asingnya."
+    },
+    "stem": "Fungsi contoh kata *sustainable* dalam bacaan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menunjukkan bahwa padanan Indonesia sudah tersedia dan bahkan lebih dahulu digunakan"
+      },
+      {
+        "id": "B",
+        "text": "membandingkan panjang kata dalam dua bahasa"
+      },
+      {
+        "id": "C",
+        "text": "mengkritik penulis yang tidak menguasai bahasa Inggris"
+      },
+      {
+        "id": "D",
+        "text": "membuktikan bahwa bahasa Indonesia kekurangan istilah ilmiah"
+      },
+      {
+        "id": "E",
+        "text": "menjelaskan asal-usul istilah lingkungan hidup"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Penulis berargumen bahwa istilah asing dipakai bukan karena padanannya tidak ada. Contoh *sustainable* mendukungnya dengan menunjukkan padanan *berkelanjutan* yang mapan dan bahkan lebih tua pemakaiannya.",
+    "distractorRationale": {
+      "B": "Panjang kata tidak menjadi bahan perbandingan.",
+      "C": "Penulis tidak mempersoalkan penguasaan bahasa Inggris siapa pun.",
+      "D": "Contoh itu justru membuktikan sebaliknya.",
+      "E": "Asal-usul istilah lingkungan hidup tidak dibahas."
+    },
+    "tags": [
+      "evaluasi",
+      "fungsi-contoh"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a13",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Program pemberian sepeda kepada siswa yang tinggal jauh dari sekolah diikuti kenaikan kehadiran sebesar sembilan persen di kecamatan A. Di kecamatan B, program yang sama tidak mengubah angka kehadiran sama sekali. Perbedaan mencolok antara keduanya adalah kondisi jalan: kecamatan A memiliki jalan beraspal ke seluruh desa, sedangkan sebagian besar desa di kecamatan B dihubungkan jalan tanah yang berlumpur pada musim hujan."
+    },
+    "stem": "Simpulan yang paling didukung oleh bacaan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Siswa di kecamatan B kurang bersemangat bersekolah."
+      },
+      {
+        "id": "B",
+        "text": "Manfaat pemberian sepeda bergantung pada kondisi jalan yang tersedia."
+      },
+      {
+        "id": "C",
+        "text": "Pemberian sepeda tidak efektif untuk meningkatkan kehadiran."
+      },
+      {
+        "id": "D",
+        "text": "Jarak ke sekolah bukan penyebab rendahnya kehadiran."
+      },
+      {
+        "id": "E",
+        "text": "Kecamatan A memiliki jumlah siswa yang lebih banyak."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Program yang sama memberi hasil berbeda di dua tempat, dan bacaan menunjuk satu pembeda: kondisi jalan. Sepeda hanya berguna bila ada jalan yang dapat dilaluinya, sehingga manfaat program itu bersyarat.",
+    "distractorRationale": {
+      "A": "Semangat siswa tidak diukur dan tidak diperlukan untuk menjelaskan perbedaannya.",
+      "C": "Di kecamatan A program itu berhasil, sehingga penilaian menyeluruh ini keliru.",
+      "D": "Bacaan justru menyiratkan jarak tetap menjadi persoalan, hanya saja sepeda tidak selalu menjawabnya.",
+      "E": "Jumlah siswa tidak disebutkan dalam bacaan."
+    },
+    "tags": [
+      "interpretasi",
+      "faktor-pembeda"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a14",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Rumah adat Toraja, tongkonan, dibangun menghadap ke utara. Atapnya melengkung menyerupai perahu dan disangga tiang-tiang kayu uru yang tidak ditanam ke tanah, melainkan berdiri di atas batu datar. Susunan ini membuat bangunan bergerak mengikuti guncangan gempa alih-alih melawannya. Di depan tongkonan berdiri lumbung padi yang disebut alang, selalu dalam jumlah ganjil."
+    },
+    "stem": "Menurut bacaan, tiang tongkonan tidak ditanam ke tanah melainkan ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "diikat pada dinding bangunan"
+      },
+      {
+        "id": "B",
+        "text": "ditopang oleh lumbung padi"
+      },
+      {
+        "id": "C",
+        "text": "berdiri di atas batu datar"
+      },
+      {
+        "id": "D",
+        "text": "dipancang dengan besi"
+      },
+      {
+        "id": "E",
+        "text": "digantung pada rangka atap"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat kedua menyebutkan bahwa tiang kayu uru \"tidak ditanam ke tanah, melainkan berdiri di atas batu datar\", dan kalimat berikutnya menjelaskan gunanya saat gempa.",
+    "distractorRationale": {
+      "A": "Pengikatan pada dinding tidak disebutkan.",
+      "B": "Lumbung padi berdiri terpisah di depan tongkonan.",
+      "D": "Besi tidak disebutkan sama sekali.",
+      "E": "Tiang menyangga atap, bukan digantung padanya."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "teks-deskripsi"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-a15",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah artikel menyarankan agar setiap sekolah memasang panel surya. Artikel itu menyebut penghematan tagihan listrik hingga empat puluh persen dan masa pakai panel dua puluh lima tahun. Artikel tidak menyebutkan biaya pemasangan awal, ketersediaan teknisi perawatan, maupun kondisi atap yang diperlukan."
+    },
+    "stem": "Kelemahan artikel tersebut sebagai dasar pengambilan keputusan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Angka penghematan empat puluh persen tidak mungkin tercapai."
+      },
+      {
+        "id": "B",
+        "text": "Masa pakai dua puluh lima tahun terlalu singkat untuk sebuah sekolah."
+      },
+      {
+        "id": "C",
+        "text": "Panel surya tidak cocok dipasang di daerah tropis."
+      },
+      {
+        "id": "D",
+        "text": "Artikel hanya menyajikan sisi manfaat tanpa syarat dan biaya yang menyertainya."
+      },
+      {
+        "id": "E",
+        "text": "Artikel seharusnya membahas sumber energi lain terlebih dahulu."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat terakhir menyebut tiga hal yang tidak dibahas: biaya awal, teknisi perawatan, dan kondisi atap. Keputusan pemasangan memerlukan ketiganya, sehingga artikel itu tidak lengkap sebagai dasar keputusan.",
+    "distractorRationale": {
+      "A": "Bacaan tidak memberi alasan untuk meragukan angka itu.",
+      "B": "Dua puluh lima tahun justru masa pakai yang panjang.",
+      "C": "Kesesuaian iklim tidak dibahas dalam bacaan.",
+      "E": "Membandingkan sumber energi lain berguna, tetapi bukan kekurangan yang ditunjuk bacaan."
+    },
+    "tags": [
+      "evaluasi",
+      "kelengkapan-informasi"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Setiap subuh Ambu menakar beras dengan gelas belimbing yang sudah retak di bibirnya. Tiga gelas untuk hari biasa, dua setengah bila Bapak belum pulang melaut. Aku pernah bertanya mengapa tidak dibeli gelas baru, dan Ambu hanya berkata bahwa gelas itu tahu ukuran keluarga ini lebih baik daripada dirinya sendiri."
+    },
+    "stem": "Berdasarkan kutipan, takaran beras yang digunakan Ambu ketika Bapak belum pulang melaut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tiga setengah gelas"
+      },
+      {
+        "id": "B",
+        "text": "empat gelas"
+      },
+      {
+        "id": "C",
+        "text": "tiga gelas"
+      },
+      {
+        "id": "D",
+        "text": "dua gelas"
+      },
+      {
+        "id": "E",
+        "text": "dua setengah gelas"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat kedua menyebut takarannya secara langsung: tiga gelas untuk hari biasa, dan dua setengah gelas bila Bapak belum pulang melaut.",
+    "distractorRationale": {
+      "A": "Angka ini tidak muncul dalam kutipan.",
+      "B": "Angka ini tidak muncul dalam kutipan.",
+      "C": "Takaran untuk hari biasa, bukan saat Bapak belum pulang.",
+      "D": "Membulatkan ke bawah takaran dua setengah gelas."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "prosa"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Setiap subuh Ambu menakar beras dengan gelas belimbing yang sudah retak di bibirnya. Tiga gelas untuk hari biasa, dua setengah bila Bapak belum pulang melaut. Aku pernah bertanya mengapa tidak dibeli gelas baru, dan Ambu hanya berkata bahwa gelas itu tahu ukuran keluarga ini lebih baik daripada dirinya sendiri."
+    },
+    "stem": "Makna kalimat *gelas itu tahu ukuran keluarga ini lebih baik daripada dirinya sendiri* dalam kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Gelas itu telah menjadi penanda keadaan keluarga yang terbaca tanpa perlu dibicarakan."
+      },
+      {
+        "id": "B",
+        "text": "Ambu tidak mampu menghitung kebutuhan beras keluarganya."
+      },
+      {
+        "id": "C",
+        "text": "Gelas belimbing memiliki ukuran yang lebih akurat daripada takaran lain."
+      },
+      {
+        "id": "D",
+        "text": "Ambu ingin mengganti gelas itu tetapi tidak memiliki uang."
+      },
+      {
+        "id": "E",
+        "text": "Keluarga itu jarang makan bersama pada waktu subuh."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Takaran gelas berubah mengikuti keadaan keluarga — tiga gelas atau dua setengah, bergantung pada apakah Bapak sudah pulang. Kalimat Ambu memberi gelas itu peran sebagai pencatat keadaan yang tidak perlu diucapkan, bukan sebagai alat ukur yang lebih tepat.",
+    "distractorRationale": {
+      "B": "Justru Ambu-lah yang menetapkan takaran itu dengan cermat.",
+      "C": "Ketepatan fisik gelas bukan yang dimaksud; gelasnya bahkan sudah retak.",
+      "D": "Alasan keuangan tidak disebutkan dalam kutipan.",
+      "E": "Kutipan tidak berbicara tentang kebiasaan makan bersama."
+    },
+    "tags": [
+      "interpretasi",
+      "majas"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pak Rusdi menolak tanda tangan itu selama sebelas bulan. Ia tahu berkasnya benar, ia tahu siapa yang menunggu, dan ia tahu berapa harga penolakan itu bagi kariernya. Pada bulan kedua belas, ketika seorang perempuan datang membawa anaknya yang sakit dan berkas yang sama, ia menandatanganinya tanpa membaca. Malam itu ia membakar catatan hariannya."
+    },
+    "stem": "Tindakan Pak Rusdi membakar catatan hariannya paling tepat ditafsirkan sebagai ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "cara menghapus jejak agar tidak dituntut secara hukum"
+      },
+      {
+        "id": "B",
+        "text": "penolakan untuk menyimpan bukti pertentangan batin yang akhirnya ia kalahkan sendiri"
+      },
+      {
+        "id": "C",
+        "text": "tanda bahwa ia telah melupakan seluruh peristiwa itu"
+      },
+      {
+        "id": "D",
+        "text": "kebiasaan lama yang ia lakukan setiap akhir tahun"
+      },
+      {
+        "id": "E",
+        "text": "usaha membersihkan rumah dari barang yang tidak terpakai"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Selama sebelas bulan Pak Rusdi bertahan pada pendiriannya, lalu menyerah dalam satu peristiwa. Catatan harian adalah rekaman pendirian itu. Membakarnya pada malam yang sama menandai ia tidak sanggup menyimpan bukti bahwa ia pernah bertahan lalu menyerah.",
+    "distractorRationale": {
+      "A": "Yang ia tanda tangani adalah berkas yang ia sendiri tahu benar, sehingga tidak ada ancaman hukum.",
+      "C": "Membakar catatan justru menunjukkan peristiwa itu terlalu berat untuk disimpan, bukan terlupakan.",
+      "D": "Tidak ada isyarat kebiasaan tahunan dalam kutipan.",
+      "E": "Penafsiran harfiah yang mengabaikan seluruh bangunan cerita."
+    },
+    "tags": [
+      "evaluasi",
+      "penafsiran-tindakan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "**Jalan Pulang**\n\nDi peta, rumahku sejengkal dari kota.\nDi kaki, ia dua sungai dan satu kabar buruk.\nAku menghitung tikungan seperti orang menghitung utang:\ntahu jumlahnya, tetap saja terkejut tiap sampai."
+    },
+    "stem": "Makna baris kedua puisi tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Peta yang digunakan penyair ternyata salah cetak."
+      },
+      {
+        "id": "B",
+        "text": "Perjalanan pulang selalu dilakukan pada musim hujan."
+      },
+      {
+        "id": "C",
+        "text": "Jarak yang tampak dekat di peta terasa jauh dan berat ketika benar-benar ditempuh."
+      },
+      {
+        "id": "D",
+        "text": "Penyair tidak pernah berhasil sampai ke rumahnya."
+      },
+      {
+        "id": "E",
+        "text": "Rumah penyair terletak di antara dua sungai besar."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Baris pertama menyebut jarak di peta yang hanya sejengkal; baris kedua mengganti satuannya menjadi *dua sungai dan satu kabar buruk* — ukuran pengalaman, bukan ukuran ruang. Pertentangan kedua baris itulah maknanya.",
+    "distractorRationale": {
+      "A": "Peta tidak dipersoalkan kebenarannya; yang dipersoalkan adalah kecukupannya.",
+      "B": "Musim tidak disinggung dalam puisi.",
+      "D": "Baris terakhir justru menyebut penyair sampai, berulang kali.",
+      "E": "Membaca 'dua sungai' secara harfiah dan mengabaikan 'satu kabar buruk' yang bukan satuan jarak."
+    },
+    "tags": [
+      "interpretasi",
+      "puisi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "**Jalan Pulang**\n\nDi peta, rumahku sejengkal dari kota.\nDi kaki, ia dua sungai dan satu kabar buruk.\nAku menghitung tikungan seperti orang menghitung utang:\ntahu jumlahnya, tetap saja terkejut tiap sampai."
+    },
+    "stem": "Perbandingan *menghitung tikungan seperti orang menghitung utang* pada puisi tersebut menyiratkan bahwa ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "penyair memiliki utang yang belum dilunasi kepada seseorang di kampungnya"
+      },
+      {
+        "id": "B",
+        "text": "jalan menuju rumah penyair memiliki jumlah tikungan yang tidak menentu"
+      },
+      {
+        "id": "C",
+        "text": "perjalanan pulang memerlukan biaya yang tidak sedikit"
+      },
+      {
+        "id": "D",
+        "text": "hal yang sudah dikenal betul tetap dapat menimbulkan rasa berat setiap kali dihadapi"
+      },
+      {
+        "id": "E",
+        "text": "penyair tidak mampu mengingat jalan menuju rumahnya sendiri"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Baris terakhir menjelaskan inti perbandingannya: *tahu jumlahnya, tetap saja terkejut*. Utang dan tikungan sama-sama dikenal jumlahnya, tetapi pengetahuan itu tidak meringankan beban saat menghadapinya.",
+    "distractorRationale": {
+      "A": "Utang adalah pembanding dalam majas, bukan keadaan yang diceritakan.",
+      "B": "Baris terakhir justru menyatakan penyair tahu jumlahnya.",
+      "C": "Biaya perjalanan tidak disinggung dalam puisi.",
+      "E": "Penyair menghitung tikungan, yang berarti ia mengenal jalannya."
+    },
+    "tags": [
+      "evaluasi",
+      "majas-perbandingan"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Warung Bu Tinah buka pukul lima pagi dan tutup ketika dagangan habis, kadang pukul sembilan, kadang menjelang tengah hari. Tidak ada daftar harga di dinding. Pelanggan lama tahu berapa yang harus ditinggalkan di kaleng biskuit dekat pintu, dan pelanggan baru selalu bertanya, lalu tidak pernah bertanya lagi setelah itu."
+    },
+    "stem": "Berdasarkan kutipan, warung Bu Tinah tutup pada saat ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "pukul sembilan pagi setiap hari"
+      },
+      {
+        "id": "B",
+        "text": "menjelang tengah hari setiap hari"
+      },
+      {
+        "id": "C",
+        "text": "pelanggan terakhir pulang"
+      },
+      {
+        "id": "D",
+        "text": "pukul lima sore"
+      },
+      {
+        "id": "E",
+        "text": "dagangannya habis"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat pertama menyatakan warung \"tutup ketika dagangan habis\", sedangkan pukul sembilan dan menjelang tengah hari hanya disebut sebagai contoh waktu yang berubah-ubah.",
+    "distractorRationale": {
+      "A": "Disebut sebagai salah satu kemungkinan, bukan waktu tetap.",
+      "B": "Sama-sama hanya salah satu kemungkinan.",
+      "C": "Kepulangan pelanggan tidak disebut sebagai penentu.",
+      "D": "Waktu ini tidak muncul dalam kutipan."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "prosa"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Warung Bu Tinah buka pukul lima pagi dan tutup ketika dagangan habis. Tidak ada daftar harga di dinding. Pelanggan lama tahu berapa yang harus ditinggalkan di kaleng biskuit dekat pintu, dan pelanggan baru selalu bertanya, lalu tidak pernah bertanya lagi setelah itu."
+    },
+    "stem": "Kalimat *pelanggan baru selalu bertanya, lalu tidak pernah bertanya lagi setelah itu* menyiratkan bahwa ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "aturan warung itu tidak tertulis tetapi mudah dipahami setelah sekali dijelaskan"
+      },
+      {
+        "id": "B",
+        "text": "Bu Tinah melarang pelanggannya mengajukan pertanyaan"
+      },
+      {
+        "id": "C",
+        "text": "pelanggan baru merasa tersinggung lalu tidak kembali lagi"
+      },
+      {
+        "id": "D",
+        "text": "kaleng biskuit itu sering kali kosong"
+      },
+      {
+        "id": "E",
+        "text": "harga di warung itu berubah setiap hari"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Berhentinya pertanyaan berarti jawabannya cukup sekali. Kalimat itu menempatkan pelanggan baru menjadi pelanggan lama, yaitu orang yang sudah tahu tanpa perlu papan harga.",
+    "distractorRationale": {
+      "B": "Tidak ada isyarat larangan; pertanyaan justru dijawab.",
+      "C": "Bila mereka tidak kembali, mereka tidak akan menjadi pelanggan lama seperti yang disiratkan.",
+      "D": "Isi kaleng tidak dibicarakan dalam kutipan.",
+      "E": "Perubahan harga tidak disebutkan; yang tidak ada hanyalah daftarnya."
+    },
+    "tags": [
+      "interpretasi",
+      "penyiratan"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Bapak mengajari aku memperbaiki jaring dengan cara yang aneh: ia merusak satu simpul yang masih baik, lalu menyuruhku memperbaikinya. \"Kalau kau hanya menambal yang sudah koyak,\" katanya, \"kau belajar dari jaring yang rusak. Aku ingin kau belajar dari jaring yang benar.\""
+    },
+    "stem": "Nilai yang paling menonjol dari kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Merusak barang milik sendiri diperbolehkan demi latihan."
+      },
+      {
+        "id": "B",
+        "text": "Belajar sebaiknya berpangkal pada contoh yang benar, bukan hanya pada kesalahan yang terlanjur ada."
+      },
+      {
+        "id": "C",
+        "text": "Keterampilan menjaring hanya dapat diwariskan dari ayah kepada anak."
+      },
+      {
+        "id": "D",
+        "text": "Jaring yang rusak sebaiknya dibuang dan diganti dengan yang baru."
+      },
+      {
+        "id": "E",
+        "text": "Pekerjaan nelayan menuntut kesabaran yang tinggi."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Alasan Bapak dinyatakan sendiri dalam kutipan: menambal yang koyak berarti belajar dari jaring yang rusak, sedangkan merusak simpul yang baik memungkinkan anak melihat bentuk yang benar sebelum memperbaikinya.",
+    "distractorRationale": {
+      "A": "Membaca tindakan Bapak secara harfiah tanpa alasan yang ia sebutkan sendiri.",
+      "C": "Kutipan tidak membatasi cara pewarisan keterampilan.",
+      "D": "Bertentangan dengan isi kutipan yang justru mengajarkan perbaikan.",
+      "E": "Kesabaran mungkin tersirat, tetapi bukan pokok yang dibangun kutipan."
+    },
+    "tags": [
+      "nilai",
+      "amanat"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Tiga puluh tahun ia menjaga mercusuar itu, dan tiga puluh tahun tidak ada kapal karam di perairan tersebut. Ketika mercusuar diganti lampu otomatis dan ia dipensiunkan, surat kabar setempat menulis satu kalimat tentangnya: *penjaga mercusuar yang tidak pernah menyelamatkan siapa pun*."
+    },
+    "stem": "Ironi dalam kutipan tersebut terletak pada ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "surat kabar salah menulis nama penjaga mercusuar tersebut"
+      },
+      {
+        "id": "B",
+        "text": "mercusuar itu ternyata tidak pernah dinyalakan selama tiga puluh tahun"
+      },
+      {
+        "id": "C",
+        "text": "keberhasilan penjaga itu justru membuat jasanya tidak terlihat"
+      },
+      {
+        "id": "D",
+        "text": "penjaga itu menolak dipensiunkan meskipun sudah tua"
+      },
+      {
+        "id": "E",
+        "text": "lampu otomatis bekerja lebih baik daripada penjaga manusia"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Tidak adanya kapal karam adalah ukuran keberhasilan penjaga mercusuar. Kalimat surat kabar membaca ketiadaan itu sebagai ketiadaan jasa. Ironinya, bukti terbaik kerjanya justru berupa peristiwa yang tidak pernah terjadi.",
+    "distractorRationale": {
+      "A": "Kesalahan penulisan nama tidak disinggung.",
+      "B": "Justru sebaliknya: mercusuar bekerja sehingga tidak ada kapal karam.",
+      "D": "Penolakan pensiun tidak disebutkan.",
+      "E": "Perbandingan mutu lampu otomatis tidak dibuat dalam kutipan."
+    },
+    "tags": [
+      "ironi",
+      "interpretasi"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Tiga puluh tahun ia menjaga mercusuar itu, dan tiga puluh tahun tidak ada kapal karam di perairan tersebut. Ketika mercusuar diganti lampu otomatis dan ia dipensiunkan, surat kabar setempat menulis satu kalimat tentangnya."
+    },
+    "stem": "Berdasarkan kutipan, penyebab tokoh dipensiunkan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "terjadi kapal karam di perairan itu"
+      },
+      {
+        "id": "B",
+        "text": "usianya sudah lanjut"
+      },
+      {
+        "id": "C",
+        "text": "ia mengundurkan diri atas kemauan sendiri"
+      },
+      {
+        "id": "D",
+        "text": "mercusuar diganti dengan lampu otomatis"
+      },
+      {
+        "id": "E",
+        "text": "surat kabar setempat menuntut penggantiannya"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat kedua menyandingkan keduanya secara langsung: \"Ketika mercusuar diganti lampu otomatis dan ia dipensiunkan.\" Penggantian teknologi itulah yang mendahului pensiunnya.",
+    "distractorRationale": {
+      "A": "Kutipan justru menyatakan tidak ada kapal karam selama tiga puluh tahun.",
+      "B": "Usia tokoh tidak disebutkan sebagai alasan.",
+      "C": "Tidak ada isyarat pengunduran diri.",
+      "E": "Surat kabar hanya menulis tentangnya setelah ia pensiun."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "sebab"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Di kampung itu, orang tidak mengucapkan terima kasih. Bukan karena tidak tahu berterima kasih, kata Nenek, melainkan karena ucapan itu menutup urusan. Yang ditolong akan datang lagi membawa sesuatu, dan yang menolong akan menerima, lalu suatu hari giliran berbalik. \"Terima kasih itu titik,\" kata Nenek. \"Kami lebih suka koma.\""
+    },
+    "stem": "Makna kalimat *Kami lebih suka koma* dalam kutipan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Nenek tidak menyukai kebiasaan berterima kasih di kota."
+      },
+      {
+        "id": "B",
+        "text": "Warga kampung jarang berbicara satu sama lain."
+      },
+      {
+        "id": "C",
+        "text": "Warga kampung enggan menolong orang yang tidak dikenal."
+      },
+      {
+        "id": "D",
+        "text": "Warga kampung tidak suka menggunakan tanda baca titik dalam menulis."
+      },
+      {
+        "id": "E",
+        "text": "Warga kampung memilih menjaga hubungan tetap berlanjut alih-alih menganggapnya selesai."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Nenek menyamakan ucapan terima kasih dengan titik — tanda bahwa urusan selesai. Koma berarti kalimatnya berlanjut, sebagaimana pertolongan dibalas dan giliran berganti terus-menerus.",
+    "distractorRationale": {
+      "A": "Kebiasaan di kota tidak dibandingkan dalam kutipan.",
+      "B": "Yang tidak diucapkan hanya terima kasih, bukan percakapan pada umumnya.",
+      "C": "Kutipan justru menggambarkan kebiasaan tolong-menolong.",
+      "D": "Membaca kiasan tanda baca secara harfiah."
+    },
+    "tags": [
+      "interpretasi",
+      "majas"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "**Musim Kedua**\n\nPohon mangga di halaman berbuah dua kali setahun,\nsatu untuk kami, satu untuk kelelawar.\nBapak tidak pernah memasang jaring.\nIa bilang, yang datang malam hari juga menanam —\nhanya saja bijinya jatuh di kebun orang lain."
+    },
+    "stem": "Baris terakhir puisi tersebut mengandung gagasan bahwa ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kelelawar ikut menyebarkan benih meskipun manfaatnya dinikmati orang lain"
+      },
+      {
+        "id": "B",
+        "text": "Bapak berencana menanam mangga di kebun orang lain"
+      },
+      {
+        "id": "C",
+        "text": "kelelawar merusak kebun tetangga di sekitar rumah"
+      },
+      {
+        "id": "D",
+        "text": "panen kedua selalu lebih sedikit daripada panen pertama"
+      },
+      {
+        "id": "E",
+        "text": "biji mangga tidak dapat tumbuh di halaman sendiri"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Bapak menyebut kelelawar \"juga menanam\", dan baris terakhir menjelaskan caranya: biji yang mereka bawa jatuh di kebun orang lain. Karena itulah ia tidak memasang jaring — kelelawar bukan sekadar pengambil.",
+    "distractorRationale": {
+      "B": "Yang menyebarkan biji adalah kelelawar, bukan Bapak.",
+      "C": "Puisi menempatkan kelelawar sebagai penanam, bukan perusak.",
+      "D": "Jumlah panen kedua tidak dibandingkan dengan yang pertama.",
+      "E": "Kemampuan tumbuh biji di halaman sendiri tidak dipersoalkan."
+    },
+    "tags": [
+      "interpretasi",
+      "puisi"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b13",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "**Musim Kedua**\n\nPohon mangga di halaman berbuah dua kali setahun,\nsatu untuk kami, satu untuk kelelawar.\nBapak tidak pernah memasang jaring.\nIa bilang, yang datang malam hari juga menanam —\nhanya saja bijinya jatuh di kebun orang lain."
+    },
+    "stem": "Sikap Bapak dalam puisi tersebut paling tepat dinyatakan sebagai ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menyerah karena tidak mampu membeli jaring pelindung"
+      },
+      {
+        "id": "B",
+        "text": "menerima kehilangan karena melihatnya sebagai bagian dari perputaran yang lebih luas"
+      },
+      {
+        "id": "C",
+        "text": "acuh tak acuh terhadap hasil panen di halamannya"
+      },
+      {
+        "id": "D",
+        "text": "berharap mendapat balasan dari pemilik kebun tetangga"
+      },
+      {
+        "id": "E",
+        "text": "menyesali keputusannya menanam pohon mangga"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bapak tidak memasang jaring bukan karena tidak peduli, melainkan karena ia menganggap kelelawar juga mengerjakan sesuatu — menyebarkan biji. Kehilangan separuh panen ia baca sebagai bagian dari daur yang lebih besar.",
+    "distractorRationale": {
+      "A": "Puisi memberi alasan berupa pandangan, bukan keterbatasan biaya.",
+      "C": "Baris pertama menunjukkan ia memperhatikan pembagian hasilnya dengan cermat.",
+      "D": "Tidak ada isyarat ia mengharapkan balasan dari siapa pun.",
+      "E": "Tidak ada nada penyesalan dalam puisi."
+    },
+    "tags": [
+      "evaluasi",
+      "watak-tokoh"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b14",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Setiap Lebaran, Mak menyiapkan tujuh toples kue tetapi hanya membuka enam. Toples ketujuh disimpan di lemari atas sampai bulan berikutnya, ketika tamu sudah tidak datang lagi dan rumah kembali sepi. Baru pada saat itu Mak membukanya, untuk kami berlima saja."
+    },
+    "stem": "Berdasarkan kutipan, toples ketujuh dibuka ketika ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tamu terakhir pulang pada hari Lebaran"
+      },
+      {
+        "id": "B",
+        "text": "malam takbiran tiba"
+      },
+      {
+        "id": "C",
+        "text": "bulan berikutnya, saat tamu sudah tidak datang lagi"
+      },
+      {
+        "id": "D",
+        "text": "Lebaran tahun berikutnya"
+      },
+      {
+        "id": "E",
+        "text": "enam toples lainnya telah habis"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat kedua menyebut toples ketujuh disimpan \"sampai bulan berikutnya, ketika tamu sudah tidak datang lagi\", dan kalimat ketiga menegaskan bahwa saat itulah Mak membukanya.",
+    "distractorRationale": {
+      "A": "Kutipan menyebut bulan berikutnya, bukan hari Lebaran itu juga.",
+      "B": "Malam takbiran tidak disebutkan dalam kutipan.",
+      "D": "Jaraknya satu bulan, bukan satu tahun.",
+      "E": "Habisnya enam toples lain tidak dijadikan penanda waktu."
+    },
+    "tags": [
+      "menemukan-informasi",
+      "waktu"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbi-b15",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Sastra",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Setiap Lebaran, Mak menyiapkan tujuh toples kue tetapi hanya membuka enam. Toples ketujuh disimpan sampai bulan berikutnya, ketika tamu sudah tidak datang lagi dan rumah kembali sepi. Baru pada saat itu Mak membukanya, untuk kami berlima saja."
+    },
+    "stem": "Makna tindakan Mak menyimpan toples ketujuh adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menghemat pengeluaran rumah tangga menjelang akhir tahun"
+      },
+      {
+        "id": "B",
+        "text": "menjaga agar kue tidak cepat basi karena terlalu lama terbuka"
+      },
+      {
+        "id": "C",
+        "text": "berjaga-jaga bila ada tamu yang datang terlambat"
+      },
+      {
+        "id": "D",
+        "text": "menyediakan perayaan tersendiri bagi keluarganya setelah kesibukan menjamu orang lain usai"
+      },
+      {
+        "id": "E",
+        "text": "menguji kesabaran anak-anaknya dalam menunggu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Toples itu dibuka justru ketika tamu tidak lagi datang dan hanya untuk keluarga berlima. Waktunya dipilih setelah masa menjamu selesai, sehingga tindakan itu menyisihkan satu perayaan khusus bagi keluarga sendiri.",
+    "distractorRationale": {
+      "A": "Penghematan tidak disinggung; kue ketujuh tetap dibuat dan dimakan.",
+      "B": "Alasan teknis semacam ini tidak muncul, dan tidak menjelaskan keterbatasan 'kami berlima saja'.",
+      "C": "Toples dibuka bulan berikutnya, jauh setelah masa bertamu berakhir.",
+      "E": "Tidak ada isyarat pengujian kesabaran dalam kutipan."
+    },
+    "tags": [
+      "evaluasi",
+      "makna-tindakan"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Indonesia's coffee exports come from two very different plants. Robusta, grown mostly below 800 metres, is hardier and yields more per tree, and it makes up roughly three-quarters of national production. Arabica needs cooler air above 1,000 metres, produces less, and takes longer to mature, but sells for two to three times the price per kilogram. Most smallholders grow whichever the altitude of their land allows, not whichever pays better."
+    },
+    "stem": "According to the passage, which variety makes up about three-quarters of Indonesia's coffee production?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Arabica"
+      },
+      {
+        "id": "B",
+        "text": "Both equally"
+      },
+      {
+        "id": "C",
+        "text": "Neither; the passage does not say"
+      },
+      {
+        "id": "D",
+        "text": "A hybrid of the two"
+      },
+      {
+        "id": "E",
+        "text": "Robusta"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "The second sentence states directly that robusta \"makes up roughly three-quarters of national production.\"",
+    "distractorRationale": {
+      "A": "Arabica is described as lower-yielding and higher-priced, not dominant in volume.",
+      "B": "The passage gives clearly unequal shares.",
+      "C": "The figure is stated explicitly.",
+      "D": "No hybrid is mentioned anywhere in the passage."
+    },
+    "tags": [
+      "locating-information",
+      "informational"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Indonesia's coffee exports come from two very different plants. Robusta, grown mostly below 800 metres, is hardier and yields more per tree. Arabica needs cooler air above 1,000 metres, produces less, and takes longer to mature, but sells for two to three times the price per kilogram. Most smallholders grow whichever the altitude of their land allows, not whichever pays better."
+    },
+    "stem": "The last sentence of the passage most nearly suggests that",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "a farmer's income from coffee is limited by geography rather than by choice."
+      },
+      {
+        "id": "B",
+        "text": "smallholders are unaware that arabica sells for a higher price."
+      },
+      {
+        "id": "C",
+        "text": "robusta will eventually replace arabica across Indonesia."
+      },
+      {
+        "id": "D",
+        "text": "farmers prefer crops that mature quickly regardless of price."
+      },
+      {
+        "id": "E",
+        "text": "the price gap between the two varieties is closing."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The sentence contrasts what the land *allows* with what *pays better*, and says altitude decides. That makes geography, not preference, the binding constraint on which crop a farmer can sell.",
+    "distractorRationale": {
+      "B": "The passage says nothing about what farmers know; it says what their land permits.",
+      "C": "No trend or projection about replacement appears in the passage.",
+      "D": "Maturation time is mentioned as a property of arabica, not as a stated preference.",
+      "E": "The price gap is given as a fact, with no indication that it is changing."
+    },
+    "tags": [
+      "inference",
+      "informational"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A city introduced a bike-share scheme and reported that ridership doubled in its second year. Critics pointed out that the city had also doubled the number of docking stations, and that trips per station had in fact fallen slightly. The operator replied that total trips, not trips per station, is what determines how many car journeys are replaced."
+    },
+    "stem": "Which statement best describes the disagreement in the passage?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Both sides agree the scheme has failed to replace car journeys."
+      },
+      {
+        "id": "B",
+        "text": "The two sides accept the same figures but disagree about which measure is the relevant one."
+      },
+      {
+        "id": "C",
+        "text": "The critics argue that docking stations are too expensive to maintain."
+      },
+      {
+        "id": "D",
+        "text": "The critics believe the ridership figures were fabricated."
+      },
+      {
+        "id": "E",
+        "text": "The operator denies that the number of stations increased."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Neither side disputes the numbers: ridership doubled and trips per station fell. What divides them is whether total trips or trips per station is the measure that matters — a disagreement about relevance, not about facts.",
+    "distractorRationale": {
+      "A": "The operator explicitly argues that total trips do replace car journeys.",
+      "C": "Cost of maintenance is never mentioned in the passage.",
+      "D": "The critics use the same figures rather than challenging them.",
+      "E": "The operator's reply concerns which measure matters, not whether stations increased."
+    },
+    "tags": [
+      "evaluating",
+      "measure-disagreement"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The Komodo dragon detects food using a forked tongue that collects scent particles from the air and transfers them to a sensory organ in the roof of the mouth. Because each fork samples a slightly different point in space, the animal can tell which side a scent is stronger on and turn towards it. In still air, this system can locate carrion up to nine kilometres away."
+    },
+    "stem": "According to the passage, why is the tongue forked?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It increases the total surface area available for tasting."
+      },
+      {
+        "id": "B",
+        "text": "It allows the animal to drink and breathe at the same time."
+      },
+      {
+        "id": "C",
+        "text": "It allows the animal to compare scent strength on two sides and find direction."
+      },
+      {
+        "id": "D",
+        "text": "It helps the animal grip food while swallowing."
+      },
+      {
+        "id": "E",
+        "text": "It protects the sensory organ from dust in the air."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The second sentence explains the fork's function directly: each fork samples a different point, so the animal can tell which side the scent is stronger on and turn towards it.",
+    "distractorRationale": {
+      "A": "Surface area is not the stated reason, and the passage emphasises direction instead.",
+      "B": "Drinking and breathing are outside the scope of the passage.",
+      "D": "Gripping food is never mentioned; the tongue is described as a sensor.",
+      "E": "No protective function is described."
+    },
+    "tags": [
+      "locating-information",
+      "science"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Traditional Javanese batik uses wax to block dye from reaching parts of the cloth. Because the wax cracks slightly as the cloth is handled, thin lines of dye seep through in patterns no artisan plans. Collectors once treated these lines as flaws. Today they are among the features used to distinguish hand-drawn batik from printed imitations, which reproduce the design perfectly and therefore never crack."
+    },
+    "stem": "The passage suggests that the cracked lines in batik are now valued because they",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "make each piece of cloth stronger and longer-lasting."
+      },
+      {
+        "id": "B",
+        "text": "allow the cloth to be dyed in a single pass."
+      },
+      {
+        "id": "C",
+        "text": "reduce the amount of wax an artisan needs to apply."
+      },
+      {
+        "id": "D",
+        "text": "cannot be produced by the printing methods used to imitate batik."
+      },
+      {
+        "id": "E",
+        "text": "were deliberately designed by early Javanese artisans."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The final sentence explains the reversal: printed imitations \"reproduce the design perfectly and therefore never crack.\" The unplanned lines are valued precisely because printing cannot produce them.",
+    "distractorRationale": {
+      "A": "Durability is never mentioned in the passage.",
+      "B": "Dyeing passes are not part of the passage's content.",
+      "C": "The amount of wax used is not discussed.",
+      "E": "The passage states the patterns are ones \"no artisan plans.\""
+    },
+    "tags": [
+      "inference",
+      "cultural-text"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "An online course provider advertises a 92% completion rate. The figure counts only students who watched at least one video after paying, and it treats a course as completed when the final quiz is opened, whether or not it is submitted."
+    },
+    "stem": "Which choice best identifies the weakness in the advertised figure?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Quizzes are an unreliable way to measure learning."
+      },
+      {
+        "id": "B",
+        "text": "The provider does not say how much the courses cost."
+      },
+      {
+        "id": "C",
+        "text": "Online courses cannot be compared with classroom courses."
+      },
+      {
+        "id": "D",
+        "text": "A completion rate of 92% is too high to be believable for any course."
+      },
+      {
+        "id": "E",
+        "text": "Both the group counted and the definition of completion are set in ways that raise the number."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Two definitions are doing the work: the denominator excludes anyone who paid but never started, and \"completed\" requires only opening the final quiz. Each choice pushes the percentage up on its own, which is exactly what **E** states.",
+    "distractorRationale": {
+      "A": "The issue is that the quiz need not be submitted, not that quizzes measure poorly.",
+      "B": "Price is irrelevant to whether the completion figure is meaningful.",
+      "C": "No comparison with classroom courses is made or needed.",
+      "D": "A high figure is not implausible by itself; the problem is how it was constructed."
+    },
+    "tags": [
+      "evaluating",
+      "definition-bias"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Rice terraces in Bali are managed by subak, an irrigation association whose members share a single water source. Each subak decides collectively when its fields will be flooded and when they will be left dry. Synchronised flooding starves rice pests of habitat across a whole area at once, which is why the system reduces pest damage more effectively than any single farmer could achieve alone."
+    },
+    "stem": "According to the passage, synchronised flooding reduces pest damage because it",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "removes pest habitat across an entire area at the same time."
+      },
+      {
+        "id": "B",
+        "text": "washes pests directly out of the fields into the rivers."
+      },
+      {
+        "id": "C",
+        "text": "allows farmers to apply pesticide more evenly."
+      },
+      {
+        "id": "D",
+        "text": "keeps the soil cooler than unsynchronised flooding would."
+      },
+      {
+        "id": "E",
+        "text": "increases the amount of water available to each farmer."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The final sentence states the mechanism explicitly: synchronised flooding \"starves rice pests of habitat across a whole area at once.\"",
+    "distractorRationale": {
+      "B": "Washing pests away is not the mechanism described.",
+      "C": "Pesticide is never mentioned in the passage.",
+      "D": "Soil temperature plays no part in the explanation.",
+      "E": "Water quantity per farmer is not discussed."
+    },
+    "tags": [
+      "locating-information",
+      "mechanism"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Two schools introduced tablets in every classroom. School P also retrained its teachers over a full term and rewrote its lesson plans around the new device. School Q distributed the tablets and left teaching methods unchanged. After two years, reading scores at School P had risen by eight points; at School Q they were unchanged."
+    },
+    "stem": "Which statement is best supported by the passage?",
+    "type": "true_false_multi",
+    "statements": [
+      {
+        "id": "s1",
+        "text": "The tablets alone were not sufficient to raise reading scores."
+      },
+      {
+        "id": "s2",
+        "text": "School Q's tablets were of lower quality than School P's."
+      },
+      {
+        "id": "s3",
+        "text": "Teacher retraining is one plausible explanation for the difference between the schools."
+      },
+      {
+        "id": "s4",
+        "text": "Technology has no effect on learning outcomes in any setting."
+      }
+    ],
+    "answer": {
+      "mode": "boolean_list",
+      "values": [
+        true,
+        false,
+        true,
+        false
+      ]
+    },
+    "explanation": "**s1 is true.** School Q had the same tablets and gained nothing, so the device by itself did not produce the rise.\n\n**s2 is false.** Nothing in the passage compares the tablets themselves; the stated difference is in teacher preparation.\n\n**s3 is true.** Retraining and rewritten lesson plans are the only reported difference between the two schools, which makes them a plausible explanation.\n\n**s4 is false.** School P did improve, so the passage does not support a claim that technology never matters.",
+    "tags": [
+      "evaluating",
+      "controlled-comparison"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Supporters of a proposed toll road argue that it will cut travel time between the two cities by forty minutes. Opponents note that the same forty-minute saving was predicted for a toll road built a decade ago in a neighbouring corridor, where measured travel times returned to their previous level within four years as new development appeared along the route."
+    },
+    "stem": "The opponents' argument depends on the assumption that",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "travel time is the only benefit a toll road can provide."
+      },
+      {
+        "id": "B",
+        "text": "the new corridor is likely to attract development in the way the earlier one did."
+      },
+      {
+        "id": "C",
+        "text": "the two cities will not grow in population."
+      },
+      {
+        "id": "D",
+        "text": "the earlier toll road was poorly engineered."
+      },
+      {
+        "id": "E",
+        "text": "drivers prefer routes without tolls."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The opponents reason from one corridor to another. That step only works if the new corridor will behave similarly — that is, if development will follow the road there too, erasing the time saving in the same way.",
+    "distractorRationale": {
+      "A": "The argument concerns the durability of the time saving, not whether other benefits exist.",
+      "C": "Population growth is not required; the mechanism described is development along the route.",
+      "D": "Their point is about how traffic responded, not about engineering quality.",
+      "E": "Driver preferences about tolls play no part in the reasoning."
+    },
+    "tags": [
+      "assumption",
+      "analogy"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Locating information",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sea cucumbers feed by drawing sediment through their bodies and returning it cleaned of organic matter. A single hectare of reef flat may hold several thousand of them, and together they turn over the top centimetre of sand roughly twice a year. Their waste also raises the pH of the surrounding water slightly, which helps corals build their skeletons."
+    },
+    "stem": "According to the passage, how often do sea cucumbers turn over the top centimetre of sand?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "About twice a year"
+      },
+      {
+        "id": "B",
+        "text": "Continuously, without pause"
+      },
+      {
+        "id": "C",
+        "text": "About once every two years"
+      },
+      {
+        "id": "D",
+        "text": "About once a month"
+      },
+      {
+        "id": "E",
+        "text": "The passage does not say"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The second sentence states that together they \"turn over the top centimetre of sand roughly twice a year.\"",
+    "distractorRationale": {
+      "B": "The passage gives a specific rate rather than describing continuous turnover.",
+      "C": "This reverses the stated rate.",
+      "D": "No monthly figure appears in the passage.",
+      "E": "The rate is stated explicitly."
+    },
+    "tags": [
+      "locating-information",
+      "science"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Weather forecasts are often judged by whether it rained on days rain was predicted. By that standard, a forecaster in a desert region who never predicts rain will score extremely well. A more demanding test asks how much the forecast improves on simply assuming that tomorrow will resemble today."
+    },
+    "stem": "The example of the desert forecaster is used mainly to",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "argue that deserts are the easiest places to forecast weather."
+      },
+      {
+        "id": "B",
+        "text": "explain how rainfall is measured in dry regions."
+      },
+      {
+        "id": "C",
+        "text": "show that a common measure of accuracy can be satisfied without any real skill."
+      },
+      {
+        "id": "D",
+        "text": "criticise forecasters who work in desert regions."
+      },
+      {
+        "id": "E",
+        "text": "demonstrate that weather forecasting has improved over time."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The forecaster in the example predicts nothing and still scores well, which exposes the weakness of the accuracy measure rather than praising the forecaster. The final sentence then proposes a stricter test.",
+    "distractorRationale": {
+      "A": "Ease of forecasting in deserts is incidental; the point is about the measure.",
+      "B": "Measurement of rainfall is not discussed at all.",
+      "D": "No actual forecaster is criticised; the example is hypothetical.",
+      "E": "The passage makes no claim about improvement over time."
+    },
+    "tags": [
+      "function-of-example",
+      "evaluating"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-a12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "A hospital reported that patients treated in its new wing had a lower mortality rate than those in the old wing, and concluded that the new facilities were saving lives. A later review found that the new wing did not admit patients requiring intensive care, who were sent to the old wing instead."
+    },
+    "stem": "The review most directly undermines the hospital's conclusion by showing that",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the old wing employed more experienced staff."
+      },
+      {
+        "id": "B",
+        "text": "the new wing had fewer beds than the old wing."
+      },
+      {
+        "id": "C",
+        "text": "intensive care is more expensive than ordinary care."
+      },
+      {
+        "id": "D",
+        "text": "the two groups of patients were not comparable at the time of admission."
+      },
+      {
+        "id": "E",
+        "text": "the mortality figures were recorded incorrectly."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Patients needing intensive care were all sent to the old wing, so the two wings began with populations of very different severity. The mortality difference can be explained by who was admitted rather than by the quality of the facilities.",
+    "distractorRationale": {
+      "A": "Staff experience is never mentioned in the passage.",
+      "B": "Bed numbers would not by itself explain a mortality difference.",
+      "C": "Cost is irrelevant to the causal claim being examined.",
+      "E": "The figures are not challenged; their interpretation is."
+    },
+    "tags": [
+      "confounding",
+      "evaluating"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-b01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Locating information",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "My grandmother kept the shop for fifty-one years and never once wrote down what anyone owed. She said the ledger was in her head, and that a page could be lost but a memory would only be forgotten, which was slower and gave people time. When she finally closed the shop, three men came to settle debts she had stopped mentioning years before."
+    },
+    "stem": "According to the passage, how long did the grandmother keep the shop?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Fifteen years"
+      },
+      {
+        "id": "B",
+        "text": "Fifty-one years"
+      },
+      {
+        "id": "C",
+        "text": "Three years"
+      },
+      {
+        "id": "D",
+        "text": "Fifty years"
+      },
+      {
+        "id": "E",
+        "text": "The passage does not say"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The first sentence states the figure directly: she \"kept the shop for fifty-one years.\"",
+    "distractorRationale": {
+      "A": "Transposes the digits of fifty-one.",
+      "C": "Three is the number of men who came to settle debts.",
+      "D": "Rounds down the stated figure.",
+      "E": "The figure appears in the opening sentence."
+    },
+    "tags": [
+      "locating-information",
+      "literary"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-b02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "My grandmother kept the shop for fifty-one years and never once wrote down what anyone owed. She said the ledger was in her head, and that a page could be lost but a memory would only be forgotten, which was slower and gave people time. When she finally closed the shop, three men came to settle debts she had stopped mentioning years before."
+    },
+    "stem": "The grandmother's remark about pages and memories most nearly means that",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "she distrusted paper because it could be stolen from the shop."
+      },
+      {
+        "id": "B",
+        "text": "she had an unusually reliable memory for numbers."
+      },
+      {
+        "id": "C",
+        "text": "written records were too expensive for a small shop."
+      },
+      {
+        "id": "D",
+        "text": "she intended to forgive every debt eventually."
+      },
+      {
+        "id": "E",
+        "text": "an unwritten debt fades gradually, leaving room for the debtor to recover."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "She contrasts a page, which is lost all at once, with a memory, which fades slowly — and adds that the slowness \"gave people time.\" The point is mercy through gradualness, and the three men who came to pay show the debts were never quite erased.",
+    "distractorRationale": {
+      "A": "Theft is not the contrast she draws; loss and forgetting are.",
+      "B": "Her memory is the means, not the reason she gives.",
+      "C": "Cost is never mentioned in the passage.",
+      "D": "The men settling debts shows the obligations survived rather than being cancelled."
+    },
+    "tags": [
+      "interpretation",
+      "figurative-language"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-b03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The new teacher asked us to write down one thing we were certain of. Then she collected the papers, shuffled them, and read them aloud without saying whose was whose. Half the room laughed at claims that had felt unassailable an hour earlier. She never told us which one was hers, and I have wondered since whether she wrote anything at all."
+    },
+    "stem": "The teacher's exercise is best described as",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "a demonstration that certainty looks different from the outside than from within."
+      },
+      {
+        "id": "B",
+        "text": "an attempt to embarrass students who spoke too confidently in class."
+      },
+      {
+        "id": "C",
+        "text": "a test of how well students could remember their classmates' handwriting."
+      },
+      {
+        "id": "D",
+        "text": "a method of grading students on the originality of their beliefs."
+      },
+      {
+        "id": "E",
+        "text": "a way of choosing a topic for the next class discussion."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "The claims felt \"unassailable\" to their writers, yet drew laughter once read anonymously to the room. Stripping away authorship is what produces the shift, so the exercise shows how differently certainty reads from inside and outside.",
+    "distractorRationale": {
+      "B": "Anonymity works against embarrassment, since no one is identified.",
+      "C": "The papers are read aloud, so handwriting plays no part.",
+      "D": "No grading is mentioned anywhere in the passage.",
+      "E": "The passage gives no indication that a topic was being selected."
+    },
+    "tags": [
+      "interpretation",
+      "purpose"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-b04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "**Low Tide**\n\nTwice a day the sea gives back the shape of the harbour:\nthe ribs of a boat nobody remembers sinking,\nthe steps that once went down to water\nand now go down to nothing.\nBy afternoon it has covered its work again,\nand the harbour looks as though it never kept anything."
+    },
+    "stem": "The final line of the poem most nearly suggests that",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the harbour has been thoroughly cleaned of old wreckage."
+      },
+      {
+        "id": "B",
+        "text": "the harbour's history remains present even when it is out of sight."
+      },
+      {
+        "id": "C",
+        "text": "the tide is gradually destroying the sunken boat."
+      },
+      {
+        "id": "D",
+        "text": "the harbour is no longer used by any boats."
+      },
+      {
+        "id": "E",
+        "text": "the speaker has forgotten what the harbour once looked like."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The poem shows the sea revealing the wreck and the old steps at low tide, then covering them again. The last line says the harbour only *looks* as though it never kept anything — the appearance is what changes, not what is there.",
+    "distractorRationale": {
+      "A": "The wreck and steps are still present; only the water hides them.",
+      "C": "No destruction is described, only alternating exposure and cover.",
+      "D": "Current use of the harbour is not discussed.",
+      "E": "The speaker recalls the details precisely enough to list them."
+    },
+    "tags": [
+      "poetry",
+      "interpretation"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-b05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "**Low Tide**\n\nTwice a day the sea gives back the shape of the harbour:\nthe ribs of a boat nobody remembers sinking,\nthe steps that once went down to water\nand now go down to nothing.\nBy afternoon it has covered its work again,\nand the harbour looks as though it never kept anything."
+    },
+    "stem": "The phrase *the steps that once went down to water and now go down to nothing* contributes to the poem mainly by",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "warning that the harbour is unsafe for visitors."
+      },
+      {
+        "id": "B",
+        "text": "indicating that the sea level has risen over time."
+      },
+      {
+        "id": "C",
+        "text": "showing that a structure can outlast the purpose it was built for."
+      },
+      {
+        "id": "D",
+        "text": "explaining why the boat in the harbour sank."
+      },
+      {
+        "id": "E",
+        "text": "describing how the steps were originally constructed."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "The steps still stand, but the water they were built to reach is gone at low tide. The image gives an object surviving past its function, which is what the poem does with the wreck as well.",
+    "distractorRationale": {
+      "A": "Safety is never raised in the poem.",
+      "B": "Steps reaching *nothing* at low tide suggests the opposite reading, and the poem makes no claim about long-term sea level.",
+      "D": "The poem states plainly that nobody remembers the boat sinking.",
+      "E": "Construction methods are not described."
+    },
+    "tags": [
+      "poetry",
+      "imagery"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-b06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Locating information",
+    "difficulty": "E",
+    "irtB": -0.3,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Every Thursday my father repaired other people's radios at the kitchen table, and every Thursday my mother laid newspaper down first. He never charged more than the cost of the parts. When I asked why, he said the charge was in the asking — people had to come to the house, sit down, and describe what was wrong, and that was worth something to him."
+    },
+    "stem": "According to the passage, how much did the father charge for repairs?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "A fixed weekly fee"
+      },
+      {
+        "id": "B",
+        "text": "Whatever the customer offered"
+      },
+      {
+        "id": "C",
+        "text": "Double the cost of the parts"
+      },
+      {
+        "id": "D",
+        "text": "No more than the cost of the parts"
+      },
+      {
+        "id": "E",
+        "text": "Nothing at all"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "The second sentence states it directly: \"He never charged more than the cost of the parts.\"",
+    "distractorRationale": {
+      "A": "No weekly fee is mentioned; Thursday is when he worked, not a billing cycle.",
+      "B": "The passage sets a ceiling based on parts, not on the customer's offer.",
+      "C": "This reverses the limit the passage describes.",
+      "E": "Parts were still paid for, so the repairs were not entirely free."
+    },
+    "tags": [
+      "locating-information",
+      "literary"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-b07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "Every Thursday my father repaired other people's radios at the kitchen table. He never charged more than the cost of the parts. When I asked why, he said the charge was in the asking — people had to come to the house, sit down, and describe what was wrong, and that was worth something to him."
+    },
+    "stem": "The father's explanation suggests that he valued the repairs mainly as",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "a distraction from difficulties elsewhere in his life."
+      },
+      {
+        "id": "B",
+        "text": "a way of demonstrating his technical skill to the neighbourhood."
+      },
+      {
+        "id": "C",
+        "text": "a source of income that supplemented his regular work."
+      },
+      {
+        "id": "D",
+        "text": "an obligation he had inherited from his own father."
+      },
+      {
+        "id": "E",
+        "text": "an occasion that brought people into his home and into conversation."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "He says the charge was \"in the asking\" and then describes what asking involved: coming to the house, sitting down, and explaining the problem. What he collected was the visit itself.",
+    "distractorRationale": {
+      "A": "Nothing in the passage points to trouble he might be avoiding.",
+      "B": "He never displays or discusses his skill; the emphasis falls on the visitors.",
+      "C": "Charging only for parts means the work produced no income.",
+      "D": "No inheritance or family tradition is mentioned."
+    },
+    "tags": [
+      "interpretation",
+      "character"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-lbe-b08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Literary Text",
+    "skill": "Evaluating & reflecting",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "en",
+    "stimulus": {
+      "type": "passage",
+      "content": "The map on the classroom wall had been drawn in 1962 and never replaced. Countries on it had changed names, borders, and in two cases ceased to exist, and every year some student pointed this out. Our teacher agreed each time and left the map where it was. On the last day of term he told us he kept it because a map that is right teaches you geography, and a map that is wrong teaches you that maps are made by people."
+    },
+    "stem": "The teacher's reason for keeping the outdated map is best understood as",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "valuing a lesson about how knowledge is produced over the accuracy of the information itself."
+      },
+      {
+        "id": "B",
+        "text": "believing that the 1962 borders were more legitimate than the current ones."
+      },
+      {
+        "id": "C",
+        "text": "hoping students would eventually stop noticing the errors."
+      },
+      {
+        "id": "D",
+        "text": "being unable to obtain a replacement map for the classroom."
+      },
+      {
+        "id": "E",
+        "text": "testing whether students had memorised the modern map correctly."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "His sentence sets two lessons against each other: a correct map teaches geography, a wrong one teaches that maps are made by people. He knowingly trades accuracy for a lesson about how knowledge gets made.",
+    "distractorRationale": {
+      "B": "He does not defend the old borders; he agrees each time they are corrected.",
+      "C": "Students noticing is what makes the map useful to him.",
+      "D": "No difficulty in obtaining a new map is mentioned.",
+      "E": "He agrees with the corrections rather than treating them as a test."
+    },
+    "tags": [
+      "evaluating",
+      "theme"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

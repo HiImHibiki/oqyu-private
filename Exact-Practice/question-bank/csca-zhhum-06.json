@@ -1,0 +1,1286 @@
+[
+  {
+    "id": "csca-zhh-f21",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Literary terminology 文学术语",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「悲剧」作为文学体裁，其核心不在于结局悲惨，而在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "篇幅长于喜剧"
+      },
+      {
+        "id": "B",
+        "text": "情节曲折离奇"
+      },
+      {
+        "id": "C",
+        "text": "人物众多"
+      },
+      {
+        "id": "D",
+        "text": "主人公在无法回避的冲突中承受苦难，从而引发观者的同情与思索"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "悲剧的力量来自冲突的不可回避：主人公往往并非因愚蠢或恶行而受难，正因如此才引人深思。仅仅结局凄惨的故事不足以称为悲剧。",
+    "distractorRationale": {
+      "A": "篇幅长短与体裁无关。",
+      "B": "情节离奇属于传奇色彩，与悲剧无必然关系。",
+      "C": "人物多寡不构成体裁分野。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "As a literary genre, the core of 悲剧 (tragedy) lies not in a sorrowful ending but in",
+        "explanation": "Tragedy draws its power from the inescapability of the conflict: the protagonist usually suffers not through stupidity or wickedness, which is precisely what makes it thought-provoking. A merely sad ending does not make a tragedy."
+      }
+    },
+    "tags": [
+      "genre",
+      "tragedy"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-f22",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「辩证法」强调的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "事物内部矛盾的运动与发展"
+      },
+      {
+        "id": "B",
+        "text": "只从单一角度看问题"
+      },
+      {
+        "id": "C",
+        "text": "事物永远静止不变"
+      },
+      {
+        "id": "D",
+        "text": "凭权威判断真假"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "辩证法主张用联系、发展、矛盾的观点看待事物，认为变化的动力来自内部对立面的相互作用，而非外部的偶然推动。",
+    "distractorRationale": {
+      "B": "片面看问题正是辩证法所反对的。",
+      "C": "这是形而上学的静止观。",
+      "D": "诉诸权威与辩证法无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "辩证法 (dialectics) emphasises",
+        "explanation": "Dialectics views things in terms of connection, development and contradiction, holding that the impetus for change comes from the interaction of opposites within, not from external accident."
+      }
+    },
+    "tags": [
+      "philosophy",
+      "dialectics"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-f23",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Legal terminology 法律术语",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「合同」在法律上成立的基本条件是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "必须由律师起草"
+      },
+      {
+        "id": "B",
+        "text": "当事人意思表示一致"
+      },
+      {
+        "id": "C",
+        "text": "必须采用书面形式"
+      },
+      {
+        "id": "D",
+        "text": "必须经过公证"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "合同的本质是合意：双方就同一内容达成一致的意思表示。书面、公证、律师起草都可能增强证明力或为特定合同所要求，却不是普遍的成立要件。",
+    "distractorRationale": {
+      "A": "法律并不要求合同必须由律师起草。",
+      "C": "口头合同在许多情形下同样有效。",
+      "D": "公证只在少数法定情形下才是必需的。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the basic condition for a 合同 (contract) to come into existence in law?",
+        "explanation": "A contract is at root an agreement: both parties express a matching intention on the same terms. Writing, notarisation and drafting by a lawyer may strengthen proof, or be required for particular contracts, but none is a universal condition of formation."
+      }
+    },
+    "tags": [
+      "contract-law",
+      "formation"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-f24",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Philosophy terminology 哲学术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「功利主义」判断行为对错的标准是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "行为是否由权威许可"
+      },
+      {
+        "id": "B",
+        "text": "行为是否出于善良动机"
+      },
+      {
+        "id": "C",
+        "text": "行为所带来的整体后果是否增进最大多数人的福祉"
+      },
+      {
+        "id": "D",
+        "text": "行为是否符合传统习俗"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "功利主义是后果论：只看行为造成的结果，不看动机本身。与之相对的义务论则认为某些行为的对错取决于其性质，与后果无关。两者的分歧是伦理学的经典争论。",
+    "distractorRationale": {
+      "A": "诉诸权威不是功利主义的标准。",
+      "B": "以动机论对错是义务论一路的想法。",
+      "D": "诉诸习俗属于传统主义。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "By what standard does 功利主义 (utilitarianism) judge an action right or wrong?",
+        "explanation": "Utilitarianism is consequentialist: it looks only at the results an action produces, not at the motive behind it. Deontology, its counterpart, holds that some acts are right or wrong by their nature regardless of consequences. The disagreement is a classic one in ethics."
+      }
+    },
+    "tags": [
+      "ethics",
+      "utilitarianism"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "印刷术的普及深刻改变了知识传播的方式。在手抄本时代，书籍数量稀少、价格昂贵，知识主要由少数机构掌握，抄写过程中的讹误也会层层累积。印刷术出现后，同一版本可以大量复制，错误得以在再版中被发现并订正，读者也第一次能够就同一文本展开公开讨论。有学者认为，这种「可核查性」比传播速度的提高更为重要。"
+    },
+    "stem": "根据短文，有学者认为印刷术最重要的影响是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "抄写员数量增加"
+      },
+      {
+        "id": "B",
+        "text": "书籍装帧更加精美"
+      },
+      {
+        "id": "C",
+        "text": "传播速度大幅提高"
+      },
+      {
+        "id": "D",
+        "text": "同一文本可被公开核查与订正"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文末句明确指出，有学者认为「可核查性」比传播速度的提高更为重要。速度是显而易见的影响，可核查性则是更深一层的判断。",
+    "distractorRationale": {
+      "A": "印刷术普及反而减少了对抄写员的需求。",
+      "B": "短文未提及装帧。",
+      "C": "短文承认速度提高，但特意说它不如可核查性重要。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what do some scholars regard as printing's most important effect?",
+        "explanation": "The final sentence states that some scholars consider «checkability» more important than the increase in speed. Speed is the obvious effect; checkability is the deeper judgement."
+      }
+    },
+    "tags": [
+      "history",
+      "main-argument"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "印刷术的普及深刻改变了知识传播的方式。在手抄本时代，书籍数量稀少、价格昂贵，知识主要由少数机构掌握，抄写过程中的讹误也会层层累积。印刷术出现后，同一版本可以大量复制，错误得以在再版中被发现并订正，读者也第一次能够就同一文本展开公开讨论。有学者认为，这种「可核查性」比传播速度的提高更为重要。"
+    },
+    "stem": "短文提到手抄本时代「讹误会层层累积」，其原因可以推知是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "每次抄写都以上一份抄本为底本，前人的错误被继承并添上新的错误"
+      },
+      {
+        "id": "B",
+        "text": "读者不愿意阅读手抄本"
+      },
+      {
+        "id": "C",
+        "text": "抄写者故意篡改内容"
+      },
+      {
+        "id": "D",
+        "text": "纸张容易损坏"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「层层累积」四字暗示的是链式传递：后一份抄本以前一份为源，既继承旧误又可能新增错误，越传越远。若各抄本互相独立，错误就不会累积。",
+    "distractorRationale": {
+      "B": "读者意愿与错误累积无关。",
+      "C": "「讹误」指无心之失，短文也未提到故意篡改。",
+      "D": "纸张损坏会造成缺失，但不解释错误如何「累积」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The passage says errors «accumulated layer upon layer» in the manuscript era. The reason can be inferred to be that",
+        "explanation": "«Layer upon layer» points to a chain: each copy was made from the previous one, inheriting old errors and adding new ones, drifting further with every generation. Had copies been made independently of one another, errors would not have accumulated."
+      }
+    },
+    "tags": [
+      "inference",
+      "manuscript-transmission"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "印刷术的普及深刻改变了知识传播的方式。在手抄本时代，书籍数量稀少、价格昂贵，知识主要由少数机构掌握，抄写过程中的讹误也会层层累积。印刷术出现后，同一版本可以大量复制，错误得以在再版中被发现并订正，读者也第一次能够就同一文本展开公开讨论。有学者认为，这种「可核查性」比传播速度的提高更为重要。"
+    },
+    "stem": "短文说读者「第一次能够就同一文本展开公开讨论」，这一说法成立的前提是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "识字率提高"
+      },
+      {
+        "id": "B",
+        "text": "不同读者手中的书内容完全一致"
+      },
+      {
+        "id": "C",
+        "text": "书籍价格下降"
+      },
+      {
+        "id": "D",
+        "text": "读者人数增加"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "讨论「同一文本」要求各人所据的版本一字不差，否则争论的可能只是抄本之间的差异。印刷正是提供了这种同一性，这也是它区别于手抄的关键。",
+    "distractorRationale": {
+      "A": "识字率是另一因素，短文未提及。",
+      "C": "价格下降扩大了读者面，同样不解决版本一致的问题。",
+      "D": "人数增加有助于讨论，但不保证讨论的是同一文本。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The passage says readers could «for the first time discuss the same text publicly». What does this claim presuppose?",
+        "explanation": "Discussing «the same text» requires that every reader's copy be identical word for word; otherwise the dispute may only be between manuscripts. Print supplied exactly that identity, and that is what set it apart from copying by hand."
+      }
+    },
+    "tags": [
+      "presupposition",
+      "textual-uniformity"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "教育中的「因材施教」由来已久。孔子对不同弟子的同一问题给出不同回答，正是着眼于各人的性情与处境。现代教育在班级授课制下追求效率，难以做到一人一策，但分层教学、选修制度以及近年的自适应学习技术，都可以看作在规模化条件下对这一古老理想的重新实践。不过技术只能提供工具，判断某个学生此刻需要什么，仍然依赖教师的观察。"
+    },
+    "stem": "根据短文，孔子对同一问题给出不同回答，是因为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "他想考验弟子"
+      },
+      {
+        "id": "B",
+        "text": "弟子提问的方式不同"
+      },
+      {
+        "id": "C",
+        "text": "他考虑到各个弟子的性情与处境不同"
+      },
+      {
+        "id": "D",
+        "text": "他自己的看法时常改变"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文说「正是着眼于各人的性情与处境」，把这一做法解释为因材施教的体现，而非随意或善变。",
+    "distractorRationale": {
+      "A": "短文未提到考验之意。",
+      "B": "短文强调的是弟子本身的差异，不是提问方式。",
+      "D": "短文的解释是针对听者而非自身立场的变化。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, Confucius gave different answers to the same question because",
+        "explanation": "The passage says he had «each person's temperament and circumstances» in view, presenting the practice as teaching suited to the individual rather than as caprice."
+      }
+    },
+    "tags": [
+      "education",
+      "detail-retrieval"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "教育中的「因材施教」由来已久。孔子对不同弟子的同一问题给出不同回答，正是着眼于各人的性情与处境。现代教育在班级授课制下追求效率，难以做到一人一策，但分层教学、选修制度以及近年的自适应学习技术，都可以看作在规模化条件下对这一古老理想的重新实践。不过技术只能提供工具，判断某个学生此刻需要什么，仍然依赖教师的观察。"
+    },
+    "stem": "短文对自适应学习技术的态度是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "认为它毫无用处"
+      },
+      {
+        "id": "B",
+        "text": "认为它能完全取代教师"
+      },
+      {
+        "id": "C",
+        "text": "认为它违背了因材施教的理想"
+      },
+      {
+        "id": "D",
+        "text": "肯定其价值，但强调判断仍须依靠教师"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文先把自适应技术与分层教学、选修制度并列，视为对古老理想的重新实践，这是肯定；末句用「不过」转折，指出技术只提供工具，判断仍依赖教师。两层意思合起来才是完整的态度。",
+    "distractorRationale": {
+      "A": "短文把它列为对理想的重新实践，并非否定。",
+      "B": "末句正是在否定这一点。",
+      "C": "短文认为它是这一理想的实践方式之一，而非违背。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the passage's attitude toward adaptive learning technology?",
+        "explanation": "The passage first places adaptive technology alongside streaming and elective systems as a renewed practice of the old ideal — an endorsement; the final sentence then turns on 不过 to say that technology supplies tools while judgement still rests with the teacher. The full attitude is both halves together."
+      }
+    },
+    "tags": [
+      "author-stance",
+      "education"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "教育中的「因材施教」由来已久。孔子对不同弟子的同一问题给出不同回答，正是着眼于各人的性情与处境。现代教育在班级授课制下追求效率，难以做到一人一策，但分层教学、选修制度以及近年的自适应学习技术，都可以看作在规模化条件下对这一古老理想的重新实践。不过技术只能提供工具，判断某个学生此刻需要什么，仍然依赖教师的观察。"
+    },
+    "stem": "短文认为班级授课制难以做到一人一策，其原因在于该制度",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "追求效率"
+      },
+      {
+        "id": "B",
+        "text": "教师水平不足"
+      },
+      {
+        "id": "C",
+        "text": "学生不愿配合"
+      },
+      {
+        "id": "D",
+        "text": "缺少技术手段"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文写道「现代教育在班级授课制下追求效率，难以做到一人一策」，把效率与个别化处理并置为一对张力，原因即在于此。",
+    "distractorRationale": {
+      "B": "短文并未把责任归于教师水平，末句反而肯定教师的判断。",
+      "C": "短文未提及学生态度。",
+      "D": "技术不足不是短文给出的原因，且短文认为技术只是工具。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, class-based teaching struggles to tailor instruction to each pupil because the system",
+        "explanation": "The passage writes that modern education under class-based teaching «pursues efficiency» and so struggles to devise a plan per pupil, setting efficiency and individualisation in tension. That is the stated cause."
+      }
+    },
+    "tags": [
+      "cause-effect",
+      "education"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共政策的制定往往面临取舍。以城市交通为例，拓宽道路在短期内可以缓解拥堵，但通行条件改善又会吸引更多车辆驶入，若干年后拥堵可能回到原有水平，这一现象被称为「诱导需求」。相比之下，改善公共交通与调整用地布局见效较慢，却可能从根本上减少出行对小汽车的依赖。政策选择的困难在于，前者的效果立竿见影，后者的收益却要许多年后才显现。"
+    },
+    "stem": "根据短文，「诱导需求」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "公共交通乘客减少"
+      },
+      {
+        "id": "B",
+        "text": "通行条件改善反而吸引更多车辆，使拥堵回到原有水平"
+      },
+      {
+        "id": "C",
+        "text": "道路施工造成的临时拥堵"
+      },
+      {
+        "id": "D",
+        "text": "政府鼓励市民购买汽车"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文在描述拓宽道路的后果时给出了这一概念：道路好走了，原本不开车的人也开车了，于是拥堵重现。它说明供给的增加本身会改变需求。",
+    "distractorRationale": {
+      "A": "短文未把乘客减少称为诱导需求。",
+      "C": "施工拥堵是临时现象，与该概念无关。",
+      "D": "诱导需求是行为的自发变化，不是政府的鼓励措施。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, 诱导需求 (induced demand) refers to",
+        "explanation": "The passage introduces the term while describing what follows from widening a road: easier driving draws in people who did not drive before, and congestion returns. It illustrates how adding supply can itself change demand."
+      }
+    },
+    "tags": [
+      "policy",
+      "concept-definition"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共政策的制定往往面临取舍。以城市交通为例，拓宽道路在短期内可以缓解拥堵，但通行条件改善又会吸引更多车辆驶入，若干年后拥堵可能回到原有水平，这一现象被称为「诱导需求」。相比之下，改善公共交通与调整用地布局见效较慢，却可能从根本上减少出行对小汽车的依赖。政策选择的困难在于，前者的效果立竿见影，后者的收益却要许多年后才显现。"
+    },
+    "stem": "短文末句所说的「困难」，实质上是指",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两种方案的成本都太高"
+      },
+      {
+        "id": "B",
+        "text": "缺乏可靠的交通数据"
+      },
+      {
+        "id": "C",
+        "text": "见效快的方案未必治本，治本的方案却难在短期内看到成效"
+      },
+      {
+        "id": "D",
+        "text": "两种方案都没有效果"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文把两条路径的时间特征对照起来：拓宽道路「立竿见影」却可能被诱导需求抵消，公共交通与用地调整「见效较慢」却可能治本。困难正在于评价周期与治本效果不一致。\n\n这也解释了为何短期见效的方案在现实中往往更容易被选中。",
+    "distractorRationale": {
+      "A": "短文比较的是时间与效果，未讨论成本高低。",
+      "B": "数据问题短文完全未提。",
+      "D": "短文认为两者都有效果，只是性质与时间不同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The «difficulty» named in the passage's final sentence essentially refers to",
+        "explanation": "The passage contrasts the two paths by their timing: widening roads works «at once» but may be cancelled out by induced demand, while better transit and land-use reform «work slowly» yet may address the root. The difficulty is that the horizon on which results appear does not match the horizon on which the root cause is fixed.\n\nThis also explains why quick-acting measures tend to be the ones actually chosen."
+      }
+    },
+    "tags": [
+      "inference",
+      "policy-tradeoff"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Politics texts 政治",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "公共政策的制定往往面临取舍。以城市交通为例，拓宽道路在短期内可以缓解拥堵，但通行条件改善又会吸引更多车辆驶入，若干年后拥堵可能回到原有水平，这一现象被称为「诱导需求」。相比之下，改善公共交通与调整用地布局见效较慢，却可能从根本上减少出行对小汽车的依赖。政策选择的困难在于，前者的效果立竿见影，后者的收益却要许多年后才显现。"
+    },
+    "stem": "短文用「以城市交通为例」引出下文，这一写法的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "以反例推翻首句的判断"
+      },
+      {
+        "id": "B",
+        "text": "用统计数据代替说理"
+      },
+      {
+        "id": "C",
+        "text": "提出一个与首句无关的新话题"
+      },
+      {
+        "id": "D",
+        "text": "用具体案例说明「公共政策面临取舍」这一概括性判断"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "首句提出的是一个概括判断，随后的交通案例是对它的支撑。先总后分是说理文常见的结构，例子的作用是让抽象判断落到实处。",
+    "distractorRationale": {
+      "A": "案例中的取舍与首句一致，是印证而非反驳。",
+      "B": "短文通篇没有出现任何统计数据。",
+      "C": "交通案例正是首句判断的具体化，并未另起话题。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The passage introduces its example with «take urban transport». What does this do?",
+        "explanation": "The opening sentence makes a general claim, and the transport case supports it. Moving from the general to the particular is a common structure in expository writing, and the example's role is to give the abstract claim something concrete to stand on."
+      }
+    },
+    "tags": [
+      "text-structure",
+      "exemplification"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "老屋的门轴又涩了。父亲每年回来一次，总要带一小罐油，蹲在门槛边慢慢地滴。他不说话，我也不问。油滴下去，门开合几次，声音就顺了。第二天他又走了，门轴的声音要到明年才会再被想起。"
+    },
+    "stem": "文中反复写门轴的声音，其作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "以一件小事贯串全文，寄托父子间不言而喻的情感"
+      },
+      {
+        "id": "B",
+        "text": "交代故事发生的季节"
+      },
+      {
+        "id": "C",
+        "text": "表现父亲擅长修理"
+      },
+      {
+        "id": "D",
+        "text": "说明老屋年久失修"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "门轴的涩与顺对应着父亲的来与去，「他不说话，我也不问」把情感压在动作之下。选择这样一件微小而重复的事，正是为了让不曾说出口的感情有所依附。",
+    "distractorRationale": {
+      "B": "文中没有季节的线索。",
+      "C": "滴油是极简单的事，谈不上技艺。",
+      "D": "老屋的状况只是背景，不是写作用意。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the effect of the repeated mention of the door hinge?",
+        "explanation": "The hinge's stiffness and its easing track the father's arrival and departure, while «he says nothing, and I do not ask» keeps the feeling beneath the action. Choosing so small and repeated a thing is precisely what gives the unspoken feeling something to rest on."
+      }
+    },
+    "tags": [
+      "literary-analysis",
+      "motif"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "老屋的门轴又涩了。父亲每年回来一次，总要带一小罐油，蹲在门槛边慢慢地滴。他不说话，我也不问。油滴下去，门开合几次，声音就顺了。第二天他又走了，门轴的声音要到明年才会再被想起。"
+    },
+    "stem": "「他不说话，我也不问」一句，最能体现的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "父亲不善言辞而儿子不满"
+      },
+      {
+        "id": "B",
+        "text": "彼此心照不宣的默契，情感藏在行动而非言语里"
+      },
+      {
+        "id": "C",
+        "text": "父子之间感情淡薄"
+      },
+      {
+        "id": "D",
+        "text": "两人正在争吵"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "父亲年年带油而来，是持续多年的行动；「我也不问」说明儿子明白这行动的含义，无需追问。沉默在这里不是隔阂，而是不必言说。若真是感情淡薄，父亲不会年年记得带那一小罐油。",
+    "distractorRationale": {
+      "A": "「不问」是理解而非不满，文中没有埋怨的语气。",
+      "C": "年年带油正说明感情并不淡薄。",
+      "D": "文中没有任何冲突的迹象。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the line «he says nothing, and I do not ask» most reveal?",
+        "explanation": "The father brings oil year after year — an action sustained over many years; «I do not ask» shows the son understands what it means and needs no explanation. The silence here is not distance but the absence of any need to speak. Were the feeling truly thin, the father would not remember that small tin every year."
+      }
+    },
+    "tags": [
+      "literary-analysis",
+      "understatement"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Literature passages 文学作品",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "老屋的门轴又涩了。父亲每年回来一次，总要带一小罐油，蹲在门槛边慢慢地滴。他不说话，我也不问。油滴下去，门开合几次，声音就顺了。第二天他又走了，门轴的声音要到明年才会再被想起。"
+    },
+    "stem": "首句中的「又」字，暗示的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "这是第一次出现这种情况"
+      },
+      {
+        "id": "B",
+        "text": "有人故意弄坏了门轴"
+      },
+      {
+        "id": "C",
+        "text": "这种情况年复一年地反复出现"
+      },
+      {
+        "id": "D",
+        "text": "门轴已经彻底损坏"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「又」表示重复发生，一个字就把时间拉长为许多年，为后文「每年回来一次」和「要到明年」预设了循环的节奏。",
+    "distractorRationale": {
+      "A": "「又」正是排除了「第一次」。",
+      "B": "文中毫无此意。",
+      "D": "滴油即可复原，说明并未损坏。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the word 又 in the opening sentence imply?",
+        "explanation": "又 marks recurrence; a single character stretches the time frame across many years and sets up the cyclical rhythm of «comes back once a year» and «not until next year»."
+      }
+    },
+    "tags": [
+      "close-reading",
+      "single-word"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "研究古代社会，出土文物与传世文献各有长短。文献记载详尽，能保存人物的言行与制度的条文，但书写者多属统治阶层，视角难免偏于一隅，且历代传抄不免增删。文物不会说话，却直接来自当时的生活现场，能反映普通人的衣食住行。二者相互印证，比单靠任何一方都可靠。"
+    },
+    "stem": "根据短文，传世文献的主要局限是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "只记录普通人的生活"
+      },
+      {
+        "id": "B",
+        "text": "完全不可信"
+      },
+      {
+        "id": "C",
+        "text": "记载过于简略"
+      },
+      {
+        "id": "D",
+        "text": "书写者视角偏于统治阶层，且传抄中有增删"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文承认文献「记载详尽」，随后用「但」指出两点局限：书写者的阶层视角，以及传抄中的增删。两者都不是详略问题。",
+    "distractorRationale": {
+      "A": "反映普通人生活的是文物。",
+      "B": "短文主张相互印证，并未否定文献的价值。",
+      "C": "短文恰恰说文献记载详尽。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what chiefly limits transmitted written records?",
+        "explanation": "The passage grants that written records are «detailed», then turns on 但 to name two limits: the writers' position within the ruling class, and additions and deletions during transmission. Neither is a matter of insufficient detail."
+      }
+    },
+    "tags": [
+      "historiography",
+      "source-criticism"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "研究古代社会，出土文物与传世文献各有长短。文献记载详尽，能保存人物的言行与制度的条文，但书写者多属统治阶层，视角难免偏于一隅，且历代传抄不免增删。文物不会说话，却直接来自当时的生活现场，能反映普通人的衣食住行。二者相互印证，比单靠任何一方都可靠。"
+    },
+    "stem": "短文说文物「不会说话」，这一表述强调的是文物的",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "不能自行说明含义，须由研究者解读"
+      },
+      {
+        "id": "B",
+        "text": "保存状况不佳"
+      },
+      {
+        "id": "C",
+        "text": "数量稀少"
+      },
+      {
+        "id": "D",
+        "text": "毫无研究价值"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「不会说话」与后文「却直接来自当时的生活现场」构成转折：文物没有文字自述，其含义要靠研究者推断，但正因为不经书写者之手，它少了一层立场的过滤。这是长处与短处的一体两面。",
+    "distractorRationale": {
+      "B": "保存状况短文未提。",
+      "C": "数量多寡短文同样未提。",
+      "D": "「却」字之后紧接着讲文物的长处，并非否定其价值。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The passage says artefacts «cannot speak». What does this stress about them?",
+        "explanation": "«Cannot speak» is set against «yet come directly from the life of the time»: an artefact carries no written account of itself, so its meaning must be inferred by researchers — but precisely because no writer's hand intervened, it lacks that layer of filtering. Strength and weakness here are two sides of one thing."
+      }
+    },
+    "tags": [
+      "inference",
+      "material-evidence"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "History texts 历史",
+    "difficulty": "M",
+    "irtB": 0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "研究古代社会，出土文物与传世文献各有长短。文献记载详尽，能保存人物的言行与制度的条文，但书写者多属统治阶层，视角难免偏于一隅，且历代传抄不免增删。文物不会说话，却直接来自当时的生活现场，能反映普通人的衣食住行。二者相互印证，比单靠任何一方都可靠。"
+    },
+    "stem": "短文的主要观点是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "文物比文献更可靠"
+      },
+      {
+        "id": "B",
+        "text": "两类材料应相互印证，单靠任何一方都不够可靠"
+      },
+      {
+        "id": "C",
+        "text": "古代社会无法研究"
+      },
+      {
+        "id": "D",
+        "text": "文献比文物更可靠"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文分别指出两类材料的长处与短处，末句以「二者相互印证，比单靠任何一方都可靠」收束。全文并未在两者之间分出高下，而是主张互补。",
+    "distractorRationale": {
+      "A": "短文也指出文物「不会说话」的局限。",
+      "C": "短文给出的是研究方法，并非否定研究的可能。",
+      "D": "短文同样指出文献的阶层视角与传抄问题。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the passage's main point?",
+        "explanation": "The passage sets out the strengths and weaknesses of each kind of material and closes with «cross-checking the two is more reliable than relying on either alone». It never ranks one above the other; it argues that they complement each other."
+      }
+    },
+    "tags": [
+      "main-idea",
+      "historiography"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zhh-g16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_hum",
+    "domain": "Humanities Reading 文科文阅读",
+    "skill": "Education texts 教育",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "考试的功能常被简化为选拔，其实它同时承担着反馈的职责。一次考试若只给出分数与名次，学生知道自己落后，却不知道落后在哪里，改进便无从谈起。反之，若能指出错误的类型与成因，分数纵然不变，学习也已经发生。近年不少学校尝试在成绩单之外附上错题分析，正是基于这一考虑。"
+    },
+    "stem": "根据短文，只给出分数与名次的考试，其不足在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "名次排列不公平"
+      },
+      {
+        "id": "B",
+        "text": "分数计算不准确"
+      },
+      {
+        "id": "C",
+        "text": "学生知道落后却不知落后在何处，无法据以改进"
+      },
+      {
+        "id": "D",
+        "text": "考试次数太少"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文把选拔与反馈分为考试的两种功能。只给分数与名次完成了选拔，却没有完成反馈：学生缺少可据以行动的信息，「改进便无从谈起」。",
+    "distractorRationale": {
+      "A": "短文谈的是信息量不足，不是排名的公平性。",
+      "B": "短文并未质疑计分的准确性。",
+      "D": "考试频次短文未提。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what is lacking in an exam that reports only marks and rank?",
+        "explanation": "The passage divides an exam's work into selection and feedback. Marks and rank accomplish the selection but not the feedback: the student is left without information to act on, so «improvement is out of the question»."
+      }
+    },
+    "tags": [
+      "assessment",
+      "feedback"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 2,
+      "keyBalanced": 1
+    }
+  }
+]

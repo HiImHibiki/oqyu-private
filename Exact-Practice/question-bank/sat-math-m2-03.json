@@ -1,0 +1,834 @@
+[
+  {
+    "id": "sat-mth-m01",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "E",
+    "irtB": -0.8,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $5x + 3 = 23$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4
+    },
+    "explanation": "Subtract 3 from both sides: $5x = 20$. Divide by 5: $x = 4$.\\n\\nSubstituting back gives $5(4) + 3 = 23$, which confirms the solution.",
+    "tags": [
+      "linear-equation"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m02",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $f$ is defined by $f(x) = 2x - 7$. What is the value of $f(5)$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "Substitute $x = 5$: $f(5) = 2(5) - 7 = 10 - 7 = 3$.\\n\\nThe notation $f(5)$ asks for the output when the input is 5; it is not a product of $f$ and 5.",
+    "tags": [
+      "function-notation"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m03",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $3x - 4 > 11$, what is the least integer value of $x$ that satisfies the inequality?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 6
+    },
+    "explanation": "Add 4 to both sides: $3x > 15$, so $x > 5$.\\n\\nThe inequality is strict, so $x = 5$ does not satisfy it. The least integer greater than 5 is 6.",
+    "tags": [
+      "inequality",
+      "least-integer"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m04",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $x + y = 12$ and $y = 3x$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "Substitute $y = 3x$ into the first equation: $x + 3x = 12$, so $4x = 12$ and $x = 3$.\\n\\nThen $y = 9$, and $3 + 9 = 12$ checks out.",
+    "tags": [
+      "systems",
+      "substitution"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m05",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear equations in two variables",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A line in the $xy$-plane passes through the point $(0, 4)$ and has slope $-2$. What is the $x$-coordinate of its $x$-intercept?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 2
+    },
+    "explanation": "The line has $y$-intercept 4 and slope $-2$, so its equation is $y = -2x + 4$.\\n\\nAt the $x$-intercept, $y = 0$: $0 = -2x + 4$, giving $x = 2$.",
+    "tags": [
+      "linear-equation",
+      "intercepts"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m06",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The system $3x + ky = 9$ and $6x + 4y = 7$ has no solution. What is the value of $k$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 2
+    },
+    "explanation": "A system of two linear equations has no solution when the lines are parallel — same slope, different intercepts.\\n\\nMatching coefficients, the second equation is twice the first in $x$ ($6 = 2 \\times 3$), so the $y$ coefficients must match the same ratio: $4 = 2k$, giving $k = 2$.\\n\\nThe constants do not match that ratio ($7 \\neq 2 \\times 9$), which is what makes the lines parallel rather than identical.",
+    "tags": [
+      "systems",
+      "no-solution"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m07",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear inequalities",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A delivery van can carry at most $900\\ \\text{kg}$. It is loaded with $12$ crates of equal mass and a driver of mass $75\\ \\text{kg}$. If the total mass must not exceed the limit, what is the greatest possible mass, in kilograms, of one crate?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 68.75
+    },
+    "explanation": "Let $c$ be the mass of one crate. Then $12c + 75 \\le 900$, so $12c \\le 825$ and $c \\le 68.75$.\\n\\nThe greatest possible mass is therefore $68.75\\ \\text{kg}$. The driver's mass must be subtracted before dividing — dividing 900 by 12 first gives 75, an answer that ignores the driver entirely.",
+    "tags": [
+      "inequality",
+      "modelling"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m08",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The linear function $g$ satisfies $g(2) = 11$ and $g(6) = 23$. What is the value of $g(0)$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "The slope is $\\dfrac{23 - 11}{6 - 2} = \\dfrac{12}{4} = 3$.\\n\\nUsing $g(x) = 3x + b$ with $g(2) = 11$: $6 + b = 11$, so $b = 5$. Since $g(0) = b$, the answer is 5.\\n\\nA line's value at $x = 0$ is always its $y$-intercept, so finding $b$ is the whole problem.",
+    "tags": [
+      "linear-function",
+      "slope-intercept"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m09",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Which expression is equivalent to $(x + 3)(x - 5)$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x^2 - 15$"
+      },
+      {
+        "id": "B",
+        "text": "$x^2 + 2x - 15$"
+      },
+      {
+        "id": "C",
+        "text": "$x^2 - 2x - 15$"
+      },
+      {
+        "id": "D",
+        "text": "$x^2 - 8x - 15$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Expand: $x^2 - 5x + 3x - 15 = x^2 - 2x - 15$.\\n\\nThe middle coefficient is the sum of $+3$ and $-5$, which is $-2$; the constant is their product, $-15$.",
+    "distractorRationale": {
+      "A": "Multiplies only the first and last terms, omitting the middle terms.",
+      "B": "Adds the outer and inner terms as $+2x$ instead of $-2x$.",
+      "D": "Multiplies 3 and $-5$ to get the middle coefficient instead of adding them."
+    },
+    "tags": [
+      "expanding",
+      "quadratic"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m10",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The function $h$ is defined by $h(x) = x^2 - 4x$. What is the value of $h(6)$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 12
+    },
+    "explanation": "Substitute $x = 6$: $h(6) = 36 - 24 = 12$.\\n\\nThe square applies to $x$ alone, so $x^2 = 36$; the second term is $4 \\times 6 = 24$.",
+    "tags": [
+      "evaluating-functions"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m11",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The expression $(2x^3)^2$ is equivalent to $ax^b$. What is the value of $a$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4
+    },
+    "explanation": "Raising a product to a power raises each factor: $(2x^3)^2 = 2^2 \\cdot (x^3)^2 = 4x^6$.\\n\\nSo $a = 4$ and $b = 6$. The coefficient is squared as well as the variable — leaving it as 2 is the usual slip.",
+    "tags": [
+      "exponents",
+      "power-of-a-product"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m12",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $2x^2 - 18 = 0$ and $x > 0$, what is the value of $x$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "Add 18 and divide by 2: $x^2 = 9$, so $x = 3$ or $x = -3$.\\n\\nThe condition $x > 0$ selects $x = 3$. Taking a square root always produces two candidates, which is why the restriction is stated.",
+    "tags": [
+      "quadratic",
+      "square-root"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m13",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The graph of $y = x^2 - 6x + 5$ has its vertex at the point $(h, k)$. What is the value of $h$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "Complete the square: $x^2 - 6x + 5 = (x - 3)^2 - 4$, so the vertex is $(3, -4)$ and $h = 3$.\\n\\nAlternatively the axis of symmetry is $x = -\\dfrac{b}{2a} = \\dfrac{6}{2} = 3$, which gives $h$ directly.",
+    "tags": [
+      "parabola",
+      "vertex"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m14",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear equations in one variable",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The solutions to $x^2 + bx + 24 = 0$ are $4$ and $6$. What is the value of $b$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": -10
+    },
+    "explanation": "If the roots are 4 and 6, the quadratic factors as $(x - 4)(x - 6) = x^2 - 10x + 24$.\\n\\nComparing with $x^2 + bx + 24$ gives $b = -10$. The sum of the roots is $-b$, so a positive root sum forces a negative $b$.",
+    "tags": [
+      "quadratic",
+      "sum-of-roots"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m15",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear functions",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A culture starts with $200$ bacteria and the population doubles every $3$ hours. Which function gives the population $P$ after $t$ hours?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$P(t) = 200 \\cdot 2^{t/3}$"
+      },
+      {
+        "id": "B",
+        "text": "$P(t) = 200 \\cdot 2^{3t}$"
+      },
+      {
+        "id": "C",
+        "text": "$P(t) = 200 \\cdot 3^{t/2}$"
+      },
+      {
+        "id": "D",
+        "text": "$P(t) = 200 + 2^{t/3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Doubling every 3 hours means the exponent counts how many 3-hour periods have passed, which is $\\dfrac{t}{3}$. So $P(t) = 200 \\cdot 2^{t/3}$.\\n\\nA check at $t = 3$ gives $200 \\cdot 2^1 = 400$, one doubling, as required.",
+    "distractorRationale": {
+      "B": "Doubles three times per hour rather than once every three hours.",
+      "C": "Triples every two hours, swapping the roles of the two numbers.",
+      "D": "Adds the growth factor instead of multiplying, which is linear-plus-constant, not exponential."
+    },
+    "tags": [
+      "exponential-growth",
+      "modelling"
+    ],
+    "estimatedTimeSec": 145,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m16",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "If $\\dfrac{x^2 - 9}{x - 3} = x + c$ for all $x \\neq 3$, what is the value of $c$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "Factor the numerator as a difference of squares: $x^2 - 9 = (x - 3)(x + 3)$.\\n\\nCancelling the common factor $x - 3$, valid because $x \\neq 3$, leaves $x + 3$. So $c = 3$.\\n\\nThe restriction $x \\neq 3$ is what makes the cancellation legitimate — at $x = 3$ the original expression is undefined while $x + 3$ is not.",
+    "tags": [
+      "factoring",
+      "rational-expression"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m17",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Percentages",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A population of $250$ increases by $12\\%$. What is the new population?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 280
+    },
+    "explanation": "An increase of $12\\%$ gives $112\\%$ of the original: $1.12 \\times 250 = 280$.\\n\\nAdding works too: $12\\%$ of 250 is 30, and $250 + 30 = 280$.",
+    "tags": [
+      "percent-increase"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m18",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "One-variable data",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "The list $4, 7, 7, 9, 13$ has mean $m$ and median $d$. What is the value of $m - d$?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 1
+    },
+    "explanation": "The mean is $\\dfrac{4 + 7 + 7 + 9 + 13}{5} = \\dfrac{40}{5} = 8$. The list is already ordered and has five values, so the median is the third, which is 7.\\n\\nTherefore $m - d = 8 - 7 = 1$. The mean exceeds the median here because the value 13 pulls it upward.",
+    "tags": [
+      "mean",
+      "median"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m19",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Ratios, rates, proportional relationships, units",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A printer produces $18$ pages per minute. How many minutes does it take to print $405$ pages?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 22.5
+    },
+    "explanation": "Divide the total by the rate: $\\dfrac{405}{18} = 22.5$ minutes.\\n\\nChecking the units confirms the operation: pages divided by pages per minute leaves minutes.",
+    "tags": [
+      "rates",
+      "unit-analysis"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m20",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Inference from sample statistics",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A random sample of $600$ residents found that $42\\%$ supported a proposal, with a margin of error of $4$ percentage points at $95\\%$ confidence. Which conclusion is best supported?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Exactly $42\\%$ of all residents support the proposal."
+      },
+      {
+        "id": "B",
+        "text": "Between $38\\%$ and $46\\%$ of the sample supported the proposal."
+      },
+      {
+        "id": "C",
+        "text": "A second sample of 600 residents would find support between $38\\%$ and $46\\%$."
+      },
+      {
+        "id": "D",
+        "text": "It is plausible that between $38\\%$ and $46\\%$ of all residents support the proposal."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "A margin of error describes a plausible interval for the population value, not a guarantee about any individual or about a repeated sample. The interval here is $42\\% \\pm 4\\%$, that is $38\\%$ to $46\\%$.\\n\\nThe defensible statement is that the true level of support in the population plausibly lies in that interval.",
+    "distractorRationale": {
+      "A": "Treats a sample estimate as an exact population value, which is what the margin of error denies.",
+      "B": "The sample proportion is known exactly to be $42\\%$; the interval is about the population.",
+      "C": "The interval describes the population parameter, not the result of any particular future sample."
+    },
+    "tags": [
+      "margin-of-error",
+      "inference"
+    ],
+    "estimatedTimeSec": 145,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m21",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Lines, angles, and triangles",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In a triangle, two of the angles measure $47^\\circ$ and $68^\\circ$. What is the measure, in degrees, of the third angle?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 65
+    },
+    "explanation": "The angles of a triangle sum to $180^\\circ$: $180 - 47 - 68 = 65$.\\n\\nSo the third angle measures $65^\\circ$.",
+    "tags": [
+      "triangle",
+      "angle-sum"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m22",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Circles",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "A circle has area $36\\pi$. What is its radius?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 6
+    },
+    "explanation": "The area of a circle is $\\pi r^2$, so $\\pi r^2 = 36\\pi$ and $r^2 = 36$, giving $r = 6$.\\n\\nThe $\\pi$ cancels on both sides, which is why the answer is a whole number.",
+    "tags": [
+      "circle",
+      "area"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m23",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Area and volume",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "Two similar triangles have corresponding sides in the ratio $2 : 5$. The area of the smaller triangle is $12$. What is the area of the larger triangle?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 75
+    },
+    "explanation": "For similar figures, areas scale as the square of the side ratio: $\\left(\\dfrac{5}{2}\\right)^2 = \\dfrac{25}{4}$.\\n\\nSo the larger area is $12 \\times \\dfrac{25}{4} = 75$. Scaling the area by $\\dfrac{5}{2}$ instead of its square is the standard trap here.",
+    "tags": [
+      "similarity",
+      "area-ratio"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "sat-mth-m24",
+    "status": "in_review",
+    "exam": "SAT",
+    "section": "sat_math_m2",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangles and trigonometry",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": true,
+    "locale": "en",
+    "stem": "In right triangle $PQR$, the right angle is at $Q$, $PQ = 8$, and $QR = 15$. What is the value of $\\sin R$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{15}{17}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{8}{17}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{8}{15}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{17}{8}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "The hypotenuse is $PR = \\sqrt{8^2 + 15^2} = \\sqrt{289} = 17$.\\n\\nFor angle $R$, the opposite side is $PQ = 8$ and the hypotenuse is 17, so $\\sin R = \\dfrac{8}{17}$.\\n\\nIdentifying which leg is opposite the named angle is the whole difficulty: $QR$ is adjacent to $R$, not opposite it.",
+    "distractorRationale": {
+      "A": "Gives $\\cos R$, using the adjacent side instead of the opposite one.",
+      "C": "Gives $\\tan R$, the ratio of the two legs.",
+      "D": "Inverts the ratio, giving a value greater than 1, which no sine can take."
+    },
+    "tags": [
+      "right-triangle",
+      "sine"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  }
+]

@@ -1,0 +1,754 @@
+[
+  {
+    "id": "utbk-sample-pu-01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Deduktif",
+    "skill": "Implikasi & kontraposisi",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Jika sebuah kota menerapkan tarif parkir progresif, maka penggunaan angkutan umum di kota itu meningkat.\nJika penggunaan angkutan umum meningkat, maka waktu tempuh rata-rata kendaraan pribadi berkurang.\n\nDiketahui waktu tempuh rata-rata kendaraan pribadi di Kota Anggrek **tidak** berkurang.\n\nSimpulan yang pasti benar adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Kota Anggrek menerapkan tarif parkir progresif."
+      },
+      {
+        "id": "B",
+        "text": "Penggunaan angkutan umum di Kota Anggrek meningkat."
+      },
+      {
+        "id": "C",
+        "text": "Kota Anggrek tidak menerapkan tarif parkir progresif."
+      },
+      {
+        "id": "D",
+        "text": "Penggunaan angkutan umum meningkat, tetapi tarif parkir tidak progresif."
+      },
+      {
+        "id": "E",
+        "text": "Tidak dapat ditarik simpulan apa pun."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Dua implikasi dapat dirantai: *tarif progresif* $\\Rightarrow$ *angkutan umum meningkat* $\\Rightarrow$ *waktu tempuh berkurang*, sehingga berlaku *tarif progresif* $\\Rightarrow$ *waktu tempuh berkurang*. Karena diketahui waktu tempuh **tidak** berkurang, kontraposisi memberi simpulan bahwa tarif parkir progresif **tidak** diterapkan. Itulah pilihan **C**.",
+    "distractorRationale": {
+      "A": "Membalik arah implikasi (konvers), yang tidak sah.",
+      "B": "Kontraposisi tahap kedua justru menolak pernyataan ini: kalau waktu tempuh tidak berkurang, penggunaan angkutan umum tidak meningkat.",
+      "D": "Menggabungkan satu simpulan yang salah (angkutan umum meningkat) dengan satu yang benar, sehingga terasa lengkap padahal separuhnya keliru.",
+      "E": "Jebakan bagi siswa yang tidak melihat bahwa dua implikasi bisa dirantai menjadi satu."
+    },
+    "tags": [
+      "kontraposisi",
+      "rantai-implikasi"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-sample-pu-02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pu",
+    "domain": "Penalaran Kuantitatif",
+    "skill": "Baca grafik & tabel",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "figure": {
+      "kind": "line_chart",
+      "alt": "Grafik garis produksi padi dua kabupaten dari 2020 sampai 2024. Kabupaten Melati: 42, 38, 45, 51, 56 ribu ton. Kabupaten Kenanga: 50, 47, 49, 52, 54 ribu ton.",
+      "caption": "Produksi padi dua kabupaten (ribu ton)",
+      "categories": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "series": [
+        {
+          "name": "Kab. Melati",
+          "values": [
+            42,
+            38,
+            45,
+            51,
+            56
+          ]
+        },
+        {
+          "name": "Kab. Kenanga",
+          "values": [
+            50,
+            47,
+            49,
+            52,
+            54
+          ]
+        }
+      ],
+      "yLabel": "ribu ton"
+    },
+    "stem": "Berdasarkan grafik tersebut, tentukan benar atau salah setiap pernyataan berikut.",
+    "type": "true_false_multi",
+    "statements": [
+      {
+        "id": "s1",
+        "text": "Selisih produksi kedua kabupaten paling besar terjadi pada tahun 2020."
+      },
+      {
+        "id": "s2",
+        "text": "Produksi Kabupaten Melati melampaui Kabupaten Kenanga untuk pertama kali pada tahun 2024."
+      },
+      {
+        "id": "s3",
+        "text": "Kenaikan produksi Kabupaten Melati dari 2021 ke 2022 lebih besar daripada kenaikan Kabupaten Kenanga pada periode yang sama."
+      }
+    ],
+    "answer": {
+      "mode": "boolean_list",
+      "values": [
+        false,
+        true,
+        true
+      ]
+    },
+    "explanation": "Selisih tiap tahun: 2020 = 8, 2021 = 9, 2022 = 4, 2023 = 1, 2024 = 2. Selisih terbesar ada di **2021**, bukan 2020, sehingga pernyataan 1 **salah**. Kabupaten Melati baru melampaui Kenanga pada 2024 (56 > 54); pada 2023 masih 51 < 52. Pernyataan 2 **benar**. Kenaikan 2021 $\\to$ 2022: Melati $38 \\to 45$ naik 7, Kenanga $47 \\to 49$ naik 2, sehingga pernyataan 3 **benar**.",
+    "tags": [
+      "grafik",
+      "selisih-dan-tren"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-sample-ppu-01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Makna kata dalam konteks",
+    "difficulty": "M",
+    "irtB": 0.1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "text",
+      "content": "Kebijakan penghapusan subsidi itu diterapkan secara **serampangan**: tanpa kajian dampak, tanpa uji coba di daerah percontohan, dan tanpa mekanisme bantuan bagi kelompok yang paling terdampak."
+    },
+    "stem": "Makna kata **serampangan** pada teks tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "bertahap"
+      },
+      {
+        "id": "B",
+        "text": "diam-diam"
+      },
+      {
+        "id": "C",
+        "text": "sembarangan"
+      },
+      {
+        "id": "D",
+        "text": "menyeluruh"
+      },
+      {
+        "id": "E",
+        "text": "tergesa-gesa"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bagian setelah titik dua menjelaskan makna kata itu: *tanpa kajian, tanpa uji coba, tanpa mekanisme bantuan*. Yang ditekankan adalah tidak adanya perhitungan yang matang, bukan kecepatan. **Serampangan** berarti sembarangan, tidak dengan pertimbangan yang cermat.",
+    "distractorRationale": {
+      "A": "Berlawanan makna; penerapan bertahap justru menandakan perencanaan.",
+      "B": "Teks tidak menyinggung kerahasiaan sama sekali.",
+      "D": "Berlawanan dengan 'tanpa kajian'.",
+      "E": "Jebakan utama. *Tergesa-gesa* menyoroti kecepatan, sedangkan tiga penjelas setelah titik dua semuanya tentang ketiadaan perhitungan."
+    },
+    "tags": [
+      "makna-kontekstual",
+      "petunjuk-titik-dua"
+    ],
+    "estimatedTimeSec": 45,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-sample-ppu-02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Kata baku",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kelompok kata yang **seluruhnya baku** menurut Kamus Besar Bahasa Indonesia adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "analisa, praktek, resiko"
+      },
+      {
+        "id": "B",
+        "text": "analisis, praktek, resiko"
+      },
+      {
+        "id": "C",
+        "text": "analisa, praktik, risiko"
+      },
+      {
+        "id": "D",
+        "text": "analisis, praktik, risiko"
+      },
+      {
+        "id": "E",
+        "text": "analisis, praktik, resiko"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Bentuk baku ketiganya adalah **analisis**, **praktik**, dan **risiko**. Bentuk *analisa*, *praktek*, dan *resiko* adalah bentuk tidak baku yang terlanjur populer dalam pemakaian sehari-hari. Hanya pilihan **D** yang memuat ketiga bentuk baku sekaligus.",
+    "distractorRationale": {
+      "A": "Ketiganya bentuk tidak baku, tetapi justru paling sering muncul di media dan percakapan sehingga terasa benar.",
+      "B": "Hanya kata pertama yang baku.",
+      "C": "Hanya kata kedua dan ketiga yang baku.",
+      "E": "Paling menggoda: dua kata pertama sudah baku, hanya *resiko* yang keliru — siswa yang membaca cepat berhenti di kata kedua."
+    },
+    "tags": [
+      "kata-baku",
+      "kbbi"
+    ],
+    "estimatedTimeSec": 35,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-sample-pbm-01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Memahami Bacaan",
+    "skill": "Gagasan utama paragraf",
+    "difficulty": "M",
+    "irtB": 0.2,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "title": "Bank sampah",
+      "content": "(1) Bank sampah kini menjadi tumpuan pengelolaan limbah rumah tangga di banyak kota di Indonesia. (2) Warga menyetorkan sampah yang telah dipilah, lalu menerima catatan tabungan sesuai berat dan jenis sampahnya. (3) Di beberapa kota, skema ini menurunkan volume sampah yang masuk ke tempat pembuangan akhir hingga seperlima.\n\n(4) Meskipun demikian, keberlanjutan bank sampah masih rapuh. (5) Sebagian besar bank sampah bergantung pada satu atau dua pengurus yang bekerja secara sukarela sehingga apabila pengurus tersebut berhalangan maka seluruh kegiatan operasional akan terhenti. (6) Harga jual sampah terpilah juga berfluktuasi mengikuti pasar daur ulang, sehingga pemasukan warga tidak dapat diperkirakan."
+    },
+    "stem": "Gagasan utama paragraf kedua bacaan tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Harga jual sampah terpilah menurun setiap tahun."
+      },
+      {
+        "id": "B",
+        "text": "Bank sampah berhasil menurunkan volume sampah yang masuk ke tempat pembuangan akhir."
+      },
+      {
+        "id": "C",
+        "text": "Warga kota enggan memilah sampah rumah tangganya."
+      },
+      {
+        "id": "D",
+        "text": "Pengurus bank sampah seharusnya menerima gaji tetap dari pemerintah daerah."
+      },
+      {
+        "id": "E",
+        "text": "Keberlanjutan bank sampah rapuh karena bergantung pada sedikit pengurus dan harga pasar yang berubah-ubah."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat (4) adalah kalimat topik paragraf kedua: *keberlanjutan bank sampah masih rapuh*. Kalimat (5) dan (6) memerinci dua sebab kerapuhan itu, yaitu ketergantungan pada sedikit pengurus dan harga jual yang berfluktuasi. Pilihan **E** merangkum ketiganya.",
+    "distractorRationale": {
+      "A": "Teks menyebut harga *berfluktuasi*, bukan menurun setiap tahun — perubahan makna yang halus.",
+      "B": "Gagasan paragraf **pertama**, bukan kedua.",
+      "C": "Bertentangan dengan kalimat (2).",
+      "D": "Saran yang tidak ada dalam teks."
+    },
+    "tags": [
+      "gagasan-utama",
+      "kalimat-topik"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-sample-pbm-02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pbm",
+    "domain": "Kemampuan Menulis",
+    "skill": "Penyuntingan kalimat",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "title": "Bank sampah",
+      "content": "(1) Bank sampah kini menjadi tumpuan pengelolaan limbah rumah tangga di banyak kota di Indonesia. (2) Warga menyetorkan sampah yang telah dipilah, lalu menerima catatan tabungan sesuai berat dan jenis sampahnya. (3) Di beberapa kota, skema ini menurunkan volume sampah yang masuk ke tempat pembuangan akhir hingga seperlima.\n\n(4) Meskipun demikian, keberlanjutan bank sampah masih rapuh. (5) Sebagian besar bank sampah bergantung pada satu atau dua pengurus yang bekerja secara sukarela sehingga apabila pengurus tersebut berhalangan maka seluruh kegiatan operasional akan terhenti. (6) Harga jual sampah terpilah juga berfluktuasi mengikuti pasar daur ulang, sehingga pemasukan warga tidak dapat diperkirakan."
+    },
+    "stem": "Kalimat (5) belum efektif. Perbaikan yang paling tepat adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menghilangkan kata *maka*"
+      },
+      {
+        "id": "B",
+        "text": "memindahkan frasa *secara sukarela* ke awal kalimat"
+      },
+      {
+        "id": "C",
+        "text": "mengganti kata *berhalangan* dengan *tidak hadir*"
+      },
+      {
+        "id": "D",
+        "text": "menghilangkan frasa *sebagian besar*"
+      },
+      {
+        "id": "E",
+        "text": "mengganti kata *sehingga* dengan *sedangkan*"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Anak kalimat yang diawali *apabila* sudah menjadi keterangan syarat, sehingga kata *maka* di depan induk kalimatnya berlebihan. Dalam kalimat majemuk bertingkat bahasa Indonesia, *apabila* dan *maka* tidak dipasangkan. Menghilangkan *maka* membuat kalimat efektif tanpa mengubah maknanya.",
+    "distractorRationale": {
+      "B": "Memindahkannya justru membuat keterangan menjauh dari kata yang diterangkan.",
+      "C": "Keduanya baku dan bermakna sepadan, jadi penggantian ini tidak memperbaiki apa pun.",
+      "D": "*Sebagian besar* justru diperlukan; menghilangkannya membuat pernyataan menjadi generalisasi berlebihan.",
+      "E": "*Sedangkan* menyatakan pertentangan, padahal hubungan antarklausa di sini adalah akibat."
+    },
+    "tags": [
+      "kalimat-efektif",
+      "konjungsi-berpasangan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-sample-pk-01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Fungsi & grafik",
+    "difficulty": "M",
+    "irtB": 0.15,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Diketahui $f(x) = 2x + 3$ dan $g(x) = x^{2} - 1$. Nilai $(f \\circ g)(2)$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$7$"
+      },
+      {
+        "id": "B",
+        "text": "$9$"
+      },
+      {
+        "id": "C",
+        "text": "$48$"
+      },
+      {
+        "id": "D",
+        "text": "$11$"
+      },
+      {
+        "id": "E",
+        "text": "$3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "$(f \\circ g)(2) = f(g(2))$. Hitung bagian dalam lebih dulu: $g(2) = 2^{2} - 1 = 3$. Kemudian $f(3) = 2(3) + 3 = 9$.",
+    "distractorRationale": {
+      "A": "Menghitung $f(2) = 7$, yaitu mengerjakan fungsi luar lebih dulu.",
+      "C": "Membalik urutan komposisi: $(g \\circ f)(2) = g(7) = 48$.",
+      "D": "Lupa mengurangi 1 pada $g$: $g(2) = 4$, lalu $f(4) = 11$.",
+      "E": "Berhenti di $g(2) = 3$ dan tidak melanjutkan ke $f$."
+    },
+    "tags": [
+      "komposisi-fungsi"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-sample-pk-02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Statistika deskriptif",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan dua kuantitas berikut.\n\n$P$ = rata-rata dari data $12,\\ 15,\\ 18,\\ 21,\\ 24$\n\n$Q$ = median dari data $10,\\ 14,\\ 18,\\ 22,\\ 30$\n\nManakah hubungan yang benar antara $P$ dan $Q$?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$P > Q$"
+      },
+      {
+        "id": "B",
+        "text": "Hubungan keduanya tidak dapat ditentukan"
+      },
+      {
+        "id": "C",
+        "text": "$P = Q$"
+      },
+      {
+        "id": "D",
+        "text": "$P < Q$"
+      },
+      {
+        "id": "E",
+        "text": "Informasi yang diberikan tidak cukup"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Data pertama adalah barisan aritmetika, sehingga rata-ratanya sama dengan suku tengahnya: $P = 18$. Kalau dihitung penuh, $\\dfrac{12+15+18+21+24}{5} = \\dfrac{90}{5} = 18$. Data kedua sudah terurut dan berjumlah lima nilai, sehingga mediannya adalah nilai ke-3, yaitu $Q = 18$. Jadi $P = Q$.",
+    "hints": [
+      "Untuk barisan aritmetika, rata-rata sama dengan suku tengah — tidak perlu menjumlahkan semuanya.",
+      "Median dari lima data terurut adalah nilai ke-3."
+    ],
+    "distractorRationale": {
+      "A": "Menduga rata-rata lebih besar karena data kedua memuat nilai ekstrem 30 — padahal nilai ekstrem tidak memengaruhi median.",
+      "B": "Dipilih siswa yang kehabisan waktu; padahal kedua kuantitas dapat dihitung pasti.",
+      "D": "Dipilih kalau median data kedua dikira 22 karena menghitung nilai ke-4, bukan ke-3.",
+      "E": "Kedua data diberikan lengkap, jadi tidak ada informasi yang kurang."
+    },
+    "formulaRefs": [
+      "utbk_math"
+    ],
+    "tags": [
+      "perbandingan-kuantitas",
+      "rata-rata-vs-median"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-sample-lbi-01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Mengevaluasi & merefleksi",
+    "difficulty": "H",
+    "irtB": 0.85,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "title": "Pertanian vertikal",
+      "content": "Pertanian vertikal menanam sayuran bertingkat di dalam ruangan dengan pencahayaan buatan dan sirkulasi air tertutup. Pendukungnya menyebut dua keunggulan yang sulit dibantah: hasil per meter persegi lantai bisa berkali-kali lipat dibanding lahan terbuka, dan kebutuhan airnya turun drastis karena air yang tidak terserap tanaman dialirkan kembali.\n\nNamun keunggulan itu tidak berdiri sendiri. Lampu LED yang menggantikan matahari mengonsumsi listrik dalam jumlah besar. Di wilayah yang listriknya masih bertumpu pada batu bara, jejak karbon per kilogram sayur dari pertanian vertikal justru dapat melampaui jejak karbon pertanian konvensional. Biaya modal awalnya pun jauh lebih tinggi daripada membuka lahan.\n\nKarena itu, pertanian vertikal bukan pengganti pertanian konvensional, melainkan pelengkap yang keunggulannya bergantung pada dua hal: sumber listrik yang dipakai dan jenis tanaman yang ditanam. Sayuran berdaun yang ringan dan cepat panen menguntungkan; padi dan gandum, yang membutuhkan luas besar dan energi tinggi per kilogram, tidak."
+    },
+    "stem": "Manakah penilaian yang **paling tepat** terhadap cara penulis menyusun argumennya?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Penulis menolak pertanian vertikal karena konsumsi listriknya boros."
+      },
+      {
+        "id": "B",
+        "text": "Penulis menyimpulkan bahwa pertanian vertikal hanya cocok diterapkan di negara maju."
+      },
+      {
+        "id": "C",
+        "text": "Penulis membandingkan biaya pertanian vertikal dan konvensional secara terperinci dengan data."
+      },
+      {
+        "id": "D",
+        "text": "Penulis menyajikan keunggulan pertanian vertikal, lalu menunjukkan syarat yang harus dipenuhi agar keunggulan itu benar-benar berlaku."
+      },
+      {
+        "id": "E",
+        "text": "Penulis mengklaim pertanian vertikal akan menggantikan seluruh pertanian konvensional."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Paragraf pertama menyajikan dua keunggulan, paragraf kedua dibuka dengan *Namun* dan memaparkan batasnya, lalu paragraf ketiga menutup dengan menyebut dua syarat penentu: sumber listrik dan jenis tanaman. Pola ini adalah menyajikan-lalu-mensyaratkan, persis yang dinyatakan **D**.",
+    "distractorRationale": {
+      "A": "Penulis memaparkan kelemahan, tetapi tidak menolak — paragraf ketiga justru menyebutnya pelengkap yang menguntungkan untuk tanaman tertentu.",
+      "B": "Teks berbicara tentang sumber listrik, bukan tingkat kemajuan negara. Simpulan yang terdengar masuk akal tetapi tidak ada di teks.",
+      "C": "Biaya modal hanya disebut sekali tanpa satu pun angka pembanding.",
+      "E": "Bertentangan langsung dengan kalimat pembuka paragraf ketiga."
+    },
+    "tags": [
+      "evaluasi-argumen",
+      "struktur-teks"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-sample-lbi-02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbi",
+    "domain": "Teks Informasi",
+    "skill": "Menginterpretasi & mengintegrasi",
+    "difficulty": "H",
+    "irtB": 0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "title": "Pertanian vertikal",
+      "content": "Pertanian vertikal menanam sayuran bertingkat di dalam ruangan dengan pencahayaan buatan dan sirkulasi air tertutup. Pendukungnya menyebut dua keunggulan yang sulit dibantah: hasil per meter persegi lantai bisa berkali-kali lipat dibanding lahan terbuka, dan kebutuhan airnya turun drastis karena air yang tidak terserap tanaman dialirkan kembali.\n\nNamun keunggulan itu tidak berdiri sendiri. Lampu LED yang menggantikan matahari mengonsumsi listrik dalam jumlah besar. Di wilayah yang listriknya masih bertumpu pada batu bara, jejak karbon per kilogram sayur dari pertanian vertikal justru dapat melampaui jejak karbon pertanian konvensional. Biaya modal awalnya pun jauh lebih tinggi daripada membuka lahan.\n\nKarena itu, pertanian vertikal bukan pengganti pertanian konvensional, melainkan pelengkap yang keunggulannya bergantung pada dua hal: sumber listrik yang dipakai dan jenis tanaman yang ditanam. Sayuran berdaun yang ringan dan cepat panen menguntungkan; padi dan gandum, yang membutuhkan luas besar dan energi tinggi per kilogram, tidak."
+    },
+    "stem": "Tentukan status setiap pernyataan berikut berdasarkan bacaan.",
+    "type": "table_grid",
+    "gridRows": [
+      {
+        "id": "r1",
+        "text": "Pertanian vertikal memakai air jauh lebih sedikit daripada pertanian di lahan terbuka."
+      },
+      {
+        "id": "r2",
+        "text": "Pertanian vertikal selalu menghasilkan jejak karbon yang lebih rendah daripada pertanian konvensional."
+      },
+      {
+        "id": "r3",
+        "text": "Pemerintah sebaiknya memberikan subsidi listrik bagi pengusaha pertanian vertikal."
+      }
+    ],
+    "gridCols": [
+      {
+        "id": "c1",
+        "text": "Didukung teks"
+      },
+      {
+        "id": "c2",
+        "text": "Bertentangan dengan teks"
+      },
+      {
+        "id": "c3",
+        "text": "Tidak dibahas"
+      }
+    ],
+    "answer": {
+      "mode": "grid",
+      "values": {
+        "r1": "c1",
+        "r2": "c2",
+        "r3": "c3"
+      }
+    },
+    "explanation": "Pernyataan 1 **didukung**: paragraf pertama menyebut kebutuhan air turun drastis karena air disirkulasikan kembali. Pernyataan 2 **bertentangan**: paragraf kedua justru menyatakan jejak karbonnya *dapat melampaui* pertanian konvensional bila listriknya dari batu bara — kata *selalu* membuatnya salah. Pernyataan 3 **tidak dibahas**: teks tidak pernah menyinggung subsidi maupun kebijakan pemerintah.",
+    "tags": [
+      "integrasi-informasi",
+      "didukung-vs-tidak-dibahas"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-sample-lbe-01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_lbe",
+    "domain": "Informational Text",
+    "skill": "Interpreting & integrating",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "title": "Coral gardening",
+      "content": "Coral gardening — growing broken fragments in underwater nurseries and transplanting them onto damaged reefs — has become the most widely used reef restoration method. A single nursery can raise thousands of fragments a year at modest cost, and transplanted colonies often survive well through their first two years.\n\nThe technique has a limitation that its popularity tends to obscure. Fragments are usually cut from a small number of healthy parent colonies, so a restored patch may contain very little genetic variation. A reef rebuilt this way can look thriving and still be unusually vulnerable to a marine heat wave, because its corals share the same tolerances. A genetically varied reef, by contrast, is likely to contain at least some colonies that survive.\n\nSome teams have therefore begun collecting coral spawn instead, raising larvae from many parents at once. The method is slower, needs far more equipment, and costs several times as much — but the colonies it produces differ from one another."
+    },
+    "stem": "It can be inferred from the passage that a reef restored from a small number of parent colonies may be especially vulnerable to a heat wave because",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "nurseries cannot produce enough fragments to cover a whole reef."
+      },
+      {
+        "id": "B",
+        "text": "transplanted fragments grow more slowly than wild coral."
+      },
+      {
+        "id": "C",
+        "text": "it contains fewer coral species than a natural reef does."
+      },
+      {
+        "id": "D",
+        "text": "spawn-based restoration is more expensive than coral gardening."
+      },
+      {
+        "id": "E",
+        "text": "its colonies tend to respond to heat stress in much the same way."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Paragraf kedua menyebut bahwa terumbu hasil restorasi semacam itu punya sedikit keragaman genetik dan karangnya *share the same tolerances* — punya batas toleransi yang sama. Konsekuensinya, kalau satu koloni tidak sanggup bertahan, hampir semuanya juga tidak. Itulah yang dinyatakan **E**.\n\nPerhatikan bedanya dengan **C**: teks berbicara tentang keragaman *genetik* dalam satu jenis karang, bukan jumlah *spesies*. Ini pembedaan yang sering terlewat.",
+    "distractorRationale": {
+      "A": "Bertentangan dengan kalimat bahwa satu nurseri bisa menghasilkan ribuan fragmen per tahun.",
+      "B": "Pertumbuhan fragmen tidak pernah dibandingkan dengan karang liar di teks.",
+      "C": "Menukar 'genetic variation' dengan 'number of species' — dua hal berbeda.",
+      "D": "Pernyataan ini benar menurut teks, tetapi menjawab pertanyaan yang berbeda."
+    },
+    "tags": [
+      "inference",
+      "genetic-diversity"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-sample-pm-01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Pemodelan persamaan",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "text",
+      "title": "Tarif air bersih",
+      "content": "Sebuah perusahaan air daerah menetapkan tarif berjenjang untuk pelanggan rumah tangga:\n\n- pemakaian 1 sampai 10 m³ pertama: Rp3.000 per m³\n- pemakaian 11 sampai 20 m³ berikutnya: Rp4.500 per m³\n- pemakaian di atas 20 m³: Rp6.000 per m³\n\nTarif dihitung berjenjang, artinya setiap jenjang dikenakan tarifnya sendiri, bukan seluruh pemakaian dikenakan tarif jenjang tertinggi."
+    },
+    "stem": "Keluarga Pak Hasan memakai $27\\ \\mathrm{m^{3}}$ air dalam satu bulan. Berapa ribu rupiah tagihan airnya bulan itu?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 117,
+      "unit": "ribu rupiah"
+    },
+    "explanation": "Pecah pemakaian menjadi tiga jenjang:\n\n- jenjang pertama: $10 \\times 3.000 = 30.000$\n- jenjang kedua: $10 \\times 4.500 = 45.000$\n- jenjang ketiga: $(27 - 20) \\times 6.000 = 7 \\times 6.000 = 42.000$\n\nTotal $= 30.000 + 45.000 + 42.000 = 117.000$ rupiah, yaitu **117** ribu rupiah.",
+    "hints": [
+      "Jangan mengalikan seluruh 27 m³ dengan tarif tertinggi — tarifnya berjenjang.",
+      "Jenjang ketiga hanya berisi $27 - 20 = 7$ m³."
+    ],
+    "distractorRationale": {},
+    "tags": [
+      "fungsi-bertahap",
+      "tarif-berjenjang"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "sample",
+      "reviewed": false,
+      "version": 1
+    }
+  }
+]

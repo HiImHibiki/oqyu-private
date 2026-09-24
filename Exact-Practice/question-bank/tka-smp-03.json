@@ -1,0 +1,3230 @@
+[
+  {
+    "id": "tka-smp-r01",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Berdasarkan bacaan, bagian terumbu karang yang tertinggal setelah polipnya mati adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "rangka kapur"
+      },
+      {
+        "id": "B",
+        "text": "jaringan polip"
+      },
+      {
+        "id": "C",
+        "text": "cangkang kerang"
+      },
+      {
+        "id": "D",
+        "text": "lendir pelindung"
+      },
+      {
+        "id": "E",
+        "text": "ganggang bersel satu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat (2) menyebutkannya: polip membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal.\n\nGanggang dan jaringan polip justru bagian yang hidup.",
+    "distractorRationale": {
+      "B": "Bagian yang hidup, bukan yang tertinggal.",
+      "C": "Tidak disebut bacaan.",
+      "D": "Tidak disebut bacaan.",
+      "E": "Ganggang hidup di dalam jaringan polip."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r02",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Berdasarkan bacaan, warna karang berasal dari",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "suhu air di sekitarnya"
+      },
+      {
+        "id": "B",
+        "text": "ganggang yang hidup di dalam jaringan polip"
+      },
+      {
+        "id": "C",
+        "text": "sinar matahari yang dipantulkan"
+      },
+      {
+        "id": "D",
+        "text": "zat kapur yang larut dalam air"
+      },
+      {
+        "id": "E",
+        "text": "rangka kapur yang dibangun polip"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat (4) menyebut polip memperoleh sebagian besar makanannya dari ganggang — dan juga warnanya.\n\nItulah sebabnya karang menjadi putih ketika ganggangnya diusir.",
+    "distractorRationale": {
+      "A": "Suhu memicu perubahan, bukan sumber warna.",
+      "C": "Tidak disebut bacaan.",
+      "D": "Tidak disebut bacaan.",
+      "E": "Rangka kapur justru berwarna putih."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r03",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Gagasan utama paragraf ketiga bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Pemutihan karang berlangsung beberapa minggu."
+      },
+      {
+        "id": "B",
+        "text": "Ganggang tidak dapat kembali setelah diusir."
+      },
+      {
+        "id": "C",
+        "text": "Karang yang memutih masih dapat pulih, dan yang mematikan adalah pemutihan yang berulang."
+      },
+      {
+        "id": "D",
+        "text": "Suhu air laut terus meningkat setiap tahun."
+      },
+      {
+        "id": "E",
+        "text": "Karang yang memutih pasti mati."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat (6) menyatakan karang yang memutih belum mati, (7) menjelaskan syarat pemulihannya, dan (8) menunjuk pengulangan sebagai yang sesungguhnya mematikan.\n\nKetiganya bergerak ke satu titik: bukan peristiwanya, melainkan jaraknya.",
+    "distractorRationale": {
+      "A": "Rentang itu menyangkut pemulihan, bukan lama pemutihan.",
+      "B": "Kalimat (7) menyatakan sebaliknya.",
+      "D": "Tidak dinyatakan bacaan.",
+      "E": "Bertentangan dengan kalimat (6)."
+    },
+    "tags": [
+      "ide-pokok"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r04",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Maksud kalimat (1) «Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "batu di laut selalu berupa karang"
+      },
+      {
+        "id": "B",
+        "text": "karang lebih keras daripada batu"
+      },
+      {
+        "id": "C",
+        "text": "karang berubah menjadi batu setelah mati"
+      },
+      {
+        "id": "D",
+        "text": "wujudnya menyerupai benda mati padahal ia tersusun atas makhluk hidup"
+      },
+      {
+        "id": "E",
+        "text": "karang sebenarnya terbuat dari batu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat berikutnya menjelaskan maksudnya: yang menyerupai batu adalah rangka kapur, sedangkan yang membangunnya adalah polip — hewan.\n\nJadi kalimat itu membedakan antara penampilan dan susunan, bukan antara jenis batu.",
+    "distractorRationale": {
+      "A": "Tidak dinyatakan bacaan.",
+      "B": "Kekerasan tidak dibandingkan.",
+      "C": "Rangka kapur sudah ada sejak polipnya hidup.",
+      "E": "Bacaan justru membantah kesan itu."
+    },
+    "tags": [
+      "makna-kalimat"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r05",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Berdasarkan bacaan, yang diperoleh ganggang dari hubungannya dengan polip adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "rangka kapur"
+      },
+      {
+        "id": "B",
+        "text": "makanan hasil fotosintesis"
+      },
+      {
+        "id": "C",
+        "text": "air bersuhu hangat"
+      },
+      {
+        "id": "D",
+        "text": "warna cerah"
+      },
+      {
+        "id": "E",
+        "text": "tempat berlindung"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat (4) membagi keuntungan keduanya: ganggang memperoleh tempat berlindung, polip memperoleh makanan dan warna.\n\nMakanan hasil fotosintesis justru yang diberikan ganggang, bukan yang diterimanya.",
+    "distractorRationale": {
+      "A": "Rangka dibangun polip untuk dirinya sendiri.",
+      "B": "Itu yang diberikan ganggang kepada polip.",
+      "C": "Suhu hangat justru memicu pengusiran.",
+      "D": "Warna diperoleh polip, bukan ganggang."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r06",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Mengevaluasi argumen",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Pernyataan yang paling melemahkan gagasan pada paragraf ketiga adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Karang yang memutih satu kali dan suhunya segera turun tetap mati seluruhnya dalam waktu sebulan."
+      },
+      {
+        "id": "B",
+        "text": "Ganggang dapat hidup di luar tubuh polip."
+      },
+      {
+        "id": "C",
+        "text": "Sebagian karang hidup di perairan dalam yang lebih dingin."
+      },
+      {
+        "id": "D",
+        "text": "Suhu air laut berubah sepanjang tahun."
+      },
+      {
+        "id": "E",
+        "text": "Terumbu karang tumbuh sangat lambat."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Paragraf ketiga bersandar pada satu klaim: satu peristiwa pemutihan tidak mematikan asalkan suhu segera turun. Karang yang tetap mati dalam keadaan persis itu langsung menggugurkan klaimnya.\n\nPertumbuhan lambat dan perubahan suhu musiman tidak menguji klaim tersebut.",
+    "distractorRationale": {
+      "B": "Tidak menyangkut nasib karangnya.",
+      "C": "Menyangkut sebaran, bukan pemulihan.",
+      "D": "Justru sejalan dengan bacaan.",
+      "E": "Menyangkut kecepatan tumbuh, bukan pemulihan."
+    },
+    "tags": [
+      "evaluasi-argumen"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r07",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Simpulan yang tepat untuk keseluruhan bacaan adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Ganggang lebih penting daripada polip."
+      },
+      {
+        "id": "B",
+        "text": "Karang adalah hewan yang bergantung pada ganggang, dan kelangsungannya ditentukan oleh jarak antarperistiwa pemutihan."
+      },
+      {
+        "id": "C",
+        "text": "Karang akan punah dalam waktu dekat."
+      },
+      {
+        "id": "D",
+        "text": "Karang sebaiknya dipindahkan ke perairan dingin."
+      },
+      {
+        "id": "E",
+        "text": "Pemutihan karang tidak berbahaya sama sekali."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Tiga paragraf bacaan bergerak dari apa itu karang, ke hubungannya dengan ganggang, lalu ke syarat kelangsungannya.\n\nBacaan tidak meramalkan kepunahan dan tidak membandingkan kepentingan kedua makhluk itu.",
+    "distractorRationale": {
+      "A": "Bacaan menggambarkan hubungan saling memberi.",
+      "C": "Bacaan tidak membuat ramalan.",
+      "D": "Tidak disarankan bacaan.",
+      "E": "Kalimat (8) menyebutnya mematikan bila berulang."
+    },
+    "tags": [
+      "simpulan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r08",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Hubungan kalimat (6) dan kalimat (8) adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kalimat (8) tidak berkaitan dengan kalimat (6)"
+      },
+      {
+        "id": "B",
+        "text": "kalimat (8) memberi contoh bagi kalimat (6)"
+      },
+      {
+        "id": "C",
+        "text": "kalimat (8) melengkapi kalimat (6) dengan menyebut keadaan yang benar-benar mematikan"
+      },
+      {
+        "id": "D",
+        "text": "kalimat (8) mengulang kalimat (6)"
+      },
+      {
+        "id": "E",
+        "text": "kalimat (8) membantah kalimat (6)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat (6) menyatakan karang yang memutih belum mati; kalimat (8) menambahkan bahwa yang mematikan adalah pemutihan berulang.\n\nKeduanya sejalan: satu menyingkirkan kesimpulan yang terlalu cepat, satunya menunjukkan bahaya yang sebenarnya.",
+    "distractorRationale": {
+      "A": "Keduanya membahas nasib karang yang memutih.",
+      "B": "Bukan contoh, melainkan pelengkap.",
+      "D": "Isinya berbeda.",
+      "E": "Keduanya sejalan, tidak bertentangan."
+    },
+    "tags": [
+      "hubungan-antarkalimat"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r09",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menemukan informasi",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Berdasarkan bacaan, penyebab polip mengusir ganggang dari tubuhnya adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "berkurangnya sinar matahari"
+      },
+      {
+        "id": "B",
+        "text": "air laut yang terlalu dingin"
+      },
+      {
+        "id": "C",
+        "text": "serangan ikan pemakan karang"
+      },
+      {
+        "id": "D",
+        "text": "suhu air yang naik terlalu lama"
+      },
+      {
+        "id": "E",
+        "text": "air laut yang terlalu keruh"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat (5) menyebutkannya: ketika suhu air naik terlalu lama, polip mengusir ganggang itu.\n\nPenyebab lain pada pilihan tidak muncul dalam bacaan.",
+    "distractorRationale": {
+      "A": "Tidak disebut bacaan.",
+      "B": "Justru suhu naik yang disebut.",
+      "C": "Tidak disebut bacaan.",
+      "E": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "menemukan-informasi"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r10",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menyimpulkan isi",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Bila suatu terumbu mengalami pemutihan dua kali dalam satu tahun, hal yang paling mungkin terjadi menurut bacaan adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "karang menjadi lebih tahan terhadap suhu tinggi"
+      },
+      {
+        "id": "B",
+        "text": "ganggang berkembang biak lebih cepat"
+      },
+      {
+        "id": "C",
+        "text": "rangka kapurnya menebal"
+      },
+      {
+        "id": "D",
+        "text": "warna karang menjadi lebih cerah"
+      },
+      {
+        "id": "E",
+        "text": "karang tidak sempat memulihkan diri sehingga kemungkinan matinya besar"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kalimat (7) menyebut pemulihan memerlukan beberapa minggu suhu yang turun, dan kalimat (8) menyebut pemutihan berulang sebelum sempat pulih sebagai yang mematikan.\n\nDua kali dalam setahun adalah keadaan itu persis.",
+    "distractorRationale": {
+      "A": "Bacaan tidak menyebut adanya pengerasan diri.",
+      "B": "Ganggang justru diusir.",
+      "C": "Tidak disinggung bacaan.",
+      "D": "Warna justru hilang saat memutih."
+    },
+    "tags": [
+      "penerapan"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r11",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Menafsirkan makna",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Kata «mengusir» pada kalimat (5) dipakai untuk menggambarkan",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "keluarnya ganggang dari jaringan polip akibat tekanan suhu"
+      },
+      {
+        "id": "B",
+        "text": "perkelahian antara polip dan ganggang"
+      },
+      {
+        "id": "C",
+        "text": "perpindahan karang ke tempat lain"
+      },
+      {
+        "id": "D",
+        "text": "matinya seluruh ganggang di laut"
+      },
+      {
+        "id": "E",
+        "text": "masuknya ganggang baru ke tubuh polip"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "«Mengusir» di sini kiasan: polip bukan makhluk yang berkelahi, tetapi ganggang benar-benar keluar dari jaringannya.\n\nKata itu dipilih karena keluarnya bukan kebetulan, melainkan akibat keadaan yang tidak lagi tertahankan.",
+    "distractorRationale": {
+      "B": "Kata itu kiasan, bukan gambaran perkelahian.",
+      "C": "Karang tidak berpindah.",
+      "D": "Ganggang keluar, tidak dinyatakan mati.",
+      "E": "Arahnya justru keluar."
+    },
+    "tags": [
+      "makna-kata"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r12",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Informasi",
+    "skill": "Mengevaluasi argumen",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "(1) Terumbu karang tampak seperti batu, tetapi sebagian besar tubuhnya adalah hewan. (2) Polip karang yang menyusunnya membangun rangka kapur di sekelilingnya, dan rangka itulah yang tertinggal ketika polipnya mati.\n\n(3) Di dalam jaringan polip hidup ganggang bersel satu yang berfotosintesis. (4) Ganggang memperoleh tempat berlindung, sedangkan polip memperoleh sebagian besar makanannya — dan juga warnanya. (5) Ketika suhu air naik terlalu lama, polip mengusir ganggang itu, dan karang berubah menjadi putih.\n\n(6) Karang yang memutih belum mati. (7) Bila suhu turun kembali dalam beberapa minggu, ganggang dapat kembali dan warnanya pulih. (8) Yang mematikan bukanlah satu peristiwa pemutihan, melainkan pemutihan yang berulang sebelum karang sempat memulihkan diri."
+    },
+    "stem": "Sikap penulis terhadap karang yang memutih adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menilainya menguntungkan bagi karang"
+      },
+      {
+        "id": "B",
+        "text": "menilainya sebagai keadaan yang masih dapat dipulihkan bila jaraknya cukup"
+      },
+      {
+        "id": "C",
+        "text": "tidak memberikan penilaian apa pun"
+      },
+      {
+        "id": "D",
+        "text": "menilainya sebagai hal biasa yang tidak perlu dicemaskan"
+      },
+      {
+        "id": "E",
+        "text": "menilainya sebagai kematian yang sudah pasti"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Kalimat (6) dan (7) menyatakan karang yang memutih belum mati dan dapat pulih bila suhu turun dalam beberapa minggu.\n\nNamun kalimat (8) menahan agar itu tidak dibaca sebagai «tidak perlu dicemaskan» — pengulangannya justru mematikan.",
+    "distractorRationale": {
+      "A": "Bacaan tidak menyebut keuntungan apa pun.",
+      "C": "Penilaiannya jelas dinyatakan.",
+      "D": "Kalimat (8) menahan pembacaan itu.",
+      "E": "Bertentangan dengan kalimat (6)."
+    },
+    "tags": [
+      "sikap-penulis"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r13",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu menyimpan uang belanja di dalam kaleng biskuit di atas lemari. Kaleng itu sudah penyok di satu sisi, dan tutupnya harus dibuka dengan ujung sendok.\n\nSetiap awal bulan Ibu membagi uang itu ke dalam beberapa amplop kecil: satu untuk beras, satu untuk lauk, satu untuk listrik, dan satu lagi yang tidak pernah ia beri nama. Amplop terakhir itu paling tipis, dan hanya dibuka kalau ada yang sakit atau ada anak tetangga yang menikah.\n\nSekarang Ibu sudah memakai aplikasi di ponsel untuk mencatat pengeluaran. Kaleng biskuit itu masih di atas lemari, kosong. Ketika kutanya mengapa tidak dibuang, Ibu menjawab bahwa tempat itu masih dibutuhkan — kalau-kalau ponselnya mati."
+    },
+    "stem": "Latar tempat penyimpanan uang belanja dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "dompet Ibu"
+      },
+      {
+        "id": "B",
+        "text": "bawah kasur"
+      },
+      {
+        "id": "C",
+        "text": "kaleng biskuit di atas lemari"
+      },
+      {
+        "id": "D",
+        "text": "laci meja makan"
+      },
+      {
+        "id": "E",
+        "text": "brankas kecil"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Bacaan menyebutkannya pada kalimat pembuka: Ibu menyimpan uang belanja di dalam kaleng biskuit di atas lemari.\n\nTempat lain pada pilihan tidak muncul dalam cerita.",
+    "distractorRationale": {
+      "A": "Tidak disebut bacaan.",
+      "B": "Tidak disebut bacaan.",
+      "D": "Tidak disebut bacaan.",
+      "E": "Tidak disebut bacaan."
+    },
+    "tags": [
+      "latar"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r14",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Makna tersirat",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu menyimpan uang belanja di dalam kaleng biskuit di atas lemari. Kaleng itu sudah penyok di satu sisi, dan tutupnya harus dibuka dengan ujung sendok.\n\nSetiap awal bulan Ibu membagi uang itu ke dalam beberapa amplop kecil: satu untuk beras, satu untuk lauk, satu untuk listrik, dan satu lagi yang tidak pernah ia beri nama. Amplop terakhir itu paling tipis, dan hanya dibuka kalau ada yang sakit atau ada anak tetangga yang menikah.\n\nSekarang Ibu sudah memakai aplikasi di ponsel untuk mencatat pengeluaran. Kaleng biskuit itu masih di atas lemari, kosong. Ketika kutanya mengapa tidak dibuang, Ibu menjawab bahwa tempat itu masih dibutuhkan — kalau-kalau ponselnya mati."
+    },
+    "stem": "Amplop yang tidak diberi nama dalam bacaan tersebut paling tepat dipahami sebagai",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "uang yang lupa dianggarkan Ibu"
+      },
+      {
+        "id": "B",
+        "text": "uang titipan tetangga"
+      },
+      {
+        "id": "C",
+        "text": "uang jajan anak-anak"
+      },
+      {
+        "id": "D",
+        "text": "dana cadangan untuk keperluan mendadak"
+      },
+      {
+        "id": "E",
+        "text": "uang tabungan untuk membeli lemari baru"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Bacaan menyebut amplop itu hanya dibuka kalau ada yang sakit atau ada anak tetangga yang menikah — dua keperluan yang tidak dapat dijadwalkan.\n\nJustru karena tidak bisa direncanakan, amplop itu tidak diberi nama.",
+    "distractorRationale": {
+      "A": "Amplop itu sengaja disiapkan setiap bulan.",
+      "B": "Uang itu milik keluarga sendiri.",
+      "C": "Tidak disebut bacaan.",
+      "E": "Tidak disebut tujuan tertentu."
+    },
+    "tags": [
+      "makna-tersirat"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r15",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu menyimpan uang belanja di dalam kaleng biskuit di atas lemari. Kaleng itu sudah penyok di satu sisi, dan tutupnya harus dibuka dengan ujung sendok.\n\nSetiap awal bulan Ibu membagi uang itu ke dalam beberapa amplop kecil: satu untuk beras, satu untuk lauk, satu untuk listrik, dan satu lagi yang tidak pernah ia beri nama. Amplop terakhir itu paling tipis, dan hanya dibuka kalau ada yang sakit atau ada anak tetangga yang menikah.\n\nSekarang Ibu sudah memakai aplikasi di ponsel untuk mencatat pengeluaran. Kaleng biskuit itu masih di atas lemari, kosong. Ketika kutanya mengapa tidak dibuang, Ibu menjawab bahwa tempat itu masih dibutuhkan — kalau-kalau ponselnya mati."
+    },
+    "stem": "Watak Ibu yang paling menonjol dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "pelit terhadap tetangga"
+      },
+      {
+        "id": "B",
+        "text": "acuh terhadap keperluan keluarga"
+      },
+      {
+        "id": "C",
+        "text": "boros dan mudah tergoda belanja"
+      },
+      {
+        "id": "D",
+        "text": "suka menunda urusan penting"
+      },
+      {
+        "id": "E",
+        "text": "cermat mengatur keuangan dan berjaga-jaga"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Membagi uang ke amplop-amplop setiap awal bulan menunjukkan kecermatan; menyisihkan satu amplop untuk keperluan tak terduga menunjukkan sikap berjaga-jaga.\n\nKedua sifat itu muncul kembali di akhir cerita lewat kaleng yang tetap disimpan.",
+    "distractorRationale": {
+      "A": "Justru ia menyiapkan uang untuk hajatan tetangga.",
+      "B": "Seluruh amplopnya untuk keperluan keluarga.",
+      "C": "Bertentangan dengan cara ia membagi uang.",
+      "D": "Ia mengatur uang di awal bulan."
+    },
+    "tags": [
+      "penokohan"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r16",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Makna tersirat",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu menyimpan uang belanja di dalam kaleng biskuit di atas lemari. Kaleng itu sudah penyok di satu sisi, dan tutupnya harus dibuka dengan ujung sendok.\n\nSetiap awal bulan Ibu membagi uang itu ke dalam beberapa amplop kecil: satu untuk beras, satu untuk lauk, satu untuk listrik, dan satu lagi yang tidak pernah ia beri nama. Amplop terakhir itu paling tipis, dan hanya dibuka kalau ada yang sakit atau ada anak tetangga yang menikah.\n\nSekarang Ibu sudah memakai aplikasi di ponsel untuk mencatat pengeluaran. Kaleng biskuit itu masih di atas lemari, kosong. Ketika kutanya mengapa tidak dibuang, Ibu menjawab bahwa tempat itu masih dibutuhkan — kalau-kalau ponselnya mati."
+    },
+    "stem": "Alasan Ibu tetap menyimpan kaleng biskuit yang sudah kosong adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "ia menyiapkan cara cadangan bila alat yang baru tidak dapat dipakai"
+      },
+      {
+        "id": "B",
+        "text": "ia berencana mengisinya kembali bulan depan"
+      },
+      {
+        "id": "C",
+        "text": "kaleng itu bernilai jual tinggi"
+      },
+      {
+        "id": "D",
+        "text": "ia lupa membuangnya"
+      },
+      {
+        "id": "E",
+        "text": "kaleng itu pemberian orang tuanya"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Ibu sendiri menjawabnya: tempat itu masih dibutuhkan, kalau-kalau ponselnya mati.\n\nAlasan itu sejalan dengan wataknya sepanjang cerita — amplop tak bernama pun disiapkan untuk hal yang belum tentu terjadi.",
+    "distractorRationale": {
+      "B": "Alasannya bukan pengisian rutin.",
+      "C": "Kaleng itu penyok dan tidak dinilai harganya.",
+      "D": "Ia menjawab dengan alasan yang jelas.",
+      "E": "Asal-usul kaleng tidak disebut."
+    },
+    "tags": [
+      "makna-tersirat"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r17",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Amanat & nilai",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu menyimpan uang belanja di dalam kaleng biskuit di atas lemari. Kaleng itu sudah penyok di satu sisi, dan tutupnya harus dibuka dengan ujung sendok.\n\nSetiap awal bulan Ibu membagi uang itu ke dalam beberapa amplop kecil: satu untuk beras, satu untuk lauk, satu untuk listrik, dan satu lagi yang tidak pernah ia beri nama. Amplop terakhir itu paling tipis, dan hanya dibuka kalau ada yang sakit atau ada anak tetangga yang menikah.\n\nSekarang Ibu sudah memakai aplikasi di ponsel untuk mencatat pengeluaran. Kaleng biskuit itu masih di atas lemari, kosong. Ketika kutanya mengapa tidak dibuang, Ibu menjawab bahwa tempat itu masih dibutuhkan — kalau-kalau ponselnya mati."
+    },
+    "stem": "Amanat yang paling sesuai dengan bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Uang sebaiknya disimpan di bank."
+      },
+      {
+        "id": "B",
+        "text": "Kebiasaan berjaga-jaga tetap berguna meski alatnya berganti."
+      },
+      {
+        "id": "C",
+        "text": "Barang lama harus segera dibuang."
+      },
+      {
+        "id": "D",
+        "text": "Anak sebaiknya tidak menanyai orang tuanya."
+      },
+      {
+        "id": "E",
+        "text": "Teknologi baru sebaiknya tidak dipakai."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Ibu berpindah dari amplop ke aplikasi, tetapi cara berpikirnya tidak berubah: selalu ada cadangan untuk hal yang belum tentu terjadi.\n\nCerita tidak menentang teknologi — Ibu justru memakainya; yang dipertahankan hanyalah kebiasaannya.",
+    "distractorRationale": {
+      "A": "Bank tidak disinggung cerita.",
+      "C": "Bertentangan dengan sikap Ibu.",
+      "D": "Pertanyaan «aku» justru memunculkan maknanya.",
+      "E": "Ibu justru sudah memakai aplikasi."
+    },
+    "tags": [
+      "amanat"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r18",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Gaya bahasa",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu menyimpan uang belanja di dalam kaleng biskuit di atas lemari. Kaleng itu sudah penyok di satu sisi, dan tutupnya harus dibuka dengan ujung sendok.\n\nSetiap awal bulan Ibu membagi uang itu ke dalam beberapa amplop kecil: satu untuk beras, satu untuk lauk, satu untuk listrik, dan satu lagi yang tidak pernah ia beri nama. Amplop terakhir itu paling tipis, dan hanya dibuka kalau ada yang sakit atau ada anak tetangga yang menikah.\n\nSekarang Ibu sudah memakai aplikasi di ponsel untuk mencatat pengeluaran. Kaleng biskuit itu masih di atas lemari, kosong. Ketika kutanya mengapa tidak dibuang, Ibu menjawab bahwa tempat itu masih dibutuhkan — kalau-kalau ponselnya mati."
+    },
+    "stem": "Detail «tutupnya harus dibuka dengan ujung sendok» terutama berfungsi untuk",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menunjukkan Ibu tidak punya alat pembuka"
+      },
+      {
+        "id": "B",
+        "text": "menjelaskan cara membuka kaleng biskuit"
+      },
+      {
+        "id": "C",
+        "text": "menunjukkan kaleng itu sudah lama dipakai sehingga tidak lagi mudah dibuka"
+      },
+      {
+        "id": "D",
+        "text": "menandakan uang di dalamnya sangat banyak"
+      },
+      {
+        "id": "E",
+        "text": "menunjukkan kaleng itu sering dicuri orang"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Tutup yang macet dan sisi yang penyok sama-sama menandai pemakaian bertahun-tahun.\n\nDetail ini menyiapkan akhir cerita: benda yang sudah lama menemani itulah yang akhirnya tetap disimpan meski kosong.",
+    "distractorRationale": {
+      "A": "Bukan soal ketiadaan alat.",
+      "B": "Bukan petunjuk teknis.",
+      "D": "Jumlah uang tidak disinggung.",
+      "E": "Pencurian tidak disinggung."
+    },
+    "tags": [
+      "detail-sastra"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r19",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Unsur intrinsik",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu menyimpan uang belanja di dalam kaleng biskuit di atas lemari. Kaleng itu sudah penyok di satu sisi, dan tutupnya harus dibuka dengan ujung sendok.\n\nSetiap awal bulan Ibu membagi uang itu ke dalam beberapa amplop kecil: satu untuk beras, satu untuk lauk, satu untuk listrik, dan satu lagi yang tidak pernah ia beri nama. Amplop terakhir itu paling tipis, dan hanya dibuka kalau ada yang sakit atau ada anak tetangga yang menikah.\n\nSekarang Ibu sudah memakai aplikasi di ponsel untuk mencatat pengeluaran. Kaleng biskuit itu masih di atas lemari, kosong. Ketika kutanya mengapa tidak dibuang, Ibu menjawab bahwa tempat itu masih dibutuhkan — kalau-kalau ponselnya mati."
+    },
+    "stem": "Sudut pandang yang digunakan dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "orang ketiga pengamat"
+      },
+      {
+        "id": "B",
+        "text": "orang kedua"
+      },
+      {
+        "id": "C",
+        "text": "campuran orang pertama dan ketiga"
+      },
+      {
+        "id": "D",
+        "text": "orang pertama pelaku sampingan"
+      },
+      {
+        "id": "E",
+        "text": "orang ketiga serba tahu"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Cerita dituturkan oleh «aku» yang bertanya kepada Ibu, sedangkan tokoh yang menjadi pusat cerita adalah Ibu.\n\nKarena «aku» hadir dan bertindak tetapi bukan pusat cerita, sudut pandangnya orang pertama pelaku sampingan.",
+    "distractorRationale": {
+      "A": "«Aku» ikut hadir dan bertanya.",
+      "B": "Tidak memakai «kamu».",
+      "C": "Sudut pandangnya konsisten.",
+      "E": "Tidak memakai kata ganti orang ketiga."
+    },
+    "tags": [
+      "sudut-pandang"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r20",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Amanat & nilai",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu menyimpan uang belanja di dalam kaleng biskuit di atas lemari. Kaleng itu sudah penyok di satu sisi, dan tutupnya harus dibuka dengan ujung sendok.\n\nSetiap awal bulan Ibu membagi uang itu ke dalam beberapa amplop kecil: satu untuk beras, satu untuk lauk, satu untuk listrik, dan satu lagi yang tidak pernah ia beri nama. Amplop terakhir itu paling tipis, dan hanya dibuka kalau ada yang sakit atau ada anak tetangga yang menikah.\n\nSekarang Ibu sudah memakai aplikasi di ponsel untuk mencatat pengeluaran. Kaleng biskuit itu masih di atas lemari, kosong. Ketika kutanya mengapa tidak dibuang, Ibu menjawab bahwa tempat itu masih dibutuhkan — kalau-kalau ponselnya mati."
+    },
+    "stem": "Alasan pengarang menyebut bahwa kaleng itu sekarang «kosong» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "untuk menunjukkan uangnya telah dicuri"
+      },
+      {
+        "id": "B",
+        "text": "untuk menjelaskan kaleng itu perlu dicuci"
+      },
+      {
+        "id": "C",
+        "text": "untuk menunjukkan keluarga itu kehabisan uang"
+      },
+      {
+        "id": "D",
+        "text": "untuk menandakan Ibu sudah berhenti berbelanja"
+      },
+      {
+        "id": "E",
+        "text": "untuk menegaskan bahwa yang dipertahankan bukan isinya melainkan kesiapsiagaannya"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kaleng yang masih berisi tentu wajar disimpan. Justru karena kosong, alasan menyimpannya harus berupa sesuatu yang lain — dan Ibu menyebutkannya sendiri.\n\nKata «kosong» itulah yang membuat jawaban Ibu di kalimat penutup terasa bermakna.",
+    "distractorRationale": {
+      "A": "Pencurian tidak disinggung.",
+      "B": "Kebersihan tidak disinggung.",
+      "C": "Uangnya berpindah ke aplikasi, bukan habis.",
+      "D": "Ibu justru masih mencatat pengeluaran."
+    },
+    "tags": [
+      "tujuan-pengarang"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r21",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Membaca Teks Sastra",
+    "skill": "Gaya bahasa",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Ibu menyimpan uang belanja di dalam kaleng biskuit di atas lemari. Kaleng itu sudah penyok di satu sisi, dan tutupnya harus dibuka dengan ujung sendok.\n\nSetiap awal bulan Ibu membagi uang itu ke dalam beberapa amplop kecil: satu untuk beras, satu untuk lauk, satu untuk listrik, dan satu lagi yang tidak pernah ia beri nama. Amplop terakhir itu paling tipis, dan hanya dibuka kalau ada yang sakit atau ada anak tetangga yang menikah.\n\nSekarang Ibu sudah memakai aplikasi di ponsel untuk mencatat pengeluaran. Kaleng biskuit itu masih di atas lemari, kosong. Ketika kutanya mengapa tidak dibuang, Ibu menjawab bahwa tempat itu masih dibutuhkan — kalau-kalau ponselnya mati."
+    },
+    "stem": "Suasana yang paling menonjol dalam bacaan tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tenang dan hangat"
+      },
+      {
+        "id": "B",
+        "text": "tegang dan mencekam"
+      },
+      {
+        "id": "C",
+        "text": "marah dan penuh keluhan"
+      },
+      {
+        "id": "D",
+        "text": "sedih dan putus asa"
+      },
+      {
+        "id": "E",
+        "text": "riang dan penuh canda"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Cerita bergerak melalui kebiasaan sehari-hari yang tertata, tanpa konflik terbuka, dan ditutup dengan jawaban Ibu yang pendek dan masuk akal.\n\nTidak ada kesedihan maupun ketegangan — yang ada adalah keakraban dengan cara hidup yang telaten.",
+    "distractorRationale": {
+      "B": "Tidak ada ketegangan.",
+      "C": "Tidak ada keluhan.",
+      "D": "Tidak ada nada putus asa.",
+      "E": "Nadanya bukan canda."
+    },
+    "tags": [
+      "suasana"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r22",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kata baku & makna kata",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan kata baku yang tepat terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "nasihat, telur, cabe"
+      },
+      {
+        "id": "B",
+        "text": "nasihat, telur, cabai"
+      },
+      {
+        "id": "C",
+        "text": "nasihat, telor, cabai"
+      },
+      {
+        "id": "D",
+        "text": "nasehat, telor, cabe"
+      },
+      {
+        "id": "E",
+        "text": "nasehat, telur, cabe"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bentuk baku ketiganya adalah «nasihat», «telur», dan «cabai».\n\n«Nasehat», «telor», dan «cabe» adalah bentuk tidak baku yang masih sering dipakai dalam percakapan sehari-hari.",
+    "distractorRationale": {
+      "A": "«cabe» tidak baku.",
+      "C": "«telor» tidak baku.",
+      "D": "Ketiganya tidak baku.",
+      "E": "«nasehat» dan «cabe» tidak baku."
+    },
+    "tags": [
+      "kata-baku"
+    ],
+    "estimatedTimeSec": 60,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r23",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Ejaan & tanda baca",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan yang sesuai kaidah terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Paman tinggal di jalan merdeka nomor 17, bandung."
+      },
+      {
+        "id": "B",
+        "text": "Paman Tinggal di Jalan Merdeka Nomor 17, Bandung."
+      },
+      {
+        "id": "C",
+        "text": "Paman tinggal di Jalan Merdeka Nomor 17, Bandung."
+      },
+      {
+        "id": "D",
+        "text": "Paman tinggal di jalan Merdeka nomor 17, Bandung."
+      },
+      {
+        "id": "E",
+        "text": "Paman tinggal di Jalan merdeka Nomor 17, bandung."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "«Jalan Merdeka» adalah nama diri geografi sehingga kedua unsurnya berhuruf kapital, begitu pula «Nomor» sebagai bagian alamat dan «Bandung» sebagai nama kota.\n\nKata «tinggal» adalah kata kerja biasa dan tidak perlu diawali huruf kapital.",
+    "distractorRationale": {
+      "A": "Seluruh nama diri ditulis huruf kecil.",
+      "B": "«Tinggal» tidak perlu kapital.",
+      "D": "«jalan» dan «nomor» seharusnya kapital.",
+      "E": "«merdeka» dan «bandung» seharusnya kapital."
+    },
+    "tags": [
+      "puebi",
+      "huruf-kapital"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r24",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kalimat efektif",
+    "difficulty": "M",
+    "irtB": 0.35,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat berikut yang paling efektif adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Dalam penelitian itu membuktikan bahwa pupuk kandang meningkatkan hasil panen."
+      },
+      {
+        "id": "B",
+        "text": "Penelitian itu membuktikan bahwasanya pupuk kandang dapat meningkatkan daripada hasil panen."
+      },
+      {
+        "id": "C",
+        "text": "Penelitian itu adalah membuktikan bahwa pupuk kandang meningkatkan hasil panen."
+      },
+      {
+        "id": "D",
+        "text": "Penelitian itu membuktikan bahwa pupuk kandang meningkatkan hasil panen."
+      },
+      {
+        "id": "E",
+        "text": "Penelitian itu membuktikan di mana pupuk kandang meningkatkan hasil panen."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kalimat efektif menuntut subjek yang jelas dan bebas kata mubazir. «Penelitian itu» adalah subjeknya dan «membuktikan bahwa…» sudah lengkap.\n\nAwalan «dalam» menghilangkan subjek, «adalah membuktikan» menumpuk dua predikat, «daripada» dipakai keliru sebagai penanda milik, dan «di mana» bukan penghubung dalam bahasa Indonesia.",
+    "distractorRationale": {
+      "A": "Kehilangan subjek karena diawali «dalam».",
+      "B": "«daripada» dipakai keliru sebagai penanda milik.",
+      "C": "«adalah membuktikan» menumpuk dua predikat.",
+      "E": "«di mana» bukan penghubung dalam bahasa Indonesia."
+    },
+    "tags": [
+      "kalimat-efektif"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r25",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kata baku & makna kata",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Makna kata «gigih» dalam kalimat «Ia gigih memperjuangkan haknya» adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "cepat dan tangkas"
+      },
+      {
+        "id": "B",
+        "text": "sabar menunggu giliran"
+      },
+      {
+        "id": "C",
+        "text": "pandai berbicara di depan umum"
+      },
+      {
+        "id": "D",
+        "text": "keras dan suka membentak"
+      },
+      {
+        "id": "E",
+        "text": "teguh dan tidak mudah menyerah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "«Gigih» berarti tetap teguh pada pendirian dan tidak mudah menyerah, meski menghadapi kesulitan.\n\nKecepatan, kesabaran, dan kepandaian berbicara adalah sifat lain yang mungkin menyertainya, tetapi bukan artinya.",
+    "distractorRationale": {
+      "A": "Kecepatan bukan arti kata ini.",
+      "B": "Ini makna «sabar».",
+      "C": "Tidak berkaitan dengan artinya.",
+      "D": "«Gigih» tidak berkonotasi kasar."
+    },
+    "tags": [
+      "makna-kata"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r26",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kepaduan paragraf",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan kalimat berikut.\n\n(1) Akibatnya, pengunjung harus mengantre panjang di satu-satunya loket yang buka.\n(2) Museum kota hanya mengoperasikan satu loket pada hari biasa.\n(3) Pengelola akhirnya membuka loket kedua pada akhir pekan.\n(4) Padahal jumlah pengunjung pada hari libur sekolah meningkat tajam.\n\nUrutan yang tepat agar membentuk paragraf padu adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(2), (4), (1), (3)"
+      },
+      {
+        "id": "B",
+        "text": "(2), (1), (4), (3)"
+      },
+      {
+        "id": "C",
+        "text": "(3), (2), (4), (1)"
+      },
+      {
+        "id": "D",
+        "text": "(4), (2), (1), (3)"
+      },
+      {
+        "id": "E",
+        "text": "(1), (2), (4), (3)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat (2) menyatakan keadaan awal, (4) menambahkan keadaan yang memperberatnya dengan penanda «padahal», (1) menyebut akibatnya, dan (3) menutup dengan tindakan pengelola.\n\nKalimat (1) harus berada setelah (4), sebab antrean panjang baru masuk akal ketika jumlah pengunjung yang meningkat sudah disebutkan.",
+    "distractorRationale": {
+      "B": "Akibat disebut sebelum lonjakan pengunjung dijelaskan.",
+      "C": "Dimulai dari tindakan penutup.",
+      "D": "Kata «padahal» menuntut keadaan pembanding di depannya.",
+      "E": "Kalimat berpenanda «akibatnya» tidak dapat membuka paragraf."
+    },
+    "tags": [
+      "struktur-paragraf"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r27",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Ejaan & tanda baca",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penggunaan tanda koma yang tepat terdapat pada",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Karena, hujan deras pertandingan ditunda sampai besok."
+      },
+      {
+        "id": "B",
+        "text": "Karena hujan deras, pertandingan ditunda sampai besok."
+      },
+      {
+        "id": "C",
+        "text": "Karena hujan deras pertandingan, ditunda sampai besok."
+      },
+      {
+        "id": "D",
+        "text": "Karena hujan deras pertandingan ditunda sampai besok."
+      },
+      {
+        "id": "E",
+        "text": "Karena hujan deras pertandingan ditunda, sampai besok."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Anak kalimat yang mendahului induk kalimat dipisahkan dengan koma. «Karena hujan deras» adalah anak kalimat, sehingga koma diletakkan tepat setelahnya.\n\nKoma tidak diletakkan setelah kata penghubung «karena», dan tidak pula memisahkan subjek dari predikatnya.",
+    "distractorRationale": {
+      "A": "Koma tidak diletakkan setelah «karena».",
+      "C": "Koma memisahkan subjek dari predikatnya.",
+      "D": "Anak kalimat di depan memerlukan koma.",
+      "E": "Koma memisahkan keterangan waktu tanpa alasan."
+    },
+    "tags": [
+      "puebi",
+      "tanda-baca"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r28",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kalimat efektif",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat berikut yang mengandung kesalahan struktur adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Kerja sama semua pihak diperlukan untuk mengatasi masalah tersebut."
+      },
+      {
+        "id": "B",
+        "text": "Mengatasi masalah tersebut memerlukan kerja sama semua pihak."
+      },
+      {
+        "id": "C",
+        "text": "Untuk mengatasi masalah tersebut memerlukan kerja sama semua pihak."
+      },
+      {
+        "id": "D",
+        "text": "Untuk mengatasi masalah tersebut, kita memerlukan kerja sama semua pihak."
+      },
+      {
+        "id": "E",
+        "text": "Penyelesaian masalah tersebut memerlukan kerja sama semua pihak."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kata «untuk» menjadikan bagian depan kalimat sebagai keterangan tujuan, sehingga kalimat pertama tidak memiliki subjek: tidak jelas siapa atau apa yang memerlukan.\n\nAda dua jalan memperbaikinya, dan keduanya muncul pada pilihan lain: menghapus «untuk» sehingga frasa itu naik menjadi subjek, atau menambahkan subjek setelah tanda koma.",
+    "distractorRationale": {
+      "A": "Berstruktur lengkap.",
+      "B": "Berstruktur lengkap.",
+      "D": "Berstruktur lengkap.",
+      "E": "Berstruktur lengkap."
+    },
+    "tags": [
+      "kalimat-efektif",
+      "subjek"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r29",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kepaduan paragraf",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan paragraf berikut.\n\n«(1) Lapangan voli sekolah kami tidak memiliki garis batas yang jelas. (2) Cat penandanya sudah lama terkelupas. (3) Sekolah kami berdiri sejak tahun 1985. (4) Akibatnya, pertandingan sering terhenti karena perselisihan soal bola masuk atau keluar.»\n\nKalimat yang tidak padu adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "semua kalimat sudah padu"
+      },
+      {
+        "id": "B",
+        "text": "kalimat (2)"
+      },
+      {
+        "id": "C",
+        "text": "kalimat (4)"
+      },
+      {
+        "id": "D",
+        "text": "kalimat (3)"
+      },
+      {
+        "id": "E",
+        "text": "kalimat (1)"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Paragraf itu membangun satu rantai: garis batas tidak jelas karena catnya terkelupas, sehingga pertandingan sering terhenti.\n\nKalimat (3) menyebut tahun berdirinya sekolah — keterangan yang tidak berkaitan dengan garis lapangan maupun jalannya pertandingan.",
+    "distractorRationale": {
+      "A": "Kalimat (3) keluar dari rantai sebab.",
+      "B": "Menjelaskan sebab utama.",
+      "C": "Menyebut akibatnya.",
+      "E": "Menyebut sebab utama."
+    },
+    "tags": [
+      "kepaduan-paragraf"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-r30",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_bind",
+    "domain": "Kebahasaan dan Menulis",
+    "skill": "Kata baku & makna kata",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Ia ______ pendapatnya dengan data yang lengkap.»\n\nKata yang paling tepat mengisi bagian rumpang adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "menguatkan badan"
+      },
+      {
+        "id": "B",
+        "text": "memperbesar"
+      },
+      {
+        "id": "C",
+        "text": "menegangkan"
+      },
+      {
+        "id": "D",
+        "text": "mengeraskan"
+      },
+      {
+        "id": "E",
+        "text": "memperkuat"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "«Memperkuat» berarti menjadikan sesuatu lebih kuat, dan lazim dipakai untuk pendapat, alasan, atau bukti.\n\n«Mengeraskan» dipakai untuk benda atau suara, «memperbesar» untuk ukuran, dan «menegangkan» untuk keadaan atau suasana — tidak satu pun berpasangan dengan «pendapat».",
+    "distractorRationale": {
+      "A": "Berpasangan dengan tubuh, bukan pendapat.",
+      "B": "Menyangkut ukuran.",
+      "C": "Menyangkut keadaan atau suasana.",
+      "D": "Dipakai untuk benda atau suara."
+    },
+    "tags": [
+      "diksi"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s01",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Operasi bilangan bulat & pecahan",
+    "difficulty": "E",
+    "irtB": -0.75,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $-15 : 3 + 4 \\times (-2)$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-13"
+      },
+      {
+        "id": "B",
+        "text": "13"
+      },
+      {
+        "id": "C",
+        "text": "-18"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      },
+      {
+        "id": "E",
+        "text": "-3"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Pembagian dan perkalian dikerjakan lebih dahulu: $-15 : 3 = -5$ dan $4 \\times (-2) = -8$.\n\nKemudian $-5 + (-8) = -13$.",
+    "distractorRationale": {
+      "B": "Salah tanda pada hasil akhir.",
+      "C": "Menghitung $-15 : 3 \\times 4 \\times (-2)$ berurutan.",
+      "D": "Mengerjakan penjumlahan lebih dahulu.",
+      "E": "Menghitung $-5 + 2$."
+    },
+    "tags": [
+      "operasi-hitung"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s02",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Operasi bilangan bulat & pecahan",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $\\dfrac{5}{6} - \\dfrac{1}{4}$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{7}{12}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{13}{12}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{4}{12}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{4}{2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Samakan penyebut menjadi 12: $\\dfrac{5}{6} = \\dfrac{10}{12}$ dan $\\dfrac{1}{4} = \\dfrac{3}{12}$.\n\nSelisihnya $\\dfrac{10}{12} - \\dfrac{3}{12} = \\dfrac{7}{12}$.",
+    "distractorRationale": {
+      "A": "Kesalahan penyederhanaan.",
+      "C": "Menjumlahkan, bukan mengurangkan.",
+      "D": "Kesalahan menyamakan penyebut.",
+      "E": "Mengurangkan pembilang dan penyebut secara terpisah."
+    },
+    "tags": [
+      "pecahan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s03",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Perbandingan & skala",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah pekerjaan diselesaikan 8 orang dalam 12 hari. Jika dikerjakan 6 orang dengan kecepatan kerja sama, waktu yang diperlukan adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10 hari"
+      },
+      {
+        "id": "B",
+        "text": "9 hari"
+      },
+      {
+        "id": "C",
+        "text": "16 hari"
+      },
+      {
+        "id": "D",
+        "text": "18 hari"
+      },
+      {
+        "id": "E",
+        "text": "14 hari"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Ini perbandingan berbalik nilai: makin sedikit pekerja, makin lama waktunya.\n\nTotal pekerjaan setara $8 \\times 12 = 96$ orang-hari, sehingga dengan 6 orang diperlukan $\\dfrac{96}{6} = 16$ hari.",
+    "distractorRationale": {
+      "A": "Kesalahan pembagian.",
+      "B": "Memakai perbandingan senilai, yang keliru untuk kasus ini.",
+      "D": "Kesalahan pembagian.",
+      "E": "Kesalahan pembagian."
+    },
+    "tags": [
+      "perbandingan-berbalik-nilai"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s04",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Persen",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Seorang pedagang membeli barang seharga Rp250.000 dan menjualnya dengan kerugian 12%.\n\nHarga jual barang tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp238.000"
+      },
+      {
+        "id": "B",
+        "text": "Rp230.000"
+      },
+      {
+        "id": "C",
+        "text": "Rp280.000"
+      },
+      {
+        "id": "D",
+        "text": "Rp220.000"
+      },
+      {
+        "id": "E",
+        "text": "Rp212.500"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kerugian 12% berarti harga jualnya 88% dari harga beli.\n\nMaka $0{,}88 \\times 250.000 = 220.000$ rupiah.",
+    "distractorRationale": {
+      "A": "Mengurangkan 12.000 begitu saja.",
+      "B": "Memakai kerugian 8%.",
+      "C": "Menambahkan, bukan mengurangkan.",
+      "E": "Memakai kerugian 15%."
+    },
+    "tags": [
+      "persen"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s05",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Pola bilangan",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan bilangan: 3, 8, 15, 24, 35, ...\n\nSuku ke-9 barisan tersebut adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 99
+    },
+    "explanation": "Selisih antarsuku adalah 5, 7, 9, 11 — bertambah 2 setiap kali. Pola umumnya $n(n+2)$: $1 \\times 3 = 3$, $2 \\times 4 = 8$, $3 \\times 5 = 15$.\n\nSuku ke-9 adalah $9 \\times 11 = 99$.",
+    "tags": [
+      "pola-bilangan"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "tka-smp-s06",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Bilangan",
+    "skill": "Pola bilangan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Perhatikan barisan: 1, 4, 9, 16, 25, ...\n\nSelisih suku ke-12 dan suku ke-10 adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "144"
+      },
+      {
+        "id": "C",
+        "text": "20"
+      },
+      {
+        "id": "D",
+        "text": "22"
+      },
+      {
+        "id": "E",
+        "text": "44"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Barisan ini adalah kuadrat bilangan asli, sehingga suku ke-$n$ adalah $n^2$.\n\nSuku ke-12 adalah 144 dan suku ke-10 adalah 100, sehingga selisihnya $144 - 100 = 44$.",
+    "distractorRationale": {
+      "A": "Mengurangkan nomor sukunya, bukan nilainya.",
+      "B": "Hanya menuliskan suku ke-12.",
+      "C": "Menghitung $2 \\times 10$.",
+      "D": "Menghitung $12 + 10$."
+    },
+    "tags": [
+      "pola-bilangan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s07",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Bentuk aljabar",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Hasil dari $(4a + 3b) - (a - 5b)$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3a + 8b$"
+      },
+      {
+        "id": "B",
+        "text": "$3a - 2b$"
+      },
+      {
+        "id": "C",
+        "text": "$3a - 8b$"
+      },
+      {
+        "id": "D",
+        "text": "$5a + 8b$"
+      },
+      {
+        "id": "E",
+        "text": "$5a - 2b$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Tanda kurung kedua didahului tanda kurang, sehingga kedua sukunya berubah tanda: $-a + 5b$.\n\nMaka $(4a - a) + (3b + 5b) = 3a + 8b$. Lupa membalik tanda pada $-5b$ adalah kekeliruan paling lazim di sini.",
+    "distractorRationale": {
+      "B": "Tidak membalik tanda pada $-5b$.",
+      "C": "Salah tanda pada suku $b$.",
+      "D": "Menjumlahkan koefisien $a$.",
+      "E": "Salah pada kedua suku."
+    },
+    "tags": [
+      "bentuk-aljabar"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s08",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penyelesaian dari $2(x - 3) = 14$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "10"
+      },
+      {
+        "id": "C",
+        "text": "7"
+      },
+      {
+        "id": "D",
+        "text": "8"
+      },
+      {
+        "id": "E",
+        "text": "11"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Bagi kedua ruas dengan 2: $x - 3 = 7$. Tambahkan 3: $x = 10$.\n\nPeriksa: $2(10 - 3) = 14$ ✓.",
+    "distractorRationale": {
+      "A": "Mengurangkan 3, bukan menambahkan.",
+      "C": "Berhenti pada $x - 3 = 7$.",
+      "D": "Kesalahan pembagian.",
+      "E": "Memakai $x - 3 = 8$."
+    },
+    "tags": [
+      "persamaan-linear"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s09",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Himpunan penyelesaian dari $4x - 3 \\ge 2x + 7$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$x \\le 5$"
+      },
+      {
+        "id": "B",
+        "text": "$x \\le 2$"
+      },
+      {
+        "id": "C",
+        "text": "$x \\ge 5$"
+      },
+      {
+        "id": "D",
+        "text": "$x \\ge 10$"
+      },
+      {
+        "id": "E",
+        "text": "$x \\ge 2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kurangkan $2x$: $2x - 3 \\ge 7$. Tambahkan 3: $2x \\ge 10$, sehingga $x \\ge 5$.\n\nKarena pembaginya positif, arah pertidaksamaan tidak berubah.",
+    "distractorRationale": {
+      "A": "Membalik arah padahal pembaginya positif.",
+      "B": "Salah arah dan salah nilai.",
+      "D": "Berhenti pada $2x \\ge 10$.",
+      "E": "Kesalahan pengurangan."
+    },
+    "tags": [
+      "pertidaksamaan"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s10",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Relasi & fungsi",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Fungsi $f$ dirumuskan $f(x) = 5 - 2x$. Nilai $f(-3)$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8"
+      },
+      {
+        "id": "B",
+        "text": "-1"
+      },
+      {
+        "id": "C",
+        "text": "1"
+      },
+      {
+        "id": "D",
+        "text": "11"
+      },
+      {
+        "id": "E",
+        "text": "-11"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Substitusikan: $f(-3) = 5 - 2(-3) = 5 + 6 = 11$.\n\nMengurangi bilangan negatif sama dengan menambah, sehingga hasilnya lebih besar daripada 5.",
+    "distractorRationale": {
+      "A": "Menghitung $5 + 3$.",
+      "B": "Menghitung $5 - 6$.",
+      "C": "Salah tanda pada perkalian.",
+      "E": "Menegatifkan hasil yang benar."
+    },
+    "tags": [
+      "fungsi"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s11",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "SPLDV",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Diketahui $x + 3y = 17$ dan $x - y = 1$.\n\nNilai $2x + y$ adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8"
+      },
+      {
+        "id": "B",
+        "text": "11"
+      },
+      {
+        "id": "C",
+        "text": "17"
+      },
+      {
+        "id": "D",
+        "text": "20"
+      },
+      {
+        "id": "E",
+        "text": "14"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kurangkan persamaan kedua dari yang pertama: $4y = 16$, sehingga $y = 4$.\n\nDari $x - y = 1$ diperoleh $x = 5$. Periksa persamaan pertama: $5 + 12 = 17$ ✓. Maka $2x + y = 10 + 4 = 14$.",
+    "distractorRationale": {
+      "A": "Memakai $x = 2$ dan $y = 4$.",
+      "B": "Menghitung $x + 2y$ secara keliru.",
+      "C": "Mengulang ruas kanan persamaan pertama.",
+      "D": "Memakai $x = 8$."
+    },
+    "tags": [
+      "spldv"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s12",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Bentuk aljabar",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari $\\dfrac{a^2 + b}{c}$ untuk $a = 6$, $b = 4$, dan $c = 8$ adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "$a^2 = 36$, sehingga pembilangnya $36 + 4 = 40$.\n\nMaka hasilnya $\\dfrac{40}{8} = 5$.",
+    "tags": [
+      "substitusi"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "tka-smp-s13",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "SPLDV",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Harga 4 pensil dan 3 buku Rp37.000, sedangkan harga 2 pensil dan 5 buku Rp43.000.\n\nHarga sebuah buku adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rp7.000"
+      },
+      {
+        "id": "B",
+        "text": "Rp8.000"
+      },
+      {
+        "id": "C",
+        "text": "Rp6.000"
+      },
+      {
+        "id": "D",
+        "text": "Rp5.000"
+      },
+      {
+        "id": "E",
+        "text": "Rp4.000"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalikan persamaan kedua dengan 2: $4p + 10b = 86.000$.\n\nKurangkan persamaan pertama darinya: $7b = 49.000$, sehingga $b = 7.000$. Periksa: $p = 4.000$, dan $4(4.000) + 3(7.000) = 37.000$ ✓.",
+    "distractorRationale": {
+      "B": "Kesalahan pembagian.",
+      "C": "Kesalahan pengurangan persamaan.",
+      "D": "Kesalahan pengurangan persamaan.",
+      "E": "Ini harga pensil."
+    },
+    "tags": [
+      "spldv"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s14",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Aljabar",
+    "skill": "Persamaan & pertidaksamaan linear",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Jumlah tiga bilangan bulat berurutan adalah 72.\n\nBilangan terbesar di antaranya adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "24"
+      },
+      {
+        "id": "B",
+        "text": "25"
+      },
+      {
+        "id": "C",
+        "text": "26"
+      },
+      {
+        "id": "D",
+        "text": "27"
+      },
+      {
+        "id": "E",
+        "text": "23"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Misalkan ketiganya $n - 1$, $n$, dan $n + 1$, sehingga jumlahnya $3n = 72$ dan $n = 24$.\n\nKetiga bilangan itu 23, 24, dan 25, sehingga yang terbesar adalah 25.",
+    "distractorRationale": {
+      "A": "Ini bilangan tengah.",
+      "C": "Melangkah satu bilangan terlalu jauh.",
+      "D": "Melangkah dua bilangan terlalu jauh.",
+      "E": "Ini bilangan terkecil."
+    },
+    "tags": [
+      "pemodelan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s15",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "E",
+    "irtB": -0.65,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah belah ketupat memiliki panjang diagonal 16 cm dan 12 cm.\n\nLuas belah ketupat tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$192\\ \\text{cm}^2$"
+      },
+      {
+        "id": "B",
+        "text": "$48\\ \\text{cm}^2$"
+      },
+      {
+        "id": "C",
+        "text": "$96\\ \\text{cm}^2$"
+      },
+      {
+        "id": "D",
+        "text": "$56\\ \\text{cm}^2$"
+      },
+      {
+        "id": "E",
+        "text": "$28\\ \\text{cm}^2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Luas belah ketupat adalah setengah hasil kali kedua diagonalnya.\n\nMaka $\\dfrac{16 \\times 12}{2} = \\dfrac{192}{2} = 96\\ \\text{cm}^2$.",
+    "distractorRationale": {
+      "A": "Lupa membagi dengan 2.",
+      "B": "Kesalahan pembagian.",
+      "D": "Menghitung keliling dengan sisi yang keliru.",
+      "E": "Menjumlahkan kedua diagonal."
+    },
+    "tags": [
+      "bangun-datar"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s16",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Teorema Pythagoras",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kapal berlayar 9 km ke arah timur, lalu 12 km ke arah utara.\n\nJarak kapal dari titik berangkatnya adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10,5 km"
+      },
+      {
+        "id": "B",
+        "text": "3 km"
+      },
+      {
+        "id": "C",
+        "text": "18 km"
+      },
+      {
+        "id": "D",
+        "text": "15 km"
+      },
+      {
+        "id": "E",
+        "text": "21 km"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Kedua arah saling tegak lurus, sehingga jaraknya adalah sisi miring segitiga siku-siku.\n\nJaraknya $\\sqrt{9^2 + 12^2} = \\sqrt{225} = 15$ km, yaitu tripel $3$–$4$–$5$ dikali 3.",
+    "distractorRationale": {
+      "A": "Merata-ratakan kedua jarak.",
+      "B": "Mengurangkan kedua jarak.",
+      "C": "Kesalahan penarikan akar.",
+      "E": "Menjumlahkan kedua jarak."
+    },
+    "tags": [
+      "pythagoras"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s17",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kerucut berjari-jari 7 cm dan tinggi 12 cm. Dengan $\\pi = \\dfrac{22}{7}$, volume kerucut tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$308\\ \\text{cm}^3$"
+      },
+      {
+        "id": "B",
+        "text": "$1.848\\ \\text{cm}^3$"
+      },
+      {
+        "id": "C",
+        "text": "$264\\ \\text{cm}^3$"
+      },
+      {
+        "id": "D",
+        "text": "$462\\ \\text{cm}^3$"
+      },
+      {
+        "id": "E",
+        "text": "$616\\ \\text{cm}^3$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Volume kerucut adalah sepertiga volume tabung dengan alas dan tinggi sama: $V = \\dfrac{1}{3}\\pi r^2 t$.\n\nMaka $\\dfrac{1}{3} \\times \\dfrac{22}{7} \\times 49 \\times 12 = \\dfrac{1}{3} \\times 154 \\times 12 = 616\\ \\text{cm}^3$.",
+    "distractorRationale": {
+      "A": "Memakai tinggi 6 cm.",
+      "B": "Lupa mengalikan dengan $\\dfrac{1}{3}$.",
+      "C": "Kesalahan perkalian.",
+      "D": "Memakai tinggi 9 cm."
+    },
+    "tags": [
+      "bangun-ruang"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s18",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Kesebangunan & kekongruenan",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah tiang setinggi 4 m memiliki bayangan sepanjang 6 m. Pada saat yang sama, bayangan sebuah menara panjangnya 27 m.\n\nTinggi menara tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "18 m"
+      },
+      {
+        "id": "B",
+        "text": "40,5 m"
+      },
+      {
+        "id": "C",
+        "text": "24 m"
+      },
+      {
+        "id": "D",
+        "text": "20 m"
+      },
+      {
+        "id": "E",
+        "text": "16 m"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Pada saat yang sama, perbandingan tinggi dan bayangan sama untuk semua benda.\n\nMaka $\\dfrac{4}{6} = \\dfrac{t}{27}$, sehingga $t = \\dfrac{4 \\times 27}{6} = 18$ meter.",
+    "distractorRationale": {
+      "B": "Membalik perbandingan tinggi dan bayangan.",
+      "C": "Memakai perbandingan $\\dfrac{6}{4}$ secara keliru.",
+      "D": "Kesalahan perkalian.",
+      "E": "Kesalahan pembagian."
+    },
+    "tags": [
+      "kesebangunan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s19",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah lingkaran berjari-jari 21 cm. Dengan $\\pi = \\dfrac{22}{7}$, luas lingkaran tersebut dalam $\\text{cm}^2$ adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 1386
+    },
+    "explanation": "Luas lingkaran $= \\pi r^2 = \\dfrac{22}{7} \\times 441$.\n\nKarena $441 : 7 = 63$, luasnya $22 \\times 63 = 1.386\\ \\text{cm}^2$.",
+    "tags": [
+      "lingkaran"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "tka-smp-s20",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah bak berbentuk balok berukuran $80\\ \\text{cm} \\times 50\\ \\text{cm} \\times 60\\ \\text{cm}$ terisi air setinggi 45 cm.\n\nVolume air dalam bak tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "144 liter"
+      },
+      {
+        "id": "B",
+        "text": "180 liter"
+      },
+      {
+        "id": "C",
+        "text": "120 liter"
+      },
+      {
+        "id": "D",
+        "text": "240 liter"
+      },
+      {
+        "id": "E",
+        "text": "200 liter"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Volume air dihitung dengan tinggi airnya, bukan tinggi baknya: $80 \\times 50 \\times 45 = 180.000\\ \\text{cm}^3$.\n\nKarena $1$ liter $= 1.000\\ \\text{cm}^3$, volumenya $180$ liter.",
+    "distractorRationale": {
+      "A": "Kesalahan perkalian.",
+      "C": "Memakai tinggi 30 cm.",
+      "D": "Memakai tinggi bak 60 cm, bukan tinggi air.",
+      "E": "Kesalahan perkalian."
+    },
+    "tags": [
+      "bangun-ruang"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s21",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Nilai ujian 30 siswa.\n\n| Nilai | Frekuensi |\n|---|---|\n| 60 | 4 |\n| 70 | 8 |\n| 80 | 10 |\n| 90 | 6 |\n| 100 | 2 |"
+    },
+    "stem": "Berdasarkan tabel, modus nilai ujian tersebut adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "90"
+      },
+      {
+        "id": "B",
+        "text": "100"
+      },
+      {
+        "id": "C",
+        "text": "80"
+      },
+      {
+        "id": "D",
+        "text": "70"
+      },
+      {
+        "id": "E",
+        "text": "60"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Modus adalah nilai dengan frekuensi terbesar.\n\nFrekuensi tertinggi adalah 11, yaitu pada nilai 80.",
+    "distractorRationale": {
+      "A": "Frekuensinya 6.",
+      "B": "Frekuensinya 2.",
+      "D": "Frekuensinya 8.",
+      "E": "Frekuensinya 4."
+    },
+    "tags": [
+      "modus"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s22",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Nilai ujian 30 siswa.\n\n| Nilai | Frekuensi |\n|---|---|\n| 60 | 4 |\n| 70 | 8 |\n| 80 | 10 |\n| 90 | 6 |\n| 100 | 2 |"
+    },
+    "stem": "Berdasarkan tabel, rata-rata nilai ujian 30 siswa tersebut adalah",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 78
+    },
+    "explanation": "Jumlah seluruh nilai: $60(4) + 70(8) + 80(10) + 90(6) + 100(2) = 240 + 560 + 800 + 540 + 200 = 2.340$.\n\nRata-ratanya $\\dfrac{2.340}{30} = 78$.",
+    "tags": [
+      "rata-rata"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3
+    }
+  },
+  {
+    "id": "tka-smp-s23",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Penyajian data",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "table",
+      "content": "Nilai ujian 30 siswa.\n\n| Nilai | Frekuensi |\n|---|---|\n| 60 | 4 |\n| 70 | 8 |\n| 80 | 10 |\n| 90 | 6 |\n| 100 | 2 |"
+    },
+    "stem": "Berdasarkan tabel, persentase siswa yang memperoleh nilai di bawah 80 adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "26,7%"
+      },
+      {
+        "id": "B",
+        "text": "60%"
+      },
+      {
+        "id": "C",
+        "text": "46,7%"
+      },
+      {
+        "id": "D",
+        "text": "40%"
+      },
+      {
+        "id": "E",
+        "text": "36,7%"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Nilai di bawah 80 mencakup nilai 60 dan 70, yaitu $4 + 8 = 12$ siswa.\n\nPersentasenya $\\dfrac{12}{30} = 0{,}4$, yaitu 40%. Kata «di bawah» berarti nilai 80 tidak ikut dihitung.",
+    "distractorRationale": {
+      "A": "Hanya menghitung nilai 70.",
+      "B": "Menghitung siswa bernilai 80 ke atas.",
+      "C": "Memasukkan nilai 80.",
+      "E": "Menghitung 11 siswa."
+    },
+    "tags": [
+      "tabel-frekuensi"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s24",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Peluang sederhana",
+    "difficulty": "M",
+    "irtB": 0.45,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Dua keping uang logam dilempar bersamaan.\n\nPeluang muncul tepat satu sisi angka adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{4}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{3}{4}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{2}{3}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{1}{2}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Kemungkinan yang muncul ada empat: AA, AG, GA, dan GG.\n\nYang memuat tepat satu angka adalah AG dan GA, sehingga peluangnya $\\dfrac{2}{4} = \\dfrac{1}{2}$. Perhatikan AG dan GA dihitung terpisah karena kedua keping dapat dibedakan.",
+    "distractorRationale": {
+      "A": "Menghitung AG dan GA sebagai satu kemungkinan.",
+      "B": "Menghitung «sedikitnya satu angka».",
+      "C": "Menganggap hanya ada tiga kemungkinan.",
+      "D": "Menganggap hanya ada tiga kemungkinan."
+    },
+    "tags": [
+      "peluang"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "tka-smp-s25",
+    "status": "in_review",
+    "exam": "TKA_SMP",
+    "section": "tka_smp_mtk",
+    "domain": "Data dan Peluang",
+    "skill": "Ukuran pemusatan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Rata-rata nilai 15 siswa adalah 74. Dua siswa baru bergabung dengan nilai 88 dan 94.\n\nRata-rata nilai seluruh siswa sekarang adalah",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "76"
+      },
+      {
+        "id": "B",
+        "text": "75"
+      },
+      {
+        "id": "C",
+        "text": "77"
+      },
+      {
+        "id": "D",
+        "text": "78"
+      },
+      {
+        "id": "E",
+        "text": "80"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Jumlah nilai 15 siswa adalah $15 \\times 74 = 1.110$.\n\nSetelah dua siswa bergabung, jumlahnya $1.110 + 88 + 94 = 1.292$ dan banyak siswa menjadi 17, sehingga rata-ratanya $\\dfrac{1.292}{17} = 76$.",
+    "distractorRationale": {
+      "B": "Kesalahan pembagian.",
+      "C": "Kesalahan pembagian.",
+      "D": "Merata-ratakan 74 dengan 89 tanpa memperhitungkan jumlah siswa.",
+      "E": "Kesalahan penjumlahan."
+    },
+    "tags": [
+      "rata-rata-gabungan"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 3,
+      "keyBalanced": 1
+    }
+  }
+]

@@ -1,0 +1,1097 @@
+[
+  {
+    "id": "utbk-ppu-p01",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Sinonim & antonim",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sinonim kata MITRA adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "rekan"
+      },
+      {
+        "id": "B",
+        "text": "atasan"
+      },
+      {
+        "id": "C",
+        "text": "pelanggan"
+      },
+      {
+        "id": "D",
+        "text": "tetangga"
+      },
+      {
+        "id": "E",
+        "text": "lawan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Mitra berarti teman kerja atau pihak yang bekerja sama, sehingga sinonimnya adalah rekan.\n\nKata ini sering muncul dalam bentuk «mitra usaha» dan «bermitra», keduanya menunjukkan hubungan kerja sama yang setara.",
+    "distractorRationale": {
+      "B": "Menunjukkan hubungan bertingkat, bukan kesetaraan.",
+      "C": "Pihak pembeli, bukan pihak yang bekerja sama.",
+      "D": "Menunjukkan kedekatan tempat, bukan kerja sama.",
+      "E": "Justru antonimnya."
+    },
+    "tags": [
+      "sinonim"
+    ],
+    "estimatedTimeSec": 55,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p02",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Sinonim & antonim",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Antonim kata SPORADIS adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "acak"
+      },
+      {
+        "id": "B",
+        "text": "terus-menerus"
+      },
+      {
+        "id": "C",
+        "text": "mendadak"
+      },
+      {
+        "id": "D",
+        "text": "tersebar"
+      },
+      {
+        "id": "E",
+        "text": "jarang"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Sporadis berarti terjadi sesekali dan tidak teratur. Lawannya adalah sesuatu yang berlangsung tanpa putus, yaitu terus-menerus.\n\nKata «jarang» dan «acak» justru mendekati maknanya, bukan melawannya.",
+    "distractorRationale": {
+      "A": "Bersinonim dengan sporadis.",
+      "C": "Menekankan kejutan, bukan keberlanjutan.",
+      "D": "Menggambarkan sebaran, bukan lawan dari ketidakteraturan waktu.",
+      "E": "Bersinonim, bukan berantonim."
+    },
+    "tags": [
+      "antonim"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p03",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Makna kata dalam konteks",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Kebijakan itu memicu polemik berkepanjangan di kalangan akademisi.» Makna kata POLEMIK dalam kalimat tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "kesepakatan"
+      },
+      {
+        "id": "B",
+        "text": "kerugian"
+      },
+      {
+        "id": "C",
+        "text": "perdebatan"
+      },
+      {
+        "id": "D",
+        "text": "penyelidikan"
+      },
+      {
+        "id": "E",
+        "text": "kebingungan"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Polemik berarti perdebatan terbuka mengenai suatu masalah, biasanya lewat tulisan atau forum umum. Konteks «di kalangan akademisi» dan «berkepanjangan» memperkuat makna itu.",
+    "distractorRationale": {
+      "A": "Justru lawannya.",
+      "B": "Polemik bukan soal untung rugi.",
+      "D": "Penyelidikan adalah proses mencari fakta, bukan berdebat.",
+      "E": "Kebingungan bersifat pribadi, sedangkan polemik melibatkan pertukaran pendapat."
+    },
+    "tags": [
+      "makna-kontekstual"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p04",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Analogi kata",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "PELUKIS : KUAS = PEMAHAT : ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "tanah liat"
+      },
+      {
+        "id": "B",
+        "text": "batu"
+      },
+      {
+        "id": "C",
+        "text": "galeri"
+      },
+      {
+        "id": "D",
+        "text": "pahat"
+      },
+      {
+        "id": "E",
+        "text": "patung"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Hubungannya adalah pelaku dengan alat kerjanya. Pelukis memakai kuas; pemahat memakai pahat.\n\nBatu dan tanah liat adalah bahan, patung adalah hasil, dan galeri adalah tempat — ketiganya bukan alat.",
+    "distractorRationale": {
+      "A": "Bahan, sama seperti batu.",
+      "B": "Bahan yang dikerjakan, bukan alatnya.",
+      "C": "Tempat memamerkan karya.",
+      "E": "Hasil karyanya."
+    },
+    "tags": [
+      "analogi-kata"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p05",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Idiom",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Makna ungkapan «besar kepala» adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "keras kepala"
+      },
+      {
+        "id": "B",
+        "text": "mudah tersinggung"
+      },
+      {
+        "id": "C",
+        "text": "banyak akal"
+      },
+      {
+        "id": "D",
+        "text": "berpikiran luas"
+      },
+      {
+        "id": "E",
+        "text": "sombong"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "«Besar kepala» adalah ungkapan untuk sifat sombong atau tinggi hati.\n\nUngkapan ini kerap tertukar dengan «keras kepala», yang berarti sukar dinasihati — dua sifat yang berbeda meskipun sama-sama memakai kata «kepala».",
+    "distractorRationale": {
+      "A": "Ungkapan berbeda dengan makna sukar dinasihati.",
+      "B": "Dekat dengan «tipis telinga».",
+      "C": "Dekat dengan ungkapan «panjang akal».",
+      "D": "Bermakna positif dan tidak berkaitan dengan ungkapan ini."
+    },
+    "tags": [
+      "idiom"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p06",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Makna kata dalam konteks",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "«Temuan itu masih bersifat tentatif sehingga belum dapat dijadikan dasar kebijakan.» Kata TENTATIF paling dekat maknanya dengan ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "sementara"
+      },
+      {
+        "id": "B",
+        "text": "keliru"
+      },
+      {
+        "id": "C",
+        "text": "rumit"
+      },
+      {
+        "id": "D",
+        "text": "penting"
+      },
+      {
+        "id": "E",
+        "text": "rahasia"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Tentatif berarti belum pasti dan masih dapat berubah. Bagian «belum dapat dijadikan dasar kebijakan» menegaskan bahwa yang dipersoalkan adalah kepastiannya, bukan kerahasiaan atau kebenarannya.",
+    "distractorRationale": {
+      "B": "Tentatif tidak berarti salah, hanya belum pasti.",
+      "C": "Kerumitan bukan alasan yang disebutkan.",
+      "D": "Tidak berkaitan dengan kepastian.",
+      "E": "Kerahasiaan tidak disinggung kalimat itu."
+    },
+    "tags": [
+      "makna-kontekstual"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p07",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Kemampuan Verbal",
+    "skill": "Analogi kata",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "GERIMIS : HUJAN = ... : ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "panas : api"
+      },
+      {
+        "id": "B",
+        "text": "angin : topan"
+      },
+      {
+        "id": "C",
+        "text": "kilat : guruh"
+      },
+      {
+        "id": "D",
+        "text": "banjir : air"
+      },
+      {
+        "id": "E",
+        "text": "embun : kabut"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Hubungannya adalah intensitas: gerimis adalah bentuk hujan yang lemah, sedangkan hujan lebat lebih kuat. Pasangan yang sejajar harus memuat dua tingkat kekuatan pada gejala yang sama.\n\nAngin dan topan tepat: keduanya gerakan udara, dan topan adalah bentuk yang jauh lebih kuat.",
+    "distractorRationale": {
+      "A": "Panas adalah akibat api, bukan tingkat lemahnya.",
+      "C": "Kilat dan guruh adalah dua gejala berbeda yang menyertai satu peristiwa.",
+      "D": "Banjir adalah peristiwa, air adalah bahannya.",
+      "E": "Embun dan kabut berbeda wujud dan tempat terjadinya, bukan bertingkat kekuatan."
+    },
+    "tags": [
+      "analogi-kata",
+      "intensitas"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p08",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Ide pokok",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pala hanya tumbuh secara alami di Kepulauan Banda, gugusan pulau kecil di timur Nusantara yang seluruhnya dapat dikelilingi dalam beberapa hari. Untuk mencapainya, pedagang Eropa menempuh pelayaran berbulan-bulan dengan risiko yang besar. Setiba di Amsterdam, segenggam pala dapat ditukar dengan sebidang tanah. Nilainya tidak berasal dari rasanya semata, melainkan dari kenyataan bahwa di seluruh dunia tidak ada tempat lain yang menghasilkannya."
+    },
+    "stem": "Ide pokok paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Pedagang Eropa menempuh perjalanan yang jauh"
+      },
+      {
+        "id": "B",
+        "text": "Rempah Nusantara pernah lebih mahal daripada emas"
+      },
+      {
+        "id": "C",
+        "text": "Kelangkaan geografis pala membuatnya bernilai tinggi di pasar Eropa"
+      },
+      {
+        "id": "D",
+        "text": "Harga rempah selalu berubah-ubah"
+      },
+      {
+        "id": "E",
+        "text": "Pala hanya tumbuh di Kepulauan Banda"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Kalimat-kalimat dalam paragraf sama-sama menjelaskan satu hal: pala hanya tumbuh di wilayah yang sangat sempit, dan justru keterbatasan itulah yang menaikkan nilainya di Eropa.\n\nPernyataan tentang jarak tempuh dan harga adalah rincian pendukung, bukan gagasan yang menaungi paragraf.",
+    "distractorRationale": {
+      "A": "Rincian yang menjelaskan mahalnya biaya.",
+      "B": "Perbandingan dengan emas hanya penekanan, bukan gagasan utamanya.",
+      "D": "Tidak dibahas dalam paragraf.",
+      "E": "Merupakan fakta pendukung."
+    },
+    "tags": [
+      "ide-pokok"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p09",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Informasi tersurat/tersirat",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pala hanya tumbuh secara alami di Kepulauan Banda, gugusan pulau kecil di timur Nusantara yang seluruhnya dapat dikelilingi dalam beberapa hari. Untuk mencapainya, pedagang Eropa menempuh pelayaran berbulan-bulan dengan risiko yang besar. Setiba di Amsterdam, segenggam pala dapat ditukar dengan sebidang tanah. Nilainya tidak berasal dari rasanya semata, melainkan dari kenyataan bahwa di seluruh dunia tidak ada tempat lain yang menghasilkannya."
+    },
+    "stem": "Berdasarkan paragraf tersebut, pernyataan yang TERSURAT adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Pala kini dapat ditanam di banyak negara"
+      },
+      {
+        "id": "B",
+        "text": "Amsterdam adalah kota terkaya pada masa itu"
+      },
+      {
+        "id": "C",
+        "text": "Perjalanan ke Banda selalu berakhir dengan keuntungan"
+      },
+      {
+        "id": "D",
+        "text": "Kepulauan Banda terletak di timur Nusantara"
+      },
+      {
+        "id": "E",
+        "text": "Pedagang Eropa tidak menyukai rasa pala"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Informasi tersurat adalah yang tertulis langsung dalam teks. Kalimat pertama menyebutkan bahwa Kepulauan Banda berada di timur Nusantara.\n\nPilihan lain menambahkan hal yang tidak dinyatakan atau bahkan bertentangan dengan isi paragraf.",
+    "distractorRationale": {
+      "A": "Keadaan masa kini tidak dibahas.",
+      "B": "Kekayaan Amsterdam tidak disebutkan.",
+      "C": "Paragraf menyebut risiko besar, bukan keuntungan pasti.",
+      "E": "Paragraf justru menyebut rasa sebagai salah satu, meski bukan satu-satunya, sumber nilai."
+    },
+    "tags": [
+      "informasi-tersurat"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p10",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Simpulan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pengukuran pada satu ruas jalan di siang hari menunjukkan suhu permukaan aspal 47 derajat Celsius dan beton 44 derajat Celsius. Pada ruas yang sama, bagian yang ternaungi tajuk pohon tercatat 38 derajat, sedangkan bagian yang terbuka 47 derajat, tanpa memandang bahan pelapisnya."
+    },
+    "stem": "Simpulan yang tepat berdasarkan paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Suhu permukaan aspal selalu lebih tinggi daripada suhu udara"
+      },
+      {
+        "id": "B",
+        "text": "Pengukuran suhu sebaiknya dilakukan pada malam hari"
+      },
+      {
+        "id": "C",
+        "text": "Jalan berlapis beton sebaiknya diganti dengan aspal"
+      },
+      {
+        "id": "D",
+        "text": "Semua kota yang menanam pohon peneduh akan lebih sejuk"
+      },
+      {
+        "id": "E",
+        "text": "Tutupan pohon menurunkan suhu jalan lebih besar daripada perbedaan bahan pelapisnya"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Paragraf membandingkan dua hal sekaligus: bahan pelapis dan tutupan pohon. Selisih akibat bahan hanya sekitar 3 derajat, sedangkan selisih akibat tutupan pohon mencapai 9 derajat.\n\nSimpulan yang sah adalah bahwa tutupan pohon berpengaruh lebih besar, persis sejauh perbandingan itu.",
+    "distractorRationale": {
+      "A": "Perbandingan dengan suhu udara tidak dibahas.",
+      "B": "Waktu pengukuran tidak dipersoalkan.",
+      "C": "Paragraf tidak menganjurkan penggantian bahan.",
+      "D": "Menggeneralisasi ke semua kota, melampaui satu pengukuran."
+    },
+    "tags": [
+      "simpulan"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p11",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Ide pokok",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Indonesia memiliki lebih dari 700 bahasa daerah, dan sebagian di antaranya masih memiliki puluhan ribu penutur. Meski begitu, ahli bahasa menilai sejumlah bahasa itu terancam punah. Ukurannya bukan jumlah penutur hari ini, melainkan apakah masih ada anak-anak yang mempelajarinya sebagai bahasa pertama. Ketika seluruh penutur berusia di atas empat puluh tahun, sebuah bahasa sesungguhnya sudah berhenti tumbuh."
+    },
+    "stem": "Gagasan utama paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sebuah bahasa dapat punah meskipun jumlah penuturnya masih banyak"
+      },
+      {
+        "id": "B",
+        "text": "Bahasa yang tidak diajarkan di sekolah pasti punah"
+      },
+      {
+        "id": "C",
+        "text": "Bahasa daerah di Indonesia berjumlah lebih dari 700"
+      },
+      {
+        "id": "D",
+        "text": "Penutur muda lebih memilih bahasa Indonesia"
+      },
+      {
+        "id": "E",
+        "text": "Pemerintah perlu membuat kamus bahasa daerah"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Paragraf memusatkan perhatian pada satu hal yang berlawanan dengan dugaan umum: jumlah penutur yang besar tidak menjamin sebuah bahasa bertahan, karena yang menentukan adalah adanya penutur baru dari kalangan anak-anak.\n\nAngka 700 dan pilihan penutur muda adalah rincian yang menopang gagasan itu.",
+    "distractorRationale": {
+      "B": "Menggunakan kata «pasti», melampaui isi paragraf.",
+      "C": "Angka pendukung, bukan gagasan utamanya.",
+      "D": "Salah satu sebab yang disebutkan, bukan gagasan yang menaungi.",
+      "E": "Saran yang tidak dibahas paragraf."
+    },
+    "tags": [
+      "ide-pokok"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p12",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Informasi tersurat/tersirat",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Indonesia memiliki lebih dari 700 bahasa daerah, dan sebagian di antaranya masih memiliki puluhan ribu penutur. Meski begitu, ahli bahasa menilai sejumlah bahasa itu terancam punah. Ukurannya bukan jumlah penutur hari ini, melainkan apakah masih ada anak-anak yang mempelajarinya sebagai bahasa pertama. Ketika seluruh penutur berusia di atas empat puluh tahun, sebuah bahasa sesungguhnya sudah berhenti tumbuh."
+    },
+    "stem": "Hal yang TERSIRAT dalam paragraf tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Bahasa yang penuturnya berusia di atas empat puluh tahun sudah berhenti tumbuh"
+      },
+      {
+        "id": "B",
+        "text": "Jumlah penutur bukan ukuran yang memadai untuk menilai kelestarian bahasa"
+      },
+      {
+        "id": "C",
+        "text": "Indonesia memiliki lebih dari 700 bahasa daerah"
+      },
+      {
+        "id": "D",
+        "text": "Ahli bahasa menilai sejumlah bahasa terancam punah"
+      },
+      {
+        "id": "E",
+        "text": "Sebagian bahasa daerah memiliki puluhan ribu penutur"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Informasi tersirat adalah yang dapat ditarik tetapi tidak dituliskan. Paragraf tidak pernah menyatakan «jumlah penutur bukan ukuran yang memadai» dengan kalimat itu, tetapi seluruh isinya mengarah ke sana.\n\nEmpat pilihan lainnya tertulis apa adanya di dalam paragraf, sehingga tersurat, bukan tersirat.",
+    "distractorRationale": {
+      "A": "Tertulis langsung pada kalimat terakhir.",
+      "C": "Tertulis langsung pada kalimat pertama.",
+      "D": "Tertulis langsung pada kalimat kedua.",
+      "E": "Tertulis langsung pada kalimat pertama."
+    },
+    "tags": [
+      "informasi-tersirat"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p13",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pemahaman Wacana",
+    "skill": "Simpulan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Selama dua tahun pengamatan, waktu tempuh rata-rata bus kota pada koridor utama turun dari 54 menit menjadi 38 menit setelah jalur khusus dioperasikan. Pada periode yang sama jumlah penumpang harian naik 41 persen. Pengelola belum meneliti dari moda apa penumpang baru itu berpindah."
+    },
+    "stem": "Simpulan yang TIDAK dapat dibenarkan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Sebagian penumpang baru sebelumnya menggunakan moda lain"
+      },
+      {
+        "id": "B",
+        "text": "Waktu tempuh rata-rata menurun setelah jalur khusus dioperasikan"
+      },
+      {
+        "id": "C",
+        "text": "Jalur khusus menyebabkan berkurangnya jumlah kendaraan pribadi di kota itu"
+      },
+      {
+        "id": "D",
+        "text": "Jumlah penumpang bus meningkat pada periode yang sama"
+      },
+      {
+        "id": "E",
+        "text": "Data dikumpulkan selama dua tahun"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Paragraf mencatat dua hal yang terjadi bersamaan: waktu tempuh bus turun dan penumpang bertambah. Ia tidak menyebutkan apa pun tentang jumlah kendaraan pribadi, sehingga simpulan mengenai berkurangnya kendaraan pribadi tidak berdasar.\n\nPenumpang baru bisa saja berasal dari pejalan kaki, ojek daring, atau orang yang sebelumnya tidak bepergian sama sekali.",
+    "distractorRationale": {
+      "A": "Merupakan kemungkinan yang memang disebut sebagai belum diketahui asalnya, sehingga tidak bertentangan.",
+      "B": "Dinyatakan langsung dalam paragraf.",
+      "D": "Dinyatakan langsung dalam paragraf.",
+      "E": "Dinyatakan langsung dalam paragraf."
+    },
+    "tags": [
+      "simpulan",
+      "batas-data"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p14",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Kata baku",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Deretan kata berikut yang seluruhnya baku adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "apotik, atlit, tehnik, kwalitas"
+      },
+      {
+        "id": "B",
+        "text": "apotik, atlet, tehnik, kualitas"
+      },
+      {
+        "id": "C",
+        "text": "apotek, atlet, tehnik, kwalitas"
+      },
+      {
+        "id": "D",
+        "text": "apotek, atlet, teknik, kualitas"
+      },
+      {
+        "id": "E",
+        "text": "apotek, atlit, teknik, kwalitas"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Bentuk bakunya adalah apotek (bukan apotik), atlet (bukan atlit), teknik (bukan tehnik), dan kualitas (bukan kwalitas).\n\nKeempatnya serapan yang kerap ditulis mengikuti lafal sehari-hari; hanya satu deretan yang seluruhnya sesuai kaidah.",
+    "distractorRationale": {
+      "A": "Keempat katanya tidak baku.",
+      "B": "Dua kata tidak baku: apotik dan tehnik.",
+      "C": "Dua kata tidak baku: tehnik dan kwalitas.",
+      "E": "Dua kata tidak baku: atlit dan kwalitas."
+    },
+    "tags": [
+      "kata-baku"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p15",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Ejaan & PUEBI",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan yang sesuai kaidah ejaan adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Ia berkunjung ke danau Toba pada hari senin."
+      },
+      {
+        "id": "B",
+        "text": "Ia berkunjung ke Danau Toba pada Hari senin."
+      },
+      {
+        "id": "C",
+        "text": "Ia berkunjung ke danau toba pada hari Senin."
+      },
+      {
+        "id": "D",
+        "text": "Ia berkunjung ke Danau toba pada Hari Senin."
+      },
+      {
+        "id": "E",
+        "text": "Ia berkunjung ke Danau Toba pada hari Senin."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Nama geografi yang diikuti nama diri ditulis dengan huruf kapital pada kedua unsurnya: Danau Toba. Nama hari juga diawali huruf kapital: Senin. Kata «hari» sendiri bukan bagian nama diri, sehingga tetap huruf kecil.",
+    "distractorRationale": {
+      "A": "«danau» seharusnya kapital dan «senin» seharusnya kapital.",
+      "B": "«Hari» seharusnya kecil dan «senin» seharusnya kapital.",
+      "C": "«danau» dan «toba» seharusnya kapital.",
+      "D": "«toba» seharusnya kapital dan «Hari» seharusnya kecil."
+    },
+    "tags": [
+      "ejaan",
+      "huruf-kapital"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p16",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Kalimat efektif",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Kalimat berikut yang efektif adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Harga naik sehingga permintaan menurun."
+      },
+      {
+        "id": "B",
+        "text": "Karena harga naik, sehingga permintaan menurun."
+      },
+      {
+        "id": "C",
+        "text": "Oleh karena harga naik, maka permintaan menurun."
+      },
+      {
+        "id": "D",
+        "text": "Disebabkan karena harga naik, permintaan menurun."
+      },
+      {
+        "id": "E",
+        "text": "Berhubung karena harga naik, permintaan pun menurun."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Kalimat efektif tidak memakai dua penanda hubungan untuk satu hubungan yang sama. «Karena ... sehingga», «disebabkan karena», «oleh karena ... maka», dan «berhubung karena» semuanya rangkap.\n\nSatu penanda sudah cukup: «Harga naik sehingga permintaan menurun.»",
+    "distractorRationale": {
+      "B": "Memakai «karena» dan «sehingga» sekaligus sehingga anak kalimatnya tidak berinduk.",
+      "C": "«Oleh karena» dan «maka» rangkap.",
+      "D": "«Disebabkan» dan «karena» rangkap.",
+      "E": "«Berhubung» dan «karena» rangkap."
+    },
+    "tags": [
+      "kalimat-efektif"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p17",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Ejaan & PUEBI",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Penulisan gabungan kata yang benar terdapat pada kalimat ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Mereka mengambilalih tugas tersebut secara bertahap."
+      },
+      {
+        "id": "B",
+        "text": "Panitia menyebarluaskan informasi itu sejak pagi."
+      },
+      {
+        "id": "C",
+        "text": "Ia bertanggungjawab atas seluruh kegiatan."
+      },
+      {
+        "id": "D",
+        "text": "Laporan itu dipertanggung jawabkan pada akhir tahun."
+      },
+      {
+        "id": "E",
+        "text": "Kami menanda tangani surat perjanjian itu."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Aturannya bergantung pada imbuhan yang melekat. Gabungan kata yang mendapat awalan DAN akhiran sekaligus ditulis serangkai: *menyebarluaskan*, *menandatangani*, *dipertanggungjawabkan*. Gabungan kata yang hanya mendapat awalan saja atau akhiran saja tetap ditulis terpisah: *bertanggung jawab*, *mengambil alih*.\n\nHanya *menyebarluaskan* pada kalimat itu yang mengikuti aturan tersebut.",
+    "distractorRationale": {
+      "A": "*mengambil alih* hanya berawalan, sehingga harus ditulis terpisah.",
+      "C": "*bertanggung jawab* hanya berawalan, sehingga harus ditulis terpisah.",
+      "D": "*dipertanggungjawabkan* berawalan dan berakhiran, sehingga harus serangkai.",
+      "E": "*menandatangani* berawalan dan berakhiran, sehingga harus serangkai."
+    },
+    "tags": [
+      "ejaan",
+      "gabungan-kata"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-ppu-p18",
+    "status": "in_review",
+    "exam": "UTBK",
+    "section": "utbk_ppu",
+    "domain": "Pengetahuan Kebahasaan",
+    "skill": "Kalimat efektif",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "«Rapat itu membahas kegiatan di mana seluruh persiapannya dilakukan oleh panitia daerah.»"
+    },
+    "stem": "Perbaikan yang tepat untuk kalimat tersebut adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Mengganti «kegiatan» dengan «acara»"
+      },
+      {
+        "id": "B",
+        "text": "Menghapus kata «adalah»"
+      },
+      {
+        "id": "C",
+        "text": "Mengganti «di mana» dengan «yang»"
+      },
+      {
+        "id": "D",
+        "text": "Menambahkan tanda koma sebelum «di mana»"
+      },
+      {
+        "id": "E",
+        "text": "Mengganti «dilakukan oleh panitia» dengan «panitia melakukan»"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "«Di mana» sebagai penghubung antarklausa adalah pengaruh struktur bahasa asing dan tidak berterima dalam bahasa Indonesia baku. Penggantinya adalah «yang» atau «tempat», bergantung pada maknanya.\n\nDi sini klausa berikutnya menerangkan «kegiatan», sehingga penghubung yang tepat adalah «yang».",
+    "distractorRationale": {
+      "A": "Pilihan kata «kegiatan» sudah tepat.",
+      "B": "Kata «adalah» pada kalimat itu tidak bermasalah.",
+      "D": "Menambah koma tidak menghilangkan pemakaian «di mana» yang keliru.",
+      "E": "Bentuk pasif tidak keliru dan bukan sumber ketidakefektifannya."
+    },
+    "tags": [
+      "kalimat-efektif",
+      "di-mana"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 4,
+      "keyBalanced": 1
+    }
+  }
+]

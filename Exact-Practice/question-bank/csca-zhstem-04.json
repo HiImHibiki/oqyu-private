@@ -1,0 +1,1340 @@
+[
+  {
+    "id": "csca-zst-f01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "光纤通信利用全反射原理传输信号。光纤由折射率较高的纤芯和折射率较低的包层构成，光在纤芯中以小于临界角的角度射向界面时会被完全反射回来，因而能沿弯曲的光纤传播而几乎不损失能量。与铜缆相比，光纤不受电磁干扰，且单根光纤可承载的信息量高出数个数量级。"
+    },
+    "stem": "根据短文，光能够沿弯曲的光纤传播，是因为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "光纤内部装有反射镜"
+      },
+      {
+        "id": "B",
+        "text": "在纤芯与包层的界面上发生全反射"
+      },
+      {
+        "id": "C",
+        "text": "光在光纤中沿直线传播"
+      },
+      {
+        "id": "D",
+        "text": "包层的折射率高于纤芯"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "短文指出纤芯折射率高于包层，光射向界面时被完全反射，故能在弯曲的光纤中不断反射前进而几乎不损失能量。",
+    "distractorRationale": {
+      "A": "全反射依靠折射率差异，不需要任何镜面。",
+      "C": "若沿直线传播，光在弯曲处便会射出光纤。",
+      "D": "折射率高低说反了：纤芯高、包层低才能发生全反射。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why can light travel along a bent optical fibre?",
+        "explanation": "The passage states that the core has a higher refractive index than the cladding, so light striking the boundary is totally reflected. Repeated total internal reflection lets the light follow the bends with almost no energy loss.\n\nOption D reverses the refractive indices — the condition for total internal reflection requires light to travel from the denser medium toward the less dense one."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "optics"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "土壤中的氮大部分以有机形式存在，植物无法直接吸收，必须先由微生物分解为铵态氮或硝态氮。硝态氮易溶于水，因而也容易随雨水淋失进入地下水；铵态氮带正电，可被带负电的土壤颗粒吸附而较少流失。因此在多雨地区，施用铵态氮肥的利用率通常高于硝态氮肥。"
+    },
+    "stem": "根据短文，铵态氮在多雨地区利用率较高的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "植物只能吸收铵态氮"
+      },
+      {
+        "id": "B",
+        "text": "铵态氮的含氮量高于硝态氮"
+      },
+      {
+        "id": "C",
+        "text": "带正电，能被带负电的土壤颗粒吸附而不易流失"
+      },
+      {
+        "id": "D",
+        "text": "铵态氮不溶于水"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文的因果链是：铵态氮带正电 → 被带负电的土壤颗粒吸附 → 较少随雨水淋失 → 多雨地区利用率高。关键在静电吸附，而非溶解性或含氮量。",
+    "distractorRationale": {
+      "A": "短文说两种形式植物都能吸收，只有有机氮不能直接吸收。",
+      "B": "含氮量高低短文未提及。",
+      "D": "铵盐同样易溶于水，区别在于是否被土壤吸附。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why is ammonium nitrogen used more efficiently in rainy regions?",
+        "explanation": "The chain of reasoning runs: ammonium nitrogen is positively charged → it is adsorbed by negatively charged soil particles → less of it leaches away with rain → efficiency is higher where rainfall is heavy.\n\nThe mechanism is electrostatic adsorption, not solubility. Ammonium salts dissolve readily too; what differs is whether the soil holds them."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "mechanism"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "figure": {
+      "kind": "table",
+      "alt": "表格给出四种燃料的热值与单位质量二氧化碳排放量，用于比较能源特性。",
+      "caption": "四种燃料的热值与排放",
+      "headers": [
+        "燃料",
+        "热值 (MJ/kg)",
+        "每千克排放 CO₂ (kg)"
+      ],
+      "rows": [
+        [
+          "煤",
+          "29",
+          "2.4"
+        ],
+        [
+          "石油",
+          "42",
+          "3.1"
+        ],
+        [
+          "天然气",
+          "55",
+          "2.7"
+        ],
+        [
+          "氢气",
+          "142",
+          "0"
+        ]
+      ]
+    },
+    "stem": "根据表中数据，就「每释放相同热量所排放的二氧化碳」而言，煤与天然气相比",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "天然气更多，因为其每千克排放量高于煤"
+      },
+      {
+        "id": "B",
+        "text": "煤更多，因为煤的热值低而排放并不低多少"
+      },
+      {
+        "id": "C",
+        "text": "两者相同"
+      },
+      {
+        "id": "D",
+        "text": "无法从表中判断"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "须比较排放量与热值之比。煤为 $\\dfrac{2.4}{29} \\approx 0.083$，天然气为 $\\dfrac{2.7}{55} \\approx 0.049$。煤约为天然气的 $1.7$ 倍，故释放同样热量时煤排放更多。\n\n只看每千克排放量会得出相反结论，这正是本题设置的陷阱。",
+    "distractorRationale": {
+      "A": "只比较了每千克排放量，忽略了天然气热值几乎是煤的两倍。",
+      "C": "两个比值相差明显。",
+      "D": "表中同时给出热值与排放量，足以计算。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Using the table, how do coal and natural gas compare in carbon dioxide emitted per unit of heat released?",
+        "explanation": "You must compare the ratio of emissions to heating value. Coal gives $\\dfrac{2.4}{29} \\approx 0.083$, natural gas $\\dfrac{2.7}{55} \\approx 0.049$. Coal is about $1.7$ times worse per unit of energy.\n\nLooking only at emissions per kilogram reverses the conclusion, since natural gas releases nearly twice the heat per kilogram. That is the trap this question sets."
+      }
+    },
+    "tags": [
+      "table-reading",
+      "ratio-comparison"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "加热试管中的液体时，液体体积不得超过试管容积的三分之一。试管应与桌面成约四十五度角，管口不可对着自己或他人。加热时先在火焰上来回移动使其均匀受热，再固定在液体中下部加热，以防局部过热造成液体暴沸喷出。"
+    },
+    "stem": "根据短文，加热前先来回移动试管的目的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "加快液体升温的速度"
+      },
+      {
+        "id": "B",
+        "text": "让液体与空气充分接触"
+      },
+      {
+        "id": "C",
+        "text": "防止试管口的液体流出"
+      },
+      {
+        "id": "D",
+        "text": "使试管受热均匀，避免局部过热引起暴沸"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文把「来回移动使其均匀受热」与「防止局部过热造成暴沸喷出」直接连在一起，目的十分明确。",
+    "distractorRationale": {
+      "A": "均匀受热并不以加快为目的，反而是先缓后集中。",
+      "B": "短文未涉及与空气的接触。",
+      "C": "防止流出靠的是控制液体量和倾斜角度。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why should the test tube be moved back and forth before steady heating?",
+        "explanation": "The passage links the two directly: moving the tube 使其均匀受热 (heats it evenly) so as to 防止局部过热造成液体暴沸喷出 — preventing a local hot spot from causing the liquid to bump violently and spray out.\n\nThe purpose is safety through even heating, not speed."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "purpose"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "海拔升高时，大气压随之降低，水的沸点也随之下降。在海拔约三千米处，水的沸点约为九十摄氏度。因此在高原上用普通锅煮食物往往不易熟透，而使用高压锅可以提高锅内气压，使沸点回升到一百摄氏度以上，从而缩短烹煮时间。"
+    },
+    "stem": "根据短文，高压锅能缩短烹煮时间的原理是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "提高锅内气压，使水的沸点升高"
+      },
+      {
+        "id": "B",
+        "text": "增大火焰的温度"
+      },
+      {
+        "id": "C",
+        "text": "减少水的用量"
+      },
+      {
+        "id": "D",
+        "text": "使水在更低温度下沸腾"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文建立的因果关系是：气压决定沸点。高压锅通过密封提高内部气压，使水的沸点升到一百摄氏度以上，食物在更高温度下受热，因而熟得更快。",
+    "distractorRationale": {
+      "B": "火焰温度与锅内沸点无关，水沸腾后温度不再随火力上升。",
+      "C": "水量影响加热时间，但不是高压锅的原理。",
+      "D": "方向说反了：高压锅使沸点升高而非降低。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, how does a pressure cooker shorten cooking time?",
+        "explanation": "The passage establishes that pressure determines boiling point. A pressure cooker seals in steam to raise the internal pressure, which pushes the boiling point above $100\\ ^\\circ\\text{C}$, so the food is heated at a higher temperature and cooks faster.\n\nNote that once water boils, a bigger flame does not raise its temperature — only the pressure can."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "pressure-boiling-point"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "figure": {
+      "kind": "line_chart",
+      "alt": "折线图显示某地区五年间太阳能装机容量与平均发电成本的变化，装机容量上升而成本下降。",
+      "caption": "太阳能装机容量与平均发电成本",
+      "categories": [
+        "第1年",
+        "第2年",
+        "第3年",
+        "第4年",
+        "第5年"
+      ],
+      "series": [
+        {
+          "name": "装机容量 (GW)",
+          "values": [
+            2,
+            5,
+            11,
+            20,
+            34
+          ]
+        },
+        {
+          "name": "度电成本 (角)",
+          "values": [
+            92,
+            71,
+            55,
+            44,
+            38
+          ]
+        }
+      ]
+    },
+    "stem": "根据图中数据，下列说法最为准确的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "装机容量与成本同步上升"
+      },
+      {
+        "id": "B",
+        "text": "装机容量持续上升的同时成本持续下降，但成本下降的速度逐年放缓"
+      },
+      {
+        "id": "C",
+        "text": "成本每年下降的幅度保持不变"
+      },
+      {
+        "id": "D",
+        "text": "第五年的成本已降至第一年的十分之一"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "成本逐年降幅依次为 $21$、$16$、$11$、$6$ 角，降幅本身在不断缩小；同期装机容量则持续增长。故 A 同时抓住了两个趋势和一个细节。",
+    "distractorRationale": {
+      "A": "成本明显在下降，而非上升。",
+      "C": "降幅从 $21$ 角缩小到 $6$ 角，并不恒定。",
+      "D": "$38$ 约为 $92$ 的百分之四十一，远未达到十分之一。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which statement is most accurate given the chart?",
+        "explanation": "The annual cost reductions run $21$, $16$, $11$ and $6$ jiao — falling, but by a shrinking amount each year — while installed capacity keeps climbing.\n\nOption B captures both trends plus the deceleration. Option D fails on arithmetic: $38$ is about $41\\%$ of $92$, nowhere near one tenth."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "trend-analysis"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "人工智能模型的训练数据决定了它能学到什么。若训练集中某一类样本明显偏少，模型在该类上的表现往往显著较差。更棘手的是，整体准确率仍可能很高——因为占多数的类别掩盖了少数类别的失败。因此评价模型时，只报告总体准确率是不够的，还须分别考察各类别的表现。"
+    },
+    "stem": "根据短文，只看总体准确率的风险在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "总体准确率的计算方法本身有误"
+      },
+      {
+        "id": "B",
+        "text": "训练数据的数量总是不足"
+      },
+      {
+        "id": "C",
+        "text": "多数类别的良好表现会掩盖少数类别的失败"
+      },
+      {
+        "id": "D",
+        "text": "模型在所有类别上都会表现不佳"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文用「掩盖」一词点明了机制：总体准确率是加权平均，占多数的类别贡献了大部分权重，因而少数类别即使几乎全错，总体数字仍可能好看。",
+    "distractorRationale": {
+      "A": "短文没有说计算方法有误，只说这一指标不够全面。",
+      "B": "短文说的是某一类样本偏少，而非总量不足。",
+      "D": "恰恰相反：模型在多数类别上表现良好。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what is the risk of reporting only overall accuracy?",
+        "explanation": "The passage names the mechanism with the word 掩盖 (mask). Overall accuracy is a weighted average, and the majority classes carry most of the weight — so a model can fail almost completely on a small class while the headline figure still looks strong.\n\nThe recommendation follows: report per-class performance, not just the aggregate."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "evaluation-metrics"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "使用显微镜观察装片时，应先用低倍镜找到目标并移到视野中央，再转动转换器换用高倍镜。换用高倍镜后不可再调节粗准焦螺旋，只能微调细准焦螺旋，否则容易压碎装片。此外，高倍镜下视野变暗，通常需要放大光圈或改用凹面反光镜。"
+    },
+    "stem": "根据短文，换用高倍镜后不能使用粗准焦螺旋的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "粗准焦螺旋在高倍镜下会失灵"
+      },
+      {
+        "id": "B",
+        "text": "使用粗准焦螺旋会使视野变暗"
+      },
+      {
+        "id": "C",
+        "text": "高倍镜下已经不需要对焦"
+      },
+      {
+        "id": "D",
+        "text": "高倍镜距离装片很近，粗调容易压碎装片"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文直接给出后果：「否则容易压碎装片」。高倍物镜的工作距离很短，粗准焦螺旋一转幅度大，镜头极易撞上玻片。",
+    "distractorRationale": {
+      "A": "短文没有说螺旋会失灵，而是说使用它有危险。",
+      "B": "视野变暗是高倍镜本身的特点，与螺旋无关。",
+      "C": "短文明确要求微调细准焦螺旋，说明仍需对焦。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why must the coarse focus knob not be used after switching to the high-power objective?",
+        "explanation": "The passage states the consequence outright: 否则容易压碎装片 — otherwise the slide is easily crushed.\n\nA high-power objective has a very short working distance, and one turn of the coarse knob moves the lens a long way, so the lens can strike the slide. Fine focus only, from that point on."
+      }
+    },
+    "tags": [
+      "microscope",
+      "lab-procedure"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "地震波分为纵波和横波。纵波传播速度较快，最先到达地面，但振动方向与传播方向一致，造成的破坏较小；横波速度较慢，晚几秒到达，振动方向与传播方向垂直，破坏力强得多。地震预警系统正是利用这几秒的时间差：先探测到纵波，随即向尚未受到横波影响的地区发出警报。"
+    },
+    "stem": "根据短文，地震预警之所以可能，关键在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "纵波比横波传播得快，两者到达存在时间差"
+      },
+      {
+        "id": "B",
+        "text": "横波的破坏力小于纵波"
+      },
+      {
+        "id": "C",
+        "text": "预警系统能在地震发生前预测地震"
+      },
+      {
+        "id": "D",
+        "text": "电磁信号的速度与地震波相同"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "预警不是预测地震，而是抢在破坏性横波到达之前发出警报。这几秒钟正来自纵波与横波的速度差。",
+    "distractorRationale": {
+      "B": "短文明确说横波破坏力「强得多」。",
+      "C": "地震已经发生，系统只是抢在破坏波到达前发出警报。",
+      "D": "电磁信号远快于地震波，这正是预警能跑赢横波的前提，但短文强调的关键是波速差。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what makes earthquake early warning possible?",
+        "explanation": "Early warning does not predict earthquakes: the quake has already happened. The system detects the fast P-wave (纵波) and issues an alert before the slower, far more destructive S-wave (横波) arrives.\n\nThose few seconds come entirely from the difference in wave speeds."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "seismology"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "figure": {
+      "kind": "bar_chart",
+      "alt": "柱状图比较四组实验中细菌菌落数量，只有加入抗生素的一组显著减少。",
+      "caption": "四组培养皿中的菌落数量",
+      "categories": [
+        "空白对照",
+        "加溶剂",
+        "加抗生素",
+        "加溶剂+抗生素"
+      ],
+      "series": [
+        {
+          "name": "菌落数",
+          "values": [
+            186,
+            179,
+            12,
+            9
+          ]
+        }
+      ]
+    },
+    "stem": "根据柱状图，可以得出的最恰当结论是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "四组之间没有显著差异"
+      },
+      {
+        "id": "B",
+        "text": "抑菌效果来自抗生素本身，而非溶剂"
+      },
+      {
+        "id": "C",
+        "text": "抗生素与溶剂的抑菌作用相当"
+      },
+      {
+        "id": "D",
+        "text": "溶剂具有明显的抑菌作用"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「加溶剂」组（$179$）与空白对照（$186$）几乎相同，说明溶剂本身无抑菌作用；两个含抗生素的组都降到十几，说明效果来自抗生素。设置溶剂对照的目的正在于此。",
+    "distractorRationale": {
+      "A": "含抗生素的两组与另两组相差超过十倍。",
+      "C": "两者差距极大：$12$ 对 $179$。",
+      "D": "$179$ 与 $186$ 相差极小，谈不上明显作用。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What conclusion does the chart best support?",
+        "explanation": "The solvent-only group ($179$) is nearly identical to the blank control ($186$), showing the solvent has no antibacterial effect of its own. Both groups containing the antibiotic drop to around a dozen colonies.\n\nThat is precisely why a solvent control is included: it isolates the active ingredient from its carrier."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "experimental-controls"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "杂交育种通过选择具有优良性状的亲本进行交配，把不同个体的优点集中到后代身上。这种方法周期长，且只能利用同一物种内已有的基因。基因工程则可以把其他物种的基因直接导入，因而能创造出自然杂交无法产生的性状。但两者都受同一条限制：导入或组合的基因必须能在受体中正常表达，否则性状不会显现。"
+    },
+    "stem": "根据短文，作者指出两种育种方法共有的限制是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两者的育种周期都很长"
+      },
+      {
+        "id": "B",
+        "text": "两者都无法创造新的性状"
+      },
+      {
+        "id": "C",
+        "text": "基因必须能在受体中正常表达，否则性状不会出现"
+      },
+      {
+        "id": "D",
+        "text": "两者都只能利用同一物种的基因"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文用「但两者都受同一条限制」明确点出共同点：基因必须能正常表达。前文列举的差异（周期、基因来源）恰恰是两者的不同之处。",
+    "distractorRationale": {
+      "A": "周期长是杂交育种的特点，短文并未这样描述基因工程。",
+      "B": "短文说基因工程能创造自然杂交无法产生的性状。",
+      "D": "这是杂交育种的局限，基因工程正是突破了它。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what limitation do both breeding methods share?",
+        "explanation": "The passage marks the shared constraint explicitly with 但两者都受同一条限制: the gene must be expressed properly in the recipient, or the trait never appears.\n\nEverything listed before that sentence — breeding time, and whether genes may cross species — describes how the two methods *differ*, which is what the distractors mistakenly pick up."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "shared-constraint"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "取用试剂应遵循「不尝、不闻、不接触」的原则。确需闻气味时，应用手在瓶口轻轻扇动，使少量气体飘向鼻孔，切不可把鼻子凑到瓶口直接嗅闻。取用液体试剂时，标签应朝向手心，以免残液流下腐蚀标签。"
+    },
+    "stem": "根据短文，取用液体试剂时标签朝向手心的目的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "便于随时查看标签内容"
+      },
+      {
+        "id": "B",
+        "text": "避免手接触到试剂"
+      },
+      {
+        "id": "C",
+        "text": "使瓶身握得更稳"
+      },
+      {
+        "id": "D",
+        "text": "防止残留液体流下腐蚀标签"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "短文最后一句直接说明原因：「以免残液流下腐蚀标签」。标签一旦被腐蚀模糊，试剂便可能被误用，这才是真正的危险。",
+    "distractorRationale": {
+      "A": "标签朝向手心时反而看不见，查看应在取用前完成。",
+      "B": "防止接触靠的是规范倾倒，而非标签方向。",
+      "C": "握持稳定与标签朝向无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why should the label face the palm when pouring a liquid reagent?",
+        "explanation": "The final sentence gives the reason directly: 以免残液流下腐蚀标签 — so that drips running down the bottle do not corrode the label.\n\nThe underlying danger is misidentification: once a label is eaten away, the reagent can be used by mistake."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "purpose"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "混凝土的抗压强度很高，抗拉强度却只有抗压强度的十分之一左右。钢筋恰好相反，抗拉性能优异。把钢筋埋入混凝土中，让混凝土承担压力、钢筋承担拉力，两者的长处便得以互补。此外，两者的热膨胀系数十分接近，温度变化时不会因伸缩不一而相互分离。"
+    },
+    "stem": "根据短文，钢筋与混凝土能够良好配合的条件之一是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两者的热膨胀系数接近"
+      },
+      {
+        "id": "B",
+        "text": "钢筋的密度与混凝土相同"
+      },
+      {
+        "id": "C",
+        "text": "两者的抗压强度相同"
+      },
+      {
+        "id": "D",
+        "text": "两者都不导热"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文最后一句专门指出这一点：热膨胀系数接近，温度变化时两者伸缩幅度相近，不会互相分离。这是力学互补之外的另一必要条件。",
+    "distractorRationale": {
+      "B": "密度未被提及，也不影响两者的结合。",
+      "C": "短文说的是两者性能互补，而非相同。",
+      "D": "两者都导热，且短文并未涉及导热性。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what is one condition that lets steel and concrete work well together?",
+        "explanation": "The final sentence singles this out: their coefficients of thermal expansion are close, so temperature changes make them expand and contract by similar amounts and they do not separate.\n\nThis is a second, independent requirement alongside the mechanical complementarity described earlier."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "materials"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "figure": {
+      "kind": "table",
+      "alt": "表格给出某反应在三个温度下的平衡转化率与达到平衡所需时间。",
+      "caption": "不同温度下的平衡转化率与所需时间",
+      "headers": [
+        "温度 (°C)",
+        "平衡转化率 (%)",
+        "达到平衡所需时间 (min)"
+      ],
+      "rows": [
+        [
+          "200",
+          "78",
+          "120"
+        ],
+        [
+          "300",
+          "62",
+          "35"
+        ],
+        [
+          "400",
+          "45",
+          "12"
+        ]
+      ]
+    },
+    "stem": "根据表中数据，关于该反应下列判断正确的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "该反应为吸热反应，且升温可加快反应速率"
+      },
+      {
+        "id": "B",
+        "text": "该反应为放热反应，且升温可加快反应速率"
+      },
+      {
+        "id": "C",
+        "text": "该反应为放热反应，升温会减慢反应速率"
+      },
+      {
+        "id": "D",
+        "text": "温度对该反应没有影响"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "两个趋势要分别读：温度升高时平衡转化率下降（$78 \\to 45$），说明升温使平衡逆向移动，故正反应放热；同时达到平衡的时间大幅缩短（$120 \\to 12$ 分钟），说明升温加快了速率。\n\n这正体现速率与平衡是两个独立的问题。",
+    "distractorRationale": {
+      "A": "若为吸热反应，升温应使转化率上升。",
+      "C": "所需时间从 $120$ 分钟降到 $12$ 分钟，速率明显加快。",
+      "D": "两列数据都随温度显著变化。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which conclusion about the reaction does the table support?",
+        "explanation": "Read the two trends separately. Conversion at equilibrium falls as temperature rises ($78 \\to 45$), so heating shifts the equilibrium backwards — the forward reaction is exothermic. Meanwhile the time to reach equilibrium collapses from $120$ to $12$ minutes, so heating speeds the reaction up.\n\nThis is the classic demonstration that rate and equilibrium position are independent questions."
+      }
+    },
+    "tags": [
+      "table-reading",
+      "rate-vs-equilibrium"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "候鸟迁徙时能够准确找到方向，其机制至今尚未完全阐明。已有研究发现，某些鸟类的视网膜中含有对磁场敏感的蛋白质，可能使它们「看见」地磁场的方向。另一些证据表明，鸟类也会利用太阳位置和星空图案。目前多数学者认为，这些机制并非互相排斥，而是共同发挥作用。"
+    },
+    "stem": "根据短文，目前学界对候鸟导航机制的主流看法是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "只有磁场感应一种机制起作用"
+      },
+      {
+        "id": "B",
+        "text": "该机制已被完全阐明"
+      },
+      {
+        "id": "C",
+        "text": "多种机制同时起作用，而非只有一种"
+      },
+      {
+        "id": "D",
+        "text": "候鸟并不具备定向能力"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文最后一句是主流看法的直接表述：「这些机制并非互相排斥，而是共同发挥作用」。前面列举的磁场、太阳与星空正是这些机制。",
+    "distractorRationale": {
+      "A": "短文列举了不止一种机制，并明确说它们共同起作用。",
+      "B": "首句就说「至今尚未完全阐明」。",
+      "D": "短文开篇即肯定候鸟「能够准确找到方向」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what is the prevailing scholarly view on bird navigation?",
+        "explanation": "The closing sentence states it directly: the mechanisms 并非互相排斥，而是共同发挥作用 — they are not mutually exclusive but work together.\n\nThe magnetic, solar and stellar cues listed earlier are the mechanisms in question. Note the opening sentence also concedes the picture is not yet complete."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "scientific-consensus"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "中和滴定时，锥形瓶内若残留少量蒸馏水，对测定结果没有影响，因为溶质的物质的量不变；但滴定管在装液前若未用待装溶液润洗，管内残留的蒸馏水会稀释溶液，使实际滴出的溶质偏少，测定结果因而偏低或偏高，需视该溶液在计算中的位置而定。"
+    },
+    "stem": "根据短文，锥形瓶内残留蒸馏水不影响结果的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "水会在滴定过程中蒸发掉"
+      },
+      {
+        "id": "B",
+        "text": "残留的水量太少可以忽略"
+      },
+      {
+        "id": "C",
+        "text": "水与滴定所用的溶液发生反应"
+      },
+      {
+        "id": "D",
+        "text": "水只改变浓度，不改变瓶中溶质的物质的量"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "滴定计算依据的是参与反应的物质的量，而非浓度。锥形瓶中加水只是把同样多的溶质稀释，物质的量丝毫未变，故不影响结果。\n\n滴定管则不同：管内的水会稀释即将滴出的溶液，从而改变每毫升所含的溶质量。",
+    "distractorRationale": {
+      "A": "常温滴定过程中水不会明显蒸发。",
+      "B": "即使水量较多，结论依然成立，理由并非「量少」。",
+      "C": "蒸馏水不参与酸碱中和反应。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why does residual distilled water in the conical flask not affect the result?",
+        "explanation": "Titration calculations rest on the *amount of substance* that reacts, not on concentration. Water added to the flask dilutes the same quantity of solute, leaving the moles unchanged.\n\nThe burette is different: water inside it dilutes the solution about to be delivered, changing how much solute each millilitre contains — which is why the burette must be rinsed with the solution itself."
+      }
+    },
+    "tags": [
+      "titration",
+      "error-analysis"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "湿地被称为「地球之肾」，因为它能截留和分解流经的污染物。芦苇等挺水植物的根系为微生物提供了附着的表面，微生物则把有机污染物分解为二氧化碳和水。这一过程不需要外加能源，但处理速度远低于污水处理厂，因此湿地更适合承担最后一道净化，而非替代集中处理。"
+    },
+    "stem": "根据短文，湿地净化的局限性在于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "处理速度较慢，难以承担大规模集中处理"
+      },
+      {
+        "id": "B",
+        "text": "会产生有害的二氧化碳"
+      },
+      {
+        "id": "C",
+        "text": "无法分解有机污染物"
+      },
+      {
+        "id": "D",
+        "text": "需要消耗大量外加能源"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "短文先肯定湿地不需外加能源的优点，再指出「处理速度远低于污水处理厂」这一局限，并据此给出定位：适合作最后一道净化。",
+    "distractorRationale": {
+      "B": "二氧化碳是分解的正常产物，短文未将其列为问题。",
+      "C": "短文说微生物正是把有机污染物分解掉。",
+      "D": "短文明确说这一过程「不需要外加能源」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what limits wetland purification?",
+        "explanation": "The passage first credits wetlands with needing no external energy, then names the limitation: 处理速度远低于污水处理厂 — the throughput is far below that of a treatment plant.\n\nThat is why the passage positions wetlands as a final polishing stage rather than a replacement for centralised treatment."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "limitation"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "figure": {
+      "kind": "table",
+      "alt": "表格记录同一材料在三种厚度下的隔热效果，厚度增加而热流量下降但降幅递减。",
+      "caption": "保温层厚度与热流量",
+      "headers": [
+        "厚度 (cm)",
+        "热流量 (W/m²)"
+      ],
+      "rows": [
+        [
+          "2",
+          "48"
+        ],
+        [
+          "4",
+          "26"
+        ],
+        [
+          "6",
+          "18"
+        ],
+        [
+          "8",
+          "14"
+        ]
+      ]
+    },
+    "stem": "根据表中数据，下列说法正确的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "热流量与厚度成正比"
+      },
+      {
+        "id": "B",
+        "text": "厚度增加使热流量下降，但每增加 $2\\ \\text{cm}$ 带来的改善逐渐减小"
+      },
+      {
+        "id": "C",
+        "text": "厚度加倍时热流量也减半"
+      },
+      {
+        "id": "D",
+        "text": "厚度超过 $4\\ \\text{cm}$ 后热流量不再变化"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "每增加 $2\\ \\text{cm}$，热流量依次下降 $22$、$8$、$4$，降幅明显递减。这说明保温层加厚存在经济上的合理限度。",
+    "distractorRationale": {
+      "A": "热流量随厚度增加而减少，不是正比关系。",
+      "C": "从 $2$ 到 $4\\ \\text{cm}$ 时约减半，但从 $4$ 到 $8\\ \\text{cm}$ 时并未减半。",
+      "D": "$6\\ \\text{cm}$ 与 $8\\ \\text{cm}$ 的数值仍在下降。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which statement is supported by the table?",
+        "explanation": "Each additional $2\\ \\text{cm}$ reduces the heat flow by $22$, then $8$, then $4\\ \\text{W/m}^2$ — a clearly diminishing return.\n\nThis is why insulation thickness has an economically sensible limit: beyond a point, more material buys very little."
+      }
+    },
+    "tags": [
+      "table-reading",
+      "diminishing-returns"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-f19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.8,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "所谓「半衰期」，是指放射性元素的原子核有一半发生衰变所需的时间。这个时间对某种元素而言是固定的，不受温度、压强或化学状态影响。需要注意的是，半衰期描述的是大量原子核的统计规律，对单个原子核而言，何时衰变完全无法预测。"
+    },
+    "stem": "根据短文，下列理解正确的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "经过两个半衰期后放射性元素将完全衰变"
+      },
+      {
+        "id": "B",
+        "text": "升高温度可以缩短半衰期"
+      },
+      {
+        "id": "C",
+        "text": "半衰期是统计规律，无法用来预测某一个原子核何时衰变"
+      },
+      {
+        "id": "D",
+        "text": "半衰期随元素的化学状态而改变"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "短文最后一句正是这一点：半衰期描述大量原子核的统计行为，单个原子核的衰变时刻完全随机。这是理解半衰期时最容易出错的地方。",
+    "distractorRationale": {
+      "A": "两个半衰期后剩余 $\\dfrac{1}{4}$，而非零；理论上永远无法完全衰变。",
+      "B": "短文明确说不受温度影响。",
+      "D": "短文明确说不受化学状态影响。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which understanding does the passage support?",
+        "explanation": "The final sentence makes the point: 半衰期 (half-life) describes the statistical behaviour of a large population of nuclei, while the moment any single nucleus decays is entirely unpredictable.\n\nOption A is the other classic error: after two half-lives one quarter remains, not zero — decay never reaches completion in principle."
+      }
+    },
+    "tags": [
+      "technical-reading",
+      "statistical-law"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  }
+]

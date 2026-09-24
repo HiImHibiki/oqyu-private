@@ -1,0 +1,1655 @@
+[
+  {
+    "id": "utbk-pk-a01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Operasi & sifat bilangan",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Nilai dari $\\dfrac{2^{10} \\times 5^{8}}{10^{8}}$ adalah ...",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4
+    },
+    "explanation": "Karena $10^{8} = 2^{8} \\times 5^{8}$, maka pecahan itu menjadi $\\dfrac{2^{10} \\times 5^{8}}{2^{8} \\times 5^{8}}$. Faktor $5^{8}$ habis dibagi, tersisa $\\dfrac{2^{10}}{2^{8}} = 2^{2} = 4$.",
+    "tags": [
+      "eksponen",
+      "penyederhanaan"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Persen",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Harga sebuah barang naik $20\\%$, lalu turun $25\\%$ dari harga yang baru. Harga akhirnya adalah berapa persen dari harga semula?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 90
+    },
+    "explanation": "Misalkan harga awal $100$. Naik $20\\%$ menjadi $120$. Turun $25\\%$ dari $120$ berarti berkurang $30$, sehingga menjadi $90$. Jadi harga akhir adalah $90\\%$ dari harga semula. Secara ringkas $1{,}20 \\times 0{,}75 = 0{,}90$.",
+    "tags": [
+      "persen",
+      "perubahan-berurutan"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Barisan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Suku ke-$5$ suatu barisan aritmetika adalah $23$ dan suku ke-$12$ adalah $58$. Berapakah suku pertamanya?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "Selisih tujuh suku adalah $58 - 23 = 35$, sehingga beda $b = \\dfrac{35}{7} = 5$. Suku pertama diperoleh dengan mundur empat langkah dari suku ke-$5$: $23 - 4 \\times 5 = 3$.",
+    "tags": [
+      "barisan-aritmetika",
+      "beda"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Bilangan",
+    "skill": "Perbandingan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Jika $a : b = 3 : 4$ dan $b : c = 6 : 5$, maka $a : c$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3 : 5$"
+      },
+      {
+        "id": "B",
+        "text": "$9 : 10$"
+      },
+      {
+        "id": "C",
+        "text": "$18 : 20$"
+      },
+      {
+        "id": "D",
+        "text": "$2 : 3$"
+      },
+      {
+        "id": "E",
+        "text": "$5 : 6$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Samakan nilai $b$ pada kedua perbandingan. Kalikan yang pertama dengan $3$: $a : b = 9 : 12$. Kalikan yang kedua dengan $2$: $b : c = 12 : 10$. Maka $a : b : c = 9 : 12 : 10$, sehingga $a : c = 9 : 10$.",
+    "distractorRationale": {
+      "A": "Mengambil angka $3$ dan $5$ langsung dari kedua perbandingan tanpa menyamakan $b$.",
+      "C": "Belum disederhanakan dan berasal dari penyamaan $b$ yang keliru.",
+      "D": "Tidak sesuai dengan hasil penyamaan mana pun.",
+      "E": "Membalik peran nilai yang dibandingkan."
+    },
+    "tags": [
+      "perbandingan-berantai",
+      "rasio"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Persamaan & pertidaksamaan",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Himpunan penyelesaian dari $|2x - 3| \\le 7$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2 \\le x \\le 5$"
+      },
+      {
+        "id": "B",
+        "text": "$x \\le -2$ atau $x \\ge 5$"
+      },
+      {
+        "id": "C",
+        "text": "$-2 \\le x \\le 5$"
+      },
+      {
+        "id": "D",
+        "text": "$-5 \\le x \\le 2$"
+      },
+      {
+        "id": "E",
+        "text": "$-2 \\le x \\le 2$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Pertidaksamaan nilai mutlak $|A| \\le k$ setara dengan $-k \\le A \\le k$. Jadi $-7 \\le 2x - 3 \\le 7$. Tambahkan $3$: $-4 \\le 2x \\le 10$. Bagi $2$: $-2 \\le x \\le 5$.",
+    "distractorRationale": {
+      "A": "Membuang batas negatif, seolah $x$ harus positif.",
+      "B": "Bentuk penyelesaian untuk $|A| \\ge k$, bukan $\\le$.",
+      "D": "Menukar batas kiri dan kanan setelah pembagian.",
+      "E": "Lupa menambahkan $3$ sebelum membagi."
+    },
+    "tags": [
+      "nilai-mutlak",
+      "pertidaksamaan"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "SPLDV",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Diketahui $3x + 2y = 16$ dan $x - y = 2$. Nilai dari $x \\times y$ adalah ...",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 8
+    },
+    "explanation": "Dari persamaan kedua, $x = y + 2$. Substitusikan: $3(y + 2) + 2y = 16$, sehingga $5y + 6 = 16$ dan $y = 2$. Maka $x = 4$, dan $x \\times y = 8$. Periksa: $3(4) + 2(2) = 16$ dan $4 - 2 = 2$.",
+    "tags": [
+      "spldv",
+      "substitusi"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Eksponen & logaritma",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Jika $\\log 2 = p$ dan $\\log 3 = q$, maka $\\log 24$ dinyatakan dalam $p$ dan $q$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$p + 3q$"
+      },
+      {
+        "id": "B",
+        "text": "$3pq$"
+      },
+      {
+        "id": "C",
+        "text": "$2p + q$"
+      },
+      {
+        "id": "D",
+        "text": "$3p + q$"
+      },
+      {
+        "id": "E",
+        "text": "$p^{3} + q$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Faktorkan: $24 = 2^{3} \\times 3$. Maka $\\log 24 = \\log 2^{3} + \\log 3 = 3\\log 2 + \\log 3 = 3p + q$.",
+    "distractorRationale": {
+      "A": "Menukar peran $2$ dan $3$, seolah $24 = 2 \\times 3^{3}$.",
+      "B": "Mengalikan logaritma, padahal perkalian bilangan menjadi penjumlahan logaritma.",
+      "C": "Menggunakan $2^{2}$, seolah $24 = 4 \\times 3$ tanpa menuntaskan faktor $2$.",
+      "E": "Memangkatkan logaritmanya, bukan mengalikannya dengan eksponen."
+    },
+    "tags": [
+      "logaritma",
+      "sifat-logaritma"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Fungsi & grafik",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Diketahui $f(x) = 2x - 1$ dan $g(x) = x^{2} + 3$. Nilai dari $(f \\circ g)(2)$ adalah ...",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 13
+    },
+    "explanation": "Kerjakan dari dalam ke luar. Pertama $g(2) = 2^{2} + 3 = 7$. Kemudian $f(7) = 2(7) - 1 = 13$.\n\nPerhatikan urutannya: $(f \\circ g)(x)$ berarti $f\\big(g(x)\\big)$, jadi $g$ dikerjakan lebih dulu.",
+    "tags": [
+      "komposisi-fungsi",
+      "urutan"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Persamaan & pertidaksamaan",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Akar-akar persamaan $x^{2} - 7x + 10 = 0$ adalah $x_1$ dan $x_2$. Nilai dari $x_1^{2} + x_2^{2}$ adalah ...",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 29
+    },
+    "explanation": "Dari rumus jumlah dan hasil kali akar: $x_1 + x_2 = 7$ dan $x_1 x_2 = 10$. Gunakan identitas $x_1^{2} + x_2^{2} = (x_1 + x_2)^{2} - 2x_1x_2 = 49 - 20 = 29$.\n\nPeriksa dengan akar sesungguhnya, $2$ dan $5$: $4 + 25 = 29$.",
+    "tags": [
+      "akar-persamaan-kuadrat",
+      "identitas"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Aljabar & Fungsi",
+    "skill": "Fungsi & grafik",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Grafik fungsi kuadrat $y = x^{2} + bx + 9$ menyinggung sumbu $x$. Nilai $b$ yang mungkin adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3$ atau $-3$"
+      },
+      {
+        "id": "B",
+        "text": "$9$ atau $-9$"
+      },
+      {
+        "id": "C",
+        "text": "$18$ atau $-18$"
+      },
+      {
+        "id": "D",
+        "text": "$0$ saja"
+      },
+      {
+        "id": "E",
+        "text": "$6$ atau $-6$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Menyinggung sumbu $x$ berarti hanya ada satu akar, sehingga diskriminannya nol: $b^{2} - 4ac = 0$. Dengan $a = 1$ dan $c = 9$: $b^{2} - 36 = 0$, sehingga $b = 6$ atau $b = -6$.",
+    "distractorRationale": {
+      "A": "Mengambil akar dari $9$ alih-alih dari $36$.",
+      "B": "Menyalin nilai konstanta $c$ sebagai jawaban.",
+      "C": "Mengalikan $4ac$ dua kali sebelum mengakarkan.",
+      "D": "Dengan $b = 0$ grafiknya tidak menyentuh sumbu $x$ sama sekali."
+    },
+    "tags": [
+      "diskriminan",
+      "menyinggung-sumbu"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah persegi panjang memiliki keliling $46$ cm dan panjangnya $5$ cm lebih dari lebarnya. Berapakah luas persegi panjang tersebut dalam cm persegi?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 126
+    },
+    "explanation": "Misalkan lebar $= l$, maka panjang $= l + 5$. Keliling $= 2(l + l + 5) = 46$, sehingga $2l + 5 = 23$ dan $l = 9$. Panjangnya $14$, sehingga luasnya $9 \\times 14 = 126$ cm persegi.",
+    "tags": [
+      "persegi-panjang",
+      "keliling-luas"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Bangun ruang",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kubus memiliki luas permukaan $216$ cm persegi. Berapakah volume kubus tersebut dalam cm kubik?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 216
+    },
+    "explanation": "Luas permukaan kubus adalah $6s^{2}$, sehingga $6s^{2} = 216$ dan $s^{2} = 36$, jadi $s = 6$ cm. Volumenya $s^{3} = 216$ cm kubik.\n\nKebetulan angka luas permukaan dan volumenya sama — hal ini hanya terjadi ketika $s = 6$.",
+    "tags": [
+      "kubus",
+      "luas-permukaan-volume"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a13",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Trigonometri dasar",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Pada segitiga siku-siku, salah satu sudut lancipnya $\\alpha$ dengan $\\tan \\alpha = \\dfrac{5}{12}$. Nilai $\\sin \\alpha$ adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{5}{13}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{12}{13}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{13}{5}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{5}{12}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{12}{5}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "Karena $\\tan \\alpha = \\dfrac{\\text{depan}}{\\text{samping}} = \\dfrac{5}{12}$, sisi depan $= 5$ dan sisi samping $= 12$. Sisi miringnya $\\sqrt{25 + 144} = 13$. Maka $\\sin \\alpha = \\dfrac{\\text{depan}}{\\text{miring}} = \\dfrac{5}{13}$.",
+    "distractorRationale": {
+      "B": "Ini $\\cos \\alpha$, yang memakai sisi samping.",
+      "C": "Kebalikan dari sinus; nilai sinus tidak mungkin lebih dari $1$.",
+      "D": "Menyalin nilai tangen tanpa menghitung sisi miring.",
+      "E": "Kebalikan dari tangen, yaitu kotangen."
+    },
+    "tags": [
+      "trigonometri",
+      "segitiga-siku-siku"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a14",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Koordinat",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Jarak antara titik $A(-3, 2)$ dan $B(1, -1)$ adalah ...",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 5
+    },
+    "explanation": "Selisih absis $= 1 - (-3) = 4$ dan selisih ordinat $= -1 - 2 = -3$. Jaraknya $\\sqrt{4^{2} + (-3)^{2}} = \\sqrt{16 + 9} = \\sqrt{25} = 5$.",
+    "tags": [
+      "jarak-dua-titik",
+      "koordinat"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a15",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Geometri & Pengukuran",
+    "skill": "Bangun datar",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah segitiga siku-siku memiliki panjang kaki $8$ cm dan $6$ cm. Berapakah panjang garis tinggi yang ditarik dari titik sudut siku-siku ke sisi miring, dalam cm?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 4.8,
+      "tolerance": 0.01,
+      "acceptedForms": [
+        "4,8",
+        "4.8",
+        "24/5"
+      ]
+    },
+    "explanation": "Luas segitiga dapat dihitung dua cara. Dengan kedua kaki: $\\dfrac{1}{2} \\times 8 \\times 6 = 24$ cm persegi. Sisi miringnya $\\sqrt{64 + 36} = 10$ cm. Dengan sisi miring sebagai alas: $\\dfrac{1}{2} \\times 10 \\times t = 24$, sehingga $t = \\dfrac{48}{10} = 4{,}8$ cm.",
+    "tags": [
+      "garis-tinggi",
+      "luas-dua-cara"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a16",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Statistika deskriptif",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Data berikut menyatakan nilai ulangan tujuh siswa: $6, 8, 5, 9, 7, 8, 6$. Median data tersebut adalah ...",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 7
+    },
+    "explanation": "Urutkan lebih dulu: $5, 6, 6, 7, 8, 8, 9$. Karena banyak data ganjil, mediannya adalah nilai di posisi tengah, yaitu data ke-$4$, sehingga mediannya $7$.\n\nKesalahan yang sering terjadi adalah mengambil nilai tengah tanpa mengurutkan data.",
+    "tags": [
+      "median",
+      "statistika"
+    ],
+    "estimatedTimeSec": 70,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a17",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Peluang",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Sebuah kotak berisi $4$ bola merah dan $6$ bola biru. Dua bola diambil sekaligus secara acak. Peluang terambil dua bola berwarna sama adalah ...",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{7}{15}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{3}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{2}{5}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{8}{15}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "Banyak cara memilih $2$ dari $10$ bola adalah $\\binom{10}{2} = 45$. Dua merah: $\\binom{4}{2} = 6$. Dua biru: $\\binom{6}{2} = 15$. Jumlahnya $21$, sehingga peluangnya $\\dfrac{21}{45} = \\dfrac{7}{15}$.",
+    "distractorRationale": {
+      "A": "Menebak setengah karena hanya ada dua warna.",
+      "C": "Hanya menghitung kasus dua biru, $\\dfrac{15}{45}$.",
+      "D": "Menggunakan perbandingan jumlah bola, bukan banyak cara pemilihan.",
+      "E": "Peluang terambil dua bola berbeda warna, yaitu $\\dfrac{24}{45}$ — pelengkap dari jawaban benar."
+    },
+    "tags": [
+      "peluang",
+      "kombinasi"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a18",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Statistika deskriptif",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Rata-rata berat badan $8$ orang adalah $54$ kg. Jika seorang bergabung dan rata-ratanya menjadi $55$ kg, berapa berat badan orang tersebut dalam kg?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 63
+    },
+    "explanation": "Total berat semula adalah $8 \\times 54 = 432$ kg. Setelah bergabung, total menjadi $9 \\times 55 = 495$ kg. Berat orang yang bergabung adalah $495 - 432 = 63$ kg.",
+    "tags": [
+      "rata-rata",
+      "penambahan-data"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a19",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Penyajian data",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "figure": {
+      "kind": "pie_chart",
+      "alt": "Diagram lingkaran pilihan ekstrakurikuler 200 siswa, terbagi menjadi empat kegiatan dengan persentase berbeda.",
+      "caption": "Pilihan ekstrakurikuler 200 siswa",
+      "slices": [
+        {
+          "label": "Futsal",
+          "value": 35
+        },
+        {
+          "label": "Paduan suara",
+          "value": 25
+        },
+        {
+          "label": "Robotika",
+          "value": 22
+        },
+        {
+          "label": "Pramuka",
+          "value": 18
+        }
+      ]
+    },
+    "stem": "Berdasarkan diagram, berapa banyak siswa yang memilih robotika?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 44
+    },
+    "explanation": "Robotika dipilih oleh $22\\%$ siswa. Dari $200$ siswa, banyaknya adalah $0{,}22 \\times 200 = 44$ siswa.",
+    "tags": [
+      "diagram-lingkaran",
+      "persentase"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pk-a20",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pk",
+    "domain": "Data & Ketidakpastian",
+    "skill": "Peluang",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stem": "Dua dadu setimbang dilempar bersamaan. Manakah pernyataan berikut yang benar?",
+    "type": "true_false_multi",
+    "statements": [
+      {
+        "id": "s1",
+        "text": "Peluang jumlah kedua mata dadu sama dengan $7$ adalah $\\dfrac{1}{6}$."
+      },
+      {
+        "id": "s2",
+        "text": "Peluang jumlah kedua mata dadu sama dengan $12$ adalah $\\dfrac{1}{18}$."
+      },
+      {
+        "id": "s3",
+        "text": "Peluang kedua mata dadu bernilai sama adalah $\\dfrac{1}{6}$."
+      },
+      {
+        "id": "s4",
+        "text": "Peluang jumlah kedua mata dadu lebih dari $10$ adalah $\\dfrac{1}{12}$."
+      }
+    ],
+    "answer": {
+      "mode": "boolean_list",
+      "values": [
+        true,
+        false,
+        true,
+        true
+      ]
+    },
+    "explanation": "Seluruhnya ada $36$ hasil yang sama mungkin.\n\n**s1 benar.** Jumlah $7$ terjadi pada $6$ pasangan, sehingga peluangnya $\\dfrac{6}{36} = \\dfrac{1}{6}$.\n\n**s2 salah.** Jumlah $12$ hanya terjadi pada satu pasangan, $(6,6)$, sehingga peluangnya $\\dfrac{1}{36}$, bukan $\\dfrac{1}{18}$.\n\n**s3 benar.** Ada $6$ pasangan kembar, sehingga peluangnya $\\dfrac{6}{36} = \\dfrac{1}{6}$.\n\n**s4 benar.** Jumlah lebih dari $10$ berarti $11$ atau $12$, yaitu $2 + 1 = 3$ pasangan, sehingga peluangnya $\\dfrac{3}{36} = \\dfrac{1}{12}$.",
+    "tags": [
+      "peluang",
+      "dua-dadu"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a01",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Rasio & proporsi",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah usaha katering menyiapkan nasi kotak. Untuk $45$ kotak diperlukan $12$ kg beras. Pesanan hari ini adalah $105$ kotak."
+    },
+    "stem": "Berapa kilogram beras yang diperlukan untuk pesanan hari ini?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 28
+    },
+    "explanation": "Perbandingannya senilai. Dari $45$ kotak menjadi $105$ kotak, faktornya $\\dfrac{105}{45} = \\dfrac{7}{3}$. Maka beras yang diperlukan $12 \\times \\dfrac{7}{3} = 28$ kg.",
+    "tags": [
+      "proporsi",
+      "kontekstual"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a02",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Operasi kontekstual",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah koperasi menjual pupuk dalam karung $25$ kg seharga Rp135.000 per karung. Untuk pembelian $10$ karung atau lebih, diberikan potongan Rp8.000 per karung."
+    },
+    "stem": "Seorang petani membeli $14$ karung. Berapa rupiah yang harus ia bayar?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 1778000
+    },
+    "explanation": "Karena $14 \\ge 10$, potongan berlaku untuk seluruh karung. Harga per karung menjadi $135.000 - 8.000 = 127.000$ rupiah. Total pembayaran $14 \\times 127.000 = 1.778.000$ rupiah.",
+    "tags": [
+      "potongan-harga",
+      "kontekstual"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a03",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Representasi bilangan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah aplikasi menampilkan konsumsi data harian sebesar $1{,}25$ GB. Paket yang dibeli pengguna berisi $30$ GB dan berlaku $30$ hari."
+    },
+    "stem": "Jika pola pemakaian tidak berubah, pada hari ke berapa kuota pengguna akan habis?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 24
+    },
+    "explanation": "Kuota habis setelah $\\dfrac{30}{1{,}25} = 24$ hari. Jadi kuota habis pada hari ke-$24$, enam hari sebelum masa berlaku paket berakhir.",
+    "tags": [
+      "pembagian-desimal",
+      "kontekstual"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a04",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Bilangan",
+    "skill": "Rasio & proporsi",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Larutan pembersih dijual dalam bentuk pekat dan harus diencerkan dengan perbandingan $1$ bagian pekatan berbanding $9$ bagian air. Seorang petugas kebersihan memerlukan $5$ liter larutan siap pakai."
+    },
+    "stem": "Berapa mililiter pekatan yang ia butuhkan?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 500
+    },
+    "explanation": "Perbandingan $1 : 9$ berarti larutan siap pakai terdiri atas $10$ bagian, dan pekatan menempati $1$ dari $10$ bagian itu. Maka pekatan $= \\dfrac{1}{10} \\times 5$ liter $= 0{,}5$ liter $= 500$ mL.\n\nKesalahan yang umum adalah membagi dengan $9$, bukan dengan $10$ — perbandingan itu menyebut bagian pekatan terhadap air, bukan terhadap keseluruhan.",
+    "tags": [
+      "pengenceran",
+      "perbandingan-bagian"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a05",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Pemodelan persamaan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah penyedia layanan internet menawarkan dua paket. Paket A: biaya tetap Rp150.000 per bulan tanpa batas pemakaian. Paket B: biaya tetap Rp90.000 per bulan ditambah Rp3.000 untuk setiap GB yang dipakai."
+    },
+    "stem": "Pada pemakaian berapa GB biaya kedua paket menjadi sama?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 20
+    },
+    "explanation": "Biaya Paket B untuk $x$ GB adalah $90.000 + 3.000x$. Samakan dengan Paket A: $90.000 + 3.000x = 150.000$, sehingga $3.000x = 60.000$ dan $x = 20$ GB.\n\nDi bawah $20$ GB Paket B lebih murah; di atas itu Paket A lebih murah.",
+    "tags": [
+      "pemodelan-linear",
+      "titik-impas"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a06",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Fungsi kontekstual",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah tangki air berisi $600$ liter dan bocor dengan laju tetap. Setelah $4$ jam, isinya tinggal $520$ liter."
+    },
+    "stem": "Berapa jam lagi terhitung sejak awal hingga tangki tersebut kosong?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 30
+    },
+    "explanation": "Laju kebocoran adalah $\\dfrac{600 - 520}{4} = 20$ liter per jam. Untuk mengosongkan $600$ liter diperlukan $\\dfrac{600}{20} = 30$ jam terhitung sejak awal.",
+    "tags": [
+      "laju-tetap",
+      "model-linear"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a07",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Sistem persamaan",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Di sebuah kantin, $3$ porsi nasi dan $2$ gelas es teh berharga Rp37.000, sedangkan $2$ porsi nasi dan $4$ gelas es teh berharga Rp38.000."
+    },
+    "stem": "Berapa rupiah harga satu porsi nasi?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 9000
+    },
+    "explanation": "Misalkan nasi $= n$ dan es teh $= t$ dalam ribuan rupiah. Maka $3n + 2t = 37$ dan $2n + 4t = 38$. Kalikan persamaan pertama dengan $2$: $6n + 4t = 74$. Kurangkan persamaan kedua: $4n = 36$, sehingga $n = 9$. Jadi satu porsi nasi Rp9.000, dan es teh Rp5.000.",
+    "tags": [
+      "spldv",
+      "kontekstual"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a08",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Pemodelan persamaan",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah bengkel memperbaiki sepeda motor dan sepeda listrik. Bulan ini bengkel menangani $48$ kendaraan dengan total $110$ roda. Sepeda motor memiliki $2$ roda, sedangkan sepeda listrik yang dilayani bengkel ini berjenis roda tiga."
+    },
+    "stem": "Berapa banyak sepeda listrik roda tiga yang ditangani bengkel bulan ini?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 14
+    },
+    "explanation": "Misalkan sepeda motor $= m$ dan sepeda listrik $= l$. Maka $m + l = 48$ dan $2m + 3l = 110$. Dari persamaan pertama $m = 48 - l$; substitusikan: $2(48 - l) + 3l = 110$, sehingga $96 + l = 110$ dan $l = 14$.\n\nPeriksa: $34$ sepeda motor dan $14$ sepeda listrik memberi $68 + 42 = 110$ roda.",
+    "tags": [
+      "spldv",
+      "kontekstual"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a09",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Fungsi kontekstual",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Keuntungan harian sebuah kedai kopi dimodelkan dengan $K(x) = -2x^{2} + 48x - 100$, dengan $x$ adalah harga jual per cangkir dalam ribuan rupiah."
+    },
+    "stem": "Pada harga berapa ribu rupiah per cangkir keuntungan kedai mencapai maksimum?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 12
+    },
+    "explanation": "Grafik $K$ adalah parabola yang terbuka ke bawah karena koefisien $x^{2}$ negatif, sehingga puncaknya adalah maksimum. Puncak berada di $x = -\\dfrac{b}{2a} = -\\dfrac{48}{2(-2)} = 12$. Jadi keuntungan maksimum tercapai pada harga Rp12.000 per cangkir.",
+    "tags": [
+      "fungsi-kuadrat",
+      "optimasi"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a10",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Aljabar",
+    "skill": "Sistem persamaan",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah perpustakaan membeli buku dan majalah. Harga satu buku Rp75.000 dan satu majalah Rp25.000. Perpustakaan membeli $60$ eksemplar dengan total belanja Rp3.000.000."
+    },
+    "stem": "Berapa banyak buku yang dibeli perpustakaan?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 30
+    },
+    "explanation": "Misalkan buku $= b$ dan majalah $= m$. Maka $b + m = 60$ dan $75b + 25m = 3.000$ (dalam ribuan). Substitusikan $m = 60 - b$: $75b + 25(60 - b) = 3.000$, sehingga $50b + 1.500 = 3.000$ dan $b = 30$.",
+    "tags": [
+      "spldv",
+      "kontekstual"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a11",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Skala & denah",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah denah dibuat dengan skala $1 : 250$. Pada denah, sebuah ruangan berbentuk persegi panjang berukuran $8$ cm kali $6$ cm."
+    },
+    "stem": "Berapa meter persegi luas ruangan sesungguhnya?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 300
+    },
+    "explanation": "Ukuran sesungguhnya: panjang $= 8 \\times 250 = 2.000$ cm $= 20$ m, lebar $= 6 \\times 250 = 1.500$ cm $= 15$ m. Luasnya $20 \\times 15 = 300$ meter persegi.\n\nPerhatikan bahwa luas berskala $250^{2}$, bukan $250$ — mengalikan luas pada denah dengan $250$ saja akan salah.",
+    "tags": [
+      "skala",
+      "luas"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a12",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun & volume kontekstual",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah bak mandi berbentuk balok berukuran panjang $80$ cm, lebar $60$ cm, dan tinggi $50$ cm. Bak diisi air hingga ketinggian $40$ cm."
+    },
+    "stem": "Berapa liter air di dalam bak tersebut?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 192
+    },
+    "explanation": "Volume air $= 80 \\times 60 \\times 40 = 192.000$ cm kubik. Karena $1$ liter $= 1.000$ cm kubik, volumenya $192$ liter.\n\nTinggi bak $50$ cm tidak dipakai karena air hanya sampai $40$ cm.",
+    "tags": [
+      "volume-balok",
+      "konversi-satuan"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a13",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Trigonometri terapan",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah tangga bersandar pada dinding. Kaki tangga berjarak $1{,}5$ m dari dinding, dan tangga membentuk sudut $60$ derajat dengan lantai."
+    },
+    "stem": "Berapa meter panjang tangga tersebut?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 3
+    },
+    "explanation": "Jarak kaki tangga ke dinding adalah sisi yang bersebelahan dengan sudut $60$ derajat, dan panjang tangga adalah sisi miring. Maka $\\cos 60^\\circ = \\dfrac{1{,}5}{\\text{panjang}}$. Karena $\\cos 60^\\circ = \\dfrac{1}{2}$, panjang tangga $= \\dfrac{1{,}5}{0{,}5} = 3$ m.",
+    "tags": [
+      "trigonometri-terapan",
+      "sudut-istimewa"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a14",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Bangun & volume kontekstual",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah kolam berbentuk lingkaran berdiameter $14$ m akan dikelilingi jalan setapak selebar $1$ m di bagian luarnya. Gunakan $\\pi = \\dfrac{22}{7}$."
+    },
+    "stem": "Berapa meter persegi luas jalan setapak tersebut?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 47.14,
+      "tolerance": 0.2
+    },
+    "explanation": "Jari-jari kolam $r = 7$ m; jari-jari luar termasuk jalan $R = 8$ m. Luas jalan adalah selisih dua lingkaran: $\\pi(R^{2} - r^{2}) = \\dfrac{22}{7}(64 - 49) = \\dfrac{22}{7} \\times 15 = \\dfrac{330}{7} \\approx 47{,}14$ meter persegi.",
+    "tags": [
+      "lingkaran",
+      "luas-cincin"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a15",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Geometri dan Pengukuran",
+    "skill": "Skala & denah",
+    "difficulty": "M",
+    "irtB": 0.3,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Pada sebuah peta, jarak antara dua kota tergambar $6{,}5$ cm. Skala peta tersebut $1 : 400.000$."
+    },
+    "stem": "Berapa kilometer jarak sesungguhnya kedua kota tersebut?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 26
+    },
+    "explanation": "Jarak sesungguhnya $= 6{,}5 \\times 400.000 = 2.600.000$ cm. Karena $1$ km $= 100.000$ cm, jaraknya $\\dfrac{2.600.000}{100.000} = 26$ km.",
+    "tags": [
+      "skala-peta",
+      "konversi-satuan"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a16",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Analisis data nyata",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "figure": {
+      "kind": "table",
+      "alt": "Tabel jumlah penjualan tiga jenis roti selama empat pekan di sebuah toko.",
+      "caption": "Penjualan roti per pekan (buah)",
+      "headers": [
+        "Jenis",
+        "Pekan 1",
+        "Pekan 2",
+        "Pekan 3",
+        "Pekan 4"
+      ],
+      "rows": [
+        [
+          "Tawar",
+          "120",
+          "135",
+          "128",
+          "141"
+        ],
+        [
+          "Manis",
+          "95",
+          "88",
+          "102",
+          "115"
+        ],
+        [
+          "Gandum",
+          "60",
+          "72",
+          "78",
+          "90"
+        ]
+      ]
+    },
+    "stem": "Berdasarkan tabel, jenis roti manakah yang mengalami kenaikan penjualan paling besar secara persentase dari Pekan 1 ke Pekan 4?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Roti tawar"
+      },
+      {
+        "id": "B",
+        "text": "Roti manis"
+      },
+      {
+        "id": "C",
+        "text": "Roti gandum"
+      },
+      {
+        "id": "D",
+        "text": "Roti tawar dan gandum sama besar"
+      },
+      {
+        "id": "E",
+        "text": "Ketiganya naik dengan persentase yang sama"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "Hitung kenaikan relatif terhadap Pekan 1. Tawar: $\\dfrac{141 - 120}{120} = 17{,}5\\%$. Manis: $\\dfrac{115 - 95}{95} \\approx 21{,}1\\%$. Gandum: $\\dfrac{90 - 60}{60} = 50\\%$. Kenaikan terbesar adalah roti gandum.\n\nRoti tawar naik paling banyak secara jumlah ($21$ buah), tetapi pertanyaannya tentang persentase.",
+    "distractorRationale": {
+      "A": "Kenaikan jumlahnya memang terbesar, tetapi persentasenya justru terkecil karena basisnya tinggi.",
+      "B": "Naik sekitar $21\\%$, masih jauh di bawah gandum.",
+      "D": "Persentasenya berbeda jauh: $17{,}5\\%$ berbanding $50\\%$.",
+      "E": "Ketiganya berbeda persentase kenaikannya."
+    },
+    "tags": [
+      "persentase-kenaikan",
+      "baca-tabel"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a17",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Peluang kontekstual",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah kelas terdiri atas $18$ siswa perempuan dan $12$ siswa laki-laki. Seorang siswa dipilih secara acak untuk mewakili kelas."
+    },
+    "stem": "Berapa peluang terpilihnya siswa laki-laki?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\dfrac{3}{5}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\dfrac{12}{18}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\dfrac{1}{2}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\dfrac{2}{5}$"
+      },
+      {
+        "id": "E",
+        "text": "$\\dfrac{2}{3}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "Jumlah seluruh siswa adalah $18 + 12 = 30$. Peluang terpilihnya laki-laki adalah $\\dfrac{12}{30} = \\dfrac{2}{5}$.",
+    "distractorRationale": {
+      "A": "Peluang terpilihnya siswa perempuan, bukan laki-laki.",
+      "B": "Memakai jumlah perempuan sebagai penyebut, bukan jumlah seluruh siswa.",
+      "C": "Menganggap kedua kelompok berjumlah sama.",
+      "E": "Menghitung $\\dfrac{12}{18}$ lalu menyederhanakannya; penyebutnya seharusnya total siswa."
+    },
+    "tags": [
+      "peluang",
+      "kontekstual"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a18",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Inferensi sederhana",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah puskesmas mencatat berat badan $200$ balita. Rata-ratanya $11{,}2$ kg dengan median $11{,}8$ kg. Grafik sebarannya memiliki ekor panjang ke arah nilai rendah."
+    },
+    "stem": "Manakah pernyataan berikut yang benar berdasarkan informasi tersebut?",
+    "type": "true_false_multi",
+    "statements": [
+      {
+        "id": "s1",
+        "text": "Sebagian besar balita memiliki berat badan di atas rata-rata."
+      },
+      {
+        "id": "s2",
+        "text": "Terdapat sejumlah balita dengan berat badan jauh di bawah kelompok utamanya."
+      },
+      {
+        "id": "s3",
+        "text": "Median lebih tahan terhadap nilai ekstrem daripada rata-rata."
+      },
+      {
+        "id": "s4",
+        "text": "Seluruh balita memiliki berat badan di bawah $11{,}8$ kg."
+      }
+    ],
+    "answer": {
+      "mode": "boolean_list",
+      "values": [
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    "explanation": "**s1 benar.** Median $11{,}8$ kg berarti separuh balita berada di atas angka itu, dan angka itu sendiri di atas rata-rata $11{,}2$ kg. Jadi lebih dari separuh balita berada di atas rata-rata.\n\n**s2 benar.** Ekor panjang ke arah nilai rendah berarti ada balita dengan berat jauh di bawah kelompok utama; merekalah yang menarik rata-rata turun.\n\n**s3 benar.** Inilah sebabnya median dan rata-rata berbeda di sini: nilai ekstrem menggeser rata-rata tetapi hampir tidak menggeser median.\n\n**s4 salah.** Median justru berarti separuh balita berada di atas $11{,}8$ kg.",
+    "tags": [
+      "median-vs-rata-rata",
+      "kemencengan"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a19",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Analisis data nyata",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah sekolah membandingkan dua kelas. Kelas X memiliki rata-rata nilai $78$ dengan simpangan baku $3$. Kelas Y memiliki rata-rata $78$ dengan simpangan baku $11$."
+    },
+    "stem": "Berdasarkan informasi tersebut, manakah pernyataan yang benar?",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Rata-rata Kelas X lebih tinggi daripada Kelas Y."
+      },
+      {
+        "id": "B",
+        "text": "Kelas Y memiliki siswa lebih banyak daripada Kelas X."
+      },
+      {
+        "id": "C",
+        "text": "Nilai tertinggi pasti berada di Kelas X."
+      },
+      {
+        "id": "D",
+        "text": "Kedua kelas memiliki sebaran nilai yang sama."
+      },
+      {
+        "id": "E",
+        "text": "Nilai siswa Kelas X lebih seragam daripada Kelas Y."
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "E"
+    },
+    "explanation": "Simpangan baku mengukur seberapa jauh nilai menyebar dari rata-ratanya. Kelas X memiliki simpangan baku $3$, jauh lebih kecil daripada $11$ pada Kelas Y, sehingga nilai-nilai di Kelas X berkumpul lebih rapat di sekitar rata-rata.",
+    "distractorRationale": {
+      "A": "Kedua rata-ratanya sama, yaitu $78$.",
+      "B": "Simpangan baku tidak memberi informasi tentang banyaknya siswa.",
+      "C": "Justru sebaliknya: sebaran lebar Kelas Y membuat nilai tertinggi lebih mungkin ada di sana.",
+      "D": "Simpangan baku yang berbeda jauh berarti sebarannya berbeda."
+    },
+    "tags": [
+      "simpangan-baku",
+      "sebaran-data"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "utbk-pm-a20",
+    "status": "approved",
+    "exam": "UTBK",
+    "section": "utbk_pm",
+    "domain": "Data dan Ketidakpastian",
+    "skill": "Peluang kontekstual",
+    "difficulty": "H",
+    "irtB": 1.1,
+    "calculatorAllowed": false,
+    "locale": "id",
+    "stimulus": {
+      "type": "passage",
+      "content": "Sebuah pabrik memiliki dua mesin. Mesin A memproduksi $70\\%$ barang dengan tingkat cacat $2\\%$. Mesin B memproduksi $30\\%$ barang dengan tingkat cacat $5\\%$."
+    },
+    "stem": "Berapa persen barang yang dihasilkan pabrik tersebut yang cacat?",
+    "type": "spr_numeric",
+    "answer": {
+      "mode": "numeric",
+      "value": 2.9,
+      "tolerance": 0.01,
+      "acceptedForms": [
+        "2,9",
+        "2.9"
+      ]
+    },
+    "explanation": "Gunakan rata-rata berbobot. Sumbangan Mesin A: $0{,}70 \\times 0{,}02 = 0{,}014$. Sumbangan Mesin B: $0{,}30 \\times 0{,}05 = 0{,}015$. Totalnya $0{,}029$, yaitu $2{,}9\\%$.\n\nMenjumlahkan $2\\%$ dan $5\\%$ lalu membaginya dua akan salah, karena kedua mesin tidak memproduksi jumlah yang sama.",
+    "tags": [
+      "peluang-total",
+      "rata-rata-berbobot"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1
+    }
+  }
+]

@@ -1,0 +1,5046 @@
+[
+  {
+    "id": "csca-zst-r01",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "E",
+    "irtB": -0.7,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "符号 $\\in$ 读作",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "属于"
+      },
+      {
+        "id": "B",
+        "text": "趋近于"
+      },
+      {
+        "id": "C",
+        "text": "包含于"
+      },
+      {
+        "id": "D",
+        "text": "等于"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "$\\in$ 表示元素与集合的关系，读作「属于」，如 $2 \\in \\mathbb{N}$。\\n\\n集合与集合之间的包含关系用 $\\subseteq$ 表示，读作「包含于」——两者层次不同，不可混用。",
+    "distractorRationale": {
+      "B": "趋近于用 $\\to$ 表示。",
+      "C": "包含于用 $\\subseteq$ 表示，是集合与集合的关系。",
+      "D": "等于用 $=$ 表示。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How is the symbol $\\in$ read in Chinese?",
+        "explanation": "$\\in$ expresses the relation between an element and a set, read 属于 («belongs to»), as in $2 \\in \\mathbb{N}$.\\n\\nContainment between two sets uses $\\subseteq$ instead. The two operate at different levels and must not be interchanged."
+      }
+    },
+    "tags": [
+      "symbols",
+      "sets"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r02",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "符号 $\\approx$ 表示",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "正比于"
+      },
+      {
+        "id": "B",
+        "text": "约等于"
+      },
+      {
+        "id": "C",
+        "text": "不等于"
+      },
+      {
+        "id": "D",
+        "text": "恒等于"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "$\\approx$ 读作「约等于」，用于近似值，如 $\\pi \\approx 3.14$。\\n\\n恒等号 $\\equiv$ 表示无论变量取何值都成立，与近似完全相反。",
+    "distractorRationale": {
+      "A": "正比于用 $\\propto$ 表示。",
+      "C": "不等于用 $\\neq$ 表示。",
+      "D": "恒等于用 $\\equiv$ 表示。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does the symbol $\\approx$ mean?",
+        "explanation": "$\\approx$ is read 约等于, «approximately equal to», used for approximations such as $\\pi \\approx 3.14$.\\n\\nThe identity sign $\\equiv$ means the relation holds for every value of the variable — the opposite of an approximation."
+      }
+    },
+    "tags": [
+      "symbols",
+      "approximation"
+    ],
+    "estimatedTimeSec": 65,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r03",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「$y \\propto x$」的含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$y$ 等于 $x$"
+      },
+      {
+        "id": "B",
+        "text": "$y$ 是 $x$ 的函数"
+      },
+      {
+        "id": "C",
+        "text": "$y$ 与 $x$ 成正比"
+      },
+      {
+        "id": "D",
+        "text": "$y$ 大于 $x$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "$\\propto$ 表示成正比：$y \\propto x$ 意为 $y = kx$，其中 $k$ 为非零常数。\\n\\n它比「是函数」强得多——任何函数关系都可写作 $y = f(x)$，但只有线性且过原点的才是正比。",
+    "distractorRationale": {
+      "A": "相等用 $=$ 表示。",
+      "B": "函数关系比正比宽泛得多。",
+      "D": "大于用 $>$ 表示。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does $y \\propto x$ mean?",
+        "explanation": "$\\propto$ denotes direct proportionality: $y \\propto x$ means $y = kx$ for some non-zero constant $k$.\\n\\nThat is a far stronger claim than «is a function of» — any relation can be written $y = f(x)$, but only a linear one through the origin is a proportion."
+      }
+    },
+    "tags": [
+      "symbols",
+      "proportionality"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r04",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「$n!$」在数学中读作",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$n$ 的绝对值"
+      },
+      {
+        "id": "B",
+        "text": "感叹 $n$"
+      },
+      {
+        "id": "C",
+        "text": "$n$ 的倒数"
+      },
+      {
+        "id": "D",
+        "text": "$n$ 的阶乘"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$n!$ 读作「$n$ 的阶乘」，表示从 $1$ 连乘到 $n$：$5! = 1 \\times 2 \\times 3 \\times 4 \\times 5 = 120$。\\n\\n规定 $0! = 1$，这不是特例而是使组合公式在边界情形仍然成立的必要约定。",
+    "distractorRationale": {
+      "A": "绝对值用一对竖线表示。",
+      "B": "数学中的感叹号无此用法。",
+      "C": "倒数写作 $\\dfrac{1}{n}$。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How is $n!$ read in Chinese?",
+        "explanation": "$n!$ is read $n$ 的阶乘, the factorial of $n$: the product of all integers from $1$ to $n$, so $5! = 120$.\\n\\nBy convention $0! = 1$ — not an arbitrary exception but what keeps the combination formulae valid at the boundary."
+      }
+    },
+    "tags": [
+      "symbols",
+      "factorial"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r05",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "在「$\\Delta ABC$」与「$\\Delta x$」中，符号 $\\Delta$ 的含义",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "前者表示三角形，后者表示变化量"
+      },
+      {
+        "id": "B",
+        "text": "都表示变化量"
+      },
+      {
+        "id": "C",
+        "text": "都表示三角形"
+      },
+      {
+        "id": "D",
+        "text": "完全相同"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "同一个符号在两处含义不同：$\\Delta ABC$ 中读作「三角形」，$\\Delta x$ 中读作「德尔塔」，表示某量的改变量。\\n\\n判断依据是后面跟的内容——跟三个顶点字母是三角形，跟一个变量是变化量。",
+    "distractorRationale": {
+      "B": "$\\Delta ABC$ 中不表示变化量。",
+      "C": "$\\Delta x$ 中不表示三角形。",
+      "D": "两处含义截然不同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In $\\Delta ABC$ and $\\Delta x$, does $\\Delta$ mean the same thing?",
+        "explanation": "The same symbol carries two senses. In $\\Delta ABC$ it is read 三角形, «triangle»; in $\\Delta x$ it is read as delta and denotes a change in a quantity.\\n\\nWhat it is followed by settles the reading: three vertex letters make a triangle, a single variable makes a change."
+      }
+    },
+    "tags": [
+      "symbols",
+      "context"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r06",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「$a_n$」中的 $n$ 称为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "指数"
+      },
+      {
+        "id": "B",
+        "text": "下标"
+      },
+      {
+        "id": "C",
+        "text": "系数"
+      },
+      {
+        "id": "D",
+        "text": "底数"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "写在右下方的 $n$ 是下标，用于给同一族的量编号，如数列的第 $n$ 项。\\n\\n写在右上方的才是指数，表示乘方。位置不同，读法与意义都不同：$a_n$ 读「$a$ 下标 $n$」，$a^n$ 读「$a$ 的 $n$ 次方」。",
+    "distractorRationale": {
+      "A": "指数写在右上方。",
+      "C": "系数是相乘的常数。",
+      "D": "底数是被乘方的数。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In $a_n$, what is $n$ called?",
+        "explanation": "Written low and to the right, $n$ is a subscript (下标), used to number members of a family such as the $n$th term of a sequence.\\n\\nWritten high and to the right it would be an exponent instead. Position changes both the reading and the meaning: $a_n$ is «$a$ sub $n$», $a^n$ is «$a$ to the power $n$»."
+      }
+    },
+    "tags": [
+      "symbols",
+      "subscript"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r07",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「$\\sqrt[3]{8} = 2$」中，数字 $3$ 称为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "次方"
+      },
+      {
+        "id": "B",
+        "text": "根号"
+      },
+      {
+        "id": "C",
+        "text": "根指数"
+      },
+      {
+        "id": "D",
+        "text": "被开方数"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "写在根号左上方的 $3$ 称为根指数，表示开几次方；根号内的 $8$ 称为被开方数。\\n\\n平方根的根指数 $2$ 通常省略不写，这正是初学者容易忽略它存在的原因。",
+    "distractorRationale": {
+      "A": "次方是乘方的说法，与开方相反。",
+      "B": "根号指符号 $\\sqrt{\\ }$ 本身。",
+      "D": "被开方数是根号内的 $8$。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In $\\sqrt[3]{8} = 2$, what is the number $3$ called?",
+        "explanation": "The $3$ written above the radical sign is the 根指数, the index of the root, stating which root is taken; the $8$ inside is the 被开方数, the radicand.\\n\\nFor square roots the index $2$ is normally omitted, which is exactly why beginners forget it is there at all."
+      }
+    },
+    "tags": [
+      "symbols",
+      "radical"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r08",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Mathematical symbols 数学符号",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「函数在该点无定义」中，「无定义」的准确含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "函数值无穷大"
+      },
+      {
+        "id": "B",
+        "text": "函数值无法计算但确实存在"
+      },
+      {
+        "id": "C",
+        "text": "函数值等于零"
+      },
+      {
+        "id": "D",
+        "text": "该点不在函数的定义域内，函数在此不取任何值"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「无定义」指该点根本不属于定义域，函数在此不对应任何值——不是取零，也不是取无穷大。\\n\\n以 $f(x) = \\dfrac{1}{x}$ 为例：$f(0)$ 无定义。说它「等于无穷大」是不严谨的，无穷大不是一个数；准确的说法是当 $x \\to 0$ 时 $|f(x)|$ 无限增大。",
+    "distractorRationale": {
+      "A": "无穷大不是一个数值。",
+      "B": "无定义不是「算不出」，而是根本不存在对应值。",
+      "C": "取零是有定义的情形。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 无定义 («undefined») precisely mean for a function at a point?",
+        "explanation": "It means the point is simply not in the domain: the function assigns no value there — not zero, and not infinity.\\n\\nTake $f(x) = \\dfrac{1}{x}$: $f(0)$ is undefined. Saying it «equals infinity» is loose, since infinity is not a number; the precise statement is that $|f(x)|$ grows without bound as $x \\to 0$."
+      }
+    },
+    "tags": [
+      "symbols",
+      "undefined"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r09",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "物理中「加速度」描述的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "速度变化的快慢"
+      },
+      {
+        "id": "B",
+        "text": "速度的大小"
+      },
+      {
+        "id": "C",
+        "text": "物体所受的力"
+      },
+      {
+        "id": "D",
+        "text": "物体运动的快慢"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "加速度是速度的变化率，描述速度改变得有多快，而非物体本身跑得多快。\\n\\n因此加速度大不等于速度大：飞机起飞前速度为零，加速度却很大；匀速飞行时速度很大，加速度却为零。",
+    "distractorRationale": {
+      "B": "速度的大小是速率。",
+      "C": "力是加速度的原因，不是加速度本身。",
+      "D": "运动快慢是速率。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 加速度 (acceleration) describe in physics?",
+        "explanation": "Acceleration is the rate at which velocity changes — how fast the speed is changing, not how fast the object is going.\\n\\nSo a large acceleration does not mean a large speed: an aircraft at the start of its take-off run has zero speed and large acceleration; in level cruise it has large speed and zero acceleration."
+      }
+    },
+    "tags": [
+      "physics-terms",
+      "acceleration"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r10",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「动量」的定义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "质量与加速度的乘积"
+      },
+      {
+        "id": "B",
+        "text": "质量与速度的乘积"
+      },
+      {
+        "id": "C",
+        "text": "力与时间的乘积"
+      },
+      {
+        "id": "D",
+        "text": "质量与速率平方的乘积"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "动量 $p = mv$，是质量与速度的乘积，且与速度同向，因此是矢量。\\n\\n力与时间的乘积是冲量，它等于动量的**变化量**——两者数值上相关，但一个是状态量，一个是过程量。",
+    "distractorRationale": {
+      "A": "质量与加速度之积是力。",
+      "C": "力与时间之积是冲量。",
+      "D": "含速率平方的是动能的一半形式。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How is 动量 (momentum) defined?",
+        "explanation": "Momentum is $p = mv$, the product of mass and velocity, and it points along the velocity, so it is a vector.\\n\\nForce multiplied by time is impulse, which equals the **change** in momentum — related numerically, but one describes a state and the other a process."
+      }
+    },
+    "tags": [
+      "physics-terms",
+      "momentum"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r11",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「频率」与「周期」的关系是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "频率是周期的平方"
+      },
+      {
+        "id": "B",
+        "text": "相等"
+      },
+      {
+        "id": "C",
+        "text": "互为倒数"
+      },
+      {
+        "id": "D",
+        "text": "二者无关"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "周期 $T$ 是完成一次全振动所需时间，频率 $f$ 是每秒完成的次数，故 $f = \\dfrac{1}{T}$。\\n\\n周期越长，频率越低——两者描述同一件事的两个侧面。",
+    "distractorRationale": {
+      "A": "不存在平方关系。",
+      "B": "单位不同，数值一般不等。",
+      "D": "二者互为倒数，关系密切。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How are 频率 (frequency) and 周期 (period) related?",
+        "explanation": "The period $T$ is the time for one complete cycle and the frequency $f$ is the number of cycles per second, so $f = \\dfrac{1}{T}$.\\n\\nA longer period means a lower frequency — two ways of describing the same thing."
+      }
+    },
+    "tags": [
+      "physics-terms",
+      "frequency"
+    ],
+    "estimatedTimeSec": 75,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r12",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「热量」与「温度」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "温度是能量，热量是状态"
+      },
+      {
+        "id": "B",
+        "text": "热量只用于固体"
+      },
+      {
+        "id": "C",
+        "text": "两者相同"
+      },
+      {
+        "id": "D",
+        "text": "热量是传递中的能量，温度是分子平均动能的标志"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "温度反映分子平均动能，是状态量；热量是因温差而传递的能量，是过程量。\\n\\n因此「物体含有多少热量」这一说法本身不成立——热量只在传递时才存在，一杯水可以有温度，却不能「含有热量」。",
+    "distractorRationale": {
+      "A": "恰好说反了。",
+      "B": "热量传递不限于固体。",
+      "C": "一为状态量，一为过程量。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 热量 (heat) and 温度 (temperature) differ?",
+        "explanation": "Temperature reflects the average kinetic energy of molecules and is a property of a state; heat is energy in transfer because of a temperature difference, and belongs to a process.\\n\\nSo the phrase «how much heat an object contains» is not well formed: heat exists only while being transferred. A cup of water has a temperature but does not «contain heat»."
+      }
+    },
+    "tags": [
+      "physics-terms",
+      "heat-temperature"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r13",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「折射率」描述的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "光在真空中与在介质中传播速度之比"
+      },
+      {
+        "id": "B",
+        "text": "介质的密度"
+      },
+      {
+        "id": "C",
+        "text": "光的强度"
+      },
+      {
+        "id": "D",
+        "text": "光的颜色"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "折射率 $n = \\dfrac{c}{v}$，是光在真空中的速度与在该介质中速度之比，故恒大于 $1$。\\n\\n它与质量密度并不等同：某些光学玻璃密度相近而折射率差别明显，正是镜片设计依赖的性质。",
+    "distractorRationale": {
+      "B": "折射率与质量密度并不等同。",
+      "C": "强度与折射率无关。",
+      "D": "颜色对应波长。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 折射率 (refractive index) describe?",
+        "explanation": "The refractive index is $n = \\dfrac{c}{v}$, the ratio of the speed of light in vacuum to its speed in the medium, and is therefore always greater than $1$.\\n\\nIt is not the same as mass density: optical glasses of similar density can differ markedly in refractive index, and lens design depends on exactly that."
+      }
+    },
+    "tags": [
+      "physics-terms",
+      "refractive-index"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r14",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「电阻率」与「电阻」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "电阻率只用于绝缘体"
+      },
+      {
+        "id": "B",
+        "text": "电阻率是材料的属性，电阻还取决于导体的长度和横截面积"
+      },
+      {
+        "id": "C",
+        "text": "两者相同"
+      },
+      {
+        "id": "D",
+        "text": "电阻是材料属性，电阻率取决于形状"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "电阻率 $\\rho$ 由材料本身决定，与尺寸无关；电阻 $R = \\dfrac{\\rho L}{A}$ 还取决于长度与横截面积。\\n\\n因此两段铜丝电阻率相同而电阻可以相差很多——把导线拉长或加粗改变的是电阻，不是电阻率。",
+    "distractorRationale": {
+      "A": "导体同样有电阻率。",
+      "C": "一个与尺寸无关，一个与尺寸有关。",
+      "D": "恰好说反了。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 电阻率 (resistivity) and 电阻 (resistance) differ?",
+        "explanation": "Resistivity $\\rho$ is a property of the material alone, independent of size; resistance $R = \\dfrac{\\rho L}{A}$ also depends on length and cross-sectional area.\\n\\nTwo copper wires therefore share a resistivity while differing greatly in resistance. Stretching or thickening a wire changes its resistance, not its resistivity."
+      }
+    },
+    "tags": [
+      "physics-terms",
+      "resistivity"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r15",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「功」与「能」在物理中的关系是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "功是矢量，能是标量，其余相同"
+      },
+      {
+        "id": "B",
+        "text": "功只用于机械运动"
+      },
+      {
+        "id": "C",
+        "text": "功是能量转化的量度，能是物体所处状态的属性"
+      },
+      {
+        "id": "D",
+        "text": "两者是同一个量的不同名称"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "能量是物体所具有的属性，可以储存；功是能量从一种形式转化为另一种形式、或从一个物体转移到另一物体的量度，只在过程中出现。\\n\\n单位相同（焦耳）容易掩盖这一区别：说「物体具有 $10\\ \\text{J}$ 的动能」成立，说「物体具有 $10\\ \\text{J}$ 的功」则不成立。功和热量在这一点上同类——都是过程量。",
+    "distractorRationale": {
+      "A": "功和能都是标量。",
+      "B": "电功、热功同样是功。",
+      "D": "一为状态量，一为过程量。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How are 功 (work) and 能 (energy) related in physics?",
+        "explanation": "Energy is a property a body possesses and can store; work is the measure of energy being converted from one form to another, or transferred between bodies, and exists only during a process.\\n\\nSharing the joule as a unit hides this distinction. «The body has $10\\ \\text{J}$ of kinetic energy» is well formed; «the body has $10\\ \\text{J}$ of work» is not. In this respect work belongs with heat — both are quantities of process."
+      }
+    },
+    "tags": [
+      "physics-terms",
+      "work-energy"
+    ],
+    "estimatedTimeSec": 130,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r16",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Physics terminology 物理术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「密度」的定义式是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\rho = mV$"
+      },
+      {
+        "id": "B",
+        "text": "$\\rho = \\dfrac{V}{m}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\rho = \\dfrac{m}{A}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\rho = \\dfrac{m}{V}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "密度是单位体积的质量：$\\rho = \\dfrac{m}{V}$。\\n\\n它是物质的属性，与取多少无关——一滴水与一桶水的密度相同。$\\dfrac{m}{A}$ 是面密度，用于薄板，不是通常所说的密度。",
+    "distractorRationale": {
+      "A": "乘积没有物理意义。",
+      "B": "是比容，密度的倒数。",
+      "C": "是面密度，用于薄板。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the defining equation for 密度 (density)?",
+        "explanation": "Density is mass per unit volume: $\\rho = \\dfrac{m}{V}$.\\n\\nIt is a property of the substance and does not depend on how much is taken — a drop and a bucket of water share the same density. The expression $\\dfrac{m}{A}$ is areal density, used for thin sheets, not density in the ordinary sense."
+      }
+    },
+    "tags": [
+      "physics-terms",
+      "density"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r17",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「化合价」表示的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "一个原子在化合时得失或共用电子的数目"
+      },
+      {
+        "id": "B",
+        "text": "物质的质量分数"
+      },
+      {
+        "id": "C",
+        "text": "元素的相对原子质量"
+      },
+      {
+        "id": "D",
+        "text": "元素在周期表中的序号"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "化合价反映原子在形成化合物时得失电子或共用电子对的数目，有正负之分。\\n\\n它与原子序数、相对原子质量都无关：同一元素在不同化合物中可以有不同化合价，如硫在 $\\text{H}_2\\text{S}$ 中为 $-2$，在 $\\text{H}_2\\text{SO}_4$ 中为 $+6$。",
+    "distractorRationale": {
+      "B": "质量分数是组成比例。",
+      "C": "相对原子质量是另一个概念。",
+      "D": "周期表序号是原子序数。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 化合价 (valency / oxidation number) represent?",
+        "explanation": "It records how many electrons an atom loses, gains or shares when forming a compound, and carries a sign.\\n\\nIt is unrelated to atomic number or relative atomic mass: one element can take different values in different compounds — sulfur is $-2$ in $\\text{H}_2\\text{S}$ and $+6$ in $\\text{H}_2\\text{SO}_4$."
+      }
+    },
+    "tags": [
+      "chemistry-terms",
+      "valency"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r18",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「官能团」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "有机物的沸点"
+      },
+      {
+        "id": "B",
+        "text": "决定有机物化学特性的原子或原子团"
+      },
+      {
+        "id": "C",
+        "text": "分子的形状"
+      },
+      {
+        "id": "D",
+        "text": "碳原子的数目"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "官能团是决定一类有机物化学性质的原子或原子团，如羟基 $-\\text{OH}$、羧基 $-\\text{COOH}$。\\n\\n同一官能团意味着相似的化学性质——这正是有机化学能按类别学习而非逐个记忆的原因。",
+    "distractorRationale": {
+      "A": "沸点是物理性质。",
+      "C": "分子形状由成键方式决定。",
+      "D": "碳原子数决定同系物的位置，不是官能团。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is a 官能团 (functional group)?",
+        "explanation": "A functional group is the atom or group of atoms that governs the chemical behaviour of a class of organic compounds — the hydroxyl $-\\text{OH}$, the carboxyl $-\\text{COOH}$, and so on.\\n\\nSharing a functional group means sharing chemical behaviour, which is precisely why organic chemistry can be learned by class rather than compound by compound."
+      }
+    },
+    "tags": [
+      "chemistry-terms",
+      "functional-group"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r19",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「同分异构体」指的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "质子数相同中子数不同的原子"
+      },
+      {
+        "id": "B",
+        "text": "化学性质相同的化合物"
+      },
+      {
+        "id": "C",
+        "text": "分子式相同而结构不同的化合物"
+      },
+      {
+        "id": "D",
+        "text": "由同种元素组成的不同单质"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "同分异构体的分子式完全相同，原子的连接方式或空间排布不同，因而性质可以差别很大。\\n\\n须与两个相近术语分清：同种元素的不同单质叫同素异形体，质子数同而中子数不同的原子叫同位素。三个词只差一字，指的却是三件事。",
+    "distractorRationale": {
+      "A": "这是同位素。",
+      "B": "同分异构体的性质往往不同。",
+      "D": "这是同素异形体。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What are 同分异构体 (isomers)?",
+        "explanation": "Isomers share a molecular formula but differ in how the atoms are connected or arranged in space, so their properties can differ sharply.\\n\\nTwo neighbouring terms must be kept apart: different elemental forms of one element are 同素异形体 (allotropes), and atoms with equal protons but different neutrons are 同位素 (isotopes). One character apart, three different ideas."
+      }
+    },
+    "tags": [
+      "chemistry-terms",
+      "isomers"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r20",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「饱和溶液」的准确含义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "溶质与溶剂等量的溶液"
+      },
+      {
+        "id": "B",
+        "text": "溶液很浓"
+      },
+      {
+        "id": "C",
+        "text": "含有沉淀的溶液"
+      },
+      {
+        "id": "D",
+        "text": "在一定温度下不能再溶解该溶质的溶液"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "饱和是指在给定温度下溶质已达溶解上限，再加不溶。\\n\\n它与「浓」无关：氢氧化钙的饱和溶液其实很稀，因为其溶解度本就很小。判断是否饱和须指明温度，否则说法不完整。",
+    "distractorRationale": {
+      "A": "与二者的量之比无关。",
+      "B": "饱和与浓稀是两回事。",
+      "C": "有无沉淀取决于是否过量，不是定义。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does 饱和溶液 (saturated solution) precisely mean?",
+        "explanation": "Saturation means the solute has reached its dissolving limit at the stated temperature; adding more leaves undissolved solid.\\n\\nIt has nothing to do with being concentrated: a saturated solution of calcium hydroxide is in fact very dilute, because its solubility is low. Saturation is meaningless without naming a temperature."
+      }
+    },
+    "tags": [
+      "chemistry-terms",
+      "saturation"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r21",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「摩尔质量」的单位是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$\\text{g}/\\text{mol}$"
+      },
+      {
+        "id": "B",
+        "text": "$\\text{mol}$"
+      },
+      {
+        "id": "C",
+        "text": "$\\text{mol}/\\text{L}$"
+      },
+      {
+        "id": "D",
+        "text": "$\\text{g}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "摩尔质量是单位物质的量的质量，单位为 $\\text{g}/\\text{mol}$，数值上等于相对分子质量但**带单位**。\\n\\n相对分子质量是比值，没有单位；把两者混为一谈，会在计算中丢失或多出单位。",
+    "distractorRationale": {
+      "B": "摩尔是物质的量的单位。",
+      "C": "是物质的量浓度的单位。",
+      "D": "克是质量单位。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the unit of 摩尔质量 (molar mass)?",
+        "explanation": "Molar mass is mass per unit amount of substance, in $\\text{g}/\\text{mol}$. Numerically it equals the relative molecular mass, but it **carries a unit**.\\n\\nRelative molecular mass is a ratio and has none. Conflating the two makes units appear or vanish in a calculation."
+      }
+    },
+    "tags": [
+      "chemistry-terms",
+      "molar-mass"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r22",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「中和反应」的实质是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "酸与碱混合"
+      },
+      {
+        "id": "B",
+        "text": "氢离子与氢氧根离子结合生成水"
+      },
+      {
+        "id": "C",
+        "text": "放出气体"
+      },
+      {
+        "id": "D",
+        "text": "溶液变为中性"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "中和反应的实质是 $\\text{H}^+ + \\text{OH}^- \\rightarrow \\text{H}_2\\text{O}$。\\n\\n注意反应完成后溶液未必呈中性：强酸与弱碱恰好完全反应，所得盐会水解，溶液显酸性。「中和」说的是酸碱相互作用，不是最终 pH 等于 7。",
+    "distractorRationale": {
+      "A": "混合是现象，不是实质。",
+      "C": "中和反应通常不放气。",
+      "D": "完全反应后未必呈中性。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the essence of a 中和反应 (neutralisation reaction)?",
+        "explanation": "The underlying process is $\\text{H}^+ + \\text{OH}^- \\rightarrow \\text{H}_2\\text{O}$.\\n\\nNote that the resulting solution need not be neutral: a strong acid exactly neutralised by a weak base leaves a salt that hydrolyses, giving an acidic solution. «Neutralisation» names the acid-base interaction, not a final pH of 7."
+      }
+    },
+    "tags": [
+      "chemistry-terms",
+      "neutralisation"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r23",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「沉淀」一词在化学中既可作名词也可作动词，其名词义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "溶液变浑浊的现象"
+      },
+      {
+        "id": "B",
+        "text": "过滤所得的滤液"
+      },
+      {
+        "id": "C",
+        "text": "从溶液中析出的难溶固体"
+      },
+      {
+        "id": "D",
+        "text": "使固体析出的操作"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "作名词时，「沉淀」指从溶液中析出的难溶固体本身，如「生成白色沉淀」。\\n\\n作动词时指析出这一过程，如「使碳酸钙沉淀下来」。二者同形不同用，句中判断依据是它是否带宾语或受动词修饰。滤液是过滤后通过滤纸的液体，与沉淀恰好相反。",
+    "distractorRationale": {
+      "A": "浑浊是现象，沉淀是物质。",
+      "B": "滤液是通过滤纸的液体。",
+      "D": "这是动词义。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "As a noun, what does 沉淀 mean in chemistry?",
+        "explanation": "Used as a noun, 沉淀 is the insoluble solid that comes out of solution — «a white precipitate forms».\\n\\nUsed as a verb it names the process of coming out of solution. The same word serves both roles; whether it takes an object settles which is meant. The filtrate is the liquid that passes through the paper, the opposite of the precipitate."
+      }
+    },
+    "tags": [
+      "chemistry-terms",
+      "precipitate"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r24",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Academic Vocabulary 学术词汇",
+    "skill": "Chemistry terminology 化学术语",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「化学平衡常数」$K$ 的值只随什么改变",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "浓度"
+      },
+      {
+        "id": "B",
+        "text": "催化剂"
+      },
+      {
+        "id": "C",
+        "text": "压强"
+      },
+      {
+        "id": "D",
+        "text": "温度"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "平衡常数只是温度的函数。改变浓度或压强会使平衡移动，但各物质浓度重新调整后仍满足同一个 $K$ 值；催化剂同等加快正逆反应，更不改变 $K$。\\n\\n只有温度能改变 $K$ 本身——这正是「平衡移动」与「平衡常数改变」必须分清的原因。",
+    "distractorRationale": {
+      "A": "浓度改变使平衡移动，$K$ 不变。",
+      "B": "催化剂不改变平衡。",
+      "C": "压强改变同理。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "The equilibrium constant $K$ changes with which quantity alone?",
+        "explanation": "$K$ is a function of temperature only. Changing concentration or pressure shifts the position of equilibrium, but the concentrations rearrange until the same $K$ is satisfied; a catalyst speeds both directions equally and changes it still less.\\n\\nOnly temperature alters $K$ itself — which is why «the equilibrium shifted» and «the constant changed» must never be confused."
+      }
+    },
+    "tags": [
+      "chemistry-terms",
+      "equilibrium-constant"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r25",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「现象」与「图像」中的「象」与「像」，用法区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "「象」表示形态或迹象，「像」表示影像或相似"
+      },
+      {
+        "id": "B",
+        "text": "两字可通用"
+      },
+      {
+        "id": "C",
+        "text": "「像」用于抽象，「象」用于具体"
+      },
+      {
+        "id": "D",
+        "text": "「象」只指动物"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「象」指形态、征候，如现象、气象、印象；「像」指影像或相似，如图像、映像、好像。\n\n物理中「成像」「实像」「虚像」都用「像」，因为说的是光形成的影像；而「现象」说的是显露出来的情形，用「象」。",
+    "distractorRationale": {
+      "B": "两字用法有明确分工。",
+      "C": "与抽象具体无关。",
+      "D": "「象」不限于动物。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 象 and 像 differ in 现象 and 图像?",
+        "explanation": "象 denotes a form or an appearance in the sense of a sign — 现象, 气象, 印象. 像 denotes an image or a resemblance — 图像, 映像, 好像.\n\nIn physics 成像, 实像 and 虚像 all take 像, because they concern images formed by light; 现象 takes 象, because it concerns what shows itself."
+      }
+    },
+    "tags": [
+      "characters",
+      "word-choice"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r26",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「化合」与「和」中，「合」与「和」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两字通用"
+      },
+      {
+        "id": "B",
+        "text": "「合」表示结合、聚拢，「和」表示相加或平和"
+      },
+      {
+        "id": "C",
+        "text": "「合」只用于数学"
+      },
+      {
+        "id": "D",
+        "text": "「和」表示结合"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「合」意为合在一起，如化合、合成、闭合；「和」意为相加或调和，如总和、求和、温和。\n\n化学中「化合反应」是两种以上物质结合成一种，用「合」；数学中「求和」是相加，用「和」。写成「化和反应」是错字。",
+    "distractorRationale": {
+      "A": "两字意义不同。",
+      "C": "「合」在化学中同样常用。",
+      "D": "结合用「合」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 合 and 和 differ?",
+        "explanation": "合 means to join or close up — 化合, 合成, 闭合. 和 means to add or to be mild — 总和, 求和, 温和.\n\nIn chemistry 化合反应 is two or more substances joining into one, so it takes 合; in mathematics 求和 is addition, so it takes 和. Writing 化和反应 is simply an error."
+      }
+    },
+    "tags": [
+      "characters",
+      "word-choice"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r27",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "下列词语中没有错别字的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "治炼、坐标、道数"
+      },
+      {
+        "id": "B",
+        "text": "冶练、坐标、导数"
+      },
+      {
+        "id": "C",
+        "text": "冶炼、坐标、导数"
+      },
+      {
+        "id": "D",
+        "text": "冶炼、座标、倒数"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "正确写法为「冶炼」（炼从火，指熔炼金属）、「坐标」（不是座标）、「导数」（不是倒数）。\n\n「练」是练习，「治」是治理，「倒数」是 $\\dfrac{1}{x}$，与导数完全是两个概念——这三处都容易在书写中出错。",
+    "distractorRationale": {
+      "A": "「治炼」「道数」均为错字。",
+      "B": "「冶练」应为「冶炼」。",
+      "D": "「座标」应为「坐标」，「倒数」应为「导数」。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which group contains no character errors?",
+        "explanation": "The correct forms are 冶炼 (smelting, with the fire radical), 坐标 (coordinates, not 座标) and 导数 (derivative, not 倒数).\\n\\n练 means to practise, 治 to govern, and 倒数 is the reciprocal $\\dfrac{1}{x}$ — an entirely different concept from a derivative. All three are common slips."
+      }
+    },
+    "tags": [
+      "characters",
+      "proofreading"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r28",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「计量」与「计算」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "「计算」指量度"
+      },
+      {
+        "id": "B",
+        "text": "「计量」只用于商业"
+      },
+      {
+        "id": "C",
+        "text": "两词通用"
+      },
+      {
+        "id": "D",
+        "text": "「计量」指用单位量度，「计算」指数值运算"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「计量」指用标准单位量度某个物理量，如计量长度、计量单位；「计算」指进行数值运算，如计算面积。\n\n一个面向测量，一个面向运算：先计量得到数据，再计算得出结果。",
+    "distractorRationale": {
+      "A": "恰好说反了。",
+      "B": "科学中同样使用。",
+      "C": "两词侧重不同。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 计量 and 计算 differ?",
+        "explanation": "计量 means to measure a quantity against a standard unit — 计量长度, 计量单位. 计算 means to perform numerical operations — 计算面积.\n\nOne faces measurement, the other arithmetic: you measure first to obtain data, then calculate to obtain a result."
+      }
+    },
+    "tags": [
+      "characters",
+      "word-choice"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r29",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「圆」与「园」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "「圆」指圆形，「园」指园地"
+      },
+      {
+        "id": "B",
+        "text": "「园」指圆形"
+      },
+      {
+        "id": "C",
+        "text": "两字通用"
+      },
+      {
+        "id": "D",
+        "text": "「圆」只用于货币"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「圆」指圆形或圆满，如圆周、圆心、圆锥；「园」指种植或游乐的场地，如公园、花园、校园。\n\n数学中一律用「圆」：写成「园周率」是错字。",
+    "distractorRationale": {
+      "B": "恰好说反了。",
+      "C": "两字意义不同。",
+      "D": "「圆」在几何中最常用。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 圆 and 园 differ?",
+        "explanation": "圆 means round or complete — 圆周, 圆心, 圆锥. 园 means a plot of land for planting or recreation — 公园, 花园, 校园.\n\nMathematics always takes 圆: writing 园周率 for π is an error."
+      }
+    },
+    "tags": [
+      "characters",
+      "word-choice"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r30",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「零」与「〇」在科技写作中的用法区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两者完全通用"
+      },
+      {
+        "id": "B",
+        "text": "「零」多用于数量与词语，「〇」多用于编号中的数位"
+      },
+      {
+        "id": "C",
+        "text": "「零」只用于口语"
+      },
+      {
+        "id": "D",
+        "text": "「〇」不能用于正式文件"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "表示数量或构成词语时用「零」，如零点、零度、零件、归零；表示编号中的某一数位时用「〇」，如二〇二六年。\n\n二者不能互换：写「二零二六年」不合规范，写「〇度」也不合规范。",
+    "distractorRationale": {
+      "A": "用法有明确分工。",
+      "C": "「零」在书面语中同样常用。",
+      "D": "「〇」正是正式文件中年份的写法。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 零 and 〇 differ in technical writing?",
+        "explanation": "零 is used for quantities and in compound words — 零点, 零度, 零件, 归零. 〇 is used as a digit within a numeral, as in 二〇二六年.\n\nThey are not interchangeable: 二零二六年 is non-standard, and so is 〇度."
+      }
+    },
+    "tags": [
+      "characters",
+      "numerals"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r31",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Character recognition 汉字识别",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "「测定」与「测量」的区别是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两词通用"
+      },
+      {
+        "id": "B",
+        "text": "「测量」只用于化学"
+      },
+      {
+        "id": "C",
+        "text": "「测量」偏重量取数值，「测定」偏重通过实验确定某量的值"
+      },
+      {
+        "id": "D",
+        "text": "「测定」只用于长度"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「测量」指直接量取，如测量长度、测量温度；「测定」指通过一定方法或实验确定某量，往往含推算，如测定浓度、测定熔点。\n\n差别在于是否只需读数：读尺子是测量，滴定求浓度是测定。",
+    "distractorRationale": {
+      "A": "两词侧重不同。",
+      "B": "测量在物理化学中都用。",
+      "D": "测定不限于长度。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How do 测量 and 测定 differ?",
+        "explanation": "测量 means taking a reading directly — measuring a length or a temperature. 测定 means establishing a value through a method or experiment, often involving inference — determining a concentration or a melting point.\n\nThe distinction is whether reading a scale suffices: reading a ruler is 测量; finding a concentration by titration is 测定."
+      }
+    },
+    "tags": [
+      "characters",
+      "word-choice"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r32",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "实验数据____为一条直线，说明两个量之间是线性关系。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "展现"
+      },
+      {
+        "id": "B",
+        "text": "出现"
+      },
+      {
+        "id": "C",
+        "text": "表现"
+      },
+      {
+        "id": "D",
+        "text": "呈现"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「呈现」指显露出某种状态或形态，与「呈现为一条直线」搭配自然，是科技文中的常用说法。\n\n「出现」偏重从无到有，「表现」多指人或事物显示出的特点，「展现」偏重铺开展示，三者与「为一条直线」搭配都不自然。",
+    "distractorRationale": {
+      "A": "偏重铺开展示。",
+      "B": "偏重从无到有。",
+      "C": "多指显示出的特点。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «The data ___ as a straight line, showing a linear relationship»?",
+        "explanation": "呈现 means to display or take on a form, and 呈现为一条直线 is the natural collocation in technical writing.\n\n出现 stresses coming into being, 表现 the showing of a characteristic, and 展现 an unfolding display; none sits naturally before 为一条直线."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "collocation"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r33",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "两组数据的差异不____，尚不足以支持该结论。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "显著"
+      },
+      {
+        "id": "B",
+        "text": "巨大"
+      },
+      {
+        "id": "C",
+        "text": "明白"
+      },
+      {
+        "id": "D",
+        "text": "清楚"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「显著」在科技文中特指差异大到具有统计意义，与「不足以支持结论」的语境精确对应，是固定搭配。\n\n「明白」「清楚」形容易于理解，「巨大」只说大小而不含统计判断。",
+    "distractorRationale": {
+      "B": "只说大小，不含统计意义。",
+      "C": "形容易于理解。",
+      "D": "形容易于理解。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «The difference between the two data sets is not ___, so it does not yet support the conclusion»?",
+        "explanation": "显著 in technical writing specifically means large enough to be statistically meaningful, which is exactly what «does not yet support the conclusion» requires. It is the fixed collocation.\n\n明白 and 清楚 describe ease of understanding, and 巨大 states magnitude without any statistical judgement."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "statistics"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r34",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "随着时间推移，反应物浓度逐渐____零。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "等于"
+      },
+      {
+        "id": "B",
+        "text": "趋于"
+      },
+      {
+        "id": "C",
+        "text": "归于"
+      },
+      {
+        "id": "D",
+        "text": "属于"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "「趋于」指逐渐接近而未必达到，与「逐渐」呼应，正合渐近的含义。\n\n「等于」表示已经相等，与「逐渐」矛盾；「归于」多指最终归属，「属于」表示从属关系，都不合此处。",
+    "distractorRationale": {
+      "A": "表示已经相等，与「逐渐」矛盾。",
+      "C": "多指最终归属。",
+      "D": "表示从属关系。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «As time passes, the concentration of the reactant gradually ___ zero»?",
+        "explanation": "趋于 means to approach gradually without necessarily arriving, echoing 逐渐 and matching the asymptotic sense.\n\n等于 asserts equality already reached, contradicting «gradually»; 归于 suggests final attribution and 属于 membership, neither of which fits."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "asymptotic"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r35",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "该金属的密度____为 $2.7\\ \\text{g}/\\text{cm}^3$。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "才"
+      },
+      {
+        "id": "B",
+        "text": "仅"
+      },
+      {
+        "id": "C",
+        "text": "约"
+      },
+      {
+        "id": "D",
+        "text": "竟"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "「约为」表示近似值，是科技文中给出测量结果的标准说法。\n\n「竟」「才」「仅」都带有主观评价的语气——意外、嫌少——而实验数据的陈述应当中性。",
+    "distractorRationale": {
+      "A": "带「不过如此」的语气。",
+      "B": "带「只有」的评价。",
+      "D": "带惊讶语气。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «The density of the metal is ___ $2.7\\ \\text{g}/\\text{cm}^3$»?",
+        "explanation": "约为 marks an approximate value and is the standard way of reporting a measurement in technical writing.\\n\\n竟, 才 and 仅 all carry an evaluative tone — surprise, or a sense of too little — whereas the statement of experimental data should be neutral."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "register"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r36",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "甲、乙两瓶试剂____为盐酸和硫酸。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "依次"
+      },
+      {
+        "id": "B",
+        "text": "一同"
+      },
+      {
+        "id": "C",
+        "text": "各自"
+      },
+      {
+        "id": "D",
+        "text": "分别"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "「分别」用于把两个或多个对象与另一组一一对应，「甲、乙分别为盐酸和硫酸」意为甲是盐酸、乙是硫酸，对应关系明确。\n\n「依次」强调顺序先后，「各自」强调各归各的，「一同」表示共同——都不表达一一对应。",
+    "distractorRationale": {
+      "A": "强调先后顺序。",
+      "B": "表示共同，不表对应。",
+      "C": "强调各归各的，不表对应。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «Bottles A and B are ___ hydrochloric acid and sulfuric acid»?",
+        "explanation": "分别 sets up a one-to-one correspondence between two lists: A is the hydrochloric acid and B the sulfuric acid, unambiguously.\n\n依次 stresses sequence, 各自 stresses each having its own, and 一同 means together — none expresses the pairing."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "correspondence"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r37",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "在忽略空气阻力的____下，物体做自由落体运动。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "三个词在此均可"
+      },
+      {
+        "id": "B",
+        "text": "前提"
+      },
+      {
+        "id": "C",
+        "text": "条件"
+      },
+      {
+        "id": "D",
+        "text": "情况"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "「前提」「条件」「情况」在此句中都能与「忽略空气阻力」搭配，且都表示某种设定：前提强调作为推理起点，条件强调所需环境，情况强调所处状态。\n\n三者语义侧重不同，但在这一句中均可成立，因此正确的选项是「三个词在此均可」。",
+    "distractorRationale": {
+      "B": "可以成立，但并非唯一可用的词。",
+      "C": "可以成立，但并非唯一可用的词。",
+      "D": "可以成立，但并非唯一可用的词。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «___ that air resistance is neglected, the object undergoes free fall»?",
+        "explanation": "前提, 条件 and 情况 all collocate here and all mark a stipulation: 前提 stresses the starting point of an inference, 条件 the required circumstances, 情况 the state of affairs.\n\nEach is acceptable in this sentence, so the correct choice is that all three work."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "synonyms"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r38",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Vocabulary fill-in-the-blank 词语填空",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stem": "该方法操作简便，____对设备要求较高。填入最恰当的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "而且"
+      },
+      {
+        "id": "B",
+        "text": "但"
+      },
+      {
+        "id": "C",
+        "text": "因此"
+      },
+      {
+        "id": "D",
+        "text": "并"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "前半句说优点，后半句说不足，是转折关系，用「但」。\n\n「并」「而且」表示并列或递进，会把不足读成又一个优点；「因此」表示因果，操作简便并不导致设备要求高。",
+    "distractorRationale": {
+      "A": "表示递进。",
+      "C": "表示因果，此处不成立。",
+      "D": "表示并列。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which word best fills the blank: «The method is simple to carry out, ___ it demands sophisticated equipment»?",
+        "explanation": "The first clause states an advantage and the second a drawback, so the relation is contrastive: 但.\n\n并 and 而且 signal addition or escalation, which would read the drawback as another advantage; 因此 signals cause, but being simple does not cause the equipment demand."
+      }
+    },
+    "tags": [
+      "vocabulary",
+      "conjunctions"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r39",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "汗液并非纯水。除水以外，它还带走钠、钾、氯等电解质，而这些离子对维持体液平衡与神经传导不可缺少。运动强度越大、时间越长，随汗液流失的电解质就越多。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此人体不需要摄入盐分。"
+      },
+      {
+        "id": "B",
+        "text": "所以运动时应尽量避免出汗。"
+      },
+      {
+        "id": "C",
+        "text": "这就是长时间大量出汗后仅补充清水并不足够的原因。"
+      },
+      {
+        "id": "D",
+        "text": "可见汗液的成分与血液相同。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "前文说明汗液中除水外还含有钠、钾等电解质。横线处应承接这一事实得出实际结论：只补水而不补电解质，会使体内电解质浓度进一步失衡。\n\n其余三项或与前文相反，或作出前文未支持的断言。",
+    "distractorRationale": {
+      "A": "与前文所述电解质流失矛盾。",
+      "B": "出汗是散热所需，前文未主张避免。",
+      "D": "前文未作此比较，且并不成立。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The passage explains that sweat carries sodium and potassium as well as water. The blank should draw the practical consequence: replacing water alone leaves the electrolyte balance further disturbed.\n\nThe other options either contradict the passage or assert what it does not support."
+      }
+    },
+    "tags": [
+      "paragraph-completion"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r40",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "金属构件在远低于其强度极限的载荷下反复受力，经过成千上万次循环后仍可能突然断裂。这种现象称为疲劳。断口往往光滑而无明显变形，事先几乎看不出预兆。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "因此金属疲劳无法预防。"
+      },
+      {
+        "id": "B",
+        "text": "所以应尽量选用密度小的材料。"
+      },
+      {
+        "id": "C",
+        "text": "可见只要载荷不超过强度极限，构件就一定安全。"
+      },
+      {
+        "id": "D",
+        "text": "因此设计时不能只看材料能承受多大的力，还要看它要承受多少次。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "前文指出：远低于强度极限的反复载荷也会使金属最终断裂。这直接否定了「只看能承受多大力」的设计思路，转而要求考虑循环次数。\n\n选项 C 恰是前文所要推翻的推论；说「无法预防」则把困难说成绝境。",
+    "distractorRationale": {
+      "A": "把困难说成绝境，前文未如此断言。",
+      "B": "密度与疲劳无直接关系。",
+      "C": "正是前文所要推翻的推论。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The passage states that repeated loads far below the strength limit still lead to fracture. That directly undermines designing by maximum load alone and calls for counting cycles instead.\n\nOption C is precisely the inference the passage blocks, and «cannot be prevented» turns a difficulty into an impasse."
+      }
+    },
+    "tags": [
+      "paragraph-completion"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r41",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "抗生素杀死对它敏感的细菌，却留下少数原本就带有耐药变异的个体。这些个体失去了竞争者，得以大量繁殖，其后代中耐药者的比例随之升高。用药越频繁，这一筛选过程重复得越多。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "这说明抗生素的效力会随使用而被逐步削弱。"
+      },
+      {
+        "id": "B",
+        "text": "所以细菌能够主动改变自身基因。"
+      },
+      {
+        "id": "C",
+        "text": "可见应当加大剂量以彻底杀灭。"
+      },
+      {
+        "id": "D",
+        "text": "因此所有细菌都对抗生素免疫。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "前文说明：抗生素杀死敏感菌，留下少数耐药菌繁殖，其后代耐药比例上升。这正是效力随使用而下降的机制。\n\n「主动改变基因」是常见误解——变异先随机发生，抗生素只起筛选作用，并非诱导细菌产生耐药性。",
+    "distractorRationale": {
+      "B": "变异随机发生，抗生素只作筛选。",
+      "C": "加大剂量不解决筛选带来的耐药扩散。",
+      "D": "过于绝对，前文未如此断言。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The passage explains that an antibiotic kills the susceptible bacteria and leaves the few resistant ones to multiply, so the resistant proportion rises. That is exactly how effectiveness declines with use.\n\n«Bacteria actively change their genes» is the common misreading: the mutations arise at random beforehand, and the antibiotic merely selects among them."
+      }
+    },
+    "tags": [
+      "paragraph-completion"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r42",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "距地面数百公里的低轨道并非真空。那里仍有极其稀薄的大气，密度虽只有海平面的万亿分之一，长期作用下产生的阻力却足以让卫星的轨道一点点降低。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "所以太空中不存在阻力。"
+      },
+      {
+        "id": "B",
+        "text": "可见低轨卫星寿命有限，需要不断补充或提升轨道。"
+      },
+      {
+        "id": "C",
+        "text": "因此卫星轨道越高越好。"
+      },
+      {
+        "id": "D",
+        "text": "因此卫星不需要携带燃料。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "前文指出：低轨道仍有稀薄大气，持续的阻力使轨道缓慢降低。由此可知卫星寿命有限，须补充或抬升轨道。\n\n「轨道越高越好」忽略了发射成本与通信延迟，前文并未支持这一取舍判断。",
+    "distractorRationale": {
+      "A": "与前文所述稀薄大气矛盾。",
+      "C": "忽略了发射成本与通信延迟，前文未讨论。",
+      "D": "恰恰相反，抬升轨道正需要燃料。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The passage notes that a thin atmosphere persists in low orbit and its steady drag lowers the orbit. It follows that such satellites have a limited life and must be replaced or boosted.\n\n«The higher the better» ignores launch cost and signal delay, a trade-off the passage never addresses."
+      }
+    },
+    "tags": [
+      "paragraph-completion"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r43",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "同一根金属棒被同一把卡尺测量五次，读数分别为 $12.33$、$12.34$、$12.33$、$12.35$、$12.34$ 毫米，彼此高度一致。然而用已校准的标准量块核对后发现，这把卡尺的零点偏移了 $0.30$ 毫米。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "可见仪器精度越高，结果越接近真值。"
+      },
+      {
+        "id": "B",
+        "text": "所以应当只做一次测量。"
+      },
+      {
+        "id": "C",
+        "text": "精密与准确是两回事：数据可以非常一致，却一致地偏离真值。"
+      },
+      {
+        "id": "D",
+        "text": "因此这项测量毫无价值。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "前文描述的正是这种情形：五次测量彼此差异极小（精密度高），却都比真值大 $0.3$（准确度低）。这源于系统误差，重复测量无法消除。\n\n提高仪器精度只能改善精密度；要改善准确度必须校准或换用方法——把两者混为一谈是测量中最常见的误解。",
+    "distractorRationale": {
+      "A": "精度高不保证准确，这正是前文所示。",
+      "B": "减少测量次数只会削弱精密度。",
+      "D": "数据仍可用，只需校正系统误差。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The passage describes exactly this case: five readings agreeing closely with one another (high precision) yet all exceeding the true value by $0.3$ (low accuracy). That is systematic error, and repetition cannot remove it.\\n\\nA more precise instrument improves precision only; improving accuracy requires calibration or a different method. Conflating the two is the commonest misunderstanding in measurement."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "measurement"
+    ],
+    "estimatedTimeSec": 135,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r44",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Language Use 语言运用",
+    "skill": "Paragraph completion 语段补全",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "把物体看作质点，就是忽略它的形状和大小，只保留质量与位置。现实中没有任何物体真的是一个点，但正是这一显然不逼真的简化，使牛顿定律得以用最清晰的形式写出并被验证。________"
+    },
+    "stem": "填入横线处最恰当的一句是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "所以物理学无法描述真实世界。"
+      },
+      {
+        "id": "B",
+        "text": "因此模型越复杂越好。"
+      },
+      {
+        "id": "C",
+        "text": "可见简化必然导致错误。"
+      },
+      {
+        "id": "D",
+        "text": "一个有用的模型不在于逼真，而在于其简化是否保留了所研究问题的关键因素。"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "前文以质点为例：忽略形状与大小显然不逼真，却使运动规律得以清晰呈现。横线处应把这一点提升为一般原则。\n\n关键在「所研究的问题」：研究行星公转时把地球当质点是恰当的，研究地球自转时则不然。同一简化的好坏取决于问题本身。",
+    "distractorRationale": {
+      "A": "过于极端，前文未如此断言。",
+      "B": "与前文所示的简化价值相反。",
+      "C": "前文正说明恰当的简化并不导致错误。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which sentence best completes the blank?",
+        "explanation": "The passage uses the point mass: ignoring shape and size is plainly unrealistic, yet it lets the laws of motion emerge clearly. The blank should raise that into a general principle.\n\nThe decisive phrase is «the problem under study»: treating the Earth as a point is apt for its orbit and inept for its rotation. The same simplification is good or bad according to the question asked."
+      }
+    },
+    "tags": [
+      "paragraph-completion",
+      "modelling"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r45",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "用托盘天平称量固体药品时，先将游码归零并调节平衡螺母，使指针指向分度盘中央。称量时药品放在左盘，砝码放在右盘，遵循「左物右码」。取用砝码必须用镊子，不得用手直接接触。称量完毕后，砝码放回盒中，游码归零。"
+    },
+    "stem": "根据操作说明，称量时药品与砝码的位置是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "药品放左盘，砝码放右盘"
+      },
+      {
+        "id": "B",
+        "text": "药品放右盘，砝码放左盘"
+      },
+      {
+        "id": "C",
+        "text": "二者放同一盘"
+      },
+      {
+        "id": "D",
+        "text": "可以随意放置"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "说明中写明「左物右码」：药品放在左盘，砝码放在右盘。\n\n位置颠倒会使读数出错——当使用游码时，正确质量为砝码加游码，颠倒后则须用砝码减游码，极易算错。",
+    "distractorRationale": {
+      "B": "与「左物右码」相反。",
+      "C": "两者必须分置两盘。",
+      "D": "位置颠倒会导致读数出错。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the procedure, where do the sample and the weights go?",
+        "explanation": "The text states the rule 左物右码: the sample on the left pan and the weights on the right.\n\nReversing them corrupts the reading. With the rider in use, the correct mass is weights plus rider; reversed, it becomes weights minus rider — an easy mistake to make."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "balance"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r46",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "用托盘天平称量固体药品时，先将游码归零并调节平衡螺母，使指针指向分度盘中央。称量时药品放在左盘，砝码放在右盘，遵循「左物右码」。取用砝码必须用镊子，不得用手直接接触。称量完毕后，砝码放回盒中，游码归零。"
+    },
+    "stem": "根据操作说明，取用砝码必须使用",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "玻璃棒"
+      },
+      {
+        "id": "B",
+        "text": "镊子"
+      },
+      {
+        "id": "C",
+        "text": "药匙"
+      },
+      {
+        "id": "D",
+        "text": "手指"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "说明中明确要求用镊子取用砝码，不得用手直接接触。\n\n手上的油脂与汗液会附着在砝码表面，日积月累改变其质量，使这套砝码此后的每一次称量都带上误差。",
+    "distractorRationale": {
+      "A": "玻璃棒用于搅拌和引流。",
+      "C": "药匙用于取用药品。",
+      "D": "说明明确禁止用手直接接触。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the procedure, what must be used to handle the weights?",
+        "explanation": "The text requires tweezers and forbids touching the weights by hand.\n\nOils and perspiration from the fingers adhere to the surface and, over time, alter the mass — putting an error into every subsequent weighing made with that set."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "balance"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r47",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "用托盘天平称量固体药品时，先将游码归零并调节平衡螺母，使指针指向分度盘中央。称量时药品放在左盘，砝码放在右盘，遵循「左物右码」。取用砝码必须用镊子，不得用手直接接触。称量完毕后，砝码放回盒中，游码归零。"
+    },
+    "stem": "根据操作说明，称量前将游码归零并调节平衡螺母的目的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "延长天平寿命"
+      },
+      {
+        "id": "B",
+        "text": "便于搬动天平"
+      },
+      {
+        "id": "C",
+        "text": "使天平在无载荷时保持平衡，确保读数以零为起点"
+      },
+      {
+        "id": "D",
+        "text": "使天平更美观"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "天平测的是差值，只有在空载时指针居中，之后的读数才代表药品本身的质量。\n\n若空载时已偏向一侧，这一偏差会原样叠加到每一次称量结果上——属于系统误差，重复称量无法消除。",
+    "distractorRationale": {
+      "A": "与寿命无关。",
+      "B": "与搬动无关。",
+      "D": "与外观无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why is the rider set to zero and the balance adjusted before weighing?",
+        "explanation": "A balance measures a difference. Only if the pointer sits centred with no load does a later reading represent the mass of the sample itself.\n\nAn off-centre starting point adds the same offset to every weighing — a systematic error that repetition cannot remove."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "zeroing"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r48",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "用托盘天平称量固体药品时，先将游码归零并调节平衡螺母，使指针指向分度盘中央。称量时药品放在左盘，砝码放在右盘，遵循「左物右码」。取用砝码必须用镊子，不得用手直接接触。称量完毕后，砝码放回盒中，游码归零。"
+    },
+    "stem": "根据操作说明，称量完毕后砝码放回盒中、游码归零，主要是为了",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "节省空间"
+      },
+      {
+        "id": "B",
+        "text": "便于清点数量"
+      },
+      {
+        "id": "C",
+        "text": "防止砝码生锈"
+      },
+      {
+        "id": "D",
+        "text": "让下一位使用者从确定的初始状态开始"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "把仪器恢复到确定的初始状态，是实验室共用器材的基本要求：下一位使用者才能相信自己看到的零点确实是零点。\n\n若游码留在中途而使用者未察觉，其称量结果将全部偏大，且这种错误极难在事后发现。",
+    "distractorRationale": {
+      "A": "空间不是主要考虑。",
+      "B": "清点并非主要目的。",
+      "C": "归零与生锈无关。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why are the weights returned to the box and the rider reset after weighing?",
+        "explanation": "Restoring an instrument to a known starting state is basic practice for shared apparatus: the next user must be able to trust that the zero they see really is zero.\n\nA rider left partway along, unnoticed, makes every subsequent weighing read high — an error that is very hard to detect afterwards."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "good-practice"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r49",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "用量筒量取液体时，量筒应放在水平桌面上，视线与量筒内液体凹液面的最低处保持水平。仰视会使读数偏小而实际量取偏多，俯视则相反。量筒不能用于加热，也不能用作反应容器。"
+    },
+    "stem": "根据操作说明，读取量筒读数时视线应",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "与凹液面最低处保持水平"
+      },
+      {
+        "id": "B",
+        "text": "从上方俯视"
+      },
+      {
+        "id": "C",
+        "text": "任意角度均可"
+      },
+      {
+        "id": "D",
+        "text": "从下方仰视"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "说明中写明：视线与量筒内液体凹液面的最低处保持水平。\n\n这样做消除的是视差——同一液面从不同角度看会落在刻度的不同位置。",
+    "distractorRationale": {
+      "B": "俯视会使读数偏大。",
+      "C": "角度直接影响读数。",
+      "D": "仰视会使读数偏小。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the procedure, how should the eye be positioned when reading a measuring cylinder?",
+        "explanation": "The text states it: level with the lowest point of the meniscus.\n\nThis removes parallax — the same liquid surface appears against different graduations when viewed from different angles."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "parallax"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r50",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "用量筒量取液体时，量筒应放在水平桌面上，视线与量筒内液体凹液面的最低处保持水平。仰视会使读数偏小而实际量取偏多，俯视则相反。量筒不能用于加热，也不能用作反应容器。"
+    },
+    "stem": "根据操作说明，若量取液体时仰视读数，实际量取的体积将",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "偏少"
+      },
+      {
+        "id": "B",
+        "text": "偏多"
+      },
+      {
+        "id": "C",
+        "text": "不受影响"
+      },
+      {
+        "id": "D",
+        "text": "无法判断"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "说明中直接给出：仰视会使读数偏小而实际量取偏多。\n\n道理在于视线自下而上时，与刻度的交点低于真实液面，操作者以为还没到刻度而继续加液，结果超过了目标体积。",
+    "distractorRationale": {
+      "A": "读数偏小，量取反而偏多。",
+      "C": "视线角度直接影响。",
+      "D": "说明中已明确给出方向。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the procedure, if the eye is below the meniscus, the volume actually measured out will be",
+        "explanation": "The text says it directly: reading from below gives a value that is too low and a volume that is too large.\n\nThe reason is that a line of sight from below meets the scale beneath the true surface, so the operator believes the mark has not yet been reached and keeps adding liquid past the target."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "error-direction"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r51",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "用量筒量取液体时，量筒应放在水平桌面上，视线与量筒内液体凹液面的最低处保持水平。仰视会使读数偏小而实际量取偏多，俯视则相反。量筒不能用于加热，也不能用作反应容器。"
+    },
+    "stem": "根据操作说明，量筒不能用于",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "量取液体"
+      },
+      {
+        "id": "B",
+        "text": "放在水平桌面上"
+      },
+      {
+        "id": "C",
+        "text": "加热和作反应容器"
+      },
+      {
+        "id": "D",
+        "text": "读取体积"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "说明中明确指出：量筒不能用于加热，也不能用作反应容器。\n\n量筒壁薄且刻度由厂家在特定温度下标定，受热会因膨胀而失准，甚至炸裂。它是量器，不是容器。",
+    "distractorRationale": {
+      "A": "这正是量筒的用途。",
+      "B": "说明要求放在水平桌面上。",
+      "D": "这正是量筒的用途。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the procedure, what must a measuring cylinder not be used for?",
+        "explanation": "The text states it: not for heating and not as a reaction vessel.\n\nIts walls are thin and its graduations were calibrated at a particular temperature; heating distorts the readings through expansion and may crack it. It is a measuring device, not a container."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "apparatus-limits"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r52",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "用量筒量取液体时，量筒应放在水平桌面上，视线与量筒内液体凹液面的最低处保持水平。仰视会使读数偏小而实际量取偏多，俯视则相反。量筒不能用于加热，也不能用作反应容器。"
+    },
+    "stem": "根据操作说明，量筒应放在水平桌面上再读数，原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "防止量筒滑落"
+      },
+      {
+        "id": "B",
+        "text": "使液体混合均匀"
+      },
+      {
+        "id": "C",
+        "text": "便于加热"
+      },
+      {
+        "id": "D",
+        "text": "倾斜时液面与刻度的相对位置改变，读数不再准确"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "刻度是按量筒竖直放置标定的。一旦倾斜，液面仍保持水平而量筒歪斜，二者的相对位置随之改变，读数便失去依据。\n\n防止滑落固然是好习惯，但那是安全考虑，不是说明中要求水平放置的理由。",
+    "distractorRationale": {
+      "A": "是安全考虑，不是读数准确性的理由。",
+      "B": "混合不靠放置方式。",
+      "C": "量筒本就不能加热。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why must the cylinder rest on a level bench before reading?",
+        "explanation": "The graduations were calibrated with the cylinder upright. Tilt it and the liquid surface stays horizontal while the cylinder does not, so the relation between surface and scale changes and the reading loses its basis.\n\nPreventing a fall is good practice, but that is a safety matter, not the reason the text gives."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "calibration"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r53",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "加热试管中的液体时，液体体积不超过试管容积的三分之一，试管与桌面约成 45 度角。先在酒精灯火焰上来回移动试管使其均匀受热，再固定在液体的中下部加热。使用酒精灯必须用火柴点燃，绝不可用一盏酒精灯去引燃另一盏；熄灭时用灯帽盖灭，不可用嘴吹。"
+    },
+    "stem": "根据操作说明，加热试管中的液体时，液体体积不应超过试管容积的",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "三分之一"
+      },
+      {
+        "id": "B",
+        "text": "三分之二"
+      },
+      {
+        "id": "C",
+        "text": "四分之三"
+      },
+      {
+        "id": "D",
+        "text": "二分之一"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "说明中给出的限度是三分之一。\n\n留出足够空间是因为液体受热可能突沸，装得过满时冲出的液体会从管口喷出伤人。",
+    "distractorRationale": {
+      "B": "远超限度。",
+      "C": "远超限度。",
+      "D": "超过说明给出的限度。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the procedure, liquid being heated in a test tube should not exceed what fraction of the tube?",
+        "explanation": "The text gives the limit as one third.\n\nThe space above matters because heated liquid can boil abruptly; a tube filled too full ejects its contents from the mouth."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "heating"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r54",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "加热试管中的液体时，液体体积不超过试管容积的三分之一，试管与桌面约成 45 度角。先在酒精灯火焰上来回移动试管使其均匀受热，再固定在液体的中下部加热。使用酒精灯必须用火柴点燃，绝不可用一盏酒精灯去引燃另一盏；熄灭时用灯帽盖灭，不可用嘴吹。"
+    },
+    "stem": "根据操作说明，先来回移动试管再固定加热，目的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "节省燃料"
+      },
+      {
+        "id": "B",
+        "text": "使试管均匀受热，避免局部过热而炸裂"
+      },
+      {
+        "id": "C",
+        "text": "加快加热速度"
+      },
+      {
+        "id": "D",
+        "text": "使液体混合"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "玻璃导热差，若一开始就集中加热一处，该处急剧膨胀而周围仍冷，应力集中便可能使试管炸裂。\n\n先来回移动使整支试管温度接近，再固定加热就安全得多。这是预热的意义所在。",
+    "distractorRationale": {
+      "A": "与燃料消耗无关。",
+      "C": "预热本身并不加快。",
+      "D": "混合靠振荡。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why is the tube moved back and forth before heating one spot?",
+        "explanation": "Glass conducts heat poorly. Concentrating the flame on one spot from the start makes that spot expand sharply while the surrounding glass stays cold, and the resulting stress can crack the tube.\n\nMoving it first brings the whole tube to a similar temperature, after which fixed heating is far safer. That is what pre-heating is for."
+      }
+    },
+    "tags": [
+      "lab-procedure",
+      "preheating"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r55",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "加热试管中的液体时，液体体积不超过试管容积的三分之一，试管与桌面约成 45 度角。先在酒精灯火焰上来回移动试管使其均匀受热，再固定在液体的中下部加热。使用酒精灯必须用火柴点燃，绝不可用一盏酒精灯去引燃另一盏；熄灭时用灯帽盖灭，不可用嘴吹。"
+    },
+    "stem": "根据操作说明，熄灭酒精灯的正确方法是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "任其自然熄灭"
+      },
+      {
+        "id": "B",
+        "text": "用水浇灭"
+      },
+      {
+        "id": "C",
+        "text": "用灯帽盖灭"
+      },
+      {
+        "id": "D",
+        "text": "用嘴吹灭"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "说明中明确要求用灯帽盖灭，不可用嘴吹。\n\n吹灭时气流可能把火焰压入灯内，点燃灯壶中的酒精蒸气而引起爆燃。盖灭则是隔绝氧气，安全且不留隐患。",
+    "distractorRationale": {
+      "A": "敞口酒精灯不应任其燃烧。",
+      "B": "水会使酒精扩散，情况更糟。",
+      "D": "说明明确禁止，且有引燃灯内蒸气的危险。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the procedure, how is a spirit lamp correctly extinguished?",
+        "explanation": "The text requires the cap, and forbids blowing.\n\nBlowing can drive the flame down into the lamp and ignite the alcohol vapour inside, causing a flash. Capping cuts off the oxygen instead — safe, and leaving nothing smouldering."
+      }
+    },
+    "tags": [
+      "lab-safety",
+      "spirit-lamp"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r56",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Lab operation texts 实验操作",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "加热试管中的液体时，液体体积不超过试管容积的三分之一，试管与桌面约成 45 度角。先在酒精灯火焰上来回移动试管使其均匀受热，再固定在液体的中下部加热。使用酒精灯必须用火柴点燃，绝不可用一盏酒精灯去引燃另一盏；熄灭时用灯帽盖灭，不可用嘴吹。"
+    },
+    "stem": "根据操作说明，禁止用一盏酒精灯引燃另一盏，最主要的危险是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "灯芯会变短"
+      },
+      {
+        "id": "B",
+        "text": "火焰温度不够"
+      },
+      {
+        "id": "C",
+        "text": "浪费酒精"
+      },
+      {
+        "id": "D",
+        "text": "倾斜时灯内酒精可能流出并被点燃"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "引燃时必须把一盏灯倾斜靠近另一盏，灯内酒精便可能从口部溢出。溢出的液体一遇火焰即被点燃，火沿液流回到灯内，后果严重。\n\n正确做法是用火柴——多花两秒，换掉一整类事故。",
+    "distractorRationale": {
+      "A": "灯芯长短与此无关。",
+      "B": "火焰温度足够。",
+      "C": "浪费不是主要危险。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What is the main danger in lighting one spirit lamp from another?",
+        "explanation": "Doing so requires tilting one lamp towards the other, and alcohol can then run out of the mouth. Spilt liquid meeting a flame ignites at once, and the fire follows the stream back into the lamp.\n\nA match takes two seconds longer and removes the whole class of accident."
+      }
+    },
+    "tags": [
+      "lab-safety",
+      "spirit-lamp"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r57",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "E",
+    "irtB": -0.6,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为某地五年间生活垃圾处理方式的构成（单位：万吨）。\n\n| 年份 | 填埋 | 焚烧 | 回收 | 合计 |\n|---|---|---|---|---|\n| 2021 | 120 | 40 | 20 | 180 |\n| 2022 | 108 | 56 | 26 | 190 |\n| 2023 | 92 | 74 | 34 | 200 |\n| 2024 | 75 | 90 | 45 | 210 |\n| 2025 | 60 | 105 | 55 | 220 |"
+    },
+    "stem": "根据表格，2025 年填埋量比 2021 年减少了",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "60 万吨"
+      },
+      {
+        "id": "B",
+        "text": "105 万吨"
+      },
+      {
+        "id": "C",
+        "text": "50 万吨"
+      },
+      {
+        "id": "D",
+        "text": "45 万吨"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "$120 - 60 = 60$ 万吨。\\n\\n直接读取首末两年的填埋量相减即可。",
+    "distractorRationale": {
+      "B": "这是 2025 年的焚烧量。",
+      "C": "计算有误。",
+      "D": "混入了其他行的数据。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "By how much did landfill volume fall from 2021 to 2025?",
+        "explanation": "$120 - 60 = 60$ ten-thousand tonnes.\\n\\nRead the first and last landfill figures and subtract."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "subtraction"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r58",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为某地五年间生活垃圾处理方式的构成（单位：万吨）。\n\n| 年份 | 填埋 | 焚烧 | 回收 | 合计 |\n|---|---|---|---|---|\n| 2021 | 120 | 40 | 20 | 180 |\n| 2022 | 108 | 56 | 26 | 190 |\n| 2023 | 92 | 74 | 34 | 200 |\n| 2024 | 75 | 90 | 45 | 210 |\n| 2025 | 60 | 105 | 55 | 220 |"
+    },
+    "stem": "根据表格，回收量首次超过 40 万吨是在",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2023 年"
+      },
+      {
+        "id": "B",
+        "text": "2024 年"
+      },
+      {
+        "id": "C",
+        "text": "2022 年"
+      },
+      {
+        "id": "D",
+        "text": "2025 年"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "回收量依次为 20、26、34、45、55。首个大于 40 的是 2024 年的 45。\n\n2023 年的 34 尚未达到 40。",
+    "distractorRationale": {
+      "A": "2023 年为 34，未超过 40。",
+      "C": "2022 年仅 26。",
+      "D": "2025 年确实超过，但不是首次。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "In which year did the recycled volume first exceed 400 000 tonnes?",
+        "explanation": "The recycled column reads 20, 26, 34, 45, 55. The first value above 40 is 45, in 2024.\n\nThe 2023 figure of 34 has not yet reached 40."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "threshold"
+    ],
+    "estimatedTimeSec": 90,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r59",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为某地五年间生活垃圾处理方式的构成（单位：万吨）。\n\n| 年份 | 填埋 | 焚烧 | 回收 | 合计 |\n|---|---|---|---|---|\n| 2021 | 120 | 40 | 20 | 180 |\n| 2022 | 108 | 56 | 26 | 190 |\n| 2023 | 92 | 74 | 34 | 200 |\n| 2024 | 75 | 90 | 45 | 210 |\n| 2025 | 60 | 105 | 55 | 220 |"
+    },
+    "stem": "根据表格，2025 年焚烧量占垃圾总量的比例约为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$41.2\\%$"
+      },
+      {
+        "id": "B",
+        "text": "$52.4\\%$"
+      },
+      {
+        "id": "C",
+        "text": "$47.7\\%$"
+      },
+      {
+        "id": "D",
+        "text": "$27.3\\%$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "$\\dfrac{105}{220} \\approx 0.477$，即约 $47.7\\%$。\\n\\n分母须用合计 220，而非填埋与焚烧之和。",
+    "distractorRationale": {
+      "A": "计算有误。",
+      "B": "分母误用 200。",
+      "D": "这是填埋所占比例。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Roughly what proportion of the 2025 total was incinerated?",
+        "explanation": "$\\dfrac{105}{220} \\approx 0.477$, about $47.7\\%$.\\n\\nThe denominator must be the total of 220, not the sum of landfill and incineration alone."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "proportion"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r60",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为某地五年间生活垃圾处理方式的构成（单位：万吨）。\n\n| 年份 | 填埋 | 焚烧 | 回收 | 合计 |\n|---|---|---|---|---|\n| 2021 | 120 | 40 | 20 | 180 |\n| 2022 | 108 | 56 | 26 | 190 |\n| 2023 | 92 | 74 | 34 | 200 |\n| 2024 | 75 | 90 | 45 | 210 |\n| 2025 | 60 | 105 | 55 | 220 |"
+    },
+    "stem": "根据表格，下列说法中数据不支持的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "填埋量逐年减少"
+      },
+      {
+        "id": "B",
+        "text": "焚烧量逐年增加"
+      },
+      {
+        "id": "C",
+        "text": "垃圾总量逐年增加"
+      },
+      {
+        "id": "D",
+        "text": "焚烧量的年增长率逐年提高"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "焚烧量的年增幅依次为 $16$、$18$、$16$、$15$，增长率分别约为 $40\\%$、$32\\%$、$22\\%$、$17\\%$，实际是逐年**下降**的。\\n\\n其余三项与表中数据一致：总量 180 至 220 递增，填埋 120 至 60 递减，焚烧 40 至 105 递增。绝对量在增加而增长率在下降，是这类数据最容易被误读之处。",
+    "distractorRationale": {
+      "A": "填埋由 120 降至 60，符合。",
+      "B": "焚烧由 40 增至 105，符合。",
+      "C": "总量由 180 增至 220，符合。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which statement is NOT supported by the table?",
+        "explanation": "The year-on-year increases in incineration are $16$, $18$, $16$, $15$, giving growth rates of roughly $40\\%$, $32\\%$, $22\\%$ and $17\\%$ — **falling**, not rising.\\n\\nThe other three match the table: totals rise from 180 to 220, landfill falls from 120 to 60, incineration rises from 40 to 105. A quantity growing in absolute terms while its growth rate declines is the classic misreading here."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "growth-rate"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r61",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为四种材料的物理性质对比。\n\n| 材料 | 密度 $(\\text{g}/\\text{cm}^3)$ | 熔点 $(^\\circ\\text{C})$ | 导电性 | 抗腐蚀 |\n|---|---|---|---|---|\n| 甲 | 2.7 | 660 | 优 | 中 |\n| 乙 | 7.9 | 1538 | 良 | 差 |\n| 丙 | 8.9 | 1085 | 优 | 良 |\n| 丁 | 4.5 | 1668 | 差 | 优 |"
+    },
+    "stem": "根据表格，密度最小的材料是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "甲"
+      },
+      {
+        "id": "B",
+        "text": "乙"
+      },
+      {
+        "id": "C",
+        "text": "丙"
+      },
+      {
+        "id": "D",
+        "text": "丁"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "甲的密度为 $2.7\\ \\text{g}/\\text{cm}^3$，是四者中最小的。\\n\\n乙 $7.9$、丙 $8.9$、丁 $4.5$ 均大于它。",
+    "distractorRationale": {
+      "B": "密度 7.9，较大。",
+      "C": "密度 8.9，最大。",
+      "D": "密度 4.5，大于甲。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which material has the lowest density?",
+        "explanation": "甲 has a density of $2.7\\ \\text{g}/\\text{cm}^3$, the lowest of the four.\\n\\n乙 at $7.9$, 丙 at $8.9$ and 丁 at $4.5$ are all higher."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "comparison"
+    ],
+    "estimatedTimeSec": 80,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r62",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为四种材料的物理性质对比。\n\n| 材料 | 密度 $(\\text{g}/\\text{cm}^3)$ | 熔点 $(^\\circ\\text{C})$ | 导电性 | 抗腐蚀 |\n|---|---|---|---|---|\n| 甲 | 2.7 | 660 | 优 | 中 |\n| 乙 | 7.9 | 1538 | 良 | 差 |\n| 丙 | 8.9 | 1085 | 优 | 良 |\n| 丁 | 4.5 | 1668 | 差 | 优 |"
+    },
+    "stem": "根据表格，若要制作既导电优良又抗腐蚀较好的电缆，最合适的材料是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "乙"
+      },
+      {
+        "id": "B",
+        "text": "丙"
+      },
+      {
+        "id": "C",
+        "text": "丁"
+      },
+      {
+        "id": "D",
+        "text": "甲"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "同时满足「导电优」与「抗腐蚀良」的只有丙。\n\n甲导电优但抗腐蚀仅为中，乙抗腐蚀差，丁导电差——各差一项。",
+    "distractorRationale": {
+      "A": "抗腐蚀差。",
+      "C": "导电性差。",
+      "D": "抗腐蚀仅为中。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which material best suits a cable that must both conduct well and resist corrosion?",
+        "explanation": "Only 丙 is rated 优 for conductivity and 良 for corrosion resistance at the same time.\n\n甲 conducts well but is only 中 for corrosion, 乙 is 差 for corrosion, and 丁 is 差 for conductivity — each fails on one criterion."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "multi-criteria"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r63",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为四种材料的物理性质对比。\n\n| 材料 | 密度 $(\\text{g}/\\text{cm}^3)$ | 熔点 $(^\\circ\\text{C})$ | 导电性 | 抗腐蚀 |\n|---|---|---|---|---|\n| 甲 | 2.7 | 660 | 优 | 中 |\n| 乙 | 7.9 | 1538 | 良 | 差 |\n| 丙 | 8.9 | 1085 | 优 | 良 |\n| 丁 | 4.5 | 1668 | 差 | 优 |"
+    },
+    "stem": "根据表格，若某构件要求熔点高于 $1000\\ ^\\circ\\text{C}$ 且密度小于 $8\\ \\text{g}/\\text{cm}^3$，可选的材料是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "只有乙"
+      },
+      {
+        "id": "B",
+        "text": "只有丁"
+      },
+      {
+        "id": "C",
+        "text": "乙和丁"
+      },
+      {
+        "id": "D",
+        "text": "丙和丁"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "逐条筛选：熔点高于 $1000$ 的有乙 $1538$、丙 $1085$、丁 $1668$；其中密度小于 $8$ 的有乙 $7.9$ 与丁 $4.5$，丙 $8.9$ 被排除。\\n\\n甲熔点 $660$，第一关即被排除。两个条件必须同时满足，只满足其一都不能入选。",
+    "distractorRationale": {
+      "A": "丁同样满足两个条件。",
+      "B": "乙同样满足两个条件。",
+      "D": "丙密度 8.9，超过限制。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which materials satisfy both a melting point above $1000\\ ^\\circ\\text{C}$ and a density below $8\\ \\text{g}/\\text{cm}^3$?",
+        "explanation": "Apply the filters in turn. Melting above $1000$: 乙 at $1538$, 丙 at $1085$, 丁 at $1668$. Of those, density below $8$: 乙 at $7.9$ and 丁 at $4.5$; 丙 at $8.9$ is excluded.\\n\\n甲 melts at $660$ and fails the first filter. Both conditions must hold together — meeting one is not enough."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "filtering"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r64",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为某次实验中不同温度下某固体在 $100\\ \\text{g}$ 水中的溶解度（单位：$\\text{g}$）。\n\n| 温度 $(^\\circ\\text{C})$ | 0 | 20 | 40 | 60 | 80 |\n|---|---|---|---|---|---|\n| 溶解度 | 13 | 32 | 64 | 110 | 169 |"
+    },
+    "stem": "根据表格，温度由 $20\\ ^\\circ\\text{C}$ 升至 $60\\ ^\\circ\\text{C}$，溶解度增加了",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$110\\ \\text{g}$"
+      },
+      {
+        "id": "B",
+        "text": "$64\\ \\text{g}$"
+      },
+      {
+        "id": "C",
+        "text": "$46\\ \\text{g}$"
+      },
+      {
+        "id": "D",
+        "text": "$78\\ \\text{g}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "$110 - 32 = 78\\ \\text{g}$。\\n\\n注意这是增加量，不是终值。",
+    "distractorRationale": {
+      "A": "这是 60 ℃ 时的溶解度，非增量。",
+      "B": "这是 40 ℃ 时的溶解度。",
+      "C": "计算有误。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "By how much does the solubility rise from $20\\ ^\\circ\\text{C}$ to $60\\ ^\\circ\\text{C}$?",
+        "explanation": "$110 - 32 = 78\\ \\text{g}$.\\n\\nNote this is the increase, not the final value."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "difference"
+    ],
+    "estimatedTimeSec": 100,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r65",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为某次实验中不同温度下某固体在 $100\\ \\text{g}$ 水中的溶解度（单位：$\\text{g}$）。\n\n| 温度 $(^\\circ\\text{C})$ | 0 | 20 | 40 | 60 | 80 |\n|---|---|---|---|---|---|\n| 溶解度 | 13 | 32 | 64 | 110 | 169 |"
+    },
+    "stem": "根据表格，在 $80\\ ^\\circ\\text{C}$ 配制的饱和溶液冷却到 $20\\ ^\\circ\\text{C}$，每 $100\\ \\text{g}$ 水中将析出固体约",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$137\\ \\text{g}$"
+      },
+      {
+        "id": "B",
+        "text": "$32\\ \\text{g}$"
+      },
+      {
+        "id": "C",
+        "text": "$105\\ \\text{g}$"
+      },
+      {
+        "id": "D",
+        "text": "$169\\ \\text{g}$"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "$80\\ ^\\circ\\text{C}$ 时 $100\\ \\text{g}$ 水最多溶 $169\\ \\text{g}$，降到 $20\\ ^\\circ\\text{C}$ 时只能溶 $32\\ \\text{g}$，多出的 $169 - 32 = 137\\ \\text{g}$ 析出。\\n\\n关键在于水量不变：冷却过程中溶剂没有减少，减少的是它的容纳能力。",
+    "distractorRationale": {
+      "B": "这是 20 ℃ 时仍溶解的量。",
+      "C": "计算有误。",
+      "D": "这是 80 ℃ 时的溶解总量。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "A saturated solution made at $80\\ ^\\circ\\text{C}$ is cooled to $20\\ ^\\circ\\text{C}$. About how much solid crystallises out per $100\\ \\text{g}$ of water?",
+        "explanation": "At $80\\ ^\\circ\\text{C}$, $100\\ \\text{g}$ of water holds at most $169\\ \\text{g}$; at $20\\ ^\\circ\\text{C}$ it holds only $32\\ \\text{g}$. The excess $169 - 32 = 137\\ \\text{g}$ crystallises.\\n\\nThe key is that the water is unchanged: cooling removes none of the solvent, only its capacity."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "solubility"
+    ],
+    "estimatedTimeSec": 160,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r66",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为某城市一周内两个监测点的空气细颗粒物浓度（单位：$\\mu\\text{g}/\\text{m}^3$）。\n\n| 日期 | 周一 | 周二 | 周三 | 周四 | 周五 | 周六 | 周日 |\n|---|---|---|---|---|---|---|---|\n| 城区点 | 68 | 75 | 82 | 90 | 86 | 52 | 45 |\n| 郊区点 | 40 | 43 | 47 | 51 | 49 | 38 | 35 |"
+    },
+    "stem": "根据表格，两个监测点浓度均最高的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "周五"
+      },
+      {
+        "id": "B",
+        "text": "周四"
+      },
+      {
+        "id": "C",
+        "text": "周三"
+      },
+      {
+        "id": "D",
+        "text": "周日"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "城区点周四为 90，郊区点周四为 51，均为各自一周的最高值。\n\n周五分别为 86 与 49，略低于周四。",
+    "distractorRationale": {
+      "A": "周五为 86 与 49，略低于周四。",
+      "C": "周三为 82 与 47，均低于周四。",
+      "D": "周日为全周最低。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "On which day was the concentration highest at both stations?",
+        "explanation": "The urban station peaks at 90 on Thursday and the suburban station at 51, both weekly maxima.\n\nFriday's 86 and 49 are just below."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "maximum"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r67",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为某城市一周内两个监测点的空气细颗粒物浓度（单位：$\\mu\\text{g}/\\text{m}^3$）。\n\n| 日期 | 周一 | 周二 | 周三 | 周四 | 周五 | 周六 | 周日 |\n|---|---|---|---|---|---|---|---|\n| 城区点 | 68 | 75 | 82 | 90 | 86 | 52 | 45 |\n| 郊区点 | 40 | 43 | 47 | 51 | 49 | 38 | 35 |"
+    },
+    "stem": "根据表格，城区点与郊区点浓度差值最大的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "周三"
+      },
+      {
+        "id": "B",
+        "text": "周六"
+      },
+      {
+        "id": "C",
+        "text": "周四"
+      },
+      {
+        "id": "D",
+        "text": "周五"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "各日差值依次为 28、32、35、39、37、14、10。最大值 39 出现在周四。\n\n周五的 37 与周三的 35 均略小。须逐日相减，不能只看城区点最高的一天就下结论——虽然此题两者恰好一致。",
+    "distractorRationale": {
+      "A": "差值 35，小于周四。",
+      "B": "差值仅 14。",
+      "D": "差值 37，小于周四。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "On which day was the gap between the two stations largest?",
+        "explanation": "The daily gaps are 28, 32, 35, 39, 37, 14, 10. The largest, 39, falls on Thursday.\n\nFriday's 37 and Wednesday's 35 are slightly smaller. The differences must be computed day by day rather than read off the urban peak — though here the two happen to coincide."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "difference"
+    ],
+    "estimatedTimeSec": 125,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r68",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Data chart interpretation 图表解读",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "下表为某城市一周内两个监测点的空气细颗粒物浓度（单位：$\\mu\\text{g}/\\text{m}^3$）。\n\n| 日期 | 周一 | 周二 | 周三 | 周四 | 周五 | 周六 | 周日 |\n|---|---|---|---|---|---|---|---|\n| 城区点 | 68 | 75 | 82 | 90 | 86 | 52 | 45 |\n| 郊区点 | 40 | 43 | 47 | 51 | 49 | 38 | 35 |"
+    },
+    "stem": "根据表格，下列推断中数据支持最充分的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "郊区没有污染源"
+      },
+      {
+        "id": "B",
+        "text": "城区浓度始终是郊区的两倍"
+      },
+      {
+        "id": "C",
+        "text": "该城市空气质量正在恶化"
+      },
+      {
+        "id": "D",
+        "text": "周末两天两个监测点的浓度均明显低于工作日"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "周六、周日城区为 52 与 45，郊区为 38 与 35，都明显低于周一至周五的各值——这是表中可直接读出的模式。\n\n仅一周数据无法判断长期趋势；郊区浓度并不为零；周一 $68 \\div 40 = 1.7$，并非两倍，「始终」更不成立。",
+    "distractorRationale": {
+      "A": "郊区浓度不为零，仍有污染。",
+      "B": "周一为 1.7 倍，并非始终两倍。",
+      "C": "一周数据不足以判断长期趋势。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which inference is best supported by the table?",
+        "explanation": "Saturday and Sunday read 52 and 45 in the city and 38 and 35 in the suburbs, all clearly below every weekday value — a pattern readable straight from the table.\n\nOne week cannot establish a long-term trend; the suburban readings are not zero; and Monday gives $68 \\div 40 = 1.7$, so «always double» fails twice over."
+      }
+    },
+    "tags": [
+      "chart-reading",
+      "inference"
+    ],
+    "estimatedTimeSec": 160,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r69",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "E",
+    "irtB": -0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "超导体是指电阻在某一温度以下突然降为零的材料，这一温度称为临界温度。1911 年首次发现汞在 $4.2\\ \\text{K}$ 时进入超导态，此后数十年间所发现材料的临界温度都极低，必须用液氦冷却，成本高昂。\n\n1986 年，一类铜氧化物陶瓷材料被发现具有远高于以往的临界温度，其中部分材料在 $77\\ \\text{K}$ 以上仍保持超导。这一温度的意义在于：$77\\ \\text{K}$ 是液氮的沸点，而液氮的价格不足液氦的百分之一。\n\n然而这类材料是陶瓷，脆而难以拉制成线材，且其超导机理至今没有被公认的理论解释。因此尽管临界温度大幅提高，它们在输电等领域的大规模应用仍受限制。"
+    },
+    "stem": "根据文章，超导体的定义是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "电阻在某一温度以下突然降为零的材料"
+      },
+      {
+        "id": "B",
+        "text": "导电性特别好的金属"
+      },
+      {
+        "id": "C",
+        "text": "在低温下仍能工作的材料"
+      },
+      {
+        "id": "D",
+        "text": "由陶瓷制成的材料"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "文章首句即给出定义：电阻在某一温度以下突然降为零。\n\n关键在「降为零」而非「很小」，也在「突然」而非「逐渐」——这正是超导区别于良导体之处。",
+    "distractorRationale": {
+      "B": "良导体电阻小但不为零。",
+      "C": "低温工作不等于超导。",
+      "D": "陶瓷只是其中一类。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, what is a superconductor?",
+        "explanation": "The opening sentence defines it: a material whose resistance drops abruptly to zero below a certain temperature.\n\nWhat matters is «to zero», not «very small», and «abruptly», not «gradually» — this is precisely what separates superconductivity from good conduction."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "definition"
+    ],
+    "estimatedTimeSec": 95,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r70",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "超导体是指电阻在某一温度以下突然降为零的材料，这一温度称为临界温度。1911 年首次发现汞在 $4.2\\ \\text{K}$ 时进入超导态，此后数十年间所发现材料的临界温度都极低，必须用液氦冷却，成本高昂。\n\n1986 年，一类铜氧化物陶瓷材料被发现具有远高于以往的临界温度，其中部分材料在 $77\\ \\text{K}$ 以上仍保持超导。这一温度的意义在于：$77\\ \\text{K}$ 是液氮的沸点，而液氮的价格不足液氦的百分之一。\n\n然而这类材料是陶瓷，脆而难以拉制成线材，且其超导机理至今没有被公认的理论解释。因此尽管临界温度大幅提高，它们在输电等领域的大规模应用仍受限制。"
+    },
+    "stem": "根据文章，$77\\ \\text{K}$ 这一温度之所以重要，是因为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "它是室温"
+      },
+      {
+        "id": "B",
+        "text": "它是液氮的沸点，而液氮远比液氦便宜"
+      },
+      {
+        "id": "C",
+        "text": "它是汞的临界温度"
+      },
+      {
+        "id": "D",
+        "text": "超过它超导就消失"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "文章明确指出：$77\\ \\text{K}$ 是液氮的沸点，液氮价格不足液氦的百分之一。临界温度越过这条线，冷却成本便大幅下降。\\n\\n汞的临界温度是 $4.2\\ \\text{K}$，与此无关。",
+    "distractorRationale": {
+      "A": "室温约 293 K，远高于此。",
+      "C": "汞的临界温度是 4.2 K。",
+      "D": "文章未把 77 K 说成普遍上限。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why does the passage single out $77\\ \\text{K}$?",
+        "explanation": "The passage states it: $77\\ \\text{K}$ is the boiling point of liquid nitrogen, which costs less than one percent of liquid helium. Once the critical temperature crosses that line, cooling becomes far cheaper.\\n\\nMercury's critical temperature is $4.2\\ \\text{K}$ and is not at issue."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "detail"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r71",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "超导体是指电阻在某一温度以下突然降为零的材料，这一温度称为临界温度。1911 年首次发现汞在 $4.2\\ \\text{K}$ 时进入超导态，此后数十年间所发现材料的临界温度都极低，必须用液氦冷却，成本高昂。\n\n1986 年，一类铜氧化物陶瓷材料被发现具有远高于以往的临界温度，其中部分材料在 $77\\ \\text{K}$ 以上仍保持超导。这一温度的意义在于：$77\\ \\text{K}$ 是液氮的沸点，而液氮的价格不足液氦的百分之一。\n\n然而这类材料是陶瓷，脆而难以拉制成线材，且其超导机理至今没有被公认的理论解释。因此尽管临界温度大幅提高，它们在输电等领域的大规模应用仍受限制。"
+    },
+    "stem": "根据文章，铜氧化物超导材料难以大规模应用的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "导电性不佳"
+      },
+      {
+        "id": "B",
+        "text": "价格过高"
+      },
+      {
+        "id": "C",
+        "text": "材料是陶瓷，脆而难以拉制成线材"
+      },
+      {
+        "id": "D",
+        "text": "临界温度仍然太低"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "文章第三段直接给出：这类材料是陶瓷，脆而难以拉制成线材。\n\n临界温度恰恰是它们的优势而非障碍；文章提到的另一限制是机理尚无公认理论，也不是价格。",
+    "distractorRationale": {
+      "A": "超导态下电阻为零。",
+      "B": "文章未以价格为限制。",
+      "D": "临界温度高正是其优势。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "According to the passage, why are cuprate superconductors hard to deploy at scale?",
+        "explanation": "The third paragraph states it: they are ceramics, brittle and hard to draw into wire.\n\nTheir critical temperature is their advantage, not their obstacle; the other limitation the passage names is the absence of an accepted theory, not price."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "causation"
+    ],
+    "estimatedTimeSec": 115,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r72",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "超导体是指电阻在某一温度以下突然降为零的材料，这一温度称为临界温度。1911 年首次发现汞在 $4.2\\ \\text{K}$ 时进入超导态，此后数十年间所发现材料的临界温度都极低，必须用液氦冷却，成本高昂。\n\n1986 年，一类铜氧化物陶瓷材料被发现具有远高于以往的临界温度，其中部分材料在 $77\\ \\text{K}$ 以上仍保持超导。这一温度的意义在于：$77\\ \\text{K}$ 是液氮的沸点，而液氮的价格不足液氦的百分之一。\n\n然而这类材料是陶瓷，脆而难以拉制成线材，且其超导机理至今没有被公认的理论解释。因此尽管临界温度大幅提高，它们在输电等领域的大规模应用仍受限制。"
+    },
+    "stem": "根据文章，下列说法正确的一项是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "液氦比液氮便宜"
+      },
+      {
+        "id": "B",
+        "text": "超导现象的机理已被完全解释"
+      },
+      {
+        "id": "C",
+        "text": "1911 年至 1986 年间未发现任何超导材料"
+      },
+      {
+        "id": "D",
+        "text": "临界温度提高降低了冷却成本，但未解决材料成形与理论解释的问题"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "文章的结构正是如此：临界温度大幅提高解决了冷却成本，却留下两个问题——陶瓷难以成形，机理没有公认理论。选项 D 完整概括了这一「进展与局限并存」的关系。\n\n其余三项均与原文相反：机理尚无定论；那数十年间发现了不少材料，只是临界温度都极低；液氦比液氮贵一百倍以上。",
+    "distractorRationale": {
+      "A": "液氮价格不足液氦的百分之一。",
+      "B": "文章说至今没有公认的理论解释。",
+      "C": "那期间发现了材料，只是临界温度极低。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which statement is correct according to the passage?",
+        "explanation": "This is the structure of the passage: a much higher critical temperature solved the cooling cost while leaving two problems — ceramics resist forming, and no accepted theory exists. Option D states that pairing of progress and limitation in full.\n\nThe other three contradict the text: the mechanism remains unsettled; materials were found across those decades, only with very low critical temperatures; and liquid helium costs over a hundred times more than liquid nitrogen."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "synthesis"
+    ],
+    "estimatedTimeSec": 150,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r73",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.5,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "植物的气孔是叶片表皮上由两个保卫细胞围成的小孔，是二氧化碳进入与水分散失的共同通道。这一结构使植物面临一个无法回避的取舍：气孔开得越大，光合作用可获得的二氧化碳越多，同时蒸腾失水也越快。\n\n干旱环境中的植物演化出多种应对方式。有的将气孔下陷于表皮凹陷处，在孔口形成一层相对静止的湿润空气，减缓水分扩散；有的把气孔开放的时间移到夜间，先把二氧化碳固定为有机酸储存起来，白天气孔关闭时再释放出来供光合作用使用。\n\n后一种方式称为景天酸代谢。它显著节水，代价是储存与释放这一额外环节限制了固定二氧化碳的总量，因此这类植物生长普遍缓慢。"
+    },
+    "stem": "根据文章，作者用「无法回避的取舍」形容气孔，是因为",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "二氧化碳与水分共用同一通道，开合无法只利其一"
+      },
+      {
+        "id": "B",
+        "text": "气孔数量固定"
+      },
+      {
+        "id": "C",
+        "text": "气孔只在白天开放"
+      },
+      {
+        "id": "D",
+        "text": "保卫细胞不能运动"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "取舍之所以无法回避，在于同一个孔既是二氧化碳的入口又是水分的出口。开大则两者同时增加，关小则两者同时减少，植物无法只要其一。\n\n这正是文章随后所述各种演化对策的共同背景。",
+    "distractorRationale": {
+      "B": "文章未提数量固定。",
+      "C": "景天酸代谢植物夜间开放。",
+      "D": "保卫细胞正是通过变形开合气孔。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why does the author call the stoma an unavoidable trade-off?",
+        "explanation": "The trade-off cannot be escaped because one and the same pore serves as the entry for carbon dioxide and the exit for water. Open it wider and both rise; close it and both fall. The plant cannot have one without the other.\n\nThat is the shared background to every adaptation the passage then describes."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "reasoning"
+    ],
+    "estimatedTimeSec": 120,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r74",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "植物的气孔是叶片表皮上由两个保卫细胞围成的小孔，是二氧化碳进入与水分散失的共同通道。这一结构使植物面临一个无法回避的取舍：气孔开得越大，光合作用可获得的二氧化碳越多，同时蒸腾失水也越快。\n\n干旱环境中的植物演化出多种应对方式。有的将气孔下陷于表皮凹陷处，在孔口形成一层相对静止的湿润空气，减缓水分扩散；有的把气孔开放的时间移到夜间，先把二氧化碳固定为有机酸储存起来，白天气孔关闭时再释放出来供光合作用使用。\n\n后一种方式称为景天酸代谢。它显著节水，代价是储存与释放这一额外环节限制了固定二氧化碳的总量，因此这类植物生长普遍缓慢。"
+    },
+    "stem": "根据文章，气孔下陷于表皮凹陷处的作用是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "防止昆虫进入"
+      },
+      {
+        "id": "B",
+        "text": "在孔口形成相对静止的湿润空气，减缓水分扩散"
+      },
+      {
+        "id": "C",
+        "text": "增加二氧化碳吸收"
+      },
+      {
+        "id": "D",
+        "text": "提高光合速率"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "文章明确说明：下陷可在孔口形成一层相对静止的湿润空气，减缓水分扩散。\n\n这层空气使孔内外的湿度差变小，蒸腾便随之减慢。",
+    "distractorRationale": {
+      "A": "文章未提及防虫。",
+      "C": "下陷同样减缓二氧化碳进入。",
+      "D": "节水措施通常伴随光合速率下降。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What does sinking the stomata into pits achieve?",
+        "explanation": "The passage states it: a layer of relatively still, humid air forms over the pore and slows the diffusion of water.\n\nThat layer narrows the humidity gradient across the pore, and transpiration slows with it."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "detail"
+    ],
+    "estimatedTimeSec": 105,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r75",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "植物的气孔是叶片表皮上由两个保卫细胞围成的小孔，是二氧化碳进入与水分散失的共同通道。这一结构使植物面临一个无法回避的取舍：气孔开得越大，光合作用可获得的二氧化碳越多，同时蒸腾失水也越快。\n\n干旱环境中的植物演化出多种应对方式。有的将气孔下陷于表皮凹陷处，在孔口形成一层相对静止的湿润空气，减缓水分扩散；有的把气孔开放的时间移到夜间，先把二氧化碳固定为有机酸储存起来，白天气孔关闭时再释放出来供光合作用使用。\n\n后一种方式称为景天酸代谢。它显著节水，代价是储存与释放这一额外环节限制了固定二氧化碳的总量，因此这类植物生长普遍缓慢。"
+    },
+    "stem": "根据文章，景天酸代谢植物生长缓慢的原因是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "它们的叶片较小"
+      },
+      {
+        "id": "B",
+        "text": "它们不进行光合作用"
+      },
+      {
+        "id": "C",
+        "text": "储存与释放这一额外环节限制了固定二氧化碳的总量"
+      },
+      {
+        "id": "D",
+        "text": "夜间温度低"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "文章末段直接给出因果：额外的储存与释放环节限制了可固定的二氧化碳总量，因而生长缓慢。\n\n节水与产量在这里构成一对代价关系——省下的水是用生长速度换来的。",
+    "distractorRationale": {
+      "A": "文章未提叶片大小。",
+      "B": "它们进行光合作用，只是时间安排不同。",
+      "D": "文章未以夜温解释。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Why do CAM plants grow slowly, according to the passage?",
+        "explanation": "The final paragraph gives the causal chain outright: the extra store-and-release step caps the total carbon dioxide that can be fixed, and slow growth follows.\n\nWater saving and yield trade against each other here — the water saved is bought with growth rate."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "causation"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r76",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "植物的气孔是叶片表皮上由两个保卫细胞围成的小孔，是二氧化碳进入与水分散失的共同通道。这一结构使植物面临一个无法回避的取舍：气孔开得越大，光合作用可获得的二氧化碳越多，同时蒸腾失水也越快。\n\n干旱环境中的植物演化出多种应对方式。有的将气孔下陷于表皮凹陷处，在孔口形成一层相对静止的湿润空气，减缓水分扩散；有的把气孔开放的时间移到夜间，先把二氧化碳固定为有机酸储存起来，白天气孔关闭时再释放出来供光合作用使用。\n\n后一种方式称为景天酸代谢。它显著节水，代价是储存与释放这一额外环节限制了固定二氧化碳的总量，因此这类植物生长普遍缓慢。"
+    },
+    "stem": "根据文章可以推断，若把景天酸代谢植物移到水分充足的环境中与普通植物竞争，最可能出现的情况是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "它们会失去景天酸代谢"
+      },
+      {
+        "id": "B",
+        "text": "它们生长更快"
+      },
+      {
+        "id": "C",
+        "text": "两者生长速度相同"
+      },
+      {
+        "id": "D",
+        "text": "它们因生长缓慢而在竞争中处于劣势"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "景天酸代谢的优势在缺水时才体现。水分充足时节水不再是稀缺资源上的优势，而其固碳总量受限的代价依然存在，生长缓慢便成为纯粹的劣势。\n\n文章未涉及代谢方式能否在个体身上改变，选项 A 超出了可推断的范围。",
+    "distractorRationale": {
+      "A": "文章未涉及代谢方式能否改变。",
+      "B": "固碳总量受限的代价不因水分充足而消失。",
+      "C": "文章明确指出这类植物生长普遍缓慢。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "If CAM plants competed with ordinary plants where water is plentiful, what would the passage lead you to expect?",
+        "explanation": "The CAM advantage only tells where water is scarce. Where it is plentiful, saving water no longer confers an edge on a scarce resource, while the cap on total carbon fixed still applies — so slow growth becomes a pure disadvantage.\n\nThe passage says nothing about whether an individual can switch metabolic mode, so option A goes beyond what can be inferred."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "inference"
+    ],
+    "estimatedTimeSec": 160,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r77",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "E",
+    "irtB": -0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "植物的气孔是叶片表皮上由两个保卫细胞围成的小孔，是二氧化碳进入与水分散失的共同通道。这一结构使植物面临一个无法回避的取舍：气孔开得越大，光合作用可获得的二氧化碳越多，同时蒸腾失水也越快。\n\n干旱环境中的植物演化出多种应对方式。有的将气孔下陷于表皮凹陷处，在孔口形成一层相对静止的湿润空气，减缓水分扩散；有的把气孔开放的时间移到夜间，先把二氧化碳固定为有机酸储存起来，白天气孔关闭时再释放出来供光合作用使用。\n\n后一种方式称为景天酸代谢。它显著节水，代价是储存与释放这一额外环节限制了固定二氧化碳的总量，因此这类植物生长普遍缓慢。"
+    },
+    "stem": "根据文章，气孔由什么围成",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "两个保卫细胞"
+      },
+      {
+        "id": "B",
+        "text": "表皮蜡质"
+      },
+      {
+        "id": "C",
+        "text": "四个薄壁细胞"
+      },
+      {
+        "id": "D",
+        "text": "一层角质膜"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "A"
+    },
+    "explanation": "文章首句写明：气孔是叶片表皮上由两个保卫细胞围成的小孔。\n\n保卫细胞通过吸水膨胀或失水收缩改变形状，从而开合气孔。",
+    "distractorRationale": {
+      "B": "蜡质覆盖表皮，不构成气孔。",
+      "C": "文章说是两个保卫细胞。",
+      "D": "角质膜是表皮的覆盖层。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What encloses a stoma, according to the passage?",
+        "explanation": "The first sentence says it: a pore in the leaf epidermis enclosed by two guard cells.\n\nThe guard cells change shape as they take up or lose water, and so open or close the pore."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "detail"
+    ],
+    "estimatedTimeSec": 85,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r78",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "M",
+    "irtB": 0.4,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "植物的气孔是叶片表皮上由两个保卫细胞围成的小孔，是二氧化碳进入与水分散失的共同通道。这一结构使植物面临一个无法回避的取舍：气孔开得越大，光合作用可获得的二氧化碳越多，同时蒸腾失水也越快。\n\n干旱环境中的植物演化出多种应对方式。有的将气孔下陷于表皮凹陷处，在孔口形成一层相对静止的湿润空气，减缓水分扩散；有的把气孔开放的时间移到夜间，先把二氧化碳固定为有机酸储存起来，白天气孔关闭时再释放出来供光合作用使用。\n\n后一种方式称为景天酸代谢。它显著节水，代价是储存与释放这一额外环节限制了固定二氧化碳的总量，因此这类植物生长普遍缓慢。"
+    },
+    "stem": "文章第二段与第一段的关系是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "第二段与第一段无关"
+      },
+      {
+        "id": "B",
+        "text": "第二段提出应对第一段所述取舍的具体方式"
+      },
+      {
+        "id": "C",
+        "text": "第二段重复第一段"
+      },
+      {
+        "id": "D",
+        "text": "第二段反驳第一段"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "B"
+    },
+    "explanation": "第一段确立问题：气孔开合中二氧化碳与失水的两难。第二段给出干旱植物演化出的两种应对方式——下陷与夜间开放。\n\n这是「提出问题—给出对策」的递进关系，不是反驳，也不是重复。",
+    "distractorRationale": {
+      "A": "两段紧密相关。",
+      "C": "第二段提供了新内容。",
+      "D": "第二段并未否定第一段。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "How does the second paragraph relate to the first?",
+        "explanation": "The first paragraph establishes the problem: the dilemma between carbon dioxide and water loss. The second supplies two evolved responses — sunken pores and night-time opening.\n\nThe relation is problem-then-response, neither rebuttal nor repetition."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "structure"
+    ],
+    "estimatedTimeSec": 110,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r79",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 0.9,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "超导体是指电阻在某一温度以下突然降为零的材料，这一温度称为临界温度。1911 年首次发现汞在 $4.2\\ \\text{K}$ 时进入超导态，此后数十年间所发现材料的临界温度都极低，必须用液氦冷却，成本高昂。\n\n1986 年，一类铜氧化物陶瓷材料被发现具有远高于以往的临界温度，其中部分材料在 $77\\ \\text{K}$ 以上仍保持超导。这一温度的意义在于：$77\\ \\text{K}$ 是液氮的沸点，而液氮的价格不足液氦的百分之一。\n\n然而这类材料是陶瓷，脆而难以拉制成线材，且其超导机理至今没有被公认的理论解释。因此尽管临界温度大幅提高，它们在输电等领域的大规模应用仍受限制。"
+    },
+    "stem": "下列最适合作文章一标题的是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "《液氮的工业用途》"
+      },
+      {
+        "id": "B",
+        "text": "《汞的物理性质》"
+      },
+      {
+        "id": "C",
+        "text": "《超导体：从液氦到液氮，以及尚未跨过的门槛》"
+      },
+      {
+        "id": "D",
+        "text": "《陶瓷材料的制造工艺》"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "C"
+    },
+    "explanation": "文章的主线是超导临界温度的提高及其意义，同时点明仍未解决的成形与理论问题。选项 C 恰好覆盖这两面。\n\n其余三项都只触及文中一个次要细节——陶瓷、汞、液氮——却都不是文章所论的主题。",
+    "distractorRationale": {
+      "A": "液氮仅作为成本对比出现。",
+      "B": "汞只在开头一提。",
+      "D": "陶瓷只是文中一处细节。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "Which title best fits the first passage?",
+        "explanation": "The passage runs on one line: the rise in critical temperature and what it made possible, together with the forming and theory problems still unsolved. Option C covers both halves.\n\nThe other three each seize on a minor detail — ceramics, mercury, liquid nitrogen — none of which is what the passage is about."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "main-idea"
+    ],
+    "estimatedTimeSec": 140,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  },
+  {
+    "id": "csca-zst-r80",
+    "status": "approved",
+    "exam": "CSCA",
+    "section": "csca_chinese_stem",
+    "domain": "Scientific Reading 科技文阅读",
+    "skill": "Technical passage comprehension 科技文理解",
+    "difficulty": "H",
+    "irtB": 1,
+    "calculatorAllowed": false,
+    "locale": "zh",
+    "stimulus": {
+      "type": "passage",
+      "content": "超导体是指电阻在某一温度以下突然降为零的材料，这一温度称为临界温度。1911 年首次发现汞在 $4.2\\ \\text{K}$ 时进入超导态，此后数十年间所发现材料的临界温度都极低，必须用液氦冷却，成本高昂。\n\n1986 年，一类铜氧化物陶瓷材料被发现具有远高于以往的临界温度，其中部分材料在 $77\\ \\text{K}$ 以上仍保持超导。这一温度的意义在于：$77\\ \\text{K}$ 是液氮的沸点，而液氮的价格不足液氦的百分之一。\n\n然而这类材料是陶瓷，脆而难以拉制成线材，且其超导机理至今没有被公认的理论解释。因此尽管临界温度大幅提高，它们在输电等领域的大规模应用仍受限制。"
+    },
+    "stem": "两篇文章在论述方式上的共同点是",
+    "type": "mcq_single",
+    "choices": [
+      {
+        "id": "A",
+        "text": "都以数据为主要论据"
+      },
+      {
+        "id": "B",
+        "text": "都以时间顺序叙述"
+      },
+      {
+        "id": "C",
+        "text": "都在结尾提出建议"
+      },
+      {
+        "id": "D",
+        "text": "都先指出一项进展或优势，再说明它所付出的代价或留下的问题"
+      }
+    ],
+    "answer": {
+      "mode": "choice",
+      "value": "D"
+    },
+    "explanation": "文章一：临界温度大幅提高（进展）—— 但陶瓷难以成形、机理未明（代价与遗留问题）。文章二：景天酸代谢显著节水（优势）—— 但固碳总量受限、生长缓慢（代价）。两文的骨架相同。\n\n只有文章一按时间展开；两文都不以数据为主；结尾也都未提出建议。",
+    "distractorRationale": {
+      "A": "两文都不以数据为主要论据。",
+      "B": "只有文章一按时间展开。",
+      "C": "两文结尾都未提出建议。"
+    },
+    "i18n": {
+      "en": {
+        "stem": "What do the two passages share in their method of exposition?",
+        "explanation": "Passage one: a large rise in critical temperature (the advance) — but ceramics resist forming and the mechanism is unexplained (the cost and what remains). Passage two: CAM saves water strikingly (the advantage) — but total carbon fixed is capped and growth is slow (the cost). The skeleton is the same.\n\nOnly the first is arranged chronologically; neither argues chiefly from data; and neither closes with a recommendation."
+      }
+    },
+    "tags": [
+      "passage-comprehension",
+      "comparison"
+    ],
+    "estimatedTimeSec": 170,
+    "points": 1,
+    "meta": {
+      "generator": "claude",
+      "reviewed": false,
+      "version": 1,
+      "form": 5,
+      "keyBalanced": 1
+    }
+  }
+]
