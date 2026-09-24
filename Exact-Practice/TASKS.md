@@ -48,6 +48,10 @@
 - ✅ P-038 Upgrade keamanan: next 15.1.6 → 15.5.26 (tutup 30+ advisori termasuk RCE React flight / CVE-2025-55182 & CVE-2025-66478, bypass middleware CVE-2025-29927, RCE Image Optimizer, SSRF), react/react-dom 19.0.0 → 19.0.8, postcss di dalam next dipaksa ≥ 8.5.28 lewat `overrides`; `typedRoutes` keluar dari `experimental`. `npm audit` 0 · typecheck ✅ · build ✅ · test:webhooks 39/39 · test:exams 101/101
 - ✅ P-032 `test:exams` jalan di clone bersih: peserta & akun afiliasi uji dibuat sendiri, bank dibangun dari `question-bank/` + `sample-tests/` bila `.data` tidak ada. Hasil 15.1.6 vs 15.5.26 pada data kosong identik (regresi bukan karena upgrade)
 
+## QA lokal (24 Sep 2026)
+- ✅ P-040 Temuan: mode dev membocorkan kunci & pembahasan ke halaman ujian (debug info I/O React dev, saat cache bank habis); build produksi terbukti bersih (2 fetch, cache dingin & habis). Dijadikan invarian #10 di AGENTS.md
+- ✅ P-041 QA alur X-1 di MacBook lokal (dev): terbit dari Worksheet (`terbit.py`) → paket kode SNNZ9M → daftar kode kelas (salah ditolak) → /menunggu → guru setujui → murid lihat paket → mulai → section (tenggat 15 mnt dari server) → save → submit 5/7 benar → hasil + pembahasan → pantau kelas; murid ditolak dari /admin, /terbit tanpa kunci 401
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-034 Satukan `.env.contoh` & `.env.example` — B3

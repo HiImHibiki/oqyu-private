@@ -189,5 +189,10 @@ Salin `.env.contoh` (khas Exact Course) — `.env.example` adalah warisan Try Ou
    kelas + persetujuan guru; umum lewat `/beli` → transfer → admin *Tandai lunas* → akun +
    sandi sementara. Harga di `src/lib/packages.ts`, komisi afiliasi 15% di `affiliate.ts`.
 9. **`diagrams.js` identik dengan Worksheet (dan Canvas)** (lihat peran 2).
-10. **Rahasia tidak masuk git**: `.env.local`, `practice.json`, `~/.cloudflared/*`,
+10. **Server untuk murid WAJIB build produksi** (`next build` + `next start`, lewat
+    `pasang-app.sh`), JANGAN `npm run dev`. Mode dev React/Next menyerialisasi hasil I/O
+    server ke browser untuk DevTools — isi `question-bank.json` (kunci + pembahasan) ikut
+    terkirim ke halaman ujian (terbukti 24 Sep 2026, P-040). `npm run dev` hanya untuk
+    pengembangan di localhost.
+11. **Rahasia tidak masuk git**: `.env.local`, `practice.json`, `~/.cloudflared/*`,
     folder data.

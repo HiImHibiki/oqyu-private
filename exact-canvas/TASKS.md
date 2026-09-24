@@ -53,8 +53,11 @@
 ## Keamanan (24 Sep 2026)
 - ✅ C-045 Audit dependensi: `npm audit` 0 (React 19.2.8 hanya client, tanpa Server Components → tidak terdampak CVE-2025-55182). `Cargo.lock` dicocokkan ke OSV: 9 temuan, tidak ada yang dapat dieksploitasi di aplikasi ini — `rsa` (Marvin, via sqlx-mysql; hanya fitur sqlite dipakai, tanpa perbaikan hulu), `rkyv` 0.7.46 (RUSTSEC-2026-0235, via rust_decimal; aplikasi tidak mendeserialisasi arsip rkyv), `glib` (khusus Linux/GTK, tidak dikompilasi di macOS), `unic-*` & `proc-macro-error` (hanya tidak dipelihara). Tinjau ulang dengan `cargo audit` setelah Rust terpasang (C-042)
 
+## QA lokal (24 Sep 2026)
+- ✅ C-042 Rust 1.98.1 terpasang (rustup), `tauri dev` terkompilasi & aplikasi jalan di MacBook lokal
+- ✅ C-047 Fix `npm run app` tidak pernah jalan: Vite di port 1420 sementara `tauri.conf.json` (devUrl + CSP) menunggu 1421 — Vite disamakan ke 1421, HMR 1422
+
 ## Direncanakan (lihat PLANS.md Backlog)
-- ⬜ C-042 Pasang Rust & verifikasi `cargo check` / `npm run app:build`
 - ❌ C-043 Jalur sesi Practice untuk Practice di cloud — tidak diperlukan, user memilih tetap Mac + Tunnel (24 Sep 2026)
 - ⬜ C-044 CI build — B3
 - ⬜ C-046 Default alamat Practice (`VITE_PRACTICE_URL`) & placeholder alamat publik tidak lagi menunjuk domain Mac utama (↔ P-039)

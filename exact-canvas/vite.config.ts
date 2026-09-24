@@ -13,10 +13,12 @@ export default defineConfig({
   // Tauri expects a fixed port and swallows Rust errors on stderr
   clearScreen: false,
   server: {
-    port: 1420,
+    // Harus sama dengan devUrl & CSP di src-tauri/tauri.conf.json (1421/1422)
+    // — kalau berbeda, `npm run app` menunggu selamanya di port yang kosong.
+    port: 1421,
     strictPort: true,
     host: host || false,
-    hmr: host ? { protocol: 'ws', host, port: 1421 } : undefined,
+    hmr: host ? { protocol: 'ws', host, port: 1422 } : undefined,
     watch: { ignored: ['**/src-tauri/**'] },
   },
   envPrefix: ['VITE_', 'TAURI_ENV_*'],

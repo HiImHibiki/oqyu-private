@@ -56,6 +56,9 @@
 ## Keamanan (24 Sep 2026)
 - ✅ W-045 KaTeX yang di-vendor (`statik/katex`, `wsm/vendor/katex`) 0.16.9 → 0.16.47: menutup CVE-2024-28243/28244 (DoS maxExpand), CVE-2024-28245 (bypass protokol `\includegraphics`), CVE-2024-28246 & CVE-2025-23207 (XSS `\htmlData`). Diuji: rumus, pecahan, `\ce` mhchem ter-render; `wsm/test.js` 94/94. Python stdlib saja (tanpa dependensi); `/berkas` menolak `/` & `..`
 
+## QA lokal (24 Sep 2026)
+- ✅ W-046 Dipasang di MacBook lokal (poppler via brew, `pasang.sh`, OCR terkompilasi, DB kosong), server `python3 cari.py` :7790 — semua tab 200; `terbit.py` → Practice lokal berhasil (↔ P-041). Catatan: keluaran & tab Hasil membaca seluruh PDF di ~/Desktop
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ⬜ W-042 Perbaiki SyntaxWarning `buat.py:931` — B1
 - ⬜ W-043 Satu perintah uji `./uji.sh` — B2
