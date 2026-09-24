@@ -1,0 +1,245 @@
+/**
+ * Kelas langsung di sisi guru: ruangan editor ini, antrian pertanyaan, murid
+ * yang masuk, dan grup. Data tinggal di SQLite vault; aksi yang harus
+ * mengabari HP (membahas pertanyaan) lewat endpoint server supaya HP murid
+ * yang bersangkutan berbunyi.
+ */
+
+import { api } from './api'
+import { q, x } from './db'
+import { pancarkan } from './events'
+import { newId } from './id'
+
+export interface Tanya {
+  id: string
+  student_id: string
+  name: string
+  room: number
+  text: string | null
+  /** Nama berkas di vault/tanya, satu per lampiran (foto-foto, atau satu PDF). */
+  photos: string[]
+  status: 'menunggu' | 'dibahas' | 'selesai'
+  created_at: number
+  handled_at: number | null
+}
+
+/** Baris mentah dari SQLite: `photos` masih JSON, belum diurai. */
+type BarisTanya = Omit<Tanya, 'photos'> & { photos: string | null }
+
+function uraiTanya(b: BarisTanya): Tanya {
+  let photos: string[] = []
+  if (b.photos) {
+    try {
+      photos = JSON.parse(b.photos)
+    } catch {
+      photos = []
+    }
+  }
+  return { ...b, photos }
+}
+
+export interface Murid {
+  id: string
+  name: string
+  room: number
+  first_seen: number
+  last_seen: number
+  muted_until: number | null
+  /** 1 = boleh mencoret kanvasnya sendiri dari HP. */
+  can_draw: number
+  /** Nomor HP dari akunnya (null untuk murid lama tanpa akun). */
+  phone?: string | null
+}
+
+/** Akun murid (nomor HP + sandi) — identitas yang mengikuti anak ke perangkat mana pun. */
+export interface Akun {
+  id: string
+  nama: string
+  hp: string
+  dibuat: number
+  /** Guru sudah menerima pendaftarannya. */
+  disetujui: boolean
+}
+
+export interface Grup {
+  id: string
+  name: string
+  color: string | null
+  /** null = kanvas sendiri/grup (bawaan); 'editor:<id>' | 'sketsa:<id>' */
+  target: string | null
+  /** Jadwal tetap, teks bebas: "Sen 16:00". */
+  schedule?: string | null
+  /** Kanvas grup hari ini (satu kanvas per grup per hari). */
+  sketch_id?: string | null
+  sketch_day?: string | null
+  sort_order: number | null
+}
+
+/* ── Antrian ───────────────────────────────────────────────────────── */
+
+export async function daftarTanya(): Promise<Tanya[]> {
+  const baris = await q<BarisTanya>(
+    "SELECT * FROM questions WHERE status != 'selesai' ORDER BY CASE status WHEN 'dibahas' THEN 0 ELSE 1 END, created_at ASC",
+  )
+  return baris.map(uraiTanya)
+}
+
+export async function riwayatTanya(batas = 30): Promise<Tanya[]> {
+  const baris = await q<BarisTanya>("SELECT * FROM questions WHERE status = 'selesai' ORDER BY handled_at DESC LIMIT ?", [batas])
+  return baris.map(uraiTanya)
+}
+
+/** Lewat server, bukan SQL langsung: HP murid (dan grupnya) harus dikabari. */
+export async function ubahTanya(id: string, status: 'dibahas' | 'selesai', editor?: string, sketsa?: string): Promise<void> {
+  await api('/api/kelas/ubah', { method: 'POST', json: { id, status, editor: editor ?? null, sketsa: sketsa ?? null } })
+}
+
+/* ── Murid & grup ──────────────────────────────────────────────────── */
+
+/** Murid yang terlihat dalam 10 jam terakhir — satu hari mengajar. */
+export async function daftarMurid(): Promise<Murid[]> {
+  return q<Murid>(
+    'SELECT s.*, a.phone FROM students s LEFT JOIN accounts a ON a.id = s.id WHERE s.last_seen > ? ORDER BY s.room, s.name COLLATE NOCASE',
+    [Date.now() - 10 * 3600_000],
+  )
+}
+
+/** Semua murid yang pernah masuk — untuk menyusun anggota tetap grup. */
+export async function daftarMuridSemua(): Promise<Murid[]> {
+  return q<Murid>('SELECT s.*, a.phone FROM students s LEFT JOIN accounts a ON a.id = s.id ORDER BY s.name COLLATE NOCASE')
+}
+
+export async function daftarAkun(): Promise<Akun[]> {
+  // Berbagi belum menyala → server belum ada → belum ada akun yang bisa mendaftar.
+  try {
+    return await api<Akun[]>('/api/akun')
+  } catch {
+    return []
+  }
+}
+
+/** Terima (akun aktif) atau tolak (akun dihapus) seorang pendaftar. */
+export async function setujuiAkun(id: string, setuju: boolean): Promise<void> {
+  await api('/api/akun/setujui', { method: 'POST', json: { id, setuju } })
+}
+
+/** Ganti sandi murid yang lupa; sesi lamanya dicabut. */
+export async function resetSandiAkun(id: string, sandi: string): Promise<void> {
+  await api('/api/akun/reset', { method: 'POST', json: { id, sandi } })
+}
+
+export async function daftarGrup(): Promise<Grup[]> {
+  return q<Grup>('SELECT * FROM groups ORDER BY sort_order, name COLLATE NOCASE')
+}
+
+export async function anggotaGrup(): Promise<{ group_id: string; student_id: string }[]> {
+  return q('SELECT group_id, student_id FROM group_members')
+}
+
+const WARNA_GRUP = ['#b4531a', '#1f6f5c', '#1d4ed8', '#7c3aed', '#d97706', '#0891b2']
+
+export async function buatGrup(nama: string): Promise<string> {
+  const id = newId('grp')
+  const semua = await daftarGrup()
+  await x('INSERT INTO groups (id, name, color, target, sort_order) VALUES (?, ?, ?, NULL, ?)', [
+    id,
+    nama.trim() || 'Group',
+    WARNA_GRUP[semua.length % WARNA_GRUP.length],
+    Date.now(),
+  ])
+  await pancarkan('kelas', { apa: 'grup' })
+  return id
+}
+
+export async function ubahGrup(id: string, ubah: { name?: string; target?: string | null; schedule?: string | null }): Promise<void> {
+  if (ubah.name !== undefined) await x('UPDATE groups SET name = ? WHERE id = ?', [ubah.name, id])
+  if (ubah.target !== undefined) await x('UPDATE groups SET target = ? WHERE id = ?', [ubah.target, id])
+  if (ubah.schedule !== undefined) await x('UPDATE groups SET schedule = ? WHERE id = ?', [ubah.schedule, id])
+  await pancarkan('kelas', { apa: 'grup' })
+}
+
+export async function hapusGrup(id: string): Promise<void> {
+  await x('DELETE FROM group_members WHERE group_id = ?', [id])
+  await x('DELETE FROM groups WHERE id = ?', [id])
+  await pancarkan('kelas', { apa: 'grup' })
+}
+
+/** Satu murid hanya di satu grup; null mengeluarkannya dari grup mana pun. */
+export async function tetapkanGrup(muridId: string, grupId: string | null): Promise<void> {
+  await x('DELETE FROM group_members WHERE student_id = ?', [muridId])
+  if (grupId) await x('INSERT OR IGNORE INTO group_members (group_id, student_id) VALUES (?, ?)', [grupId, muridId])
+  await pancarkan('kelas', { apa: 'grup' })
+}
+
+/** Bisukan pertanyaan dari seorang murid selama `menit`; 0 = buka lagi. */
+export async function bisukanMurid(muridId: string, menit: number): Promise<void> {
+  await x('UPDATE students SET muted_until = ? WHERE id = ?', [menit > 0 ? Date.now() + menit * 60_000 : null, muridId])
+  await pancarkan('kelas', { apa: 'bisu' })
+}
+
+/**
+ * Izinkan/cabut izin murid mencoret kanvasnya sendiri dari HP. Lewat server,
+ * bukan SQL langsung: server yang memegang koneksi WebSocket murid itu dan
+ * membuat kanvasnya kalau belum ada.
+ */
+export async function izinkanCoret(muridId: string, boleh: boolean): Promise<void> {
+  await api('/api/kelas/izin', { method: 'POST', json: { murid: muridId, boleh } })
+}
+
+/** Tutup semua pertanyaan yang masih terbuka. */
+export async function kosongkanAntrean(): Promise<void> {
+  await x("UPDATE questions SET status = 'selesai', handled_at = ? WHERE status != 'selesai'", [Date.now()])
+  await pancarkan('kelas', { apa: 'kosong' })
+}
+
+/* ── Bunyi ─────────────────────────────────────────────────────────── */
+
+let bunyiTerakhir = 0
+
+/** Bunyi pertanyaan baru paling sering sekali tiap 4 detik — banjir pertanyaan bukan alasan kelas berisik. */
+export function bunyiTanya(): void {
+  const kini = Date.now()
+  if (kini - bunyiTerakhir < 4000) return
+  bunyiTerakhir = kini
+  bunyi('tanya')
+}
+
+let audio: AudioContext | null = null
+
+/**
+ * Dua nada pendek. AudioContext dibuat saat pertama dipanggil; di browser
+ * ia baru boleh berbunyi setelah ada ketukan pengguna, jadi pemanggil di HP
+ * memanggilnya sekali (tanpa bunyi) saat tombol Masuk ditekan.
+ */
+export function bunyi(jenis: 'tanya' | 'bahas' | 'diam' = 'tanya'): void {
+  try {
+    audio ??= new AudioContext()
+    if (audio.state === 'suspended') void audio.resume()
+    if (jenis === 'diam') return
+    const nada = jenis === 'tanya' ? [880, 1174] : [659, 880, 1046]
+    nada.forEach((f, i) => {
+      const o = audio!.createOscillator()
+      const g = audio!.createGain()
+      o.type = 'sine'
+      o.frequency.value = f
+      g.gain.value = 0.0001
+      o.connect(g).connect(audio!.destination)
+      const t0 = audio!.currentTime + i * 0.16
+      g.gain.setValueAtTime(0.0001, t0)
+      g.gain.exponentialRampToValueAtTime(0.25, t0 + 0.02)
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.15)
+      o.start(t0)
+      o.stop(t0 + 0.16)
+    })
+  } catch {
+    /* tanpa audio */
+  }
+}
+
+/** "3 min", "just now" */
+export function lamaMenunggu(sejak: number): string {
+  const m = Math.round((Date.now() - sejak) / 60_000)
+  if (m < 1) return 'just now'
+  if (m < 60) return `${m} min`
+  return `${Math.floor(m / 60)} h ${m % 60} m`
+}

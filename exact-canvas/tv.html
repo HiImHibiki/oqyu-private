@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exact Canvas — TV</title>
+    <style>
+      :root {
+        --bg: #f2f0ea; --surface: #ffffff; --surface-2: #f7f5ef; --paper: #ffffff;
+        --line: rgba(36, 38, 43, 0.13); --line-strong: rgba(36, 38, 43, 0.28);
+        --ink: #24262b; --ink-soft: rgba(36, 38, 43, 0.68); --ink-faint: rgba(36, 38, 43, 0.42);
+        --ink-on-paper: #24262b; --accent: #b4531a; --accent-2: #1f6f5c; --glow: #e8a24b;
+        --up: #1f6f5c; --down: #b4351a;
+      }
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { height: 100%; margin: 0; overflow: hidden; background: var(--bg); color: var(--ink);
+        font: 15px -apple-system, system-ui, "Helvetica Neue", Arial, sans-serif; cursor: none; }
+      canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+      #status { position: absolute; left: 16px; bottom: 14px; padding: 6px 12px; border-radius: 999px;
+        background: rgba(36, 38, 43, 0.72); color: #fff; font-size: 14px; opacity: 0; transition: opacity 600ms; pointer-events: none; }
+      #status.tampil { opacity: 1; }
+      #pesan { position: absolute; inset: 0; display: none; place-items: center; text-align: center; padding: 24px;
+        background: rgba(242, 240, 234, 0.92); font-size: 22px; line-height: 1.5; }
+      #pesan.tampil { display: grid; }
+      #pesan small { display: block; font-size: 15px; color: var(--ink-soft); margin-top: 8px; }
+
+      /* ── Murid (HP) ─────────────────────────────────────────────── */
+      .hp { cursor: auto; }
+      #masuk, #akun, #setuju { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; padding: 24px; background: var(--bg); overflow: hidden; }
+      #masuk.tampil, #akun.tampil, #setuju.tampil { display: flex; }
+      #masuk form, #akun form, #setuju form { width: 100%; max-width: 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+      #masuk input, #masuk select, #masuk button, #akun input, #akun button { width: 100%; min-width: 0; }
+      #masuk h1, #akun h1, #setuju h1 { font-size: 20px; margin: 0; font-weight: 600; }
+      #masuk input, #masuk select, #masuk button, #akun input, #akun button { font: inherit; font-size: 17px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); }
+      #akun .tab { display: flex; gap: 6px; padding: 4px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+      #akun .tab button { flex: 1; padding: 8px; border: 0; border-radius: 9px; background: transparent; color: var(--ink-soft); font-weight: 600; }
+      #akun .tab button.aktif { background: var(--accent); color: #fff; }
+      #akun .galat { color: #c0392b; font-size: 14px; min-height: 18px; }
+      #akun small, #masuk small { color: var(--ink-soft); font-size: 13px; }
+      #masuk .siapa, #setuju .siapa { display: flex; justify-content: space-between; align-items: center; font-size: 15px; }
+      #masuk .siapa button, #setuju .siapa button { width: auto; font: inherit; background: transparent; border: 0; color: var(--accent); padding: 4px 6px; font-size: 14px; font-weight: 600; }
+      #akun #akun-kirim { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+      #masuk button { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+      #bilah { position: absolute; left: 0; right: 0; bottom: 0; display: none; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(242, 240, 234, 0.92); border-top: 1px solid var(--line); backdrop-filter: blur(8px); }
+      #bilah.tampil { display: flex; }
+      #bilah button { flex: 1; font: inherit; font-size: 15px; padding: 11px 8px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); }
+      #bilah button.utama { background: var(--accent); color: #fff; border-color: var(--accent); }
+      #bilah button:disabled { opacity: 0.45; }
+      #status-saya { position: absolute; left: 12px; right: 12px; bottom: calc(70px + env(safe-area-inset-bottom)); text-align: center; font-size: 14px; color: var(--ink-soft); pointer-events: none; }
+      #status-saya b { color: var(--accent); }
+
+      #lembar { position: absolute; inset: 0; display: none; align-items: flex-end; background: rgba(36, 38, 43, 0.35); }
+      #lembar.tampil { display: flex; }
+      #lembar .isi { width: 100%; background: var(--surface); border-radius: 16px 16px 0 0; padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; }
+      #lembar textarea { font: inherit; font-size: 16px; min-height: 72px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink); resize: none; }
+      #lembar .baris { display: flex; gap: 8px; }
+      #lembar button { flex: 1; font: inherit; font-size: 15px; padding: 11px 8px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--ink); }
+      #lembar button.utama { background: var(--accent); color: #fff; border-color: var(--accent); }
+      #lembar img { max-height: 160px; width: auto; max-width: 100%; border-radius: 8px; border: 1px solid var(--line); align-self: flex-start; }
+      #pratinjau-foto { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
+      #pratinjau-foto[hidden] { display: none; }
+      #pratinjau-foto .foto-item { position: relative; flex: 0 0 auto; }
+      #pratinjau-foto .foto-item img { display: block; height: 90px; max-height: 90px; width: auto; border-radius: 8px; border: 1px solid var(--line); }
+      #pratinjau-foto .foto-item button { position: absolute; top: -6px; right: -6px; width: 22px; height: 22px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); font-size: 14px; line-height: 1; padding: 0; display: flex; align-items: center; justify-content: center; }
+
+      #grup { position: absolute; inset: 0; display: none; align-items: flex-end; background: rgba(36, 38, 43, 0.35); }
+      #grup.tampil { display: flex; }
+      #grup .isi { width: 100%; max-height: 80vh; overflow-y: auto; background: var(--surface); border-radius: 16px 16px 0 0; padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; }
+      #grup input { font: inherit; font-size: 16px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink); flex: 1; min-width: 0; }
+      #grup .baris { display: flex; gap: 8px; }
+      #grup button { font: inherit; font-size: 15px; padding: 11px 8px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--ink); }
+      #grup button.utama { background: var(--accent); color: #fff; border-color: var(--accent); flex: 0 0 auto; }
+      #grup #grup-keluar, #grup #grup-tutup { width: 100%; }
+      .grup-baris { display: flex; align-items: center; gap: 8px; padding: 8px 4px; border-bottom: 1px solid var(--line); }
+      .grup-baris .titik { width: 10px; height: 10px; border-radius: 999px; flex-shrink: 0; }
+      .grup-baris .nama { flex: 1; min-width: 0; font-size: 15px; }
+      .grup-baris .jumlah { font-size: 12px; color: var(--ink-faint); }
+      .grup-baris button { padding: 6px 12px; font-size: 13px; }
+
+      #kabar { position: absolute; left: 12px; right: 12px; top: 12px; padding: 12px 14px; border-radius: 12px; background: var(--accent); color: #fff; font-size: 16px;
+        text-align: center; transform: translateY(-140%); transition: transform 300ms; pointer-events: none; box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+      #kabar.tampil { transform: none; }
+      #tunggu { position: absolute; inset: 0; display: none; place-items: center; text-align: center; background: #000; color: #666; padding: 32px; }
+      #tunggu.tampil { display: grid; }
+      #tunggu .bulan { font-size: 40px; margin-bottom: 12px; }
+      #tunggu .judul { font-size: 18px; color: #999; }
+      #tunggu .sub { font-size: 14px; line-height: 1.5; margin-top: 8px; }
+      #tunggu #tunggu-antrean { margin-top: 18px; font-size: 15px; color: #8a8; }
+      #bilah #tombol-tunggu, #bilah #tombol-coret { flex: 0 0 auto; padding: 11px 14px; }
+      #bilah #tombol-coret.aktif { background: var(--accent); border-color: var(--accent); }
+      #alat-coret { position: absolute; left: 8px; right: 8px; top: calc(8px + env(safe-area-inset-top)); display: none; gap: 6px; align-items: center; padding: 8px;
+        border-radius: 14px; background: rgba(242, 240, 234, 0.94); border: 1px solid var(--line); backdrop-filter: blur(8px); overflow-x: auto; }
+      #alat-coret.tampil { display: flex; }
+      #alat-coret button { font: inherit; font-size: 13px; padding: 8px 10px; border-radius: 9px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); flex: 0 0 auto; }
+      #alat-coret button.aktif { outline: 2px solid var(--accent); outline-offset: 1px; }
+      #alat-coret button.utama { background: var(--accent); color: #fff; border-color: var(--accent); margin-left: auto; }
+      #alat-coret .warna { width: 30px; height: 30px; padding: 0; border-radius: 999px; }
+      #alat-coret .warna[data-warna="ink"] { background: var(--ink); }
+      #alat-coret .warna[data-warna="accent"] { background: var(--accent); }
+      #alat-coret .warna[data-warna="down"] { background: var(--down); }
+      #alat-coret .warna[data-warna="up"] { background: var(--up); }
+      #alat-coret .warna[data-warna="accent-2"] { background: var(--accent-2); }
+      #alat-coret .sekat { width: 1px; height: 24px; background: var(--line-strong); flex: 0 0 auto; }
+      #alat-coret #coret-hapus.aktif { background: var(--ink); color: var(--bg); border-color: var(--ink); outline: 0; }
+      .hp.mencoret.menghapus #aktif { cursor: cell; }
+      .hp.mencoret #ikuti { display: none; }
+      #pilih { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; padding: 24px; background: var(--bg); cursor: auto; }
+      #pilih.tampil { display: flex; }
+      #pilih .kotak { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 12px; text-align: center; }
+      #pilih h1 { margin: 0; font-size: 22px; font-weight: 600; }
+      #pilih p { margin: 0; color: var(--ink-soft); }
+      #pilih button { font: inherit; font-size: 16px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); cursor: pointer; }
+      #pilih button.utama { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+      #pilih .baris { display: flex; gap: 8px; }
+      #pilih .baris button { flex: 1; }
+      #pilih small { color: var(--ink-faint); }
+      #ikuti { position: absolute; right: 12px; top: 12px; padding: 10px 14px; border-radius: 999px; border: 0; background: var(--accent); color: #fff;
+        font: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+      #kembali-riwayat { position: absolute; left: 12px; top: 12px; padding: 10px 14px; border-radius: 999px; border: 0; background: var(--ink); color: #fff;
+        font: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+      .hp #aktif { touch-action: none; }
+      /* Tertanam di Exact Practice: tombol Practice tidak ada gunanya di dalam Practice sendiri. */
+      html.embed #tombol-latihan { display: none; }
+    </style>
+  </head>
+  <body>
+    <canvas id="dasar"></canvas>
+    <canvas id="aktif"></canvas>
+    <div id="status"></div>
+    <div id="pesan"></div>
+
+    <div id="kabar"></div>
+    <button id="ikuti" hidden>↩ Follow the teacher</button>
+    <button id="kembali-riwayat" hidden>← Back to today</button>
+    <div id="status-saya"></div>
+    <div id="bilah">
+      <button id="tombol-grup" title="Study group">👥 Group</button>
+      <button id="tombol-ekspor" title="Export your canvas as a PDF">📄 PDF</button>
+      <button id="tombol-latihan" title="Practice questions from the teacher (Exact Practice)">📝 Practice</button>
+      <button id="tombol-tangan">✋ Raise hand</button>
+      <button id="tombol-tanya" class="utama">❓ Ask</button>
+      <button id="tombol-paham" disabled>✅ Got it</button>
+      <button id="tombol-coret" title="Draw on your own canvas" hidden>✏️</button>
+      <button id="tombol-sisip-foto" title="Insert a photo onto your canvas" hidden>🖼️</button>
+      <button id="tombol-tunggu" title="Dim the screen or lock the phone until the teacher gets to you">🌙</button>
+    </div>
+    <!-- Foto ditempel langsung ke kanvas sendiri (tidak lewat antrian guru) —
+         cuma untuk murid yang sedang diizinkan mencoret. -->
+    <input id="berkas-sisip-foto" type="file" accept="image/*" multiple hidden />
+    <div id="alat-coret">
+      <button data-warna="ink" class="warna aktif" aria-label="Black"></button>
+      <button data-warna="accent" class="warna" aria-label="Orange"></button>
+      <button data-warna="down" class="warna" aria-label="Red"></button>
+      <button data-warna="up" class="warna" aria-label="Green"></button>
+      <button data-warna="accent-2" class="warna" aria-label="Blue"></button>
+      <span class="sekat"></span>
+      <button data-ukuran="3" class="ukuran">thin</button>
+      <button data-ukuran="5" class="ukuran aktif">med</button>
+      <button data-ukuran="9" class="ukuran">thick</button>
+      <span class="sekat"></span>
+      <button id="coret-bentuk" aria-label="Shapes: draw roughly and it snaps to a clean line, box or circle" title="Shapes">◇ shape</button>
+      <button id="coret-penggaris" aria-label="Ruler: draw along its edge for a straight line" title="Ruler">📏 ruler</button>
+      <button id="coret-busur" aria-label="Protractor: draw along the arc, or from the centre for an angle" title="Protractor">⌒ protractor</button>
+      <button id="coret-jangka" aria-label="Compass: start at the pencil tip to draw an arc around the pin" title="Compass">⊙ compass</button>
+      <span class="sekat"></span>
+      <button id="coret-hapus" aria-label="Eraser: rub out your own strokes" title="Eraser">⌫ erase</button>
+      <button id="coret-undo" aria-label="Undo">↶</button>
+      <button id="coret-selesai" class="utama">Done</button>
+    </div>
+    <div id="tunggu">
+      <div>
+        <div class="bulan">🌙</div>
+        <div class="judul">Waiting for the teacher</div>
+        <div class="sub">You can lock your phone. It will ring when your question comes up.<br>Tap anywhere to go back.</div>
+        <div id="tunggu-antrean"></div>
+      </div>
+    </div>
+    <div id="lembar">
+      <div class="isi">
+        <strong>Ask the teacher</strong>
+        <textarea id="teks-tanya" placeholder="Type your question (optional)…"></textarea>
+        <div id="pratinjau-foto" hidden></div>
+        <div id="pratinjau-pdf" hidden style="font-size:14px;color:var(--ink-soft)"></div>
+        <div class="baris">
+          <button id="tombol-foto">📷 Camera</button>
+          <button id="tombol-galeri">🖼 Gallery</button>
+          <button id="tombol-pdf">📄 PDF</button>
+        </div>
+        <button id="tombol-kirim" class="utama">Send</button>
+        <button id="tombol-batal">Cancel</button>
+        <!-- Dua input terpisah: "capture" pada yang pertama membuka kamera
+             langsung (satu foto); yang kedua tanpa capture tapi dengan
+             "multiple" membuka galeri dengan pilih-banyak. Menggabungkan
+             keduanya ke satu input tidak selalu menawarkan kamera lagi di
+             Android saat "multiple" terpasang. -->
+        <input id="berkas-foto" type="file" accept="image/*" capture="environment" hidden />
+        <input id="berkas-galeri" type="file" accept="image/*" multiple hidden />
+        <input id="berkas-pdf" type="file" accept="application/pdf,.pdf" hidden />
+      </div>
+    </div>
+    <div id="grup">
+      <div class="isi">
+        <strong>Study group</strong>
+        <div id="grup-sekarang" hidden>
+          <p id="grup-sekarang-teks" style="margin:0 0 8px;color:var(--ink-soft);font-size:15px"></p>
+          <button id="grup-keluar">Leave this group</button>
+        </div>
+        <div id="grup-buat">
+          <div class="baris">
+            <input id="grup-nama" placeholder="New group name" maxlength="40" />
+            <button id="grup-buat-kirim" class="utama">Create</button>
+          </div>
+        </div>
+        <div id="grup-daftar"></div>
+        <div id="grup-riwayat" hidden>
+          <p style="margin:4px 0 2px;font-size:12px;color:var(--ink-faint)">Past days</p>
+          <div id="grup-riwayat-daftar"></div>
+        </div>
+        <button id="grup-tutup">Close</button>
+      </div>
+    </div>
+    <div id="pilih">
+      <div class="kotak">
+        <h1>Exact Canvas</h1>
+        <p>How should this screen be used?</p>
+        <button id="pilih-murid" class="utama">🙋 Join as a student</button>
+        <div class="baris">
+          <button id="pilih-tv">📺 TV</button>
+        </div>
+        <small>Students can ask questions and follow the teacher. A TV only follows.</small>
+      </div>
+    </div>
+    <div id="akun">
+      <form id="form-akun" autocomplete="on">
+        <h1>Exact Canvas</h1>
+        <div class="tab">
+          <button type="button" id="tab-masuk" class="aktif">Sign in</button>
+          <button type="button" id="tab-daftar">Register</button>
+        </div>
+        <input id="akun-nama" placeholder="Your name" autocomplete="name" maxlength="40" size="10" hidden />
+        <input id="akun-hp" placeholder="Phone number (08…)" inputmode="tel" autocomplete="username" maxlength="20" size="10" required />
+        <input id="akun-sandi" type="password" placeholder="Password" autocomplete="current-password" minlength="4" size="10" required />
+        <input id="akun-ulang" type="password" placeholder="Confirm password" autocomplete="new-password" minlength="4" size="10" hidden />
+        <input id="akun-kode" placeholder="Class code from the teacher" inputmode="numeric" autocomplete="off" maxlength="8" size="10" hidden />
+        <div class="galat" id="akun-galat"></div>
+        <button type="submit" id="akun-kirim">Sign in</button>
+        <small id="akun-catatan">Your phone number is your username. Forgot the password? Ask the teacher to reset it.</small>
+      </form>
+    </div>
+    <div id="setuju">
+      <form id="form-setuju">
+        <h1>Waiting for the teacher</h1>
+        <p id="setuju-teks" style="margin:0;color:var(--ink-soft);font-size:15px;line-height:1.5"></p>
+        <div class="siapa"><span id="setuju-siapa"></span><button type="button" id="setuju-keluar">Not you? Sign out</button></div>
+      </form>
+    </div>
+    <div id="masuk">
+      <form id="form-masuk">
+        <h1>Join the lesson</h1>
+        <div class="siapa"><span id="masuk-siapa"></span><button type="button" id="masuk-keluar">Not you? Sign out</button></div>
+        <button type="submit">Join</button>
+      </form>
+    </div>
+    <script type="module" src="/src/tv/main.ts"></script>
+  </body>
+</html>

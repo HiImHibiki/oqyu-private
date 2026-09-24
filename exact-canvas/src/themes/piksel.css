@@ -1,0 +1,287 @@
+/* ============================================================
+   TEMA — 8-BIT (warna-warni, piksel)
+   Langit biru, balok bertanda tanya, pipa hijau, koin emas. Paletnya
+   diambil dari konsol 8-bit: warna murni, tanpa gradasi, tanpa sudut
+   membulat, dan bayangan yang tidak pernah kabur — sprite tidak punya
+   penumbra. Satu-satunya tema yang sengaja ramai.
+
+   Warna sudah diperiksa kontrasnya: tinta #101024 di langit #5c94fc
+   bernilai 6,3:1 dan di kartu putih 18,7:1. Kuning koin cuma 1,7:1
+   dengan teks putih — jadi tombol aksen di sini bertinta gelap.
+   ============================================================ */
+
+:root[data-theme="piksel"] {
+  --bg: #5c94fc;
+  --surface: #ffffff;
+  --surface-2: #eef4ff;
+  --paper: #fffef2;
+  --line: rgba(16, 16, 36, 0.22);
+  --line-strong: #101024;
+
+  --ink: #101024;
+  --ink-soft: rgba(16, 16, 36, 0.7);
+  --ink-faint: rgba(16, 16, 36, 0.45);
+  --ink-on-paper: #101024;
+
+  /* Koin sebagai aksen utama, pipa sebagai pendamping. */
+  --accent: #fac000;
+  --accent-2: #1f7a1f;
+  --glow: #fbd000;
+
+  /* Hijau pipa dan merah bata, keduanya digelapkan secukupnya agar
+     terbaca di atas kartu putih. */
+  --up: #1a7a1a;
+  --down: #c02000;
+
+  /* Balok-balok dunia 1-1: koin, pipa, bata, awan, bintang, jamur. */
+  --paper-1: #fff6c8;
+  --paper-2: #d6f5d0;
+  --paper-3: #ffd9cf;
+  --paper-4: #d5e6ff;
+  --paper-5: #f2dcff;
+  --paper-6: #ffffff;
+
+  --font-display: "Baloo 2", system-ui, sans-serif;
+  --font-body: "Fredoka", system-ui, sans-serif;
+  --font-hand: "Baloo 2", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Piksel tidak melengkung. */
+  --radius: 0px;
+  --radius-sm: 0px;
+  --radius-lg: 0px;
+  --stroke: 3px;
+
+  /* Bayangan sprite: padat, bergeser, sama sekali tanpa blur. */
+  --shadow-card: 4px 4px 0 var(--ink);
+  --shadow-lift: 8px 8px 0 var(--ink);
+  --shadow-paper: 4px 4px 0 color-mix(in srgb, var(--ink) 45%, transparent);
+
+  /* Tinta di atas bidang aksen. Terpisah dari --ink karena keduanya tidak
+     selalu searah: di dunia gelap tintanya terang, tapi di atas kuning koin
+     tinta terang cuma bernilai 1,7:1 — jadi yang ini tetap gelap. */
+  --tinta-aksen: #101024;
+
+  --texture: none;
+  --texture-opacity: 0;
+  --texture-blend: normal;
+
+  /* Dinding bata, digambar sebagai motif SVG — bukan berkas gambar. */
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='32' viewBox='0 0 64 32'%3E%3Cg fill='none' stroke='%23808080' stroke-width='2'%3E%3Cpath d='M0 16h64M0 0h64M0 32h64M16 0v16M48 0v16M32 16v16M0 16v16M64 16v16'/%3E%3C/g%3E%3C/svg%3E");
+  --pattern-opacity: 0.08;
+  --blur-surface: blur(0px);
+
+  --sticky-fastener: "pin";
+  --sticky-tilt: 0deg;
+}
+
+/* Judul modul memakai huruf piksel asli — persis label HUD 8-bit
+   ("WORLD", "TIME"). Hanya di sini: huruf ini sangat lebar dan akan
+   memecah tata letak kalau dipakai untuk teks yang panjang. */
+:root[data-theme="piksel"] .ex-module-title {
+  font-family: "Press Start 2P", "Baloo 2", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 0.56em;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+/* Koin di kiri judul: satu kotak kuning bergaris hitam. */
+:root[data-theme="piksel"] .ex-module-title::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  flex: none;
+  background: var(--accent);
+  border: 2px solid var(--ink);
+}
+
+/* Angka besar dibuat sangat tebal — papan skor, bukan laporan keuangan. */
+:root[data-theme="piksel"] .ex-num,
+:root[data-theme="piksel"] .ex-jam-besar {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+:root[data-theme="piksel"] .ex-kutipan {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+/* Kartu = balok: garis hitam tebal, bayangan padat, tanpa gradasi. */
+:root[data-theme="piksel"] .ex-card {
+  border: 3px solid var(--ink);
+  background: var(--surface);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+/* Tombol ditekan benar-benar masuk — bayangannya ikut hilang, seperti
+   balok yang dipukul dari bawah. */
+:root[data-theme="piksel"] .ex-btn {
+  border: 3px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  font-weight: 600;
+}
+:root[data-theme="piksel"] .ex-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+/* Kuning koin hanya 1,7:1 dengan putih — tinta di sini wajib gelap, di
+   dunia mana pun. */
+:root[data-theme="piksel"] .ex-btn[data-variant="accent"] {
+  background: var(--accent);
+  color: var(--tinta-aksen);
+}
+
+:root[data-theme="piksel"] .ex-input {
+  border: 3px solid var(--ink);
+}
+
+:root[data-theme="piksel"] .ex-frame {
+  background: #ffffff;
+  padding: 10px 10px 34px;
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+:root[data-theme="piksel"] .ex-divider {
+  height: 3px;
+  background: var(--ink);
+  opacity: 0.18;
+}
+
+/* ============================================================
+   DUNIA — palet tukar untuk tema 8-Bit.
+
+   Dipasang lewat atribut `data-palet` di <html>, bukan style inline.
+   Sengaja: `[data-theme][data-palet]` menang atas `[data-theme]` saja,
+   sementara aksen kustom pengguna tetap dipasang inline dan karena itu
+   tetap menang atas keduanya — urutan yang benar tanpa satu pun `!important`.
+
+   Overworld adalah palet dasar di atas; ia tidak punya blok sendiri.
+   Garis luar dan bayangan sprite mengikuti --ink, jadi keempat dunia di
+   bawah cukup mengganti warna. Semua sudah diperiksa kontrasnya.
+   ============================================================ */
+
+/* ── Underground ── Balok biru di kegelapan, koin tetap emas.
+   tinta di latar 18,1:1 · tinta di kartu 13,2:1 */
+:root[data-theme="piksel"][data-palet="bawah-tanah"] {
+  --bg: #05060f;
+  --surface: #14235c;
+  --surface-2: #0d1740;
+  --paper: #fffef2;
+  --line: rgba(232, 244, 255, 0.28);
+  --line-strong: #e8f4ff;
+
+  --ink: #e8f4ff;
+  --ink-soft: rgba(232, 244, 255, 0.7);
+  --ink-faint: rgba(232, 244, 255, 0.45);
+
+  --accent: #fac000;
+  --accent-2: #3cbcfc;
+  --glow: #3cbcfc;
+
+  --up: #5ce65c;
+  --down: #ff7a6b;
+
+  --paper-1: #fff6c8;
+  --paper-2: #cfe8ff;
+  --paper-3: #d6f5d0;
+  --paper-4: #ffd9cf;
+  --paper-5: #e6dcff;
+  --paper-6: #ffffff;
+}
+
+/* ── Underwater ── Teal dalam, karang, dan mutiara.
+   tinta di latar 11,8:1 · tinta di kartu 7,2:1 */
+:root[data-theme="piksel"][data-palet="bawah-air"] {
+  --bg: #073844;
+  --surface: #0e5a6b;
+  --surface-2: #0a4655;
+  --paper: #f2fdff;
+  --line: rgba(226, 251, 255, 0.28);
+  --line-strong: #e2fbff;
+
+  --ink: #e2fbff;
+  --ink-soft: rgba(226, 251, 255, 0.72);
+  --ink-faint: rgba(226, 251, 255, 0.46);
+
+  --accent: #7ff0d0;
+  --accent-2: #ffbca8;
+  --glow: #7ff0d0;
+
+  --up: #7ff0a8;
+  /* Koral #ff9a6c cuma 3,75:1 di atas kartu — dipucatkan sampai 4,8:1. */
+  --down: #ffbca8;
+
+  --paper-1: #f2fdff;
+  --paper-2: #ccf7ec;
+  --paper-3: #cfeaff;
+  --paper-4: #ffe2d8;
+  --paper-5: #e4f7c8;
+  --paper-6: #f6e8ff;
+}
+
+/* ── Castle ── Batu arang, tulang, dan lava.
+   tinta di latar 15,6:1 · tinta di kartu 11,5:1 */
+:root[data-theme="piksel"][data-palet="kastil"] {
+  --bg: #14100f;
+  --surface: #322b2a;
+  --surface-2: #241e1d;
+  --paper: #f7f0e4;
+  --line: rgba(242, 232, 220, 0.26);
+  --line-strong: #f2e8dc;
+
+  --ink: #f2e8dc;
+  --ink-soft: rgba(242, 232, 220, 0.7);
+  --ink-faint: rgba(242, 232, 220, 0.44);
+
+  --accent: #ff8c1a;
+  --accent-2: #e05a3c;
+  --glow: #ff8c1a;
+
+  --up: #c8d97a;
+  --down: #ff6b5c;
+
+  --paper-1: #f7f0e4;
+  --paper-2: #ffe0bd;
+  --paper-3: #ffd2c8;
+  --paper-4: #e8e4cc;
+  --paper-5: #ded6d2;
+  --paper-6: #ffffff;
+}
+
+/* ── Night ── Langit ungu, bintang, dan magenta.
+   tinta di latar 15,5:1 · tinta di kartu 12,4:1 */
+:root[data-theme="piksel"][data-palet="malam"] {
+  --bg: #160c38;
+  --surface: #2d1b5e;
+  --surface-2: #1f1246;
+  --paper: #fdf7ff;
+  --line: rgba(242, 232, 255, 0.28);
+  --line-strong: #f2e8ff;
+
+  --ink: #f2e8ff;
+  --ink-soft: rgba(242, 232, 255, 0.72);
+  --ink-faint: rgba(242, 232, 255, 0.46);
+
+  --accent: #ffd84d;
+  --accent-2: #ff5cc8;
+  --glow: #ff5cc8;
+
+  --up: #8cf0c0;
+  --down: #ff7aa8;
+
+  --paper-1: #fdf7ff;
+  --paper-2: #ffeeb8;
+  --paper-3: #ffd6f0;
+  --paper-4: #d8d0ff;
+  --paper-5: #cceeff;
+  --paper-6: #e0ffe8;
+}

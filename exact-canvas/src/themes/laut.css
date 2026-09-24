@@ -1,0 +1,105 @@
+/* ============================================================
+   TEMA — DASAR LAUT (kartun bawah air)
+   Dapur kecil di dasar laut. Gelembung naik, sinar matahari menembus
+   air, dan semuanya digambar dengan garis tebal.
+
+   Terinspirasi kartun bawah laut, dengan bahasa visual sendiri —
+   tanpa nama, karakter, atau logo waralaba mana pun (§5).
+   ============================================================ */
+
+:root[data-theme="laut"] {
+  --bg: #0d7a99;
+  --surface: #128fb0;
+  --surface-2: #0f819f;
+  --paper: #ffe873;
+  --line: rgba(10, 45, 60, 0.28);
+  --line-strong: #0a2d3c;
+
+  --ink: #f2fbff;
+  --ink-soft: rgba(242, 251, 255, 0.78);
+  --ink-faint: rgba(242, 251, 255, 0.5);
+  --ink-on-paper: #123a4a;
+
+  --accent: #ff7a5c;
+  --accent-2: #6fe0a8;
+  --glow: #ffe873;
+
+  --up: #6fe0a8;
+  --down: #ff7a5c;
+
+  --paper-1: #ffe873;
+  --paper-2: #ffb4a2;
+  --paper-3: #a8ecd0;
+  --paper-4: #ffd0e0;
+  --paper-5: #bfe6ff;
+  --paper-6: #ffd79a;
+
+  --font-display: "Baloo 2", "Fredoka", system-ui, sans-serif;
+  --font-body: "Baloo 2", "Fredoka", system-ui, sans-serif;
+  --font-hand: "Baloo 2", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --radius-lg: 26px;
+  /* Garis tebal — inti dari tampilan kartun. */
+  --stroke: 2px;
+
+  --shadow-card: 0 3px 0 var(--line-strong);
+  --shadow-lift: 0 12px 0 var(--line-strong), 0 22px 44px rgba(4, 30, 40, 0.4);
+  --shadow-paper: 0 4px 0 rgba(10, 45, 60, 0.45);
+
+  --texture: none;
+  --texture-opacity: 0;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: none;
+
+  --sticky-fastener: "pin";
+  --sticky-tilt: 4deg;
+}
+
+/* Judul modul memakai gelembung sebagai pemisah. */
+:root[data-theme="laut"] .ex-module-title {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--paper);
+}
+:root[data-theme="laut"] .ex-module-title::after {
+  content: "•°";
+  margin-left: 0.45em;
+  color: var(--glow);
+  opacity: 0.8;
+}
+
+/* Kartu bergaris tebal dengan bayangan padat, bukan kabur. */
+:root[data-theme="laut"] .ex-card {
+  border-color: var(--line-strong);
+}
+
+:root[data-theme="laut"] .ex-btn {
+  border-width: 2px;
+  border-color: var(--line-strong);
+  font-weight: 700;
+}
+:root[data-theme="laut"] .ex-btn[data-variant="accent"] {
+  color: #10323f;
+  box-shadow: 0 3px 0 var(--line-strong);
+}
+:root[data-theme="laut"] .ex-btn[data-variant="accent"]:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+:root[data-theme="laut"] .ex-sticky {
+  border: 2px solid var(--line-strong);
+}
+
+/* Bingkai foto seperti jendela kapal selam. */
+:root[data-theme="laut"] .ex-frame {
+  border: 6px solid var(--paper);
+  outline: 3px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 0 rgba(10, 45, 60, 0.4);
+}

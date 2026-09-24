@@ -1,0 +1,90 @@
+/* ============================================================
+   TEMA — FOSFOR (terminal hijau)
+   Layar fosfor di ruang server. Kipas berdengung, kursor berkedip,
+   semuanya monospace. Terang hanya di tempat yang perlu.
+   ============================================================ */
+
+:root[data-theme="fosfor"] {
+  --bg: #04120a;
+  --surface: #08200f;
+  --surface-2: #06190c;
+  --paper: #0c2a15;
+  --line: rgba(57, 255, 136, 0.16);
+  --line-strong: rgba(57, 255, 136, 0.4);
+
+  --ink: #8dffbc;
+  --ink-soft: rgba(141, 255, 188, 0.66);
+  --ink-faint: rgba(141, 255, 188, 0.36);
+  --ink-on-paper: #a9ffd0;
+
+  --accent: #39ff88;
+  --accent-2: #ffb000;
+  --glow: #39ff88;
+
+  /* Naik = fosfor, turun = amber peringatan. */
+  --up: #39ff88;
+  --down: #ffb000;
+
+  --paper-1: #0c2a15;
+  --paper-2: #0e3119;
+  --paper-3: #10281c;
+  --paper-4: #142c14;
+  --paper-5: #0a2a20;
+  --paper-6: #123018;
+
+  --font-display: "JetBrains Mono", ui-monospace, monospace;
+  --font-body: "JetBrains Mono", ui-monospace, monospace;
+  --font-hand: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius: 0px;
+  --radius-sm: 0px;
+  --radius-lg: 0px;
+  --stroke: 1px;
+
+  --shadow-card: 0 0 0 1px rgba(57, 255, 136, 0.06);
+  --shadow-lift: 0 0 46px rgba(57, 255, 136, 0.16);
+  --shadow-paper: 0 0 20px rgba(57, 255, 136, 0.1);
+
+  --texture: none;
+  --texture-opacity: 0;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: none;
+
+  --sticky-fastener: "tape";
+  --sticky-tilt: 0deg;
+}
+
+/* Fosfor selalu sedikit berpendar. */
+:root[data-theme="fosfor"] .ex-module-title,
+:root[data-theme="fosfor"] .ex-num {
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+/* Judul modul diberi prompt dan kursor berkedip. */
+:root[data-theme="fosfor"] .ex-module-title::before {
+  content: "> ";
+  color: var(--accent);
+}
+:root[data-theme="fosfor"] .ex-module-title::after {
+  content: "▍";
+  margin-left: 0.35em;
+  color: var(--accent);
+  animation: ex-kursor 1.1s steps(1) infinite;
+}
+
+@keyframes ex-kursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Sticky note = potongan kertas printer, ditempel selotip. */
+:root[data-theme="fosfor"] .ex-sticky {
+  border: 1px solid var(--line-strong);
+}
+
+:root[data-theme="fosfor"] .ex-frame {
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 0 32px rgba(57, 255, 136, 0.14);
+}

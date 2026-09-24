@@ -1,0 +1,125 @@
+/* ============================================================
+   TEMA — MOCHI (lucu, lembut)
+   Sepupu Candy yang lebih kalem. Kalau Candy adalah toko permen jam
+   empat sore, ini adalah kedai mochi jam sepuluh pagi: krem, matcha,
+   susu stroberi. Warnanya diredam, bentuknya justru dibuat lebih
+   gemuk — lucu tanpa membuat mata lelah setelah satu jam.
+   ============================================================ */
+
+:root[data-theme="mochi"] {
+  --bg: #f6f1e7;
+  --surface: #fffdf8;
+  --surface-2: #faf5ec;
+  --paper: #fffefb;
+  --line: rgba(90, 74, 66, 0.16);
+  --line-strong: rgba(90, 74, 66, 0.34);
+
+  --ink: #5a4a42;
+  --ink-soft: rgba(90, 74, 66, 0.66);
+  --ink-faint: rgba(90, 74, 66, 0.4);
+  --ink-on-paper: #5a4a42;
+
+  /* Susu stroberi dan matcha. Keduanya diredam sampai tidak menyala. */
+  --accent: #e58a9a;
+  --accent-2: #9ab87a;
+  --glow: #f3c78a;
+
+  --up: #7fa863;
+  --down: #dd7a86;
+
+  --paper-1: #fffdf6;
+  --paper-2: #fdeef0;
+  --paper-3: #edf3e4;
+  --paper-4: #fdf1e0;
+  --paper-5: #eaf0f3;
+  --paper-6: #f4ecf6;
+
+  --font-display: "Baloo 2", "Fredoka", system-ui, sans-serif;
+  --font-body: "Baloo 2", system-ui, sans-serif;
+  --font-hand: "Baloo 2", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Sangat bulat — ini yang menanggung seluruh kesan lucunya, karena
+     warnanya sengaja tidak. */
+  --radius: 24px;
+  --radius-sm: 16px;
+  --radius-lg: 32px;
+  --stroke: 1.5px;
+
+  /* Bayangan padat tanpa kabur, sedikit bergeser: mainan plastik tebal,
+     bukan kaca. */
+  --shadow-card: 0 3px 0 rgba(90, 74, 66, 0.1);
+  --shadow-lift: 0 10px 0 rgba(229, 138, 154, 0.22), 0 18px 36px rgba(90, 74, 66, 0.14);
+  --shadow-paper: 0 5px 0 rgba(90, 74, 66, 0.09);
+
+  --texture: none;
+  --texture-opacity: 0;
+  --texture-blend: normal;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: blur(8px);
+
+  --sticky-fastener: "tape";
+  --sticky-tilt: 2.6deg;
+}
+
+/* Judul modul gemuk dan bulat, dengan satu bulatan mochi di kiri. */
+:root[data-theme="mochi"] .ex-module-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82em;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+:root[data-theme="mochi"] .ex-module-title::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 2px 0 rgba(90, 74, 66, 0.14);
+}
+
+:root[data-theme="mochi"] .ex-num,
+:root[data-theme="mochi"] .ex-jam-besar {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+:root[data-theme="mochi"] .ex-kutipan {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.08em;
+}
+
+/* Kartu = kue mochi: tepi tebal lembut, dasar sedikit lebih dalam. */
+:root[data-theme="mochi"] .ex-card {
+  border: 1.5px solid rgba(90, 74, 66, 0.13);
+  background: linear-gradient(180deg, #fffefa, #fbf6ee);
+}
+
+/* Tombol ditekan benar-benar turun — bayangan padatnya ikut memendek. */
+:root[data-theme="mochi"] .ex-btn:active {
+  transform: translateY(2px);
+}
+
+:root[data-theme="mochi"] .ex-btn[data-variant="accent"] {
+  color: #ffffff;
+  box-shadow: 0 3px 0 rgba(196, 106, 122, 0.6);
+}
+:root[data-theme="mochi"] .ex-btn[data-variant="accent"]:active {
+  box-shadow: 0 1px 0 rgba(196, 106, 122, 0.6);
+}
+
+:root[data-theme="mochi"] .ex-frame {
+  background: #fffdf8;
+  padding: 12px 12px 40px;
+  border: 1.5px solid rgba(229, 138, 154, 0.35);
+  box-shadow: 0 8px 0 rgba(229, 138, 154, 0.2), 0 16px 34px rgba(90, 74, 66, 0.14);
+}

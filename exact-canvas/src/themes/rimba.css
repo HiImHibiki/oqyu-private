@@ -1,0 +1,116 @@
+/* ============================================================
+   TEMA — WOODLAND (earthy, gelap)
+   Hutan sesudah hujan, dilihat dari dalam tenda. Lumut, kulit kayu,
+   jamur krem, dan satu berkas bulan yang menembus daun. Gelapnya
+   gelap kecokelatan — bukan hitam-biru layar.
+   ============================================================ */
+
+:root[data-theme="rimba"] {
+  --bg: #16150f;
+  --surface: rgba(233, 226, 205, 0.045);
+  --surface-2: rgba(233, 226, 205, 0.022);
+  --paper: rgba(233, 226, 205, 0.075);
+  --line: rgba(197, 189, 162, 0.13);
+  --line-strong: rgba(197, 189, 162, 0.28);
+
+  --ink: #e6e0cd;
+  --ink-soft: rgba(230, 224, 205, 0.63);
+  --ink-faint: rgba(230, 224, 205, 0.36);
+  --ink-on-paper: #e6e0cd;
+
+  /* Lumut yang basah, bukan hijau neon. Aksen keduanya kulit kayu. */
+  --accent: #8fae60;
+  --accent-2: #b98a5a;
+  --glow: #c3d98a;
+
+  --up: #8fae60;
+  --down: #c47a63;
+
+  --paper-1: rgba(233, 226, 205, 0.07);
+  --paper-2: rgba(143, 174, 96, 0.13);
+  --paper-3: rgba(185, 138, 90, 0.13);
+  --paper-4: rgba(196, 122, 99, 0.12);
+  --paper-5: rgba(146, 168, 176, 0.12);
+  --paper-6: rgba(210, 190, 130, 0.11);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-hand: "Fraunces", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius: 14px;
+  --radius-sm: 8px;
+  --radius-lg: 20px;
+  --stroke: 1px;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-lift: 0 22px 52px rgba(0, 0, 0, 0.65);
+  --shadow-paper: 0 8px 22px rgba(0, 0, 0, 0.5);
+
+  --texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23r)'/%3E%3C/svg%3E");
+  --texture-opacity: 0.05;
+  --texture-blend: overlay;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: blur(18px);
+
+  --sticky-fastener: "pin";
+  --sticky-tilt: 2.2deg;
+}
+
+:root[data-theme="rimba"] .ex-module-title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+/* Daun kecil di kiri judul: satu bujur sangkar yang dibulatkan dua
+   sudut berseberangan. Bentuk daun paling sederhana yang masih terbaca. */
+:root[data-theme="rimba"] .ex-module-title::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: none;
+  background: var(--accent);
+  border-radius: 0 100% 0 100%;
+  opacity: 0.85;
+}
+
+:root[data-theme="rimba"] .ex-num,
+:root[data-theme="rimba"] .ex-jam-besar {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+:root[data-theme="rimba"] .ex-kutipan {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1em;
+}
+
+/* Kartu seperti bidang kayu yang tersinari dari atas. */
+:root[data-theme="rimba"] .ex-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(
+    180deg,
+    rgba(233, 226, 205, 0.055),
+    rgba(233, 226, 205, 0.018)
+  );
+}
+
+:root[data-theme="rimba"] .ex-btn[data-variant="accent"] {
+  color: #171a10;
+}
+
+:root[data-theme="rimba"] .ex-frame {
+  background: rgba(233, 226, 205, 0.05);
+  padding: 12px 12px 40px;
+  border: 1px solid rgba(185, 138, 90, 0.26);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.62);
+}

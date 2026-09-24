@@ -1,0 +1,104 @@
+/* ============================================================
+   TEMA — ARENA (antarmuka game)
+   Panel HUD melayang di ruang gelap. Sudut terpotong, garis sian
+   menyala, bilah status, dan angka yang terasa seperti statistik.
+
+   Terinspirasi antarmuka game bertema dunia maya, dengan bahasa
+   visual sendiri — tanpa nama, lambang, atau aset waralaba (§5).
+   ============================================================ */
+
+:root[data-theme="arena"] {
+  --bg: #05070f;
+  --surface: rgba(120, 200, 255, 0.06);
+  --surface-2: rgba(120, 200, 255, 0.035);
+  --paper: rgba(150, 220, 255, 0.1);
+  --line: rgba(96, 226, 255, 0.22);
+  --line-strong: rgba(96, 226, 255, 0.6);
+
+  --ink: #dff3ff;
+  --ink-soft: rgba(223, 243, 255, 0.66);
+  --ink-faint: rgba(223, 243, 255, 0.36);
+  --ink-on-paper: #dff3ff;
+
+  --accent: #60e2ff;
+  --accent-2: #ff5470;
+  --glow: #a8f0ff;
+
+  /* Bilah nyawa: hijau naik, merah turun. */
+  --up: #5cff9d;
+  --down: #ff5470;
+
+  --paper-1: rgba(150, 220, 255, 0.1);
+  --paper-2: rgba(96, 226, 255, 0.16);
+  --paper-3: rgba(255, 84, 112, 0.14);
+  --paper-4: rgba(92, 255, 157, 0.14);
+  --paper-5: rgba(168, 140, 255, 0.16);
+  --paper-6: rgba(255, 214, 102, 0.14);
+
+  --font-display: "Inter Tight", system-ui, sans-serif;
+  --font-body: "Inter Tight", system-ui, sans-serif;
+  --font-hand: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius: 2px;
+  --radius-sm: 2px;
+  --radius-lg: 3px;
+  --stroke: 1px;
+
+  --shadow-card: 0 0 0 1px rgba(96, 226, 255, 0.08), 0 0 22px rgba(96, 226, 255, 0.07);
+  --shadow-lift: 0 0 48px rgba(96, 226, 255, 0.28);
+  --shadow-paper: 0 0 18px rgba(96, 226, 255, 0.14);
+
+  --texture: none;
+  --texture-opacity: 0;
+  --pattern: none;
+  --pattern-opacity: 0;
+  --blur-surface: blur(14px);
+
+  --sticky-fastener: "magnet";
+  --sticky-tilt: 0.8deg;
+}
+
+/* Sudut kartu terpotong seperti panel HUD, bukan dibulatkan. */
+:root[data-theme="arena"] .ex-card {
+  clip-path: polygon(0 10px, 10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  backdrop-filter: var(--blur-surface);
+  -webkit-backdrop-filter: var(--blur-surface);
+}
+
+/* Judul modul memakai kurung siku dan huruf renggang. */
+:root[data-theme="arena"] .ex-module-title {
+  letter-spacing: 0.24em;
+  color: var(--accent);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+:root[data-theme="arena"] .ex-module-title::before { content: "[ "; opacity: 0.55; }
+:root[data-theme="arena"] .ex-module-title::after { content: " ]"; opacity: 0.55; }
+
+/* Pembatas berupa bilah status yang terisi sebagian. */
+:root[data-theme="arena"] .ex-divider {
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0 38%, color-mix(in srgb, var(--accent) 18%, transparent) 38%);
+  opacity: 0.6;
+}
+
+:root[data-theme="arena"] .ex-btn {
+  letter-spacing: 0.08em;
+  clip-path: polygon(0 6px, 6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+}
+:root[data-theme="arena"] .ex-btn[data-variant="accent"] {
+  color: #04121a;
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+:root[data-theme="arena"] .ex-sticky {
+  border: 1px solid var(--line-strong);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+:root[data-theme="arena"] .ex-frame {
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 0 40px rgba(96, 226, 255, 0.22);
+  clip-path: polygon(0 14px, 14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+}
