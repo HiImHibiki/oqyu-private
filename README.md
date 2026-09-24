@@ -13,5 +13,5 @@ Basis kode per 24 Sep 2026, digabung dari tiga repo asal dengan riwayat commit u
 `Exact-Digital/Exact-Worksheet`, `ricokurniawan18-ui/exact-canvas`,
 `Exact-Digital/Exact-Practice`.
 
-Pemasangan di Mac: `Exact-Practice/PASANG-MAC-BARU.md`.
+Pemasangan di Mac: `Exact-Practice/PASANG-MAC-BARU.md`. Daftar fitur: [`FITUR.md`](FITUR.md).
 Untuk pengembang (dan Claude): mulai dari [`CLAUDE.md`](CLAUDE.md).
