@@ -21,7 +21,7 @@ export default async function LatihanPage({ searchParams }: { searchParams: Prom
   for (const a of riwayat) riwayatJudul.set(a.formTitle, [...(riwayatJudul.get(a.formTitle) ?? []), a]);
 
   return (
-    <>
+    <div className="mx-auto max-w-4xl px-6 py-8">
       <PageHead title="Latihan" subtitle="Masukkan kode ujian dari guru untuk membuka paket soalnya." />
 
       <GabungKode awal={(sp.kode ?? sp.q ?? "").slice(0, 12)} />
@@ -90,6 +90,6 @@ export default async function LatihanPage({ searchParams }: { searchParams: Prom
           </div>
         </section>
       )}
-    </>
+    </div>
   );
 }

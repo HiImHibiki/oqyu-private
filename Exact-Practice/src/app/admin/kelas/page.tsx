@@ -40,7 +40,7 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
   }));
 
   return (
-    <>
+    <div className="mx-auto max-w-5xl px-6 py-8">
       <PageHead title="Pantau kelas" subtitle="Kemajuan dan kesalahan murid di paket latihan." />
 
       {ringkasPaket.length > 0 && (
@@ -112,6 +112,6 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
           ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }

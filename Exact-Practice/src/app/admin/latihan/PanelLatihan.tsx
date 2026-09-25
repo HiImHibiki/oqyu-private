@@ -10,7 +10,7 @@ type SoalRingkas = { id: string; stem: string; type: string; mapel: string; kela
 
 export function PanelLatihan({ awal }: { awal: Paket[] }) {
   const [paket, setPaket] = useState<Paket[]>(awal);
-  const [tab, setTab] = useState<"gemini" | "tempel" | "bank">("gemini");
+  const [tab, setTab] = useState<"gemini" | "tempel" | "bank">("tempel");
 
   /* ---- buat dengan Gemini ---- */
   const [f, setF] = useState({ judul: "", mapel: "", kelas: "", topik: "", jumlah: 10, durasiMenit: 120, instruksi: "" });
@@ -167,14 +167,18 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
       <div className="card p-5">
-        <div className="mb-4 flex gap-2">
-          <button className={`btn ${tab === "gemini" ? "btn-primary" : "btn-ghost"}`} onClick={() => setTab("gemini")}><Sparkles size={16} /> Buat dengan Gemini</button>
-          <button className={`btn ${tab === "tempel" ? "btn-primary" : "btn-ghost"}`} onClick={() => setTab("tempel")}><ClipboardPaste size={16} /> Tempel dari AI</button>
+        <div className="mb-4 flex flex-wrap gap-2">
+          <button className={`btn ${tab === "tempel" ? "btn-primary" : "btn-ghost"}`} onClick={() => setTab("tempel")}><ClipboardPaste size={16} /> Prompt → AI → Tempel</button>
           <button className={`btn ${tab === "bank" ? "btn-primary" : "btn-ghost"}`} onClick={() => setTab("bank")}><ListChecks size={16} /> Susun dari bank</button>
+          <button className={`btn ${tab === "gemini" ? "btn-primary" : "btn-ghost"}`} onClick={() => setTab("gemini")} title="Butuh Exact Worksheet menyala di Mac ini"><Sparkles size={16} /> Otomatis (Worksheet)</button>
         </div>
 
         {tab === "gemini" && (
           <div className="grid gap-3">
+            <div className="rounded-lg px-3 py-2 text-xs" style={{ background: "var(--surface-2, #f5f5f5)" }}>
+              Mode ini memerintah <b>Exact Worksheet</b> (Gemini lewat Chrome) — Worksheet harus menyala di Mac ini.
+              Tanpa Worksheet, pakai tab <b>Prompt → AI → Tempel</b>.
+            </div>
             <label className="text-sm">Topik / deskripsi soal *
               <textarea className={input} rows={3} value={f.topik} onChange={(e) => setF({ ...f, topik: e.target.value })}
                 placeholder="mis. Persamaan linear satu variabel, soal cerita" />
@@ -204,8 +208,8 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
         {tab === "tempel" && (
           <div className="grid gap-3">
             <div className="rounded-lg px-3 py-2 text-xs" style={{ background: "var(--surface-2, #f5f5f5)" }}>
-              <b>1.</b> Isi rincian di bawah · <b>2.</b> Salin prompt, tempel ke ChatGPT/Gemini/Claude ·
-              <b> 3.</b> Salin balasannya, tempel ke kotak naskah · <b>4.</b> Buat paket.
+              <b>1.</b> Isi rincian di bawah · <b>2.</b> Salin prompt, tempel ke Claude/ChatGPT/Gemini ·
+              <b> 3.</b> Salin balasannya, tempel ke kotak naskah · <b>4.</b> Buat paket. Tidak perlu Exact Worksheet.
             </div>
 
             <label className="text-sm">Materi / topik soal *
@@ -249,6 +253,9 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
             <div className="flex flex-wrap gap-2">
               <button className="btn btn-ghost" onClick={() => salin(teksPrompt, "prompt")}>
                 {disalin === "prompt" ? <Check size={15} /> : <Copy size={15} />} Salin prompt
+              </button>
+              <button className="btn btn-ghost" onClick={async () => { await salin(teksPrompt, "prompt"); window.open("https://claude.ai/new", "_blank", "noopener"); }}>
+                <ExternalLink size={15} /> Salin &amp; buka Claude
               </button>
               <button className="btn btn-ghost" onClick={async () => { await salin(teksPrompt, "prompt"); window.open("https://chatgpt.com/", "_blank", "noopener"); }}>
                 <ExternalLink size={15} /> Salin &amp; buka ChatGPT

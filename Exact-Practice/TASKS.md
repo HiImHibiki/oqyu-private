@@ -60,6 +60,8 @@
 - ✅ P-044 Login username + sandi: daftar (nama, username, sandi) langsung aktif — tanpa email, kode kelas global, maupun persetujuan guru (/menunggu dihapus); `ADMIN_USERNAMES` (ADMIN_EMAILS lama tetap dibaca); form masuk murid & admin pakai username; akun Canvas jadi jalur kedua di /masuk; tujuan bawaan setelah masuk = /latihan
 - ✅ P-045 Kode ujian per paket: murid memasukkan kode → paket masuk "Paket saya" (`POST /api/latihan/gabung`, dibatasi 20 percobaan/15 mnt); hanya peserta paket terbit yang boleh mulai & cetak (`bolehBuka`); terbit ulang dari Worksheet mempertahankan peserta; tautan guru `/latihan?kode=XXXXXX` mengisi kotak kode; panel guru menampilkan jumlah murid bergabung; latihan acak dari bank dihapus. Uji: test:exams 87/87 (11 uji kode ujian baru) + e2e di server lokal
 - ✅ P-034 `.env.example` (warisan Try Out) dilebur ke `.env.contoh`
+- ✅ P-046 UI: halaman Buat latihan, Pantau kelas (admin) dan Latihan (murid) tidak punya pembungkus `mx-auto max-w-* px-6 py-8` seperti halaman warisan Try Out — judul menempel di pojok kiri atas & kartu menempel di tepi kanan. Diberi pembungkus standar
+- ✅ P-047 Buat soal tanpa Worksheet jadi alur utama: tab "Prompt → AI → Tempel" jadi tab pertama & bawaan, tombol "Salin & buka Claude" (claude.ai/new), tab Gemini-otomatis dipindah terakhir dengan keterangan butuh Worksheet. Uji: prompt dirender → naskah 5 soal SPLDV ditulis Claude → tempel → paket 34LQKR (5/5 soal, 0 dilewati) → murid gabung & kerjakan → nilai 4/5 sesuai jawaban, pembahasan tampil, soal tanpa kunci
 
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
