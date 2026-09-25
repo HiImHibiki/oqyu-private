@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
-import { currentUser, menunggu } from "@/lib/auth";
+import { currentUser } from "@/lib/auth";
 import { isAdmin } from "@/lib/adminGuard";
-import { aksesLatihan } from "@/lib/practice/akses";
-import { getPaket, savePaket } from "@/lib/practice/paket";
+import { bolehBuka, getPaket, savePaket } from "@/lib/practice/paket";
 import { questionsByIds } from "@/lib/exams/bank";
 import { ambilPdf, questionKeButir, renderPdf } from "@/lib/practice/worksheet";
 import { getDb } from "@/lib/db";
@@ -15,15 +14,12 @@ import type { ResponseValue } from "@/lib/types";
 export async function GET(req: Request) {
   const user = await currentUser();
   if (!user) return NextResponse.json({ error: "Perlu masuk" }, { status: 401 });
-  if (menunggu(user)) return NextResponse.json({ error: "Akunmu belum disetujui guru" }, { status: 403 });
-  const akses = await aksesLatihan(user);
-  if (!akses.boleh) return NextResponse.json({ error: akses.alasan }, { status: 402 });
   const u = new URL(req.url);
   const id = u.searchParams.get("id") || "";
   const kunci = u.searchParams.get("kunci") === "1";
   if (kunci && !isAdmin(user)) return NextResponse.json({ error: "Kunci hanya untuk guru" }, { status: 403 });
   const p = await getPaket(id);
-  if (!p || (!p.terbit && !isAdmin(user))) return NextResponse.json({ error: "Paket tidak ditemukan" }, { status: 404 });
+  if (!p || !bolehBuka(user, p)) return NextResponse.json({ error: "Paket tidak ditemukan" }, { status: 404 });
 
   /* Sudah mengerjakan → lembarnya jadi lembar belajar miliknya sendiri: soal,
    * kunci, pembahasan, dan di depan tiap pembahasan jawaban yang tadi ia isi

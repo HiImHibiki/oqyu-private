@@ -3,8 +3,9 @@ import { login } from "@/lib/auth";
 import { clientIp, rateLimit } from "@/lib/ratelimit";
 
 export async function POST(req: Request) {
-  const { email, password } = await req.json();
-  const target = String(email ?? "").trim().toLowerCase();
+  const { username, email, password } = await req.json();
+  // `email` diterima demi klien lama; isinya diperlakukan sebagai username.
+  const target = String(username ?? email ?? "").trim().toLowerCase();
 
   for (const key of [`login:mail:${target}`, `login:ip:${clientIp(req)}`]) {
     const l = rateLimit(key, 8, 900);

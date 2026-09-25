@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, LogIn } from "lucide-react";
 
-/** Masuk murid: email + kata sandi (akun lokal Exact Practice). */
+/** Masuk: username + kata sandi (murid maupun guru). */
 export function FormMasuk({ next }: { next: string }) {
   const router = useRouter();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -16,7 +16,7 @@ export function FormMasuk({ next }: { next: string }) {
     setBusy(true); setErr(null);
     const r = await fetch("/api/auth/login", {
       method: "POST", headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, password }),
     });
     const j = await r.json().catch(() => ({}));
     setBusy(false);
@@ -28,8 +28,8 @@ export function FormMasuk({ next }: { next: string }) {
   return (
     <form onSubmit={submit} className="space-y-3">
       {err && <p className="text-xs" style={{ color: "var(--danger)" }}>{err}</p>}
-      <input className="input" type="email" required placeholder="Email" autoComplete="email"
-        value={email} onChange={(e) => setEmail(e.target.value)} />
+      <input className="input" required placeholder="Username" autoComplete="username"
+        autoCapitalize="none" spellCheck={false} value={username} onChange={(e) => setUsername(e.target.value)} />
       <input className="input" type="password" required placeholder="Kata sandi" autoComplete="current-password"
         value={password} onChange={(e) => setPassword(e.target.value)} />
       <button className="btn btn-primary w-full" disabled={busy}>

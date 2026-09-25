@@ -25,9 +25,11 @@ for (const f of ["db.json", "question-bank.json"]) {
   const asal = path.join(process.cwd(), ".data", f);
   if (fs.existsSync(asal)) fs.copyFileSync(asal, path.join(tmp, f));
 }
-/* Clone bersih belum punya .data: bank dibangun dari berkas soal di repo,
- * semuanya berstatus approved, supaya paket SAT/A Level bisa disusun. */
-if (!fs.existsSync(path.join(tmp, "question-bank.json"))) {
+/* Bank uji = berkas soal di repo (semua approved, supaya paket SAT/A Level
+ * bisa disusun penuh), ditimpa isi bank .data bila ada. Dulu bank .data
+ * dipakai apa adanya — begitu berisi beberapa soal latihan saja, uji paket
+ * SAT gagal karena banknya nyaris kosong. */
+{
   const byId = new Map();
   for (const dir of ["question-bank", "sample-tests"]) {
     for (const f of fs.readdirSync(dir).filter((n) => n.endsWith(".json"))) {
@@ -35,7 +37,9 @@ if (!fs.existsSync(path.join(tmp, "question-bank.json"))) {
       for (const q of Array.isArray(isi) ? isi : [isi]) byId.set(q.id, { ...q, _status: "approved" });
     }
   }
-  fs.writeFileSync(path.join(tmp, "question-bank.json"), JSON.stringify([...byId.values()]));
+  const salinan = path.join(tmp, "question-bank.json");
+  if (fs.existsSync(salinan)) for (const q of JSON.parse(fs.readFileSync(salinan, "utf8"))) byId.set(q.id, q);
+  fs.writeFileSync(salinan, JSON.stringify([...byId.values()]));
 }
 process.env.EXACT_DATA_DIR = tmp;
 
@@ -43,8 +47,6 @@ const { getDb } = await import("@/lib/db");
 const { devAuth } = await import("@/lib/db/dev");
 const { composeLayout, normalizeMultiplier, seenQuestionIds } = await import("@/lib/exams/formBuilder");
 const { getBlueprint } = await import("@/lib/exams/blueprints");
-const { checkRefund } = await import("@/lib/refunds.ts");
-const { settleRefund } = await import("@/lib/checkout.ts");
 const { evaluate, MathExprError } = await import("@/lib/mathexpr.ts");
 const { DICTIONARIES, LOCALES } = await import("@/lib/i18n/dictionaries.ts");
 const { sectionsOf } = await import("@/lib/exams/attempt");
@@ -53,6 +55,7 @@ const { clampRubricAwards } = await import("@/lib/exams/grade");
 const { questionsByIds, importQuestions } = await import("@/lib/exams/bank");
 const { applyHighlights } = await import("@/lib/exams/highlight");
 
+const approvedPoolAny = async () => (await (await import("@/lib/exams/bank")).approvedPool("SAT")).map((q) => q.id);
 let lulus = 0, gagal = 0;
 const ok = (nama, syarat, catatan = "") => {
   if (syarat) { lulus++; console.log(`  \x1b[32m✓\x1b[0m ${nama}`); }
@@ -348,49 +351,6 @@ bagian("Penyorot bacaan");
   }
 }
 
-/* --------------------------------------------------- komisi multi-mata-uang */
-bagian("Komisi afiliasi lintas mata uang");
-{
-  const { commissionFor } = await import("@/lib/affiliate");
-  // tiga akun sendiri (afiliator + dua pembeli) — jangan bergantung isi data dev
-  const ids = [];
-  for (const n of ["uji-afiliator", "uji-pembeli-1", "uji-pembeli-2"])
-    ids.push((await devAuth.upsertUser({ email: `${n}@contoh.test`, fullName: n, phone: "" })).id);
-  const [aff, p1, p2] = ids;
-  const d = await devAuth.read();
-  d.affiliates = [{ userId: aff, code: "UJIKOM", rate: 0.15, status: "active", createdAt: new Date().toISOString() }];
-  d.commissions = []; d.payouts = [];
-  d.referrals = [
-    { id: "rk1", code: "UJIKOM", referredUserId: p1, createdAt: new Date().toISOString(), converted: false },
-    { id: "rk2", code: "UJIKOM", referredUserId: p2, createdAt: new Date().toISOString(), converted: false },
-  ];
-  await devAuth.write(d);
-
-  ok("komisi 15% dari Rp 349.000 = Rp 52.350", commissionFor(349_000, 0.15) === 52_350);
-  ok("komisi 15% dari US$ 60 = US$ 9", commissionFor(60, 0.15) === 9);
-
-  await getDb().createCommission({ affiliateUserId: aff, referredUserId: p1, orderId: "ok-1", amount: 52_350, currency: "IDR", rate: 0.15 });
-  await getDb().createCommission({ affiliateUserId: aff, referredUserId: p2, orderId: "ok-2", amount: 9, currency: "USD", rate: 0.15 });
-  const ulang = await getDb().createCommission({ affiliateUserId: aff, referredUserId: p1, orderId: "ok-1", amount: 999, currency: "IDR", rate: 0.15 });
-  ok("komisi ganda untuk pesanan yang sama ditolak", ulang === null);
-
-  const st = await getDb().affiliateStats(aff);
-  const idr = st.balances.find((b) => b.currency === "IDR");
-  const usd = st.balances.find((b) => b.currency === "USD");
-  ok("saldo dipisah per mata uang", st.balances.length === 2, `balances=${JSON.stringify(st.balances)}`);
-  ok("rupiah utuh, tidak tercampur", idr?.pending === 52_350, `IDR=${idr?.pending}`);
-  ok("dolar utuh, tidak tercampur", usd?.pending === 9, `USD=${usd?.pending}`);
-  ok("angka utama berasal dari SATU mata uang", st.pendingIdr === 52_350 && st.currency === "IDR",
-    `${st.pendingIdr} ${st.currency}`);
-  ok("tidak ada penjumlahan rupiah + dolar", st.pendingIdr !== 52_359, `pendingIdr=${st.pendingIdr}`);
-
-  const ov = await getDb().adminOverview();
-  ok("ringkasan admin: utang komisi rupiah hanya rupiah", ov.commissionOwedIdr === 52_350,
-    `commissionOwedIdr=${ov.commissionOwedIdr}`);
-  ok("ringkasan admin: mata uang lain dirinci terpisah", (ov.commissionOwed?.USD ?? 0) === 9,
-    `commissionOwed=${JSON.stringify(ov.commissionOwed)}`);
-}
-
 /* ------------------------------------------------------ keamanan sesi */
 bagian("Mengakhiri seluruh sesi");
 {
@@ -553,111 +513,32 @@ bagian("Soal yang sudah dilihat tidak diulang di paket berikutnya");
     `${hanyaSulit.length} dari ${semuanya.length}`);
 }
 
-/* ================================================ Pengembalian dana */
-bagian("Pengembalian dana mencabut kuota dan membatalkan komisi");
+/* ======================================== Kode ujian membuka paket */
+bagian("Kode ujian: hanya peserta yang bisa membuka paket");
 {
-  const db = getDb();
-
-  const buatPesananLunas = async (jumlahKuota) => {
-    const o = await db.createOrder({
-      userId: uid, packageId: "utbk-starter", exam: "UTBK",
-      amount: 149000, currency: "IDR", provider: "simulation",
-    });
-    await db.markOrderPaid(o.id, jumlahKuota, "uji-refund");
-    return o;
-  };
-  const kuotaPesanan = async (orderId) =>
-    (await db.entitlements(uid)).find((e) => e.orderId === orderId);
-
-  /* --- kuota utuh: seluruh sisa dicabut --- */
-  const o1 = await buatPesananLunas(3);
-  const k1 = await kuotaPesanan(o1.id);
-  ok("kuota tercatat atas pesanan itu", Boolean(k1) && k1.attemptsTotal === 3,
-    k1 ? `total ${k1.attemptsTotal}` : "tidak ditemukan");
-
-  const r1 = await db.refundOrder(o1.id);
-  const k1b = await kuotaPesanan(o1.id);
-  ok("status pesanan menjadi refunded", r1.order.status === "refunded", r1.order.status);
-  ok("seluruh sisa kuota dicabut", r1.attemptsRevoked === 3 && k1b.attemptsTotal - k1b.attemptsUsed === 0,
-    `dicabut ${r1.attemptsRevoked}, sisa ${k1b.attemptsTotal - k1b.attemptsUsed}`);
-
-  /* --- kuota terpakai sebagian: yang terpakai TIDAK diutak-atik --- */
-  const o2 = await buatPesananLunas(3);
-  const k2 = await kuotaPesanan(o2.id);
-  await beriKuota("UTBK", 0);                       // pastikan tidak ada kuota lain menyerap
-  const d = await devAuth.read();
-  d.entitlements.find((e) => e.id === k2.id).attemptsUsed = 1;
-  await devAuth.write(d);
-
-  const r2 = await db.refundOrder(o2.id);
-  const k2b = await kuotaPesanan(o2.id);
-  ok("hanya sisa yang dicabut, yang terpakai dibiarkan",
-    r2.attemptsRevoked === 2 && k2b.attemptsUsed === 1 && k2b.attemptsTotal === 1,
-    `dicabut ${r2.attemptsRevoked}, terpakai ${k2b.attemptsUsed}, total ${k2b.attemptsTotal}`);
-
-  /* --- komisi afiliasi --- */
-  const o3 = await buatPesananLunas(2);
-  await db.createCommission({
-    affiliateUserId: uid, referredUserId: uid, orderId: o3.id,
-    amount: 22350, currency: "IDR", rate: 0.15,
-  });
-  const r3 = await db.refundOrder(o3.id);
-  const komisi = (await db.commissionsOf(uid)).filter((c) => c.orderId === o3.id);
-  ok("komisi atas pesanan itu dibatalkan",
-    r3.commissionsVoided === 1 && komisi.every((c) => c.status === "void"),
-    komisi.map((c) => c.status).join(",") || "tidak ada komisi");
-
-  /* --- idempoten --- */
-  const r3b = await db.refundOrder(o3.id);
-  ok("refund kedua tidak mencabut apa pun lagi",
-    r3b.attemptsRevoked === 0 && r3b.commissionsVoided === 0,
-    `${r3b.attemptsRevoked} kuota, ${r3b.commissionsVoided} komisi`);
-
-  /* --- surat pemberitahuan dikirim sekali, tidak dua kali --- */
-  {
-    /* sendMail tanpa RESEND_API_KEY hanya menulis ke console; suratnya
-     * dihitung dengan menyadap console.log sebentar. */
-    const o = await buatPesananLunas(2);
-    const asli = console.log;
-    let surat = 0;
-    console.log = (...a) => { if (String(a[0] ?? "").includes("[MAIL:dev]")) surat++; else asli(...a); };
-    try {
-      const a = await settleRefund(o.id, "admin");
-      const b = await settleRefund(o.id, "admin");
-      console.log = asli;
-      ok("pembeli diberi tahu saat dananya dikembalikan", surat === 1, `${surat} surat`);
-      ok("refund kedua tidak mengirim surat lagi",
-        b.alreadyRefunded === true && a.alreadyRefunded === false, `${surat} surat total`);
-    } finally {
-      console.log = asli;
-    }
-  }
-
-  /* --- pesanan yang tidak jadi dibayar ditutup, bukan dibiarkan pending --- */
-  const o4 = await db.createOrder({
-    userId: uid, packageId: "utbk-starter", exam: "UTBK",
-    amount: 149000, currency: "IDR", provider: "midtrans",
-  });
-  const ditutup = await db.setOrderStatus(o4.id, "expired");
-  ok("pesanan pending yang kedaluwarsa ditutup", ditutup.status === "expired", ditutup.status);
-
-  const o5 = await buatPesananLunas(2);
-  const tetap = await db.setOrderStatus(o5.id, "failed");
-  ok("pesanan yang SUDAH LUNAS tidak bisa diturunkan", tetap.status === "paid", tetap.status);
-
-  /* --- syarat kelayakan --- */
-  const kemarin = { status: "paid", paidAt: new Date(Date.now() - 3 * 864e5).toISOString() };
-  const lampau = { status: "paid", paidAt: new Date(Date.now() - 40 * 864e5).toISOString() };
-  ok("dalam 14 hari dan belum mengerjakan: memenuhi syarat",
-    checkRefund(kemarin, { attemptsUsed: 0 }).eligible);
-  ok("satu try out sudah dimulai: masih memenuhi syarat",
-    checkRefund(kemarin, { attemptsUsed: 1 }).eligible);
-  ok("dua try out sudah dimulai: tidak memenuhi syarat",
-    checkRefund(kemarin, { attemptsUsed: 2 }).reason === "tooManyAttempts");
-  ok("lewat 14 hari: tidak memenuhi syarat",
-    checkRefund(lampau, { attemptsUsed: 0 }).reason === "windowClosed");
-  ok("pesanan belum lunas: tidak ada yang dikembalikan",
-    checkRefund({ status: "pending", createdAt: new Date().toISOString() }, null).reason === "notPaid");
+  const { savePaket, gabungPaket, bolehBuka, paketUntuk, getPaket } = await import("@/lib/practice/paket");
+  const qid = (await approvedPoolAny())[0];
+  const p = await savePaket({ judul: "Paket uji kode", mapel: "Uji", kelas: "", topik: "", questionIds: [qid],
+    durasiMenit: 10, sumber: "bank", terbit: true, oleh: "uji" });
+  const murid = { id: uid, role: "student" };
+  ok("murid belum bergabung tidak boleh membuka", !bolehBuka(murid, p));
+  ok("paket belum tampil di Paket saya", !(await paketUntuk(murid)).some((x) => x.id === p.id));
+  ok("kode salah ditolak", !(await gabungPaket("XXXXXX", uid)).ok);
+  const g1 = await gabungPaket(p.kode.toLowerCase(), uid);
+  ok("kode benar (huruf kecil pun) diterima", g1.ok && g1.baru);
+  const g2 = await gabungPaket(p.kode, uid);
+  ok("kode yang sama dua kali tidak menggandakan peserta", g2.ok && !g2.baru && (await getPaket(p.id)).peserta.length === 1);
+  ok("setelah bergabung boleh membuka", bolehBuka(murid, await getPaket(p.id)));
+  ok("paket tampil di Paket saya", (await paketUntuk(murid)).some((x) => x.id === p.id));
+  // Worksheet menerbitkan ulang tanpa tahu daftar peserta — tidak boleh terhapus.
+  const lama = await getPaket(p.id);
+  const { peserta: _abaikan, ...tanpaPeserta } = lama;
+  await savePaket({ ...tanpaPeserta, judul: "Paket uji kode (terbit ulang)" });
+  ok("terbit ulang mempertahankan peserta", ((await getPaket(p.id)).peserta ?? []).includes(uid));
+  await savePaket({ ...(await getPaket(p.id)), terbit: false });
+  ok("paket ditutup guru tidak bisa dibuka murid", !bolehBuka(murid, await getPaket(p.id)));
+  ok("paket ditutup tidak bisa di-join", !(await gabungPaket(p.kode, "murid-lain")).ok);
+  ok("guru selalu boleh membuka", bolehBuka({ id: "g", role: "admin" }, await getPaket(p.id)));
 }
 
 /* ============================== Galat kalkulator tidak berbahasa apa pun */

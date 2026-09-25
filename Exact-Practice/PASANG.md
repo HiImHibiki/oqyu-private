@@ -9,7 +9,7 @@ cd ~/Documents/"PROJECT EXACT GROUP"
 git clone git@github.com:Exact-Digital/Exact-Practice.git "Exact Practice"
 cd "Exact Practice"
 npm install
-cp .env.contoh .env.local          # isi ADMIN_EMAILS, EXACT_KODE_KELAS, EXACT_CANVAS_PIN, EXACT_PRACTICE_KUNCI
+cp .env.contoh .env.local          # isi ADMIN_USERNAMES, EXACT_CANVAS_PIN, EXACT_PRACTICE_KUNCI
 # EXACT_PRACTICE_KUNCI: sembarang string acak; tulis nilai yang sama ke
 # ~/Library/Application Support/Exact Worksheet/setelan.json → "practice_kunci"
 # (dan "practice_url": "http://127.0.0.1:8770") supaya tombol Ke Practice di Worksheet bekerja.
@@ -37,6 +37,6 @@ Tunnel Cloudflare `exact-practice` (`~/.cloudflared/exact-practice.yml`, LaunchA
 
 ## Akun guru pertama
 
-Daftar di `/daftar` dengan email yang ada di `ADMIN_EMAILS` (pakai kode kelas), lalu buka
-`/admin/latihan`. Atau: `node scripts/make-admin.mjs email@guru` (mode berkas: perlu
+Daftar di `/daftar` dengan username yang ada di `ADMIN_USERNAMES`, lalu buka
+`/admin/latihan`. Atau: `node scripts/make-admin.mjs username-guru` (mode berkas: perlu
 `EXACT_DATA_DIR` diarahkan ke folder data di atas).

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { AlertCircle, ShieldCheck } from "lucide-react";
 import { SiteHeader } from "@/components/ui/SiteHeader";
-import { GoogleSignIn } from "@/components/auth/GoogleSignIn";
 import { usingDev } from "@/lib/db";
 import { getT } from "@/lib/i18n";
 import { safePath } from "@/lib/redirects";
@@ -43,18 +42,15 @@ export default async function MasukPage({
 
           {dev ? (
             <>
-              {/* Murid: akun Exact Canvas (No. HP + sandi) — satu akun untuk kanvas dan latihan. */}
-              <FormCanvas next={next} />
+              <FormMasuk next={next} />
+              {/* Akun Exact Canvas (No. HP + sandi) tetap bisa dipakai, tapi bukan jalur utama. */}
               <details className="mt-5">
-                <summary className="cursor-pointer text-center text-xs muted">Masuk dengan email (guru / akun lokal)</summary>
-                <div className="mt-3"><FormMasuk next={next} /></div>
+                <summary className="cursor-pointer text-center text-xs muted">Masuk dengan akun Exact Canvas</summary>
+                <div className="mt-3"><FormCanvas next={next} /></div>
               </details>
             </>
           ) : (
-            <>
-              <GoogleSignIn label={t("auth.googleContinue")} next={next} />
-              <p className="mt-4 text-center text-xs muted">{t("auth.googleNote")}</p>
-            </>
+            <p className="text-sm muted">Masuk hanya tersedia di mode berkas.</p>
           )}
 
           <hr className="my-6" style={{ borderColor: "var(--border)" }} />
@@ -62,9 +58,6 @@ export default async function MasukPage({
           <p className="text-center text-xs muted">
             {t("auth.noAccount")}{" "}
             <Link href="/daftar" className="underline">{t("auth.registerLink")}</Link>
-          </p>
-          <p className="mt-2 text-center text-xs muted">
-            Bukan murid Exact Course? <Link href="/beli" className="underline">Beli paket latihan</Link> — mulai Rp20.000/minggu.
           </p>
           <p className="mt-2 flex items-center justify-center gap-1.5 text-center text-xs muted">
             <ShieldCheck size={13} />

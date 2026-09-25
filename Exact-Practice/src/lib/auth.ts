@@ -3,22 +3,16 @@ import { devAuth } from "./db/dev";
 import { usingDev } from "./db";
 
 /* =========================================================================
- * Autentikasi.
+ * Autentikasi — username + kata sandi (24 Sep 2026).
  *
- * SATU cara masuk untuk peserta: Google. Tidak ada OTP, tidak ada kata sandi
- * yang harus dibuat, tidak ada formulir pendaftaran. Alasannya sederhana —
- * setiap langkah tambahan antara «mau coba» dan «sudah masuk» adalah tempat
- * orang berhenti, dan alur lama punya empat langkah sebelum peserta melihat
- * dasbornya sekali pun.
+ * Exact Practice dipakai internal untuk les privat: murid mendaftar sendiri
+ * dengan nama, username, dan kata sandi, akunnya langsung aktif, lalu masuk ke
+ * soal dengan kode ujian dari guru. Tidak ada email, No. HP, Google, maupun
+ * persetujuan guru. Username disimpan di kolom `email` milik driver (warisan
+ * Try Out) — nama kolomnya saja yang lama; isinya username.
  *
- * Kata sandi TIDAK dihapus: /admin/masuk masih memakainya. Itu disengaja.
- * Kalau OAuth Google bermasalah — kunci klien kedaluwarsa, domain belum
- * diizinkan, akun Google tim terkunci — tim operasional tetap harus bisa
- * masuk untuk mengonfirmasi pembayaran orang lain.
- *
- *  Supabase (produksi) : Supabase Auth, provider Google.
- *  Dev (tanpa env)     : pengguna dan sesi di .data/db.json; masuk cepat lewat
- *                        /api/auth/dev-login tanpa Google sama sekali.
+ *  Mode berkas (produksi): pengguna & sesi di <data>/db.json, cookie sendiri.
+ *  Mode Supabase (warisan, tidak dipakai): masuk dengan sandi saja.
  * ========================================================================= */
 
 export const SESSION_COOKIE = "exact_session";
@@ -40,14 +34,6 @@ export interface CurrentUser {
 type Result<T = void> = { ok: true; data: T } | { ok: false; error: string };
 const ok = <T>(data: T): Result<T> => ({ ok: true, data });
 const fail = (error: string): Result<never> => ({ ok: false, error });
-
-/** Email di ADMIN_EMAILS langsung berperan admin begitu akunnya ada — cara
- *  membuat admin pertama tanpa menyentuh basis data. Jalur dev sudah
- *  melakukannya sendiri di devAuth.upsertUser(). */
-const bootstrapAdmin = (email: string) =>
-  (process.env.ADMIN_EMAILS ?? "")
-    .split(",").map((e) => e.trim().toLowerCase()).filter(Boolean)
-    .includes(email.trim().toLowerCase());
 
 /* ------------------------------------------------------------- pengguna */
 
@@ -83,78 +69,6 @@ export async function currentUser(): Promise<CurrentUser | null> {
   };
 }
 
-/* --------------------------------------------------------------- Google */
-
-/** Alamat halaman izin Google. Sesi BELUM terbentuk di sini — yang terjadi
- *  hanyalah Supabase menyiapkan PKCE verifier di cookie lalu memberi tahu ke
- *  mana peramban harus pergi. Sesinya lahir di completeGoogleSignIn(). */
-export async function googleAuthUrl(redirectTo: string): Promise<Result<{ url: string }>> {
-  if (usingDev()) {
-    return fail("Supabase belum dikonfigurasi, jadi masuk lewat Google belum bisa dipakai.");
-  }
-
-  const { createClient } = await import("./supabase/server");
-  const sb = await createClient();
-  const { data, error } = await sb.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      redirectTo,
-      /* Memaksa pemilih akun. Tanpa ini, orang yang punya dua akun Google
-       * di satu peramban selalu masuk dengan yang pertama tanpa pernah
-       * ditanya — dan baru sadar setelah melihat dasbor orang lain. */
-      queryParams: { prompt: "select_account" },
-    },
-  });
-  if (error || !data.url) return fail(error?.message ?? "Gagal memulai masuk lewat Google");
-  return ok({ url: data.url });
-}
-
-/** Menukar `code` dari Google menjadi sesi, lalu memastikan profilnya lengkap.
- *
- *  Profil dibuat oleh trigger handle_new_user() saat baris auth.users lahir,
- *  jadi tugas di sini hanya melengkapi yang tidak diketahui trigger itu:
- *  bahasa antarmuka, negara (yang menentukan mata uang), dan nama bila Google
- *  mengirimkannya lewat `name` alih-alih `full_name`. */
-export async function completeGoogleSignIn(
-  code: string,
-  hints: { country?: string; locale?: string } = {},
-): Promise<Result<{ userId: string; email: string; isNew: boolean }>> {
-  if (usingDev()) return fail("Supabase belum dikonfigurasi.");
-
-  const { createClient, createAdminClient } = await import("./supabase/server");
-  const sb = await createClient();
-  const { data, error } = await sb.auth.exchangeCodeForSession(code);
-  if (error || !data.user) return fail(error?.message ?? "Sesi Google tidak bisa dibuka");
-
-  const user = data.user;
-  const email = (user.email ?? "").toLowerCase();
-  const admin = createAdminClient();
-
-  const { data: p } = await admin
-    .from("profiles")
-    .select("full_name,country,locale,role,onboarded_at")
-    .eq("id", user.id)
-    .maybeSingle();
-
-  /* «Baru» di sini berarti belum pernah menyelesaikan satu putaran masuk pun,
-   * bukan «barusan dibuat»: orang yang mendarat di sini dua kali karena
-   * jaringannya putus tidak boleh diperlakukan sebagai pendaftar baru. */
-  const isNew = !p?.onboarded_at;
-
-  const meta = user.user_metadata ?? {};
-  const nameFromGoogle = (meta.full_name as string) || (meta.name as string) || "";
-
-  const patch: Record<string, unknown> = { onboarded_at: p?.onboarded_at ?? new Date().toISOString() };
-  if (!p?.full_name && nameFromGoogle) patch.full_name = nameFromGoogle;
-  if (!p?.country && hints.country) patch.country = hints.country;
-  if (!p?.locale && hints.locale) patch.locale = hints.locale;
-  if (bootstrapAdmin(email) && (p?.role ?? "student") === "student") patch.role = "admin";
-
-  await admin.from("profiles").update(patch).eq("id", user.id);
-
-  return ok({ userId: user.id, email, isNew });
-}
-
 /* ------------------------------------------------------------------ dev */
 
 /** Masuk cepat untuk mode pengembangan, tempat Google tidak tersedia sama
@@ -180,33 +94,25 @@ export async function devSignIn(input: {
   return ok({ userId: u.id, isNew: !existing });
 }
 
-/** Pendaftaran murid Exact Practice: email + nama + kata sandi, dijaga kode
- *  kelas dari guru (EXACT_KODE_KELAS). Tanpa Supabase tidak ada Google, dan
- *  murid bimbel tidak perlu OAuth — cukup akun lokal di berkas. */
+/** Username: 3–32 huruf kecil, angka, titik, garis bawah, atau tanda hubung. */
+export const POLA_USERNAME = /^[a-z0-9._-]{3,32}$/;
+
+/** Pendaftaran murid: nama + username + kata sandi, langsung aktif. Username di
+ *  ADMIN_USERNAMES (atau ADMIN_EMAILS lama) langsung jadi guru/admin. */
 export async function daftarMurid(input: {
-  email: string; fullName: string; password: string; kode: string;
+  username: string; fullName: string; password: string;
 }): Promise<Result<{ userId: string }>> {
-  if (!usingDev()) return fail("Pendaftaran lokal hanya untuk mode berkas.");
-  const kodeKelas = (process.env.EXACT_KODE_KELAS ?? "").trim();
-  if (!kodeKelas) return fail("Pendaftaran belum dibuka: EXACT_KODE_KELAS belum diatur di server.");
-  if (input.kode.trim().toLowerCase() !== kodeKelas.toLowerCase()) return fail("Kode kelas salah. Minta kode ke guru.");
-  const email = input.email.trim().toLowerCase();
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return fail("Alamat email tidak valid");
+  if (!usingDev()) return fail("Pendaftaran hanya tersedia di mode berkas.");
+  const username = input.username.trim().toLowerCase();
+  if (!POLA_USERNAME.test(username)) return fail("Username 3–32 karakter: huruf kecil, angka, titik, _ atau -");
   if (!input.fullName.trim()) return fail("Nama wajib diisi");
   if (input.password.length < 6) return fail("Kata sandi minimal 6 karakter");
-  if (await devAuth.userByEmail(email)) return fail("Email ini sudah terdaftar — silakan masuk.");
-  const u = await devAuth.upsertUser({ email, fullName: input.fullName.trim(), phone: "" });
+  if (await devAuth.userByEmail(username)) return fail("Username sudah dipakai — pilih yang lain atau masuk.");
+  const u = await devAuth.upsertUser({ email: username, fullName: input.fullName.trim(), phone: "" });
   await devAuth.setPassword(u.id, input.password);
-  /* Kode kelas hanya membuka pintu depan — guru yang memutuskan siapa masuk,
-   * sama seperti di Exact Canvas. Akun baru menunggu sampai disetujui di
-   * /admin/peserta; email di ADMIN_EMAILS langsung jadi admin. */
-  if (u.role === "student") await (await import("./db")).getDb().setUserRole(u.id, "menunggu");
   await setSessionCookie(await devAuth.createSession(u.id));
   return ok({ userId: u.id });
 }
-
-export const MENUNGGU = "menunggu";
-export const menunggu = (u: CurrentUser | null) => Boolean(u && u.role === MENUNGGU);
 
 /* --------------------------------------------------------- Exact Canvas */
 
@@ -253,8 +159,6 @@ export async function masukDariSesiCanvas(token: string): Promise<Result<{ userI
 
 /* ------------------------------------------------------------ kata sandi */
 
-/* Hanya untuk jalur admin. Peserta tidak pernah melihat layar kata sandi. */
-
 export async function setPassword(password: string): Promise<Result> {
   const user = await currentUser();
   if (!user) return fail("Sesi tidak valid");
@@ -272,12 +176,12 @@ export async function setPassword(password: string): Promise<Result> {
   return ok(undefined);
 }
 
-export async function login(email: string, password: string): Promise<Result> {
-  const target = email.trim().toLowerCase();
+export async function login(username: string, password: string): Promise<Result> {
+  const target = username.trim().toLowerCase();
 
   if (usingDev()) {
     const u = await devAuth.login(target, password);
-    if (!u) return fail("Email atau kata sandi salah");
+    if (!u) return fail("Username atau kata sandi salah");
     await setSessionCookie(await devAuth.createSession(u.id));
     return ok(undefined);
   }
@@ -285,7 +189,7 @@ export async function login(email: string, password: string): Promise<Result> {
   const { createClient } = await import("./supabase/server");
   const sb = await createClient();
   const { error } = await sb.auth.signInWithPassword({ email: target, password });
-  if (error) return fail("Email atau kata sandi salah");
+  if (error) return fail("Username atau kata sandi salah");
   return ok(undefined);
 }
 

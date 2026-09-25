@@ -27,7 +27,7 @@ Belum pernah dideploy ke Vercel/Cloudflare Workers — lihat PLANS.md §Deploy.
         ▼  │ /api/render /berkas /api/potret-html          │  /api/akun/sesi (PIN + loopback saja)
  ┌──────────────── Exact Practice (:8770, Next.js) ─────────┘
  │ POST /api/latihan/terbit  (header x-exact-kunci = EXACT_PRACTICE_KUNCI)
- └── publik lewat Cloudflare Tunnel → murid & pembeli umum
+ └── publik lewat Cloudflare Tunnel → murid (masuk dengan kode ujian)
 ```
 
 ### Peta direktori
@@ -39,7 +39,7 @@ src/app/                    halaman & route API (App Router)
   hasil/[attemptId]         hasil & pembahasan
   admin/latihan             guru: buat soal, susun paket, cetak PDF, terbit/sembunyi
   admin/kelas               pantau kemajuan & kesalahan per murid/paket
-  admin/peserta|pesanan|afiliasi   setujui murid, tandai lunas (sandi sementara), komisi
+  admin/peserta             peran & akomodasi waktu murid
   api/latihan/terbit        MASUKAN dari Worksheet (kunci bersama)
   api/latihan/cetak|tanya   KELUARAN ke Worksheet (PDF) / Canvas (tanya guru)
   api/admin/latihan/*       buat (via Worksheet), bank, paket, tempel (naskah dari AI)
@@ -65,14 +65,12 @@ pasang-tunnel.sh            Cloudflare Tunnel per Mac
 
 | Data | Mode berkas (produksi sekarang) | Mode Supabase |
 |---|---|---|
-| akun, sesi, attempt, pesanan, afiliasi | `<data>/db.json` (dev.ts) | tabel Postgres (supabase.ts) |
+| akun (username di kolom `email`), sesi, attempt | `<data>/db.json` (dev.ts) | tabel Postgres (supabase.ts) |
 | bank soal | `<data>/question-bank.json` | tabel `questions` |
-| paket latihan | `<data>/paket.json` | **tetap berkas** (paket.ts selalu fs) |
-| sandi sementara pembeli | `<data>/sandi-sementara.json` | **tetap berkas** (sandi.ts selalu fs) |
-| daftar pakai kode kelas | ✅ | ❌ "hanya untuk mode berkas" |
+| paket latihan + peserta (kode ujian) | `<data>/paket.json` | **tetap berkas** (paket.ts selalu fs) |
+| daftar username + sandi (langsung aktif) | ✅ | ❌ "hanya untuk mode berkas" |
 | masuk pakai akun Canvas | ✅ | ❌ |
-| beli umum `/api/beli` + sandi sementara | ✅ | ❌ |
-| login | email+sandi (cookie sendiri) | Google OAuth via Supabase |
+| login | username+sandi (cookie sendiri) | sandi Supabase (warisan, tidak dipakai) |
 
 `<data>` = `EXACT_DATA_DIR` atau `./.data`. Di Mac produksi:
 `~/Library/Application Support/Exact Practice/data/`.
@@ -86,8 +84,7 @@ npm ci                       # pasang dependensi (pakai lockfile)
 npm run dev                  # http://localhost:8770 (mode berkas bila .env.local tanpa Supabase)
 npm run typecheck            # tsc --noEmit — WAJIB hijau
 npm run build                # next build — WAJIB hijau sebelum pasang-app.sh / deploy
-npm run test:webhooks        # 39 uji jalur pembayaran (tidak butuh data)
-npm run test:exams           # uji mesin ujian — BUTUH minimal 1 user di data (lihat TASKS P-032)
+npm run test:exams           # uji mesin ujian + kode ujian (data sementara sendiri)
 npm run validate             # validasi struktur JSON soal
 npm run import -- <file>     # impor soal ke bank
 node scripts/make-admin.mjs email@guru   # jadikan admin (mode berkas: set EXACT_DATA_DIR)
@@ -104,14 +101,12 @@ Salin `.env.contoh` (khas Exact Course) — `.env.example` adalah warisan Try Ou
 
 | Var | Guna |
 |---|---|
-| `ADMIN_EMAILS` | email yang otomatis jadi guru/admin saat mendaftar |
-| `EXACT_KODE_KELAS` | kode kelas yang diminta saat murid mendaftar |
+| `ADMIN_USERNAMES` | username yang otomatis jadi guru/admin saat mendaftar (`ADMIN_EMAILS` lama masih dibaca) |
 | `EXACT_WORKSHEET_URL` | alamat Worksheet (bawaan `http://127.0.0.1:7790`) |
 | `EXACT_CANVAS_URL` / `EXACT_CANVAS_PUBLIC` / `EXACT_CANVAS_PIN` | Canvas lokal, publik, PIN berbagi |
 | `EXACT_PRACTICE_KUNCI` | kunci bersama dengan Worksheet (`practice.json` → `kunci`) |
 | `EXACT_PRACTICE_PUBLIC`, `NEXT_PUBLIC_SITE_URL` | alamat publik Practice |
 | `EXACT_DATA_DIR` | lokasi folder data mode berkas |
-| `NEXT_PUBLIC_ADMIN_WHATSAPP`, `NEXT_PUBLIC_BANK_*` | tombol konfirmasi WA & rekening transfer |
 | `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` | diisi = pindah ke mode Supabase |
 
 ## Peran (pilih sesuai permintaan)
@@ -152,7 +147,7 @@ Salin `.env.contoh` (khas Exact Course) — `.env.example` adalah warisan Try Ou
 
 ### 4. QA / Testing
 - Minimal sebelum menyatakan selesai: `npm run typecheck`, `npm run build`,
-  `npm run test:webhooks`, dan `npm run test:exams` (dengan `EXACT_DATA_DIR` sementara
+dan `npm run test:exams` (dengan `EXACT_DATA_DIR` sementara
   yang berisi satu user).
 - Perubahan ruang ujian: pastikan kunci jawaban tidak bocor —
   `curl -s localhost:8770/ujian/<id> | grep -c '"explanation"'` harus 0.
@@ -185,9 +180,12 @@ Salin `.env.contoh` (khas Exact Course) — `.env.example` adalah warisan Try Ou
    sama (PDF + set sama) MEMPERBARUI paket yang sama, bukan membuat baru.
 7. **Redirect di balik tunnel memakai `Location` relatif** — origin yang dilihat Node adalah
    `http://localhost`; memakainya melempar murid keluar dari HTTPS.
-8. **Murid Exact Course gratis, umum berbayar.** Murid masuk via akun Canvas / daftar kode
-   kelas + persetujuan guru; umum lewat `/beli` → transfer → admin *Tandai lunas* → akun +
-   sandi sementara. Harga di `src/lib/packages.ts`, komisi afiliasi 15% di `affiliate.ts`.
+8. **Internal, tidak dijual; kode ujian adalah gerbangnya.** Murid daftar sendiri (nama +
+   username + sandi, langsung aktif, tanpa email/HP/persetujuan). Murid hanya melihat &
+   membuka paket terbit yang kodenya sudah ia masukkan — `bolehBuka()` di `paket.ts` WAJIB
+   dipakai setiap rute yang membuka isi paket (mulai, cetak). `savePaket` mempertahankan
+   `peserta` bila pemanggil tidak menyebutnya (terbit ulang dari Worksheet). Tidak ada
+   pembayaran/afiliasi/pesanan (dihapus P-043).
 9. **`diagrams.js` identik dengan Worksheet (dan Canvas)** (lihat peran 2).
 10. **Server untuk murid WAJIB build produksi** (`next build` + `next start`, lewat
     `pasang-app.sh`), JANGAN `npm run dev`. Mode dev React/Next menyerialisasi hasil I/O

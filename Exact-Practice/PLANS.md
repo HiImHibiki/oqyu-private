@@ -47,7 +47,7 @@ hilang 14 Sep 2026).
 Guru membagi kelas ("kiri kode A, kanan kode B"). Tiap set punya kode ujian 6 huruf sendiri
 (tanpa 0/O/1/I agar aman dibacakan lewat WA). Terbit ulang lembar yang sama memperbarui.
 
-### D5. Murid gratis & disetujui guru; umum bayar via transfer manual
+### D5. ~~Murid gratis & disetujui guru; umum bayar via transfer manual~~ (DIGANTI D10, 25 Sep 2026)
 Murid Exact Course masuk via akun Canvas (No. HP + sandi, atau token sesi dari halaman murid
 Canvas) atau daftar dengan kode kelas → menunggu *Setujui* di `/admin/peserta`. Umum membeli
 paket berjangka (1 minggu Rp20.000 / 1 bulan Rp60.000 / 3 bulan Rp150.000) lewat transfer +
@@ -66,6 +66,20 @@ GitHub. Tunnel per Mac (`pasang-tunnel.sh`).
 ### D8. Cetak PDF lewat Worksheet; render ulang bila PDF tidak ada di Mac ini
 PDF lembar tinggal di Desktop Mac yang membuatnya. Bila paket diterbitkan dari Mac lain,
 `/api/latihan/cetak` merender ulang dari bank lewat `/api/render` Worksheet.
+
+### D10. Internal saja: username + kode ujian per paket (dikonfirmasi user, 25 Sep 2026)
+Exact Practice dipakai untuk les privat (1–2 murid mengerjakan bersamaan), **tidak dijual**.
+Meniru ExactQuiz lama: murid daftar sendiri → masuk → masukkan **kode ujian** → paket masuk
+"Paket saya". Keputusan user:
+- Login **username + sandi** saja (tanpa email, No. HP, Google, maupun fitur WhatsApp).
+  Username disimpan di kolom `email` driver warisan (hanya nama kolom).
+- Akun **langsung aktif** — tanpa persetujuan guru, tanpa kode kelas global
+  (`EXACT_KODE_KELAS` dihapus). Gerbangnya kode per paket.
+- **Kode per paket** (6 huruf yang sudah ada). Murid hanya melihat/membuka paket terbit yang
+  kodenya sudah ia masukkan; menutup paket menyembunyikannya dan mematikan kodenya.
+- **Latihan acak dari bank dihapus** — bank soal tidak terbuka untuk murid.
+- **Pesanan, pembelian, afiliasi, kupon, refund, Stripe/Midtrans, sandi sementara dihapus.**
+Login akun Canvas (No. HP) tetap ada sebagai jalur kedua di /masuk (belum diputuskan dibuang).
 
 ## Deploy — analisis (24 Sep 2026)
 
@@ -142,7 +156,7 @@ sendiri hanya dengan konfigurasi. Eksekusi: P-039 (↔ C-046).
   (RCE React Server Components, Des 2025) — Practice memakai App Router, jadi terdampak. Naikkan ke rilis patch 15.x terbaru + React 19 patch, lalu typecheck/build/uji.
 - **B2. ✅ SELESAI (P-032).** `test:exams` bisa jalan di clone bersih — buat user uji sendiri di `EXACT_DATA_DIR`
   sementara alih-alih membaca `users[0]` data yang ada.
-- **B3. Satukan `.env.contoh` & `.env.example`** — satu berkas, dikelompokkan "wajib Exact
+- **B3. ✅ SELESAI (P-034).** Satukan `.env.contoh` & `.env.example` — satu berkas, dikelompokkan "wajib Exact
   Course" vs "opsional/warisan Try Out".
 - **B4. CI GitHub Actions** — typecheck + build + test:webhooks + test:exams di tiap push.
 - **B5. Migrasi penyimpanan** (bila K1 = B): tabel paket, sandi sementara, auth lokal di driver

@@ -54,9 +54,15 @@
 
 - ✅ P-042 Halaman tampil Mandarin di browser berbahasa "Inggris + Mandarin": deteksi Accept-Language melewati `en` lalu memilih `zh` di urutan mana pun. Deteksi dibuang — bahasa = cookie pilihan pengguna, selain itu Indonesia
 
+
+## Internal & kode ujian (25 Sep 2026) — PLANS D10
+- ✅ P-043 Hapus penjualan & afiliasi: /beli, /paket, /afiliasi, /r/[kode], /admin/pesanan, /admin/afiliasi, API orders/checkout/coupons/webhooks/affiliate/refund/payout/commissions, lib packages/payment/stripe/midtrans/snap/checkout/coupons/refunds/affiliate/mail/entitlements, sandi sementara, login Google, peran `umum`; ringkasan admin tanpa pendapatan; `test:webhooks` & `close-stale-orders` dihapus. (Metode order/komisi di driver DB masih ada sebagai kode mati — dibersihkan bersama keputusan FP-50/FP-60)
+- ✅ P-044 Login username + sandi: daftar (nama, username, sandi) langsung aktif — tanpa email, kode kelas global, maupun persetujuan guru (/menunggu dihapus); `ADMIN_USERNAMES` (ADMIN_EMAILS lama tetap dibaca); form masuk murid & admin pakai username; akun Canvas jadi jalur kedua di /masuk; tujuan bawaan setelah masuk = /latihan
+- ✅ P-045 Kode ujian per paket: murid memasukkan kode → paket masuk "Paket saya" (`POST /api/latihan/gabung`, dibatasi 20 percobaan/15 mnt); hanya peserta paket terbit yang boleh mulai & cetak (`bolehBuka`); terbit ulang dari Worksheet mempertahankan peserta; tautan guru `/latihan?kode=XXXXXX` mengisi kotak kode; panel guru menampilkan jumlah murid bergabung; latihan acak dari bank dihapus. Uji: test:exams 87/87 (11 uji kode ujian baru) + e2e di server lokal
+- ✅ P-034 `.env.example` (warisan Try Out) dilebur ke `.env.contoh`
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
-- ⬜ P-034 Satukan `.env.contoh` & `.env.example` — B3
 - ⬜ P-035 CI GitHub Actions (typecheck, build, test) — B4
 - ✅ P-036 Keputusan deploy: tetap Mac + Cloudflare Tunnel (opsi A), dikonfirmasi user 24 Sep 2026
 - ⬜ P-039 Pisahkan pengaturan Cloudflare/domain dari kode (domain & tunnel per pemasang lewat konfigurasi, bukan tertanam) — PLANS D9

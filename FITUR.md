@@ -73,18 +73,18 @@ dibahas dengan user.
 ### Akun & akses
 | Kode | Fitur | Di mana | Label | Keputusan |
 |---|---|---|---|---|
-| FP-01 | Daftar murid dengan **kode kelas** → menunggu disetujui guru | `/daftar`, `/menunggu`, `/admin/peserta` | 🟢 | |
-| FP-02 | **Masuk pakai akun Exact Canvas** (No. HP + sandi) | `/masuk` | 🟢 🔗FC-12 | |
+| FP-01 | Daftar murid dengan **kode kelas** → menunggu disetujui guru | `/daftar`, `/menunggu`, `/admin/peserta` | 🟢 | ubah → daftar username+sandi, langsung aktif (P-044) |
+| FP-02 | **Masuk pakai akun Exact Canvas** (No. HP + sandi) | `/masuk` | 🟢 🔗FC-12 | pertahankan sebagai jalur kedua |
 | FP-03 | Masuk otomatis dari tombol Practice di Canvas (token sesi) | `/api/auth/canvas?sesi=` | 🟢 🔗FC-18 | |
-| FP-04 | Masuk email + sandi, ganti sandi, keluar semua perangkat | `/masuk`, `/pengaturan` | 🟢 | |
+| FP-04 | Masuk email + sandi, ganti sandi, keluar semua perangkat | `/masuk`, `/pengaturan` | 🟢 | ubah → username+sandi (P-044) |
 | FP-05 | Admin/guru otomatis dari `ADMIN_EMAILS`, halaman masuk admin | `/admin/masuk` | 🟢 | |
-| FP-06 | Masuk Google (Supabase) — hanya mode Supabase | `/auth/callback` | 🔴 | |
+| FP-06 | Masuk Google (Supabase) — hanya mode Supabase | `/auth/callback` | 🔴 | hapus (P-043) |
 
 ### Murid: latihan & ujian
 | Kode | Fitur | Di mana | Label | Keputusan |
 |---|---|---|---|---|
-| FP-10 | Halaman **Latihan**: paket dari guru, cari dengan nama/kode ujian 6 huruf, riwayat | `/latihan` | 🟢 | |
-| FP-11 | **Latihan acak dari bank** per mapel/kelas/topik | `/latihan` | 🟡 | |
+| FP-10 | Halaman **Latihan**: paket dari guru, cari dengan nama/kode ujian 6 huruf, riwayat | `/latihan` | 🟢 | ubah → masukkan kode ujian, Paket saya (P-045) |
+| FP-11 | **Latihan acak dari bank** per mapel/kelas/topik | `/latihan` | 🟡 | hapus (P-045) |
 | FP-12 | **Ruang ujian**: jam di server, autosave, daftar soal, tandai (flag), offline-aware | `/ujian/[id]` | 🟢 | |
 | FP-13 | Alat ujian: **kalkulator**, lembar rumus, stabilo teks, sembunyikan waktu | ruang ujian | 🟡 | |
 | FP-14 | **Proctoring** (keluar tab, blur, fullscreen, salin) tercatat | ruang ujian | 🟡 | |
@@ -102,7 +102,7 @@ dibahas dengan user.
 | FP-24 | Teks bacaan jadi stimulus panel kiri | ruang ujian | 🟡 🔗FW-11 | |
 | FP-25 | **Pantau kelas**: per murid (paket, sampai nomor berapa, nomor salah), per paket (nomor paling sering salah) | `/admin/kelas` | 🟢 | |
 | FP-26 | Ringkasan admin | `/admin` | 🟡 | |
-| FP-27 | Kelola peserta: setujui, peran, akomodasi waktu (1×/1,5×/2×) | `/admin/peserta` | 🟢 | |
+| FP-27 | Kelola peserta: setujui, peran, akomodasi waktu (1×/1,5×/2×) | `/admin/peserta` | 🟢 | ubah → tanpa persetujuan (P-044) |
 
 ### Integrasi Canvas di Practice
 | Kode | Fitur | Di mana | Label | Keputusan |
@@ -113,12 +113,12 @@ dibahas dengan user.
 ### Penjualan ke umum
 | Kode | Fitur | Di mana | Label | Keputusan |
 |---|---|---|---|---|
-| FP-40 | **Beli paket berjangka** (1 mgg Rp20rb / 1 bln Rp60rb / 3 bln Rp150rb) tanpa akun: transfer + konfirmasi WA | `/beli` | 🟡 | |
-| FP-41 | Admin **Tandai lunas** → akun + sandi sementara, tombol "Kirim akun via WA" | `/admin/pesanan` | 🟡 | |
-| FP-42 | **Afiliasi** murid (kode, tautan `/r/KODE`, komisi 15%, pencairan manual) | `/afiliasi`, `/admin/afiliasi` | 🟡 | |
-| FP-43 | Kupon diskon | `/api/coupons/validate` | 🔴 | |
-| FP-44 | Refund | `/admin/pesanan` | 🔴 | |
-| FP-45 | Pembayaran **Stripe & Midtrans** (checkout, webhook) | `/api/checkout/*`, `/api/webhooks/*` | 🔴 (alur umum pakai transfer manual) | |
+| FP-40 | **Beli paket berjangka** (1 mgg Rp20rb / 1 bln Rp60rb / 3 bln Rp150rb) tanpa akun: transfer + konfirmasi WA | `/beli` | 🟡 | hapus (P-043) |
+| FP-41 | Admin **Tandai lunas** → akun + sandi sementara, tombol "Kirim akun via WA" | `/admin/pesanan` | 🟡 | hapus (P-043) |
+| FP-42 | **Afiliasi** murid (kode, tautan `/r/KODE`, komisi 15%, pencairan manual) | `/afiliasi`, `/admin/afiliasi` | 🟡 | hapus (P-043) |
+| FP-43 | Kupon diskon | `/api/coupons/validate` | 🔴 | hapus (P-043) |
+| FP-44 | Refund | `/admin/pesanan` | 🔴 | hapus (P-043) |
+| FP-45 | Pembayaran **Stripe & Midtrans** (checkout, webhook) | `/api/checkout/*`, `/api/webhooks/*` | 🔴 (alur umum pakai transfer manual) | hapus (P-043) |
 
 ### Warisan Exact Try Out
 | Kode | Fitur | Di mana | Label | Keputusan |

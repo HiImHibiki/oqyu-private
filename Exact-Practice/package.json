@@ -11,13 +11,11 @@
     "validate": "node --experimental-strip-types scripts/validate-questions.mjs",
     "check-scripts": "node scripts/check-scripts.mjs",
     "coverage": "node --experimental-strip-types --import ./scripts/alias-register.mjs scripts/bank-coverage.mjs",
-    "close-stale-orders": "node --experimental-strip-types --import ./scripts/alias-register.mjs scripts/close-stale-orders.mjs",
     "import": "node --env-file-if-exists=.env.local --experimental-strip-types --import ./scripts/alias-register.mjs scripts/import-questions.mjs",
     "seed": "node --env-file-if-exists=.env.local --experimental-strip-types --import ./scripts/alias-register.mjs scripts/seed-bank.mjs",
     "make-admin": "node --env-file-if-exists=.env.local scripts/make-admin.mjs",
     "approve": "node --env-file-if-exists=.env.local scripts/approve-questions.mjs",
     "balance-keys": "node scripts/balance-keys.mjs",
-    "test:webhooks": "node --experimental-strip-types --import ./scripts/alias-register.mjs scripts/test-webhooks.mjs",
     "test:exams": "node --experimental-strip-types --import ./scripts/alias-register.mjs scripts/test-exams.mjs"
   },
   "dependencies": {

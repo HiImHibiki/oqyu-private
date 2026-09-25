@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { AlertCircle, Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
+import { AlertCircle, Loader2, Lock, ShieldCheck, User } from "lucide-react";
 import { Logo } from "@/components/ui/SiteHeader";
 
 export function AdminLoginForm({ signedInAs }: { signedInAs: string | null }) {
@@ -18,7 +18,7 @@ export function AdminLoginForm({ signedInAs }: { signedInAs: string | null }) {
 
     const r = await fetch("/api/auth/login", {
       method: "POST", headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username: email, password }),
     });
     const j = await r.json();
     if (!r.ok) { setBusy(false); return setErr(j.error ?? "Gagal masuk"); }
@@ -64,9 +64,9 @@ export function AdminLoginForm({ signedInAs }: { signedInAs: string | null }) {
         )}
 
         <label className="mb-4 block">
-          <span className="mb-1.5 flex items-center gap-1.5 text-sm font-medium"><Mail size={15} /> Email admin</span>
-          <input className="input" type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-            autoComplete="email" required />
+          <span className="mb-1.5 flex items-center gap-1.5 text-sm font-medium"><User size={15} /> Username</span>
+          <input className="input" value={email} onChange={(e) => setEmail(e.target.value)}
+            autoComplete="username" autoCapitalize="none" spellCheck={false} required />
         </label>
         <label className="block">
           <span className="mb-1.5 flex items-center gap-1.5 text-sm font-medium"><Lock size={15} /> Kata sandi</span>

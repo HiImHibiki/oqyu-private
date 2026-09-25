@@ -7,8 +7,8 @@ export async function POST(req: Request) {
   if (!l.ok) return NextResponse.json({ error: `Terlalu banyak pendaftaran. Coba lagi dalam ${l.retryAfterSec} detik.` }, { status: 429 });
   const b = await req.json().catch(() => ({}));
   const res = await daftarMurid({
-    email: String(b.email ?? ""), fullName: String(b.fullName ?? ""),
-    password: String(b.password ?? ""), kode: String(b.kode ?? ""),
+    username: String(b.username ?? ""), fullName: String(b.fullName ?? ""),
+    password: String(b.password ?? ""),
   });
   if (!res.ok) return NextResponse.json({ error: res.error }, { status: 400 });
   return NextResponse.json({ ok: true });

@@ -26,7 +26,7 @@ export function DevQuickSignIn({ next }: { next: string }) {
     const j = await r.json().catch(() => ({}));
     setBusy(false);
     if (!r.ok) return setErr(j.error ?? "Could not sign in");
-    router.push(next || "/dashboard");
+    router.push(next || "/latihan");
     router.refresh();
   }
 

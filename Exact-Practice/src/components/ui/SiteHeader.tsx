@@ -41,7 +41,7 @@ export function SiteHeader({ authed }: { authed?: boolean }) {
           <LocaleSwitcher compact />
           <ThemeSwitcher compact />
           {authed ? (
-            <Link href="/dashboard" className="btn btn-primary">{t("nav.dashboard")}</Link>
+            <Link href="/latihan" className="btn btn-primary">{t("nav.dashboard")}</Link>
           ) : (
             <>
               <Link href="/masuk" className="btn btn-ghost">{t("nav.signIn")}</Link>

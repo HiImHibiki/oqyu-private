@@ -1,7 +1,7 @@
 /* Logika bersama paket latihan: membuat attempt dari paket, mengacak soal
  * per topik, dan menghitung kemajuan/kesalahan untuk pantauan guru. */
 import { getDb } from "@/lib/db";
-import { approvedPool, questionsByIds, type BankQuestion } from "@/lib/exams/bank";
+import { questionsByIds, type BankQuestion } from "@/lib/exams/bank";
 import { gradeAnswer } from "@/lib/exams/grade";
 import type { AttemptRecord } from "@/lib/db/types";
 import type { FormSectionLayout, ResponseValue } from "@/lib/types";
@@ -26,38 +26,6 @@ export async function mulaiDariPaket(userId: string, paket: Paket) {
 /** Soal LATIHAN yang disetujui, dikelompokkan menurut tag mapel/kelas/topik. */
 export function tagDari(q: BankQuestion) {
   return { mapel: q.domain, kelas: (q.tags ?? []).find((t) => t.startsWith("kelas-"))?.slice(6) ?? "", topik: q.skill };
-}
-
-export async function kelompokBank() {
-  const pool = await approvedPool("LATIHAN");
-  const peta = new Map<string, { mapel: string; kelas: string; topik: string; jumlah: number }>();
-  for (const q of pool) {
-    const t = tagDari(q);
-    const k = `${t.mapel}|${t.kelas}|${t.topik}`;
-    const v = peta.get(k) ?? { ...t, jumlah: 0 };
-    v.jumlah++; peta.set(k, v);
-  }
-  return [...peta.values()].sort((a, b) => a.mapel.localeCompare(b.mapel) || a.kelas.localeCompare(b.kelas) || a.topik.localeCompare(b.topik));
-}
-
-function acak<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
-  return a;
-}
-
-export async function mulaiAcak(userId: string, f: { mapel: string; kelas?: string; topik?: string; jumlah: number }) {
-  const pool = (await approvedPool("LATIHAN")).filter((q) => {
-    const t = tagDari(q);
-    return t.mapel === f.mapel && (!f.kelas || t.kelas === f.kelas) && (!f.topik || t.topik === f.topik);
-  });
-  if (!pool.length) return null;
-  const ids = acak(pool).slice(0, Math.max(1, f.jumlah)).map((q) => q.id);
-  const judul = `Latihan acak: ${f.topik || f.mapel}${f.kelas ? ` (Kelas ${f.kelas})` : ""}`;
-  return getDb().createAttempt({
-    userId, exam: "LATIHAN", formTitle: judul, isDemo: false,
-    formLayout: layoutLatihan(ids, Math.ceil(ids.length * 2)),
-  });
 }
 
 /* ------------------------------------------------------------------ */

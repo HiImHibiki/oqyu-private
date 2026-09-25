@@ -1,4 +1,3 @@
-import { packageById } from "@/lib/packages";
 import { promises as fs } from "fs";
 import path from "path";
 import crypto from "crypto";
@@ -341,8 +340,10 @@ const devAuthRaw = {
 
 /** Email di ADMIN_EMAILS langsung menjadi admin — cara membuat admin pertama
  *  tanpa perlu menyentuh basis data. */
+/** Username di ADMIN_USERNAMES (atau ADMIN_EMAILS lama) langsung jadi admin. */
 function bootstrapRole(email: string) {
-  const list = (process.env.ADMIN_EMAILS ?? "").split(",").map((e) => e.trim().toLowerCase()).filter(Boolean);
+  const list = `${process.env.ADMIN_USERNAMES ?? ""},${process.env.ADMIN_EMAILS ?? ""}`
+    .split(",").map((e) => e.trim().toLowerCase()).filter(Boolean);
   return list.includes(email.toLowerCase()) ? "admin" : "student";
 }
 
@@ -391,7 +392,7 @@ const devDbRaw: FullDb = {
       id: uid(), userId: o.userId, packageId: o.packageId, exam: o.exam,
       attemptsTotal: attemptsGranted, attemptsUsed: 0,
       // Paket berjangka (latihan mingguan/bulanan) kedaluwarsa sesuai `days`-nya.
-      expiresAt: new Date(Date.now() + (packageById(o.packageId)?.days ?? 365) * 864e5).toISOString(),
+      expiresAt: new Date(Date.now() + 365 * 864e5).toISOString(),
       orderId: o.id,
     });
     await write(d);

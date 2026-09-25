@@ -29,7 +29,7 @@ lokalnya langsung jadi. Hapus `.data/` untuk mengosongkan semuanya.
    - `service_role` → `SUPABASE_SERVICE_ROLE_KEY` (**hanya di server**, jangan pernah di client)
 
 ```bash
-cp .env.example .env.local
+cp .env.contoh .env.local
 ```
 
 ### 2.1b Pilih region

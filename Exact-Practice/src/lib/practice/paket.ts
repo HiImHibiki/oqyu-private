@@ -32,6 +32,9 @@ export interface Paket {
   oleh: string;
   /** soal esai yang dilewati saat impor (tidak bisa dinilai otomatis) */
   dilewati?: number;
+  /** id akun murid yang sudah memasukkan kode ujian paket ini — hanya mereka
+   *  yang melihat dan boleh mengerjakan paketnya (guru/admin selalu boleh). */
+  peserta?: string[];
 }
 
 const FILE = path.join(process.env.EXACT_DATA_DIR || path.join(process.cwd(), ".data"), "paket.json");
@@ -44,6 +47,16 @@ async function baca(): Promise<Paket[]> {
   } catch {
     return [];
   }
+}
+
+/* Baca–ubah–tulis dijalankan berurutan (pola yang sama dengan db/dev.ts):
+ * dua murid yang memasukkan kode bersamaan tidak boleh saling menimpa daftar
+ * peserta. */
+let antrean: Promise<unknown> = Promise.resolve();
+function berurutan<T>(fn: () => Promise<T>): Promise<T> {
+  const jalan = antrean.then(fn, fn);
+  antrean = jalan.catch(() => undefined);
+  return jalan;
 }
 
 /* Tulis ke berkas sementara lalu ganti nama: writeFile memotong berkas lebih
@@ -86,23 +99,70 @@ export async function getPaket(id: string) {
   return (await bacaBerkode()).find((p) => p.id === id) ?? null;
 }
 
-export async function savePaket(p: Omit<Paket, "id" | "dibuatAt" | "kode"> & { id?: string; dibuatAt?: string; kode?: string }) {
-  const list = await bacaBerkode();
-  const i = list.findIndex((x) => x.id === p.id);
-  const paket: Paket = {
-    ...p,
-    id: p.id ?? `pk-${crypto.randomBytes(5).toString("hex")}`,
-    dibuatAt: p.dibuatAt ?? new Date().toISOString(),
-    kode: p.kode || (i >= 0 ? list[i].kode : "") || buatKode(new Set(list.map((x) => x.kode))),
-  };
-  if (i >= 0) list[i] = paket; else list.push(paket);
-  await tulis(list);
-  return paket;
+export function savePaket(p: Omit<Paket, "id" | "dibuatAt" | "kode"> & { id?: string; dibuatAt?: string; kode?: string }) {
+  return berurutan(async () => {
+    const list = await bacaBerkode();
+    const i = list.findIndex((x) => x.id === p.id);
+    const paket: Paket = {
+      ...p,
+      id: p.id ?? `pk-${crypto.randomBytes(5).toString("hex")}`,
+      dibuatAt: p.dibuatAt ?? new Date().toISOString(),
+      kode: p.kode || (i >= 0 ? list[i].kode : "") || buatKode(new Set(list.map((x) => x.kode))),
+      /* Penerbit ulang (tombol Ke Practice di Worksheet) tidak tahu siapa yang
+       * sudah bergabung — daftar peserta lama dipertahankan, jangan dihapus. */
+      peserta: p.peserta ?? (i >= 0 ? list[i].peserta : undefined),
+    };
+    if (i >= 0) list[i] = paket; else list.push(paket);
+    await tulis(list);
+    return paket;
+  });
 }
 
-export async function hapusPaket(id: string) {
-  const list = await baca();
-  const sisa = list.filter((p) => p.id !== id);
-  if (sisa.length !== list.length) await tulis(sisa);
-  return sisa.length !== list.length;
+export function hapusPaket(id: string) {
+  return berurutan(async () => {
+    const list = await baca();
+    const sisa = list.filter((p) => p.id !== id);
+    if (sisa.length !== list.length) await tulis(sisa);
+    return sisa.length !== list.length;
+  });
+}
+
+/* ------------------------------------------------------------------ */
+/* Keanggotaan: murid masuk ke paket dengan kode ujian                  */
+/* ------------------------------------------------------------------ */
+
+const GURU = new Set(["admin", "reviewer"]);
+type Pengguna = { id: string; role: string };
+
+/** Guru/admin boleh membuka paket apa pun; murid hanya paket terbit yang
+ *  kodenya sudah ia masukkan. */
+export function bolehBuka(user: Pengguna, p: Paket) {
+  if (GURU.has(user.role)) return true;
+  return p.terbit && (p.peserta ?? []).includes(user.id);
+}
+
+/** Paket yang tampil di halaman Latihan milik pengguna ini. */
+export async function paketUntuk(user: Pengguna) {
+  const semua = (await listPaket()).filter((p) => p.questionIds.length);
+  return GURU.has(user.role) ? semua.filter((p) => p.terbit) : semua.filter((p) => bolehBuka(user, p));
+}
+
+export type HasilGabung = { ok: true; paket: Paket; baru: boolean } | { ok: false; alasan: string };
+
+/** Masukkan kode ujian → murid jadi peserta paket itu. Kode yang sama dua kali
+ *  tidak menggandakan apa pun. */
+export function gabungPaket(kode: string, userId: string): Promise<HasilGabung> {
+  const k = kode.trim().toUpperCase();
+  return berurutan(async () => {
+    const list = await bacaBerkode();
+    const p = k ? list.find((x) => x.kode === k) : undefined;
+    if (!p) return { ok: false, alasan: "Kode ujian tidak ditemukan. Periksa lagi kode dari guru." };
+    if (!p.terbit) return { ok: false, alasan: "Paket ini sedang ditutup oleh guru." };
+    if (!p.questionIds.length) return { ok: false, alasan: "Paket ini belum punya soal." };
+    const peserta = p.peserta ?? [];
+    if (peserta.includes(userId)) return { ok: true, paket: p, baru: false };
+    p.peserta = [...peserta, userId];
+    await tulis(list);
+    return { ok: true, paket: p, baru: true };
+  });
 }

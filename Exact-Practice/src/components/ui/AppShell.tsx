@@ -13,7 +13,6 @@ const NAV: { href: string; key: MessageKey; icon: typeof BarChart3 }[] = [
   { href: "/dashboard", key: "nav.dashboard", icon: BarChart3 },
   { href: "/journey", key: "nav.journey", icon: Route },
   { href: "/leaderboard", key: "nav.leaderboard", icon: Trophy },
-  { href: "/afiliasi", key: "nav.affiliate", icon: Gift },
   { href: "/pengaturan", key: "nav.settings", icon: Settings },
 ];
 

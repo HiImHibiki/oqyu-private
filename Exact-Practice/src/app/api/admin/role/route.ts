@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { adminOrNull } from "@/lib/adminGuard";
 import { getDb } from "@/lib/db";
 
-const ROLES = ["student", "umum", "reviewer", "admin"];
+const ROLES = ["student", "reviewer", "admin"];
 
 export async function POST(req: Request) {
   const me = await adminOrNull();

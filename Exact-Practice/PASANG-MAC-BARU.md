@@ -8,7 +8,7 @@ Disusun 14 Sep 2026.
 Tiap Mac **berdiri sendiri**: Worksheet + Canvas + Practice lengkap, dengan
 **domain Cloudflare-nya masing-masing** (Rico yang memberi tahu domainnya,
 biasanya dua: satu untuk Canvas/meet, satu untuk Practice). Data (akun murid,
-paket, pesanan, vault kanvas) milik Mac itu sendiri. Tidak ada yang berbagi
+paket, vault kanvas) milik Mac itu sendiri. Tidak ada yang berbagi
 dengan Mac utama Rico kecuali kode di GitHub.
 
 | Aplikasi | Port | Peran |
@@ -24,7 +24,7 @@ dengan Mac utama Rico kecuali kode di GitHub.
 4. `gh auth login` — akses repo privat `Exact-Digital/Exact-Worksheet`, `Exact-Digital/Exact-Practice`, `ricokurniawan18-ui/exact-canvas`.
 5. **Login Google Gemini** sekali di Chrome kendali (langkah 2.3).
 6. Membuka System Settings: **Full Disk Access** untuk `/usr/bin/python3`.
-7. Email guru pemilik Mac ini (jadi admin Practice) dan **kode kelas** pilihan (mis. `VELISIA2026`).
+7. **Username** guru pemilik Mac ini (jadi admin Practice).
 
 ## 1. Kebutuhan sistem
 ```bash
@@ -76,8 +76,7 @@ npm install && cp .env.contoh .env.local
 ```
 4.2 Isi `.env.local`:
 ```
-ADMIN_EMAILS=<email guru pemilik Mac ini>
-EXACT_KODE_KELAS=<kode kelas pilihan>
+ADMIN_USERNAMES=<username guru pemilik Mac ini>
 EXACT_WORKSHEET_URL=http://127.0.0.1:7790
 EXACT_CANVAS_URL=http://127.0.0.1:4747
 EXACT_CANVAS_PUBLIC=https://CANVAS_HOST
@@ -85,7 +84,6 @@ EXACT_CANVAS_PIN=<PIN 4 digit dari Canvas, langkah 3>
 EXACT_PRACTICE_KUNCI=<isi ~/.exact-practice-kunci dari langkah 2.3>
 EXACT_PRACTICE_PUBLIC=https://PRACTICE_HOST
 NEXT_PUBLIC_SITE_URL=https://PRACTICE_HOST
-NEXT_PUBLIC_ADMIN_WHATSAPP=<nomor WA guru, mis. 628xxxx>   # opsional, untuk pembeli umum
 ```
 4.3 Pasang layanan + menu bar **EP**, lalu tunnel:
 ```bash
@@ -93,7 +91,7 @@ NEXT_PUBLIC_ADMIN_WHATSAPP=<nomor WA guru, mis. 628xxxx>   # opsional, untuk pem
 ./pasang-tunnel.sh PRACTICE_HOST   # tunnel exact-practice + CNAME + LaunchAgent; lalu:
 ./pasang-app.sh --tanpa-build      # muat ulang .env.local yang diubah pasang-tunnel.sh
 ```
-4.4 Guru mendaftar di `https://PRACTICE_HOST/daftar` (email di ADMIN_EMAILS + kode kelas) → otomatis admin. Verifikasi `https://PRACTICE_HOST/admin/latihan` → 200.
+4.4 Guru mendaftar di `https://PRACTICE_HOST/daftar` (username di ADMIN_USERNAMES) → otomatis admin. Verifikasi `https://PRACTICE_HOST/admin/latihan` → 200.
 
 ## 5. Daftar periksa akhir
 ```bash

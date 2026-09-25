@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { BookMarked, ClipboardCheck, FileQuestion, Gauge, Gift, LogOut, Receipt, ShieldCheck, Users, PenLine, Sparkles, Eye } from "lucide-react";
+import { BookMarked, ClipboardCheck, FileQuestion, Gauge, LogOut, ShieldCheck, Users, PenLine, Sparkles, Eye } from "lucide-react";
 import { Logo } from "@/components/ui/SiteHeader";
 import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
 
@@ -11,8 +11,6 @@ const NAV = [
   { href: "/admin/kelas", label: "Pantau kelas", icon: Eye },
   { href: "/admin/soal", label: "Bank soal", icon: FileQuestion },
   { href: "/admin/peserta", label: "Peserta", icon: Users },
-  { href: "/admin/pesanan", label: "Pesanan", icon: Receipt },
-  { href: "/admin/afiliasi", label: "Afiliasi", icon: Gift },
 ];
 
 export function AdminShell({
@@ -56,7 +54,7 @@ export function AdminShell({
           })}
         </nav>
 
-        <Link href="/dashboard" className="mb-3 text-xs underline muted">← Kembali ke sisi peserta</Link>
+        <Link href="/latihan" className="mb-3 text-xs underline muted">← Kembali ke sisi murid</Link>
 
         <div className="rounded-xl p-3" style={{ background: "var(--bg-sunken)" }}>
           <div className="truncate text-xs font-semibold">{user.fullName || "Admin"}</div>

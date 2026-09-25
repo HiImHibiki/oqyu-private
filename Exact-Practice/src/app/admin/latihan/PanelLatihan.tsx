@@ -324,12 +324,12 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
                   <button className="btn btn-ghost !px-2 !py-1 text-xs" title="Salin kode ujian" onClick={() => salin(p.kode, p.id + ":kode")}>
                     {disalin === p.id + ":kode" ? <Check size={13} /> : <Copy size={13} />} Salin kode
                   </button>
-                  <button className="btn btn-ghost !px-2 !py-1 text-xs" title="Salin tautan langsung ke ujian ini" onClick={() => salin(`${situs}/latihan?q=${p.kode}`, p.id + ":tautan")}>
+                  <button className="btn btn-ghost !px-2 !py-1 text-xs" title="Salin tautan langsung ke ujian ini" onClick={() => salin(`${situs}/latihan?kode=${p.kode}`, p.id + ":tautan")}>
                     {disalin === p.id + ":tautan" ? <Check size={13} /> : <Link2 size={13} />} Salin tautan
                   </button>
                 </div>
                 <div className="text-xs muted">
-                  {[p.mapel, p.kelas && `Kelas ${p.kelas}`, p.topik].filter(Boolean).join(" · ")} · {p.questionIds.length} soal · {p.durasiMenit} mnt · {p.sumber}
+                  {[p.mapel, p.kelas && `Kelas ${p.kelas}`, p.topik].filter(Boolean).join(" · ")} · {p.questionIds.length} soal · {p.durasiMenit} mnt · {p.sumber} · {(p.peserta ?? []).length} murid bergabung
                   {p.dilewati ? ` · ${p.dilewati} esai hanya di PDF` : ""}
                   {!p.questionIds.length && p.jid ? " · sedang dibuat" : ""}
                 </div>
