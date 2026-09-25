@@ -2,6 +2,10 @@ import { getLocale, intlTag, translatorFor } from "@/lib/i18n";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, PlayCircle, ShieldCheck, Trophy } from "lucide-react";
+import { isAdmin } from "@/lib/adminGuard";
+import { getPaket } from "@/lib/practice/paket";
+import { statusPaket } from "@/lib/practice/latihan";
+import { MulaiLatihan } from "@/app/(app)/latihan/MulaiLatihan";
 import { currentUser } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { loadAttempt, sectionsOf } from "@/lib/exams/attempt";
@@ -24,21 +28,30 @@ export default async function HasilPage({ params }: { params: Promise<{ attemptI
   const t = translatorFor(locale);
 
   const res = await loadAttempt(attemptId);
+  const user = await currentUser();
+  /* Guru boleh membuka hasil (sudah selesai) milik murid mana pun dari Pantau
+   * kelas — hanya baca. Ruang ujian & rute simpan tetap khusus pemiliknya. */
+  let attemptGuru = null;
   if ("error" in res) {
     if (res.error === "not_found") notFound();
-    redirect("/masuk");
+    if (!isAdmin(user)) redirect("/masuk");
+    attemptGuru = await getDb().getAttempt(attemptId);
+    if (!attemptGuru || attemptGuru.status !== "submitted") redirect("/admin/kelas");
   }
-
-  const { attempt } = res;
+  const attempt = attemptGuru ?? ("attempt" in res ? res.attempt : null)!;
+  const milikSendiri = !attemptGuru;
   if (attempt.status !== "submitted") redirect(`/ujian/${attemptId}`);
-
-  // Hasil demo bisa dilihat tanpa akun — kalau tidak, siswa yang baru mencoba
-  // demo akan terpental ke halaman masuk tepat setelah menyelesaikan tesnya.
-  const user = await currentUser();
   const exam = attempt.exam as ExamCode;
   const score = attempt.score as ScoreReport;
   const integrity = attempt.integrity as ProctorLog | undefined;
   const bp = getBlueprint(exam);
+  const latihan = exam === "LATIHAN";
+  const lay = attempt.formLayout[0];
+  const paket = latihan && lay?.paketId ? await getPaket(lay.paketId) : null;
+  /* Nomor soal = nomor di paket (perbaikan hanya memuat sebagian soal, tapi
+   * murid mengenal soalnya lewat nomor aslinya). */
+  const nomorAsli = new Map((paket?.questionIds ?? []).map((id, i) => [id, i + 1]));
+  const st = paket && milikSendiri ? await statusPaket(paket, await getDb().attemptsOf(attempt.userId)) : null;
   const sections = await sectionsOf(attempt);
   const responses = (attempt.responses ?? {}) as Record<string, ResponseValue>;
 
@@ -53,7 +66,7 @@ export default async function HasilPage({ params }: { params: Promise<{ attemptI
         ? { correct: mark.total >= (q.points ?? 1), credit: mark.total / (q.points || 1) }
         : gradeAnswer(q, raw);
       return {
-        sectionName: s.name, index: i + 1, question: q, raw,
+        sectionName: s.name, index: nomorAsli.get(q.id) ?? i + 1, question: q, raw,
         correct: g.correct, credit: g.credit,
         ...(q.answer?.mode === "rubric" ? { mark: mark ?? null } : {}),
       };
@@ -74,8 +87,8 @@ export default async function HasilPage({ params }: { params: Promise<{ attemptI
   const body = (
     <div className="mx-auto max-w-4xl px-6 py-8">
       {user ? (
-        <Link href="/journey" className="mb-4 inline-flex items-center gap-1.5 text-sm muted hover:underline">
-          <ArrowLeft size={14} /> {t("result.backToJourney")}
+        <Link href={latihan ? (milikSendiri ? "/latihan" : "/admin/kelas") : "/journey"} className="mb-4 inline-flex items-center gap-1.5 text-sm muted hover:underline">
+          <ArrowLeft size={14} /> {latihan ? (milikSendiri ? "Kembali ke Latihan" : "Kembali ke Pantau kelas") : t("result.backToJourney")}
         </Link>
       ) : (
         <div className="card mb-5 flex flex-wrap items-center gap-4 p-4">
@@ -85,6 +98,47 @@ export default async function HasilPage({ params }: { params: Promise<{ attemptI
         </div>
       )}
 
+      {latihan ? (
+        <div className="card mb-6 p-6">
+          <span className="chip mb-2">{lay?.perbaikan ? "Perbaikan" : "Latihan"}</span>
+          <h1 className="display text-2xl">{attempt.formTitle}</h1>
+          <p className="mt-1 text-sm muted">
+            {new Date(attempt.submittedAt ?? attempt.startedAt).toLocaleString(tag, { dateStyle: "full", timeStyle: "short" })}
+          </p>
+          <div className="mt-4 flex flex-wrap items-end gap-6">
+            <div>
+              <div className="display text-5xl leading-none">{review.filter((r) => r.correct).length}<span className="text-2xl muted">/{review.length}</span></div>
+              <div className="mt-1 text-xs muted">jawaban benar</div>
+            </div>
+            {st && st.nilaiAkhir !== null && (
+              <div className="text-sm">
+                Nilai awal paket <b>{st.nilaiAwal}</b>
+                {st.nilaiAkhir !== st.nilaiAwal && <> → sekarang <b>{st.nilaiAkhir}</b></>}
+              </div>
+            )}
+          </div>
+          {review.some((r) => !r.correct) && (
+            <p className="mt-3 text-sm">Salah / kosong di nomor{" "}
+              {review.filter((r) => !r.correct).map((r) => <span key={r.index} className="chip mr-1" style={{ color: "var(--danger)" }}>{r.index}</span>)}
+            </p>
+          )}
+          {st && paket && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {st.berjalan && (
+                <Link href={`/ujian/${st.berjalan.id}`} className="btn btn-primary">
+                  <PlayCircle size={16} /> {st.berjalan.formLayout[0]?.perbaikan ? "Lanjutkan perbaikan" : "Lanjutkan yang belum selesai"}
+                </Link>
+              )}
+              {st.masihSalah.length > 0 && !st.berjalan && (
+                <MulaiLatihan body={{ paketId: paket.id, perbaikan: true }} ikon="ulang" label={`Kerjakan yang salah (${st.masihSalah.length})`} />
+              )}
+              {st.masihSalah.length === 0 && <span className="text-sm" style={{ color: "var(--accent)" }}>Semua nomor paket ini sudah benar.</span>}
+              <Link href="/latihan" className="btn btn-ghost">Kembali ke Latihan</Link>
+            </div>
+          )}
+        </div>
+      ) : (
+      <>
       <div className="card mb-6 overflow-hidden">
         <div className="flex flex-wrap items-center gap-6 p-6"
           style={{ background: "linear-gradient(135deg, var(--accent-soft), transparent)" }}>
@@ -155,7 +209,10 @@ export default async function HasilPage({ params }: { params: Promise<{ attemptI
         </div>
       </section>
 
-      {integrity && integrity.events.length > 0 && (
+      </>
+      )}
+
+      {!latihan && integrity && integrity.events.length > 0 && (
         <section className="card mb-6 p-5">
           <h2 className="mb-3 font-semibold">{t("result.proctorLog")}</h2>
           <div className="grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">
@@ -167,7 +224,7 @@ export default async function HasilPage({ params }: { params: Promise<{ attemptI
         </section>
       )}
 
-      {exam === "LATIHAN" && !attempt.isDemo && <PapanHasil />}
+      {latihan && !attempt.isDemo && milikSendiri && <PapanHasil />}
 
       <section>
         <div className="mb-3 flex items-center gap-2">

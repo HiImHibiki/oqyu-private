@@ -81,6 +81,18 @@ Meniru ExactQuiz lama: murid daftar sendiri → masuk → masukkan **kode ujian*
 - **Pesanan, pembelian, afiliasi, kupon, refund, Stripe/Midtrans, sandi sementara dihapus.**
 Login akun Canvas (No. HP) tetap ada sebagai jalur kedua di /masuk (belum diputuskan dibuang).
 
+### D11. Pengerjaan berwaktu, perbaikan tanpa waktu, guru melihat langsung (dikonfirmasi user, 25 Sep 2026)
+- Guru melihat progres murid langsung (sudah dijawab, benar, salah per nomor); **murid tidak melihat
+  benar/salah sampai mengirim** — hasil & pembahasan baru tampil di akhir.
+- Durasi paket berlaku; waktu habis → terkirim otomatis, yang kosong dihitung salah.
+- **Perbaikan**: murid mengerjakan ulang HANYA nomor yang masih salah, **tanpa batas waktu**, boleh
+  berulang sampai semua benar. Nilai awal (pengerjaan pertama) tetap tercatat; "sekarang" = soal yang
+  pernah dijawab benar di pengerjaan/perbaikan mana pun.
+- Riwayat per paket untuk murid (nomor salah tiap pengerjaan + tombol perbaikan).
+- **Tanpa kunci layar**: tidak ada layar penuh/proctoring untuk latihan.
+- **Tanya guru dihapus** (les privat, murid bisa langsung bicara). Kanvas coret murid otomatis
+  tersambung ke Mac guru: akun Canvas dibuat otomatis untuk murid username (Canvas C-049).
+
 ## Deploy — analisis (24 Sep 2026)
 
 **Pertanyaan user:** versi lama (ExactQuiz) di Vercel; apakah Cloudflare lebih lancar, dan

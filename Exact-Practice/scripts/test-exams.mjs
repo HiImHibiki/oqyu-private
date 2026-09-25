@@ -541,6 +541,63 @@ bagian("Kode ujian: hanya peserta yang bisa membuka paket");
   ok("guru selalu boleh membuka", bolehBuka({ id: "g", role: "admin" }, await getPaket(p.id)));
 }
 
+/* ==================== Waktu habis, perbaikan, dan nilai setelah perbaikan */
+bagian("Latihan: waktu habis ditutup otomatis, perbaikan hanya nomor yang salah");
+{
+  const { savePaket } = await import("@/lib/practice/paket");
+  const { mulaiDariPaket, mulaiPerbaikan, statusPaket, tutupYangKedaluwarsa } = await import("@/lib/practice/latihan");
+  const { approvedPool } = await import("@/lib/exams/bank");
+  const pg = (await approvedPool("SAT")).filter((q) => q.answer?.mode === "choice" && typeof q.answer.value === "string").slice(0, 3);
+  const p = await savePaket({ judul: "Paket uji perbaikan", mapel: "Uji", kelas: "", topik: "", questionIds: pg.map((q) => q.id),
+    durasiMenit: 10, sumber: "bank", terbit: true, oleh: "uji" });
+  const salahDari = (q) => (q.choices ?? []).find((c) => c.id !== q.answer.value)?.id;
+  const jawab = (q, raw) => ({ questionId: q.id, raw, visited: true, timeSpentSec: 5 });
+  const lewatkanTenggat = async (id) => {
+    const d = await devAuth.read();
+    const a = d.attempts.find((x) => x.id === id);
+    a.sectionDeadlines = { latihan: new Date(Date.now() - 60_000).toISOString() };
+    await devAuth.write(d);
+  };
+
+  const a1 = await mulaiDariPaket(uid, p);
+  ok("attempt utama berwaktu sesuai paket & bertanda paketId",
+    a1.formLayout[0].durationSec === 600 && a1.formLayout[0].paketId === p.id && !a1.formLayout[0].tanpaWaktu);
+  await getDb().startSection(a1.id, 0, { code: "latihan", durationSec: 600 });
+  // nomor 1 benar, nomor 2 salah, nomor 3 dibiarkan kosong
+  await getDb().saveResponses(a1.id, "latihan", { [pg[0].id]: jawab(pg[0], pg[0].answer.value), [pg[1].id]: jawab(pg[1], salahDari(pg[1])) });
+  await lewatkanTenggat(a1.id);
+  const ditutup = await tutupYangKedaluwarsa(await getDb().attemptsOf(uid));
+  const a1b = await getDb().getAttempt(a1.id);
+  ok("waktu habis & tab ditinggal → ditutup otomatis", ditutup && a1b.status === "submitted");
+  const st1 = await statusPaket(p, await getDb().attemptsOf(uid));
+  ok("nilai awal: 1 dari 3 benar (kosong dihitung salah)", st1.nilaiAwal === 33 && st1.benarGabungan === 1, `nilaiAwal=${st1.nilaiAwal}`);
+  ok("nomor yang masih salah = 2 dan 3", JSON.stringify(st1.masihSalah) === "[2,3]", JSON.stringify(st1.masihSalah));
+
+  const pb = await mulaiPerbaikan(uid, p, await getDb().attemptsOf(uid));
+  const lay = pb.formLayout[0];
+  ok("perbaikan hanya berisi nomor yang salah", JSON.stringify(lay.questionIds) === JSON.stringify([pg[1].id, pg[2].id]));
+  ok("perbaikan tanpa batas waktu", lay.tanpaWaktu === true && lay.perbaikan === true && lay.durationSec >= 7 * 86400);
+  await getDb().startSection(pb.id, 0, { code: "latihan", durationSec: lay.durationSec });
+  await getDb().saveResponses(pb.id, "latihan", { [pg[1].id]: jawab(pg[1], pg[1].answer.value), [pg[2].id]: jawab(pg[2], salahDari(pg[2])) });
+  await lewatkanTenggat(pb.id);
+  await tutupYangKedaluwarsa(await getDb().attemptsOf(uid));
+  const st2 = await statusPaket(p, await getDb().attemptsOf(uid));
+  ok("nilai naik setelah perbaikan (33 → 67), nilai awal tetap", st2.nilaiAwal === 33 && st2.nilaiAkhir === 67, `${st2.nilaiAwal}→${st2.nilaiAkhir}`);
+  ok("tinggal nomor 3 yang salah", JSON.stringify(st2.masihSalah) === "[3]", JSON.stringify(st2.masihSalah));
+  ok("riwayat mencatat 1 pengerjaan + 1 perbaikan, nomor perbaikan = nomor asli",
+    st2.selesai.length === 1 && st2.perbaikan.length === 1 && JSON.stringify(st2.perbaikan[0].salah) === "[3]", JSON.stringify(st2.perbaikan[0]?.salah));
+
+  const pb2 = await mulaiPerbaikan(uid, p, await getDb().attemptsOf(uid));
+  await getDb().startSection(pb2.id, 0, { code: "latihan", durationSec: pb2.formLayout[0].durationSec });
+  await getDb().saveResponses(pb2.id, "latihan", { [pg[2].id]: jawab(pg[2], pg[2].answer.value) });
+  await lewatkanTenggat(pb2.id); await tutupYangKedaluwarsa(await getDb().attemptsOf(uid));
+  const st3 = await statusPaket(p, await getDb().attemptsOf(uid));
+  ok("semua benar → nilai 100, tidak ada yang tersisa", st3.nilaiAkhir === 100 && st3.masihSalah.length === 0);
+  let tolak = false;
+  try { await mulaiPerbaikan(uid, p, await getDb().attemptsOf(uid)); } catch { tolak = true; }
+  ok("perbaikan ditolak bila semua sudah benar", tolak);
+}
+
 /* ============================== Galat kalkulator tidak berbahasa apa pun */
 bagian("Evaluator melempar kode, bukan kalimat");
 {

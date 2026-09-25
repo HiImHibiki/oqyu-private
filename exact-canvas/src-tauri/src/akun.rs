@@ -316,6 +316,71 @@ pub async fn api_sesi_akun(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json
     }
 }
 
+#[derive(Deserialize)]
+pub struct AkunPractice {
+    /// id pengguna Exact Practice
+    pub id: String,
+    pub nama: String,
+}
+
+/// Akun Canvas otomatis untuk murid Exact Practice (login username di sana).
+/// Dibuat sekali, langsung disetujui, izin coret menyala, dan kanvas
+/// pribadinya disiapkan — coretan murid di halaman latihan langsung tampil di
+/// Mac guru. Pagar sama dengan `api_sesi_akun`: loopback tanpa header proxy
+/// dan PIN. Akun ini tidak bisa dipakai masuk dengan No. HP: kolom phone diisi
+/// penanda "practice:<id>" dan sandinya tidak pernah ada.
+pub async fn api_akun_practice(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(a): Json<AkunPractice>) -> Response {
+    let lewat_proxy = ["cf-connecting-ip", "x-forwarded-for", "x-real-ip"].iter().any(|h| headers.contains_key(*h));
+    let asal = headers.get("x-exact-asal").and_then(|v| v.to_str().ok()).unwrap_or("");
+    let lokal = asal == "127.0.0.1" || asal == "::1";
+    if lewat_proxy || !lokal || !sah(&hub, &headers, None) {
+        return tolak();
+    }
+    let asli: String = a.id.trim().chars().filter(|c| c.is_ascii_alphanumeric() || *c == '-').take(64).collect();
+    let nama: String = a.nama.trim().chars().take(60).collect();
+    if asli.is_empty() || nama.is_empty() {
+        return (StatusCode::BAD_REQUEST, "id/nama kosong").into_response();
+    }
+    let id = format!("px-{asli}");
+    let perangkat = format!("{} (Exact Practice)", perangkat_dari(&headers));
+    let hasil = tokio::task::spawn_blocking(move || -> Result<(Value, Option<String>, Option<String>), String> {
+        let c = koneksi()?;
+        c.execute(
+            "INSERT INTO accounts (id, name, phone, pass_hash, salt, created_at, approved) VALUES (?1, ?2, ?3, '-', '-', ?4, 1)
+             ON CONFLICT(id) DO UPDATE SET name = excluded.name, approved = 1",
+            rusqlite::params![id, nama, format!("practice:{asli}"), sekarang()],
+        )
+        .map_err(|e| e.to_string())?;
+        let (sketsa, baru) = crate::kelas::siapkan_murid_practice(&c, &id, &nama)?;
+        // Satu sesi per akun untuk Practice, dipakai ulang — iframe dimuat
+        // ulang tiap halaman latihan dibuka, jangan menimbun baris sesi.
+        let lama: Option<String> = c
+            .query_row(
+                "SELECT token FROM sessions WHERE account_id = ?1 AND device LIKE '%(Exact Practice)' ORDER BY last_seen DESC LIMIT 1",
+                rusqlite::params![id],
+                |r| r.get(0),
+            )
+            .ok();
+        let token = match lama {
+            Some(t) => t,
+            None => buat_sesi(&c, &id, &perangkat)?,
+        };
+        Ok((json!({ "token": token, "id": id, "nama": nama, "kanvas": sketsa }), sketsa, baru))
+    })
+    .await;
+    match hasil {
+        Ok(Ok((v, sketsa, baru))) => {
+            if let Some(k) = &baru {
+                let _ = hub.tx.send(json!({ "t": "data", "kanal": "canvas", "payload": { "id": k, "src": "server" } }).to_string());
+            }
+            let _ = hub.tx.send(json!({ "t": "izin", "murid": v["id"], "boleh": sketsa.is_some(), "sketsa": sketsa }).to_string());
+            Json(v).into_response()
+        }
+        Ok(Err(e)) => (StatusCode::INTERNAL_SERVER_ERROR, e).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, e.to_string()).into_response(),
+    }
+}
+
 /// Siapa pemilik sesi ini — juga untuk akun yang masih menunggu persetujuan,
 /// supaya HP-nya bisa menunggu sambil bertanya berkala.
 pub async fn api_saya_akun(State(_hub): State<Arc<Hub>>, headers: HeaderMap) -> Response {

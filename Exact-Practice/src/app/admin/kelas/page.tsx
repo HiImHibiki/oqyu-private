@@ -2,55 +2,151 @@ import Link from "next/link";
 import { requireAdmin } from "@/lib/adminGuard";
 import { getDb } from "@/lib/db";
 import { questionsByIds } from "@/lib/exams/bank";
-import { ringkasAttempt, type RingkasAttempt } from "@/lib/practice/latihan";
+import { remainingSec } from "@/lib/exams/attempt";
+import { listPaket } from "@/lib/practice/paket";
+import { milikPaket, ringkasAttempt, statusPaket, tutupYangKedaluwarsa, type RingkasAttempt, type StatusPaket } from "@/lib/practice/latihan";
 import { PageHead } from "@/components/ui/AppShell";
+import { SegarkanOtomatis } from "./SegarkanOtomatis";
 
 export const metadata = { title: "Pantau kelas" };
 export const dynamic = "force-dynamic";
 
-/** Guru melihat, per murid, latihan mana yang sedang/sudah dikerjakan, sampai
- *  nomor berapa, dan nomor mana saja yang salah — dan per paket, nomor mana
- *  yang paling banyak salah di kelas. */
+const jam = (iso: string) => new Date(iso).toLocaleString("id-ID", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
+const menit = (d: number) => `${Math.floor(d / 60)}:${String(d % 60).padStart(2, "0")}`;
+const Nomor = ({ n, warna }: { n: number[]; warna: string }) =>
+  n.length === 0 ? <span className="muted">—</span>
+    : <>{n.map((x) => <span key={x} className="chip mr-1" style={{ color: warna }}>{x}</span>)}</>;
+
+/** Guru melihat, per murid dan per paket: yang sedang dikerjakan (sudah
+ *  dijawab berapa, benar/salah berapa — langsung, tiap autosave 15 detik),
+ *  nilai awal → nilai setelah perbaikan, dan nomor yang masih salah. Murid
+ *  sendiri tidak melihat benar/salah sebelum mengirim. */
 export default async function PantauKelasPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   await requireAdmin();
   const { q } = await searchParams;
   const db = getDb();
-  const murid = await db.listUsers(q, 200);
-  const semua = await Promise.all(murid.map(async (m) => ({ m, attempts: (await db.attemptsOf(m.id)).filter((a) => a.exam === "LATIHAN") })));
-  const ids = new Set(semua.flatMap((x) => x.attempts.flatMap((a) => a.formLayout.flatMap((s) => s.questionIds))));
-  const bank = await questionsByIds([...ids]);
+  const [murid, semuaPaket] = await Promise.all([db.listUsers(q, 200), listPaket()]);
+  const bank = await questionsByIds(semuaPaket.flatMap((p) => p.questionIds));
 
-  const baris: { nama: string; email: string; id: string; daftar: RingkasAttempt[] }[] = [];
-  const perPaket = new Map<string, { peserta: number; salah: Map<number, number>; total: number }>();
-  for (const { m, attempts } of semua) {
+  const baris: { nama: string; username: string; id: string; paket: { judul: string; kode: string; st: StatusPaket; live: RingkasAttempt | null; sisa: number | null }[] }[] = [];
+  const perPaket = new Map<string, { judul: string; peserta: number; salah: Map<number, number>; total: number }>();
+
+  for (const m of murid) {
+    let attempts = (await db.attemptsOf(m.id)).filter((a) => a.exam === "LATIHAN");
     if (!attempts.length) continue;
-    const daftar = (await Promise.all(attempts.map((a) => ringkasAttempt(a, bank))))
-      .sort((a, b) => (a.startedAt < b.startedAt ? 1 : -1));
-    baris.push({ nama: m.fullName, email: m.email, id: m.id, daftar });
-    for (const r of daftar) {
-      const p = perPaket.get(r.judul) ?? { peserta: 0, salah: new Map(), total: r.total };
-      p.peserta++;
-      for (const n of r.salah) p.salah.set(n, (p.salah.get(n) ?? 0) + 1);
-      perPaket.set(r.judul, p);
+    if (await tutupYangKedaluwarsa(attempts)) attempts = (await db.attemptsOf(m.id)).filter((a) => a.exam === "LATIHAN");
+    const daftar = [];
+    for (const p of semuaPaket) {
+      if (!attempts.some((a) => milikPaket(a, p))) continue;
+      const st = await statusPaket(p, attempts, bank);
+      const nomor = new Map(p.questionIds.map((id, i) => [id, i + 1]));
+      const live = st.berjalan ? await ringkasAttempt(st.berjalan, bank, nomor) : null;
+      const tenggat = st.berjalan?.sectionDeadlines?.latihan;
+      const sisa = st.berjalan && !st.berjalan.formLayout[0]?.tanpaWaktu && tenggat ? remainingSec(tenggat) : null;
+      daftar.push({ judul: p.judul, kode: p.kode, st, live, sisa });
+      if (st.selesai.length) {
+        const agg = perPaket.get(p.id) ?? { judul: p.judul, peserta: 0, salah: new Map(), total: st.total };
+        agg.peserta++;
+        for (const n of [...st.selesai[0].salah, ...st.selesai[0].kosong]) agg.salah.set(n, (agg.salah.get(n) ?? 0) + 1);
+        perPaket.set(p.id, agg);
+      }
     }
+    if (daftar.length) baris.push({ nama: m.fullName, username: m.email, id: m.id, paket: daftar });
   }
-  const ringkasPaket = [...perPaket].map(([judul, p]) => ({
-    judul, peserta: p.peserta, total: p.total,
-    terbanyak: [...p.salah].sort((a, b) => b[1] - a[1]).slice(0, 8),
+  const ringkasPaket = [...perPaket.values()].map((p) => ({
+    ...p, terbanyak: [...p.salah].sort((a, b) => b[1] - a[1]).slice(0, 8),
   }));
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-8">
-      <PageHead title="Pantau kelas" subtitle="Kemajuan dan kesalahan murid di paket latihan." />
+      <PageHead title="Pantau kelas" subtitle="Kemajuan murid per paket — diperbarui otomatis tiap 10 detik." />
+      <SegarkanOtomatis detik={10} />
+
+      <section className="mb-8">
+        <form className="mb-3 flex gap-2">
+          <input name="q" defaultValue={q ?? ""} placeholder="Cari nama / username murid" className="input !w-auto" />
+          <button className="btn btn-ghost">Cari</button>
+        </form>
+        {baris.length === 0 && <p className="text-sm muted">Belum ada murid yang mengerjakan latihan.</p>}
+        <div className="grid gap-4">
+          {baris.map((b) => (
+            <div key={b.id} className="card p-4">
+              <div className="mb-3 flex items-baseline justify-between gap-2">
+                <div className="font-semibold">{b.nama}</div>
+                <div className="text-xs muted">{b.username}</div>
+              </div>
+              <div className="grid gap-3">
+                {b.paket.map(({ judul, kode, st, live, sisa }) => (
+                  <div key={kode} className="rounded-lg border p-3" style={{ borderColor: "var(--line)" }}>
+                    <div className="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="font-medium">{judul}</span>
+                      <span className="font-mono text-xs muted">{kode}</span>
+                      {st.selesai.length > 0 && (
+                        <span className="ml-auto text-sm">
+                          Nilai awal <b>{st.nilaiAwal}</b>
+                          {st.nilaiAkhir !== st.nilaiAwal && <> → sekarang <b>{st.nilaiAkhir}</b></>}
+                        </span>
+                      )}
+                    </div>
+
+                    {live && (
+                      <div className="mb-2 rounded-md px-3 py-2 text-sm" style={{ background: "color-mix(in srgb, var(--warn) 10%, transparent)" }}>
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                          <span className="chip" style={{ color: "var(--warn)" }}>{live.perbaikan ? "sedang perbaikan" : "sedang mengerjakan"}</span>
+                          <span>Dijawab <b>{live.dijawab}/{live.total}</b></span>
+                          <span>Benar <b style={{ color: "var(--accent)" }}>{live.benar}</b></span>
+                          <span>Salah <b style={{ color: "var(--danger)" }}>{live.salah.length}</b></span>
+                          {sisa !== null && <span className="muted">sisa {menit(sisa)}</span>}
+                        </div>
+                        {live.salah.length > 0 && <div className="mt-1 text-xs">Salah di nomor <Nomor n={live.salah} warna="var(--danger)" /></div>}
+                      </div>
+                    )}
+
+                    {st.selesai.length > 0 && (
+                      <div className="text-xs">
+                        {st.masihSalah.length > 0
+                          ? <>Masih salah: <Nomor n={st.masihSalah} warna="var(--danger)" /></>
+                          : <span style={{ color: "var(--accent)" }}>Semua nomor sudah benar.</span>}
+                      </div>
+                    )}
+
+                    {[...st.selesai, ...st.perbaikan].length > 0 && (
+                      <details className="mt-2 text-sm">
+                        <summary className="cursor-pointer text-xs muted">Riwayat ({st.selesai.length + st.perbaikan.length})</summary>
+                        <table className="mt-1 w-full text-sm">
+                          <tbody>
+                            {[...st.selesai, ...st.perbaikan].sort((x, y) => (x.startedAt < y.startedAt ? 1 : -1)).map((r) => (
+                              <tr key={r.attemptId} className="border-t" style={{ borderColor: "var(--line)" }}>
+                                <td className="py-1 pr-3 text-xs muted whitespace-nowrap">{jam(r.startedAt)}</td>
+                                <td className="py-1 pr-3"><span className="chip">{r.perbaikan ? "Perbaikan" : "Pengerjaan"}</span></td>
+                                <td className="py-1 pr-3 whitespace-nowrap">benar {r.benar}/{r.total}</td>
+                                <td className="py-1 pr-3 text-xs">
+                                  <Nomor n={r.salah} warna="var(--danger)" />
+                                  {r.kosong.length > 0 && <span className="muted"> kosong: {r.kosong.join(", ")}</span>}
+                                </td>
+                                <td className="py-1 text-right"><Link className="text-xs underline" href={`/hasil/${r.attemptId}`}>Lihat</Link></td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </details>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {ringkasPaket.length > 0 && (
-        <section className="mb-8">
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide muted">Nomor yang paling sering salah</h2>
+        <section>
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide muted">Nomor yang paling sering salah (pengerjaan pertama)</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             {ringkasPaket.map((p) => (
               <div key={p.judul} className="card p-4 text-sm">
                 <div className="font-medium">{p.judul}</div>
-                <div className="text-xs muted">{p.peserta} pengerjaan · {p.total} soal</div>
+                <div className="text-xs muted">{p.peserta} murid · {p.total} soal</div>
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   {p.terbanyak.length === 0 && <span className="text-xs muted">Belum ada yang salah.</span>}
                   {p.terbanyak.map(([n, c]) => (
@@ -62,56 +158,6 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
           </div>
         </section>
       )}
-
-      <section>
-        <form className="mb-3 flex gap-2">
-          <input name="q" defaultValue={q ?? ""} placeholder="Cari nama / email murid" className="rounded-lg border px-3 py-2 text-sm bg-transparent" />
-          <button className="btn btn-ghost">Cari</button>
-        </form>
-        {baris.length === 0 && <p className="text-sm muted">Belum ada murid yang mengerjakan latihan.</p>}
-        <div className="grid gap-3">
-          {baris.map((b) => (
-            <div key={b.id} className="card p-4">
-              <div className="mb-2 flex items-baseline justify-between gap-2">
-                <div className="font-semibold">{b.nama}</div>
-                <div className="text-xs muted">{b.email}</div>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead className="text-left text-xs muted">
-                    <tr><th className="py-1 pr-3">Paket</th><th className="py-1 pr-3">Status</th><th className="py-1 pr-3">Sampai</th><th className="py-1 pr-3">Benar</th><th className="py-1 pr-3">Salah di nomor</th><th className="py-1">Skor</th></tr>
-                  </thead>
-                  <tbody>
-                    {b.daftar.map((r) => (
-                      <tr key={r.attemptId} className="border-t" style={{ borderColor: "var(--line)" }}>
-                        <td className="py-1.5 pr-3">
-                          {r.judul}
-                          <div className="text-[11px] muted">{new Date(r.startedAt).toLocaleString("id-ID")}</div>
-                        </td>
-                        <td className="py-1.5 pr-3">
-                          {r.status === "in_progress" ? <span className="chip" style={{ color: "var(--warn)" }}>sedang mengerjakan</span>
-                            : r.status === "submitted" ? <span className="chip">selesai</span> : <span className="chip">{r.status}</span>}
-                        </td>
-                        <td className="py-1.5 pr-3 whitespace-nowrap">{r.dijawab}/{r.total} <span className="muted">(no. {r.terakhir})</span></td>
-                        <td className="py-1.5 pr-3">{r.benar}</td>
-                        <td className="py-1.5 pr-3">
-                          {r.salah.length === 0 ? <span className="muted">—</span>
-                            : r.salah.map((n) => <span key={n} className="chip mr-1" style={{ color: "var(--danger, #b00)" }}>{n}</span>)}
-                        </td>
-                        <td className="py-1.5">
-                          {r.status === "submitted"
-                            ? <Link className="underline" href={`/hasil/${r.attemptId}`}>{r.skor ?? "-"}</Link>
-                            : <span className="muted">-</span>}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }

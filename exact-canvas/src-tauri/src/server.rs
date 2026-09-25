@@ -350,6 +350,7 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/api/akun/masuk", axum::routing::post(crate::akun::api_masuk_akun))
         .route("/api/akun/saya", get(crate::akun::api_saya_akun))
         .route("/api/akun/sesi", axum::routing::post(crate::akun::api_sesi_akun))
+        .route("/api/akun/practice", axum::routing::post(crate::akun::api_akun_practice))
         .route("/api/akun/keluar", axum::routing::post(crate::akun::api_keluar))
         .route("/api/akun", get(crate::akun::api_daftar_akun))
         .route("/api/akun/reset", axum::routing::post(crate::akun::api_reset_sandi))

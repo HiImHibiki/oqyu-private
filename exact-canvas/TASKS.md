@@ -59,6 +59,8 @@
 
 - ✅ C-048 Sinkron diagrams.js dari Worksheet: label sisi bangun bisa ditimpa (↔ W-047)
 
+- ✅ C-049 `POST /api/akun/practice` (loopback + PIN, tanpa header proxy): akun Canvas otomatis untuk murid Exact Practice (`px-<id>`, disetujui, phone `practice:<id>` sehingga tidak bisa login HP), `siapkan_murid_practice` menyalakan izin coret & menyiapkan kanvas pribadi, sesi dipakai ulang; siaran izin & kanvas baru ke Mac guru (↔ P-053). `cargo check` ✅; uji langsung menunggu mode berbagi dinyalakan
+
 ## Direncanakan (lihat PLANS.md Backlog)
 - ❌ C-043 Jalur sesi Practice untuk Practice di cloud — tidak diperlukan, user memilih tetap Mac + Tunnel (24 Sep 2026)
 - ⬜ C-044 CI build — B3

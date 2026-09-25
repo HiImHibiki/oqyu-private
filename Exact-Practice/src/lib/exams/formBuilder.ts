@@ -277,6 +277,8 @@ export async function sectionsFrom(layout: FormSectionLayout[]): Promise<PlayerS
       calculatorAllowed: s.calculatorAllowed,
       formulaSheet: s.formulaSheet,
       breakAfterSec: s.breakAfterSec,
+      tanpaWaktu: s.tanpaWaktu,
+      nomorAsli: s.nomorAsli,
       questionCount: s.questionIds.length,
       questions: s.questionIds
         .map((id) => map.get(id))

@@ -65,6 +65,13 @@
 
 - ✅ P-048 Prompt "Prompt → AI → Tempel" untuk diagram: katalog lengkap bangun datar (7 bentuk) & bangun ruang (7 bentuk) + parameter label, jaring, pandangan, anotasi `teks=`; aturan: sisi yang ditanyakan wajib berlabel huruf, segitiga istimewa pakai segitiga-siku berproporsi benar + teks sudut (bukan `[[sudut]]` yang selalu sama sisi); isian wajib bilangan bulat/desimal sederhana (hasil akar → tripel Pythagoras / PG). Sinkron diagrams.js (↔ W-047). Uji: 10 soal isian Pythagoras (segitiga istimewa, trapesium, balok, kerucut, limas, tangga) → paket WQHYRK 10/10 → tangkapan layar ruang ujian: semua gambar tampil, label benar, jawaban tidak tercetak
 
+## Pengerjaan, perbaikan & pantauan (25 Sep 2026) — PLANS D11
+- ✅ P-049 Riwayat & perbaikan: attempt diberi `paketId`; `statusPaket` (nilai awal → sekarang, nomor yang masih salah = belum pernah benar di attempt selesai mana pun); "Kerjakan yang salah" = attempt perbaikan berisi nomor yang masih salah saja, tanpa batas waktu (`tanpaWaktu`, jam disembunyikan, nomor asli dipertahankan lewat `nomorAsli`); satu attempt berjalan per paket (mulai lagi = lanjutkan); kartu paket murid: nilai, nomor salah, tombol, riwayat; halaman hasil latihan: benar X/N, nomor salah, tombol perbaikan, guru boleh membuka hasil murid (baca saja)
+- ✅ P-050 Waktu: attempt utama berwaktu sesuai durasi paket; jam habis → pemutar mengirim otomatis (diuji di browser: 00:02 → /hasil); tab ditinggal → `tutupYangKedaluwarsa` menutup saat Latihan/Pantau kelas dibuka; soal kosong = salah
+- ✅ P-051 Pantau kelas ditulis ulang: per murid per paket, progres langsung (dijawab/benar/salah/nomor salah/sisa waktu, tiap autosave 15 dtk), nilai awal → sekarang, masih salah, riwayat, rekap nomor tersering salah; muat ulang otomatis tiap 10 dtk
+- ✅ P-052 Tanpa kunci layar: layar penuh, proctoring, skor integritas, dan gerbang mulai dimatikan untuk LATIHAN (langsung mulai)
+- ✅ P-053 Tanya guru dihapus (tombol, POST /api/latihan/tanya, tanyaGuru, potretHtml); papan Canvas lewat `GET /api/latihan/papan`: murid username dibuatkan akun Canvas otomatis (↔ C-049). Uji: test:exams 98/98 (+11) · e2e salinan terpisah (murid & guru, tangkapan layar)
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-035 CI GitHub Actions (typecheck, build, test) — B4

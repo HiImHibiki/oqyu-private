@@ -8,8 +8,9 @@ Latihan & ujian online untuk murid les privat Exact Course (pemakaian internal, 
 - **Bisa dicetak** — PDF lembar soal / kunci dirender Exact Worksheet Maker (`/api/latihan/cetak?id=…[&kunci=1]`).
 - **Bisa dikerjakan online** — ruang ujian Exact Try Out (jam di server, autosave, hasil & pembahasan).
 - **Kode ujian** — murid daftar sendiri (nama + username + sandi, langsung aktif), lalu memasukkan kode ujian 6 huruf dari guru; hanya paket yang kodenya dimasukkan yang terlihat.
-- **Tanya guru** — dari ruang ujian, soal yang sedang dibuka dikirim (teks + gambar) ke antrean pertanyaan **Exact Canvas**, lalu layar murid Canvas terbuka di tab baru.
-- **Pantau kelas** — guru melihat per murid: paket mana yang dikerjakan, sampai nomor berapa, nomor mana yang salah; dan per paket, nomor yang paling sering salah.
+- **Kanvas coret tersambung ke guru** — halaman soal & hasil menanam kanvas pribadi murid dari **Exact Canvas** (akun Canvas dibuat otomatis); coretannya langsung tampil di Mac guru. (Tanya guru dihapus.)
+- **Perbaikan** — setelah mengirim, murid bisa mengerjakan ulang hanya nomor yang salah, tanpa batas waktu; riwayat & nilai awal → sekarang tercatat per paket.
+- **Pantau kelas** — guru melihat per murid & per paket secara langsung: sudah dijawab berapa, benar/salah per nomor, sisa waktu, nilai awal → sesudah perbaikan; dan nomor yang paling sering salah. Murid baru melihat benar/salahnya setelah mengirim.
 
 Server: port 8770 di Mac guru, dibuka ke internet lewat Cloudflare Tunnel milik pemasang (`pasang-tunnel.sh`).
 
@@ -18,7 +19,7 @@ Server: port 8770 di Mac guru, dibuka ke internet lewat Cloudflare Tunnel milik 
 | Siapa | Halaman | Isi |
 |---|---|---|
 | Murid | `/latihan` | masukkan kode ujian, Paket saya, riwayat |
-| Murid | `/ujian/[id]` | ruang ujian + tombol **Tanya guru** |
+| Murid | `/ujian/[id]` | ruang ujian (berwaktu; perbaikan tanpa waktu) + kanvas coret Canvas |
 | Guru | `/admin/latihan` | buat soal dengan Gemini, susun paket dari bank, cetak PDF, terbitkan/sembunyikan |
 | Guru | `/admin/kelas` | pantauan kemajuan & kesalahan |
 | Guru | `/admin/soal` | bank soal (warisan Try Out) |

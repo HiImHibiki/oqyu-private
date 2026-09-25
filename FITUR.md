@@ -37,7 +37,7 @@ dibahas dengan user.
 | FW-17 | Akses dari HP/tablet lewat LAN/Tailscale (`--lan`) | `pasang-autostart.sh` | 🟡 | |
 | FW-18 | Penjaga kesehatan (restart otomatis kalau tersangkut) + `/diag` | `penjaga.py` | 🟢 | |
 | FW-19 | **Editor Worksheet Maker** langsung (tempel naskah, render manual) | `/wsm/` | 🟡 | |
-| FW-20 | Jembatan untuk Practice: ambil butir soal, render PDF, potret HTML→PNG | `/api/soal`, `/api/render`, `/api/potret-html` | 🟢 🔗FP-21, FP-22, FP-31 | |
+| FW-20 | Jembatan untuk Practice: ambil butir soal, render PDF, potret HTML→PNG | `/api/soal`, `/api/render`, `/api/potret-html` | 🟢 🔗FP-21, FP-22, FP-31  | potret HTML tidak dipakai lagi (P-053) |
 | FW-21 | **Arsip & bank soal lama**: cari arsip PDF, soal serupa, impor, susun tanpa AI, pilih otomatis | `/cari`, `/serupa`, `/impor`, `/susun`, `/otomatis`, `/lembar`; `bangun_indeks.py`… | 🔴 (tab sudah disembunyikan sejak 13 Sep) | |
 | FW-22 | OCR foto soal (Vision macOS) | `ocr-mac/` | 🟢 (dipakai FW-01/03) | |
 
@@ -58,12 +58,12 @@ dibahas dengan user.
 | FC-11 | **Editor tablet** penuh via browser (`/admin`, sandi admin), sinkron dua arah dengan Mac | `/admin` | 🟢 | |
 | FC-12 | **Akun murid** (No. HP + sandi, persetujuan guru, reset sandi) | `/api/akun/*`, panel Class | 🟢 🔗FP-02 | |
 | FC-13 | **Kelas langsung**: 3 ruangan, murid ikut papan guru di HP | `/tv?murid=1` | 🟢 | |
-| FC-14 | **Antrean tanya** (teks/foto, dibahas → kanvas "Tanya · Nama"), anti-spam, bisukan | panel Class, `/api/kelas/*` | 🟢 🔗FP-31 | |
+| FC-14 | **Antrean tanya** (teks/foto, dibahas → kanvas "Tanya · Nama"), anti-spam, bisukan | panel Class, `/api/kelas/*` | 🟢 🔗FP-31  | tetap di Canvas; dari Practice dihapus (P-053) |
 | FC-15 | **Izin coret** per murid di kanvasnya sendiri (pena, bentuk, penggaris, busur, jangka) | panel Class | 🟡 | |
 | FC-16 | **Grup** murid (buatan guru & belajar mandiri), kanvas grup per hari | panel Class | 🟡 | |
 | FC-17 | Mode menunggu HP, notifikasi "dibahas", lampu fokus, bunyi | HP murid | 🟡 | |
 | FC-18 | Tombol 📝 **Practice** di HP murid (masuk Practice dengan sesi akun Canvas) | `src/tv/main.ts` | 🟢 🔗FP-03 | |
-| FC-19 | Mode tertanam untuk **papan guru di Practice** + sesi atas nama Practice | `embed=1`, `/api/akun/sesi` | 🟡 🔗FP-32 | |
+| FC-19 | Mode tertanam untuk **papan guru di Practice** + sesi atas nama Practice | `embed=1`, `/api/akun/sesi` | 🟡 🔗FP-32  | ubah → akun Canvas otomatis untuk murid Practice (C-049) |
 | FC-20 | Akses internet lewat Cloudflare Tunnel (alamat publik, PIN 6–8 digit) | `scripts/cloudflare-setup.sh` | 🟢 | |
 | FC-21 | Cadangan versi tiap sketsa (30 versi), vault bisa di iCloud | vault | 🟢 | |
 | FC-22 | Rencana **Kelas & Tugas** (belum dibangun) | `docs/RENCANA-KELAS-TUGAS.md` | ⬜ rencana | |
@@ -85,10 +85,10 @@ dibahas dengan user.
 |---|---|---|---|---|
 | FP-10 | Halaman **Latihan**: paket dari guru, cari dengan nama/kode ujian 6 huruf, riwayat | `/latihan` | 🟢 | ubah → masukkan kode ujian, Paket saya (P-045) |
 | FP-11 | **Latihan acak dari bank** per mapel/kelas/topik | `/latihan` | 🟡 | hapus (P-045) |
-| FP-12 | **Ruang ujian**: jam di server, autosave, daftar soal, tandai (flag), offline-aware | `/ujian/[id]` | 🟢 | |
+| FP-12 | **Ruang ujian**: jam di server, autosave, daftar soal, tandai (flag), offline-aware | `/ujian/[id]` | 🟢 | ubah → berwaktu + kirim otomatis, perbaikan tanpa waktu (P-049/050) |
 | FP-13 | Alat ujian: **kalkulator**, lembar rumus, stabilo teks, sembunyikan waktu | ruang ujian | 🟡 | |
-| FP-14 | **Proctoring** (keluar tab, blur, fullscreen, salin) tercatat | ruang ujian | 🟡 | |
-| FP-15 | **Hasil & pembahasan** per soal | `/hasil/[id]` | 🟢 | |
+| FP-14 | **Proctoring** (keluar tab, blur, fullscreen, salin) tercatat | ruang ujian | 🟡 | hapus untuk latihan (P-052) |
+| FP-15 | **Hasil & pembahasan** per soal | `/hasil/[id]` | 🟢 | ubah → hasil latihan + tombol perbaikan (P-049) |
 | FP-16 | **Cetak PDF** paket (soal / berkunci untuk guru / ikut jawaban murid) | `/api/latihan/cetak` | 🟡 🔗FW-20 | |
 | FP-17 | Jenis soal: PG, benar/salah, isian (kunci LaTeX dipoloskan), teks bacaan, diagram | mesin ujian | 🟢 | |
 
@@ -100,15 +100,15 @@ dibahas dengan user.
 | FP-22 | **Tempel dari AI** (naskah dari AI mana pun → paket) | `/admin/latihan` | 🟡 | |
 | FP-23 | Susun paket dari bank, terbit/sembunyikan, durasi, nomor set, salin kode/tautan | `/admin/latihan` | 🟢 | |
 | FP-24 | Teks bacaan jadi stimulus panel kiri | ruang ujian | 🟡 🔗FW-11 | |
-| FP-25 | **Pantau kelas**: per murid (paket, sampai nomor berapa, nomor salah), per paket (nomor paling sering salah) | `/admin/kelas` | 🟢 | |
+| FP-25 | **Pantau kelas**: per murid (paket, sampai nomor berapa, nomor salah), per paket (nomor paling sering salah) | `/admin/kelas` | 🟢 | ubah → progres langsung per paket (P-051) |
 | FP-26 | Ringkasan admin | `/admin` | 🟡 | |
 | FP-27 | Kelola peserta: setujui, peran, akomodasi waktu (1×/1,5×/2×) | `/admin/peserta` | 🟢 | ubah → tanpa persetujuan (P-044) |
 
 ### Integrasi Canvas di Practice
 | Kode | Fitur | Di mana | Label | Keputusan |
 |---|---|---|---|---|
-| FP-31 | **Tanya guru**: soal yang dibuka (teks + gambar) masuk antrean Canvas | ruang ujian | 🟢 🔗FC-14, FW-20 | |
-| FP-32 | **Papan guru** Canvas tertanam di halaman soal & hasil | ruang ujian, hasil | 🟡 🔗FC-19 | |
+| FP-31 | **Tanya guru**: soal yang dibuka (teks + gambar) masuk antrean Canvas | ruang ujian | 🟢 🔗FC-14, FW-20  | hapus (P-053) |
+| FP-32 | **Papan guru** Canvas tertanam di halaman soal & hasil | ruang ujian, hasil | 🟡 🔗FC-19  | ubah → kanvas coret murid otomatis tersambung (P-053, C-049) |
 
 ### Penjualan ke umum
 | Kode | Fitur | Di mana | Label | Keputusan |

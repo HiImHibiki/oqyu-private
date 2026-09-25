@@ -336,4 +336,12 @@ export interface FormSectionLayout {
   formulaSheet?: string;
   breakAfterSec?: number;
   questionIds: string[];
+  /** Latihan Exact Practice: paket asal attempt ini (untuk riwayat & perbaikan). */
+  paketId?: string;
+  /** Attempt perbaikan: hanya nomor yang masih salah, dikerjakan ulang. */
+  perbaikan?: boolean;
+  /** Tanpa batas waktu (perbaikan): jam tidak ditampilkan, tidak ada kirim otomatis. */
+  tanpaWaktu?: boolean;
+  /** Nomor soal di paket asal (perbaikan memuat sebagian soal saja). */
+  nomorAsli?: number[];
 }

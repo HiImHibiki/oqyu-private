@@ -303,6 +303,23 @@ fn pastikan_sketsa_murid(c: &rusqlite::Connection, murid: &str) -> Result<(Optio
     Ok((Some(id.clone()), Some(id)))
 }
 
+/// Murid dari Exact Practice: baris `students` dibuat/diperbarui dengan izin
+/// coret menyala dan kanvas pribadinya disiapkan, tanpa menunggu guru membuka
+/// panel Class. Guru les privat ingin coretan murid di halaman latihan langsung
+/// tampil di Mac-nya — tidak lewat "Tanya" dulu. Kembaliannya
+/// `(kanvas, baru_dibuat)`, dan cache izin langsung diperbarui.
+pub fn siapkan_murid_practice(c: &rusqlite::Connection, murid: &str, nama: &str) -> Result<(Option<String>, Option<String>), String> {
+    c.execute(
+        "INSERT INTO students (id, name, room, first_seen, last_seen, can_draw) VALUES (?1, ?2, 1, ?3, ?3, 1)
+         ON CONFLICT(id) DO UPDATE SET name = excluded.name, last_seen = excluded.last_seen, can_draw = 1",
+        rusqlite::params![murid, nama, sekarang()],
+    )
+    .map_err(|e| e.to_string())?;
+    let (sketsa, baru) = pastikan_sketsa_murid(c, murid)?;
+    catat_izin(murid, sketsa.is_some(), sketsa.clone());
+    Ok((sketsa, baru))
+}
+
 /// (boleh mencoret?, kanvas yang boleh dicoret).
 pub fn izin_murid(c: &rusqlite::Connection, murid: &str) -> (bool, Option<String>) {
     let boleh: bool = c

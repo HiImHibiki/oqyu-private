@@ -1,7 +1,7 @@
 "use client";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  AlertTriangle, BookOpen, Calculator as CalcIcon, ChevronLeft, ChevronRight, Clock, Eye, EyeOff, Flag, Highlighter, LayoutGrid, Loader2, Maximize, ShieldCheck, WifiOff, MessageCircleQuestion,
+  AlertTriangle, BookOpen, Calculator as CalcIcon, ChevronLeft, ChevronRight, Clock, Eye, EyeOff, Flag, Highlighter, LayoutGrid, Loader2, Maximize, ShieldCheck, WifiOff,
 } from "lucide-react";
 import type { ExamCode, Question, ResponseValue } from "@/lib/types";
 import { QuestionView } from "./QuestionView";
@@ -24,6 +24,10 @@ export interface PlayerSection {
   questionCount: number;
   /** Kosong untuk section yang belum dicapai peserta; diisi saat section dimulai. */
   questions: Question[];
+  /** Tanpa batas waktu (perbaikan latihan): jam disembunyikan. */
+  tanpaWaktu?: boolean;
+  /** Nomor soal di paket asal — perbaikan menampilkan nomor yang dikenal murid. */
+  nomorAsli?: number[];
 }
 
 export interface SectionClock {
@@ -98,19 +102,15 @@ export function ExamPlayer(props: ExamPlayerProps) {
   const [showTimer, setShowTimer] = useState(true);
   const [navOpen, setNavOpen] = useState(true);
   const [calcOpen, setCalcOpen] = useState(false);
-  /* "Tanya guru": soal yang sedang dibuka dikirim ke Exact Canvas (lengkap
-   * dengan gambarnya), lalu tab layar murid dibuka supaya ia bisa menyimak
-   * pembahasan gurunya. Hanya untuk paket latihan — try out resmi tidak boleh
-   * ada bantuan. */
-  const [asking, setAsking] = useState<"idle" | "busy" | "done" | "fail">("idle");
-  const [askMsg, setAskMsg] = useState("");
+  /* Latihan Exact Practice (les privat): tanpa layar penuh, tanpa proctoring,
+   * tanpa "Tanya guru" — guru ada di ruangan / panggilan yang sama. */
+  const latihan = props.examCode === "LATIHAN";
   /* Papan guru: layar murid Exact Canvas ditanam di halaman ini (iframe),
    * jadi anak tidak bolak-balik dua aplikasi saat soalnya dibahas. Hanya
    * untuk akun yang berasal dari Canvas (sesinya bisa diterbitkan server);
    * yang lain tetap dibukakan tab Canvas seperti dulu. Tampil sejak awal,
    * bukan baru setelah bertanya: guru sering membahas tanpa ditanya, dan
    * anak yang sedang mengerjakan tetap bisa melirik papannya. */
-  const [bisaPapan, setBisaPapan] = useState(false);
   const [papan, setPapan] = useState<{ url: string; asal: string } | null>(null);
   const [papanMode, setPapanMode] = useState<ModePapan>("normal");
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -127,9 +127,8 @@ export function ExamPlayer(props: ExamPlayerProps) {
   useEffect(() => {
     if (props.examCode !== "LATIHAN" || isDemo) return;
     let batal = false;
-    fetch("/api/latihan/tanya").then((r) => r.json()).then((j: { papan?: boolean; url?: string | null }) => {
+    fetch("/api/latihan/papan").then((r) => r.json()).then((j: { url?: string | null }) => {
       if (batal) return;
-      setBisaPapan(!!j.papan);
       if (j.url) setPapan((p) => p ?? { url: j.url!, asal: new URL(j.url!).origin });
     }).catch(() => {});
     return () => { batal = true; };
@@ -151,10 +150,15 @@ export function ExamPlayer(props: ExamPlayerProps) {
   const advancing = useRef(false);
 
   const proctor = useProctor({
-    enabled: !isDemo && started,
-    requireFullscreen: !isDemo,
+    enabled: !isDemo && !latihan && started,
+    requireFullscreen: !isDemo && !latihan,
     onEvent: props.onProctorEvent,
   });
+
+  useEffect(() => {
+    if (latihan && !started && !starting) void beginExam();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [latihan, started]);
 
   /* ------------------------------------------------- hitung mundur lokal */
   useEffect(() => {
@@ -349,7 +353,7 @@ export function ExamPlayer(props: ExamPlayerProps) {
   async function beginExam() {
     setStarting(true);
     try {
-      if (!isDemo) await proctor.enterFullscreen();
+      if (!isDemo && !latihan) await proctor.enterFullscreen();
       const clock = await props.onStartSection(si);
       if (clock?.questions?.length) {
         setSections((prev) => prev.map((s, i) => (i === si ? { ...s, questions: clock.questions! } : s)));
@@ -374,6 +378,13 @@ export function ExamPlayer(props: ExamPlayerProps) {
   const totalQuestions = sections.reduce((a, s) => a + s.questionCount, 0);
 
   if (!section || !question) return null;
+
+  /* Latihan langsung mulai: murid sudah menekan "Mulai" di halaman Latihan,
+   * dan tidak ada layar penuh yang butuh gestur klik. Gerbang hanya untuk
+   * try out warisan. */
+  if (!started && latihan) {
+    return <div className="flex min-h-screen items-center justify-center gap-2 text-sm muted"><Loader2 size={16} className="animate-spin" /> Menyiapkan soal…</div>;
+  }
 
   if (!started) {
     return (
@@ -418,6 +429,12 @@ export function ExamPlayer(props: ExamPlayerProps) {
           <div className="text-[11px] muted">{examName}{isDemo ? ` · ${t("exam.startGateDemo")}` : ""}</div>
         </div>
 
+        {section.tanpaWaktu ? (
+          <div className="mx-auto text-center">
+            <div className="text-sm font-semibold">Perbaikan</div>
+            <div className="text-[11px] muted">tanpa batas waktu</div>
+          </div>
+        ) : (
         <div className="mx-auto flex flex-col items-center">
           {showTimer ? (
             /* role="timer" membuatnya dikenali sebagai jam, dan aria-label
@@ -457,6 +474,7 @@ export function ExamPlayer(props: ExamPlayerProps) {
             {showTimer ? t("exam.hideTime") : t("exam.showTime")}
           </button>
         </div>
+        )}
 
         <div className="flex items-center gap-1.5">
           {offline && (
@@ -475,43 +493,13 @@ export function ExamPlayer(props: ExamPlayerProps) {
               <BookOpen size={16} />
             </button>
           )}
-          {props.examCode === "LATIHAN" && question && (
-            <button className={`btn btn-ghost !px-2 ${asking === "done" ? "!bg-[var(--accent-soft)]" : ""}`}
-              disabled={asking === "busy"}
-              title={askMsg || t("exam.askTeacher")}
-              onClick={async () => {
-                setAsking("busy"); setAskMsg(t("exam.asking"));
-                /* Tab dibuka SEBELUM await: peramban ponsel memblokir window.open
-                 * yang tidak lagi berada di dalam gestur klik. Kalau papan guru
-                 * bisa ditanam di sini, tidak ada tab yang perlu dibuka. */
-                const tab = bisaPapan ? null : window.open("", "_blank");
-                try {
-                  const r = await fetch("/api/latihan/tanya", {
-                    method: "POST", headers: { "content-type": "application/json" },
-                    body: JSON.stringify({ attemptId: props.attemptId, questionId: question.id, number: qi + 1 }),
-                  });
-                  const j = await r.json();
-                  if (j.papan) {
-                    tab?.close();
-                    /* Iframe yang sudah hidup dibiarkan (sesinya sama); cuma dibuka lagi kalau terlipat. */
-                    setPapan((p) => p ?? { url: j.papan, asal: new URL(j.papan).origin });
-                    setPapanMode((m) => (m === "kecil" ? "normal" : m));
-                    setAsking("done"); setAskMsg(t("exam.askedBoard"));
-                  } else if (j.url) { if (tab) tab.location.href = j.url; else window.open(j.url, "_blank"); setAsking("done"); setAskMsg(t("exam.asked")); }
-                  else { tab?.close(); setAsking("fail"); setAskMsg(j.error || "Gagal"); }
-                } catch { tab?.close(); setAsking("fail"); setAskMsg("Gagal menghubungi server"); }
-              }}>
-              <MessageCircleQuestion size={16} />
-              <span className="hidden sm:inline text-xs">{asking === "idle" ? t("exam.askTeacher") : askMsg}</span>
-            </button>
-          )}
           {section.calculatorAllowed && (
             <button className={`btn btn-ghost !px-2 ${calcOpen ? "!bg-[var(--accent-soft)]" : ""}`}
               onClick={() => setCalcOpen((v) => !v)} title={`${t("exam.calculator")} (K)`}>
               <CalcIcon size={16} />
             </button>
           )}
-          {!isDemo && (
+          {!isDemo && !latihan && (
             <span className="chip" title={`Skor integritas ${proctor.log.integrityScore}`}>
               <ShieldCheck size={12} /> {proctor.log.integrityScore}
             </span>
@@ -556,7 +544,7 @@ export function ExamPlayer(props: ExamPlayerProps) {
                     }}
                     aria-current={cur}
                   >
-                    {i + 1}
+                    {section.nomorAsli?.[i] ?? i + 1}
                     {r?.flagged && (
                       <Flag size={9} className="absolute -right-0.5 -top-0.5" style={{ color: "var(--warn)", fill: "var(--warn)" }} />
                     )}
@@ -616,7 +604,7 @@ export function ExamPlayer(props: ExamPlayerProps) {
                 <Stimulus q={question} hlMode={hlMode} />
               </section>
               <section className="flex-1 overflow-y-auto px-4 py-5 md:w-1/2 md:flex-none md:px-8 md:py-6">
-                <QHead index={qi} flagged={resp?.flagged} onFlag={toggleFlag} difficulty={question.difficulty} t={t} />
+                <QHead index={(section.nomorAsli?.[qi] ?? qi + 1) - 1} flagged={resp?.flagged} onFlag={toggleFlag} difficulty={question.difficulty} t={t} />
                 <QuestionView
                   question={question}
                   value={resp?.raw}
@@ -629,7 +617,7 @@ export function ExamPlayer(props: ExamPlayerProps) {
             </>
           ) : (
             <section className="mx-auto w-full max-w-3xl overflow-y-auto px-4 py-5 md:px-8 md:py-6">
-              <QHead index={qi} flagged={resp?.flagged} onFlag={toggleFlag} difficulty={question.difficulty} t={t} />
+              <QHead index={(section.nomorAsli?.[qi] ?? qi + 1) - 1} flagged={resp?.flagged} onFlag={toggleFlag} difficulty={question.difficulty} t={t} />
               <QuestionView
                 question={question}
                 value={resp?.raw}
@@ -652,7 +640,7 @@ export function ExamPlayer(props: ExamPlayerProps) {
         <span className="truncate text-sm font-medium">{studentName}</span>
         <div className="mx-auto flex items-center gap-2 text-sm">
           <Clock size={13} className="muted" />
-          <span className="muted">{t("exam.questionOf", { n: qi + 1, total: section.questions.length })}</span>
+          <span className="muted">{section.nomorAsli ? `Nomor ${section.nomorAsli[qi]} · ${qi + 1} dari ${section.questions.length} soal perbaikan` : t("exam.questionOf", { n: qi + 1, total: section.questions.length })}</span>
         </div>
         <button className="btn btn-ghost" onClick={prev} disabled={qi === 0}>
           <ChevronLeft size={16} /> {t("common.back")}

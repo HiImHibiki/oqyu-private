@@ -35,13 +35,13 @@ Belum pernah dideploy ke Vercel/Cloudflare Workers — lihat PLANS.md §Deploy.
 ```
 src/app/                    halaman & route API (App Router)
   (app)/latihan             murid: paket dari guru, bank soal acak, riwayat, cari kode ujian
-  ujian/[attemptId]         ruang ujian (ExamRunner) + tombol Tanya guru + PapanGuru (iframe Canvas)
+  ujian/[attemptId]         ruang ujian (ExamRunner) + PapanGuru (kanvas coret Canvas, iframe)
   hasil/[attemptId]         hasil & pembahasan
   admin/latihan             guru: buat soal, susun paket, cetak PDF, terbit/sembunyi
   admin/kelas               pantau kemajuan & kesalahan per murid/paket
   admin/peserta             peran & akomodasi waktu murid
   api/latihan/terbit        MASUKAN dari Worksheet (kunci bersama)
-  api/latihan/cetak|tanya   KELUARAN ke Worksheet (PDF) / Canvas (tanya guru)
+  api/latihan/cetak|papan   KELUARAN ke Worksheet (PDF) / Canvas (sesi kanvas murid)
   api/admin/latihan/*       buat (via Worksheet), bank, paket, tempel (naskah dari AI)
 src/lib/db/                 SATU pintu penyimpanan: getDb() → dev.ts (berkas) | supabase.ts
 src/lib/practice/           khas Exact Course: paket.ts, latihan.ts, worksheet.ts, canvas.ts,
@@ -187,6 +187,10 @@ dan `npm run test:exams` (dengan `EXACT_DATA_DIR` sementara
    `peserta` bila pemanggil tidak menyebutnya (terbit ulang dari Worksheet). Tidak ada
    pembayaran/afiliasi/pesanan (dihapus P-043).
 9. **`diagrams.js` identik dengan Worksheet (dan Canvas)** (lihat peran 2).
+9b. **Latihan: satu attempt berjalan per paket; perbaikan = nomor yang masih salah, tanpa waktu**
+    (`tanpaWaktu`, `nomorAsli`, `perbaikan`, `paketId` di layout). Murid tidak boleh melihat
+    benar/salah sebelum mengirim; guru melihatnya langsung di Pantau kelas. Tidak ada layar
+    penuh/proctoring untuk LATIHAN.
 10. **Server untuk murid WAJIB build produksi** (`next build` + `next start`, lewat
     `pasang-app.sh`), JANGAN `npm run dev`. Mode dev React/Next menyerialisasi hasil I/O
     server ke browser untuk DevTools — isi `question-bank.json` (kunci + pembahasan) ikut

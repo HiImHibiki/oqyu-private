@@ -95,15 +95,6 @@ export async function ambilPdf(nama: string): Promise<Response> {
   return fetch(`${BASE}/berkas?f=${encodeURIComponent(nama)}`, { cache: "no-store" });
 }
 
-/** HTML -> PNG (buffer) lewat Chrome kendali Exact Worksheet. */
-export async function potretHtml(html: string, lebar = 900): Promise<Buffer> {
-  const r = await fetch(`${BASE}/api/potret-html`, {
-    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ html, lebar }),
-  });
-  if (!r.ok) throw new Error(`potret gagal: HTTP ${r.status}`);
-  return Buffer.from(await r.arrayBuffer());
-}
-
 /* ------------------------------------------------------------------ */
 /* Konversi butir naskah <-> Question milik mesin ujian                 */
 /* ------------------------------------------------------------------ */
