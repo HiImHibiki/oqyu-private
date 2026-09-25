@@ -59,6 +59,9 @@
 ## QA lokal (24 Sep 2026)
 - ✅ W-046 Dipasang di MacBook lokal (poppler via brew, `pasang.sh`, OCR terkompilasi, DB kosong), server `python3 cari.py` :7790 — semua tab 200; `terbit.py` → Practice lokal berhasil (↔ P-041). Catatan: keluaran & tab Hasil membaca seluruh PDF di ~/Desktop
 
+## Diagram (25 Sep 2026)
+- ✅ W-047 Label sisi bangun bisa ditimpa (`labelSisi`, bertanda PATCH EXACT di `wsm/diagrams.js`): bangun datar `labelalas/labeltinggi/labelmiring`, `labela/b/c`, `labelsisi`, `labelpanjang/labellebar`, `labelatas/labelbawah/labelkiri/labelkanan`, `labeljari`; bangun ruang `labelsisi/labelpanjang/labellebar/labeltinggi/labeljari/labelalas`; nilai `-`/`kosong` = tanpa label. Dulu angka ukuran selalu tercetak → soal "cari tinggi" membocorkan jawaban lewat gambar. wsm/test.js 96/96 (+2). Disinkron ke Practice & Canvas (↔ P-048, C-048)
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ⬜ W-042 Perbaiki SyntaxWarning `buat.py:931` — B1
 - ⬜ W-043 Satu perintah uji `./uji.sh` — B2

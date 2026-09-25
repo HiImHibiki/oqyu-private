@@ -1501,6 +1501,24 @@ test('A-Level pohon peluang & program linear: nama simpul tidak tertimpa cabang 
 // Runner
 // ---------------------------------------------------------------------
 let failed = 0;
+// Label sisi bisa ditimpa: soal Pythagoras "cari tinggi" tidak boleh
+// membocorkan jawaban lewat angka di gambar (PATCH label sisi).
+test('label sisi: segitiga-siku labelalas/labeltinggi/labelmiring menimpa angka bawaan', () => {
+  const teks = (h) => [...h.matchAll(/<text[^>]*>([^<]*)<\/text>/g)].map((m) => m[1]);
+  const bawaan = teks(D.renderDiagramTag('bangun: bentuk=segitiga-siku; alas=6; tinggi=8'));
+  assert.ok(bawaan.includes('6') && bawaan.includes('8'), 'tanpa label: angka ukuran tetap tercetak');
+  const t = teks(D.renderDiagramTag('bangun: bentuk=segitiga-siku; alas=6; tinggi=8; labelalas=6 cm; labeltinggi=x; labelmiring=10 cm'));
+  assert.ok(t.includes('6 cm') && t.includes('x') && t.includes('10 cm'), JSON.stringify(t));
+  assert.ok(!t.includes('8'), 'tinggi yang ditanyakan tidak boleh tercetak: ' + JSON.stringify(t));
+});
+test('label sisi: "-" mengosongkan label, bangun ruang ikut bisa ditimpa', () => {
+  const teks = (h) => [...h.matchAll(/<text[^>]*>([^<]*)<\/text>/g)].map((m) => m[1]);
+  const kosong = teks(D.renderDiagramTag('bangun: bentuk=persegi-panjang; panjang=8; lebar=6; labellebar=-'));
+  assert.ok(!kosong.includes('6') && kosong.includes('8'), JSON.stringify(kosong));
+  const balok = teks(D.renderDiagramTag('bangunruang: bentuk=balok; panjang=12; lebar=4; tinggi=3; labeltinggi=t'));
+  assert.ok(balok.includes('t') && !balok.includes('t = 3') && balok.includes('p = 12'), JSON.stringify(balok));
+});
+
 for (const t of tests) {
   try {
     t.fn();

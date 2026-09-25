@@ -57,6 +57,8 @@
 - ✅ C-042 Rust 1.98.1 terpasang (rustup), `tauri dev` terkompilasi & aplikasi jalan di MacBook lokal
 - ✅ C-047 Fix `npm run app` tidak pernah jalan: Vite di port 1420 sementara `tauri.conf.json` (devUrl + CSP) menunggu 1421 — Vite disamakan ke 1421, HMR 1422
 
+- ✅ C-048 Sinkron diagrams.js dari Worksheet: label sisi bangun bisa ditimpa (↔ W-047)
+
 ## Direncanakan (lihat PLANS.md Backlog)
 - ❌ C-043 Jalur sesi Practice untuk Practice di cloud — tidak diperlukan, user memilih tetap Mac + Tunnel (24 Sep 2026)
 - ⬜ C-044 CI build — B3

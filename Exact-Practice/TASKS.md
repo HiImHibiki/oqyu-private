@@ -63,6 +63,8 @@
 - ✅ P-046 UI: halaman Buat latihan, Pantau kelas (admin) dan Latihan (murid) tidak punya pembungkus `mx-auto max-w-* px-6 py-8` seperti halaman warisan Try Out — judul menempel di pojok kiri atas & kartu menempel di tepi kanan. Diberi pembungkus standar
 - ✅ P-047 Buat soal tanpa Worksheet jadi alur utama: tab "Prompt → AI → Tempel" jadi tab pertama & bawaan, tombol "Salin & buka Claude" (claude.ai/new), tab Gemini-otomatis dipindah terakhir dengan keterangan butuh Worksheet. Uji: prompt dirender → naskah 5 soal SPLDV ditulis Claude → tempel → paket 34LQKR (5/5 soal, 0 dilewati) → murid gabung & kerjakan → nilai 4/5 sesuai jawaban, pembahasan tampil, soal tanpa kunci
 
+- ✅ P-048 Prompt "Prompt → AI → Tempel" untuk diagram: katalog lengkap bangun datar (7 bentuk) & bangun ruang (7 bentuk) + parameter label, jaring, pandangan, anotasi `teks=`; aturan: sisi yang ditanyakan wajib berlabel huruf, segitiga istimewa pakai segitiga-siku berproporsi benar + teks sudut (bukan `[[sudut]]` yang selalu sama sisi); isian wajib bilangan bulat/desimal sederhana (hasil akar → tripel Pythagoras / PG). Sinkron diagrams.js (↔ W-047). Uji: 10 soal isian Pythagoras (segitiga istimewa, trapesium, balok, kerucut, limas, tangga) → paket WQHYRK 10/10 → tangkapan layar ruang ujian: semua gambar tampil, label benar, jawaban tidak tercetak
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-035 CI GitHub Actions (typecheck, build, test) — B4

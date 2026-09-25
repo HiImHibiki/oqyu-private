@@ -749,6 +749,19 @@ function renderLinearProgramSVG(cfg) {
 // 2. Bangun Geometri
 // ---------------------------------------------------------------------
 
+// PATCH EXACT (label sisi, 25 Sep 2026): angka sisi bangun datar/ruang
+// dulu selalu dicetak dari ukurannya. Untuk soal Pythagoras "cari tinggi"
+// itu membocorkan jawaban lewat gambar, dan sisi yang dicari tidak bisa
+// diberi nama "x". labelalas/labeltinggi/labelmiring/labelsisi/... menimpa
+// tulisannya; nilai "-" atau "kosong" = sisi tanpa label. Ukuran gambarnya
+// tetap dari parameter angka.
+function labelSisi(p, kunci, bawaan) {
+  const v = p[kunci];
+  if (v === undefined || v === null) return bawaan;
+  const t = String(v).trim();
+  return /^(-|kosong|tanpa)$/i.test(t) ? '' : t;
+}
+
 const GEOMETRY_PRESETS = {
   'segitiga-sembarang': {
     build: (p) => {
@@ -759,9 +772,9 @@ const GEOMETRY_PRESETS = {
       return {
         points: [{ name: 'A', x, y }, { name: 'B', x: 0, y: 0 }, { name: 'C', x: a, y: 0 }],
         segments: [
-          { from: 'B', to: 'C', label: `a = ${a}` },
-          { from: 'C', to: 'A', label: `b = ${b}` },
-          { from: 'A', to: 'B', label: `c = ${c}` },
+          { from: 'B', to: 'C', label: labelSisi(p, 'labela', `a = ${a}`) },
+          { from: 'C', to: 'A', label: labelSisi(p, 'labelb', `b = ${b}`) },
+          { from: 'A', to: 'B', label: labelSisi(p, 'labelc', `c = ${c}`) },
         ],
       };
     },
@@ -772,9 +785,9 @@ const GEOMETRY_PRESETS = {
       return {
         points: [{ name: 'A', x: 0, y: 0 }, { name: 'B', x: alas, y: 0 }, { name: 'C', x: 0, y: tinggi }],
         segments: [
-          { from: 'A', to: 'B', label: `${alas}` },
-          { from: 'A', to: 'C', label: `${tinggi}` },
-          { from: 'B', to: 'C', label: '' },
+          { from: 'A', to: 'B', label: labelSisi(p, 'labelalas', `${alas}`) },
+          { from: 'A', to: 'C', label: labelSisi(p, 'labeltinggi', `${tinggi}`) },
+          { from: 'B', to: 'C', label: labelSisi(p, 'labelmiring', '') },
         ],
       };
     },
@@ -785,8 +798,8 @@ const GEOMETRY_PRESETS = {
       return {
         points: [{ name: 'A', x: 0, y: 0 }, { name: 'B', x: s, y: 0 }, { name: 'C', x: s, y: s }, { name: 'D', x: 0, y: s }],
         segments: [
-          { from: 'A', to: 'B', label: `${s}` }, { from: 'B', to: 'C', label: `${s}` },
-          { from: 'C', to: 'D', label: `${s}` }, { from: 'D', to: 'A', label: `${s}` },
+          { from: 'A', to: 'B', label: labelSisi(p, 'labelsisi', `${s}`) }, { from: 'B', to: 'C', label: labelSisi(p, 'labelsisi', `${s}`) },
+          { from: 'C', to: 'D', label: labelSisi(p, 'labelsisi', `${s}`) }, { from: 'D', to: 'A', label: labelSisi(p, 'labelsisi', `${s}`) },
         ],
       };
     },
@@ -797,8 +810,8 @@ const GEOMETRY_PRESETS = {
       return {
         points: [{ name: 'A', x: 0, y: 0 }, { name: 'B', x: pj, y: 0 }, { name: 'C', x: pj, y: lb }, { name: 'D', x: 0, y: lb }],
         segments: [
-          { from: 'A', to: 'B', label: `${pj}` }, { from: 'B', to: 'C', label: `${lb}` },
-          { from: 'C', to: 'D', label: `${pj}` }, { from: 'D', to: 'A', label: `${lb}` },
+          { from: 'A', to: 'B', label: labelSisi(p, 'labelpanjang', `${pj}`) }, { from: 'B', to: 'C', label: labelSisi(p, 'labellebar', `${lb}`) },
+          { from: 'C', to: 'D', label: labelSisi(p, 'labelpanjang', `${pj}`) }, { from: 'D', to: 'A', label: labelSisi(p, 'labellebar', `${lb}`) },
         ],
       };
     },
@@ -813,8 +826,8 @@ const GEOMETRY_PRESETS = {
           { name: 'C', x: bawah - offset, y: tinggi }, { name: 'D', x: offset, y: tinggi },
         ],
         segments: [
-          { from: 'A', to: 'B', label: `${bawah}` }, { from: 'B', to: 'C', label: '' },
-          { from: 'C', to: 'D', label: `${atas}` }, { from: 'D', to: 'A', label: '' },
+          { from: 'A', to: 'B', label: labelSisi(p, 'labelbawah', `${bawah}`) }, { from: 'B', to: 'C', label: labelSisi(p, 'labelkanan', '') },
+          { from: 'C', to: 'D', label: labelSisi(p, 'labelatas', `${atas}`) }, { from: 'D', to: 'A', label: labelSisi(p, 'labelkiri', '') },
         ],
       };
     },
@@ -822,7 +835,7 @@ const GEOMETRY_PRESETS = {
   lingkaran: {
     build: (p) => {
       const r = numOrDefault(p.jari, 4);
-      return { points: [{ name: 'O', x: 0, y: 0 }], circles: [{ center: 'O', radius: r, label: `r = ${r}` }] };
+      return { points: [{ name: 'O', x: 0, y: 0 }], circles: [{ center: 'O', radius: r, label: labelSisi(p, 'labeljari', `r = ${r}`) }] };
     },
   },
   'setengah-lingkaran': {
@@ -1283,7 +1296,7 @@ const SOLID_PRESETS = {
         { a: A, b: E }, { a: B, b: F }, { a: C, b: G }, { a: D, b: H, dashed: true },
       ],
       labels: [
-        { pos: [s / 2, 0], text: `s = ${s}`, n: [0, -1] },
+        { pos: [s / 2, 0], text: labelSisi(p, 'labelsisi', `s = ${s}`), n: [0, -1] },
       ],
       vertices: [
         { pos: A, name: 'A', n: [-0.7, -0.7] }, { pos: B, name: 'B', n: [0.7, -0.7] },
@@ -1304,9 +1317,9 @@ const SOLID_PRESETS = {
         { a: A, b: E }, { a: B, b: F }, { a: C, b: G }, { a: D, b: H, dashed: true },
       ],
       labels: [
-        { pos: [pj / 2, 0], text: `p = ${pj}`, n: [0, -1] },
-        { pos: [pj, t / 2], text: `t = ${t}`, n: [1, 0] },
-        { pos: [(B[0] + C[0]) / 2, (B[1] + C[1]) / 2], text: `l = ${lb}`, n: [0.7, -0.7] },
+        { pos: [pj / 2, 0], text: labelSisi(p, 'labelpanjang', `p = ${pj}`), n: [0, -1] },
+        { pos: [pj, t / 2], text: labelSisi(p, 'labeltinggi', `t = ${t}`), n: [1, 0] },
+        { pos: [(B[0] + C[0]) / 2, (B[1] + C[1]) / 2], text: labelSisi(p, 'labellebar', `l = ${lb}`), n: [0.7, -0.7] },
       ],
       vertices: [
         { pos: A, name: 'A', n: [-0.7, -0.7] }, { pos: B, name: 'B', n: [0.7, -0.7] },
@@ -1330,10 +1343,10 @@ const SOLID_PRESETS = {
       ],
       dots: [[r, t]],
       labels: [
-        { pos: [2 * r, t / 2], text: `t = ${tAsli}`, n: [1, 0] },
+        { pos: [2 * r, t / 2], text: labelSisi(p, 'labeltinggi', `t = ${tAsli}`), n: [1, 0] },
         // Di bawah garis jari-jari, di dalam muka tutup: di atasnya bertabrakan
         // dengan tepi elips yang pipih.
-        { pos: [r * 1.5, t], text: `r = ${r}`, n: [0, -1] },
+        { pos: [r * 1.5, t], text: labelSisi(p, 'labeljari', `r = ${r}`), n: [0, -1] },
       ],
       vertices: [{ pos: [r, t], name: 'O', n: [-0.7, -0.7] }],
     };
@@ -1352,8 +1365,8 @@ const SOLID_PRESETS = {
       dots: [O],
       labels: [
         // Rendah (30% tinggi): makin ke bawah makin lebar jarak ke sisi miring.
-        { pos: [r, t * 0.3], text: `t = ${tAsli}`, n: [-1, 0] },
-        { pos: [r * 1.5, 0], text: `r = ${r}`, n: [0, -1] },
+        { pos: [r, t * 0.3], text: labelSisi(p, 'labeltinggi', `t = ${tAsli}`), n: [-1, 0] },
+        { pos: [r * 1.5, 0], text: labelSisi(p, 'labeljari', `r = ${r}`), n: [0, -1] },
       ],
       vertices: [{ pos: V, name: 'V', n: [0, 1] }, { pos: O, name: 'O', n: [-0.7, -0.7] }],
     };
@@ -1364,7 +1377,7 @@ const SOLID_PRESETS = {
       ellipses: [{ cx: 0, cy: 0, rx: r, ry: r }, { cx: 0, cy: 0, rx: r, ry: r * 0.32, belah: true }],
       edges: [{ a: [0, 0], b: [r, 0], tipis: true }],
       dots: [[0, 0]],
-      labels: [{ pos: [r / 2, 0], text: `r = ${r}`, n: [0, 1] }],
+      labels: [{ pos: [r / 2, 0], text: labelSisi(p, 'labeljari', `r = ${r}`), n: [0, 1] }],
       vertices: [{ pos: [0, 0], name: 'O', n: [-0.7, -0.7] }],
     };
   },
@@ -1384,10 +1397,10 @@ const SOLID_PRESETS = {
       ],
       dots: [O],
       labels: [
-        { pos: [s / 2, 0], text: `s = ${s}`, n: [0, -1] },
+        { pos: [s / 2, 0], text: labelSisi(p, 'labelsisi', `s = ${s}`), n: [0, -1] },
         // Rendah (22% tinggi) dan di kiri: menjauhi rusuk VB/VC yang padat;
         // yang terdekat tinggal VD putus-putus, dan halo putih menjaga keterbacaan.
-        { pos: [O[0], O[1] + t * 0.22], text: `t = ${tAsli}`, n: [-1, 0] },
+        { pos: [O[0], O[1] + t * 0.22], text: labelSisi(p, 'labeltinggi', `t = ${tAsli}`), n: [-1, 0] },
       ],
       vertices: [
         { pos: A, name: 'A', n: [-0.7, -0.7] }, { pos: B, name: 'B', n: [0.7, -0.7] },
@@ -1409,9 +1422,9 @@ const SOLID_PRESETS = {
       ],
       siku: [{ v: M, a: C, b: B }],
       labels: [
-        { pos: [alas / 2, 0], text: `alas = ${alas}`, n: [0, -1] },
-        { pos: [alas / 2, tinggi / 2], text: `t = ${tinggi}`, n: [-1, 0] },
-        { pos: [(B[0] + E[0]) / 2, (B[1] + E[1]) / 2], text: `p = ${panjang}`, n: [0.7, -0.7] },
+        { pos: [alas / 2, 0], text: labelSisi(p, 'labelalas', `alas = ${alas}`), n: [0, -1] },
+        { pos: [alas / 2, tinggi / 2], text: labelSisi(p, 'labeltinggi', `t = ${tinggi}`), n: [-1, 0] },
+        { pos: [(B[0] + E[0]) / 2, (B[1] + E[1]) / 2], text: labelSisi(p, 'labelpanjang', `p = ${panjang}`), n: [0.7, -0.7] },
       ],
       vertices: [
         { pos: A, name: 'A', n: [-0.7, -0.7] }, { pos: B, name: 'B', n: [0.7, -0.7] },

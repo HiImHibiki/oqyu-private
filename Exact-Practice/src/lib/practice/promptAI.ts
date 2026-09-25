@@ -122,7 +122,12 @@ export function susunPrompt(o: OpsiPrompt): string {
 
   if (jenis.includes("PG")) L.push("Catatan PG: minimal 4 opsi (A–D, boleh sampai E). Hanya satu yang benar.");
   if (jenis.includes("B")) L.push("Catatan B: tulis pernyataannya saja, tanpa opsi A/B/C/D.");
-  if (jenis.includes("I")) L.push("Catatan I: jawabannya harus pendek dan pasti (satu angka atau satu kata), tanpa satuan, dan tidak boleh mengandung koma.");
+  if (jenis.includes("I")) {
+    L.push("Catatan I: jawabannya harus pendek dan pasti (satu angka atau satu kata), tanpa satuan, dan tidak boleh mengandung koma.");
+    /* Murid mengetik jawaban isian dari HP/laptop: bentuk akar (5√3) atau
+     * pecahan panjang nyaris tidak mungkin diketik sama persis dengan kunci. */
+    L.push("Catatan I: jawaban isian harus bilangan bulat atau desimal sederhana (paling banyak 2 angka di belakang titik). Kalau hasil hitungannya memuat akar atau pecahan tak sederhana (mis. $5\\sqrt{3}$), ubah angkanya (mis. pakai tripel Pythagoras 3-4-5, 5-12-13, 8-15-17, 7-24-25), tanyakan besaran lain yang bulat (mis. kuadrat panjangnya), atau jadikan soal pilihan ganda bila jenis PG juga dipakai.");
+  }
   if (jenis.includes("E")) L.push("Catatan E: soal uraian hanya ikut tercetak di PDF dan dinilai guru — tetap beri kuncinya berupa inti jawaban.");
   L.push("");
 
@@ -165,18 +170,42 @@ export function susunPrompt(o: OpsiPrompt): string {
 
   if (o.diagram) {
     L.push("=== DIAGRAM & TABEL ===");
-    L.push("Kalau sebuah soal butuh gambar atau tabel, sisipkan salah satu tag di bawah ini apa adanya di dalam teks soal, satu tag satu baris tersendiri:");
-    L.push("[[grafik: f1=2^x; xmin=-3; xmax=4; ymin=0; ymax=9; sumbux=x; sumbuy=y]]");
+    L.push("Kalau sebuah soal butuh gambar atau tabel, sisipkan tag di dalam teks soal, satu tag satu baris tersendiri. Gambar digambar otomatis oleh sistem dari tag ini — kamu TIDAK menggambar apa pun.");
+    L.push("");
+    L.push("Bangun datar — [[bangun: bentuk=…; ukuran…; label…]]");
+    L.push("  bentuk=segitiga-siku (alas, tinggi; siku-siku di A, alas AB, tinggi AC, sisi miring BC) · labelalas, labeltinggi, labelmiring");
+    L.push("  bentuk=segitiga-sembarang (a, b, c = panjang ketiga sisi) · labela, labelb, labelc");
+    L.push("  bentuk=persegi (sisi) · labelsisi");
+    L.push("  bentuk=persegi-panjang (panjang, lebar) · labelpanjang, labellebar");
+    L.push("  bentuk=trapesium (atas, bawah, tinggi) · labelatas, labelbawah, labelkiri, labelkanan (kaki kiri/kanan)");
+    L.push("  bentuk=lingkaran (jari) · labeljari     bentuk=setengah-lingkaran (jari)");
+    L.push("Bangun ruang — [[bangunruang: bentuk=…; ukuran…; label…]] (rusuk belakang digambar putus-putus, titik sudut diberi huruf)");
+    L.push("  bentuk=kubus (sisi) · labelsisi — titik ABCD.EFGH");
+    L.push("  bentuk=balok (panjang, lebar, tinggi) · labelpanjang, labellebar, labeltinggi — titik ABCD.EFGH");
+    L.push("  bentuk=tabung (jari, tinggi) · bentuk=kerucut (jari, tinggi) · bentuk=bola (jari) · labeljari, labeltinggi");
+    L.push("  bentuk=limas-segiempat (alas, tinggi) · labelsisi, labeltinggi — puncak V");
+    L.push("  bentuk=prisma-segitiga (alas, tinggi, panjang) · labelalas, labeltinggi, labelpanjang");
+    L.push("Jaring-jaring: [[jaring: bentuk=kubus]] (kubus/balok/prisma-segitiga/limas-segiempat/tabung/kerucut)");
+    L.push("Pandangan depan-samping-atas: [[pandangan: bentuk=kerucut]]");
+    L.push("Tulisan tambahan di atas gambar: parameter teks=x,y:tulisan (x,y = PERSEN kotak gambar dari pojok kiri-atas, 0–100), beberapa dipisah |. Contoh: teks=20,85:30° | 75,20:60°");
+    L.push("");
+    L.push("Contoh:");
+    L.push("[[bangun: bentuk=segitiga-siku; alas=6; tinggi=8; labelalas=6 cm; labeltinggi=8 cm; labelmiring=x]]");
+    L.push("[[bangun: bentuk=segitiga-siku; alas=5; tinggi=12; labelalas=5 cm; labeltinggi=t; labelmiring=13 cm]]");
+    L.push("[[bangunruang: bentuk=balok; panjang=12; lebar=4; tinggi=3; labelpanjang=12 cm; labellebar=4 cm; labeltinggi=3 cm]]");
+    L.push("[[bangunruang: bentuk=kerucut; jari=5; tinggi=12; labeljari=5 cm; labeltinggi=12 cm]]");
     L.push("[[grafik: f1=x^2; f2=2*x+1; xmin=-5; xmax=5; ymin=-5; ymax=10]]");
     L.push("[[tabel: judul=Data gerak; header=Waktu (s),Jarak (m); baris=1,60 | 2,120 | 3,180]]");
-    L.push("[[bangun: bentuk=segitiga-siku; alas=6; tinggi=8]]");
-    L.push("[[bangunruang: bentuk=tabung; jari=4; tinggi=8]]");
     L.push("[[garisbilangan: min=-5; max=5; step=1; titik=3:A]]");
     L.push("[[venn: a=Matematika; b=IPA; onlyA=5; onlyB=4; ab=2]]");
     L.push("[[statistik: tipe=batang; label=Sen,Sel,Rab; data=10,15,8]]");
-    L.push("[[histogram: batas=10,20,30,40; frekuensi=4,7,3]]");
-    L.push("[[pencar: x=1,2,3,4; y=2,4,5,9]]");
-    L.push("[[pohonfaktor: n=60]]");
+    L.push("");
+    L.push("Aturan gambar bangun:");
+    L.push("- Angka ukuran (alas=, tinggi=, …) menentukan BENTUK gambar, jadi isi dengan ukuran sebenarnya — termasuk sisi yang ditanyakan (isi nilai jawabannya).");
+    L.push("- Tanpa parameter label, angka ukuran itu IKUT TERCETAK di gambar. Sisi yang DITANYAKAN wajib diberi label huruf (mis. labeltinggi=x) supaya jawabannya tidak tercetak. Sisi yang diketahui beri label bersatuan (mis. labelalas=6 cm). labelxxx=- berarti tanpa label.");
+    L.push("- Segitiga istimewa: pakai segitiga-siku dengan perbandingan sisi yang benar (45°-45°-90°: alas = tinggi; 30°-60°-90°: tinggi ≈ 1.73 × alas), lalu tulis besar sudutnya dengan teks=. JANGAN memakai [[sudut: …]] untuk segitiga — hasilnya selalu tergambar sama sisi.");
+    L.push("- Diagonal bidang/ruang, garis bantu, atau sisi lain yang tidak digambar sistem: jelaskan di kalimat soal (mis. \"panjang diagonal ruang AG\"), jangan dikarang dengan tag lain.");
+    L.push("- Di dalam tag, tanda derajat ditulis langsung (30°); aturan LaTeX hanya berlaku untuk teks soal.");
     L.push("Aturan tag:");
     L.push("- Pakai HANYA jenis tag dan nama parameter yang ada di daftar di atas. Tag karangan sendiri tidak tergambar dan muncul sebagai galat di layar murid.");
     L.push("- Pemisah antar parameter adalah titik koma, dan tag ditulis polos — jangan dibungkus tanda $ atau tanda kutip.");
