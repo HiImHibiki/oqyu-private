@@ -98,7 +98,7 @@ export default async function LatihanPage({ searchParams }: { searchParams: Prom
                   {riwayat.length > 0 && (
                     <details className="text-sm">
                       <summary className="flex cursor-pointer items-center gap-1.5 text-xs muted"><History size={13} /> Riwayat ({riwayat.length})</summary>
-                      <ul className="mt-2 divide-y" style={{ borderColor: "var(--line)" }}>
+                      <ul className="mt-2 divide-y" style={{ borderColor: "var(--border)" }}>
                         {riwayat.map((r) => (
                           <li key={r.attemptId} className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2">
                             <span className="text-xs muted tabular-nums">{tanggal(r.startedAt)}</span>

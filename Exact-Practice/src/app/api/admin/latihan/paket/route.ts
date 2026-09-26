@@ -1,12 +1,23 @@
 import { NextResponse } from "next/server";
 import { adminOrNull } from "@/lib/adminGuard";
-import { getPaket, hapusPaket, listPaket, savePaket } from "@/lib/practice/paket";
+import { buatKode, getPaket, hapusPaket, listPaket, savePaket } from "@/lib/practice/paket";
+import { getDb } from "@/lib/db";
 import { questionsByIds } from "@/lib/exams/bank";
 
-export async function GET() {
+export async function GET(req: Request) {
   const guru = await adminOrNull();
   if (!guru) return NextResponse.json({ error: "Hanya guru" }, { status: 403 });
-  return NextResponse.json({ paket: await listPaket() });
+  const id = new URL(req.url).searchParams.get("id");
+  if (!id) return NextResponse.json({ paket: await listPaket() });
+  /* Satu paket + nama murid yang sudah memasukkan kodenya (panel Ubah paket). */
+  const p = await getPaket(id);
+  if (!p) return NextResponse.json({ error: "Paket tidak ditemukan" }, { status: 404 });
+  const users = await getDb().listUsers(undefined, 2000);
+  const peserta = (p.peserta ?? []).map((uid) => {
+    const u = users.find((x) => x.id === uid);
+    return { id: uid, nama: u?.fullName || "(akun dihapus)", username: u?.email ?? "" };
+  });
+  return NextResponse.json({ paket: p, peserta });
 }
 
 /** POST: susun paket dari soal bank. body: { judul, mapel, kelas, topik, questionIds, durasiMenit } */
@@ -26,17 +37,27 @@ export async function POST(req: Request) {
   return NextResponse.json({ paket });
 }
 
-/** PATCH: ubah judul/durasi/terbit/set. body: { id, ...perubahan } */
+/** PATCH: ubah paket. body: { id, judul?, mapel?, kelas?, topik?, durasiMenit?,
+ *  terbit?, set?, hapusPeserta? (id murid dikeluarkan), kodeBaru? (true = kode
+ *  ujian diganti; murid yang sudah bergabung tetap bergabung) } */
 export async function PATCH(req: Request) {
   const guru = await adminOrNull();
   if (!guru) return NextResponse.json({ error: "Hanya guru" }, { status: 403 });
-  const b = (await req.json()) as { id: string; judul?: string; durasiMenit?: number; terbit?: boolean; set?: number | null };
+  const b = (await req.json()) as {
+    id: string; judul?: string; mapel?: string; kelas?: string; topik?: string; durasiMenit?: number;
+    terbit?: boolean; set?: number | null; hapusPeserta?: string; kodeBaru?: boolean;
+  };
   const p = await getPaket(b.id);
   if (!p) return NextResponse.json({ error: "Paket tidak ditemukan" }, { status: 404 });
   const paket = await savePaket({
     ...p,
     ...(b.judul !== undefined ? { judul: b.judul.trim() || p.judul } : {}),
-    ...(b.durasiMenit !== undefined ? { durasiMenit: Math.max(5, Number(b.durasiMenit) || p.durasiMenit) } : {}),
+    ...(b.mapel !== undefined ? { mapel: b.mapel.trim() } : {}),
+    ...(b.kelas !== undefined ? { kelas: b.kelas.trim() } : {}),
+    ...(b.topik !== undefined ? { topik: b.topik.trim() } : {}),
+    ...(b.hapusPeserta ? { peserta: (p.peserta ?? []).filter((x) => x !== b.hapusPeserta) } : {}),
+    ...(b.kodeBaru ? { kode: buatKode(new Set((await listPaket()).map((x) => x.kode))) } : {}),
+    ...(b.durasiMenit !== undefined ? { durasiMenit: Math.min(600, Math.max(5, Number(b.durasiMenit) || p.durasiMenit)) } : {}),
     ...(b.terbit !== undefined ? { terbit: Boolean(b.terbit) } : {}),
     // null/0 = bukan seri; angka positif = nomor set
     ...(b.set !== undefined ? { set: Number.isInteger(b.set) && (b.set as number) > 0 ? (b.set as number) : null } : {}),

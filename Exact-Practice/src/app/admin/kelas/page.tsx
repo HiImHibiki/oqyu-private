@@ -89,7 +89,7 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
               </div>
               <div className="grid gap-3">
                 {b.paket.map(({ judul, kode, st, live }) => (
-                  <div key={kode} className="rounded-lg border p-3" style={{ borderColor: "var(--line)" }}>
+                  <div key={kode} className="rounded-lg border p-3" style={{ borderColor: "var(--border)" }}>
                     <div className="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
                       <span className="font-medium">{judul}</span>
                       <span className="font-mono text-xs muted">{kode}</span>
@@ -134,7 +134,7 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
                         <table className="mt-1 w-full text-sm">
                           <tbody>
                             {[...st.selesai, ...st.perbaikan].sort((x, y) => (x.startedAt < y.startedAt ? 1 : -1)).map((r) => (
-                              <tr key={r.attemptId} className="border-t" style={{ borderColor: "var(--line)" }}>
+                              <tr key={r.attemptId} className="border-t" style={{ borderColor: "var(--border)" }}>
                                 <td className="py-1 pr-3 text-xs muted whitespace-nowrap">{jam(r.startedAt)}</td>
                                 <td className="py-1 pr-3"><span className="chip">{r.perbaikan ? "Perbaikan" : "Pengerjaan"}</span></td>
                                 <td className="py-1 pr-3 whitespace-nowrap">benar {r.benar}/{r.total}</td>

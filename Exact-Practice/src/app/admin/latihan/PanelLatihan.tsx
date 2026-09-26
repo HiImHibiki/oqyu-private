@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Loader2, Printer, Sparkles, Trash2, Eye, EyeOff, KeyRound, ListChecks, Square, Copy, Link2, Check, ClipboardPaste, ExternalLink, Pencil } from "lucide-react";
 import type { Paket } from "@/lib/practice/paket";
+import { SuntingPaket } from "./SuntingPaket";
 import { susunPrompt, type JenisSoal } from "@/lib/practice/promptAI";
 import { uraiNaskah } from "@/lib/practice/naskah";
 import { butirKeQuestion } from "@/lib/practice/worksheet";
@@ -140,17 +141,8 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
     await fetch("/api/admin/latihan/paket", { method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify({ id, ...perubahan }) });
     await muatPaket();
   };
-  /* Ganti judul dan nomor set lewat dialog kecil — cukup untuk pemakaian sesekali. */
-  const sunting = async (p: Paket) => {
-    const judul = prompt("Judul paket:", p.judul);
-    if (judul === null) return;
-    const setTeks = prompt("Set ke berapa? (kosongkan kalau bukan seri)", p.set ? String(p.set) : "");
-    if (setTeks === null) return;
-    const set = /^\d+$/.test(setTeks.trim()) && Number(setTeks) > 0 ? Number(setTeks) : null;
-    // Judul tidak menumpuk «— Set 2 — Set 3»: bagian set lama dilepas dulu.
-    const dasar = judul.trim().replace(/ — Set \d+$/, "") || p.judul;
-    await ubah(p.id, { judul: set ? `${dasar} — Set ${set}` : dasar, set });
-  };
+  /* Panel Ubah paket (judul, mapel, kelas, topik, durasi, set, terbit, murid, kode). */
+  const [disunting, setDisunting] = useState<Paket | null>(null);
   const hapus = async (p: Paket) => {
     if (!confirm(`Hapus paket "${p.judul}"? Soalnya tetap ada di bank.`)) return;
     await fetch(`/api/admin/latihan/paket?id=${p.id}`, { method: "DELETE" });
@@ -297,10 +289,10 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
         {tab === "bank" && (
           <div className="grid gap-3">
             <input className={input} placeholder="Cari soal (topik, mapel, kata di soal)…" value={cari} onChange={(e) => setCari(e.target.value)} />
-            <div className="max-h-80 overflow-auto rounded-lg border" style={{ borderColor: "var(--line)" }}>
+            <div className="max-h-80 overflow-auto rounded-lg border" style={{ borderColor: "var(--border)" }}>
               {bank.length === 0 && <p className="p-3 text-sm muted">Tidak ada soal.</p>}
               {bank.map((s) => (
-                <label key={s.id} className="flex cursor-pointer gap-2 border-b px-3 py-2 text-sm" style={{ borderColor: "var(--line)" }}>
+                <label key={s.id} className="flex cursor-pointer gap-2 border-b px-3 py-2 text-sm" style={{ borderColor: "var(--border)" }}>
                   <input type="checkbox" checked={pilih.has(s.id)} onChange={(e) => { const n = new Set(pilih); if (e.target.checked) n.add(s.id); else n.delete(s.id); setPilih(n); }} />
                   <span>
                     <span className="line-clamp-2">{s.stem}</span>
@@ -323,7 +315,7 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
         {paket.length === 0 && <p className="text-sm muted">Belum ada paket. Paket dari tombol «Ke Practice» di Exact Worksheet akan muncul di sini.</p>}
         <div className="grid gap-3">
           {paket.map((p) => (
-            <div key={p.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border p-3 text-sm" style={{ borderColor: "var(--line)", opacity: p.terbit ? 1 : 0.6 }}>
+            <div key={p.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border p-3 text-sm" style={{ borderColor: "var(--border)", opacity: p.terbit ? 1 : 0.6 }}>
               <div className="min-w-0 flex-1">
                 <div className="font-medium">{p.judul}</div>
                 <div className="my-1 flex flex-wrap items-center gap-1.5">
@@ -350,13 +342,14 @@ export function PanelLatihan({ awal }: { awal: Paket[] }) {
                 <button className="btn btn-ghost !px-2" title={p.terbit ? "Sembunyikan dari murid" : "Terbitkan ke murid"} onClick={() => ubah(p.id, { terbit: !p.terbit })}>
                   {p.terbit ? <Eye size={15} /> : <EyeOff size={15} />}
                 </button>
-                <button className="btn btn-ghost !px-2" title="Ubah judul / nomor set" onClick={() => sunting(p)}><Pencil size={15} /></button>
+                <button className="btn btn-ghost !px-2" title="Ubah paket (judul, durasi, murid, kode…)" onClick={() => setDisunting(p)}><Pencil size={15} /></button>
                 <button className="btn btn-ghost !px-2" title="Hapus paket" onClick={() => hapus(p)}><Trash2 size={15} /></button>
               </div>
             </div>
           ))}
         </div>
       </div>
+      {disunting && <SuntingPaket paket={disunting} onTutup={() => setDisunting(null)} onSimpan={muatPaket} />}
     </div>
   );
 }

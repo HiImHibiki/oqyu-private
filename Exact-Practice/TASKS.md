@@ -88,6 +88,8 @@
 
 - ✅ P-061 Kanvas di web admin dihapus (permintaan user: halaman jadi bermasalah; guru memakai aplikasi Exact Canvas di Mac). Pantau kelas & detail murid kini tanpa iframe kanvas — hanya progres, nomor sekarang, soal, jawaban & kunci; menyebut nama sketsa "Tanya · <murid> · tanggal" untuk dibuka di aplikasi. Helper kanvasMurid/urlLihatKanvas/tiketAdminCanvas/urlEditorKanvas dibuang. (Endpoint Canvas `?lihat=` & tiket admin tetap ada tapi tidak dipakai Practice)
 
+- ✅ P-062 Panel "Ubah paket" (tombol pensil di Buat latihan) menggantikan dialog prompt judul: judul, mapel, kelas, topik, **durasi (5–600 menit, berlaku untuk pengerjaan berikutnya)**, set ke-, status terbit, daftar murid bergabung + Keluarkan, dan Ganti kode (kode lama langsung tidak berlaku). API: GET `?id=` memberi nama peserta; PATCH menerima mapel/kelas/topik/hapusPeserta/kodeBaru. Token CSS `var(--line)` yang tidak terdefinisi diganti `var(--border)`. Diuji lewat API + headless (laptop & HP) pada paket sementara
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-035 CI GitHub Actions (typecheck, build, test) — B4
