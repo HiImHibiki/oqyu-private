@@ -84,6 +84,8 @@
 
 - ✅ P-059 Guru menulis di kanvas murid dari web admin: halaman detail murid menanam editor Canvas lengkap (`/admin?admin=<tiket>&buka=<kanvas>`) + tombol "Buka layar penuh"; tiket admin 12 jam diminta server Practice ke Canvas (loopback + PIN). Aplikasi Canvas di Mac tetap bisa dipakai bersamaan (kanvas sama). Diuji: goresan guru dari web tersimpan di kanvas murid
 
+- ✅ P-060 Rombak sesuai alur les privat (guru di laptop: buat soal → pantau + tulis di kanvas; murid di HP/tablet: kode → kerjakan + coret → hasil → perbaikan). Dibuang: Dashboard, Journey, Demo, Ringkasan admin (/admin → Pantau kelas), Bank soal Try Out, Tinjauan, Penilaian esai, Referensi, API /api/admin/{ai,questions,marks}, POST /api/attempts (mulai try out), tautan Ujian/Fitur/Harga & pemilih bahasa. Menu guru: Buat latihan · Pantau kelas · Murid; menu murid: Latihan · Pengaturan. Mesin ujian & kode Try Out di lib dibiarkan (dipakai pemutar ujian & tes)
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-035 CI GitHub Actions (typecheck, build, test) — B4

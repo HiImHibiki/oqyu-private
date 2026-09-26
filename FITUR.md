@@ -101,7 +101,7 @@ dibahas dengan user.
 | FP-23 | Susun paket dari bank, terbit/sembunyikan, durasi, nomor set, salin kode/tautan | `/admin/latihan` | 🟢 | |
 | FP-24 | Teks bacaan jadi stimulus panel kiri | ruang ujian | 🟡 🔗FW-11 | |
 | FP-25 | **Pantau kelas**: per murid (paket, sampai nomor berapa, nomor salah), per paket (nomor paling sering salah) | `/admin/kelas` | 🟢 | ubah → progres langsung per paket (P-051) |
-| FP-26 | Ringkasan admin | `/admin` | 🟡 | |
+| FP-26 | Ringkasan admin | `/admin` | 🟡 | hapus → /admin = Pantau kelas (P-060) |
 | FP-27 | Kelola peserta: setujui, peran, akomodasi waktu (1×/1,5×/2×) | `/admin/peserta` | 🟢 | ubah → tanpa persetujuan (P-044) |
 
 ### Integrasi Canvas di Practice
@@ -123,15 +123,15 @@ dibahas dengan user.
 ### Warisan Exact Try Out
 | Kode | Fitur | Di mana | Label | Keputusan |
 |---|---|---|---|---|
-| FP-50 | Ujian **SAT / UTBK / CSCA / A Level** (blueprint, skoring IRT, modul adaptif SAT) + bank ±2.000 soal | `question-bank/`, `src/lib/exams/` | 🔴 | |
-| FP-51 | **Dashboard** skor & tren, mulai try out | `/dashboard` | 🔴 | |
-| FP-52 | **Journey** | `/journey` | 🔴 | |
+| FP-50 | Ujian **SAT / UTBK / CSCA / A Level** (blueprint, skoring IRT, modul adaptif SAT) + bank ±2.000 soal | `question-bank/`, `src/lib/exams/` | 🔴 | hapus dari menu (mesin tetap di lib) (P-060) |
+| FP-51 | **Dashboard** skor & tren, mulai try out | `/dashboard` | 🔴 | hapus (P-060) |
+| FP-52 | **Journey** | `/journey` | 🔴 | hapus (P-060) |
 | FP-53 | **Leaderboard** | `/leaderboard` | 🔴  | hapus (P-055) |
-| FP-54 | **Demo** ujian | `/demo` | 🔴 | |
-| FP-55 | Bank soal Try Out + **tinjauan** soal + pembuat soal AI (Claude/Gemini/OpenAI API) | `/admin/soal`, `/admin/tinjauan`, `/api/admin/ai/*`, `prompts/` | 🔴 | |
-| FP-56 | Penilaian **esai** dengan rubrik | `/admin/esai` | 🔴 | |
-| FP-57 | Referensi (lembar rumus/ujian) | `/admin/referensi` | 🔴 | |
-| FP-58 | Tema (9) & bahasa (ID/EN/…) | `/pengaturan` | 🟡 | |
+| FP-54 | **Demo** ujian | `/demo` | 🔴 | hapus (P-060) |
+| FP-55 | Bank soal Try Out + **tinjauan** soal + pembuat soal AI (Claude/Gemini/OpenAI API) | `/admin/soal`, `/admin/tinjauan`, `/api/admin/ai/*`, `prompts/` | 🔴 | hapus (P-060) |
+| FP-56 | Penilaian **esai** dengan rubrik | `/admin/esai` | 🔴 | hapus (P-060) |
+| FP-57 | Referensi (lembar rumus/ujian) | `/admin/referensi` | 🔴 | hapus (P-060) |
+| FP-58 | Tema (9) & bahasa (ID/EN/…) | `/pengaturan` | 🟡 | pemilih bahasa dihapus dari menu (P-060) |
 | FP-59 | Hak data pribadi: ekspor JSON & hapus akun; halaman Ketentuan & Privasi | `/pengaturan`, `/ketentuan`, `/privasi` | 🟡 | |
 | FP-60 | Mode Supabase (driver Postgres, 15 migrasi) | `src/lib/db/supabase.ts`, `supabase/` | 🔴 (produksi pakai mode berkas) | |
 

@@ -16,7 +16,7 @@ export default async function PesertaPage({
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-8">
-      <PageHead title="Peserta" subtitle={`${users.length} akun ditampilkan.`} />
+      <PageHead title="Murid" subtitle={`${users.length} akun ditampilkan.`} />
       <UserTable rows={JSON.parse(JSON.stringify(users))} q={q ?? ""} meId={me.id} canEditRole={me.role === "admin"} />
     </div>
   );

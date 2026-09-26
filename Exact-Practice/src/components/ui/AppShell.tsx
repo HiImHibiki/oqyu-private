@@ -1,17 +1,14 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { BarChart3, GraduationCap, LogOut, Route, Settings, PenLine } from "lucide-react";
+import { GraduationCap, LogOut, Settings, PenLine } from "lucide-react";
 import { Logo } from "./SiteHeader";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import { LocaleSwitcher } from "./LocaleSwitcher";
 import { useI18n } from "./I18nProvider";
 import type { MessageKey } from "@/lib/i18n/dictionaries";
 
-const NAV: { href: string; key: MessageKey; icon: typeof BarChart3 }[] = [
+const NAV: { href: string; key: MessageKey; icon: typeof PenLine }[] = [
   { href: "/latihan", key: "nav.latihan", icon: PenLine },
-  { href: "/dashboard", key: "nav.dashboard", icon: BarChart3 },
-  { href: "/journey", key: "nav.journey", icon: Route },
   { href: "/pengaturan", key: "nav.settings", icon: Settings },
 ];
 
@@ -66,7 +63,6 @@ export function AppShell({
             </div>
           </div>
           <div className="mt-2.5 flex gap-1.5">
-            <LocaleSwitcher compact />
             <ThemeSwitcher compact />
             <button className="btn btn-ghost !px-2.5 min-h-11 min-w-11" title={t("nav.signOut")}
               aria-label={t("nav.signOut")} onClick={signOut}>
@@ -90,7 +86,6 @@ export function AppShell({
         >
           <Logo small />
           <span className="ml-auto flex items-center gap-1.5">
-            <LocaleSwitcher compact />
             <ThemeSwitcher compact />
             <button
               className="btn btn-ghost !px-2.5 min-h-11 min-w-11"

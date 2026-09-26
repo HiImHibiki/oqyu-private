@@ -30,7 +30,7 @@ export function AdminLoginForm({ signedInAs }: { signedInAs: string | null }) {
       setErr("Akun ini bukan admin. Hubungi pemilik akun admin untuk diberi akses.");
       return;
     }
-    router.push("/admin");
+    router.push("/admin/kelas");
     router.refresh();
   }
 

@@ -5,7 +5,7 @@ import { NextResponse, type NextRequest } from "next/server";
  * akun, dan hak aksesnya sudah diperiksa loadAttempt() di halaman masing-masing.
  * /admin punya penjaganya sendiri (requireAdmin) karena halaman masuknya
  * berada di bawah path yang sama. */
-const PROTECTED = ["/dashboard", "/journey", "/pengaturan", "/latihan"];
+const PROTECTED = ["/pengaturan", "/latihan"];
 
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
