@@ -75,6 +75,9 @@
 ## QA menyeluruh (26 Sep 2026)
 - ✅ P-054 QA ujung-ke-ujung di server lokal (skrip API + Chrome headless): akun & akses (fitur terhapus 404, murid ditolak dari admin), tempel naskah, kode ujian (tutup/buka paket), pengerjaan berwaktu (soal tanpa kunci, lanjutkan attempt, kirim, kosong = salah), hasil (guru boleh lihat, murid lain tidak), perbaikan (nomor salah saja, tanpa waktu, nilai 50 → 75), cetak PDF soal/berkunci lewat Worksheet, progres langsung di Pantau kelas, kanvas coret Canvas (akun otomatis, goresan tersimpan di Canvas guru), tampilan desktop & HP 390px (tanpa gulir mendatar, tanpa galat JS). 70 pemeriksaan; 3 "gagal" ternyata pencocokan HTML di skrip (penanda `<!-- -->` React), bukan bug. Perbaikan dari QA: judul panel "Kanvas coret" (dulu menyuruh "tekan Tanya guru"), laci daftar soal tertutup di HP (dulu menutupi soal)
 
+- ✅ P-055 Papan peringkat dihapus (halaman, API, menu murid & header, metode `leaderboard` di kedua driver DB, tipe LeaderRow) — permintaan user 26 Sep 2026
+- ✅ P-056 Judul tab halaman hasil "Hasil latihan" (dulu "Hasil try out")
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-035 CI GitHub Actions (typecheck, build, test) — B4

@@ -19,7 +19,7 @@ import { PapanHasil } from "./PapanHasil";
 import type { ScoreReport } from "@/lib/exams/scoring";
 import type { ExamCode, ProctorLog, ResponseValue } from "@/lib/types";
 
-export const metadata = { title: "Hasil try out" };
+export const metadata = { title: "Hasil latihan" };
 
 export default async function HasilPage({ params }: { params: Promise<{ attemptId: string }> }) {
   const { attemptId } = await params;

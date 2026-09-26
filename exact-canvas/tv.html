@@ -25,7 +25,17 @@
       #pesan small { display: block; font-size: 15px; color: var(--ink-soft); margin-top: 8px; }
 
       /* ── Murid (HP) ─────────────────────────────────────────────── */
-      .hp { cursor: auto; }
+      /* HP/laptop murid: kursor kembali (TV tetap tanpa kursor). `body` perlu
+         disebut sendiri — aturan `html, body { cursor: none }` di atas berlaku
+         langsung ke body, jadi kelas .hp di html saja tidak cukup (kursor hilang
+         saat mencoret di laptop, 26 Sep 2026). */
+      .hp, .hp body { cursor: auto; }
+      .hp button:not(:disabled) { cursor: pointer; }
+      /* Pena: titik kecil bercincin putih — kelihatan di kertas putih maupun
+         tema gelap; titik panasnya tepat di tengah = ujung goresan. */
+      .hp.mencoret:not(.menghapus) #aktif {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='8' cy='8' r='5' fill='none' stroke='white' stroke-width='3'/%3E%3Ccircle cx='8' cy='8' r='5' fill='none' stroke='%2324262b' stroke-width='1.5'/%3E%3Ccircle cx='8' cy='8' r='1.5' fill='%2324262b'/%3E%3C/svg%3E") 8 8, crosshair;
+      }
       #masuk, #akun, #setuju { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; padding: 24px; background: var(--bg); overflow: hidden; }
       #masuk.tampil, #akun.tampil, #setuju.tampil { display: flex; }
       #masuk form, #akun form, #setuju form { width: 100%; max-width: 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }

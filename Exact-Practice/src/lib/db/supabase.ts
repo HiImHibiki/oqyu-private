@@ -5,7 +5,7 @@ import {
   isExpired, shortName,
   type AdminOverview, type AdminUserRow, type AffiliateRecord, type AffiliateStats,
   type AttemptRecord, type CommissionRecord, type EntitlementRecord, type FullDb,
-  type ItemOutcomeRow, type LeaderRow, type OrderRecord, type PayoutRecord,
+  type ItemOutcomeRow, type OrderRecord, type PayoutRecord,
   type ReferralRecord, type SaveResult,
   type RubricMark,
   type AffiliateBalance,
@@ -374,25 +374,6 @@ export const supabaseDb: FullDb = {
     return (data ?? []).map((r) => toAttempt(r as AttemptRow));
   },
 
-  async leaderboard(exam): Promise<LeaderRow[]> {
-    const client = sb();
-    const { data, error } = await client
-      .from("v_leaderboard")
-      .select("user_id,full_name,school,attempts,avg_total,best_total")
-      .eq("exam", exam)
-      .order("best_total", { ascending: false, nullsFirst: false })
-      .limit(100);
-    if (error) throw new Error(`leaderboard: ${error.message}`);
-    return (data ?? []).map((r, i) => ({
-      rank: i + 1,
-      userId: r.user_id,
-      displayName: shortName(r.full_name ?? ""),
-      school: r.school,
-      attempts: Number(r.attempts ?? 0),
-      avgTotal: Number(r.avg_total ?? 0),
-      bestTotal: Number(r.best_total ?? 0),
-    }));
-  },
 
   /* ---------------------------------------------------------- afiliasi */
 

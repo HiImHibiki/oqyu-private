@@ -41,7 +41,7 @@ start_worksheet() {
   if [ -n "$(pid_port $PORT_WS)" ]; then echo "  Worksheet  sudah jalan"; return; fi
   [ -x "$WS/ocr-mac/visionocr" ] || { echo "  Worksheet  $(merah GAGAL): jalankan dulu $WS/pasang.sh"; return; }
   echo "  Worksheet  menyalakan…"
-  (cd "$WS" && nohup python3 cari.py >"$LOG/worksheet.log" 2>&1 &)
+  (cd "$WS" && nohup python3 cari.py </dev/null >"$LOG/worksheet.log" 2>&1 &)
   tunggu_port $PORT_WS 20 || echo "  Worksheet  $(merah 'tidak menyala') — ./run-server.sh logs worksheet"
 }
 
@@ -64,14 +64,14 @@ start_practice() {
   [ -d "$PR/node_modules" ] || (cd "$PR" && echo "  Practice   npm ci…" && npm ci --no-audit --no-fund >"$LOG/practice-install.log" 2>&1)
   if [ "$mode" = "dev" ]; then
     echo "  Practice   menyalakan (dev)…"
-    (cd "$PR" && nohup npx next dev -p $PORT_PR >"$LOG/practice.log" 2>&1 &)
+    (cd "$PR" && nohup npx next dev -p $PORT_PR </dev/null >"$LOG/practice.log" 2>&1 &)
   else
     if practice_perlu_build; then
       echo "  Practice   build produksi (±1 menit)…"
       (cd "$PR" && npx next build >"$LOG/practice-build.log" 2>&1) || { echo "  Practice   $(merah 'BUILD GAGAL') — lihat $LOG/practice-build.log"; return; }
     fi
     echo "  Practice   menyalakan (produksi)…"
-    (cd "$PR" && nohup npx next start -p $PORT_PR >"$LOG/practice.log" 2>&1 &)
+    (cd "$PR" && nohup npx next start -p $PORT_PR </dev/null >"$LOG/practice.log" 2>&1 &)
   fi
   tunggu_port $PORT_PR 90 || echo "  Practice   $(merah 'tidak menyala') — ./run-server.sh logs practice"
 }
@@ -89,7 +89,7 @@ start_canvas() {
     (cd "$CV" && VITE_PRACTICE_URL="$practice_url" npm run build >"$LOG/canvas-build.log" 2>&1) || echo "  Canvas     $(kuning 'build dist gagal') — /tv bisa 404"
   fi
   echo "  Canvas     membuka aplikasi (tauri dev, build Rust pertama bisa beberapa menit)…"
-  (cd "$CV" && VITE_PRACTICE_URL="$practice_url" nohup npm run app >"$LOG/canvas.log" 2>&1 &)
+  (cd "$CV" && VITE_PRACTICE_URL="$practice_url" nohup npm run app </dev/null >"$LOG/canvas.log" 2>&1 &)
   if tunggu_port $PORT_CV 240; then :; elif [ -n "$(pid_canvas_app)" ]; then
     echo "  Canvas     aplikasi terbuka; berbagi mati — nyalakan di Canvas: ⌘, → Share on this network"
   else echo "  Canvas     $(merah 'tidak menyala') — ./run-server.sh logs canvas"; fi

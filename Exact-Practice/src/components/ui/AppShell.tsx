@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { BarChart3, GraduationCap, Gift, LogOut, Route, Settings, ShoppingBag, Trophy, PenLine } from "lucide-react";
+import { BarChart3, GraduationCap, LogOut, Route, Settings, PenLine } from "lucide-react";
 import { Logo } from "./SiteHeader";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { LocaleSwitcher } from "./LocaleSwitcher";
@@ -12,7 +12,6 @@ const NAV: { href: string; key: MessageKey; icon: typeof BarChart3 }[] = [
   { href: "/latihan", key: "nav.latihan", icon: PenLine },
   { href: "/dashboard", key: "nav.dashboard", icon: BarChart3 },
   { href: "/journey", key: "nav.journey", icon: Route },
-  { href: "/leaderboard", key: "nav.leaderboard", icon: Trophy },
   { href: "/pengaturan", key: "nav.settings", icon: Settings },
 ];
 

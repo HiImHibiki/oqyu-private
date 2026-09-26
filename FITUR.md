@@ -126,7 +126,7 @@ dibahas dengan user.
 | FP-50 | Ujian **SAT / UTBK / CSCA / A Level** (blueprint, skoring IRT, modul adaptif SAT) + bank ±2.000 soal | `question-bank/`, `src/lib/exams/` | 🔴 | |
 | FP-51 | **Dashboard** skor & tren, mulai try out | `/dashboard` | 🔴 | |
 | FP-52 | **Journey** | `/journey` | 🔴 | |
-| FP-53 | **Leaderboard** | `/leaderboard` | 🔴 | |
+| FP-53 | **Leaderboard** | `/leaderboard` | 🔴  | hapus (P-055) |
 | FP-54 | **Demo** ujian | `/demo` | 🔴 | |
 | FP-55 | Bank soal Try Out + **tinjauan** soal + pembuat soal AI (Claude/Gemini/OpenAI API) | `/admin/soal`, `/admin/tinjauan`, `/api/admin/ai/*`, `prompts/` | 🔴 | |
 | FP-56 | Penilaian **esai** dengan rubrik | `/admin/esai` | 🔴 | |

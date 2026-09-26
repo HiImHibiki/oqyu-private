@@ -35,7 +35,6 @@ export function SiteHeader({ authed }: { authed?: boolean }) {
           <a href="#exams" className="muted hover:text-[var(--fg)]">{t("nav.exams")}</a>
           <a href="#features" className="muted hover:text-[var(--fg)]">{t("nav.features")}</a>
           <a href="#pricing" className="muted hover:text-[var(--fg)]">{t("nav.pricing")}</a>
-          <Link href="/leaderboard" className="muted hover:text-[var(--fg)]">{t("nav.leaderboard")}</Link>
         </nav>
         <div className="ml-auto flex items-center gap-2">
           <LocaleSwitcher compact />

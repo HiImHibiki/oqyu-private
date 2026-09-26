@@ -84,15 +84,6 @@ export interface AttemptRecord {
   submittedAt?: string | null;
 }
 
-export interface LeaderRow {
-  rank: number;
-  userId: string;
-  displayName: string;
-  school?: string | null;
-  attempts: number;
-  avgTotal: number;
-  bestTotal: number;
-}
 
 /* Nilai satu jawaban esai.
  *
@@ -198,7 +189,6 @@ export interface Db {
   attemptsOf(userId: string): Promise<AttemptRecord[]>;
 
   /* --- papan peringkat --- */
-  leaderboard(exam: ExamCode): Promise<LeaderRow[]>;
 }
 
 /** Antarmuka penuh yang dipakai getDb(). */

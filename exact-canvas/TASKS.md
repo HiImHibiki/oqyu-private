@@ -63,6 +63,8 @@
 
 - ✅ C-050 Mode tertanam (Practice): langsung bergabung tanpa layar "Join the lesson", pena langsung aktif begitu izin coret ada, tombol Ask/Raise hand/Got it/Group/PDF/🌙 disembunyikan. Diuji: goresan dari iframe tersimpan ke kanvas "Tanya · <murid>" di vault guru (↔ P-054)
 
+- ✅ C-051 Kursor hilang saat mencoret di laptop (halaman murid): aturan TV `html, body { cursor: none }` masih berlaku di body walau mode .hp — kini `.hp body` kursor normal, pena = titik bercincin (SVG, titik panas di tengah), hapus = cell, tombol = pointer. Diuji computed style di Chrome
+
 ## Direncanakan (lihat PLANS.md Backlog)
 - ❌ C-043 Jalur sesi Practice untuk Practice di cloud — tidak diperlukan, user memilih tetap Mac + Tunnel (24 Sep 2026)
 - ⬜ C-044 CI build — B3

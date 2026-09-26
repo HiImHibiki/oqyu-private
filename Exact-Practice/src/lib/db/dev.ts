@@ -7,7 +7,7 @@ import {
   isExpired, shortName,
   type AdminOverview, type AdminUserRow, type AffiliateRecord, type AffiliateStats,
   type AttemptRecord, type CommissionRecord, type EntitlementRecord, type FullDb,
-  type LeaderRow, type OrderRecord, type PayoutMethod, type PayoutRecord,
+  type OrderRecord, type PayoutMethod, type PayoutRecord,
   type ReferralRecord, type SaveResult,
   type AffiliateBalance,
 } from "./types";
@@ -563,30 +563,6 @@ const devDbRaw: FullDb = {
       .sort((x, y) => y.startedAt.localeCompare(x.startedAt));
   },
 
-  async leaderboard(exam): Promise<LeaderRow[]> {
-    const d = await read();
-    const byUser = new Map<string, { totals: number[]; name: string; school?: string }>();
-    for (const a of d.attempts) {
-      if (a.exam !== exam || a.status !== "submitted" || a.isDemo || !a.score) continue;
-      const integrity = (a.integrity as { integrityScore?: number } | undefined)?.integrityScore ?? 100;
-      if (integrity < 60) continue;                  // attempt bermasalah tidak masuk papan
-      const u = d.users.find((x) => x.id === a.userId);
-      const cur = byUser.get(a.userId) ?? { totals: [], name: u?.fullName ?? "Peserta", school: u?.school };
-      cur.totals.push((a.score as ScoreReport).total ?? 0);
-      byUser.set(a.userId, cur);
-    }
-    return [...byUser.entries()]
-      .map(([userId, v]) => ({
-        userId,
-        displayName: shortName(v.name),
-        school: v.school,
-        attempts: v.totals.length,
-        avgTotal: Math.round((v.totals.reduce((a, b) => a + b, 0) / v.totals.length) * 10) / 10,
-        bestTotal: Math.max(...v.totals),
-      }))
-      .sort((a, b) => b.bestTotal - a.bestTotal)
-      .map((r, i) => ({ rank: i + 1, ...r }));
-  },
 
   /* ---------------------------------------------------------- afiliasi */
 
