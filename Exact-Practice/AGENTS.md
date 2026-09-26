@@ -196,5 +196,9 @@ dan `npm run test:exams` (dengan `EXACT_DATA_DIR` sementara
     server ke browser untuk DevTools — isi `question-bank.json` (kunci + pembahasan) ikut
     terkirim ke halaman ujian (terbukti 24 Sep 2026, P-040). `npm run dev` hanya untuk
     pengembangan di localhost.
+10b. **Akses internet hanya lewat `run-server.sh publik on`** (Cloudflare Tunnel dari laptop):
+    hanya Practice (mode produksi — ditolak kalau dev) dan Canvas; Worksheet TIDAK PERNAH
+    dibuka. Alamat publik masuk ke Practice lewat `.run/publik.env` (EXACT_PRACTICE_PUBLIC,
+    EXACT_CANVAS_PUBLIC dibaca saat jalan → cukup restart, tanpa build ulang).
 11. **Rahasia tidak masuk git**: `.env.local`, `practice.json`, `~/.cloudflared/*`,
     folder data.

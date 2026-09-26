@@ -2,7 +2,7 @@
  * (sesi akun Canvas atau akun otomatis untuk murid username Practice), dan
  * login murid dengan akun Canvas (lihat lib/auth.ts). */
 const URL_LOKAL = process.env.EXACT_CANVAS_URL || "http://127.0.0.1:4747";
-const URL_PUBLIK = process.env.EXACT_CANVAS_PUBLIC || "https://meet2.exactprintsolution.com";
+const URL_PUBLIK = process.env.EXACT_CANVAS_PUBLIC || "http://localhost:4747";
 const PIN = process.env.EXACT_CANVAS_PIN || "";
 
 const kepala = () => ({ "Content-Type": "application/json", ...(PIN ? { "x-exact-pin": PIN } : {}) });

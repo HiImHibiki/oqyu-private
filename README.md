@@ -14,7 +14,10 @@ Basis kode per 24 Sep 2026, digabung dari tiga repo asal dengan riwayat commit u
 `Exact-Digital/Exact-Practice`.
 
 Menjalankan semua server di Mac ini: `./run-server.sh` (status: `./run-server.sh status`,
-matikan: `stop`, log: `logs <worksheet|practice|canvas>`, Practice mode dev: `dev`).
+matikan: `stop`, log: `logs <worksheet|practice|canvas|tunnel>`, Practice mode dev: `dev`).
+Buka ke internet lewat Cloudflare Tunnel (server tetap di laptop): `./run-server.sh publik on`,
+tutup: `publik off`. Tanpa setup alamatnya acak `*.trycloudflare.com`; dengan domain sendiri:
+`./run-server.sh publik setup <host-practice> <host-canvas>` sekali. Worksheet tidak pernah dibuka.
 
 Pemasangan di Mac: `Exact-Practice/PASANG-MAC-BARU.md`. Daftar fitur: [`FITUR.md`](FITUR.md).
 Untuk pengembang (dan Claude): mulai dari [`CLAUDE.md`](CLAUDE.md).

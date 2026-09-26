@@ -78,6 +78,8 @@
 - ✅ P-055 Papan peringkat dihapus (halaman, API, menu murid & header, metode `leaderboard` di kedua driver DB, tipe LeaderRow) — permintaan user 26 Sep 2026
 - ✅ P-056 Judul tab halaman hasil "Hasil latihan" (dulu "Hasil try out")
 
+- ✅ P-057 Akses internet on/off lewat Cloudflare Tunnel dari laptop: `run-server.sh publik on|off|status|setup` — tanpa setup = 2 tunnel cepat trycloudflare (Practice & Canvas), dengan `setup <host> <host>` = named tunnel domain sendiri (ingress Practice+Canvas saja). Practice di-restart dengan alamat publik (tanpa build ulang), ditolak bila mode dev. Proses latar dilepas penuh (`lepas`: fd warisan ditutup, sesi sendiri) — pipa pemanggil tak lagi menggantung. Default `EXACT_CANVAS_PUBLIC` tidak lagi domain Mac teman (localhost). Diuji lewat internet: halaman 200, login (cookie Secure), papan pakai alamat Canvas publik, goresan tersimpan lewat WebSocket tunnel, Worksheet tak terjangkau; lalu ditutup lagi (sebagian P-039)
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-035 CI GitHub Actions (typecheck, build, test) — B4
