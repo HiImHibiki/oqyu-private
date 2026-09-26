@@ -948,6 +948,16 @@ async function keluarAkun() {
  * tidak melewati form akun sama sekali.
  */
 function layarMasuk(): Promise<void> {
+  /* Tertanam di halaman latihan Exact Practice: tidak ada layar penuh maupun
+   * bunyi yang perlu izin ketukan, jadi langsung bergabung — kanvas coret
+   * murid tersambung ke Mac guru tanpa satu ketukan pun (25 Sep 2026). */
+  if (tertanam) {
+    return api('/api/kelas/masuk', { method: 'POST', json: { murid: muridId, nama: namaSaya } })
+      .then(() => undefined)
+      .catch((err: unknown) => {
+        tampilkanStatus(`Could not join: ${err instanceof Error ? err.message : String(err)}`, true)
+      })
+  }
   return new Promise((selesai) => {
     const masuk = el('masuk')
     const form = el('form-masuk') as HTMLFormElement
@@ -1918,8 +1928,13 @@ function terapkanIzin(boleh: boolean, sketsaId: string | null) {
     selesaiCoret()
     tampilkanStatus('The teacher turned off drawing.', true)
   } else if (boleh && berubah && !modeCoret) {
-    tampilkanStatus('You may draw on your canvas — tap ✏️', true)
-    bunyi('bahas')
+    /* Tertanam di Exact Practice: pena langsung aktif — coretan murid
+     * tersambung ke Mac guru tanpa ketukan tambahan. */
+    if (tertanam) void mulaiCoret()
+    else {
+      tampilkanStatus('You may draw on your canvas — tap ✏️', true)
+      bunyi('bahas')
+    }
   }
 }
 

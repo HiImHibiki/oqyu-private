@@ -101,6 +101,9 @@ export function ExamPlayer(props: ExamPlayerProps) {
   const [left, setLeft] = useState(initial.remainingSec);
   const [showTimer, setShowTimer] = useState(true);
   const [navOpen, setNavOpen] = useState(true);
+  /* Di HP daftar soal adalah laci melayang yang menutupi soal — mulai
+   * tertutup; di layar lebar tetap terbuka seperti biasa. */
+  useEffect(() => { if (window.innerWidth < 768) setNavOpen(false); }, []);
   const [calcOpen, setCalcOpen] = useState(false);
   /* Latihan Exact Practice (les privat): tanpa layar penuh, tanpa proctoring,
    * tanpa "Tanya guru" — guru ada di ruangan / panggilan yang sama. */

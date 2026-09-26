@@ -72,6 +72,9 @@
 - ✅ P-052 Tanpa kunci layar: layar penuh, proctoring, skor integritas, dan gerbang mulai dimatikan untuk LATIHAN (langsung mulai)
 - ✅ P-053 Tanya guru dihapus (tombol, POST /api/latihan/tanya, tanyaGuru, potretHtml); papan Canvas lewat `GET /api/latihan/papan`: murid username dibuatkan akun Canvas otomatis (↔ C-049). Uji: test:exams 98/98 (+11) · e2e salinan terpisah (murid & guru, tangkapan layar)
 
+## QA menyeluruh (26 Sep 2026)
+- ✅ P-054 QA ujung-ke-ujung di server lokal (skrip API + Chrome headless): akun & akses (fitur terhapus 404, murid ditolak dari admin), tempel naskah, kode ujian (tutup/buka paket), pengerjaan berwaktu (soal tanpa kunci, lanjutkan attempt, kirim, kosong = salah), hasil (guru boleh lihat, murid lain tidak), perbaikan (nomor salah saja, tanpa waktu, nilai 50 → 75), cetak PDF soal/berkunci lewat Worksheet, progres langsung di Pantau kelas, kanvas coret Canvas (akun otomatis, goresan tersimpan di Canvas guru), tampilan desktop & HP 390px (tanpa gulir mendatar, tanpa galat JS). 70 pemeriksaan; 3 "gagal" ternyata pencocokan HTML di skrip (penanda `<!-- -->` React), bukan bug. Perbaikan dari QA: judul panel "Kanvas coret" (dulu menyuruh "tekan Tanya guru"), laci daftar soal tertutup di HP (dulu menutupi soal)
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-035 CI GitHub Actions (typecheck, build, test) — B4

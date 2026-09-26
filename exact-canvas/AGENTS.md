@@ -67,6 +67,8 @@ npm ci
 npm run dev                  # Vite saja (UI di browser, tanpa Rust) — port 1421
 npm run build                # tsc --noEmit + vite build — WAJIB hijau
 npm run app                  # tauri dev (butuh Rust stable + Xcode CLT)
+# `tauri dev` menyajikan halaman TV/HP murid (/tv, /admin) dari folder dist/ — jalankan
+# `npm run build` dulu (dan ulangi setelah mengubah src/tv atau tv.html), kalau tidak /tv = 404.
 VITE_PRACTICE_URL="https://PRACTICE_HOST" npm run app:build   # .app + .dmg
 ditto "src-tauri/target/release/bundle/macos/Exact Canvas.app" "/Applications/Exact Canvas.app"
 node scripts/salin-diagrams.mjs ../Exact-Worksheet/wsm/diagrams.js   # sinkron diagram

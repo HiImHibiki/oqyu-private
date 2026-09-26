@@ -122,6 +122,10 @@
       .hp #aktif { touch-action: none; }
       /* Tertanam di Exact Practice: tombol Practice tidak ada gunanya di dalam Practice sendiri. */
       html.embed #tombol-latihan { display: none; }
+      /* Di halaman latihan Practice tidak ada "Tanya": guru les privat ada di
+         ruangan/panggilan yang sama, kanvas coret langsung tersambung. */
+      html.embed #tombol-tanya, html.embed #tombol-tangan, html.embed #tombol-paham,
+      html.embed #tombol-grup, html.embed #tombol-ekspor, html.embed #tombol-tunggu { display: none; }
     </style>
   </head>
   <body>
