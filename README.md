@@ -13,5 +13,8 @@ Basis kode per 24 Sep 2026, digabung dari tiga repo asal dengan riwayat commit u
 `Exact-Digital/Exact-Worksheet`, `ricokurniawan18-ui/exact-canvas`,
 `Exact-Digital/Exact-Practice`.
 
+Menjalankan semua server di Mac ini: `./run-server.sh` (status: `./run-server.sh status`,
+matikan: `stop`, log: `logs <worksheet|practice|canvas>`, Practice mode dev: `dev`).
+
 Pemasangan di Mac: `Exact-Practice/PASANG-MAC-BARU.md`. Daftar fitur: [`FITUR.md`](FITUR.md).
 Untuk pengembang (dan Claude): mulai dari [`CLAUDE.md`](CLAUDE.md).
