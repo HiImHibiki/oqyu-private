@@ -8,7 +8,6 @@ import { milikPaket, ringkasAttempt, statusPaket, tutupYangKedaluwarsa, type Rin
 import { PageHead } from "@/components/ui/AppShell";
 import { SegarkanOtomatis } from "./SegarkanOtomatis";
 import { posisiDari } from "@/lib/practice/posisi";
-import { kanvasMurid, urlLihatKanvas } from "@/lib/practice/canvas";
 
 export const metadata = { title: "Pantau kelas" };
 export const dynamic = "force-dynamic";
@@ -31,7 +30,7 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
   const bank = await questionsByIds(semuaPaket.flatMap((p) => p.questionIds));
 
   type Live = { r: RingkasAttempt; sisa: number | null; nomor: number | null; attemptId: string };
-  const baris: { nama: string; username: string; id: string; kanvas: string | null; paket: { judul: string; kode: string; st: StatusPaket; live: Live | null }[] }[] = [];
+  const baris: { nama: string; username: string; id: string; paket: { judul: string; kode: string; st: StatusPaket; live: Live | null }[] }[] = [];
   const perPaket = new Map<string, { judul: string; peserta: number; salah: Map<number, number>; total: number }>();
 
   for (const m of murid) {
@@ -61,21 +60,18 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
         perPaket.set(p.id, agg);
       }
     }
-    /* Kanvas coret hanya untuk murid yang sedang mengerjakan — itu yang perlu
-     * dilihat guru saat mengajar. */
-    const kanvas = daftar.some((d) => d.live) ? await kanvasMurid(m.id, m.fullName) : null;
-    if (daftar.length) baris.push({ nama: m.fullName, username: m.email, id: m.id, kanvas, paket: daftar });
+    if (daftar.length) baris.push({ nama: m.fullName, username: m.email, id: m.id, paket: daftar });
   }
   const ringkasPaket = [...perPaket.values()].map((p) => ({
     ...p, terbanyak: [...p.salah].sort((a, b) => b[1] - a[1]).slice(0, 8),
   }));
 
   /* Yang sedang mengerjakan di atas. */
-  baris.sort((x, y) => Number(!!y.kanvas || y.paket.some((p) => p.live)) - Number(!!x.kanvas || x.paket.some((p) => p.live)));
+  baris.sort((x, y) => Number(y.paket.some((p) => p.live)) - Number(x.paket.some((p) => p.live)));
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-8">
-      <PageHead title="Pantau kelas" subtitle="Murid yang sedang mengerjakan tampil di atas beserta kanvas coretnya — diperbarui otomatis." />
+      <PageHead title="Pantau kelas" subtitle="Murid yang sedang mengerjakan tampil di atas — diperbarui otomatis. Kanvas coret murid dibuka di aplikasi Exact Canvas." />
       <SegarkanOtomatis detik={5} />
 
       <section className="mb-8">
@@ -106,7 +102,7 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
                     </div>
 
                     {live && (
-                      <div className="mb-2 grid gap-3 rounded-md p-3 text-sm md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" style={{ background: "color-mix(in srgb, var(--warn) 10%, transparent)" }}>
+                      <div className="mb-2 rounded-md p-3 text-sm" style={{ background: "color-mix(in srgb, var(--warn) 10%, transparent)" }}>
                         <div>
                           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
                             <span className="chip" style={{ color: "var(--warn)" }}>{live.r.perbaikan ? "sedang perbaikan" : "sedang mengerjakan"}</span>
@@ -119,11 +115,8 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
                             <span>Salah <b style={{ color: "var(--danger)" }}>{live.r.salah.length}</b></span>
                           </div>
                           {live.r.salah.length > 0 && <div className="mt-1 text-xs">Salah di nomor <Nomor n={live.r.salah} warna="var(--danger)" /></div>}
-                          <Link href={`/admin/kelas/${live.attemptId}`} className="btn btn-primary mt-3 !py-1.5 text-sm">Lihat soal, jawaban & kanvas</Link>
+                          <Link href={`/admin/kelas/${live.attemptId}`} className="btn btn-primary mt-3 !py-1.5 text-sm">Lihat soal & jawaban</Link>
                         </div>
-                        {b.kanvas
-                          ? <iframe src={urlLihatKanvas(b.kanvas)} className="h-64 w-full rounded-md" style={{ border: "1px solid var(--line)", background: "#fff" }} title={`Kanvas ${b.nama}`} />
-                          : <div className="grid h-64 place-items-center rounded-md text-xs muted" style={{ border: "1px dashed var(--line)" }}>Kanvas: Exact Canvas belum menyala</div>}
                       </div>
                     )}
 

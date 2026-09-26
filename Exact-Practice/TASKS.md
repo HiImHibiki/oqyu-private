@@ -86,6 +86,8 @@
 
 - ✅ P-060 Rombak sesuai alur les privat (guru di laptop: buat soal → pantau + tulis di kanvas; murid di HP/tablet: kode → kerjakan + coret → hasil → perbaikan). Dibuang: Dashboard, Journey, Demo, Ringkasan admin (/admin → Pantau kelas), Bank soal Try Out, Tinjauan, Penilaian esai, Referensi, API /api/admin/{ai,questions,marks}, POST /api/attempts (mulai try out), tautan Ujian/Fitur/Harga & pemilih bahasa. Menu guru: Buat latihan · Pantau kelas · Murid; menu murid: Latihan · Pengaturan. Mesin ujian & kode Try Out di lib dibiarkan (dipakai pemutar ujian & tes)
 
+- ✅ P-061 Kanvas di web admin dihapus (permintaan user: halaman jadi bermasalah; guru memakai aplikasi Exact Canvas di Mac). Pantau kelas & detail murid kini tanpa iframe kanvas — hanya progres, nomor sekarang, soal, jawaban & kunci; menyebut nama sketsa "Tanya · <murid> · tanggal" untuk dibuka di aplikasi. Helper kanvasMurid/urlLihatKanvas/tiketAdminCanvas/urlEditorKanvas dibuang. (Endpoint Canvas `?lihat=` & tiket admin tetap ada tapi tidak dipakai Practice)
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-035 CI GitHub Actions (typecheck, build, test) — B4

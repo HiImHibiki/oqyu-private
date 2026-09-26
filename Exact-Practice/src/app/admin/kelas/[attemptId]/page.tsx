@@ -9,7 +9,6 @@ import { gradeAnswer } from "@/lib/exams/grade";
 import { getPaket } from "@/lib/practice/paket";
 import { jawabanMuridTeks, kunciTeks } from "@/lib/practice/latihan";
 import { posisiDari } from "@/lib/practice/posisi";
-import { kanvasMurid, tiketAdminCanvas, urlEditorKanvas } from "@/lib/practice/canvas";
 import { RichText, RichInline } from "@/components/exam/RichText";
 import { SegarkanOtomatis } from "../SegarkanOtomatis";
 import type { ResponseValue } from "@/lib/types";
@@ -21,8 +20,10 @@ const menit = (d: number) => `${Math.floor(d / 60)}:${String(d % 60).padStart(2,
 const lalu = (ms: number) => { const d = Math.round((Date.now() - ms) / 1000); return d < 60 ? `${d} dtk lalu` : `${Math.floor(d / 60)} mnt lalu`; };
 
 /** Pantau satu murid secara langsung: nomor yang sedang dibuka beserta
- *  soalnya, jawaban & kunci tiap nomor, dan kanvas coretnya (Exact Canvas).
- *  Diperbarui tiap 3 detik; jawaban murid terkirim ±1,5 detik setelah diisi. */
+ *  soalnya, serta jawaban & kunci tiap nomor. Diperbarui tiap 4 detik; jawaban
+ *  murid terkirim ±1,5 detik setelah diisi. Kanvas coret murid dibuka guru di
+ *  aplikasi Exact Canvas (Mac) — kanvas di web admin dihapus atas permintaan user
+ *  (26 Sep 2026: membuat halaman berat/bermasalah). */
 export default async function PantauMuridPage({ params }: { params: Promise<{ attemptId: string }> }) {
   await requireAdmin();
   const { attemptId } = await params;
@@ -49,14 +50,11 @@ export default async function PantauMuridPage({ params }: { params: Promise<{ at
   const dijawab = baris.filter((b) => b.ada).length, nBenar = baris.filter((b) => b.benar).length;
   const tenggat = a.sectionDeadlines?.latihan;
   const sisa = a.status === "in_progress" && !lay?.tanpaWaktu && tenggat ? remainingSec(tenggat) : null;
-  const kanvas = murid ? await kanvasMurid(murid.id, murid.fullName) : null;
-  const tiket = kanvas ? await tiketAdminCanvas() : null;
-  const editor = kanvas && tiket ? urlEditorKanvas(kanvas, tiket) : null;
 
   const warna = (b: (typeof baris)[number]) => (!b.ada ? "var(--fg-muted)" : b.benar ? "var(--accent)" : "var(--danger)");
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-6">
+    <div className="mx-auto max-w-5xl px-6 py-6">
       {a.status === "in_progress" && <SegarkanOtomatis detik={4} />}
       <Link href="/admin/kelas" className="mb-3 inline-flex items-center gap-1.5 text-sm muted hover:underline"><ArrowLeft size={14} /> Pantau kelas</Link>
 
@@ -86,34 +84,24 @@ export default async function PantauMuridPage({ params }: { params: Promise<{ at
         ))}
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-        <div className="grid content-start gap-4">
-          {a.status === "in_progress" && (
-            <section className="card p-4" style={{ borderColor: "var(--warn)" }}>
-              <div className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--warn)" }}>
-                Sedang dikerjakan {sekarang ? `— nomor ${sekarang.no}` : ""} {pos && <span className="font-normal normal-case muted">· {lalu(pos.at)}</span>}
-              </div>
-              {sekarang?.q ? <Soal b={sekarang} /> : <p className="text-sm muted">Menunggu murid membuka soal…</p>}
-            </section>
-          )}
-          {baris.map((b) => (
-            <section key={b.id} id={`no-${b.no}`} className="card p-4">
-              <Soal b={b} />
-            </section>
-          ))}
-        </div>
+      <p className="mb-4 text-xs muted">
+        Kanvas coret murid dibuka di aplikasi Exact Canvas (Mac): sketsa <b>Tanya · {murid?.fullName ?? "nama murid"} · tanggal hari ini</b>.
+      </p>
 
-        <div className="lg:sticky lg:top-4 lg:self-start">
-          <div className="card overflow-hidden">
-            <div className="flex items-center gap-2 border-b px-4 py-2 text-sm font-semibold" style={{ borderColor: "var(--border)" }}>
-              Kanvas murid — bisa ditulis guru
-              {editor && <a href={editor} target="_blank" rel="noreferrer" className="btn btn-ghost ml-auto !px-3 !py-1 text-xs">Buka layar penuh</a>}
+      <div className="grid max-w-3xl gap-4">
+        {a.status === "in_progress" && (
+          <section className="card p-4" style={{ borderColor: "var(--warn)" }}>
+            <div className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--warn)" }}>
+              Sedang dikerjakan {sekarang ? `— nomor ${sekarang.no}` : ""} {pos && <span className="font-normal normal-case muted">· {lalu(pos.at)}</span>}
             </div>
-            {editor
-              ? <iframe src={editor} className="block h-[78vh] w-full" style={{ border: 0, background: "#fff" }} title="Kanvas murid" allow="fullscreen" />
-              : <p className="p-4 text-sm muted">Exact Canvas belum menyala atau berbagi mati (⌘, → Share on this network).</p>}
-          </div>
-        </div>
+            {sekarang?.q ? <Soal b={sekarang} /> : <p className="text-sm muted">Menunggu murid membuka soal…</p>}
+          </section>
+        )}
+        {baris.map((b) => (
+          <section key={b.id} id={`no-${b.no}`} className="card p-4">
+            <Soal b={b} />
+          </section>
+        ))}
       </div>
     </div>
   );
