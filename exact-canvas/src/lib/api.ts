@@ -50,6 +50,17 @@ let adminMemori: string | null = null
 
 export function adminAktif(): string {
   if (adminMemori) return adminMemori
+  // Tiket sementara dari halaman guru Exact Practice (?admin=tk…) — disimpan
+  // seperti sandi admin supaya muat ulang di tab yang sama tetap masuk.
+  try {
+    const t = new URLSearchParams(location.search).get('admin')
+    if (t && t.startsWith('tk')) {
+      simpanAdmin(t)
+      return t
+    }
+  } catch {
+    /* bukan browser */
+  }
   try {
     return localStorage.getItem(KUNCI_ADMIN) ?? ''
   } catch {

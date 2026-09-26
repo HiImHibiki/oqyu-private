@@ -681,6 +681,13 @@ fn tulis_coretan_murid(id: &str, ops: &[Value]) -> Result<(), String> {
             }
         }
     }
+    // Halaman tambahan dari murid (tombol "+ Halaman") — lewat antrean yang
+    // sama dengan coretan supaya tidak saling menimpa berkasnya.
+    let tambah = ops.iter().filter(|op| op["tambahHalaman"].as_i64().unwrap_or(0) > 0).count() as i64;
+    if tambah > 0 {
+        let kini_hal = d["pages"].as_i64().unwrap_or(1).max(1);
+        d["pages"] = json!((kini_hal + tambah).min(MAKS_HALAMAN_MURID));
+    }
     let kini = sekarang();
     d["updated_at"] = json!(kini);
     vault::canvas_write(id.to_string(), d.to_string())?;
@@ -695,6 +702,30 @@ fn tulis_coretan_murid(id: &str, ops: &[Value]) -> Result<(), String> {
         rusqlite::params![id, judul, kini],
     );
     Ok(())
+}
+
+/// Batas halaman kanvas murid — cukup untuk satu sesi latihan panjang.
+const MAKS_HALAMAN_MURID: i64 = 30;
+
+#[derive(Deserialize)]
+pub struct Halaman {
+    pub murid: String,
+}
+
+/// Murid menambah satu halaman di bawah kanvasnya sendiri. Hanya pemilik sesi
+/// akun itu, dan hanya untuk kanvas yang boleh ia coret.
+pub async fn api_halaman(State(hub): State<Arc<Hub>>, headers: HeaderMap, Json(h): Json<Halaman>) -> Response {
+    let sesi = headers.get("x-exact-sesi").and_then(|v| v.to_str().ok()).unwrap_or("");
+    let pemilik = crate::akun::akun_dari_sesi(sesi);
+    if pemilik.as_deref() != Some(h.murid.as_str()) {
+        return tolak();
+    }
+    let (boleh, kanvas) = izin_murid_terkini(&h.murid);
+    let Some(kanvas) = kanvas.filter(|_| boleh) else {
+        return (StatusCode::FORBIDDEN, "Drawing is not allowed.").into_response();
+    };
+    antre_coretan_murid(hub, kanvas.clone(), json!({ "tambahHalaman": 1 }));
+    Json(json!({ "ok": true, "kanvas": kanvas })).into_response()
 }
 
 /* ── Pertanyaan ────────────────────────────────────────────────────── */

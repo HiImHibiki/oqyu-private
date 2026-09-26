@@ -24,7 +24,15 @@ import {
  */
 export function KanvasLayar() {
   const { data: kanvas, memuat } = useData('canvas', daftarKanvas, [])
-  const [aktif, setAktif] = useState<string | null>(null)
+  /* `?buka=<id>`: halaman guru Exact Practice membuka editor langsung di kanvas
+   * seorang murid (hanya di browser; aplikasi Mac membuka seperti biasa). */
+  const [aktif, setAktif] = useState<string | null>(() => {
+    try {
+      return new URLSearchParams(location.search).get('buka')
+    } catch {
+      return null
+    }
+  })
   const [ubahNama, setUbahNama] = useState(false)
   const [nama, setNama] = useState('')
   const inputRef = useRef<HTMLInputElement | null>(null)

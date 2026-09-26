@@ -1951,6 +1951,32 @@ function terapkanIzin(boleh: boolean, sketsaId: string | null) {
   }
 }
 
+/** "+ Halaman": satu kertas lagi di bawah kanvas saya, lalu gulir ke sana.
+ *  Server menambahkannya lewat antrean tulis coretan (±1,2 dtk), jadi berkasnya
+ *  dimuat ulang sesudahnya — guru di Mac/web melihat halaman barunya juga. */
+async function tambahHalaman() {
+  const tombol = el('coret-halaman') as HTMLButtonElement
+  if (!izinCoret.sketsa || tombol.disabled) return
+  tombol.disabled = true
+  try {
+    await api('/api/kelas/halaman', { method: 'POST', json: { murid: muridId } })
+    await new Promise((r) => window.setTimeout(r, 1800))
+    await muatSketsa(izinCoret.sketsa)
+    const kertas = kertasDari(sketsa?.paper)
+    if (kertas.w > 0) {
+      const k = kotakHalaman(kertas, Math.max(0, (sketsa?.pages ?? 1) - 1))
+      tampilan = { ...tampilan, y: 24 - k.y1 * tampilan.skala }
+    }
+    kotorDasar = true
+    kotorAktif = true
+    tampilkanStatus(`Halaman ${sketsa?.pages ?? ''} ditambahkan`)
+  } catch (e) {
+    tampilkanStatus(`Gagal menambah halaman: ${e instanceof Error ? e.message : String(e)}`, true)
+  } finally {
+    tombol.disabled = false
+  }
+}
+
 /** Buka kanvas saya dan nyalakan mode coret. */
 async function mulaiCoret() {
   if (!izinCoret.boleh || !izinCoret.sketsa) return
@@ -2083,6 +2109,7 @@ function pasangCoret() {
   }
   el('coret-selesai').onclick = selesaiCoret
   el('coret-undo').onclick = urungkanKu
+  el('coret-halaman').onclick = () => void tambahHalaman()
   el('coret-bentuk').onclick = () => setBentuk(!bentukAktif)
   el('coret-penggaris').onclick = () => setInstrumenKu(instrumenKu?.jenis === 'penggaris' ? null : 'penggaris')
   el('coret-busur').onclick = () => setInstrumenKu(instrumenKu?.jenis === 'busur' ? null : 'busur')

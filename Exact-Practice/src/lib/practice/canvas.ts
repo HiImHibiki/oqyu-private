@@ -67,3 +67,21 @@ export async function kanvasMurid(userId: string, nama: string): Promise<string 
 export function urlLihatKanvas(kanvasId: string): string {
   return `${URL_PUBLIK}/tv?tv=1&mode=fit&pin=${encodeURIComponent(PIN)}&lihat=${encodeURIComponent(kanvasId)}`;
 }
+
+/** Tiket admin sementara (12 jam) dari Canvas — supaya editor web Canvas bisa
+ *  ditanam di halaman guru tanpa mengetik sandi admin. Loopback + PIN. */
+export async function tiketAdminCanvas(): Promise<string | null> {
+  if (!PIN) return null;
+  try {
+    const r = await fetch(`${URL_LOKAL}/api/admin/tiket`, { method: "POST", headers: kepala(), body: "{}" });
+    if (!r.ok) return null;
+    return ((await r.json()) as { tiket?: string }).tiket ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** Editor Canvas lengkap (bisa menulis) yang langsung membuka kanvas murid. */
+export function urlEditorKanvas(kanvasId: string, tiket: string): string {
+  return `${URL_PUBLIK}/admin?admin=${encodeURIComponent(tiket)}&buka=${encodeURIComponent(kanvasId)}`;
+}

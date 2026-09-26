@@ -182,6 +182,33 @@ pub fn share_set_admin(sandi: Option<String>) {
 
 /// Hak admin: token internal aplikasi, atau kata sandi admin yang disetel.
 /// Percobaan yang gagal dihitung bersama percobaan PIN yang salah.
+/// Tiket admin sementara untuk halaman guru Exact Practice: editor web Canvas
+/// ditanam di sana tanpa guru mengetik sandi admin. Diterbitkan hanya lewat
+/// `/api/admin/tiket` (loopback + PIN, tanpa header proxy), berlaku 12 jam,
+/// hilang saat aplikasi ditutup.
+static TIKET_ADMIN: Mutex<Vec<(String, std::time::Instant)>> = Mutex::new(Vec::new());
+const UMUR_TIKET: Duration = Duration::from_secs(12 * 3600);
+
+fn tiket_sah(k: &str) -> bool {
+    let mut g = TIKET_ADMIN.lock().unwrap_or_else(|e| e.into_inner());
+    g.retain(|(_, t)| t.elapsed() < UMUR_TIKET);
+    g.iter().any(|(x, _)| x == k)
+}
+
+pub async fn api_tiket_admin(State(hub): State<Arc<Hub>>, headers: HeaderMap) -> Response {
+    let lewat_proxy = ["cf-connecting-ip", "x-forwarded-for", "x-real-ip"].iter().any(|h| headers.contains_key(*h));
+    let asal = headers.get("x-exact-asal").and_then(|v| v.to_str().ok()).unwrap_or("");
+    let lokal = asal == "127.0.0.1" || asal == "::1";
+    if lewat_proxy || !lokal || !sah(&hub, &headers, None) {
+        return tolak();
+    }
+    let tiket = format!("tk{:x}{:x}{:x}", sidik_teks(&pin_acak()), sidik_teks(&format!("{:?}", std::time::SystemTime::now())), sidik_teks(&pin_acak()));
+    let mut g = TIKET_ADMIN.lock().unwrap_or_else(|e| e.into_inner());
+    g.retain(|(_, t)| t.elapsed() < UMUR_TIKET);
+    g.push((tiket.clone(), std::time::Instant::now()));
+    Json(json!({ "tiket": tiket })).into_response()
+}
+
 pub fn admin_sah(hub: &Hub, headers: &HeaderMap, q: Option<&str>) -> bool {
     let asal = asal_klien(headers);
     if diblokir(&asal) {
@@ -193,7 +220,7 @@ pub fn admin_sah(hub: &Hub, headers: &HeaderMap, q: Option<&str>) -> bool {
         .map(|s| s.to_string())
         .or_else(|| q.map(|s| s.to_string()));
     let Some(k) = kandidat.filter(|k| !k.is_empty()) else { return false };
-    if k == hub.token_app {
+    if k == hub.token_app || (k.starts_with("tk") && tiket_sah(&k)) {
         return true;
     }
     let sandi = SANDI_ADMIN.lock().ok().and_then(|s| s.clone());
@@ -351,6 +378,8 @@ fn rute(hub: Arc<Hub>) -> Router {
         .route("/api/akun/saya", get(crate::akun::api_saya_akun))
         .route("/api/akun/sesi", axum::routing::post(crate::akun::api_sesi_akun))
         .route("/api/akun/practice", axum::routing::post(crate::akun::api_akun_practice))
+        .route("/api/admin/tiket", axum::routing::post(api_tiket_admin))
+        .route("/api/kelas/halaman", axum::routing::post(crate::kelas::api_halaman))
         .route("/api/akun/keluar", axum::routing::post(crate::akun::api_keluar))
         .route("/api/akun", get(crate::akun::api_daftar_akun))
         .route("/api/akun/reset", axum::routing::post(crate::akun::api_reset_sandi))

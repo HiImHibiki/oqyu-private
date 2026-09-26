@@ -82,6 +82,8 @@
 
 - ✅ P-058 Pantauan langsung per murid: posisi nomor yang sedang dibuka (memori proses, `POST /api/attempts/[id]/posisi` tiap pindah soal), jawaban latihan terkirim ±1,5 dtk setelah diisi; Pantau kelas menampilkan "di nomor X" + kanvas coret mini murid yang sedang mengerjakan (refresh 5 dtk); halaman `/admin/kelas/[attempt]`: soal yang sedang dikerjakan, peta nomor benar/salah/kosong, soal + jawaban murid + kunci tiap nomor, kanvas coret langsung (refresh 3 dtk). Diuji dua browser (murid tablet & guru laptop)
 
+- ✅ P-059 Guru menulis di kanvas murid dari web admin: halaman detail murid menanam editor Canvas lengkap (`/admin?admin=<tiket>&buka=<kanvas>`) + tombol "Buka layar penuh"; tiket admin 12 jam diminta server Practice ke Canvas (loopback + PIN). Aplikasi Canvas di Mac tetap bisa dipakai bersamaan (kanvas sama). Diuji: goresan guru dari web tersimpan di kanvas murid
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-035 CI GitHub Actions (typecheck, build, test) — B4

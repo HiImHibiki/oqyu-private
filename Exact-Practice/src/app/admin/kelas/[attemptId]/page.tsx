@@ -9,7 +9,7 @@ import { gradeAnswer } from "@/lib/exams/grade";
 import { getPaket } from "@/lib/practice/paket";
 import { jawabanMuridTeks, kunciTeks } from "@/lib/practice/latihan";
 import { posisiDari } from "@/lib/practice/posisi";
-import { kanvasMurid, urlLihatKanvas } from "@/lib/practice/canvas";
+import { kanvasMurid, tiketAdminCanvas, urlEditorKanvas } from "@/lib/practice/canvas";
 import { RichText, RichInline } from "@/components/exam/RichText";
 import { SegarkanOtomatis } from "../SegarkanOtomatis";
 import type { ResponseValue } from "@/lib/types";
@@ -50,12 +50,14 @@ export default async function PantauMuridPage({ params }: { params: Promise<{ at
   const tenggat = a.sectionDeadlines?.latihan;
   const sisa = a.status === "in_progress" && !lay?.tanpaWaktu && tenggat ? remainingSec(tenggat) : null;
   const kanvas = murid ? await kanvasMurid(murid.id, murid.fullName) : null;
+  const tiket = kanvas ? await tiketAdminCanvas() : null;
+  const editor = kanvas && tiket ? urlEditorKanvas(kanvas, tiket) : null;
 
   const warna = (b: (typeof baris)[number]) => (!b.ada ? "var(--fg-muted)" : b.benar ? "var(--accent)" : "var(--danger)");
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-6">
-      {a.status === "in_progress" && <SegarkanOtomatis detik={3} />}
+      {a.status === "in_progress" && <SegarkanOtomatis detik={4} />}
       <Link href="/admin/kelas" className="mb-3 inline-flex items-center gap-1.5 text-sm muted hover:underline"><ArrowLeft size={14} /> Pantau kelas</Link>
 
       <div className="card mb-4 flex flex-wrap items-center gap-x-6 gap-y-2 p-4">
@@ -103,9 +105,12 @@ export default async function PantauMuridPage({ params }: { params: Promise<{ at
 
         <div className="lg:sticky lg:top-4 lg:self-start">
           <div className="card overflow-hidden">
-            <div className="border-b px-4 py-2 text-sm font-semibold" style={{ borderColor: "var(--border)" }}>Kanvas coret murid (langsung)</div>
-            {kanvas
-              ? <iframe src={urlLihatKanvas(kanvas)} className="block h-[70vh] w-full" style={{ border: 0, background: "#fff" }} title="Kanvas murid" />
+            <div className="flex items-center gap-2 border-b px-4 py-2 text-sm font-semibold" style={{ borderColor: "var(--border)" }}>
+              Kanvas murid — bisa ditulis guru
+              {editor && <a href={editor} target="_blank" rel="noreferrer" className="btn btn-ghost ml-auto !px-3 !py-1 text-xs">Buka layar penuh</a>}
+            </div>
+            {editor
+              ? <iframe src={editor} className="block h-[78vh] w-full" style={{ border: 0, background: "#fff" }} title="Kanvas murid" allow="fullscreen" />
               : <p className="p-4 text-sm muted">Exact Canvas belum menyala atau berbagi mati (⌘, → Share on this network).</p>}
           </div>
         </div>

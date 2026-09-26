@@ -68,6 +68,9 @@
 - ✅ C-052 `?lihat=<id kanvas>` di halaman TV: terpaku ke satu kanvas murid (goresan murid tampil seketika), tanpa pil status — ditanam di halaman pantau guru Practice (↔ P-058)
 - ✅ C-053 Fix PIN dari URL hanya diterima 4 digit (server 4–8) — tautan dengan PIN 6–8 digit selalu meminta PIN lagi
 
+- ✅ C-054 Tiket admin sementara (`POST /api/admin/tiket`, loopback + PIN, tanpa header proxy, 12 jam, di memori) diterima `admin_sah`; editor web menerima `?admin=tk…` dan `?buka=<kanvas>` (↔ P-059)
+- ✅ C-055 Tombol "＋ Halaman" di kanvas coret murid: `POST /api/kelas/halaman` (hanya pemilik sesi, kanvas berizin) → operasi `tambahHalaman` lewat antrean tulis coretan (maks 30 halaman), layar murid menggulir ke halaman baru; guru melihatnya di Mac/web. Diuji
+
 ## Direncanakan (lihat PLANS.md Backlog)
 - ❌ C-043 Jalur sesi Practice untuk Practice di cloud — tidak diperlukan, user memilih tetap Mac + Tunnel (24 Sep 2026)
 - ⬜ C-044 CI build — B3
