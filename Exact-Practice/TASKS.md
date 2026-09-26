@@ -80,6 +80,8 @@
 
 - ✅ P-057 Akses internet on/off lewat Cloudflare Tunnel dari laptop: `run-server.sh publik on|off|status|setup` — tanpa setup = 2 tunnel cepat trycloudflare (Practice & Canvas), dengan `setup <host> <host>` = named tunnel domain sendiri (ingress Practice+Canvas saja). Practice di-restart dengan alamat publik (tanpa build ulang), ditolak bila mode dev. Proses latar dilepas penuh (`lepas`: fd warisan ditutup, sesi sendiri) — pipa pemanggil tak lagi menggantung. Default `EXACT_CANVAS_PUBLIC` tidak lagi domain Mac teman (localhost). Diuji lewat internet: halaman 200, login (cookie Secure), papan pakai alamat Canvas publik, goresan tersimpan lewat WebSocket tunnel, Worksheet tak terjangkau; lalu ditutup lagi (sebagian P-039)
 
+- ✅ P-058 Pantauan langsung per murid: posisi nomor yang sedang dibuka (memori proses, `POST /api/attempts/[id]/posisi` tiap pindah soal), jawaban latihan terkirim ±1,5 dtk setelah diisi; Pantau kelas menampilkan "di nomor X" + kanvas coret mini murid yang sedang mengerjakan (refresh 5 dtk); halaman `/admin/kelas/[attempt]`: soal yang sedang dikerjakan, peta nomor benar/salah/kosong, soal + jawaban murid + kunci tiap nomor, kanvas coret langsung (refresh 3 dtk). Diuji dua browser (murid tablet & guru laptop)
+
 ## Direncanakan (lihat detail di PLANS.md Backlog)
 - ❌ P-033 (digabung ke P-038)
 - ⬜ P-035 CI GitHub Actions (typecheck, build, test) — B4

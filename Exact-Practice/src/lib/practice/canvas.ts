@@ -46,3 +46,24 @@ export async function sesiPracticeUntuk(userId: string, nama: string): Promise<s
     return null;
   }
 }
+
+/** Id kanvas pribadi murid Practice di Canvas (dibuat bila belum ada) — untuk
+ *  layar pantau guru. null = Canvas mati/PIN kosong. */
+export async function kanvasMurid(userId: string, nama: string): Promise<string | null> {
+  if (!PIN) return null;
+  try {
+    const r = await fetch(`${URL_LOKAL}/api/akun/practice`, {
+      method: "POST", headers: kepala(), body: JSON.stringify({ id: userId, nama: nama || "Murid" }),
+    });
+    if (!r.ok) return null;
+    return ((await r.json()) as { kanvas?: string | null }).kanvas ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** Layar lihat-saja (mode TV) yang terpaku ke satu kanvas murid: goresannya
+ *  tampil seketika. Membawa PIN — hanya untuk halaman guru. */
+export function urlLihatKanvas(kanvasId: string): string {
+  return `${URL_PUBLIK}/tv?tv=1&mode=fit&pin=${encodeURIComponent(PIN)}&lihat=${encodeURIComponent(kanvasId)}`;
+}

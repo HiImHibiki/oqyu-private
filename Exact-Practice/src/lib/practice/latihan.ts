@@ -202,3 +202,15 @@ export function jawabanMuridTeks(q: BankQuestion, raw: unknown): string {
   const opsi = q.choices?.find((c) => c.id === teks);
   return opsi ? `${opsi.id}. ${opsi.text}` : teks;
 }
+
+/** Kunci jawaban yang terbaca guru (pilihan ganda ditulis beserta kalimat opsinya). */
+export function kunciTeks(q: BankQuestion): string {
+  const a = q.answer as { mode?: string; value?: unknown; accepted?: string[]; min?: number; max?: number } | undefined;
+  if (!a) return "";
+  if (a.mode === "choice" && typeof a.value === "string") return jawabanMuridTeks(q, a.value);
+  if (a.mode === "numeric") return String(a.value);
+  if (a.mode === "numeric_range") return `${a.min} – ${a.max}`;
+  if (a.mode === "text") return (a.accepted ?? []).slice(0, 3).join(" / ");
+  if (Array.isArray(a.value)) return a.value.map(String).join(", ");
+  return "";
+}

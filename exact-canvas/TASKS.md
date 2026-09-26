@@ -65,6 +65,9 @@
 
 - ✅ C-051 Kursor hilang saat mencoret di laptop (halaman murid): aturan TV `html, body { cursor: none }` masih berlaku di body walau mode .hp — kini `.hp body` kursor normal, pena = titik bercincin (SVG, titik panas di tengah), hapus = cell, tombol = pointer. Diuji computed style di Chrome
 
+- ✅ C-052 `?lihat=<id kanvas>` di halaman TV: terpaku ke satu kanvas murid (goresan murid tampil seketika), tanpa pil status — ditanam di halaman pantau guru Practice (↔ P-058)
+- ✅ C-053 Fix PIN dari URL hanya diterima 4 digit (server 4–8) — tautan dengan PIN 6–8 digit selalu meminta PIN lagi
+
 ## Direncanakan (lihat PLANS.md Backlog)
 - ❌ C-043 Jalur sesi Practice untuk Practice di cloud — tidak diperlukan, user memilih tetap Mac + Tunnel (24 Sep 2026)
 - ⬜ C-044 CI build — B3

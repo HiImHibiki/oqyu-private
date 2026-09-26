@@ -7,6 +7,8 @@ import { listPaket } from "@/lib/practice/paket";
 import { milikPaket, ringkasAttempt, statusPaket, tutupYangKedaluwarsa, type RingkasAttempt, type StatusPaket } from "@/lib/practice/latihan";
 import { PageHead } from "@/components/ui/AppShell";
 import { SegarkanOtomatis } from "./SegarkanOtomatis";
+import { posisiDari } from "@/lib/practice/posisi";
+import { kanvasMurid, urlLihatKanvas } from "@/lib/practice/canvas";
 
 export const metadata = { title: "Pantau kelas" };
 export const dynamic = "force-dynamic";
@@ -28,7 +30,8 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
   const [murid, semuaPaket] = await Promise.all([db.listUsers(q, 200), listPaket()]);
   const bank = await questionsByIds(semuaPaket.flatMap((p) => p.questionIds));
 
-  const baris: { nama: string; username: string; id: string; paket: { judul: string; kode: string; st: StatusPaket; live: RingkasAttempt | null; sisa: number | null }[] }[] = [];
+  type Live = { r: RingkasAttempt; sisa: number | null; nomor: number | null; attemptId: string };
+  const baris: { nama: string; username: string; id: string; kanvas: string | null; paket: { judul: string; kode: string; st: StatusPaket; live: Live | null }[] }[] = [];
   const perPaket = new Map<string, { judul: string; peserta: number; salah: Map<number, number>; total: number }>();
 
   for (const m of murid) {
@@ -40,10 +43,17 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
       if (!attempts.some((a) => milikPaket(a, p))) continue;
       const st = await statusPaket(p, attempts, bank);
       const nomor = new Map(p.questionIds.map((id, i) => [id, i + 1]));
-      const live = st.berjalan ? await ringkasAttempt(st.berjalan, bank, nomor) : null;
-      const tenggat = st.berjalan?.sectionDeadlines?.latihan;
-      const sisa = st.berjalan && !st.berjalan.formLayout[0]?.tanpaWaktu && tenggat ? remainingSec(tenggat) : null;
-      daftar.push({ judul: p.judul, kode: p.kode, st, live, sisa });
+      let live: Live | null = null;
+      if (st.berjalan) {
+        const tenggat = st.berjalan.sectionDeadlines?.latihan;
+        const pos = posisiDari(st.berjalan.id);
+        live = {
+          r: await ringkasAttempt(st.berjalan, bank, nomor), attemptId: st.berjalan.id,
+          sisa: !st.berjalan.formLayout[0]?.tanpaWaktu && tenggat ? remainingSec(tenggat) : null,
+          nomor: pos ? nomor.get(pos.questionId) ?? null : null,
+        };
+      }
+      daftar.push({ judul: p.judul, kode: p.kode, st, live });
       if (st.selesai.length) {
         const agg = perPaket.get(p.id) ?? { judul: p.judul, peserta: 0, salah: new Map(), total: st.total };
         agg.peserta++;
@@ -51,16 +61,22 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
         perPaket.set(p.id, agg);
       }
     }
-    if (daftar.length) baris.push({ nama: m.fullName, username: m.email, id: m.id, paket: daftar });
+    /* Kanvas coret hanya untuk murid yang sedang mengerjakan — itu yang perlu
+     * dilihat guru saat mengajar. */
+    const kanvas = daftar.some((d) => d.live) ? await kanvasMurid(m.id, m.fullName) : null;
+    if (daftar.length) baris.push({ nama: m.fullName, username: m.email, id: m.id, kanvas, paket: daftar });
   }
   const ringkasPaket = [...perPaket.values()].map((p) => ({
     ...p, terbanyak: [...p.salah].sort((a, b) => b[1] - a[1]).slice(0, 8),
   }));
 
+  /* Yang sedang mengerjakan di atas. */
+  baris.sort((x, y) => Number(!!y.kanvas || y.paket.some((p) => p.live)) - Number(!!x.kanvas || x.paket.some((p) => p.live)));
+
   return (
-    <div className="mx-auto max-w-5xl px-6 py-8">
-      <PageHead title="Pantau kelas" subtitle="Kemajuan murid per paket — diperbarui otomatis tiap 10 detik." />
-      <SegarkanOtomatis detik={10} />
+    <div className="mx-auto max-w-6xl px-6 py-8">
+      <PageHead title="Pantau kelas" subtitle="Murid yang sedang mengerjakan tampil di atas beserta kanvas coretnya — diperbarui otomatis." />
+      <SegarkanOtomatis detik={5} />
 
       <section className="mb-8">
         <form className="mb-3 flex gap-2">
@@ -76,7 +92,7 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
                 <div className="text-xs muted">{b.username}</div>
               </div>
               <div className="grid gap-3">
-                {b.paket.map(({ judul, kode, st, live, sisa }) => (
+                {b.paket.map(({ judul, kode, st, live }) => (
                   <div key={kode} className="rounded-lg border p-3" style={{ borderColor: "var(--line)" }}>
                     <div className="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
                       <span className="font-medium">{judul}</span>
@@ -90,15 +106,24 @@ export default async function PantauKelasPage({ searchParams }: { searchParams: 
                     </div>
 
                     {live && (
-                      <div className="mb-2 rounded-md px-3 py-2 text-sm" style={{ background: "color-mix(in srgb, var(--warn) 10%, transparent)" }}>
-                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                          <span className="chip" style={{ color: "var(--warn)" }}>{live.perbaikan ? "sedang perbaikan" : "sedang mengerjakan"}</span>
-                          <span>Dijawab <b>{live.dijawab}/{live.total}</b></span>
-                          <span>Benar <b style={{ color: "var(--accent)" }}>{live.benar}</b></span>
-                          <span>Salah <b style={{ color: "var(--danger)" }}>{live.salah.length}</b></span>
-                          {sisa !== null && <span className="muted">sisa {menit(sisa)}</span>}
+                      <div className="mb-2 grid gap-3 rounded-md p-3 text-sm md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]" style={{ background: "color-mix(in srgb, var(--warn) 10%, transparent)" }}>
+                        <div>
+                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                            <span className="chip" style={{ color: "var(--warn)" }}>{live.r.perbaikan ? "sedang perbaikan" : "sedang mengerjakan"}</span>
+                            {live.nomor && <span>Di nomor <b>{live.nomor}</b></span>}
+                            {live.sisa !== null && <span className="muted">sisa {menit(live.sisa)}</span>}
+                          </div>
+                          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+                            <span>Dijawab <b>{live.r.dijawab}/{live.r.total}</b></span>
+                            <span>Benar <b style={{ color: "var(--accent)" }}>{live.r.benar}</b></span>
+                            <span>Salah <b style={{ color: "var(--danger)" }}>{live.r.salah.length}</b></span>
+                          </div>
+                          {live.r.salah.length > 0 && <div className="mt-1 text-xs">Salah di nomor <Nomor n={live.r.salah} warna="var(--danger)" /></div>}
+                          <Link href={`/admin/kelas/${live.attemptId}`} className="btn btn-primary mt-3 !py-1.5 text-sm">Lihat soal, jawaban & kanvas</Link>
                         </div>
-                        {live.salah.length > 0 && <div className="mt-1 text-xs">Salah di nomor <Nomor n={live.salah} warna="var(--danger)" /></div>}
+                        {b.kanvas
+                          ? <iframe src={urlLihatKanvas(b.kanvas)} className="h-64 w-full rounded-md" style={{ border: "1px solid var(--line)", background: "#fff" }} title={`Kanvas ${b.nama}`} />
+                          : <div className="grid h-64 place-items-center rounded-md text-xs muted" style={{ border: "1px dashed var(--line)" }}>Kanvas: Exact Canvas belum menyala</div>}
                       </div>
                     )}
 

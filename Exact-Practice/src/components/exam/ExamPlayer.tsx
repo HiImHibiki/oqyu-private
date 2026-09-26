@@ -255,6 +255,24 @@ export function ExamPlayer(props: ExamPlayerProps) {
     return () => clearInterval(t);
   }, [started, save]);
 
+  /* Latihan dipantau guru secara langsung: jawaban dikirim ~1,5 detik setelah
+   * berubah (bukan menunggu autosave 15 detik), dan nomor yang sedang dibuka
+   * dikabarkan tiap pindah soal. */
+  const jawabanTerakhir = useRef<string>("");
+  useEffect(() => {
+    if (!latihan || !started) return;
+    const sidik = JSON.stringify(Object.fromEntries(Object.entries(responses).map(([k, v]) => [k, v.raw])));
+    if (sidik === jawabanTerakhir.current) return;
+    const t = setTimeout(() => { jawabanTerakhir.current = sidik; void save(); }, 1500);
+    return () => clearTimeout(t);
+  }, [latihan, started, responses, save]);
+  useEffect(() => {
+    if (!latihan || !started || !question) return;
+    void fetch(`/api/attempts/${props.attemptId}/posisi`, {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ questionId: question.id }),
+    }).catch(() => {});
+  }, [latihan, started, question, props.attemptId]);
+
   /* Simpan saat halaman ditinggalkan.
    *
    * `pagehide` dipakai, bukan `beforeunload`: Safari dan peramban ponsel

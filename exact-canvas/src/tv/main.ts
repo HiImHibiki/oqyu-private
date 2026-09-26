@@ -76,6 +76,15 @@ const paramMode = params.get('mode')
  * supaya panelnya bisa membesar sendiri tepat ketika guru mulai mencoret.
  */
 const tertanam = params.get('embed') === '1'
+/**
+ * `?lihat=<id kanvas>` (layar TV/guru, bukan murid): terpaku ke satu kanvas —
+ * dipakai halaman pantau Exact Practice untuk melihat coretan satu murid secara
+ * langsung. Goresan murid di kanvas itu tampil seketika; editor yang pindah ke
+ * kanvas lain tidak menyeret layar ini.
+ */
+const lihatKanvas = params.get('lihat')
+// Lihat-saja dari halaman guru Practice: tanpa pil status ("Following …") — cuma kanvasnya.
+if (lihatKanvas) document.documentElement.classList.add('lihat')
 if (tertanam) document.documentElement.classList.add('embed')
 /**
  * `?sesi=<token>`: sesi akun yang diterbitkan Practice atas nama murid (lewat
@@ -689,6 +698,10 @@ async function mulai() {
     sesi: sebagaiMurid ? sesiAktif() : undefined,
   })
   dengarkanLangsung(terima)
+  if (lihatKanvas && !sebagaiMurid) {
+    arah = `sketsa:${lihatKanvas}`
+    kanvasSaya = lihatKanvas
+  }
   if (sebagaiMurid) {
     pasangBilahMurid()
     pasangGestur()
@@ -731,7 +744,7 @@ async function mulai() {
   // Murid yang sudah punya kanvasnya sendiri tidak perlu sketsa terakhir
   // kelas — itu cuma cadangan supaya layar tidak kosong (TV, atau jaringan
   // sedang putus saat masuk; siklus segarkanSaya berikutnya membetulkannya).
-  const awal = sebagaiMurid && kanvasSaya ? null : await sketsaTerbaru()
+  const awal = lihatKanvas && !sebagaiMurid ? lihatKanvas : sebagaiMurid && kanvasSaya ? null : await sketsaTerbaru()
   if (awal) {
     await muatSketsa(awal)
     // Belum ada sumber: muat satu halaman penuh supaya layar tidak kosong.

@@ -11,7 +11,8 @@ const KUNCI_PIN = 'exact-canvas-pin'
 export function pinTersimpan(): string | null {
   try {
     const dariUrl = new URLSearchParams(location.search).get('pin')
-    if (dariUrl && /^\d{4}$/.test(dariUrl)) {
+    // 4–8 digit, sama dengan server (share_start) — PIN internet disarankan 6–8.
+    if (dariUrl && /^\d{4,8}$/.test(dariUrl)) {
       localStorage.setItem(KUNCI_PIN, dariUrl)
       return dariUrl
     }
